@@ -26,3 +26,11 @@ _$*
 *.ln
 core
 # CVS default ignores end
+proyecto.aux
+proyecto.bbl
+proyecto.blg
+proyecto.lof
+proyecto.log
+proyecto.lot
+proyecto.out
+proyecto.toc

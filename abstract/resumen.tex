@@ -1,0 +1,82 @@
+\chapter*{Resumen}
+\label{cha:resumen}
+
+El trabajo realizado en esta tesis ha abordado diferentes estudios
+orientados a la mejora de un sistema de generación de respuesta mediante
+la incorporación de un sintetizador de habla con emociones en
+español. La tesis doctoral se ha abordado en tres fases fundamentales,
+cada una de las cuales está relacionada con una de las contribuciones
+científicas planteadas originalmente.
+
+En primer lugar, y con el objetivo de obtener información sobre la
+relevancia de las distintas componentes de la señal de habla en los
+procesos de identificación de emociones, se ha realizado un estudio
+que demuestra la complementariedad entre los aspectos segmentales y
+suprasegmentales, caracterizando su importancia relativa para cada una
+de las emociones bajo estudio. Sobre una base de datos existente, se
+ha realizado un análisis de la naturaleza de las emociones en la voz
+mediante estrategias de identificación automática y la evaluación
+perceptual de estímulos generados mediante métodos de síntesis por
+copia. Adicionalmente, se ha realizado un estudio sobre la
+normalización de características acústicas con el fin de implementar
+sistemas de identificación de emociones multi-locutor y
+multi-idioma. Como complemento al análisis, se ha evaluado el
+comportamiento de un sistema automático de identificación basado en
+redes bayesianas dinámicas a la hora de identificar emociones reales
+(no actuadas), dicho sistema ha sido evaluado dentro de la primera
+competición internacional de reconocimiento automático de emociones.
+
+En segundo lugar, los conocimientos adquiridos de este análisis
+inicial han sido la base para la adquisición de un corpus pionero en
+el área de síntesis de emociones, dada la cobertura de su contenido
+emocional multimedia y multi-locutor. Este corpus ha sido
+imprescindible para adaptar y evaluar exhaustivamente la aplicación a
+la síntesis de habla emocional, de dos de las técnicas de alta calidad
+empleadas actualmente por la comunidad científica: síntesis por
+selección de unidades, dominante en la última década; y síntesis
+paramétrica basada en modelos ocultos de Markov, técnica emergente y
+base de las investigaciones futuras en síntesis de voz durante la
+próxima década. Tras un exhaustivo y novedoso análisis de los
+resultados obtenidos en una evaluación perceptual, se ha comprobado
+que ambas técnicas producen voz con emociones de la misma calidad. Sin
+embargo, a pesar de que las emociones se identifican mejor de forma
+global cuando sintetizamos voz mediante la técnica de selección de
+unidades, y que la intensidad emocional resultante es mayor al
+minimizar el modelado y el procesado de la señal de voz, es la
+síntesis de voz basada en modelos ocultos de Markov la que modela
+mejor la información prosódica, de máxima relevancia en cuanto a la
+expresión de emociones se refiere. El sistema basado en modelos
+ocultos de Markov adaptado al castellano ha sido galardonado con el
+premio al mejor sistema en la competición nacional de conversión texto
+a voz dentro de las Jornadas de Tecnología del Habla en 2008.
+
+En tercer lugar, sobre las voces generadas utilizando una de las técnicas
+anteriores (concretamente las generadas exitosamente basándose en
+modelos ocultos de Markov, dada la flexibilidad en la manipulación de
+parámetros del modelo que ofrece esta técnica y los excelentes
+resultados obtenidos en la competición), se ha diseñado, implementado
+y evaluado una nueva estrategia de transformación de emociones
+independiente del locutor. Dicha estrategia está basada en la
+extrapolación de la emoción sobre aquellas características halladas
+como relevantes en el análisis inicial. De los resultados de la
+evaluación, se ha comprobado que los patrones acústicos emocionales
+son extrapolados parcialmente a una locutora objetivo sin por ello
+perder similitud con la voz de dicha locutora, y que la intesidad de
+la emoción extrapolada puede ser modificada con éxito variando un
+coeficiente de extrapolación. Sin embargo, la intensidad con la que se
+extrapola la emoción tiene un impacto negativo en la calidad de la voz
+sintetizada, especialmente cuando dicha extrapolación se centra en la
+transformación de parámetros espectrales. Finalmente, se ha propuesto
+una nueva medida sobre la bondad de la extrapolación/transformación de
+emociones independiente del locutor, basándose en los resultados
+perceptuales en cuanto a calidad de voz, identificación de la emoción
+e identificación del locutor objetivo se refiere.
+
+\clearemptydoublepage
+
+%% DONE
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "phd-book"
+%%% End: 
