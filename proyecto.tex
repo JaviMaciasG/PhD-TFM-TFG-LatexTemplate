@@ -1,86 +1,73 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % PFC Latex Template
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\documentclass[english]{report}
 \documentclass[spanish,openright]{book}
+%\documentclass[english,openright]{book}
 %\documentclass[11pt,english,twoside,openright]{book}
 
-\input{setlanguage} % This defines the boolean english
-\input{preamble}    % All definitions, packages, etc.
+\input{config/preamble.tex}    % All definitions, packages, etc.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Info for the pdf file
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hypersetup
-{
-  pdfauthor={Nombre y apellidos del autor <autor@depeca.upm.es>},
-  pdftitle={Título del proyecto},
-  pdfsubject={Proyecto Fin de Carrera},
-  pdfkeywords={pfc template, latex document},
-  pdfcreator={LaTeX with hyperref package},
-  pdfproducer={rubber}
-}
+\input{config/setlanguage.tex} % This defines the boolean english. EDIT IT!
 
-%ruta de las imagenes
+\input{config/pdfdata.tex}     % This sets pdf file information. EDIT IT!
+
+% ruta de las imagenes
 \graphicspath{{./logos/}{./results/}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Let's start with the real stuff
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Now start text and numbering for toc, list of tables/figures,...
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frontmatter
 
-\input{cover/setspanishissues}
-\input{cover/cover-pfc}
+% Set Language dependent issues
+\input{config/setlanguagedependentissues.tex}
 
-\include{cover/dedicatoria}
-\include{cover/agradecimientos}
+% Here select the corresponding cover doc
+\input{cover/cover-pfc.tex}
 
-\include{abstract/resumen}
-\include{abstract/abstract}
+% Dedicatorias+agradecimientos
+\input{cover/dedicatoria.tex}
+\input{cover/agradecimientos.tex}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Resumen en cristiano e inglés
+\input{abstract/resumen.tex}
+\input{abstract/abstract.tex}
+
 % Now include toc and list of figures+tables
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{cover/toc+lof+lot}
+\input{cover/toc+lof+lot.tex}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Now include acronyms (if this is the case)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{acronyms/acronyms}
+\input{acronyms/acronyms.tex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Now start normal text and numbering, etc.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mainmatter
-
 \deactivatetilden
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Normal chapters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{introduction/introduccion.tex}
+\input{introduction/introduccion.tex}
 
-\include{development/desarrollo.tex}
+\input{development/desarrollo.tex}
 
-\include{results/resultados.tex}
+\input{results/resultados.tex}
 
-\include{conclusions/conclusiones.tex}
+\input{conclusions/conclusiones.tex}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearemptydoublepage
-%\bibliographystyle{plainnat}
-%\bibliographystyle{dinat}
-\bibliographystyle{unsrt}
-\bibliography{biblio/biblio}
+\input{biblio/bibliography.tex}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Appendices
@@ -91,7 +78,3 @@
 
 \end{document}
 
-%%% Local Variables: 
-%%% mode: latex
-%%% TeX-master: t
-%%% End: 
