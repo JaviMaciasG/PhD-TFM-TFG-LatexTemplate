@@ -1,0 +1,27 @@
+I'd like to announce the availability of
+my LaTeX2e acronym Package from CTAN.
+
+INSTALLATION:
+ - call 'latex acronym.ins' and copy the acronym.sty - file into
+   a path searched by LaTeX.
+ - to re-generate the documentation, call latex acronym.dtx
+
+When writing a paper on cellular mobile radio I started to used a lot
+of acronyms. This can be very disturbing for the reader, as he might
+not know all the used acronyms. To help the reader I kept a list of
+all the acronyms at the end of my paper.
+
+This package makes sure, that all acronyms used in the text are
+spelled out in full at least once. And it provides an environment to
+keep a list of used acronyms.
+
+Note that acronym requires the 'suffix' package. You can find it on 
+CTAN:macros/latex/contrib/bigfoot/
+
+Files of the `acronym' package:
+  README		This file
+  acronym.dtx		Sourcecode, example file & documentation
+  acronym.ins		Installation script generating the source and an example
+  acronym.pdf		PDF Version of the Docs
+  CHANGES               list of changes
+

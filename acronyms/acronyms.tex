@@ -11,8 +11,13 @@
 \addcontentsline{toc}{chapter}{Acrónimos}
 }
 
-\begin{acronym}
-\acro{HMI}[HMI]{\textit{Human-Machine Interfaces}}
+If you want to list just the used acronyms, specify the option
+\texttt{printonlyused} when including the package.
+
+% The argument to acronym sets the width of the acronym field, so that
+% all of the definitions will appear aligned
+\begin{acronym}[TD-PSOLA]
+
 \acro{HMI}[HMI]{\textit{Human-Machine Interfaces}}
 \acro{ETTS}[ETTS]{\textit{Emotional Text To Speech}}
 \acro{TTS}[TTS]{\textit{Text To Speech}}
@@ -47,6 +52,7 @@
 \acro{NIST}[NIST]{\textit{National Institute of Technology}}
 \acro{SES}[SES]{\textit{Spanish Expressive Speech}}
 \acro{EMODB}[EMODB]{\textit{Berlin Database of Emotional Speech}}
+
 \acro{FAUAIBO}[FAU-AIBO]{\textit{FAU AIBO Emotion Corpus}}
 
 \acro{SEV}[SEV]{\textit{Spanish Expressive Voices}}
@@ -58,9 +64,15 @@
 \acro{EIR}[EIR]{\textit{Emotion Identification Rate}}
 \acro{SIR}[SIR]{\textit{Speaker Identification Rate}}
 \acro{ES}[ES]{\textit{Emotional Strength}}
+
 \acro{STRAIGHT}[STRAIGHT]{\textit{Speech Transformation and Representation using Adaptive Interpolation of weiGHTed spectrum}}
 
+\acro{SOC}[SOC]{\textit{System on a Chip}}
+\acroplural{SOC}[SOCs]{\textit{Systems on a Chip}}
+
 \end{acronym}
+
+
 
 %\clearemptydoublepage
 

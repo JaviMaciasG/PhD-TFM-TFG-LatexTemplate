@@ -8,6 +8,9 @@
 
 \usepackage[spanish, english]{babel}
 
+% Use this if you want to delete headers and footers in empty pages
+%\usepackage{emptypage}
+
 \usepackage{listings}
 \usepackage{longtable}
 \usepackage{afterpage}
@@ -59,6 +62,8 @@
 % \usepackage{natbib}
 
 \usepackage{geometry}
+\geometry{verbose,a4paper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+\geometry{paperwidth=210mm,paperheight=297mm}
 
 \usepackage[
 ps2pdf,                %%% hyper-references for ps2pdf
@@ -139,8 +144,16 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 %***************************************************************************
 \usepackage{multirow}
 \usepackage{rotating}
-\usepackage{setspace, amssymb, amsmath, epsfig, multirow, colortbl, tabularx, subfigure}
-\usepackage{acronym}
+\usepackage{setspace, amssymb, amsmath, epsfig, multirow, colortbl, tabularx, subfigure}%
+% For acronym package:
+% If footnote is specified, text will be included in a footnote
+% If printonlyused is specified, only used acronyms will be included
+% I use the acronym sty under the sty directory as I needed the newest version
+%\usepackage[footnote,printonlyused,withpage]{acronym} 
+%\usepackage[printonlyused]{sty/acronym}
+
+% Mejor que el acronym es glossaries
+\usepackage[acronym,shortcuts,nomain]{glossaries}
 
 % ifthen to allow using language dependent settings
 \usepackage{ifthen}
@@ -182,8 +195,6 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 \definecolor{blanco}{rgb}{1,1,1}
 \definecolor{burdeos}{rgb}{1,0,0.95}
 
-\geometry{verbose,a4paper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
-\geometry{paperwidth=210mm,paperheight=297mm}
 
 \providecommand\phantomsection{}
 \onehalfspacing
@@ -201,5 +212,8 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
 \addtolength{\headheight}{3.5pt}
-\fancypagestyle{plain}{\fancyhead{}  \renewcommand{\headrulewidth}{0pt}}
+\fancypagestyle{plain}{\fancyhead{}  
+\renewcommand{\headrulewidth}{0pt}}
+
+%\makeglossaries
 

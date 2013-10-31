@@ -9,11 +9,12 @@
 
 \input{config/setlanguage.tex} % This defines the boolean english. EDIT IT!
 
+\input{config/glossaries.tex}  % EDIT IT to include your glossaries!
+
 \input{config/pdfdata.tex}     % This sets pdf file information. EDIT IT!
 
 % ruta de las imagenes
-\graphicspath{{./logos/}{./results/}}
-
+\graphicspath{{./logos/}{./results/}{./diagrams/}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Let's start with the real stuff
@@ -23,7 +24,7 @@
 % Now start text and numbering for toc, list of tables/figures,...
 \frontmatter
 
-% Set Language dependent issues
+% Set Language dependent issues that must be set after \begin{document}
 \input{config/setlanguagedependentissues.tex}
 
 % Here select the corresponding cover doc
@@ -40,9 +41,11 @@
 % Now include toc and list of figures+tables
 \input{cover/toc+lof+lot.tex}
 
-
 % Now include acronyms (if this is the case)
-\input{acronyms/acronyms.tex}
+\input{acronyms/acronymsgl.tex}
+
+% Now include symbols (if this is the case)
+\input{symbols/symbolsgl.tex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -75,6 +78,7 @@
 \appendix
 \input{appendix/manual.tex}
 \input{appendix/herramientas.tex}
+
 
 \end{document}
 

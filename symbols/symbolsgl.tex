@@ -1,0 +1,38 @@
+% These ones for the symbols glossary
+
+\newglossaryentry{ohm}{type=symbols,
+        name={\ensuremath{\Omega}},
+        symbol={\ensuremath{\Omega}}, 
+        sort=ohm,
+        description=unit of electrical resistance}
+
+\newglossaryentry{angstrom}{type=symbols,
+        name={\AA},
+        symbol={\AA},
+        sort=angstrom,
+        description={non-SI unit of length}}
+
+\newglossaryentry{xdet}{type=symbols,
+        name={\ensuremath{x(t)}},
+        symbol={\ensuremath{x(t)}},
+        sort=xdet,
+        description={Audio signal}}
+
+\newglossaryentry{xidet}{type=symbols,
+        name={\ensuremath{x_i(t)}},
+        symbol={\ensuremath{x_i(t)}},
+        sort=xidet,
+        description={Audio signal captured at microphone $i$}}
+
+
+
+\ifthenelse{\boolean{english}}
+{
+\printglossary[type=symbols,style=super,nonumberlist=true,title=List of Symbols,toctitle=List of Symbols]
+\addcontentsline{toc}{chapter}{List of Symbols}
+}
+{
+\printglossary[type=symbols,style=super,nonumberlist=true,title=Lista de símbolos,title=Lista de símbolos,toctitle=Lista de símbolos]
+\addcontentsline{toc}{chapter}{Lista de símbolos}
+}
+

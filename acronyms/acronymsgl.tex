@@ -1,0 +1,80 @@
+% These ones for the acronym glossary
+\newacronym{HMI}{HMI}{Human-Machine Interfaces}
+\newacronym{ETTS}{ETTS}{Emotional Text To Speech}
+\newacronym{TTS}{TTS}{Text To Speech}
+\newacronym{PSOLA}{PSOLA}{Pitch Synchronous OverLap Add}
+\newacronym{TDPSOLA}{TD-PSOLA}{Time Domain Pitch Synchronous OverLap Add}
+\newacronym{AI}{AI}{Artificial Intelligenge}
+
+\newacronym{SPSS}{SPSS}{Statistical Parametric Speech Synthesis}
+\newacronym{VC}{VC}{Voice Conversion}
+\newacronym{US}{US}{Unit Selection}
+\newacronym{HMM}{HMM}{Hidden Markov Model}
+\newacronym{LSP}{LSP}{Line Spectral Pairs}
+\newacronym{LPC}{LPC}{Linear Prediction Coefficiens}
+\newacronym{LSF}{LSF}{Line Spectral Frequencies}
+\newacronym{F0}{F0}{Fundamental Frequency}
+\newacronym{MCEP}{MCEP}{Mel Cepstral Coefficients}
+\newacronym{MGCEP}{MGCEP}{Mel Generalized Cepstral Coefficients}
+\newacronym{MFCC}{MFCC}{Mel Frequency Cepstrum Coefficients}
+\newacronym{ASR}{ASR}{Automatic Speech Recognition}
+\newacronym{MDL}{MDL}{Minimum Description Length Criterion}
+\newacronym{MSD}{MSD}{Multi Space Probability Distributions}
+\newacronym{HSMM}{HSMM}{Hidden Semi-Markov Models}
+\newacronym{ML}{ML}{Maximum Likelihood}
+\newacronym{MLSA}{MLSA}{Mel Log Spectrum Approximation}
+\newacronym{MAP}{MAP}{Maximum A Posteriori} 
+\newacronym{MLLR}{MLLR}{Maximum Likelihood Linear Regression}
+\newacronym{CSMAPLR}{CSMAPLR}{Constrain Structural MAP Linear Regression}
+\newacronym{AV}{AV}{Average Voice}
+
+\newacronym{ANN}{ANN}{Artificial Neural Network}
+
+\newacronym{NIST}{NIST}{National Institute of Technology}
+\newacronym{SES}{SES}{Spanish Expressive Speech}
+\newacronym{EMODB}{EMODB}{Berlin Database of Emotional Speech}
+
+\newacronym{FAUAIBO}{FAU-AIBO}{FAU AIBO Emotion Corpus}
+
+\newacronym{SEV}{SEV}{Spanish Expressive Voices}
+\newacronym{AER}{AER}{Automatic Emotion Recognition}
+\newacronym{UBEC}{UBEC}{Universal Background Emotion Codebook}
+
+\newacronym{STRAIGHT}{STRAIGHT}{Speech Transformation and Representation using Adaptive Interpolation of weiGHTed spectrum}
+
+
+\newacronym{DBN}{DBN}{Dynamic Bayesian Network}
+\newacronym{SQ}{SQ}{Speech Quality}
+\newacronym{EIR}{EIR}{Emotion Identification Rate}
+\newacronym{SIR}{SIR}{Speaker Identification Rate}
+\newacronym{ES}{ES}{Emotional Strength}
+
+\newacronym{ACCCHARS}{¡…Õ”⁄‹—·ÈÌÛ˙¸Ò}{Long ¡…Õ”⁄‹—·ÈÌÛ˙¸Ò}
+
+% In the future version of texlive, we will be able to use longplural
+% and shortplural. Right now we must use \newglossaryentry.
+%\newacronym[longplural={Systems on a Chip},shortplural={SOCs}]{SOC}{SOC}{System on a Chip}
+\newglossaryentry{SOC}{type=\acronymtype,
+        name={SOC},
+        symbol={},
+        sort=soc,
+        plural={SOCs},
+        firstplural={Systems on a Chip (SOCs)},
+        description={System on a Chip},
+        descriptionplural={Systems on a Chip}}
+
+% You can change the way the entries appear the first time they are used
+\defglsdisplayfirst[\acronymtype]{\textit{#1}}
+
+\setlength{\glsdescwidth}{0.7\linewidth}
+
+\ifthenelse{\boolean{english}}
+{
+\printglossary[type=\acronymtype,style=super,nonumberlist=true,title=List of Acronyms,toctitle=List of Acronyms]
+\addcontentsline{toc}{chapter}{List of Acronyms}
+}
+{
+\printglossary[type=\acronymtype,style=super,nonumberlist=true,title=Lista de acrÛnimos,toctitle=Lista de acrÛnimos]
+\addcontentsline{toc}{chapter}{Lista de acrÛnimos}
+}
+

@@ -1,0 +1,1686 @@
+% \iffalse (meta-comment)
+%
+% Doc-Source file to use with LaTeX2e
+%
+% Copyright 1994-2010 by Tobias Oetiker (tobi@oetiker.ch) and many Contributors.
+% All rights reserved.
+%
+% This work may be distributed and/or modified under the conditions of
+% the LaTeX Project Public License, either version 1.3 of this license
+% or (at your option) any later version. The latest version of the
+% license is in
+%
+%     http://www.latex-project.org/lppl.txt
+%
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2003/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+% The Current Maintainer of this work is Tobias Oetiker (tobi@oetiker.ch).
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{acronym}   % to get file info
+\EnableCrossrefs
+%\DisableCrossrefs     % say \DisableCrossrefs if index is ready
+\CodelineIndex
+\RecordChanges         % gather update information
+%\OnlyDescription      % comment out for implementation details
+%\OldMakeindex         % use if your MakeIndex is pre-v2.9
+\setlength\hfuzz{15pt} % dont make so many
+\hbadness=7000         % over and under full box warnings
+\begin{document}
+  \DocInput{acronym.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{1066}
+%
+%% \CharacterTable
+%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%   Digits        \0\1\2\3\4\5\6\7\8\9
+%%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%%   Dollar        \$     Percent       \%     Ampersand     \&
+%%   Acute accent  \'     Left paren    \(     Right paren   \)
+%%   Asterisk      \*     Plus          \+     Comma         \,
+%%   Minus         \-     Point         \.     Solidus       \/
+%%   Colon         \:     Semicolon     \;     Less than     \<
+%%   Equals        \=     Greater than  \>     Question mark \?
+%%   Commercial at \@     Left bracket  \[     Backslash     \\
+%%   Right bracket \]     Circumflex    \^     Underscore    \_
+%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%   Right brace   \}     Tilde         \~}
+%%
+%
+%
+% \DoNotIndex{\@auxout, \@bsphack, \@car, \@esphack, \@firstoftwo,
+%             \@gobble, \@ifnextchar,
+%             \@ifpackageloaded, \@nil, \@secondoftwo, \\}
+% \DoNotIndex{\addtolength, \AtBeginDocument}
+% \DoNotIndex{\begin, \begingroup, \bflabel}
+% \DoNotIndex{\csname}
+% \DoNotIndex{\DeclareOption, \def, \documentclass}
+% \DoNotIndex{\edef, \else, \end, \endcsname, \endgroup, \endinput,
+%             \ensuremath, \expandafter}
+% \DoNotIndex{\fi, \footnote}
+% \DoNotIndex{\gdef, \global}
+% \DoNotIndex{\hfill, \hyperlink, \hypertarget}
+% \DoNotIndex{\if@filesw, \ifx, \item}
+% \DoNotIndex{\label, \labelsep, \labelwidth, \leftmargin, \let,
+%             \long}
+% \DoNotIndex{\makelabel, \mathrm}
+% \DoNotIndex{\NeedsTeXFormat, \newcommand, \newenvironment,
+%             \newif, \newtoks, \noexpand, \nolinebreak, \null}
+% \DoNotIndex{\PackageWarning, \ProcessOptions, \protect,
+%             \protected@write, \providecommand, \ProvidesPackage}
+% \DoNotIndex{\raggedright, \ref, \relax, \renewcommand,
+%             \RequirePackage}
+% \DoNotIndex{\S, \section, \setlength, \settowidth, \string,
+%             \subsection}
+% \DoNotIndex{\textbf, \textsf, \textsmaller, \textsuperscript, \the}
+% \DoNotIndex{\usepackage}
+%
+%
+%  \changes{v1.38}{2012/10/09}{Ash Hughes - add support for dynamic indefinite articles depending on the acronym form used}
+%  \changes{v1.37}{2012/09/04}{Martin Falk - ac* should NOT set the used flag ... now it does not. Martin Ruessler found fix for non hyphenation in the first word of the long form of the acronym}
+%  \changes{v1.36}{2010/09/08}{Uwe Bieling disable hyperlinks in nolist mode, prevent hyphenation of short form of acronyms}
+%  \changes{v1.35}{2009/10/20}{Sergio Callegari added support for nonstandard plural forms and fixed management of default short form.}
+%  \changes{v1.34}{2009/01/25}{make sure that the s of acp get smaller as well when the smaller option is active}
+%  \changes{v1.33}{2008/12/19}{enrico.gregorio provided a patch for makeing non-description acronym lists work}
+%  \changes{v1.32}{2008/05/28}{Ulrich Diez again altered code to redefine labels in order to cope with unreproducable bug-reports. Warnings turnrd into infos for the sake of decreasing frightening-level}
+%  \changes{v1.31}{2008/05/21}{Philipp Lehman noted a nameconflict with jurabib. Renamed clearlist to AC@clearlist since it is internal anyway}
+%  \changes{v1.30}{2008/04/22}{Ulrich Diez corrected code to redefine labels and adjusted behavior with \cmd{\AC@used}}
+%  \changes{v1.29}{2008/04/22}{added code to redefine labels as acronyms are used multiple times, makeing the right page numbers show up for the withpage option (code by Ulrich Diez on comp.text.tex, integration by Domagoj Babic, babic AT cs.ubc.ca)}
+%  \changes{v1.28}{2008/04/19}{add linebreak to items list by tobi}
+%  \changes{v1.27}{2008/04/18}{Added withpage option to print page numbers into acronym list by tobi and Domagoj Babic, babic AT cs.ubc.ca}
+%  \changes{v1.26}{2006/06/26}{Don't put out an empty item if nolist is in effect by Immo.Koester@rwth-aachen.de}
+%  \changes{v1.25}{2005/11/11}{Properly handle acronym commands in PDF Bookmarks by Heiko Oberdiek oberdiek@uni-freiburg.de}
+%  \changes{v1.24}{2005/10/25}{Now the acronyms commands and fixed a bug in the option nolist, by Jose Emilio Vila Forcen, jemilio@ieee.org}
+%  \changes{v1.23}{2005/10/24}{Fix fpr nolist option by Tobi}
+%  \changes{v1.22}{2005/10/04}{added starred versions of ac(p), acf(p), acs(p), acl(p), acfi, acsu \& aclu by Stefan Pinnow (Mo-Gul@gmx.net)}
+%  \changes{v1.21}{2005/09/20}{fixed acused again by Tobi. added option nolist, by Jose Emilio Vila Forcen, jemilio@ieee.org}
+%  \changes{v1.20}{2005/08/16}{make acused actually work. by Richard.Walker with cs.anu.edu.au}
+%  \changes{v1.19}{2005/04/26}{three new commands acused (set-used), acsu (adds to used), aclu (adds to used) by Lee Netherton ltn100@ohm.york.ac.uk}
+%  \changes{v1.18}{2005/04/01}{added additionaly format option for Full Name (acfi) command by Manuel G"ortz mgoertz@kom.tu-darmstadt.de}
+%  \changes{v1.17}{2004/11/10}{added don't use acronyms (dua) option by Oliver Creighton}
+%  \changes{v1.16}{2004/11/03}{fixed version number -- tobi}
+%  \changes{v1.15}{2004/11/02}{make acresetall work even when ac is called in environments by ctt}
+%  \changes{v1.14}{2004/10/08}{fix acsp and acfp for footnote mode by Markus Ortner m.ortner@icie.jku.at}
+%  \changes{v1.13}{2004/07/29}{deflist renamed to AC@deflist to
+%   avoid unnecessary nameing conflict. Found by peter.may@philips.com.
+%   fixed prinonlyused option, it was ON all the time by Tobi. Foonotes were
+%   not adding to the clear list by Tobi.}
+%  \changes{v1.12}{2004/06/08}{Make acronyms robust and compatible
+%   with pdf bookmarks by Danie Els (dnjels@sun.ac.za).}
+%  \changes{v1.11}{2004/06/04}{make hyperlinks work inside optional
+%    item text by replaceing hypertarget with raisedhypertarget by
+%    Martin Salois (Martin.Salois@drdc-rddc.gc.ca). Added note on fragility by Tobi}
+%  \changes{v1.10a}{2004/05/26}{Fix for the bug of a \cs{}\cs{} following
+%    an acronym. Add footnote optional out for \cmd{\acs} by Danie Els
+%   (dnjels@sun.ac.za).}
+%  \changes{v1.10}{2004/05/25}{Fix for list of acronyms in front
+%    matter and addition of \cmd{\acroextra} command by Danie Els
+%   (dnjels@sun.ac.za).}
+%  \changes{v1.09}{2003/10/26}{Fixed hyperref support by Danie Els
+%    (dnjels@sun.ac.za), make sure not only \cmd{\ac} sets acronyms
+%    as used but direct calls to \cmd{\acs} and \cmd{\acf} and
+%    \cmd{\acl} as well by Tobi.}
+%  \changes{v1.08}{2003/10/20}{Added hyperref support and the
+%    option \texttt{nohyperref} provided by Martin Salois
+%    (martin.salois@drdc-rddc.gc.ca)}
+%  \changes{v1.07}{2003/02/11}{Added \cs{acresetall} to reset the
+%    'uses' - flag of \cmd{\ac}, new option \texttt{printonlyused},
+%    new possible format for the list. provided by Sebastian Max
+%    (smx@comnets.rwth-aachen.de)}
+%  \changes{v1.06}{2000/05/21}{Added the smaller option and
+%    macros to control the appearance of \cmd{\acf} and \cmd{\acs}
+%    provided by Ingo Lepper (lepper@math.uni-muenster.de)}
+%  \changes{v1.05}{2000/05/11}{Added new commands for handling
+%    English plural forms of acronyms and the \texttt{footnote}
+%    option provided by David.C.Sterratt@ed.ac.uk}
+%  \changes{v1.04}{2000/02/09}{Optional argument for \cmd{\acro} and
+%    \cmd{\acrodef}, allowing formatting of the acronym itself
+%    provided by Heiko Oberdiek (oberdiek@ruf.uni-freiburg.de)}
+%  \changes{v1.03}{1996/09/19}{Fixed dtx file ... could not be printed}
+%  \changes{v1.02}{1996/08/14}{Added \cmd{\acl} command patch provided by
+%                Ted Stern (stern@amath.washington.edu)}
+%
+%
+% \GetFileInfo{acronym.sty}
+%
+% \title{An Acronym Environment for \LaTeXe\thanks{^^A
+%        This file has version number \fileversion,
+%        last revised \filedate.}}
+% \author{Tobias Oetiker}
+% \date{\filedate}
+% \maketitle
+%
+%
+% \section{Introduction}
+%    When writing a paper on cellular mobile radio I started to use a
+%    lot of acronyms. This can be very disturbing for the reader,
+%    as he might not know all the used acronyms. To help the reader
+%    I kept a list of all the acronyms at the end of my paper.
+%
+%    This package makes sure, that all acronyms used in the text are
+%    spelled out in full at least once.
+%
+% \section{The user interface}
+%    The package provides several commands and one environment
+%    for dealing with acronyms. Their appearance can be controlled by
+%    two package options and three macros.
+%
+% \subsection{Acronyms in the Text}
+%
+%    \DescribeMacro{\ac}
+%    To enter an acronym inside the text, use the
+%    \begin{quote}
+%     |\ac{|\meta{acronym}|}|
+%    \end{quote}
+%    command. The first time you use an acronym, the full name of the
+%    acronym along with the acronym in brackets will be printed. If you
+%    specify the |footnote| option while loading the package, the full
+%    name of the acronym is printed as a footnote.
+%    The next time you access the acronym only the acronym will
+%    be printed.
+%
+%    \DescribeMacro{\acresetall}
+%    The 'memory' of the macro \cmd{\ac} can be flushed by calling the macro
+%    \cmd{\acresetall}. Afterwards, \cmd{\ac} will print the full name of any
+%    acronym and the acronym in brackets the next time it is used.
+%
+%    \DescribeMacro{\acf}
+%    If later in the text again the Full Name of the acronym should be
+%    printed, use the command
+%    \begin{quote}
+%     |\acf{|\meta{acronym}|}|
+%    \end{quote}
+%    to access the acronym. It stands for ``full acronym'' and it
+%    always prints the full name
+%    and the acronym in brackets.
+%
+%    \DescribeMacro{\acs}
+%    To get the short version of the acronym, use the command
+%    \begin{quote}
+%     |\acs{|\meta{acronym}|}|
+%    \end{quote}
+%
+%    \DescribeMacro{\acl}
+%    Gives you the expanded acronym without even mentioning the
+%    acronym.
+%    \begin{quote}
+%     |\acl{|\meta{acronym}|}|
+%    \end{quote}
+%
+%    \DescribeMacro{\acp}
+%    Works in the same way as \cmd{\ac}, but makes the short and/or
+%    long forms into plurals. 
+%
+%    \DescribeMacro{\acfp}
+%    Works in the same way as \cmd{\acf}, but makes the short and
+%    long forms into plurals. 
+%
+%    \DescribeMacro{\acsp}
+%    Works in the same way as \cmd{\acs}, but makes the short
+%    form into a plural. 
+%
+%    \DescribeMacro{\aclp}
+%    Works in the same way as \cmd{\acl}, but makes the long form
+%    into a plural.
+%
+%    \DescribeMacro{\acfi}
+%    Prints the Full Name acronym (\cmd{\acl}) in italics and the abbreviated
+%    form (\cmd{\acs}) in upshaped form.
+%
+%    \DescribeMacro{\acused}
+%    Marks an acronym as used, as if it had been called with \cmd{\ac},
+%    but without printing anything. This means that in the future only the
+%    short form of the acronym will be printed.
+%
+%    \DescribeMacro{\acsu}
+%    Prints the short form of the acronym and marks it as used.
+%
+%    \DescribeMacro{\aclu}
+%    Prints the long form of the acronym and marks it as used.
+%
+%    Example: |\acl{lox}/\acl{lh2} (\acsu{lox}/\acsu{lh2})|
+%
+%    \DescribeMacro{\iac}
+%    Works in the same way as the \cmd{\ac} command but prefixes it with 
+%    an appropriate indefinite article.
+%
+%    \DescribeMacro{\Iac}
+%    Works in the same way as the \cmd{\ac} command but prefixes it with 
+%    an appropriate upper case indefinite article.
+%
+%    \DescribeMacro{\...*}
+%    The following commands do the same as their unstarred forms, except
+%    that the acronym will not be marked as used.  If you work with the 'onlyused'
+%    option then macros which have only been used with starred commands will
+%    not show up.\\
+%    \cmd{\ac*}, \cmd{\acs*}, \cmd{\acl*}, \cmd{\acf*}, \cmd{\acp*},
+%    \cmd{\acsp*}, \cmd{\aclp*}, \cmd{\acfp*}, \cmd{\acfi*}, \cmd{\acsu*},
+%    \cmd{\aclu*}, \cmd{\iac*} and \cmd{\Iac*}.
+%
+% \subsection{Customization}
+%
+%    The appearance of \cmd{\acs} and \cmd{\acf} can be configured
+%    in various ways. Of main importance are the package options:
+%    \begin{description}
+%      \item[\normalfont|footnote|]
+%         makes the full name of the acronym appear as a footnote.
+%      \item[\normalfont|smaller|]
+%         lets the acronyms appear a bit smaller than the surrounding
+%         text. This is in accord with typographic convention.
+%         The |relsize| package is required.
+%    \end{description}
+%
+%    There are three lower-level macros controlling the output.
+%    Any acronym printed by \cmd{\acs} is formatted
+%    by \DescribeMacro{\acsfont}\cmd{\acsfont}. Similarly, unless the
+%    option |footnote| is specified, \DescribeMacro{\acffont}\cmd{\acffont}
+%    handles the output of \cmd{\acf}, where the included acronym
+%    goes through \DescribeMacro{\acfsfont}\cmd{\acfsfont} (and
+%    \cmd{\acsfont}).
+%    The plural forms are treated accordingly. Usually the
+%    three macros do nothing. To give an example, the option |smaller|
+%    makes \cmd{\acsfont} use the command \cmd{\textsmaller} from the
+%    |relsize| package:
+%    \begin{quote}
+%      |\renewcommand*{\acsfont}[1]{\textsmaller{#1}}|
+%    \end{quote}
+%
+% \subsection{Defining Acronyms}
+%    Acronyms can either defined from an environment specifically
+%    introduced for that purpose or by direct definitions.
+%
+%    \DescribeEnv{acronym}
+%    The |acronym| environment allows one to define all the acronyms
+%    needed by a document at a single place and is self-documenting,
+%    since a table of acronyms is automatically produced.
+%
+%    In the |acronym| environment, acronyms are defined with the
+%    \DescribeMacro{\acro} command:
+%    \begin{quote}
+%      |\acro{|\meta{acronym}|}[|\meta{short name}|]{|\meta{full name}|}|
+%    \end{quote}
+%    The first argument \meta{acronym} is the acronym string itself
+%    and is used in the commands of the previous section such as
+%    \cmd{\ac} or \cmd{\acl}, that print the different forms of the
+%    acronym.
+%
+%    Because internal commands take \meta{acronym} for storing
+%    the different forms of the acronym, the \TeX\ code for the
+%    acronym is limited by \cmd{\csname}.
+%    If the acronym requires problematic or complicate \TeX\ stuff
+%    (font commands, \dots), then this code
+%    can be given in the optional argument \meta{short name}.
+%    The first argument \meta{acronym} is then a simpler string
+%    to identify the acronym.
+%    For example, an acronym for water can look like this:
+%    \begin{quote}
+%      |\acro{H2O}[$\mathrm{H_2O}$]{water}|
+%    \end{quote}
+%    Then |\acs{H2O}| gets ``$\mathrm{H_2O}$'' and
+%    |\acl{H2O}| prints ``water''.
+%%
+%    Inside the |acronym| environment \DescribeMacro{\acroextra}
+%    additional information can be added to the list of acronyms
+%    with the \cmd{\acroextra} command that will not be included
+%    in the normal inline acronyms.
+%
+%    \begin{quote}
+%      |\acroextra{|\meta{additional info}|}|
+%    \end{quote}
+%
+%    \noindent
+%    for example:
+%
+%    \begin{quote}
+%    |\acro{H2O}[$\mathrm{H_2O}$]|\\
+%    |     {Dihydrogen Monoxide\acroextra{ (water)}}|\\[1ex]
+%    |\acro{NA}[\ensuremath{N_{\mathrm A}}]|\\
+%    |     {Number of Avogadro\acroextra{ (See \S\protect\ref{A1})}}|
+%    \end{quote}
+%
+%    \noindent
+%    Note that \cmd{\acroextra} must be inserted inside the
+%    \cmd{\acro} definition and that fragile commands must be
+%    protected. Be careful of unnecessary spaces.
+%
+%    The standard format of the acronym list is a \cmd{\description}
+%    environment. If you pass an optional parameter to the |acronym|
+%    environment, the width of the acronym-column will be fitted to the
+%    width of the given parameter (which should be the longest acronym).
+%    For example, if \textit{HBCI} is the longest acronym used, the
+%    list should start with
+%    \begin{quote}
+%    |\begin{acronym}[HBCI]|
+%    \end{quote}
+%
+%    In standard mode, the acronym-list will consist of all defined
+%    acronyms, regardless if the the acronym was used in the text
+%    before or not. This behavior can be changed by loading the
+%    package with the parameter \texttt{printonlyused}:
+%    \begin{quote}
+%    |\usepackage[printonlyused]{acronym}|
+%    \end{quote}
+%    In \texttt{printonlyused}-mode you can add to each acronym the
+%    the page number where it was first used by additionally specifying
+%    the option \texttt{withpage}.
+%    \begin{quote}
+%    |\usepackage[printonlyused,withpage]{acronym}|
+%    \end{quote}
+%
+%    If one does not want an acronym list to be produced at all,
+%    acronyms can be defined directly thanks to the two commands
+%    \DescribeMacro{\newacro}%
+%    \DescribeMacro{\acrodef}%
+%    \begin{quote}
+%      |\newacro{|\meta{acronym}|}[|\meta{short name}|]{|\meta{full name}|}|\\
+%      |\acrodef{|\meta{acronym}|}[|\meta{short name}|]{|\meta{full name}|}|
+%    \end{quote}
+%    \noindent the difference between the two consisting in the fact
+%    that the latter makes the acronym definition stored in the |.aux|
+%    file. Therefore, the acronym becomes available from start-up in
+%    the next run.
+%    
+%    Note that all the acronym definitions made by \cmd{\acro} in the
+%    |acronym| environment are also similarly added to the |.aux|
+%    file.
+%
+%    \subsubsection{Non standard indefinite articles}
+%
+%    Sometimes the indefinite article of an acronym differs between its
+%    short form and its long form, for example ``a Federal Bureau of 
+%    Investigation (FBI) agent'' and ``an FBI agent''. To deal with this, 
+%    the package provides the following three commands
+%    \DescribeMacro{\newacroindefinite}
+%    \DescribeMacro{\acrodefindefinite}
+%    \DescribeMacro{\acroindefinite}
+%    \begin{quote}
+%      |\acroindefinite{|\meta{acronym}|}{|\meta{short indefinite article}|}{|%
+%      \meta{long indefinite article}|}|\\
+%      |\newacroindefinite{|\meta{acronym}|}{|\meta{short indefinite article}|}{|%
+%      \meta{long indefinite article}|}|\\
+%      |\acrodefindefinite{|\meta{acronym}|}{|\meta{short indefinite article}|}{|%
+%      \meta{long indefinite article}|}|\\
+%    \end{quote}
+%    \noindent that allow one to define indefinite articles. The \cmd{\acroindefinite}
+%    command is meant to be used in the |acronym| environment.  The
+%    difference among the latter two is that \cmd{\acrodefindefinite} puts
+%    the acronym definition in the |.aux| file, so that the acronym
+%    exception is available at the next run from start-up.
+%
+%    When using \cmd{\iac} and \cmd{\Iac} without first defining an 
+%    article, the default article is ``a''.
+%
+%    \subsubsection{Non standard and foreign plural forms}
+%
+%    When the plural form of an acronym is required, the package
+%    typically obtains it as an English plural, by adding an `s'. This
+%    happens both for long and short forms.  For instance, for an
+%    acronym defined as
+%    \begin{quote}
+%      |\newacro{IC}{Integrated Circuit}|
+%    \end{quote}
+%    \noindent the |\acsp{IC}| command produces ``ICs'', and the
+%    |\aclp{IC}| command produces ``Integrated Circuits''.
+%
+%    Unfortunately, this is generally not suitable for typesetting in
+%    languages different from English, and at times it is not correct
+%    even for English.  For instance consider the ``MP'' acronym,
+%    commonly used to refer to a ``Member of the Parlament''. Of
+%    course, its long form plural is not ``Member of the Parlaments'',
+%    but ``Members of the Parlament''. For the short form plural,
+%    ``MPs'' is anyway commonly accepted. The same happens with ``SOC
+%    (System on a Chip)'' or ``BUT (Block Under Test)''.
+%
+%    In foreign languages, things can be even more complicated. For
+%    instance, in Italian, there are different rules for English
+%    acronyms used in Italian text and Italian acronyms used in
+%    Italian text. The former do not get a plural at all, neither for
+%    the long, nor for the short form as in ``Un paio di
+%    \emph{Integrated Circuit (IC)}''. The latter get a plural long
+%    form following the natural Italian rules for plurals, and a
+%    plural short form that can either be the same as the singular
+%    short form, or --- at times --- a form obtained by doubling those
+%    letter of the short form that correspond to words that get a
+%    plural in the long form. For instance: ``Nucleo Investigativo
+%    (NI)'' could take a plural as in ``Nuclei Investigativi (NNII)'',
+%    although in modern texts one is more likely to find ``Nuclei
+%    Investigativi (NI)''.
+%
+%    To deal with all these different situations, the package (since
+%    version 1.35) has been enriched with the following three commands
+%    \DescribeMacro{\acroplural}
+%    \DescribeMacro{\newacroplural}
+%    \DescribeMacro{\acrodefplural}
+%    \begin{quote}
+%      |\acroplural{|\meta{acronym}|}[|\meta{short plural}|]{|%
+%      \meta{long plural}|}|\\
+%      |\newacroplural{|\meta{acronym}|}[|\meta{short plural}|]{|%
+%      \meta{long plural}|}|\\
+%      |\acrodefplural{|\meta{acronym}|}[|\meta{short plural}|]{|%
+%      \meta{long plural}|}|\\
+%    \end{quote}
+%    \noindent that allow one to define plural exceptions. The \cmd{\acroplural}
+%    command is meant to be used in the |acronym| environment.  The
+%    difference among the latter two is that \cmd{\acrodefplural} puts
+%    the acronym definition in the |.aux| file, so that the acronym
+%    exception is available at the next run from start-up. When the
+%    optional short form is not provided, the acronym name plus an `s'
+%    is used.
+% 
+%    Plural exceptions are never reported in tables of acronyms.
+%
+%
+%  \subsection{Miscellaneous}
+%    \subsubsection{Sectioning and pdf marks}
+%    Acronyms are robust (since version 1.12) and can be used in
+%    sectional headers such as \cmd{\chapter}, \cmd{\section}, etc.,
+%    but please note the following:
+%    \begin{itemize}
+%       \item  Do not use the general form (\cmd{\ac} or \cmd{\acp}) in
+%              sectional headers, because it will the uses the full name the first time,
+%              that is in the table of contents, and the short form further on.
+%
+%       \item  The text of \meta{acronym} is used verbatim in bookmarks and
+%              not \meta{short name} for pdf\TeX\ with \texttt{hyperref}.
+%
+%       \item  When the long form of the acronym is used in sectional headers
+%             (for pdf\TeX\ with \texttt{hyperref}), it will end up in the pdf
+%             bookmarks. In that case it is good to hide unusual text such as
+%             math inside the \cmd{\texorpdfstring} defined by \texttt{hyperref},
+%             for example:
+%             \begin{quote}
+%                |\acro{Nx}[\ensuremath{N_{\chi}}]|\\
+%                |     {\texorpdfstring{$\chi$}{X}-faktor}|
+%             \end{quote}
+%             which will then give
+%             \begin{quote}\begin{tabbing}
+%                pdf bookmark:\quad\=|\acf{Nx}| $\rightarrow$ \textsf{X-factor (Nx)}\\
+%                text:             \>|\acf{Nx}| $\rightarrow$ $\chi$-factor~($N_{\chi}$)
+%             \end{tabbing}\end{quote}
+%
+%      \item  For acronyms in sectional headers, the file must be \textsc{pdf}\LaTeX'ed
+%             3 times before the bookmarks are correct.
+%
+%
+%      \item  Acronyms in sectional headers together with the |footnote| option
+%             will not give reliable results, because it will end up in the running
+%             heads and table of contents. If you really need it, use the optional
+%             argument of the sectioning commands. For example:
+%             \begin{quote}
+%                |\chapter[The water \texorpdfstring{$\mathrm{H_2O}$}{H2O}) ...]|\\
+%                |        {The \acf{H2O} ...}|
+%             \end{quote}
+%    \end{itemize}
+%
+% \clearpage
+% \section{An example file}
+%
+%    \begin{macrocode}
+%<*acrotest>
+\documentclass{article}
+\usepackage[colorlinks]{hyperref}
+\usepackage[printonlyused,withpage]{acronym}
+\begin{document}
+
+\section{Intro}
+In the early nineties, \acs{GSM} was deployed in many European
+countries. \ac{GSM} offered for the first time international
+roaming for mobile subscribers. The \acs{GSM}'s use of \ac{TDMA} as
+its communication standard was debated at length. And every now
+and then there are big discussion whether \ac{CDMA} should have
+been chosen over \ac{TDMA}.
+
+\section{Furthermore}
+\acresetall
+The reader could have forgotten all the nice acronyms, so we repeat the
+meaning again.
+
+If you want to know more about \acf{GSM}, \acf{TDMA}, \acf{CDMA}
+and other acronyms, just read a book about mobile communication. Just
+to mention it: There is another \ac{UA}, just for testing purposes!
+
+\begin{figure}[h]
+Figure
+\caption{A float also admits references like \ac{GSM} or \acf{CDMA}.}
+\end{figure}
+
+\subsection{Some chemistry and physics}
+\label{Chem}
+\ac{NAD+} is a major electron acceptor in the oxidation
+of fuel molecules. The reactive part of \ac{NAD+} is its nictinamide
+ring, a pyridine derivate.
+
+One mol consists of \acs{NA} atoms or molecules. There is a relation
+between the constant of Boltzmann and the \acl{NA}:
+\begin{equation}
+  k = R/\acs{NA}
+\end{equation}
+
+\acl{lox}/\acl{lh2} (\acsu{lox}/\acsu{lh2})
+
+\subsection{Some testing fundamentals}
+When testing \acp{IC}, one typically wants to identify functional
+blocks to be tested separately. The latter are commonly indicated as
+\acp{BUT}. To test a \ac{BUT} requires defining a testing strategy\dots
+
+\section{Acronyms}
+\begin{acronym}[TDMA]
+ \acro{CDMA}{Code Division Multiple Access}
+ \acro{GSM}{Global System for Mobile communication}
+ \acro{NA}[\ensuremath{N_{\mathrm A}}]
+      {Number of Avogadro\acroextra{ (see \S\ref{Chem})}}
+ \acro{NAD+}[NAD\textsuperscript{+}]{Nicotinamide Adenine Dinucleotide}
+ \acro{NUA}{Not Used Acronym}
+ \acro{TDMA}{Time Division Multiple Access}
+ \acro{UA}{Used Acronym}
+ \acro{lox}[\ensuremath{LOX}]{Liquid Oxygen}%
+ \acro{lh2}[\ensuremath{LH_2}]{Liquid Hydrogen}%
+ \acro{IC}{Integrated Circuit}%
+ \acro{BUT}{Block Under Test}%
+ \acrodefplural{BUT}{Blocks Under Test}%
+\end{acronym}
+
+\end{document}
+%</acrotest>
+%    \end{macrocode}
+%
+% \StopEventually{}
+% \clearpage
+%
+% \newcommand{\fnacro}{\cmd{\fn@}\texttt{\textsl{<acronym>}}}
+%
+%
+%
+% \section{The implementation}
+%    \begin{macrocode}
+%<*acronym>
+%    \end{macrocode}
+%
+%
+%    \subsection{Identification}
+%
+%    First we test that we got the right format and name the package.
+%    \begin{macrocode}
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{acronym}[2012/10/29
+                          v1.38
+                          Support for acronyms (Tobias Oetiker)]
+\RequirePackage{suffix,xstring}
+%    \end{macrocode}
+%
+%
+%
+% \subsection{Options}
+%
+%    \begin{macro}{\ifAC@footnote}
+%    The option |footnote| leads to a redefinition of \cmd{\acf} and
+%    \cmd{\acfp}, making the full name appear as a footnote.
+%    \begin{macrocode}
+\newif\ifAC@footnote
+\AC@footnotefalse
+%    \end{macrocode}
+%    \begin{macrocode}
+\DeclareOption{footnote}{\AC@footnotetrue}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\ifAC@nohyperlinks}
+%    If hyperref is loaded, all acronyms will link to their glossary entry.
+%    With the option |nohyperlinks| these links can be suppressed.
+%    \begin{macrocode}
+\newif\ifAC@nohyperlinks
+\AC@nohyperlinksfalse
+%    \end{macrocode}
+%    \begin{macrocode}
+\DeclareOption{nohyperlinks}{\AC@nohyperlinkstrue}
+%    \end{macrocode}
+%    \end{macro}
+%
+%
+%    \begin{macro}{\ifAC@printonlyused}
+%    We need a marker
+%    which is set if the option |printonlyused| was used.
+%    \begin{macrocode}
+\newif\ifAC@printonlyused
+\AC@printonlyusedfalse
+%    \end{macrocode}
+%    \begin{macrocode}
+\DeclareOption{printonlyused}{\AC@printonlyusedtrue}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\ifAC@withpage}
+%    A marker which tells us to print page numbers.
+%    \begin{macrocode}
+\newif\ifAC@withpage
+\AC@withpagefalse
+%    \end{macrocode}
+%    \begin{macrocode}
+\DeclareOption{withpage}{\AC@withpagetrue}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\ifAC@smaller}
+%    The option |smaller| leads to a redefinition of \cmd{\acsfont}.
+%    We want to make the acronym appear smaller. Since this should
+%    be done in a context-sensitive way, we rely on the macro
+%    \cmd{\textsmaller} provided by the |relsize| package.
+%    As \cmd{\RequirePackage} cannot be used inside
+%    \cmd{\DeclareOption}, we need a boolean variable.
+%    \begin{macrocode}
+\newif\ifAC@smaller
+\AC@smallerfalse
+\DeclareOption{smaller}{\AC@smallertrue}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\ifAC@dua}
+%    The option |dua| stands for ``don't use acronyms''.
+%    It leads to a redefinition of \cmd{\ac} and
+%    \cmd{\acp}, making the full name appear all the time
+%    and suppressing all acronyms but the explicity requested by
+%    \cmd{\acf} or \cmd{\acfp}.
+%    \begin{macrocode}
+\newif\ifAC@dua
+\AC@duafalse
+\DeclareOption{dua}{\AC@duatrue}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\ifAC@nolist}
+%    The option |nolist| stands for ``don't write the list of acronyms''.
+%    \begin{macrocode}
+\newif\ifAC@nolist
+\AC@nolistfalse
+\DeclareOption{nolist}{\AC@nolisttrue\AC@nohyperlinkstrue}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    Now we process the options.
+%    \begin{macrocode}
+\ProcessOptions\relax
+%    \end{macrocode}
+%
+%
+%
+%
+%    \subsection{Setup macros}
+%
+%    \begin{macro}{\acsfont}
+%    \begin{macro}{\acffont}
+%    \begin{macro}{\acfsfont}
+%    The appearance of the output of the commands \cmd{\acs} and
+%    \cmd{\acf} is partially controlled by \cmd{\acsfont},
+%    \cmd{\acffont}, and \cmd{\acfsfont}. By default, they do nothing
+%    except when the |smaller| option is loaded.
+%
+%    The option |smaller| leads to a redefinition of \cmd{\acsfont}.
+%    We want to make the acronym appear smaller. Since this should
+%    be done in a context-sensitive way, we rely on the macro
+%    \cmd{\textsmaller} provided by the |relsize| package.
+%    \begin{macrocode}
+\ifAC@smaller
+  \RequirePackage{relsize}
+  \newcommand*{\acsfont}[1]{\textsmaller{#1}}
+\else
+  \newcommand*{\acsfont}[1]{#1}
+\fi
+\newcommand*{\acffont}[1]{#1}
+\newcommand*{\acfsfont}[1]{#1}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%    \end{macro}
+%
+%    \subsection{Hyperlinks and PDF support}
+%
+%    \begin{macro}{\AC@hyperlink}
+%    \begin{macro}{\AC@hypertarget}
+%    Define dummy hyperlink commands
+%    \begin{macrocode}
+\def\AC@hyperlink#1#2{#2}
+\def\AC@hypertarget#1#2{#2}
+\def\AC@phantomsection{}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%    \begin{macro}{\AC@raisedhypertarget}
+%    Make sure that hyperlink processing gets enabled before we process
+%    the document if hyperref has been loaded in the mean time.
+%    \begin{macrocode}
+\ifAC@nohyperlinks
+\else
+   \AtBeginDocument{%
+      \@ifpackageloaded{hyperref}
+         {\let\AC@hyperlink=\hyperlink
+          \newcommand*\AC@raisedhypertarget[2]{%
+             \Hy@raisedlink{\hypertarget{#1}{}}#2}%
+          \let\AC@hypertarget=\AC@raisedhypertarget
+          \def\AC@phantomsection{%
+            \Hy@GlobalStepCount\Hy@linkcounter
+            \edef\@currentHref{section*.\the \Hy@linkcounter}%
+            \Hy@raisedlink{%
+              \hyper@anchorstart{\@currentHref}\hyper@anchorend
+            }%
+          }%
+         }{}}%
+\fi
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \noindent
+%    The \texttt{hyperref} package defines \cmd{\pdfstringdefDisableCommands}
+%    and \cmd{\texorpdfstring} for text in bookmarks. If undefined, then provide them
+%    it at the beginning of the document.
+%
+%    \begin{macrocode}
+\AtBeginDocument{%
+   \providecommand\texorpdfstring[2]{#1}%
+   \providecommand\pdfstringdefDisableCommands[1]{}%
+   \pdfstringdefDisableCommands{%
+     \csname AC@starredfalse\endcsname
+     \csname AC@footnotefalse\endcsname
+     \let\AC@hyperlink\@secondoftwo
+     \let\acsfont\relax
+     \let\acffont\relax
+     \let\acfsfont\relax
+     \let\acused\relax
+     \let\null\relax
+     \def\AChy@call#1#2{%
+        \ifx*#1\@empty
+          \expandafter #2%
+        \else
+          #2{#1}%
+        \fi
+      }%
+      \def\acs#1{\AChy@call{#1}\AC@acs}%
+      \def\acl#1{\AChy@call{#1}\@acl}%
+      \def\acf#1{\AChy@call{#1}\AChy@acf}%
+      \def\ac#1{\AChy@call{#1}\@ac}%
+      \def\acsp#1{\AChy@call{#1}\@acsp}%
+      \def\aclp#1{\AChy@call{#1}\@aclp}%
+      \def\acfp#1{\AChy@call{#1}\AChy@acfp}%
+      \def\acp#1{\AChy@call{#1}\@acp}%
+      \def\acfi#1{\AChy@call{#1}\AChy@acf}%
+      \let\acsu\acs
+      \let\aclu\acl
+      \def\AChy@acf#1{\AC@acl{#1} (\AC@acs{#1})}%
+      \def\AChy@acfp#1{\AC@aclp{#1} (\AC@acsp{#1})}%
+   }%
+}
+%    \end{macrocode}
+%
+%
+%
+%    \subsection{Additional Helper macros}
+%
+%
+%    We need a list of the used acronyms after the last \cmd{\acresetall}
+%    (or since beginning), a token list is very useful for this purpose
+%
+%    \begin{macro}{AC@clearlist}
+%    \begin{macrocode}
+\newtoks\AC@clearlist
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\AC@addtoAC@clearlist}
+%    Adds acronyms to the clear list
+%    \begin{macrocode}
+\newcommand*\AC@addtoAC@clearlist[1]{%
+  \global\AC@clearlist\expandafter{\the\AC@clearlist\AC@reset{#1}}%
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+%
+%    \begin{macro}{\acresetall}
+%    \begin{macro}{\AC@reset}
+%    This macro resets the |ac@FN| - tag of each acronym, therefore |\ac|
+%    will use FullName (FN) next time it is called
+%    \begin{macrocode}
+\newcommand*\acresetall{\the\AC@clearlist\AC@clearlist={}}
+%    \end{macrocode}
+%    \begin{macrocode}
+\def\AC@reset#1{%
+  \global\expandafter\let\csname ac@#1\endcsname\relax
+}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%
+%    \begin{macro}{\AC@used}
+%    We also need a markers for 'used'.
+%    \begin{macrocode}
+\newcommand*\AC@used{@<>@<>@}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\AC@populated}
+%    An on/off flag to note if any acronyms were logged. This
+%    is needed for the first run with |printonlyused| option,
+%    because the acronym list are then empty, resulting in a
+%    |"missing item"| error.
+%
+%    \begin{macrocode}
+\newcommand{\AC@populated}{}
+%    \end{macrocode}
+%    \end{macro}
+%
+%
+%    \begin{macro}{\AC@logged}
+%    \begin{macro}{\acronymused}
+%    Log the usage by writing the \cmd{\acronymused}
+%    to the |aux| file and
+%    by reading it back again at the beginning of the
+%    document (performed automatically by LaTeX).
+%    This results in processing the document twice,
+%    but it is needed anyway for the rest of the
+%    package.
+%
+%    This methodology is needed when the list of
+%    acronyms is in the front matter of the document.
+%    \begin{macrocode}
+\newcommand*{\AC@logged}[1]{%
+   \acronymused{#1}% mark it as used in the current run too
+   \@bsphack
+   \protected@write\@auxout{}{\string\acronymused{#1}}%
+   \@esphack}
+%    \end{macrocode}
+%    Keep it out of bookmarks.
+%    \begin{macrocode}
+\AtBeginDocument{%
+   \pdfstringdefDisableCommands{%
+      \let\AC@logged\@gobble
+   }%
+}
+%    \end{macrocode}
+%    Flag the acronym at the beginning of the document as used
+%    (called by the \texttt{aux} file).
+%    \begin{macrocode}
+\newcommand*{\acronymused}[1]{%
+   \expandafter\ifx\csname acused@#1\endcsname\AC@used
+      \relax
+   \else
+       \global\expandafter\let\csname acused@#1\endcsname\AC@used
+       \global\let\AC@populated\AC@used
+   \fi}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%
+%
+% \subsection{Defining acronyms}
+%
+%    There are three commands that define acronyms:
+%    \cmd{\newacro}, \cmd{\acrodef}, and \cmd{\acro}.
+%    They are called with the following arguments:
+%    \begin{quote}
+%       |\acro{|\meta{acronym}|}[|\meta{short name}^^A
+%         |]{|\meta{full name}|}|
+%    \end{quote}
+%    The mechanism used in this package is to make the
+%    optional \meta{short name} identical to the \meta{acronym} when it
+%    is empty (no optional argument), thereby only the second (optional) argument
+%    is stored together with the \meta{full name}.
+%
+%    \begin{macro}{\newacro}
+%    \begin{macro}{\AC@newacro}
+%    The internal macro \cmd{\newacro} stores the
+%    \meta{short name} and the \meta{full name} in the
+%    command \fnacro.
+%    \begin{macrocode}
+\newcommand*\newacro[1]{%
+  \@ifnextchar[{\AC@newacro{#1}}{\AC@newacro{#1}[#1]}}
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand\AC@newacro{}
+\def\AC@newacro#1[#2]#3{%
+   \expandafter\gdef\csname fn@#1\endcsname{{#2}{#3}}%
+   }
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%
+%    \begin{macro}{\acrodef}
+%    \begin{macro}{\AC@acrodef}
+%    The user command \cmd{\acrodef} calls \cmd{\newacro} and
+%    writes it into the |.aux| file.
+%    \begin{macrocode}
+\newcommand*\acrodef[1]{%
+  \@ifnextchar[{\AC@acrodef{#1}}{\AC@acrodef{#1}[#1]}}
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand\AC@acrodef{}
+\def\AC@acrodef#1[#2]#3{%
+   \@bsphack
+   \protected@write\@auxout{}{\string\newacro{#1}[#2]{#3}}%
+   \@esphack}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%
+%
+%    \begin{environment}{AC@deflist}
+%    In standard mode, the acronym - list is formatted with a description
+%    environment. If an optional argument is passed to the acronym
+%    environment, the list is formatted as a AC@deflist, which needs the
+%    longest appearing acronym as parameter. If the option 'nolist' is selected
+%    the enviroment is empty.
+%    \begin{macrocode}
+\def\bflabel#1{{\textbf{\textsf{#1}}\hfill}}
+\newenvironment{AC@deflist}[1]%
+        {\ifAC@nolist%
+         \else%
+            \raggedright\begin{list}{}%
+                {\settowidth{\labelwidth}{\textbf{\textsf{#1}}}%
+                \setlength{\leftmargin}{\labelwidth}%
+                \addtolength{\leftmargin}{\labelsep}%
+                \renewcommand{\makelabel}{\bflabel}}%
+          \fi}%
+        {\ifAC@nolist%
+         \else%
+            \end{list}%
+         \fi}%
+%    \end{macrocode}
+%    \end{environment}
+%
+%    \begin{environment}{acronym}
+%    In the 'acronym' - environment, all acronyms are defined, and printed
+%    if they have been used before, which is indicated by the acused-tag.
+%
+%    \begin{quote}
+%      |\begin{acronym}|\\
+%      |\acro{CDMA}{Code Division Multiple Access\acroextra{\ ...}}|\\
+%      |\end{acronym}|
+%    \end{quote}
+%
+%    \begin{macro}{\acroextra}
+%     Additional information can be added after to \cmd{\acro}
+%     definition for display in the list of acronyms. This command
+%     is only active inside the |acronym| environment. Outside it
+%     gobbles up its argument.
+%    \begin{macrocode}
+\newcommand{\acroextra}[1]{}
+%    \end{macrocode}
+%
+%    \begin{macro}{\acro}
+%    Acronyms can be defined with the user command \cmd{\acro}
+%    in side the  |acronym| environment.
+%
+%    \begin{macrocode}
+\newenvironment{acronym}[1][1]{%
+   \providecommand*{\acro}{\AC@acro}%
+   \providecommand*{\acroplural}{\AC@acroplural}%
+   \providecommand*{\acroindefinite}{\AC@acroindefinite}%
+   \long\def\acroextra##1{##1}%
+   \def\@tempa{1}\def\@tempb{#1}%
+   \ifx\@tempa\@tempb%
+      \global\expandafter\let\csname ac@des@mark\endcsname\AC@used%
+      \ifAC@nolist%
+      \else%
+         \begin{description}%
+      \fi%
+   \else%
+      \begin{AC@deflist}{#1}%
+   \fi%
+  }%
+  {%
+   \ifx\AC@populated\AC@used\else%
+      \ifAC@nolist%
+      \else%
+          \item[]\relax%
+      \fi%
+   \fi%
+   \expandafter\ifx\csname ac@des@mark\endcsname\AC@used%
+      \ifAC@nolist%
+      \else%
+        \end{description}%
+      \fi%
+   \else%
+      \end{AC@deflist}%
+   \fi}%
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%    \end{environment}
+%
+%    \begin{macro}{\AC@acro}
+%    \begin{macro}{\AC@@acro}
+%    \begin{macrocode}
+\newcommand*\AC@acro[1]{%
+  \@ifnextchar[{\AC@@acro{#1}}{\AC@@acro{#1}[#1]}}
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand\AC@@acro{}
+\def\AC@@acro#1[#2]#3{%
+  \ifAC@nolist%
+  \else%
+  \ifAC@printonlyused%
+    \expandafter\ifx\csname acused@#1\endcsname\AC@used%
+       \item[\protect\AC@hypertarget{#1}{\acsfont{#2}}] #3%
+          \ifAC@withpage%
+            \expandafter\ifx\csname r@acro:#1\endcsname\relax%
+               \PackageInfo{acronym}{%
+                 Acronym #1 used in text but not spelled out in
+                 full in text}%
+            \else%
+               \dotfill\pageref{acro:#1}%
+            \fi\\%
+          \fi%
+    \fi%
+ \else%
+    \item[\protect\AC@hypertarget{#1}{\acsfont{#2}}] #3%
+ \fi%
+ \fi%
+ \begingroup
+    \def\acroextra##1{}%
+    \@bsphack
+    \protected@write\@auxout{}%
+       {\string\newacro{#1}[\string\AC@hyperlink{#1}{#2}]{#3}}%
+    \@esphack
+  \endgroup}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%
+%
+% \subsubsection{Nonstandard indefinite articles}
+%
+%    \begin{macro}{\newacroindefinite}
+%    Sets up a non standard indefinite article for a given acronym.
+%    \begin{macrocode}
+\newcommand*\newacroindefinite[3]{%
+  \expandafter\gdef\csname fn@#1@IS\endcsname{#2}%
+  \expandafter\gdef\csname fn@#1@IL\endcsname{#3}%
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\acrodefindefinite}
+%    Same as above, storing content in aux file.
+%    \begin{macrocode}
+\newcommand*\acrodefindefinite[3]{%
+  \@bsphack
+  \protected@write\@auxout{}{\string\newacroindefinite{#1}{#2}{#3}}%
+  \@esphack
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\AC@acroindefinite}
+%    Internal command to set up an indefinite article in the
+%    acronym environment.
+%    \begin{macrocode}
+\newcommand\AC@acroindefinite[3]{
+  \@bsphack
+  \protected@write\@auxout{}%
+    {\string\newacroindefinite{#1}{\string\AC@hyperlink{#1}{#2}}{#3}}%
+  \@esphack
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+% \subsubsection{Non standard or foreign plural forms}
+%
+%    \begin{macro}{\newacroplural}
+%    \begin{macro}{\AC@newacroplurali}
+%    \begin{macro}{\AC@newacropluralii}
+%    Sets up a non standard plural form for a given acronym.
+%    \begin{macrocode}
+\newcommand*\newacroplural[1]{%
+  \@ifnextchar[%]
+  {\AC@newacroplurali{#1}}{\AC@newacropluralii{#1}}%
+}
+\newcommand\AC@newacroplurali{}
+\def\AC@newacroplurali#1[#2]#3{%
+  \expandafter\gdef\csname fn@#1@PS\endcsname{#2}%
+  \expandafter\gdef\csname fn@#1@PL\endcsname{#3}%
+}
+\newcommand\AC@newacropluralii[2]{%
+  \expandafter\gdef\csname fn@#1@PL\endcsname{#2}%
+}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%    \end{macro}
+%
+%    \begin{macro}{\acrodefplural}
+%    \begin{macro}{\AC@acrodefplurali}
+%    \begin{macro}{\AC@acrodefpluralii}
+%    Same as above, storing content in aux file.
+%    \begin{macrocode}
+\newcommand*\acrodefplural[1]{%
+   \@ifnextchar[%]
+   {\AC@acrodefplurali{#1}}{\AC@acrodefpluralii{#1}}%
+}
+\newcommand\AC@acrodefplurali{}
+\def\AC@acrodefplurali#1[#2]#3{%
+  \@bsphack
+  \protected@write\@auxout{}{\string\newacroplural{#1}[#2]{#3}}%
+  \@esphack
+}
+\newcommand\AC@acrodefpluralii[2]{%
+  \@bsphack
+  \protected@write\@auxout{}{\string\newacroplural{#1}{#2}}%
+  \@esphack
+}  
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%    \end{macro}
+%
+%    \begin{macro}{\AC@acroplural}
+%    \begin{macro}{\AC@acroplurali}
+%    \begin{macro}{\AC@acropluralii}
+%    Internal commands to set up a plural version of an acronym in the
+%    acronym environment.
+%    \begin{macrocode}
+\newcommand*\AC@acroplural[1]{%
+   \@ifnextchar[%]
+   {\AC@acroplurali{#1}}{\AC@acropluralii{#1}}%
+}
+\newcommand\AC@acroplurali{}
+\def\AC@acroplurali#1[#2]#3{%
+  \@bsphack
+  \protected@write\@auxout{}%
+    {\string\newacroplural{#1}[\string\AC@hyperlink{#1}{#2}]{#3}}%
+  \@esphack
+}
+\newcommand\AC@acropluralii[2]{
+  \@bsphack
+  \protected@write\@auxout{}%
+    {\string\newacroplural{#1}[\string\AC@hyperlink{#1}{\AC@acs{#1}}]{#2}}%
+  \@esphack
+}
+%    \end{macrocode}   
+%    \end{macro}
+%    \end{macro}
+%    \end{macro}
+% 
+%
+%    \begin{macro}{\AC@aclp}
+%    \begin{macro}{\AC@acsp}
+%    Deliver either standard or nonstandard plural form (long and short
+%    respectively).
+%   \begin{macrocode}
+\newcommand*\AC@aclp[1]{%
+  \ifcsname fn@#1@PL\endcsname
+  \csname fn@#1@PL\endcsname
+  \else
+  \AC@acl{#1}s%
+  \fi
+}
+\newcommand*\AC@acsp[1]{%
+  \ifcsname fn@#1@PS\endcsname
+  \csname fn@#1@PS\endcsname
+  \else
+  \AC@acs{#1}s%
+  \fi
+}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+
+%
+% \subsection{Using acronyms}
+%
+%
+%    \begin{macro}{\ifAC@starred}
+%    Before the macros are defined, we need a boolean variable which will
+%    be set to true or false, when the following commands are used in the
+%    starred or unstarred form. If it is true, the acronym will be not be
+%    logged, otherwhise it will be logged.
+%    \begin{macrocode}
+\newif\ifAC@starred
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\AC@get}
+%    If the acronym is undefined, the internal macro \cmd{\AC@get}
+%    warns the user by printing the name in bold with an exclamation
+%    mark at the end.
+%    If defined, \cmd{\AC@get} uses the same mechanism used by the LaTeX
+%    kernel commands \cmd{\ref} and \cmd{\pageref} to return the short
+%    \cmd{\AC@acs} and long forms \cmd{\AC@acl} of the acronym
+%    saved in \fnacro.
+%    \begin{macrocode}
+\newcommand*\AC@get[3]{%
+    \ifx#1\relax
+       \PackageWarning{acronym}{Acronym `#3' is not defined}%
+       \textbf{#3!}%
+    \else
+       \expandafter#2#1%
+    \fi}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\AC@acs}
+%    \begin{macro}{\AC@acl}
+%    The internal commands \cmd{\AC@acs} and \cmd{\AC@acl} returns
+%    the (unformatted) short and the long forms of an acronym as
+%    saved in \fnacro. Mbox to prevent hyphenation of short form.
+%    \begin{macrocode}
+\newcommand*\AC@acs[1]{%
+   \mbox{\expandafter\AC@get\csname fn@#1\endcsname\@firstoftwo{#1}}}
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*\AC@acl[1]{%
+   \expandafter\AC@get\csname fn@#1\endcsname\@secondoftwo{#1}}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%
+%    \begin{macro}{\acs}
+%    \begin{macro}{\acsa}
+%    \begin{macro}{\@acs}
+%    The user macro \cmd{\acs} prints the short form of the acronym
+%    using the font specified by \cmd{\acsfont}.
+%    \begin{macrocode}
+\newcommand*{\acs}{\AC@starredfalse\protect\acsa}%
+\WithSuffix\newcommand\acs*{\AC@starredtrue\protect\acsa}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\acsa}[1]{%
+   \texorpdfstring{\protect\@acs{#1}}{#1}}
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\@acs}[1]{%
+   \acsfont{\AC@acs{#1}}%
+%% having a footnote on acs sort of defeats the purpose
+%%   \ifAC@footnote
+%%      \footnote{\AC@acl{#1}{}}%
+%%   \fi
+   \ifAC@starred\else\AC@logged{#1}\fi}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%    \end{macro}
+%
+%    \begin{macro}{\acl}
+%    \begin{macro}{\@acl}
+%    The user macro \cmd{\acl} prints the full name of the
+%    acronym.
+%    \begin{macrocode}
+\newcommand*{\acl}{\AC@starredfalse\protect\@acl}%
+\WithSuffix\newcommand\acl*{\AC@starredtrue\protect\@acl}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\@acl}[1]{%
+   \AC@acl{#1}%
+   \ifAC@starred\else\AC@logged{#1}\fi}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%
+%    \subsection{Helper functions to unset labels}
+%
+%    \begin{macro}{\@verridelabel} The internal \cmd{\@verridelabel}
+%    command lets us 'redefine' an acronym label such that the page
+%    reference in the acronym list points where it should be pointing and
+%    not just to the very first occurrence of the acronym, where it may not
+%    even be expanded. (code by Ulrich Diez)
+%
+%    \begin{macrocode}
+\newcommand*\@verridelabel[1]{%
+  \@bsphack
+  \protected@write\@auxout{}{\string\undonewlabel{#1}}%
+  \label{#1}%
+  \@overriddenmessage rs{#1}%
+  \@esphack
+}%
+\newcommand*\undonewlabel{\@und@newl@bel rs}%
+\newcommand*\@und@newl@bel[3]{%
+  \@ifundefined{#1@#3}%
+  {%
+    \global\expandafter\let\csname#2@#3\endcsname\@nnil
+  }%
+  {%
+    \global\expandafter\let\csname#1@#3\endcsname\relax
+  }%
+}%
+\newcommand*\@overriddenmessage[3]{%
+  \expandafter\ifx\csname#2@#3\endcsname\@nnil
+    \expandafter\@firstoftwo
+  \else
+    \@ifundefined{#1@#3}%
+    {%
+      \@ifundefined{#2@#3}%
+      {\expandafter\@firstoftwo}%
+      {\expandafter\@secondoftwo}%
+    }%
+    {\expandafter\@secondoftwo}%
+  \fi
+  {%
+    \PackageInfo{acronym}{Label `#3' newly defined as it
+    shall be overridden^^Jalthough it is yet undefined}%
+    \global\expandafter\let\csname#2@#3\endcsname\empty
+  }%
+  {%
+    \PackageInfo{acronym}{Label `#3' overridden}%
+    \@ifundefined{#2@#3}{%
+      \global\expandafter\let\csname#2@#3\endcsname\empty}{}%
+    \expandafter\g@addto@macro\csname#2@#3\endcsname{i}%
+  }%
+}%
+\newcommand*\ac@testdef[3]{%
+  \@ifundefined{s@#2}\@secondoftwo\@firstofone
+  {%
+    \expandafter\ifx\csname s@#2\endcsname\empty
+      \expandafter\@firstofone
+    \else
+      \expandafter\xdef\csname s@#2\endcsname{%
+        \expandafter\expandafter
+        \expandafter\@gobble
+        \csname s@#2\endcsname
+      }%
+      \expandafter\@gobble
+    \fi
+  }%
+  {%
+    \@testdef{#1}{#2}{#3}%
+  }%
+}%
+\protected@write\@auxout{}{%
+  \string\reset@newl@bel
+}%
+\newcommand*\reset@newl@bel{%
+  \ifx\@newl@bel\@testdef
+    \let\@newl@bel\ac@testdef
+    \let\undonewlabel\@gobble
+  \fi
+}%
+\newcommand*\AC@placelabel[1]{%
+  \expandafter\ifx\csname ac@#1\endcsname\AC@used
+  \else
+    {\AC@phantomsection\@verridelabel{acro:#1}}%
+    \ifAC@starred\else%
+    \global\expandafter\let\csname ac@#1\endcsname\AC@used
+    \fi%
+    \AC@addtoAC@clearlist{#1}%
+  \fi
+}%
+%    \end{macrocode}
+%    \end{macro}
+%
+%
+%    \begin{macro}{\acf}
+%    \begin{macro}{\acfa}
+%    \begin{macro}{\@acf}
+%    The user macro \cmd{\acf} always prints the full name with
+%    the acronym. The format depends on \cmd{\acffont} and
+%    \cmd{\acfsfont}, and on the option |footnote| handled below.
+%    The acronym is added to the clear list to keep track of the
+%    used acronyms and it is marked as used by by |\gdef|ining
+%    the |\ac@FN| to be |\AC@used| after its first use.
+%
+%    The option |footnote| leads to a redefinition of \cmd{\acf},
+%    making the full name appear as a footnote. There is then
+%    no need for \cmd{\acffont} and \cmd{\acfsfont}.
+%    \begin{macrocode}
+\newcommand*{\acf}{\AC@starredfalse\protect\acfa}%
+\WithSuffix\newcommand\acf*{\AC@starredtrue\protect\acfa}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\acfa}[1]{%
+   \texorpdfstring{\protect\@acf{#1}}{\AC@acl{#1} (#1)}}
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\@acf}[1]{%
+    \ifAC@footnote
+       \acsfont{\AC@acs{#1}}%
+       \footnote{\AC@placelabel{#1}\hskip\z@\AC@acl{#1}{}}%
+    \else
+       \acffont{%
+          \AC@placelabel{#1}\hskip\z@\AC@acl{#1}%
+          \nolinebreak[3] %
+          \acfsfont{(\acsfont{\AC@acs{#1}})}%
+        }%
+     \fi
+     \ifAC@starred\else\AC@logged{#1}\fi}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%    \end{macro}
+%
+%    \begin{macro}{\ac}
+%    The first time an acronym is accessed its Full Name (FN) is
+%    printed. The next time just (FN). When the |footnote| option is
+%    used the short form (FN) is always used.
+%    \begin{macrocode}
+\newcommand*{\ac}{\AC@starredfalse\protect\@ac}%
+\WithSuffix\newcommand\ac*{\AC@starredtrue\protect\@ac}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand{\@ac}[1]{%
+  \ifAC@dua
+     \ifAC@starred\acl*{#1}\else\acl{#1}\fi%
+  \else
+     \expandafter\ifx\csname ac@#1\endcsname\AC@used%
+     \ifAC@starred\acs*{#1}\else\acs{#1}\fi%
+   \else
+     \ifAC@starred\acf*{#1}\else\acf{#1}\fi%
+   \fi
+  \fi}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\@firstupper}
+%    Internal commands for Indefinite article
+%    \begin{macrocode}
+\newcommand{\@firstupper}[1]{%
+    \StrLeft{#1}{1}[\firstletter]%
+    \StrGobbleLeft{#1}{1}[\remainder]%
+    \MakeUppercase\firstletter\remainder
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\iac}
+%    \begin{macro}{\@iac}
+%    \begin{macro}{\@iaci}
+%    \begin{macro}{\Iac}
+%    \begin{macro}{\@Iac}
+%    Indefinite article correct expansion
+%    \begin{macrocode}
+\newcommand*{\iac}{\AC@starredfalse\protect\@iac}%
+\WithSuffix\newcommand\iac*{\AC@starredtrue\protect\@iac}%
+\newcommand*{\Iac}{\AC@starredfalse\protect\@Iac}%
+\WithSuffix\newcommand\Iac*{\AC@starredtrue\protect\@Iac}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\@iaci}[1]{%
+   \ifcsname fn@#1@IL\endcsname
+     \ifAC@dua
+        \csname fn@#1@IL\endcsname%
+     \else
+        \expandafter\ifx\csname ac@#1\endcsname\AC@used%
+        \csname fn@#1@IS\endcsname%
+      \else
+        \csname fn@#1@IL\endcsname%
+      \fi
+     \fi
+   \else
+   a%
+   \fi
+}
+\newcommand*{\@iac}[1]{%
+   \@iaci{#1} \ifAC@starred\ac*{#1}\else\ac{#1}\fi%
+}
+\newcommand*{\@Iac}[1]{%
+   \@firstupper{\@iaci{#1}} \ifAC@starred\ac*{#1}\else\ac{#1}\fi%
+}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%    \end{macro}
+%    \end{macro}
+%    \end{macro}
+%
+%    \begin{macro}{\acsp}
+%    \begin{macro}{\acspa}
+%    \begin{macro}{\@acsp}
+%    The user macro \cmd{\acsp} prints the plural short form of the
+%    acronym.
+%    This is the acronym itself or the \meta{short name}, if the
+%    optional argument is given in the definition of the acronym plus
+%    an `s'.
+%    \begin{macrocode}
+\newcommand*{\acsp}{\AC@starredfalse\protect\acspa}%
+\WithSuffix\newcommand\acsp*{\AC@starredtrue\protect\acspa}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\acspa}[1]{%
+   \texorpdfstring{\protect\@acsp{#1}}{\AC@acsp{#1}}}
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\@acsp}[1]{%
+   \acsfont{\AC@acsp{#1}}%
+   \ifAC@starred\else\AC@logged{#1}\fi}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%    \end{macro}
+%
+%    \begin{macro}{\aclp}
+%    \begin{macro}{\@aclp}
+%    The user macro \cmd{\aclp} prints the plural full name of the
+%    acronym.
+%    \begin{macrocode}
+\newcommand*{\aclp}{\AC@starredfalse\protect\@aclp}%
+\WithSuffix\newcommand\aclp*{\AC@starredtrue\protect\@aclp}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\@aclp}[1]{%
+   \AC@aclp{#1}%
+   \ifAC@starred\else\AC@logged{#1}\fi}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%
+%    \begin{macro}{\acfp}
+%    \begin{macro}{\acfpa}
+%    \begin{macro}{\@acfp}
+%    The user macro \cmd{\acfp} always prints the plural full name with
+%    the plural of the acronym. The format depends on \cmd{\acffont} and
+%    \cmd{\acfsfont}, and on the option |footnote| handled below.
+%
+%    The option |footnote| leads to a redefinition of
+%    \cmd{\acfp}, making the full name appear as a footnote.
+%    There is then
+%    no need for \cmd{\acffont} and \cmd{\acfsfont}.
+%    \begin{macrocode}
+\newcommand*{\acfp}{\AC@starredfalse\protect\acfpa}%
+\WithSuffix\newcommand\acfp*{\AC@starredtrue\protect\acfpa}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\acfpa}[1]{%
+   \texorpdfstring{\protect\@acfp{#1}}{\AC@aclp{#1} (\AC@acsp{#1})}}
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\@acfp}[1]{%
+   \ifAC@footnote
+      \acsfont{\AC@acsp{#1}}%
+      \footnote{\AC@placelabel{#1}\hskip\z@\AC@aclp{#1}{}}%
+   \else
+      \acffont{%
+         \AC@placelabel{#1}\hskip\z@\AC@aclp{#1}%
+         \nolinebreak[3] %
+         \acfsfont{(\acsfont{\AC@acsp{#1}})}%
+         }%
+   \fi
+   \ifAC@starred\else\AC@logged{#1}\fi}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%    \end{macro}
+%
+%    \begin{macro}{\acp}
+%    \begin{macro}{\@acp}
+%    The first time an acronym is accessed Full Names (FNs) is
+%    printed. The next time just (FNs).
+%    \begin{macrocode}
+\newcommand*{\acp}{\AC@starredfalse\protect\@acp}%
+\WithSuffix\newcommand\acp*{\AC@starredtrue\protect\@acp}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand{\@acp}[1]{%
+  \ifAC@dua
+     \ifAC@starred\aclp*{#1}\else\aclp{#1}\fi%
+  \else
+   \expandafter\ifx\csname ac@#1\endcsname\AC@used
+      \ifAC@starred\acsp*{#1}\else\acsp{#1}\fi%
+   \else
+      \ifAC@starred\acfp*{#1}\else\acfp{#1}\fi%
+   \fi
+  \fi}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%
+%
+%    \begin{macro}{\acfi}
+%    \begin{macro}{\acfia}
+%    The Full Name is printed in italics and the abbreviated is printed in upshape.
+%    \begin{macrocode}
+\newcommand*{\acfi}{\AC@starredfalse\protect\acfia}%
+\WithSuffix\newcommand\acfi*{\AC@starredtrue\protect\acfia}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand{\acfia}[1]{%
+  {\itshape \AC@acl{#1} \nolinebreak[3]} (\ifAC@starred\acs*{#1}\else\acs{#1}\fi)}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%
+%    \begin{macro}{\acused}
+%    Marks the acronym as used. Don't confuse this with
+%    \cmd{\acronymused}!
+%    \begin{macrocode}
+\newcommand{\acused}[1]{%
+\global\expandafter\let\csname ac@#1\endcsname\AC@used%
+\AC@addtoAC@clearlist{#1}}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\acsu}
+%    \begin{macro}{\acsua}
+%    Print the short form of the acronym and mark it as used.
+%    \begin{macrocode}
+\newcommand*{\acsu}{\AC@starredfalse\protect\acsua}%
+\WithSuffix\newcommand\acsu*{\AC@starredtrue\protect\acsua}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand{\acsua}[1]{%
+   \ifAC@starred\acs*{#1}\else\acs{#1}\fi\acused{#1}}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%
+%    \begin{macro}{\aclu}
+%    \begin{macro}{\aclua}
+%    Print the long form of the acronym and mark it as used.
+%    \begin{macrocode}
+\newcommand*{\aclu}{\AC@starredfalse\protect\aclua}%
+\WithSuffix\newcommand\aclu*{\AC@starredtrue\protect\aclua}%
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand{\aclua}[1]{%
+   \ifAC@starred\acl*{#1}\else\acl{#1}\fi\acused{#1}}
+%    \end{macrocode}
+%    \end{macro}
+%    \end{macro}
+%
+%    \begin{macrocode}
+\endinput
+%</acronym>
+%    \end{macrocode}
+%    That's it.
+%    \Finale
