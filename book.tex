@@ -1,0 +1,90 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PFC/Tesis Latex Template
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{config/preamble.tex}    % All definitions, packages, etc.
+
+\input{config/mycommands.tex}  % Include your own commands here. EDIT
+                               % IT!
+
+\input{config/setlanguage.tex} % This defines the value of the boolean
+                               % english. EDIT IT! Setting the variable
+                               % will automatically adjust some defaults
+
+\input{config/glossaries.tex}  % EDIT IT to include your glossaries!
+
+\input{config/pdfdata.tex}     % This sets the general information kept
+                               % in the pdf file. EDIT IT!
+
+% ruta de las imágenes
+\graphicspath{{./logos/}{./results/}{./diagrams/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Let's start with the real stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% Now start text and numbering for toc, list of tables/figures,...
+\frontmatter
+
+% Set Language dependent issues that must be set after \begin{document}
+\input{config/setlanguagedependentissues.tex} % No need to touch it
+
+% Here select the corresponding cover doc
+\input{cover/cover-pfc-uah.tex}
+%\input{cover/cover-tesis-uah.tex}
+
+% Dedicatorias+agradecimientos
+\input{cover/dedicatoria.tex}
+\input{cover/agradecimientos.tex}
+
+% Now include resumen and abstract
+\input{abstract/resumen.tex}
+\input{abstract/abstract.tex}
+\input{abstract/resumen-extendido.tex}
+
+% Now include toc and list of figures+tables
+\input{cover/toc+lof+lot.tex}
+
+% Now include acronyms (if this is the case)
+\input{acronyms/acronymsgl.tex}
+
+% Now include symbols (if this is the case)
+\input{symbols/symbolsgl.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now start normal text and numbering, etc.
+\mainmatter
+\deactivatetilden
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Normal chapters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{introduction/introduccion.tex}
+
+\input{theory/estudioTeorico.tex}
+
+\input{development/desarrollo.tex}
+
+\input{results/resultados.tex}
+
+\input{conclusions/conclusiones.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{biblio/bibliography.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\input{appendix/manual.tex}
+\input{appendix/herramientas.tex}
+
+
+\end{document}
+

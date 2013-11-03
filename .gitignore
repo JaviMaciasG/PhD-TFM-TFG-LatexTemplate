@@ -26,6 +26,23 @@ _$*
 *.ln
 core
 # CVS default ignores end
+book.acn
+book.acr
+book.alg
+book.aux
+book.bbl
+book.blg
+book.ist
+book.lof
+book.log
+book.lot
+book.out
+book.sbl
+book.slg
+book.sym
+book.toc
+pdf_dia_done
+pdf_svg_done
 proyecto-std.pdf
 proyecto.acn
 proyecto.acr
