@@ -26,6 +26,7 @@ _$*
 *.ln
 core
 # CVS default ignores end
+proyecto-std.pdf
 proyecto.acn
 proyecto.acr
 proyecto.alg

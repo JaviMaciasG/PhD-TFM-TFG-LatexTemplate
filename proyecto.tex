@@ -1,19 +1,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% PFC Latex Template
+% PFC/Tesis Latex Template
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[spanish,openright]{book}
-%\documentclass[english,openright]{book}
-%\documentclass[11pt,english,twoside,openright]{book}
-
 \input{config/preamble.tex}    % All definitions, packages, etc.
 
-\input{config/setlanguage.tex} % This defines the boolean english. EDIT IT!
+\input{config/mycommands.tex}  % Include your own commands here. EDIT
+                               % IT!
+
+\input{config/setlanguage.tex} % This defines the value of the boolean
+                               % english. EDIT IT! Setting the variable
+                               % will automatically adjust some defaults
 
 \input{config/glossaries.tex}  % EDIT IT to include your glossaries!
 
-\input{config/pdfdata.tex}     % This sets pdf file information. EDIT IT!
+\input{config/pdfdata.tex}     % This sets the general information kept
+                               % in the pdf file. EDIT IT!
 
-% ruta de las imagenes
+% ruta de las imágenes
 \graphicspath{{./logos/}{./results/}{./diagrams/}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -25,18 +27,20 @@
 \frontmatter
 
 % Set Language dependent issues that must be set after \begin{document}
-\input{config/setlanguagedependentissues.tex}
+\input{config/setlanguagedependentissues.tex} % No need to touch it
 
 % Here select the corresponding cover doc
-\input{cover/cover-pfc.tex}
+\input{cover/cover-pfc-uah.tex}
+%\input{cover/cover-tesis-uah.tex}
 
 % Dedicatorias+agradecimientos
 \input{cover/dedicatoria.tex}
 \input{cover/agradecimientos.tex}
 
-% Resumen en cristiano e inglés
+% Now include resumen and abstract
 \input{abstract/resumen.tex}
 \input{abstract/abstract.tex}
+\input{abstract/resumen-extendido.tex}
 
 % Now include toc and list of figures+tables
 \input{cover/toc+lof+lot.tex}
@@ -58,6 +62,8 @@
 % Normal chapters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{introduction/introduccion.tex}
+
+\input{theory/estudioTeorico.tex}
 
 \input{development/desarrollo.tex}
 
