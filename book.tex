@@ -33,6 +33,12 @@
 \input{cover/cover-pfc-uah.tex}
 %\input{cover/cover-tesis-uah.tex}
 
+% Include pdf files if necessary (for example in phd Thesis)
+%\includepdf[pages=3-6]{insertme.pdf} % include pages 3-6 of insertme.pdf
+%\clearemptydoublepage % You need to include this after including each pdf
+%\includepdf[pages=-]{insertme.pdf}   % include all pages of insertme.pdf
+%\clearemptydoublepage % You need to include this after including each pdf
+
 % Dedicatorias+agradecimientos
 \input{cover/dedicatoria.tex}
 \input{cover/agradecimientos.tex}
@@ -61,6 +67,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Normal chapters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% I don't recommend it, but if you want to define "parts", use this...
+% BEWARE: I didn't write the english dependent code
+%\part*{Memoria}
+%\label{part:memoria}
+
+
 \input{introduction/introduccion.tex}
 
 \input{theory/estudioTeorico.tex}
@@ -71,6 +83,9 @@
 
 \input{conclusions/conclusiones.tex}
 
+%\input{pliego/pliego.tex}
+
+%\input{presupuesto/presupuesto.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
@@ -81,6 +96,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Appendices
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% I don't recommend it, but if you want to define "parts", use this...
+% BEWARE: I didn't write the english dependent code
+%\part*{Apéndices}
+%\label{part:apendices}
+
 \appendix
 \input{appendix/manual.tex}
 \input{appendix/herramientas.tex}
