@@ -24,9 +24,25 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\bibliographystyle{plainnat}
-%\bibliographystyle{dinat}
-%\bibliographystyle{unsrt}
-\bibliographystyle{IEEEtran}
-\bibliography{biblio/biblio}
+\ifthenelse{\equal{\mybooklanguage}{english}}
+{
+  \chapter*{Acknowledgements}
+  \label{cha:acknowledgements}
+  \markboth{Acknowledgements}{Acknowledgements}
+}
+{
+  \chapter*{Agradecimientos}
+  \label{cha:agradecimientos}
+  \markboth{Agradecimientos}{Agradecimientos}
+}
 
+% Use this if you don't like the fancy style
+% \pagestyle{myplain}
+
+``Más vale un minuto de ilusión que mil horas de
+razonamiento''... (cortesía de Roberto Barra)
+
+
+
+% Back to normal JIC. Use it if you set \pagestyle{myplain} above
+% \pagestyle{fancy}

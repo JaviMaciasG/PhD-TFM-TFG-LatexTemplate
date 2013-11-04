@@ -1,4 +1,34 @@
-% These ones for the acronym glossary
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id:$
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% (copyleft)2013
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This file shows some examples for glossary terms
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN example of glossary terms definition
+%
 \newacronym{HMI}{HMI}{Human-Machine Interfaces}
 \newacronym{ETTS}{ETTS}{Emotional Text To Speech}
 \newacronym{TTS}{TTS}{Text To Speech}
@@ -63,11 +93,19 @@
         description={System on a Chip},
         descriptionplural={Systems on a Chip}}
 
-% You can change the way the entries appear the first time they are used
-\defglsdisplayfirst[\acronymtype]{\textit{#1}}
+%
+% END example of glossary terms definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\setlength{\glsdescwidth}{0.7\linewidth}
+% You can change the way the entries appear the first time they are
+% used. I've used italics by default
+\defglsdisplayfirst[\acronymtype]{\textit{#1}} % EDIT this if required
 
+% This may lead to problems... I don't know how to fix it in case the
+% column for acronym is wider than 0.3\linewidth
+\setlength{\glsdescwidth}{0.7\linewidth}       % EDIT this if required
+
+% Set language specific definitions...
 \ifthenelse{\equal{\mybooklanguage}{english}}
 {
 \printglossary[type=\acronymtype,style=super,nonumberlist=true,title=List of Acronyms,toctitle=List of Acronyms]

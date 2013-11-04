@@ -1,73 +1,120 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% PFC/Tesis Latex Template
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id:$
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% (copyleft)2013
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{config/preamble.tex}    % All definitions, packages, etc.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Preamble and configuration section
+%
+\input{config/preamble.tex}    % All definitions, packages, etc. DO NOT
+                               % TOUCH THIS LINE 
+                               
 \input{config/myconfig.tex}    % EDIT IT! to set your specific settings!
 
 \input{config/glossaries.tex}  % EDIT IT to include your glossaries!
 
-\input{config/postamble.tex}   % DO NOT TOUCH THIS LINE
+\input{config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
+                               % "postamble" is not a valid word... :-)
 
 % ruta de las imágenes
-\graphicspath{{./logos/}{./results/}{./diagrams/}}
+\graphicspath{{./logos/}{./results/}{./diagrams/}} % Edit this to your
+                                % needs. Only logos is really required
+%
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Let's start with the real stuff
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-% Now start text and numbering for toc, list of tables/figures,...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now start text and numbering for frontmatter (toc, list of
+% tables/figures,...) 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frontmatter
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN within-document configuration, frontpage and cover pages generation
+%
+
 % Set Language dependent issues that must be set after \begin{document}
-\input{config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
+\input{config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE/FILE
 
-% This will include front page (if needed), and cover pages
-\input{cover/cover.tex}
+% This will include front page (if needed), and cover pages. Selection
+% of the adequate one is done automagically depending on values set by
+% the user in config/myconfig.tex
+\input{cover/cover.tex}                       % DO NOT TOUCH THIS LINE/FILE
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Include pdf files if necessary (for example in the phd Thesis at UAH
 % the permissions of the advisors...)
-%\includepdf[pages=3-6]{insertme.pdf} % include pages 3-6 of insertme.pdf
+%\includepdf[pages=3-6]{letters.pdf} % include pages 3-6 of insertme.pdf
 %\clearemptydoublepage % You need to include this after including each pdf
-%\includepdf[pages=-]{insertme.pdf}   % include all pages of insertme.pdf
+%\includepdf[pages=-]{letters/ejemploCarta.pdf}   % include all pages of insertme.pdf
 %\clearemptydoublepage % You need to include this after including each pdf
 
 % Dedicatorias+agradecimientos
-\input{cover/dedicatoria.tex}
-\input{cover/agradecimientos.tex}
+\input{dedicatoria/dedicatoria.tex}           % EDIT this file
+\input{agradecimientos/agradecimientos.tex}   % EDIT this file
 
 % Now include resumen and abstract
-\input{abstract/resumen.tex}
-\input{abstract/abstract.tex}
+\input{abstract/resumen.tex}                  % EDIT this file
+\input{abstract/abstract.tex}                 % EDIT this file
 
-% Just for TFGs at UAH, I do nothing and leave to the author
-%\input{abstract/resumen-extendido.tex}
+% Just for TFGs at UAH, I do nothing and leave to the author the
+% inclusion of the file
+%\input{abstract/resumen-extendido.tex}       % EDIT this file
 
 % Now include toc and list of figures+tables
-\input{cover/toc+lof+lot.tex}
+\input{cover/toc+lof+lot.tex}                 % DO NOT TOUCH THIS LINE
 
 % Now include acronyms (if this is the case)
-\input{acronyms/acronymsgl.tex}
+\input{acronyms/acronymsgl.tex}               % EDIT this file
 
 % Now include symbols (if this is the case)
-\input{symbols/symbolsgl.tex}
+\input{symbols/symbolsgl.tex}                 % EDIT this file
+
+%
+% END within-document configuration, frontpage and cover pages generation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Now start normal text and numbering, etc.
+% Now start text and numbering for mainmatter (chapter+appendices)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mainmatter
 \deactivatetilden
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Normal chapters
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Normal chapters. Edit/modify all within this section
+%
 % I don't recommend it, but if you want to define "parts", use this...
 % BEWARE: I didn't write the english dependent code
 %\part*{Memoria}
 %\label{part:memoria}
-
 
 \input{introduction/introduccion.tex}
 
@@ -85,15 +132,20 @@
 % Optional in PFCs, compulsory in TFGs
 %\input{presupuesto/presupuesto.tex}
 
+%
+% END Normal chapters. Edit/modify all within this section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{biblio/bibliography.tex}
+\input{biblio/bibliography.tex}               % EDIT this file if required
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Appendices
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Appendices. Edit/modigy all within this section
+%
 % I don't recommend it, but if you want to define "parts", use this...
 % BEWARE: I didn't write the english dependent code
 %\part*{Apéndices}
@@ -104,10 +156,21 @@
 \input{appendix/manual.tex}
 \input{appendix/herramientas.tex}
 
+%
+% END Appendices. Edit/modigy all within this section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now start text and numbering for backmatter (just backpage in our
+% case)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \backmatter
 
-% Just for TFGs at UAH right now, but kept here
-\input{cover/backpage.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Just for TFGs at UAH right now, but kept here JIC anybody else wants
+% to use it
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{cover/backpage.tex}                    % EDIT this file if required
 
 \end{document}
 

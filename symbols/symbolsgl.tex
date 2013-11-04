@@ -1,5 +1,34 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id:$
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% (copyleft)2013
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % These ones for the symbols glossary
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN example of symbols definition
+%
 \newglossaryentry{ohm}{type=symbols,
         name={\ensuremath{\Omega}},
         symbol={\ensuremath{\Omega}}, 
@@ -24,15 +53,18 @@
         sort=xidet,
         description={Audio signal captured at microphone $i$}}
 
+%
+% END example of symbols definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+% Set language specific definitions...
 \ifthenelse{\equal{\mybooklanguage}{english}}
 {
-\printglossary[type=symbols,style=super,nonumberlist=true,title=List of Symbols,toctitle=List of Symbols]
-\addcontentsline{toc}{chapter}{List of Symbols}
+  \printglossary[type=symbols,style=super,nonumberlist=true,title=List of Symbols,toctitle=List of Symbols]
+  \addcontentsline{toc}{chapter}{List of Symbols}
 }
 {
-\printglossary[type=symbols,style=super,nonumberlist=true,title=Lista de símbolos,title=Lista de símbolos,toctitle=Lista de símbolos]
-\addcontentsline{toc}{chapter}{Lista de símbolos}
+  \printglossary[type=symbols,style=super,nonumberlist=true,title=Lista de símbolos,title=Lista de símbolos,toctitle=Lista de símbolos]
+  \addcontentsline{toc}{chapter}{Lista de símbolos}
 }
 
