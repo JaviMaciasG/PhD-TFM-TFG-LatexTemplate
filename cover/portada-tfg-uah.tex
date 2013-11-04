@@ -1,10 +1,9 @@
-\setboolean{tfguah}{true} 
-
 \thispagestyle{empty}
 
 % To add background watermark
 \BgThispage
 
+% Draw colored rectangle in page heading
 \begin{tikzpicture}[remember picture,overlay]
 
   draw[fill=headingPortadaTFM] (current page.north.west) rectangle -(\paperwidth,5cm);
@@ -39,34 +38,34 @@
 \begin{center}
 
   % titulación a la que se opta
-  \Large\textbf{GRADO EN INGENIERÍA <<...>>}
+  \Large\textbf{GRADO EN INGENIERÍA ...}
 
   \vspace{25mm}
 
   \ifthenelse{\boolean{english}}
   {
-    \Large{Master Thesis}
+    \Large\textbf{Master Thesis}
   }
   {
-    \Large{Trabajo Fin de Grado}
+    \Large\textbf{Trabajo Fin de Grado}
   }
 
-  \LARGE \textbf{``<< Título del TFC >>''}
+  \LARGE{``Título del trabajo''}
 
 \vspace{5cm}
 
-  Autor: << Nombre y apellidos del autor >>
+  \textbf{Autor:}  Nombre y apellidos del autor 
 
 \vspace{0.5cm}
 
-  Tutor: << Nombre y apellidos del tutor >>
+  \textbf{Director/es:}  Nombre y apellidos del/los director/es
 
 \vspace{4cm}
 
-  << Año de realización del examen >>
+   Año de realización del examen 
 
 \end{center}
 
-\newpage
+%\newpage
 \clearemptydoublepage
 

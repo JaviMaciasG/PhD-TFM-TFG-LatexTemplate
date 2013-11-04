@@ -1,0 +1,73 @@
+\thispagestyle{empty}
+\large
+\vspace{3cm}
+\begin{center}
+
+  \Huge\textbf{UNIVERSIDAD DE ALCALÁ}
+
+  \vspace{1cm}
+
+  \textbf{Escuela Politécnica Superior}
+
+  \vspace{1cm}
+
+  % titulación a la que se opta
+  \ifthenelse{\boolean{pfcuah}}
+  {
+    \Large\textbf{INGENIERÍA ...}
+  }
+  {
+    \ifthenelse{\boolean{tfguah}}
+    {
+      \Large\textbf{GRADO EN INGENIERÍA ...}
+    }
+    {
+      \Large\textbf{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
+    }
+    
+  }
+  
+  \vspace{15mm}
+
+  \centerline{\includegraphics[height=6cm]{logoUAHazul.jpg}}
+
+  \vspace{1cm}
+
+  \ifthenelse{\boolean{english}}
+  {
+    \Large\textbf{Master Thesis}
+  }
+  {
+    
+    % titulación a la que se opta
+    \ifthenelse{\boolean{pfcuah}}
+    {
+      \Large\textbf{Proyecto Fin de Carrera}
+    }
+    {
+      \ifthenelse{\boolean{tfguah}}
+      {
+        \Large\textbf{Trabajo Fin de Grado}
+      }
+      {
+        \Large\textbf{Trabajo Fin de Máster}
+      }
+    }
+  }
+
+
+  \vspace{2cm}   
+
+  \LARGE \textbf{``Título del trabajo''}
+
+\vspace{2cm}
+
+  Nombre del autor
+
+\vspace{1cm}
+
+  Año
+
+\end{center}
+
+\clearemptydoublepage

@@ -1,14 +1,19 @@
+% This is a trick to avoid the header to be shown. There must be a
+% better way...
+\chapter*{ }
+
+
 \cleartoleftpage
 \thispagestyle{plain}
 
 % To add background watermark
 \BgThispage
 
-\begin{tikzpicture}[remember picture,overlay]
+% \begin{tikzpicture}[remember picture,overlay]
 
-  draw[fill=headingPortadaTFM] (current page.north.west) rectangle -(\paperwidth,5cm);
+%   draw[fill=headingPortadaTFM] (current page.north.west) rectangle -(\paperwidth,5cm);
 
-\end{tikzpicture}
+% \end{tikzpicture}
 
 % Nice example of tikz
 % \begin{tikzpicture}[remember picture,overlay]
