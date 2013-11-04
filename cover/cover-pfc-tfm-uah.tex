@@ -11,64 +11,25 @@
   \vspace{7mm}
 
   % titulación a la que se opta
-  \ifthenelse{\boolean{pfcuah}}
-  {
-    \Large\textbf{INGENIERÍA ...}
-  }
-  {
-    \ifthenelse{\boolean{tfguah}}
-    {
-      \Large\textbf{GRADO EN INGENIERÍA ...}
-    }
-    {
-      \Large\textbf{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
-    }
-    
-  }
+  \Large\textbf{\mydegreefull}
 
   \vspace{1cm}
 
-  \ifthenelse{\boolean{english}}
-  {
-    \Large\textbf{Master Thesis}
-  }
-  {
-    
-    % titulación a la que se opta
-    \ifthenelse{\boolean{pfcuah}}
-    {
-      \Large\textbf{Proyecto Fin de Carrera}
-    }
-    {
-      \ifthenelse{\boolean{tfguah}}
-      {
-        \Large\textbf{Trabajo Fin de Grado}
-      }
-      {
-        \Large\textbf{Trabajo Fin de Máster}
-      }
-    }
-  }
-
+  \Large\textbf{\mybookworktypefull}
+        
   \vspace{1cm}   
 
-  \Large\textbf{``Título del trabajo''}
+  \Large\textbf{\mybooktitle}
 
   \vspace{1cm}
   
-  Autor: Nombre del Alumno
+  Autor: \mybookauthor
   
   \vspace{1mm}
   
-  Director/es: Nombre del/los Director/es
+  Director/es: \mybookadvisors
   
-  \ifthenelse{\boolean{tfmuah}}
-  {
-    \vspace{1cm}
-  }
-  {
-    \vspace{2cm}
-  }
+  \vspace{1cm}
 
   \begin{tabular}{rll}
     \textbf{Tribunal:} & &\\ 
