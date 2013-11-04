@@ -68,7 +68,7 @@
 
 \setlength{\glsdescwidth}{0.7\linewidth}
 
-\ifthenelse{\boolean{english}}
+\ifthenelse{\equal{\mybooklanguage}{english}}
 {
 \printglossary[type=\acronymtype,style=super,nonumberlist=true,title=List of Acronyms,toctitle=List of Acronyms]
 \addcontentsline{toc}{chapter}{List of Acronyms}

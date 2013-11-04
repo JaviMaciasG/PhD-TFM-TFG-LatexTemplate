@@ -1,0 +1,38 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Defines the cover to be used depending on the type of work (that is
+% turn depends on the \mydegree variable
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifthenelse{\equal{\mybookworktype}{TFG}}
+{
+  \input{cover/portada-tfg-uah.tex}
+  \input{cover/cover-pfc-tfg-tfm-uah.tex}
+}
+{
+  \ifthenelse{\equal{\mybookworktype}{PFC}}
+  {
+    \input{cover/portada-pfc-uah.tex}
+    \input{cover/cover-pfc-tfg-tfm-uah.tex}
+  }
+  {
+    \ifthenelse{\equal{\mybookworktype}{TFM}}
+    {
+      \input{cover/portada-tfm-uah.tex}
+      \input{cover/cover-pfc-tfg-tfm-uah.tex}
+    }
+    {
+      \ifthenelse{\equal{\mybookworktype}{PHD}}
+      {
+        \input{cover/portada-phd-uah.tex}
+        \input{cover/cover-phd-uah.tex}
+      }
+      {
+        ERROR: Defined degree (\mydegree) unknown so that work type is
+        undefined or wrong (\mybookworktype), check \texttt{config/myconfig.tex}
+      }
+      
+    }
+
+  }
+
+}

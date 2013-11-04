@@ -3,17 +3,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{config/preamble.tex}    % All definitions, packages, etc.
 
-\input{config/mycommands.tex}  % Include your own commands here. EDIT
-                               % IT!
-
-\input{config/setlanguage.tex} % This defines the value of the boolean
-                               % english. EDIT IT! Setting the variable
-                               % will automatically adjust some defaults
+\input{config/myconfig.tex}    % EDIT IT! to set your specific settings!
 
 \input{config/glossaries.tex}  % EDIT IT to include your glossaries!
 
-\input{config/pdfdata.tex}     % This sets the general information kept
-                               % in the pdf file. EDIT IT!
+\input{config/postamble.tex}   % DO NOT TOUCH THIS LINE
 
 % ruta de las imágenes
 \graphicspath{{./logos/}{./results/}{./diagrams/}}
@@ -27,15 +21,13 @@
 \frontmatter
 
 % Set Language dependent issues that must be set after \begin{document}
-\input{config/setlanguagedependentissues.tex} % No need to touch it
+\input{config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
 
+% This will include front page (if needed), and cover pages
+\input{cover/cover.tex}
 
-% Here select the corresponding cover doc
-%\input{cover/cover-pfc-uah.tex}
-\input{cover/cover-tfg-uah.tex}
-%\input{cover/cover-tesis-uah.tex}
-
-% Include pdf files if necessary (for example in phd Thesis)
+% Include pdf files if necessary (for example in the phd Thesis at UAH
+% the permissions of the advisors...)
 %\includepdf[pages=3-6]{insertme.pdf} % include pages 3-6 of insertme.pdf
 %\clearemptydoublepage % You need to include this after including each pdf
 %\includepdf[pages=-]{insertme.pdf}   % include all pages of insertme.pdf
@@ -48,7 +40,9 @@
 % Now include resumen and abstract
 \input{abstract/resumen.tex}
 \input{abstract/abstract.tex}
-\input{abstract/resumen-extendido.tex}
+
+% Just for TFGs at UAH, I do nothing and leave to the author
+%\input{abstract/resumen-extendido.tex}
 
 % Now include toc and list of figures+tables
 \input{cover/toc+lof+lot.tex}
@@ -85,8 +79,10 @@
 
 \input{conclusions/conclusiones.tex}
 
+% Optional in PFCs
 %\input{pliego/pliego.tex}
 
+% Optional in PFCs, compulsory in TFGs
 %\input{presupuesto/presupuesto.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -104,19 +100,14 @@
 %\label{part:apendices}
 
 \appendix
+
 \input{appendix/manual.tex}
 \input{appendix/herramientas.tex}
 
 \backmatter
 
-% Just fot TFGs at UAH
-\ifthenelse{\boolean{tfguah}}
-{
-  \input{cover/backpage-tfg-uah.tex}
-}
-{
-
-}
+% Just for TFGs at UAH right now, but kept here
+\input{cover/backpage.tex}
 
 \end{document}
 

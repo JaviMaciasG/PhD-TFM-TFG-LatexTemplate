@@ -169,6 +169,11 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 
 \pagestyle{fancy}
 
+% Pantone 160
+%\definecolor{headingPortadaTFM}{RGB}{158,84,10}
+% Pantone 160C (this is supposed to be the correct one, but it looks horrible in screen)
+%\definecolor{headingPortadaTFM}{RGB}{161,86,28}
+% Captured color in screen (this looks ok on screen)
 \definecolor{headingPortadaTFM}{RGB}{152,118,52}
 \definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
 
@@ -229,15 +234,6 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 
 \backgroundsetup{ scale=1, angle=0, opacity=.1, color=pink,
   contents={\includegraphics[width=.7\paperwidth]{logos/logoEPS-UAH.jpg}}, vshift=-50pt,  hshift=0pt }
-
-% Specific booleans for tfc, tfm, thesis, tfg...
-\newboolean{pfcuah}
-\setboolean{pfcuah}{false} 
-\newboolean{tfmuah}
-\setboolean{tfmuah}{false} 
-\newboolean{tfguah}
-\setboolean{tfguah}{false} 
-
 
 \makeatletter
 \newcommand*{\cleartoleftpage}{%

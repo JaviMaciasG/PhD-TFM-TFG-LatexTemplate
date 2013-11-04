@@ -1,0 +1,289 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% You should not need to edit this file.
+%
+% Here we define \mydegreefull, \mybookworktype and \mybookworktypefull 
+% that will be used by other modules. The decision is based on the
+% \mydegree variable set by the user.
+%
+% In case the \mydegree variable is now known, the module will generate 
+% an error message in \mydegreefull and \mybookworktypefull, but will 
+% generate a valid \mybookworktype, to be able to generate front and
+% cover pages (TFG by default)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set degree name and type of document, depending on the user defined degree
+\ifthenelse{\equal{\mydegree}{IT}}
+{
+  \newcommand{\mydegreefull}{Ingeniería de Telecomunicación}
+  \newcommand{\mybookworktype}{TFC}
+  \ifthenelse{\equal{\mybooklanguage}{spanish}}
+  {
+    \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+  }
+  {
+    % This could be translated. I'm leaving this in Spanish...
+    % \newcommand{\mybookworktypefull}{Master's Thesis}
+    \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+  }
+}
+{
+  \ifthenelse{\equal{\mydegree}{IE}}
+  {
+    \newcommand{\mydegreefull}{Ingeniería Electrónica}
+    \newcommand{\mybookworktype}{TFC}
+    \ifthenelse{\equal{\mybooklanguage}{spanish}}
+    {
+      \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+    }
+    {
+      % This could be translated. I'm leaving this in Spanish...
+      % \newcommand{\mybookworktypefull}{Master's Thesis}
+      \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+    }
+  }
+  {
+    \ifthenelse{\equal{\mydegree}{ITTSE}}
+    {
+      \newcommand{\mydegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas Electrónicos}
+      \newcommand{\mybookworktype}{TFC}
+      \ifthenelse{\equal{\mybooklanguage}{spanish}}
+      {
+        \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+      }
+      {
+        % This could be translated. I'm leaving this in Spanish...
+        % \newcommand{\mybookworktypefull}{Bachelor's Thesis}
+        \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+      }
+    }
+    {
+      \ifthenelse{\equal{\mydegree}{ITTST}}
+      {
+        \newcommand{\mydegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas de Telecomunicación}
+      \newcommand{\mybookworktype}{TFC}
+        \ifthenelse{\equal{\mybooklanguage}{spanish}}
+        {
+          \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+        }
+        {
+          % This could be translated. I'm leaving this in Spanish...
+          % \newcommand{\mybookworktypefull}{Bachelor's Thesis}
+          \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+        }
+      }
+      {
+        \ifthenelse{\equal{\mydegree}{ITI}}
+        {
+          \newcommand{\mydegreefull}{Ingeniería Técnica Industrial, especialidad en Electrónica Industrial}
+          \newcommand{\mybookworktype}{TFC}
+          \ifthenelse{\equal{\mybooklanguage}{spanish}}
+          {
+            \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+          }
+          {
+            % This could be translated. I'm leaving this in Spanish...
+            % \newcommand{\mybookworktypefull}{Bachelor's Thesis}
+            \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+          }
+        }
+        {
+          \ifthenelse{\equal{\mydegree}{GIEC}}
+          {
+            \newcommand{\mydegreefull}{Grado en Ingeniería Electrónica de Comunicaciones}
+            \newcommand{\mybookworktype}{TFG}
+            \ifthenelse{\equal{\mybooklanguage}{spanish}}
+            {
+              \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+            }
+            {
+              % This could be translated. I'm leaving this in Spanish...
+              % \newcommand{\mybookworktypefull}{Bachelor's Thesis}
+              \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+            }
+          }
+          {
+            \ifthenelse{\equal{\mydegree}{GIEAI}}
+            {
+              \newcommand{\mydegreefull}{Grado en Ingeniería en Electrónica y Automática Industrial}
+              \newcommand{\mybookworktype}{TFG}
+              \ifthenelse{\equal{\mybooklanguage}{spanish}}
+              {
+                \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+              }
+              {
+                % This could be translated. I'm leaving this in Spanish...
+                % \newcommand{\mybookworktypefull}{Bachelor's Thesis}
+                \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+              }
+            }
+            {
+              \ifthenelse{\equal{\mydegree}{GIST}}
+              {
+                \newcommand{\mydegreefull}{Grado en Ingeniería en Sistemas de Telecomunicación}
+                \newcommand{\mybookworktype}{TFG}
+                \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                {
+                  \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                }
+                {
+                  % This could be translated. I'm leaving this in Spanish...
+                  % \newcommand{\mybookworktypefull}{Bachelor's Thesis}
+                  \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                }
+              }
+              {
+                \ifthenelse{\equal{\mydegree}{GITT}}
+                {
+                  \newcommand{\mydegreefull}{Grado en Ingeniería en Tecnologías de la Telecomunicación}
+                  \newcommand{\mybookworktype}{TFG}
+                  \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                  {
+                    \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                  }
+                  {
+                    % This could be translated. I'm leaving this in Spanish...
+                    % \newcommand{\mybookworktypefull}{Bachelor's Thesis}
+                    \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                  }
+                }
+                {
+                  \ifthenelse{\equal{\mydegree}{GIT}}
+                  {
+                    \newcommand{\mydegreefull}{Grado en Ingeniería Telemática}
+                    \newcommand{\mybookworktype}{TFG}
+                    \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                    {
+                      \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                    }
+                    {
+                      % This could be translated. I'm leaving this in Spanish...
+                      % \newcommand{\mybookworktypefull}{Bachelor's Thesis}
+                      \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                    }
+                  }
+                  {
+                    \ifthenelse{\equal{\mydegree}{GIC}}
+                    {
+                      \newcommand{\mydegreefull}{Grado en Ingeniería de Computadores}
+                      \newcommand{\mybookworktype}{TFG}
+                      \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                      {
+                        \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                      }
+                      {
+                        % This could be translated. I'm leaving this in Spanish...
+                        % \newcommand{\mybookworktypefull}{Bachelor's Thesis}
+                        \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                      }
+                    }
+                    {
+                      \ifthenelse{\equal{\mydegree}{GII}}
+                      {
+                        \newcommand{\mydegreefull}{Grado en Ingeniería Informática}
+                        \newcommand{\mybookworktype}{TFG}
+                        \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                        {
+                          \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                        }
+                        {
+                          % This could be translated. I'm leaving this in Spanish...
+                          % \newcommand{\mybookworktypefull}{Bachelor's Thesis}
+                          \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                        }
+                      }
+                      {
+                        \ifthenelse{\equal{\mydegree}{GSI}}
+                        {
+                          \newcommand{\mydegreefull}{Grado en Sistemas de Información}
+                          \newcommand{\mybookworktype}{TFG}
+                          \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                          {
+                            \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                          }
+                          {
+                            % This could be translated. I'm leaving this in Spanish...
+                            % \newcommand{\mybookworktypefull}{Bachelor's Thesis}
+                            \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                          }
+                        }
+                        {
+                          \ifthenelse{\equal{\mydegree}{MUSEA}}
+                          {
+                            \newcommand{\mydegreefull}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
+                            \newcommand{\mybookworktype}{TFM}
+                            \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                            {
+                              \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                            }
+                            {
+                              % This could be translated. I'm leaving this in Spanish...
+                              % \newcommand{\mybookworktypefull}{Master's Thesis}
+                              \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                            }
+                          }
+                          {
+                            \ifthenelse{\equal{\mydegree}{PHD}}
+                            {
+                              \newcommand{\mydegreefull}{Estudios de Doctorado}
+                              \newcommand{\mybookworktype}{PHD}
+                              \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                              {
+                                \newcommand{\mybookworktypefull}{Tesis Doctoral}
+                              }
+                              {
+                                \newcommand{\mybookworktypefull}{Doctoral Thesis}
+                              }
+                            }
+                            {
+                              \newcommand{\mybookworktype}{TFG}
+                              \newcommand{\mydegreefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}} 
+                              \newcommand{\mybookworktypefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}}
+                            }                          
+                          }                          
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Definition of the pdf document information data
+
+% Set keywords for pdf information
+\ifthenelse{\equal{\mybooklanguage}{english}}
+{
+  \newcommand{\keywordsforpdf}{\mybookkeywords}
+}
+{
+  \newcommand{\keywordsforpdf}{\mybookpalabrasclave}
+}
+
+\hypersetup
+{
+  pdfauthor={\mybookauthor <\href{mailto:\mybookemail}{\mybookemail}>},
+  pdftitle={\mybooktitle},
+  pdfsubject={\mydegreefull, \mybookworktypefull},
+% Uncomment the English or Spanish version if you wish to hard-code them
+%  pdfkeywords={\mybookkeywords, \mybookworktypefull, \mydegreefull},
+%  pdfkeywords={\mybookpalabrasclave, \mybookworktypefull, \mydegreefull},
+  pdfkeywords={\keywordsforpdf},
+  pdfcreator={\LaTeX with hyperref package},
+  pdfproducer={rubber},
+  pdffitwindow={true}
+}
+
+% END Definition of the pdf document information data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

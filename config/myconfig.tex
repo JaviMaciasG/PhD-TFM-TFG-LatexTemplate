@@ -1,0 +1,75 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Contents of this file:
+% + Definition of your own commands (samples provided)
+% + Definition of variables controlling compilation flavours
+%
+% You must edit it to suit to your specific case
+%
+% Specially important are the definition of your variables (title of the
+% book, your degree, author name, email, advisors, keywords (in Spanish
+% and English), year, ... They will be used in generating the adequate
+% front and cover pages, automagically.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% BEGIN My own commands section 
+% Define your own commands here
+
+% This one is to define a specific format for english text in a Spanish
+% document
+\DeclareRobustCommand{\texten}[1]{\textit{#1}}
+
+% Various examples
+\newcommand{\circulo}{\large $\circ$}
+\newcommand{\asterisco}{$\ast$}
+\newcommand{\cuadrado}{\tiny $\square$}
+\newcommand{\triangulo}{\scriptsize $\vartriangle$}
+\newcommand{\triangv}{\scriptsize $\triangledown$}
+\newcommand{\diamante}{\large $\diamond$}
+
+\newcommand{\new}[1]{\textcolor{magenta}{#1 }}
+\newcommand{\argmax}[1]{\underset{#1}{\operatorname{argmax}}}
+
+% END My own commands section 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% BEGIN Set my own variables (control compilation for different flavours)
+
+% Control language specific modifications
+% This can be english or spanish
+\newcommand{\mybooklanguage}{english}
+
+% Control compilation flavour (for PFCs, TFMs, TFGs, Thesis, etc...)
+% Degree (titulación), can be:
+% IT    - Ingeniería de Telecomunicación
+% IE    - Ingeniería Electrónica
+% ITTSE - Ingeniería Técnica de Telecomunicación, Sistemas Electrónicos
+% ITTST - Ingeniería Técnica de Telecomunicación, Sistemas de Telecomunicación
+% ITI   - Ingeniería Técnica Industrial, Electrónica Industrial 
+% GIEC  - Grado en Ingeniería Electrónica de Comunicaciones
+% GIEAI - Grado en Ingeniería en Electrónica y Automática Industrial
+% GIST  - Grado en Ingeniería en Sistemas de Telecomunicación
+% GITT  - Grado en Ingeniería en Tecnologías de la Telecomunicación
+% GIT   - Grado en Ingeniería Telemática
+% GIC   - Grado en Ingeniería de Computadores
+% GII   - Grado en Ingeniería Informática
+% GSI   - Grado en Sistemas de Información
+% MUSEA - Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes
+% PHD   - Doctorado
+\newcommand{\mydegree}{IT}
+
+% General document information
+\newcommand{\mybooktitle}{Title of the pfc/tfm/tfg/tesis}
+\newcommand{\mybookauthor}{Full name of author}
+\newcommand{\mybookemail}{autor@depeca.uah.es}
+\newcommand{\mybookadvisors}{Full name of advisors}
+\newcommand{\mybookyear}{Year of the examination}
+\newcommand{\mybookkeywords}{First, second, third, fourth and fifth (up to a maximum of five)}
+\newcommand{\mybookpalabrasclave}{Primera, segunda, tercera, cuarta y quinta (máximo de cinco)}
+
+% END Set my own variables (control compilation for different flavours)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
