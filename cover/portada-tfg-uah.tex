@@ -1,0 +1,72 @@
+\setboolean{tfguah}{true} 
+
+\thispagestyle{empty}
+
+% To add background watermark
+\BgThispage
+
+\begin{tikzpicture}[remember picture,overlay]
+
+  draw[fill=headingPortadaTFM] (current page.north.west) rectangle -(\paperwidth,5cm);
+
+\end{tikzpicture}
+
+% Nice example of tikz
+% \begin{tikzpicture}[remember picture,overlay]
+%   \node [xshift=1cm,yshift=1cm] at (current page.south west)
+%   [text width=7cm,fill=red!20,rounded corners,above right]
+%   {
+%     This is an absolutely positioned text in the
+%     lower left corner. No shipout-hackery is used.
+%   };
+% \end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]
+    \node[yshift=-5cm] at (current page.north west)
+      {
+        \begin{tikzpicture}[remember picture, overlay]
+          \draw[fill=headingPortadaTFM] (0,0) rectangle (\paperwidth,5cm);
+          \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}Universidad de Alcalá};
+          \node [yshift=2cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}Escuela Politécnica Superior};
+
+        \end{tikzpicture}
+      };
+   \end{tikzpicture}
+
+
+\large
+\vspace{5cm}
+\begin{center}
+
+  % titulación a la que se opta
+  \Large\textbf{GRADO EN INGENIERÍA <<...>>}
+
+  \vspace{25mm}
+
+  \ifthenelse{\boolean{english}}
+  {
+    \Large{Master Thesis}
+  }
+  {
+    \Large{Trabajo Fin de Grado}
+  }
+
+  \LARGE \textbf{``<< Título del TFC >>''}
+
+\vspace{5cm}
+
+  Autor: << Nombre y apellidos del autor >>
+
+\vspace{0.5cm}
+
+  Tutor: << Nombre y apellidos del tutor >>
+
+\vspace{4cm}
+
+  << Año de realización del examen >>
+
+\end{center}
+
+\newpage
+\clearemptydoublepage
+

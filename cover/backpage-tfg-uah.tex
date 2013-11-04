@@ -1,0 +1,44 @@
+\cleartoleftpage
+\thispagestyle{plain}
+
+% To add background watermark
+\BgThispage
+
+\begin{tikzpicture}[remember picture,overlay]
+
+  draw[fill=headingPortadaTFM] (current page.north.west) rectangle -(\paperwidth,5cm);
+
+\end{tikzpicture}
+
+% Nice example of tikz
+% \begin{tikzpicture}[remember picture,overlay]
+%   \node [xshift=1cm,yshift=1cm] at (current page.south west)
+%   [text width=7cm,fill=red!20,rounded corners,above right]
+%   {
+%     This is an absolutely positioned text in the
+%     lower left corner. No shipout-hackery is used.
+%   };
+% \end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]
+    \node[yshift=-5cm] at (current page.north west)
+      {
+        \begin{tikzpicture}[remember picture, overlay]
+          \draw[fill=headingPortadaTFM] (0,0) rectangle (\paperwidth,5cm);
+          \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}Universidad de Alcalá};
+          \node [yshift=2cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}Escuela Politécnica Superior};
+
+        \end{tikzpicture}
+      };
+   \end{tikzpicture}
+
+
+\large
+\vspace{20cm}
+\begin{center}
+  
+  \centerline{\includegraphics[height=2.5cm]{logoUAH.jpg}}
+
+\end{center}
+
+

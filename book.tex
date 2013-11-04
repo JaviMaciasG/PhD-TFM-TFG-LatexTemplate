@@ -29,8 +29,10 @@
 % Set Language dependent issues that must be set after \begin{document}
 \input{config/setlanguagedependentissues.tex} % No need to touch it
 
+
 % Here select the corresponding cover doc
-\input{cover/cover-pfc-uah.tex}
+%\input{cover/cover-pfc-uah.tex}
+\input{cover/cover-tfg-uah.tex}
 %\input{cover/cover-tesis-uah.tex}
 
 % Include pdf files if necessary (for example in phd Thesis)
@@ -105,6 +107,16 @@
 \input{appendix/manual.tex}
 \input{appendix/herramientas.tex}
 
+\backmatter
+
+% Just fot TFGs at UAH
+\ifthenelse{\boolean{tfguah}}
+{
+  \input{cover/backpage-tfg-uah.tex}
+}
+{
+
+}
 
 \end{document}
 

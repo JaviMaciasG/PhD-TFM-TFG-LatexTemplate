@@ -1,0 +1,745 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2009, 2012 by Gonzalo Medina
+%
+% --------------------------------------------------------------------------
+%
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in:
+%
+% http://www.latex-project.org/lppl.txt
+%
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2003/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Gonzalo Medina.
+%
+% This work consists of the files background.dtx and background.ins,
+% and the derived files background.sty and background.pdf.
+%
+% \fi
+%
+% \iffalse
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{booktabs,multirow}
+\usepackage[svgnames,x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{ragged2e}
+\usepackage{ntheorem}
+\usepackage{framed}
+\usepackage{kpfonts}
+\usepackage{fancypar}
+\usepackage{ifpdf}
+\ifpdf
+  \usepackage[placement=top]{background}
+  \SetBgContents{-\thepage-}
+  \SetBgAngle{0}
+  \SetBgColor{black!40}
+  \SetBgScale{4}
+  \SetBgHshift{60}
+  \SetBgVshift{-5}
+\fi
+\usepackage{hypdoc}
+\ifpdf
+  \usepackage{hypdestopt}
+\fi
+\hypersetup{%
+  pdftitle={Background material},
+  pdfauthor={Gonzalo Medina},
+  pdfkeywords={LaTeX, package, background},%
+  pdfstartpage={1},%
+  pdfstartview={},%
+  breaklinks=true,%
+  linktocpage}
+
+\newcommand\MarNote[1]{\marginpar{\RaggedLeft\textcolor{blue}{#1}}}
+\newcommand*\package[1]{{\upshape\mdseries\sffamily #1}}
+
+\makeatletter
+\renewtheoremstyle{margin}%
+  {\item[\theorem@headerfont \llap{\fbox{\rule{0pt}{9pt}##1\ ##2}\quad }]} 
+  {\item[\theorem@headerfont \llap{\fbox{\rule{0pt}{9pt}##1\ ##2}\quad }]}
+\makeatother
+
+\theoremstyle{margin}
+\newtheorem{exam}{Example}
+
+\setlength\parindent{0pt}
+
+\pagestyle{empty}
+\makeatletter
+  \let\ps@titlepage\ps@empty
+\makeatother
+
+\usepackage{titletoc}
+\titlecontents*{section}[0pt]
+  {\itshape}{}{}
+  {, \thecontentspage}[\ --\ ][.]
+\titlecontents*{subsection}[0pt]
+  {\upshape\small}{}{}
+  {, \thecontentspage}[ (][. ][)]
+\setcounter{tocdepth}{2}
+
+\newenvironment{mycode}
+  {\begin{shaded}\ttfamily}
+  {\end{shaded}}
+
+\renewenvironment{shaded}{%
+  \def\FrameCommand{\FrameRestore\fboxsep=\FrameSep\colorbox{Honeydew2}}%
+  \MakeFramed {\FrameRestore}}%
+ {\endMakeFramed}
+
+\newcommand\impo{%
+  \tikz{%
+    \node[draw=Tomato, very thick , fill=Honeydew2,%xshift=2cm,%
+      text width=0.8cm , text height=.8cm , text depth=0cm , text badly centered]   
+      {\textcolor{Tomato}{\fontsize{30}{72}\selectfont\bfseries !}};
+  }
+}
+
+\newenvironment{Alerta}
+ {\par}%
+ {\marginpar{\hfill\impo}\par}
+
+\newcommand\colorsample[1]{%
+  \raisebox{1.5pt}{\colorbox{#1}{\hphantom{e}\vphantom{e}}}%
+}
+
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+
+\begin{document}
+\DocInput{background.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \CheckSum{204}
+%
+% \changes{v 1.0}{2009/11/07}{First version}
+% \changes{v 2.0}{2012/08/06}{Second version}
+%
+% \GetFileInfo{background.sty}
+% \hfuzz=90pt
+%
+% \title{The \package{background} package\\
+% {\footnotesize\fileversion , dated \filedate.}}
+% \author{Gonzalo Medina\\%
+%   Universidad Nacional de Colombia -- Sede Manizales\\%
+%   Departamento de Matem\'aticas y Estad\'istica\\
+%   \texttt{gmedinaar@unal.edu.co}}
+%
+% \maketitle
+%
+% \begin{abstract}
+% \noindent This package allows the placement of quite arbitrary background material on the pages of a 
+% document. The user can control many aspects (i.e., contents, position, color, opacity) of the
+% background material that will be displayed. The background material can be modified as many times as required and it can be displayed in all the pages or in some specifically chosen ones.
+% \end{abstract}
+% \tableofcontents
+% \section{Introduction}
+% The \package{background} package relies on the \package{TikZ} and \package{everypar} 
+% packages to provide a simple and flexible mechanism to include background material on all 
+% (or on some of) the pages of a \LaTeX2e document.
+% \par\medskip
+% This version reimplements almost completely version 1.0; a most friendly interface was implemented using the |key=value| functionality.
+% \par\medskip
+% The author will gladly receive suggestions, comments and bug reports.
+%
+% \section{User Interface}
+%
+% Loading this package (without any package options) in the preamble of a document in the 
+% standard way:
+% \begin{mycode}
+% |\usepackage{background}|
+% \end{mycode}
+% activates a set of predefined options that will typeset the word "Draft" across every page of 
+% your document (from the lower left corner to the upper right corner), using 
+% \textcolor{red!45}{this color} and a huge font size.
+% \par\medskip
+% Of course, the package can be loaded using some of the options described in the next section;
+% for example:
+% \begin{mycode}
+% |\usepackage[pages=some,placement=bottom]{background}|
+% \end{mycode}
+% For a later change of options, this package provides the command
+% \begin{mycode}
+%|\backgroundsetup{|\meta{options}|}|
+% \end{mycode}
+% So, for example,
+% \begin{mycode}
+%|\usepackage[contents=Confidential,color=blue!30]{background}|
+% \end{mycode}
+% and
+% \begin{mycode}
+%|\usepackage{background}|\\
+%|\backgroundsetup{contents=Confidential,color=blue!30}|
+% \end{mycode}
+% produce the same result. The advantage of |\backgroundsetup| is that it can be used not only in the preamble but on the body of the document, as many times as required.\medskip
+% \begin{Alerta}
+% The document needs to be processed twice to get the background material in the right position.
+% \end{Alerta}
+%
+% \subsection{Options}
+% The options described in this section can be used as package options or in the argument of the |\backgroundsetup| command. The table~\ref{tab:options} contains a summary of all the available options and their default values. Since the options used to modify attributes of the background material depend on the |\node| construct offered by the \package{TikZ} package, we strongly encourage the reading of Till Tantau's \href{http://mirror.ctan.org/graphics/pgf/base/doc/generic/pgf/pgfmanual.pdf}{\emph{PGF/TikZ package manual}}.
+
+%\par\medskip
+%\DescribeMacro{pages=}
+% This option controls wether the background material should appear in all or in some of the pages of the document. The predefined values for this option are |all| (default) and |some|. Take into account that using the value |some| for this option will cause no background material to be displayed at all and the user will have to issue the command |\BgThispage| for each page in which he/she desires the background material to appear (see example \ref{exa:bgthispage}).
+%\par\medskip
+%\DescribeMacro{firstpage=}
+% This boolean option allows the user to specify, setting the value |true|, that the background material must be displayed only in the first page of the document. The deafulat value is |false|.
+% \par\medskip
+%\DescribeMacro{placement=}
+% This option allows the user to choose three predefined positions for the background material; the predefined values for this option are |center| (default), |top| and |bottom|.  Using |center| will cause the background material to be displayed diagonally across the page, from the bottom left corner to the upper right corner of the page(s); the |top| value will cause the background material to be displayed horizontally at the top of the page(s), and the |bottom|value will cause the background material to be displayed horizontally at the top of the page(s).
+%\par\medskip
+%
+%\DescribeMacro{contents=}
+% This options allows the user to specify the material that will be used in the document. This material can be quite arbitrary: text of arbitrary length, images included via the standard |\includegraphics| command from the \package{graphicx} package, or graphics created with the \package{PGF/TikZ} package, for example.
+% \par\medskip
+% \begin{Alerta}
+% If the material that will be used as background contains \LaTeX\ commands or if it is not plain text, then the |\backgroundsetup| command \emph{must} be used to declare the contents instead of using the key |contents| as one of the package options.
+%\end{Alerta}
+%\par\medskip
+%\DescribeMacro{color=}
+% This option allows the user to specify the color for the background material that will be used in the document. The whole range of colors provided by the \package{xcolor} package can be used.
+%\par\medskip
+%\DescribeMacro{angle=}
+% This option allows the user to specify the angle for the background material that will be used in the document. Angles are measred counterclockwise; any value between -360 and 360 can be used.
+%\par\medskip
+
+
+%\DescribeMacro{opacity=}
+% This option allows the user to change the transparency level for the background material. Any number between 0 (full transparency) and 1 (no transparency at all) can be used as a valid value for this option.
+%\par\medskip
+
+%\DescribeMacro{scale=}
+% This option allows the user to change the scaling factor that will be applied to the background material. Any (sensible) positive value can be used.
+% \par\medskip
+
+%\DescribeMacro{position=}
+% This option allows the user to deﬁne the position of the background material. Any valid position accepted by the at syntax for nodes placement can be used (see the TikZ manual). When using coordinates, do \emph{not} enclose them inside parentheses. Some examples of valid positions are
+% \begin{mycode}
+%|position={0,0}|\\
+%|position=current page.north|\\
+%|position={5cm,7cm}|
+% \end{mycode}
+
+%\DescribeMacro{anchor=}
+%This option allows the user to set the anchor for the node containing the background material. Typical values for this key are:
+% \begin{mycode}
+%|anchor=north east|\\
+%|anchor=below|
+% \end{mycode}
+% \par\medskip
+
+%
+%\DescribeMacro{hshift=}
+%\DescribeMacro{vshift=}
+% These two options control the horizontal and vertical shifting, respectively, of the node position.
+% \begin{table}[!ht]
+%   \centering
+%   \makebox[\textwidth]{
+%   \begin{tabular}{rll}\toprule
+%   Key & Possible Values & Default\\\toprule
+%   |pages| & |<all|$\mid$|some>| & |all| \\
+%   |firstpage| & |<true|$\mid$|false>| & |false| \\
+%   |placement| & |<center|$\mid$|top|$\mid$|bottom>| & |center| \\
+%   |contents| & Text, images, etc. & |Draft|\\
+%   |color| & Any valid color & red!45\ \ \colorsample{red!45}\\
+%   |angle| & Any value between -360 and 360 & 60, for |center| \\
+%   & & 0, for |top| and |bottom|\\
+%   |opacity| & Any value between 0 and 1 & 0.5 \\
+%   |scale| & Any positive value & 15 for |center| \\
+%   & & 8 for |top| and |bottom| \\
+%   |position| & Any value for node placement & |current page.center| for |center| \\
+%   & & |current page.north| for |top| \\
+%   & & |current page.south| for |bottom| \\
+%   |anchor| & Any value for node anchor & empty for |center| \\
+%   & & |below| for |top| \\
+%   & & |above| for |bottom| \\
+%   |hshift| & Any value. & 0 \\
+%   |vshift| & Any value. & 0 \\
+%   \\\bottomrule
+%   \end{tabular}
+%   }
+%  \caption{The available options.}
+%  \label{tab:options}
+% \end{table}
+% 
+% \subsection{User Commands}
+% The following two commands are designed to give the user control on whether the background material should or should not appear on specific pages of the document.
+% \par\medskip 
+% \DescribeMacro{\BgThispage}
+% This command permits to select particular pages in which the background material will
+% be displayed (see example \ref{exa:bgthispage}).
+% \par\medskip
+%
+% \DescribeMacro{\NoBgThispage}
+% This command will prevent the background material to be displayed in the page where it
+% was issued.
+% \par\medskip
+% \begin{Alerta} 
+% Do not use this command in two column documents since its implementation depends on the \package{afterpage} package, and this package doesn't cooperate with two-column mode (see example~\ref{exa:nobgthispage}) . 
+% \end{Alerta}
+
+% 
+
+% \section{Examples}
+% In the following examples, the \package{lipsum} package was used only to automatically
+% generate text.
+% \begin{exam}
+% This example shows how to display the background material only on the first two pages of
+% the document: 
+% \end{exam}
+% \begin{mycode}
+% |\documentclass{article}|\\
+% |\usepackage{background}|\\
+% |\usepackage{lipsum}|\\
+%
+% |\begin{document}|\\
+% |\lipsum[1-10]|\\
+% |\newpage\backgroundsetup{contents={}}|\\
+% |\lipsum[1-30]|\\
+% |\end{document}|
+% \end{mycode}
+%
+% \begin{exam}
+% This example imitates the page numbering format used in this document: 
+% \end{exam} 
+% \begin{mycode}
+% |\documentclass{article}|\\
+% |\usepackage[placement=top,angle=0,%|\\
+% |  color=black!40,scale=4,hshift=60,vshift=-5]{background}| \\
+% |\backgroundsetup{contents={-\thepage-}}|\\
+% |\usepackage{lipsum}|\\
+%
+% |\pagestyle{empty}|\\
+%
+% |\begin{document}|\\
+% |\lipsum[1-30]|\\
+% |\end{document}|
+% \end{mycode}
+%
+% \begin{exam}\label{exa:bgthispage}
+% This example illustrates how to use of the |\BgThispage| command to add background material  on selected pages and how to use |\backgroundsetup|.
+% \end{exam}
+% \begin{mycode}
+% |\documentclass{article}|\\
+% |\usepackage[pages=some,placement=top]{background}|\\
+% |\usepackage{lipsum}|\\
+%
+% |\begin{document}|\\
+% |\lipsum[1-5]|\\
+% |\newpage|\\
+% |\backgroundsetup{contents=A,color=yellow}|\\
+% |\BgThispage|\\
+% |\lipsum[1-5]|\\
+% |\newpage|\\
+% |\backgroundsetup{contents=B,color=blue}|\\
+% |\BgThispage|\\
+% |\lipsum[1-5]|\\
+% |\end{document}|
+% \end{mycode}
+% 
+% \begin{exam}
+% This example shows how to proceed in order to obtain different background material for the 
+% odd and even pages of a document.
+% \end{exam}
+% \begin{mycode}
+% |\documentclass{article}|\\
+% |\usepackage[contents={},opacity=1,scale=1.5,|
+% |  color=blue!90]{background}|\\
+% |\usepackage{lipsum}|\\
+% |\usepackage{ifthen}|\\
+%
+% |\AddEverypageHook{%|\\
+% |  \ifthenelse{\isodd{\thepage}}%|\\
+% |    {\backgroundsetup{angle=90,position={0,-0.65\textheight},%|\\
+% |       contents={The background package}}}%|\\
+% |    {\backgroundsetup{angle=270,position={0.9\textwidth,-.7\textheight},%|\\
+% |       contents={Version 2.0}}}%|\\
+% |  \BgMaterial}|\\
+%
+% |\begin{document}|\\
+% |\lipsum[1-30]|\\
+% |\end{document}|
+% \end{mycode}
+%
+% \begin{exam}\label{exa:nobgthispage}
+% This example
+% illustrates the use of the |\NoBgThispage| command, to 
+% suppress the background material on selected pages (page 2, in this case).
+% Adding the |twocolumn| class option will produce compilation errors
+% \end{exam}
+% \begin{mycode}
+% |\documentclass{article}|\\
+% |\usepackage{background}|\\
+% |\usepackage{lipsum}|\\
+%
+% |\begin{document}|\\
+% |\lipsum[1-5]|\\
+% |\newpage\NoBgThispage|\\
+% |\lipsum[1-5]|\\
+% |\newpage|\\
+% |\lipsum[1-20]|\\
+% |\end{document}|
+% \end{mycode}
+%
+%\section{Compatibility with version 1.0}
+% \par\medskip
+% The macros used in version 1.0 to control the attributes of the background material are still available for backwards compatibility. However, users of version 2.0 are encouraged to use the newly implemented |key=value| mechanism instead.  The old macros are listed below:
+%
+% \begin{mycode}
+% |\SetBgContents| \\
+% |\SetBgColor|\\
+% |\SetBgAngle|\\
+% |\SetBgOpacity|\\
+% |\SetBgScale|\\
+% |\SetBgPosition|\\
+% |\SetBgAnchor|\\
+% |\SetBgHshift|\\
+% |\SetBgVshift|\\
+% \end{mycode}
+%
+% \begin{Alerta}
+% In version 1.0 there were five package options: |all|, |some|, |center|, |top|, and |bottom|; these options are still available, but the user is encouraged to use the |pages| and |placement| keys; so, for example,
+% \end{Alerta}
+% \begin{mycode}
+% |\usepackage[some,top]{background}|
+% \end{mycode}
+% from version 1.0, could be replaced, from version 2.0 on, with
+% \begin{mycode}
+% |\usepackage[pages=some,placement=top]{background}|
+% \end{mycode}
+%
+% \section*{Hystory}
+%
+% \textbf{Version 1.0 (2009/11/07)}: first implementation, quite simple and paralleling the one of the \texttt{draftwatermark} package by Sergio Callegari, but adding greater control over the background material attributes.\bigskip
+
+% \textbf{Version 2.0 (2012/08/06)}: 
+% \begin{itemize}
+% \item Complete reimplementation, now using the \texttt{xkeyval} package to handle attributes and options in an unified way through the \texttt{key=value} mechanism. 
+% \item A bug in version 1.0 with |\SetBgAnchor| was reported by \texttt{eudoxos} at \url{http://tex.stackexchange.com/q/47875/3954}; the bug has been fixed. 
+% \item A user command |\BgMaterial| has been added.
+% \end{itemize}
+%
+% \DoNotIndex{\#,\$,\%,\&,\@,\\,\{,\},\^,\_,\~,\ }
+% \DoNotIndex{\@ifpackageloaded }
+% \DoNotIndex{\advance,\AtEndDocument,\begingroup,\begin,\catcode,\clearpage}
+% \DoNotIndex{\closein,\closeout,\CurrentOption,\day,\DeclareOptionX} 
+% \DoNotIndex{\def,\DeclareRobustCommand,\define@choycekey}
+% \DoNotIndex{\edef,\else,\end,\empty,\endgroup,\ExecuteOptions,\ExecuteOptionsX,\fi}
+% \DoNotIndex{\ifcase,\NeedsTeXFormat,\newif,\node,\nr,\or,\PackageWarning}
+% \DoNotIndex{\let,\newcommand,\renewcommand}
+% \DoNotIndex{\ProcessOptionsX,\ProvidesPackage,\relax,\RequirePackage,\val}
+% 
+% \StopEventually{\PrintIndex}
+%
+% \section{Implementation}
+% 
+% Standard identification:
+% \begin{macrocode}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{background}[2012/08/06 v2.0 background material]
+%    \end{macrocode}
+%
+% Next, we check if the needed packages have been already loaded; if not, we load them:
+%
+% \begin{macrocode}
+\@ifpackageloaded{xkeyval}{}{\RequirePackage{xkeyval}}
+\@ifpackageloaded{tikz}{}{\RequirePackage{tikz}}
+\@ifpackageloaded{everypar}{}{\RequirePackage{everypage}}
+\@ifpackageloaded{afterpage}{}{\RequirePackage{afterpage}}
+%    \end{macrocode}
+%
+% \begin{macro}{contents=}
+% \begin{macro}{color=}
+% \begin{macro}{angle=}
+% \begin{macro}{opacity=}
+% \begin{macro}{scale=}
+% \begin{macro}{position=}
+% \begin{macro}{anchor=}
+% \begin{macro}{hshift=}
+% \begin{macro}{vshift=}
+% Now we declare the options that will control the background material
+% \begin{macrocode}
+\DeclareOptionX[BG]<background>{contents}{%
+  \def\Background@Contents{#1}}
+\DeclareOptionX[BG]<background>{color}{%
+  \def\Background@Color{#1}}
+\DeclareOptionX[BG]<background>{angle}{%
+  \def\Background@Angle{#1}}
+\DeclareOptionX[BG]<background>{opacity}{%
+  \def\Background@Opacity{#1}}
+\DeclareOptionX[BG]<background>{scale}{%
+  \def\Background@Scale{#1}}
+\DeclareOptionX[BG]<background>{position}{%
+  \def\Background@Position{#1}}
+\DeclareOptionX[BG]<background>{anchor}{%
+  \def\Background@Anchor{#1}}
+\DeclareOptionX[BG]<background>{hshift}{%
+  \def\Background@HShift{#1}}
+\DeclareOptionX[BG]<background>{vshift}{%
+  \def\Background@VShift{#1}}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\bg@some}
+% A boolean (initially set to |false|) to control whether the background material will be displayed in
+% every page or not.
+% \begin{macrocode}
+
+\newif\ifbg@some
+  \bg@somefalse
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{pages=}
+% \begin{macro}{position=}
+% We define the two choice keys \texttt{pages} and \texttt{position} and set the default for their options:
+% \begin{macrocode}
+
+\define@choicekey+[BG]{background}{pages}[\val\nr]{all,some}{%
+  \ifcase\nr\relax
+    \bg@somefalse
+  \or
+    \bg@sometrue
+  \fi
+}{%
+  \PackageWarning{background}{erroneous input ignored}%
+}
+
+\define@choicekey+[BG]{background}{placement}[\val\nr]{center,bottom,top}{%
+  \ifcase\nr\relax
+    \renewcommand\Background@Position{current page.center}%
+    \renewcommand\Background@Anchor{}%
+    \renewcommand\Background@Angle{60}
+  \or
+    \renewcommand\Background@Position{current page.south}%
+    \renewcommand\Background@Anchor{above}%
+    \renewcommand\Background@Angle{0}%
+  \or
+    \renewcommand\Background@Position{current page.north}%
+    \renewcommand\Background@Anchor{below}%
+    \renewcommand\Background@Angle{0}%
+  \fi
+}{%
+  \PackageWarning{background}{erroneous input ignored}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+%
+% \begin{macro}{firstpage}
+% This boolean key makes the background material to be displayed only in the first page of the document; dafault value=false.
+% \begin{macrocode}
+\define@boolkey+[BG]{background}{firstpage}{%
+  \ifBG@background@firstpage
+    \bg@sometrue%
+    \AtBeginDocument{\BgThispage}%
+  \else
+    \bg@somefalse%
+  \fi
+}{%
+  \PackageWarning{background}{erroneous input ignored}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% For compatibility with previous version we also provide the package options \texttt{some}, \texttt{all}, \texttt{center}, \texttt{top}, and, \texttt{bottom}: 
+% \begin{macrocode}
+
+\DeclareOptionX[BG]<background>{all}{\bg@somefalse}
+\DeclareOptionX[BG]<background>{some}{\bg@sometrue}
+\DeclareOptionX[BG]<background>{center}{%
+  \renewcommand\Background@Position{current page.center}%
+  \renewcommand\Background@Anchor{}%
+  \renewcommand\Background@Angle{60}}
+\DeclareOptionX[BG]<background>{bottom}{%
+  \renewcommand\Background@Position{current page.south}%
+  \renewcommand\Background@Anchor{above}%
+  \renewcommand\Background@Angle{0}%
+  \renewcommand\Background@Scale{8}}
+\DeclareOptionX[BG]<background>{top}{%
+  \renewcommand\Background@Position{current page.north}%
+  \renewcommand\Background@Anchor{below}%
+  \renewcommand\Background@Angle{0}%
+  \renewcommand\Background@Scale{8}}
+%    \end{macrocode}
+
+% And we execute the options \texttt{all} and \texttt{center}.
+% \begin{macrocode}
+
+\ExecuteOptions{all,center}
+% \begin{macrocode}
+
+% Now we process any unknown inputs. A warning will be produced when the user issues an option that has not been declared.
+% \begin{macrocode}
+
+\DeclareOptionX*{\PackageWarning{background}{‘ \CurrentOption’ ignored}}
+%    \end{macrocode}
+%
+% We next execute and process the options:
+% \begin{macrocode}
+
+\ExecuteOptionsX[BG]<background>{%
+  firstpage=false,
+  contents=Draft,%
+  color=red!45,%
+  angle=60,%
+  opacity=0.5,%
+  scale=10,%
+  position=current page.center,%
+  anchor={},%
+  hshift=0,%
+  vshift=0%
+}
+
+\ProcessOptionsX[BG]<background>
+%    \end{macrocode}
+%
+% \begin{macro}{\backgroundsetup}
+% We define \verb+\backgroundsetup+; our command for changing default values ay any point of the document:
+% \begin{macrocode}
+\DeclareRobustCommand*\backgroundsetup[1]{%
+  \setkeys[BG]{background}{#1}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\bg@material}
+% Our main command uses a simple |\node| construct to build the background material.
+% \begin{macrocode}
+
+\newcommand\bg@material{%
+  \begin{tikzpicture}[remember picture,overlay,scale=\Background@Scale]
+  \node [rotate=\Background@Angle,scale=\Background@Scale,
+    opacity=\Background@Opacity,%
+    xshift=\Background@HShift,yshift=\Background@VShift,color=\Background@Color]
+    at (\Background@Position) [\Background@Anchor]  {\Background@Contents};
+  \end{tikzpicture}}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\BgThispage}
+% A simple application of the |AddThispageHook| command provided by the \package{everypage}
+% package.
+% \begin{macrocode}
+\newcommand\BgThispage{\AddThispageHook{\bg@material}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\NoBgThispage}
+% A hack that perhaps admits improvements. We make a copy of |\bg@material|, and redefine
+% it to be empty on the current page. Then we use the |afterpage| command to restore the 
+% original background material.
+% \begin{macrocode}
+
+\newcommand\NoBgThispage{%
+  \let\oldbg@material\bg@material\renewcommand\bg@material{}%
+  \afterpage{\AddEverypageHook{\oldbg@material}}}
+%    \end{macrocode}
+% \end{macro}
+%
+% Finally, we check for the boolean |bg@some|; if it is |true|, then no background material is
+% added; otherwise, the material will be added using the |AddEverypageHook| command.
+% \begin{macrocode}
+
+\ifbg@some
+  \AddThispageHook{}
+\else
+  \AddEverypageHook{\bg@material}
+\fi
+%    \end{macrocode}
+%
+% \begin{macro}{\SetBgContents}
+% \begin{macro}{\SetBgColor}
+% \begin{macro}{\SetBgAngle}
+% \begin{macro}{\SetBgOpacity}
+% \begin{macro}{\SetBgScale}
+% \begin{macro}{\SetBgPosition}
+% \begin{macro}{\SetBgAnchor}
+% \begin{macro}{\SetBgHshift}
+% \begin{macro}{\SetBgVshift}
+% Now we take care of backwards compatibility; we create the old commands and use them as
+% aliases for the new ones: 
+% \begin{macrocode}
+
+\newcommand\SetBgContents[1]{%
+  \def\Background@Contents{#1}}
+\newcommand\SetBgAngle[1]{%
+  \def\Background@Angle{#1}}
+\newcommand\SetBgColor[1]{%
+  \def\Background@Color{#1}}
+\newcommand\SetBgScale[1]{%
+  \def\Background@Scale{#1}}
+\newcommand\SetBgVshift[1]{%
+  \def\Background@VShift{#1}}
+\newcommand\SetBgHshift[1]{%
+  \def\Background@HShift{#1}}
+\newcommand\SetBgPosition[1]{%
+  \def\Background@Position{#1}}
+\newcommand\SetBgAnchor[1]{%
+  \def\Background@Anchor{#1}}
+\newcommand\SetBgOpacity[1]{%
+  \def\Background@Opacity{#1}}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\BgMaterial}
+% We create a copy of \verb+\bg@material+ to be used directly in documents
+% \begin{macrocode}
+
+\let\BgMaterial\bg@material
+%    \end{macrocode}
+% \end{macro}
+%
+% Finally, we invoke \verb+\clearpage+ at the end of the document to be sure that the background material in the last page will be processed appropriately:
+% \begin{macrocode}
+
+\AtEndDocument{\clearpage}
+%    \end{macrocode}
+% \Finale
+\endinput
