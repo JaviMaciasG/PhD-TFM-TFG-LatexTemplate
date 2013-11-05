@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id:$
+% $Id: postamble.tex,v 1.2 2013/11/04 23:46:21 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -289,6 +289,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN Definition of the pdf document information data
 
+\newcommand{\contactauthor}{\mybookauthor~\textless\href{mailto:\mybookemail}{\mybookemail}\textgreater}
+
 % Set keywords for pdf information
 \ifthenelse{\equal{\mybooklanguage}{english}}
 {
@@ -300,7 +302,7 @@
 
 \hypersetup
 {
-  pdfauthor={\mybookauthor <\href{mailto:\mybookemail}{\mybookemail}>},
+  pdfauthor={\mybookauthor~\textless\href{mailto:\mybookemail}{\mybookemail}\textgreater},
   pdftitle={\mybooktitle},
   pdfsubject={\mydegreefull, \mybookworktypefull},
 % Uncomment the English or Spanish version if you wish to hard-code them
