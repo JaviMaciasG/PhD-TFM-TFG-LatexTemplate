@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: preamble.tex,v 1.9 2013/11/04 23:46:21 macias Exp $
+% $Id: preamble.tex,v 1.10 2013/11/05 00:23:36 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -84,6 +84,7 @@
 
 
 \usepackage[RGB,rgb]{xcolor}
+%\usepackage{color}
 
 % To draw rectagles in tfm cover
 \usepackage{tikz}
@@ -234,8 +235,8 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}{}}
 
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Fancy headers stuff
 \fancyhf{}
 
 \fancyhead[LE,RO]{\bfseries\thepage}
@@ -245,11 +246,7 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
 \addtolength{\headheight}{3.5pt}
-\fancypagestyle{plain}{\fancyhead{}  
-  \renewcommand{\headrulewidth}{0pt}}
-
-%\makeglossaries
-
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}}
 \fancypagestyle{myplain}
 {
   \fancyhf{}
@@ -257,13 +254,85 @@ pdfborder={0 0 112.0}              %%% border-width of frames
   \renewcommand\footrulewidth{0pt}
   \fancyfoot[C]{\thepage}
 }
+% END Fancy headers stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% To set background image in TFMs front and back pages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Set nice chapter titles
+
+% BEGIN Example 0 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+% \usepackage[explicit]{titlesec}
+% \usepackage{blindtext}
+% \definecolor{gray75}{gray}{0.75}
+% \newcommand{\hsp}{\hspace{20pt}}
+% \titleformat{\chapter}[hang]{\Huge\bfseries}{\chaptername~\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+% END Example 0 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+
+% BEGIN Example 1 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+% \usepackage{titlesec}
+% \usepackage{blindtext}
+% \definecolor{gray75}{gray}{0.75}
+% \newcommand{\hsp}{\hspace{20pt}}
+% \titleformat{\chapter}[hang]{\Huge\bfseries}{\chaptername~\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+% END Example 1 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+
+% BEGIN Example 2 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+%\usepackage[Sonny]{fncychap}
+%\usepackage[Lenny]{fncychap} % ugly
+%\usepackage[Glenn]{fncychap}
+%\usepackage[Conny]{fncychap} % ugly
+%\usepackage[Rejne]{fncychap}
+%\usepackage[Bjarne]{fncychap} % Doesn't work in Spanish
+%\usepackage[Bjornstrup]{fncychap}
+% END   Example 2 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+
+% BEGIN Example 3 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+% This is a nice colored example
+% \usepackage{kpfonts}
+% \usepackage[explicit]{titlesec}
+% \newcommand*\chapterlabel{}
+% \titleformat{\chapter}
+%   {\gdef\chapterlabel{}
+%    \normalfont\sffamily\Huge\bfseries\scshape}
+%   {\gdef\chapterlabel{\thechapter\ }}{0pt}
+%   {\begin{tikzpicture}[remember picture,overlay]
+%     \node[yshift=-3cm] at (current page.north west)
+%       {\begin{tikzpicture}[remember picture, overlay]
+%         \draw[fill=LightSkyBlue] (0,0) rectangle
+%           (\paperwidth,3cm);
+%         \node[anchor=east,xshift=.9\paperwidth,rectangle,
+%               rounded corners=20pt,inner sep=11pt,
+%               fill=MidnightBlue]
+%               {\color{white}\chapterlabel#1};
+%        \end{tikzpicture}
+%       };
+%    \end{tikzpicture}
+%   }
+% \titlespacing*{\chapter}{0pt}{50pt}{-60pt}
+% END   Example 3 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+
+% BEGIN Example 4 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+% END   Example 4 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+
+
+
+
+% END Set nice chapter titles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is to set background images (in our case to set background image
+% in TFMs front and back pages)
+% If you want to set this background, use \BgThispage in the
+% corresponding pages
 \usepackage[pages=some]{sty/background}
-
 \backgroundsetup{ scale=1, angle=0, opacity=.1, color=pink,
   contents={\includegraphics[width=.7\paperwidth]{logos/logoEPS-UAH.jpg}}, vshift=-50pt,  hshift=0pt }
 
+
+% This is to allow do a clearpage and let the next one to be placed in
+% even pages (to set a backpage for example)
 \makeatletter
 \newcommand*{\cleartoleftpage}{%
   \clearpage
@@ -277,3 +346,4 @@ pdfborder={0 0 112.0}              %%% border-width of frames
   \fi
 }
 \makeatother
+
