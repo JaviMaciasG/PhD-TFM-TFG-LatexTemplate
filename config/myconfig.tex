@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id:$
+% $Id: myconfig.tex,v 1.2 2013/11/04 23:46:21 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -27,8 +27,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %
 % Contents of this file:
-% + Definition of your own commands (samples provided)
 % + Definition of variables controlling compilation flavours
+% + Definition of your own commands (samples provided)
 %
 % You must edit it to suit to your specific case
 %
@@ -37,29 +37,6 @@
 % and English), year, ... They will be used in generating the adequate
 % front and cover pages, automagically.
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% BEGIN My own commands section 
-% Define your own commands here
-
-% This one is to define a specific format for english text in a Spanish
-% document
-\DeclareRobustCommand{\texten}[1]{\textit{#1}}
-
-% Various examples
-\newcommand{\circulo}{\large $\circ$}
-\newcommand{\asterisco}{$\ast$}
-\newcommand{\cuadrado}{\tiny $\square$}
-\newcommand{\triangulo}{\scriptsize $\vartriangle$}
-\newcommand{\triangv}{\scriptsize $\triangledown$}
-\newcommand{\diamante}{\large $\diamond$}
-
-\newcommand{\new}[1]{\textcolor{magenta}{#1 }}
-\newcommand{\argmax}[1]{\underset{#1}{\operatorname{argmax}}}
-
-% END My own commands section 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -86,7 +63,7 @@
 % GSI   - Grado en Sistemas de Información
 % MUSEA - Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes
 % PHD   - Doctorado
-\newcommand{\mydegree}{GIEC}
+\newcommand{\mydegree}{PHD}
 
 % General document information
 \newcommand{\mybooktitle}{Title of the pfc/tfm/tfg/tesis}
@@ -100,3 +77,24 @@
 % END Set my own variables (control compilation for different flavours)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% BEGIN My own commands section 
+% Define your own commands here
+
+% This one is to define a specific format for english text in a Spanish
+% document
+\DeclareRobustCommand{\texten}[1]{\textit{#1}}
+
+% Various examples
+\newcommand{\circulo}{\large $\circ$}
+\newcommand{\asterisco}{$\ast$}
+\newcommand{\cuadrado}{\tiny $\square$}
+\newcommand{\triangulo}{\scriptsize $\vartriangle$}
+\newcommand{\triangv}{\scriptsize $\triangledown$}
+\newcommand{\diamante}{\large $\diamond$}
+
+\newcommand{\new}[1]{\textcolor{magenta}{#1 }}
+\newcommand{\argmax}[1]{\underset{#1}{\operatorname{argmax}}}
+
+% END My own commands section 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
