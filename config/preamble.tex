@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id:$
+% $Id: preamble.tex,v 1.9 2013/11/04 23:46:21 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -47,9 +47,6 @@
 %\usepackage[nottoc]{tocbibind}
 \usepackage{tocbibind}
 
-% To draw rectagles in tfm cover
-\usepackage{tikz}
-
 \usepackage{listings}
 \usepackage{longtable}
 \usepackage{afterpage}
@@ -86,7 +83,11 @@
                         % http://www.ctan.org/tex-archive/macros/latex/contrib/supported/cite/
 
 
-\usepackage{color}
+\usepackage[RGB,rgb]{xcolor}
+
+% To draw rectagles in tfm cover
+\usepackage{tikz}
+
 
 %\usepackage[authoryear]{natbib}
 % \makeatletter
@@ -199,7 +200,9 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 %\definecolor{headingPortadaTFM}{RGB}{158,84,10}
 % Pantone 160C (this is supposed to be the correct one, but it looks horrible in screen)
 %\definecolor{headingPortadaTFM}{RGB}{161,86,28}
-% Captured color in screen (this looks ok on screen)
+% Gold in RGB
+%\definecolor{textoHeadingPortadaTFM}{RGB}{215,215,0}
+% Captured colors in screen (this looks pst on screen)
 \definecolor{headingPortadaTFM}{RGB}{152,118,52}
 \definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
 
