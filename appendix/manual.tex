@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id:$
+% $Id: manual.tex,v 1.3 2013/11/04 23:46:21 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -20,7 +20,7 @@
 % If you think you can add pieces of relevant/useful examples,
 % improvements, please contact us at (macias@depeca.uah.es)
 %
-% (copyleft)2013
+% Copyleft 2013
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -37,4 +37,28 @@ Introducción.
 \label{sec:manual}
 
 Pues eso.
+
+\section{Código fuente}
+\label{sec:codigo-fuente}
+
+Así se inserta código fuente.
+
+\lstset{language=c++}
+\lstset{tabsize=2}
+\lstset{commentstyle=\textit}
+\lstset{stringstyle=\ttfamily, basicstyle=\small}
+\begin{lstlisting}[frame=trbl]{}
+void funcionPrueba()
+{	
+	int prueba;
+}
+\end{lstlisting}
+
+
+	
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
+
 
