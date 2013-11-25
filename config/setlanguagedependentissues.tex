@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: setlanguagedependentissues.tex,v 1.4 2013/11/04 23:46:21 macias Exp $
+% $Id: setlanguagedependentissues.tex,v 1.5 2013/11/25 00:33:31 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -34,12 +34,34 @@
 \ifthenelse{\equal{\mybooklanguage}{english}}
 {
   \selectlanguage{english}
+
+  \floatname{codefloat}{Source code}
+
+  %% \DeclareFloatingEnvironment[
+  %%       fileext=lox,
+  %%       listname={Source code listing},
+  %%       name=Code,
+  %%       placement=p,
+  %%       within=section,
+  %%       chapterlistsgaps=off,
+  %%       ]{sourcecode}
 }
 {
   \selectlanguage{spanish}
   
   \renewcommand{\tablename}{Tabla}
   \renewcommand{\listtablename}{Índice de tablas}
+
+  \floatname{codefloat}{Código fuente}
+
+  %% \DeclareFloatingEnvironment[
+  %%       fileext=lox,
+  %%       listname={Lista de código fuente},
+  %%       name=Código,
+  %%       placement=p,
+  %%       within=section,
+  %%       chapterlistsgaps=off,
+  %%       ]{sourcecode}
 }
 
 %%% Local Variables:

@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: manual.tex,v 1.3 2013/11/04 23:46:21 macias Exp $
+% $Id: manual.tex,v 1.4 2013/11/25 00:33:31 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -41,21 +41,74 @@ Pues eso.
 \section{Código fuente}
 \label{sec:codigo-fuente}
 
-Así se inserta código fuente.
+Así se inserta código fuente, usando el estilo \texttt{CppExample} que
+hemos definido en el preamble, escribiendo el código directamente :
 
-\lstset{language=c++}
+\begin{lstlisting}[style=CppExample]
+#include <stdio.h>
+
+// Esto es una función de prueba
+void funcionPrueba(int argumento)
+{	
+	int prueba = 1;
+
+  printf("Esto es una prueba [%d][%d]\n", argumento, prueba);
+
+}
+\end{lstlisting}
+
+O bien insertando directamente código de un fichero externo, como en el
+ejemplo \ref{sample1}, usando
+\texttt{\textbackslash{}lstinputlisting} y cambiando el estilo a
+\texttt{cCbluebox} (además de usar el entorno \texttt{codefloat} para
+evitar pagebreaks, definir captions, etc.):
+
+\begin{codefloat}
+\label{sample1}
+\caption{Ejemplo de código fuente con un \texttt{lstinputlisting} dentro de un \texttt{codefloat}.}
+\lstinputlisting[style=Cbluebox]{appendix/function.c}
+\end{codefloat}
+
+
+O por ejemplo en matlab, definiendo settings en lugar de usar estilos
+definidos:
+
+\lstset{language=matlab}
 \lstset{tabsize=2}
 \lstset{commentstyle=\textit}
 \lstset{stringstyle=\ttfamily, basicstyle=\small}
 \begin{lstlisting}[frame=trbl]{}
-void funcionPrueba()
-{	
-	int prueba;
-}
+%
+% add_simple.m - Simple matlab script to run with condor
+%
+a = 9;
+b = 10;
+
+c = a+b;
+
+fprintf(1, 'La suma de %d y %d es igual a %d\n', a, b, c);
 \end{lstlisting}
 
+O incluso como en el listado \ref{sample2}, usando un layout más refinado (con
+los settings de \url{http://www.rafalinux.com/?p=599} en un lststyle
+\texttt{Cnice}):
 
-	
+
+\begin{codefloat}
+\label{sample2}
+\caption{Ejemplo de código fuente con estilo \texttt{Cnice}, de nuevo
+  con un \texttt{lstinputlisting} dentro de un \texttt{codefloat}.}
+\lstinputlisting[style=Cnice]{appendix/hello.c}
+\end{codefloat}
+
+\noindent
+Ahora compila usando \texttt{gcc}:
+
+
+\begin{lstlisting}[style=console, numbers=none]
+$ gcc  -o hello hello.c
+\end{lstlisting}
+
 
 %%% Local Variables:
 %%% TeX-master: "../book"

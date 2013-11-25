@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: preamble.tex,v 1.11 2013/11/05 15:08:15 macias Exp $
+% $Id: preamble.tex,v 1.12 2013/11/25 00:33:31 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -57,7 +57,7 @@
 \usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{eurosym}
-\usepackage{subfigure}
+\usepackage{subfig} % subfigure is obsolete...
 \usepackage{multirow}
 \usepackage{fancyhdr}
 \usepackage{makeidx}
@@ -214,6 +214,11 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 \definecolor{magenta}{rgb}{0.75,0,0.75}
 \definecolor{amarillo}{rgb}{0.75,0.75,0}
 \definecolor{gris}{rgb}{0.25,0.25,0.25}
+
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+
 \definecolor{r}{rgb}{0,0,1}
 \definecolor{g}{rgb}{0,1,0}
 \definecolor{b}{rgb}{1,0,0}
@@ -346,6 +351,69 @@ pdfborder={0 0 112.0}              %%% border-width of frames
   \fi
 }
 \makeatother
+
+% Let's define some styles for listings:
+% minimizar fragmentado de listados (from http://www.rafalinux.com/?p=599)
+%\lstnewenvironment{codelisting}[1][]
+%{\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+% This was using old float package
+\usepackage{float}
+\floatstyle{plain} % optionally change the style of the new float
+\newfloat{codefloat}{H}{cod}[chapter]
+% Now let's use newfloat
+%\usepackage{newfloat}
+
+\lstdefinestyle{console}
+               {
+                 basicstyle=\scriptsize\bf\ttfamily,
+                 backgroundcolor=\color{gray75},
+               }
+
+\lstdefinestyle{Cbluebox}
+               {
+                 language=C,
+                 frame=shadowbox, 
+                 rulesepcolor=\color{blue}
+               }
+                                                
+\lstdefinestyle{Cnice}
+{
+  language=C,
+  frame=Ltb,
+  framerule=0pt,
+  tabsize=2,
+  aboveskip=0.5cm,
+  framextopmargin=3pt,
+  framexbottommargin=3pt,
+  framexleftmargin=0.4cm,
+  framesep=0pt,
+  rulesep=.4pt,
+  backgroundcolor=\color{gray97},
+  rulesepcolor=\color{black},
+  %
+  stringstyle=\ttfamily,
+  showstringspaces = false,
+%  basicstyle=\small\ttfamily,
+  basicstyle=\footnotesize\ttfamily,
+  commentstyle=\color{gray45},
+  keywordstyle=\bfseries,
+  %
+  numbers=left,
+  numbersep=15pt,
+  numberstyle=\tiny,
+  numberfirstline = false,
+  breaklines=true,
+}	
+
+\lstdefinestyle{CppExample}
+{
+  language=C++,
+  frame=trbl,
+  tabsize=2,
+  commentstyle=\textit,
+  stringstyle=\ttfamily, 
+  basicstyle=\small,
+}	
 
 
 %%% Local Variables:

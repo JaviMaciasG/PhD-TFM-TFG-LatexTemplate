@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: book.tex,v 1.5 2013/11/04 23:46:20 macias Exp $
+% $Id: book.tex,v 1.6 2013/11/25 00:33:30 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -66,6 +66,13 @@
 % of the adequate one is done automagically depending on values set by
 % the user in config/myconfig.tex
 \input{cover/cover.tex}                       % DO NOT TOUCH THIS LINE/FILE
+
+% If you want to include additional listings, you can use the float
+% package. As an example, I include here the listing of source code
+% snippets (they are defined in the appendix)
+\input{cover/extralistings.tex}
+
+\listof{codefloat}{List of source code listings}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Include pdf files if necessary (for example in the phd Thesis at UAH
@@ -155,6 +162,7 @@
 
 \input{appendix/manual.tex}
 \input{appendix/herramientas.tex}
+
 
 %
 % END Appendices. Edit/modigy all within this section
