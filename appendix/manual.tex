@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: manual.tex,v 1.5 2013/11/25 11:21:32 macias Exp $
+% $Id: manual.tex,v 1.6 2013/11/27 00:35:13 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -58,15 +58,16 @@ void funcionPrueba(int argumento)
 \end{lstlisting}
 
 O bien insertando directamente código de un fichero externo, como en el
-ejemplo \ref{sample1}, usando
+ejemplo \ref{cod:sample1}, usando
 \texttt{\textbackslash{}lstinputlisting} y cambiando el estilo a
-\texttt{cCbluebox} (además de usar el entorno \texttt{codefloat} para
-evitar pagebreaks, definir captions, etc.):
+\texttt{Cbluebox} (además de usar el entorno \texttt{codefloat} para
+evitar pagebreaks, etc.).
 
 \begin{codefloat}
-\label{sample1}
-\caption{Ejemplo de código fuente con un \texttt{lstinputlisting} dentro de un \texttt{codefloat}.}
 \lstinputlisting[style=Cbluebox]{appendix/function.c}
+\caption{Ejemplo de código fuente con un \texttt{lstinputlisting} dentro
+de un \texttt{codefloat}}
+\label{cod:sample1}
 \end{codefloat}
 
 
@@ -90,16 +91,29 @@ fprintf(1, 'La suma de %d y %d es igual a %d\n', a, b, c);
 \end{lstlisting}
 
 O incluso como en el listado \ref{cod:sample2}, usando un layout más refinado (con
-los settings de \url{http://www.rafalinux.com/?p=599} en un lststyle
-\texttt{Cnice}):
+los settings de \url{http://www.rafalinux.com/?p=599} en un \texttt{lststyle}
+\texttt{Cnice}).
 
 
 \begin{codefloat}
-\label{cod:sample2}
-\caption{Ejemplo de código fuente con estilo \texttt{Cnice}, de nuevo
-  con un \texttt{lstinputlisting} dentro de un \texttt{codefloat}.}
 \lstinputlisting[style=Cnice]{appendix/hello.c}
+\caption{Ejemplo de código fuente con estilo \texttt{Cnice}, de nuevo
+  con un \texttt{lstinputlisting} dentro de un \texttt{codefloat}}
+\label{cod:sample2}
 \end{codefloat}
+
+Y podemos reutilizar estilos cambiando algún parámetro, como podemos ver
+en el listado \ref{cod:sample3}, en el que he vuelto a usar el estilo
+\texttt{Cnice} eliminando la numeración.
+
+
+\begin{codefloat}
+\lstinputlisting[style=Cnice,numbers=none]{appendix/hello.c}
+\caption{Ejemplo de código fuente con estilo \texttt{Cnice}, modificado
+para que no aparezca la numeración.}
+\label{cod:sample3}
+\end{codefloat}
+
 
 \noindent
 Ahora compila usando \texttt{gcc}:
@@ -108,6 +122,16 @@ Ahora compila usando \texttt{gcc}:
 \begin{lstlisting}[style=console, numbers=none]
 $ gcc  -o hello hello.c
 \end{lstlisting}
+
+Y también podemos poner ejemplos de código \textit{coloreado}, como se
+muestra en el \ref{cod:sample5}.
+
+\begin{codefloat}
+\lstinputlisting[style=Ccolor]{appendix/hello.c}
+\caption{Ejemplo con colores usando el estilo \texttt{Ccolor}}
+\label{cod:sample5}
+\end{codefloat}
+
 
 
 %%% Local Variables:
