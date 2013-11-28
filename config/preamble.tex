@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: preamble.tex,v 1.12 2013/11/25 00:33:31 macias Exp $
+% $Id: preamble.tex,v 1.13 2013/11/25 11:21:32 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -352,16 +352,17 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 }
 \makeatother
 
-% Let's define some styles for listings:
-% minimizar fragmentado de listados (from http://www.rafalinux.com/?p=599)
+% Let's define some styles for source code listings:
+%
+% minimizar fragmentado de listados (from
+% http://www.rafalinux.com/?p=599), pero no me funciona:
 %\lstnewenvironment{codelisting}[1][]
 %{\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
-% This was using old float package
+%
+% This was using the float package
 \usepackage{float}
-\floatstyle{plain} % optionally change the style of the new float
+\floatstyle{plaintop} % optionally change the style of the new float
 \newfloat{codefloat}{H}{cod}[chapter]
-% Now let's use newfloat
-%\usepackage{newfloat}
 
 \lstdefinestyle{console}
                {
@@ -415,6 +416,24 @@ pdfborder={0 0 112.0}              %%% border-width of frames
   basicstyle=\small,
 }	
 
+% This one from http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+\lstdefinestyle{Ccolor}
+{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+% To set side-captions in figures
+\usepackage{sidecap}
 
 %%% Local Variables:
 %%% TeX-master: "../book"

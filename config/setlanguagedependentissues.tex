@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: setlanguagedependentissues.tex,v 1.5 2013/11/25 00:33:31 macias Exp $
+% $Id: setlanguagedependentissues.tex,v 1.6 2013/11/25 11:21:32 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -35,7 +35,8 @@
 {
   \selectlanguage{english}
 
-  \floatname{codefloat}{Source code}
+  \floatname{codefloat}{Listing}
+  \renewcommand{\lstlistingname}{Listing}
 
   %% \DeclareFloatingEnvironment[
   %%       fileext=lox,
@@ -52,7 +53,9 @@
   \renewcommand{\tablename}{Tabla}
   \renewcommand{\listtablename}{Índice de tablas}
 
-  \floatname{codefloat}{Código fuente}
+  \floatname{codefloat}{Listado}
+  \renewcommand{\lstlistingname}{Listado}
+
 
   %% \DeclareFloatingEnvironment[
   %%       fileext=lox,

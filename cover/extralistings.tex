@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: toc+lof+lot.tex,v 1.7 2013/11/25 00:33:32 macias Exp $
+% $Id: extralistings.tex,v 1.1 2013/11/25 11:21:32 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -24,12 +24,13 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Include the list of source code listings (if this is the case)
 \ifthenelse{\equal{\mybooklanguage}{english}}
 {
   \listof{codefloat}{List of source code listings}
 }
 {
-  \listof{codefloat}{Listado de código fuente}    
+  \listof{codefloat}{Índice de listados de código fuente}    
 }
 
 
