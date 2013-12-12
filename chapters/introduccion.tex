@@ -1,0 +1,184 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: introduccion.tex,v 1.8 2013/11/27 00:35:13 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% Copyleft 2013
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introducción}
+\label{cha:introduccion}
+
+
+\section{Presentación}
+\label{sec:presentacion}
+
+Este capítulo presenta una introducción al \mybookworktypefull{} 
+desarrollado. En este caso incluimos además secciones ``tutoriales'' en
+las que explicamos la inclusión de diagramas y el uso de acrónimos y
+símbolos.
+
+He definido el comando \texttt{\textbackslash{}texten\{\}} en
+\texttt{config/myconfig.tex} para usarlo, por ejemplo, para marcar
+palabras escritas en inglés (aka \texten{English}).
+
+Por si os hace falta, en \texttt{config/postamble.tex} se definen las
+variables \texttt{\textbackslash{}mydegreefull} (igual a
+``\mydegreefull'' en esta compilación),
+\texttt{\textbackslash{}mybookworktype} (igual a ``\mybookworktype'' en
+esta compilación) y \texttt{\textbackslash{}mybookworktypefull} (igual a
+``\mybookworktypefull'' en esta compilación).
+
+Importante para las tesis de UAH: si necesitáis incluir ficheros pdf
+(los de autorización e informes de los tutores, por ejemplo), esta
+plantilla lo permite: mirad el book.tex
+
+Contact: \contactauthor.
+
+Si quieres escribir el símbolo \texttt{backslash} puedes usar el comando
+\texttt{\textbackslash{}backlash\{\}}: \textbackslash{}.
+
+Lo mismo aplica para el símbolo \texttt{tilde}, para lo que puedes usar
+el comando \texttt{\textbackslash{}textasciitilde\{\}}: \textasciitilde{}.
+
+
+\section{Motivación y objetivos}
+\label{sec:motiv-y-objet}
+
+La motivación de este proyecto\ldots
+
+Los objetivos principales de Trabajo Fin de Carrera son (ejemplo
+utilizando ''enumerate''):
+
+\begin{enumerate}
+\item Primer objetivo\ldots
+\item Segundo objetivo\ldots
+  \begin{enumerate}
+  \item Objetivo 2.1\ldots
+  \item Objetivo 2.2\ldots
+  \end{enumerate}
+\item Tercer objetivo\ldots
+\end{enumerate}
+
+
+\section{Diagrama}
+\label{sec:diagrama}
+
+En la figura \ref{fig:fig_clobj} se muestra un ejemplo de gráfico
+generado automáticamente a partir de un fichero \texttt{.dia} (podéis
+generalizarlo en el \texttt{Makefile}).
+
+\begin{figure}[tphb]
+  \centering
+  \includegraphics{Esquema_objetos.pdf}
+  \caption{Clasificación de los objetos para la gramática.}
+  \label{fig:fig_clobj}
+\end{figure}
+
+
+\section{Uso de acrónimos}
+\label{sec:uso-de-acronimos}
+
+El uso del paquete \texttt{glossaries} permite definir los acrónimos y
+el sistema automáticamente gestiona su inclusión completa la primera vez
+que se usa. Los acrónimos de ejemplo están en el fichero
+\texttt{acronyms/acronymsgl.tex}.
+
+Así, si nos referimos a \ac{ETTS} o bien a \ac{EMODB},
+veremos como aparecen expandidas la primera vez. A partir de ahí, sólo
+se usará el acrónimo como puede verse al volver a hablar de \ac{ETTS} y
+\ac{EMODB}.
+
+Tiene también soporte para resetear todos los acrónimos como si no
+estuvieran usados. Vuelvo a incluir el párrafo anterior tras un reset:
+
+\glsresetall[acronym]
+
+El uso del paquete acronym permite definir los acrónimos y el sistema
+automáticamente gestiona su inclusión completa la primera vez que se
+usa. Así, si nos referimos a \ac{ETTS} o bien a \ac{EMODB}, veremos como
+aparecen expandidas la primera vez. A partir de ahí, sólo se usará el
+acrónimo como puede verse al volver a hablar de \ac{ETTS} y \ac{EMODB}.
+
+Y permite también forzar que se vuelva a citar completo aunque ya se
+haya utilizado (con el acrónimo entre paréntesis), como puede verse en
+\acl{ETTS} (equivalente a \glsdesc{ETTS} que vale para cualquier
+glosario), y también a usar forzosamente el acrónimo. Primero reseteamos
+de nuevo.
+
+\glsresetall[acronym]
+
+Y ahora forzamos el acrónimo: \acs{EMODB} (eqivalente a
+\glsname{EMODB} que vale para cualquier glosario). También podemos
+forzar a que lo ponga todo, con \acf{EMODB}.
+
+
+Podemos seguir definiendo entradas de acrónimos, referirnos a \ac{DBN}
+por primera vez, y las siguientes aparecerá como \ac{DBN}.  Pongo ahora
+el resto de acrónimos \ac{SQ}, \ac{EIR}, \ac{SIR} y
+\ac{ES}. Finalmente los repito para que se vea el efecto: \ac{SQ},
+\ac{EIR}, \ac{SIR} y \ac{ES}.
+
+Y gestiona bien los plurales, ponemos el plural como \acp{SOC} la
+primera vez, y luego la segunda como \acp{SOC}. Y podemos volver al
+singular con \ac{SOC}.
+
+
+\section{Símbolos}
+\label{sec:simbolos}
+
+Los símbolos definidos están incluidos en el fichero
+\texttt{symbols/symbolsgl.tex} y en esta sección mostramos algunos
+ejemplos. 
+
+El \ac{angstrom} se usa en biología estructural, mientras que el
+\ac{ohm} se usa en electrónica. También podemos poner \ac{xdet}.
+
+\begin{equation}
+  \label{eq:1}
+  \ac{xdet}
+\end{equation}
+
+Y usar la que nos falta \ac{xidet}, también dentro de fórmulas (otra
+cosa es que sea conveniente o útil):
+
+\begin{equation}
+  \label{eq:2}
+  \ac{xidet} = \sqrt{i}
+\end{equation}
+
+Acabamos con un par de acrónimos: \ac{TDPSOLA} y \ac{STRAIGHT}. 
+
+% Y también funcionan los caracteres acentuados:
+%
+% Y con el de acentos \ac{ACCCHARS} la primera vez, \ac{ACCCHARS} la
+% segunda, y luego acrónimo, descripción y completo: \acs{ACCCHARS},
+% \acl{ACCCHARS} y \acf{ACCCHARS}.
+
+
+\section{Organización de la memoria}
+\label{sec:organizacion-memoria}
+
+Esta memoria se organiza en cuatro grandes capítulos. El primero\ldots
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:

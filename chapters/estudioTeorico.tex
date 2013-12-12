@@ -1,0 +1,97 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: estudioTeorico.tex,v 1.4 2013/11/28 00:15:15 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% Copyleft 2013
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Estudio teórico}
+\label{cha:estudio-teorico}
+
+\section{Introducción}
+\label{sec:introduccion-teoria}
+
+En este capítulo se cuenta tal y tal.
+
+El capítulo se estructura en n apartados...
+
+
+\section{Estado del Arte}
+\label{sec:estadoarte}
+
+En el estado del arte se enumeran los trabajos más relevantes de otros
+grupos de investigación. A continuación se muestra un ejemplo del uso de
+viñetas que nos proporciona ''itemize'':
+
+\begin{itemize}
+\item En el trabajo ..... 
+\item En el siguiente trabajo.....
+\end{itemize}
+
+O citas en un párrafo real: Sin embargo, hay entornos acústicos donde
+las tasas de error conseguidas son todavía demasiado altas. En concreto,
+las aplicaciones en las que la captura de la señal de habla se hace
+usando micrófonos alejados del locutor (típicamente para distancias
+superiores a un metro) muestran una fuerte sensibilidad a los problemas
+de reverberación, ruido aditivo y baja relación señal a ruido
+(\cite{gelbart02},\cite{kochkin02}). En estos entornos, se ha propuesto
+el uso de arrays de micrófonos como un método para mejorar la calidad
+del habla capturada \cite{seltzer03}\cite{herbordt05}.
+
+Existen múltiples formas de insertar figuras en Latex. A continuación,
+se muestra un ejemplo del uso de ''figure''. Como se puede ver en la
+Figura \ref{fig1} también se pueden poner referencias a las figuras por
+medio de ''ref'' y la etiqueta ''label'' de la figura en particular.
+
+\begin{figure}[h] %el especificador [h] indica que ponga la figura aqui si es posible
+  \centering
+  \includegraphics[width=4.7in]{Figure1}
+  % where an .eps filename suffix will be assumed under latex, 
+  % and a .pdf suffix will be assumed for pdflatex
+  \caption{Departmento de Electróonica}
+  \label{fig1}
+\end{figure}
+
+Y ahora un ejemplo en el que ponemos el caption en el lateral:
+
+\begin{SCfigure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{Figure1}
+  \caption{Departamento de Electrónica en el lateral}
+\end{SCfigure}
+
+
+
+\section{Técnicas utilizadas}
+\label{sec:tecnicas-utilizadas}
+
+Blah, blah, blah.
+
+
+\section{Conclusiones}
+\label{sec:conclusiones-teoria}
+
+Blah, blah, blah.
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
