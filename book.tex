@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: book.tex,v 1.8 2013/11/27 00:35:13 macias Exp $
+% $Id: book.tex,v 1.9 2013/11/28 00:15:15 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -41,7 +41,7 @@
                                % "postamble" is not a valid word... :-)
 
 % ruta de las imágenes
-\graphicspath{{./logos/}{./results/}{./diagrams/}} % Edit this to your
+\graphicspath{{./logos/}{./figures/}{./diagrams/}} % Edit this to your
                                 % needs. Only logos is really required
 %
 % END Preamble and configuration section
@@ -131,15 +131,15 @@
 %\part*{Memoria}
 %\label{part:memoria}
 
-\input{introduction/introduccion.tex}
+\input{chapters/introduccion.tex}
 
-\input{theory/estudioTeorico.tex}
+\input{chapters/estudioTeorico.tex}
 
-\input{development/desarrollo.tex}
+\input{chapters/desarrollo.tex}
 
-\input{results/resultados.tex}
+\input{chapters/resultados.tex}
 
-\input{conclusions/conclusiones.tex}
+\input{chapters/conclusiones.tex}
 
 % Optional in PFCs
 %\input{pliego/pliego.tex}
@@ -177,8 +177,6 @@
 \input{appendix/manual.tex}
 \input{appendix/herramientas.tex}
 
-
-\listof{codefloat}{List of source code listings}
 
 %
 % END Appendices. Edit/modify all within this section

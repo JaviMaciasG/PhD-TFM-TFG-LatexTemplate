@@ -43,12 +43,12 @@ pdf_svg_done: $(PDFS_FROM_SVG)
 
 
 tar:
-	tar czvf `basename $(TEX_FILE) .tex`.tgz *.tex *.bib *.pdf *.bst *.cls *.png *.PNG *.jpg *.JPG 
+	tar czvf $(ROOT_FILENAME).tgz Makefile `find . -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG"` 
 
 clean:
 	rubber --clean -d $(TEX_FILE)
-	rm -f $(PDFS_FROM_DIA)
-	rm -f $(PDFS_FROM_SVG)
+#	rm -f $(PDFS_FROM_DIA)
+#	rm -f $(PDFS_FROM_SVG)
 	rm -f $(DUMMY_TARGETS)
 
 .PHONY:	all pdf clean tar $(DUMMY_TARGETS)
