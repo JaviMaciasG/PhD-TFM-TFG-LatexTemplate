@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: preamble.tex,v 1.13 2013/11/25 11:21:32 macias Exp $
+% $Id: preamble.tex,v 1.14 2013/11/28 00:15:15 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -434,6 +434,55 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 
 % To set side-captions in figures
 \usepackage{sidecap}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This comes from TeXiS, thanks to its authors, available at
+% http://gaia.fdi.ucm.es/projects/texis 
+\def\texis{\TeX \raise.15em\hbox{\textsc{i}}S}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comando:
+%
+%       \begin{FraseCelebre}
+%             \begin{Frase}
+%                Y así, del mucho leer y del poco dormir...
+%             \end{Frase}
+%             \begin{Fuente}
+%                Don Quijote de la Mancha
+%
+%                Miguel de Cervantes
+%             \end{Fuente}
+%       \begin{FraseCelebre}
+%
+% Resultado:
+%
+% Añade la frase célebre del principio de un capítulo.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{FraseCelebre}% Definición del entorno de FraseCelebre
+ {\begin{list}{}{%
+     \setlength{\leftmargin}{0.5\textwidth}% Desplazamos el inicio de
+                                 % los párrafos a la derecha la mitad
+                                 % de la anchura de la línea de texto.
+                                 % Puede que quieras cambiar esto
+                                 % por otra cantidad como '5cm'.
+     \setlength{\parsep}{0cm}% La separación entre párrafos de la
+                             % frase o de la fuente es normal, sin
+                             % espacio extra.
+     \addtolength{\topsep}{0.5cm}% Aumentamos un poco la separación
+                                 % entre la parte de la fase célebre
+                                 % y los párrafos de alrededor
+   }
+ }
+ {\unskip \end{list}}
+
+\newenvironment{Frase}%
+  {\item \begin{flushright}\small\em}%
+  {\end{flushright}}
+
+\newenvironment{Fuente}%
+  {\item \begin{flushright}\small}%
+  {\end{flushright}}
+
+
 
 %%% Local Variables:
 %%% TeX-master: "../book"
