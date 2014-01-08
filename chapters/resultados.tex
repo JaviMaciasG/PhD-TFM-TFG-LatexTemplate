@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: resultados.tex,v 1.1 2013/12/12 22:05:15 macias Exp $
+% $Id: resultados.tex,v 1.2 2013/12/12 23:06:55 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -16,6 +16,9 @@
 % Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
 %
 % If you think you can add pieces of relevant/useful examples,
 % improvements, please contact us at (macias@depeca.uah.es)
@@ -31,7 +34,8 @@
 \begin{FraseCelebre}
   \begin{Frase}
     % Si quieres ser leído más de una vez, no vaciles en borrar a menudo.
-    Rem tene, verba sequentur (Si dominas el tema, las palabras vendrán solas)
+    Rem tene, verba sequentur (Si dominas el tema, las palabras vendrán
+    solas)\footnote{Tomado de ejemplos del proyecto \texis{}.}.
   \end{Frase}
   \begin{Fuente}
     % Horacio
@@ -45,7 +49,7 @@
 En este capítulo se introducirán los resultados más relevantes del
 trabajo. 
 
-La estructura del capítulo es...
+La estructura del capítulo es\ldots
 
 
 \section{Entorno experimental}
@@ -80,7 +84,7 @@ A continuación, se muestra un ejemplo de tabla simple (ver tabla \ref{table1}).
 \begin{table}
   % increase table row spacing, adjust to taste
   \renewcommand{\arraystretch}{1.3}
-  \caption{Comparativa}
+  \caption{Comparativa.}
   \label{table1}
   \begin{center}
     % Some packages, such as MDW tools, offer better commands for making tables
@@ -100,23 +104,24 @@ A continuación, se muestra un ejemplo de tabla simple (ver tabla \ref{table1}).
 \end{table}
 
 Cuando las tablas ocupan más de un página se debe utilizar un tipo
-especial de tablas denominado ''longtbale''. A continuación, se muestra
-un ejemplo del mismo (ver tabla \ref{table2}).
+especial de tablas denominado \texttt{longtable}. A continuación, se
+muestra un ejemplo del mismo (ver tabla \ref{table2}).
 
 \begin{center}
 	\begin{longtable}{|c|c|c|c|}
-    \caption[Resultados de la Correlacion cruzada]{Resultados de la Correlación cruzada} \label{table2} \\
+    \caption[Resultados de la correlación cruzada.]{Resultados de la correlación cruzada.} \label{table2} \\
     
     \hline \multicolumn{1}{|c|}{\textbf{Posición Real}} & \multicolumn{1}{c|}{\textbf{Posición estimada}} & \multicolumn{1}{c|}{\textbf{Coef. Correlación}} & \multicolumn{1}{c|}{\textbf{Acierto/Fallo}} \\ \hline 
     \endfirsthead
     
     \multicolumn{4}{c}%
-    {{\bfseries \tablename\ \thetable{} -- continua en la página anterior}} \\
+    {{\bfseries \tablename\ \thetable{} -- continúa en la página anterior}} \\
     \hline \multicolumn{1}{|c|}{\textbf{Posición Real}} & \multicolumn{1}{c|}{\textbf{Posición estimada}} & \multicolumn{1}{c|}{\textbf{Coef. Correlación}} & \multicolumn{1}{c|}{\textbf{Acierto/Fallo}} \\ \hline 
     \endhead
     
-    \hline \multicolumn{4}{|r|}{{Continua en la página siguiente}} \\ \hline
+    \hline \multicolumn{4}{|r|}{{Continúa en la página siguiente}} \\ \hline
     \endfoot
+
     \hline \hline
     \endlastfoot
     
@@ -180,12 +185,12 @@ un ejemplo del mismo (ver tabla \ref{table2}).
 \end{center}
 
 En algunas ocasiones, también resulta útil emplear el entorno
-''subfloat'' (del nuevo paquete subfig) para añadir múltiples imágenes
-dentro de la misma figura. A continuación, se muestra un ejemplo del uso
-en la figura \ref{fig:fig2}. También se pueden referenciar las
-sub-figuras de forma individual, por ejemplo la sub-figura
-\ref{fig:fig2b} (usando un método de cita), o bien la sub-figura
-\ref{fig:fig2}\subref{fig:fig2b} (usando otro).
+\texttt{subfloat} (del paquete \texttt{subfig}) para añadir múltiples
+imágenes dentro de la misma figura. A continuación, se muestra un
+ejemplo del uso en la figura \ref{fig:fig2}. También se pueden
+referenciar las sub-figuras de forma individual, por ejemplo la
+sub-figura \ref{fig:fig2b} (usando un método de cita), o bien la
+sub-figura \ref{fig:fig2}\subref{fig:fig2b} (usando otro alternativo).
 
 \begin{figure}[h]
   \centerline{\subfloat[Mean entropy]{\includegraphics[width=3in]{Figure2}
@@ -197,7 +202,7 @@ sub-figuras de forma individual, por ejemplo la sub-figura
       % where an .eps filename suffix will be assumed under latex, 
       % and a .pdf suffix will be assumed for pdflatex
       \label{fig:fig2b}}}
-  \caption{Optimal trames number in the training data set}
+  \caption{Optimal number of frames in the training data set.}
   \label{fig:fig2}
 \end{figure}
 
@@ -209,17 +214,17 @@ sub-figuras de forma individual, por ejemplo la sub-figura
 %   \centering
 %   \begin{subfigure}[b]{0.3\textwidth}
 %     \includegraphics[width=\textwidth]{Figure2}
-%     \caption{Mean Entropy}
+%     \caption{Mean Entropy.}
 %     \label{fig:fig3a}
 %   \end{subfigure}%
 %   ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
 %   % (or a blank line to force the subfigure onto a new line)
 %   \begin{subfigure}[b]{0.3\textwidth}
 %     \includegraphics[width=\textwidth]{Figure3}
-%     \caption{Error Percentage}
+%     \caption{Error Percentage.}
 %     \label{fig:fig3b}
 %   \end{subfigure}
-%   \caption{Optimal trames number in the training data set}
+%   \caption{Optimal trames number in the training data set.}
 %   \label{fig:fig3}
 % \end{figure}
 
@@ -252,7 +257,7 @@ obtenidos en una serie de experimentos de localización de locutores.
       Ref. duration (s) & $6287.0$ & $596.0$ & $1143.0$ & $1180.0$ & $1194.0$ \\
       \hline \hline
     \end{tabular}
-    \caption{Resultados TEST CLEAR 2006}
+    \caption{Resultados TEST CLEAR 2006.}
     \label{tablas2006}
   \end{center}
 \end{sidewaystable}
@@ -263,6 +268,7 @@ obtenidos en una serie de experimentos de localización de locutores.
 \label{sec:conclusiones-resultados}
 
 Blah, blah, blah.
+
 
 %%% Local Variables:
 %%% TeX-master: "../book"

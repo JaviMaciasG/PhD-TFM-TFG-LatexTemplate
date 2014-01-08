@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: myconfig.tex,v 1.5 2013/11/25 00:33:31 macias Exp $
+% $Id: myconfig.tex,v 1.6 2013/12/12 22:00:06 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -16,6 +16,9 @@
 % Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
 %
 % If you think you can add pieces of relevant/useful examples,
 % improvements, please contact us at (macias@depeca.uah.es)
@@ -48,36 +51,57 @@
 
 % Control compilation flavour (for PFCs, TFMs, TFGs, Thesis, etc...)
 % Degree (titulación), can be:
-% IT    - Ingeniería de Telecomunicación
-% IE    - Ingeniería Electrónica
-% ITTSE - Ingeniería Técnica de Telecomunicación, Sistemas Electrónicos
-% ITTST - Ingeniería Técnica de Telecomunicación, Sistemas de Telecomunicación
-% ITI   - Ingeniería Técnica Industrial, Electrónica Industrial 
-% GIEC  - Grado en Ingeniería Electrónica de Comunicaciones
-% GIEAI - Grado en Ingeniería en Electrónica y Automática Industrial
-% GIST  - Grado en Ingeniería en Sistemas de Telecomunicación
-% GITT  - Grado en Ingeniería en Tecnologías de la Telecomunicación
-% GIT   - Grado en Ingeniería Telemática
-% GIC   - Grado en Ingeniería de Computadores
-% GII   - Grado en Ingeniería Informática
-% GSI   - Grado en Sistemas de Información
-% MUSEA - Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes
-% PHD   - Doctorado
+% IT     - Ingeniería de Telecomunicación
+% IE     - Ingeniería Electrónica
+% ITTSE  - Ingeniería Técnica de Telecomunicación, Sistemas Electrónicos
+% ITTST  - Ingeniería Técnica de Telecomunicación, Sistemas de Telecomunicación
+% ITI    - Ingeniería Técnica Industrial, Electrónica Industrial 
+% GIEC   - Grado en Ingeniería Electrónica de Comunicaciones
+% GIEAI  - Grado en Ingeniería en Electrónica y Automática Industrial
+% GIST   - Grado en Ingeniería en Sistemas de Telecomunicación
+% GITT   - Grado en Ingeniería en Tecnologías de la Telecomunicación
+% GIT    - Grado en Ingeniería Telemática
+% GIC    - Grado en Ingeniería de Computadores
+% GII    - Grado en Ingeniería Informática
+% GSI    - Grado en Sistemas de Información
+% MUSEA  - Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes
+% PHDUAH - Doctorado UAH
+% PHDUPM - Doctorado UPM
+% You can include additional degrees and modify config/myconfig.tex
+% config/postamble.tex and cover/cover.tex, generating new specific
+% cover files if needed
 \newcommand{\mydegree}{GIEC}
 
 % General document information
-\newcommand{\mybooktitle}{Title of the pfc/tfm/tfg/tesis}
-\newcommand{\mybookauthor}{Full name of author}
+\newcommand{\mybooktitle}{Plantilla unificada para la generación de
+memorias de PFCs/TFGs/TFMs y tesis doctorales}
+\newcommand{\mybookauthor}{Javier Macías-Guarasa}
 \newcommand{\mybookauthordegree}{Ingeniero de Telecomunicación} % Used in UPM
-\newcommand{\mybookemail}{autor@depeca.uah.es}
-\newcommand{\mybookadvisors}{Full name of advisors}
+\newcommand{\mybookemail}{macias@depeca.uah.es}
+\newcommand{\mybookadvisors}{Roberto Barra-Chicote}
 \newcommand{\mybookpresident}{Name of the tribunal president}
 \newcommand{\mybookfirstvocal}{Name of the first vocal}
 \newcommand{\mybooksecondvocal}{Name of the second vocal}
 \newcommand{\mybooksecretary}{Name of the secretary (if needed)}
-\newcommand{\mybookyear}{Year of the examination}
-\newcommand{\mybookkeywords}{First, second, third, fourth and fifth (up to a maximum of five)}
-\newcommand{\mybookpalabrasclave}{Primera, segunda, tercera, cuarta y quinta (máximo de cinco)}
+\newcommand{\mybookyear}{2014}
+\newcommand{\mybookkeywords}{Bsc., Msc. and PhD. Thesis template, \LaTeX, English/Spanish support, automatic generation} % (up to a maximum of five)}
+\newcommand{\mybookpalabrasclave}{Plantillas de trabajos fin de carrera/máster/grado y tesis doctorales, \LaTeX, soporte de español e inglés, generación automática} % (máximo de cinco)
+
+% Link color definition
+% Color links of the toc/lot/lof entries
+\newcommand{\mytoclinkcolor}{azul}
+\newcommand{\myloflinkcolor}{rojo}
+\newcommand{\mylotlinkcolor}{verde}
+% This is used in cover/extralistings.tex
+\newcommand{\myothertoclinkcolor}{magenta}
+
+% Other color links in the document
+\newcommand{\mylinkcolor}{azul}
+%\newcommand{\mylinkcolor}{negro}
+
+% Color links to urls and cites
+\newcommand{\myurlcolor}{azul}
+\newcommand{\mycitecolor}{verde}
 
 % END Set my own variables (control compilation for different flavours)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -90,7 +114,7 @@
 % document
 \DeclareRobustCommand{\texten}[1]{\textit{#1}}
 
-% Various examples
+% Various examples of commonly used commands
 \newcommand{\circulo}{\large $\circ$}
 \newcommand{\asterisco}{$\ast$}
 \newcommand{\cuadrado}{\tiny $\square$}

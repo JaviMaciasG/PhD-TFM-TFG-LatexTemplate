@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: cover-pfc-tfg-tfm-uah.tex,v 1.3 2013/11/25 00:33:31 macias Exp $
+% $Id: cover-pfc-tfg-tfm-uah.tex,v 1.4 2013/12/12 22:00:06 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -16,6 +16,9 @@
 % Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
 %
 % If you think you can add pieces of relevant/useful examples,
 % improvements, please contact us at (macias@depeca.uah.es)
@@ -53,7 +56,8 @@
   
   \vspace{1mm}
   
-  Director/es: \mybookadvisors
+% If multiple advisors, change Director to Directores
+  Director: \mybookadvisors
   
   \vspace{1cm}
 
@@ -67,11 +71,15 @@
 \end{center}
 
 
-\vspace{15mm}
-\begin{tabular}{p{3cm}c}
-  &Calificación: ..........................................................................\\ \\
-  &Fecha: ...................................................................................
-\end{tabular}
+\begin{bottomparagraph}
+  \begin{center}
+    \begin{tabular}{p{3cm}c}
+      &Calificación: ..........................................................................\\ \\
+      &Fecha: ...................................................................................
+    \end{tabular}
+  \end{center}
+\end{bottomparagraph}
+
 
 \normalsize
 

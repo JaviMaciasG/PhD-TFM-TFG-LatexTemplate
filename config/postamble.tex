@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: postamble.tex,v 1.3 2013/11/05 00:42:41 macias Exp $
+% $Id: postamble.tex,v 1.4 2013/11/25 00:33:31 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -16,6 +16,9 @@
 % Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
 %
 % If you think you can add pieces of relevant/useful examples,
 % improvements, please contact us at (macias@depeca.uah.es)
@@ -251,10 +254,10 @@
                             }
                           }
                           {
-                            \ifthenelse{\equal{\mydegree}{PHD}}
+                            \ifthenelse{\equal{\mydegree}{PHDUAH}}
                             {
                               \newcommand{\mydegreefull}{Estudios de Doctorado}
-                              \newcommand{\mybookworktype}{PHD}
+                              \newcommand{\mybookworktype}{PHDUAH}
                               \ifthenelse{\equal{\mybooklanguage}{spanish}}
                               {
                                 \newcommand{\mybookworktypefull}{Tesis Doctoral}
@@ -264,9 +267,23 @@
                               }
                             }
                             {
-                              \newcommand{\mybookworktype}{TFG}
-                              \newcommand{\mydegreefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}} 
-                              \newcommand{\mybookworktypefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}}
+                              \ifthenelse{\equal{\mydegree}{PHDUPM}}
+                              {
+                                \newcommand{\mydegreefull}{Doctor Ingeniero de Telecomunicación}
+                                \newcommand{\mybookworktype}{PHDUPM}
+                                \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                {
+                                  \newcommand{\mybookworktypefull}{Tesis Doctoral}
+                                }
+                                {
+                                  \newcommand{\mybookworktypefull}{Doctoral Thesis}
+                                }
+                              }
+                              {
+                                \newcommand{\mybookworktype}{TFG}
+                                \newcommand{\mydegreefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}} 
+                                \newcommand{\mybookworktypefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}}
+                            }                          
                             }                          
                           }                          
                         }
@@ -311,7 +328,11 @@
   pdfkeywords={\keywordsforpdf},
   pdfcreator={\LaTeX with hyperref package},
   pdfproducer={rubber},
-  pdffitwindow={true}
+  pdffitwindow={true},
+% This can be set in myconfig.tex
+  urlcolor=\myurlcolor,
+  linkcolor=\mylinkcolor,
+  citecolor=\mycitecolor
 }
 
 % END Definition of the pdf document information data

@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: book.tex,v 1.10 2013/12/12 22:00:06 macias Exp $
+% $Id: book.tex,v 1.11 2013/12/12 23:14:34 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -17,6 +17,9 @@
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
 %
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
 % If you think you can add pieces of relevant/useful examples,
 % improvements, please contact us at (macias@depeca.uah.es)
 %
@@ -30,19 +33,28 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN Preamble and configuration section
 %
-\input{config/preamble.tex}    % All definitions, packages, etc. DO NOT
-                               % TOUCH THIS LINE 
-                               
-\input{config/myconfig.tex}    % EDIT IT! to set your specific settings!
+\input{config/preamble.tex}    % DO NOT TOUCH THIS LINE. You can edit
+                               % the file to modify some default settings
+                                   
+\input{config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE 
+                               % to set your specific settings (related
+                               % to the document language, your degree,
+                               % document details (such as title, author
+                               % (you), your email, name of the tribunal
+                               % members, document year, keyword and
+                               % palabras clave) and link colors), and
+                               % define your commonly used commands
+                               % (some examples are provided).
 
-\input{config/glossaries.tex}  % EDIT IT to include your glossaries!
+\input{config/glossaries.tex}  % EDIT THIS FILE to include your glossaries
 
 \input{config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
                                % "postamble" is not a valid word... :-)
 
-% ruta de las imágenes
+% path to directories containing images
 \graphicspath{{./logos/}{./figures/}{./diagrams/}} % Edit this to your
                                 % needs. Only logos is really required
+                                % when you generate your own content.
 %
 % END Preamble and configuration section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -56,54 +68,73 @@
 % Now start text and numbering for frontmatter (toc, list of
 % tables/figures,...) 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frontmatter
+\frontmatter                                  % DO NOT TOUCH THIS LINE
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN within-document configuration, frontpage and cover pages generation
 %
 
 % Set Language dependent issues that must be set after \begin{document}
-\input{config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE/FILE
+\input{config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
+                                              % NOR THE FILE
 
 % This will include front page (if needed), and cover pages. Selection
 % of the adequate one is done automagically depending on values set by
 % the user in config/myconfig.tex
-\input{cover/cover.tex}                       % DO NOT TOUCH THIS LINE/FILE
+\input{cover/cover.tex}                       % DO NOT TOUCH THIS
+                                              % LINE/FILE. You can edit
+                                              % the file in case you
+                                              % need it (there may be
+                                              % problems with vertical
+                                              % spacing if the title is
+                                              % too long...)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Include pdf files if necessary (for example in the phd Thesis at UAH
-% the permissions of the advisors...)
-%\includepdf[pages=3-6]{letters.pdf} % include pages 3-6 of insertme.pdf
-%\clearemptydoublepage % You need to include this after including each pdf
-%\includepdf[pages=-]{letters/ejemploCarta.pdf}   % include all pages of insertme.pdf
+% In some cases you may need to include pdf files (for example in the
+% PhD. Thesis at UAH you need to include the permission letter by the
+% advisors...). You can do this 
+%
+%\includepdf[pages=3-6]{letters/sampleLetter-pages.pdf} % include pages 
+%                                                       % 3-6 of pdf file
 %\clearemptydoublepage % You need to include this after including each pdf
 
-% Dedicatorias+agradecimientos
-\input{dedicatoria/dedicatoria.tex}           % EDIT this file
-\input{agradecimientos/agradecimientos.tex}   % EDIT this file
+%\includepdf[pages=-]{letters/sampleLetter.pdf}   % include all pages of
+%                                                 % pdf file
+%\clearemptydoublepage % You need to add this after including each pdf
+
+% Dedication+ackowledgements (dedicatorias+agradecimientos)
+\input{dedication/dedicatoria.tex}            % EDIT this file or
+                                              % comment it out
+\input{acknowledgements/agradecimientos.tex}  % EDIT this file or
+                                              % comment it out
 
 % Now include resumen and abstract
 \input{abstract/resumen.tex}                  % EDIT this file
 \input{abstract/abstract.tex}                 % EDIT this file
 
-% Just for TFGs at UAH, I do nothing and leave to the author the
+% Just for TFGs/PFCs at UAH, I do nothing and leave to the author the
 % inclusion of the file
 %\input{abstract/resumen-extendido.tex}       % EDIT this file
 
 % Now include toc and list of figures+tables
-\input{cover/toc+lof+lot.tex}                 % DO NOT TOUCH THIS LINE
+\input{cover/toc+lof+lot.tex}                 % DO NOT TOUCH THIS LINE!
 
 % If you want to include additional listings, you can use the float
 % package. As an example, I include here the listing of source code
 % snippets (you have some examples in appendix/manual.tex)
-\input{cover/extralistings.tex}
+\input{cover/extralistings.tex}               % Edit this file or
+                                              % comment it out
 
 % Now include acronyms (if this is the case)
-\input{acronyms/acronymsgl.tex}               % EDIT this file
+\input{acronyms/acronymsgl.tex}               % EDIT this file or
+                                              % comment it out if you do 
+                                              % not use acronyms
 
 % Now include symbols (if this is the case)
-\input{symbols/symbolsgl.tex}                 % EDIT this file
+\input{symbols/symbolsgl.tex}                 % EDIT this file or
+                                              % comment it out if you do 
+                                              % not use acronyms
 
 %
 % END within-document configuration, frontpage and cover pages generation
@@ -113,8 +144,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Now start text and numbering for mainmatter (chapter+appendices)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mainmatter
-\deactivatetilden
+\mainmatter                                       % DO NOT TOUCH THIS LINE!
+\deactivatetilden                                 % DO NOT TOUCH THIS LINE!
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,7 +203,7 @@
 %\part*{Apéndices}
 %\label{part:apendices}
 
-\appendix
+\appendix                                         % DO NOT TOUCH THIS LINE!
 
 \input{appendix/manual.tex}
 \input{appendix/herramientas.tex}
@@ -186,13 +217,14 @@
 % Now start text and numbering for backmatter (just backpage in our
 % case)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\backmatter
+\backmatter                                       % DO NOT TOUCH THIS LINE!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Just for TFGs at UAH right now, but kept here JIC anybody else wants
 % to use it
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{cover/backpage.tex}                    % EDIT this file if required
+\input{cover/backpage.tex}                    % EDIT this file if
+                                              % required, or comment it out
 
 \end{document}
 

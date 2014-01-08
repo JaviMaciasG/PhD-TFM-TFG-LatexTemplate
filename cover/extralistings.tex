@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: extralistings.tex,v 1.1 2013/11/25 11:21:32 macias Exp $
+% $Id: extralistings.tex,v 1.2 2013/11/28 00:15:15 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -17,6 +17,9 @@
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
 %
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
 % If you think you can add pieces of relevant/useful examples,
 % improvements, please contact us at (macias@depeca.uah.es)
 %
@@ -25,6 +28,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Include the list of source code listings (if this is the case)
+\hypersetup{linkcolor=\myothertoclinkcolor}
 \ifthenelse{\equal{\mybooklanguage}{english}}
 {
   \listof{codefloat}{List of source code listings}
@@ -32,7 +36,7 @@
 {
   \listof{codefloat}{Índice de listados de código fuente}    
 }
-
+\hypersetup{linkcolor=\mylinkcolor}
 
 %%% Local Variables:
 %%% TeX-master: "../book"

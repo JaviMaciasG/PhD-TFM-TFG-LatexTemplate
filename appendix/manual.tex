@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: manual.tex,v 1.6 2013/11/27 00:35:13 macias Exp $
+% $Id: manual.tex,v 1.7 2013/11/27 09:25:56 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -17,6 +17,9 @@
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
 %
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
 % If you think you can add pieces of relevant/useful examples,
 % improvements, please contact us at (macias@depeca.uah.es)
 %
@@ -30,16 +33,22 @@
 \section{Introducción}
 \label{sec:introapp1}
 
+Blah, blah, blah\ldots
 
-Introducción.
 
 \section{Manual}
 \label{sec:manual}
 
 Pues eso.
 
-\section{Código fuente}
+
+\section{Ejemplos de inclusión de fragmentos de código fuente}
 \label{sec:codigo-fuente}
+
+Para la inclusión de código fuente se utiliza el paquete
+\texttt{listings}, para el que se han definido algunos estilos de
+ejemplo que pueden verse en el fichero \texttt{config/preamble.tex} y
+que se usan a continuación.
 
 Así se inserta código fuente, usando el estilo \texttt{CppExample} que
 hemos definido en el preamble, escribiendo el código directamente :
@@ -103,7 +112,7 @@ los settings de \url{http://www.rafalinux.com/?p=599} en un \texttt{lststyle}
 \end{codefloat}
 
 Y podemos reutilizar estilos cambiando algún parámetro, como podemos ver
-en el listado \ref{cod:sample3}, en el que he vuelto a usar el estilo
+en el listado \ref{cod:sample3}, en el que hemos vuelto a usar el estilo
 \texttt{Cnice} eliminando la numeración.
 
 

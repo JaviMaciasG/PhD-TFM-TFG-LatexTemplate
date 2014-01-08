@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: preamble.tex,v 1.14 2013/11/28 00:15:15 macias Exp $
+% $Id: preamble.tex,v 1.15 2013/12/12 23:06:55 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -16,6 +16,9 @@
 % Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
 %
 % If you think you can add pieces of relevant/useful examples,
 % improvements, please contact us at (macias@depeca.uah.es)
@@ -83,6 +86,9 @@
                         % http://www.ctan.org/tex-archive/macros/latex/contrib/supported/cite/
 
 
+\usepackage{caption}
+
+
 \usepackage[RGB,rgb]{xcolor}
 %\usepackage{color}
 
@@ -114,8 +120,9 @@ linktoc=all,
 colorlinks=true,
 linkcolor=azul,    
 citecolor=verde,
-urlcolor=azul,                     %%% texto  con color
-linkbordercolor={0 0 1},           %%% blue frames around links
+urlcolor=azul,                     %%% texto  con color (further
+                                %%% modified in myconfig.tex)
+%linkbordercolor={0 0 1},           %%% blue frames around links
 pdfborder={0 0 112.0}              %%% border-width of frames 
 ]{hyperref}                        %%% will be multiplied with 0.009 by ps2pdf
 
@@ -163,12 +170,6 @@ pdfborder={0 0 112.0}              %%% border-width of frames
   \stepcounter{figure}
 }
 
-% \newlength{\myVSpace}% the height of the box
-% \setlength{\myVSpace}{0ex}% the default, 
-% \newcommand\xstrut{\raisebox{-.5\myVSpace}% symmetric behaviour, 
-%   {\rule{0pt}{\myVSpace}}%
-% }
-
 \usepackage{amsmath}
 
 \usepackage{courier}
@@ -186,14 +187,13 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 %\usepackage[footnote,printonlyused,withpage]{acronym} 
 %\usepackage[printonlyused]{sty/acronym}
 
-% Mejor que el acronym es glossaries
+% glossaries is better than the acronym package 
 \usepackage[acronym,shortcuts,nomain]{glossaries}
 
 % ifthen to allow using language dependent settings
 \usepackage{ifthen}
 
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
-
 
 \pagestyle{fancy}
 
@@ -207,6 +207,7 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 \definecolor{headingPortadaTFM}{RGB}{152,118,52}
 \definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
 
+\definecolor{negro}{rgb}{0,0,0}
 \definecolor{azul}{rgb}{0,0,1}
 \definecolor{verde}{rgb}{0,0.5,0}
 \definecolor{rojo}{rgb}{1,0,0}
@@ -214,6 +215,10 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 \definecolor{magenta}{rgb}{0.75,0,0.75}
 \definecolor{amarillo}{rgb}{0.75,0.75,0}
 \definecolor{gris}{rgb}{0.25,0.25,0.25}
+\definecolor{azulE}{rgb}{0,0.3984,0.5977}
+\definecolor{amarilloE}{rgb}{0.9961,0.7969,0}
+\definecolor{blanco}{rgb}{1,1,1}
+\definecolor{burdeos}{rgb}{1,0,0.95}
 
 \definecolor{gray97}{gray}{.97}
 \definecolor{gray75}{gray}{.75}
@@ -227,10 +232,6 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 \definecolor{y}{rgb}{1,1,0}
 \definecolor{w}{rgb}{1,1,1}
 \definecolor{k}{rgb}{0,0,0}
-\definecolor{azulE}{rgb}{0,0.3984,0.5977}
-\definecolor{amarilloE}{rgb}{0.9961,0.7969,0}
-\definecolor{blanco}{rgb}{1,1,1}
-\definecolor{burdeos}{rgb}{1,0,0.95}
 
 
 \providecommand\phantomsection{}
@@ -247,6 +248,11 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 \fancyhead[LE,RO]{\bfseries\thepage}
 \fancyhead[LO]{\bfseries\rightmark}
 \fancyhead[RE]{\bfseries\leftmark}
+
+\makeatletter
+\renewcommand{\chaptermark}[1]{\markboth{\@chapapp \ \thechapter . \ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection \ \ #1}}
+\makeatother
 
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
@@ -319,8 +325,6 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 
 % BEGIN Example 4 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
 % END   Example 4 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
-
-
 
 
 % END Set nice chapter titles
@@ -482,6 +486,10 @@ pdfborder={0 0 112.0}              %%% border-width of frames
   {\item \begin{flushright}\small}%
   {\end{flushright}}
 
+
+% To put paragraphs at page bottom
+\newenvironment{bottomparagraph}{\par\vspace*{\fill}}{\clearpage}
+%\newenvironment{bottomparagraph}{\par\vspace*{\fill}}{\clearemptydoublepage}
 
 
 %%% Local Variables:
