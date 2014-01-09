@@ -1,0 +1,94 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: cover-phd-uah.tex,v 1.3 2013/11/25 00:33:31 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% Copyleft 2013
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+\large
+\begin{center}
+
+  \Huge\textbf{UNIVERSIDAD POLITÉCNICA DE MADRID}
+
+  \vspace{7mm}
+
+  \huge{Escuela Técnica Superior\\de Ingenieros de Telecomunicación}
+
+  \vspace{1cm}
+  
+  \centerline{\includegraphics[width=80mm]{logos/logoetsit_tamano.jpg}}
+
+%  \vspace{1cm}   
+
+  \Large\textbf{\mybooktitle}
+
+%  \vspace{2cm}
+  
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    \textbf {Author}
+  }
+  {
+    \textbf {Autor}
+  }
+  
+%  \vspace{5mm}
+  
+  \mybookauthor
+  
+  \vspace{1cm}
+  
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    \textbf {Advisor}
+  }
+  {
+    \textbf {Director}
+  }  
+%  \vspace{5mm}
+  
+  \mybookadvisors
+  
+\end{center}
+
+\begin{bottomparagraph}
+  \begin{center}
+    \textbf{\mybookyear}\\
+    \vspace{5mm}
+    \textbf{\mybookworktypefull}
+  \end{center}
+\end{bottomparagraph}
+
+
+\normalsize
+
+\clearemptydoublepage
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
+
+
