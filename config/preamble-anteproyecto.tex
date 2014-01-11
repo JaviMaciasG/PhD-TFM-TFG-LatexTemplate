@@ -1,0 +1,501 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: preamble.tex,v 1.16 2014/01/08 22:56:05 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% Copyleft 2013
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+%\usepackage[a4,cam,center]{crop}
+%\crop[font=\upshape\mdseries\small\textsf]
+
+\usepackage[latin1]{inputenc} % Para poder escribir con acentos y ñ.
+\usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
+                              % usar si no es necesario, porque ralentiza muchisimo la compilación.
+\usepackage{ae}               % Para que todas las fuentes sean Type1, y ninguna Type3.
+
+\usepackage[spanish, english]{babel}
+
+% Use this if you want to include pdf files in the final document
+\usepackage[final]{pdfpages}
+
+% Use this if you want to delete headers and footers in empty pages
+\usepackage{emptypage}
+
+%\usepackage[nottoc]{tocbibind}
+\usepackage{tocbibind}
+
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{afterpage}
+
+\usepackage{xspace}
+\usepackage{verbatim}
+\usepackage{moreverb}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{eurosym}
+\usepackage{subfig} % subfigure is obsolete...
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{makeidx}
+\usepackage{rotating}
+\usepackage{supertabular}
+\usepackage{hhline}
+\usepackage{array}
+\usepackage[noadjust]{cite}      % Written by Donald Arseneau
+                        % V1.6 and later of IEEEtran pre-defines the format
+                        % of the cite.sty package \cite{} output to follow
+                        % that of IEEE. Loading the cite package will
+                        % result in citation numbers being automatically
+                        % sorted and properly "ranged". i.e.,
+                        % [1], [9], [2], [7], [5], [6]
+                        % (without using cite.sty)
+                        % will become:
+                        % [1], [2], [5]--[7], [9] (using cite.sty)
+                        % cite.sty's \cite will automatically add leading
+                        % space, if needed. Use cite.sty's noadjust option
+                        % (cite.sty V3.8 and later) if you want to turn this
+                        % off. cite.sty is already installed on most LaTeX
+                        % systems. The latest version can be obtained at:
+                        % http://www.ctan.org/tex-archive/macros/latex/contrib/supported/cite/
+
+
+\usepackage{caption}
+
+
+\usepackage[RGB,rgb]{xcolor}
+%\usepackage{color}
+
+% To draw rectagles in tfm cover
+\usepackage{tikz}
+
+
+\usepackage{pdftexcmds}
+
+%\usepackage[authoryear]{natbib}
+% \makeatletter
+% \let\NAT@parse\undefined
+% \makeatother
+% \usepackage{natbib}
+
+\usepackage{geometry}
+\geometry{verbose,a4paper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+%\geometry{paperwidth=210mm,paperheight=297mm}
+
+\usepackage[
+ps2pdf,                %%% hyper-references for ps2pdf
+bookmarks=true,%                   %%% generate bookmarks ...
+bookmarksnumbered=true,            %%% ... with numbers
+hypertexnames=false,               %%% needed for correct links to
+                                %%% figures!!!
+%hypertexnames=true,               %%% needed for correct links on pagebackrefs!!!
+breaklinks=true,                   %%% breaks lines, but links are very small
+%pagebackref=true,
+%linktocpage=true,                 %%% enlace en el numero de página.
+linktoc=all,
+colorlinks=true,
+linkcolor=azul,    
+citecolor=verde,
+urlcolor=azul,                     %%% texto  con color (further
+                                %%% modified in myconfig.tex)
+%linkbordercolor={0 0 1},           %%% blue frames around links
+pdfborder={0 0 112.0}              %%% border-width of frames 
+]{hyperref}                        %%% will be multiplied with 0.009 by ps2pdf
+
+
+% Para numerar las \subsubsection
+\setcounter{secnumdepth}{5}
+%para hacer que las \subsubsection aparezcan en el indice
+\setcounter{tocdepth}{5}
+%\setcounter{lofdepth}{2}
+\setcounter{table}{1}
+\setcounter{figure}{1}
+\setcounter{secnumdepth}{4}
+
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+
+\usepackage{multirow}
+
+\usepackage{setspace}
+% \renewcommand{\baselinestretch}{10}
+\newcommand{\mycaptiontable}[1]{
+\begin{spacing}{0.6}
+  %\vspace{0.5cm}
+  \begin{quote}
+    %\begin{center}
+            {{Table} \thechapter.\arabic{table}: #1}
+    %\end{center}
+  \end{quote}
+  %\vspace{1cm}
+  \end{spacing}
+  \stepcounter{table}
+}
+
+\newcommand{\mycaptionfigure}[1]{
+  %\vspace{0.5cm}
+  \begin{spacing}{0.6}
+  \begin{quote}
+    %\begin{center}
+            {{Figure} \thechapter.\arabic{figure}: #1}
+    %\end{center}
+  \end{quote}
+  %\vspace{1cm}
+  \end{spacing}
+  \stepcounter{figure}
+}
+
+\usepackage{amsmath}
+
+\usepackage{courier}
+
+%***************************************************************************
+%***************************************************************************
+%***************************************************************************
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{setspace, amssymb, amsmath, epsfig, multirow, colortbl, tabularx}%
+% For acronym package:
+% If footnote is specified, text will be included in a footnote
+% If printonlyused is specified, only used acronyms will be included
+% I use the acronym sty under the sty directory as I needed the newest version
+%\usepackage[footnote,printonlyused,withpage]{acronym} 
+%\usepackage[printonlyused]{sty/acronym}
+
+% glossaries is better than the acronym package 
+\usepackage[acronym,shortcuts,nomain]{glossaries}
+
+% ifthen to allow using language dependent settings
+\usepackage{ifthen}
+
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+
+\pagestyle{plain}
+
+% Pantone 160
+%\definecolor{headingPortadaTFM}{RGB}{158,84,10}
+% Pantone 160C (this is supposed to be the correct one, but it looks horrible in screen)
+%\definecolor{headingPortadaTFM}{RGB}{161,86,28}
+% Gold in RGB
+%\definecolor{textoHeadingPortadaTFM}{RGB}{215,215,0}
+% Captured colors in screen (this looks pst on screen)
+\definecolor{headingPortadaTFM}{RGB}{152,118,52}
+\definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
+
+\definecolor{negro}{rgb}{0,0,0}
+\definecolor{azul}{rgb}{0,0,1}
+\definecolor{verde}{rgb}{0,0.5,0}
+\definecolor{rojo}{rgb}{1,0,0}
+\definecolor{cyan}{rgb}{0,0.75,0.75}
+\definecolor{magenta}{rgb}{0.75,0,0.75}
+\definecolor{amarillo}{rgb}{0.75,0.75,0}
+\definecolor{gris}{rgb}{0.25,0.25,0.25}
+\definecolor{azulE}{rgb}{0,0.3984,0.5977}
+\definecolor{amarilloE}{rgb}{0.9961,0.7969,0}
+\definecolor{blanco}{rgb}{1,1,1}
+\definecolor{burdeos}{rgb}{1,0,0.95}
+
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+
+\definecolor{r}{rgb}{0,0,1}
+\definecolor{g}{rgb}{0,1,0}
+\definecolor{b}{rgb}{1,0,0}
+\definecolor{c}{rgb}{0,1,1}
+\definecolor{m}{rgb}{1,0,1}
+\definecolor{y}{rgb}{1,1,0}
+\definecolor{w}{rgb}{1,1,1}
+\definecolor{k}{rgb}{0,0,0}
+
+
+\providecommand\phantomsection{}
+\onehalfspacing
+\sloppy  %better line breaks
+
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}{}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Fancy headers stuff
+\fancyhf{}
+
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+
+\makeatletter
+%\renewcommand{\chaptermark}[1]{\markboth{\@chapapp \ \thechapter . \ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection \ \ #1}}
+\makeatother
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{3.5pt}
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}}
+\fancypagestyle{myplain}
+{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0pt}
+  \renewcommand\footrulewidth{0pt}
+  \fancyfoot[C]{\thepage}
+}
+% END Fancy headers stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Set nice chapter titles
+
+% BEGIN Example 0 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+% \usepackage[explicit]{titlesec}
+% \usepackage{blindtext}
+% \definecolor{gray75}{gray}{0.75}
+% \newcommand{\hsp}{\hspace{20pt}}
+% \titleformat{\chapter}[hang]{\Huge\bfseries}{\chaptername~\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+% END Example 0 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+
+% BEGIN Example 1 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+% \usepackage{titlesec}
+% \usepackage{blindtext}
+% \definecolor{gray75}{gray}{0.75}
+% \newcommand{\hsp}{\hspace{20pt}}
+% \titleformat{\chapter}[hang]{\Huge\bfseries}{\chaptername~\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+% END Example 1 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+
+% BEGIN Example 2 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+%\usepackage[Sonny]{fncychap}
+%\usepackage[Lenny]{fncychap} % ugly
+%\usepackage[Glenn]{fncychap}
+%\usepackage[Conny]{fncychap} % ugly
+%\usepackage[Rejne]{fncychap}
+%\usepackage[Bjarne]{fncychap} % Doesn't work in Spanish
+%\usepackage[Bjornstrup]{fncychap}
+% END   Example 2 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+
+% BEGIN Example 3 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+% This is a nice colored example
+% \usepackage{kpfonts}
+% \usepackage[explicit]{titlesec}
+% \newcommand*\chapterlabel{}
+% \titleformat{\chapter}
+%   {\gdef\chapterlabel{}
+%    \normalfont\sffamily\Huge\bfseries\scshape}
+%   {\gdef\chapterlabel{\thechapter\ }}{0pt}
+%   {\begin{tikzpicture}[remember picture,overlay]
+%     \node[yshift=-3cm] at (current page.north west)
+%       {\begin{tikzpicture}[remember picture, overlay]
+%         \draw[fill=LightSkyBlue] (0,0) rectangle
+%           (\paperwidth,3cm);
+%         \node[anchor=east,xshift=.9\paperwidth,rectangle,
+%               rounded corners=20pt,inner sep=11pt,
+%               fill=MidnightBlue]
+%               {\color{white}\chapterlabel#1};
+%        \end{tikzpicture}
+%       };
+%    \end{tikzpicture}
+%   }
+% \titlespacing*{\chapter}{0pt}{50pt}{-60pt}
+% END   Example 3 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+
+% BEGIN Example 4 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+% END   Example 4 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+
+
+% END Set nice chapter titles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is to set background images (in our case to set background image
+% in TFMs front and back pages)
+% If you want to set this background, use \BgThispage in the
+% corresponding pages
+% \usepackage[pages=some]{sty/background}
+% \backgroundsetup{ scale=1, angle=0, opacity=.1, color=pink,
+%   contents={\includegraphics[width=.7\paperwidth]{logos/logoEPS-UAH.jpg}}, vshift=-50pt,  hshift=0pt }
+
+
+% This is to allow do a clearpage and let the next one to be placed in
+% even pages (to set a backpage for example)
+\makeatletter
+\newcommand*{\cleartoleftpage}{%
+  \clearpage
+    \if@twoside
+    \ifodd\c@page
+      \hbox{}\newpage
+      \if@twocolumn
+        \hbox{}\newpage
+      \fi
+    \fi
+  \fi
+}
+\makeatother
+
+% Let's define some styles for source code listings:
+%
+% minimizar fragmentado de listados (from
+% http://www.rafalinux.com/?p=599), pero no me funciona:
+%\lstnewenvironment{codelisting}[1][]
+%{\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+%
+% This was using the float package
+\usepackage{float}
+\floatstyle{plaintop} % optionally change the style of the new float
+%\newfloat{codefloat}{H}{cod}[chapter]
+
+\lstdefinestyle{console}
+               {
+                 basicstyle=\scriptsize\bf\ttfamily,
+                 backgroundcolor=\color{gray75},
+               }
+
+\lstdefinestyle{Cbluebox}
+               {
+                 language=C,
+                 frame=shadowbox, 
+                 rulesepcolor=\color{blue}
+               }
+                                                
+\lstdefinestyle{Cnice}
+{
+  language=C,
+  frame=Ltb,
+  framerule=0pt,
+  tabsize=2,
+  aboveskip=0.5cm,
+  framextopmargin=3pt,
+  framexbottommargin=3pt,
+  framexleftmargin=0.4cm,
+  framesep=0pt,
+  rulesep=.4pt,
+  backgroundcolor=\color{gray97},
+  rulesepcolor=\color{black},
+  %
+  stringstyle=\ttfamily,
+  showstringspaces = false,
+%  basicstyle=\small\ttfamily,
+  basicstyle=\footnotesize\ttfamily,
+  commentstyle=\color{gray45},
+  keywordstyle=\bfseries,
+  %
+  numbers=left,
+  numbersep=15pt,
+  numberstyle=\tiny,
+  numberfirstline = false,
+  breaklines=true,
+}	
+
+\lstdefinestyle{CppExample}
+{
+  language=C++,
+  frame=trbl,
+  tabsize=2,
+  commentstyle=\textit,
+  stringstyle=\ttfamily, 
+  basicstyle=\small,
+}	
+
+% This one from http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+\lstdefinestyle{Ccolor}
+{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+% To set side-captions in figures
+\usepackage{sidecap}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This comes from TeXiS, thanks to its authors, available at
+% http://gaia.fdi.ucm.es/projects/texis 
+\def\texis{\TeX \raise.15em\hbox{\textsc{i}}S}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comando:
+%
+%       \begin{FraseCelebre}
+%             \begin{Frase}
+%                Y así, del mucho leer y del poco dormir...
+%             \end{Frase}
+%             \begin{Fuente}
+%                Don Quijote de la Mancha
+%
+%                Miguel de Cervantes
+%             \end{Fuente}
+%       \begin{FraseCelebre}
+%
+% Resultado:
+%
+% Añade la frase célebre del principio de un capítulo.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{FraseCelebre}% Definición del entorno de FraseCelebre
+ {\begin{list}{}{%
+     \setlength{\leftmargin}{0.5\textwidth}% Desplazamos el inicio de
+                                 % los párrafos a la derecha la mitad
+                                 % de la anchura de la línea de texto.
+                                 % Puede que quieras cambiar esto
+                                 % por otra cantidad como '5cm'.
+     \setlength{\parsep}{0cm}% La separación entre párrafos de la
+                             % frase o de la fuente es normal, sin
+                             % espacio extra.
+     \addtolength{\topsep}{0.5cm}% Aumentamos un poco la separación
+                                 % entre la parte de la fase célebre
+                                 % y los párrafos de alrededor
+   }
+ }
+ {\unskip \end{list}}
+
+\newenvironment{Frase}%
+  {\item \begin{flushright}\small\em}%
+  {\end{flushright}}
+
+\newenvironment{Fuente}%
+  {\item \begin{flushright}\small}%
+  {\end{flushright}}
+
+
+% To put paragraphs at page bottom
+\newenvironment{bottomparagraph}{\par\vspace*{\fill}}{\clearpage}
+%\newenvironment{bottomparagraph}{\par\vspace*{\fill}}{\clearemptydoublepage}
+
+\usepackage{wasysym}
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
+
+
+

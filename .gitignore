@@ -26,6 +26,8 @@ _$*
 *.ln
 core
 # CVS default ignores end
+book-latex.tgz
+book-latex.zip
 book.acn
 book.acr
 book.alg
@@ -42,7 +44,9 @@ book.out
 book.sbl
 book.slg
 book.sym
+book.tgz
 book.toc
+book.zip
 pdf_dia_done
 pdf_svg_done
 proyecto-std.pdf

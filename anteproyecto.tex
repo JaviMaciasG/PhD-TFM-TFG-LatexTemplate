@@ -1,0 +1,245 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for the anteproyectos of TFC/TFM/TFGs
+%
+% $Id: book.tex,v 1.12 2014/01/08 22:56:02 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% Copyleft 2013
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This is for rubber to clean additional files
+% rubber: clean anteproyecto.acn anteproyecto.acr anteproyecto.alg anteproyecto.cod anteproyecto.ist anteproyecto.out anteproyecto.sbl anteproyecto.slg anteproyecto.sym anteproyecto.lor
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Preamble and configuration section
+%
+\input{config/preamble-anteproyecto.tex}    % DO NOT TOUCH THIS LINE. You can edit
+                               % the file to modify some default settings
+                                   
+\input{config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE 
+                               % to set your specific settings (related
+                               % to the document language, your degree,
+                               % document details (such as title, author
+                               % (you), your email, name of the tribunal
+                               % members, document year, keyword and
+                               % palabras clave) and link colors), and
+                               % define your commonly used commands
+                               % (some examples are provided).
+
+\input{config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
+                               % "postamble" is not a valid word... :-)
+
+% path to directories containing images
+\graphicspath{{./logos/}{./figures/}{./diagrams/}} % Edit this to your
+                                % needs. Only logos is really required
+                                % when you generate your own content.
+%
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Anteproyecto de \mybookworktypefull}        % DO NOT TOUCH THIS LINE
+\date{\myanteproyectodate}                         % DO NOT TOUCH THIS LINE
+\author{\mybookauthor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Let's start with the real stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}                                   % DO NOT TOUCH THIS LINE
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN within-document configuration, frontpage and cover pages generation
+%
+
+% Set Language dependent issues that must be set after \begin{document}
+\input{config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
+                                              % NOR THE FILE
+
+%
+% END within-document configuration, frontpage and cover pages generation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+
+ \begin{description}                               % DO NOT TOUCH THIS LINE
+ \item[Título:] \mybooktitle                       % DO NOT TOUCH THIS LINE
+ \item[Departamento:] \mybookdepartment            % DO NOT TOUCH THIS LINE
+ \item[Autor:] \mybookauthor                       % DO NOT TOUCH THIS LINE
+ \item[Tutores:] \mybookadvisors                   % DO NOT TOUCH THIS LINE
+ \end{description}                                 % DO NOT TOUCH THIS LINE
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Normal sections. Edit/modify all within this section
+
+\section{Introducción}
+\label{sec:introduccion}
+
+\textit{En este apartado se describirá el contexto en el que se desenvolverá el
+TFG y sus antecedentes si existen. Recuerda que en el anteproyecto
+también se pueden poner referencias bibliográficas como \cite{texis}}.
+
+
+\section{Objetivos y desarrollo}
+\label{sec:objetivos-y-campo}
+
+\textit{En este apartado se delimitan y explican con claridad los objetivos
+generales a conseguir con el TFG y la aplicación del mismo, así como los
+objetivos específicos en su caso. Algo del tipo:}
+
+El objetivo fundamental de este proyecto es el diseño, implementación y
+evaluación de \ldots
+
+Los objetivos específicos de este proyecto son los siguientes:
+
+\begin{itemize}
+\item Realizar un  \ldots
+\item Diseñar, implementar y evaluar  \ldots, siguiendo la arquitectura
+  mostrada en la figura \ref{fig_arquitectura}, y que tendrá las
+  siguientes características:
+
+  \begin{enumerate}
+  \item Característica 1 \ldots
+  \item Característica 2 \ldots
+  \item  \ldots
+  \item Característica n \ldots
+  \end{enumerate}
+
+\item Analizar  \ldots
+
+\item Documentar  \ldots
+
+\end{itemize}
+
+  \begin{figure}[tphb]
+    \centering
+    \includegraphics[width=3in]{Diagrama2.pdf}
+    \caption{Arquitectura del sistema completo.}
+    \label{fig_arquitectura}
+  \end{figure}
+
+
+\section{Metodología y plan de trabajo}
+\label{sec:metodologia-y-plan}
+
+\textit{Aquí se incluirá una descripción (puede ser incluso una enumeración)
+clara de las etapas que se van a seguir, y si es posible se deberá
+incluir un diagrama de Gantt. Por ejemplo algo del estilo a:}
+
+Estas son las fases de desarrollo que se van a seguir para la
+consecución de los objetivos del proyecto:
+
+\begin{enumerate}
+  
+\item Formación inicial (1 mes)
+  
+  \begin{itemize}
+  \item Formación en \ldots
+  \item Consulta de la API \ldots
+  \item Consulta bibliográfica \ldots
+  \item Profundización en herramientas de soporte \ldots
+  \item  \ldots
+  \end{itemize}
+
+\item Diseño del entorno \ldots (0,5 meses)
+
+\item Diseño, implementación y evaluación del  \ldots (2 meses)
+  \begin{itemize}
+  \item Definición del  \ldots
+  \item Implementación del  \ldots
+  \item Evaluación del  \ldots
+  \end{itemize}
+  
+\item Implementación y evaluación de  \ldots (1 mes)
+
+\item Diseño, implementación y evaluación del módulo  \ldots (1 mes):
+  \begin{itemize}
+  \item Definición de  \ldots
+  \item Definición de  \ldots
+  \item Implementación y evaluación  \ldots
+  \end{itemize}
+
+\item Integración y  \ldots (1 mes)
+
+\item Documentación  \ldots (0,5 meses)
+
+\end{enumerate}
+
+
+\section{Medios}
+\label{sec:medios}
+
+\textit{Aquí se describen de los medios necesarios para realizar el TFG. Por
+ejemplo:}
+
+Las herramientas que van a ser necesarias para desarrollar este proyecto
+son las siguientes:
+
+\begin{itemize}
+\item PC compatible
+\item Sensor  \ldots
+\item Sistema operativo GNU/Linux~\cite{gnulinux}
+\item Entorno de desarrollo Emacs/Vim~\cite{emacs}
+\item Procesador de textos \LaTeX~\cite{lamport94}
+\item Control de versiones CVS~\cite{cvs}
+\item Compilador C/C++ gcc~\cite{gcc}
+\item Gestor de compilaciones make~\cite{make}
+\item Robot con movilidad.
+\item  \ldots
+\end{itemize}
+
+Otros recursos necesarios para la elaboración del proyecto son:
+
+\begin{itemize}
+\item Herramientas  \ldots
+\item Sistema de desarrollo  \ldots
+\item  \ldots
+\end{itemize}
+
+
+
+
+%
+% END Normal sections. Edit/modify all within this section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{biblio/bibliography.tex}               % EDIT this file if required
+
+
+
+\end{document}
+

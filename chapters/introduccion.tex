@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: introduccion.tex,v 1.2 2013/12/12 23:06:55 macias Exp $
+% $Id: introduccion.tex,v 1.3 2014/01/08 22:56:04 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -59,6 +59,12 @@ en los que se han incluido secciones ``tutoriales'', en la que se
 explican algunas de sus características y se muestran ejemplos de
 elementos típicos que pueden ser de utilidad (pero sin el objetivo de
 que esto sea una guía de \LaTeX{}).
+
+Igualmente se proporciona un modelo simplificado de un anteproyecto
+(para el caso de los TFCs/TFMs/TFGs), así como parte de la documentación
+que hay que presentar para la defensa de los TFGs de la Universidad de
+Alcalá.
+
 
 
 \section{Uso de la plantilla}
@@ -135,21 +141,36 @@ prestaciones:
   instalada si se desea usar esa capacidad.
 \item Soporta los targets:
   \begin{itemize}
-  \item \texttt{all}, que genera el fichero \texttt{book.pdf}
-    correspondiente, usando \texttt{rubber} y
+  \item \texttt{all} (que es la opción predeterminada si se ejecuta
+    \texttt{make} sin más argumentos), que genera el fichero
+    \texttt{book.pdf} correspondiente, usando \texttt{rubber} y
     \texttt{makeglossaries}. No nos hemos planteado la generación de
     ficheros en otros formatos.
   \item \texttt{all\_latexmk}, que genera el fichero \texttt{book.pdf}
     correspondiente, usando \texttt{latexmk} y
     \texttt{makeglossaries}. Si ésta  es tu opción, sustituye el target
     \texttt{all} por éste, para facilitarte la compilación.
+
+  \item \texttt{anteproyecto}, que genera el fichero
+    \texttt{anteproyecto.pdf} correspondiente, usando
+    \texttt{rubber}. No nos hemos planteado la generación de ficheros en
+    otros formatos.
+  \item \texttt{anteproyecto\_latexmk}, que genera el fichero
+    \texttt{anteproyecto.pdf} correspondiente, usando
+    \texttt{latexmk}. Si ésta es tu opción, sustituye el target
+    \texttt{anteproyecto} por éste, para facilitarte la compilación.
   \item  \texttt{tar}, que genera un fichero \texttt{tgz} que contiene
     todo lo necesario para la distribución de la plantilla.
   \item \texttt{clean}, que borra todos los ficheros temporales usando
-    \texttt{rubber}.
+    \texttt{rubber} (para simplificar los targets, la limpieza se hace
+    tanto para los temporales de generación del \texttt{book.pdf} como
+    los del \texttt{anteproyecto.pdf}).
   \item \texttt{clean\_latexmk}, que borra todos los ficheros temporales
     usando \texttt{latexmk}. Si ésta es tu opción, sustituye el target
-    \texttt{clean} por éste, para facilitarte la compilación.
+    \texttt{clean} por éste, para facilitarte la compilación (para
+    simplificar los targets, la limpieza se hace tanto para los
+    temporales de generación del \texttt{book.pdf} como los del
+    \texttt{anteproyecto.pdf}).
   \end{itemize}
 
 \end{itemize}
@@ -241,6 +262,10 @@ de trabajo y el autor:
   automáticamente configura portadas, entre otras cosas.
 \item Título del documento (variable \texttt{\textbackslash{}mybooktitle}).
 \item Nombre del autor del trabajo (variable \texttt{\textbackslash{}mybookauthor}).
+\item DNI del autor del trabajo, usado en el papeleo de los TFGs (variable \texttt{\textbackslash{}mybookDNI}).
+\item Departamento en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybookdepartment}).
+\item Centro en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybookschool}, que debería ser la Escuela Politénica Superior, pero se incluye por generalidad).
+\item Universidad en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybooksuniversidad}, que debería ser la de Alcalá, pero se incluye por generalidad).
 \item Titulación del autor (usada en las tesis de UPM, (variable \texttt{\textbackslash{}mybookauthordegree})).
 \item Email del autor (variable \texttt{\textbackslash{}mybookemail}).
 \item Nombre de los directores del trabajo (variable \texttt{\textbackslash{}mybookadvisors}).
@@ -249,6 +274,7 @@ de trabajo y el autor:
 \item Nombre del segundo vocal del tribunal (variable \texttt{\textbackslash{}mybooksecondvocal}).
 \item Nombre del secretario del tribunal, en su caso (variable \texttt{\textbackslash{}mybooksecretary}).
 \item Año del trabajo (variable \texttt{\textbackslash{}mybookyear}).
+\item Fecha del anteproyecto, en su caso (variable \texttt{\textbackslash{}mybookanteproyectodate}), en el caso de que se usen la plantilla del anteproyecto.
 \item Palabras clave en inglés (variable \texttt{\textbackslash{}mybookkeywords}).
 \item Palabras clave en español (variable \texttt{\textbackslash{}mybookpalabrasclave}).
 \end{itemize}
@@ -296,6 +322,36 @@ Importante para las tesis de UAH: si necesitáis incluir ficheros pdf
 (los de autorización e informes de los tutores, por ejemplo), esta
 plantilla lo permite: mirad los \texttt{\textbackslash{}includepdf} en
 el \texttt{book.tex}.
+
+\subsection{Plantilla de anteproyecto}
+\label{sec:introapp1}
+
+Para el caso de los TFMs/TFGs/TFCs, se incluye una plantilla para
+realizar el anteproyecto.
+
+La plantilla se encuentra en el fichero \texttt{anteproyecto.tex} y el
+\texttt{Makefile} genera automáticamente el \texttt{anteproyecto.pdf},
+haciendo un \texttt{make anteproyecto}.
+
+
+\subsection{Papeleo adicional para la defensa de los TFGs}
+\label{sec:introapp1}
+
+Para el caso de los TFGs, se incluyen en el directorio \texttt{papeleo}
+algunos de los documentos que hay que generar en el momento de la
+defensa. En concreto:
+
+\begin{itemize}
+\item La autorización del tutor para la publicación en abierto, en el
+  fichero \texttt{autorizacionTutorPublicarRepositorio.tex}
+\item La autorización del autor para la publicación en abierto, en el
+  fichero \texttt{autorizacionAutorPublicarRepositorio.tex}
+\item El visto bueno del tutor para la defensa \texttt{vistoBuenoTutor.tex}
+\end{itemize}
+
+En el directorio se incluye un \texttt{Makefile} que genera los
+\texttt{pdfs} correspondientes a esos documentos.
+ 
 
 
 \section{Ejemplos de elementos de utilidad}
@@ -414,8 +470,8 @@ El \ac{angstrom} se usa en biología estructural, mientras que el
   \ac{xdet}
 \end{equation}
 
-Y usar la que nos falta \ac{xidet}, también dentro de fórmulas (otra
-cosa es que sea conveniente o útil):
+Y finalmente la que nos falta: \ac{xidet}, también dentro de fórmulas
+(otra cosa es que sea conveniente o útil):
 
 \begin{equation}
   \label{eq:2}
@@ -454,7 +510,7 @@ Los objetivos principales de este trabajo son (ejemplo utilizando
 \section{Organización de la memoria}
 \label{sec:organizacion-memoria}
 
-Esta memoria se organiza en cinco grandes capítulos. El primero\ldots
+Esta memoria se organiza en cinco grandes capítulos. El primero \ldots
 
 %%% Local Variables:
 %%% TeX-master: "../book"

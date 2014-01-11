@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: portada-phd-uah.tex,v 1.5 2014/01/08 22:56:06 macias Exp $
+% $Id: preamble.tex,v 1.16 2014/01/08 22:56:05 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -27,47 +27,34 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\thispagestyle{empty}
-\large
-\vspace{3cm}
-\begin{center}
+\documentclass[12pt,a4paper,oneside]{article}
 
-  \Huge{\textbf{\MakeUppercase{\mybookuniversity}}}
+%\usepackage[a4,cam,center]{crop}
+%\crop[font=\upshape\mdseries\small\textsf]
 
-  \vspace{5mm}
+\usepackage[latin1]{inputenc} % Para poder escribir con acentos y ñ.
+\usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
+                              % usar si no es necesario, porque ralentiza muchisimo la compilación.
+\usepackage{ae}               % Para que todas las fuentes sean Type1, y ninguna Type3.
 
-  \Large{\MakeUppercase{\mybookschool}}
-  
-  \vspace{5mm}
+\usepackage[spanish, english]{babel}
 
-  \Large\textbf{\MakeUppercase{\mybookdepartment}}
+% Use this if you want to delete headers and footers in empty pages
+\usepackage{emptypage}
 
-  \vspace{15mm}
 
-  \centerline{\includegraphics[height=6cm]{logoUAHazul.jpg}}
-  
-  \vspace{15mm}
-  
-  \LARGE\textbf{\mybookworktypefull}
+\usepackage{wasysym}
 
-  \vspace{15mm}   
-  
-  \LARGE\textbf{\mybooktitle}
-  
-  \vspace{2cm}
-  
-  \mybookauthor
+\usepackage{tabularx}
 
-\end{center}
+\usepackage{geometry}
+\geometry{verbose,a4paper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
 
-\begin{bottomparagraph}
-  \begin{center}
-    \huge{\mybookyear}
-  \end{center}
-\end{bottomparagraph}
-
-\clearemptydoublepage
+\usepackage{enumitem}
 
 %%% Local Variables:
 %%% TeX-master: "../book"
 %%% End:
+
+
+
