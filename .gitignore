@@ -26,6 +26,11 @@ _$*
 *.ln
 core
 # CVS default ignores end
+anteproyecto.aux
+anteproyecto.bbl
+anteproyecto.blg
+anteproyecto.log
+anteproyecto.out
 book-latex.tgz
 book-latex.zip
 book.acn
