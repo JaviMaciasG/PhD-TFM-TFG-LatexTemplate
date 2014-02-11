@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: introduccion.tex,v 1.4 2014/01/11 23:27:55 macias Exp $
+% $Id: introduccion.tex,v 1.5 2014/01/20 10:06:29 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -358,6 +358,31 @@ defensa. En concreto:
 En el directorio se incluye un \texttt{Makefile} que genera los
 \texttt{pdfs} correspondientes a esos documentos.
  
+
+
+
+\subsection{Problemas conocidos}
+\label{sec:problemas-conocidos}
+
+Resumimos a continuación los problemas con los que nos hemos ido
+encontrando tras el uso más generalizado de esta plantilla, y, en su
+caso, la solución propuesta/adoptada:
+
+\begin{itemize}
+\item Al menos en la versión 12.04 de ubuntu, se producía un fallo de
+compilación por un problema del \textit{option clash} del paquete
+\texttt{xcolor}. La solución fue incluir las opciones \texttt{[RGB,rgb]}
+de dicho paquete en el \texttt{documentclass}, y eliminar la inclusión
+de \texttt{xcolor} (que ya lo incluye, al menos, \texttt{listings}). No
+es muy bonito como solución, pero funciona.
+
+\item También hemos observado en la versión 12.04 de ubuntu que
+  \texttt{evince} no es capaz de visualizar la primera página de los
+  TFGs (generada con \texttt{tikz}), y que \texttt{xpdf} genera un core
+  cuando intenta abrir el fichero compilado. La solución es usar
+  \texttt{qpdfview} o \texttt{acroread}.
+
+\end{itemize}
 
 
 \section{Ejemplos de elementos de utilidad}
