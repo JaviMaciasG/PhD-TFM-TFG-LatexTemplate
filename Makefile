@@ -2,7 +2,7 @@
 # 
 # Makefile to generate both book.pdf and anteproyecto.pdf
 #
-# $Id: Makefile,v 1.8 2014/01/11 23:27:52 macias Exp $
+# $Id: Makefile,v 1.9 2014/01/15 01:06:40 macias Exp $
 #
 # By:
 #  + Javier Macías-Guarasa. 
@@ -96,8 +96,10 @@ pdf_eps_done: $(PDFS_FROM_EPS)
 #	-epstopdf -outfile=$@ $^ 
 
 tar:
-	tar czvf $(ROOT_FILENAME)-latex.tgz `find . -name Makefile -o -name README -o -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS"` 
-	zip $(ROOT_FILENAME)-latex.zip `find . -name Makefile -o -name README -o -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS"` 
+	gunzip $(ROOT_FILENAME)-latex.tar.gz
+	tar -uvf $(ROOT_FILENAME)-latex.tar `find . -name Makefile -o -name README -o -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS"` 
+	gzip $(ROOT_FILENAME)-latex.tar
+	zip -u $(ROOT_FILENAME)-latex.zip `find . -name Makefile -o -name README -o -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS"` 
 
 clean:
 	$(RUBBER_TOOL) --clean -d $(TEX_ANTEPROYECTO_FILE)
