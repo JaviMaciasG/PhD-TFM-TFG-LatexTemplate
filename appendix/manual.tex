@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: manual.tex,v 1.7 2013/11/27 09:25:56 macias Exp $
+% $Id: manual.tex,v 1.8 2014/01/08 22:56:03 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -140,6 +140,22 @@ muestra en el \ref{cod:sample5}.
 \caption{Ejemplo con colores usando el estilo \texttt{Ccolor}}
 \label{cod:sample5}
 \end{codefloat}
+
+Finalmente aquí tenéis un ejemplo de código shell, usando el estilo
+\texttt{BashInputStyle}:
+
+\begin{lstlisting}[style=BashInputStyle, numbers=none]
+#!/bin/sh
+
+HOSTS_ALL="gc000 gc001 gc002 gc003 gc004 gc005 gc006 gc007"
+
+for h in $HOSTS_ALL
+do
+	echo "Running [$*] in $h..."
+  echo -n "   "
+  ssh root@$h $*
+done
+\end{lstlisting}
 
 
 
