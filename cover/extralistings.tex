@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: extralistings.tex,v 1.2 2013/11/28 00:15:15 macias Exp $
+% $Id: extralistings.tex,v 1.3 2014/01/08 22:56:05 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -32,11 +32,43 @@
 \ifthenelse{\equal{\mybooklanguage}{english}}
 {
   \listof{codefloat}{List of source code listings}
+  \addcontentsline{toc}{chapter}{List of source code listings}
 }
 {
   \listof{codefloat}{Índice de listados de código fuente}    
+  \addcontentsline{toc}{chapter}{Índice de listados de código fuente}
 }
+
+
+\ifthenelse{\equal{\mybooklanguage}{english}}
+{
+\renewcommand*{\algorithmcfname}{Algorithm}
+\renewcommand{\listofalgorithms}{\begingroup
+  \tocfile{List of Algorithms}{loa}
+  \endgroup}
+% \makeatletter
+% \let\l@algorithm\l@figure
+% \makeatother
+
+}
+{
+%\SetAlgorithmName{Algoritmo}{algoritmo}{Índice de algoritmos}
+\renewcommand*{\algorithmcfname}{Algoritmo}
+
+\renewcommand{\listofalgorithms}{\begingroup
+   \tocfile{Índice de algoritmos}{loa}
+   \endgroup}
+ % \makeatletter
+ % \let\l@algorithm\l@figure
+ % \makeatother
+
+
+}
+
+\listofalgorithms
+
 \hypersetup{linkcolor=\mylinkcolor}
+
 
 %%% Local Variables:
 %%% TeX-master: "../book"
