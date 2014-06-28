@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: preamble-anteproyecto.tex,v 1.2 2014/02/14 10:39:14 macias Exp $
+% $Id: preamble-anteproyecto.tex,v 1.3 2014/04/01 11:33:57 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -31,6 +31,9 @@
 
 %\usepackage[a4,cam,center]{crop}
 %\crop[font=\upshape\mdseries\small\textsf]
+
+%% FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR
+\PassOptionsToPackage{cmyk}{xcolor}% NB: put this *before* \usepackage{pst-all}
 
 \usepackage[latin1]{inputenc} % Para poder escribir con acentos y ñ.
 \usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
@@ -87,8 +90,31 @@
 \usepackage{caption}
 
 
+%% FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR
+\usepackage[cmyk]{xcolor}
 %\usepackage[RGB,rgb]{xcolor}
 %\usepackage{color}
+% Pantone 160
+%\definecolor{headingPortadaTFM}{RGB}{158,84,10}
+% Pantone 160C (this is supposed to be the correct one, but it looks horrible in screen)
+%\definecolor{headingPortadaTFM}{RGB}{161,86,28}
+% Gold in RGB
+%\definecolor{textoHeadingPortadaTFM}{RGB}{215,215,0}
+% Captured colors in screen (this looks pst on screen)
+\newcommand{\colorspaceused}{cmyk}
+
+\ifthenelse{\equal{\colorspaceused}{rgb}}
+{
+\definecolor{headingPortadaTFM}{RGB}{152,118,52}
+\definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
+}
+{
+% These definitions are for cmyk colorspace
+\definecolor{headingPortadaTFM}{cmyk}{0.0254,0,0.559,0.537}
+\definecolor{textoHeadingPortadaTFM}{cmyk}{0,0.0144,0.51,0.184}
+
+}
+
 
 % To draw rectagles in tfm cover
 \usepackage{tikz}
@@ -197,41 +223,6 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 
 \pagestyle{plain}
 
-% Pantone 160
-%\definecolor{headingPortadaTFM}{RGB}{158,84,10}
-% Pantone 160C (this is supposed to be the correct one, but it looks horrible in screen)
-%\definecolor{headingPortadaTFM}{RGB}{161,86,28}
-% Gold in RGB
-%\definecolor{textoHeadingPortadaTFM}{RGB}{215,215,0}
-% Captured colors in screen (this looks pst on screen)
-\definecolor{headingPortadaTFM}{RGB}{152,118,52}
-\definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
-
-\definecolor{negro}{rgb}{0,0,0}
-\definecolor{azul}{rgb}{0,0,1}
-\definecolor{verde}{rgb}{0,0.5,0}
-\definecolor{rojo}{rgb}{1,0,0}
-\definecolor{cyan}{rgb}{0,0.75,0.75}
-\definecolor{magenta}{rgb}{0.75,0,0.75}
-\definecolor{amarillo}{rgb}{0.75,0.75,0}
-\definecolor{gris}{rgb}{0.25,0.25,0.25}
-\definecolor{azulE}{rgb}{0,0.3984,0.5977}
-\definecolor{amarilloE}{rgb}{0.9961,0.7969,0}
-\definecolor{blanco}{rgb}{1,1,1}
-\definecolor{burdeos}{rgb}{1,0,0.95}
-
-\definecolor{gray97}{gray}{.97}
-\definecolor{gray75}{gray}{.75}
-\definecolor{gray45}{gray}{.45}
-
-\definecolor{r}{rgb}{0,0,1}
-\definecolor{g}{rgb}{0,1,0}
-\definecolor{b}{rgb}{1,0,0}
-\definecolor{c}{rgb}{0,1,1}
-\definecolor{m}{rgb}{1,0,1}
-\definecolor{y}{rgb}{1,1,0}
-\definecolor{w}{rgb}{1,1,1}
-\definecolor{k}{rgb}{0,0,0}
 
 
 \providecommand\phantomsection{}

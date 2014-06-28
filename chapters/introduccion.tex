@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: introduccion.tex,v 1.6 2014/02/11 11:00:06 macias Exp $
+% $Id: introduccion.tex,v 1.7 2014/06/28 14:31:45 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -45,14 +45,18 @@
 \section{Presentación}
 \label{sec:presentacion}
 
-Esta plantilla pretende proporcionar un conjunto de estilos consistentes
-y unificados para cubrir las necesidades de generación de memorias
-\LaTeX{} para cada uno de los TFCs/TFMs/TFGs y tesis doctorales que se
-generen en la Escuela Politécnica Superior de la Universidad de
-Alcalá\footnote{También se incluye la definición para las tesis de la
-  Escuela Técnica Superior de Ingenieros de Telecomunicación de la
-  Universidad Politécnica de Madrid. La extensión a los TFGs de la
-  misma es sencilla, aunque no se ha realizado por el momento.}.
+Esta plantilla\footnote{Asegúrate de compilar de nuevo el documento
+  (como cuenta la sección~\ref{sec:compilacion}), para verificar que
+  todo funciona y por si ha habido algún cambio en los fuentes que no
+  está reflejado en los pdf de ejemplo precompilados.} pretende
+proporcionar un conjunto de estilos consistentes y unificados para
+cubrir las necesidades de generación de memorias \LaTeX{} para cada uno
+de los TFCs/TFMs/TFGs y tesis doctorales que se generen en la Escuela
+Politécnica Superior de la Universidad de Alcalá\footnote{También se
+  incluye la definición para las tesis de la Escuela Técnica Superior de
+  Ingenieros de Telecomunicación de la Universidad Politécnica de
+  Madrid. La extensión a los TFGs de la misma es sencilla, aunque no se
+  ha realizado por el momento.}.
 
 Para utilizar la plantilla se han generado algunos capítulos genéricos
 en los que se han incluido secciones ``tutoriales'', en la que se
@@ -369,12 +373,22 @@ encontrando tras el uso más generalizado de esta plantilla, y, en su
 caso, la solución propuesta/adoptada:
 
 \begin{itemize}
+
 \item Al menos en la versión 12.04 de ubuntu, se producía un fallo de
-compilación por un problema del \textit{option clash} del paquete
-\texttt{xcolor}. La solución fue incluir las opciones \texttt{[RGB,rgb]}
-de dicho paquete en el \texttt{documentclass}, y eliminar la inclusión
-de \texttt{xcolor} (que ya lo incluye, al menos, \texttt{listings}). No
-es muy bonito como solución, pero funciona.
+  compilación por un problema del \textit{option clash} del paquete
+  \texttt{xcolor}. La solución fue incluir las opciones
+  \texttt{[RGB,rgb]} de dicho paquete en el \texttt{documentclass}, y
+  eliminar la inclusión de \texttt{xcolor} (que ya lo incluye, al menos,
+  \texttt{listings}). No es muy bonito como solución, pero
+  funcionaba. Eso dio lugar a otro problema, que hacía que todas las
+  página aparecieran como en color cuando se llevaba a la imprenta (con
+  el consiguiente incremento de precio). Para intentar solucionarlo, he
+  vuelto a eliminar las opciones \texttt{[RGB,rgb]} del
+  \texttt{documentclass}, y se las paso con un
+  \texttt{PassOptionsToPackage}, pero está pendiente de
+  verificación. Please, confirmadme que funciona (tanto lo del color
+  como la compilación en un ubuntu 12.04 (o posterior).
+
 
 \item También hemos observado en la versión 12.04 de ubuntu que
   \texttt{evince} no es capaz de visualizar la primera página de los

@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: portada-phd-uah.tex,v 1.5 2014/01/08 22:56:06 macias Exp $
+% $Id: portada-phd-uah.tex,v 1.6 2014/01/11 23:27:57 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -44,7 +44,13 @@
 
   \vspace{15mm}
 
+\ifthenelse{\equal{\colorspaceused}{rgb}}
+{
   \centerline{\includegraphics[height=6cm]{logoUAHazul.jpg}}
+}
+{
+  \centerline{\includegraphics[height=6cm]{logoUAHazul-cmyk.jpg}}
+}
   
   \vspace{15mm}
   

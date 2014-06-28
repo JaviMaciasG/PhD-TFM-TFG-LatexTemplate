@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: portada-phd-uah.tex,v 1.4 2013/11/25 00:33:32 macias Exp $
+% $Id: portada-phd-upm.tex,v 1.1 2014/01/09 00:50:36 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -40,7 +40,15 @@
 
   \vspace{1cm}
 
+\ifthenelse{\equal{\colorspaceused}{rgb}}
+{
   \includegraphics[width=80mm]{logos/logoetsit_tamano.jpg}
+}
+{
+  \includegraphics[width=80mm]{logos/logoetsit_tamano-cmyk.jpg}
+}
+
+
   
 %  \vspace{1cm}   
   
