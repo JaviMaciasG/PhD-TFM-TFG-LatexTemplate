@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: introduccion.tex,v 1.7 2014/06/28 14:31:45 macias Exp $
+% $Id: introduccion.tex,v 1.8 2014/06/28 22:08:21 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -83,15 +83,18 @@ una serie de paquetes de estilos \LaTeX{} (ficheros \texttt{.sty}),
 todos ellos definidos en el fichero \texttt{config/preamble.tex}.
 
 No vamos a hacer un listado de todos lo necesarios (sería demasiado
-largo), pero en la mayoría de distribuciones GNU/Linux serán fáciles de
-conseguir en caso de que la compilación genere un error de fichero no
-encontrado. Si os sucede, buscadlos en alguno de los paquetes
-\texttt{texlive-*}. En caso de no encontrarlos, una búsqueda en google
-(que con casi total seguridad referenciará a alguna página en CTAN) os
-dará el enlace a la descarga correspondiente. A partir de ahí, su
-inclusión en directorios locales será suficiente (como por ejemplo hemos
-tenido que hacer con el paquete \texttt{background}, incluido en la
-distribución en el directorio \texttt{sty/background}).
+largo\footnote{Los que suelen no estar instalados en un ubuntu estándar
+  son \texttt{texlive-publishers}, \texttt{texlive-science}}), pero en
+la mayoría de distribuciones GNU/Linux serán fáciles de conseguir en
+caso de que la compilación genere un error de fichero no encontrado. Si
+os sucede, buscadlos en alguno de los paquetes \texttt{texlive-*}. En
+caso de no encontrarlos, una búsqueda en google (que con casi total
+seguridad referenciará a alguna página en CTAN) os dará el enlace a la
+descarga correspondiente. A partir de ahí, su inclusión en directorios
+locales será suficiente (como por ejemplo hemos tenido que hacer con el
+paquete \texttt{background}, incluido en la distribución en el
+directorio \texttt{sty/background}). Lo más cómodo es hacer una
+instalación del \texttt{texlive-full}. 
 
 Igualmente será necesario tener instaladas una serie de utilidades y
 aplicaciones:
@@ -289,6 +292,21 @@ de trabajo y el autor:
 \item Palabras clave en español (variable \texttt{\textbackslash{}mybookpalabrasclave}).
 \end{itemize}
 
+Y también un par de variables para el caso de los TFG's que deseen
+aceptar la publicación en abierto:
+
+\begin{itemize}
+\item DNI del profesor que firma el acuerdo (variable
+  \texttt{\textbackslash{}mybookDNIOpenPublishing}).
+\item Nombre del profesor que firma el acuerdo (variable
+  \texttt{\textbackslash{}mybookProfNameOpenPublishing}).
+\item Figura de profesor que tiene el profesor que firma el acuerdo
+  (variable \texttt{\textbackslash{}mybookProfFigureOpenPublishing}).
+
+
+\end{itemize}
+
+
 Parte de esa información se utilizará para rellenar la metainformación
 incluida en el fichero \texttt{pdf} que se genera.
 
@@ -397,6 +415,10 @@ caso, la solución propuesta/adoptada:
   \texttt{qpdfview} o \texttt{acroread}.
 
 \end{itemize}
+
+Si das con más problemas, escribid por favor a \contactauthor
+contándonoslos y trataremos de solucionarlo (y si tenéis la solución,
+contádnosla también).
 
 
 \section{Ejemplos de elementos de utilidad}
