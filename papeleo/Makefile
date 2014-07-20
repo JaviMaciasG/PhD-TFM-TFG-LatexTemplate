@@ -18,20 +18,20 @@ RM=rm -f
 ###########################################################################
 
 all: $(DUMMY_TARGETS)
-	$(RUBBER_TOOL) -f -d $(TEX_CARTA1)
-	$(RUBBER_TOOL) -f -d $(TEX_CARTA1)
-	$(RUBBER_TOOL) -f -d $(TEX_CARTA2)
-	$(RUBBER_TOOL) -f -d $(TEX_CARTA2)
-	$(RUBBER_TOOL) -f -d $(TEX_CARTA3)
-	$(RUBBER_TOOL) -f -d $(TEX_CARTA3)
+	$(RUBBER_TOOL) -d $(TEX_CARTA1)
+#	$(RUBBER_TOOL) -f -d $(TEX_CARTA1)
+	$(RUBBER_TOOL) -d $(TEX_CARTA2)
+#	$(RUBBER_TOOL) -f -d $(TEX_CARTA2)
+	$(RUBBER_TOOL) -d $(TEX_CARTA3)
+#	$(RUBBER_TOOL) -f -d $(TEX_CARTA3)
 
 all_latexmk: $(DUMMY_TARGETS)
 	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_CARTA1)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_CARTA1)
+#	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_CARTA1)
 	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_CARTA2)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_CARTA2)
+#	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_CARTA2)
 	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_CARTA3)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_CARTA3)
+#	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_CARTA3)
 
 tar:
 	tar czvf $(ROOT_FILENAME).tgz Makefile README `find . -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS"` 
