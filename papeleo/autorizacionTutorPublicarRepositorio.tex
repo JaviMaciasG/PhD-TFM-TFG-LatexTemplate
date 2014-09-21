@@ -2,7 +2,7 @@
 %
 % Generic template for the anteproyectos of TFC/TFM/TFGs
 %
-% $Id: book.tex,v 1.12 2014/01/08 22:56:02 macias Exp $
+% $Id: autorizacionTutorPublicarRepositorio.tex,v 1.1 2014/07/10 21:19:35 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -46,11 +46,15 @@
                                % define your commonly used commands
                                % (some examples are provided).
 
+\input{../config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
+                               % "postamble" is not a valid word... :-)
+
+
 %
 % END Preamble and configuration section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{AUTORIZACIÓN DEL TUTOR DEL TRABAJO FIN DE GRADO PARA PUBLICAR EN
+\title{AUTORIZACIÓN \MakeUppercase{\mybookDelOrDeLos{} \mybookTutorOrTutores} DEL TRABAJO FIN DE GRADO PARA PUBLICAR EN
   EL REPOSITORIO INSTITUCIONAL E-BUAH}             % DO NOT TOUCH THIS LINE
 \date{}                                            % DO NOT TOUCH THIS LINE
 
@@ -62,11 +66,12 @@
 {\Large
 \maketitle 
 
+\thispagestyle{empty}
 
 \vspace{1cm}
 
-D. \mybookadvisors, Tutor del Trabajo Fin de Grado de título:
-``\mybooktitle'' realizado por D. \mybookauthor, por la presente da su
+D. \mybookadvisors, \mybookTutorOrTutores{} del Trabajo Fin de Grado de título:
+``\mybooktitle'' realizado por D. \mybookauthor, por la presente \mybookDaOrDan{} su
 conformidad para que el citado trabajo sea incluido en el repositorio
 institucional de documentos digitales de la Universidad, e-Buah.
 
