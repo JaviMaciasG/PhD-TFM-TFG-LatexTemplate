@@ -1,0 +1,152 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for the anteproyectos of TFC/TFM/TFGs
+%
+% $Id: autorizacionTutorPublicarRepositorio.tex,v 1.1 2014/07/10 21:19:35 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% Copyleft 2013
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This is for rubber to clean additional files
+% rubber: clean anteproyecto.acn anteproyecto.acr anteproyecto.alg anteproyecto.cod anteproyecto.ist anteproyecto.out anteproyecto.sbl anteproyecto.slg anteproyecto.sym anteproyecto.lor
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Preamble and configuration section
+%
+\input{../config/preamble-letter.tex}    % DO NOT TOUCH THIS LINE. You can edit
+                               % the file to modify some default settings
+                                   
+\input{../config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE 
+                               % to set your specific settings (related
+                               % to the document language, your degree,
+                               % document details (such as title, author
+                               % (you), your email, name of the tribunal
+                               % members, document year, keyword and
+                               % palabras clave) and link colors), and
+                               % define your commonly used commands
+                               % (some examples are provided).
+
+\input{../config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
+                               % "postamble" is not a valid word... :-)
+
+
+%
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\date{}                                            % DO NOT TOUCH THIS LINE
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Let's start with the real stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}                                   % DO NOT TOUCH THIS LINE
+
+\thispagestyle{empty}
+
+\begin{center}
+  FORMULARIO DE AUTORIZACIÓN PARA LA INCLUSIÓN DEL TRABAJO FIN DE MÁSTER
+  EN EL ARCHIVO ABIERTO INSTITUCIONAL E-BUAH DE LA UNIVERSIDAD DE ALCALÁ
+\end{center}
+%\maketitle 
+
+
+%\vspace{1cm}
+
+\begin{figure}[H]
+  \begin{tabular}{|p{1.0\textwidth}|}
+    \hline
+    TÍTULO DEL TRABAJO FIN DE MÁSTER:\\
+    \mybooktitle\\
+    \hline
+  \end{tabular}
+\end{figure}
+
+1. ESTUDIANTE (AUTOR)
+
+\begin{figure}[H]
+  \begin{tabular}{|p{0.7\textwidth}|p{0.3\textwidth}|}
+    \hline
+    APELLIDOS Y NOMBRE: & DNI:\\
+    \mybookauthor & \mybookDNIOpenPublishing \\
+    \hline
+    \multicolumn{2}{|l|}{TITULACIÓN:} \\
+    \multicolumn{2}{|l|}{\mydegreefull} \\
+    \hline
+  \end{tabular}
+\end{figure}
+
+2. \MakeUppercase{\mybookTutorOrTutores{}} DEL TRABAJO FIN DE MÁSTER
+
+\begin{figure}[H]
+  \begin{tabular}{|p{0.7\textwidth}|p{0.3\textwidth}|}
+    \hline
+    APELLIDOS Y NOMBRE: & DNI:\\
+    \mybookNameFirstAdvisor & \mybookDNIFirstAdvisor \\
+    \mybookNameSecondAdvisor & \mybookDNISecondAdvisor \\
+    \hline
+    \multicolumn{2}{|l|}{DEPARTAMENTO O INSTITUCIÓN:} \\
+    \multicolumn{2}{|l|}{\mybookdepartment} \\
+    \hline
+  \end{tabular}
+\end{figure}
+
+Los abajo firmantes:
+
+$\XBox$ AUTORIZAN
+
+$\Box$ NO AUTORIZAN
+
+\vspace{1cm}
+
+\noindent El depósito y puesta a disposición del Trabajo Fin de Máster en el
+Repositorio Institucional de la Universidad, e- BUAH, de acceso libre y
+gratuito a través de Internet, y otorgando las condiciones de uso de la
+licencia Creative Commons reconocimiento-uso no comercial-sin obra
+derivada.
+
+\noindent Más información en: \url{http://creativecommons.org/licenses/by-nc-nd/3.0/deed.es}.
+
+\vspace{1cm}
+
+\begin{figure}[H]
+  \begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
+    \hline
+    \footnotesize{Firmado: El Autor} & Firmado: \footnotesize{\mybookElOrLos{} \mybookTutorOrTutores{} del Trabajo Fin de Máster:}\\
+
+%\begin{figure}[H]
+  \includegraphics[width=0.5\textwidth]{firmaDavid.png}
+%\end{figure}
+& 
+%\begin{figure}[H]
+  \includegraphics[width=0.5\textwidth]{firmaJaviMarta.png}
+%\end{figure}
+ \\
+    \hline
+  \end{tabular}
+\end{figure}
+
+\vspace{1cm}
+\noindent \url{http://www.uah.es/biblioteca/e\_buah/ebuah.html}
+
+\end{document}
+
