@@ -2,7 +2,7 @@
 % 
 % Generic template for TFC/TFM/TFG/Tesis
 % 
-% $Id: preamble.tex,v 1.21 2014/06/28 22:08:21 macias Exp $
+% $Id: preamble.tex,v 1.22 2014/09/01 22:15:20 macias Exp $
 % 
 % By:
 % + Javier Macías-Guarasa. 
@@ -131,7 +131,8 @@
 %   \definecolor{textoHeadingPortadaTFM}{cmyk}{0,0.0144,0.51,0.184}
 % }
 
-\definecolor{headingPortadaTFM}{RGB}{152,118,52}
+\definecolor{headingPortadaTFG}{RGB}{152,118,52}
+\definecolor{headingPortadaTFM}{RGB}{0,0,255}
 \definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
 
 \definecolor{gray97}{gray}{.97}
@@ -534,7 +535,10 @@ hyperfootnotes=false,
 % Add algorithms april 2014
 \usepackage[vlined,algochapter]{algorithm2e}
 
+% Add support for fonts at arbitrary sizes september 2014, for TFG's cover
+\usepackage{fix-cm}
 
+\usepackage{graphicx}                                                                      
 
 %%% Local Variables:
 %%% TeX-master: "../book"

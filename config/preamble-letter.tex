@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: preamble-letter.tex,v 1.1 2014/01/11 23:27:56 macias Exp $
+% $Id: preamble-letter.tex,v 1.2 2014/07/20 22:22:35 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -32,6 +32,9 @@
 %\usepackage[a4,cam,center]{crop}
 %\crop[font=\upshape\mdseries\small\textsf]
 
+% ifthen to allow using language dependent settings
+\usepackage{ifthen}
+
 \usepackage[latin1]{inputenc} % Para poder escribir con acentos y ñ.
 \usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
                               % usar si no es necesario, porque ralentiza muchisimo la compilación.
@@ -51,6 +54,30 @@
 \geometry{verbose,a4paper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
 
 \usepackage{enumitem}
+
+\usepackage{graphicx}
+\usepackage{float}
+
+\usepackage[
+%% ps2pdf,                %%% hyper-references for ps2pdf
+bookmarks=true,%                   %%% generate bookmarks ...
+bookmarksnumbered=true,            %%% ... with numbers
+hypertexnames=false,               %%% needed for correct links to
+%%% figures!!!
+% hypertexnames=true,               %%% needed for correct links on pagebackrefs!!!
+breaklinks=true,                   %%% breaks lines, but links are very small
+% pagebackref=true,
+% linktocpage=true,                 %%% enlace en el numero de página.
+linktoc=all,
+colorlinks=true,
+linkcolor=blue,    
+citecolor=green,
+urlcolor=blue,                     %%% texto  con color (further
+%%% modified in myconfig.tex)
+% linkbordercolor={0 0 1},           %%% blue frames around links
+pdfborder={0 0 112.0},              %%% border-width of frames 
+hyperfootnotes=false,
+]{hyperref}                        %%% will be multiplied with 0.009 by ps2pdf
 
 %%% Local Variables:
 %%% TeX-master: "../book"

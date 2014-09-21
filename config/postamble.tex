@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: postamble.tex,v 1.4 2013/11/25 00:33:31 macias Exp $
+% $Id: postamble.tex,v 1.5 2014/01/08 22:56:05 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -42,6 +42,25 @@
 % cover pages (TFG by default)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set name of advisors and define words depending on singular/plural
+\ifthenelse{\equal{\mybookNameSecondAdvisor}{}}
+{
+\newcommand{\mybookadvisors}{\mybookNameFirstAdvisor{}}
+\newcommand{\mybookDirectorOrDirectores}{director}
+\newcommand{\mybookDaOrDan}{da}
+\newcommand{\mybookTutorOrTutores}{tutor}
+\newcommand{\mybookElOrLos}{El}
+\newcommand{\mybookDelOrDeLos}{del}
+}
+{
+\newcommand{\mybookadvisors}{\mybookNameFirstAdvisor{} y \mybookNameSecondAdvisor{}}
+\newcommand{\mybookDirectorOrDirectores}{directores}
+\newcommand{\mybookDaOrDan}{dan}
+\newcommand{\mybookTutorOrTutores}{tutores}
+\newcommand{\mybookElOrLos}{Los}
+\newcommand{\mybookDelOrDeLos}{de los}
+}
 
 % Set degree name and type of document, depending on the user defined degree
 \ifthenelse{\equal{\mydegree}{IT}}
@@ -242,6 +261,7 @@
                           \ifthenelse{\equal{\mydegree}{MUSEA}}
                           {
                             \newcommand{\mydegreefull}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
+                            \newcommand{\mydegreefullwrapped}{Máster Universitario en Sistemas Electrónicos Avanzados\\Sistemas Inteligentes}
                             \newcommand{\mybookworktype}{TFM}
                             \ifthenelse{\equal{\mybooklanguage}{spanish}}
                             {
