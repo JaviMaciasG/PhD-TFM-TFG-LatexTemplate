@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: portada-tfg-uah.tex,v 1.8 2014/01/11 23:27:57 macias Exp $
+% $Id: portada-tfg-uah.tex,v 1.9 2014/01/20 10:06:29 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -46,7 +46,7 @@
     \node[yshift=-5cm] at (current page.north west)
       {
         \begin{tikzpicture}[remember picture, overlay]
-          \draw[fill=headingPortadaTFM] (0,0) rectangle (\paperwidth,5cm);
+          \draw[fill=headingPortadaTFG,headingPortadaTFG] (0,0) rectangle (\paperwidth,5cm);
           \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\mybookuniversity}};
           \node [yshift=2cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\mybookschool}};
 
@@ -74,8 +74,9 @@
 
 \vspace{0.5cm}
 
-% If multiple advisors, change Tutor to Tutores
-  \textbf{Tutor:}  \mybookadvisors
+% If also director: add corresponding line (mybookDirectors IS NOT DEFINED AS FOR ME (JMG)
+  \textbf{\expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}:}  \mybookadvisors
+%  \textbf{\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}:}  \mybookdirectors
 
 \end{center}
 

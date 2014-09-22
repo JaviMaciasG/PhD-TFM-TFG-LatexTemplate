@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: backpage-tfg-uah.tex,v 1.6 2014/01/08 22:56:05 macias Exp $
+% $Id: backpage-tfg-uah.tex,v 1.7 2014/01/11 23:27:56 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -41,7 +41,7 @@
 % Nice example of tikz
 % \begin{tikzpicture}[remember picture,overlay]
 %   \node [xshift=1cm,yshift=1cm] at (current page.south west)
-%   [text width=7cm,fill=red!20,rounded corners,above right]
+%   [text width=7cm,fill=red,red!20,rounded corners,above right]
 %   {
 %     This is an absolutely positioned text in the
 %     lower left corner. No shipout-hackery is used.
@@ -52,9 +52,10 @@
     \node[yshift=-5cm] at (current page.north west)
       {
         \begin{tikzpicture}[remember picture, overlay]
-          \draw[fill=headingPortadaTFM] (0,0) rectangle (\paperwidth,5cm);
-          \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\mybookuniversity};
-          \node [yshift=2cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\mybookschool};
+          \draw[fill=headingPortadaTFG,headingPortadaTFG] (0,0) rectangle (\paperwidth,5cm);
+
+          \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFG}\mybookuniversity};
+          \node [yshift=2cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFG}\mybookschool};
 
         \end{tikzpicture}
       };

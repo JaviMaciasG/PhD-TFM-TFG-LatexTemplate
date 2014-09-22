@@ -1,92 +1,94 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% 
 % Generic template for the anteproyectos of TFC/TFM/TFGs
-%
-% $Id: vistoBuenoTutor.tex,v 1.1 2014/01/11 23:27:58 macias Exp $
-%
+% 
+% $Id: vistoBuenoTutorTFM-MUSEA.tex,v 1.1 2014/09/21 23:48:18 macias Exp $
+% 
 % By:
-%  + Javier Macías-Guarasa. 
-%    Departamento de Electrónica
-%    Universidad de Alcalá
-%  + Roberto Barra-Chicote. 
-%    Departamento de Ingeniería Electrónica
-%    Universidad Politécnica de Madrid   
+% + Javier Macías-Guarasa. 
+% Departamento de Electrónica
+% Universidad de Alcalá
+% + Roberto Barra-Chicote. 
+% Departamento de Ingeniería Electrónica
+% Universidad Politécnica de Madrid   
 % 
 % Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
 % Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
-%
+% 
 % See also the additionalContributors.txt file to check the name of
 % additional contributors to this work.
-%
+% 
 % If you think you can add pieces of relevant/useful examples,
 % improvements, please contact us at (macias@depeca.uah.es)
-%
+% 
 % Copyleft 2013
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 % This is for rubber to clean additional files
 % rubber: clean anteproyecto.acn anteproyecto.acr anteproyecto.alg anteproyecto.cod anteproyecto.ist anteproyecto.out anteproyecto.sbl anteproyecto.slg anteproyecto.sym anteproyecto.lor
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % BEGIN Preamble and configuration section
-%
+% 
 \input{../config/preamble-letter.tex}    % DO NOT TOUCH THIS LINE. You can edit
-                               % the file to modify some default settings
+% the file to modify some default settings
 \input{../config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE 
-                               % to set your specific settings (related
-                               % to the document language, your degree,
-                               % document details (such as title, author
-                               % (you), your email, name of the tribunal
-                               % members, document year, keyword and
-                               % palabras clave) and link colors), and
-                               % define your commonly used commands
-                               % (some examples are provided).
+% to set your specific settings (related
+% to the document language, your degree,
+% document details (such as title, author
+% (you), your email, name of the tribunal
+% members, document year, keyword and
+% palabras clave) and link colors), and
+% define your commonly used commands
+% (some examples are provided).
 
 \input{../config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
-                               % "postamble" is not a valid word... :-)
+% "postamble" is not a valid word... :-)
 
-%
+% 
 % END Preamble and configuration section
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \title{VISTO BUENO \MakeUppercase{\mybookDelOrDeLos{} \mybookDirectorOrDirectores/\mybookTutorOrTutores} AL TFM} 
-                                                   % DO NOT TOUCH THIS LINE
+% DO NOT TOUCH THIS LINE
 \date{}                                            % DO NOT TOUCH THIS LINE
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Let's start with the real stuff
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{document}                                   % DO NOT TOUCH THIS LINE
 
 {\Large
-\maketitle 
+  \maketitle 
 
-\thispagestyle{empty}
+  \thispagestyle{empty}
 
-\vspace{1cm}
+  \vspace{1cm}
 
-\mybookadvisors, \mybookDirectorOrDirectores{} del Trabajo Fin de Máster de título:
-``\mybooktitle'' realizado por D. \mybookauthor{}, por la presente \mybookDaOrDan{} su
-conformidad para que el citado trabajo sea presentado para su defensa.
+  \mybookadvisors, \mybookDirectorOrDirectores{} del Trabajo Fin de Máster de título:
+  ``\mybooktitle'' realizado por D. \mybookauthor{}, por la presente \mybookDaOrDan{} su
+  conformidad para que el citado trabajo sea presentado para su defensa.
 
 
-\vspace{2cm}
+  \vspace{2cm}
 
-\flushright{Alcalá de Henares, 22 de septiembre de 2014}
+  \flushright{Alcalá de Henares, 22 de septiembre de 2014}
 
-%\vspace{4cm}
+  % \vspace{4cm}
 
-\begin{figure}[H]
-%  \centering
-\begin{flushright}
-  \includegraphics[width=0.7\textwidth]{firmaJaviMarta.png}
-\end{flushright}
-\end{figure}
+  SI TIENES GRÁFICOS CON LAS FIRMAS, DESCOMENTA Y EDITA EL SIGUIENTE
+  CÓDIGO...
 
-\flushright{Fdo.: \mybookadvisors}
+  % \begin{figure}[H]
+  %   \begin{flushright}
+  %     \includegraphics[width=0.7\textwidth]{firma...png}
+  %   \end{flushright}
+  % \end{figure}
+
+  \flushright{Fdo.: \mybookadvisors}
 
 }
 \end{document}

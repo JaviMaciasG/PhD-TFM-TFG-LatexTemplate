@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: cover-phd-uah.tex,v 1.3 2013/11/25 00:33:31 macias Exp $
+% $Id: cover-phd-upm.tex,v 1.1 2014/01/09 00:50:36 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -63,10 +63,10 @@
   
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
-    \textbf {Advisor}
+    \textbf {\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}}
   }
   {
-    \textbf {Director}
+    \textbf {\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}}
   }  
 %  \vspace{5mm}
   

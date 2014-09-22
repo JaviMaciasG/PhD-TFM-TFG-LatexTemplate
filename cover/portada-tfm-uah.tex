@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: portada-tfm-uah.tex,v 1.6 2014/01/11 23:27:57 macias Exp $
+% $Id: portada-tfg-uah.tex,v 1.9 2014/01/20 10:06:29 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -28,51 +28,101 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \thispagestyle{empty}
-\large
-\vspace{3cm}
-\begin{center}
 
-  \Huge\textbf{\MakeUppercase{\mybookuniversity}}
+% To add background watermark
+%\BgThispage
 
-  \vspace{1cm}
+% Nice example of tikz
+% \begin{tikzpicture}[remember picture,overlay]
+%   \node [xshift=1cm,yshift=1cm] at (current page.south west)
+%   [text width=7cm,fill=red!20,rounded corners,above right]
+%   {
+%     This is an absolutely positioned text in the
+%     lower left corner. No shipout-hackery is used.
+%   };
+% \end{tikzpicture}
 
-  \textbf{\mybookschool}
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-14cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (6cm,14cm);
+      \node [yshift=7cm, xshift=3cm, text centered, midway, rotate=+90] {\color{white}\fontsize{110}{132}\selectfont\mybookuniversityacronym};
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
 
-  \vspace{1cm}
+% title box
+\begin{tikzpicture}
+  \node [xshift=7cm] at (current page.north west)
+  {%
+     \begin{tikzpicture}[remember picture, overlay]
+    
+       \node [yshift=-3.5cm, xshift=0.5\paperwidth, align=center, text width=14cm, text centered, midway] {\begin{minipage}[c][13cm][c]{13cm}\centering\color{black}\fontsize{26}{31}\selectfont\textbf{\mybooktitle}\par\end{minipage}};
+%      \color{black}\fontsize{30}{36}\selectfont\textbf{\mybooktitle}
+      
+   
+     \end{tikzpicture}
+    
+  };
+\end{tikzpicture}
 
-  \Large\textbf{\mydegreefull}
-  
-  \vspace{15mm}
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-\paperheight] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2cm);
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
 
-\ifthenelse{\equal{\colorspaceused}{rgb}}
-{
-  \centerline{\includegraphics[height=6cm]{logoUAHazul.jpg}}
-}
-{
-  \centerline{\includegraphics[height=6cm]{logoUAHazul-cmyk.jpg}}
-}
 
-  \vspace{1cm}
+% Middle rectangle
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-17cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2.8cm);
+      \node [yshift=1.8cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{15}\selectfont\textbf{\mydegreefullwrapped}\par};
+      \node [yshift=0.5cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{26}\selectfont\textbf{\mybookdepartment}};
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
 
-  \Large\textbf{\mybookworktypefull}
+% Author information
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-19cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \node [yshift=0,    xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Presentado por:\\\mybookauthor}\par};
+      \node [yshift=-3cm, xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Dirigido por:\\\mybookadvisors}\par};
+      \node [yshift=-6cm, xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Alcalá de Henares, a \mydefensedate}\par};
 
-  \vspace{2cm}   
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
 
-  \LARGE\textbf{\mybooktitle}
+% lower rectangle
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-\paperheight] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2cm);
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
 
-  \vspace{2cm}
 
-  \mybookauthor
 
-\end{center}
+% \begin{bottomparagraph}
+%   \begin{center}
+%     \huge{\mybookyear}
+%   \end{center}
+% \end{bottomparagraph}
 
-\begin{bottomparagraph}
-  \begin{center}
-    \huge{\mybookyear}
-  \end{center}
-\end{bottomparagraph}
-
+%\newpage
 \clearemptydoublepage
+
 
 %%% Local Variables:
 %%% TeX-master: "../book"

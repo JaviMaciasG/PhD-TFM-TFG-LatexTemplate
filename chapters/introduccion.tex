@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: introduccion.tex,v 1.8 2014/06/28 22:08:21 macias Exp $
+% $Id: introduccion.tex,v 1.9 2014/07/01 15:33:47 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -281,7 +281,7 @@ de trabajo y el autor:
 \item Universidad en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybooksuniversidad}, que debería ser la de Alcalá, pero se incluye por generalidad).
 \item Titulación del autor (usada en las tesis de UPM, (variable \texttt{\textbackslash{}mybookauthordegree})).
 \item Email del autor (variable \texttt{\textbackslash{}mybookemail}).
-\item Nombre de los directores del trabajo (variable \texttt{\textbackslash{}mybookadvisors}).
+\item Nombre del/de los directores del trabajo (variable \texttt{\textbackslash{}mybookadvisors}).
 \item Nombre del presidente del tribunal (variable \texttt{\textbackslash{}mybookpresident}).
 \item Nombre del primer vocal del tribunal (variable \texttt{\textbackslash{}mybookfirstvocal}).
 \item Nombre del segundo vocal del tribunal (variable \texttt{\textbackslash{}mybooksecondvocal}).
@@ -292,18 +292,17 @@ de trabajo y el autor:
 \item Palabras clave en español (variable \texttt{\textbackslash{}mybookpalabrasclave}).
 \end{itemize}
 
-Y también un par de variables para el caso de los TFG's que deseen
-aceptar la publicación en abierto:
+Y también variables para el caso de los TFG's y TFM's que deseen aceptar
+la publicación en abierto:
 
 \begin{itemize}
-\item DNI del profesor que firma el acuerdo (variable
-  \texttt{\textbackslash{}mybookDNIOpenPublishing}).
-\item Nombre del profesor que firma el acuerdo (variable
-  \texttt{\textbackslash{}mybookProfNameOpenPublishing}).
-\item Figura de profesor que tiene el profesor que firma el acuerdo
+\item DNI del autor que firma el acuerdo, que es normalmente el alumno
+  (variable \texttt{\textbackslash{}mybookDNIOpenPublishing}).
+\item Figura del autor del trabajo, que es normalmente ``alumno''
   (variable \texttt{\textbackslash{}mybookProfFigureOpenPublishing}).
-
-
+\item DNIs del/de los tutores, para los permisos de publicación en
+  abierto (variables \texttt{\textbackslash{}mybookDNIFirstAdvisor} y
+  \texttt{\textbackslash{}mybookDNISecondAdvisor}, en su caso)
 \end{itemize}
 
 
@@ -365,20 +364,28 @@ haciendo un \texttt{make anteproyecto}.
 \subsection{Papeleo adicional para la defensa de los TFGs}
 \label{sec:introapp1}
 
-Para el caso de los TFGs, se incluyen en el directorio \texttt{papeleo}
-algunos de los documentos que hay que generar en el momento de la
-defensa. En concreto:
+Para el caso de los TFGs y TFMs (al menos los del MUSEA), se incluyen en
+el directorio \texttt{papeleo} algunos de los documentos que hay que
+generar en el momento de la defensa. En concreto:
 
 \begin{itemize}
 \item La autorización del tutor para la publicación en abierto, en el
-  fichero \texttt{autorizacionTutorPublicarRepositorio.tex}
+  fichero \texttt{autorizacionTutorPublicarRepositorio.tex} para TFGs.
 \item La autorización del autor para la publicación en abierto, en el
   fichero \texttt{autorizacionAutorPublicarRepositorio.tex}
-\item El visto bueno del tutor para la defensa \texttt{vistoBuenoTutor.tex}
+\item El visto bueno del tutor para la defensa del TFG
+  \texttt{vistoBuenoTutorTFG.tex}
+\item La autorización del autor y tutor/tutores para la publicación en
+  abierto, en el fichero
+  \texttt{autorizacionPublicarAbiertoTFM-MUSEA.tex}.
+\item El visto bueno del tutor para la defensa del TFM
+  \texttt{vistoBuenoTutorTFM-MUSEA.tex}
 \end{itemize}
 
 En el directorio se incluye un \texttt{Makefile} que genera los
-\texttt{pdfs} correspondientes a esos documentos.
+\texttt{pdfs} correspondientes a esos documentos. El sistema
+automáticamente adapta los singulares/plurales necesarios para el caso
+de que haya uno o varios directores/tutores.
  
 
 

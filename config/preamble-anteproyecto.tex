@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: preamble-anteproyecto.tex,v 1.3 2014/04/01 11:33:57 macias Exp $
+% $Id: preamble-anteproyecto.tex,v 1.4 2014/06/28 22:08:21 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -483,6 +483,28 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 %\newenvironment{bottomparagraph}{\par\vspace*{\fill}}{\clearemptydoublepage}
 
 \usepackage{wasysym}
+
+% To uppercase first letter
+\usepackage{mfirstuc}
+% \makefirstuc{abc} produces Abc.
+% \makefirstuc{\emph{abc}} produces Abc (\MakeUppercase has been applied to the letter "a" rather than \emph). Note however that
+% \makefirstuc{{\em abc}}
+% produces ABC (first object is {\em abc} so equivalent to \MakeUppercase{\em abc}), and
+% {\makefirstuc{\em abc}}
+% produces abc (\em doesn't have an argument therefore first object is \em and so is equivalent to {\MakeUppercase{\em}abc}).
+% \makefirstuc{{\'a}bc} produces Ábc.
+% \makefirstuc{\ae bc} produces Æbc.
+% \makefirstuc{{\ae}bc} produces Æbc.
+% \makefirstuc{{ä}bc} produces Äbc. 
+%
+% Note that non-Latin or accented characters appearing at the start of
+% the text must be placed in a group (even if you are using the inputenc
+% package). The reason for this restriction is detailed in §3 UTF-8.  
+%
+% For already defined commands use:
+%\newcommand{\abc}{abc}  
+%\expandafter\makefirstuc\expandafter{\abc} 
+
 
 %%% Local Variables:
 %%% TeX-master: "../book"
