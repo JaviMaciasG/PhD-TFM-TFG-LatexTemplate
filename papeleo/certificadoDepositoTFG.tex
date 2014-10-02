@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Generic template for the anteproyectos of TFC/TFM/TFGs
+% Generic template 
 %
 % $Id: autorizacionTutorPublicarRepositorio.tex,v 1.2 2014/09/21 23:47:40 macias Exp $
 %
@@ -54,8 +54,7 @@
 % END Preamble and configuration section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{AUTORIZACIÓN \MakeUppercase{\mybookDelOrDeLos{} \mybookTutorOrTutores} DEL TRABAJO FIN DE GRADO PARA PUBLICAR EN
-  EL REPOSITORIO INSTITUCIONAL E-BUAH}             % DO NOT TOUCH THIS LINE
+\title{CERTIFICADO DE DEPÓSITO DE TRABAJO FIN DE GRADO}             % DO NOT TOUCH THIS LINE
 \date{}                                            % DO NOT TOUCH THIS LINE
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,33 +62,48 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}                                   % DO NOT TOUCH THIS LINE
 
-{\Large
+{\large
 \maketitle 
 
 \thispagestyle{empty}
 
-\vspace{1cm}
+%\vspace{1cm}
 
-D. \mybookadvisors, \mybookTutorOrTutores{} del Trabajo Fin de Grado de título:
-``\mybooktitle'' realizado por D. \mybookauthor, por la presente \mybookDaOrDan{} su
-conformidad para que el citado trabajo sea incluido en el repositorio
-institucional de documentos digitales de la Universidad, e-Buah.
+\begin{description}
+\item[Título del Trabajo Fin de Grado:] \mybooktitle
 
-\vspace{1cm}
+\item[Autor:] \mybookauthor
 
-$\XBox$ Sí
+\item[Estudios:] \mydegreefull
+
+\item[\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}:] \mybookadvisors
+
+\item[Departamento:] \mybookdepartment
+\end{description}
 
 \vspace{0.5cm}
+El Secretario del \mybookdepartment
 
-$\Box$ No
+\vspace{0.5cm}
+\textbf{CERTIFICA}
 
-\vspace{2cm}
+\vspace{0.5cm}
+Que el trabajo de fin de grado cuyos datos aparecen en este documento ha
+obtenido el Visto Bueno de \mybookSuOrSus
+\mybookDirectorOrDirectores{}/\mybookTutorOrTutores{} y ha sido
+DEPOSITADO en el departamento a expensas de que el autor reúna todos los
+requisitos necesarios para su defensa y calificación.
+\vspace{0.5cm}
 
-\flushright{Alcalá de Henares, \mybookdateforpaperwork.}
+Y para que así conste para su presentación donde fuese requerido, se
+expide el presente certificado en Alcalá de Henares a \mybookdateforpaperwork.
 
-\vspace{4cm}
 
-\flushright{Fdo.: \mybookadvisors}
+\vspace{3cm}
+
+\flushright{Fdo.: \mybookdepartmentsecretary}
+
+(Firma del Secretario y Sello del Departamento)
 
 }
 \end{document}

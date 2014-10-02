@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: myconfig.tex,v 1.16 2014/09/21 23:55:20 macias Exp $
+% $Id: myconfig.tex,v 1.17 2014/09/22 00:19:34 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -51,32 +51,34 @@
 
 % Control compilation flavour (for PFCs, TFMs, TFGs, Thesis, etc...)
 % Degree (titulación), can be:
-% IT     - Ingeniería de Telecomunicación
-% IE     - Ingeniería Electrónica
-% ITTSE  - Ingeniería Técnica de Telecomunicación, Sistemas Electrónicos
-% ITTST  - Ingeniería Técnica de Telecomunicación, Sistemas de Telecomunicación
-% ITI    - Ingeniería Técnica Industrial, Electrónica Industrial 
-% GIEC   - Grado en Ingeniería Electrónica de Comunicaciones
-% GIEAI  - Grado en Ingeniería en Electrónica y Automática Industrial
-% GIST   - Grado en Ingeniería en Sistemas de Telecomunicación
-% GITT   - Grado en Ingeniería en Tecnologías de la Telecomunicación
-% GIT    - Grado en Ingeniería Telemática
-% GIC    - Grado en Ingeniería de Computadores
-% GII    - Grado en Ingeniería Informática
-% GSI    - Grado en Sistemas de Información
-% MUSEA  - Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes
-% PHDUAH - Doctorado UAH
-% PHDUPM - Doctorado UPM
+% IT        - Ingeniería de Telecomunicación
+% IE        - Ingeniería Electrónica
+% ITTSE     - Ingeniería Técnica de Telecomunicación, Sistemas Electrónicos
+% ITTST     - Ingeniería Técnica de Telecomunicación, Sistemas de Telecomunicación
+% ITI       - Ingeniería Técnica Industrial, Electrónica Industrial 
+% GIEC      - Grado en Ingeniería Electrónica de Comunicaciones
+% GIEAI     - Grado en Ingeniería en Electrónica y Automática Industrial
+% GIST      - Grado en Ingeniería en Sistemas de Telecomunicación
+% GITT      - Grado en Ingeniería en Tecnologías de la Telecomunicación
+% GIT       - Grado en Ingeniería Telemática
+% GIC       - Grado en Ingeniería de Computadores
+% GII       - Grado en Ingeniería Informática
+% GSI       - Grado en Sistemas de Información
+% MUSEA     - Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes
+% PHDUAH    - Doctorado UAH
+% PHDUPM    - Doctorado UPM
+% GEINTRARR - Geintra Research Report
 % You can include additional degrees and modify config/myconfig.tex
 % config/postamble.tex and cover/cover.tex, generating new specific
 % cover files if needed
-\newcommand{\mydegree}{MUSEA}
+\newcommand{\mydegree}{GEINTRARR}
 
 % General document information
 \newcommand{\mybooktitle}{Plantilla unificada para la generación de
 memorias de PFCs/TFGs/TFMs y tesis doctorales}
 \newcommand{\mybookauthor}{Javier Macías-Guarasa}
 \newcommand{\mybookdepartment}{Departamento de Electrónica}
+\newcommand{\mybookresearchgroup}{GEINTRA}
 \newcommand{\mybookschool}{Escuela Politécnica Superior}
 \newcommand{\mybookuniversity}{Universidad de Alcalá}
 \newcommand{\mybookuniversityacronym}{UAH}
@@ -90,11 +92,14 @@ memorias de PFCs/TFGs/TFMs y tesis doctorales}
 \newcommand{\mybooksecretary}{Name of the secretary (if needed)}
 \newcommand{\mybookyear}{2014}
 \newcommand{\myanteproyectodate}{6 de enero de 2014}
+% For RR, mydefensedate is date to be shown in the cover
 \newcommand{\mydefensedate}{6 de enero de 2014}
 \newcommand{\mybookkeywords}{Bsc., Msc. and PhD. Thesis template, \LaTeX, English/Spanish support, automatic generation} % (up to a maximum of five)
 \newcommand{\mybookpalabrasclave}{Plantillas de trabajos fin de carrera/máster/grado y tesis doctorales, \LaTeX, soporte de español e inglés, generación automática} % (máximo de cinco)
 
 % Por TFGs & MUSEA-TFMs paperwork
+\newcommand{\mybookdepartmentsecretary}{José Luis Martín Sánchez}
+\newcommand{\mybookdateforpaperwork}{30 de septiembre de 2014}
 \newcommand{\mybookDNIOpenPublishing}{12345678-L} % Required for TFG's & MUSEA-TFMs
                                 % paperwork, must be the DNI of the student
 \newcommand{\mybookDNIFirstAdvisor}{11111111-A}
@@ -104,7 +109,7 @@ memorias de PFCs/TFGs/TFMs y tesis doctorales}
                                 % the author signing the agreement
                                 % (should be "alumno" in most cases)
 
-
+\newcommand{\mybookresearchreportID}{RR-2014-01}
 % Link color definition
 % Color links of the toc/lot/lof entries
 \newcommand{\mytoclinkcolor}{blue}

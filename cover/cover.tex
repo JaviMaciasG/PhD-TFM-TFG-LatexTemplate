@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: cover.tex,v 1.4 2014/01/08 22:56:05 macias Exp $
+% $Id: cover.tex,v 1.5 2014/09/22 08:15:28 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -62,8 +62,15 @@
           \input{cover/cover-phd-upm.tex}
         }
         {
-          ERROR: in \texttt{cover/cover.tex} Defined book type (\mybookworktype) unknown so that work type is
-          undefined or wrong (\mybookworktype), check also \texttt{config/myconfig.tex}
+          \ifthenelse{\equal{\mybookworktype}{GEINTRARR}}
+          {
+            \input{cover/portada-geintra-rr.tex}
+%            \input{cover/cover-geintra-rr.tex}
+          }
+          {
+            ERROR: in \texttt{cover/cover.tex} Defined book type (\mybookworktype) unknown so that work type is
+            undefined or wrong (\mybookworktype), check also \texttt{config/myconfig.tex}
+          }
         }
       }
       
