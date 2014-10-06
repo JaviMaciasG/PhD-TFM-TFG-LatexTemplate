@@ -2,7 +2,7 @@
 % 
 % Generic template for TFC/TFM/TFG/Tesis
 % 
-% $Id: preamble.tex,v 1.24 2014/09/22 08:15:28 macias Exp $
+% $Id: preamble-slides.tex,v 1.1 2014/10/02 22:16:06 macias Exp $
 % 
 % By:
 % + Javier Macías-Guarasa. 
@@ -27,29 +27,8 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-%% FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR \documentclass[RGB,rgb,svgnames,spanish,openright]{book}
-%\documentclass[spanish,openright]{book}
-% \documentclass[english,openright]{book}
-% \documentclass[11pt,english,twoside,openright]{book}
-
-% \usepackage[a4,cam,center]{crop}
-% \crop[font=\upshape\mdseries\small\textsf]
-
 % ifthen to allow using language dependent settings
 \usepackage{ifthen}
-
-%% JMG: FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR
-% This should not be touched, as it should work as it is know.
-\newcommand{\colorspaceused}{rgb}
-
-%The next section seems to be useless, but it's still pending to try further
-\ifthenelse{\equal{\colorspaceused}{rgb}}
-{
-  \PassOptionsToPackage{rgb}{xcolor}% NB: put this *before* \usepackage{pst-all}
-}
-{
-  \PassOptionsToPackage{cmyk}{xcolor}% NB: put this *before* \usepackage{pst-all}
-}
 
 \usepackage[latin1]{inputenc} % Para poder escribir con acentos y ñ.
 \usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
@@ -60,10 +39,12 @@
 
 \usepackage[spanish, english]{babel}
 
+\usepackage{lastpage}
 
 % To position logos in slide header
 \usepackage{textpos}
 
+\usepackage{bm}
 
 % % Use this if you want to include pdf files in the final document
 % \usepackage[final]{pdfpages}
@@ -113,90 +94,34 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
-% %% FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR
-% \usepackage{xcolor}
-% % \usepackage[RGB,rgb]{xcolor}
-% % \usepackage{color}
-% % Pantone 160
-% % \definecolor{headingPortadaTFM}{RGB}{158,84,10}
-% % Pantone 160C (this is supposed to be the correct one, but it looks horrible in screen)
-% % \definecolor{headingPortadaTFM}{RGB}{161,86,28}
-% % Gold in RGB
-% % \definecolor{textoHeadingPortadaTFM}{RGB}{215,215,0}
-% % Captured colors in screen (this looks pst on screen)
 
-% % \ifthenelse{\equal{\colorspaceused}{rgb}}
-% % {
-% %   \definecolor{headingPortadaTFM}{RGB}{152,118,52}
-% %   \definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
-% % }
-% % {
-% %   % These definitions are for cmyk colorspace
-% %   \definecolor{headingPortadaTFM}{cmyk}{0.0254,0,0.559,0.537}
-% %   \definecolor{textoHeadingPortadaTFM}{cmyk}{0,0.0144,0.51,0.184}
-% % }
-
-% \definecolor{headingPortadaTFG}{RGB}{152,118,52}
-% \definecolor{headingPortadaTFM}{RGB}{0,90,170}
-% \definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
-
-% \definecolor{gray97}{gray}{.97}
-% \definecolor{gray75}{gray}{.75}
-% \definecolor{gray45}{gray}{.45}
-
-
-
-
-% % To draw rectagles in tfm cover
+% To draw decoration in slides
 \usepackage{tikz}
 \newcommand{\topline}{%
   \tikz[remember picture,overlay] {%
-    \filldraw[fill=red,draw=red] ([xshift=0.3cm,yshift=-1.4cm]current page.north west) rectangle ([xshift=0.6\paperwidth,yshift=-1.5cm]current page.north west);
-%    \filldraw[fill=green!20!white, draw=green!40!black] (0,0) rectangle (2,1);
+    \filldraw[fill=red,draw=red] ([xshift=0.3cm,yshift=-1.3cm]current page.north west) rectangle ([xshift=0.6\paperwidth,yshift=-1.4cm]current page.north west);
   }
-  %   \draw[red,ultra thick] ([xshift=0.3cm,yshift=-1.4cm]current page.north west)
-  %   -- ([xshift=0.6\paperwidth,yshift=-1.4cm]current page.north west);}
   \tikz[remember picture,overlay] {%
-    \draw[red,thick] ([xshift=0.6\paperwidth,yshift=-1.4cm]current page.north west)
-    -- ([xshift=0.985\paperwidth,yshift=-1.4cm]current page.north west);}
+    \draw[red,thick] ([xshift=0.3cm,yshift=-1.3cm]current page.north west) -- ([xshift=0.985\paperwidth,yshift=-1.3cm]current page.north west);}
   \tikz[remember picture,overlay] {%
-    \draw[red,thick] ([xshift=0.3cm,yshift=0.35cm]current page.south west)
-    -- ([xshift=0.985\paperwidth,yshift=0.35cm]current page.south west);}
-
+    \draw[red,thick] ([xshift=0.3cm,yshift=0.35cm]current page.south west) -- ([xshift=0.985\paperwidth,yshift=0.35cm]current page.south west);}
 }
 
-% % \usepackage[authoryear]{natbib}
-% % \makeatletter
-% % \let\NAT@parse\undefined
-% % \makeatother
-% % \usepackage{natbib}
+\newcommand{\toplinetitlepage}{%
+  \tikz[remember picture,overlay] {%
+    \filldraw[fill=red,draw=red] ([xshift=0.3cm,yshift=-1.3cm]current page.north west) rectangle ([xshift=0.985\paperwidth,yshift=-1.4cm]current page.north west);
+  }
+}
+
 
 \usepackage{geometry}
 % % \geometry{paperwidth=210mm,paperheight=297mm}
 
 % %\usepackage[hang, flushmargin]{footmisc}   
 
-% \usepackage[
-% %% ps2pdf,                %%% hyper-references for ps2pdf
-% bookmarks=true,%                   %%% generate bookmarks ...
-% bookmarksnumbered=true,            %%% ... with numbers
-% hypertexnames=false,               %%% needed for correct links to
-% %%% figures!!!
-% % hypertexnames=true,               %%% needed for correct links on pagebackrefs!!!
-% breaklinks=true,                   %%% breaks lines, but links are very small
-% % pagebackref=true,
-% % linktocpage=true,                 %%% enlace en el numero de página.
-% linktoc=all,
-% colorlinks=true,
-% linkcolor=blue,    
-% citecolor=green,
-% urlcolor=blue,                     %%% texto  con color (further
-% %%% modified in myconfig.tex)
-% % linkbordercolor={0 0 1},           %%% blue frames around links
-% pdfborder={0 0 112.0},              %%% border-width of frames 
-% hyperfootnotes=false,
-% ]{hyperref}                        %%% will be multiplied with 0.009 by ps2pdf
-% %\usepackage[all]{hypcap}
+\usepackage[]{hyperref} 
+
+%\usepackage[all]{hypcap}
 
 % % Para numerar las \subsubsection
 % \setcounter{secnumdepth}{5}
@@ -207,8 +132,6 @@
 % \setcounter{figure}{1}
 % \setcounter{secnumdepth}{4}
 
-
-% \setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
 
 
 % \usepackage{multirow}
@@ -273,128 +196,10 @@
 % \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
 % \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}{}}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% % BEGIN Fancy headers stuff
-% \fancyhf{}
-
-% \fancyhead[LE,RO]{\bfseries\thepage}
-% \fancyhead[LO]{\bfseries\rightmark}
-% \fancyhead[RE]{\bfseries\leftmark}
-
-% \makeatletter
-% \renewcommand{\chaptermark}[1]{\markboth{\@chapapp \ \thechapter . \ #1}{}}
-% \renewcommand{\sectionmark}[1]{\markright{\thesection \ \ #1}}
-% \makeatother
-
-% \renewcommand{\headrulewidth}{0.5pt}
-% \renewcommand{\footrulewidth}{0pt}
-% \addtolength{\headheight}{3.5pt}
-% \fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}}
-% \fancypagestyle{myplain}
-% {
-%   \fancyhf{}
-%   \renewcommand\headrulewidth{0pt}
-%   \renewcommand\footrulewidth{0pt}
-%   \fancyfoot[C]{\thepage}
-% }
-% % END Fancy headers stuff
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% % BEGIN Set nice chapter titles
-
-% % BEGIN Example 0 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
-% % \usepackage[explicit]{titlesec}
-% % \usepackage{blindtext}
-% % \definecolor{gray75}{gray}{0.75}
-% % \newcommand{\hsp}{\hspace{20pt}}
-% % \titleformat{\chapter}[hang]{\Huge\bfseries}{\chaptername~\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
-% % END Example 0 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
-
-% % BEGIN Example 1 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
-% % \usepackage{titlesec}
-% % \usepackage{blindtext}
-% % \definecolor{gray75}{gray}{0.75}
-% % \newcommand{\hsp}{\hspace{20pt}}
-% % \titleformat{\chapter}[hang]{\Huge\bfseries}{\chaptername~\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
-% % END Example 1 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
-
-% % BEGIN Example 2 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
-% % Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
-% % \usepackage[Sonny]{fncychap}
-% % \usepackage[Lenny]{fncychap} % ugly
-% % \usepackage[Glenn]{fncychap}
-% % \usepackage[Conny]{fncychap} % ugly
-% % \usepackage[Rejne]{fncychap}
-% % \usepackage[Bjarne]{fncychap} % Doesn't work in Spanish
-% % \usepackage[Bjornstrup]{fncychap}
-% % END   Example 2 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
-
-% % BEGIN Example 3 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
-% % This is a nice colored example
-% % \usepackage{kpfonts}
-% % \usepackage[explicit]{titlesec}
-% % \newcommand*\chapterlabel{}
-% % \titleformat{\chapter}
-% % {\gdef\chapterlabel{}
-% % \normalfont\sffamily\Huge\bfseries\scshape}
-% % {\gdef\chapterlabel{\thechapter\ }}{0pt}
-% % {\begin{tikzpicture}[remember picture,overlay]
-% %   \node[yshift=-3cm] at (current page.north west)
-% %   {\begin{tikzpicture}[remember picture, overlay]
-% %     \draw[fill=LightSkyBlue] (0,0) rectangle
-% %     (\paperwidth,3cm);
-% %     \node[anchor=east,xshift=.9\paperwidth,rectangle,
-% %     rounded corners=20pt,inner sep=11pt,
-% %     fill=MidnightBlue]
-% %     {\color{white}\chapterlabel#1};
-% %   \end{tikzpicture}
-% % };
-% % \end{tikzpicture}
-% % }
-% %   \titlespacing*{\chapter}{0pt}{50pt}{-60pt}
-% %   END   Example 3 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
-
-% %   BEGIN Example 4 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
-% %   END   Example 4 from http://texblog.org/2012/07/03/fancy-latex-chapter-styles/
 
 
-% %   END Set nice chapter titles
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
-
-% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
-% % %   This is to set background images (in our case to set background image
-% % %   in TFMs front and back pages)
-% % %   If you want to set this background, use \BgThispage in the
-% % %   corresponding pages
-% % \usepackage[pages=some]{sty/background}
-
-% % \ifthenelse{\equal{\colorspaceused}{rgb}}
-% % {
-% %   \backgroundsetup{ scale=1, angle=0, opacity=.1, color=pink,
-% %     contents={\includegraphics[width=.7\paperwidth]{logos/logoEPS-UAH.jpg}}, vshift=-50pt,  hshift=0pt }
-% % }
-% % {
-% %   \backgroundsetup{ scale=1, angle=0, opacity=.1, color=pink,
-% %     contents={\includegraphics[width=.7\paperwidth]{logos/logoEPS-UAH-cmyk.jpg}}, vshift=-50pt,  hshift=0pt }
-% % }
 
 
-% % This is to allow do a clearpage and let the next one to be placed in
-% % even pages (to set a backpage for example)
-% \makeatletter
-% \newcommand*{\cleartoleftpage}{%
-%   \clearpage
-%   \if@twoside
-%   \ifodd\c@page
-%   \hbox{}\newpage
-%   \if@twocolumn
-%   \hbox{}\newpage
-%   \fi
-%   \fi
-%   \fi
-% }
-% \makeatother
 
 % % Let's define some styles for source code listings:
 % % 
@@ -557,6 +362,122 @@
 % \usepackage{fix-cm}
 
 % \usepackage{graphicx}                                                                      
+
+\definecolor{titlecolor}{RGB}{0,173,239}
+
+\mode<presentation>{
+  % % \usetheme{Warsaw}
+  % \usefonttheme{structurebold}
+  % \setbeamerfont{title}{family={\fontfamily{ppl}},series=\bfseries,size=\LARGE,shape=\itshape}
+  
+  % \definecolor{steelblue3}{rgb}{0.31,0.58,0.8}
+  % \colorlet{structure}{steelblue3}
+  % \usecolortheme[named=steelblue3]{structure}
+  
+  % \setbeamercovered{transparent}
+  
+  % \definecolor{skyblue3}{rgb}{0.42,0.65,0.8} 
+  % \setbeamercolor{blocks}{fg=black,bg=skyblue3}
+  
+  % \definecolor{purple4}{rgb}{0.33,0.1,0.55}
+  % \setbeamercolor{alerted text}{fg=purple4}
+  
+  \setbeamertemplate{navigation symbols}{}
+
+
+%  \setbeamertemplate{itemize items}[square]
+
+\transduration{1}
+%\addtobeamertemplate{background canvas}{\transuncover[duration=1,direction=270]}{}
+%\addtobeamertemplate{background canvas}{\transdissolve[duration=0.5,direction=90]}{}
+%\addtobeamertemplate{background canvas}{\transglitter[direction=90]}{}
+
+\setbeamertemplate{frametitle}{\Large\insertframetitle\\\large\textcolor{blue}{\insertframesubtitle}}
+
+\setbeamercolor{item}{fg=red} % color of bullets
+\setbeamertemplate{itemize item}{$\bm{\Box}$}
+\setbeamercolor{itemize/enumerate body}{fg=black}
+
+\setbeamertemplate{itemize subitem}{\scriptsize$\blacksquare$}
+\setbeamercolor{itemize/enumerate subbody}{fg=blue,shape=\itshape}
+
+\setbeamertemplate{itemize subsubitem}{\tiny$\Box$}
+\setbeamercolor{itemize/enumerate subsubbody}{fg=red,shape=\itshape}
+
+\setbeamercolor{frametitle}{fg=black}
+\setbeamercolor{framesubtitle}{fg=blue}
+\setbeamerfont{framesubtitle}{size=\Large}
+
+
+%\setbeamercolor{subitem}{fg=red}
+%\setbeamercolor{itemize/enumerate subbody}{fg=gray}
+%\setbeamertemplate{itemize subitem}{{\textendash}}
+%\setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
+%\setbeamerfont{itemize/enumerate subitem}{size=\footnotesize}
+
+%   \setbeamertemplate{itemize items}{\scriptsize\raise1.25pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
+%   \setbeamertemplate{itemize subitems}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
+%   \setbeamertemplate{itemize subsubitems}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
+  % \setbeamertemplate{enumerate items}{\insertenumlabel.}
+  % \setbeamertemplate{enumerate subitems}{\insertenumlabel.\insertsubenumlabel}
+  % \setbeamertemplate{enumerate subsubitems}{\insertenumlabel.\insertsubenumlabel.\insertsubsubenumlabel}
+  % \setbeamertemplate{enumerate mini template}{\insertenumlabel}
+  
+  \let\Tiny=\tiny
+  \setbeamersize{text margin left=0.3cm,text margin right=0.3cm, text margin top=0.3cm, text margin bottom=0.3cm}
+}
+
+\addtobeamertemplate{title page}{}{%
+  \toplinetitlepage
+
+  \begin{textblock*}{100mm}(0.05cm,-7.9cm)
+    \includegraphics[height=1cm]{logoUAHazul.jpg}
+  \end{textblock*}
+  
+  \begin{textblock*}{100mm}(11.3cm,-7.9cm)
+    \includegraphics[height=1.cm]{Logo_depeca_azul.jpg}
+  \end{textblock*}
+
+  \begin{textblock*}{\paperwidth}(-0.5cm,0.45cm)
+    \begin{flushright}
+      \raisebox{-.15\height}{}\tiny\mydegreefull
+    \end{flushright}
+  \end{textblock*}
+
+  \begin{textblock*}{\textwidth}(0cm,0.86cm)
+%    \raisebox{-.15\height}{\includegraphics[height=0.2cm]{logogeintra+pcr.png}} Proyecto Spaces \textemdash~UPM+UAH
+    \raisebox{-.15\height}{}\tiny Defensa~\mybookworktype{} %\thepage/\pageref{Lastpage}
+  \end{textblock*}
+
+  \tikz[remember picture,overlay] {%
+    \draw[red,thick] ([xshift=0.3cm,yshift=0.35cm]current page.south west) -- ([xshift=0.985\paperwidth,yshift=0.35cm]current page.south west);}
+
+  % \begin{textblock*}{100mm}(0cm,-0.6cm)
+  %   \includegraphics[height=1.06cm]{multilogo-SPACES.png}
+  % \end{textblock*}
+}
+
+
+\addtobeamertemplate{frametitle}{}{%
+  \begin{textblock*}{100mm}(0.965\textwidth,-1cm)
+    \includegraphics[height=1.1cm]{logoUAH+DEPECA.png}
+%    \includegraphics[width=0.5cm]{Logo-upm-uah.png}
+  \end{textblock*}}
+
+\setbeamertemplate{footline}{
+  \begin{textblock*}{\textwidth}(0.3cm,-0.25cm)
+%    \raisebox{-.15\height}{\includegraphics[height=0.2cm]{logogeintra+pcr.png}} Proyecto Spaces \textemdash~UPM+UAH
+    \raisebox{-.15\height}{}Defensa \mybookworktype{}~\textemdash~\mybookauthor %\thepage/\pageref{Lastpage}
+  \end{textblock*}
+
+  \begin{textblock*}{\textwidth}(-0.3cm,-0.7cm)
+    \begin{flushright}
+      \tiny\thepage/\pageref{lastPage}
+    \end{flushright}
+  \end{textblock*}
+
+\topline
+}
 
 %%% Local Variables:
 %%% TeX-master: "../book"

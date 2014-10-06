@@ -1,0 +1,104 @@
+% Title:  slides
+% 
+% Doc: /home/macias/reposito/users/plantilla-unificada-latex/slides/slides.tex
+% Original Author:	Javier Macias-Guarasa <macias@depeca.uah.es>
+% Created:		Sat Sep 27 2014
+% 
+
+\documentclass[spanish,a4]{beamer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% BEGIN Preamble and configuration section
+% 
+\input{../config/preamble-slides.tex}    % DO NOT TOUCH THIS LINE. You can edit
+% the file to modify some default settings
+
+\input{../config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE 
+                                  % to set your specific settings (related
+                                  % to the document language, your degree,
+                                  % document details (such as title, author
+                                  % (you), your email, name of the tribunal
+                                  % members, document year, keyword and
+                                  % palabras clave) and link colors), and
+                                  % define your commonly used commands
+                                  % (some examples are provided).
+
+\input{../config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
+                                  % "postamble" is not a valid word... :-)
+
+% path to directories containing images
+\graphicspath{{../logos/}{../figures/}{../diagrams/}} % Edit this to your
+% needs. Only logos is really required
+% when you generate your own content.
+% 
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\title[Defensa \mybookworktype \textemdash \mybookauthor]{\mybooktitle}
+
+% Use this for TFCs et al
+\author{\mybookauthor}
+\institute{\mybookresearchgroup \\ \mybookdepartment \\ \mybookuniversity}
+
+% Use this for research reports or other document types
+% \author[\mybookauthor]{\mybookauthor\inst{1} \and \mybookNameFirstAdvisor\inst{2}}
+% \institute[Alcalá and Politécnica de Madrid]{\inst{1}Department of Electronics \\ Universidad de Alcalá \and \inst{2}Department of Artificial Intelligence \\ Universidad Politécnica de Madrid}
+
+
+% Some useful definitions...
+
+
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+%\maketitle
+
+\begin{frame}
+  
+  \frametitle{Título tal largo, sin pasarnos}  
+  \framesubtitle{Subtítulo}  
+  
+  \begin{itemize}
+  \item Nivel 1, item 1
+  \item Nivel 1, item 2
+    \begin{itemize}
+    \item Nivel 2, item 1
+      \begin{itemize}
+      \item Nivel 3, item 1
+      \item Nivel 3, item 2
+      \end{itemize}
+    \item Nivel 2, item 2
+    \end{itemize}
+    
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+
+  \frametitle{Título de la segunda transparencia}  
+  \framesubtitle{Subtítulo 2ª}  
+
+  \begin{itemize}
+  \item Uno
+  \item Dos
+  \item Tres
+  \item Cuatro
+  \end{itemize}
+
+  % To generate page x/y
+  \label{lastPage}
+
+\end{frame}
+
+
+
+
+\end{document}
+
+% Local Variables:
+% End:

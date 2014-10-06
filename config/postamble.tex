@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: postamble.tex,v 1.7 2014/09/22 00:19:35 macias Exp $
+% $Id: postamble.tex,v 1.8 2014/10/02 22:16:06 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -42,6 +42,14 @@
 % cover pages (TFG by default)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifthenelse{\equal{\mybooklanguage}{spanish}}
+{
+\newcommand{\mybookFullAffiliation}{Grupo de investigación \mybookresearchgroup \\ \mybookdepartment \\ \mybookuniversity} 
+} 
+{
+\newcommand{\mybookFullAffiliation}{\mybookresearchgroup Research Group \\ \mybookdepartmentEnglish \\ \mybookuniversity} 
+}
 
 % Set name of advisors and define words depending on singular/plural
 \ifthenelse{\equal{\mybookNameSecondAdvisor}{}}
@@ -306,7 +314,7 @@
                               {
                                 \ifthenelse{\equal{\mydegree}{GEINTRARR}}
                                 {
-%                                  \newcommand{\mydegreefull}{GEINTRA Research Report}
+                                  \newcommand{\mydegreefull}{GEINTRA Research Report}
                                   \newcommand{\mybookworktype}{GEINTRARR}
                                   \ifthenelse{\equal{\mybooklanguage}{spanish}}
                                   {
