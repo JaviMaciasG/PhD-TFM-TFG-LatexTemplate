@@ -2,7 +2,7 @@
 # 
 # Makefile to generate slides
 #
-# $Id: Makefile,v 1.10 2014/03/19 15:03:40 macias Exp $
+# $Id: Makefile,v 1.1 2014/10/06 22:35:59 macias Exp $
 #
 # By:
 #  + Javier Macías-Guarasa. 
@@ -36,9 +36,9 @@ RM=rm -f
 
 ###########################################################################
 # Support to automagically compile dia+svg files. Adapt to your own needs
-DIA_SOURCES=$(wildcard diagrams/*.dia)
-SVG_SOURCES=$(wildcard diagrams/*.svg)
-EPS_SOURCES=$(wildcard eps/*.eps) $(wildcard ALLcurvesROC-AV16.3/*.eps) $(wildcard ALLcurvesROC-HIFI-MM1/*.eps)
+DIA_SOURCES=$(wildcard ../diagrams/*.dia)
+SVG_SOURCES=$(wildcard ../diagrams/*.svg)
+EPS_SOURCES=$(wildcard ../eps/*.eps) $(wildcard ALLcurvesROC-AV16.3/*.eps) $(wildcard ALLcurvesROC-HIFI-MM1/*.eps)
 
 PDFS_FROM_DIA=$(patsubst %.dia,%.pdf,$(DIA_SOURCES)) 
 PDFS_FROM_SVG=$(patsubst %.svg,%.pdf,$(SVG_SOURCES)) 
