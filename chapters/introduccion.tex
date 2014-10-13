@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: introduccion.tex,v 1.9 2014/07/01 15:33:47 macias Exp $
+% $Id: introduccion.tex,v 1.10 2014/09/22 00:19:34 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -276,28 +276,37 @@ de trabajo y el autor:
 \item Título del documento (variable \texttt{\textbackslash{}mybooktitle}).
 \item Nombre del autor del trabajo (variable \texttt{\textbackslash{}mybookauthor}).
 \item DNI del autor del trabajo, usado en el papeleo de los TFGs (variable \texttt{\textbackslash{}mybookDNI}).
-\item Departamento en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybookdepartment}).
+\item Departamento en el que se realiza el trabajo (variable
+  \texttt{\textbackslash{}mybookdepartment}, en español, y \texttt{\textbackslash{}mybookdepartmentEnglish}, en inglés).
+\item Grupo de investigación en el que se realiza el trabajo (variable
+  \texttt{\textbackslash{}mybookresearchgroup}.
 \item Centro en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybookschool}, que debería ser la Escuela Politénica Superior, pero se incluye por generalidad).
 \item Universidad en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybooksuniversidad}, que debería ser la de Alcalá, pero se incluye por generalidad).
 \item Titulación del autor (usada en las tesis de UPM, (variable \texttt{\textbackslash{}mybookauthordegree})).
 \item Email del autor (variable \texttt{\textbackslash{}mybookemail}).
-\item Nombre del/de los directores del trabajo (variable \texttt{\textbackslash{}mybookadvisors}).
+\item Nombre del primer (o único, en su caso) director del trabajo
+  (variable \texttt{\textbackslash{}mybookNameFirstAdvisor}).
+\item Nombre del segundo (en su caso) director del trabajo (variable \texttt{\textbackslash{}mybookNameSecondAdvisor}).
 \item Nombre del presidente del tribunal (variable \texttt{\textbackslash{}mybookpresident}).
 \item Nombre del primer vocal del tribunal (variable \texttt{\textbackslash{}mybookfirstvocal}).
 \item Nombre del segundo vocal del tribunal (variable \texttt{\textbackslash{}mybooksecondvocal}).
 \item Nombre del secretario del tribunal, en su caso (variable \texttt{\textbackslash{}mybooksecretary}).
 \item Año del trabajo (variable \texttt{\textbackslash{}mybookyear}).
 \item Fecha del anteproyecto, en su caso (variable \texttt{\textbackslash{}mybookanteproyectodate}), en el caso de que se usen la plantilla del anteproyecto.
+\item Fecha de la defensa del trabajo, en su caso (variable \texttt{\textbackslash{}mydefensedate}).
 \item Palabras clave en inglés (variable \texttt{\textbackslash{}mybookkeywords}).
 \item Palabras clave en español (variable \texttt{\textbackslash{}mybookpalabrasclave}).
 \end{itemize}
 
-Y también variables para el caso de los TFG's y TFM's que deseen aceptar
-la publicación en abierto:
+Y también variables para el caso de los trabajos que necesitan papeleo
+adicional (publicación en abierto, autorizaciones, etc.).
 
 \begin{itemize}
-\item DNI del autor que firma el acuerdo, que es normalmente el alumno
-  (variable \texttt{\textbackslash{}mybookDNIOpenPublishing}).
+\item Nombre del Secretario del Departamento (que firmará parte del papeleo)
+  (variable \texttt{\textbackslash{}mybookdepartmentsecretary}).
+\item Fecha que aparecerá en la firma del papeleo (variable \texttt{\textbackslash{}mybookdateforpaperwork}).
+\item DNI del alumno (variable
+  \texttt{\textbackslash{}mybookDNIOpenPublishing}).
 \item Figura del autor del trabajo, que es normalmente ``alumno''
   (variable \texttt{\textbackslash{}mybookProfFigureOpenPublishing}).
 \item DNIs del/de los tutores, para los permisos de publicación en
@@ -305,14 +314,17 @@ la publicación en abierto:
   \texttt{\textbackslash{}mybookDNISecondAdvisor}, en su caso)
 \end{itemize}
 
+Se ha comenzado a trabajar en la versión alfa del soporte para
+\textit{research reports}, y en ese caso se usa la variable
+\texttt{\textbackslash{}mybookresearchreportID}.
 
 Parte de esa información se utilizará para rellenar la metainformación
 incluida en el fichero \texttt{pdf} que se genera.
 
-También se definen los colores que se usarán en los
-hiperenlaces del documento. En concreto\footnote{Os rogamos
-  encarecidamente que cambiéis los colores definidos actualmente, que se
-  han usado para verificar que todo funciona correctamente.}:
+También se definen los colores que se usarán en los hiperenlaces del
+documento. En concreto\footnote{Os rogamos encarecidamente que cambiéis
+  los colores definidos actualmente, que se han usado para verificar que
+  todo funciona correctamente.}:
 
 \begin{itemize}
 \item Color de los enlaces en el índice de contenidos (variable
@@ -413,7 +425,6 @@ caso, la solución propuesta/adoptada:
   \texttt{PassOptionsToPackage}, pero está pendiente de
   verificación. Please, confirmadme que funciona (tanto lo del color
   como la compilación en un ubuntu 12.04 (o posterior).
-
 
 \item También hemos observado en la versión 12.04 de ubuntu que
   \texttt{evince} no es capaz de visualizar la primera página de los

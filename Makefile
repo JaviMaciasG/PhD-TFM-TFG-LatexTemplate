@@ -2,7 +2,7 @@
 # 
 # Makefile to generate book.pdf
 #
-# $Id: Makefile,v 1.10 2014/03/19 15:03:40 macias Exp $
+# $Id: Makefile,v 1.11 2014/10/02 22:16:05 macias Exp $
 #
 # By:
 #  + Javier Macías-Guarasa. 
@@ -86,7 +86,7 @@ pdf_eps_done: $(PDFS_FROM_EPS)
 #	-epstopdf -outfile=$@ $^ 
 
 tar:
-	gunzip $(ROOT_FILENAME)-latex.tar.gz
+#	gunzip $(ROOT_FILENAME)-latex.tar.gz
 	tar -uvf $(ROOT_FILENAME)-latex.tar `find . -name Makefile -o -name README -o -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS"` 
 	gzip $(ROOT_FILENAME)-latex.tar
 	zip -u $(ROOT_FILENAME)-latex.zip `find . -name Makefile -o -name README -o -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS"` 
