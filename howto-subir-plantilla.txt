@@ -1,0 +1,16 @@
+Para subir la plantilla a distintos sitios:
+
++ En www.depeca.uah.es está en 
+  - https://www.depeca.uah.es/depeca/repositorio/otros/book-latex.zip
+  - https://www.depeca.uah.es/depeca/repositorio/asignaturas/201760/CA_plantilla_TFM_latex.zip
+
+  scp -P 2222 book-latex.zip macias@www.depeca.uah.es:/srv/www/htdocs/depeca/repositorio/otros
+  scp -P 2222 book-latex.zip macias@www.depeca.uah.es:/srv/www/htdocs/depeca/repositorio/asignaturas/201760/CA_plantilla_TFM_latex.zip
+
++ En www.geintra-uah.org, por ftp, 
+  - directorio archivos
+  - copiar book-latex.zip 
+           book-GIEC-spanish.pdf
+           book-PHDUAH-spanish.pdf
+           book-PHDUAH-english.pdf
+           book-MUSEA-english.pdf
