@@ -2,7 +2,7 @@
 % 
 % Generic template for TFC/TFM/TFG/Tesis
 % 
-% $Id: preamble.tex,v 1.25 2014/10/02 22:16:06 macias Exp $
+% $Id: preamble.tex,v 1.26 2014/10/13 13:32:09 macias Exp $
 % 
 % By:
 % + Javier Macías-Guarasa. 
@@ -535,6 +535,11 @@ hyperfootnotes=false,
 
 % Add algorithms april 2014
 \usepackage[vlined,algochapter]{algorithm2e}
+% Make this compatible with older/newer versions of the package
+\providecommand{\DontPrintSemicolon}{\dontprintsemicolon}
+\providecommand{\SetAlgoLined}{\SetLine}
+
+
 
 % Add support for fonts at arbitrary sizes september 2014, for TFG's cover
 \usepackage{fix-cm}
