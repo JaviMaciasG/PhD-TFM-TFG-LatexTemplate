@@ -2,7 +2,7 @@
 % 
 % Generic template for TFC/TFM/TFG/Tesis
 % 
-% $Id: preamble.tex,v 1.27 2014/10/28 14:44:15 marcos.baptista Exp $
+% $Id: preamble.tex,v 1.28 2014/11/06 09:33:06 macias Exp $
 % 
 % By:
 % + Javier Macías-Guarasa. 
@@ -242,7 +242,16 @@ hyperfootnotes=false,
 % \usepackage[printonlyused]{sty/acronym}
 
 % glossaries is better than the acronym package 
-\usepackage[acronym,shortcuts,nomain]{glossaries}
+\usepackage[acronym,shortcuts,nomain,hyperfirst=false]{glossaries}
+% If you want to PERMANENTLY DISABLE HYPERLINKS, uncomment the following
+% line
+% \glsdisablehyper
+% In future versiones (not as for ubuntu 12.04) You can also selectively
+% disable hyperlinks for given glossaries, using:
+% \usepackage[acronym,shortcuts,nomain,nohypertypes={acronyms,symbols}]{glossaries}
+% Or (for newwer versions also), you can even use
+% \GlsDeclareNoHyperList{acronyms,symbols}
+% You can also disable hyperlinks in the acronym use, like in \ac*{symbol}
 
 
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
@@ -545,6 +554,20 @@ hyperfootnotes=false,
 \usepackage{fix-cm}
 
 \usepackage{graphicx}                                                                      
+
+% This is to avoid producing an hyperlink for starred documents. ONLY
+% WORKS FOR THE ACRONYM PACKAGE, NOT USED HERE ANYMORE
+% \makeatletter
+% \AtBeginDocument{%
+%   \renewcommand*\AC@hyperlink{%
+%     \ifAC@starred
+%       \expandafter\@secondoftwo
+%     \else
+%       \expandafter\hyperlink
+%     \fi
+%   }%
+% }
+% \makeatother
 
 %%% Local Variables:
 %%% TeX-master: "../book"
