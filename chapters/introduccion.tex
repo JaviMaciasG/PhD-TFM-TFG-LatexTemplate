@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: introduccion.tex,v 1.11 2014/10/13 13:32:08 macias Exp $
+% $Id: introduccion.tex,v 1.12 2014/11/06 09:26:55 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -524,7 +524,7 @@ de nuevo.
 
 \glsresetall[acronym]
 
-Y ahora forzamos el acrónimo: \acs{EMODB} (eqivalente a
+Y ahora forzamos el acrónimo: \acs{EMODB} (equivalente a
 \glsname{EMODB} que vale para cualquier glosario). También podemos
 forzar a que lo ponga todo, con \acf{EMODB}.
 
@@ -548,14 +548,21 @@ Los símbolos definidos están incluidos en el fichero
 ejemplos. 
 
 El \ac{angstrom} se usa en biología estructural, mientras que el
-\ac{ohm} se usa en electrónica. También podemos poner~\ac{xdet}.
+\ac{ohm} se usa en electrónica. También podemos poner~\ac{xdet}. Y
+también funciona en entornos \textt{math} (\$...\$)
+$(\ac{xdet})$.
+
+Es posible incluso deshabilitar los hiperenlaces, usando un ``*'', como
+en ~\ac*{xdet} o \ac*{EMODB}.
+
+También valen en entornos equation:
 
 \begin{equation}
   \label{eq:1}
   \ac{xdet}
 \end{equation}
 
-Y finalmente la que nos falta: \ac{xidet}, también dentro de fórmulas
+Y finalmente la que nos falta: \ac{xidet}, también dentro de ecuaciones
 (otra cosa es que sea conveniente o útil):
 
 \begin{equation}
