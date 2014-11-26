@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: introduccion.tex,v 1.13 2014/11/06 13:46:53 macias Exp $
+% $Id: introduccion.tex,v 1.14 2014/11/26 14:35:28 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -432,7 +432,7 @@ caso, la solución propuesta/adoptada:
   \texttt{evince} no es capaz de visualizar la primera página de los
   TFGs (generada con \texttt{tikz}), y que \texttt{xpdf} genera un core
   cuando intenta abrir el fichero compilado. La solución es usar
-  \texttt{qpdfview} o \texttt{acroread}.
+  \texttt{qpdfview} o \texttt{acroread}. 
 
 \end{itemize}
 
@@ -489,12 +489,14 @@ generado automáticamente a partir de un fichero
 \begin{figure}[tphb]
   \centering
   \includegraphics{Esquema_objetos}
-  \caption{Clasificación de los objetos para la gramática.}
+  \caption{Clasificación de los objetos para la gramática (aquí también
+    se pueden poner acrónimos como \acs{ETTS} y símbolos como \ac{xidet})}
   \label{fig:fig_clobj}
 \end{figure}
 
 
-\subsection{Definición y uso de acrónimos}
+\subsection{Definición y uso de acrónimos (aquí también
+    se pueden poner acrónimos como \acs{ETTS})}
 \label{sec:uso-de-acronimos}
 
 El uso del paquete \texttt{glossaries} permite definir los acrónimos y
@@ -545,11 +547,12 @@ primera vez, y luego la segunda como \acp{SOC}. Y podemos volver al
 singular con \ac{SOC}.
 
 
-\subsection{Definición y uso de símbolos}
+\subsection{Definición y uso de símbolos (aquí también
+    se pueden símbolos como \ac{xidet})}
 \label{sec:simbolos}
 
 Los símbolos definidos están incluidos en el fichero
-\texttt{symbols/defsymbolsgl.tex} (with additional configuration in
+\texttt{symbols/defsymbolsgl.tex} (con configuración adicional en
 \texttt{symbols/symbolsgl.tex}) y en esta sección mostramos algunos
 ejemplos.
 
@@ -561,7 +564,7 @@ $(\ac{xdet})$.
 Es posible incluso deshabilitar los hiperenlaces, usando un ``*'', como
 en ~\ac*{xdet} o \ac*{EMODB}.
 
-También valen en entornos equation:
+También valen en entornos \texttt{equation}:
 
 \begin{equation}
   \label{eq:1}

@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: acronymsgl.tex,v 1.5 2014/01/08 22:56:03 macias Exp $
+% $Id: acronymsgl.tex,v 1.6 2014/11/26 14:35:27 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -28,8 +28,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % You can change the way the entries appear the first time they are
-% used. I've used italics by default
-\defglsdisplayfirst[\acronymtype]{\textit{#1}} % EDIT this if required
+% used. I've used italics by default. I found a problem if using this:
+% LaTeX adds an extra space after the acronym, so I'm commenting it out
+% (if you find a solution, please let me know)
+%\defglsdisplayfirst[\acronymtype]{\textit{#1}} % EDIT this if required
 
 % This may lead to problems... I don't know how to fix it in case the
 % column for acronym is wider than 0.3\linewidth
