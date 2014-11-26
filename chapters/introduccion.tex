@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: introduccion.tex,v 1.12 2014/11/06 09:26:55 macias Exp $
+% $Id: introduccion.tex,v 1.13 2014/11/06 13:46:53 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -211,11 +211,13 @@ La plantilla definida presenta la siguiente estructura:
   el listado de fragmentos de código fuente definidos en el
   \texttt{appendix/manual.tex}.
 \item Listado de acrónimos utilizados, que se definen en el fichero
-  \texttt{acronyms/acronymsgl.tex}, y del que incluimos más información
-  en la sección~\ref{sec:uso-de-acronimos}.
+  \texttt{acronyms/defacronymsgl.tex} (con opciones adicionales de
+  configuración en \texttt{acronyms/acronymsgl.tex}), y del que
+  incluimos más información en la sección~\ref{sec:uso-de-acronimos}.
 \item Listado de símbolos utilizados, que se definen en el fichero
-  \texttt{symbols/symbolsgl.tex}, y del que incluimos más información en
-  la sección~\ref{sec:simbolos}.
+  \texttt{symbols/defsymbolsgl.tex} (con opciones adicionales de
+  configuración en \texttt{symbols/symbolsgl.tex}), y del que incluimos
+  más información en la sección~\ref{sec:simbolos}.
 \item Capítulos del documento, del que hay varios ejemplos que siguen la
   estructura típica (introducción, estudio teórico, desarrollo,
   resultados y conclusiones.
@@ -486,7 +488,7 @@ generado automáticamente a partir de un fichero
 
 \begin{figure}[tphb]
   \centering
-  \includegraphics{Esquema_objetos.pdf}
+  \includegraphics{Esquema_objetos}
   \caption{Clasificación de los objetos para la gramática.}
   \label{fig:fig_clobj}
 \end{figure}
@@ -498,7 +500,8 @@ generado automáticamente a partir de un fichero
 El uso del paquete \texttt{glossaries} permite definir los acrónimos y
 el sistema automáticamente gestiona su inclusión completa la primera vez
 que se usa. Los acrónimos de ejemplo están en el fichero
-\texttt{acronyms/acronymsgl.tex}.
+\texttt{acronyms/defacronymsgl.tex} (con opciones adicionales de
+configuración en \texttt{acronyms/acronymsgl.tex}).
 
 Así, si nos referimos a \ac{ETTS} o bien a \ac{EMODB},
 veremos como aparecen expandidas la primera vez. A partir de ahí, sólo
@@ -506,15 +509,17 @@ se usará el acrónimo como puede verse al volver a hablar de \ac{ETTS} y
 \ac{EMODB}.
 
 Tiene también soporte para resetear todos los acrónimos como si no
-estuvieran usados. Vuelvo a incluir el párrafo anterior tras un reset:
+estuvieran usados. Vuelvo a incluir el párrafo anterior tras un reset
+(que se hace con un \texttt{\textbackslash{}glsresetall[acronym]}):
 
 \glsresetall[acronym]
 
 El uso del paquete acronym permite definir los acrónimos y el sistema
 automáticamente gestiona su inclusión completa la primera vez que se
 usa. Así, si nos referimos a \ac{ETTS} o bien a \ac{EMODB}, veremos como
-aparecen expandidas la primera vez. A partir de ahí, sólo se usará el
-acrónimo como puede verse al volver a hablar de \ac{ETTS} y \ac{EMODB}.
+aparecen expandidas de nuevo (como si fuera la primera vez que se
+usan). A partir de ahí, sólo se usará el acrónimo como puede verse al
+volver a hablar de \ac{ETTS} y \ac{EMODB}.
 
 Y permite también forzar que se vuelva a citar completo aunque ya se
 haya utilizado (con el acrónimo entre paréntesis), como puede verse en
@@ -544,12 +549,13 @@ singular con \ac{SOC}.
 \label{sec:simbolos}
 
 Los símbolos definidos están incluidos en el fichero
-\texttt{symbols/symbolsgl.tex} y en esta sección mostramos algunos
-ejemplos. 
+\texttt{symbols/defsymbolsgl.tex} (with additional configuration in
+\texttt{symbols/symbolsgl.tex}) y en esta sección mostramos algunos
+ejemplos.
 
 El \ac{angstrom} se usa en biología estructural, mientras que el
 \ac{ohm} se usa en electrónica. También podemos poner~\ac{xdet}. Y
-también funciona en entornos \textt{math} (\$...\$)
+también funciona en entornos \texttt{math} (\$...\$)
 $(\ac{xdet})$.
 
 Es posible incluso deshabilitar los hiperenlaces, usando un ``*'', como
