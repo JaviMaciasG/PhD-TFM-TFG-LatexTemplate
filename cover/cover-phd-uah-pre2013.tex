@@ -31,76 +31,66 @@
 \large
 \begin{center}
 
-  \color{pantone293}
+  {\Huge\textbf{\MakeUppercase{\mybookuniversity}}}
 
-  \centerline{\includegraphics[height=3cm]{uah/01_logo-vA_pant293.pdf}}
+  \vspace{7mm}
 
-  \ifthenelse{\equal{\mybooklanguage}{english}}
-  {
-    \huge{{\mybookphdprogramEnglish}}
-  }
-  {
-    \huge{{\mybookphdprogram}}
-  }
+  {\Large{\MakeUppercase{\mybookschool}}}
 
-  \vspace{2cm}   
+  \vspace{1cm}
   
-  \Huge\textbf{\mybooktitle}
+  {\Large\textbf{\MakeUppercase{\mybookdepartment}}}
 
-  \vspace{10mm}
+  \vspace{15mm}
+
+  \centerline{\includegraphics[height=6cm]{logoUAHazul.jpg}}
+
+  \vspace{1cm}   
+
+  \Large\textbf{\mybooktitle}
+
+  \vspace{2cm}
   
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
-    \huge{{PhD. Thesis Presented by}}
+    \textbf {Author}
   }
   {
-    \huge{{Tesis Doctoral presentada por}}
+    \textbf {Autor}
   }
-
-  \huge{\textbf{\mybookauthor}}
-
-
-  \vspace{10mm}
-
+  
+  % \vspace{5mm}
+  
+  \mybookauthor
+  
+  \vspace{1cm}
+  
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
-    \huge {\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}}
+    \textbf {\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}}
   }
   {
-    \huge {\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}}
+    \textbf {\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}}
   }  
-
-  \textbf{\mybookadvisors}
-
-  % \LARGE\textbf{\mybookworktypefull}
-
-  \color{black}
+  % \vspace{5mm}
   
-
+  \mybookadvisors
+  
+  
 \end{center}
 
 \begin{bottomparagraph}
   \begin{center}
-
-    \color{pantone293}
-
-    \ifthenelse{\equal{\mybooklanguage}{english}}
-    {
-      \huge {Alcalá de Henares, \mydefensedateEnglish}
-    }
-    { 
-      \huge {Alcalá de Henares, \mydefensedate}
-    }  
-    \color{black}
-
+    \textbf{\mybookyear}\\
+    \vspace{5mm}
+    \textbf{\mybookworktypefull}
   \end{center}
 \end{bottomparagraph}
 
 
+\normalsize
+
 \clearemptydoublepage
-
-
-
 
 %%% Local Variables:
 %%% TeX-master: "../book"

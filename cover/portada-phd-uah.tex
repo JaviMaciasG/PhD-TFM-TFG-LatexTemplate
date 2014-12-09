@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: portada-phd-uah.tex,v 1.6 2014/01/11 23:27:57 macias Exp $
+% $Id: portada-phd-uah.tex,v 1.7 2014/06/28 22:08:22 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -32,37 +32,50 @@
 \vspace{3cm}
 \begin{center}
 
-  \Huge{\textbf{\MakeUppercase{\mybookuniversity}}}
+\color{pantone293}
 
-  \vspace{5mm}
+  \centerline{\includegraphics[height=3cm]{uah/01_logo-vA_pant293.pdf}}
 
-  \Large{\MakeUppercase{\mybookschool}}
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    \huge{{\mybookphdprogramEnglish}}
+  }
+  {
+    \huge{{\mybookphdprogram}}
+  }
+  % \Huge{\textbf{\MakeUppercase{\mybookuniversity}}}
+
+%  \vspace{5mm}
+
+%  \Large{\MakeUppercase{\mybookschool}}
   
-  \vspace{5mm}
+%  \vspace{5mm}
 
-  \Large\textbf{\MakeUppercase{\mybookdepartment}}
+%  \Large\textbf{\MakeUppercase{\mybookdepartment}}
+
+%  \vspace{15mm}
+
+  \vspace{2cm}   
+  
+  \Huge\textbf{\mybooktitle}
 
   \vspace{15mm}
+  
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    \huge{{PhD. Thesis Presented by}}
+  }
+  {
+    \huge{{Tesis Doctoral presentada por}}
+  }
 
-\ifthenelse{\equal{\colorspaceused}{rgb}}
-{
-  \centerline{\includegraphics[height=6cm]{logoUAHazul.jpg}}
-}
-{
-  \centerline{\includegraphics[height=6cm]{logoUAHazul-cmyk.jpg}}
-}
-  
-  \vspace{15mm}
-  
-  \LARGE\textbf{\mybookworktypefull}
+%  \vspace{15mm}
 
-  \vspace{15mm}   
+  \huge{\textbf{\mybookauthor}}
+
+%  \LARGE\textbf{\mybookworktypefull}
+
   
-  \LARGE\textbf{\mybooktitle}
-  
-  \vspace{2cm}
-  
-  \mybookauthor
 
 \end{center}
 
@@ -71,6 +84,8 @@
     \huge{\mybookyear}
   \end{center}
 \end{bottomparagraph}
+
+\color{black}
 
 \clearemptydoublepage
 
