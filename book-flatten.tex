@@ -1,0 +1,3237 @@
+
+
+\documentclass[spanish,openright]{book}
+
+\makeatletter{}
+
+
+\usepackage{ifthen}
+
+\newcommand{\colorspaceused}{rgb}
+
+\ifthenelse{\equal{\colorspaceused}{rgb}}
+{
+  \PassOptionsToPackage{rgb}{xcolor}}
+{
+  \PassOptionsToPackage{cmyk}{xcolor}}
+
+\usepackage[latin1]{inputenc} \usepackage[T1]{fontenc}                                    \usepackage{ae}               \usepackage{lmodern}                                        
+\usepackage[spanish, english]{babel}
+
+\usepackage[final]{pdfpages}
+
+\usepackage{emptypage}
+
+\usepackage{tocbibind}
+
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{afterpage}
+
+\usepackage{xspace}
+\usepackage{verbatim}
+\usepackage{moreverb}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{eurosym}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{makeidx}
+\usepackage{rotating}
+\usepackage{supertabular}
+\usepackage{hhline}
+\usepackage{array}
+\usepackage[noadjust]{cite}      
+
+\usepackage[center]{caption}
+\usepackage{subcaption}
+
+\usepackage{xcolor}
+
+
+\definecolor{headingPortadaTFG}{RGB}{152,118,52}
+\definecolor{headingPortadaTFM}{RGB}{0,90,170}
+\definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
+\definecolor{textoHeadingPortadaTFG}{RGB}{208,205,102}
+
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+
+
+
+
+\usepackage{tikz}
+
+
+
+\usepackage{geometry}
+\geometry{verbose,a4paper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+
+
+\usepackage[
+bookmarks=true,bookmarksnumbered=true,            hypertexnames=false,               breaklinks=true,                   linktoc=all,
+colorlinks=true,
+linkcolor=blue,    
+citecolor=green,
+urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfootnotes=false,
+]{hyperref}                        
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\setcounter{table}{1}
+\setcounter{figure}{1}
+\setcounter{secnumdepth}{4}
+
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+
+\usepackage{multirow}
+
+\usepackage{setspace}
+\newcommand{\mycaptiontable}[1]{
+  \begin{spacing}{0.6}
+        \begin{quote}
+            {{Table} \thechapter.\arabic{table}: #1}
+          \end{quote}
+      \end{spacing}
+  \stepcounter{table}
+}
+
+\newcommand{\mycaptionfigure}[1]{
+    \begin{spacing}{0.6}
+    \begin{quote}
+            {{Figure} \thechapter.\arabic{figure}: #1}
+          \end{quote}
+      \end{spacing}
+  \stepcounter{figure}
+}
+
+\usepackage{amsmath}
+
+\usepackage{courier}
+
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{setspace, amssymb, amsmath, epsfig, multirow, colortbl, tabularx}
+\usepackage[acronym,shortcuts,nomain,hyperfirst=false]{glossaries}
+
+
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+
+\pagestyle{fancy}
+
+\providecommand\phantomsection{}
+\onehalfspacing
+\sloppy  
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}{}}
+
+\fancyhf{}
+
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+
+\makeatletter
+\renewcommand{\chaptermark}[1]{\markboth{\@chapapp \ \thechapter . \ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection \ \ #1}}
+\makeatother
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{3.5pt}
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}}
+\fancypagestyle{myplain}
+{
+  \fancyhf{}
+  \renewcommand\headrulewidth{0pt}
+  \renewcommand\footrulewidth{0pt}
+  \fancyfoot[C]{\thepage}
+}
+
+
+
+
+
+
+
+
+
+\usepackage[pages=some]{sty/background}
+
+\ifthenelse{\equal{\colorspaceused}{rgb}}
+{
+  \backgroundsetup{ scale=1, angle=0, opacity=.1, color=pink,
+    contents={\includegraphics[width=.7\paperwidth]{logos/logoEPS-UAH.jpg}}, vshift=-50pt,  hshift=0pt }
+}
+{
+  \backgroundsetup{ scale=1, angle=0, opacity=.1, color=pink,
+    contents={\includegraphics[width=.7\paperwidth]{logos/logoEPS-UAH-cmyk.jpg}}, vshift=-50pt,  hshift=0pt }
+}
+
+
+\makeatletter
+\newcommand*{\cleartoleftpage}{  \clearpage
+  \if@twoside
+  \ifodd\c@page
+  \hbox{}\newpage
+  \if@twocolumn
+  \hbox{}\newpage
+  \fi
+  \fi
+  \fi
+}
+\makeatother
+
+\usepackage{float}
+\floatstyle{plaintop} \newfloat{codefloat}{H}{cod}[chapter]
+
+\lstdefinestyle{console}
+{
+  basicstyle=\scriptsize\bf\ttfamily,
+  backgroundcolor=\color{gray75},
+}
+
+\lstdefinestyle{Cbluebox}
+{
+  language=C,
+  frame=shadowbox, 
+  rulesepcolor=\color{blue}
+}
+
+\lstdefinestyle{Cnice}
+{
+  language=C,
+  frame=Ltb,
+  framerule=0pt,
+  tabsize=2,
+  aboveskip=0.5cm,
+  framextopmargin=3pt,
+  framexbottommargin=3pt,
+  framexleftmargin=0.4cm,
+  framesep=0pt,
+  rulesep=.4pt,
+  backgroundcolor=\color{gray97},
+  rulesepcolor=\color{black},
+    stringstyle=\ttfamily,
+  showstringspaces = false,
+    basicstyle=\footnotesize\ttfamily,
+  commentstyle=\color{gray45},
+  keywordstyle=\bfseries,
+    numbers=left,
+  numbersep=15pt,
+  numberstyle=\tiny,
+  numberfirstline = false,
+  breaklines=true,
+}	
+
+\lstdefinestyle{CppExample}
+{
+  language=C++,
+  frame=trbl,
+  tabsize=2,
+  commentstyle=\textit,
+  stringstyle=\ttfamily, 
+  basicstyle=\small,
+}	
+
+\lstdefinestyle{Ccolor}
+{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\lstdefinestyle{BashInputStyle}{
+  language=bash,
+  basicstyle=\small\sffamily,
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=3pt,
+  frame=tb, 
+  showspaces=false, 
+  showtabs=false,
+  showstringspaces=false,
+  columns=fullflexible,
+  backgroundcolor=\color{gray97},
+    linewidth=0.9\linewidth,
+  xleftmargin=0.05\linewidth
+}
+
+
+\usepackage{sidecap}
+
+\def\texis{\TeX \raise.15em\hbox{\textsc{i}}S}
+\newenvironment{FraseCelebre}{\begin{list}{}{      \setlength{\leftmargin}{0.5\textwidth}                              \setlength{\parsep}{0cm}                  \addtolength{\topsep}{0.5cm}                }
+  }
+  {\unskip \end{list}}
+
+\newenvironment{Frase}{\item \begin{flushright}\small\em}  {\end{flushright}}
+
+\newenvironment{Fuente}{\item \begin{flushright}\small}  {\end{flushright}}
+
+
+\newenvironment{bottomparagraph}{\par\vspace*{\fill}}{\clearpage}
+
+\usepackage[vlined,algochapter]{algorithm2e}
+\providecommand{\DontPrintSemicolon}{\dontprintsemicolon}
+\providecommand{\SetAlgoLined}{\SetLine}
+
+
+
+\usepackage{fix-cm}
+
+\usepackage{graphicx}                                                                      
+
+
+\newcommand{\myreferencespath}{}
+
+
+
+     
+                                                                  
+\makeatletter{}
+
+
+\newcommand{\mybooklanguage}{spanish}
+
+\newcommand{\mydegree}{GIEC}
+
+\newcommand{\mybooktitle}{Plantilla unificada para la generación de memorias de PFCs, TFGs, TFMs y tesis doctorales}
+\newcommand{\mybookauthor}{Javier Macías-Guarasa}
+\newcommand{\mybookdepartment}{Departamento de Electrónica}
+\newcommand{\mybookdepartmentEnglish}{Departament of Electronics}
+\newcommand{\mybookresearchgroup}{GEINTRA}
+\newcommand{\mybookschool}{Escuela Politécnica Superior}
+\newcommand{\mybookuniversity}{Universidad de Alcalá}
+\newcommand{\mybookuniversityacronym}{UAH}
+\newcommand{\mybookauthordegree}{Ingeniero de Telecomunicación} \newcommand{\mybookemail}{macias@depeca.uah.es}
+\newcommand{\mybookNameFirstAdvisor}{Roberto Barra Chicote}
+\newcommand{\mybookNameSecondAdvisor}{}
+\newcommand{\mybookpresident}{Name of the tribunal president}
+\newcommand{\mybookfirstvocal}{Name of the first vocal}
+\newcommand{\mybooksecondvocal}{Name of the second vocal}
+\newcommand{\mybooksecretary}{Name of the secretary (if needed)}
+\newcommand{\mybookyear}{2014}
+\newcommand{\myanteproyectodate}{6 de enero de 2014}
+\newcommand{\mydefensedate}{6 de enero de 2014}
+\newcommand{\mybookkeywords}{Bsc., Msc. and PhD. Thesis template, \LaTeX, English/Spanish support, automatic generation} \newcommand{\mybookpalabrasclave}{Plantillas de trabajos fin de carrera/máster/grado y tesis doctorales, \LaTeX, soporte de español e inglés, generación automática} 
+\newcommand{\mybookdepartmentsecretary}{José Luis Martín Sánchez}
+\newcommand{\mybookdateforpaperwork}{30 de septiembre de 2014}
+\newcommand{\mybookDNIOpenPublishing}{12345678-L}                                 \newcommand{\mybookDNIFirstAdvisor}{11111111-A}
+\newcommand{\mybookDNISecondAdvisor}{}
+\newcommand{\mybookFigure}{alumno}                                                                                                 
+\newcommand{\mybookresearchreportID}{RR-2014-01}
+
+\newcommand{\mytoclinkcolor}{blue}
+\newcommand{\myloflinkcolor}{red}
+\newcommand{\mylotlinkcolor}{green}
+
+\newcommand{\myothertoclinkcolor}{magenta}
+
+\newcommand{\mylinkcolor}{blue}
+
+\newcommand{\myurlcolor}{blue}
+\newcommand{\mycitecolor}{green}
+
+
+
+\newcommand{\myreferences}{biblio/biblio}
+
+
+
+\DeclareRobustCommand{\texten}[1]{\textit{#1}}
+
+\def\ci{\perp\!\!\!\perp}
+
+\newcommand{\circulo}{\large $\circ$}
+\newcommand{\asterisco}{$\ast$}
+\newcommand{\cuadrado}{\tiny $\square$}
+\newcommand{\triangulo}{\scriptsize $\vartriangle$}
+\newcommand{\triangv}{\scriptsize $\triangledown$}
+\newcommand{\diamante}{\large $\diamond$}
+
+\newcommand{\new}[1]{\textcolor{magenta}{#1 }}
+\newcommand{\argmax}[1]{\underset{#1}{\operatorname{argmax}}}
+
+\newcommand{\verticalSpacingSRPMaps}{-0.3cm}
+
+
+
+
+     
+                                                                                                                                                                                                                                                        
+\makeatletter{}
+
+\newglossary[slg]{symbols}{sym}{sbl}{List of Symbols}
+
+\makeglossaries               
+
+
+
+   
+
+\makeatletter{}
+
+\ifthenelse{\equal{\mybooklanguage}{spanish}}
+{
+\newcommand{\mybookFullAffiliation}{Grupo de investigación \mybookresearchgroup \\ \mybookdepartment \\ \mybookuniversity} 
+} 
+{
+\newcommand{\mybookFullAffiliation}{\mybookresearchgroup Research Group \\ \mybookdepartmentEnglish \\ \mybookuniversity} 
+}
+
+\ifthenelse{\equal{\mybookNameSecondAdvisor}{}}
+{
+\newcommand{\mybookadvisors}{\mybookNameFirstAdvisor{}}
+\newcommand{\mybookDirectorOrDirectores}{director}
+\newcommand{\mybookAdvisorOrAdvisors}{advisor}
+\newcommand{\mybookDaOrDan}{da}
+\newcommand{\mybookTutorOrTutores}{tutor}
+\newcommand{\mybookElOrLos}{El}
+\newcommand{\mybookSuOrSus}{su}
+\newcommand{\mybookDelOrDeLos}{del}
+}
+{
+\newcommand{\mybookadvisors}{\mybookNameFirstAdvisor{} y \mybookNameSecondAdvisor{}}
+\newcommand{\mybookDirectorOrDirectores}{directores}
+\newcommand{\mybookAdvisorOrAdvisors}{advisors}
+\newcommand{\mybookDaOrDan}{dan}
+\newcommand{\mybookTutorOrTutores}{tutores}
+\newcommand{\mybookElOrLos}{Los}
+\newcommand{\mybookSuOrSus}{Su}
+\newcommand{\mybookDelOrDeLos}{de los}
+}
+
+\ifthenelse{\equal{\mydegree}{IT}}
+{
+  \newcommand{\mydegreefull}{Ingeniería de Telecomunicación}
+  \newcommand{\mybookworktype}{TFC}
+  \ifthenelse{\equal{\mybooklanguage}{spanish}}
+  {
+    \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+  }
+  {
+            \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+  }
+}
+{
+  \ifthenelse{\equal{\mydegree}{IE}}
+  {
+    \newcommand{\mydegreefull}{Ingeniería Electrónica}
+    \newcommand{\mybookworktype}{TFC}
+    \ifthenelse{\equal{\mybooklanguage}{spanish}}
+    {
+      \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+    }
+    {
+                  \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+    }
+  }
+  {
+    \ifthenelse{\equal{\mydegree}{ITTSE}}
+    {
+      \newcommand{\mydegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas Electrónicos}
+      \newcommand{\mybookworktype}{TFC}
+      \ifthenelse{\equal{\mybooklanguage}{spanish}}
+      {
+        \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+      }
+      {
+                        \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+      }
+    }
+    {
+      \ifthenelse{\equal{\mydegree}{ITTST}}
+      {
+        \newcommand{\mydegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas de Telecomunicación}
+      \newcommand{\mybookworktype}{TFC}
+        \ifthenelse{\equal{\mybooklanguage}{spanish}}
+        {
+          \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+        }
+        {
+                              \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+        }
+      }
+      {
+        \ifthenelse{\equal{\mydegree}{ITI}}
+        {
+          \newcommand{\mydegreefull}{Ingeniería Técnica Industrial, especialidad en Electrónica Industrial}
+          \newcommand{\mybookworktype}{TFC}
+          \ifthenelse{\equal{\mybooklanguage}{spanish}}
+          {
+            \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+          }
+          {
+                                    \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+          }
+        }
+        {
+          \ifthenelse{\equal{\mydegree}{GIEC}}
+          {
+            \newcommand{\mydegreefull}{Grado en Ingeniería Electrónica de Comunicaciones}
+            \newcommand{\mybookworktype}{TFG}
+            \ifthenelse{\equal{\mybooklanguage}{spanish}}
+            {
+              \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+            }
+            {
+                                          \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+            }
+          }
+          {
+            \ifthenelse{\equal{\mydegree}{GIEAI}}
+            {
+              \newcommand{\mydegreefull}{Grado en Ingeniería en Electrónica y Automática Industrial}
+              \newcommand{\mybookworktype}{TFG}
+              \ifthenelse{\equal{\mybooklanguage}{spanish}}
+              {
+                \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+              }
+              {
+                                                \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+              }
+            }
+            {
+              \ifthenelse{\equal{\mydegree}{GIST}}
+              {
+                \newcommand{\mydegreefull}{Grado en Ingeniería en Sistemas de Telecomunicación}
+                \newcommand{\mybookworktype}{TFG}
+                \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                {
+                  \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                }
+                {
+                                                      \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                }
+              }
+              {
+                \ifthenelse{\equal{\mydegree}{GITT}}
+                {
+                  \newcommand{\mydegreefull}{Grado en Ingeniería en Tecnologías de la Telecomunicación}
+                  \newcommand{\mybookworktype}{TFG}
+                  \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                  {
+                    \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                  }
+                  {
+                                                            \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                  }
+                }
+                {
+                  \ifthenelse{\equal{\mydegree}{GIT}}
+                  {
+                    \newcommand{\mydegreefull}{Grado en Ingeniería Telemática}
+                    \newcommand{\mybookworktype}{TFG}
+                    \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                    {
+                      \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                    }
+                    {
+                                                                  \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                    }
+                  }
+                  {
+                    \ifthenelse{\equal{\mydegree}{GIC}}
+                    {
+                      \newcommand{\mydegreefull}{Grado en Ingeniería de Computadores}
+                      \newcommand{\mybookworktype}{TFG}
+                      \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                      {
+                        \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                      }
+                      {
+                                                                        \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                      }
+                    }
+                    {
+                      \ifthenelse{\equal{\mydegree}{GII}}
+                      {
+                        \newcommand{\mydegreefull}{Grado en Ingeniería Informática}
+                        \newcommand{\mybookworktype}{TFG}
+                        \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                        {
+                          \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                        }
+                        {
+                                                                              \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                        }
+                      }
+                      {
+                        \ifthenelse{\equal{\mydegree}{GSI}}
+                        {
+                          \newcommand{\mydegreefull}{Grado en Sistemas de Información}
+                          \newcommand{\mybookworktype}{TFG}
+                          \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                          {
+                            \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                          }
+                          {
+                                                                                    \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                          }
+                        }
+                        {
+                          \ifthenelse{\equal{\mydegree}{MUSEA}}
+                          {
+                            \newcommand{\mydegreefull}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
+                            \newcommand{\mydegreefullwrapped}{Máster Universitario en Sistemas Electrónicos Avanzados\\Sistemas Inteligentes}
+                            \newcommand{\mybookworktype}{TFM}
+                            \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                            {
+                              \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                            }
+                            {
+                                                                                          \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                            }
+                          }
+                          {
+                            \ifthenelse{\equal{\mydegree}{PHDUAH}}
+                            {
+                              \newcommand{\mydegreefull}{Estudios de Doctorado}
+                              \newcommand{\mybookworktype}{PHDUAH}
+                              \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                              {
+                                \newcommand{\mybookworktypefull}{Tesis Doctoral}
+                              }
+                              {
+                                \newcommand{\mybookworktypefull}{Doctoral Thesis}
+                              }
+                            }
+                            {
+                              \ifthenelse{\equal{\mydegree}{PHDUPM}}
+                              {
+                                \newcommand{\mydegreefull}{Doctor Ingeniero de Telecomunicación}
+                                \newcommand{\mybookworktype}{PHDUPM}
+                                \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                {
+                                  \newcommand{\mybookworktypefull}{Tesis Doctoral}
+                                }
+                                {
+                                  \newcommand{\mybookworktypefull}{Doctoral Thesis}
+                                }
+                              }
+                              {
+                                \ifthenelse{\equal{\mydegree}{GEINTRARR}}
+                                {
+                                  \newcommand{\mydegreefull}{GEINTRA Research Report}
+                                  \newcommand{\mybookworktype}{GEINTRARR}
+                                  \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                  {
+                                    \newcommand{\mybookworktypefull}{Informe técnico del Grupo de investigación \mybookresearchgroup{}}
+                                  }
+                                  {
+                                    \newcommand{\mybookworktypefull}{\mybookresearchgroup{} Research Report}
+                                  }
+                                }
+                                {
+                                  \newcommand{\mybookworktype}{TFG}
+                                  \newcommand{\mydegreefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}} 
+                                  \newcommand{\mybookworktypefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}}
+                                }                          
+                              }                          
+                            }                          
+                          }                          
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+\newcommand{\contactauthor}{\mybookauthor~\textless\href{mailto:\mybookemail}{\mybookemail}\textgreater}
+
+\ifthenelse{\equal{\mybooklanguage}{english}}
+{
+  \newcommand{\keywordsforpdf}{\mybookkeywords}
+}
+{
+  \newcommand{\keywordsforpdf}{\mybookpalabrasclave}
+}
+
+\hypersetup
+{
+  pdfauthor={\mybookauthor~\textless\href{mailto:\mybookemail}{\mybookemail}\textgreater},
+  pdftitle={\mybooktitle},
+  pdfsubject={\mydegreefull, \mybookworktypefull},
+  pdfkeywords={\keywordsforpdf},
+  pdfcreator={\LaTeX with hyperref package},
+  pdfproducer={rubber},
+  pdffitwindow={true},
+  urlcolor=\myurlcolor,
+  linkcolor=\mylinkcolor,
+  citecolor=\mycitecolor
+}
+
+
+
+
+    
+                               
+\graphicspath{{./logos/}{./figures/}{./diagrams/}}                                                                 
+\begin{document}
+
+pepe
+
+\frontmatter                                  
+
+\makeatletter{}
+
+\ifthenelse{\equal{\mybooklanguage}{english}}
+{
+  \selectlanguage{english}
+
+  \floatname{codefloat}{Listing}
+  \renewcommand{\lstlistingname}{Listing}
+
+                }
+{
+  \selectlanguage{spanish}
+  
+  \renewcommand{\tablename}{Tabla}
+  \renewcommand{\listtablename}{Índice de tablas}
+
+  \floatname{codefloat}{Listado}
+  \renewcommand{\lstlistingname}{Listado}
+
+
+                }
+
+
+
+  
+                                              
+\makeatletter{}
+
+\ifthenelse{\equal{\mybookworktype}{TFG}}
+{
+  \makeatletter{}
+\thispagestyle{empty}
+
+\BgThispage
+
+
+\begin{tikzpicture}[remember picture,overlay]
+    \node[yshift=-5cm] at (current page.north west)
+      {
+        \begin{tikzpicture}[remember picture, overlay]
+          \draw[fill=headingPortadaTFG,headingPortadaTFG] (0,0) rectangle (\paperwidth,5cm);
+          \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\mybookuniversity}};
+          \node [yshift=2cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\mybookschool}};
+
+        \end{tikzpicture}
+      };
+   \end{tikzpicture}
+
+
+\large
+\vspace{5cm}
+\begin{center}
+
+    \LARGE\textbf{\mydegreefull}
+
+  \vspace{25mm}
+
+  \LARGE\textbf{\mybookworktypefull}
+
+  \LARGE{\mybooktitle}
+
+\vspace{5cm}
+
+  \textbf{Autor:}  \mybookauthor 
+
+\vspace{0.5cm}
+
+  \textbf{\expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}:}  \mybookadvisors
+
+\end{center}
+
+\begin{bottomparagraph}
+  \begin{center}
+    \huge{\mybookyear}
+  \end{center}
+\end{bottomparagraph}
+
+\clearemptydoublepage
+
+
+ 
+  \makeatletter{}
+\thispagestyle{empty}
+\large
+\begin{center}
+
+  \Huge\MakeUppercase{\mybookuniversity}
+
+
+  \Large{\MakeUppercase{\mybookschool}}
+
+  \vspace{7mm}
+
+    \Large\textbf{\mydegreefull}
+
+  \vspace{1cm}
+
+  \Large\textbf{\mybookworktypefull}
+        
+  \vspace{1cm}   
+
+  \Large\textbf{\mybooktitle}
+
+  \vspace{1cm}
+  
+  Autor: \mybookauthor
+  
+  \vspace{1mm}
+  
+
+  \expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}: \mybookadvisors
+  
+  \vspace{1cm}
+
+  \begin{tabular}{rll}
+    \textbf{Tribunal:} & &\\ 
+    &&\\
+    & \textbf{Presidente:} & \mybookpresident\\ \\ \\
+    & \textbf{Vocal 1º:}   & \mybookfirstvocal\\ \\ \\
+    & \textbf{Vocal 2º:}   & \mybooksecondvocal\\ \\
+  \end{tabular}
+\end{center}
+
+
+\begin{bottomparagraph}
+  \begin{center}
+    \begin{tabular}{p{3cm}c}
+      &Calificación: ..........................................................................\\ \\
+      &Fecha: ...................................................................................
+    \end{tabular}
+  \end{center}
+\end{bottomparagraph}
+
+
+\normalsize
+
+\clearemptydoublepage
+
+
+
+ 
+}
+{
+  \ifthenelse{\equal{\mybookworktype}{TFC}}
+  {
+    \makeatletter{}
+\thispagestyle{empty}
+\large
+\vspace{3cm}
+\begin{center}
+
+  \Huge\textbf{\MakeUppercase{\mybookuniversity}}
+
+
+  \textbf{\mybookschool}
+
+  \vspace{1cm}
+
+  \huge\textbf{\mydegreefull}
+  
+  \vspace{1cm}
+
+\ifthenelse{\equal{\colorspaceused}{rgb}}
+{
+  \centerline{\includegraphics[height=6cm]{logoUAHazul.jpg}}
+}
+{
+  \centerline{\includegraphics[height=6cm]{logoUAHazul-cmyk.jpg}}
+}
+  \vspace{1cm}
+
+  \Large\textbf{\mybookworktypefull}
+
+  \vspace{0.5cm}   
+
+  \LARGE\textbf{\mybooktitle}
+
+  \vspace{2cm}
+
+  \mybookauthor
+
+\end{center}
+
+\begin{bottomparagraph}
+  \begin{center}
+    \huge{\mybookyear}
+  \end{center}
+\end{bottomparagraph}
+
+\clearemptydoublepage
+
+ 
+    \makeatletter{}
+\thispagestyle{empty}
+\large
+\begin{center}
+
+  \Huge\MakeUppercase{\mybookuniversity}
+
+
+  \Large{\MakeUppercase{\mybookschool}}
+
+  \vspace{7mm}
+
+    \Large\textbf{\mydegreefull}
+
+  \vspace{1cm}
+
+  \Large\textbf{\mybookworktypefull}
+        
+  \vspace{1cm}   
+
+  \Large\textbf{\mybooktitle}
+
+  \vspace{1cm}
+  
+  Autor: \mybookauthor
+  
+  \vspace{1mm}
+  
+
+  \expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}: \mybookadvisors
+  
+  \vspace{1cm}
+
+  \begin{tabular}{rll}
+    \textbf{Tribunal:} & &\\ 
+    &&\\
+    & \textbf{Presidente:} & \mybookpresident\\ \\ \\
+    & \textbf{Vocal 1º:}   & \mybookfirstvocal\\ \\ \\
+    & \textbf{Vocal 2º:}   & \mybooksecondvocal\\ \\
+  \end{tabular}
+\end{center}
+
+
+\begin{bottomparagraph}
+  \begin{center}
+    \begin{tabular}{p{3cm}c}
+      &Calificación: ..........................................................................\\ \\
+      &Fecha: ...................................................................................
+    \end{tabular}
+  \end{center}
+\end{bottomparagraph}
+
+
+\normalsize
+
+\clearemptydoublepage
+
+
+
+ 
+  }
+  {
+    \ifthenelse{\equal{\mybookworktype}{TFM}}
+    {
+      \makeatletter{}
+\thispagestyle{empty}
+
+
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-14cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (6cm,14cm);
+      \node [yshift=7cm, xshift=3cm, text centered, midway, rotate=+90] {\color{white}\fontsize{110}{132}\selectfont\mybookuniversityacronym};
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \node [xshift=7cm] at (current page.north west)
+  {     \begin{tikzpicture}[remember picture, overlay]
+    
+       \node [yshift=-3.5cm, xshift=0.5\paperwidth, align=center, text width=14cm, text centered, midway] {\begin{minipage}[c][13cm][c]{13cm}\centering\color{black}\fontsize{26}{31}\selectfont\textbf{\mybooktitle}\par\end{minipage}};
+      
+   
+     \end{tikzpicture}
+    
+  };
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-\paperheight] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2cm);
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-17cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2.8cm);
+      \node [yshift=1.8cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{15}\selectfont\textbf{\mydegreefullwrapped}\par};
+      \node [yshift=0.5cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{26}\selectfont\textbf{\mybookdepartment}};
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-19cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \node [yshift=0,    xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Presentado por:\\\mybookauthor}\par};
+      \node [yshift=-3cm, xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Dirigido por:\\\mybookadvisors}\par};
+      \node [yshift=-6cm, xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Alcalá de Henares, a \mydefensedate}\par};
+
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-\paperheight] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2cm);
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+
+
+
+\clearemptydoublepage
+
+
+ 
+    }
+    {
+      \ifthenelse{\equal{\mybookworktype}{PHDUAH}}
+      {
+        \makeatletter{}
+\thispagestyle{empty}
+\large
+\vspace{3cm}
+\begin{center}
+
+  \Huge{\textbf{\MakeUppercase{\mybookuniversity}}}
+
+  \vspace{5mm}
+
+  \Large{\MakeUppercase{\mybookschool}}
+  
+  \vspace{5mm}
+
+  \Large\textbf{\MakeUppercase{\mybookdepartment}}
+
+  \vspace{15mm}
+
+\ifthenelse{\equal{\colorspaceused}{rgb}}
+{
+  \centerline{\includegraphics[height=6cm]{logoUAHazul.jpg}}
+}
+{
+  \centerline{\includegraphics[height=6cm]{logoUAHazul-cmyk.jpg}}
+}
+  
+  \vspace{15mm}
+  
+  \LARGE\textbf{\mybookworktypefull}
+
+  \vspace{15mm}   
+  
+  \LARGE\textbf{\mybooktitle}
+  
+  \vspace{2cm}
+  
+  \mybookauthor
+
+\end{center}
+
+\begin{bottomparagraph}
+  \begin{center}
+    \huge{\mybookyear}
+  \end{center}
+\end{bottomparagraph}
+
+\clearemptydoublepage
+
+ 
+        \makeatletter{}
+\thispagestyle{empty}
+\large
+\begin{center}
+
+  {\Huge\textbf{\MakeUppercase{\mybookuniversity}}}
+
+  \vspace{7mm}
+
+  {\Large{\MakeUppercase{\mybookschool}}}
+
+  \vspace{1cm}
+  
+  {\Large\textbf{\MakeUppercase{\mybookdepartment}}}
+
+  \vspace{15mm}
+
+  \centerline{\includegraphics[height=6cm]{logoUAHazul.jpg}}
+
+  \vspace{1cm}   
+
+  \Large\textbf{\mybooktitle}
+
+  \vspace{2cm}
+  
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    \textbf {Author}
+  }
+  {
+    \textbf {Autor}
+  }
+  
+  
+  \mybookauthor
+  
+  \vspace{1cm}
+  
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    \textbf {\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}}
+  }
+  {
+    \textbf {\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}}
+  }  
+  
+  \mybookadvisors
+  
+  
+\end{center}
+
+\begin{bottomparagraph}
+  \begin{center}
+    \textbf{\mybookyear}\\
+    \vspace{5mm}
+    \textbf{\mybookworktypefull}
+  \end{center}
+\end{bottomparagraph}
+
+
+\normalsize
+
+\clearemptydoublepage
+
+
+
+ 
+      }
+      {
+        \ifthenelse{\equal{\mybookworktype}{PHDUPM}}
+        {
+          \makeatletter{}
+\thispagestyle{empty}
+\large
+\vspace{3cm}
+\begin{center}
+
+  \Huge\textbf{UNIVERSIDAD POLITÉCNICA DE MADRID}
+
+  \vspace{1cm}
+
+  \huge{Escuela Técnica Superior\\de Ingenieros de Telecomunicación} 
+
+  \vspace{1cm}
+
+\ifthenelse{\equal{\colorspaceused}{rgb}}
+{
+  \includegraphics[width=80mm]{logos/logoetsit_tamano.jpg}
+}
+{
+  \includegraphics[width=80mm]{logos/logoetsit_tamano-cmyk.jpg}
+}
+
+
+  
+  
+  \LARGE\textbf{\mybooktitle}
+  
+  
+  \mybookauthor
+
+  \vspace{5mm}
+
+  \mybookauthordegree
+
+  \vspace{1cm}
+
+\end{center}
+
+\begin{bottomparagraph}
+  \begin{center}
+    \huge{\mybookyear}
+  \end{center}
+\end{bottomparagraph}
+
+
+\clearemptydoublepage
+
+ 
+          \makeatletter{}
+\thispagestyle{empty}
+\large
+\begin{center}
+
+  \Huge\textbf{UNIVERSIDAD POLITÉCNICA DE MADRID}
+
+  \vspace{7mm}
+
+  \huge{Escuela Técnica Superior\\de Ingenieros de Telecomunicación}
+
+  \vspace{1cm}
+  
+  \centerline{\includegraphics[width=80mm]{logos/logoetsit_tamano.jpg}}
+
+
+  \Large\textbf{\mybooktitle}
+
+  
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    \textbf {Author}
+  }
+  {
+    \textbf {Autor}
+  }
+  
+  
+  \mybookauthor
+  
+  \vspace{1cm}
+  
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    \textbf {\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}}
+  }
+  {
+    \textbf {\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}}
+  }  
+  
+  \mybookadvisors
+  
+\end{center}
+
+\begin{bottomparagraph}
+  \begin{center}
+    \textbf{\mybookyear}\\
+    \vspace{5mm}
+    \textbf{\mybookworktypefull}
+  \end{center}
+\end{bottomparagraph}
+
+
+\normalsize
+
+\clearemptydoublepage
+
+
+
+ 
+        }
+        {
+          \ifthenelse{\equal{\mybookworktype}{GEINTRARR}}
+          {
+            \makeatletter{}
+\thispagestyle{empty}
+
+
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-14cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (6cm,14cm);
+      \node [yshift=7cm, xshift=3cm, text centered, midway, rotate=+90] {\color{white}\fontsize{110}{132}\selectfont\mybookuniversityacronym};
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+\begin{tikzpicture}
+  \node [xshift=7cm] at (current page.north west)
+  {     \begin{tikzpicture}[remember picture, overlay]
+    
+       \node [yshift=-3.5cm, xshift=0.5\paperwidth, align=center, text width=14cm, text centered, midway] {\begin{minipage}[c][13cm][c]{13cm}\centering\color{black}\fontsize{26}{31}\selectfont\textbf{\mybooktitle{}\\}\par\fontsize{18}{26}\selectfont\textbf{[\mybookresearchreportID{}]}\par\end{minipage}};
+      
+   
+     \end{tikzpicture}
+    
+  };
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-\paperheight] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2cm);
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-17cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2.8cm);
+      \node [yshift=1.8cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{15}\selectfont\textbf{\mybookworktypefull}\par};
+      \node [yshift=0.5cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{26}\selectfont\textbf{\mybookdepartment}};
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-19cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \node [yshift=0,    xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{\mybookauthor}\par};
+      \node [yshift=-6cm, xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Alcalá de Henares, \mydefensedate}\par};
+
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-\paperheight] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2cm);
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+
+
+
+\clearemptydoublepage
+
+
+ 
+          }
+          {
+            ERROR: in \texttt{cover/cover.tex} Defined book type (\mybookworktype) unknown so that work type is
+            undefined or wrong (\mybookworktype), check also \texttt{config/myconfig.tex}
+          }
+        }
+      }
+      
+    }
+
+  }
+
+}
+
+
+                        
+                                                                                                                                                                                                                                                                                    
+
+
+
+
+\makeatletter{}
+
+\thispagestyle{empty}
+
+\begin{flushright}
+
+  \topskip0pt
+  \vspace*{\fill}
+
+  \textbf{A nuestros alumnos pasados, presentes y futuros\ldots}\\
+
+  \vspace{3cm}
+
+  \emph{``Empieza haciendo lo necesario, luego haz lo posible y de
+    pronto empezarás a hacer lo imposible.''}\\ Francisco de Asís
+
+\end{flushright}  
+
+\vspace{4cm}
+\vspace*{\fill}
+
+
+
+
+             
+                                              \makeatletter{}
+\ifthenelse{\equal{\mybooklanguage}{english}}
+{
+  \chapter*{Acknowledgements}
+  \label{cha:acknowledgements}
+  \markboth{Acknowledgements}{Acknowledgements}
+}
+{
+  \chapter*{Agradecimientos}
+  \label{cha:agradecimientos}
+  \markboth{Agradecimientos}{Agradecimientos}
+}
+
+\thispagestyle{myplain}
+
+
+
+\begin{FraseCelebre}
+  \begin{Frase}
+    A todos los que la presente vieren y entendieren.
+  \end{Frase}
+  \begin{Fuente}
+    Inicio de las Leyes Orgánicas. Juan Carlos I
+  \end{Fuente}
+\end{FraseCelebre}
+
+
+
+Este trabajo es el fruto de muchas horas de trabajo, tanto de los
+autores últimos de los ficheros de la distribución como de todos los que
+en mayor o menor medida han participado en él a lo largo de su proceso
+de gestación.
+
+Mención especial merece Manuel Ocaña, el autor de la primera versión de
+las plantillas de proyectos fin de carrera y tesis doctorales usadas en
+el Departamento de Electrónica de la Universidad de Alcalá, con
+contribuciones de Jesús Nuevo, Pedro Revenga, Fernando Herránz y Noelia
+Hernández.
+
+En la versión actual, la mayor parte de las definiciones de estilos de
+partida proceden de la tesis doctoral de Roberto Barra-Chicote, con lo
+que gracias muy especiales para él.
+
+También damos las gracias a \makeatletter{}Manuel Villaverde, David Casillas, Jesús Pablo Martínez, José Francisco
+Velasco Cerpa
+  que nos
+han proporcionado secciones completas y ejemplos puntuales de sus
+proyectos fin de carrera.
+
+Finalmente, hay incontables contribuyentes a esta plantilla, la mayoría
+encontrados gracias a la magia del buscador de Google. Hemos intentado
+referenciar los más importantes en los fuentes de la plantilla, aunque
+seguro que hemos omitido alguno. Desde aquí les damos las gracias a
+todos ellos por compartir su saber con el mundo.
+
+
+
+
+
+   
+                                              
+\makeatletter{}
+
+\newacronym{HMI}{HMI}{Human-Machine Interfaces}
+\newacronym{ETTS}{ETTS}{Emotional Text To Speech}
+\newacronym{TTS}{TTS}{Text To Speech}
+\newacronym{PSOLA}{PSOLA}{Pitch Synchronous OverLap Add}
+\newacronym{TDPSOLA}{TD-PSOLA}{Time Domain Pitch Synchronous OverLap Add}
+\newacronym{AI}{AI}{Artificial Intelligenge}
+
+\newacronym{SPSS}{SPSS}{Statistical Parametric Speech Synthesis}
+\newacronym{VC}{VC}{Voice Conversion}
+\newacronym{US}{US}{Unit Selection}
+\newacronym{HMM}{HMM}{Hidden Markov Model}
+\newacronym{LSP}{LSP}{Line Spectral Pairs}
+\newacronym{LPC}{LPC}{Linear Prediction Coefficiens}
+\newacronym{LSF}{LSF}{Line Spectral Frequencies}
+\newacronym{F0}{F0}{Fundamental Frequency}
+\newacronym{MCEP}{MCEP}{Mel Cepstral Coefficients}
+\newacronym{MGCEP}{MGCEP}{Mel Generalized Cepstral Coefficients}
+\newacronym{MFCC}{MFCC}{Mel Frequency Cepstrum Coefficients}
+\newacronym{ASR}{ASR}{Automatic Speech Recognition}
+\newacronym{MDL}{MDL}{Minimum Description Length Criterion}
+\newacronym{MSD}{MSD}{Multi Space Probability Distributions}
+\newacronym{HSMM}{HSMM}{Hidden Semi-Markov Models}
+\newacronym{ML}{ML}{Maximum Likelihood}
+\newacronym{MLSA}{MLSA}{Mel Log Spectrum Approximation}
+\newacronym{MAP}{MAP}{Maximum A Posteriori} 
+\newacronym{MLLR}{MLLR}{Maximum Likelihood Linear Regression}
+\newacronym{CSMAPLR}{CSMAPLR}{Constrain Structural MAP Linear Regression}
+\newacronym{AV}{AV}{Average Voice}
+
+\newacronym{ANN}{ANN}{Artificial Neural Network}
+
+\newacronym{NIST}{NIST}{National Institute of Technology}
+\newacronym{SES}{SES}{Spanish Expressive Speech}
+\newacronym{EMODB}{EMODB}{Berlin Database of Emotional Speech}
+
+\newacronym{FAUAIBO}{FAU-AIBO}{FAU AIBO Emotion Corpus}
+
+\newacronym{SEV}{SEV}{Spanish Expressive Voices}
+\newacronym{AER}{AER}{Automatic Emotion Recognition}
+\newacronym{UBEC}{UBEC}{Universal Background Emotion Codebook}
+
+\newacronym{STRAIGHT}{STRAIGHT}{Speech Transformation and Representation using Adaptive Interpolation of weiGHTed spectrum}
+
+
+\newacronym{DBN}{DBN}{Dynamic Bayesian Network}
+\newacronym{SQ}{SQ}{Speech Quality}
+\newacronym{EIR}{EIR}{Emotion Identification Rate}
+\newacronym{SIR}{SIR}{Speaker Identification Rate}
+\newacronym{ES}{ES}{Emotional Strength}
+
+\newacronym{ACCCHARS}{ÁÉÍÓÚÜÑáéíóúüñ}{Long ÁÉÍÓÚÜÑáéíóúüñ}
+
+\newglossaryentry{SOC}{type=\acronymtype,
+        name={SOC},
+        symbol={},
+        sort=soc,
+        plural={SOCs},
+        firstplural={Systems on a Chip (SOCs)},
+        description={System on a Chip},
+        descriptionplural={Systems on a Chip}}
+
+
+
+             
+                                                                                            
+\makeatletter{}
+
+\newglossaryentry{ohm}{type=symbols,
+        name={\ensuremath{\Omega}},
+        symbol={\ensuremath{\Omega}}, 
+        sort=ohm,
+        description=unit of electrical resistance}
+
+\newglossaryentry{angstrom}{type=symbols,
+        name={\AA},
+        symbol={\AA},
+        sort=angstrom,
+        description={non-SI unit of length}}
+
+\newglossaryentry{xdet}{type=symbols,
+        name={\ensuremath{x(t)}},
+        symbol={\ensuremath{x(t)}},
+        sort=xdet,
+        description={Audio signal}}
+
+\newglossaryentry{xidet}{type=symbols,
+        name={\ensuremath{x_i(t)}},
+        symbol={\ensuremath{x_i(t)}},
+        sort=xidet,
+        description={Audio signal captured at microphone $i$}}
+
+\newglossaryentry{condindep}{type=symbols,
+        name={\ensuremath{\ci}},
+        symbol={\ensuremath{\ci}}, 
+        sort=conditionalindependence,
+        description=conditional independence}
+
+
+               
+                                                                                            
+\makeatletter{}
+\chapter*{Resumen}
+\label{cha:resumen}
+\markboth{Resumen}{Resumen}
+
+\addcontentsline{toc}{chapter}{Resumen}
+
+Este documento ha sido generado con una plantilla para memorias de
+trabajos fin de carrera, fin de máster, fin de grado y tesis
+doctorales. Está especialmente pensado para su uso en la Universidad de
+Alcalá, pero debería ser fácilmente extensible y adaptable a otros casos
+de uso. En su contenido se incluyen las instrucciones generales para
+usarlo, así como algunos ejemplos de elementos que pueden ser de
+utilidad. Si tenéis problemas, sugerencias o comentarios sobre el mismo,
+dirigidlas por favor a \contactauthor.
+
+\textbf{Palabras clave:} \mybookpalabrasclave.
+
+
+
+                   
+\makeatletter{}
+\chapter*{Abstract}
+\label{cha:abstract}
+
+\addcontentsline{toc}{chapter}{Abstract}
+
+This document has been generated with a template for Bsc and Msc Thesis
+(trabajos fin de carrera, fin de máster, fin de grado) and PhD. Thesis,
+specially thought for its use in Universidad de Alcalá, although it
+should be easily extended and adapted for other use cases. In its
+content we include general instructions of use, and some example of
+elements than can be useful. If you have problemas, suggestions or
+comments on the template, please forward them to \contactauthor.
+
+
+\textbf{Keywords:} \mybookkeywords.
+
+
+
+                  
+
+
+\makeatletter{}
+\hypersetup{linkcolor=\mytoclinkcolor}
+\tableofcontents
+
+\hypersetup{linkcolor=\myloflinkcolor}
+\listoffigures
+                          
+\hypersetup{linkcolor=\mylotlinkcolor}
+\listoftables
+
+\hypersetup{linkcolor=\mylinkcolor}
+
+                  
+
+\makeatletter{}
+\hypersetup{linkcolor=\myothertoclinkcolor}
+\ifthenelse{\equal{\mybooklanguage}{english}}
+{
+  \listof{codefloat}{List of source code listings}
+  \addcontentsline{toc}{chapter}{List of source code listings}
+}
+{
+  \listof{codefloat}{Índice de listados de código fuente}    
+  \addcontentsline{toc}{chapter}{Índice de listados de código fuente}
+}
+
+
+\ifthenelse{\equal{\mybooklanguage}{english}}
+{
+\renewcommand*{\algorithmcfname}{Algorithm}
+\renewcommand{\listofalgorithms}{\begingroup
+  \tocfile{List of Algorithms}{loa}
+  \endgroup}
+
+}
+{
+\renewcommand*{\algorithmcfname}{Algoritmo}
+
+\renewcommand{\listofalgorithms}{\begingroup
+   \tocfile{Índice de algoritmos}{loa}
+   \endgroup}
+   
+
+}
+
+\listofalgorithms
+
+\hypersetup{linkcolor=\mylinkcolor}
+
+
+                
+                                              
+\makeatletter{}
+
+\setlength{\glsdescwidth}{0.7\linewidth}       
+\ifthenelse{\equal{\mybooklanguage}{english}}
+{
+\printglossary[type=\acronymtype,style=super,nonumberlist=true,title=List of Acronyms,toctitle=List of Acronyms]
+\addcontentsline{toc}{chapter}{List of Acronyms}
+}
+{
+\printglossary[type=\acronymtype,style=super,nonumberlist=true,title=Lista de acrónimos,toctitle=Lista de acrónimos]
+\addcontentsline{toc}{chapter}{Lista de acrónimos}
+}
+
+
+
+
+                
+                                                                                            
+\makeatletter{}
+
+\ifthenelse{\equal{\mybooklanguage}{english}}
+{
+  \printglossary[type=symbols,style=super,nonumberlist=true,title=List of Symbols,toctitle=List of Symbols]
+  \addcontentsline{toc}{chapter}{List of Symbols}
+}
+{
+  \printglossary[type=symbols,style=super,nonumberlist=true,title=Lista de símbolos,title=Lista de símbolos,toctitle=Lista de símbolos]
+  \addcontentsline{toc}{chapter}{Lista de símbolos}
+}
+
+
+                  
+                                                                                            
+
+
+\mainmatter                                       \deactivatetilden                                 
+
+
+\makeatletter{}
+\chapter{Introducción}
+\label{cha:introduccion}
+
+\begin{FraseCelebre}
+  \begin{Frase}
+    Desocupado lector, sin juramento me podrás creer que quisiera que este
+    libro [...] fuera el más hermoso, el más gallardo y más discreto que
+    pudiera imaginarse\footnote{Tomado de ejemplos del proyecto \texis{}.}.
+  \end{Frase}
+  \begin{Fuente}
+    Miguel de Cervantes, Don Quijote de la Mancha
+  \end{Fuente}
+\end{FraseCelebre}
+
+
+\section{Presentación probando más}
+\label{sec:presentacion}
+
+probando Esta plantilla\footnote{Asegúrate de compilar de nuevo el documento
+  (como cuenta la sección~\ref{sec:compilacion}), para verificar que
+  todo funciona y por si ha habido algún cambio en los fuentes que no
+  está reflejado en los pdf de ejemplo precompilados.} pretende
+proporcionar un conjunto de estilos consistentes y unificados para
+cubrir las necesidades de generación de memorias \LaTeX{} para cada uno
+de los TFCs/TFMs/TFGs y tesis doctorales que se generen en la Escuela
+Politécnica Superior de la Universidad de Alcalá\footnote{También se
+  incluye la definición para las tesis de la Escuela Técnica Superior de
+  Ingenieros de Telecomunicación de la Universidad Politécnica de
+  Madrid. La extensión a los TFGs de la misma es sencilla, aunque no se
+  ha realizado por el momento.}.
+
+Para utilizar la plantilla se han generado algunos capítulos genéricos
+en los que se han incluido secciones ``tutoriales'', en la que se
+explican algunas de sus características y se muestran ejemplos de
+elementos típicos que pueden ser de utilidad (pero sin el objetivo de
+que esto sea una guía de \LaTeX{}).
+
+Igualmente se proporciona un modelo simplificado de un anteproyecto
+(para el caso de los TFCs/TFMs/TFGs), así como parte de la documentación
+que hay que presentar para la defensa de los TFGs de la Universidad de
+Alcalá.
+
+
+
+\section{Uso de la plantilla}
+\label{sec:uso-generico-de}
+
+
+\subsection{Prerrequisitos}
+\label{sec:prerrequisitos}
+
+Para usar la plantilla tal y como está definida, hace falta disponer de
+una serie de paquetes de estilos \LaTeX{} (ficheros \texttt{.sty}),
+todos ellos definidos en el fichero \texttt{config/preamble.tex}.
+
+No vamos a hacer un listado de todos lo necesarios (sería demasiado
+largo\footnote{Los que suelen no estar instalados en un ubuntu estándar
+  son \texttt{texlive-publishers}, \texttt{texlive-science}}), pero en
+la mayoría de distribuciones GNU/Linux serán fáciles de conseguir en
+caso de que la compilación genere un error de fichero no encontrado. Si
+os sucede, buscadlos en alguno de los paquetes \texttt{texlive-*}. En
+caso de no encontrarlos, una búsqueda en google (que con casi total
+seguridad referenciará a alguna página en CTAN) os dará el enlace a la
+descarga correspondiente. A partir de ahí, su inclusión en directorios
+locales será suficiente (como por ejemplo hemos tenido que hacer con el
+paquete \texttt{background}, incluido en la distribución en el
+directorio \texttt{sty/background}). Lo más cómodo es hacer una
+instalación del \texttt{texlive-full}. 
+
+Igualmente será necesario tener instaladas una serie de utilidades y
+aplicaciones:
+
+\begin{itemize}
+\item \texttt{make}, si se quiere utilizar la facilidad del
+  \texttt{Makefile} suministrado. Está disponible en todas las
+  distribuciones GNU/Linux.
+\item \texttt{rubber}, si se quiere utilizar la prestación de
+  compilación de código \LaTeX{} incluida en el
+  \texttt{Makefile}. Debería estar disponible en cualquier distribución
+  GNU/Linux, pero si no es así, puedes optar por descargarla, o bien
+  usar la alternativa de \texttt{latexmk} (para el que también se
+  incluyen targets específicos en el \texttt{Makefile} suministrado).
+\item \texttt{dia}, si se quiere utilizar el ejemplo proporcionado de
+  generación de esquemas con dicha herramienta.
+\item \texttt{epspdf}, si se quiere utilizar la facilidad de la
+  conversión automática de ficheros \texttt{eps} a \texttt{pdf} (también
+  se usa en la conversión de ficheros \texttt{.dia}).
+\item \texttt{makeglossaries}, si se quiere utilizar la prestación de
+  manejo de listas de acrónimos y variables. Suele estar en el paquete
+  \texttt{texlive-latex-extra} en distribuciones basadas en Debian
+  (como ubuntu y derivados).
+\end{itemize}
+
+
+\subsection{Compilación}
+\label{sec:compilacion}
+
+Para facilitar la generación del documento se incluye un
+\texttt{Makefile} relativamente sencillo. No somos expertos ni en
+\texttt{make} ni en \LaTeX, con lo que seguro que no es el mejor de los
+\texttt{Makefiles} del mundo, pero creemos que hace su función.
+
+El \texttt{Makefile} tiene las siguientes características y
+prestaciones:
+
+\begin{itemize}
+
+\item Hace uso de la herramienta \texttt{rubber}. En caso de no disponer
+  de ella, puede usarse \texttt{latexmk} (hay targets específicos de
+  ejemplo para ese caso), pero esta última herramienta no ha sido
+  probada intensivamente. Si no se dispone de ninguna de ellas, habría
+  que generar la estructura típica de compilación: (al estilo
+  \texttt{pdflatex + bibtex + pdflatex + pdflatex}).
+\item Soporta la generación automática de ficheros \texttt{pdf} a partir
+  de los \texttt{dia} y \texttt{svg} (se han elegido estos a modo de
+  ejemplo, pero se puede adaptar fácilmente a otras necesidades).
+\item Genera la información de listas de acrónimos y símbolos con la
+  herramienta \texttt{makeglossaries}. Es imprescindible tenerla
+  instalada si se desea usar esa capacidad.
+\item Soporta los targets:
+  \begin{itemize}
+  \item \texttt{all} (que es la opción predeterminada si se ejecuta
+    \texttt{make} sin más argumentos), que genera el fichero
+    \texttt{book.pdf} correspondiente, usando \texttt{rubber} y
+    \texttt{makeglossaries}. No nos hemos planteado la generación de
+    ficheros en otros formatos.
+  \item \texttt{all\_latexmk}, que genera el fichero \texttt{book.pdf}
+    correspondiente, usando \texttt{latexmk} y
+    \texttt{makeglossaries}. Si ésta  es tu opción, sustituye el target
+    \texttt{all} por éste, para facilitarte la compilación.
+
+  \item \texttt{anteproyecto}, que genera el fichero
+    \texttt{anteproyecto.pdf} correspondiente, usando
+    \texttt{rubber}. No nos hemos planteado la generación de ficheros en
+    otros formatos.
+  \item \texttt{anteproyecto\_latexmk}, que genera el fichero
+    \texttt{anteproyecto.pdf} correspondiente, usando
+    \texttt{latexmk}. Si ésta es tu opción, sustituye el target
+    \texttt{anteproyecto} por éste, para facilitarte la compilación.
+  \item  \texttt{tar}, que genera un fichero \texttt{tgz} que contiene
+    todo lo necesario para la distribución de la plantilla.
+  \item \texttt{clean}, que borra todos los ficheros temporales usando
+    \texttt{rubber} (para simplificar los targets, la limpieza se hace
+    tanto para los temporales de generación del \texttt{book.pdf} como
+    los del \texttt{anteproyecto.pdf}).
+  \item \texttt{clean\_latexmk}, que borra todos los ficheros temporales
+    usando \texttt{latexmk}. Si ésta es tu opción, sustituye el target
+    \texttt{clean} por éste, para facilitarte la compilación (para
+    simplificar los targets, la limpieza se hace tanto para los
+    temporales de generación del \texttt{book.pdf} como los del
+    \texttt{anteproyecto.pdf}).
+  \end{itemize}
+
+\end{itemize}
+
+
+
+\subsection{Estructura del documento generado por la plantilla}
+\label{sec:estr-del-docum}
+
+La plantilla definida presenta la siguiente estructura:
+
+\begin{itemize}
+\item Portada y página de información sobre el trabajo, que será
+  dependiente del tipo de trabajo y la titulación. Se genera
+  automáticamente a partir de la información definida en la
+  sección~\ref{sec:definicion-del-tipo}
+\item Dedicatoria, con un ejemplo incluido en el fichero
+  \texttt{dedication/dedicatoria.tex}.
+\item Agradecimientos, con un ejemplo incluido en el fichero
+  \texttt{dedication/agradecimientos.tex}.
+\item Resumen en español, con un ejemplo incluido en el fichero
+  \texttt{abstract/resumen.tex}.
+\item Resumen en inglés, con un ejemplo incluido en el fichero
+  \texttt{abstract/abstract.tex}.
+\item Resumen extendido en español (opcional en algunos tipos de
+  documento), con un ejemplo incluido en el fichero
+  \texttt{abstract/resumen-extendido.tex}.
+\item Índice de contenidos, índice de figuras e índice de tablas.
+\item Índices adicionales, de los que se incluye un ejemplo de listado
+  específico en el fichero \texttt{cover/extralistings.tex}, que incluye
+  el listado de fragmentos de código fuente definidos en el
+  \texttt{appendix/manual.tex}.
+\item Listado de acrónimos utilizados, que se definen en el fichero
+  \texttt{acronyms/defacronymsgl.tex} (con opciones adicionales de
+  configuración en \texttt{acronyms/acronymsgl.tex}), y del que
+  incluimos más información en la sección~\ref{sec:uso-de-acronimos}.
+\item Listado de símbolos utilizados, que se definen en el fichero
+  \texttt{symbols/defsymbolsgl.tex} (con opciones adicionales de
+  configuración en \texttt{symbols/symbolsgl.tex}), y del que incluimos
+  más información en la sección~\ref{sec:simbolos}.
+\item Capítulos del documento, del que hay varios ejemplos que siguen la
+  estructura típica (introducción, estudio teórico, desarrollo,
+  resultados y conclusiones.
+\item Pliego de condiciones y presupuesto, opcionales (se incluyen un
+  par de ejemplos del trabajo fin de carrera de Jesús Martínez en los
+  ficheros \texttt{pliego/pliego-ejemplo.tex} y
+  \texttt{presupuesto/presupuesto-ejemplo.tex}.
+\item Bibliografía, de la que se puede cambiar el estilo utilizado y los
+  ficheros \texttt{.bib} en el fichero \texttt{biblio/bibliography.tex}
+\item Apéndices, de los que ahora se incluyen dos ejemplos en los
+  ficheros \texttt{appendix/manual.tex} (que sirve de pretexto para
+  mostrar cómo se insertan fragmentos de código fuente), y
+  \texttt{appendix/herramientas.tex}.
+\item Contraportada, sólo para el caso de los TFGs en UAH.
+\end{itemize}
+
+Por supuesto, modificad la estructura para que encaje en las directrices
+que tengáis al respecto de cómo documentar vuestro trabajo.
+
+
+\subsection{Definiciones específicas del tipo de documento}
+\label{sec:definicion-del-tipo}
+
+Para comenzar a usar la plantilla es fundamental revisar el fichero
+\texttt{book.tex} en el que se incluyen todos los detalles genéricos de
+la estructura usada en el documento, con comentarios que esperamos que
+os ayuden a entenderlo. Si sois de los impacientes, basta con que
+comencéis por la parte en la que se incluyen los distintos capítulos
+(buscad la parte de los \texttt{\textbackslash{}input\{chapters/*.tex\}}).
+
+Uno de los ficheros de configuración más importantes es el
+\texttt{config/myconfig.tex} en el que se incluyen elementos para
+determinar la configuración específica de tu documento. El primero de
+ellos (para facilitar la generación de documentos en español o inglés),
+es el que define el idioma que vas a utilizar. Para seleccionarlo, basta
+con asignar \texttt{spanish} o \texttt{english} a la variable
+\texttt{\textbackslash{}mybooklanguage}. A partir de ella, el sistema
+generará las cabeceras y títulos adecuados a cada una.
+
+Igualmente, tendréis que definir las siguientes variables sobre el tipo
+de trabajo y el autor:
+
+\begin{itemize} 
+\item Acrónimo de la titulación correspondiente al trabajo (variable
+  \texttt{\textbackslash{}mydegree}): Que se seleccionará entre los
+  definidos (por ahora\footnote{Este documento se generó a finales de
+    2013.} son \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST},
+  \texttt{ITI}, \texttt{GIEC}, \texttt{GIEAI}, \texttt{GIST},
+  \texttt{GITT}, \texttt{GIT}, \texttt{GIC}, \texttt{GII}, \texttt{GSI},
+  \texttt{MUSEA}, \texttt{PHDUAH} y \texttt{PHDUPM}) y que
+  automáticamente configura portadas\footnote{Un comentario sobre el
+    color de las bandas en la portada de los TFGs: de acuerdo con la
+    normativa, dicho color debe ser PANTONE 160c. Yo he intentado
+    utilizar dicho color, pero el aspecto con el que finalmente aparece
+    no es ni de lejos similar al del modelo que proporciona la EPS, con
+    lo que he optado por utilizar el que se ve realmente en dicho
+    modelo. Si quieres cambiarlo, busca ``PANTONE'' en \texttt{config/preamble.tex}.}, entre otras cosas.
+\item Título del documento (variable \texttt{\textbackslash{}mybooktitle}).
+\item Nombre del autor del trabajo (variable \texttt{\textbackslash{}mybookauthor}).
+\item DNI del autor del trabajo, usado en el papeleo de los TFGs (variable \texttt{\textbackslash{}mybookDNI}).
+\item Departamento en el que se realiza el trabajo (variable
+  \texttt{\textbackslash{}mybookdepartment}, en español, y \texttt{\textbackslash{}mybookdepartmentEnglish}, en inglés).
+\item Grupo de investigación en el que se realiza el trabajo (variable
+  \texttt{\textbackslash{}mybookresearchgroup}.
+\item Centro en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybookschool}, que debería ser la Escuela Politénica Superior, pero se incluye por generalidad).
+\item Universidad en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybooksuniversidad}, que debería ser la de Alcalá, pero se incluye por generalidad).
+\item Titulación del autor (usada en las tesis de UPM, (variable \texttt{\textbackslash{}mybookauthordegree})).
+\item Email del autor (variable \texttt{\textbackslash{}mybookemail}).
+\item Nombre del primer (o único, en su caso) director del trabajo
+  (variable \texttt{\textbackslash{}mybookNameFirstAdvisor}).
+\item Nombre del segundo (en su caso) director del trabajo (variable \texttt{\textbackslash{}mybookNameSecondAdvisor}).
+\item Nombre del presidente del tribunal (variable \texttt{\textbackslash{}mybookpresident}).
+\item Nombre del primer vocal del tribunal (variable \texttt{\textbackslash{}mybookfirstvocal}).
+\item Nombre del segundo vocal del tribunal (variable \texttt{\textbackslash{}mybooksecondvocal}).
+\item Nombre del secretario del tribunal, en su caso (variable \texttt{\textbackslash{}mybooksecretary}).
+\item Año del trabajo (variable \texttt{\textbackslash{}mybookyear}).
+\item Fecha del anteproyecto, en su caso (variable \texttt{\textbackslash{}mybookanteproyectodate}), en el caso de que se usen la plantilla del anteproyecto.
+\item Fecha de la defensa del trabajo, en su caso (variable \texttt{\textbackslash{}mydefensedate}).
+\item Palabras clave en inglés (variable \texttt{\textbackslash{}mybookkeywords}).
+\item Palabras clave en español (variable \texttt{\textbackslash{}mybookpalabrasclave}).
+\end{itemize}
+
+Y también variables para el caso de los trabajos que necesitan papeleo
+adicional (publicación en abierto, autorizaciones, etc.).
+
+\begin{itemize}
+\item Nombre del Secretario del Departamento (que firmará parte del papeleo)
+  (variable \texttt{\textbackslash{}mybookdepartmentsecretary}).
+\item Fecha que aparecerá en la firma del papeleo (variable \texttt{\textbackslash{}mybookdateforpaperwork}).
+\item DNI del alumno (variable
+  \texttt{\textbackslash{}mybookDNIOpenPublishing}).
+\item Figura del autor del trabajo, que es normalmente ``alumno''
+  (variable \texttt{\textbackslash{}mybookProfFigureOpenPublishing}).
+\item DNIs del/de los tutores, para los permisos de publicación en
+  abierto (variables \texttt{\textbackslash{}mybookDNIFirstAdvisor} y
+  \texttt{\textbackslash{}mybookDNISecondAdvisor}, en su caso)
+\end{itemize}
+
+Se ha comenzado a trabajar en la versión alfa del soporte para
+\textit{research reports}, y en ese caso se usa la variable
+\texttt{\textbackslash{}mybookresearchreportID}.
+
+Parte de esa información se utilizará para rellenar la metainformación
+incluida en el fichero \texttt{pdf} que se genera.
+
+También se definen los colores que se usarán en los hiperenlaces del
+documento. En concreto\footnote{Os rogamos encarecidamente que cambiéis
+  los colores definidos actualmente, que se han usado para verificar que
+  todo funciona correctamente.}:
+
+\begin{itemize}
+\item Color de los enlaces en el índice de contenidos (variable
+  \texttt{\textbackslash{}mytoclinkcolor}).
+\item Color de los enlaces en el índice de figuras (variable
+  \texttt{\textbackslash{}myloflinkcolor}).
+\item Color de los enlaces en el índice de tablas (variable
+  \texttt{\textbackslash{}mylotlinkcolor}).
+\item Color de los enlaces en otros índices (variable
+  \texttt{\textbackslash{}myothertoclinkcolor}), de los que ahora se
+  incluye un ejemplo en el fichero \texttt{cover/extralistings.tex}.
+\item Color de los enlaces (\texttt{\textbackslash{}ref}) en el
+  documento (variable \texttt{\textbackslash{}mylinkcolor}).
+\item Color de los enlaces a URLs (variable
+  \texttt{\textbackslash{}myurlcolor}).
+\item Color de los enlaces a referencias bibliográficas (variable
+  \texttt{\textbackslash{}mycitecolor}).
+\end{itemize}
+
+Basta con que defináis las variables correspondientes y la plantilla
+generará automáticamente las portadas adecuadas a la normativa y usará
+las definiciones específicas que hayas seleccionado.
+
+Por si os hace falta, en \texttt{config/postamble.tex} se definen
+algunas variables relacionadas con el tipo de trabajo. Por ejemplo las
+variables \texttt{\textbackslash{}mydegreefull} (igual a
+``\mydegreefull'' en esta compilación),
+\texttt{\textbackslash{}mybookworktype} (igual a ``\mybookworktype'' en
+esta compilación) y \texttt{\textbackslash{}mybookworktypefull} (igual a
+``\mybookworktypefull'' en esta compilación). Otro ejemplo sería el
+autor de contacto: \contactauthor.
+
+Importante para las tesis de UAH: si necesitáis incluir ficheros pdf
+(los de autorización e informes de los tutores, por ejemplo), esta
+plantilla lo permite: mirad los \texttt{\textbackslash{}includepdf} en
+el \texttt{book.tex}.
+
+\subsection{Plantilla de anteproyecto}
+\label{sec:plantilla-de-anteproyecto}
+
+Para el caso de los TFMs/TFGs/TFCs, se incluye una plantilla para
+realizar el anteproyecto.
+
+La plantilla se encuentra en el fichero \texttt{anteproyecto.tex} y el
+\texttt{Makefile} genera automáticamente el \texttt{anteproyecto.pdf},
+haciendo un \texttt{make anteproyecto}.
+
+
+\subsection{Papeleo adicional para la defensa de los TFGs}
+\label{sec:introapp1}
+
+Para el caso de los TFGs y TFMs (al menos los del MUSEA), se incluyen en
+el directorio \texttt{papeleo} algunos de los documentos que hay que
+generar en el momento de la defensa. En concreto:
+
+\begin{itemize}
+\item La autorización del tutor para la publicación en abierto, en el
+  fichero \texttt{autorizacionTutorPublicarRepositorio.tex} para TFGs.
+\item La autorización del autor para la publicación en abierto, en el
+  fichero \texttt{autorizacionAutorPublicarRepositorio.tex}
+\item El visto bueno del tutor para la defensa del TFG
+  \texttt{vistoBuenoTutorTFG.tex}
+\item La autorización del autor y tutor/tutores para la publicación en
+  abierto, en el fichero
+  \texttt{autorizacionPublicarAbiertoTFM-MUSEA.tex}.
+\item El visto bueno del tutor para la defensa del TFM
+  \texttt{vistoBuenoTutorTFM-MUSEA.tex}
+\end{itemize}
+
+En el directorio se incluye un \texttt{Makefile} que genera los
+\texttt{pdfs} correspondientes a esos documentos. El sistema
+automáticamente adapta los singulares/plurales necesarios para el caso
+de que haya uno o varios directores/tutores.
+ 
+
+
+
+\subsection{Problemas conocidos}
+\label{sec:problemas-conocidos}
+
+Resumimos a continuación los problemas con los que nos hemos ido
+encontrando tras el uso más generalizado de esta plantilla, y, en su
+caso, la solución propuesta/adoptada:
+
+\begin{itemize}
+
+\item Al menos en la versión 12.04 de ubuntu, se producía un fallo de
+  compilación por un problema del \textit{option clash} del paquete
+  \texttt{xcolor}. La solución fue incluir las opciones
+  \texttt{[RGB,rgb]} de dicho paquete en el \texttt{documentclass}, y
+  eliminar la inclusión de \texttt{xcolor} (que ya lo incluye, al menos,
+  \texttt{listings}). No es muy bonito como solución, pero
+  funcionaba. Eso dio lugar a otro problema, que hacía que todas las
+  página aparecieran como en color cuando se llevaba a la imprenta (con
+  el consiguiente incremento de precio). Para intentar solucionarlo, he
+  vuelto a eliminar las opciones \texttt{[RGB,rgb]} del
+  \texttt{documentclass}, y se las paso con un
+  \texttt{PassOptionsToPackage}, pero está pendiente de
+  verificación. Please, confirmadme que funciona (tanto lo del color
+  como la compilación en un ubuntu 12.04 (o posterior).
+
+\item También hemos observado en la versión 12.04 de ubuntu que
+  \texttt{evince} no es capaz de visualizar la primera página de los
+  TFGs (generada con \texttt{tikz}), y que \texttt{xpdf} genera un core
+  cuando intenta abrir el fichero compilado. La solución es usar
+  \texttt{qpdfview} o \texttt{acroread}. 
+
+\end{itemize}
+
+Si das con más problemas, escribid por favor a \contactauthor
+contándonoslos y trataremos de solucionarlo (y si tenéis la solución,
+contádnosla también).
+
+
+\section{Ejemplos de elementos de utilidad}
+\label{sec:ejempl-de-elem}
+
+\subsection{Uso de comandos definidos}
+\label{sec:uso-de-comandos}
+
+A modo de ejemplo, hemos definido el comando
+\texttt{\textbackslash{}texten\{\}} en \texttt{config/myconfig.tex} para
+usarlo, por ejemplo, para marcar palabras escritas en inglés (aka
+\texten{English}). Sigue el ejemplo para definir aquellos que utilices
+con frecuencia.
+
+Si quieres escribir el símbolo \texttt{backslash} puedes usar el comando
+\texttt{\textbackslash{}backlash\{\}}:~\textbackslash{}.
+
+Lo mismo aplica para el símbolo \texttt{tilde}, para lo que puedes usar
+el comando \texttt{\textbackslash{}textasciitilde\{\}}:~\textasciitilde{}.
+
+
+\subsection{Uso de ``frases célebres''}
+\label{sec:uso-de-frases}
+
+Respecto a la frase célebre del inicio de los capítulos: todas las que
+hemos usado y las definiciones que las generen están sacadas del
+excelente trabajo de Marco Antonio Gomez-Martín y Pedro Pablo
+Gomez-Martín en el proyecto \texis, una plantilla para la creación de
+tesis y otros documentos y disponible en \cite{texis}.
+
+
+\subsection{Inclusión de diagramas}
+\label{sec:diagrama}
+
+Para incluir gráficos, la compilación que utilizamos permite usar
+ficheros \texttt{png}, \texttt{jpg} y \texttt{pdf}, en el comando
+\texttt{\textbackslash{}includegraphics}. Si queréis ahorraros incluir
+el path a cada fichero, podéis definir todos aquellos en los que haya
+ficheros gráficos en el \texttt{\textbackslash{}graphicspath} del
+\texttt{book.tex}.
+
+En la figura \ref{fig:fig_clobj} se muestra un ejemplo de gráfico
+generado automáticamente a partir de un fichero
+\texttt{.dia}\footnote{Tomadas de los proyectos fin de carrera de David
+  Casillas y Manuel Villaverde.}: \texttt{diagrams/Esquema\_objetos.dia}
+(podéis generalizar su generación en el \texttt{Makefile}).
+
+\begin{figure}[tphb]
+  \centering
+  \includegraphics{Esquema_objetos}
+  \caption{Clasificación de los objetos para la gramática (aquí también
+    se pueden poner acrónimos como \acs{ETTS} y símbolos como \ac{xidet})}
+  \label{fig:fig_clobj}
+\end{figure}
+
+
+\subsection{Definición y uso de acrónimos (aquí también
+    se pueden poner acrónimos como \acs{ETTS})}
+\label{sec:uso-de-acronimos}
+
+El uso del paquete \texttt{glossaries} permite definir los acrónimos y
+el sistema automáticamente gestiona su inclusión completa la primera vez
+que se usa. Los acrónimos de ejemplo están en el fichero
+\texttt{acronyms/defacronymsgl.tex} (con opciones adicionales de
+configuración en \texttt{acronyms/acronymsgl.tex}).
+
+Así, si nos referimos a \ac{ETTS} o bien a \ac{EMODB},
+veremos como aparecen expandidas la primera vez. A partir de ahí, sólo
+se usará el acrónimo como puede verse al volver a hablar de \ac{ETTS} y
+\ac{EMODB}.
+
+Tiene también soporte para resetear todos los acrónimos como si no
+estuvieran usados. Vuelvo a incluir el párrafo anterior tras un reset
+(que se hace con un \texttt{\textbackslash{}glsresetall[acronym]}):
+
+\glsresetall[acronym]
+
+El uso del paquete acronym permite definir los acrónimos y el sistema
+automáticamente gestiona su inclusión completa la primera vez que se
+usa. Así, si nos referimos a \ac{ETTS} o bien a \ac{EMODB}, veremos como
+aparecen expandidas de nuevo (como si fuera la primera vez que se
+usan). A partir de ahí, sólo se usará el acrónimo como puede verse al
+volver a hablar de \ac{ETTS} y \ac{EMODB}.
+
+Y permite también forzar que se vuelva a citar completo aunque ya se
+haya utilizado (con el acrónimo entre paréntesis), como puede verse en
+\acl{ETTS} (equivalente a \glsdesc{ETTS} que vale para cualquier
+glosario), y también a usar forzosamente el acrónimo. Primero reseteamos
+de nuevo.
+
+\glsresetall[acronym]
+
+Y ahora forzamos el acrónimo: \acs{EMODB} (equivalente a
+\glsname{EMODB} que vale para cualquier glosario). También podemos
+forzar a que lo ponga todo, con \acf{EMODB}.
+
+
+Podemos seguir definiendo entradas de acrónimos, referirnos a \ac{DBN}
+por primera vez, y las siguientes aparecerá como \ac{DBN}.  Pongo ahora
+el resto de acrónimos \ac{SQ}, \ac{EIR}, \ac{SIR} y
+\ac{ES}. Finalmente los repito para que se vea el efecto: \ac{SQ},
+\ac{EIR}, \ac{SIR} y \ac{ES}.
+
+Y gestiona bien los plurales, ponemos el plural como \acp{SOC} la
+primera vez, y luego la segunda como \acp{SOC}. Y podemos volver al
+singular con \ac{SOC}.
+
+
+\subsection{Definición y uso de símbolos (aquí también
+    se pueden símbolos como \ac{xidet})}
+\label{sec:simbolos}
+
+Los símbolos definidos están incluidos en el fichero
+\texttt{symbols/defsymbolsgl.tex} (con configuración adicional en
+\texttt{symbols/symbolsgl.tex}) y en esta sección mostramos algunos
+ejemplos.
+
+El \ac{angstrom} se usa en biología estructural, mientras que el
+\ac{ohm} se usa en electrónica. También podemos poner~\ac{xdet}. Y
+también funciona en entornos \texttt{math} (\$...\$)
+$(\ac{xdet})$.
+
+Es posible incluso deshabilitar los hiperenlaces, usando un ``*'', como
+en ~\ac*{xdet} o \ac*{EMODB}.
+
+También valen en entornos \texttt{equation}:
+
+\begin{equation}
+  \label{eq:1}
+  \ac{xdet}
+\end{equation}
+
+Y finalmente la que nos falta: \ac{xidet}, también dentro de ecuaciones
+(otra cosa es que sea conveniente o útil):
+
+\begin{equation}
+  \label{eq:2}
+  \ac{xidet} = \sqrt{i}
+\end{equation}
+
+Acabamos con un par de acrónimos: \ac{TDPSOLA} y \ac{STRAIGHT}. 
+
+Recientemente nos han pedido información sobre cómo introducir el
+comando de independencia incondicional y también funciona (la definición
+está en el \texttt{config/myconfig.tex}, y se usa tal cual en el
+\texttt{symbols/symbolsgl.tex} (revisadlos para ver cómo se implementa):
+\ac{condindep}. 
+
+
+
+
+\section{Motivación y objetivos}
+\label{sec:motiv-y-objet}
+
+La motivación de este proyecto\ldots
+
+Los objetivos principales de este trabajo son (ejemplo utilizando
+''enumerate''):
+
+\begin{enumerate}
+\item Primer objetivo\ldots
+\item Segundo objetivo\ldots
+  \begin{enumerate}
+  \item Objetivo 2.1\ldots
+  \item Objetivo 2.2\ldots
+  \end{enumerate}
+\item Tercer objetivo\ldots
+\end{enumerate}
+
+
+
+\section{Organización de la memoria}
+\label{sec:organizacion-memoria}
+
+Esta memoria se organiza en cinco grandes capítulos. El primero \ldots
+
+ 
+
+\makeatletter{}
+\chapter{Estudio teórico}
+\label{cha:estudio-teorico}
+
+\begin{FraseCelebre}
+  \begin{Frase}
+    Y así, del mucho leer y del poco dormir, se le secó el cerebro de
+    manera que vino a perder el juicio\footnote{Tomado de ejemplos del
+      proyecto \texis{}.}.
+  \end{Frase}
+  \begin{Fuente}
+    Miguel de Cervantes Saavedra
+  \end{Fuente}
+\end{FraseCelebre}
+
+
+\section{Introducción}
+\label{sec:introduccion-teoria}
+
+En este capítulo se cuenta tal y tal.
+
+El capítulo se estructura en $n$ apartados\ldots
+
+
+\section{Estado del Arte}
+\label{sec:estadoarte}
+
+En el estado del arte se enumeran los trabajos más relevantes de otros
+grupos de investigación. A continuación se muestra un ejemplo del uso de
+viñetas que nos proporciona \texttt{itemize}:
+
+\begin{itemize}
+\item En el trabajo ..... 
+\item En el siguiente trabajo.....
+\end{itemize}
+
+O citas en un párrafo real: Sin embargo, hay entornos acústicos donde
+las tasas de error conseguidas son todavía demasiado altas. En concreto,
+las aplicaciones en las que la captura de la señal de habla se hace
+usando micrófonos alejados del locutor (típicamente para distancias
+superiores a un metro) muestran una fuerte sensibilidad a los problemas
+de reverberación, ruido aditivo y baja relación señal a ruido
+(\cite{gelbart02},\cite{kochkin02}). En estos entornos, se ha propuesto
+el uso de arrays de micrófonos como un método para mejorar la calidad
+del habla capturada \cite{seltzer03}\cite{herbordt05}.
+
+Existen múltiples formas de insertar figuras en Latex. A continuación,
+se muestra un ejemplo del uso de \texttt{figure}. Como se puede ver en
+la Figura \ref{fig1} también se pueden poner referencias a las figuras
+por medio de \texttt{ref} y la etiqueta \texttt{label} de la figura en
+particular.
+
+\begin{figure}[h]   \centering
+  \includegraphics[width=4.7in]{Figure1}
+      \caption{Departamento de Electrónica.}
+  \label{fig1}
+\end{figure}
+
+Y ahora un ejemplo en el que ponemos el \texttt{caption} en el lateral:
+
+\begin{SCfigure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{Figure1}
+  \caption{Departamento de Electrónica en el lateral.}
+\end{SCfigure}
+
+
+
+\section{Técnicas utilizadas}
+\label{sec:tecnicas-utilizadas}
+
+Blah, blah, blah\ldots
+
+
+\section{Conclusiones}
+\label{sec:conclusiones-teoria}
+
+Blah, blah, blah\ldots
+
+ 
+
+\makeatletter{}
+\chapter{Desarrollo}
+\label{cha:desarrollo}
+
+
+\begin{FraseCelebre}
+  \begin{Frase}
+    A fuerza de construir bien, se llega a buen
+    arquitecto\footnote{Tomado de ejemplos del proyecto \texis{}.}.
+  \end{Frase}
+  \begin{Fuente}
+    Aristóteles
+  \end{Fuente}
+\end{FraseCelebre}
+
+\section{Introducción}
+\label{sec:introduccion-desarrollo}
+
+En este capítulo se incluirá la descripción del desarrollo del trabajo.
+
+El capítulo se estructura en n apartados:...
+
+
+\section{Desarrollo del sistema de experimentación}
+\label{sec:desarr-del-sist}
+
+Blah, blah, blah\ldots
+
+
+\section{Planteamiento matemático}
+\label{sec:libr-desarr}
+
+También resulta útil poder introducir ecuaciones que se encuentran tanto
+en línea con el texto (como por ejemplo $\sigma=0.75$), como en un
+párrafo aparte (como en la ecuación \ref{eq1}). Al igual que ocurre con
+las figuras, también se pueden referenciar las ecuaciones.
+
+\begin{equation}
+  \label{eq1}
+  p[q_t=\sigma_t|q_{t-1}=\sigma_{t-1}]
+\end{equation}
+
+\section{Conclusiones}
+\label{sec:conclusiones-desarrollo}
+
+Blah, blah, blah\ldots
+
+
+
+ 
+
+\makeatletter{}
+\chapter{Resultados}
+\label{cha:resultados}
+
+
+\begin{FraseCelebre}
+  \begin{Frase}
+        Rem tene, verba sequentur (Si dominas el tema, las palabras vendrán
+    solas)\footnote{Tomado de ejemplos del proyecto \texis{}.}.
+  \end{Frase}
+  \begin{Fuente}
+        Catón el Viejo
+  \end{Fuente}
+\end{FraseCelebre}
+
+\section{Introducción}
+\label{sec:introduccion-resultados}
+
+En este capítulo se introducirán los resultados más relevantes del
+trabajo. 
+
+La estructura del capítulo es\ldots
+
+
+\section{Entorno experimental}
+\label{sec:entorno-experimental}
+
+Blah, blah, blah.
+
+
+\subsection{Bases de datos utilizadas}
+\label{sec:bases-de-datos-1}
+
+Blah, blah, blah.
+
+
+\subsection{Métricas de calidad}
+\label{sec:metricas-de-calidad}
+
+Blah, blah, blah.
+
+
+\subsection{Estrategia y metodología de experimentación}
+\label{sec:estr-y-metod}
+
+Blah, blah, blah.
+
+
+\section{Resultados experimentales}
+\label{sec:result-experim}
+
+A continuación, se muestra un ejemplo de tabla simple (ver tabla \ref{table1}).
+
+\begin{table}
+    \renewcommand{\arraystretch}{1.3}
+  \caption{Comparativa.}
+  \label{table1}
+  \begin{center}
+            \begin{tabular}{|c|c|c|}
+      \hline
+      Method & Training Time & Man-Work (\%)\\
+      \hline
+      Propagation model & $<$ 30 sec & 5\\
+      \hline
+      Manual & 9 h 30 min & 24\\
+      \hline
+      Automatic & 2 h & 10 8\\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+Cuando las tablas ocupan más de un página se debe utilizar un tipo
+especial de tablas denominado \texttt{longtable}. A continuación, se
+muestra un ejemplo del mismo (ver tabla \ref{table2}).
+
+\begin{center}
+	\begin{longtable}{|c|c|c|c|}
+    \caption[Resultados de la correlación cruzada.]{Resultados de la correlación cruzada.} \label{table2} \\
+    
+    \hline \multicolumn{1}{|c|}{\textbf{Posición Real}} & \multicolumn{1}{c|}{\textbf{Posición estimada}} & \multicolumn{1}{c|}{\textbf{Coef. Correlación}} & \multicolumn{1}{c|}{\textbf{Acierto/Fallo}} \\ \hline 
+    \endfirsthead
+    
+    \multicolumn{4}{c}    {{\bfseries \tablename\ \thetable{} -- continúa en la página anterior}} \\
+    \hline \multicolumn{1}{|c|}{\textbf{Posición Real}} & \multicolumn{1}{c|}{\textbf{Posición estimada}} & \multicolumn{1}{c|}{\textbf{Coef. Correlación}} & \multicolumn{1}{c|}{\textbf{Acierto/Fallo}} \\ \hline 
+    \endhead
+    
+    \hline \multicolumn{4}{|r|}{{Continúa en la página siguiente}} \\ \hline
+    \endfoot
+
+    \hline \hline
+    \endlastfoot
+    
+    \hline	2P0	&	2P0	&	0,004954	&	A	\\
+    \hline	2P1	&	2P4	&	0,005752	&	F	\\
+    \hline	2P2	&	2P2	&	0,005461	&	A	\\
+    \hline	2P3	&	2P0	&	0,004634	&	F	\\
+    \hline	2P5	&	2P4	&	0,005991	&	F	\\
+    \hline	2P6	&	2P16	&	0,004410	&	F	\\
+    \hline	2P7	&	3P9	&	0,008038	&	F	\\
+    \hline	2P8	&	3P9	&	0,003753	&	F	\\
+    \hline	2P9	&	2P7	&	0,004908	&	F	\\
+    \hline	2P10	&	2P10	&	0,007273	&	A	\\
+    \hline	2P14	&	2P16	&	0,006485	&	F	\\
+    \hline	2P15	&	2P15	&	0,004932	&	A	\\
+    \hline	2P16	&	2P16	&	0,006237	&	A	\\
+    \hline	2P17	&	2P15	&	0,005110	&	F	\\
+    \hline	2P18	&	3P18	&	0,006235	&	F	\\
+    \hline	2P19	&	3P18	&	0,004827	&	F	\\
+    \hline	2P20	&	2P20	&	0,006877	&	A	\\
+    \hline	2P22	&	3P18	&	0,003048	&	F	\\
+    \hline	2P24	&	2P24	&	0,006833	&	A	\\
+    \hline	2P25	&	2P25	&	0,004875	&	A	\\
+    \hline	2P26	&	2P31	&	0,005511	&	F	\\
+    \hline	2P27	&	2P28	&	0,004590	&	F	\\
+    \hline	2P30	&	2P31	&	0,005576	&	F	\\
+    \hline	2P31	&	2P31	&	0,007213	&	A	\\
+    \hline	2P32	&	2P35	&	0,003340	&	F	\\
+    \hline	2P34	&	2P34	&	0,004128	&	A	\\
+    \hline	2P36	&	2P35	&	0,003329	&	F	\\
+    \hline	2P37	&	2P37	&	0,003468	&	A	\\
+    \hline	2P39	&	2P38	&	0,002577	&	F	\\
+    \hline	2P40	&	2P43	&	0,004303	&	F	\\
+    \hline	2P41	&	2P41	&	0,001573	&	A	\\
+    \hline	2P42	&	2P41	&	0,000846	&	F	\\
+    \hline	2P44	&	2P44	&	0,002732	&	A	\\
+    \hline	2P45	&	23P45	&	0,001958	&	F	\\
+    \hline	2P47	&	2P34	&	0,002869	&	F	\\
+    \hline	2P48	&	2P43	&	0,004569	&	F	\\
+    \hline	2P49	&	3P51	&	0,001374	&	F	\\
+    \hline	2P50	&	2P34	&	0,002274	&	F	\\
+    \hline	2P51	&	2P63	&	0,003931	&	F	\\
+    \hline	2P52	&	2P55	&	0,003537	&	F	\\
+    \hline	2P53	&	3P56	&	0,003126	&	F	\\
+    \hline	2P54	&	2P67	&	0,005560	&	F	\\
+    \hline	2P56	&	2P55	&	0,002817	&	F	\\
+    \hline	2P57	&	2P67	&	0,006168	&	F	\\
+    \hline	2P58	&	2P58	&	0,005278	&	A	\\
+    \hline	2P60	&	3P66	&	0,004966	&	F	\\
+    \hline	2P61	&	3P61	&	0,004748	&	A	\\
+    \hline	2P64	&	2P67	&	0,005342	&	F	\\
+    \hline	2P66	&	2P4	&	0,004172	&	F	\\
+    \hline	2P67	&	2P67	&	0,005706	&	A	\\
+    \hline	3P0	&	3P0	&	0,003674	&	A	\\
+    \hline	3P61	&	2P61	&	0,003263	&	F	\\
+    \hline	3P64	&	2P67	&	0,003484	&	F	\\
+    \hline	3P65	&	2P67	&	0,002975	&	F	\\
+    \hline	3P66	&	2P58	&	0,005029	&	F	\\
+    \hline	3P67	&	3P67	&	0,003714	&	A	\\
+	\end{longtable}
+\end{center}
+
+
+
+En algunas ocasiones, también resulta útil emplear el entorno
+\texttt{subfigure} para añadir múltiples imágenes dentro de la misma
+figura. A continuación, se muestra un ejemplo del uso en la figura
+\ref{fig:fig3}. También se pueden referenciar las sub-figuras de forma
+individual, por ejemplo la sub-figura \ref{fig:fig3b} (usando un método
+de cita), o bien la sub-figura \ref{fig:fig3}.\subref{fig:fig3b} (usando
+otro alternativo).
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{Figure2}
+    \caption{Mean Entropy.}
+    \label{fig:fig3a}
+  \end{subfigure}  ~     \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{Figure3}
+    \caption{Error Percentage.}
+    \label{fig:fig3b}
+  \end{subfigure}
+  \caption{Optimal trames number in the training data set.}
+  \label{fig:fig3}
+\end{figure}
+
+La figura~\ref{fig:LIdiapRoom} muestra otro ejemplo con referencias a
+las subfigures en el caption principal. 
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.30\textwidth}
+    \includegraphics[width=\textwidth]{roomlayout2}
+    \caption{}
+    \label{fig:RoomLayout}
+  \end{subfigure}  \qquad \qquad     \begin{subfigure}[b]{0.425\textwidth}
+    \includegraphics[width=\textwidth]{idiap-seq45-cam2.jpg}
+    \caption{}
+    \label{fig:RoomPicture}
+  \end{subfigure}
+  \caption{Idiap Smart Meeting Room for AV16.3 recordings.
+    (\protect\subref{fig:RoomLayout}) Room layout showing the centered
+    table, and the microphones arranged in two circular arrays.
+    (\protect\subref{fig:RoomPicture}) Sample of recorded video frame
+    showing the arrays area. \vspace{-0.3cm}}
+  \label{fig:LIdiapRoom}
+\end{figure}
+
+Os incluimos a continuación un
+párrafo de un artículo en el que hacemos referencia a varias figuras y
+subfiguras: 
+
+\emph{The IDIAP Meeting Room (shown in figure~\ref{fig:LIdiapRoom}) is a $8.2m
+\times 3.6m \times 2.4m$ rectangular space containing a centrally
+located $4.8m \times 1.2m$ rectangular table, on top of which two
+circular microphone arrays of $10 cm$ radius are located, each of them
+composed by 8 microphones. The centers of the two arrays are separated
+by $80 cm$ and the origin of coordinates is located in the middle point
+between the two arrays. The arrays can be also seen in
+figures~\ref{fig:simureal_positions}.\subref{fig:Simulated_positions},
+~\ref{fig:simureal_positions}.\subref{fig:real_positions_short}, and
+~\ref{fig:simureal_positions}.\subref{fig:real_positions_long}, in which
+only the relevant section of the room is displayed, each one showing
+different scenarios that were used in the experiments. A detailed
+description of the meeting room can be found in~\cite{moore2002}.}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{angular2-short-improved}
+    \caption{For validation\\with simulated data.}
+    \label{fig:Simulated_positions}
+  \end{subfigure}
+~      \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{positions1-short-improved}
+    \caption{For validation\\with real data and microphone pairs with $20~cm$ spacing.}
+    \label{fig:real_positions_short}
+  \end{subfigure}
+  ~
+  \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{positions2-short-improved}
+    \caption{For validation\\with real data and microphone pairs with
+      $82.46~cm$ spacing.}
+    \label{fig:real_positions_long}
+  \end{subfigure}
+  \caption{Geometrical details for the experiments carried out. Only the
+    relevant section of the room is shown, and microphone pairs are
+    connected by solid lines.}
+  \label{fig:simureal_positions}
+\end{figure}
+
+En la figura~\ref{fig:Sim_angles} mostramos un ejemplo de varias
+figuras organizadas de forma un poco más complejo.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{Sim_seg025_ang090}
+    \caption{$0^{\circ}$}
+    \label{fig:Sim_ang090}
+  \end{subfigure}
+    
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{Sim_seg025_ang108}
+    \caption{$18^{\circ}$}
+    \label{fig:Sim_ang108}
+  \end{subfigure}
+      \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{Sim_seg025_ang126}
+    \caption{$36^{\circ}$}
+    \label{fig:Sim_ang126}
+  \end{subfigure}
+      \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{Sim_seg025_ang144}
+    \caption{$54^{\circ}$}
+    \label{fig:Sim_ang144}
+  \end{subfigure}
+    
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{Sim_seg025_ang162}
+    \caption{$72^{\circ}$}
+    \label{fig:Sim_ang162}
+  \end{subfigure}
+
+  \caption{Comparison between the steered power response generated
+    by the model (solid line) and that calculated using simulated
+    waveforms in the AV16.3 environment (stems). Results for the
+    speaker in given angles and the array steered from -90º to
+    +90º are shown.}
+  \label{fig:Sim_angles}
+\end{figure}
+
+También es posible incluir el código de una figura en un fichero
+\texttt{.tex} independiente (para hacer más legible el código del
+documento principal). Un ejemplo lo tenéis a continuación, incluyendo el
+texto en inglés del documento original:
+
+\emph{Figure~\ref{fig:SRPvsPatternSelected} includes the results of the
+comparison, for several speaker positions (1, 2, 4, 6, 8 and 16,
+emphasized in
+figure~\ref{fig:simureal_positions}.\subref{fig:real_positions_short}),
+and selected to provide different acoustic situations, both in terms of
+distance and angular position with respect to the arrays. All the
+graphics show the acoustic power map (predicted or calculated) for a
+regular two-dimensional grid of $10~cm$. The plot is provided from a top
+view of the room, spanning the full plan at a height of $61~cm$ above the
+microphone arrays (this height was the ground truth one for sequence
+01). For each speaker position shown, three graphics are plotted:}
+
+\begin{itemize}
+\item The graphics on the left show the SRP-PHAT acoustic power maps
+  generated by the proposed model (for example, the left graphic in
+  figure~\ref{fig:SRPvsPatternSelected}.\subref{fig:SRPvsModel_Fo1500_position1}
+  for position 1).
+\item The graphics in the middle show the real SRP-PHAT acoustic power
+  maps calculated using the real acoustic waveforms (for example, the
+  middle graphic in
+  figure~\ref{fig:SRPvsPatternSelected}.\subref{fig:SRPvsModel_Fo1500_position1}
+  for position 1), for a single selected frame.
+\item The graphics on the right show the average real SRP-PHAT acoustic
+  power maps, averaging for all the frames in which the user was in the
+  given position (for example, the right graphic in
+  figure~\ref{fig:SRPvsPatternSelected}.\subref{fig:SRPvsModel_Fo1500_position1}
+  for position 1).
+\end{itemize}
+
+\emph{The green point represents the real (ground truth) speaker
+position, and the black dots represent the positions of the four
+microphones used. The hyperbolic shapes found in the figure are
+consistent with the fact that the place of points with equal acoustic
+power value, for a given microphone pair, is a hyperbola (in our
+two-dimensional case, being a hyperboloid of revolution in the
+three-dimensional case).}
+
+\emph{From figure~\ref{fig:SRPvsPatternSelected}, it can clearly be seen that,
+again, the predictions closely match the results with real data for the
+different acoustic conditions, even when the simulations are using fixed
+and frequency independent average reflection coefficients, and that the
+acoustic model is based on the simplistic image method model.}
+
+\makeatletter{}\begin{figure}
+  \centering
+  \begin{subfigure}[t]{0.47\textwidth}
+    \begin{minipage}[t]{\textwidth}
+      \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{Pattern_Fo1500_pos01}
+                \label{fig:Pattern_Fo1500_pos01}
+      \end{subfigure}
+                        \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{SRP_Fo1500_frame003_pos01}
+                \label{fig:SRP_Fo1500_pos01}
+      \end{subfigure}
+                        \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{SRP_Fo1500_mean_pos01}
+                \label{fig:SRP_Fo1500_mean_pos01}
+      \end{subfigure}
+      \vspace{\verticalSpacingSRPMaps}
+      \caption{\centering For position 1}
+      \label{fig:SRPvsModel_Fo1500_position1}
+      \vspace{0.25cm}
+    \end{minipage}
+  \end{subfigure}
+  ~      \begin{subfigure}[t]{0.47\textwidth}
+    \begin{minipage}[t]{\textwidth}
+      \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{Pattern_Fo1500_pos02}
+                \label{fig:Pattern_Fo1500_pos02}
+      \end{subfigure}
+                        \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{SRP_Fo1500_frame161_pos02}
+                \label{fig:SRP_pos02}
+      \end{subfigure}
+                        \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{SRP_Fo1500_mean_pos02}
+                \label{fig:SRP_Fo1500_mean_pos02}
+      \end{subfigure}
+      \vspace{\verticalSpacingSRPMaps}
+      \caption{\centering For position 2}
+      \vspace{0.25cm}
+    \end{minipage}
+  \end{subfigure}
+
+  \begin{subfigure}[t]{0.47\textwidth}
+    \begin{minipage}[t]{\textwidth}
+      \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{Pattern_Fo1500_pos04}
+                \label{fig:Pattern_Fo1500_pos04}
+      \end{subfigure}
+                        \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{SRP_Fo1500_frame464_pos04}
+                \label{fig:SRP_pos04}
+      \end{subfigure}
+                        \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{SRP_Fo1500_mean_pos04}
+                \label{fig:SRP_Fo1500_mean_pos04}
+      \end{subfigure}
+      \vspace{\verticalSpacingSRPMaps}
+      \caption{\centering For position 4}
+      \vspace{0.25cm}
+    \end{minipage}
+  \end{subfigure}
+  ~      \begin{subfigure}[t]{0.47\textwidth}
+    \begin{minipage}[t]{\textwidth}
+      \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{Pattern_Fo1500_pos06}
+                \label{fig:Pattern_Fo1500_pos06}
+      \end{subfigure}
+                        \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{SRP_Fo1500_frame809_pos06}
+                \label{fig:SRP_pos06}
+      \end{subfigure}
+                        \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{SRP_Fo1500_mean_pos06}
+                \label{fig:SRP_Fo1500_mean_pos06}
+      \end{subfigure}
+      \vspace{\verticalSpacingSRPMaps}
+      \caption{\centering For position 6}
+      \vspace{0.25cm}
+    \end{minipage}
+  \end{subfigure}
+
+  \begin{subfigure}[t]{0.47\textwidth}
+    \begin{minipage}[t]{\textwidth}
+      \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{Pattern_Fo1500_pos08}
+                \label{fig:Pattern_Fo1500_pos08}
+      \end{subfigure}
+                        \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{SRP_Fo1500_frame1127_pos08}
+                \label{fig:SRP_pos08}
+      \end{subfigure}
+                        \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{SRP_Fo1500_mean_pos08}
+                \label{fig:SRP_Fo1500_mean_pos08}
+      \end{subfigure}
+      \vspace{\verticalSpacingSRPMaps}
+      \caption{\centering For position 8}
+      \vspace{0.25cm}
+    \end{minipage}
+  \end{subfigure}
+  ~      \begin{subfigure}[t]{0.47\textwidth}
+    \begin{minipage}[t]{\textwidth}
+      \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{Pattern_Fo1500_pos16}
+                \label{fig:Pattern_Fo1500_pos16}
+      \end{subfigure}
+                        \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{SRP_Fo1500_frame2518_pos16}
+                \label{fig:SRP_pos16}
+      \end{subfigure}
+                        \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{SRP_Fo1500_mean_pos16}
+                \label{fig:SRP_Fo1500_mean_pos16}
+      \end{subfigure}
+      \vspace{\verticalSpacingSRPMaps}
+      \caption{\centering For position 16}
+      \vspace{0.25cm}
+    \end{minipage}
+  \end{subfigure}
+  \caption{Comparison between the SRP-PHAT map predicted by the model
+    (left graphics),
+    the real SRP-PHAT map (middle graphics), and the average (real)
+    SRP-PHAT map (right graphics), for
+    several speaker positions ($f_0=1.5~KHz$). See
+    figure~~\ref{fig:simureal_positions}.\subref{fig:real_positions_short}
+    for geometrical references.}
+  \label{fig:SRPvsPatternSelected}
+\end{figure}
+  
+
+Incluso podemos poner una tabla ``apaisada'', como en la
+\ref{tablas2006}, donde se muestra un resumen de los resultados
+obtenidos en una serie de experimentos de localización de locutores.
+
+\clearpage
+\begin{sidewaystable}[hbtp]
+  \begin{center}
+
+    \begin{tabular}{||l|c|c|c|c|c||}
+      \hline \hline
+      & UKA & ITC & AIT & UPC & IBM\\
+      \hline
+      \hline
+      Pcor & $57.0\pm1.4\%$ & $84.0\pm3.3\%$ & $47.0\pm3.1\%$ & $20.0\pm2.5\%$ & $67.0\pm2.9\%$ \\
+      \hline
+      Bias fine (x:y:z) [mm] & $20:-42:-75$ & $45:27:-41$ & $-27:-77:-40$ & $-59:112:52$ & $91:-69:-38$ \\
+      \hline
+      Bias fine+gross (x,y,z) [mm] & $735:-93:-258$ & $67:439:-134$ & $17:-402:-118$ & $-141:255:39$ & $474:-141:-14$ \\
+      \hline
+      AEE fine [mm] = MOTP & $210$ & $130$ & $266$ & $344$ & $228$ \\
+      \hline
+      Fine+gross [mm] & $1201$ & $632$ & $1006$ & $1188$ & $884$ \\
+      \hline
+      Loc. frames & $5035$ & $22$ & $995$ & $977$ & $1023$ \\
+      \hline
+      Ref. duration (s) & $6287.0$ & $596.0$ & $1143.0$ & $1180.0$ & $1194.0$ \\
+      \hline \hline
+    \end{tabular}
+    \caption{Resultados TEST CLEAR 2006.}
+    \label{tablas2006}
+  \end{center}
+\end{sidewaystable}
+
+
+\section{Conclusiones}
+\label{sec:conclusiones-resultados}
+
+Blah, blah, blah.
+
+
+ 
+
+\makeatletter{}
+\chapter{Conclusiones y líneas futuras}
+\label{cha:concl-y-line}
+
+En este apartado se resumen las conclusiones obtenidas y se proponen
+futuras líneas de investigación que se deriven del trabajo.
+
+La estructura del capítulo es...
+
+
+\section{Conclusiones}
+\label{sec:conclusiones}
+
+Para añadir una referencia a un autor, se puede utilizar el paquete
+\texttt{cite}. En el trabajo \cite{armani03}, se muestra un trabajo...
+
+Y podemos usar de nuevo algún acrónimo, como por ejemplo \ac{TDPSOLA}, o
+uno ya referenciado como \ac{ANN}.
+
+
+\section{Líneas futuras}
+\label{sec:lineas-futuras}
+
+Pues eso.
+
+
+
+
+ 
+
+
+
+
+
+\makeatletter{}
+\bibliographystyle{IEEEtran}
+\newcommand{\myreferencespaths}{}
+\bibliography{biblio/biblio}
+
+
+
+
+                
+
+
+
+\appendix                                         
+\makeatletter{}
+\chapter{Manual de usuario}
+\label{cha:manual-de-usuario}
+
+\section{Introducción}
+\label{sec:intro-manual-de-usuario}
+
+Blah, blah, blah\ldots
+
+
+\section{Manual}
+\label{sec:sec-manual-de-usuario}
+
+Pues eso.
+
+
+\section{Ejemplos de inclusión de fragmentos de código fuente}
+\label{sec:codigo-fuente}
+
+Para la inclusión de código fuente se utiliza el paquete
+\texttt{listings}, para el que se han definido algunos estilos de
+ejemplo que pueden verse en el fichero \texttt{config/preamble.tex} y
+que se usan a continuación.
+
+Así se inserta código fuente, usando el estilo \texttt{CppExample} que
+hemos definido en el preamble, escribiendo el código directamente :
+
+\begin{lstlisting}[style=CppExample]
+#include <stdio.h>
+
+// Esto es una función de prueba
+void funcionPrueba(int argumento)
+{	
+	int prueba = 1;
+
+  printf("Esto es una prueba [
+}
+\end{lstlisting}
+
+O bien insertando directamente código de un fichero externo, como en el
+ejemplo \ref{cod:sample1}, usando
+\texttt{\textbackslash{}lstinputlisting} y cambiando el estilo a
+\texttt{Cbluebox} (además de usar el entorno \texttt{codefloat} para
+evitar pagebreaks, etc.).
+
+\begin{codefloat}
+\lstinputlisting[style=Cbluebox]{appendix/function.c}
+\caption{Ejemplo de código fuente con un \texttt{lstinputlisting} dentro
+de un \texttt{codefloat}}
+\label{cod:sample1}
+\end{codefloat}
+
+
+O por ejemplo en matlab, definiendo settings en lugar de usar estilos
+definidos:
+
+\lstset{language=matlab}
+\lstset{tabsize=2}
+\lstset{commentstyle=\textit}
+\lstset{stringstyle=\ttfamily, basicstyle=\small}
+\begin{lstlisting}[frame=trbl]{}
+a = 9;
+b = 10;
+
+c = a+b;
+
+fprintf(1, 'La suma de \end{lstlisting}
+
+O incluso como en el listado \ref{cod:sample2}, usando un layout más refinado (con
+los settings de \url{http://www.rafalinux.com/?p=599} en un \texttt{lststyle}
+\texttt{Cnice}).
+
+
+\begin{codefloat}
+\lstinputlisting[style=Cnice]{appendix/hello.c}
+\caption{Ejemplo de código fuente con estilo \texttt{Cnice}, de nuevo
+  con un \texttt{lstinputlisting} dentro de un \texttt{codefloat}}
+\label{cod:sample2}
+\end{codefloat}
+
+Y podemos reutilizar estilos cambiando algún parámetro, como podemos ver
+en el listado \ref{cod:sample3}, en el que hemos vuelto a usar el estilo
+\texttt{Cnice} eliminando la numeración.
+
+
+\begin{codefloat}
+\lstinputlisting[style=Cnice,numbers=none]{appendix/hello.c}
+\caption{Ejemplo de código fuente con estilo \texttt{Cnice}, modificado
+para que no aparezca la numeración.}
+\label{cod:sample3}
+\end{codefloat}
+
+
+\noindent
+Ahora compila usando \texttt{gcc}:
+
+
+\begin{lstlisting}[style=console, numbers=none]
+$ gcc  -o hello hello.c
+\end{lstlisting}
+
+Y también podemos poner ejemplos de código \textit{coloreado}, como se
+muestra en el \ref{cod:sample5}.
+
+\begin{codefloat}
+\lstinputlisting[style=Ccolor]{appendix/hello.c}
+\caption{Ejemplo con colores usando el estilo \texttt{Ccolor}}
+\label{cod:sample5}
+\end{codefloat}
+
+Finalmente aquí tenéis un ejemplo de código shell, usando el estilo
+\texttt{BashInputStyle}:
+
+\begin{lstlisting}[style=BashInputStyle, numbers=none]
+#!/bin/sh
+
+HOSTS_ALL="gc000 gc001 gc002 gc003 gc004 gc005 gc006 gc007"
+
+for h in $HOSTS_ALL
+do
+	echo "Running [$*] in $h..."
+  echo -n "   "
+  ssh root@$h $*
+done
+\end{lstlisting}
+
+\section{Ejemplos de inclusión de algoritmos}
+\label{sec:algoritmos}
+
+En la versión actual (abril de 2014), empezamos a usar el paquete
+\texttt{algorithm2e} para incluir algoritmos, y hay ajustes específicos
+y dependientes de este paquete tanto en \texttt{config/preamble.tex}
+como en \texttt{cover/extralistings.tex} (editadlos según vuestras
+necesidades). 
+
+Hay otras opciones disponibles (por ejemplo las descritas en
+\url{http://en.wikibooks.org/wiki/LaTeX/Algorithm}), y podemos
+abordarlas, pero por el momento nos quedamos con \texttt{algorithm2e}.
+
+Incluimos dos ejemplos directamente del manual: uno sencillo en el
+algoritmo~\ref{alg:howto}, y otro un poco más complicado en el
+algoritmo~\ref{alg:restriction}.
+
+\begin{algorithm}[H]
+ \caption{How to write algorithms}
+ \label{alg:howto}
+ \KwData{this text}
+ \KwResult{how to write algorithm with \LaTeX2e }
+ initialization\;
+ \While{not at end of this document}{
+  read current\;
+  \eIf{understand}{
+   go to next section\;
+   current section becomes this one\;
+   }{
+   go back to the beginning of current section\;
+  }
+ }
+\end{algorithm}
+
+
+\begin{algorithm}
+\caption{IntervalRestriction\label{IR}}
+ \label{alg:restriction}
+\DontPrintSemicolon
+\KwData{$G=(X,U)$ such that $G^{tc}$ is an order.}
+\KwResult{$G'=(X,V)$ with $V\subseteq U$ such that $G'^{tc}$ is an
+interval order.}
+\Begin{
+$V \longleftarrow U$\;
+$S \longleftarrow \emptyset$\;
+\For{$x\in X$}{
+$NbSuccInS(x) \longleftarrow 0$\;
+$NbPredInMin(x) \longleftarrow 0$\;
+$NbPredNotInMin(x) \longleftarrow |ImPred(x)|$\;
+}
+\For{$x \in X$}{
+\If{$NbPredInMin(x) = 0$ {\bf and} $NbPredNotInMin(x) = 0$}{
+$AppendToMin(x)$}
+}
+\nl\While{$S \neq \emptyset$}{\label{InRes1}
+\nlset{REM} remove $x$ from the list of $T$ of maximal index\;\label{InResR}
+\lnl{InRes2}\While{$|S \cap ImSucc(x)| \neq |S|$}{
+\For{$ y \in S-ImSucc(x)$}{
+\{ remove from $V$ all the arcs $zy$ : \}\;
+\For{$z \in ImPred(y) \cap Min$}{
+remove the arc $zy$ from $V$\;
+$NbSuccInS(z) \longleftarrow NbSuccInS(z) - 1$\;
+move $z$ in $T$ to the list preceding its present list\;
+\{i.e. If $z \in T[k]$, move $z$ from $T[k]$ to
+$T[k-1]$\}\;
+}
+$NbPredInMin(y) \longleftarrow 0$\;
+$NbPredNotInMin(y) \longleftarrow 0$\;
+$S \longleftarrow S - \{y\}$\;
+$AppendToMin(y)$\;
+}
+}
+$RemoveFromMin(x)$\;
+}
+}
+\end{algorithm}
+
+
+
+ 
+\makeatletter{}
+\chapter{Herramientas y recursos}
+\label{cha:herr-y-recurs}
+
+Las herramientas necesarias para la elaboración del proyecto han sido:
+
+\begin{itemize}
+\item PC compatible 
+\item Sistema operativo GNU/Linux \cite{gnulinux}
+\item Entorno de desarrollo Emacs \cite{emacs}
+\item Entorno de desarrollo KDevelop \cite{kdevelop}
+\item Procesador de textos \LaTeX \cite{lamport94}
+\item Lenguaje de procesamiento matemático Octave  \cite{octave}
+\item Control de versiones CVS \cite{cvs}
+\item Compilador C/C++ gcc \cite{gcc}
+\item Gestor de compilaciones make \cite{make}
+\end{itemize}
+
+
+
+ 
+
+
+
+\backmatter                                       
+\makeatletter{}
+
+\ifthenelse{\equal{\mybookworktype}{TFG}}
+{
+  \makeatletter{}
+\chapter*{ }
+\thispagestyle{empty}
+
+\cleartoleftpage
+\thispagestyle{empty}
+
+\BgThispage
+
+
+\begin{tikzpicture}[remember picture,overlay]
+    \node[yshift=-5cm] at (current page.north west)
+      {
+        \begin{tikzpicture}[remember picture, overlay]
+          \draw[fill=headingPortadaTFG,headingPortadaTFG] (0,0) rectangle (\paperwidth,5cm);
+
+          \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFG}\mybookuniversity};
+          \node [yshift=2cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFG}\mybookschool};
+
+        \end{tikzpicture}
+      };
+   \end{tikzpicture}
+
+
+\large
+\vspace{20cm}
+\begin{center}
+  
+  \centerline{\includegraphics[height=2.5cm]{logoUAH.jpg}}
+
+\end{center}
+
+
+
+
+
+ 
+}
+{
+
+}
+
+
+
+                     
+                                              
+\end{document}
