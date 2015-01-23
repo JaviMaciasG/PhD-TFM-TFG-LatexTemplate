@@ -2,7 +2,7 @@
 # 
 # Makefile to generate both book.pdf and anteproyecto.pdf
 #
-# $Id: Makefile,v 1.10 2014/03/19 15:03:40 macias Exp $
+# $Id: Makefile,v 1.1 2014/10/02 22:19:03 macias Exp $
 #
 # By:
 #  + Javier Macías-Guarasa. 
@@ -27,8 +27,11 @@
 #
 ###########################################################################
 
-ROOT_ANTEPROYECTO_FILENAME=anteproyecto
-TEX_ANTEPROYECTO_FILE = $(ROOT_ANTEPROYECTO_FILENAME).tex
+ROOT_FILENAME=anteproyecto
+TEX_FILE = $(ROOT_FILENAME).tex
+FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten.tex
+DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff
+DIFF_FLATTEN_TEX_FILE = $(DIFF_FLATTEN_ROOT_FILENAME).tex
 RUBBER_TOOL=rubber
 LATEXMK_TOOL=latexmk
 EPSPDF_TOOL=epspdf
@@ -47,16 +50,25 @@ PDFS_FROM_EPS=$(patsubst %.eps,%.pdf,$(EPS_SOURCES))
 DUMMY_TARGETS=pdf_dia_done pdf_svg_done pdf_eps_done
 
 all: $(DUMMY_TARGETS)
-	$(RUBBER_TOOL) -f -d $(TEX_ANTEPROYECTO_FILE)
-	$(RUBBER_TOOL) -f -d $(TEX_ANTEPROYECTO_FILE)
+	$(RUBBER_TOOL) -f -d $(TEX_FILE)
+	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 
-anteproyecto: $(TEX_ANTEPROYECTO_FILENAME)
-	$(RUBBER_TOOL) -f -d $(TEX_ANTEPROYECTO_FILE)
-	$(RUBBER_TOOL) -f -d $(TEX_ANTEPROYECTO_FILE)
+anteproyecto: $(TEX_FILENAME)
+	$(RUBBER_TOOL) -f -d $(TEX_FILE)
+	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 
-anteproyecto_latexmk: $(TEX_ANTEPROYECTO_FILENAME)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_ANTEPROYECTO_FILE)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_ANTEPROYECTO_FILE)
+anteproyecto_latexmk: $(TEX_FILENAME)
+	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_FILE)
+	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_FILE)
+
+flatten: 
+	latexpand $(TEX_FILE) > $(FLATTEN_TEX_FILE)
+
+latexdiff: flatten
+	latexdiff-cvs --force -r $(FLATTEN_TEX_FILE)
+	rubber -d $(DIFF_FLATTEN_TEX_FILE)
+	rubber -d $(DIFF_FLATTEN_TEX_FILE)
+
 
 pdf_dia_done: $(PDFS_FROM_DIA)
 	echo "Generating pdfs from DIA: [$(PDFS_FROM_DIA)]..."
@@ -92,23 +104,23 @@ tar:
 	zip -u $(ROOT_FILENAME)-latex.zip `find . -name Makefile -o -name README -o -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS"` 
 
 clean:
-	$(RUBBER_TOOL) --clean -d $(TEX_ANTEPROYECTO_FILE)
+	$(RUBBER_TOOL) --clean -d $(TEX_FILE)
 #	$(RM) $(PDFS_FROM_DIA)
 #	$(RM) $(PDFS_FROM_SVG)
 	$(RM) $(DUMMY_TARGETS)
 
 
 clean_latexmk:
-	$(LATEXMK_TOOL) -C $(TEX_ANTEPROYECTO_FILE)
+	$(LATEXMK_TOOL) -C $(TEX_FILE)
 #	$(RM) $(PDFS_FROM_DIA)
 #	$(RM) $(PDFS_FROM_SVG)
-	-$(RM) $(ROOT_ANTEPROYECTO_FILENAME).blg
-	-$(RM) $(ROOT_ANTEPROYECTO_FILENAME).bbl
-	-$(RM) $(ROOT_ANTEPROYECTO_FILENAME).out
-	-$(RM) $(ROOT_ANTEPROYECTO_FILENAME).aux
-	-$(RM) $(ROOT_ANTEPROYECTO_FILENAME).pdf
-	-$(RM) $(ROOT_ANTEPROYECTO_FILENAME).log
-	-$(RM) $(ROOT_ANTEPROYECTO_FILENAME).fdb_latexmk
+	-$(RM) $(ROOT_FILENAME).blg
+	-$(RM) $(ROOT_FILENAME).bbl
+	-$(RM) $(ROOT_FILENAME).out
+	-$(RM) $(ROOT_FILENAME).aux
+	-$(RM) $(ROOT_FILENAME).pdf
+	-$(RM) $(ROOT_FILENAME).log
+	-$(RM) $(ROOT_FILENAME).fdb_latexmk
 	$(RM) $(DUMMY_TARGETS)
 
 .PHONY:	all pdf clean tar $(DUMMY_TARGETS)

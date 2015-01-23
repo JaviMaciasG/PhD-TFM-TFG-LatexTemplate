@@ -2,7 +2,7 @@
 # 
 # Makefile to generate book.pdf
 #
-# $Id: Makefile,v 1.12 2014/10/13 13:32:04 macias Exp $
+# $Id: Makefile,v 1.13 2014/11/26 23:09:09 macias Exp $
 #
 # By:
 #  + Javier Macías-Guarasa. 
@@ -29,6 +29,9 @@
 
 ROOT_FILENAME=book
 TEX_FILE = $(ROOT_FILENAME).tex
+FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten.tex
+DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff
+DIFF_FLATTEN_TEX_FILE = $(DIFF_FLATTEN_ROOT_FILENAME).tex
 RUBBER_TOOL=rubber
 LATEXMK_TOOL=latexmk
 EPSPDF_TOOL=epspdf
@@ -57,6 +60,15 @@ all_latexmk: $(DUMMY_TARGETS)
 	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_FILE)
 	makeglossaries $(ROOT_FILENAME)
 	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_FILE)
+
+flatten: 
+	latexpand $(TEX_FILE) > $(FLATTEN_TEX_FILE)
+
+latexdiff: flatten
+	latexdiff-cvs --force -r $(FLATTEN_TEX_FILE)
+	rubber -d $(DIFF_FLATTEN_TEX_FILE)
+	makeglossaries $(DIFF_FLATTEN_ROOT_FILENAME)
+	rubber -d $(DIFF_FLATTEN_TEX_FILE)
 
 pdf_dia_done: $(PDFS_FROM_DIA)
 #	echo "Generating pdfs from DIA: [$(PDFS_FROM_DIA)]..."

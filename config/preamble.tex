@@ -2,7 +2,7 @@
 % 
 % Generic template for TFC/TFM/TFG/Tesis
 % 
-% $Id: preamble.tex,v 1.29 2014/11/06 13:48:47 macias Exp $
+% $Id: preamble.tex,v 1.30 2014/12/09 11:42:57 macias Exp $
 % 
 % By:
 % + Javier Macías-Guarasa. 
@@ -570,6 +570,17 @@ hyperfootnotes=false,
 %   }%
 % }
 % \makeatother
+
+% This should be relative to the book.tex path, do not touch!!!!!!!!!!!
+\newcommand{\myreferencespath}{}
+
+%\providecommand{\DIFadd}[1]{{\protect\color{blue}#1}} %DIF PREAMBLE
+%\providecommand{\DIFdel}[1]{{\protect\color{red}\protect\scriptsize{#1}}}
+
+% As fancy underlining does not seem to compile with pdflatex, remove underline
+%\providecommand{\DIFadd}[1]{{\protect\color{blue}{\protect\uwave{#1}}}}
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\textbf{#1}}}
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                     
 
 %%% Local Variables:
 %%% TeX-master: "../book"

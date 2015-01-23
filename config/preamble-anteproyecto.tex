@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: preamble-anteproyecto.tex,v 1.5 2014/09/22 00:19:35 macias Exp $
+% $Id: preamble-anteproyecto.tex,v 1.6 2014/10/02 22:16:06 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -89,31 +89,22 @@
 
 \usepackage{caption}
 
+% ifthen to allow using language dependent settings
+\usepackage{ifthen}
 
-%% FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR
-\usepackage[cmyk]{xcolor}
-%\usepackage[RGB,rgb]{xcolor}
-%\usepackage{color}
-% Pantone 160
-%\definecolor{headingPortadaTFM}{RGB}{158,84,10}
-% Pantone 160C (this is supposed to be the correct one, but it looks horrible in screen)
-%\definecolor{headingPortadaTFM}{RGB}{161,86,28}
-% Gold in RGB
-%\definecolor{textoHeadingPortadaTFM}{RGB}{215,215,0}
-% Captured colors in screen (this looks pst on screen)
-\newcommand{\colorspaceused}{cmyk}
+%% JMG: FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR
+% This should not be touched, as it should work as it is know.
+\newcommand{\colorspaceused}{rgb}
 
+%The next section seems to be useless, but it's still pending to try further
 \ifthenelse{\equal{\colorspaceused}{rgb}}
 {
-\definecolor{headingPortadaTFM}{RGB}{152,118,52}
-\definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
+  \PassOptionsToPackage{rgb}{xcolor}% NB: put this *before* \usepackage{pst-all}
 }
 {
-% These definitions are for cmyk colorspace
-\definecolor{headingPortadaTFM}{cmyk}{0.0254,0,0.559,0.537}
-\definecolor{textoHeadingPortadaTFM}{cmyk}{0,0.0144,0.51,0.184}
-
+  \PassOptionsToPackage{cmyk}{xcolor}% NB: put this *before* \usepackage{pst-all}
 }
+
 
 
 % To draw rectagles in tfm cover
@@ -505,6 +496,21 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 %\newcommand{\abc}{abc}  
 %\expandafter\makefirstuc\expandafter{\abc} 
 
+\makeatletter
+\def\input@path{{../}{../biblio/}}
+%or: \def\input@path{{/path/to/folder}{/path/to/other/folder}}
+\makeatother
+
+% This should be relative to the anteproyecto path
+\newcommand{\myreferencespath}{../}
+
+%\providecommand{\DIFadd}[1]{{\protect\color{blue}#1}} %DIF PREAMBLE
+%\providecommand{\DIFdel}[1]{{\protect\color{red}\protect\scriptsize{#1}}}
+
+% As fancy underlining does not seem to compile with pdflatex, remove underline
+%\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}}
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\textbf{#1}}}
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                     
 
 %%% Local Variables:
 %%% TeX-master: "../book"

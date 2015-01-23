@@ -49,6 +49,8 @@
 \usepackage{xcolor}
 
 
+\definecolor{pantone293}{RGB}{35,91,168}
+
 \definecolor{headingPortadaTFG}{RGB}{152,118,52}
 \definecolor{headingPortadaTFM}{RGB}{0,90,170}
 \definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
@@ -314,6 +316,8 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 \newcommand{\mybookauthor}{Javier Macías-Guarasa}
 \newcommand{\mybookdepartment}{Departamento de Electrónica}
 \newcommand{\mybookdepartmentEnglish}{Departament of Electronics}
+\newcommand{\mybookphdprogram}{Programa de Doctorado en Electrónica: Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
+\newcommand{\mybookphdprogramEnglish}{PhD. Program in Electronics: Advanced Electronic Systems. Intelligent Systems}
 \newcommand{\mybookresearchgroup}{GEINTRA}
 \newcommand{\mybookschool}{Escuela Politécnica Superior}
 \newcommand{\mybookuniversity}{Universidad de Alcalá}
@@ -328,6 +332,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 \newcommand{\mybookyear}{2014}
 \newcommand{\myanteproyectodate}{6 de enero de 2014}
 \newcommand{\mydefensedate}{6 de enero de 2014}
+\newcommand{\mydefensedateEnglish}{January 6\textsuperscript{th}, 2014}
 \newcommand{\mybookkeywords}{Bsc., Msc. and PhD. Thesis template, \LaTeX, English/Spanish support, automatic generation} \newcommand{\mybookpalabrasclave}{Plantillas de trabajos fin de carrera/máster/grado y tesis doctorales, \LaTeX, soporte de español e inglés, generación automática} 
 \newcommand{\mybookdepartmentsecretary}{José Luis Martín Sánchez}
 \newcommand{\mybookdateforpaperwork}{30 de septiembre de 2014}
@@ -859,13 +864,8 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
   
   \vspace{1cm}
 
-\ifthenelse{\equal{\colorspaceused}{rgb}}
-{
-  \centerline{\includegraphics[height=6cm]{logoUAHazul.jpg}}
-}
-{
-  \centerline{\includegraphics[height=6cm]{logoUAHazul-cmyk.jpg}}
-}
+  \centerline{\includegraphics[height=6cm]{uah/logoUAHazul.jpg}}
+
   \vspace{1cm}
 
   \Large\textbf{\mybookworktypefull}
@@ -1039,37 +1039,42 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 \vspace{3cm}
 \begin{center}
 
-  \Huge{\textbf{\MakeUppercase{\mybookuniversity}}}
+\color{pantone293}
 
-  \vspace{5mm}
+  \centerline{\includegraphics[height=3cm]{uah/01_logo-vA_pant293.pdf}}
 
-  \Large{\MakeUppercase{\mybookschool}}
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    \huge{{\mybookphdprogramEnglish}}
+  }
+  {
+    \huge{{\mybookphdprogram}}
+  }
   
-  \vspace{5mm}
 
-  \Large\textbf{\MakeUppercase{\mybookdepartment}}
+  
+
+
+
+  \vspace{2cm}   
+  
+  \Huge\textbf{\mybooktitle}
 
   \vspace{15mm}
+  
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    \huge{{PhD. Thesis Presented by}}
+  }
+  {
+    \huge{{Tesis Doctoral presentada por}}
+  }
 
-\ifthenelse{\equal{\colorspaceused}{rgb}}
-{
-  \centerline{\includegraphics[height=6cm]{logoUAHazul.jpg}}
-}
-{
-  \centerline{\includegraphics[height=6cm]{logoUAHazul-cmyk.jpg}}
-}
-  
-  \vspace{15mm}
-  
-  \LARGE\textbf{\mybookworktypefull}
 
-  \vspace{15mm}   
+  \huge{\textbf{\mybookauthor}}
+
+
   
-  \LARGE\textbf{\mybooktitle}
-  
-  \vspace{2cm}
-  
-  \mybookauthor
 
 \end{center}
 
@@ -1079,6 +1084,8 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
   \end{center}
 \end{bottomparagraph}
 
+\color{black}
+
 \clearemptydoublepage
 
  
@@ -1087,64 +1094,75 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 \large
 \begin{center}
 
-  {\Huge\textbf{\MakeUppercase{\mybookuniversity}}}
+  \color{pantone293}
 
-  \vspace{7mm}
+  \centerline{\includegraphics[height=3cm]{uah/01_logo-vA_pant293.pdf}}
 
-  {\Large{\MakeUppercase{\mybookschool}}}
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    \huge{{\mybookphdprogramEnglish}}
+  }
+  {
+    \huge{{\mybookphdprogram}}
+  }
 
-  \vspace{1cm}
+  \vspace{2cm}   
   
-  {\Large\textbf{\MakeUppercase{\mybookdepartment}}}
+  \Huge\textbf{\mybooktitle}
 
-  \vspace{15mm}
-
-  \centerline{\includegraphics[height=6cm]{logoUAHazul.jpg}}
-
-  \vspace{1cm}   
-
-  \Large\textbf{\mybooktitle}
-
-  \vspace{2cm}
+  \vspace{10mm}
   
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
-    \textbf {Author}
+    \huge{{PhD. Thesis Presented by}}
   }
   {
-    \textbf {Autor}
+    \huge{{Tesis Doctoral presentada por}}
   }
-  
-  
-  \mybookauthor
-  
-  \vspace{1cm}
-  
+
+  \huge{\textbf{\mybookauthor}}
+
+
+  \vspace{10mm}
+
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
-    \textbf {\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}}
+    \huge {\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}}
   }
   {
-    \textbf {\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}}
+    \huge {\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}}
   }  
+
+  \textbf{\mybookadvisors}
+
   
-  \mybookadvisors
+  \color{black}
   
-  
+
 \end{center}
 
 \begin{bottomparagraph}
   \begin{center}
-    \textbf{\mybookyear}\\
-    \vspace{5mm}
-    \textbf{\mybookworktypefull}
+
+    \color{pantone293}
+
+    \ifthenelse{\equal{\mybooklanguage}{english}}
+    {
+      \huge {Alcalá de Henares, \mydefensedateEnglish}
+    }
+    { 
+      \huge {Alcalá de Henares, \mydefensedate}
+    }  
+    \color{black}
+
   \end{center}
 \end{bottomparagraph}
 
 
-\normalsize
-
 \clearemptydoublepage
+
+
+
 
 
 
@@ -1776,6 +1794,10 @@ aplicaciones:
   manejo de listas de acrónimos y variables. Suele estar en el paquete
   \texttt{texlive-latex-extra} en distribuciones basadas en Debian
   (como ubuntu y derivados).
+\item \texttt{latexdiff} y \texttt{latexpand}, si se quiere utilizar la
+  prestación de generación de ficheros pdf con control de cambios. El
+  primero suele ser un paquete independiente, y el segundo suele estar
+  en el paquete \texttt{texlive-extra-utils}.
 \end{itemize}
 
 
@@ -1816,14 +1838,6 @@ prestaciones:
     \texttt{makeglossaries}. Si ésta  es tu opción, sustituye el target
     \texttt{all} por éste, para facilitarte la compilación.
 
-  \item \texttt{anteproyecto}, que genera el fichero
-    \texttt{anteproyecto.pdf} correspondiente, usando
-    \texttt{rubber}. No nos hemos planteado la generación de ficheros en
-    otros formatos.
-  \item \texttt{anteproyecto\_latexmk}, que genera el fichero
-    \texttt{anteproyecto.pdf} correspondiente, usando
-    \texttt{latexmk}. Si ésta es tu opción, sustituye el target
-    \texttt{anteproyecto} por éste, para facilitarte la compilación.
   \item  \texttt{tar}, que genera un fichero \texttt{tgz} que contiene
     todo lo necesario para la distribución de la plantilla.
   \item \texttt{clean}, que borra todos los ficheros temporales usando
@@ -1942,6 +1956,9 @@ de trabajo y el autor:
 \item DNI del autor del trabajo, usado en el papeleo de los TFGs (variable \texttt{\textbackslash{}mybookDNI}).
 \item Departamento en el que se realiza el trabajo (variable
   \texttt{\textbackslash{}mybookdepartment}, en español, y \texttt{\textbackslash{}mybookdepartmentEnglish}, en inglés).
+\item Programa de Doctorado (en su caso) en el que se realiza el trabajo (variable
+  \texttt{\textbackslash{}mybookphdprogram}, en español, y
+  \texttt{\textbackslash{}mybookphdprogramEnglish}, en inglés). 
 \item Grupo de investigación en el que se realiza el trabajo (variable
   \texttt{\textbackslash{}mybookresearchgroup}.
 \item Centro en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybookschool}, que debería ser la Escuela Politénica Superior, pero se incluye por generalidad).
@@ -1957,7 +1974,9 @@ de trabajo y el autor:
 \item Nombre del secretario del tribunal, en su caso (variable \texttt{\textbackslash{}mybooksecretary}).
 \item Año del trabajo (variable \texttt{\textbackslash{}mybookyear}).
 \item Fecha del anteproyecto, en su caso (variable \texttt{\textbackslash{}mybookanteproyectodate}), en el caso de que se usen la plantilla del anteproyecto.
-\item Fecha de la defensa del trabajo, en su caso (variable \texttt{\textbackslash{}mydefensedate}).
+\item Fecha de la defensa del trabajo, en su caso (variable
+  \texttt{\textbackslash{}mydefensedate}, en español, o
+  \texttt{\textbackslash{}mydefensedateEnglish}).
 \item Palabras clave en inglés (variable \texttt{\textbackslash{}mybookkeywords}).
 \item Palabras clave en español (variable \texttt{\textbackslash{}mybookpalabrasclave}).
 \end{itemize}
@@ -2032,9 +2051,15 @@ el \texttt{book.tex}.
 Para el caso de los TFMs/TFGs/TFCs, se incluye una plantilla para
 realizar el anteproyecto.
 
-La plantilla se encuentra en el fichero \texttt{anteproyecto.tex} y el
+La plantilla se encuentra en el directorio \texttt{anteproyecto}, y en
+fichero \texttt{anteproyecto.tex} tenéis un ejemplo. El
 \texttt{Makefile} genera automáticamente el \texttt{anteproyecto.pdf},
-haciendo un \texttt{make anteproyecto}.
+haciendo un \texttt{make} en ese directorio, y tiene targets similares a los
+del \texttt{Makefile} del documento principal, incluyendo
+\texttt{flatten} y \texttt{latexdiff}, con lo que también puede
+generarse el fichero con control de cambios, tal y como se describe en
+la sección~\ref{sec:control-de-cambios} (cambiando las referencias a
+\texttt{book...} por \texttt{anteproyecto...}).
 
 
 \subsection{Papeleo adicional para la defensa de los TFGs}
@@ -2064,7 +2089,7 @@ automáticamente adapta los singulares/plurales necesarios para el caso
 de que haya uno o varios directores/tutores.
  
 
-\subsection{Generación del documento con control de cambios}
+\subsection{Generación del documento con control de cambios (para revisión)}
 \label{sec:control-de-cambios}
 
 Uno de los problemas de \LaTeX{} frente a otros sistemas de edición de
@@ -2114,8 +2139,8 @@ procedimiento para hacer uso de ello sería (asumiendo que usáis
   \texttt{cvs commit -m ``New flattened version'' book-flatten.tex}.
 \item A partir de ahí ya se puede trabajar en los cambios al documento,
   los que sean necesarios.
-\item Cuando se quiera obtener el fichero con el control de cambios,
-  bastará hacer un \texttt{make latexdiff}, que acabará generando 
+\item Cuando se quiera obtener el fichero pdf con el control de cambios,
+  bastará hacer un \texttt{make latexdiff}, que acabará generando
   \texttt{book-flatten-diff.pdf}, que será lo que estábamos buscando.
 \end{itemize}
 
@@ -2405,7 +2430,26 @@ Y ahora un ejemplo en el que ponemos el \texttt{caption} en el lateral:
 \section{Técnicas utilizadas}
 \label{sec:tecnicas-utilizadas}
 
+Aquí vamos a probar todos los niveles de sección disponibles, para
+evaluar la asignación de \texttt{tocdepth}...
+
 Blah, blah, blah\ldots
+
+
+\subsection{Subsección}
+\label{sec:subseccion}
+
+
+\subsubsection{Subsubsección}
+\label{sec:subsubseccion}
+
+\paragraph{Paragraph}
+\label{sec:paragraph-1}
+
+
+\subparagraph{Subparagraph}
+\label{sec:subparagraph}
+
 
 
 \section{Conclusiones}
@@ -3284,7 +3328,7 @@ Las herramientas necesarias para la elaboración del proyecto han sido:
 \vspace{20cm}
 \begin{center}
   
-  \centerline{\includegraphics[height=2.5cm]{logoUAH.jpg}}
+  \centerline{\includegraphics[height=2.5cm]{uah/01_logo-vA_pant293.pdf}}
 
 \end{center}
 

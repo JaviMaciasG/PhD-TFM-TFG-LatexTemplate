@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: bibliography.tex,v 1.6 2013/11/25 00:33:31 macias Exp $
+% $Id: bibliography.tex,v 1.7 2014/01/08 22:56:04 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -31,7 +31,24 @@
 %\bibliographystyle{dinat}
 %\bibliographystyle{unsrt}
 \bibliographystyle{IEEEtran}
-\bibliography{biblio/biblio}
+
+% The following is overly complicated because I was not able to do so in
+% another way. The problem is the bibliography command being "called"
+% from both the root and anteproyecto directories...
+%
+% Here define as many bibfiles as needed
+\newcommand{\mybibfileOne}{biblio/biblio}
+\newcommand{\mybibfileTwo}{biblio/biblio2}
+%...
+%\newcommand{\mybibfileN}{biblio/biblioN}
+
+% This is for a single bib file
+\newcommand{\mybibfiles}{\myreferencespath\mybibfileOne}
+% but do this for multiple files
+%\newcommand{\mybibfiles}{\myreferencespath\mybibfile1,\myreferencespath\mybibfile2,...,\myreferencespath\mybibfileN}
+
+% Do not touch this
+\bibliography{\mybibfiles}
 
 
 %%% Local Variables:
