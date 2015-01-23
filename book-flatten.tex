@@ -296,6 +296,8 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 \newcommand{\myreferencespath}{}
 
 
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\textbf{#1}}}
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                     
 
 
 
@@ -2061,6 +2063,62 @@ En el directorio se incluye un \texttt{Makefile} que genera los
 automáticamente adapta los singulares/plurales necesarios para el caso
 de que haya uno o varios directores/tutores.
  
+
+\subsection{Generación del documento con control de cambios}
+\label{sec:control-de-cambios}
+
+Uno de los problemas de \LaTeX{} frente a otros sistemas de edición de
+textos viene en el momento de la revisión de cambios realizados a un
+documento. En el caso que nos ocupa serían los que nos sugiere nuestro
+tutor de TFC/TFG/TFG o director de tesis doctoral y que luego querrá
+verificar cómo se han aplicado. En un procesador al estilo de
+libreoffice (vaaaaaaaaale, o Microsoft Word también), tenemos la opción
+de comparar documentos o llevar el control de cambios y que el sistema
+automáticamente nos marque los añadidos o borrados. 
+
+En \LaTeX{} también es posible si usamos un sistema de control de
+versiones (y si no lo estáis usando, deberíais plantearos seriamente el
+hacerlo), con la ayuda de herramientas adicionales.
+
+Hay varias soluciones disponibles, la mayoría basada en el uso de la
+\texttt{latexdiff} \cite{latexdiff} (o derivados). Lo recomendable sería
+el uso de un sistema automatizado como el disponible en
+\texttt{git-latexdiff} \cite{git-latexdiff}, pero necesita el soporte de
+\texttt{git}, y por el momento estoy manteniendo esto en \texttt{cvs}
+(flames to \texttt{/dev/null}, please).
+
+\texttt{latexdiff} permite comparar dos versiones de un documento y
+generar un nuevo fichero fuente en \LaTeX{} que, al compilarlo, muestra un
+pdf ``bonito'', con las marcas de las diferencias (resaltando lo añadido
+y lo quitado). El resultado es perfecto para hacer una buena revisión de
+los cambios, y por supuesto no tiene punto de comparación con ver un
+\texttt{diff} a palo seco de las dos versiones del documento. 
+
+Lo que finalmente he implementado es muy ad-hoc, pero funciona. El
+procedimiento para hacer uso de ello sería (asumiendo que usáis
+\texttt{cvs} como sistema de control de versiones\footnote{Si usáis
+  \texttt{git} (lo que también os recomiendo que hagáis), el proceso es
+  más sencillo porque \texttt{git-latexdiff} lo hace todo automático,
+  aunque os tendréis que trabajar la parte correspondiente del
+  \texttt{Makefile}}:
+
+\begin{itemize}
+\item Primero hay que preparar la versión base sobre la que luego se
+  harán los cambios. Esa preparación se hace normalmente cuando se tiene
+  una versión razonablemente estable, y con la que luego se quiere
+  comparar (por ejemplo cuando le entregas a tu tutor tu primer borrador
+  del documento completo). La preparación es sencilla: basta hacer un
+  \texttt{make flatten}. Eso generará un fichero
+  \texttt{book-flatten.tex} que contiene el estado actual del documento,
+  expandido. Luego hay que registrarlo en el repositorio basta hacer un
+  \texttt{cvs commit -m ``New flattened version'' book-flatten.tex}.
+\item A partir de ahí ya se puede trabajar en los cambios al documento,
+  los que sean necesarios.
+\item Cuando se quiera obtener el fichero con el control de cambios,
+  bastará hacer un \texttt{make latexdiff}, que acabará generando 
+  \texttt{book-flatten-diff.pdf}, que será lo que estábamos buscando.
+\end{itemize}
+
 
 
 \subsection{Problemas conocidos}
