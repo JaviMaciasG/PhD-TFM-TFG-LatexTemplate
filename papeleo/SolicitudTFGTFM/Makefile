@@ -1,6 +1,6 @@
 ###########################################################################
 # 
-# Makefile to generate anteproyecto.pdf
+# Makefile to generate solicitud.pdf
 #
 # $Id: Makefile,v 1.2 2015/01/23 22:44:44 macias Exp $
 #
@@ -27,7 +27,7 @@
 #
 ###########################################################################
 
-ROOT_FILENAME=anteproyecto
+ROOT_FILENAME=solicitud
 TEX_FILE = $(ROOT_FILENAME).tex
 FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten.tex
 DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff
@@ -53,11 +53,11 @@ all: $(DUMMY_TARGETS)
 	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 
-anteproyecto: $(TEX_FILENAME)
+solicitud: $(TEX_FILENAME)
 	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 
-anteproyecto_latexmk: $(TEX_FILENAME)
+solicitud_latexmk: $(TEX_FILENAME)
 	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_FILE)
 	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_FILE)
 
