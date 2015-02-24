@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: setlanguagedependentissues.tex,v 1.7 2013/11/28 00:15:15 macias Exp $
+% $Id: setlanguagedependentissues.tex,v 1.8 2014/01/08 22:56:05 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -38,6 +38,9 @@
 {
   \selectlanguage{english}
 
+  \newcommand{\xUseSpanish}{~}    
+  \newcommand{\xUseEnglish}{X}  
+
   \floatname{codefloat}{Listing}
   \renewcommand{\lstlistingname}{Listing}
 
@@ -52,7 +55,9 @@
 }
 {
   \selectlanguage{spanish}
-  
+
+  \newcommand{\xUseSpanish}{X}    
+  \newcommand{\xUseEnglish}{~}  
   \renewcommand{\tablename}{Tabla}
   \renewcommand{\listtablename}{Índice de tablas}
 

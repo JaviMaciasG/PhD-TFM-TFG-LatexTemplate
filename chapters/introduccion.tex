@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: introduccion.tex,v 1.17 2015/01/23 22:44:45 macias Exp $
+% $Id: introduccion.tex,v 1.18 2015/02/24 23:09:58 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -329,6 +329,18 @@ Se ha comenzado a trabajar en la versión alfa del soporte para
 Parte de esa información se utilizará para rellenar la metainformación
 incluida en el fichero \texttt{pdf} que se genera.
 
+También se ha iniciado soporte básico para generar la hoja de control de
+anteproyecto que se usa en la solicitud, con lo que hay variables
+relacionadas con los datos personales del alumno:
+
+\begin{itemize}
+\item Dirección: calle (variable \texttt{\textbackslash{}mystreet}),
+  ciudad (variable \texttt{\textbackslash{}mycity}), código postal
+  (variable \texttt{\textbackslash{}mypostalcode}), provincia (variable
+  \texttt{\textbackslash{}myprovince}) y teléfono (variable
+  \texttt{\textbackslash{}mytelephone}).
+\end{itemize}
+
 También se definen los colores que se usarán en los hiperenlaces del
 documento. En concreto\footnote{Os rogamos encarecidamente que cambiéis
   los colores definidos actualmente, que se han usado para verificar que
@@ -385,6 +397,23 @@ del \texttt{Makefile} del documento principal, incluyendo
 generarse el fichero con control de cambios, tal y como se describe en
 la sección~\ref{sec:control-de-cambios} (cambiando las referencias a
 \texttt{book...} por \texttt{anteproyecto...}).
+
+\subsection{Plantilla de hoja de control de anteproyecto}
+\label{sec:plantilla-de-hoja-control-anteproyecto}
+
+Para el caso de los TFMs/TFGs/TFCs, se incluye una plantilla de la hoja
+de control de la solicitud del anteproyecto.
+
+La plantilla se encuentra en el directorio \texttt{solicitud}, y en
+fichero \texttt{solicitud.tex} tenéis un ejemplo. El
+\texttt{Makefile} genera automáticamente el \texttt{solicitud.pdf},
+haciendo un \texttt{make} en ese directorio, y tiene targets similares a los
+del \texttt{Makefile} del documento principal, incluyendo
+\texttt{flatten} y \texttt{latexdiff}, con lo que también puede
+generarse el fichero con control de cambios, tal y como se describe en
+la sección~\ref{sec:control-de-cambios} (cambiando las referencias a
+\texttt{book...} por \texttt{solicitud...}). En este caso el documento
+no hay que tocarlo prácticamente, salvo que le pase alguna cosa rara.
 
 
 \subsection{Papeleo adicional para la defensa de los TFGs}
