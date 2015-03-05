@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: preamble-solicitud.tex,v 1.1 2015/02/24 15:47:22 macias Exp $
+% $Id: preamble-solicitud.tex,v 1.2 2015/02/24 23:21:55 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -120,7 +120,7 @@
 % \usepackage{natbib}
 
 \usepackage{geometry}
-\geometry{verbose,a4paper,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+\geometry{verbose,a4paper,tmargin=1.5cm,bmargin=1.5cm,lmargin=2cm,rmargin=2cm}
 %\geometry{paperwidth=210mm,paperheight=297mm}
 
 \usepackage[
@@ -513,6 +513,14 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 \providecommand{\DIFadd}[1]{{\protect\color{blue}\textbf{#1}}}
 \providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                     
 \usepackage{setspace}
+
+% Long underline whole line (http://tex.stackexchange.com/questions/18768/underlining-a-whole-line-with-a-short-text-in-its-beginning)
+\usepackage{calc} 
+\newlength{\remaining}
+\newcommand{\longunderline}[2]{%
+\setlength{\remaining}{\linewidth-\widthof{{#2}{#1}}-\tabcolsep}
+\noindent\underline{\smash{{#1}\hspace*{\remaining}}}}
+
 
 %%% Local Variables:
 %%% TeX-master: "../book"
