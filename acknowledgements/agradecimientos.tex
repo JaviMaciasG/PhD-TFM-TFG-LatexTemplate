@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: agradecimientos.tex,v 1.4 2014/01/08 22:56:03 macias Exp $
+% $Id: agradecimientos.tex,v 1.5 2014/01/10 10:06:23 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -27,6 +27,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Use this if you don't like the fancy style
+\thispagestyle{empty}
+
 \ifthenelse{\equal{\mybooklanguage}{english}}
 {
   \chapter*{Acknowledgements}
@@ -39,8 +42,6 @@
   \markboth{Agradecimientos}{Agradecimientos}
 }
 
-% Use this if you don't like the fancy style
-\thispagestyle{myplain}
 
 
 
