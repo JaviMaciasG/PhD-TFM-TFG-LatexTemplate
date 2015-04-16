@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: portada-tfg-uah.tex,v 1.9 2014/01/20 10:06:29 macias Exp $
+% $Id: portada-tfg-uah.tex,v 1.10 2014/09/22 00:19:35 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -70,13 +70,28 @@
 
 \vspace{5cm}
 
+\ifthenelse{\equal{\mybooklanguage}{english}}
+{
+  \textbf{Author:}  \mybookauthor 
+}
+{
   \textbf{Autor:}  \mybookauthor 
+}
 
 \vspace{0.5cm}
 
 % If also director: add corresponding line (mybookDirectors IS NOT DEFINED AS FOR ME (JMG)
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    \textbf{\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}:} \mybookadvisors
+  }
+  {
   \textbf{\expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}:}  \mybookadvisors
 %  \textbf{\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}:}  \mybookdirectors
+  }
+
+
+
 
 \end{center}
 

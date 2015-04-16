@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: cover-pfc-tfg-tfm-uah.tex,v 1.6 2014/01/11 23:27:56 macias Exp $
+% $Id: cover-pfc-tfg-tfm-uah.tex,v 1.7 2014/09/22 00:19:35 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -52,30 +52,64 @@
 
   \vspace{1cm}
   
-  Autor: \mybookauthor
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    Author: \mybookauthor
+  }
+  {
+    Autor: \mybookauthor
+  }
+  
   
   \vspace{1mm}
   
 
-  \expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}: \mybookadvisors
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    \expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}: \mybookadvisors
+  }
+  {
+    \expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}: \mybookadvisors
+  }
+
   
   \vspace{1cm}
 
   \begin{tabular}{rll}
     \textbf{Tribunal:} & &\\ 
     &&\\
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    & \textbf{President:} & \mybookpresident\\ \\ \\
+  }
+  {
     & \textbf{Presidente:} & \mybookpresident\\ \\ \\
+  }
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    & \textbf{1\textsuperscript{st} Vocal:}   & \mybookfirstvocal\\ \\ \\
+    & \textbf{2\textsuperscript{nd} Vocal:}   & \mybooksecondvocal\\ \\
+  }
+  {
     & \textbf{Vocal 1º:}   & \mybookfirstvocal\\ \\ \\
     & \textbf{Vocal 2º:}   & \mybooksecondvocal\\ \\
-  \end{tabular}
+  }
+\end{tabular}
 \end{center}
 
 
 \begin{bottomparagraph}
   \begin{center}
     \begin{tabular}{p{3cm}c}
-      &Calificación: ..........................................................................\\ \\
-      &Fecha: ...................................................................................
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+    &Calification: ..........................................................................\\ \\
+    &Date: ...................................................................................
+  }
+  {
+    &Calificación: ..........................................................................\\ \\
+    &Fecha: ...................................................................................
+  }
     \end{tabular}
   \end{center}
 \end{bottomparagraph}
