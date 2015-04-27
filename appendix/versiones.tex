@@ -1,0 +1,73 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: herramientas.tex,v 1.5 2014/01/08 22:56:03 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% Copyleft 2013
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Versiones}
+\label{cha:versiones}
+
+En este apartado incluyo el historial de cambios más relevantes de la
+plantilla a lo largo del tiempo.
+
+No empecé este apéndice hasta principios de 2015, con lo que se ha
+perdido parte de la información de los cambios importantes que ha ido
+sufriendo esta plantilla.
+
+
+\begin{itemize}
+\item Abril 2015:
+  \begin{itemize}
+  \item Comienzo de intento de hacer un \texttt{make bare} para que deje
+    los capítulos mondos y lirondos. Afecta a la creación de ficheros
+    \texttt{*-bare.tex} en los directorios \texttt{./chapters} y
+    \texttt{./appendix}.
+  \end{itemize}
+
+\item Enero 2015:
+  \begin{itemize}
+  \item Solucionado el problema (gordo) de compilación del
+    \texttt{anteproyecto.tex} y el \texttt{book.tex}, debido al uso de
+    paths distintos en la compilación de la bibliografía. El sistema se ha
+    complicado un poco (ver
+    \texttt{biblio\textbackslash{}bibliography.tex}).
+  \item Añadido un (rudimentario) sistema para generar pdf con las
+    diferencias entre el documento en su estado actual y lo último
+    disponible en el repositorio (usando \texttt{latexdiff}).
+  \end{itemize}
+\item Diciembre 2015:
+  \begin{itemize}
+  \item Separada la compilación del anteproyecto de la del documento
+    principal. Para el primero se ha creado el directorio
+    \texttt{anteproyecto} donde está todo lo necesario.
+  \end{itemize}
+\end{itemize}
+
+%%% Local Variables:
+%%% TeX-master: "../book"ve
+%%% End:
+
+

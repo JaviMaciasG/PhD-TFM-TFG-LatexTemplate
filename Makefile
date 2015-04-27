@@ -2,7 +2,7 @@
 # 
 # Makefile to generate book.pdf
 #
-# $Id: Makefile,v 1.13 2014/11/26 23:09:09 macias Exp $
+# $Id: Makefile,v 1.14 2015/01/23 22:44:44 macias Exp $
 #
 # By:
 #  + Javier Macías-Guarasa. 
@@ -39,6 +39,8 @@ RM=rm -f
 
 ###########################################################################
 # Support to automagically compile dia+svg files. Adapt to your own needs
+CHAPTER_SOURCES=$(wildcard chapters/*.tex)
+CHAPTER_BARE_SOURCES=$(wildcard chapters/*-bare.tex)
 DIA_SOURCES=$(wildcard diagrams/*.dia)
 SVG_SOURCES=$(wildcard diagrams/*.svg)
 EPS_SOURCES=$(wildcard figures/*.eps) $(wildcard additional/*.eps) 
@@ -49,11 +51,21 @@ PDFS_FROM_EPS=$(patsubst %.eps,%.pdf,$(EPS_SOURCES))
 
 DUMMY_TARGETS=pdf_dia_done pdf_svg_done pdf_eps_done
 
+DATE=$(shell date "+%C%y%m%d-%H%M%S")
+
 all: $(DUMMY_TARGETS)
 	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 	makeglossaries $(ROOT_FILENAME)
 	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 
+backup-chapters:
+	@echo "Backup up chapter sources to chapters/$(DATE)..."
+#	@echo $(DATE)
+	mkdir chapters/$(DATE)
+	cp $(CHAPTER_SOURCES) chapters/$(DATE)
+	@echo " Done!"
+	for f in $(CHAPTER_BARE_SOURCES); do DST_FILE=`basename $$f -bare.tex`.tex; echo cp $$f chapters/$$DST_FILE;done
+#	for f in chapters/*.tex DATE=`date +%C%y%m%d%H%M%S`
 
 
 all_latexmk: $(DUMMY_TARGETS)
