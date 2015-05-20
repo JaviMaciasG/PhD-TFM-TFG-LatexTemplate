@@ -1,9 +1,9 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% 
 % Generic template for the anteproyectos of TFC/TFM/TFGs
-%
-% $Id: anteproyecto.tex,v 1.2 2015/01/23 22:44:44 macias Exp $
-%
+% 
+% $Id: anteproyecto.tex,v 1.3 2015/02/24 23:09:34 macias Exp $
+% 
 % By:
 %  + Javier Macías-Guarasa. 
 %    Departamento de Electrónica
@@ -16,100 +16,106 @@
 % Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
-%
+% 
 % See also the additionalContributors.txt file to check the name of
 % additional contributors to this work.
-%
+% 
 % If you think you can add pieces of relevant/useful examples,
 % improvements, please contact us at (macias@depeca.uah.es)
-%
+% 
 % Copyleft 2013
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 % This is for rubber to clean additional files
 % rubber: clean anteproyecto.acn anteproyecto.acr anteproyecto.alg anteproyecto.cod anteproyecto.ist anteproyecto.out anteproyecto.sbl anteproyecto.slg anteproyecto.sym anteproyecto.lor
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % BEGIN Preamble and configuration section
-%
+% 
 \input{../config/preamble-anteproyecto.tex}    % DO NOT TOUCH THIS LINE. You can edit
-                               % the file to modify some default settings
-                                   
+% the file to modify some default settings
+
 \input{../config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE 
-                               % to set your specific settings (related
-                               % to the document language, your degree,
-                               % document details (such as title, author
-                               % (you), your email, name of the tribunal
-                               % members, document year, keyword and
-                               % palabras clave) and link colors), and
-                               % define your commonly used commands
-                               % (some examples are provided).
+                                  % to set your specific settings (related
+                                  % to the document language, your degree,
+                                  % document details (such as title, author
+                                  % (you), your email, name of the tribunal
+                                  % members, document year, keyword and
+                                  % palabras clave) and link colors), and
+                                  % define your commonly used commands
+                                  % (some examples are provided).
 
 \input{../config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
-                               % "postamble" is not a valid word... :-)
+                                  % "postamble" is not a valid word... :-)
 
 % path to directories containing images
 \graphicspath{{../logos/}{../figures/}{../diagrams/}} % Edit this to your
-                                % needs. Only logos is really required
-                                % when you generate your own content.
-%
+                                  % needs. Only logos is really required
+                                  % when you generate your own content.
+% 
 % END Preamble and configuration section
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \title{Anteproyecto de \mybookworktypefull}        % DO NOT TOUCH THIS LINE
 \date{\myanteproyectodate}                         % DO NOT TOUCH THIS LINE
 \author{\mybookauthor}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Let's start with the real stuff
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{document}                                   % DO NOT TOUCH THIS LINE
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % BEGIN within-document configuration, frontpage and cover pages generation
-%
+% 
 
 % Set Language dependent issues that must be set after \begin{document}
 \input{../config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
-                                              % NOR THE FILE
+                                                 % NOR THE FILE
 
-%
+% 
 % END within-document configuration, frontpage and cover pages generation
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \maketitle
 
- \begin{description}                               % DO NOT TOUCH THIS LINE
- \item[Título:] \mybooktitle                       % DO NOT TOUCH THIS LINE
- \item[Departamento:] \mybookdepartment            % DO NOT TOUCH THIS LINE
- \item[Autor:] \mybookauthor                       % DO NOT TOUCH THIS LINE
- \item[\expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}:] \mybookadvisors                   % DO NOT TOUCH THIS LINE
- \end{description}                                 % DO NOT TOUCH THIS LINE
+\begin{description}                               % DO NOT TOUCH THIS LINE
+\item[Título:] \mybooktitlespanish                % DO NOT TOUCH THIS LINE
+  \ifthenelse{\equal{\mybooklanguage}{english}}   % DO NOT TOUCH THIS LINE
+  {                                               % DO NOT TOUCH THIS LINE
+  \item[Título en inglés:] \mybooktitleenglish    % DO NOT TOUCH THIS LINE
+  }                                               % DO NOT TOUCH THIS LINE
+  {                                               % DO NOT TOUCH THIS LINE
+  }                                               % DO NOT TOUCH THIS LINE
+\item[Departamento:] \mybookdepartment            % DO NOT TOUCH THIS LINE
+\item[\expandafter\makefirstuc\expandafter{\mybookAutorOrAutora}:] \mybookauthor                       % DO NOT TOUCH THIS LINE
+\item[\expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}:] \mybookadvisors                   % DO NOT TOUCH THIS LINE
+\end{description}                                 % DO NOT TOUCH THIS LINE
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % BEGIN Normal sections. Edit/modify all within this section
 
 \section{Introducción}
 \label{sec:introduccion}
 
 \textit{En este apartado se describirá el contexto en el que se desenvolverá el
-TFG y sus antecedentes si existen. Recuerda que en el anteproyecto
-también se pueden poner referencias bibliográficas como \cite{texis}}.
+  TFG y sus antecedentes si existen. Recuerda que en el anteproyecto
+  también se pueden poner referencias bibliográficas como \cite{nerea2015}}.
 
 
 \section{Objetivos y desarrollo}
 \label{sec:objetivos-y-campo}
 
 \textit{En este apartado se delimitan y explican con claridad los objetivos
-generales a conseguir con el TFG y la aplicación del mismo, así como los
-objetivos específicos en su caso. Algo del tipo:}
+  generales a conseguir con el TFG y la aplicación del mismo, así como los
+  objetivos específicos en su caso. Algo del tipo:}
 
 El objetivo fundamental de este proyecto es el diseño, implementación y
 evaluación de \ldots
@@ -135,20 +141,20 @@ Los objetivos específicos de este proyecto son los siguientes:
 
 \end{itemize}
 
-  \begin{figure}[tphb]
-    \centering
-    \includegraphics[width=3in]{Diagrama2.pdf}
-    \caption{Arquitectura del sistema completo.}
-    \label{fig_arquitectura}
-  \end{figure}
+\begin{figure}[tphb]
+  \centering
+  \includegraphics[width=3in]{Diagrama2.pdf}
+  \caption{Arquitectura del sistema completo.}
+  \label{fig_arquitectura}
+\end{figure}
 
 
 \section{Metodología y plan de trabajo}
 \label{sec:metodologia-y-plan}
 
 \textit{Aquí se incluirá una descripción (puede ser incluso una enumeración)
-clara de las etapas que se van a seguir, y si es posible se deberá
-incluir un diagrama de Gantt. Por ejemplo algo del estilo a:}
+  clara de las etapas que se van a seguir, y si es posible se deberá
+  incluir un diagrama de Gantt. Por ejemplo algo del estilo a:}
 
 Estas son las fases de desarrollo que se van a seguir para la
 consecución de los objetivos del proyecto descritos en la sección~\ref{sec:objetivos-y-campo}:
@@ -194,7 +200,7 @@ consecución de los objetivos del proyecto descritos en la sección~\ref{sec:objet
 \label{sec:medios}
 
 \textit{Aquí se describen de los medios necesarios para realizar el TFG. Por
-ejemplo:}
+  ejemplo:}
 
 Las herramientas que van a ser necesarias para desarrollar este proyecto
 son las siguientes:
@@ -225,20 +231,20 @@ Otros recursos necesarios para la elaboración del proyecto son:
 
 
 
-%
+% 
 % END Normal sections. Edit/modify all within this section
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \input{../biblio/bibliography.tex}               % EDIT this file if required
 
 
