@@ -2,7 +2,7 @@
 %
 % Generic template for the anteproyectos of TFC/TFM/TFGs
 %
-% $Id: autorizacionAutorPublicarRepositorio.tex,v 1.5 2014/07/20 22:36:20 macias Exp $
+% $Id: autorizacionAutorPublicarRepositorio.tex,v 1.6 2014/09/21 23:47:40 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -46,11 +46,14 @@
                                % define your commonly used commands
                                % (some examples are provided).
 
+\input{../config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
+                               % "postamble" is not a valid word... :-)
+
 %
 % END Preamble and configuration section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Autorización del Autor para la publicación
+\title{Autorización \mybookDelOrDeLa{} \mybookAutorOrAutora{} para la publicación
 electrónica \\ LICENCIA} 
                                                    % DO NOT TOUCH THIS LINE
 \date{}                                            % DO NOT TOUCH THIS LINE
@@ -74,21 +77,24 @@ plataforma digital de acceso libre y abierto a la producción científica en la Co
 Madrid, con la participación de las universidades públicas y de los centros de
 investigación en este ámbito.
 
-El autor/a D/Dª. \mybookauthor, con DNI \mybookDNIOpenPublishing,
+\expandafter\makefirstuc\expandafter{\mybookElOrLa} \mybookAutorOrAutora{}
+\mybookDonOrDona{}. \mybookauthor, con DNI \mybookDNIOpenPublishing,
 adscrito/a a la \mybookuniversity{} como \mybookFigure, DECLARA que es
 el titular de los derechos de propiedad intelectual, objeto de la
 presente cesión, en relación con la obra: ``\mybooktitle'', que ésta es
-una obra original, y que ostenta la condición de autor en el sentido que
+una obra original, y que ostenta la condición de \mybookAutorOrAutora{} en el sentido que
 otorga la Ley de Propiedad Intelectual como titular único o cotitular de
 la obra.
 
-En caso de ser cotitular, el autor declara asimismo que cuenta con el consentimiento de
-los restantes titulares para hacer la presente cesión.
+En caso de ser cotitular, \mybookElOrLa{} \mybookAutorOrAutora{} declara
+asimismo que cuenta con el consentimiento de los restantes titulares
+para hacer la presente cesión.
 
-O en caso de previa cesión a terceros de derechos de explotación de la obra, el autor
-declara que tiene la oportuna autorización de dichos titulares de derechos a los fines de
-esta cesión o bien que retiene la facultad de ceder estos derechos en la forma prevista en
-la presente cesión.
+O en caso de previa cesión a terceros de derechos de explotación de la
+obra, \mybookElOrLa{} \mybookAutorOrAutora{} declara que tiene la
+oportuna autorización de dichos titulares de derechos a los fines de
+esta cesión o bien que retiene la facultad de ceder estos derechos en la
+forma prevista en la presente cesión.
 
 Con el fin de dar la máxima difusión a mi obra citada, a través de este repositorio
 institucional, CEDO a la Universidad de Alcalá, de forma gratuita y no exclusiva, por el
@@ -102,8 +108,8 @@ La cesión se realiza en las siguientes condiciones:
 \begin{itemize}
 
 \item El repositorio no asume la titularidad de la obra, que sigue
-  correspondiendo al autor. Sin embargo, esta cesión de derechos sobre
-  la obra permitirá al repositorio:
+  correspondiendo \mybookAlOrALa{} \mybookAutorOrAutora{}. Sin embargo,
+  esta cesión de derechos sobre la obra permitirá al repositorio:
 
   \begin{enumerate}[label=\alph*]
   \item Transformarla, en la medida en que ello sea necesario, para
@@ -124,38 +130,55 @@ La cesión se realiza en las siguientes condiciones:
     través de Internet.
   \end{enumerate}
 
-\item La cesión es no-exclusiva, por lo que el autor es libre de comunicar y dar publicidad a la
-  obra, en esta y en posteriores versiones, a través de los medios que estime oportunos.
-\item   El autor garantiza que el compromiso que aquí adquiere no infringe ningún derecho de
-terceros, ya sean de propiedad industrial, intelectual o cualquier otro.
-\item El autor garantiza asimismo que el contenido de las obras no atenta contra los derechos
+\item La cesión es no-exclusiva, por lo que \mybookElOrLa{}
+  \mybookAutorOrAutora{} es libre de comunicar y dar publicidad a la
+  obra, en esta y en posteriores versiones, a través de los medios que
+  estime oportunos.
+\item \expandafter\makefirstuc\expandafter{\mybookElOrLa}
+  \mybookAutorOrAutora{} garantiza que el compromiso que aquí adquiere
+  no infringe ningún derecho de terceros, ya sean de propiedad
+  industrial, intelectual o cualquier otro.
+\item \expandafter\makefirstuc\expandafter{\mybookElOrLa}
+  \mybookAutorOrAutora{}  garantiza asimismo que el contenido de las obras no atenta contra los derechos
 al honor, a la intimidad y a la imagen de terceros.
-\item El autor asume la responsabilidad para el caso de que la Universidad de Alcalá fuera
+\item \expandafter\makefirstuc\expandafter{\mybookElOrLa}
+  \mybookAutorOrAutora{} asume la responsabilidad para el caso de que la Universidad de Alcalá fuera
 condenada por infracción de derechos derivada de las obras objeto de la cesión.
-\item El autor, como garante de la autoría de las obras, asume toda reclamación o
+\item \expandafter\makefirstuc\expandafter{\mybookElOrLa}
+  \mybookAutorOrAutora{}, como garante de la autoría de las obras, asume toda reclamación o
 responsabilidad, incluyendo las indemnizaciones por daños, que pudieran ejercitarse
 contra la Universidad por terceros que vieran infringidos sus derechos e intereses a causa
 de la cesión.
-\item La obra se pondrá a disposición de los usuarios para que hagan de ella un uso justo y
-respetuoso con los derechos del autor, según lo permitido por la legislación aplicable, con
-fines de estudio, investigación, o cualquier otro fin lícito. El uso posterior, más allá de la
-copia privada, requerirá que se cite la fuente y se reconozca la autoría, que no se obtenga
-beneficio comercial, y que no se realicen obras derivadas.
+\item La obra se pondrá a disposición de los usuarios para que hagan de
+  ella un uso justo y respetuoso con los derechos \mybookDelOrDeLa{}
+  \mybookAutorOrAutora{}, según lo permitido por la legislación
+  aplicable, con fines de estudio, investigación, o cualquier otro fin
+  lícito. El uso posterior, más allá de la copia privada, requerirá que
+  se cite la fuente y se reconozca la autoría, que no se obtenga
+  beneficio comercial, y que no se realicen obras derivadas.
 \item La Universidad deberá informar a los usuarios del archivo sobre los usos permitidos, y no
 garantiza ni asume responsabilidad alguna por otras formas en que los usuarios hagan un
 uso posterior de las obras no conforme con la legislación vigente.
-\item La Universidad no revisará el contenido de las obras, que en todo caso permanecerá bajo
-la responsabilidad exclusiva del autor.
-\item La Universidad no estará obligada a ejercitar acciones legales en nombre del autor en el
-supuesto de infracciones a derechos de propiedad intelectual derivados del depósito y
-archivo de las obras.
-\item El autor podrá solicitar la retirada de la obra del repositorio por causa justificada. A tal fin
-deberá ponerse en contacto con el responsable de e\_Buah (ebuah@uah.es). Asimismo,
-el repositorio podrá retirar la obra, previa notificación al autor, en supuestos
-suficientemente justificados, o en caso de reclamaciones de terceros.
-\item El autor será convenientemente notificado de cualquier reclamación que puedan formular
-terceras personas en relación con la obra y, en particular, de reclamaciones relativas a los
-derechos de propiedad intelectual sobre ella.
+\item La Universidad no revisará el contenido de las obras, que en todo
+  caso permanecerá bajo la responsabilidad exclusiva \mybookDelOrDeLa{}
+  \mybookAutorOrAutora{}.
+\item La Universidad no estará obligada a ejercitar acciones legales en
+  nombre \mybookDelOrDeLa{} \mybookAutorOrAutora{} en el supuesto de
+  infracciones a derechos de propiedad intelectual derivados del
+  depósito y archivo de las obras.
+\item \expandafter\makefirstuc\expandafter{\mybookElOrLa}
+  \mybookAutorOrAutora{} podrá solicitar la retirada de la obra del
+  repositorio por causa justificada. A tal fin deberá ponerse en
+  contacto con el responsable de e\_Buah (ebuah@uah.es). Asimismo, el
+  repositorio podrá retirar la obra, previa notificación
+  \mybookAlOrALa{} \mybookAutorOrAutora{}, en supuestos suficientemente
+  justificados, o en caso de reclamaciones de terceros.
+\item \expandafter\makefirstuc\expandafter{\mybookElOrLa}
+  \mybookAutorOrAutora{} será convenientemente
+  \mybookNotificadoOrNotificada{} de cualquier reclamación que puedan
+  formular terceras personas en relación con la obra y, en particular,
+  de reclamaciones relativas a los derechos de propiedad intelectual
+  sobre ella.
 
 \end{itemize}
 
@@ -167,8 +190,8 @@ derechos de propiedad intelectual sobre ella.
 \vspace{4cm}
 
 \begin{tabularx}{\textwidth}{XcX}
-  Por la Universidad & ~ & Por el autor/a  \\
-  Excma. Sra. María Luisa Marina Alegre & ~ & D/Dª \mybookauthor \\
+  Por la Universidad & ~ & Por \mybookElOrLa{} \mybookAutorOrAutora{}  \\
+  Excma. Sra. María Luisa Marina Alegre & ~ & \mybookDonOrDona{}. \mybookauthor \\
   Vicerrectora de Investigación de la UAH & ~ &
 \end{tabularx}
 

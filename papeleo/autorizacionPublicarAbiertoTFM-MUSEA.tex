@@ -2,7 +2,7 @@
 %
 % Generic template for the anteproyectos of TFC/TFM/TFGs
 %
-% $Id: autorizacionPublicarAbiertoTFM-MUSEA.tex,v 1.1 2014/09/21 23:48:18 macias Exp $
+% $Id: autorizacionPublicarAbiertoTFM-MUSEA.tex,v 1.2 2014/09/22 00:19:36 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -81,7 +81,7 @@
   \end{tabular}
 \end{figure}
 
-1. ESTUDIANTE (AUTOR)
+1. ESTUDIANTE (\MakeUppercase{\mybookAutorOrAutora})
 
 \begin{figure}[H]
   \begin{tabular}{|p{0.7\textwidth}|p{0.3\textwidth}|}
@@ -132,7 +132,7 @@ derivada.
 \begin{figure}[H]
   \begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
     \hline
-    \footnotesize{Firmado: El Autor} & Firmado: \footnotesize{\mybookElOrLos{} \mybookTutorOrTutores{} del Trabajo Fin de Máster:}\\
+    \footnotesize{Firmado: \expandafter\makefirstuc\expandafter{\mybookElOrLa} \mybookAutorOrAutora{}} & Firmado: \footnotesize{\mybookElOrLos{} \mybookTutorOrTutores{} del Trabajo Fin de Máster:}\\
 
   SI TIENES GRÁFICOS CON LAS FIRMAS, DESCOMENTA Y EDITA EL SIGUIENTE
   CÓDIGO...
