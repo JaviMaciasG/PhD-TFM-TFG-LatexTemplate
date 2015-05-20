@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: postamble.tex,v 1.9 2014/10/06 22:35:58 macias Exp $
+% $Id: postamble.tex,v 1.10 2015/02/24 23:21:54 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -46,9 +46,11 @@
 \ifthenelse{\equal{\mybooklanguage}{spanish}}
 {
 \newcommand{\mybookFullAffiliation}{Grupo de investigación \mybookresearchgroup \\ \mybookdepartment \\ \mybookuniversity} 
+\newcommand{\mybooktitle}{\mybooktitlespanish}
 } 
 {
 \newcommand{\mybookFullAffiliation}{\mybookresearchgroup Research Group \\ \mybookdepartmentEnglish \\ \mybookuniversity} 
+\newcommand{\mybooktitle}{\mybooktitleenglish}
 }
 
 % Set name of advisors and define words depending on singular/plural
@@ -72,6 +74,27 @@
 \newcommand{\mybookElOrLos}{Los}
 \newcommand{\mybookSuOrSus}{Su}
 \newcommand{\mybookDelOrDeLos}{de los}
+}
+
+% Set Autor/Autora field
+\ifthenelse{\equal{\mybookauthorsex}{male}}     
+{                                                       
+\newcommand{\mybookAutorOrAutora}{autor}                
+\newcommand{\mybookElOrLa}{el}                
+\newcommand{\mybookAlOrALa}{al}                
+\newcommand{\mybookDelOrDeLa}{del}                
+\newcommand{\mybookDonOrDona}{D}                
+\newcommand{\mybookNotificadoOrNotificada}{notificado}                
+\newcommand{\mybookAlumnoOrAlumna}{alumno}                
+}                                               
+{
+\newcommand{\mybookAutorOrAutora}{autora}                
+\newcommand{\mybookElOrLa}{la}                
+\newcommand{\mybookAlOrALa}{a la}                
+\newcommand{\mybookDelOrDeLa}{de la}                
+\newcommand{\mybookDonOrDona}{Dª}                
+\newcommand{\mybookNotificadoOrNotificada}{notificada}    
+\newcommand{\mybookAlumnoOrAlumna}{alumna}                            
 }
 
 % Set degree name and type of document, depending on the user defined degree
