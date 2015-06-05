@@ -2,7 +2,7 @@
 # 
 # Makefile to generate book.pdf
 #
-# $Id: Makefile,v 1.16 2015/06/05 00:10:30 macias Exp $
+# $Id: Makefile,v 1.17 2015/06/05 00:27:16 macias Exp $
 #
 # By:
 #  + Javier Macías-Guarasa. 
@@ -111,22 +111,6 @@ clean-orig-diagrams:
 	if [ \"$$dodelete\" == \"Y\" ]; \
 	then \
 	rm diagrams/*.eps diagrams/*.pdf diagrams/*.dia; \
-  fi
-
-
-clean-orig-figures:
-	@echo "About to delete the files in the 'figures' directory..."
-	@echo "This cannot be undone..."
-	@echo "About to delete the files in the 'figures' directory..."
-	@echo "This cannot be undone..."
-	@echo "About to delete the files in the 'figures' directory..."
-	@echo "This cannot be undone..."
-	@echo "..."
-	@echo "Got it?..."
-	@read -p "I will ask you once... Are you sure to delete all files there? " dodelete; \
-	if [ \"$$dodelete\" == \"Y\" ]; \
-	then \
-	echo rm figures/*; \
   fi
 
 
