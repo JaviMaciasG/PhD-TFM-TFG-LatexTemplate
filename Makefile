@@ -2,7 +2,7 @@
 # 
 # Makefile to generate book.pdf
 #
-# $Id: Makefile,v 1.2 2015/04/29 12:54:42 macias Exp $
+# $Id: Makefile,v 1.16 2015/06/05 00:10:30 macias Exp $
 #
 # By:
 #  + Javier Macías-Guarasa. 
@@ -65,7 +65,7 @@ all: $(DUMMY_TARGETS)
 	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 
 
-bare: backup-chapters bare-chapters clean-orig-figures
+bare: backup-chapters bare-chapters clean-orig-figures clean-orig-diagrams
 
 
 backup-chapters:
@@ -91,6 +91,27 @@ bare-chapters: backup-chapters
 	for f in $(CHAPTER_BARE_SOURCES);  do cp $$f chapters; done
 	for f in $(APPENDIX_BARE_SOURCES); do cp $$f appendix; done
 	@echo " Done!"
+
+
+clean-orig-figures:
+	@echo "About to delete the files in the 'figures' directory..."
+	@echo "This cannot be undone..."
+	@echo "Got it?..."
+	@read -p "I will ask you once... Are you sure to delete all files there? " dodelete; \
+	if [ \"$$dodelete\" == \"Y\" ]; \
+	then \
+	rm figures/*.eps figures/*.pdf figures/*.png figures/*.jpg; \
+  fi
+
+clean-orig-diagrams:
+	@echo "About to delete the files in the 'diagrams' directory..."
+	@echo "This cannot be undone..."
+	@echo "Got it?..."
+	@read -p "I will ask you once... Are you sure to delete all files there? " dodelete; \
+	if [ \"$$dodelete\" == \"Y\" ]; \
+	then \
+	rm diagrams/*.eps diagrams/*.pdf diagrams/*.dia; \
+  fi
 
 
 clean-orig-figures:
