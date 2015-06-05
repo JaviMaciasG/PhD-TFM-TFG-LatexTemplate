@@ -2,7 +2,7 @@
 # 
 # Makefile to generate book.pdf
 #
-# $Id: Makefile,v 1.17 2015/06/05 00:27:16 macias Exp $
+# $Id: Makefile,v 1.18 2015/06/05 00:29:59 macias Exp $
 #
 # By:
 #  + Javier Macías-Guarasa. 
@@ -86,6 +86,7 @@ orig-chapters: backup-chapters
 	@echo " Done!"
 
 
+
 bare-chapters: backup-chapters
 	@echo "Setting orig chapters..."
 	for f in $(CHAPTER_BARE_SOURCES);  do cp $$f chapters; done
@@ -111,7 +112,7 @@ clean-orig-diagrams:
 	if [ \"$$dodelete\" == \"Y\" ]; \
 	then \
 	rm diagrams/*.eps diagrams/*.pdf diagrams/*.dia; \
-  fi
+	fi
 
 
 all_latexmk: $(DUMMY_TARGETS)
