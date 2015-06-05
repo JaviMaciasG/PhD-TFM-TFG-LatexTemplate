@@ -2,7 +2,7 @@
 # 
 # Makefile to generate book.pdf
 #
-# $Id: Makefile,v 1.14 2015/01/23 22:44:44 macias Exp $
+# $Id: Makefile,v 1.2 2015/04/29 12:54:42 macias Exp $
 #
 # By:
 #  + Javier Macías-Guarasa. 
@@ -27,6 +27,8 @@
 #
 ###########################################################################
 
+SHELL=/bin/bash
+
 ROOT_FILENAME=book
 TEX_FILE = $(ROOT_FILENAME).tex
 FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten.tex
@@ -40,7 +42,11 @@ RM=rm -f
 ###########################################################################
 # Support to automagically compile dia+svg files. Adapt to your own needs
 CHAPTER_SOURCES=$(wildcard chapters/*.tex)
-CHAPTER_BARE_SOURCES=$(wildcard chapters/*-bare.tex)
+CHAPTER_ORIG_SOURCES=$(wildcard chapters/orig/*.tex)
+CHAPTER_BARE_SOURCES=$(wildcard chapters/bare/*.tex)
+APPENDIX_SOURCES=$(wildcard appendix/*.tex)
+APPENDIX_ORIG_SOURCES=$(wildcard appendix/orig/*.tex)
+APPENDIX_BARE_SOURCES=$(wildcard appendix/bare/*.tex)
 DIA_SOURCES=$(wildcard diagrams/*.dia)
 SVG_SOURCES=$(wildcard diagrams/*.svg)
 EPS_SOURCES=$(wildcard figures/*.eps) $(wildcard additional/*.eps) 
@@ -58,14 +64,49 @@ all: $(DUMMY_TARGETS)
 	makeglossaries $(ROOT_FILENAME)
 	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 
+
+bare: backup-chapters bare-chapters clean-orig-figures
+
+
 backup-chapters:
 	@echo "Backup up chapter sources to chapters/$(DATE)..."
-#	@echo $(DATE)
 	mkdir chapters/$(DATE)
 	cp $(CHAPTER_SOURCES) chapters/$(DATE)
 	@echo " Done!"
-	for f in $(CHAPTER_BARE_SOURCES); do DST_FILE=`basename $$f -bare.tex`.tex; echo cp $$f chapters/$$DST_FILE;done
-#	for f in chapters/*.tex DATE=`date +%C%y%m%d%H%M%S`
+	@echo "Backup up appendix sources to appendix/$(DATE)..."
+	mkdir appendix/$(DATE)
+	cp $(APPENDIX_SOURCES) appendix/$(DATE)
+	@echo " Done!"
+
+
+orig-chapters: backup-chapters
+	@echo "Setting orig chapters..."
+	for f in $(CHAPTER_ORIG_SOURCES);  do cp $$f chapters; done
+	for f in $(APPENDIX_ORIG_SOURCES); do cp $$f appendix; done
+	@echo " Done!"
+
+
+bare-chapters: backup-chapters
+	@echo "Setting orig chapters..."
+	for f in $(CHAPTER_BARE_SOURCES);  do cp $$f chapters; done
+	for f in $(APPENDIX_BARE_SOURCES); do cp $$f appendix; done
+	@echo " Done!"
+
+
+clean-orig-figures:
+	@echo "About to delete the files in the 'figures' directory..."
+	@echo "This cannot be undone..."
+	@echo "About to delete the files in the 'figures' directory..."
+	@echo "This cannot be undone..."
+	@echo "About to delete the files in the 'figures' directory..."
+	@echo "This cannot be undone..."
+	@echo "..."
+	@echo "Got it?..."
+	@read -p "I will ask you once... Are you sure to delete all files there? " dodelete; \
+	if [ \"$$dodelete\" == \"Y\" ]; \
+	then \
+	echo rm figures/*; \
+  fi
 
 
 all_latexmk: $(DUMMY_TARGETS)

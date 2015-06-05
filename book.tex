@@ -1,8 +1,8 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: book.tex,v 1.18 2014/11/26 14:35:27 macias Exp $
+% $Id: book.tex,v 1.19 2015/05/20 14:03:57 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -23,11 +23,12 @@
 % If you think you can add pieces of relevant/useful examples,
 % improvements, please contact us at (macias@depeca.uah.es)
 %
-% Copyleft 2013
+% You can freely use this template and please contribute with
+% comments or suggestions!!!
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% This is for rubber to clean additional files
+% This is for rubber to clean additional files (do not remove!!)
 % rubber: clean book.acn book.acr book.alg book.cod book.ist book.out book.sbl book.slg book.sym book.lor
 
 \documentclass[spanish,openright]{book}
@@ -116,7 +117,7 @@
 
 % If this is the case, include definitions of acronyms (it's 
 % included before resumen.tex and abstract.tex in case you want
-% to use them there 
+% to use them here 
 \input{acronyms/defacronymsgl.tex}            % EDIT this file or
                                               % comment it out if you do 
                                               % not use acronyms
@@ -196,7 +197,7 @@
 %\input{pliego/pliego.tex}
 
 % Optional in PFCs, compulsory in TFGs
-%\input{presupuesto/presupuesto.tex}
+\input{presupuesto/presupuesto.tex}
 
 %
 % END Normal chapters. Edit/modify all within this section
@@ -216,7 +217,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% BEGIN Appendices. Edit/modigy all within this section
+% BEGIN Appendices. Edit/modify all within this section
 %
 % I don't recommend it, but if you want to define "parts", use this...
 % BEWARE: I didn't write the english dependent code
@@ -228,7 +229,6 @@
 \input{appendix/manual.tex}
 \input{appendix/herramientas.tex}
 \input{appendix/versiones.tex}
-
 
 %
 % END Appendices. Edit/modify all within this section
