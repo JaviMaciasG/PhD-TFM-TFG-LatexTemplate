@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: introduccion.tex,v 1.19 2015/02/24 23:21:54 macias Exp $
+% $Id: introduccion.tex,v 1.21 2015/06/05 00:27:17 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -176,6 +176,20 @@ prestaciones:
     simplificar los targets, la limpieza se hace tanto para los
     temporales de generación del \texttt{book.pdf} como los del
     \texttt{anteproyecto.pdf}).
+
+  \item \texttt{bare}, que deja razonablemente limpios los ficheros de
+    los capítulos y apéndices, además de borrar los gráficos del
+    directorio \texttt{figures} y \texttt{diagrams}, para que sea más
+    fácil comenzar a editar. \textbf{OJO: HAY CONSECUENCIAS NEGATIVAS NO
+      DESPRECIABLES PORQUE SE BORRARÁ TODO LO QUE TENGAS EN ESOS
+      DIRECTORIOS Y SÓLO DEBERÍA HACERSE CUANDO VAYAMOS A EMPEZAR A
+      ESCRIBIR NUESTRA MEMORIA DEL TRABAJO REALIZADO}.
+
+  \item \texttt{backup-chapters}, que hace un backup de los ficheros que
+    hay en los directorios \texttt{chapters} y \texttt{appendix},
+    creando directorios cuyo nombre es la fecha y hora actuales y que se
+    crean bajo los anteriores. No debería hacer falta si usas un buen
+    sistema de control de versiones.
   \end{itemize}
 
 \end{itemize}
