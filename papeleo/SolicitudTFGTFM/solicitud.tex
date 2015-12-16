@@ -2,7 +2,7 @@
 % 
 % Generic template for TFC/TFM/TFGs requests
 % 
-% $Id: solicitud.tex,v 1.4 2015/05/20 14:03:31 macias Exp $
+% $Id: solicitud.tex,v 1.5 2015/06/05 00:10:37 macias Exp $
 % 
 % By:
 % + Javier Macías-Guarasa. 
@@ -125,14 +125,16 @@
 
 \begin{spacing}{1.0}
   \begin{tabularx}{\textwidth}{X}
-    \MakeUppercase{\mybookDirectorOrDirectores}: \mybookadvisors \\
-    TUTOR: \mybookNameAcademicTutor\\
+%    \MakeUppercase{\mybookDirectorOrDirectores}: \mybookadvisors \\
+    TUTOR: \mybookNameFirstAdvisor\\
+    COTUTOR: \mybookNameSecondAdvisor\\
     \begin{center}
       Alcalá de Henares, \myanteproyectodate
     \end{center}
  \end{tabularx}
   \begin{tabularx}{\textwidth}{X X}
-    El tutor & Vº Bº \mybookDelOrDeLos~\mybookDirectorOrDirectores{} (si procede) \\
+%    El tutor & Vº Bº \mybookDelOrDeLos~\mybookDirectorOrDirectores{} (si procede) \\
+    El tutor & Vº Bº del cotutor (si procede) \\
     \\ % \includegraphics[width=0.2\textwidth]{firma_tutor_si_procede.png}
     \\ Firma \mybookDelOrDeLa{} \mybookAlumnoOrAlumna{} & ~ % \includegraphics[width=0.25\textwidth]{firma_de_directores_procede.png}
     \\ ~ % \includegraphics[width=0.2\textwidth]{firma_alumno_si_procede.png}
