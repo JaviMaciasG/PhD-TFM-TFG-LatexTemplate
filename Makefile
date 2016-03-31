@@ -2,7 +2,7 @@
 # 
 # Makefile to generate book.pdf
 #
-# $Id: Makefile,v 1.18 2015/06/05 00:29:59 macias Exp $
+# $Id: Makefile,v 1.19 2015/06/05 00:31:02 macias Exp $
 #
 # By:
 #  + Javier Macías-Guarasa. 
@@ -60,6 +60,14 @@ DUMMY_TARGETS=pdf_dia_done pdf_svg_done pdf_eps_done
 DATE=$(shell date "+%C%y%m%d-%H%M%S")
 
 all: $(DUMMY_TARGETS)
+	pdflatex $(TEX_FILE)
+	bibtex $(ROOT_FILENAME)
+	makeglossaries $(ROOT_FILENAME)
+	pdflatex $(TEX_FILE)
+	pdflatex $(TEX_FILE)
+
+
+all_old: $(DUMMY_TARGETS)
 	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 	makeglossaries $(ROOT_FILENAME)
 	$(RUBBER_TOOL) -f -d $(TEX_FILE)
