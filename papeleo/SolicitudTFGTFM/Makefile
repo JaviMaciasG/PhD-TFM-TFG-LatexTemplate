@@ -2,7 +2,7 @@
 # 
 # Makefile to generate solicitud.pdf
 #
-# $Id: Makefile,v 1.2 2015/01/23 22:44:44 macias Exp $
+# $Id: Makefile,v 1.1 2015/02/24 15:47:22 macias Exp $
 #
 # By:
 #  + Javier Macías-Guarasa. 
@@ -27,7 +27,7 @@
 #
 ###########################################################################
 
-ROOT_FILENAME=solicitud
+ROOT_FILENAME=solicitudTFG-new
 TEX_FILE = $(ROOT_FILENAME).tex
 FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten.tex
 DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff

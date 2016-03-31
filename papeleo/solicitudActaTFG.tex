@@ -1,0 +1,150 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% 
+% Generic template for TFC/TFM/TFGs requests
+% 
+% $Id: solicitud.tex,v 1.3 2015/03/05 18:39:55 macias Exp $
+% 
+% By:
+% + Javier Macías-Guarasa. 
+%   Departamento de Electrónica
+%   Universidad de Alcalá
+% + Roberto Barra-Chicote. 
+%   Departamento de Ingeniería Electrónica
+%   Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+% 
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+% 
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+% 
+% Copyleft 2013
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+% This is for rubber to clean additional files
+% rubber: clean solicitudActaTFG.acn solicitudActaTFG.acr solicitudActaTFG.alg solicitudActaTFG.cod solicitudActaTFG.ist solicitudActaTFG.out solicitudActaTFG.sbl solicitudActaTFG.slg solicitudActaTFG.sym solicitudActaTFG.lor solicitudActaTFG.glsdefs solicitudActaTFG.loa
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% BEGIN Preamble and configuration section
+% 
+\input{../config/preamble-solicitud.tex}    % DO NOT TOUCH THIS LINE. You can edit
+% the file to modify some default settings
+
+\input{../config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE 
+% to set your specific settings (related
+% to the document language, your degree,
+% document details (such as title, author
+% (you), your email, name of the tribunal
+% members, document year, keyword and
+% palabras clave) and link colors), and
+% define your commonly used commands
+% (some examples are provided).
+
+\input{../config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
+% "postamble" is not a valid word... :-)
+
+% path to directories containing images
+\graphicspath{{../logos/}{../figures/}{../diagrams/}} % Edit this to your
+% needs. Only logos is really required
+% when you generate your own content.
+% 
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\title{FORMULARIO PARA PETICIÓN DE EXPEDICIÓN DE ACTA \mybookworktype}        % DO NOT TOUCH THIS LINE
+\date{}                                            % DO NOT TOUCH THIS LINE
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Let's start with the real stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{document}                                   % DO NOT TOUCH THIS LINE
+
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% BEGIN within-document configuration, frontpage and cover pages generation
+% 
+
+% Set Language dependent issues that must be set after \begin{document}
+\input{../config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
+% NOR THE FILE
+
+% 
+% END within-document configuration, frontpage and cover pages generation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\Large{FORMULARIO PARA PETICIÓN DE EXPEDICIÓN DE ACTA \mybookworktype}
+
+\vspace{1cm}
+
+\begin{Large}
+
+  \begin{spacing}{1.0}
+    \begin{tabularx}{\textwidth}{lX}
+      \multicolumn{1}{l}{Alumno:}     & \mybookauthor \\
+      \multicolumn{1}{l}{Título del Proyecto:} & \mybooktitle \\ 
+      \multicolumn{1}{l}{Tutor:}   & \mybookNameFirstAdvisor \\
+      \multicolumn{1}{l}{Cotutor:} & \mybookNameSecondAdvisor \\
+    \end{tabularx}
+  \end{spacing}
+
+  \vspace{0.5cm}
+
+  Como \mybookTutorOrTutores{} del proyecto de referencia,
+  \mybookHagoOrHacemos{} constar que el mismo cumple los requisitos
+  técnicos y formales exigidos para su presentación a examen según la
+  normativa vigente; concretamente han sido revisados los siguientes
+  aspectos: 
+  
+  \vspace{1cm}
+  \hfill\begin{minipage}{\dimexpr\textwidth-2cm}
+    \underline{Contenido}
+
+    $\XBox$ Entidad y coherencia de los aspectos técnicos 
+
+    $\XBox$ Correcto desarrollo de los diferentes apartados 
+    \vspace{0.5cm}
+
+    \underline{Presentación}
+
+    $\XBox$ Corrección y claridad (texto, figuras, ecuaciones, etc.) 
+
+    $\XBox$ Apartados exigidos (índice, resumen, memoria, etc.) 
+
+    $\XBox$ Soporte informático (disco o CD-ROM, estructura de ficheros) 
+    \vspace{1cm}
+    % \xdef\tpd{\the\prevdepth}
+  \end{minipage}
+
+  Es por ello que se solicita expedición de acta para el día indicado a
+  continuación, fecha que ha sido previamente consensuada con el alumno y
+  resto de miembros del tribunal, que definitivamente queda constituido
+  como sigue:
+  \begin{tabular}{rrl}
+    ~~~~~~~~~~ & &\\ 
+      & {Presidente:}        & \mybookpresident\\ 
+      & {Vocal 1º:}          & \mybookfirstvocal\\ 
+      & {Vocal 2º:}          & \mybooksecondvocal\\ 
+      & {Fecha de examen:}   & \mydefensedate\\ 
+  \end{tabular}
+
+  \vspace{0.5cm}
+
+   \center{\MakeUppercase{\mybookElOrLos{} \mybookTutorOrTutores{}} DEL TRABAJO FIN DE GRADO}
+
+    \vspace{1.5cm}
+    \center{Fdo.: \mybookadvisors}
+
+
+\end{Large}
+
+
+\end{document}
+
