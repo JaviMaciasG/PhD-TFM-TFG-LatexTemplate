@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: myconfig.tex,v 1.27 2015/05/20 14:01:31 macias Exp $
+% $Id: myconfig.tex,v 1.28 2015/06/05 00:10:33 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -49,8 +49,8 @@
 % Control language specific modifications
 % This can be english or spanish
 %\newcommand{\mybooklanguage}{spanish}
-%\newcommand{\mybooklanguage}{spanish}
 \newcommand{\mybooklanguage}{spanish}
+%\newcommand{\mybooklanguage}{english}
 
 % Control compilation flavour (for PFCs, TFMs, TFGs, Thesis, etc...)
 % Degree (titulación), can be:
@@ -77,11 +77,13 @@
 \newcommand{\mydegree}{GIEC}
 %\newcommand{\mydegree}{PHDUAH}
 
+\newcommand{\myspecialty}{} % New in TFGs from 20151218!
+
 % General document information
 \newcommand{\mybooktitlespanish}{Plantilla unificada para la generación de memorias de PFCs, TFGs, TFMs y tesis doctorales}
 \newcommand{\mybooktitleenglish}{Unified Template for the Generation of PFCs, TFGs, TFMs and PhD Thesis}
 
-\newcommand{\mybookauthor}{Javier Macías-Guarasa}
+\newcommand{\mybookauthor}{Javier Macías Guarasa}
 %\newcommand{\mybookauthorsex}{female}
 \newcommand{\mybookauthorsex}{male}
 
@@ -95,8 +97,9 @@
 \newcommand{\mybookuniversityacronym}{UAH}
 \newcommand{\mybookauthordegree}{Ingeniero de Telecomunicación} % Used in UPM
 \newcommand{\mybookemail}{macias@depeca.uah.es}
-\newcommand{\mybookNameAcademicTutor}{} % In case you need this for yout TF?
-\newcommand{\mybookNameFirstAdvisor}{Roberto Barra Chicote}
+\newcommand{\mybookNameAcademicTutor}{} % This is the default in  TFGs from 20151218
+\newcommand{\mybookNameCoTutor}{} % In case you need this for yout TF?
+\newcommand{\mybookNameFirstAdvisor}{\mybookNameAcademicTutor} % This is deprecated: set to academic tutor
 \newcommand{\mybookNameSecondAdvisor}{}
 \newcommand{\mybookpresident}{Name of the tribunal president}
 \newcommand{\mybookfirstvocal}{Name of the first vocal}
@@ -117,7 +120,9 @@
 \newcommand{\mybookdateforpaperwork}{30 de septiembre de 2014}
 \newcommand{\mybookDNIOpenPublishing}{12345678-L} % Required for TFG's & MUSEA-TFMs
                                 % paperwork, must be the DNI of the student
-\newcommand{\mybookDNIFirstAdvisor}{11111111-A}
+\newcommand{\mybookDNIAcademicTutor}{11111111-A}
+\newcommand{\mybookDNICotutor}{}
+\newcommand{\mybookDNIFirstAdvisor}{\mybookDNIAcademicTutor} % Deprecated: set to that of academic tutor
 \newcommand{\mybookDNISecondAdvisor}{}
 \newcommand{\mybookFigure}{alumno} % Required
                                 % for TFG's: the type of adscription of
@@ -132,7 +137,7 @@
 \newcommand{\mycity}{Meco}
 \newcommand{\mypostalcode}{28880}
 \newcommand{\myprovince}{Madrid}
-\newcommand{\mytelephone}{}
+\newcommand{\mytelephone}{666666666}
 
 
 % Link color definition
