@@ -2,7 +2,7 @@
 % 
 % Generic template for TFC/TFM/TFG/Tesis
 % 
-% $Id: preamble.tex,v 1.31 2015/01/23 22:44:45 macias Exp $
+% $Id: preamble.tex,v 1.32 2015/06/05 00:10:33 macias Exp $
 % 
 % By:
 % + Javier Macías-Guarasa. 
@@ -585,6 +585,24 @@ hyperfootnotes=false,
 %\providecommand{\DIFadd}[1]{{\protect\color{blue}{\protect\uwave{#1}}}}
 \providecommand{\DIFadd}[1]{{\protect\color{blue}\textbf{#1}}}
 \providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                     
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+\usepackage{ifpdf}
+\ifpdf
+  \DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\else
+  \DeclareGraphicsExtensions{.eps}
+\fi
+
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Para control de viudas y huérfanas
+\clubpenalty=10000
+\widowpenalty=10000
 
 %%% Local Variables:
 %%% TeX-master: "../book"
