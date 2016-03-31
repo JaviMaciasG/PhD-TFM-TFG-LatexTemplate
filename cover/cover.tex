@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: cover.tex,v 1.7 2015/06/05 00:10:34 macias Exp $
+% $Id: cover.tex,v 1.8 2016/03/31 16:39:45 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -45,10 +45,13 @@
     \input{cover/cover-pfc-tfg-tfm-uah.tex}
   }
   {
-    \ifthenelse{\equal{\mybookworktype}{TFM}}
-    {
-      \input{cover/portada-tfm-uah.tex}
-      \input{cover/cover-pfc-tfg-tfm-uah.tex}
+  \ifthenelse{\equal{\mybookworktype}{TFM}}
+  {
+    % Same than TFGs from 2016
+    \input{cover/portada-tfg-uah.tex}
+    \input{cover/cover-pfc-tfg-tfm-uah.tex}
+    %      \input{cover/portada-tfm-uah.tex}
+    %      \input{cover/cover-pfc-tfg-tfm-uah.tex}
     }
     {
       \ifthenelse{\equal{\mybookworktype}{PHDUAH}}

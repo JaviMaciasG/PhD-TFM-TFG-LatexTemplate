@@ -2,7 +2,7 @@
 # 
 # Makefile to generate anteproyecto.pdf
 #
-# $Id: Makefile,v 1.2 2015/01/23 22:44:44 macias Exp $
+# $Id: Makefile,v 1.2 2016/03/31 21:47:06 macias Exp $
 #
 # By:
 #  + Javier Macías-Guarasa. 
@@ -50,12 +50,18 @@ PDFS_FROM_EPS=$(patsubst %.eps,%.pdf,$(EPS_SOURCES))
 DUMMY_TARGETS=pdf_dia_done pdf_svg_done pdf_eps_done
 
 all: $(DUMMY_TARGETS)
-	$(RUBBER_TOOL) -f -d $(TEX_FILE)
-	$(RUBBER_TOOL) -f -d $(TEX_FILE)
+	pdflatex $(TEX_FILE)
+	pdflatex $(TEX_FILE)
+	pdflatex $(TEX_FILE)
+#	$(RUBBER_TOOL) -f -d $(TEX_FILE)
+#	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 
 anteproyecto: $(TEX_FILENAME)
-	$(RUBBER_TOOL) -f -d $(TEX_FILE)
-	$(RUBBER_TOOL) -f -d $(TEX_FILE)
+	pdflatex $(TEX_FILE)
+	pdflatex $(TEX_FILE)
+	pdflatex $(TEX_FILE)
+#	$(RUBBER_TOOL) -f -d $(TEX_FILE)
+#	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 
 anteproyecto_latexmk: $(TEX_FILENAME)
 	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_FILE)
