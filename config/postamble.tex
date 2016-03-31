@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: postamble.tex,v 1.12 2015/06/05 00:10:33 macias Exp $
+% $Id: postamble.tex,v 1.13 2016/03/31 10:45:21 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -300,6 +300,7 @@
                           {
                             \newcommand{\mydegreefull}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
                             \newcommand{\mydegreefullwrapped}{Máster Universitario en Sistemas Electrónicos Avanzados\\Sistemas Inteligentes}
+                            \newcommand{\mydegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería de Telecomunicación}}
                             \newcommand{\mybookworktype}{TFM}
                             \ifthenelse{\equal{\mybooklanguage}{spanish}}
                             {
@@ -351,10 +352,47 @@
                                   }
                                 }
                                 {
-                                  \newcommand{\mybookworktype}{TFG}
-                                  \newcommand{\mydegreefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}} 
-                                  \newcommand{\mybookworktypefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}}
-                                }                          
+                                  \ifthenelse{\equal{\mydegree}{MUIT}}
+                                  {
+                                    \newcommand{\mydegreefull}{Máster Universitario en Ingeniería de Telecomunicación}
+                                    \newcommand{\mydegreefullwrapped}{Máster Universitario en Ingeniería de Telecomunicación}
+                                    \newcommand{\mydegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería de Telecomunicación}}
+                                    \newcommand{\mybookworktype}{TFM}
+                                    \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                    {
+                                    \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                                    }
+                                    {
+                                    % This could be translated. I'm leaving this in Spanish...
+                                    % \newcommand{\mybookworktypefull}{Master's Thesis}
+                                    \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                                    }
+                                 }
+                                 {
+                                   \ifthenelse{\equal{\mydegree}{MUII}}
+                                   {
+                                     \newcommand{\mydegreefull}{Máster Universitario en Ingeniería Industrial}
+                                     \newcommand{\mydegreefullwrapped}{Máster Universitario en Ingeniería Industrial}
+                                     \newcommand{\mydegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería Industrial}}
+                                     \newcommand{\mybookworktype}{TFM}
+                                     \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                     {
+                                       \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                                     }
+                                     {        
+                                     % This could be translated. I'm leaving this in Spanish...
+                                     % \newcommand{\mybookworktypefull}{Master's Thesis}
+                                     \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                                     }
+                                   }
+                                   {
+                                   \newcommand{\mybookworktype}{TFG}
+                                   \newcommand{\mydegreefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}} 
+                                   \newcommand{\mybookworktypefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}}
+                                   }
+                                 }
+                               
+                                }                               
                               }                          
                             }                          
                           }                          

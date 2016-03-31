@@ -1,0 +1,130 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: portada-tfm-uah.tex,v 1.9 2015/06/05 00:10:34 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% You can freely use this template and please contribute with
+% comments or suggestions!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+
+% To add background watermark
+%\BgThispage
+
+% Nice example of tikz
+% \begin{tikzpicture}[remember picture,overlay]
+%   \node [xshift=1cm,yshift=1cm] at (current page.south west)
+%   [text width=7cm,fill=red!20,rounded corners,above right]
+%   {
+%     This is an absolutely positioned text in the
+%     lower left corner. No shipout-hackery is used.
+%   };
+% \end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-14cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (6cm,14cm);
+      \node [yshift=7cm, xshift=3cm, text centered, midway, rotate=+90] {\color{white}\fontsize{110}{132}\selectfont\mybookuniversityacronym};
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+% title box
+\begin{tikzpicture}
+  \node [xshift=7cm] at (current page.north west)
+  {%
+     \begin{tikzpicture}[remember picture, overlay]
+    
+       \node [yshift=-3.5cm, xshift=0.5\paperwidth, align=center, text width=14cm, text centered, midway] {\begin{minipage}[c][13cm][c]{13cm}\centering\color{black}\fontsize{26}{31}\selectfont\textbf{\mybooktitle}\par\end{minipage}};
+%      \color{black}\fontsize{30}{36}\selectfont\textbf{\mybooktitle}
+      
+   
+     \end{tikzpicture}
+    
+  };
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-\paperheight] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2cm);
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+
+% Middle rectangle
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-17cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2.8cm);
+      \node [yshift=1.8cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{15}\selectfont\textbf{\mydegreefullwrapped}\par};
+      \node [yshift=0.5cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{26}\selectfont\textbf{\mybookdepartment}};
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+% Author information
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-19cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \node [yshift=0,    xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Presentado por:\\\mybookauthor}\par};
+      \node [yshift=-3cm, xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Dirigido por:\\\mybookadvisors}\par};
+      \node [yshift=-6cm, xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Alcalá de Henares, a \mydefensedate}\par};
+
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+% lower rectangle
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-\paperheight] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2cm);
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+
+
+% \begin{bottomparagraph}
+%   \begin{center}
+%     \huge{\mybookyear}
+%   \end{center}
+% \end{bottomparagraph}
+
+%\newpage
+\clearemptydoublepage
+
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
