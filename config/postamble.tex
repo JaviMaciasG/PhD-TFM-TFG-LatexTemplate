@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: postamble.tex,v 1.13 2016/03/31 10:45:21 macias Exp $
+% $Id: postamble.tex,v 1.14 2016/03/31 16:35:19 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -54,13 +54,48 @@
 \newcommand{\mybooktitle}{\mybooktitleenglish}
 }
 
-% Set name of advisors and define words depending on singular/plural
-\ifthenelse{\equal{\mybookNameSecondAdvisor}{}}
+\ifthenelse{\equal{\mybooklanguage}{spanish}}
 {
-\newcommand{\mybookadvisors}{\mybookNameFirstAdvisor{}}
+\newcommand{\andOrY}{y} 
+} 
+{
+\newcommand{\andOrY}{and} 
+}
+
+% Sex issues
+\ifthenelse{\equal{\mybookAcademicTutorSex}{male}}     
+{                                                       
+\newcommand{\donOrDonaTutor}{D.}
+}
+{
+\newcommand{\donOrDonaTutor}{Dª.}
+}
+
+\ifthenelse{\equal{\mybookCoTutorSex}{male}}     
+{                                                       
+\newcommand{\donOrDonaCoTutor}{D.}
+}
+{
+\newcommand{\donOrDonaCoTutor}{Dª.}
+}
+
+\ifthenelse{\equal{\mybookauthorsex}{male}}     
+{                                                       
+\newcommand{\donOrDonaAutor}{D.}
+}
+{
+\newcommand{\donOrDonaAutor}{Dª.}
+}
+
+% Set name of advisors and define words depending on singular/plural
+\ifthenelse{\equal{\mybookNameCoTutor}{}}
+{
+\newcommand{\mybookadvisors}{\mybookNameAcademicTutor{}}
+\newcommand{\mybookadvisorsConDon}{\donOrDonaTutor{} \mybookNameAcademicTutor{}}
 \newcommand{\mybookDirectorOrDirectores}{director}
 \newcommand{\mybookAdvisorOrAdvisors}{advisor}
 \newcommand{\mybookDaOrDan}{da}
+\newcommand{\mybookEmiteOrEmiten}{emite}
 \newcommand{\mybookTutorOrTutores}{tutor}
 \newcommand{\mybookElOrLos}{El}
 \newcommand{\mybookSuOrSus}{su}
@@ -68,10 +103,12 @@
 \newcommand{\mybookHagoOrHacemos}{hago}
 }
 {
-\newcommand{\mybookadvisors}{\mybookNameFirstAdvisor{} y \mybookNameSecondAdvisor{}}
+\newcommand{\mybookadvisors}{\mybookNameAcademicTutor{} \andOrY{} \mybookNameCoTutor{}}
+\newcommand{\mybookadvisorsConDon}{\donOrDonaTutor{} \mybookNameAcademicTutor{} \andOrY{} \donOrDonaCoTutor{} \mybookNameCoTutor{}}
 \newcommand{\mybookDirectorOrDirectores}{directores}
 \newcommand{\mybookAdvisorOrAdvisors}{advisors}
 \newcommand{\mybookDaOrDan}{dan}
+\newcommand{\mybookEmiteOrEmiten}{emiten}
 \newcommand{\mybookTutorOrTutores}{tutores}
 \newcommand{\mybookElOrLos}{Los}
 \newcommand{\mybookSuOrSus}{Su}
@@ -88,6 +125,7 @@
 \newcommand{\mybookDelOrDeLa}{del}                
 \newcommand{\mybookDonOrDona}{D}                
 \newcommand{\mybookNotificadoOrNotificada}{notificado}                
+\newcommand{\mybookAdscritoOrAdscrita}{adscrito}                
 \newcommand{\mybookAlumnoOrAlumna}{alumno}                
 }                                               
 {
@@ -97,6 +135,7 @@
 \newcommand{\mybookDelOrDeLa}{de la}                
 \newcommand{\mybookDonOrDona}{Dª}                
 \newcommand{\mybookNotificadoOrNotificada}{notificada}    
+\newcommand{\mybookAdscritoOrAdscrita}{adscrita}                
 \newcommand{\mybookAlumnoOrAlumna}{alumna}                            
 }
 
