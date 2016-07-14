@@ -2,7 +2,7 @@
 % 
 % Generic template for TFC/TFM/TFGs requests
 % 
-% $Id: solicitudTFG-new.tex,v 1.1 2016/03/31 10:49:21 macias Exp $
+% $Id: solicitud.tex,v 1.7 2016/06/22 23:27:41 macias Exp $
 % 
 % By:
 % + Javier Macías-Guarasa. 
@@ -159,7 +159,15 @@
     \cellcolor{gray!10} \hrulefill\\
     \cellcolor{gray!10} \hrulefill\\
     \cellcolor{gray!10} ~\\
-    \cellcolor{gray!10}\underline{TRIBUNAL CALIFICADOR:}\\
+
+    \ifthenelse{\equal{\mybookworktype}{TFM}}   
+    {                                               
+      \cellcolor{gray!10}\underline{TRIBUNAL CALIFICADOR (nombrado por
+        la Comisión Académica del Máster):}\\
+    }                                               
+    {                                               
+      \cellcolor{gray!10}\underline{TRIBUNAL CALIFICADOR:}\\
+    }                                               
     \cellcolor{gray!10}\spacingFour{}Presidente: D/Dª. \longunderline{\mybookpresident}{\spacingFour{}Presidente: D/Dª. } \\
     \cellcolor{gray!10}\spacingFour{}Vocal 1º: D/Dª. \longunderline{}{\spacingFour{}Vocal 1º: D/Dª. } \\
     \cellcolor{gray!10}\spacingFour{}Vocal 2º: D/Dª. \longunderline{\mybookNameFirstAdvisor{}}{\spacingFour{}Vocal 2º: D/Dª. }\\
