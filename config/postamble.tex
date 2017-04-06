@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: postamble.tex,v 1.14 2016/03/31 16:35:19 macias Exp $
+% $Id: postamble.tex,v 1.15 2016/06/22 23:24:59 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -46,10 +46,12 @@
 
 \ifthenelse{\equal{\mybooklanguage}{spanish}}
 {
+\usepackage[spanish]{babel}
 \newcommand{\mybookFullAffiliation}{Grupo de investigación \mybookresearchgroup \\ \mybookdepartment \\ \mybookuniversity} 
 \newcommand{\mybooktitle}{\mybooktitlespanish}
 } 
 {
+\usepackage[english]{babel}
 \newcommand{\mybookFullAffiliation}{\mybookresearchgroup Research Group \\ \mybookdepartmentEnglish \\ \mybookuniversity} 
 \newcommand{\mybooktitle}{\mybooktitleenglish}
 }

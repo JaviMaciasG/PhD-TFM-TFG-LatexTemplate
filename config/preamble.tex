@@ -2,7 +2,7 @@
 % 
 % Generic template for TFC/TFM/TFG/Tesis
 % 
-% $Id: preamble.tex,v 1.32 2015/06/05 00:10:33 macias Exp $
+% $Id: preamble.tex,v 1.33 2016/03/31 10:46:01 macias Exp $
 % 
 % By:
 % + Javier Macías-Guarasa. 
@@ -52,14 +52,15 @@
   \PassOptionsToPackage{cmyk}{xcolor}% NB: put this *before* \usepackage{pst-all}
 }
 
-\usepackage[latin1]{inputenc} % Para poder escribir con acentos y ñ.
+\usepackage[latin1]{inputenc} % Para poder escribir con acentos y ñ. en
+                              % latin1
+%\usepackage[utf8]{inputenc} % Para poder escribir con acentos y ñ. en utf8
 \usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
                               % usar si no es necesario, porque ralentiza muchisimo la compilación.
 \usepackage{ae}               % Para que todas las fuentes sean Type1, y ninguna Type3.
 \usepackage{lmodern}          % This generates a pdf with searchable
                               % accented characters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-\usepackage[spanish, english]{babel}
 
 \usepackage{wrapfig}
 \usepackage{lipsum}
