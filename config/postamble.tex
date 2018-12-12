@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: postamble.tex,v 1.16 2017/04/06 13:56:12 macias Exp $
+% $Id: postamble.tex,v 1.17 2018/12/12 13:06:52 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -103,13 +103,17 @@
 {                                                       
 \newcommand{\directorOrdirectora}{director}
 \newcommand{\mybookTutorOrTutores}{tutor}
+\newcommand{\mybookTutor}{tutor}
 }
 {
 \newcommand{\directorOrdirectora}{directora}
 \newcommand{\mybookTutorOrTutores}{tutora}
+\newcommand{\mybookTutor}{tutora}
 }
 \newcommand{\mybookDirectorOrDirectores}{\directorOrdirectora}
 \newcommand{\mybookAdvisorOrAdvisors}{advisor}
+\newcommand{\mybookAdvisor}{advisor}
+\newcommand{\mybookCoAdvisor}{co-advisor}
 \newcommand{\mybookDaOrDan}{da}
 \newcommand{\mybookEmiteOrEmiten}{emite}
 \newcommand{\mybookElOrLos}{El}
@@ -124,9 +128,32 @@
 
 \newcommand{\mybookDirectorOrDirectores}{directores}
 \newcommand{\mybookAdvisorOrAdvisors}{advisors}
+\newcommand{\mybookAdvisor}{advisor}
+\newcommand{\mybookCoAdvisor}{co-advisor}
 \newcommand{\mybookDaOrDan}{dan}
 \newcommand{\mybookEmiteOrEmiten}{emiten}
 \newcommand{\mybookTutorOrTutores}{tutores}
+
+
+\ifthenelse{\equal{\mybookAcademicTutorSex}{male}}     
+{                                                       
+\newcommand{\directorOrdirectora}{director}
+\newcommand{\mybookTutor}{tutor}
+}
+{
+\newcommand{\directorOrdirectora}{directora}
+\newcommand{\mybookTutor}{tutora}
+}
+
+\ifthenelse{\equal{\mybookCoTutorSex}{male}}     
+{                                                       
+\newcommand{\mybookCoTutor}{cotutor}
+}
+{
+\newcommand{\mybookCoTutor}{cotutora}
+}
+
+
 \newcommand{\mybookElOrLos}{Los}
 \newcommand{\mybookSuOrSus}{Su}
 \newcommand{\mybookDelOrDeLos}{de los}

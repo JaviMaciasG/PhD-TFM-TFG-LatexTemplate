@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: cover-pfc-tfg-tfm-uah.tex,v 1.10 2015/06/05 00:10:34 macias Exp $
+% $Id: cover-pfc-tfg-tfm-uah.tex,v 1.11 2016/03/31 23:38:15 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -64,17 +64,44 @@
   
   \vspace{1mm}
   
+  \ifthenelse{\equal{\mybooktutoresseparados}{true}}
+{
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+%    \expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}: \mybookadvisors
+    \expandafter\makefirstuc\expandafter{\mybookAdvisor}: \mybookNameAcademicTutor{}
 
+    \ifthenelse{\equal{\mybookNameCoTutor}{}}
+    {
+    }
+    {
+    \expandafter\makefirstuc\expandafter{\mybookCoAdvisor}: \mybookNameCoTutor{}
+    }
+
+  }
+  {%
+%    \expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}: \mybookadvisors
+%    \expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}: \mybookadvisors
+    \expandafter\makefirstuc\expandafter{\mybookTutor}:    \mybookNameAcademicTutor{}
+
+    \ifthenelse{\equal{\mybookNameCoTutor}{}}
+    {
+    }
+    {
+    \expandafter\makefirstuc\expandafter{\mybookCoTutor}: \mybookNameCoTutor{}
+    }
+  }
+}
+{
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
     \expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}: \mybookadvisors
   }
-  {%
-%    \expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}: \mybookadvisors
+  {
     \expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}: \mybookadvisors
   }
+}  
 
-  
   \vspace{1cm}
 
   \begin{tabular}{rll}

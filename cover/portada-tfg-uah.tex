@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: portada-tfg-uah.tex,v 1.11 2015/04/16 23:16:37 macias Exp $
+% $Id: portada-tfg-uah.tex,v 1.12 2015/06/05 00:10:34 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -82,16 +82,56 @@
 \vspace{0.5cm}
 
 % If also director: add corresponding line (mybookDirectors IS NOT DEFINED AS FOR ME (JMG)
+%   \ifthenelse{\equal{\mybooklanguage}{english}}
+%   {
+%     \textbf{\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}:} \mybookadvisors
+%   }
+%   {
+%   \textbf{\expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}:}  \mybookadvisors
+% %  \textbf{\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}:}  \mybookdirectors
+%   }
+
+% ---
+  \ifthenelse{\equal{\mybooktutoresseparados}{true}}
+{
+  \ifthenelse{\equal{\mybooklanguage}{english}}
+  {
+%    \expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}: \mybookadvisors
+    \textbf{\expandafter\makefirstuc\expandafter{\mybookAdvisor}:} \mybookNameAcademicTutor{}
+
+    \ifthenelse{\equal{\mybookNameCoTutor}{}}
+    {
+    }
+    {
+    \textbf{\expandafter\makefirstuc\expandafter{\mybookCoAdvisor}:} \mybookNameCoTutor{}
+    }
+
+  }
+  {%
+%    \expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}: \mybookadvisors
+%    \expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}: \mybookadvisors
+    \textbf{\expandafter\makefirstuc\expandafter{\mybookTutor}:}    \mybookNameAcademicTutor{}
+
+    \ifthenelse{\equal{\mybookNameCoTutor}{}}
+    {
+    }
+    {
+    \textbf{\expandafter\makefirstuc\expandafter{\mybookCoTutor}:} \mybookNameCoTutor{}
+    }
+  }
+}
+{
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
     \textbf{\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}:} \mybookadvisors
   }
   {
-  \textbf{\expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}:}  \mybookadvisors
-%  \textbf{\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}:}  \mybookdirectors
+    \textbf{\expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}:} \mybookadvisors
   }
+}  
 
 
+%---
 
 
 \end{center}

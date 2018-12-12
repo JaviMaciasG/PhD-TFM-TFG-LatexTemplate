@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: myconfig.tex,v 1.32 2016/06/22 23:25:15 macias Exp $
+% $Id: myconfig.tex,v 1.33 2018/12/12 13:06:52 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -48,8 +48,8 @@
 
 % Control language specific modifications
 % This can be english or spanish
-%\newcommand{\mybooklanguage}{spanish}
-\newcommand{\mybooklanguage}{english}
+\newcommand{\mybooklanguage}{spanish}
+%\newcommand{\mybooklanguage}{english}
 
 % Control compilation flavour (for PFCs, TFMs, TFGs, Thesis, etc...)
 % Degree (titulación), can be:
@@ -75,8 +75,14 @@
 % You can include additional degrees and modify config/myconfig.tex
 % config/postamble.tex and cover/cover.tex, generating new specific
 % cover files if needed
-\newcommand{\mydegree}{MUIT}
+\newcommand{\mydegree}{GIEC}
 %\newcommand{\mydegree}{PHDUAH}
+
+\newcommand{\mybooktutoresseparados}{true} % if false it will set
+                                % "Tutores/Advisors" in the cover
+                                % pages. Otherwise it will split in
+                                % Tutor/Cotutor Advisor/Co-advisor
+
 
 \newcommand{\myspecialty}{} % New in TFGs from 20151218!
 
@@ -104,7 +110,7 @@
 
 \newcommand{\mybookNameAcademicTutor}{Roberto Barra Chicote} % This is the default in  TFGs from 20151218
 \newcommand{\mybookAcademicTutorSex}{male}
-\newcommand{\mybookNameCoTutor}{Periquita} % In case you need this for yout TF?
+\newcommand{\mybookNameCoTutor}{Juana de Arco} % In case you need this for yout TF?
 \newcommand{\mybookCoTutorSex}{female}
 
 \newcommand{\mybookNameFirstAdvisor}{\mybookNameAcademicTutor} % This is deprecated: set to academic tutor
