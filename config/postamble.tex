@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: postamble.tex,v 1.15 2016/06/22 23:24:59 macias Exp $
+% $Id: postamble.tex,v 1.16 2017/04/06 13:56:12 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -68,17 +68,21 @@
 \ifthenelse{\equal{\mybookAcademicTutorSex}{male}}     
 {                                                       
 \newcommand{\donOrDonaTutor}{D.}
+\newcommand{\drOrDraTutor}{Dr.}
 }
 {
 \newcommand{\donOrDonaTutor}{Dª.}
+\newcommand{\drOrDraTutor}{Dra.}
 }
 
 \ifthenelse{\equal{\mybookCoTutorSex}{male}}     
 {                                                       
 \newcommand{\donOrDonaCoTutor}{D.}
+\newcommand{\drOrDraCoTutor}{Dr.}
 }
 {
 \newcommand{\donOrDonaCoTutor}{Dª.}
+\newcommand{\drOrDraCoTutor}{Dra.}
 }
 
 \ifthenelse{\equal{\mybookauthorsex}{male}}     
@@ -94,11 +98,20 @@
 {
 \newcommand{\mybookadvisors}{\mybookNameAcademicTutor{}}
 \newcommand{\mybookadvisorsConDon}{\donOrDonaTutor{} \mybookNameAcademicTutor{}}
-\newcommand{\mybookDirectorOrDirectores}{director}
+\newcommand{\mybookadvisorsConDr}{\drOrDraTutor{} \mybookNameAcademicTutor{}}
+\ifthenelse{\equal{\mybookAcademicTutorSex}{male}}     
+{                                                       
+\newcommand{\directorOrdirectora}{director}
+\newcommand{\mybookTutorOrTutores}{tutor}
+}
+{
+\newcommand{\directorOrdirectora}{directora}
+\newcommand{\mybookTutorOrTutores}{tutora}
+}
+\newcommand{\mybookDirectorOrDirectores}{\directorOrdirectora}
 \newcommand{\mybookAdvisorOrAdvisors}{advisor}
 \newcommand{\mybookDaOrDan}{da}
 \newcommand{\mybookEmiteOrEmiten}{emite}
-\newcommand{\mybookTutorOrTutores}{tutor}
 \newcommand{\mybookElOrLos}{El}
 \newcommand{\mybookSuOrSus}{su}
 \newcommand{\mybookDelOrDeLos}{del}
@@ -107,6 +120,8 @@
 {
 \newcommand{\mybookadvisors}{\mybookNameAcademicTutor{} \andOrY{} \mybookNameCoTutor{}}
 \newcommand{\mybookadvisorsConDon}{\donOrDonaTutor{} \mybookNameAcademicTutor{} \andOrY{} \donOrDonaCoTutor{} \mybookNameCoTutor{}}
+\newcommand{\mybookadvisorsConDr}{\drOrDraTutor{} \mybookNameAcademicTutor{}\\\drOrDraCoTutor{} \mybookNameCoTutor{}}
+
 \newcommand{\mybookDirectorOrDirectores}{directores}
 \newcommand{\mybookAdvisorOrAdvisors}{advisors}
 \newcommand{\mybookDaOrDan}{dan}

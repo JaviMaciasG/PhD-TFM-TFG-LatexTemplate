@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: myconfig.tex,v 1.31 2016/03/31 23:38:15 macias Exp $
+% $Id: myconfig.tex,v 1.32 2016/06/22 23:25:15 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -49,7 +49,7 @@
 % Control language specific modifications
 % This can be english or spanish
 %\newcommand{\mybooklanguage}{spanish}
-\newcommand{\mybooklanguage}{spanish}
+\newcommand{\mybooklanguage}{english}
 
 % Control compilation flavour (for PFCs, TFMs, TFGs, Thesis, etc...)
 % Degree (titulación), can be:
@@ -75,7 +75,7 @@
 % You can include additional degrees and modify config/myconfig.tex
 % config/postamble.tex and cover/cover.tex, generating new specific
 % cover files if needed
-\newcommand{\mydegree}{GIEC}
+\newcommand{\mydegree}{MUIT}
 %\newcommand{\mydegree}{PHDUAH}
 
 \newcommand{\myspecialty}{} % New in TFGs from 20151218!
@@ -84,7 +84,10 @@
 \newcommand{\mybooktitlespanish}{Plantilla unificada para la generación de memorias de PFCs, TFGs, TFMs y tesis doctorales}
 \newcommand{\mybooktitleenglish}{Unified Template for the Generation of PFCs, TFGs, TFMs and PhD Thesis}
 
-\newcommand{\mybookauthor}{Javier Macías Guarasa}
+\newcommand{\mybookauthorname}{Javier}
+\newcommand{\mybookauthorsurname}{Macías Guarasa}
+\newcommand{\mybookauthor}{\mybookauthorname{} \mybookauthorsurname{}}
+
 %\newcommand{\mybookauthorsex}{female}
 \newcommand{\mybookauthorsex}{male}
 
@@ -128,7 +131,7 @@
 \newcommand{\mybookDNIAcademicTutor}{11111111-A}
 \newcommand{\mybookDNICotutor}{}
 \newcommand{\mybookDNIFirstAdvisor}{\mybookDNIAcademicTutor} % Deprecated: set to that of academic tutor
-\newcommand{\mybookDNISecondAdvisor}{}
+\newcommand{\mybookDNISecondAdvisor}{\mybookDNICotutor} % Deprecated set to that of cotutor
 \newcommand{\mybookFigure}{alumno} % Required
                                 % for TFG's: the type of adscription of
                                 % the author signing the agreement
