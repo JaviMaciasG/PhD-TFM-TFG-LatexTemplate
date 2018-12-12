@@ -1,0 +1,174 @@
+\documentclass[xcolor=x11names,compress]{beamer}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{textpos}
+\usepackage{arabtex}
+\usepackage{color}
+\usepackage{hyperref}
+\useoutertheme{infolines}
+
+% ========================================================
+% Customizations 
+\newcommand{\logoimagepath}{../../logos/fastlogo}
+\newcommand{\highlightcolor}{DeepSkyBlue3}
+\newcommand{\headbarcolor}{DeepSkyBlue4!25}
+\newcommand{\authorname}{Nauman}
+\newcommand{\authoremail}{recluze@gmail.com}
+\newcommand{\authorweb}{http://csrdu.org/nauman}
+\newcommand{\authoraffiliation}{FAST National University of Computer and Emerging Sciences (FAST-NU) \\ Peshawar Campus}
+\institute{http://csrdu.org/nauman}
+% --------------------------------------
+\newcommand{\coursetitle}{Seminar Series on Introduction to Research}
+\newcommand{\slidesettitle}{Document Preparation Using \LaTeX2$_\epsilon$}
+\newcommand{\slidesetsubtitle}{}
+\newcommand{\slidesetnumber}{01}
+\usefonttheme{professionalfonts}
+% ========================================================
+% DO NOT MODIFY THE NEXT LINE ----------
+\input{../../includes/header-commands}
+
+% ================= BEGIN SLIDES ============================================
+
+\begin{frame}[allowframebreaks,t] % %----------------------------------------------------------
+\frametitle{Session Series Plan}
+
+\begin{itemize} 
+\item Introduction to \LaTeX 
+\item Why use it (or what’s wrong with MS-Word) 
+\item Terminology 
+\item Getting started 
+	\begin{itemize}
+	\item Installing the software 
+	\item Setting up the preferences 
+	\end{itemize}
+\item Document structure 
+	\begin{itemize}
+	\item Setting the document class 
+	\item Sections, subsections and formatting 
+	\item Figures and Tables \framebreak
+	\item Using packages (or what’s with this ‘undefined control sequence’!)
+	\item Typesetting Math/Equations
+	\item Bibliographies (and how not to have headaches working with them) 
+	\end{itemize}
+\item Advanced topics 
+\item Setting up algorithms 
+\item Code/program/policies/output formatting
+\item Must-see documents 
+\end{itemize}
+
+\end{frame}
+\begin{frame}[t] % %----------------------------------------------------------
+\frametitle{Introduction to \LaTeX}
+\begin{itemize} 
+  \item Based on \TeX
+  \item Pronounced leh-tek (k being the sound of Arabic \RL{_h} or Greek $\chi$)
+ 	\item Takes in \LaTeX\ source and generates a number of outputs (dvi, html, rtf, pdf, ps …)
+	\item The output is concerned with placing “boxes” around the “page” 
+\item Boxes are combined to form other boxes 
+\item Placed using fixed or ‘elastic’ widths and distances
+\end{itemize}
+\end{frame}
+%----------------------------------------------------------
+\begin{frame}[t] % 
+\frametitle{Introduction (contd.)}
+\begin{itemize} 
+  \item What's wrong with MS-Word? 
+  \item Lack of control 
+	\item Have to focus on content and presentation at the same time 
+	\item Too much effort required to format for specific 		conferences/journals 
+	\item Too much effort to change from one format to another 
+	\item Difficult to manage versions 
+	\item Difficult to manage references (even with EndNote) 
+\end{itemize}
+\end{frame}
+%----------------------------------------------------------
+\begin{frame}[t] % 
+\frametitle{Introduction (contd.)}
+\begin{itemize} 
+  \item What’s wrong with LaTeX? 
+  \item You need to learn how to use it! 
+	\item It’s not completely intuitive (for some) 
+\end{itemize}
+\end{frame}
+\begin{frame}
+
+%--------------------
+\frametitle{The Power of \LaTeX -- An Example}
+Output:
+ 
+\begin{center}
+\includegraphics[width=0.7\textwidth]{imgs/drawing}
+\end{center}
+\pause
+
+Input: \\
+\hspace{1cm}\texttt{What is the second question I should ask you?}\\
+\hspace{1cm}$\backslash$\texttt{putansline\{6\}\{3\}}
+
+\end{frame}
+
+%----------------------------------------------------------
+\begin{frame}[t] % 
+\frametitle{Terminology}
+\begin{itemize} 
+  \item Document (the output) 
+\item Document Class (the main type defining the doc) 
+\item Package (a file encapsulating commands for a specific purpose) 
+\item .sty (style files) 
+\item .cls (document class files)
+\item FNDB (filename database) 
+\item update (… file/repository/meta information)  
+\end{itemize}
+\end{frame}
+
+
+%----------------------------------------------------------
+\begin{frame}[t] % 
+\frametitle{Must See Documents}
+\begin{itemize} 
+  \item ``A Not So Short Introduction to LaTeX"
+	\item ``The LaTeX Comprehensive Symbol List" 
+
+\end{itemize}
+\end{frame}
+%----------------------------------------------------------
+\begin{frame}[t] % 
+\frametitle{Getting Started}
+\begin{itemize} 
+  \item To work with LaTeX, you need: 
+  \begin{itemize}
+ 	 \item an editor ({\TeX}nicCenter, Kile, WinEdt, LED) 
+  	 \item a compiler (Mik{\TeX}, {\TeX}Live, tetex ...)   
+  \end{itemize}
+  \item Enough talk. Let’s get started!
+\end{itemize}
+\end{frame}
+%----------------------------------------------------------
+\begin{frame}[t] % 
+\frametitle{Demo}
+\begin{itemize} 
+  \item Installing software \pause
+  \item Creating your first document \pause 
+  \item Getting the required packages \pause 
+  \item Creating your second document (an ACM format paper) \pause 
+  \item Creating your third document (a Springer format paper) \pause
+  \item Creating your fourth document (an IEEE transactions format paper) \pause   
+  \item Algorithms \pause
+  \item Mathematical typesetting \pause 
+  \item Cool output boxes with line numbers!
+ 
+\end{itemize}
+\end{frame}
+%----------------------------------------------------------
+\begin{frame}[t] % 
+\frametitle{Getting the Sources}
+\begin{itemize} 
+  \item You can get the resources for these sessions here:
+  \url{http://www.csrdu.org/nauman/2011/10/16/latex-screencasts/} 
+  \item Feel free to leave comments on the post there if you have any questions at all. I'll try to answer them as soon as possible. 
+  \item All the required files (and completed documents) can be downloaded from this page. 
+  \item You can find a really good resource on learning \LaTeX\ here: \url{http://ctan.org/tex-archive/info/lshort/english/lshort.pdf}
+\end{itemize}
+\end{frame}
+
+\end{document}

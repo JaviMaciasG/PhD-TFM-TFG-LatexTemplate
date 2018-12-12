@@ -1,0 +1,71 @@
+    \documentclass[12pt]{article}
+        
+        % funky manipulation of text. 
+        %only useful for producing ps not pdf
+
+        \usepackage{pstricks}
+        
+        % extra pstricks pieces
+        \usepackage{pst-text}
+        \usepackage{pst-eps}
+        
+        % allows \includegraphics 
+        % most likely, we'll be using dvips for output
+        \usepackage[dvips]{graphicx}
+        
+        % allows \so  (stretched-out)
+        \usepackage{soul}
+        
+        % set default pstricks unit to 1cm
+        \psset{unit=1cm}
+        
+        % don't do page numbers, etc
+        \pagestyle{empty}
+        
+        
+        % environment for actual content
+        \begin{document}
+        
+        % The rest is compressed, because you can't have any 
+        % blank lines. they will start a new paragraph 
+        % which isn't something we want in the middle of
+        % a picture..
+        
+        % A pstricks trick, to help produce the right 
+        % bounding box for eps
+        \TeXtoEPS
+
+        % pstricks pspicture environment. width/height/offset etc.
+        \begin{pspicture}(-1,-11)(11,1)
+
+        % default font attributes
+        \Huge\ttfamily\bfseries
+
+        % draw a little cross at the center (5,-5) (two straight lines)
+        \qline(4.6,-5)(5.4,-5)\qline(5,-4.6)(5,-5.4) % mark center
+
+        % the text "\so{CCRMA Open House}" drawn around in an arc.
+        \pstextpath[c](0,0){
+          \psarcn[linestyle=none](5,-5){3.5}{270}{0}}
+        {\so{CCRMA Open House}}
+
+        % put an .eps at (7.7, -7.7)
+        \rput(7.7,-7.7){\includegraphics[width=3cm]{geintra}}
+
+        % put some text (in a table, to get layout correct)
+        \rput(3.5,-8.5){\mdseries\sffamily\small%
+         \begin{tabular}{r}
+         Friday May 9, 2003 \\
+         The Knoll, Stanford University \\
+         U.S.A.
+         \end{tabular}}
+
+        % uncomment for cd border:
+        %\pscircle(5,-5){2}
+        %\pscircle(5,-5){6}
+
+        \end{pspicture}
+        \endTeXtoEPS
+
+      \end{document}
+

@@ -1,0 +1,45 @@
+\documentclass[%
+	final, %
+	% draft, % Grafische Elemente durch graue Boxen ersetzen (beschleunigt Kompilieren)
+	% 8pt, % Zu klein, erfordert Paket extsize
+	% 9pt, % Zu klein, erfordert Paket extsize
+	% 10pt, % für Folien mit sehr viel Text
+	11pt, % Standardschriftgröße
+	% 12pt, % etwas größer und daher besser zu lesen
+	% 14pt, % deutlich größer, erfordert Paket extsize
+	% 17pt, % PowerPoint Standardschriftgröße, erfordert Paket extsize
+	% 20pt, % sehr groß, erfordert Paket extsize
+	% trans,% Zum Erstellen von Overhead Folien
+	% handout, % Erstellen eines Handouts
+	% article,% Erstellen eines Artikels
+ 	% compress, % Die Navigation in der Kopfzeile wird komprimiert dargestellt
+	t, % Place text of slides at the (vertical) top of the slides
+	% c, % Place text of slides at the (vertical) center of the slides
+	% color={}, % list of options for color
+	xcolor={table,dvipsnames}, % Optionen für xcolor übergeben
+	% hyperref={}, % list of options for hyperref
+	% envcountsect, % Causes theorems, deﬁnitions, and so on to be numbered locally to each section.
+	% notheorems, % Switches off the definition of default blocks like theorem
+	% noamsthm, % Does not load amsthm and also not amsmath
+	% ucs, % lädt ucs Paket
+	% utf8, % lädt utf8x Paket von ucs (utf8 enconding)
+	% dvips, % erzwingt das Laden des dvips Treibers - idR nicht nötig!
+	% usepdftitle=false, % Suppresses the automatic generation of title and author entries in the pdf document information.
+	% ignorenonframetext, % suppresses content created for the article mode ??
+	show notes, % enables Notes
+	% leqno,
+	% fleqn,
+]{beamer}[2007/03/11] % Minimum necessary version due to severe bugs in version 3.06 !!!
+
+\input{preambel/Beamer-Fonts}
+\input{preambel/Beamer-LaTeX-Settings}
+\input{preambel/Beamer-Settings}
+\input{preambel/Beamer-LaTeX-newcommands}
+
+
+\begin{document}
+     \input{content/Beamer-Examples}
+%  	\input{content/Beamer-Title}
+%  	\input{content/Beamer-Content}
+%  	\input{content/Beamer-Appendix}
+\end{document}

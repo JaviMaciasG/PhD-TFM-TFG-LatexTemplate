@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -z "$1" ] 
+then 
+	echo "Pass the name of the tex file without extension."
+	exit 0
+fi
+
+ 
+
+rm $1.snm $1.nav $1.aux $1.bbl $1.toc $1.out $1*.gz $1.log
+mv $1.pdf ../

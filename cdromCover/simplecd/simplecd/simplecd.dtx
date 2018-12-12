@@ -1,0 +1,2675 @@
+
+% \iffalse meta-comment
+%
+% Copyright (C) 2010-2013 by Daniel Majoros
+%
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.2 of this license or (at your option) any later
+% version. The latest version of this license is in:
+%
+% http://www.latex-project.org/lppl.txt
+%
+% and version 1.2 or later is part of all distributions of
+% LaTeX version 1999/12/01 or later.
+%
+% \fi
+%
+%\iffalse
+%<package>\NeedsTeXFormat{LaTeX2e}
+%<package>\ProvidesPackage{simplecd}
+%<package>    [2013/02/28 v1.4 Simple CD, DVD covers and many more]
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{simplecd}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+
+%Provides clickable links in content tables, references
+\usepackage[hyperindex=false,%
+	pdftitle={simplecd},%
+	pdfauthor={Daniel Majoros},%
+	pdfsubject={CD, DVD and other media covers and labels},%
+	pdfkeywords={cover,cd,dvd,bluray,sheet,keepcase,layout,disk,zip,VHS}]{hyperref}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+            
+\begin{document}
+	\lstset{language=[LaTeX]Tex}
+	\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
+	\lstset{gobble=1,float,frame=tb}
+	\lstset{tabsize=2}
+    \DocInput{./simplecd.dtx} 
+\end{document}
+%</driver>
+%\fi
+% 
+% \CheckSum{1464}
+%
+% \CharacterTable
+% {Upper-case \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%     Lower-case \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%     Digits \0\1\2\3\4\5\6\7\8\9
+%     Exclamation         \!     Double quote    \"     Hash (number)   \#
+%     Dollar              \$     Percent         \%     Ampersand       \&
+%     Acute accent        \'     Left paren      \(     Right paren     \)
+%     Asterisk            \*     Plus            \+     Comma           \,
+%     Minus               \-     Point           \.     Solidus         \/
+%     Colon               \:     Semicolon       \;     Less than       \<
+%     Equals              \=     Greater than    \>     Question mark   \?
+%     Commercial at       \@     Left bracket    \[     Backslash       \\
+%     Right bracket       \]     Circumflex      \^     Underscore      \_
+%     Grave accent        \`     Left brace      \{     Vertical bar    \|
+%     Right brace         \}     Tilde           \~}
+%
+% \changes{v1.0}{2010/07/01}{Initial version}
+% \changes{v1.1}{2012/11/04}{Rewrote drawing mechanism, added layouts, disk images, additional covers}
+% \changes{v1.2}{2012/12/21}{Added new layouts and many new covers, labels}
+% \changes{v1.3}{2013/01/26}{Added nohcenter option, more layouts and singlesheet}
+% \changes{v1.4}{2013/02/28}{Made unitlength setting local}
+%
+% \DoNotIndex{\newline,\\,\space,\begin,\end,\rule,\cline,\hspace,\vspace,\centering,\DeclareRobustCommand,\{,\},\ }
+% \DoNotIndex{\newcommand,\newlength,\setlength,\parbox,\line,\putline,\resizebox,\unitlength}
+% \DoNotIndex{\put,\RequirePackage,\vrule,\DeclareOption,\fontsize,\ProcessOptions,\relax}
+% \DoNotIndex{\renewcommand,\selectfont,\multicolumn,\framebox,\usebox,\put,\line,\value,\rotatebox,\setcounter,\newcounter,\!,!\!,!\,! ,\! ,!\! ,!\ , }
+% \DoNotIndex{\Large,\Huge,\huge,\footnotesize,\underline,\savebox,\equal,\boolean,\newboolean,\setboolean,\baselineskip,\ifthenelse}
+% \DoNotIndex{\scalebox,\makebox,\OR,\AND,\newsavebox,\qbezier,\circle,\space,\textless,\textgreater,\csname,\endcsname}
+% \begingroup
+%   \makeatletter
+%   \lccode`9=32\relax
+%   \lowercase{%^^A
+%     \edef\x{\noexpand\DoNotIndex{\@backslashchar9}}%^^A
+%   }%^^A
+% \expandafter\endgroup\x
+%
+% \GetFileInfo{simplecd.sty}
+%
+% \title{The \textsf{simplecd} package\thanks{This document
+%  corresponds to \textsf{simplecd}~\fileversion,
+%  dated~\filedate.}}
+% \author{D\'aniel Majoros}
+%
+% \maketitle
+%
+% \begin{abstract}
+%     The simplecd package provides printable cut-outs for various CD, DVD and other data storage holders.
+%     The name of the package comes form it's implementation and ease of use.
+% \end{abstract}
+%
+% \newlength{\orig}
+% \setlength{\orig}{\baselineskip}
+% \setlength{\baselineskip}{0.9\baselineskip}
+% \tableofcontents
+% \setlength{\baselineskip}{\orig}
+%
+% \section{Introduction}
+% The \textsf{simplecd} package was created for producing cut-outs for creating covers, inlays(inlets) for 
+% optical disc packaging such as jewel cases, keepcases. Additional data storage cover support were added for
+% VHS, audio cassette and gramophone records. The covers were aimed for containing only 
+% simple text with different font sizes, but since everything is placed inside a |\parbox| environment, it can
+% contain a wide range of things.
+%
+% There are also macros which can resize ready-to-print images to the appropriate size.
+%
+% The layout macros provide ready-to-use formatting for the covers.
+%
+% \section{Installation}
+%
+% The install procedure is the usual. Run \texttt{(pdf)latex} on the \texttt{simplecd.ins} file to obtain the necessary \texttt{simplecd.sty} file: \\
+% 
+% \texttt{pdflatex ./simplecd.ins --output-directory=./} \\
+%
+% Then place the \texttt{simplecd.sty} file in a directory that is searched by \TeX.
+% If you use some kind of \LaTeX\ distribution, like MiKTeX, see it's documentation.
+%
+% \section{Usage}
+%
+% To use the package, put this in the document preamble: |\usepackage{simplecd}|.
+% This section gives a detailed information on macros, lists their parameters also. 
+%
+% It is worth to decrease the document's margins, so the covers can fit onto
+% an A4 sized paper. For this, use the \textsf{geometry} package, for example like this: \\
+% |\usepackage[left=1cm, top=1cm, right=1cm, bottom=1cm]{geometry}|
+%
+% All examples in this document were resized, for full size output, see the \texttt{examples.pdf} file.
+%
+% \vspace{0.3cm}
+%
+% \begin{lstlisting}
+% LaTeX example source codes in this document are placed in 
+% listings like this. They are usually followed by output 
+% produced with the code samples.
+% \end{lstlisting}
+%
+% \vspace{0.3cm}
+%
+% Please note that not all the covers were tested ( printed and placed on actual media ) as the appropriate media was not available.
+%
+% \subsection{Cut-outs}
+%
+% \subsubsection{Jewel cases}
+%
+% \DescribeMacro{\covers}
+% The first and foremost macro is for the standard jewel case and it's backsheet with two spines.
+% The parameters of the |\covers| macro are as follows:
+% |\covers| \oarg{backsheet text} \marg{cover title} \marg{spine text}. The first two can be
+% whole paragraphs with different font sized texts. For a new line, you can use |\\|,
+% and for a skip, use |\vspace{length to skip}| in the text after a new line. 
+% The spine text will be printed on both spines. The spine
+% text should be short enough to fit into the desired space.
+%
+% Example: 
+% \begin{lstlisting}
+% \covers
+% 	[{\Large Backsheet text}]
+%  	{{\Huge Jewelcase Title} \\ \vspace{1cm} Subtitle}
+%  	{Spine Text}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+% 	\resizebox{0.95\textwidth}{!}{\covers[{\Large Backsheet text}]{{\Huge Jewelcase Title} \\ \vspace{1cm} Subtitle}{Spine Text}} 
+%	\caption{Jewel case covers}
+% \end{figure}
+% 
+% \vspace*{0.5cm}
+%
+% \DescribeMacro{\frontcover} 
+% The |\frontcover|, which is called in the previously mentioned macro, produces the front cover for
+% the jewel case. It's mandatory argument is the cover text: |\frontcover| \marg{cover text}.
+%
+% \DescribeMacro{\LXfrontcover} \DescribeMacro{\LXXXfrontcover} The |\LXfrontcover| and |\LXXXfrontcover| macros work just the same as
+% |\frontcover| but they produce covers for jewel cases that holds 60 or 80 millimeter disks (LX and LXXX are roman numbers, their values are 60 and 80).
+%
+% \DescribeMacro{\backsheet}
+% The |\backsheet| macro is also called from the |\covers| macro. It produces the backsheet with two
+% identical spines. The usage is |\backsheet| \oarg{backsheet middle text} \marg{spine text}.
+%
+% \DescribeMacro{\jewelspine}
+% The |\jewelspine| macro creates a single spine for the jewelcase. It's usage is |\jewelspine| \marg{spine text}.
+%
+% \DescribeMacro{\singlesheet} The |\singlesheet| macro creates a single sheet for a special jewel case. The \marg{front side}
+% argument makes it possible to put content beside the jewel case sized front content.
+% Usage: |\singlesheet| \marg{front} \marg{front side} \marg{spine} \marg{back}
+%
+% \begin{lstlisting}
+% \singlesheet
+%   {\huge Front}
+%   {Front side}
+%   {Spine}
+%   {Back}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+% 	\resizebox{0.8\textwidth}{!}{
+%		\singlesheet
+%   		{\huge Front}
+%			{Front side}
+%   		{Spine}
+%   		{Back}}
+%	\caption{Single sheet}
+% \end{figure}
+%
+% \DescribeMacro{\djewel}
+% The |\djewel| macro creates a double page jewel case cover. Text can be put on one side, then it should be folded
+% in half. The usage is: |\djewel| \marg{first page text} \marg{second page text}.
+%
+% \begin{lstlisting}
+% \djewel
+%   {\fontsize{70}{36}\selectfont Big Title}
+%   {Second page}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+% 	\rotatebox{270}{\resizebox{0.48\textwidth}{!}{\djewel{\fontsize{70}{36}\selectfont Big Title}{Second page}}}
+%	\caption{Double page jewel book}
+% \end{figure}
+%
+% \vspace*{0.5cm}
+%
+% This is also an example of using fix sized fonts with the \textsf{fix-cm} package.
+%
+% \subsubsection{Keepcases}
+%
+% \DescribeMacro{\slimdvd} \DescribeMacro{\dvd}
+% The |\slimdvd| and |\dvd| macros creates a slim and a simple DVD keepcase. Text can be put on both 
+% sides plus on the spine area. \DescribeMacro{\bluray} The |\bluray| macro creates a keepcase for Blu-Ray disks.
+% Their usage is: |\dvd| \oarg{backside text} \marg{cover text} \marg{spine text}.
+%
+% \begin{lstlisting}
+% \slimdvd
+%   [{\Large Backsheet text}]                                  
+%   {{\Huge \underline{SlimDVD Title}}%
+%     \\ \vspace{1cm} Subtitle}   
+%   {Spine Text}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+% 	\rotatebox{270}{\resizebox{0.65\textwidth}{!}{\slimdvd[{\Large Backsheet text}]%
+% 		{{\Huge \underline{SlimDVD Title}} \\ \vspace{1cm} Subtitle}{Spine Text}} }
+%	\caption{Slim DVD keepcase cover}
+% \end{figure}
+%
+% \vspace*{0.5cm}
+%
+% \subsubsection{Sleeves}
+%
+% \DescribeMacro{\sleeve}
+% The |\sleeve| macro creates a disk-sleeve which requires some glue after cutting it out. The upper part 
+% can be used to close the sleeve. Text can be put on 
+% it's cover and back. The usage is: |\sleeve| \oarg{back text} \marg{cover text}.
+%
+% \begin{lstlisting}
+% \sleeve[Back text]{{\Huge Sleeve text}}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+% 	\resizebox{0.7\textwidth}{!}{\sleeve[Back text]{{\Huge Sleeve text}}}
+%	\caption{Paper sleeve}
+% \end{figure}
+%
+% \DescribeMacro{\sleeveLX} \DescribeMacro{\sleeveLXXX} The |\sleeveLX| and |\sleeveLXXX| macros produce sleeves for 
+% the 60 and the 80 millimeter sized disks, respectively. Their use is the same as |\sleeve|.
+%
+% \begin{lstlisting}
+% \sleeveLX[Back text]{\large Front text}
+% \sleeveLXXX[Back text]{\large Front text}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\begin{minipage}[b]{0.45\textwidth}
+%		\centering
+%		\resizebox{0.8\textwidth}{!}{\sleeveLX[Back text]{\large Front text}}
+%		\caption{60 millimeter disk sleeve}
+%	\end{minipage}
+%	\hspace{0.5cm}
+%	\begin{minipage}[b]{0.45\textwidth}
+%		\centering
+%		\resizebox{0.8\textwidth}{!}{\sleeveLXXX[Back text]{\large Front text}}
+%		\caption{80 millimeter disk sleeve}
+%	\end{minipage}
+% \end{figure}
+%
+% \DescribeMacro{\sleevela} The |\sleevela| macro creates a sleeve that can be used in lever arch files. 
+% The small circles must be cut out, they are for the levers. The distance between the circle centers is 8 centimeter.
+%
+% \begin{lstlisting}
+% \sleevela[Back text]{\scalebox{4}{Front text}}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%	\resizebox{0.8\textwidth}{!}{\sleevela[Back text]{\scalebox{4}{Front text}}}
+%	\caption{Sleeve for lever arch files}
+% \end{figure}
+% 
+% \vspace*{0.5cm}
+%
+% \subsubsection{Image as cover}
+%
+% \DescribeMacro{\coverimg} \DescribeMacro{\backsheetimg} \DescribeMacro{\dvdimg} \DescribeMacro{\slimdvdimg}
+% \DescribeMacro{\blurayimg}
+% The macros width the \emph{img} ending are expecting an image, and resizing this image to the appropriate cover
+% size. The macros are |\coverimg|, |\backsheetimg|, |\dvdimg|, |\slimdvdimg|, |\blurayimg|. Their usage is 
+% |\coverimg| \parg{picture}. No image macro for 
+% the sleeve. These macros does not keep the aspect ratio of the given image, thus it should already be at the 
+% correct ratio.
+%
+% An example without the result: 
+% \begin{lstlisting}
+% \dvdimg{includegraphics{coverpic}}
+% \end{lstlisting}
+%
+% \vspace*{0.5cm}
+%
+% \subsubsection{Inlays}
+%
+% \DescribeMacro{\dvdinlay} \DescribeMacro{\blurayinlay}
+% The |\dvdinlay| and |\blurayinlay| macros create a one sided inlay for the appropriate keepcases.
+% Their usage is |\dvdinlay| \marg{text}. 
+%
+% \begin{lstlisting}
+% \dvdinlay
+%   {{\Large DVD Inlay}
+%  
+%   \vspace{5cm} TextTextText
+%   
+%   \vspace{1cm} {\fontsize{20}{36}\selectfont TextText}}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+% 		\resizebox{0.5\textwidth}{!}{%
+% 			\dvdinlay{{\Large DVD Inlay
+%
+% 			\vspace{5cm} TextTextText 
+%
+% 			\vspace{1cm} {\fontsize{20}{36}\selectfont TextText}}}}
+%	\caption{DVD keepcase inlay}
+% \end{figure}
+%
+% \vspace*{0.5cm}
+%
+% \subsubsection{Floppy covers}
+%
+% These macros can be used to produce covers that can be glued to floppy disks at the appropriate place.
+%
+% \DescribeMacro{\floppyIIIV} The |\floppyIIIV| macro creates cover for the 3.5-inch (89 mm) disks. The cover 
+% should be glued to both sides of the disk. Usage: |\floppyIIIV| \marg{front} \marg{back}
+%
+% \begin{lstlisting}
+% \floppyIIIV{Front content}{Back content}}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%	  \resizebox{0.5\textwidth}{!}{%
+%       \floppyIIIV{Front content}{Back content}}%
+%   \caption{The 3.5-inch floppy disk cover}
+% \end{figure}
+%
+% \subsubsection{Zip disks}
+%
+% \DescribeMacro{\zipdisk} The |\zipdisk| macro provides a cover label for zip disks. 
+% Cover dimensions: 98 millimeter wide, 120 millimeter high. Usage: |\zipdisk| \marg{front} \marg{back}
+%
+% \begin{lstlisting}
+% \zipdisk{Front content}{Back content}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%	  \resizebox{0.5\textwidth}{!}{%
+%       \zipdisk{Front content}{Back content}}%
+%   \caption{Cover label for zip disks}
+% \end{figure}
+%
+% \DescribeMacro{\zipdiskII} The |\zipdiskII| macro provides a cover label for zip disks. 
+% Cover dimensions: 60 millimeter wide, 51 millimeter high. Usage: |\zipdiskII| \marg{content}
+%
+% \begin{lstlisting}
+% \zipdiskII{Content}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%	  \resizebox{0.4\textwidth}{!}{%
+%       \zipdiskII{Content}}%
+%   \caption{Cover label for zip disks}
+% \end{figure}
+%
+% \subsubsection{Disk covers}
+%
+% Macros presented below can be used to create images like actual disks. The results can be used for example for top cover of a cake box. 
+% For printing directly on the disks themselves, use a printing software especially designed for this task.
+%
+% Content can be placed anywhere in the rectangle which is always defined by the largest circle in the picture.
+% \begin{figure}[H]
+%	\centering
+%		\resizebox{0.5\textwidth}{!}{%
+%			\setlength{\unitlength}{1mm}%
+%			\cdrdisk{\begin{picture}(116,116)\framebox(116,116){}\end{picture}}%
+%		}
+%	\caption{The rectangle that is the boundary for the content}
+% \end{figure}
+%
+% \DescribeMacro{\cdrdisk} The |\cdrdisk| macro creates an image of a CD-R disk. It's inner circle leaves space for the transparent part of the disk.
+% Usage: |\cddvddisk| \marg{content}
+%
+% \begin{lstlisting}
+% \cdrdisk{
+% 	{\Huge Title} \\ \vspace{3cm}
+%	Left \hspace{7cm} Right \\ \vspace{3cm}
+%	TextText}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%		\resizebox{0.5\textwidth}{!}{%
+%			\cdrdisk{%
+%				{\Huge Title} \\ \vspace{3cm}%
+%				Left \hspace{7cm} Right \\ \vspace{3cm}%
+%				TextText}%
+%		}
+%	\caption{CD-R image with positioned texts}
+% \end{figure}
+%
+% \DescribeMacro{\cddvddisk} The |\cddvddisk| macro is slightly bigger than the |\cdrdisk|, and has a smaller inner circle. This smaller inner cicrle 
+% is nearly as small as the center hole in the disks.
+%
+% \begin{lstlisting}
+% \cddvddisk{
+% 	{\Huge Title} \\ \vspace{3cm}
+%	Left \hspace{7cm} Right \\ \vspace{3cm}
+%	TextText}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+% 	\resizebox{0.5\textwidth}{!}{%
+%		\cddvddisk{
+% 			{\Huge Title} \\ \vspace{3cm}
+%			Left \hspace{7cm} Right \\ \vspace{3cm}
+%			TextText}
+%	}
+%	\caption{CD, DVD image with positioned texts}
+% \end{figure}
+%
+% \DescribeMacro{\disk} The |\disk| macro provides the picture of a standard compact disk with all the circles indicating the different parts. 
+% The innermost circle is the size of the center hole in the disks.
+%
+% \begin{lstlisting}
+% \disk{
+% 	{\Huge Title} \\ \vspace{3cm}
+%	Left \hspace{7cm} Right \\ \vspace{3cm}
+%	TextText}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%		\resizebox{0.5\textwidth}{!}{%
+%			\disk{%
+%				{\Huge Title} \\ \vspace{3cm}%
+%				Left \hspace{7cm} Right \\ \vspace{3cm}%
+%				TextText}%
+%		}
+%	\caption{Disk image with positioned texts}
+% \end{figure}
+%
+% \DescribeMacro{\emptydisk} The |\emptydisk| macro provides the picture of a standard compact disk without all the circles indicating the different parts. 
+% The innermost circle is the size of the center hole in the disks.
+%
+% \begin{lstlisting}
+% \emptydisk{
+% 	{\Huge Title} \\ \vspace{3cm}
+%	Left \hspace{7cm} Right \\ \vspace{3cm}
+%	TextText}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%		\resizebox{0.5\textwidth}{!}{%
+%			\emptydisk{%
+%				{\Huge Title} \\ \vspace{3cm}%
+%				Left \hspace{7cm} Right \\ \vspace{3cm}%
+%				TextText}%
+%		}
+%	\caption{Empty disk image with positioned texts}
+% \end{figure}
+%
+% \DescribeMacro{\LXXXdisk} The |\LXXXdisk| macro is the disk image of a 80 millimeter disk.
+%
+% \begin{lstlisting}
+% \LXXXdisk{Title \\ \vsapce{4cm} Text}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%	\resizebox{0.4\textwidth}{!}{%
+%		\LXXXdisk{{\large Title } \\ \vspace{4cm} Text}
+%	}
+%	\caption{80 millimeter disk image with positioned texts}
+% \end{figure}
+%
+% \subsubsection{VHS covers}
+%
+% \DescribeMacro{\vhsfront} The |\vhsfront| macro creates the label that can be placed on the front middle part of a VHS cassette. 
+% Usage: |\vhsfront| \marg{content} \\
+%
+% \begin{lstlisting}
+% \vhsfront{\huge Text}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%	\resizebox{0.5\textwidth}{!}{%
+%		\vhsfront{\huge Text}
+%	}
+%	\caption{VHS front label}
+% \end{figure}
+%
+% \DescribeMacro{\vhsspine} The |\vhsspine| macro creates the spine that can be placed on the side of a VHS cassette. 
+% Usage: |\vhsspine| \marg{content} \\
+%
+% \begin{lstlisting}
+% \vhsspine{\huge Text}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%	\resizebox{0.8\textwidth}{!}{%
+%		\vhsspine{\huge Text}
+%	}
+%	\caption{VHS front label}
+% \end{figure}
+%
+% \DescribeMacro{\CCCvhscover} \DescribeMacro{\CCCCvhscover} The |\CCCvhscover| and |\CCCvhscover| macros
+% create a cover for a 300 series and 400 series VHS cassette, respectively. To differentiate between the two: 
+% the 300 series cover is 257 millimeter wide, the 400 series cover is 296 millimeter wide. 
+% Their usage is the same: |\CCCvhscover| \marg{front} \marg{spine} \marg{back} \\
+%
+% \begin{lstlisting}
+% \CCCvhscover
+%   {\scalebox{6}{Front}}
+%   {\scalebox{4}{Spine}}
+%   {\scalebox{4}{Back}}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%	\resizebox{0.9\textwidth}{!}{%
+%		\CCCvhscover{\scalebox{6}{Front}}{\scalebox{4}{Spine}}{\scalebox{4}{Back}}
+%	}
+%	\caption{Cover for a 300 series VHS case}
+% \end{figure}
+%
+% \subsubsection{Audio cassette covers}
+%
+% \DescribeMacro{\cassettecover} The |\cassettecover| macro creates cover label for an audio cassette. Many types of cassettes exist with more or less
+% different labels, so the provided label may need adjustments, like cutting off the corners or a rectangular inner part.
+% Usage: |\cassettecover| \marg{content} \\
+%
+% \begin{lstlisting}
+% \cassettecover
+%   {{\huge Upper text} \\ \vspace{2cm}  Lower text}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%	\resizebox{0.7\textwidth}{!}{%
+%		\cassettecover{{\huge Upper text} \\ \vspace{2cm}  Lower text}
+%	}
+%	\caption{Cover label for an audio cassette}
+% \end{figure}
+%
+% \DescribeMacro{\cassetteinlay} The |\cassetteinlay| macro provides an inlay for the standard cassette case.
+% Usage: |\cassetteinlay| \marg{front} \marg{spine} \marg{back} \\
+%
+% \begin{lstlisting}
+% \cassetteinlay
+%   {\huge Front}
+%   {Spine}
+%   {Back}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%	\resizebox{0.7\textwidth}{!}{%
+% 	\cassetteinlay
+%   	{\huge Front}
+%   	{Spine}
+%   	{Back}
+%	}
+%	\caption{Cover label for an audio cassette}
+% \end{figure}
+%
+% \subsubsection{Gramophone records}
+%
+% \DescribeMacro{\vinylcdcover} The |\vinylcdcover| macro provides a cover label for vinyl CDs. 
+% The vinyl CDs have the same size as standard CDs, they just look like old gramophone records. The outer circle is 65 millimeter in diameter,
+% the inner circle is 16.7 milimeter in diameter. Usage: |\vinylcdcover| \marg{content} \\
+%
+% \begin{lstlisting}
+% \vinylcdcover
+%   {{\huge Upper text} \\ \vspace{3cm}  Lower text}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%	\resizebox{0.7\textwidth}{!}{%
+% 		\vinylcdcover{{\huge Upper text} \\ \vspace{3cm}  Lower text}
+%	}
+%	\caption{Cover label for a vinyl CD}
+% \end{figure}
+%
+% \DescribeMacro{\recordcover} The |\recordcover| macro creates cover label for a 30 centimeter record. The outer circle is 99 millimeter in diameter,
+% the inner circle is 8 milimeter in diameter. Usage: |\recordcover| \marg{content} \\
+%
+% \begin{lstlisting}
+% \recordcover
+%   {{\huge Upper text} \\ \vspace{3cm}  Lower text}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%	\resizebox{0.7\textwidth}{!}{%
+% 		\recordcover{{\huge Upper text} \\ \vspace{3cm}  Lower text}
+%	}
+%	\caption{Cover label for a gramophone record}
+% \end{figure}
+%
+% \subsection{Layouts}
+%
+% The layouts are pre-set cover layouts for ease of use. Similar content can be produced and used in the cover macros.
+%
+% Some layouts contain preconfigured text. The texts are always
+% in English and represent a personal preference. All layouts have a macro suffixed with the \texttt{empty} word that
+% only contains the frames with no text, so one can insert any content.
+%
+% A layout can be used on various cover types. The first word in the layout's name decides the type.
+% \begin{description}
+%	\item[jewel] type layouts are compatible with: |\covers| |\frontcover| |\sleeve| |\djewel| |\sleevela| |\singlesheet|
+%	\item[LX] type layouts are compatible with: |\LXfrontcover| |\sleeveLX|
+%	\item[LXXX] type layouts are compatible with: |\LXXXfrontcover| |\sleeveLXXX|
+%	\item[dvd] type layouts are compatible with: |\dvd| |\slimdvd|
+%	\item[bluray] type layouts are compatible with: |\bluray|
+% \end{description}
+% Note that this compatibility is not checked in the macros. The layouts were designed to be centered on the covers.
+% If the |nohcenter| package option is used, they could get misplaced.
+%
+% Any parameter in a layout can be empty. It means that no content will be put in the appropriate cell. For example |\jewelflaglempty {} {Middle} {}|
+%
+% The numbers in the parentheses in the below examples marks the number of the parameter which will be placed there. For example (3) means the 
+% third parameter of the macro.
+%
+% Many layouts have a meaningful name, like driver, movie or music. 
+% These names indicate a sugessted usage and they are easier to remeber than layoutA, layoutB etc.
+%
+% \subsubsection{Jewel case layouts}
+%
+% \DescribeMacro{\jeweldriverl} \DescribeMacro{\jeweldriverlempty} The |\jeweldriverl| can be used to create cover for driver disks that are supplied with
+% PC hardware elements. 
+% Usage: |\jeweldriverl| \marg{title} \marg{subtitle} \marg{date} \marg{serial} \marg{disk version} \marg{right middle cell} \marg{bottom cell} 
+%
+% \begin{lstlisting}
+% \frontcover
+%   {\jeweldriverl
+%	  {Motherboard(1)}
+%	  {Model XYZ (2)}
+%	  {2012.20.12 (3)}
+%	  {123456789 (4)}
+%	  {12-ABC (5)}
+%	  {Driver \\ Manual (6)}
+%	  {Driver not compatible with ZYX operating system (7)}}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+% 	\scalebox{0.6}{\frontcover{\jeweldriverl{Motherboard(1)}{Model XYZ (2)}{2012.20.12 (3)}{123456789 (4)}%
+% 		{12-ABC (5)}{Driver \\ Manual (6)}{Driver not compatible with ZYX operating system (7)}}}
+%	\caption{Driver CD layout on a jewel case fronrcover}
+% \end{figure}
+%
+% \vspace*{0.5cm}
+%
+% \DescribeMacro{\jewellempty} The |\jewellempty| macro provides the same border as in the other layouts, just with one cell with centered content.
+%  Usage: |\jewellempty| \marg{content} \\
+% 
+% \DescribeMacro{\jewelmusiclempty} The |\jewelmusiclempty| macro is for music disks. There is no non-empty version as there isn't any text to be left out.
+% Usage: |\jewelmusiclempty| \marg{title} \marg{performer} \marg{year} \marg{style} \\
+%
+% \begin{lstlisting}
+% \sleeve
+%   [\jewellempty
+%	  {\begin{enumerate} 
+%       \item Track One 
+%       \item Track Two 
+%     \end{enumerate}}]
+%   {\jewelmusiclempty
+%	  {Album X (1)}
+%	  {XYZ band(2)}
+%	  {2222 (3)}
+%	  {Styles (4)}}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+% 		\resizebox{0.5\textwidth}{!}{\sleeve[\jewellempty{\begin{enumerate} \item Track One \item Track Two \end{enumerate}}]%
+% 			{\jewelmusiclempty{Album X (1)}{XYZ band(2)}{2222 (3)}{Styles (4)}}}
+%	\caption{Music layout on front, empty layout on back}
+% \end{figure}
+%
+% \DescribeMacro{\jewelbacklempty}\DescribeMacro{\jewelbackIIlempty} 
+% The |\jewelbacklempty| macro is the pair of the |\jewellempty| macro. This is for the backsheet of a jewel case. The |\jewelbackIIlempty| macro is
+% the same, without the layout border and centering. Their usage is the same.
+% Usage: |\jewelbacklempty| \marg{content} \\
+%
+% \begin{lstlisting}
+% \backsheet
+%   [\jewelbacklempty
+%	  {Backsheet content}]
+%   {Spine text}
+% \backsheet
+%   [\jewelbackIIlempty
+%	  {Backsheet content}]
+%   {Spine text}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\begin{minipage}[b]{0.45\textwidth}
+%		\centering
+% 		\resizebox{0.9\textwidth}{!}{\backsheet[\jewelbacklempty{Backsheet content}]{Spine text}}
+%		\caption{Empty jewel backsheet layout}
+%	\end{minipage}
+%	\hspace{0.5cm}
+%	\begin{minipage}[b]{0.45\textwidth}
+%		\centering
+%		\resizebox{0.9\textwidth}{!}{\backsheet[\jewelbackIIlempty{Backsheet content}]{Spine text}}
+%		\caption{Empty jewel backsheet layout without border and centering}
+%	\end{minipage}
+% \end{figure}
+%
+% \DescribeMacro{\LXlempty} \DescribeMacro{\LXXXlempty} \DescribeMacro{\LXemptydriverl} \DescribeMacro{\LXXXemptydriverl} %
+% \DescribeMacro{\LXdriverl} \DescribeMacro{\LXXXdriverl}  The empty, empty driver and driver layouts for the 60
+% and 80 millimeter disk covers: |\LXlempty|, |\LXXXlempty|, |\LXemptydriverl|, |\LXXXemptydriverl|, |\LXdriverl| and |\LXXXdriverl| macros.
+%
+% \begin{lstlisting}
+% \LXfrontcover{\LXlempty{\scalebox{3}{Title}}}
+% \LXXXfrontcover
+%   {\LXXXdriverl
+%     {Motherboard(1)}
+%     {Model XYZ (2)}
+%     {2012.20.12 (3)}
+%     {123456789 (4)}
+%     {12-ABC (5)}
+%     {Driver \\ Manual (6)}
+%     {Driver not compatible with ZYX operating system (7)}}
+% \end{lstlisting}
+%	
+% \begin{figure}[H]
+%	\begin{minipage}[b]{0.45\textwidth}
+%		\centering
+%		\resizebox{0.7\textwidth}{!}{\LXfrontcover{\LXlempty{\scalebox{3}{Title}}}}
+%		\caption{The \texttt{\textbackslash LXlempty} layout}
+%	\end{minipage}
+%	\hspace{0.5cm}
+%	\begin{minipage}[b]{0.45\textwidth}
+%		\centering
+%		\resizebox{0.75\textwidth}{!}{\LXXXfrontcover{\LXXXdriverl{Motherboard(1)}{Model XYZ (2)}{2012.20.12 (3)}{123456789 (4)}%
+% 			{12-ABC (5)}{Driver \\ Manual (6)}{Driver not compatible with ZYX operating system (7)}}}
+%		\caption{The \texttt{\textbackslash LXXXdriverl} layout}
+%	\end{minipage}
+% \end{figure}
+%
+% \DescribeMacro{\jewelstripeslempty} The |\jewelstripeslempty| macro provides a layout of a stiped jewel cover. If the second or 
+% the third parameters are empty, then the appropriate diagonal stripe will not be drawn. 
+% Usage: |\jewelstripeslempty| \marg{center content} \marg{upper right content} \marg{lower left content}  \\
+%
+% \begin{lstlisting}
+% \frontcover
+%   {\jewelstripeslempty
+%     {Main Title (1)}
+%     {Right upper text (2)}
+%     {Left lower text (3)}}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%   \scalebox{0.6}{\frontcover
+%     {\jewelstripeslempty
+%       {Main Title (1)}
+%       {Right upper text (2)}
+%       {Left lower text (3)}}}
+%	\caption{Striped jewel cover with missing upper right stripe}
+% \end{figure}
+%
+% \DescribeMacro{\jewelgamel} \DescribeMacro{\jewelgamelempty} The |\jewelgamel| and the |\jewelgamelempty| macros provide a layout for game disks. 
+% As usual, the empty version does not contain the preset texts. 
+% Usage: |\jewelgamel| \marg{title} \marg{release year} \marg{genres} \marg{developer} \marg{publisher} \marg{serial} \marg{comment} \\
+%
+% \begin{lstlisting}
+% \frontcover
+%   {\jewelgamel
+%     {Title (1)}
+%     {<release year> (2)}
+%     {<genre list> (3)}
+%     {<developer> (4)}
+%     {<publisher> (5)}
+%     {<serial> (6)}
+%     {<comment> (7)}}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%   \scalebox{0.6}{\frontcover
+%     {\jewelgamel
+%       {Title (1)}
+%       {\textless release year\textgreater (2)}
+%       {\textless genre list\textgreater (3)}
+%       {\textless developer\textgreater (4)}
+%       {\textless publisher\textgreater (5)}
+%       {\textless serial\textgreater (6)}
+%       {\textless comment\textgreater (7)}}}
+%	\caption{The \texttt{\textbackslash jewelgamel} layout}
+% \end{figure}
+%
+% \DescribeMacro{\jewelflaglempty} The |\jewelflaglempty| macro creates a cover layout in a 3-striped flag format. Content can be put in each stripe.
+% Usage: |\jewelflaglempty| \marg{upper content} \marg{middle content} \marg{lower content} \\
+%
+% \begin{lstlisting}
+% \frontcover
+%   {\jewelflaglempty
+%     {Upper (1)}
+%     {\scalebox{3}{Middle (2)}}
+%     {Lower (3)}}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+%   \scalebox{0.6}{\frontcover
+%     {\jewelflaglempty
+%     {Upper (1)}
+%     {\scalebox{3}{Middle (2)}}
+%     {Lower (3)}}}
+%	\caption{The \texttt{\textbackslash jewelflaglempty} layout}
+% \end{figure}
+%
+% \DescribeMacro{\jewellineslempty} The |\jewellineslempty| macro creates horizontal lines. The main purpose of these is 
+% to be written onto them by hand after printing. Nevertheless, content can be placed onto it with the first parameter.
+% The content text must not be resized and it must contain odd number of lines. After even number of lines, add |\\ \ | like in 
+% the below example.
+% Usage: |\jewellineslempty| \marg{content} \\
+%
+% \begin{lstlisting}
+% \frontcover
+%   {\jewellineslempty
+%     {Text line 1 \\ Text line 2 \\ \ }}
+% \end{lstlisting}
+% 
+% \begin{figure}[H]
+%	\centering
+%   \scalebox{0.6}{
+%     \frontcover
+%     {\jewellineslempty
+%       {Text line 1 \\ Text line 2 \\ \ }}}
+%	\caption{The \texttt{\textbackslash jewellineslempty} layout}
+% \end{figure}
+%
+% \DescribeMacro{\jeweltitledlempty} The |\jeweltitledlempty| macro creates a layout with an upper title part and a large lower part for content.
+% Usage: |\jeweltitledlempty| \marg{title} \marg{content} \\
+%
+% \begin{lstlisting}
+% \singlesheet
+%   {\jeweltitledlempty
+%     {Title}
+%     {Lots of content \\ More\dots \\ Even more\dots}}
+%   {}{}{}
+% \end{lstlisting}
+% 
+% \begin{figure}[H]
+%	\centering
+%   \scalebox{0.6}{
+%     \singlesheet
+%     	{\jeweltitledlempty
+%       	{Title}
+%			{Lots of content \\ More\dots \\ Even more\dots}}
+%		{}{}{}}
+%	\caption{The \texttt{\textbackslash jeweltitledlempty} layout}
+% \end{figure}
+%
+% \subsubsection{Keepcase layouts}
+%
+% \DescribeMacro{\dvdlempty} The |\dvdlempty| macro provides the mandatory empty layout 
+% for the standard keepcases. It's usage is |\dvdlempty| \marg{content}.
+%
+% \DescribeMacro{\dvdmovielempty} \DescribeMacro{\dvdmoviel} The |\dvdmoviel| macro is for a movie disk cover.
+% Usage: |\dvdmoviel| \marg{title} \marg{original title} \marg{release year} \marg{director} 
+% \marg{languages} \marg{subtitles} \marg{actors} \marg{comment} \\
+%
+% \begin{lstlisting}
+% \dvd
+%   [\dvdlempty{\Large Back text}]
+%   {\dvdmoviel
+%	  {Movie title (1)}
+%	  {Original title (2)}
+%	  {Release year (3)}
+%	  {Director (4)}
+%	  {Language1 \\ Language2 (5)}
+%	  {Subtitle1 \\ Subtitle2 (6)}
+%	  {Actor1 \\ Actor2 \\ Actor3 \\ Actor4 (7)}
+%	  {Comment, rating, etc. (8)}}
+%   {spinetext}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+% 	\scalebox{0.45}{\rotatebox{270}{\dvd[\dvdlempty{\Large Back text}]{\dvdmoviel{Movie title (1)}%
+%		{Original title (2)}{2012 (3)}{Director (4)}{Language1 \\ Language2 (5)}%
+% 		{Subtitle1 \\ Subtitle2 (6)}{Actor1 \\ Actor2 \\ Actor3 \\ Actor4 (7)}{Comment, rating, etc. (8)}}{spinetext}} }
+%	\caption{Front movie and empty back layouts for DVD keepcase}
+% \end{figure}
+%
+% \DescribeMacro{\bluraylempty} The |\bluraylempty| macro provides the mandatory empty 
+% layout for the Blu-ray keepcases. It's usage is |\bluraylempty| \marg{content}.
+%
+% \DescribeMacro{\bluraymovielempty} \DescribeMacro{\bluraymoviel} The |\bluraymoviel| macro is for a Blu-ray movie disk cover.
+% Usage: |\bluraymoviel| \marg{title} \marg{original title} \marg{release year} 
+% \marg{director} \marg{languages} \marg{subtitles} \marg{actors} \marg{comment} \\
+%
+% \begin{lstlisting}
+% \bluray
+%   [\bluraylempty{\Large Back text}]
+%   {\bluraymoviel
+%	  {Movie title (1)}
+%	  {Original title (2)}
+%	  {Release year (3)}
+%	  {Director (4)}
+%	  {Language1 \\ Language2 (5)}
+%	  {Subtitle1 \\ Subtitle2 (6)}
+%	  {Actor1 \\ Actor2 \\ Actor3 \\ Actor4 (7)}
+%	  {Comment, rating, etc. (8)}}
+%   {spinetext}
+% \end{lstlisting}
+%
+% \begin{figure}[H]
+%	\centering
+% 	\scalebox{0.45}{\rotatebox{270}{\bluray[\bluraylempty{\Large Back text}]{\bluraymoviel{Movie title (1)}%
+%		{Original title (2)}{2012 (3)}{Director (4)}{Language1 \\ Language2 (5)}%
+% 		{Subtitle1 \\ Subtitle2 (6)}{Actor1 \\ Actor2 \\ Actor3 \\ Actor4 (7)}{Comment, rating, etc. (8)}}{spinetext}} }
+%	\caption{Front movie and empty back layouts for Blu-ray keepcase}
+% \end{figure}
+%
+% \subsection{General macros}
+%
+% These macros are used behind the macros described above. They are made public, with one note: 
+% keep in mind that these can change during package development, so
+% do not be suprised when after a package update, they work differently. 
+%
+% Those parameters that require a length, expect a single, positive integer, for example a counter value.
+% The numbers represent length in millimeters.
+%
+% \DescribeMacro{\keepcase} With |\keepcase|, one can create
+% a custom sized keepcase in the format of cover, spine and a backside. It's usage is: 
+% |\keepcase| \oarg{backtext} \marg{cover text} \marg{spinetext} \marg{cover height} \marg{cover width} \marg{spine width}.
+% The cover width refers to one side's width without the spine.
+%
+% \DescribeMacro{\inlay} With the general |\inlay| macro, one can create
+% a custom sized inlay. It's usage is: |\inlay| \marg{text} \marg{inlay width} \marg{inlay height}.
+%
+% \vspace*{0.5cm}
+%
+% \subsection{Package Options}
+%
+% Use package options at the package loading as usual, for example: \\ |\usepackage[nofold,noalign]{simplecd}|.
+% 
+% \begin{description}
+% \item[noalign:] Many cover macros are containing some text alignment lengths. Without them, the content would be 
+% centered vertically in the frames. \label{opt:noalign}The |noalign| option sets these alignment lengths to zero, so one can align the 
+% contents individually. This option does not affect layout placement.
+%
+% \item[nofold:] As default, many covers contain folding lines with the same line type as where the pieces must be cut out. 
+% With the |nofold| option, the folding lines won't be drawn.
+%
+% \item[spiner:] The |spiner| option rotates all spine texts with $180^\circ$. 
+%
+% \item[nohcenter:] The |nohcenter| option disables the horizontal centering of the contents of all covers, labels and layouts.
+% \end{description}
+%
+% \vspace*{0.5cm}
+%
+% \section{Font size}
+%
+% For covers, often a large font is desired. Here is a list of the standard \LaTeX\ sizing macros:
+% \begin{itemize}
+%	\item {\tiny |\tiny|}
+%	\item {\scriptsize |\scriptsize|}
+%	\item {\footnotesize |\footnotesize|}
+%	\item {\small |\small|}
+%	\item {\normalsize |\normalsize|}
+%	\item {\large |\large|}
+%	\item {\Large |\Large|}
+%	\item {\LARGE |\LARGE|}
+%	\item {\huge |\huge|}
+%	\item {\Huge |\Huge|}
+% \end{itemize}
+% Their use is the same: |{\huge text to be resized}|.
+%
+% If the largest is still not enough, use the |\scalebox| \marg{ratio} \marg{text} macro:
+% \begin{itemize}
+%	\item \scalebox{4}{ratio is 4}
+%	\item \scalebox{5}{ratio is 5}
+%	\item \scalebox{7}{ratio is 7}
+% \end{itemize}
+% The |\scalebox| macro can be used on many other things, not just text.
+%
+% All of the above presented methods increase or decrease the font size relative to the document's default font size.
+% To create fixed size fonts, use the \textsf{fix-cm} package's |\fontsize| macro.
+%
+% \section{Troubleshooting}
+%
+% \begin{description}
+%	\item[Problem: the text won't fit into a frame.] Suggestions: try to break it into multiple lines, for example with the |\\| macro. 
+%		Decrease the font size. Use scaling to shrink the content with the |\scalebox{ratio}{object}| macro. 
+%	\item[Problem: printed pieces do not fit.] Suggestions: make sure the pieces are appropriate for the selected container. Make sure
+%		the software used for viewing and printing result file (the PDF/DVI/PS viewer) does not resize the page before printing. 
+%	\item[Problem: the cover won't fit onto one page.] Suggestions: use a large enough paper size. Decrease te margin of the paper with
+%		the \texttt{geometry} package. An A4 paper with 1cm margins should be able to contain all cover types.
+%	\item[Problem: the content is not in the vertical center of a cover.] Suggestion: see the \texttt{noalign} 
+%		package option on page \pageref{opt:noalign}.
+% \end{description}
+% 
+% \StopEventually{\PrintChanges\PrintIndex}
+%
+% \section{Implementation}
+%
+% Used for setting fix font size for spine texts.
+%    \begin{macrocode}
+\RequirePackage{fix-cm}
+%    \end{macrocode}
+%
+% Used for calculating lengths
+%    \begin{macrocode}
+\RequirePackage{calc}
+%    \end{macrocode}
+%
+% Used for the nofold option
+%    \begin{macrocode}
+\RequirePackage{ifthen}
+%    \end{macrocode}
+
+% Used for drawing, resizing, rotating
+%    \begin{macrocode}
+\RequirePackage{graphicx}
+%    \end{macrocode}
+
+%% The |noalign| option sets all text aligning lengths to zero.
+%    \begin{macrocode}
+\DeclareOption{noalign}{
+    \setlength{\sc@jewelalign}{0cm}
+    \setlength{\sc@keepcasealign}{0cm}
+    \setlength{\sc@inalign}{0cm}
+	\setboolean{sc@align}{false}
+}
+%    \end{macrocode}
+
+%% Layouts should set this to true to indicate the containing cover 
+%% to not use align spaces even if noalign is not used
+%    \begin{macrocode}
+\newboolean{sc@layout}
+\setboolean{sc@layout}{false}
+%    \end{macrocode}
+
+
+%% The |nofold| option removes the folding lines on the cut-outs.
+%    \begin{macrocode}
+\DeclareOption{nofold}{
+	\setboolean{sc@fold}{false}
+}
+%    \end{macrocode}
+
+
+%% Redefines rotation degrees to rotate spine text with $180^\circ$.
+%    \begin{macrocode}
+\DeclareOption{spiner}{
+    \renewcommand{\sc@spinerotone}{270}
+    \renewcommand{\sc@spinerottwo}{90}
+}
+%    \end{macrocode}
+
+%% Disables horizontal centering everywhere
+%    \begin{macrocode}
+\DeclareOption{nohcenter}{
+    \renewcommand{\sc@centering}{}
+}
+%    \end{macrocode}
+
+% \begin{macro}{\sc@spinerotone}
+%    Default rotation degree. \\
+%    Usage: |\sc@spinerotone|
+%    \begin{macrocode}
+\newcommand{\sc@spinerotone}{90}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sc@spinerottwo}
+%    Default rotation degree. \\
+%    Usage: |\sc@spinerottwo|
+%    \begin{macrocode}
+\newcommand{\sc@spinerottwo}{270}
+%    \end{macrocode}
+% \end{macro}
+
+%% Boolean for indicating whether or not the folding lines need to be drawn. True value means to draw.
+%    \begin{macrocode}
+\newboolean{sc@fold}
+\setboolean{sc@fold}{true}
+%    \end{macrocode}
+
+%% Boolean for indicating whether or not the default aligning is needed.
+%    \begin{macrocode}
+\newboolean{sc@align}
+\setboolean{sc@align}{true}
+%    \end{macrocode}
+
+% \begin{macro}{\sc@truestr}
+%    Stores the string that is used to indicate to always draw a border in |\sc@choicebox|. \\
+%    Usage: |\sc@truestr|
+%    \begin{macrocode}
+\newcommand{\sc@truestr}{t}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sc@falsestr}
+%    Stores the string that is used to indicate to not draw a border in |\sc@choicebox| if nofold option is set. \\
+%    Usage: |\sc@falsestr|
+%    \begin{macrocode}
+\newcommand{\sc@falsestr}{f}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sc@centering}
+%    Centering alias to allow disabling the centering, see novcenter package option
+%    Usage: |\sc@centering|
+%    \begin{macrocode}
+\newcommand{\sc@centering}{\centering}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sc@unittype}
+%    Unit type for all lengths. \\
+%    Usage: |\sc@unittype|
+%    \begin{macrocode}
+\newcommand{\sc@unittype}{mm}
+%    \end{macrocode}
+% \end{macro}
+
+% Setting unit length for drawing
+%    \begin{macrocode}
+\newcommand{\sc@picinit}{%
+	\setlength{\unitlength}{1\sc@unittype}%
+}
+%    \end{macrocode}
+
+%% Text aligning lengths
+% These lengths ensure that the text is not in the vertical center of a cell,
+% instead, they are little above of the center. 
+%    \begin{macrocode}
+\newlength{\sc@jewelalign}
+\setlength{\sc@jewelalign}{15 \sc@unittype}
+\newlength{\sc@keepcasealign}
+\setlength{\sc@keepcasealign}{40 \sc@unittype}
+\newlength{\sc@inalign}
+\setlength{\sc@inalign}{30 \sc@unittype}
+%    \end{macrocode}
+
+% Dimension names are created as follows: prefixed with |sc@|, then some letters for
+% identifying the case, then place, then width or height and the draw word.
+
+%% CD jewel case dimensions 
+%    \begin{macrocode}
+\newcounter{sc@cdjccoverwidthdraw}
+\setcounter{sc@cdjccoverwidthdraw}{120}
+\newcounter{sc@cdjccoverheightdraw}
+\setcounter{sc@cdjccoverheightdraw}{120}
+\newcounter{sc@cdjcspinewidthdraw}
+\setcounter{sc@cdjcspinewidthdraw}{6}
+\newcounter{sc@cdjcbackheightdraw}
+\setcounter{sc@cdjcbackheightdraw}{117}
+\newcounter{sc@cdjcbackwidthdraw}
+\setcounter{sc@cdjcbackwidthdraw}{151}
+\newcounter{sc@cdjcbackinwidthdraw}
+\setcounter{sc@cdjcbackinwidthdraw}{%
+	\value{sc@cdjcbackwidthdraw} - 2*\value{sc@cdjcspinewidthdraw}}
+%    \end{macrocode}
+
+%% Mini disk dimensions
+%    \begin{macrocode}
+\newcounter{sc@cdLXXXjccoverwidthdraw}
+\setcounter{sc@cdLXXXjccoverwidthdraw}{80}
+\newcounter{sc@cdLXXXjccoverheightdraw}
+\setcounter{sc@cdLXXXjccoverheightdraw}{80}
+\newcounter{sc@cdLXjccoverwidthdraw}
+\setcounter{sc@cdLXjccoverwidthdraw}{60}
+\newcounter{sc@cdLXjccoverheightdraw}
+\setcounter{sc@cdLXjccoverheightdraw}{60}
+%    \end{macrocode}
+
+%% Jewelcase spine fixed text font size
+% \begin{macro}{\sc@cdjfontsize}
+%    Usage: |\sc@cdjfontsize|
+%    \begin{macrocode}
+\newcommand{\sc@cdjfontsize}{15}
+%    \end{macrocode}
+% \end{macro}
+
+%% DVD keepcase dimensions
+%    \begin{macrocode}
+\newcounter{sc@dvdkccoverwidthdraw}
+\setcounter{sc@dvdkccoverwidthdraw}{128}
+\newcounter{sc@dvdkccoverheightdraw}
+\setcounter{sc@dvdkccoverheightdraw}{183}
+\newcounter{sc@dvdkcspinewidthdraw}
+\setcounter{sc@dvdkcspinewidthdraw}{14}
+\newcounter{sc@dvdkcinletwidthdraw}
+\setcounter{sc@dvdkcinletwidthdraw}{115}
+\newcounter{sc@dvdkcinletheightdraw}
+\setcounter{sc@dvdkcinletheightdraw}{175}
+%    \end{macrocode}
+
+% Slim DVD keepcase dimensions
+%    \begin{macrocode}
+\newcounter{sc@sdvdkcspinewidthdraw}
+\setcounter{sc@sdvdkcspinewidthdraw}{7}
+%    \end{macrocode}
+
+%% Blu-ray keepcase dimensions
+%    \begin{macrocode}
+\newcounter{sc@brcoverheightdraw}
+\setcounter{sc@brcoverheightdraw}{149}
+\newcounter{sc@brinletwidthdraw}
+\setcounter{sc@brinletwidthdraw}{115}
+\newcounter{sc@brinletheightdraw}
+\setcounter{sc@brinletheightdraw}{140}
+%    \end{macrocode}
+
+%% Dimensions for drawing the sleeves
+%    \begin{macrocode}
+\newcounter{sc@dssleeve}
+\setcounter{sc@dssleeve}{15}
+\newcounter{sc@dssleeveLXXXmm}
+\setcounter{sc@dssleeveLXXXmm}{10}
+\newcounter{sc@dssleeveLXmm}
+\setcounter{sc@dssleeveLXmm}{8}
+%    \end{macrocode}
+
+%    \begin{macrocode}
+\ProcessOptions\relax 
+%    \end{macrocode}
+
+%% Temporary counters for the implementation.
+%    \begin{macrocode}
+\newcounter{sc@tempa}
+\newcounter{sc@tempb}
+\newcounter{sc@tempc}
+\newcounter{sc@tempd}
+\newcounter{sc@tempe}
+\newcounter{sc@tempf}
+\newcounter{sc@tempg}
+\newcounter{sc@layouttempa}
+\newcounter{sc@layouttempb}
+\newcounter{sc@layouttempc}
+\newcounter{sc@resizertempa}
+%    \end{macrocode}
+
+% Puts the desired vspace if the amount is not null and no layout is currently being used
+%    \begin{macrocode}
+\newcommand{\sc@doalign}[1]{%
+	\ifthenelse{\equal{#1}{} \OR \boolean{sc@layout}}{}{\ \\ \vspace{#1}}%
+	\setboolean{sc@layout}{false}%
+}
+%    \end{macrocode}
+
+% The covers are drawed inside the \texttt{picture} environment. The text is always placed inside a |\parbox| .
+%
+% The space produced with the |\vspace| macros are for aligning purposes. Without them, the texts would be 
+% vertically centered in the cell. 
+
+% \begin{macro}{\covers}
+%    Creates a jewel case cover with a front and a backsheet.
+%    Usage: |\covers| \oarg{backsheet text} \marg{cover title} \marg{spine text}
+%    \begin{macrocode}
+\DeclareRobustCommand{\covers}[3][\ ]{%
+    \frontcover{#2}
+    
+    \vspace*{0.5cm}%
+    \backsheet[#1]{#3}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\frontcover}
+%    Creates front cover for a jewel case.
+%    Usage: |\frontcover| \marg{cover title}
+%    \begin{macrocode}
+\DeclareRobustCommand{\frontcover}[1]{%
+    \sc@cell{#1}{\value{sc@cdjccoverwidthdraw}}%
+		{\value{sc@cdjccoverheightdraw}}%
+		{\sc@jewelalign}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\LXfrontcover}
+%    Creates front cover for a 60 millimeter jewel case.
+%    Usage: |\LXfrontcover| \marg{cover title}
+%    \begin{macrocode}
+\DeclareRobustCommand{\LXfrontcover}[1]{%
+    \sc@cell{#1}{\value{sc@cdLXjccoverwidthdraw}}%
+		{\value{sc@cdLXjccoverheightdraw}}%
+		{\sc@jewelalign}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\LXXXfrontcover}
+%    Creates front cover for a 80 millimeter jewel case.
+%    Usage: |\LXXXfrontcover| \marg{cover title}
+%    \begin{macrocode}
+\DeclareRobustCommand{\LXXXfrontcover}[1]{%
+    \sc@cell{#1}{\value{sc@cdLXXXjccoverwidthdraw}}%
+		{\value{sc@cdLXXXjccoverheightdraw}}%
+		{\sc@jewelalign}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% Rotating for one of the spine texts. Also used in |\singlesheet|
+%    \begin{macrocode}
+\newcounter{sc@backsheetspinerot}
+\setcounter{sc@backsheetspinerot}{180+\sc@spinerotone}
+%    \end{macrocode}
+
+% \begin{macro}{\backsheet}
+%    Creates backsheet for a jewel case with 2 spines.
+%    Usage: |\backsheet| \oarg{backsheet middle text} \marg{spine text}
+%    \begin{macrocode}
+\DeclareRobustCommand{\backsheet}[2][\ ]{%
+	\sc@picinit%
+	\begin{picture}%
+		(\value{sc@cdjcbackwidthdraw}, \value{sc@cdjcbackheightdraw})%
+		\sc@choicebox{\value{sc@cdjcspinewidthdraw}}%
+			{\value{sc@cdjcbackheightdraw}}%
+			{\rotatebox{\sc@spinerotone}%
+				{\fontsize{\sc@cdjfontsize}{36}\selectfont #2}}%
+			{\sc@truestr}{\sc@truestr}{\sc@truestr}{\sc@falsestr}%
+		\sc@choicebox{\value{sc@cdjcbackinwidthdraw}}%
+			{\value{sc@cdjcbackheightdraw}}%
+			{\parbox[c]{\value{sc@cdjcbackinwidthdraw} \sc@unittype}{%
+				\sc@centering #1\sc@doalign{\sc@jewelalign}}}%
+			{\sc@truestr}{\sc@truestr}{\sc@falsestr}{\sc@falsestr}%
+		\sc@choicebox{\value{sc@cdjcspinewidthdraw}}%
+			{\value{sc@cdjcbackheightdraw}}%
+			{\rotatebox{\value{sc@backsheetspinerot}}{%
+				\fontsize{\sc@cdjfontsize}{36}\selectfont #2}}%
+			{\sc@truestr}{\sc@truestr}{\sc@falsestr}{\sc@truestr}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\jewelspine}
+%    Creates a single spine for a jewel case.
+%    Usage: |\jewelspine| \marg{text}
+%    \begin{macrocode}
+\DeclareRobustCommand{\jewelspine}[1]{%
+	\sc@picinit%
+	\begin{picture}%
+		(\value{sc@cdjccoverheightdraw}, \value{sc@cdjcspinewidthdraw})%
+		\framebox%
+			(\value{sc@cdjccoverheightdraw}, \value{sc@cdjcspinewidthdraw})%
+			{\fontsize{\sc@cdjfontsize}{36}\selectfont #1}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\singlesheet}
+%    Creates a single sheet for a special jewel case.
+%    Usage: |\singlesheet| \marg{front} \marg{front side} \marg{spine} \marg{back}
+%    \begin{macrocode}
+\DeclareRobustCommand{\singlesheet}[4]{%
+	\sc@picinit%
+	\begin{picture}(155,120)%
+		\put(0,2){%
+			\sc@choicebox{15}{116}%
+				{\rotatebox{90}{\parbox[c]{116\sc@unittype}{\sc@centering #4}}}%
+				{\sc@truestr}{\sc@truestr}{\sc@truestr}{\sc@falsestr}}%
+		\put(15,2){%
+			\sc@choicebox{3}{116}%
+				{\rotatebox{\value{sc@backsheetspinerot}}{\fontsize{9}{36}\selectfont #3}}%
+				{\sc@truestr}{\sc@truestr}{\sc@falsestr}{\sc@falsestr}}%
+		\put(36,0){%
+			\makebox(120,120)[c]{%
+				\parbox[c]{120\sc@unittype}{%
+					\sc@centering #1\sc@doalign{\sc@jewelalign}}}}%
+		\put(18,2){%
+			\makebox(18,120)[c]{%
+				\rotatebox{270}{\parbox[c]{18\sc@unittype}{\sc@centering #2}}}}%
+		\put(18,2){\line(1,0){18}}%
+		\put(18,118){\line(1,0){18}}%
+		\put(36,0){\line(0,1){2}}%
+		\put(36,118){\line(0,1){2}}%
+		\put(36,0){\line(1,0){119}}%
+		\put(36,120){\line(1,0){119}}%
+		\put(155,0){\line(0,1){120}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sc@sleeve}
+%    Creates a custom-sized sleeve for cutting out and glueing together.
+%    Usage: |\sc@sleeve| \oarg{other side middle text} \marg{middle text} \marg{sleeve length} 
+%    \marg{cover height} \marg{cover width} \marg{sleeve drawing}
+%    \begin{macrocode}
+\DeclareRobustCommand{\sc@sleeve}[6][]{%
+	\setcounter{sc@tempc}{#5 + 2}%
+	\setcounter{sc@tempd}{#4 + 2}%
+	\setcounter{sc@tempe}{\value{sc@tempc} + #3 *2}%
+	\setcounter{sc@tempf}{2 * \value{sc@tempd} + #3}%
+	\setcounter{sc@tempg}{2 * \value{sc@tempd}}%
+	\sc@picinit%
+	\begin{picture}(\value{sc@tempe}, \value{sc@tempf})%
+		\put(0,\value{sc@tempd}){#6}%
+		\put(#3,\value{sc@tempf}){\rotatebox{270}{#6}}%
+		\put(\value{sc@tempe},\value{sc@tempg}){\rotatebox{180}{#6}}%
+		\put(#3,\value{sc@tempd}){%
+			\sc@choicebox{\value{sc@tempc}}{\value{sc@tempd}}{%
+				\parbox[c]{\value{sc@tempc} \sc@unittype}{%
+					\sc@centering #2\sc@doalign{\sc@jewelalign}}%
+			}{\sc@falsestr}{\sc@falsestr}{\sc@falsestr}{\sc@falsestr}%
+		}%
+		\put(#3,0){%
+			\sc@choicebox{\value{sc@tempc}}{\value{sc@tempd}}{%
+				\rotatebox{180}{\parbox[c]{\value{sc@tempc} \sc@unittype}{%
+					\sc@centering #1\sc@doalign{\sc@jewelalign}}}%
+			}{\sc@truestr}{\sc@falsestr}{\sc@truestr}{\sc@truestr}%
+		}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sc@sleevebox}
+%    Draws a fold part of the sleeve.
+%    Usage: |\usebox{\sc@sleevebox}|
+%    \begin{macrocode}
+\newsavebox{\sc@sleevebox}
+\savebox{\sc@sleevebox}{%
+	\sc@picinit%
+	\setcounter{sc@tempa}{\value{sc@cdjccoverheightdraw} + 2}%
+	\put(\value{sc@dssleeve},0){\line(-1,1){\value{sc@dssleeve}}}%
+	\put(0,\value{sc@dssleeve}){\line(0,1){92}}%
+	\put(\value{sc@dssleeve},\value{sc@tempa}){%
+		\line(-1,-1){\value{sc@dssleeve}}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sc@sleeveboxLXmm}
+%    Draws a fold part of the 60 mm sleeve.
+%    Usage: |\usebox{\sc@sleeveboxLXmm}|
+%    \begin{macrocode}
+\newsavebox{\sc@sleeveboxLXmm}
+\savebox{\sc@sleeveboxLXmm}{%
+	\sc@picinit%
+	\setcounter{sc@tempa}{\value{sc@cdLXjccoverheightdraw} + 2}%
+	\put(\value{sc@dssleeveLXmm},0)%
+		{\line(-1,1){\value{sc@dssleeveLXmm}}}%
+	\put(0,\value{sc@dssleeveLXmm}){\line(0,1){46}}%
+	\put(\value{sc@dssleeveLXmm},\value{sc@tempa}){%
+		\line(-1,-1){\value{sc@dssleeveLXmm}}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sc@sleeveboxLXXXmm}
+%    Draws a fold part of the 80 mm sleeve.
+%    Usage: |\usebox{\sc@sleeveboxLXXXmm}|
+%    \begin{macrocode}
+\newsavebox{\sc@sleeveboxLXXXmm}
+\savebox{\sc@sleeveboxLXXXmm}{%
+	\sc@picinit%
+	\setcounter{sc@tempa}{\value{sc@cdLXXXjccoverheightdraw} + 2}%
+	\put(\value{sc@dssleeveLXXXmm},0)%
+		{\line(-1,1){\value{sc@dssleeveLXXXmm}}}%
+	\put(0,\value{sc@dssleeveLXXXmm}){\line(0,1){62}}%
+	\put(\value{sc@dssleeveLXXXmm},\value{sc@tempa}){%
+		\line(-1,-1){\value{sc@dssleeveLXXXmm}}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sleeve}
+%    Creates a disk sleeve for cutting out and glueing together.
+%    Usage: |\sleeve| \oarg{other side middle text} \marg{middle text}
+%    \begin{macrocode}
+\DeclareRobustCommand{\sleeve}[2][]{%
+	\sc@sleeve[#1]{#2}{\value{sc@dssleeve}}%
+		{\value{sc@cdjccoverheightdraw}}%
+		{\value{sc@cdjccoverwidthdraw}}%
+		{\usebox{\sc@sleevebox}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sleeveLXXX}
+%    Creates a 80 millimeter disk sleeve for cutting out and glueing together.
+%    Usage: |\sleeveLXXX| \oarg{other side middle text} \marg{middle text}
+%    \begin{macrocode}
+\DeclareRobustCommand{\sleeveLXXX}[2][]{%
+	\sc@sleeve[#1]{#2}{\value{sc@dssleeveLXXXmm}}%
+		{\value{sc@cdLXXXjccoverheightdraw}}%
+		{\value{sc@cdLXXXjccoverwidthdraw}}%
+		{\usebox{\sc@sleeveboxLXXXmm}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sleeveLX}
+%    Creates a 60 millimeter disk sleeve for cutting out and glueing together.
+%    Usage: |\sleeveLX| \oarg{other side middle text} \marg{middle text}
+%    \begin{macrocode}
+\DeclareRobustCommand{\sleeveLX}[2][]{%
+	\sc@sleeve[#1]{#2}{\value{sc@dssleeveLXmm}}%
+		{\value{sc@cdLXjccoverheightdraw}}%
+		{\value{sc@cdLXjccoverwidthdraw}}%
+		{\usebox{\sc@sleeveboxLXmm}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+
+
+% \begin{macro}{\sleevela}
+%    Creates a disk sleeve for lever arch files.
+%    Usage: |\sleevela| \oarg{back text} \marg{front text}
+%    \begin{macrocode}
+\DeclareRobustCommand{\sleevela}[2][]{%
+	\sc@picinit%
+	\begin{picture}(165,248)%
+		\put(13,0){\usebox{\sc@sleevebox}}%
+		\put(165,122){\rotatebox{180}{\usebox{\sc@sleevebox}}}%
+		\put(28,0){%
+			\sc@choicebox{122}{122}{%
+				\rotatebox{180}{%
+					\parbox[c]{122\sc@unittype}{\sc@centering #1\sc@doalign{\sc@jewelalign}}%
+			}}{\sc@truestr}{\sc@falsestr}{\sc@falsestr}{\sc@falsestr}%
+		}%
+		\put(28,122){%
+			\sc@choicebox{122}{122}{%
+				\parbox[c]{122\sc@unittype}{\sc@centering #2\sc@doalign{\sc@jewelalign}}%
+			}{\sc@falsestr}{\sc@truestr}{\sc@falsestr}{\sc@truestr}%
+		}%
+		\put(0,122){%
+			\sc@choicebox{28}{122}{}%
+				{\sc@truestr}{\sc@truestr}{\sc@truestr}{\sc@falsestr}}%
+		\put(14,142.5){\circle{6}}%
+		\put(14,222.5){\circle{6}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+
+% \begin{macro}{\keepcase}
+%    Universal macro for creating keepcases in various sizes.
+%    Usage: |\keepcase| \oarg{backtext} \marg{cover text} \marg{spinetext} \marg{cover height} 
+%    \marg{cover width} \marg{spine width}
+%    \begin{macrocode}
+\DeclareRobustCommand{\keepcase}[6][]{%
+	\setcounter{sc@tempa}{2*#5 + #6 }%
+	\sc@picinit%
+	\begin{picture}(#4, \value{sc@tempa})%
+		\rotatebox{90}{%
+			\sc@choicebox{#5}{#4}{%
+				\parbox[c]{#5 \sc@unittype}{%
+					\sc@centering #1\sc@doalign{\sc@keepcasealign}}%
+			}{\sc@truestr}{\sc@truestr}{\sc@truestr}{\sc@falsestr}%
+			\sc@choicebox{#6}{#4}{%
+				\rotatebox{\sc@spinerottwo}{\parbox[c]{#4 \sc@unittype}{%
+					\sc@centering #3}}%
+			}{\sc@truestr}{\sc@truestr}{\sc@falsestr}{\sc@falsestr}%
+			\sc@choicebox{#5}{#4}{%
+				\parbox[c]{#5 \sc@unittype}{%
+					\sc@centering #2\sc@doalign{\sc@keepcasealign}}%
+			}{\sc@truestr}{\sc@truestr}{\sc@falsestr}{\sc@truestr}%
+		}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\slimdvd}
+%    Creates a slim dvd keepcase cover.
+%    Usage: |\slimdvd| \oarg{back text} \marg{cover text} \marg{spine text}
+%    \begin{macrocode}
+\DeclareRobustCommand{\slimdvd}[3][]{%
+    \keepcase[#1]{#2}{#3}{\value{sc@dvdkccoverheightdraw}}%
+		{\value{sc@dvdkccoverwidthdraw}}%
+        {\value{sc@sdvdkcspinewidthdraw}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\dvd}
+%    Creates a dvd keepcase.
+%    Usage: |\dvd| \oarg{back text} \marg{cover text} \marg{spine text}
+%    \begin{macrocode}
+\DeclareRobustCommand{\dvd}[3][]{%
+    \keepcase[#1]{#2}{#3}{\value{sc@dvdkccoverheightdraw}}%
+		{\value{sc@dvdkccoverwidthdraw}}%
+        {\value{sc@dvdkcspinewidthdraw}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\bluray}
+%    Creates a Blu-Ray keepcase.
+%    Usage: |\bluray| \oarg{backtext} \marg{cover text} \marg{spine text}
+%    \begin{macrocode}
+\DeclareRobustCommand{\bluray}[3][]{%
+    \keepcase[#1]{#2}{#3}{\value{sc@brcoverheightdraw}}%
+		{\value{sc@dvdkccoverwidthdraw}}%
+        {\value{sc@dvdkcspinewidthdraw}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\coverimg}
+%    Resizes the image for a jewel case cover.
+%    Usage: |\coverimg| \parg{picture}
+%    \begin{macrocode}
+\DeclareRobustCommand{\coverimg}[1]{%
+    \resizebox{\value{sc@cdjccoverwidthdraw} \sc@unittype}{%
+		\value{sc@cdjccoverheightdraw} \sc@unittype}{#1}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\backsheetimg}
+%    Resizes the image for a jewel case backsheet with spines.
+%    Usage: |\backsheetimg| \parg{picture}
+%    \begin{macrocode}
+\DeclareRobustCommand{\backsheetimg}[1]{%
+    \resizebox{%
+		\value{sc@cdjcbackwidthdraw}+\value{sc@cdjcspinewidthdraw}*2%
+			\sc@unittype}%
+		{\value{sc@cdjcbackheightdraw} \sc@unittype}{#1}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\slimdvdimg}
+%    Resizes an image for the slim dvd keepcase.
+%    Usage: |\slimdvdimg| \parg{picture}
+%    \begin{macrocode}
+\DeclareRobustCommand{\slimdvdimg}[1]{%
+	\resizebox{\value{sc@dvdkcheightdraw} \sc@unittype}%
+		{\value{sc@sdvdkccoverwidthdraw}*2+\value{sc@sdvdkcspinewidthdraw}%
+			\sc@unittype}{#1}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\dvdimg}
+%    Resizes an image for a dvd keepcase.
+%    Usage: |\dvdimg| \parg{picture}
+%    \begin{macrocode}
+\DeclareRobustCommand{\dvdimg}[1]{%
+	\resizebox{\value{sc@dvdkcheightdraw} \sc@unittype}%
+	{\value{sc@dvdkccoverwidthdraw}*2+\value{sc@dvdkcspinewidthdraw}%
+		\sc@unittype}{#1}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\blurayimg}
+%    Resizes an image for the Blu-Ray keepcase.
+%    Usage: |\blurayimg| \parg{picture}
+%    \begin{macrocode}
+\DeclareRobustCommand{\blurayimg}[1]{%
+	\resizebox{\value{sc@brcoverheightdraw} \sc@unittype}%
+		{\value{sc@dvdkccoverwidthdraw}*2+\value{sc@dvdkcspinewidthdraw}%
+			\sc@unittype}{#1}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sc@cell}
+%    Creates a single cell for a cover, inlay.
+%    Usage: |\sc@cell| \marg{text} \marg{width} \marg{height} \marg{aligning space}
+%    \begin{macrocode}
+\DeclareRobustCommand{\sc@cell}[4]{%
+	\sc@picinit%
+	\begin{picture}(#2,#3)%
+		\framebox(#2,#3)[c]{%
+			\parbox[c]{#2 \sc@unittype}{\sc@centering #1\sc@doalign{#4}}%
+		}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sc@choicebox}
+%    Creates a box with configurable borders. If a parameter in 4-7 range is |\sc@truestr|, then
+%    the appropriate border is drawn. If |\sc@falsestr| or nofold option is used, border is not drawn.
+%    Usage: |\sc@choicebox| \marg{width} \marg{height} \marg{text} \marg{bottom border} 
+%    \marg{top border} \marg{left border} \marg{right border}
+%    \begin{macrocode}
+\newcommand{\sc@choicebox}[7]{%
+	\makebox(#1,#2)[c]{%
+		\parbox[c]{#1 \sc@unittype}{\sc@centering #3}%
+	}%
+	\ifthenelse{\boolean{sc@fold} \OR \equal{#4}{\sc@truestr}}%
+		{\put(-#1,0){\line(1,0){#1}}}{}%
+	\ifthenelse{\boolean{sc@fold} \OR \equal{#5}{\sc@truestr}}%
+		{\put(-#1,#2){\line(1,0){#1}}}{}%
+	\ifthenelse{\boolean{sc@fold} \OR \equal{#6}{\sc@truestr}}%
+		{\put(-#1,0){\line(0,1){#2}}}{}%
+	\ifthenelse{\boolean{sc@fold} \OR \equal{#7}{\sc@truestr}}%
+		{\put(0,0){\line(0,1){#2}}}{}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\inlay}
+%    Creates a custom sized inlay.
+%    Usage: |\inlay| \marg{text} \marg{width} \marg{height}
+%    \begin{macrocode}
+\DeclareRobustCommand{\inlay}[3]{%
+	\sc@cell{#1}{#2}{#3}{\sc@inalign}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\dvdinlay}
+%    Creates an inlay card for a dvd/slimdvd keepcase.
+%    Usage: |\dvdinlay| \marg{text}
+%    \begin{macrocode}
+\DeclareRobustCommand{\dvdinlay}[1]{%
+	\inlay{#1}{\value{sc@dvdkcinletwidthdraw}}%
+		{\value{sc@dvdkcinletheightdraw}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\blurayinlay}
+%    Creates an inlay for a Blu-Ray keepcase.
+%    Usage: |\blurayinlay| \marg{text}
+%    \begin{macrocode}
+\DeclareRobustCommand{\blurayinlay}[1]{%
+	\inlay{#1}{\value{sc@brinletwidthdraw}}%
+		{\value{sc@brinletheightdraw}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\djewel}
+%    Creates a two-page jewel case cover.
+%    Usage: |\djewel| \marg{first page text} \marg{second page text}
+%    \begin{macrocode}
+\DeclareRobustCommand{\djewel}[2]{%
+	\setcounter{sc@tempa}{2 * \value{sc@cdjccoverwidthdraw}}%
+	\sc@picinit%
+	\begin{picture}(\value{sc@cdjccoverheightdraw}, \value{sc@tempa})%
+		\rotatebox{90}{%
+			\sc@choicebox{\value{sc@cdjccoverwidthdraw}}%
+				{\value{sc@cdjccoverheightdraw}}{%
+				\parbox[c]{\value{sc@cdjccoverwidthdraw} \sc@unittype}{%
+					\sc@centering #2\sc@doalign{\sc@jewelalign}}%
+			}{\sc@truestr}{\sc@truestr}{\sc@truestr}{\sc@falsestr}%
+			\sc@choicebox{\value{sc@cdjccoverwidthdraw}}%
+				{\value{sc@cdjccoverheightdraw}}{%
+				\parbox[c]{\value{sc@cdjccoverwidthdraw} \sc@unittype}{%
+					\sc@centering #1\sc@doalign{\sc@jewelalign}}%
+			}{\sc@truestr}{\sc@truestr}{\sc@falsestr}{\sc@truestr}%
+		}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\floppyIIIV}
+%    Cover for the 3.5-inch floppy.
+%    Usage: |\floppyIIIV| \marg{front content} \marg{back content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\floppyIIIV}[2]{%
+	\sc@picinit%
+	\begin{picture}(70,69.5)%
+		\put(-2,66.5){\qbezier(3, 3)(2, 3)(2, 2)}%
+		\put(1,69.5){\line(1,0){68}}%
+		\put(66,66.5){\qbezier(4, 2)(4, 3)(3, 3)}%
+		\put(0,56.5){%
+			\makebox(70,13)[c]{\rotatebox{180}{\parbox[c]{70mm}{\sc@centering #2}}}}%
+		\put(0,54){\sc@choicebox{70}{2.5}{}%
+			{\sc@falsestr}{\sc@falsestr}{\sc@truestr}{\sc@truestr}}%
+		\put(0,0){\makebox(70,54)[c]{\parbox[c]{70mm}{\sc@centering #1}}}%
+		\put(0,1){\line(0,1){67.5}}%
+		\put(70,1){\line(0,1){67.5}}%
+		\put(1,0){\line(1,0){68}}%
+		\put(-2,-1){\qbezier(2, 2)(2, 1)(3, 1)}%
+		\put(66,-1){\qbezier(3, 1)(4, 1)(4, 2)}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\zipdisk}
+%    Cover for a zip disk.
+%    Usage: |\zipdisk| \marg{front content} \marg{back content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\zipdisk}[2]{%
+	\sc@picinit%
+	\begin{picture}(98,120)%
+		\put(0,20){\makebox(98,100)[c]{\parbox[c]{98\sc@unittype}{\sc@centering #1}}}%
+		\put(0,13){\sc@choicebox{98}{7}{}%
+			{\sc@falsestr}{\sc@falsestr}{\sc@truestr}{\sc@truestr}}%
+		\put(0,0){%
+			\makebox(98,13)[c]{%
+				\rotatebox{180}{\parbox[c]{98\sc@unittype}{\sc@centering #2}}}}%
+		\put(0,0){\framebox(98,120){}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\zipdiskII}
+%    Cover for a zip disk.
+%    Usage: |\zipdiskII| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\zipdiskII}[1]{%
+	\sc@cell{#1}{60}{51}{}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\disk}
+%    Creates a CD-R image.
+%    Usage: |\disk| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\disk}[1]{%
+	\sc@picinit%
+	\begin{picture}(120,120)%
+		% Ellipse: u = 60.0 v = 60.0 a = 60.0 b = 60.0 phi = 0.0 Grad
+		\qbezier(120.0, 60.0)(120.0, 84.8528)(102.4264, 102.4264)%
+		\qbezier(102.4264, 102.4264)(84.8528, 120.0)(60.0, 120.0)%
+		\qbezier(60.0, 120.0)(35.1472, 120.0)(17.5736, 102.4264)%
+		\qbezier(17.5736, 102.4264)(0.0, 84.8528)(0.0, 60.0)%
+		\qbezier(0.0, 60.0)(0.0, 35.1472)(17.5736, 17.5736)%
+		\qbezier(17.5736, 17.5736)(35.1472, 0.0)(60.0, 0.0)%
+		\qbezier(60.0, 0.0)(84.8528, 0.0)(102.4264, 17.5736)%
+		\qbezier(102.4264, 17.5736)(120.0, 35.1472)(120.0, 60.0)%
+		% Ellipse: u = 60.0 v = 60.0 a = 58.0 b = 58.0 phi = 0.0 Grad
+		\qbezier(118.0, 60.0)(118.0, 84.0244)(101.0122, 101.0122)%
+		\qbezier(101.0122, 101.0122)(84.0244, 118.0)(60.0, 118.0)%
+		\qbezier(60.0, 118.0)(35.9756, 118.0)(18.9878, 101.0122)%
+		\qbezier(18.9878, 101.0122)(2.0, 84.0244)(2.0, 60.0)%
+		\qbezier(2.0, 60.0)(2.0, 35.9756)(18.9878, 18.9878)%
+		\qbezier(18.9878, 18.9878)(35.9756, 2.0)(60.0, 2.0)%
+		\qbezier(60.0, 2.0)(84.0244, 2.0)(101.0122, 18.9878)%
+		\qbezier(101.0122, 18.9878)(118.0, 35.9756)(118.0, 60.0)%
+		% Ellipse: u = 60.0 v = 60.0 a = 23.0 b = 23.0 phi = 0.0 Grad
+		\qbezier(83.0, 60.0)(83.0, 69.5269)(76.2635, 76.2635)%
+		\qbezier(76.2635, 76.2635)(69.5269, 83.0)(60.0, 83.0)%
+		\qbezier(60.0, 83.0)(50.4731, 83.0)(43.7365, 76.2635)%
+		\qbezier(43.7365, 76.2635)(37.0, 69.5269)(37.0, 60.0)%
+		\qbezier(37.0, 60.0)(37.0, 50.4731)(43.7365, 43.7365)%
+		\qbezier(43.7365, 43.7365)(50.4731, 37.0)(60.0, 37.0)%
+		\qbezier(60.0, 37.0)(69.5269, 37.0)(76.2635, 43.7365)%
+		\qbezier(76.2635, 43.7365)(83.0, 50.4731)(83.0, 60.0)%
+		% Ellipse: u = 60.0 v = 60.0 a = 11.5 b = 11.5 phi = 0.0 Grad
+		\qbezier(71.5, 60.0)(71.5, 64.7635)(68.1317, 68.1317)%
+		\qbezier(68.1317, 68.1317)(64.7635, 71.5)(60.0, 71.5)%
+		\qbezier(60.0, 71.5)(55.2365, 71.5)(51.8683, 68.1317)%
+		\qbezier(51.8683, 68.1317)(48.5, 64.7635)(48.5, 60.0)%
+		\qbezier(48.5, 60.0)(48.5, 55.2365)(51.8683, 51.8683)%
+		\qbezier(51.8683, 51.8683)(55.2365, 48.5)(60.0, 48.5)%
+		\qbezier(60.0, 48.5)(64.7635, 48.5)(68.1317, 51.8683)%
+		\qbezier(68.1317, 51.8683)(71.5, 55.2365)(71.5, 60.0)%
+		% Ellipse: u = 60.0 v = 60.0 a = 7.5 b = 7.5 phi = 0.0 Grad
+		\qbezier(67.5, 60.0)(67.5, 63.1066)(65.3033, 65.3033)%
+		\qbezier(65.3033, 65.3033)(63.1066, 67.5)(60.0, 67.5)%
+		\qbezier(60.0, 67.5)(56.8934, 67.5)(54.6967, 65.3033)%
+		\qbezier(54.6967, 65.3033)(52.5, 63.1066)(52.5, 60.0)%
+		\qbezier(52.5, 60.0)(52.5, 56.8934)(54.6967, 54.6967)%
+		\qbezier(54.6967, 54.6967)(56.8934, 52.5)(60.0, 52.5)%
+		\qbezier(60.0, 52.5)(63.1066, 52.5)(65.3033, 54.6967)%
+		\qbezier(65.3033, 54.6967)(67.5, 56.8934)(67.5, 60.0)%
+		\put(0,0){%
+			\makebox(120,120)[c]{%
+				\parbox[c]{120\sc@unittype}{\sc@centering #1}%
+		}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\emptydisk}
+%    Creates a CD-R image.
+%    Usage: |\emptydisk| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\emptydisk}[1]{%
+	\sc@picinit%
+	\begin{picture}(120,120)%
+		% Ellipse: u = 60.0 v = 60.0 a = 60.0 b = 60.0 phi = 0.0 Grad
+		\qbezier(120.0, 60.0)(120.0, 84.8528)(102.4264, 102.4264)%
+		\qbezier(102.4264, 102.4264)(84.8528, 120.0)(60.0, 120.0)%
+		\qbezier(60.0, 120.0)(35.1472, 120.0)(17.5736, 102.4264)%
+		\qbezier(17.5736, 102.4264)(0.0, 84.8528)(0.0, 60.0)%
+		\qbezier(0.0, 60.0)(0.0, 35.1472)(17.5736, 17.5736)%
+		\qbezier(17.5736, 17.5736)(35.1472, 0.0)(60.0, 0.0)%
+		\qbezier(60.0, 0.0)(84.8528, 0.0)(102.4264, 17.5736)%
+		\qbezier(102.4264, 17.5736)(120.0, 35.1472)(120.0, 60.0)%
+		% Ellipse: u = 60.0 v = 60.0 a = 7.5 b = 7.5 phi = 0.0 Grad
+		\qbezier(67.5, 60.0)(67.5, 63.1066)(65.3033, 65.3033)%
+		\qbezier(65.3033, 65.3033)(63.1066, 67.5)(60.0, 67.5)%
+		\qbezier(60.0, 67.5)(56.8934, 67.5)(54.6967, 65.3033)%
+		\qbezier(54.6967, 65.3033)(52.5, 63.1066)(52.5, 60.0)%
+		\qbezier(52.5, 60.0)(52.5, 56.8934)(54.6967, 54.6967)%
+		\qbezier(54.6967, 54.6967)(56.8934, 52.5)(60.0, 52.5)%
+		\qbezier(60.0, 52.5)(63.1066, 52.5)(65.3033, 54.6967)%
+		\qbezier(65.3033, 54.6967)(67.5, 56.8934)(67.5, 60.0)%
+		\put(0,0){%
+			\makebox(120,120)[c]{%
+				\parbox[c]{120\sc@unittype}{\sc@centering #1}%
+		}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\cdrdisk}
+%    Creates a CD-R image.
+%    Usage: |\cdrdisk| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\cdrdisk}[1]{%
+	\sc@picinit%
+	\begin{picture}(116, 116)%
+		% Ellipse: u = 58.0 v = 58.0 a = 58.0 b = 58.0 phi = 0.0 Grad
+		\qbezier(116.0, 58.0)(116.0, 82.0244)(99.0122, 99.0122)%
+		\qbezier(99.0122, 99.0122)(82.0244, 116.0)(58.0, 116.0)%
+		\qbezier(58.0, 116.0)(33.9756, 116.0)(16.9878, 99.0122)%
+		\qbezier(16.9878, 99.0122)(0.0, 82.0244)(0.0, 58.0)%
+		\qbezier(0.0, 58.0)(0.0, 33.9756)(16.9878, 16.9878)%
+		\qbezier(16.9878, 16.9878)(33.9756, 0.0)(58.0, 0.0)%
+		\qbezier(58.0, 0.0)(82.0244, 0.0)(99.0122, 16.9878)%
+		\qbezier(99.0122, 16.9878)(116.0, 33.9756)(116.0, 58.0)%
+		% Ellipse: u = 58.0 v = 58.0 a = 19.0 b = 19.0 phi = 0.0 Grad
+		\qbezier(77.0, 58.0)(77.0, 65.8701)(71.435, 71.435)%
+		\qbezier(71.435, 71.435)(65.8701, 77.0)(58.0, 77.0)%
+		\qbezier(58.0, 77.0)(50.1299, 77.0)(44.565, 71.435)%
+		\qbezier(44.565, 71.435)(39.0, 65.8701)(39.0, 58.0)%
+		\qbezier(39.0, 58.0)(39.0, 50.1299)(44.565, 44.565)%
+		\qbezier(44.565, 44.565)(50.1299, 39.0)(58.0, 39.0)%
+		\qbezier(58.0, 39.0)(65.8701, 39.0)(71.435, 44.565)%
+		\qbezier(71.435, 44.565)(77.0, 50.1299)(77.0, 58.0)%
+		\put(0,0){%
+			\makebox(116,116)[c]{%
+				\parbox[c]{116\sc@unittype}{\sc@centering #1}%
+		}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\cddvddisk}
+%    Creates a CD, DVD image.
+%    Usage: |\cddvddisk| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\cddvddisk}[1]{%
+	\sc@picinit%
+	\begin{picture}(117, 117)%
+		% Ellipse: u = 58.5 v = 58.5 a = 58.5 b = 58.5 phi = 0.0 Grad
+		\qbezier(117.0, 58.5)(117.0, 82.7315)(99.8657, 99.8657)%
+		\qbezier(99.8657, 99.8657)(82.7315, 117.0)(58.5, 117.0)%
+		\qbezier(58.5, 117.0)(34.2685, 117.0)(17.1343, 99.8657)%
+		\qbezier(17.1343, 99.8657)(0.0, 82.7315)(0.0, 58.5)%
+		\qbezier(0.0, 58.5)(0.0, 34.2685)(17.1343, 17.1343)%
+		\qbezier(17.1343, 17.1343)(34.2685, 0.0)(58.5, 0.0)%
+		\qbezier(58.5, 0.0)(82.7315, 0.0)(99.8657, 17.1343)%
+		\qbezier(99.8657, 17.1343)(117.0, 34.2685)(117.0, 58.5)%
+		% Ellipse: u = 58.5 v = 58.5 a = 11.25 b = 11.25 phi = 0.0 Grad
+		\qbezier(69.75, 58.5)(69.75, 63.1599)(66.455, 66.455)%
+		\qbezier(66.455, 66.455)(63.1599, 69.75)(58.5, 69.75)%
+		\qbezier(58.5, 69.75)(53.8401, 69.75)(50.545, 66.455)%
+		\qbezier(50.545, 66.455)(47.25, 63.1599)(47.25, 58.5)%
+		\qbezier(47.25, 58.5)(47.25, 53.8401)(50.545, 50.545)%
+		\qbezier(50.545, 50.545)(53.8401, 47.25)(58.5, 47.25)%
+		\qbezier(58.5, 47.25)(63.1599, 47.25)(66.455, 50.545)%
+		\qbezier(66.455, 50.545)(69.75, 53.8401)(69.75, 58.5)%
+		\put(0,0){%
+			\makebox(117,117)[c]{%
+				\parbox[c]{117\sc@unittype}{\sc@centering #1}%
+		}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\LXXXdisk}
+%    Creates a 80 millimeter disk image.
+%    Usage: |\LXXXdisk| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\LXXXdisk}[1]{%
+	\sc@picinit%
+	\begin{picture}(76, 76)%
+		% Ellipse: u = 38.0 v = 38.0 a = 38.0 b = 38.0 phi = 0.0 Grad
+		\qbezier(76.0, 38.0)(76.0, 53.7401)(64.8701, 64.8701)%
+		\qbezier(64.8701, 64.8701)(53.7401, 76.0)(38.0, 76.0)%
+		\qbezier(38.0, 76.0)(22.2599, 76.0)(11.1299, 64.8701)%
+		\qbezier(11.1299, 64.8701)(0.0, 53.7401)(0.0, 38.0)%
+		\qbezier(0.0, 38.0)(0.0, 22.2599)(11.1299, 11.1299)%
+		\qbezier(11.1299, 11.1299)(22.2599, 0.0)(38.0, 0.0)%
+		\qbezier(38.0, 0.0)(53.7401, 0.0)(64.8701, 11.1299)%
+		\qbezier(64.8701, 11.1299)(76.0, 22.2599)(76.0, 38.0)%
+		% Ellipse: u = 38.0 v = 38.0 a = 9.0 b = 9.0 phi = 0.0 Grad
+		\qbezier(47.0, 38.0)(47.0, 41.7279)(44.364, 44.364)%
+		\qbezier(44.364, 44.364)(41.7279, 47.0)(38.0, 47.0)%
+		\qbezier(38.0, 47.0)(34.2721, 47.0)(31.636, 44.364)%
+		\qbezier(31.636, 44.364)(29.0, 41.7279)(29.0, 38.0)%
+		\qbezier(29.0, 38.0)(29.0, 34.2721)(31.636, 31.636)%
+		\qbezier(31.636, 31.636)(34.2721, 29.0)(38.0, 29.0)%
+		\qbezier(38.0, 29.0)(41.7279, 29.0)(44.364, 31.636)%
+		\qbezier(44.364, 31.636)(47.0, 34.2721)(47.0, 38.0)%
+		\put(0,0){%
+			\makebox(76,76)[c]{%
+				\parbox[c]{76\sc@unittype}{\sc@centering #1}%
+		}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\vhsfront}
+%    Front label for a VHS cassette.
+%    Usage: |\vhsfront| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\vhsfront}[1]{%
+	\sc@cell{#1}{76}{44}{}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\vhsspine}
+%    Side spine label for a VHS cassette.
+%    Usage: |\vhsspine| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\vhsspine}[1]{%
+	\sc@cell{#1}{145}{17}{}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\CCCvhscover}
+%    Case for a 300 series VHS cassette.
+%    Usage: |\CCCvhscover| \marg{front} \marg{spine} \marg{back} 
+%    \begin{macrocode}
+\DeclareRobustCommand{\CCCvhscover}[3]{%
+	\keepcase[#3]{#1}{#2}{197}{115}{27}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\CCCCvhscover}
+%    Case for a 400 series VHS cassette.
+%    Usage: |\CCCCvhscover| \marg{front} \marg{spine} \marg{back}
+%    \begin{macrocode}
+\DeclareRobustCommand{\CCCCvhscover}[3]{%
+	\keepcase[#3]{#1}{#2}{210}{134.5}{27}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\cassettecover}
+%    Cover label for an audio cassette.
+%    Usage: |\cassettecover| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\cassettecover}[1]{%
+	\sc@picinit%
+	\begin{picture}(88,39)%
+		% Ellipse: u = 22.0 v = 16.5 a = 7.5 b = 7.5 phi = 0.0 Grad
+		% \qbezier(29.5, 16.5)(29.5, 19.6066)(27.3033, 21.8033)%
+		% \qbezier(27.3033, 21.8033)(25.1066, 24.0)(22.0, 24.0)%
+		\qbezier(22.0, 24.0)(18.8934, 24.0)(16.6967, 21.8033)%
+		\qbezier(16.6967, 21.8033)(14.5, 19.6066)(14.5, 16.5)%
+		\qbezier(14.5, 16.5)(14.5, 13.3934)(16.6967, 11.1967)%
+		\qbezier(16.6967, 11.1967)(18.8934, 9.0)(22.0, 9.0)%
+		% \qbezier(22.0, 9.0)(25.1066, 9.0)(27.3033, 11.1967)%
+		% \qbezier(27.3033, 11.1967)(29.5, 13.3934)(29.5, 16.5)%
+		% Ellipse: u = 66.0 v = 16.5 a = 7.5 b = 7.5 phi = 0.0 Grad
+		\qbezier(73.5, 16.5)(73.5, 19.6066)(71.3033, 21.8033)%
+		\qbezier(71.3033, 21.8033)(69.1066, 24.0)(66.0, 24.0)%
+		% \qbezier(66.0, 24.0)(62.8934, 24.0)(60.6967, 21.8033)%
+		% \qbezier(60.6967, 21.8033)(58.5, 19.6066)(58.5, 16.5)%
+		% \qbezier(58.5, 16.5)(58.5, 13.3934)(60.6967, 11.1967)%
+		% \qbezier(60.6967, 11.1967)(62.8934, 9.0)(66.0, 9.0)%
+		\qbezier(66.0, 9.0)(69.1066, 9.0)(71.3033, 11.1967)%
+		\qbezier(71.3033, 11.1967)(73.5, 13.3934)(73.5, 16.5)%
+		\put(22,9){\line(1,0){44}}%
+		\put(22,24){\line(1,0){44}}%
+		\framebox(88,39)[c]{\parbox[c]{88\sc@unittype}{\sc@centering #1}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\cassetteinlay}
+%    Cover label for an audio cassette.
+%    Usage: |\cassetteinlay| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\cassetteinlay}[3]{%
+	\sc@picinit%
+	\begin{picture}(102,104)%
+		\put(0,38){%
+			\sc@choicebox{102}{66}{\parbox[c]{102\sc@unittype}{\sc@centering #1}}%
+				{\sc@falsestr}{\sc@truestr}{\sc@truestr}{\sc@truestr}}%
+		\put(0,25){%
+			\sc@choicebox{102}{13}{\parbox[c]{102\sc@unittype}{\sc@centering #2}}%
+				{\sc@falsestr}{\sc@falsestr}{\sc@truestr}{\sc@truestr}}%
+		\put(0,0){%
+			\sc@choicebox{102}{25}{\parbox[c]{102\sc@unittype}{\sc@centering #3}}%
+				{\sc@truestr}{\sc@falsestr}{\sc@truestr}{\sc@truestr}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+
+% \begin{macro}{\vinylcdcover}
+%    Cover label for a vinyl CD.
+%    Usage: |\vinylcdcover| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\vinylcdcover}[1]{%
+	\sc@picinit%
+	\begin{picture}(65,65)%
+		% Ellipse: u = 32.5 v = 32.5 a = 32.5 b = 32.5 phi = 0.0 Grad
+		\qbezier(65.0, 32.5)(65.0, 45.9619)(55.481, 55.481)%
+		\qbezier(55.481, 55.481)(45.9619, 65.0)(32.5, 65.0)%
+		\qbezier(32.5, 65.0)(19.0381, 65.0)(9.519, 55.481)%
+		\qbezier(9.519, 55.481)(0.0, 45.9619)(0.0, 32.5)%
+		\qbezier(0.0, 32.5)(0.0, 19.0381)(9.519, 9.519)%
+		\qbezier(9.519, 9.519)(19.0381, 0.0)(32.5, 0.0)%
+		\qbezier(32.5, 0.0)(45.9619, 0.0)(55.481, 9.519)%
+		\qbezier(55.481, 9.519)(65.0, 19.0381)(65.0, 32.5)%
+		% Ellipse: u = 32.5 v = 32.5 a = 8.35 b = 8.35 phi = 0.0 Grad
+		\qbezier(40.85, 32.5)(40.85, 35.9587)(38.4043, 38.4043)%
+		\qbezier(38.4043, 38.4043)(35.9587, 40.85)(32.5, 40.85)%
+		\qbezier(32.5, 40.85)(29.0413, 40.85)(26.5957, 38.4043)%
+		\qbezier(26.5957, 38.4043)(24.15, 35.9587)(24.15, 32.5)%
+		\qbezier(24.15, 32.5)(24.15, 29.0413)(26.5957, 26.5957)%
+		\qbezier(26.5957, 26.5957)(29.0413, 24.15)(32.5, 24.15)%
+		\qbezier(32.5, 24.15)(35.9587, 24.15)(38.4043, 26.5957)%
+		\qbezier(38.4043, 26.5957)(40.85, 29.0413)(40.85, 32.5)%
+		\put(0,0){%
+			\makebox(65,65)[c]{\parbox[c]{65\sc@unittype}{\sc@centering #1}}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\recordcover}
+%    Cover label for a 30 centimeter record.
+%    Usage: |\recordcover| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\recordcover}[1]{%
+	\sc@picinit%
+	\begin{picture}(99,99)%
+		% Ellipse: u = 49.5 v = 49.5 a = 49.5 b = 49.5 phi = 0.0 Grad
+		\qbezier(99.0, 49.5)(99.0, 70.0036)(84.5018, 84.5018)%
+		\qbezier(84.5018, 84.5018)(70.0036, 99.0)(49.5, 99.0)%
+		\qbezier(49.5, 99.0)(28.9964, 99.0)(14.4982, 84.5018)%
+		\qbezier(14.4982, 84.5018)(0.0, 70.0036)(0.0, 49.5)%
+		\qbezier(0.0, 49.5)(0.0, 28.9964)(14.4982, 14.4982)%
+		\qbezier(14.4982, 14.4982)(28.9964, 0.0)(49.5, 0.0)%
+		\qbezier(49.5, 0.0)(70.0036, 0.0)(84.5018, 14.4982)%
+		\qbezier(84.5018, 14.4982)(99.0, 28.9964)(99.0, 49.5)%
+		% Ellipse: u = 49.5 v = 49.5 a = 4.0 b = 4.0 phi = 0.0 Grad
+		\qbezier(53.5, 49.5)(53.5, 51.1569)(52.3284, 52.3284)%
+		\qbezier(52.3284, 52.3284)(51.1569, 53.5)(49.5, 53.5)%
+		\qbezier(49.5, 53.5)(47.8431, 53.5)(46.6716, 52.3284)%
+		\qbezier(46.6716, 52.3284)(45.5, 51.1569)(45.5, 49.5)%
+		\qbezier(45.5, 49.5)(45.5, 47.8431)(46.6716, 46.6716)%
+		\qbezier(46.6716, 46.6716)(47.8431, 45.5)(49.5, 45.5)%
+		\qbezier(49.5, 45.5)(51.1569, 45.5)(52.3284, 46.6716)%
+		\qbezier(52.3284, 46.6716)(53.5, 47.8431)(53.5, 49.5)%
+		\put(0,0){%
+			\makebox(99,99)[c]{\parbox[c]{99\sc@unittype}{\sc@centering #1}}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sc@jewelemptyl}
+%    Empty jewel layout.
+%    Usage: |\sc@jewelemptyl| \marg{content} \marg{cover width} \marg{cover height}
+%    \begin{macrocode}
+\DeclareRobustCommand{\sc@jewelemptyl}[3]{%
+	\setboolean{sc@layout}{true}%
+	\setcounter{sc@layouttempa}{#2 - 10}%
+	\setcounter{sc@layouttempb}{#3 - 10}%
+	\sc@picinit%
+	\begin{picture}(\value{sc@layouttempa}, \value{sc@layouttempb})%
+		\framebox(\value{sc@layouttempa}, \value{sc@layouttempb})[c]{#1}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\jewellempty}
+%    Empty layout border.
+%    Usage: |\jewellempty| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\jewellempty}[1]{%
+	\setcounter{sc@layouttempa}{\value{sc@cdjccoverwidthdraw} - 10}%
+	\setcounter{sc@layouttempb}{\value{sc@cdjccoverheightdraw} - 10}%
+	\sc@jewelemptyl{
+			\makebox(\value{sc@layouttempa},\value{sc@layouttempb})[c]{%
+			\parbox[c]{\value{sc@layouttempa} \sc@unittype}{\sc@centering #1}}}%
+		{\value{sc@cdjccoverwidthdraw}}%
+		{\value{sc@cdjccoverheightdraw}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\jeweldriverlempty}
+%    Empty cover layout for a hardware driver disk.
+%    Usage: |\jeweldriverlempty| \marg{title} \marg{subtitle} \marg{date} \marg{serial} 
+%    \marg{disk version} \marg{right middle cell} \marg{bottom cell}
+%    \begin{macrocode}
+\DeclareRobustCommand{\jeweldriverlempty}[7]{%
+	\sc@jewelemptyl{%
+			\put(0,80){%
+				\framebox(110,30){\parbox[c]{110mm}{\sc@centering\scalebox{4.5}{#1}}}}%
+			\put(0,60){\framebox(110,20){\parbox[c]{110mm}{\sc@centering\huge #2}}}%
+			\put(0,50){\framebox(55,10){\parbox[c]{55mm}{\sc@centering #3}}}%
+			\put(0,40){\framebox(55,10){\parbox[c]{55mm}{\sc@centering #4}}}%
+			\put(0,30){\framebox(55,10){\parbox[c]{55mm}{\sc@centering #5}}}%
+			\put(55,30){\framebox(55,30)[t]{%
+				\parbox[c]{4cm}{%
+					\vspace{0.5cm}%
+					\setlength{\baselineskip}{1.5\baselineskip} #6%
+				}%
+			}}%
+			\put(0,0){\framebox(110,30)[t]{%
+				\parbox[c]{10.5cm}{\vspace{0.5cm} #7}%
+		}}}%
+		{\value{sc@cdjccoverwidthdraw}}%
+		{\value{sc@cdjccoverheightdraw}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\jeweldriverl}
+%    Cover layout for a hardware driver disk.
+%    Usage: |\jeweldriverl| \marg{title} \marg{subtitle} \marg{date} \marg{serial} 
+%    \marg{disk version} \marg{right middle cell} \marg{bottom cell}
+%    \begin{macrocode}
+\DeclareRobustCommand{\jeweldriverl}[7]{%
+	\jeweldriverlempty{#1}{#2}{Acquisition date: #3}{Serial: #4}%
+		{Disk version/ID: #5}{#6}{#7}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\jewelmusiclempty}
+%    Cover layout for music disks.
+%    Usage: |\jewelmusiclempty| \marg{title} \marg{performer} \marg{year} \marg{style}
+%    \begin{macrocode}
+\DeclareRobustCommand{\jewelmusiclempty}[4]{%
+	\sc@jewelemptyl{%
+			\put(0,60){%
+				\makebox(110,40)[c]{\parbox[c]{110mm}{\sc@centering\scalebox{4}{#1}}}}%
+			\put(0,60){\makebox(110,10)[c]{\parbox[c]{110mm}{\sc@centering\Large #2}}}%
+			\put(0,15){\makebox(110,20)[c]{\parbox[c]{110mm}{\sc@centering\Large #4}}}%
+			\put(0,10){\makebox(110,10)[c]{\parbox[c]{110mm}{\sc@centering\Large #3}}}%
+		}%
+		{\value{sc@cdjccoverwidthdraw}}%
+		{\value{sc@cdjccoverheightdraw}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\sc@jewelbackemptyl}
+%    Empty jewel backsheet layout.
+%    Usage: |\sc@jewelbackemptyl| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\sc@jewelbackemptyl}[2]{%
+	\setboolean{sc@layout}{true}%
+	\setcounter{sc@layouttempa}{\value{sc@cdjcbackinwidthdraw} - 10}%
+	\setcounter{sc@layouttempb}{\value{sc@cdjcbackheightdraw} - 10}%
+	\sc@picinit%
+	\begin{picture}(\value{sc@layouttempa}, \value{sc@layouttempb})%
+		\csname#2\endcsname(\value{sc@layouttempa}, \value{sc@layouttempb})[c]{#1}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\jewelbacklempty}
+%    Empty layout border.
+%    Usage: |\jewelbacklempty| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\jewelbacklempty}[1]{%
+	\setcounter{sc@layouttempa}{\value{sc@cdjcbackinwidthdraw} - 10}%
+	\setcounter{sc@layouttempb}{\value{sc@cdjcbackheightdraw} - 10}%
+	\sc@jewelbackemptyl{%
+		\parbox[c]{\value{sc@layouttempa} \sc@unittype}{\sc@centering #1}}{framebox}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\jewelbackIIlempty}
+%    Empty layout without border.
+%    Usage: |\jewelbackIIlempty| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\jewelbackIIlempty}[1]{%
+	\setcounter{sc@layouttempa}{\value{sc@cdjcbackinwidthdraw} - 10}%
+	\setcounter{sc@layouttempb}{\value{sc@cdjcbackheightdraw} - 10}%
+	\sc@jewelbackemptyl{%
+		\parbox[c]{\value{sc@layouttempa} \sc@unittype}{#1}}{makebox}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\LXlempty}
+%    Empty layout border for 60 millimeter disk covers.
+%    Usage: |\LXlempty| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\LXlempty}[1]{%
+	\setboolean{sc@layout}{true}%
+	\setcounter{sc@resizertempa}{\value{sc@cdLXjccoverwidthdraw} - 10}%
+	\resizebox{\value{sc@resizertempa}\sc@unittype}{!}{%
+		\sc@jewelemptyl{%
+				\parbox[c]{\value{sc@resizertempa} \sc@unittype}{\sc@centering #1}}%
+			{\value{sc@cdLXjccoverwidthdraw}}%
+			{\value{sc@cdLXjccoverheightdraw}}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\LXXXlempty}
+%    Empty layout border for 80 millimeter disk covers.
+%    Usage: |\LXXXlempty| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\LXXXlempty}[1]{%
+	\setboolean{sc@layout}{true}%
+	\setcounter{sc@resizertempa}{\value{sc@cdLXXXjccoverwidthdraw} - 10}%
+	\resizebox{\value{sc@resizertempa}\sc@unittype}{!}{%
+		\sc@jewelemptyl{%
+			\parbox[c]{\value{sc@resizertempa} \sc@unittype}{\sc@centering #1}}%
+		{\value{sc@cdLXXXjccoverwidthdraw}}%
+		{\value{sc@cdLXXXjccoverheightdraw}}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\LXdriverlempty}
+%    Driver layout border for 60 millimeter disk covers.
+%    Usage: |\LXdriverlempty| \marg{title} \marg{subtitle} \marg{date} \marg{serial} 
+%    \marg{version} \marg{right middle cell} \marg{bottom cell}
+%    \begin{macrocode}
+\DeclareRobustCommand{\LXdriverlempty}[7]{%
+	\setboolean{sc@layout}{true}%
+	\setcounter{sc@resizertempa}{\value{sc@cdLXjccoverheightdraw} - 10}%
+	\resizebox{\value{sc@resizertempa}\sc@unittype}{!}{%
+		\jeweldriverlempty{#1}{#2}{#3}{#4}{#5}{#6}{#7}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\LXXXdriverlempty}
+%    Driver layout border for 80 millimeter disk covers.
+%    Usage: |\LXXXdriverlempty| \marg{title} \marg{subtitle} \marg{date} \marg{serial} 
+%    \marg{disk version} \marg{right middle cell} \marg{bottom cell}
+%    \begin{macrocode}
+\DeclareRobustCommand{\LXXXdriverlempty}[7]{%
+	\setboolean{sc@layout}{true}%
+	\setcounter{sc@resizertempa}{\value{sc@cdLXXXjccoverheightdraw} - 10}%
+	\resizebox{\value{sc@resizertempa}\sc@unittype}{!}{%
+		\jeweldriverlempty{#1}{#2}{#3}{#4}{#5}{#6}{#7}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\LXdriverl}
+%    Driver layout border for 60 millimeter disk covers.
+%    Usage: |\LXdriverl| \marg{title} \marg{subtitle} \marg{date} \marg{serial} 
+%    \marg{disk version} \marg{right middle cell} \marg{bottom cell}
+%    \begin{macrocode}
+\DeclareRobustCommand{\LXdriverl}[7]{%
+	\LXdriverlempty{#1}{#2}{Acquisition date: #3}{Serial: #4}%
+		{Disk version/ID: #5}{#6}{#7}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\LXXXdriverl}
+%    Driver layout border for 80 millimeter disk covers.
+%    Usage: |\LXXXdriverl| \marg{title} \marg{subtitle} \marg{date} \marg{serial} 
+%    \marg{disk version} \marg{right middle cell} \marg{bottom cell}
+%    \begin{macrocode}
+\DeclareRobustCommand{\LXXXdriverl}[7]{%
+	\LXXXdriverlempty{#1}{#2}{Acquisition date: #3}{Serial: #4}%
+		{Disk version/ID: #5}{#6}{#7}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\jewelstripeslempty}
+%    One centered stripe and 2 optional diagonal stripes with content.
+%    Usage: |\jewelstripeslempty| \marg{center content} \marg{upper right content} \marg{lower left content} 
+%    \begin{macrocode}
+\DeclareRobustCommand{\jewelstripeslempty}[3]{%
+	\setboolean{sc@layout}{true}%
+	\sc@picinit%
+	\begin{picture}%
+		(\value{sc@cdjccoverwidthdraw},\value{sc@cdjccoverheightdraw})%
+		\put(0,75){\line(1,0){120}}%
+		\put(0,45){\line(1,0){120}}%
+		\put(0,45){\makebox(\value{sc@cdjccoverwidthdraw},30)[c]%
+			{\parbox[c]{\value{sc@cdjccoverwidthdraw}\sc@unittype}{\sc@centering #1}}}%
+		\ifthenelse{\equal{#2}{}}{}{%
+			\put(62,117.5){\rotatebox{-40}{%
+				\put(13.5,15){\line(1,0){49.8}}%
+				\put(2.2,5){\line(1,0){69.8}}%
+				\put(5,5){\makebox(60,10)[c]{\parbox[c]{50mm}{\sc@centering #2}}}}}}%
+		\ifthenelse{\equal{#3}{}}{}{%
+			\put(-5,29.5){\rotatebox{-40}{%
+				\put(-6,15){\line(1,0){69.8}}%
+				\put(2.2,5){\line(1,0){49.8}}%
+				\put(0,5){\makebox(60,10)[c]{\parbox[c]{50mm}{\sc@centering #3}}}}}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\jewelgamelempty}
+%    Empty cover layout for a game disk.
+%    Usage: |\jewelgamelempty| \marg{title} \marg{release year} \marg{genres} \marg{developer} 
+%    \marg{publisher} \marg{serial} \marg{comment}
+%    \begin{macrocode}
+\DeclareRobustCommand{\jewelgamelempty}[7]{%
+	\sc@jewelemptyl{%
+			\put(0,70){%
+				\framebox(110,40){\parbox[c]{110mm}{\sc@centering\scalebox{3}{#1}}}}%
+			\put(0,60){\framebox(55,10){\parbox[c]{55mm}{\sc@centering #2}}}%
+			\put(55,60){\framebox(55,10){\parbox[c]{55mm}{\sc@centering #3}}}%
+			\put(0,50){\framebox(55,10){\parbox[c]{55mm}{\sc@centering #4}}}%
+			\put(55,50){\framebox(55,10){\parbox[c]{55mm}{\sc@centering #5}}}%
+			\put(0,40){\framebox(110,10){\parbox[c]{110mm}{\sc@centering #6}}}%%
+			\put(0,0){\framebox(110,40)[t]{%
+				\parbox[c]{105mm}{\vspace{5mm} #7}%
+		}}}%
+		{\value{sc@cdjccoverwidthdraw}}%
+		{\value{sc@cdjccoverheightdraw}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\jewelgamel}
+%    Cover layout for a game disk.
+%    Usage: |\jewelgamel| \marg{title} \marg{release year} \marg{genres} \marg{developer} 
+%    \marg{publisher} \marg{serial} \marg{comment}
+%    \begin{macrocode}
+\DeclareRobustCommand{\jewelgamel}[7]{%
+	\jewelgamelempty{#1}{Released: #2}{Genre(s): #3}{Developer: #4}%
+		{Publisher: #5}{Serial: #6}{#7}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\jewelflaglempty}
+%    Empty cover layout in a 3-striped flag format.
+%    Usage: |\jewelflaglempty| \marg{upper content} \marg{middle content} \marg{lower content} 
+%    \begin{macrocode}
+\DeclareRobustCommand{\jewelflaglempty}[3]{%
+	\sc@jewelemptyl{%
+			\put(0,73.33){%
+				\framebox(110,36.66){\parbox[c]{110mm}{\sc@centering #1}}}%
+			\put(0,36.66){\framebox(110,36.66){\parbox[c]{110mm}{\sc@centering #2}}}%
+			\put(0,0){\framebox(110,36.66){\parbox[c]{110mm}{\sc@centering #3}}}%
+		}%
+		{\value{sc@cdjccoverwidthdraw}}%
+		{\value{sc@cdjccoverheightdraw}}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\jewellineslempty}
+%    Cover with horizontal lines.
+%    Usage: |\jewellineslempty| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\jewellineslempty}[1]{%
+	\setboolean{sc@layout}{true}%
+	\sc@picinit%
+	\begin{picture}%
+		(\value{sc@cdjccoverwidthdraw},\value{sc@cdjccoverheightdraw})%
+		\put(5,110){\line(1,0){110}}%
+		\put(5,100){\line(1,0){110}}%
+		\put(5,90){\line(1,0){110}}%
+		\put(5,80){\line(1,0){110}}%
+		\put(5,70){\line(1,0){110}}%
+		\put(5,60){\line(1,0){110}}%
+		\put(5,50){\line(1,0){110}}%
+		\put(5,40){\line(1,0){110}}%
+		\put(5,30){\line(1,0){110}}%
+		\put(5,20){\line(1,0){110}}%
+		\put(5,10){\line(1,0){110}}%
+		\put(5,10){%
+			\makebox(110,110){%
+				\parbox[c]{110mm}{\sc@centering \setlength\baselineskip{1cm} #1}}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\jeweltitledlempty}
+%    Empty cover layout with a top title part and a larger bottom part.
+%    Usage: |\jeweltitledlempty| \marg{title} \marg{content} 
+%    \begin{macrocode}
+\DeclareRobustCommand{\jeweltitledlempty}[2]{%
+	\setboolean{sc@layout}{true}%
+	\sc@picinit%
+	\begin{picture}(\value{sc@cdjccoverwidthdraw}, \value{sc@cdjccoverheightdraw})
+		\put(5,100){%
+			\makebox(110,20){\parbox[c]{110mm}{\sc@centering\huge #1}}}%
+		\put(5,0){\makebox(110,100){\parbox[c]{110mm}{#2}}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\dvdmovielempty}
+%    Cover layout for movie DVDs.
+%    Usage: |\dvdmovielempty| \marg{title} \marg{original title} \marg{release year} 
+%    \marg{director} \marg{languages} \marg{subtitle} \marg{actors} \marg{comment}
+%    \begin{macrocode}
+\DeclareRobustCommand{\dvdmovielempty}[8]{%
+	\setboolean{sc@layout}{true}%
+	\setcounter{sc@layouttempa}{\value{sc@dvdkccoverwidthdraw} - 10}%
+	\setcounter{sc@layouttempb}{\value{sc@dvdkccoverheightdraw} - 10}%
+	\sc@picinit%
+	\begin{picture}(\value{sc@layouttempa}, \value{sc@layouttempb})%
+		\put(0,140){%
+			\framebox(118,33)[c]{\parbox[c]{110mm}{\sc@centering\scalebox{3}{#1}}}}%
+		\put(0,120){%
+			\framebox(118,20)[c]{\parbox[c]{110mm}{\sc@centering\huge #2}}}%
+		\put(0,110){\framebox(59,10)[c]{\parbox[c]{50mm}{\sc@centering #3}}}%
+		\put(0,100){\framebox(59,10)[c]{\parbox[c]{50mm}{#4}}}%
+		\put(0,70){\framebox(59,30)[c]{\parbox[c]{50mm}{#5}}}%
+		\put(0,40){\framebox(59,30)[c]{\parbox[c]{50mm}{#6}}}%
+		\put(59,40){\framebox(59,80)[c]{\parbox[c]{50mm}{#7}}}%
+		\put(0,0){\framebox(118,40)[t]{\parbox[c]{108mm}{\vspace{0.5cm} #8}}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\dvdmoviel}
+%    Cover layout for movie DVDs.
+%    Usage: |\dvdmoviel| \marg{title} \marg{original title} \marg{release year} 
+%    \marg{director} \marg{languages} \marg{subtitle} \marg{actors} \marg{comment}
+%    \begin{macrocode}
+\DeclareRobustCommand{\dvdmoviel}[8]{%
+	\dvdmovielempty{#1}{#2}{Released: #3}{Directed by: #4}%
+		{\underline{Spoken languages:} \\ #5}%
+		{\underline{Subtitles:} \\ #6}{\underline{Starring:} \\ #7}{#8}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\dvdlempty}
+%    Empty layout for DVD keepcases.
+%    Usage: |\dvdlempty| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\dvdlempty}[1]{%
+	\setboolean{sc@layout}{true}%
+	\setcounter{sc@layouttempa}{\value{sc@dvdkccoverwidthdraw} - 10}%
+	\setcounter{sc@layouttempb}{\value{sc@dvdkccoverheightdraw} - 10}%
+	\sc@picinit%
+	\begin{picture}(\value{sc@layouttempa}, \value{sc@layouttempb})%
+		\put(0,0){%
+			\framebox(\value{sc@layouttempa}, \value{sc@layouttempb})[c]{%
+				\parbox[c]{\value{sc@layouttempa}\sc@unittype}{\sc@centering #1}}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\bluraymovielempty}
+%    Cover layout for movie Blu-rays.
+%    Usage: |\bluraymovielempty| \marg{title} \marg{original title} \marg{release year} 
+%    \marg{director} \marg{languages} \marg{subtitles} \marg{actors} \marg{comment}
+%    \begin{macrocode}
+\DeclareRobustCommand{\bluraymovielempty}[8]{%
+	\setboolean{sc@layout}{true}%
+	\setcounter{sc@layouttempa}{\value{sc@dvdkccoverwidthdraw} - 10}%
+	\setcounter{sc@layouttempb}{\value{sc@brcoverheightdraw} - 10}%
+	\sc@picinit%
+	\begin{picture}(\value{sc@layouttempa}, \value{sc@layouttempb})%
+		\put(0,120){%
+			\framebox(118,20)[c]{\parbox[c]{110mm}{\sc@centering\scalebox{3}{#1}}}}%
+		\put(0,105){%
+			\framebox(118,15)[c]{\parbox[c]{110mm}{\sc@centering\huge #2}}}%
+		\put(0,95){\framebox(59,10)[c]{\parbox[c]{50mm}{\sc@centering #3}}}%
+		\put(0,85){\framebox(59,10)[c]{\parbox[c]{50mm}{#4}}}%
+		\put(0,55){\framebox(59,30)[c]{\parbox[c]{50mm}{#5}}}%
+		\put(0,25){\framebox(59,30)[c]{\parbox[c]{50mm}{#6}}}%
+		\put(59,25){\framebox(59,80)[c]{\parbox[c]{50mm}{#7}}}%
+		\put(0,0){\framebox(118,25)[t]{\parbox[c]{108mm}{\vspace{0.5cm} #8}}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\bluraymoviel}
+%    Cover layout for movie Blu-rays.
+%    Usage: |\bluraymoviel| \marg{title} \marg{original title} \marg{release year} 
+%    \marg{director} \marg{languages} \marg{subtitles} \marg{actors} \marg{comment}
+%    \begin{macrocode}
+\DeclareRobustCommand{\bluraymoviel}[8]{%
+	\bluraymovielempty{#1}{#2}{Released: #3}{Directed by: #4}%
+		{\underline{Spoken languages:} \\ #5}%
+		{\underline{Subtitles:} \\ #6}{\underline{Starring:} \\ #7}{#8}%
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\bluraylempty}
+%    Empty layout for Blu-ray keepcases.
+%    Usage: |\bluraylempty| \marg{content}
+%    \begin{macrocode}
+\DeclareRobustCommand{\bluraylempty}[1]{%
+	\setboolean{sc@layout}{true}%
+	\setcounter{sc@layouttempa}{\value{sc@dvdkccoverwidthdraw} - 10}%
+	\setcounter{sc@layouttempb}{\value{sc@brcoverheightdraw} - 10}%
+	\sc@picinit%
+	\begin{picture}(\value{sc@layouttempa}, \value{sc@layouttempb})%
+		\put(0,0){%
+			\framebox(\value{sc@layouttempa}, \value{sc@layouttempb})[c]{%
+				\parbox[c]{\value{sc@layouttempa}\sc@unittype}{\sc@centering #1}}}%
+	\end{picture}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \Finale
+\endinput

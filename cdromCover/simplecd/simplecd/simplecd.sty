@@ -1,0 +1,1064 @@
+%%
+%% This is file `simplecd.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% ./simplecd.dtx  (with options: `package')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2010-2013 by Daniel Majoros
+%% 
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 1.2 of this license or (at your option) any later
+%% version. The latest version of this license is in:
+%% 
+%% http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.2 or later is part of all distributions of
+%% LaTeX version 1999/12/01 or later.
+%% 
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{simplecd}
+    [2013/02/28 v1.4 Simple CD, DVD covers and many more]
+\RequirePackage{fix-cm}
+\RequirePackage{calc}
+\RequirePackage{ifthen}
+
+\RequirePackage{graphicx}
+
+%% The |noalign| option sets all text aligning lengths to zero.
+\DeclareOption{noalign}{
+    \setlength{\sc@jewelalign}{0cm}
+    \setlength{\sc@keepcasealign}{0cm}
+    \setlength{\sc@inalign}{0cm}
+\setboolean{sc@align}{false}
+}
+
+%% Layouts should set this to true to indicate the containing cover
+%% to not use align spaces even if noalign is not used
+\newboolean{sc@layout}
+\setboolean{sc@layout}{false}
+
+%% The |nofold| option removes the folding lines on the cut-outs.
+\DeclareOption{nofold}{
+\setboolean{sc@fold}{false}
+}
+
+%% Redefines rotation degrees to rotate spine text with $180^\circ$.
+\DeclareOption{spiner}{
+    \renewcommand{\sc@spinerotone}{270}
+    \renewcommand{\sc@spinerottwo}{90}
+}
+
+%% Disables horizontal centering everywhere
+\DeclareOption{nohcenter}{
+    \renewcommand{\sc@centering}{}
+}
+
+\newcommand{\sc@spinerotone}{90}
+
+\newcommand{\sc@spinerottwo}{270}
+
+%% Boolean for indicating whether or not the folding lines need to be drawn. True value means to draw.
+\newboolean{sc@fold}
+\setboolean{sc@fold}{true}
+
+%% Boolean for indicating whether or not the default aligning is needed.
+\newboolean{sc@align}
+\setboolean{sc@align}{true}
+
+\newcommand{\sc@truestr}{t}
+
+\newcommand{\sc@falsestr}{f}
+
+\newcommand{\sc@centering}{\centering}
+
+\newcommand{\sc@unittype}{mm}
+
+\newcommand{\sc@picinit}{%
+\setlength{\unitlength}{1\sc@unittype}%
+}
+
+%% Text aligning lengths
+\newlength{\sc@jewelalign}
+\setlength{\sc@jewelalign}{15 \sc@unittype}
+\newlength{\sc@keepcasealign}
+\setlength{\sc@keepcasealign}{40 \sc@unittype}
+\newlength{\sc@inalign}
+\setlength{\sc@inalign}{30 \sc@unittype}
+
+
+%% CD jewel case dimensions
+\newcounter{sc@cdjccoverwidthdraw}
+\setcounter{sc@cdjccoverwidthdraw}{120}
+\newcounter{sc@cdjccoverheightdraw}
+\setcounter{sc@cdjccoverheightdraw}{120}
+\newcounter{sc@cdjcspinewidthdraw}
+\setcounter{sc@cdjcspinewidthdraw}{6}
+\newcounter{sc@cdjcbackheightdraw}
+\setcounter{sc@cdjcbackheightdraw}{117}
+\newcounter{sc@cdjcbackwidthdraw}
+\setcounter{sc@cdjcbackwidthdraw}{151}
+\newcounter{sc@cdjcbackinwidthdraw}
+\setcounter{sc@cdjcbackinwidthdraw}{%
+\value{sc@cdjcbackwidthdraw} - 2*\value{sc@cdjcspinewidthdraw}}
+
+%% Mini disk dimensions
+\newcounter{sc@cdLXXXjccoverwidthdraw}
+\setcounter{sc@cdLXXXjccoverwidthdraw}{80}
+\newcounter{sc@cdLXXXjccoverheightdraw}
+\setcounter{sc@cdLXXXjccoverheightdraw}{80}
+\newcounter{sc@cdLXjccoverwidthdraw}
+\setcounter{sc@cdLXjccoverwidthdraw}{60}
+\newcounter{sc@cdLXjccoverheightdraw}
+\setcounter{sc@cdLXjccoverheightdraw}{60}
+
+%% Jewelcase spine fixed text font size
+\newcommand{\sc@cdjfontsize}{15}
+
+%% DVD keepcase dimensions
+\newcounter{sc@dvdkccoverwidthdraw}
+\setcounter{sc@dvdkccoverwidthdraw}{128}
+\newcounter{sc@dvdkccoverheightdraw}
+\setcounter{sc@dvdkccoverheightdraw}{183}
+\newcounter{sc@dvdkcspinewidthdraw}
+\setcounter{sc@dvdkcspinewidthdraw}{14}
+\newcounter{sc@dvdkcinletwidthdraw}
+\setcounter{sc@dvdkcinletwidthdraw}{115}
+\newcounter{sc@dvdkcinletheightdraw}
+\setcounter{sc@dvdkcinletheightdraw}{175}
+
+\newcounter{sc@sdvdkcspinewidthdraw}
+\setcounter{sc@sdvdkcspinewidthdraw}{7}
+
+%% Blu-ray keepcase dimensions
+\newcounter{sc@brcoverheightdraw}
+\setcounter{sc@brcoverheightdraw}{149}
+\newcounter{sc@brinletwidthdraw}
+\setcounter{sc@brinletwidthdraw}{115}
+\newcounter{sc@brinletheightdraw}
+\setcounter{sc@brinletheightdraw}{140}
+
+%% Dimensions for drawing the sleeves
+\newcounter{sc@dssleeve}
+\setcounter{sc@dssleeve}{15}
+\newcounter{sc@dssleeveLXXXmm}
+\setcounter{sc@dssleeveLXXXmm}{10}
+\newcounter{sc@dssleeveLXmm}
+\setcounter{sc@dssleeveLXmm}{8}
+
+\ProcessOptions\relax
+
+%% Temporary counters for the implementation.
+\newcounter{sc@tempa}
+\newcounter{sc@tempb}
+\newcounter{sc@tempc}
+\newcounter{sc@tempd}
+\newcounter{sc@tempe}
+\newcounter{sc@tempf}
+\newcounter{sc@tempg}
+\newcounter{sc@layouttempa}
+\newcounter{sc@layouttempb}
+\newcounter{sc@layouttempc}
+\newcounter{sc@resizertempa}
+
+\newcommand{\sc@doalign}[1]{%
+\ifthenelse{\equal{#1}{} \OR \boolean{sc@layout}}{}{\ \\ \vspace{#1}}%
+\setboolean{sc@layout}{false}%
+}
+
+
+\DeclareRobustCommand{\covers}[3][\ ]{%
+    \frontcover{#2}
+
+    \vspace*{0.5cm}%
+    \backsheet[#1]{#3}%
+}
+
+\DeclareRobustCommand{\frontcover}[1]{%
+    \sc@cell{#1}{\value{sc@cdjccoverwidthdraw}}%
+{\value{sc@cdjccoverheightdraw}}%
+{\sc@jewelalign}%
+}
+
+\DeclareRobustCommand{\LXfrontcover}[1]{%
+    \sc@cell{#1}{\value{sc@cdLXjccoverwidthdraw}}%
+{\value{sc@cdLXjccoverheightdraw}}%
+{\sc@jewelalign}%
+}
+
+\DeclareRobustCommand{\LXXXfrontcover}[1]{%
+    \sc@cell{#1}{\value{sc@cdLXXXjccoverwidthdraw}}%
+{\value{sc@cdLXXXjccoverheightdraw}}%
+{\sc@jewelalign}%
+}
+
+\newcounter{sc@backsheetspinerot}
+\setcounter{sc@backsheetspinerot}{180+\sc@spinerotone}
+
+\DeclareRobustCommand{\backsheet}[2][\ ]{%
+\sc@picinit%
+\begin{picture}%
+(\value{sc@cdjcbackwidthdraw}, \value{sc@cdjcbackheightdraw})%
+\sc@choicebox{\value{sc@cdjcspinewidthdraw}}%
+{\value{sc@cdjcbackheightdraw}}%
+{\rotatebox{\sc@spinerotone}%
+{\fontsize{\sc@cdjfontsize}{36}\selectfont #2}}%
+{\sc@truestr}{\sc@truestr}{\sc@truestr}{\sc@falsestr}%
+\sc@choicebox{\value{sc@cdjcbackinwidthdraw}}%
+{\value{sc@cdjcbackheightdraw}}%
+{\parbox[c]{\value{sc@cdjcbackinwidthdraw} \sc@unittype}{%
+\sc@centering #1\sc@doalign{\sc@jewelalign}}}%
+{\sc@truestr}{\sc@truestr}{\sc@falsestr}{\sc@falsestr}%
+\sc@choicebox{\value{sc@cdjcspinewidthdraw}}%
+{\value{sc@cdjcbackheightdraw}}%
+{\rotatebox{\value{sc@backsheetspinerot}}{%
+\fontsize{\sc@cdjfontsize}{36}\selectfont #2}}%
+{\sc@truestr}{\sc@truestr}{\sc@falsestr}{\sc@truestr}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\jewelspine}[1]{%
+\sc@picinit%
+\begin{picture}%
+(\value{sc@cdjccoverheightdraw}, \value{sc@cdjcspinewidthdraw})%
+\framebox%
+(\value{sc@cdjccoverheightdraw}, \value{sc@cdjcspinewidthdraw})%
+{\fontsize{\sc@cdjfontsize}{36}\selectfont #1}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\singlesheet}[4]{%
+\sc@picinit%
+\begin{picture}(155,120)%
+\put(0,2){%
+\sc@choicebox{15}{116}%
+{\rotatebox{90}{\parbox[c]{116\sc@unittype}{\sc@centering #4}}}%
+{\sc@truestr}{\sc@truestr}{\sc@truestr}{\sc@falsestr}}%
+\put(15,2){%
+\sc@choicebox{3}{116}%
+{\rotatebox{\value{sc@backsheetspinerot}}{\fontsize{9}{36}\selectfont #3}}%
+{\sc@truestr}{\sc@truestr}{\sc@falsestr}{\sc@falsestr}}%
+\put(36,0){%
+\makebox(120,120)[c]{%
+\parbox[c]{120\sc@unittype}{%
+\sc@centering #1\sc@doalign{\sc@jewelalign}}}}%
+\put(18,2){%
+\makebox(18,120)[c]{%
+\rotatebox{270}{\parbox[c]{18\sc@unittype}{\sc@centering #2}}}}%
+\put(18,2){\line(1,0){18}}%
+\put(18,118){\line(1,0){18}}%
+\put(36,0){\line(0,1){2}}%
+\put(36,118){\line(0,1){2}}%
+\put(36,0){\line(1,0){119}}%
+\put(36,120){\line(1,0){119}}%
+\put(155,0){\line(0,1){120}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\sc@sleeve}[6][]{%
+\setcounter{sc@tempc}{#5 + 2}%
+\setcounter{sc@tempd}{#4 + 2}%
+\setcounter{sc@tempe}{\value{sc@tempc} + #3 *2}%
+\setcounter{sc@tempf}{2 * \value{sc@tempd} + #3}%
+\setcounter{sc@tempg}{2 * \value{sc@tempd}}%
+\sc@picinit%
+\begin{picture}(\value{sc@tempe}, \value{sc@tempf})%
+\put(0,\value{sc@tempd}){#6}%
+\put(#3,\value{sc@tempf}){\rotatebox{270}{#6}}%
+\put(\value{sc@tempe},\value{sc@tempg}){\rotatebox{180}{#6}}%
+\put(#3,\value{sc@tempd}){%
+\sc@choicebox{\value{sc@tempc}}{\value{sc@tempd}}{%
+\parbox[c]{\value{sc@tempc} \sc@unittype}{%
+\sc@centering #2\sc@doalign{\sc@jewelalign}}%
+}{\sc@falsestr}{\sc@falsestr}{\sc@falsestr}{\sc@falsestr}%
+}%
+\put(#3,0){%
+\sc@choicebox{\value{sc@tempc}}{\value{sc@tempd}}{%
+\rotatebox{180}{\parbox[c]{\value{sc@tempc} \sc@unittype}{%
+\sc@centering #1\sc@doalign{\sc@jewelalign}}}%
+}{\sc@truestr}{\sc@falsestr}{\sc@truestr}{\sc@truestr}%
+}%
+\end{picture}%
+}
+
+\newsavebox{\sc@sleevebox}
+\savebox{\sc@sleevebox}{%
+\sc@picinit%
+\setcounter{sc@tempa}{\value{sc@cdjccoverheightdraw} + 2}%
+\put(\value{sc@dssleeve},0){\line(-1,1){\value{sc@dssleeve}}}%
+\put(0,\value{sc@dssleeve}){\line(0,1){92}}%
+\put(\value{sc@dssleeve},\value{sc@tempa}){%
+\line(-1,-1){\value{sc@dssleeve}}}%
+}
+
+\newsavebox{\sc@sleeveboxLXmm}
+\savebox{\sc@sleeveboxLXmm}{%
+\sc@picinit%
+\setcounter{sc@tempa}{\value{sc@cdLXjccoverheightdraw} + 2}%
+\put(\value{sc@dssleeveLXmm},0)%
+{\line(-1,1){\value{sc@dssleeveLXmm}}}%
+\put(0,\value{sc@dssleeveLXmm}){\line(0,1){46}}%
+\put(\value{sc@dssleeveLXmm},\value{sc@tempa}){%
+\line(-1,-1){\value{sc@dssleeveLXmm}}}%
+}
+
+\newsavebox{\sc@sleeveboxLXXXmm}
+\savebox{\sc@sleeveboxLXXXmm}{%
+\sc@picinit%
+\setcounter{sc@tempa}{\value{sc@cdLXXXjccoverheightdraw} + 2}%
+\put(\value{sc@dssleeveLXXXmm},0)%
+{\line(-1,1){\value{sc@dssleeveLXXXmm}}}%
+\put(0,\value{sc@dssleeveLXXXmm}){\line(0,1){62}}%
+\put(\value{sc@dssleeveLXXXmm},\value{sc@tempa}){%
+\line(-1,-1){\value{sc@dssleeveLXXXmm}}}%
+}
+
+\DeclareRobustCommand{\sleeve}[2][]{%
+\sc@sleeve[#1]{#2}{\value{sc@dssleeve}}%
+{\value{sc@cdjccoverheightdraw}}%
+{\value{sc@cdjccoverwidthdraw}}%
+{\usebox{\sc@sleevebox}}%
+}
+
+\DeclareRobustCommand{\sleeveLXXX}[2][]{%
+\sc@sleeve[#1]{#2}{\value{sc@dssleeveLXXXmm}}%
+{\value{sc@cdLXXXjccoverheightdraw}}%
+{\value{sc@cdLXXXjccoverwidthdraw}}%
+{\usebox{\sc@sleeveboxLXXXmm}}%
+}
+
+\DeclareRobustCommand{\sleeveLX}[2][]{%
+\sc@sleeve[#1]{#2}{\value{sc@dssleeveLXmm}}%
+{\value{sc@cdLXjccoverheightdraw}}%
+{\value{sc@cdLXjccoverwidthdraw}}%
+{\usebox{\sc@sleeveboxLXmm}}%
+}
+
+\DeclareRobustCommand{\sleevela}[2][]{%
+\sc@picinit%
+\begin{picture}(165,248)%
+\put(13,0){\usebox{\sc@sleevebox}}%
+\put(165,122){\rotatebox{180}{\usebox{\sc@sleevebox}}}%
+\put(28,0){%
+\sc@choicebox{122}{122}{%
+\rotatebox{180}{%
+\parbox[c]{122\sc@unittype}{\sc@centering #1\sc@doalign{\sc@jewelalign}}%
+}}{\sc@truestr}{\sc@falsestr}{\sc@falsestr}{\sc@falsestr}%
+}%
+\put(28,122){%
+\sc@choicebox{122}{122}{%
+\parbox[c]{122\sc@unittype}{\sc@centering #2\sc@doalign{\sc@jewelalign}}%
+}{\sc@falsestr}{\sc@truestr}{\sc@falsestr}{\sc@truestr}%
+}%
+\put(0,122){%
+\sc@choicebox{28}{122}{}%
+{\sc@truestr}{\sc@truestr}{\sc@truestr}{\sc@falsestr}}%
+\put(14,142.5){\circle{6}}%
+\put(14,222.5){\circle{6}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\keepcase}[6][]{%
+\setcounter{sc@tempa}{2*#5 + #6 }%
+\sc@picinit%
+\begin{picture}(#4, \value{sc@tempa})%
+\rotatebox{90}{%
+\sc@choicebox{#5}{#4}{%
+\parbox[c]{#5 \sc@unittype}{%
+\sc@centering #1\sc@doalign{\sc@keepcasealign}}%
+}{\sc@truestr}{\sc@truestr}{\sc@truestr}{\sc@falsestr}%
+\sc@choicebox{#6}{#4}{%
+\rotatebox{\sc@spinerottwo}{\parbox[c]{#4 \sc@unittype}{%
+\sc@centering #3}}%
+}{\sc@truestr}{\sc@truestr}{\sc@falsestr}{\sc@falsestr}%
+\sc@choicebox{#5}{#4}{%
+\parbox[c]{#5 \sc@unittype}{%
+\sc@centering #2\sc@doalign{\sc@keepcasealign}}%
+}{\sc@truestr}{\sc@truestr}{\sc@falsestr}{\sc@truestr}%
+}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\slimdvd}[3][]{%
+    \keepcase[#1]{#2}{#3}{\value{sc@dvdkccoverheightdraw}}%
+{\value{sc@dvdkccoverwidthdraw}}%
+        {\value{sc@sdvdkcspinewidthdraw}}%
+}
+
+\DeclareRobustCommand{\dvd}[3][]{%
+    \keepcase[#1]{#2}{#3}{\value{sc@dvdkccoverheightdraw}}%
+{\value{sc@dvdkccoverwidthdraw}}%
+        {\value{sc@dvdkcspinewidthdraw}}%
+}
+
+\DeclareRobustCommand{\bluray}[3][]{%
+    \keepcase[#1]{#2}{#3}{\value{sc@brcoverheightdraw}}%
+{\value{sc@dvdkccoverwidthdraw}}%
+        {\value{sc@dvdkcspinewidthdraw}}%
+}
+
+\DeclareRobustCommand{\coverimg}[1]{%
+    \resizebox{\value{sc@cdjccoverwidthdraw} \sc@unittype}{%
+\value{sc@cdjccoverheightdraw} \sc@unittype}{#1}%
+}
+
+\DeclareRobustCommand{\backsheetimg}[1]{%
+    \resizebox{%
+\value{sc@cdjcbackwidthdraw}+\value{sc@cdjcspinewidthdraw}*2%
+\sc@unittype}%
+{\value{sc@cdjcbackheightdraw} \sc@unittype}{#1}%
+}
+
+\DeclareRobustCommand{\slimdvdimg}[1]{%
+\resizebox{\value{sc@dvdkcheightdraw} \sc@unittype}%
+{\value{sc@sdvdkccoverwidthdraw}*2+\value{sc@sdvdkcspinewidthdraw}%
+\sc@unittype}{#1}%
+}
+
+\DeclareRobustCommand{\dvdimg}[1]{%
+\resizebox{\value{sc@dvdkcheightdraw} \sc@unittype}%
+{\value{sc@dvdkccoverwidthdraw}*2+\value{sc@dvdkcspinewidthdraw}%
+\sc@unittype}{#1}%
+}
+
+\DeclareRobustCommand{\blurayimg}[1]{%
+\resizebox{\value{sc@brcoverheightdraw} \sc@unittype}%
+{\value{sc@dvdkccoverwidthdraw}*2+\value{sc@dvdkcspinewidthdraw}%
+\sc@unittype}{#1}%
+}
+
+\DeclareRobustCommand{\sc@cell}[4]{%
+\sc@picinit%
+\begin{picture}(#2,#3)%
+\framebox(#2,#3)[c]{%
+\parbox[c]{#2 \sc@unittype}{\sc@centering #1\sc@doalign{#4}}%
+}%
+\end{picture}%
+}
+
+\newcommand{\sc@choicebox}[7]{%
+\makebox(#1,#2)[c]{%
+\parbox[c]{#1 \sc@unittype}{\sc@centering #3}%
+}%
+\ifthenelse{\boolean{sc@fold} \OR \equal{#4}{\sc@truestr}}%
+{\put(-#1,0){\line(1,0){#1}}}{}%
+\ifthenelse{\boolean{sc@fold} \OR \equal{#5}{\sc@truestr}}%
+{\put(-#1,#2){\line(1,0){#1}}}{}%
+\ifthenelse{\boolean{sc@fold} \OR \equal{#6}{\sc@truestr}}%
+{\put(-#1,0){\line(0,1){#2}}}{}%
+\ifthenelse{\boolean{sc@fold} \OR \equal{#7}{\sc@truestr}}%
+{\put(0,0){\line(0,1){#2}}}{}%
+}
+
+\DeclareRobustCommand{\inlay}[3]{%
+\sc@cell{#1}{#2}{#3}{\sc@inalign}%
+}
+
+\DeclareRobustCommand{\dvdinlay}[1]{%
+\inlay{#1}{\value{sc@dvdkcinletwidthdraw}}%
+{\value{sc@dvdkcinletheightdraw}}%
+}
+
+\DeclareRobustCommand{\blurayinlay}[1]{%
+\inlay{#1}{\value{sc@brinletwidthdraw}}%
+{\value{sc@brinletheightdraw}}%
+}
+
+\DeclareRobustCommand{\djewel}[2]{%
+\setcounter{sc@tempa}{2 * \value{sc@cdjccoverwidthdraw}}%
+\sc@picinit%
+\begin{picture}(\value{sc@cdjccoverheightdraw}, \value{sc@tempa})%
+\rotatebox{90}{%
+\sc@choicebox{\value{sc@cdjccoverwidthdraw}}%
+{\value{sc@cdjccoverheightdraw}}{%
+\parbox[c]{\value{sc@cdjccoverwidthdraw} \sc@unittype}{%
+\sc@centering #2\sc@doalign{\sc@jewelalign}}%
+}{\sc@truestr}{\sc@truestr}{\sc@truestr}{\sc@falsestr}%
+\sc@choicebox{\value{sc@cdjccoverwidthdraw}}%
+{\value{sc@cdjccoverheightdraw}}{%
+\parbox[c]{\value{sc@cdjccoverwidthdraw} \sc@unittype}{%
+\sc@centering #1\sc@doalign{\sc@jewelalign}}%
+}{\sc@truestr}{\sc@truestr}{\sc@falsestr}{\sc@truestr}%
+}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\floppyIIIV}[2]{%
+\sc@picinit%
+\begin{picture}(70,69.5)%
+\put(-2,66.5){\qbezier(3, 3)(2, 3)(2, 2)}%
+\put(1,69.5){\line(1,0){68}}%
+\put(66,66.5){\qbezier(4, 2)(4, 3)(3, 3)}%
+\put(0,56.5){%
+\makebox(70,13)[c]{\rotatebox{180}{\parbox[c]{70mm}{\sc@centering #2}}}}%
+\put(0,54){\sc@choicebox{70}{2.5}{}%
+{\sc@falsestr}{\sc@falsestr}{\sc@truestr}{\sc@truestr}}%
+\put(0,0){\makebox(70,54)[c]{\parbox[c]{70mm}{\sc@centering #1}}}%
+\put(0,1){\line(0,1){67.5}}%
+\put(70,1){\line(0,1){67.5}}%
+\put(1,0){\line(1,0){68}}%
+\put(-2,-1){\qbezier(2, 2)(2, 1)(3, 1)}%
+\put(66,-1){\qbezier(3, 1)(4, 1)(4, 2)}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\zipdisk}[2]{%
+\sc@picinit%
+\begin{picture}(98,120)%
+\put(0,20){\makebox(98,100)[c]{\parbox[c]{98\sc@unittype}{\sc@centering #1}}}%
+\put(0,13){\sc@choicebox{98}{7}{}%
+{\sc@falsestr}{\sc@falsestr}{\sc@truestr}{\sc@truestr}}%
+\put(0,0){%
+\makebox(98,13)[c]{%
+\rotatebox{180}{\parbox[c]{98\sc@unittype}{\sc@centering #2}}}}%
+\put(0,0){\framebox(98,120){}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\zipdiskII}[1]{%
+\sc@cell{#1}{60}{51}{}%
+}
+
+\DeclareRobustCommand{\disk}[1]{%
+\sc@picinit%
+\begin{picture}(120,120)%
+\qbezier(120.0, 60.0)(120.0, 84.8528)(102.4264, 102.4264)%
+\qbezier(102.4264, 102.4264)(84.8528, 120.0)(60.0, 120.0)%
+\qbezier(60.0, 120.0)(35.1472, 120.0)(17.5736, 102.4264)%
+\qbezier(17.5736, 102.4264)(0.0, 84.8528)(0.0, 60.0)%
+\qbezier(0.0, 60.0)(0.0, 35.1472)(17.5736, 17.5736)%
+\qbezier(17.5736, 17.5736)(35.1472, 0.0)(60.0, 0.0)%
+\qbezier(60.0, 0.0)(84.8528, 0.0)(102.4264, 17.5736)%
+\qbezier(102.4264, 17.5736)(120.0, 35.1472)(120.0, 60.0)%
+\qbezier(118.0, 60.0)(118.0, 84.0244)(101.0122, 101.0122)%
+\qbezier(101.0122, 101.0122)(84.0244, 118.0)(60.0, 118.0)%
+\qbezier(60.0, 118.0)(35.9756, 118.0)(18.9878, 101.0122)%
+\qbezier(18.9878, 101.0122)(2.0, 84.0244)(2.0, 60.0)%
+\qbezier(2.0, 60.0)(2.0, 35.9756)(18.9878, 18.9878)%
+\qbezier(18.9878, 18.9878)(35.9756, 2.0)(60.0, 2.0)%
+\qbezier(60.0, 2.0)(84.0244, 2.0)(101.0122, 18.9878)%
+\qbezier(101.0122, 18.9878)(118.0, 35.9756)(118.0, 60.0)%
+\qbezier(83.0, 60.0)(83.0, 69.5269)(76.2635, 76.2635)%
+\qbezier(76.2635, 76.2635)(69.5269, 83.0)(60.0, 83.0)%
+\qbezier(60.0, 83.0)(50.4731, 83.0)(43.7365, 76.2635)%
+\qbezier(43.7365, 76.2635)(37.0, 69.5269)(37.0, 60.0)%
+\qbezier(37.0, 60.0)(37.0, 50.4731)(43.7365, 43.7365)%
+\qbezier(43.7365, 43.7365)(50.4731, 37.0)(60.0, 37.0)%
+\qbezier(60.0, 37.0)(69.5269, 37.0)(76.2635, 43.7365)%
+\qbezier(76.2635, 43.7365)(83.0, 50.4731)(83.0, 60.0)%
+\qbezier(71.5, 60.0)(71.5, 64.7635)(68.1317, 68.1317)%
+\qbezier(68.1317, 68.1317)(64.7635, 71.5)(60.0, 71.5)%
+\qbezier(60.0, 71.5)(55.2365, 71.5)(51.8683, 68.1317)%
+\qbezier(51.8683, 68.1317)(48.5, 64.7635)(48.5, 60.0)%
+\qbezier(48.5, 60.0)(48.5, 55.2365)(51.8683, 51.8683)%
+\qbezier(51.8683, 51.8683)(55.2365, 48.5)(60.0, 48.5)%
+\qbezier(60.0, 48.5)(64.7635, 48.5)(68.1317, 51.8683)%
+\qbezier(68.1317, 51.8683)(71.5, 55.2365)(71.5, 60.0)%
+\qbezier(67.5, 60.0)(67.5, 63.1066)(65.3033, 65.3033)%
+\qbezier(65.3033, 65.3033)(63.1066, 67.5)(60.0, 67.5)%
+\qbezier(60.0, 67.5)(56.8934, 67.5)(54.6967, 65.3033)%
+\qbezier(54.6967, 65.3033)(52.5, 63.1066)(52.5, 60.0)%
+\qbezier(52.5, 60.0)(52.5, 56.8934)(54.6967, 54.6967)%
+\qbezier(54.6967, 54.6967)(56.8934, 52.5)(60.0, 52.5)%
+\qbezier(60.0, 52.5)(63.1066, 52.5)(65.3033, 54.6967)%
+\qbezier(65.3033, 54.6967)(67.5, 56.8934)(67.5, 60.0)%
+\put(0,0){%
+\makebox(120,120)[c]{%
+\parbox[c]{120\sc@unittype}{\sc@centering #1}%
+}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\emptydisk}[1]{%
+\sc@picinit%
+\begin{picture}(120,120)%
+\qbezier(120.0, 60.0)(120.0, 84.8528)(102.4264, 102.4264)%
+\qbezier(102.4264, 102.4264)(84.8528, 120.0)(60.0, 120.0)%
+\qbezier(60.0, 120.0)(35.1472, 120.0)(17.5736, 102.4264)%
+\qbezier(17.5736, 102.4264)(0.0, 84.8528)(0.0, 60.0)%
+\qbezier(0.0, 60.0)(0.0, 35.1472)(17.5736, 17.5736)%
+\qbezier(17.5736, 17.5736)(35.1472, 0.0)(60.0, 0.0)%
+\qbezier(60.0, 0.0)(84.8528, 0.0)(102.4264, 17.5736)%
+\qbezier(102.4264, 17.5736)(120.0, 35.1472)(120.0, 60.0)%
+\qbezier(67.5, 60.0)(67.5, 63.1066)(65.3033, 65.3033)%
+\qbezier(65.3033, 65.3033)(63.1066, 67.5)(60.0, 67.5)%
+\qbezier(60.0, 67.5)(56.8934, 67.5)(54.6967, 65.3033)%
+\qbezier(54.6967, 65.3033)(52.5, 63.1066)(52.5, 60.0)%
+\qbezier(52.5, 60.0)(52.5, 56.8934)(54.6967, 54.6967)%
+\qbezier(54.6967, 54.6967)(56.8934, 52.5)(60.0, 52.5)%
+\qbezier(60.0, 52.5)(63.1066, 52.5)(65.3033, 54.6967)%
+\qbezier(65.3033, 54.6967)(67.5, 56.8934)(67.5, 60.0)%
+\put(0,0){%
+\makebox(120,120)[c]{%
+\parbox[c]{120\sc@unittype}{\sc@centering #1}%
+}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\cdrdisk}[1]{%
+\sc@picinit%
+\begin{picture}(116, 116)%
+\qbezier(116.0, 58.0)(116.0, 82.0244)(99.0122, 99.0122)%
+\qbezier(99.0122, 99.0122)(82.0244, 116.0)(58.0, 116.0)%
+\qbezier(58.0, 116.0)(33.9756, 116.0)(16.9878, 99.0122)%
+\qbezier(16.9878, 99.0122)(0.0, 82.0244)(0.0, 58.0)%
+\qbezier(0.0, 58.0)(0.0, 33.9756)(16.9878, 16.9878)%
+\qbezier(16.9878, 16.9878)(33.9756, 0.0)(58.0, 0.0)%
+\qbezier(58.0, 0.0)(82.0244, 0.0)(99.0122, 16.9878)%
+\qbezier(99.0122, 16.9878)(116.0, 33.9756)(116.0, 58.0)%
+\qbezier(77.0, 58.0)(77.0, 65.8701)(71.435, 71.435)%
+\qbezier(71.435, 71.435)(65.8701, 77.0)(58.0, 77.0)%
+\qbezier(58.0, 77.0)(50.1299, 77.0)(44.565, 71.435)%
+\qbezier(44.565, 71.435)(39.0, 65.8701)(39.0, 58.0)%
+\qbezier(39.0, 58.0)(39.0, 50.1299)(44.565, 44.565)%
+\qbezier(44.565, 44.565)(50.1299, 39.0)(58.0, 39.0)%
+\qbezier(58.0, 39.0)(65.8701, 39.0)(71.435, 44.565)%
+\qbezier(71.435, 44.565)(77.0, 50.1299)(77.0, 58.0)%
+\put(0,0){%
+\makebox(116,116)[c]{%
+\parbox[c]{116\sc@unittype}{\sc@centering #1}%
+}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\cddvddisk}[1]{%
+\sc@picinit%
+\begin{picture}(117, 117)%
+\qbezier(117.0, 58.5)(117.0, 82.7315)(99.8657, 99.8657)%
+\qbezier(99.8657, 99.8657)(82.7315, 117.0)(58.5, 117.0)%
+\qbezier(58.5, 117.0)(34.2685, 117.0)(17.1343, 99.8657)%
+\qbezier(17.1343, 99.8657)(0.0, 82.7315)(0.0, 58.5)%
+\qbezier(0.0, 58.5)(0.0, 34.2685)(17.1343, 17.1343)%
+\qbezier(17.1343, 17.1343)(34.2685, 0.0)(58.5, 0.0)%
+\qbezier(58.5, 0.0)(82.7315, 0.0)(99.8657, 17.1343)%
+\qbezier(99.8657, 17.1343)(117.0, 34.2685)(117.0, 58.5)%
+\qbezier(69.75, 58.5)(69.75, 63.1599)(66.455, 66.455)%
+\qbezier(66.455, 66.455)(63.1599, 69.75)(58.5, 69.75)%
+\qbezier(58.5, 69.75)(53.8401, 69.75)(50.545, 66.455)%
+\qbezier(50.545, 66.455)(47.25, 63.1599)(47.25, 58.5)%
+\qbezier(47.25, 58.5)(47.25, 53.8401)(50.545, 50.545)%
+\qbezier(50.545, 50.545)(53.8401, 47.25)(58.5, 47.25)%
+\qbezier(58.5, 47.25)(63.1599, 47.25)(66.455, 50.545)%
+\qbezier(66.455, 50.545)(69.75, 53.8401)(69.75, 58.5)%
+\put(0,0){%
+\makebox(117,117)[c]{%
+\parbox[c]{117\sc@unittype}{\sc@centering #1}%
+}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\LXXXdisk}[1]{%
+\sc@picinit%
+\begin{picture}(76, 76)%
+\qbezier(76.0, 38.0)(76.0, 53.7401)(64.8701, 64.8701)%
+\qbezier(64.8701, 64.8701)(53.7401, 76.0)(38.0, 76.0)%
+\qbezier(38.0, 76.0)(22.2599, 76.0)(11.1299, 64.8701)%
+\qbezier(11.1299, 64.8701)(0.0, 53.7401)(0.0, 38.0)%
+\qbezier(0.0, 38.0)(0.0, 22.2599)(11.1299, 11.1299)%
+\qbezier(11.1299, 11.1299)(22.2599, 0.0)(38.0, 0.0)%
+\qbezier(38.0, 0.0)(53.7401, 0.0)(64.8701, 11.1299)%
+\qbezier(64.8701, 11.1299)(76.0, 22.2599)(76.0, 38.0)%
+\qbezier(47.0, 38.0)(47.0, 41.7279)(44.364, 44.364)%
+\qbezier(44.364, 44.364)(41.7279, 47.0)(38.0, 47.0)%
+\qbezier(38.0, 47.0)(34.2721, 47.0)(31.636, 44.364)%
+\qbezier(31.636, 44.364)(29.0, 41.7279)(29.0, 38.0)%
+\qbezier(29.0, 38.0)(29.0, 34.2721)(31.636, 31.636)%
+\qbezier(31.636, 31.636)(34.2721, 29.0)(38.0, 29.0)%
+\qbezier(38.0, 29.0)(41.7279, 29.0)(44.364, 31.636)%
+\qbezier(44.364, 31.636)(47.0, 34.2721)(47.0, 38.0)%
+\put(0,0){%
+\makebox(76,76)[c]{%
+\parbox[c]{76\sc@unittype}{\sc@centering #1}%
+}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\vhsfront}[1]{%
+\sc@cell{#1}{76}{44}{}%
+}
+
+\DeclareRobustCommand{\vhsspine}[1]{%
+\sc@cell{#1}{145}{17}{}%
+}
+
+\DeclareRobustCommand{\CCCvhscover}[3]{%
+\keepcase[#3]{#1}{#2}{197}{115}{27}%
+}
+
+\DeclareRobustCommand{\CCCCvhscover}[3]{%
+\keepcase[#3]{#1}{#2}{210}{134.5}{27}%
+}
+
+\DeclareRobustCommand{\cassettecover}[1]{%
+\sc@picinit%
+\begin{picture}(88,39)%
+\qbezier(22.0, 24.0)(18.8934, 24.0)(16.6967, 21.8033)%
+\qbezier(16.6967, 21.8033)(14.5, 19.6066)(14.5, 16.5)%
+\qbezier(14.5, 16.5)(14.5, 13.3934)(16.6967, 11.1967)%
+\qbezier(16.6967, 11.1967)(18.8934, 9.0)(22.0, 9.0)%
+\qbezier(73.5, 16.5)(73.5, 19.6066)(71.3033, 21.8033)%
+\qbezier(71.3033, 21.8033)(69.1066, 24.0)(66.0, 24.0)%
+\qbezier(66.0, 9.0)(69.1066, 9.0)(71.3033, 11.1967)%
+\qbezier(71.3033, 11.1967)(73.5, 13.3934)(73.5, 16.5)%
+\put(22,9){\line(1,0){44}}%
+\put(22,24){\line(1,0){44}}%
+\framebox(88,39)[c]{\parbox[c]{88\sc@unittype}{\sc@centering #1}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\cassetteinlay}[3]{%
+\sc@picinit%
+\begin{picture}(102,104)%
+\put(0,38){%
+\sc@choicebox{102}{66}{\parbox[c]{102\sc@unittype}{\sc@centering #1}}%
+{\sc@falsestr}{\sc@truestr}{\sc@truestr}{\sc@truestr}}%
+\put(0,25){%
+\sc@choicebox{102}{13}{\parbox[c]{102\sc@unittype}{\sc@centering #2}}%
+{\sc@falsestr}{\sc@falsestr}{\sc@truestr}{\sc@truestr}}%
+\put(0,0){%
+\sc@choicebox{102}{25}{\parbox[c]{102\sc@unittype}{\sc@centering #3}}%
+{\sc@truestr}{\sc@falsestr}{\sc@truestr}{\sc@truestr}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\vinylcdcover}[1]{%
+\sc@picinit%
+\begin{picture}(65,65)%
+\qbezier(65.0, 32.5)(65.0, 45.9619)(55.481, 55.481)%
+\qbezier(55.481, 55.481)(45.9619, 65.0)(32.5, 65.0)%
+\qbezier(32.5, 65.0)(19.0381, 65.0)(9.519, 55.481)%
+\qbezier(9.519, 55.481)(0.0, 45.9619)(0.0, 32.5)%
+\qbezier(0.0, 32.5)(0.0, 19.0381)(9.519, 9.519)%
+\qbezier(9.519, 9.519)(19.0381, 0.0)(32.5, 0.0)%
+\qbezier(32.5, 0.0)(45.9619, 0.0)(55.481, 9.519)%
+\qbezier(55.481, 9.519)(65.0, 19.0381)(65.0, 32.5)%
+\qbezier(40.85, 32.5)(40.85, 35.9587)(38.4043, 38.4043)%
+\qbezier(38.4043, 38.4043)(35.9587, 40.85)(32.5, 40.85)%
+\qbezier(32.5, 40.85)(29.0413, 40.85)(26.5957, 38.4043)%
+\qbezier(26.5957, 38.4043)(24.15, 35.9587)(24.15, 32.5)%
+\qbezier(24.15, 32.5)(24.15, 29.0413)(26.5957, 26.5957)%
+\qbezier(26.5957, 26.5957)(29.0413, 24.15)(32.5, 24.15)%
+\qbezier(32.5, 24.15)(35.9587, 24.15)(38.4043, 26.5957)%
+\qbezier(38.4043, 26.5957)(40.85, 29.0413)(40.85, 32.5)%
+\put(0,0){%
+\makebox(65,65)[c]{\parbox[c]{65\sc@unittype}{\sc@centering #1}}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\recordcover}[1]{%
+\sc@picinit%
+\begin{picture}(99,99)%
+\qbezier(99.0, 49.5)(99.0, 70.0036)(84.5018, 84.5018)%
+\qbezier(84.5018, 84.5018)(70.0036, 99.0)(49.5, 99.0)%
+\qbezier(49.5, 99.0)(28.9964, 99.0)(14.4982, 84.5018)%
+\qbezier(14.4982, 84.5018)(0.0, 70.0036)(0.0, 49.5)%
+\qbezier(0.0, 49.5)(0.0, 28.9964)(14.4982, 14.4982)%
+\qbezier(14.4982, 14.4982)(28.9964, 0.0)(49.5, 0.0)%
+\qbezier(49.5, 0.0)(70.0036, 0.0)(84.5018, 14.4982)%
+\qbezier(84.5018, 14.4982)(99.0, 28.9964)(99.0, 49.5)%
+\qbezier(53.5, 49.5)(53.5, 51.1569)(52.3284, 52.3284)%
+\qbezier(52.3284, 52.3284)(51.1569, 53.5)(49.5, 53.5)%
+\qbezier(49.5, 53.5)(47.8431, 53.5)(46.6716, 52.3284)%
+\qbezier(46.6716, 52.3284)(45.5, 51.1569)(45.5, 49.5)%
+\qbezier(45.5, 49.5)(45.5, 47.8431)(46.6716, 46.6716)%
+\qbezier(46.6716, 46.6716)(47.8431, 45.5)(49.5, 45.5)%
+\qbezier(49.5, 45.5)(51.1569, 45.5)(52.3284, 46.6716)%
+\qbezier(52.3284, 46.6716)(53.5, 47.8431)(53.5, 49.5)%
+\put(0,0){%
+\makebox(99,99)[c]{\parbox[c]{99\sc@unittype}{\sc@centering #1}}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\sc@jewelemptyl}[3]{%
+\setboolean{sc@layout}{true}%
+\setcounter{sc@layouttempa}{#2 - 10}%
+\setcounter{sc@layouttempb}{#3 - 10}%
+\sc@picinit%
+\begin{picture}(\value{sc@layouttempa}, \value{sc@layouttempb})%
+\framebox(\value{sc@layouttempa}, \value{sc@layouttempb})[c]{#1}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\jewellempty}[1]{%
+\setcounter{sc@layouttempa}{\value{sc@cdjccoverwidthdraw} - 10}%
+\setcounter{sc@layouttempb}{\value{sc@cdjccoverheightdraw} - 10}%
+\sc@jewelemptyl{
+\makebox(\value{sc@layouttempa},\value{sc@layouttempb})[c]{%
+\parbox[c]{\value{sc@layouttempa} \sc@unittype}{\sc@centering #1}}}%
+{\value{sc@cdjccoverwidthdraw}}%
+{\value{sc@cdjccoverheightdraw}}%
+}
+
+\DeclareRobustCommand{\jeweldriverlempty}[7]{%
+\sc@jewelemptyl{%
+\put(0,80){%
+\framebox(110,30){\parbox[c]{110mm}{\sc@centering\scalebox{4.5}{#1}}}}%
+\put(0,60){\framebox(110,20){\parbox[c]{110mm}{\sc@centering\huge #2}}}%
+\put(0,50){\framebox(55,10){\parbox[c]{55mm}{\sc@centering #3}}}%
+\put(0,40){\framebox(55,10){\parbox[c]{55mm}{\sc@centering #4}}}%
+\put(0,30){\framebox(55,10){\parbox[c]{55mm}{\sc@centering #5}}}%
+\put(55,30){\framebox(55,30)[t]{%
+\parbox[c]{4cm}{%
+\vspace{0.5cm}%
+\setlength{\baselineskip}{1.5\baselineskip} #6%
+}%
+}}%
+\put(0,0){\framebox(110,30)[t]{%
+\parbox[c]{10.5cm}{\vspace{0.5cm} #7}%
+}}}%
+{\value{sc@cdjccoverwidthdraw}}%
+{\value{sc@cdjccoverheightdraw}}%
+}
+
+\DeclareRobustCommand{\jeweldriverl}[7]{%
+\jeweldriverlempty{#1}{#2}{Acquisition date: #3}{Serial: #4}%
+{Disk version/ID: #5}{#6}{#7}%
+}
+
+\DeclareRobustCommand{\jewelmusiclempty}[4]{%
+\sc@jewelemptyl{%
+\put(0,60){%
+\makebox(110,40)[c]{\parbox[c]{110mm}{\sc@centering\scalebox{4}{#1}}}}%
+\put(0,60){\makebox(110,10)[c]{\parbox[c]{110mm}{\sc@centering\Large #2}}}%
+\put(0,15){\makebox(110,20)[c]{\parbox[c]{110mm}{\sc@centering\Large #4}}}%
+\put(0,10){\makebox(110,10)[c]{\parbox[c]{110mm}{\sc@centering\Large #3}}}%
+}%
+{\value{sc@cdjccoverwidthdraw}}%
+{\value{sc@cdjccoverheightdraw}}%
+}
+
+\DeclareRobustCommand{\sc@jewelbackemptyl}[2]{%
+\setboolean{sc@layout}{true}%
+\setcounter{sc@layouttempa}{\value{sc@cdjcbackinwidthdraw} - 10}%
+\setcounter{sc@layouttempb}{\value{sc@cdjcbackheightdraw} - 10}%
+\sc@picinit%
+\begin{picture}(\value{sc@layouttempa}, \value{sc@layouttempb})%
+\csname#2\endcsname(\value{sc@layouttempa}, \value{sc@layouttempb})[c]{#1}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\jewelbacklempty}[1]{%
+\setcounter{sc@layouttempa}{\value{sc@cdjcbackinwidthdraw} - 10}%
+\setcounter{sc@layouttempb}{\value{sc@cdjcbackheightdraw} - 10}%
+\sc@jewelbackemptyl{%
+\parbox[c]{\value{sc@layouttempa} \sc@unittype}{\sc@centering #1}}{framebox}%
+}
+
+\DeclareRobustCommand{\jewelbackIIlempty}[1]{%
+\setcounter{sc@layouttempa}{\value{sc@cdjcbackinwidthdraw} - 10}%
+\setcounter{sc@layouttempb}{\value{sc@cdjcbackheightdraw} - 10}%
+\sc@jewelbackemptyl{%
+\parbox[c]{\value{sc@layouttempa} \sc@unittype}{#1}}{makebox}%
+}
+
+\DeclareRobustCommand{\LXlempty}[1]{%
+\setboolean{sc@layout}{true}%
+\setcounter{sc@resizertempa}{\value{sc@cdLXjccoverwidthdraw} - 10}%
+\resizebox{\value{sc@resizertempa}\sc@unittype}{!}{%
+\sc@jewelemptyl{%
+\parbox[c]{\value{sc@resizertempa} \sc@unittype}{\sc@centering #1}}%
+{\value{sc@cdLXjccoverwidthdraw}}%
+{\value{sc@cdLXjccoverheightdraw}}}%
+}
+
+\DeclareRobustCommand{\LXXXlempty}[1]{%
+\setboolean{sc@layout}{true}%
+\setcounter{sc@resizertempa}{\value{sc@cdLXXXjccoverwidthdraw} - 10}%
+\resizebox{\value{sc@resizertempa}\sc@unittype}{!}{%
+\sc@jewelemptyl{%
+\parbox[c]{\value{sc@resizertempa} \sc@unittype}{\sc@centering #1}}%
+{\value{sc@cdLXXXjccoverwidthdraw}}%
+{\value{sc@cdLXXXjccoverheightdraw}}}%
+}
+
+\DeclareRobustCommand{\LXdriverlempty}[7]{%
+\setboolean{sc@layout}{true}%
+\setcounter{sc@resizertempa}{\value{sc@cdLXjccoverheightdraw} - 10}%
+\resizebox{\value{sc@resizertempa}\sc@unittype}{!}{%
+\jeweldriverlempty{#1}{#2}{#3}{#4}{#5}{#6}{#7}}%
+}
+
+\DeclareRobustCommand{\LXXXdriverlempty}[7]{%
+\setboolean{sc@layout}{true}%
+\setcounter{sc@resizertempa}{\value{sc@cdLXXXjccoverheightdraw} - 10}%
+\resizebox{\value{sc@resizertempa}\sc@unittype}{!}{%
+\jeweldriverlempty{#1}{#2}{#3}{#4}{#5}{#6}{#7}}%
+}
+
+\DeclareRobustCommand{\LXdriverl}[7]{%
+\LXdriverlempty{#1}{#2}{Acquisition date: #3}{Serial: #4}%
+{Disk version/ID: #5}{#6}{#7}%
+}
+
+\DeclareRobustCommand{\LXXXdriverl}[7]{%
+\LXXXdriverlempty{#1}{#2}{Acquisition date: #3}{Serial: #4}%
+{Disk version/ID: #5}{#6}{#7}%
+}
+
+\DeclareRobustCommand{\jewelstripeslempty}[3]{%
+\setboolean{sc@layout}{true}%
+\sc@picinit%
+\begin{picture}%
+(\value{sc@cdjccoverwidthdraw},\value{sc@cdjccoverheightdraw})%
+\put(0,75){\line(1,0){120}}%
+\put(0,45){\line(1,0){120}}%
+\put(0,45){\makebox(\value{sc@cdjccoverwidthdraw},30)[c]%
+{\parbox[c]{\value{sc@cdjccoverwidthdraw}\sc@unittype}{\sc@centering #1}}}%
+\ifthenelse{\equal{#2}{}}{}{%
+\put(62,117.5){\rotatebox{-40}{%
+\put(13.5,15){\line(1,0){49.8}}%
+\put(2.2,5){\line(1,0){69.8}}%
+\put(5,5){\makebox(60,10)[c]{\parbox[c]{50mm}{\sc@centering #2}}}}}}%
+\ifthenelse{\equal{#3}{}}{}{%
+\put(-5,29.5){\rotatebox{-40}{%
+\put(-6,15){\line(1,0){69.8}}%
+\put(2.2,5){\line(1,0){49.8}}%
+\put(0,5){\makebox(60,10)[c]{\parbox[c]{50mm}{\sc@centering #3}}}}}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\jewelgamelempty}[7]{%
+\sc@jewelemptyl{%
+\put(0,70){%
+\framebox(110,40){\parbox[c]{110mm}{\sc@centering\scalebox{3}{#1}}}}%
+\put(0,60){\framebox(55,10){\parbox[c]{55mm}{\sc@centering #2}}}%
+\put(55,60){\framebox(55,10){\parbox[c]{55mm}{\sc@centering #3}}}%
+\put(0,50){\framebox(55,10){\parbox[c]{55mm}{\sc@centering #4}}}%
+\put(55,50){\framebox(55,10){\parbox[c]{55mm}{\sc@centering #5}}}%
+\put(0,40){\framebox(110,10){\parbox[c]{110mm}{\sc@centering #6}}}%%
+\put(0,0){\framebox(110,40)[t]{%
+\parbox[c]{105mm}{\vspace{5mm} #7}%
+}}}%
+{\value{sc@cdjccoverwidthdraw}}%
+{\value{sc@cdjccoverheightdraw}}%
+}
+
+\DeclareRobustCommand{\jewelgamel}[7]{%
+\jewelgamelempty{#1}{Released: #2}{Genre(s): #3}{Developer: #4}%
+{Publisher: #5}{Serial: #6}{#7}%
+}
+
+\DeclareRobustCommand{\jewelflaglempty}[3]{%
+\sc@jewelemptyl{%
+\put(0,73.33){%
+\framebox(110,36.66){\parbox[c]{110mm}{\sc@centering #1}}}%
+\put(0,36.66){\framebox(110,36.66){\parbox[c]{110mm}{\sc@centering #2}}}%
+\put(0,0){\framebox(110,36.66){\parbox[c]{110mm}{\sc@centering #3}}}%
+}%
+{\value{sc@cdjccoverwidthdraw}}%
+{\value{sc@cdjccoverheightdraw}}%
+}
+
+\DeclareRobustCommand{\jewellineslempty}[1]{%
+\setboolean{sc@layout}{true}%
+\sc@picinit%
+\begin{picture}%
+(\value{sc@cdjccoverwidthdraw},\value{sc@cdjccoverheightdraw})%
+\put(5,110){\line(1,0){110}}%
+\put(5,100){\line(1,0){110}}%
+\put(5,90){\line(1,0){110}}%
+\put(5,80){\line(1,0){110}}%
+\put(5,70){\line(1,0){110}}%
+\put(5,60){\line(1,0){110}}%
+\put(5,50){\line(1,0){110}}%
+\put(5,40){\line(1,0){110}}%
+\put(5,30){\line(1,0){110}}%
+\put(5,20){\line(1,0){110}}%
+\put(5,10){\line(1,0){110}}%
+\put(5,10){%
+\makebox(110,110){%
+\parbox[c]{110mm}{\sc@centering \setlength\baselineskip{1cm} #1}}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\jeweltitledlempty}[2]{%
+\setboolean{sc@layout}{true}%
+\sc@picinit%
+\begin{picture}(\value{sc@cdjccoverwidthdraw}, \value{sc@cdjccoverheightdraw})
+\put(5,100){%
+\makebox(110,20){\parbox[c]{110mm}{\sc@centering\huge #1}}}%
+\put(5,0){\makebox(110,100){\parbox[c]{110mm}{#2}}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\dvdmovielempty}[8]{%
+\setboolean{sc@layout}{true}%
+\setcounter{sc@layouttempa}{\value{sc@dvdkccoverwidthdraw} - 10}%
+\setcounter{sc@layouttempb}{\value{sc@dvdkccoverheightdraw} - 10}%
+\sc@picinit%
+\begin{picture}(\value{sc@layouttempa}, \value{sc@layouttempb})%
+\put(0,140){%
+\framebox(118,33)[c]{\parbox[c]{110mm}{\sc@centering\scalebox{3}{#1}}}}%
+\put(0,120){%
+\framebox(118,20)[c]{\parbox[c]{110mm}{\sc@centering\huge #2}}}%
+\put(0,110){\framebox(59,10)[c]{\parbox[c]{50mm}{\sc@centering #3}}}%
+\put(0,100){\framebox(59,10)[c]{\parbox[c]{50mm}{#4}}}%
+\put(0,70){\framebox(59,30)[c]{\parbox[c]{50mm}{#5}}}%
+\put(0,40){\framebox(59,30)[c]{\parbox[c]{50mm}{#6}}}%
+\put(59,40){\framebox(59,80)[c]{\parbox[c]{50mm}{#7}}}%
+\put(0,0){\framebox(118,40)[t]{\parbox[c]{108mm}{\vspace{0.5cm} #8}}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\dvdmoviel}[8]{%
+\dvdmovielempty{#1}{#2}{Released: #3}{Directed by: #4}%
+{\underline{Spoken languages:} \\ #5}%
+{\underline{Subtitles:} \\ #6}{\underline{Starring:} \\ #7}{#8}%
+}
+
+\DeclareRobustCommand{\dvdlempty}[1]{%
+\setboolean{sc@layout}{true}%
+\setcounter{sc@layouttempa}{\value{sc@dvdkccoverwidthdraw} - 10}%
+\setcounter{sc@layouttempb}{\value{sc@dvdkccoverheightdraw} - 10}%
+\sc@picinit%
+\begin{picture}(\value{sc@layouttempa}, \value{sc@layouttempb})%
+\put(0,0){%
+\framebox(\value{sc@layouttempa}, \value{sc@layouttempb})[c]{%
+\parbox[c]{\value{sc@layouttempa}\sc@unittype}{\sc@centering #1}}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\bluraymovielempty}[8]{%
+\setboolean{sc@layout}{true}%
+\setcounter{sc@layouttempa}{\value{sc@dvdkccoverwidthdraw} - 10}%
+\setcounter{sc@layouttempb}{\value{sc@brcoverheightdraw} - 10}%
+\sc@picinit%
+\begin{picture}(\value{sc@layouttempa}, \value{sc@layouttempb})%
+\put(0,120){%
+\framebox(118,20)[c]{\parbox[c]{110mm}{\sc@centering\scalebox{3}{#1}}}}%
+\put(0,105){%
+\framebox(118,15)[c]{\parbox[c]{110mm}{\sc@centering\huge #2}}}%
+\put(0,95){\framebox(59,10)[c]{\parbox[c]{50mm}{\sc@centering #3}}}%
+\put(0,85){\framebox(59,10)[c]{\parbox[c]{50mm}{#4}}}%
+\put(0,55){\framebox(59,30)[c]{\parbox[c]{50mm}{#5}}}%
+\put(0,25){\framebox(59,30)[c]{\parbox[c]{50mm}{#6}}}%
+\put(59,25){\framebox(59,80)[c]{\parbox[c]{50mm}{#7}}}%
+\put(0,0){\framebox(118,25)[t]{\parbox[c]{108mm}{\vspace{0.5cm} #8}}}%
+\end{picture}%
+}
+
+\DeclareRobustCommand{\bluraymoviel}[8]{%
+\bluraymovielempty{#1}{#2}{Released: #3}{Directed by: #4}%
+{\underline{Spoken languages:} \\ #5}%
+{\underline{Subtitles:} \\ #6}{\underline{Starring:} \\ #7}{#8}%
+}
+
+\DeclareRobustCommand{\bluraylempty}[1]{%
+\setboolean{sc@layout}{true}%
+\setcounter{sc@layouttempa}{\value{sc@dvdkccoverwidthdraw} - 10}%
+\setcounter{sc@layouttempb}{\value{sc@brcoverheightdraw} - 10}%
+\sc@picinit%
+\begin{picture}(\value{sc@layouttempa}, \value{sc@layouttempb})%
+\put(0,0){%
+\framebox(\value{sc@layouttempa}, \value{sc@layouttempb})[c]{%
+\parbox[c]{\value{sc@layouttempa}\sc@unittype}{\sc@centering #1}}}%
+\end{picture}%
+}
+\endinput
+%%
+%% End of file `simplecd.sty'.

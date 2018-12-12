@@ -1,0 +1,92 @@
+Copyright (C) 2010-2013 by Daniel Majoros
+
+This file may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either
+version 1.2 of this license or (at your option) any later
+version. The latest version of this license is in:
+
+http://www.latex-project.org/lppl.txt
+
+and version 1.2 or later is part of all distributions of
+LaTeX version 1999/12/01 or later.
+
+
+The simplecd package
+
+The simplecd package provides printable cut-outs for various CD, DVD and other data storage holders.
+The name of the package comes form it's implementation and ease of use.
+
+The simplecd package was created for producing cut-outs for creating covers, inlays(inlets) for 
+optical disc packaging such as jewel cases, keepcases. Additional data storage cover support were added for
+VHS, audio cassette and gramophone records. The covers were aimed for containing only 
+simple text with different font sizes, but since everything is placed inside a \parbox environment, it can
+contain a wide range of things.
+
+There are also macros which can resize ready-to-print images to the appropriate size.
+
+The layout macros provide ready-to-use formatting for the covers.
+
+Covers and labels:
+ - jewel case front, back and individual spine
+ - 60 and 80 millimeter jewel case covers
+ - two-page jewel case front
+ - slim DVD keepcase
+ - normal DVD keepcase
+ - Blu-Ray keepcase
+ - custom-sized keepcase
+ - disk sleeve 
+ - sleeve for 60 and 80 millimeter disks
+ - sleeve for lever arch files
+ - one sided DVD keepcase inlay
+ - one sided Blu-Ray keepcase inlay
+ - custom-sized inlay
+ - CD-R, CD, DVD disk images
+ - 60 and 80 millimeter disk images
+ - 3.5-inch floppy cover
+ - VHS labels and covers
+ - Audio cassette label and inlay
+ - Gramophone record covers
+ - Zip disk covers
+
+Layout macros:
+ - empty layouts for all macros listed below
+ - driver layout for standard, 60 and 80 millimeter covers
+ - movie layout for DVD and Blu-ray keepcases
+ - many jewel case layouts
+ 
+ 
+Version history:
+
+1.4 - 2013/02/28
+ - Made unitlength setting local
+
+1.3 - 2013/01/26
+ - Added the nohcenter package option
+ - Added the jeweltitledlempty layout
+ - Added the jewelbackIIlempty layout
+ - Added the singlesheet cover with jewel layout support
+ - Improved noalign option and layout placement relation
+
+1.2 - 2012/12/21
+ - Added jewelstripeslempty layout
+ - Added jewelgamel and jewelgamelempty layouts
+ - Added jewelflaglempty layout
+ - Added jewellineslempty layout
+ - Added cover for 3.5-inch floppy disks
+ - Added the disk macro
+ - Added VHS labels and covers
+ - Added audio cassette cover and inlay
+ - Added gramophone record cover labels
+ - Added zip disk covers
+
+1.1 - 2012/11/04
+ - Rewrote the drawing mechanism, covers will never be resized based on content
+ - Added support for 60 and 80 millimeter disks
+ - Added sleeve for lever arch files
+ - Added disk images
+ - Added layouts: ready-to-use designs for cover content
+ - Added troubleshooting and font size section into the documentation
+ - Added examples tex and pdf files
+
+1.0 - 2010/07/01
+ - Initial release

@@ -1,0 +1,838 @@
+% Title:  beamer-example
+%
+% Doc: /home/macias/reposito/users/plantilla-unificada-latex/slides/beamer-example.tex
+% Original Author:	Javier Macias-Guarasa <macias@depeca.uah.es>
+% Created:		Sun Sep 28 2014
+%
+
+\documentclass[]{beamer}
+
+% Some useful definitions...
+
+\begin{document}
+
+\title{beamer examples}
+\subtitle{created with beamer 3.x}
+\author{Matthias Pospiech}
+\institute{University of Hannover}
+\titlegraphic{}
+\date{\today}
+% --------------------------------------------------- Slide --
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+% --------------------------------------------------- Slide --
+% \section[Contents]{}
+% ------------------------------------------------------------
+% \begin{frame}
+% 	\frametitle{Contents}
+% 	\tableofcontents[%
+% 		currentsection, % causes all sections but the current to be shown in a semi-transparent way.
+% % 		currentsubsection, % causes all subsections but the current subsection in the current section to ...
+% % 		hideallsubsections, % causes all subsections to be hidden.
+% 		hideothersubsections, % causes the subsections of sections other than the current one to be hidden.
+% % 		part=, % part number causes the table of contents of part part number to be shown
+% 		pausesections, % causes a \pause command to be issued before each section. This is useful if you
+% % 		pausesubsections, %  causes a \pause command to be issued before each subsection.
+% % 		sections={ overlay specification },
+% 	]
+% \end{frame}
+% --------------------------------------------------- PART ---
+\part{Tutorial}
+\frame{\partpage}
+% ------------------------------------------------------------
+\begin{frame}
+	\frametitle{Contents}
+	\tableofcontents[%
+% 		currentsection, % causes all sections but the current to be shown in a semi-transparent way.
+% 		currentsubsection, % causes all subsections but the current subsection in the current section to ...
+% 		hideallsubsections, % causes all subsections to be hidden.
+% 		hideothersubsections, % causes the subsections of sections other than the current one to be hidden.
+% 		part=, % part number causes the table of contents of part part number to be shown
+		pausesections, % causes a \pause command to be issued before each section. This is useful if you
+% 		pausesubsections, %  causes a \pause command to be issued before each subsection.
+% 		sections={ overlay specification },
+	]
+\end{frame}
+% ------------------------------------------------------------
+\section{Tutorial: Euclid's Presentation}
+% ------------------------------------------------------------
+% --------------------------------------------------- Slide --
+\subsection{Creating a Simple Frame}
+% ------------------------------------------------------------
+\begin{frame}
+  \frametitle{What Are Prime Numbers?}
+  A prime number is a number that has exactly two divisors.
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+  \frametitle{What Are Prime Numbers?}
+  \begin{definition}
+    A \alert{prime number} is a number that has exactly two divisors
+  \end{definition}
+  \begin{example}
+    \begin{itemize}
+    \item 2 is prime (two divisors: 1 and 2).
+    \item 3 is prime (two divisors: 1 and 3).
+    \item 4 is not prime (\alert{three} divisors: 1, 2, and 4).
+    \end{itemize}
+  \end{example}
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Creating Simple Overlays}
+% ------------------------------------------------------------
+\begin{frame}
+  \frametitle{What Are Prime Numbers?}
+  \begin{definition}
+    A \alert{prime number} is a number that has exactly two divisors
+  \end{definition}
+  \begin{example}
+		\begin{itemize}
+			\item 2 is prime (two divisors: 1 and 2).
+  			\pause
+			\item 3 is prime (two divisors: 1 and 3).
+  			\pause
+			\item 4 is not prime (\alert{three} divisors: 1, 2, and 4).
+		\end{itemize}
+  \end{example}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+  \frametitle{There Is No Largest Prime Number}
+  \framesubtitle{The proof uses \textit{reductio ad absurdum}.}
+  \begin{theorem}
+    There is no largest prime number.
+  \end{theorem}
+  \begin{proof}
+    \begin{enumerate}
+    \item<1-> Suppose $p$ were the largest prime number.
+    \item<2-> Let $q$ be the product of the first $p$ numbers.
+    \item<3-> Then $q + 1$ is not divisible by any of them.
+    \item<1-> Thus $q + 1$ is also prime and greater than $p$.\qedhere
+    \end{enumerate}
+  \end{proof}
+  \uncover<4->{The proof used \textit{reductio ad absurdum}.}
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Structuring a Frame}
+% ------------------------------------------------------------
+\newtheorem{answeredquestions}[theorem]{Answered Questions}
+\newtheorem{openquestions}[theorem]{Open Questions}
+% ------------------------------------------------------------
+\begin{frame}
+  \frametitle{What's Still To Do?}
+  \begin{block}{Answered Questions}
+    How many primes are there?
+  \end{block}
+  \begin{block}{Open Questions}
+    Is every even number the sum of two primes?
+  \end{block}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+  \frametitle{What's Still To Do?}
+  \begin{itemize}
+  \item Answered Questions
+    \begin{itemize}
+    \item How many primes are there?
+    \end{itemize}
+  \item Open Questions
+    \begin{itemize}
+    \item Is every even number the sum of two primes?
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+  \frametitle{What's Still To Do?}
+  \begin{columns}
+    \column{.5\textwidth}
+      \begin{block}{Answered Questions}
+        How many primes are there?
+      \end{block}
+    \column{.5\textwidth}
+      \begin{block}{Open Questions}
+        Is every even number the sum of two primes?
+        \cite{Goldbach1742}
+      \end{block}
+  \end{columns}
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Verbatim Text}
+% ------------------------------------------------------------
+\begin{frame}[fragile]
+  \frametitle{An Algorithm For Finding Primes Numbers.}
+	\begin{verbatim}
+int main (void)
+{
+  std::vector<bool> is_prime (100, true);
+  for (int i = 2; i < 100; i++)
+    if (is_prime[i])
+      {
+        std::cout << i << " ";
+        for (int j = i; j < 100;
+            is_prime [j] = false, j+=i);
+      }
+  return 0;
+}
+	\end{verbatim}
+%  \begin{uncoverenv}<2>
+%     Note the use of \verb|std::|.
+%  \end{uncoverenv}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}[fragile]
+  \frametitle{An Algorithm For Finding Primes Numbers.}
+\begin{semiverbatim}
+\uncover<1->{\alert<0>{int main (void)}}
+\uncover<1->{\alert<0>{\{}}
+\uncover<1->{\alert<1>{ \alert<4>{std::}vector<bool> is_prime (100, true);}}
+\uncover<1->{\alert<1>{ for (int i = 2; i < 100; i++)}}
+\uncover<2->{\alert<2>{    if (is_prime[i])}}
+\uncover<2->{\alert<0>{      \{}}
+\uncover<3->{\alert<3>{        \alert<4>{std::}cout << i << " ";}}
+\uncover<3->{\alert<3>{        for (int j = i; j < 100;}}
+\uncover<3->{\alert<3>{             is_prime [j] = false, j+=i);}}
+\uncover<2->{\alert<0>{      \}}}
+\uncover<1->{\alert<0>{ return 0;}}
+\uncover<1->{\alert<0>{\}}}
+\end{semiverbatim}
+  \visible<4->{Note the use of \alert{\texttt{std::}}.}
+\end{frame}
+% --------------------------------------------------- PART ---
+\part{Howtos}
+\frame{\partpage}
+% ------------------------------------------------------------
+\begin{frame}
+	\frametitle{Contents}
+	\tableofcontents[%
+% 		currentsection, % causes all sections but the current to be shown in a semi-transparent way.
+% 		currentsubsection, % causes all subsections but the current subsection in the current section to ...
+% 		hideallsubsections, % causes all subsections to be hidden.
+% 		hideothersubsections, % causes the subsections of sections other than the current one to be hidden.
+% 		part=, % part number causes the table of contents of part part number to be shown
+		pausesections, % causes a \pause command to be issued before each section. This is useful if you
+% 		pausesubsections, %  causes a \pause command to be issued before each subsection.
+% 		sections={ overlay specification },
+	]
+\end{frame}
+% ------------------------------------------------------------
+\section{How To Uncover Things Piecewise}
+% ------------------------------------------------------------
+\subsection{Uncovering an Enumeration Piecewise}
+% ------------------------------------------------------------
+\begin{frame}
+\begin{itemize}
+\item<1-> First point.
+\item<2-> Second point.
+\item<3-> Third point.
+\end{itemize}
+ 
+\begin{itemize}[<+->]
+\item First point.
+\item Second point.
+\item Third point.
+\end{itemize}
+ 
+\begin{itemize}[<+->]
+\item First point.
+\item<.-> Second point.
+\item Third point.
+\end{itemize}
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Hilighting the Current Item in an Enumeration}
+% ------------------------------------------------------------
+\begin{frame}
+\begin{itemize}
+\item<1-| alert@1> First point.
+\item<2-| alert@2> Second point.
+\item<3-| alert@3> Third point.
+\end{itemize}
+or
+\begin{itemize}[<+-| alert@+>]
+\item First point.
+\item Second point.
+\item Third point.
+\end{itemize}
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Changing Symbol Before an Enumeration}
+% ------------------------------------------------------------
+\newenvironment{ballotenv}
+{\only{%
+  \setbeamertemplate{itemize item}{code for showing a ballot}%
+  \setbeamertemplate{itemize subitem}{code for showing a smaller ballot}%
+  \setbeamertemplate{itemize subsubitem}{code for showing a smaller ballot}}}
+{}
+\begin{frame}
+\begin{itemize}
+\item<1-| ballot@1> First point.
+\item<2-| ballot@2> Second point.
+\item<3-| ballot@3> Third point.
+\end{itemize}
+and
+\begin{itemize}[<+-| ballot@+>]
+\item First point.
+\item Second point.
+\item Third point.
+\end{itemize}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+In the following example, more and more items become "checked" from slide to slide:
+\begin{itemize}[<ballot@+-| visible@1-,+(1)>]
+\item First point.
+\item Second point.
+\item Third point.
+\end{itemize}
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Uncovering Piecewise}
+% ------------------------------------------------------------
+\begin{frame}
+Uncovering Tagged Formulas Piecewise
+\begin{align}
+  A &= B \\
+    \uncover<2->{&= C \\}
+    \uncover<3->{&= D \\}
+    \notag
+  \end{align}
+\vskip-1.5em
+\end{frame}
+ 
+\begin{frame}
+Uncovering a Table Rowwise \newline
+\rowcolors[]{1}{blue!20}{blue!10}
+\begin{tabular}{l!{\vrule}cccc}
+  Class & A & B & C & D \\\hline
+  X     & 1 & 2 & 3 & 4 \pause\\
+  Y     & 3 & 4 & 5 & 6 \pause\\
+  Z     &5&6&7&8
+\end{tabular}
+\end{frame}
+ 
+\begin{frame}
+Uncovering a Table Columnwise \newline
+\rowcolors[]{1}{blue!20}{blue!10}
+\begin{tabular}{l!{\vrule}c<{\onslide<2->}c<{\onslide<3->}c<{\onslide<4->}c<{\onslide}c}
+  Class & A & B & C & D \\
+  X     & 1 & 2 & 3 & 4 \\
+  Y     & 3 & 4 & 5 & 6 \\
+  Z     &5&6&7&8
+\end{tabular}
+\end{frame}
+% --------------------------------------------------- PART ---
+\part{Building a Presentation}
+\frame{\partpage}
+% ------------------------------------------------------------
+\begin{frame}
+	\frametitle{Contents}
+	\tableofcontents[%
+%   	currentsection, % causes all sections but the current to be shown in a semi-transparent way.
+% 		currentsubsection, % causes all subsections but the current subsection in the current section to ...
+ 		hideallsubsections, % causes all subsections to be hidden.
+% 		hideothersubsections, % causes the subsections of sections other than the current one to be hidden.
+% 		part=, % part number causes the table of contents of part part number to be shown
+		pausesections, % causes a \pause command to be issued before each section. This is useful if you
+% 		pausesubsections, %  causes a \pause command to be issued before each subsection.
+% 		sections={ overlay specification },
+	]
+\end{frame}
+% --------------------------------------------------- Slide --
+\section{Creating Overlays}
+% ------------------------------------------------------------
+\subsection{The Pause Commands}
+% ------------------------------------------------------------
+\begin{frame}
+  \begin{itemize}
+  \item
+    Shown from first slide on.
+  \pause
+  \item
+    Shown from second slide on.
+    \begin{itemize}
+    \item
+      Shown from second slide on.
+    \pause
+    \item
+      Shown from third slide on.
+    \end{itemize}
+  \item
+    Shown from third slide on.
+  \pause
+  \item
+    Shown from fourth slide on.
+  \end{itemize}
+  Shown from fourth slide on.
+  \begin{itemize}
+  \onslide
+  \item
+    Shown from first slide on.
+  \pause
+  \item
+    Shown from fifth slide on.
+  \end{itemize}
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Commands with Overlay Specifications}
+% ------------------------------------------------------------
+\begin{frame}
+  \textbf{This line is bold on all three slides.}
+  \textbf<2>{This line is bold only on the second slide.}
+  \textbf<3>{This line is bold only on the third slide.}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+  \only<1>{This line is inserted only on slide 1.}
+  \only<2>{This line is inserted only on slide 2.}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+  Shown on first slide.
+  \onslide<2-3>
+  Shown on second and third slide.
+  \begin{itemize}
+  \item
+    Still shown on the second and third slide.
+  \onslide+<4->
+  \item
+    Shown from slide 4 on.
+  \end{itemize}
+  Shown from slide 4 on.
+  \onslide
+  Shown on all slides.
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+  \onslide<1>{Same effect as the following command.}
+  \uncover<1>{Same effect as the previous command.}
+  \onslide+<2>{Same effect as the following command.}
+  \visible<2>{Same effect as the previous command.}
+  \onslide*<3>{Same effect as the following command.}
+  \only<3>{Same effect as the previous command.}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+\temporal<3-4>{Shown on 1, 2}{Shown on 3, 4}{Shown 5, 6, 7, ...}
+\temporal<3,5>{Shown on 1, 2, 4}{Shown on 3, 5}{Shown 6, 7, 8, ...}
+\end{frame}
+% --------------------------------------------------- Slide --
+\def\colorize<#1>{%
+  \temporal<#1>{\color{red!50}}{\color{black}}{\color{black!50}}}
+\begin{frame}
+  \begin{itemize}
+    \colorize<1> \item First item.
+    \colorize<2> \item Second item.
+    \colorize<3> \item Third item.
+    \colorize<4> \item Fourth item.
+  \end{itemize}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+  \begin{enumerate}
+  \item<3-| alert@3>[0.] A zeroth point, shown at the very end.
+  \item<1-| alert@1> The first and main point.
+  \item<2-| alert@2> The second point.
+  \end{enumerate}
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Environments with Overlay Specifications}
+% ------------------------------------------------------------
+\begin{frame}
+  \frametitle{A Theorem on Infinite Sets}
+  \begin{theorem}<1->
+    There exists an infinite set.
+  \end{theorem}
+  \begin{proof}<3->
+    This follows from the axiom of infinity.
+  \end{proof}
+  \begin{example}<2->
+    The set of natural numbers is infinite.
+  \end{example}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+  This line is always shown.
+  \begin{onlyenv}<2>
+    This line is inserted on slide 2.
+  \end{onlyenv}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+  This
+  \begin{altenv}<2>{(}{)}{[}{]}
+    word
+  \end{altenv}
+  is in round brackets on slide 2 and in square brackets on slide 1.
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Dynamically Changing Text or Images}
+% ------------------------------------------------------------
+\begin{frame}
+	\begin{overlayarea}{\textwidth}{3cm}
+  		\only<1>{Some text for the first slide.\\ Possibly several lines long.}
+  		\only<2>{Replacement on the second slide.}
+	\end{overlayarea}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+	\begin{overprint}
+  		\onslide<1| handout:1>
+    		Some text for the first slide.\\
+    		Possibly several lines long.
+  		\onslide<2| handout:0>
+    		Replacement on the second slide. Supressed for handout.
+	\end{overprint}
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Advanced Overlay Specifications}
+% ------------------------------------------------------------
+\begin{frame}
+  \begin{actionenv}<1-| alert@3-4,6>
+    This text is shown the same way as the text below.
+  \end{actionenv}
+  \begin{uncoverenv}<2->
+    \begin{alertenv}<3-4,6>
+      This text is shown the same way as the text above.
+    \end{alertenv}
+  \end{uncoverenv}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+	\begin{itemize}
+		\item<+-> Apple
+		\item<+-> Peach
+		\item<+-> Plum
+		\item<+-> Orange
+	\end{itemize}
+ 
+	\begin{itemize}[<+-| alert@+>]
+		\item Apple
+		\item Peach
+		\item Plum
+		\item Orange
+	\end{itemize}
+ 
+	\begin{itemize}[<+->]
+		\item This is \alert<.>{important}.
+		\item We want to \alert<.>{highlight} this and \alert<.>{this}.
+		\item What is the \alert<.>{matrix}?
+	\end{itemize}
+\end{frame}
+% --------------------------------------------------- Slide --
+% \section{Adding Parts}
+% % ------------------------------------------------------------
+% \frame{\titlepage}
+% \section*{Outlines}
+% \subsection{Part I: Review of Previous Lecture}
+% \frame{
+%   \frametitle{Outline of Part I}
+%   \tableofcontents[part=1]}
+% \subsection{Part II: Today's Lecture}
+% \frame{
+%   \frametitle{Outline of Part II}
+%   \tableofcontents[part=2]}
+% \part{Review of Previous Lecture}
+% \frame{\partpage}
+% \section[Previous Lecture]{Summary of the Previous Lecture}
+% \subsection{Topics}
+% \frame{...}
+% \subsection{Learning Objectives}
+% \frame{...}
+% \part{Today's Lecture}
+% \frame{\partpage}
+% \section{Topic A}
+% \frame{\tableofcontents[currentsection]}
+% \subsection{Foo}
+% \frame{...}
+% \section{Topic B}
+% \frame{\tableofcontents[currentsection]}
+% \subsection{bar}
+% \frame{...}
+% --------------------------------------------------- Slide --
+\section{Structuring a Presentation: The Interactive Global Structure}
+% ------------------------------------------------------------
+\subsection{Adding Hyperlinks and Buttons}
+% ------------------------------------------------------------
+\begin{frame}
+  \begin{itemize}
+  \item<1-> First item.
+  \item<2-> Second item.
+  \item<3-> Third item.
+  \end{itemize}
+  \hyperlink{jumptosecond}{\beamergotobutton{Jump to second slide}}
+  \hypertarget<2>{jumptosecond}{}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}[label=threeitems]
+  \begin{itemize}
+  \item<1-> First item.
+  \item<2-> Second item.
+  \item<3-> Third item.
+  \end{itemize}
+  \hyperlink{threeitems<2>}{\beamergotobutton{Jump to second slide}}
+\end{frame}
+% --------------------------------------------------- Slide --
+\frame{
+  \begin{theorem}
+    ...
+  \end{theorem}
+  \begin{overprint}
+  \onslide<1>
+    \hfill\hyperlinkframestartnext{\beamerskipbutton{Skip proof}}
+  \onslide<2>
+    \begin{proof}
+      ...
+    \end{proof}
+  \end{overprint}
+}
+% --------------------------------------------------- Slide --
+% \frame<1>[label=mytheorem]
+% {
+%   \begin{theorem}
+%     ...
+%   \end{theorem}
+%   \begin{overprint}
+%   \onslide<1>
+%     \hfill\hyperlink{mytheorem<2>}{\beamergotobutton{Go to proof details}}
+%   \onslide<2>
+%     \begin{proof}
+%       ...
+%     \end{proof}
+%     \hfill\hyperlink{mytheorem<1>}{\beamerreturnbutton{Return}}
+%   \end{overprint}
+% }
+% \appendix
+% \againframe<2>{mytheorem}
+% % --------------------------------------------------- Slide --
+% \subsection{Repeating a Frame at a Later Point}
+% % ------------------------------------------------------------
+% \frame<1-2>[label=myframe]
+% {
+%   \begin{itemize}
+%   \item<alert@1> First subject.
+%   \item<alert@2> Second subject.
+%   \item<alert@3> Third subject.
+%   \end{itemize}
+% }
+% \frame
+% {
+%   Some stuff explaining more on the second matter.
+% }
+% \againframe<3>{myframe}
+% --------------------------------------------------- Slide --
+% \subsection{Adding Anticipated Zooming}
+% % ------------------------------------------------------------
+% \begin{frame}<1>[label=zooms]
+%   \frametitle<1>{A Complicated Picture}
+%   \framezoom<1><2>[border](0cm,0cm)(2cm,1.5cm)
+%   \framezoom<1><3>[border](1cm,3cm)(2cm,1.5cm)
+%   \framezoom<1><4>[border](3cm,2cm)(3cm,2cm)
+%   \pgfimage[height=8cm]{complicatedimagefilename}
+% \end{frame}
+% \againframe<2->[plain]{zooms}
+% --------------------------------------------------- Slide --
+\section{Structuring a Presentation: The Local Structure}
+% ------------------------------------------------------------
+\subsection{Itemizations, Enumerations, and Descriptions}
+% ------------------------------------------------------------
+\begin{frame}
+  There are three important points:
+  \begin{enumerate}
+  \item<1-> A first one,
+  \item<2-> a second one with a bunch of subpoints,
+    \begin{itemize}
+    \item first subpoint. (Only shown from second slide on!).
+    \item<3-> second subpoint added on third slide.
+    \item<4-> third subpoint added on fourth slide.
+    \end{itemize}
+  \item<5-> and a third one.
+  \end{enumerate}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+\begin{itemize}[<+->]
+\item This is shown from the first slide on.
+\item This is shown from the second slide on.
+\item This is shown from the third slide on.
+\item<1-> This is shown from the first slide on.
+\item This is shown from the fourth slide on.
+\end{itemize}
+\end{frame}
+% --------------------------------------------------- Slide --
+\begin{frame}
+\begin{description}[<+->][longest label]
+\item[short] Some text.
+\item[longest label] Some text.
+\item[long label] Some text.
+\end{description}
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Block Environments}
+% ------------------------------------------------------------
+\begin{frame}
+	\begin{block}<1->{Definition}
+  		A \alert{set} consists of elements.
+	\end{block}
+	\begin{alertblock}{Wrong Theorem}
+  		$1=2$.
+	\end{alertblock}
+	\begin{exampleblock}{Example}<only@2->
+  		The set $\{1,2,3,5\}$ has four elements.
+	\end{exampleblock}
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Theorem Environments}
+% ------------------------------------------------------------
+\begin{frame}
+  \frametitle{A Theorem on Infinite Sets}
+  \begin{theorem}<1->
+    There exists an infinite set.
+  \end{theorem}
+  \begin{proof}<2->
+    This follows from the axiom of infinity.
+  \end{proof}
+  \begin{example}<3->[Natural Numbers]
+    The set of natural numbers is infinite.
+  \end{example}
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Framed and Boxed Text}
+% ------------------------------------------------------------
+\begin{frame}
+	\begin{beamercolorbox}[ht=2.5ex,dp=1ex,center]{title in head/foot}
+  		\usebeamerfont{title in head/foot}
+  		\insertshorttitle
+	\end{beamercolorbox}%
+	\begin{beamercolorbox}[ht=2.5ex,dp=1ex,center]{author in head/foot}
+  		\usebeamerfont{author in head/foot}
+  		\insertshortauthor
+	\end{beamercolorbox}
+	\mbox{}\medskip\newline
+	Typesetting a postit:\newline
+	\setbeamercolor{postit}{fg=black,bg=yellow}
+	\begin{beamercolorbox}[sep=1em,wd=5cm]{postit}
+  		Place me somewhere!
+	\end{beamercolorbox}
+	\mbox{}\medskip\newline
+	\begin{beamerboxesrounded}[upper=block head,lower=block body,shadow=true]{Theorem}
+  		$A = B$.
+	\end{beamerboxesrounded}
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Splitting a Frame into Multiple Columns}
+% ------------------------------------------------------------
+\begin{frame}
+	\begin{columns}[t]
+  		\begin{column}{5cm}
+    		Two\\lines.
+  		\end{column}
+  		\begin{column}{5cm}
+    		One line (but aligned).
+  		\end{column}
+	\end{columns}
+\end{frame}
+% --------------------------------------------------- Slide --
+\section{Animations, Sounds, and Slide Transitions}
+% ------------------------------------------------------------
+\subsection{Animations Created by Showing Slides in Rapid Succession}
+% ------------------------------------------------------------
+% \begin{frame}
+%   \frametitle{A Five Slide Animation}
+%   \animate<2-4>
+%   ... code for creating an animation with five slides ...
+% \end{frame}
+% --------------------------------------------------- Slide --
+\newcount\opaqueness
+\begin{frame}
+  anomations only work in full screen mode in Acrobat Reader !
+  \animate<2-10>
+  \animatevalue<1-10>{\opaqueness}{100}{0}
+  \begin{colormixin}{\the\opaqueness!averagebackgroundcolor}
+    \frametitle{Fadeout Frame}
+    This text (and all other frame content) will fade out when the
+    second slide is shown. This even works with
+    {\color{green!90!black}colored} \alert{text}.
+  \end{colormixin}
+\end{frame}
+\newcount\opaqueness
+\newdimen\offset
+\begin{frame}
+  \frametitle{Flying Theorems (You Really Shouldn't!)}
+  \animate<2-14>
+  \animatevalue<1-15>{\opaqueness}{100}{0}
+  \animatevalue<1-15>{\offset}{0cm}{-5cm}
+  \begin{colormixin}{\the\opaqueness!averagebackgroundcolor}
+  \hskip\offset
+    \begin{minipage}{\textwidth}
+      \begin{theorem}
+        This theorem flies out.
+      \end{theorem}
+    \end{minipage}
+  \end{colormixin}
+  \animatevalue<1-15>{\opaqueness}{0}{100}
+  \animatevalue<1-15>{\offset}{-5cm}{0cm}
+  \begin{colormixin}{\the\opaqueness!averagebackgroundcolor}
+  \hskip\offset
+    \begin{minipage}{\textwidth}
+      \begin{theorem}
+        This theorem flies in.
+      \end{theorem}
+    \end{minipage}
+  \end{colormixin}
+\end{frame}
+% --------------------------------------------------- Slide --
+\subsection{Slide Transitions}
+% ------------------------------------------------------------
+\begin{frame}
+	Slide Transitions only work in full screen mode in Acrobat Reader !
+  \begin{example}<1,6,11>[examples for Slide Transitions]{This line is shown on each slide of slide transitions}\end{example}
+  \begin{example}<2,7,12>[examples for Slide Transitions]{This line is shown on each slide of slide transitions}\end{example}
+  \begin{example}<3,8>[examples for Slide Transitions]{This line is shown on each slide of slide transitions}\end{example}
+  \begin{example}<4,9>[examples for Slide Transitions]{This line is shown on each slide of slide transitions}\end{example}
+  \begin{example}<5,10>[examples for Slide Transitions]{This line is shown on each slide of slide transitions}\end{example}
+  \transdissolve<1>[duration=0.2]
+  \transblindshorizontal<2>
+  \transblindsvertical<3>
+  \transboxin<4>
+  \transboxout<5>
+  \transdissolve<6>[duration=0.2]
+  \transglitter<7>[direction=90]
+  \transsplitverticalin<8>
+  \transsplitverticalout<9>
+  \transsplithorizontalin<10>
+  \transsplithorizontalout<11>
+  \transwipe<12>[direction=90]
+\end{frame}
+ 
+% --------------------------------------------------- Slide --
+\section{Adding Notes}
+% ------------------------------------------------------------
+\begin{frame}
+  \begin{itemize}
+  \item<1-> Eggs
+  \item<2-> Plants
+    \note[item]<2>{Tell joke about plants.}
+    \note[item]<2>{Make it short.}
+  \item<3-> Animals
+  \end{itemize}
+\end{frame}
+ 
+% % --------------------------------------------------- Slide --
+% \begin{frame}
+%
+% \end{frame}
+ 
+% ------------------------------------------------------------
+\begin{thebibliography}{10}
+\bibitem{Goldbach1742}[Goldbach, 1742]
+  Christian Goldbach.
+  \newblock A problem we should try to solve before the ISPN '43 deadline,
+  \newblock \emph{Letter to Leonhard Euler}, 1742.
+\end{thebibliography}
+
+\end{document}
+
+% Local Variables:
+% End:

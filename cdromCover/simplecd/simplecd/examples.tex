@@ -1,0 +1,62 @@
+
+\documentclass[a4paper,10pt,oneside]{article}
+\pagestyle{empty}
+
+%Sets margins in centimetres
+\usepackage[left=1cm, top=1cm, right=2cm, bottom=1cm]{geometry}
+
+\usepackage{simplecd}
+
+\begin{document}
+
+\djewel{{\Large Double jewel front frontpage}}{second page}
+\newpage 
+\dvd[backtext]{{\Huge DVD keepcase}}{spine}
+\newpage
+\bluray{{\Huge Blu-Ray keepcase}}{Spine}
+\newpage
+\slimdvd[backtext]{{\Huge Slim DVD keepcase}}{spine}
+\newpage
+\dvdinlay{{\Huge DVD keepcase inlay}}
+\newpage 
+\sleeve{{\Huge Disk Sleeve}}
+\newpage
+\covers[{\Large Backsheet text}]{{{\Huge Jewel case cover} \\ \vspace{0.5cm} {\large TestSubtitle}}}{TestSpineText} 
+
+\vspace{0.5cm}
+\jewelspine{Jewel case spine}
+\newpage
+\sleevela[Back text]{\jeweldriverl{Lever arch(1)}{sleeve with layout (2)}{2012.20.12 (3)}{123456789 (4)}%
+	{12-ABC (5)}{Driver \\ Manual (6)}{Driver not compatible with ZYX operating system (7)}}
+\newpage
+\cddvddisk{{\Huge CD} \\ \vspace{3cm} Left \hspace{7cm} Right \\ \vspace{3cm} TextText}
+
+\vspace{2cm}
+
+\LXXXdisk{{\large 80 millmieter disk } \\ \vspace{4cm} Text}
+\newpage
+\sleeveLXXX[Back text]{\large 80 millimeter sleeve}
+\floppyIIIV{3.5-inch floppy}{Back content}
+
+\zipdisk{Zip disk}{Back content}
+
+\vspace{1cm}
+
+\zipdiskII{Zip disk II}
+
+\vspace{1cm}
+
+\disk{{\Huge Disk} \\ \vspace{3cm}Left \hspace{7cm} Right \\ \vspace{3cm}TextText}
+
+\vspace{1cm}
+
+\vhsspine{\huge VHS spine}
+
+\vspace{1cm}
+
+\vhsfront{\huge VHS front} \hspace{1cm}
+\cassettecover{{\huge Audio cassette} \\ \vspace{2cm}  Lower text}
+
+\cassetteinlay{\huge Audio cassette inlay}{Spine}{Back}
+
+\end{document}

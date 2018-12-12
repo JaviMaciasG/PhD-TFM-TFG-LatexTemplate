@@ -1,0 +1,70 @@
+\usepackage{calc} 
+\usepackage{forloop}
+\usepackage{framed}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage{mathpazo}
+\usepackage{lastpage}
+\usepackage{totcount}
+	
+\usepackage[hmargin=2.5cm,vmargin=2.5cm]{geometry}
+
+\newtotcounter{calctotalmarks}
+\setcounter{calctotalmarks}{0} 
+\newcounter{forloopcounter} 
+\newcommand{\putansline}[2]{\setcounter{forloopcounter}{1}\forloop{forloopcounter}{0}{\value{forloopcounter}< #1}{\par\vspace{\the\baselineskip}\dotfill}[#2]\addtocounter{calctotalmarks}{#2}}
+\newcommand{\calculatedtotalmarks}{\vspace{20pt}\par Calculated Total Marks: \the\value{calctotalmarks}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\cfoot{}
+\rfoot{\textcolor{black!80}{\hspace{0.04\textwidth}\coursename\ (\semester\ - \examtype)
+\hfill Page \thepage\ of \pageref{LastPage}}}
+
+\newcommand{\putansbox}[1]{%
+  \vspace{\the\baselineskip}\par\framebox[0.94\textwidth]{\rule{0pt}{#1\baselineskip}}\vspace{\the\baselineskip}
+}
+
+\newcommand{\maketitleheader}{%
+\begin{tabular}{ccc}
+\begin{minipage}{0.15\textwidth}
+\includegraphics[width=\textwidth]{\leftlogo}
+\end{minipage}
+&
+\begin{minipage}{0.6\textwidth}
+\begin{center}
+{\huge \textsc{\univname}} \\ 
+{\large \textsc{\univsubname}}
+\end{center} 
+\end{minipage}
+&
+\begin{minipage}{0.15\textwidth}
+\includegraphics[width=\textwidth]{\rightlogo}
+\end{minipage}
+\end{tabular}
+\begin{center}
+\begin{tabular}{p{0.16\textwidth}p{0.28\textwidth}p{0.17\textwidth}p{0.25\textwidth}}
+\textbf{Name}:        & \dotfill            & \textbf{Roll No}:     &  \dotfill \\
+\textbf{Program}:      & \programname & \textbf{Examination}: & \examtype \\
+\textbf{Semester}:    & \semester    & \textbf{Total marks}: 
+							  \total{calctotalmarks}  & \textbf{Weight}: \weightmarks \\
+\textbf{Time allowed}:& \timeallowed & \textbf{Date}:        & \examdate \\
+\textbf{Course}:      & \coursename  & \textbf{Instructor}:  & \instructorname  \\
+\end{tabular}
+\parbox[c]{0.95\textwidth}{\vspace{12pt}
+\hrule\vspace{6pt}
+\topnote\vspace{6pt}
+\hrule 
+}
+\end{center}
+}
+
+%\newcommand{\putansbox}[1]{%
+%  \vspace{\the\baselineskip}\par\framebox[\dimexpr\linewidth-2\fboxrule-2\fboxsep\relax]  
+%  {%
+%    \rule{0pt}{#1\baselineskip}%
+%  }%
+%  \vspace{\the\baselineskip}
+%}
+

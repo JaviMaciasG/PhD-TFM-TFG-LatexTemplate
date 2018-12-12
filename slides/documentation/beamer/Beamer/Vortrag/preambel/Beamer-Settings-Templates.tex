@@ -1,0 +1,330 @@
+% *****************************************
+% >>>> 15.3.2    Using Beamer’s Templates
+% *****************************************
+% As a user of the beamer class you typically do not “use” or “invoke” templates yourself, directly. For
+% example, the frame title template is automatically invoked by beamer somewhere deep inside the frame
+% typesetting process. The same is true of most other templates. However, if, for whatever reason, you wish
+% to invoke a template yourself, you can use the following command.
+% \usebeamertemplate***{ element name }
+% -------------------------------
+%%% 7.2.1 The Headline and Footline
+% \setbeamertemplate{headline} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{headline}
+% {%
+%   \begin{beamercolorbox}{section in head/foot}
+%     \vskip2pt\insertnavigation{\paperwidth}\vskip2pt
+%   \end{beamercolorbox}%
+% }
+% \setbeamertemplate{headline}[default] % The default is just an empty headline. 
+% \setbeamertemplate{headline}[infolines theme] 
+% \setbeamertemplate{headline}[miniframes theme] 
+% \setbeamertemplate{headline}[sidebar theme] 
+% \setbeamertemplate{headline}[smoothtree theme]
+% \setbeamertemplate{headline}[smoothbars theme]
+% \setbeamertemplate{headline}[tree] 
+% \setbeamertemplate{headline}[split theme] 
+% \setbeamertemplate{headline}[text line]{ text } % The headline is typeset with 'text' 
+% -------------------------------
+% \setbeamertemplate{footline} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{footline}[default] 
+% \setbeamertemplate{footline}[infolines theme] 
+% \setbeamertemplate{footline}[miniframes theme] 
+% \setbeamertemplate{footline}[page number] 
+% \setbeamertemplate{footline}[frame number] 
+% \setbeamertemplate{footline}[split] 
+% \setbeamertemplate{footline}[text line]{ text } 
+% -------------------------------
+% \setbeamertemplate{page number in head/foot} % Beamer-Color/-Font 
+% -------------------------------
+%%% 7.2.2 The Sidebars
+% \setbeamertemplate{sidebar} % Beamer-Template/-Color/-Font (Parent)
+% \setbeamertemplate{sidebar left} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{sidebar right} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{sidebar canvas left} % Beamer-Template 
+% \setbeamertemplate{sidebar canvas right} % Beamer-Template 
+% -------------------------------
+%%% 7.2.3 Navigation Bars (funktioniert nur mit miniframe Themes)
+% \setbeamertemplate{mini frames}[default] % shows small circles as mini frames.
+\setbeamertemplate{mini frames}[box] % shows small rectangles as mini frames.
+% \setbeamertemplate{mini frames}[tick] % shows small vertical bars as mini frames.
+% -------------------------------
+% \setbeamertemplate{mini frame} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{mini frame in current subsection} % Beamer-Template 
+% \setbeamertemplate{mini frame in other subsection} % Beamer-Template 
+% \setbeamertemplate{mini frame in other subsection}[default][20]
+% -------------------------------
+% \setbeamertemplate{section in head/foot} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{section in head/foot shaded} % Beamer-Template 
+% \setbeamertemplate{section in head/foot shaded}[default][20]
+% \setbeamertemplate{section in sidebar} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{section in sidebar}[sidebar theme]
+% \setbeamertemplate{subsection in head/foot} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{subsection in head/foot shaded} % Beamer-Template 
+% \setbeamertemplate{section in head/foot shaded}[default][20]
+% \setbeamertemplate{subsection in head/foot shaded}[default][20]
+% \setbeamertemplate{subsection in sidebar} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{subsection in sidebar shaded} % Beamer-Template 
+% \setbeamertemplate{subsubsection in head/foot} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{subsubsection in head/foot shaded} % Beamer-Template 
+% \setbeamertemplate{subsubsection in head/foot shaded}[default][20] 
+% \setbeamertemplate{subsubsection in sidebar} % Beamer-Template/-Color/-Font
+% \setbeamertemplate{subsubsection in sidebar shaded} % Beamer-Template 
+% -------------------------------
+%%% 7.2.4 The Navigation Symbols
+%%% Beamer-Template/-Color/-Font navigation symbols
+\setbeamertemplate{navigation symbols}{} % suppresses all navigation symbols:
+% \setbeamertemplate{navigation symbols}[horizontal] % Organizes the navigation symbols horizontally.
+% \setbeamertemplate{navigation symbols}[vertical] % Organizes the navigation symbols vertically.
+% \setbeamertemplate{navigation symbols}[only frame symbol] % Shows only the navigational symbol for navigating frames.
+% -------------------------------
+%%% 7.2.5 The Logo
+% \setbeamertemplate{logo} % Beamer-Template/-Color/-Font 
+% -------------------------------
+%%% 7.2.6 The Frame Title
+% \setbeamertemplate{frametitle} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{frametitle}[default][left] % left, center, right 
+% \setbeamertemplate{frametitle}[shadow theme]
+% \setbeamertemplate{frametitle}[sidebar theme] 
+% \setbeamertemplate{frametitle}[smoothbars theme] 
+% \setbeamertemplate{frametitle}[smoothtree theme] 
+% -------------------------------
+%%% 7.2.7 The Background
+% \setbeamertemplate{background canvas} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{background canvas}[default] 
+% \setbeamertemplate{background canvas}[vertical shading][ color options ] installs a vertically shaded background. 
+%     – top= color speciﬁes the color at the top of the page. By default, 25% of the foreground of
+%       the beamer-color palette primary is used.
+%     – bottom= color speciﬁes the color at the bottom of the page. By default, the background of
+%       normal text at the moment of invocation of this command is used.
+%     – middle= color speciﬁes the color for the middle of the page. Thus, if this option is given, the
+%       shading changes from the bottom color to this color and then to the top color.
+%     – midpoint= factor speciﬁes at which point of the page the middle color is used. A factor of 0
+%       is the bottom of the page, a factor of 1 is the top. The default, which is 0.5 is in the middle.
+% \setbeamertemplate{background} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{background}[default] % is empty.
+% \setbeamertemplate{background}[grid][step=1cm] % places a grid on the background. 
+%     – step= dimension speciﬁes the distance between grid lines. The default is 0.5cm.
+%     – color= color speciﬁes the color of the grid lines. The default is 10% foreground.
+% -------------------------------
+%%% 7.3 Margin Sizes
+\setbeamersize{text margin left=2em,text margin right=2em}
+% \setbeamersize{sidebar width left=2cm}
+%         • text margin left= TEX dimension sets a new left margin. This excludes the left sidebar. Thus,
+%           it is the distance between the right edge of the left sidebar and the left edge of the text.
+%         • text margin right= TEX dimension sets a new right margin.
+%         • sidebar width left= TEX dimension sets the size of the left sidebar. Currently, this command
+%           should be given before a shading is installed for the sidebar canvas.
+%         • sidebar width right= TEX dimension sets the size of the right sidebar.
+%         • description width= TEX dimension sets the default width of description labels, see Section 11.1.
+%         • description width of= text sets the default width of description labels to the width of the
+%             text , see Section 11.1.
+%         • mini frame size= TEX dimension sets the size of mini frames in a navigation bar. When two
+%           mini frame icons are shown alongside each other, their left end points are TEX dimension far
+%           apart.
+%         • mini frame offset= TEX dimension set an additional vertical oﬀset that is added to the mini
+%           frame size when arranging mini frames vertically.
+% -------------------------------
+%%% 9.1 Adding a Title Page
+% \setbeamersize{title page} % Beamer-Template/-Color/-Font 
+%    This template is invoked when the \titlepage command is used.
+%    The following commands are useful for this template:
+%     •  \insertauthor inserts a version of the author’s name that is useful for the title page.
+%     •  \insertdate inserts the date.
+%     •  \insertinstitute inserts the institute.
+%     •  \inserttitle inserts a version of the document title that is useful for the title page.
+%     •  \insertsubtitle inserts a version of the document title that is useful for the title page.
+%     •  \inserttitlegraphic inserts the title graphic into a template.
+% -------------------------------
+%%% 9.2 Adding Sections and Subsections
+% \setbeamersize{section in toc} % Beamer-Template/-Color/-Font 
+% \setbeamersize{section in toc shaded} % Beamer-Template/-Color/-Font 
+%      • \inserttocsection inserts the table of contents version o
+%      • \inserttocsectionnumber inserts the number of the curre
+% \setbeamersize{subsection in toc} % Beamer-Template/-Color/-Font 
+% \setbeamersize{subsection in toc shaded} % Beamer-Template/-Color/-Font 
+%      • \inserttocsubsection inserts the table of contents version of the current subsection name.
+%      • \inserttocsubsectionnumber inserts the number of the current subsection (in the table of contents).
+% \setbeamersize{subsubsection in toc} % Beamer-Template/-Color/-Font 
+% \setbeamersize{subsubsection in toc shaded} % Beamer-Template/-Color/-Font 
+%      • \inserttocsubsubsection inserts the table of contents version of the current subsubsection name.
+%      • \inserttocsubsubsectionnumber inserts the number of the current subsubsection (in the table of contents).
+% \setbeamersize{part page}% Beamer-Template/-Color/-Font 
+% 		 • \insertpart inserts the current part name.
+% 		 • \insertpartnumber inserts the current part number as an Arabic number into a template.
+% 		 • \insertpartromannumber inserts the current part number as a Roman number into a template.
+% -------------------------------
+%%% Parent Beamer-Template sections/subsections in toc
+% This is a parent template, whose children are section in toc and subsection in toc. 
+% \setbeamertemplate{sections/subsections in toc}[default]
+% \setbeamertemplate{sections/subsections in toc}[sections numbered]
+% \setbeamertemplate{sections/subsections in toc}[subsections numbered]
+% \setbeamertemplate{sections/subsections in toc}[circle] 
+\setbeamertemplate{sections/subsections in toc}[square] 
+% \setbeamertemplate{sections/subsections in toc}[ball] 
+% \setbeamertemplate{sections/subsections in toc}[ball unnumbered] 
+% -------------------------------
+%%% 9.6 Adding a Bibliography
+% \setbeamertemplate{bibliography entry author} % Beamer-Template/-Color/-Font
+% \setbeamertemplate{bibliography entry title} % Beamer-Template/-Color/-Font
+% \setbeamertemplate{bibliography entry journal} % Beamer-Template/-Color/-Font
+% \setbeamertemplate{bibliography entry note} % Beamer-Template/-Color/-Font
+% -------------------------------
+% \setbeamertemplate{bibliography item} % Beamer-Template/-Color/-Font
+\setbeamertemplate{bibliography item}[default] %  little article icon as the reference
+% \setbeamertemplate{bibliography item}[article] % Alias for the default.
+% \setbeamertemplate{bibliography item}[book] % little book icon as the reference
+% \setbeamertemplate{bibliography item}[triangle] % triangle as the reference
+% \setbeamertemplate{bibliography item}[text] % reference text (like “[Dijkstra, 1982]”) 
+% -------------------------------
+%%% 10.1 Adding Hyperlinks and Buttons
+% \setbeamertemplate{button} % Beamer-Template/-Color/-Font
+% • \insertbuttontext inserts the text of the current button. Inside “Goto-Buttons” (see below)
+%   this text is preﬁxed by the insert \insertgotosymbol and similarly for skip and return buttons.
+% • \insertgotosymbol This text is inserted at the beginning of goto buttons. Redeﬁne this
+%   command to change the symbol.
+%   Example: \renewcommand{\insertgotosymbol}{\somearrowcommand}
+% • \insertskipsymbol This text is inserted at the beginning of skip buttons.
+% • \insertreturnsymbol This text is inserted at the beginning of return buttons.
+% -------------------------------
+%%% 11.1 Itemizations, Enumerations, and Descriptions
+% \setbeamertemplate{items} % parent template of itemize items and enumerate items
+% \setbeamertemplate{itemize items} % Parent Beamer-Template 
+\setbeamertemplate{itemize items}[triangle]
+% \setbeamertemplate{itemize items}[circle] 
+% \setbeamertemplate{itemize items}[square] 
+% \setbeamertemplate{itemize items}[ball] 
+% -------------------------------
+% \setbeamertemplate{itemize item} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{itemize subitem} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{itemize subsubitem} % Beamer-Template/-Color/-Font 
+% -------------------------------
+% \setbeamertemplate{enumerate items}[default] % Numbered 
+% \setbeamertemplate{enumerate items}[circle] % Places the numbers inside little circles. 
+\setbeamertemplate{enumerate items}[square] % Places the numbers on little squares.
+% \setbeamertemplate{enumerate items}[ball] % “Projects” the numbers onto little balls.
+% -------------------------------
+% \setbeamertemplate{enumerate items} % Parent Beamer-Template 
+% \setbeamertemplate{enumerate item} % Beamer-Template/-Color/-Font 
+%  • \insertenumlabel inserts the current number of the top-level enumeration (as an Arabic
+% 	   number). This insert is also available in the next two templates.
+% \setbeamertemplate{enumerate subitem} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{enumerate subitem}{\insertenumlabel-\insertsubenumlabel}
+%  • \insertsubenumlabel inserts the current number of the second-level enumeration (as an Ara-
+%   	bic number).
+% \setbeamertemplate{enumerate subsubitem} % Beamer-Template/-Color/-Font 
+%  • \insertsubsubenumlabel inserts the current number of the second-level enumeration (as an
+%     Arabic number).
+% \setbeamertemplate{enumerate mini template} % Beamer-Template/-Color/-Font 
+%  • \insertenumlabel inserts the current number rendered by this mini template. For example,
+%     if the mini template is (i) and this command is used in the fourth item, \insertenumlabel
+%     would yield (iv).
+% \setbeamertemplate{itemize/enumerate body begin} % Beamer-Template 
+% \setbeamertemplate{itemize/enumerate body end} % Beamer-Template 
+% -------------------------------
+% \setbeamertemplate{description item}[default] % Beamer-Template/-Color/-Font 
+%      • \insertdescriptionitem inserts the text of the current description item.
+% -------------------------------
+% \setbeamertemplate{item}  % Beamer-Color/-Font 
+% \setbeamertemplate{item projected}   % Beamer-Color/-Font 
+% \setbeamertemplate{subitem}  % Beamer-Color/-Font 
+% \setbeamertemplate{subitem projected}  % Beamer-Color/-Font 
+% \setbeamertemplate{subsubitem}  % Beamer-Color/-Font 
+% \setbeamertemplate{subsubitem projected}  % Beamer-Color/-Font 
+% -------------------------------
+%%% 11.2 Hilighting
+% \setbeamertemplate{structure}  % Beamer-Color/-Font 
+% \setbeamertemplate{local structure}  % Beamer-Color/-Font 
+% \setbeamertemplate{tiny structure}  % Beamer-Color/-Font 
+% \setbeamertemplate{structure begin} % Beamer-Template
+% \setbeamertemplate{structure end} % Beamer-Template
+% \setbeamertemplate{alerted text} % Beamer-Color/-Font 
+% \setbeamertemplate{alerted text begin} % Beamer-Template
+% \setbeamertemplate{alerted text end} % Beamer-Template
+% -------------------------------
+%%% 11.3 Block Environments
+% \setbeamertemplate{blocks} % Parent Beamer-Template
+% \setbeamertemplate{blocks}[default] 
+\setbeamertemplate{blocks}[rounded][shadow=true]
+% \setbeamertemplate{blocks}[rounded][shadow=false]
+% -------------------------------
+% \setbeamertemplate{block begin} % Beamer-Template
+% \setbeamertemplate{block end} % Beamer-Template
+% \setbeamertemplate{block title} % Beamer-Color/-Font 
+% \setbeamertemplate{block body} % Beamer-Color/-Font 
+% \setbeamertemplate{block alerted begin} % Beamer-Template
+% \setbeamertemplate{block alerted end} % Beamer-Template
+% \setbeamertemplate{block title alerted} % Beamer-Color/-Font 
+% \setbeamertemplate{block body alerted} % Beamer-Color/-Font 
+% \setbeamertemplate{block example begin} % Beamer-Template
+% \setbeamertemplate{block example end} % Beamer-Template
+% \setbeamertemplate{block title example} % Beamer-Color/-Font 
+% \setbeamertemplate{block body example} % Beamer-Color/-Font 
+% -------------------------------
+%%% 11.4 Theorem Environments
+% \setbeamertemplate{qed symbol} % Beamer-Template/-Color/-Font 
+% -------------------------------
+% \setbeamertemplate{theorems} % Parent Beamer-Template 
+% \setbeamertemplate{theorems}[default] 
+% \setbeamertemplate{theorems}[normal font] 
+% \setbeamertemplate{theorems}[numbered] 
+% \setbeamertemplate{theorems}[ams style]
+% -------------------------------
+% \setbeamertemplate{theorem begin} % Beamer-Template 
+% • \inserttheoremblockenv This will normally expand to block, but if a theorem that has theorem
+%   style example is typeset, it will expand to exampleblock. Thus you can use this insert to decide
+%   which environment should be used when typesetting the theorem.
+% • \inserttheoremheadfont This will expand to a font changing command that switches to the font
+%   to be used in the head of the theorem. By not inserting it, you can ignore the head font.
+% • \inserttheoremname This will expand to the name of the environment to be typeset (like “Theo-
+%   rem” or “Corollary”).
+% • \inserttheoremnumber This will expand to the number of the current theorem preceeded by a
+%   space or to nothing, if the current theorem does not have a number.
+% • \inserttheoremaddition This will expand to the optional argument given to the environment or
+%   will be empty, if there was no optional argument.
+% • \inserttheorempunctuation This will expand to the punctuation character for the current envi-
+%   ronment. This is usually a period.
+% -------------------------------
+% \setbeamertemplate{theorem end} % Beamer-Template 
+% -------------------------------
+%%% 11.6 Figures and Tables
+% \setbeamertemplate{caption} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{caption}[default] typesets the caption name (a word like “Figure” or “Abbildung” or “Table”)
+% \setbeamertemplate{caption}[numbered] adds the figure or table number to the caption. 
+% \setbeamertemplate{caption}[caption name own line] 
+% -------------------------------
+% \setbeamertemplate{caption name} % Beamer-Color/-Font 
+% -------------------------------
+%%% 11.10    Abstract
+% \setbeamertemplate{abstract} 		 % Beamer-Color/-Font 
+% \setbeamertemplate{abstract title} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{abstract begin} % Beamer-Template 
+% \setbeamertemplate{abstract end}   % Beamer-Template 
+% -------------------------------
+%%% 11.11 Verse, Quotations, Quotes
+% \setbeamertemplate{verse} 		 % Beamer-Color/-Font 
+% \setbeamertemplate{verse begin} % Beamer-Template 
+% \setbeamertemplate{verse end}   % Beamer-Template 
+% \setbeamertemplate{quotation}   % Beamer-Color/-Font 
+% \setbeamertemplate{quotation begin} % Beamer-Template 
+% \setbeamertemplate{quotation end}   % Beamer-Template 
+% \setbeamertemplate{quote}       % Beamer-Color/-Font 
+% \setbeamertemplate{quote begin} % Beamer-Template 
+% \setbeamertemplate{quote end}   % Beamer-Template 
+% -------------------------------
+%%% 11.12 Footnotes
+% \setbeamertemplate{footnote} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{mark}     % Beamer-Color/-Font footnote 
+% -------------------------------
+%%% 18.1 Specifying Note Contents
+% \setbeamertemplate{note page} % Beamer-Template/-Color/-Font 
+% \setbeamertemplate{note page}[default] 
+% \setbeamertemplate{note page}[compress] 
+% \setbeamertemplate{note page}[plain] 
+% -------------------------------
+%%% Specifying Which Notes and Frames Are Shown
+% \setbeameroption{hide notes}
+% \setbeameroption{show notes}
+% \setbeameroption{show notes on second screen= location }
+% \setbeameroption{show only notes}
+
+

@@ -1,0 +1,23 @@
+
++ By Ruth:
+
+   - Acrónimos no chutan
+   
+   - FIXED: backpage.tex deshabilitado en TFMs y no debería
+
+   - cover-pfc-tfg-tfm: quitar lo de calificación y poner abajo fecha de
+     depósito
+
+   - ¿Dejar hueco para especialidad en el título?
+
+   
+   
++ Tell how to use acronyms in windows.
+
++ Write a howto for windows users:
+
+  - Texstudio
+  - TexNIC center: problemas con adobe nuevo
+  - Sugerir sumatra
+   
++ Use autolatex instead of rubber?.... Done! To be carefully checked

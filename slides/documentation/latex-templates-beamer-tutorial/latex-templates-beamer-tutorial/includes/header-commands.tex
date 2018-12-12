@@ -1,0 +1,145 @@
+\usetikzlibrary{decorations.fractals}
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+%\usepackage{palatino}
+\usepackage{mathpazo}
+%\usepackage{utopia}
+\usepackage{stmaryrd} % for varodot, bigodot 
+\usepackage{mathabx} % for \coAsterisk
+%\usepackage{mnsymbol}
+\setbeamertemplate{itemize item}{\scriptsize\raise1.7pt\hbox{\donotcoloroutermaths$\Asterisk$}}
+\setbeamertemplate{itemize item}{\scriptsize\raise1.7pt\hbox{\donotcoloroutermaths$\varodot$}}
+\setbeamertemplate{itemize subitem}{\scriptsize\raise1.25pt\hbox{\donotcoloroutermaths$\rhd$}}
+
+
+
+\usepackage{xifthen}% provides \isempty test
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=red} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{frametitle}{fg=DeepSkyBlue3} 
+\setbeamercolor*{structure}{fg=black} 
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+%\renewcommand{\(}{\begin{columns}}
+%\renewcommand{\)}{\end{columns}}
+%\newcommand{\<}[1]{\begin{column}{#1}}
+%\renewcommand{\>}{\end{column}}
+
+% ======================================
+% custom commands 
+\newcommand{\cemph}[1]{\textcolor{\highlightcolor}{#1}}
+%\renewcommand\frametitle[1]{{\textsc{\Large \textcolor{\highlightcolor}{#1}}}\vspace{0.6cm}\par}
+
+\setbeamertemplate{frametitle}
+{
+{\textsc \insertframetitle}\vspace{0.2cm}\par
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{headline}{% 
+	\setbeamercolor{head1}{bg=\headbarcolor}
+	 \hbox{%
+  \begin{beamercolorbox}[wd=.01\paperwidth,ht=2.25ex,dp=50ex,center]{head1}%
+  \fontsize{5}{5}\selectfont
+  
+  \end{beamercolorbox}%
+  }\vspace{-50ex}
+}
+\setbeamertemplate{footline}{
+\begin{tiny}
+\setbeamercolor{foot1}{fg=black!70,bg=gray!10}
+\setbeamercolor{foot2}{fg=gray,bg=gray!15}
+\setbeamercolor{foot3}{fg=gray,bg=gray!10}
+\setbeamercolor{foot4}{fg=black!70,bg=gray!20}
+\setbeamercolor{foot5}{fg=gray,bg=gray!15}
+\setbeamercolor{foot6}{fg=black,bg=gray!20}
+
+% taken from theme infolines and adapted
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{foot1}%
+  \fontsize{5}{5}\selectfont
+  \slidesettitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.25ex,dp=1ex,center]{foot2}
+  \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.05\paperwidth,ht=2.25ex,dp=1ex,center]{foot3}
+  \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,center]{foot4}%
+  \fontsize{5}{5}\selectfont
+  \insertshortauthor\ (\authorweb) 
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.05\paperwidth,ht=2.25ex,dp=1ex,center]{foot5}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=2.25ex,dp=1ex,right]{foot6}%
+	\insertframenumber{} / \inserttotalframenumber \hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+\end{tiny}
+\vskip10pt
+}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Title slide 
+
+
+\title{\slidesettitle} 
+\author{Nauman} 
+
+\begin{document}
+{\setbeamertemplate{footline}{}
+\begin{frame}
+\title{\slidesettitle}
+%\subtitle{SUBTITLE}
+\author{\footnotesize 
+	\textbf{\authorname}\\ \authoremail \\ {\scriptsize \url{\authorweb}} \\\vspace{12pt}
+	{\scriptsize \authoraffiliation}\\\vspace{6pt}
+	{\tiny \textcolor{gray}{\insertdate}}
+}
+\date{
+	{\scriptsize \today}
+}
+\begin{flushright}\includegraphics[width=0.15\textwidth]{\logoimagepath}\end{flushright}
+
+
+\begin{flushleft}
+\vspace{-1.5cm}{\small \textcolor{\highlightcolor}{\coursetitle}}\\\vspace{2cm}
+{\huge \slidesettitle \ifthenelse{\equal{\slidesetsubtitle}{}}%
+    {}% if #1 is empty
+    {: \\ {\large \slidesetsubtitle}}% if #1 is not empty
+    } \\    
+    \vspace{20pt}
+\insertauthor 
+\end{flushleft}
+\end{frame}
+}
+% custom footer after the title 
+%\setbeamertemplate{navigation symbols}{\tiny \textcolor{gray}{\coursetitle\ [Slideset \slidesetnumber] -  }\textcolor{black}{\insertframenumber\ / \inserttotalframenumber}}
+\setbeamertemplate{navigation symbols}{}
+
+
+%% ----------- redefine headline for next slides
+\setbeamertemplate{headline}{% 
+	\setbeamercolor{head1}{bg=\headbarcolor}
+	 \hbox{%
+  \begin{beamercolorbox}[wd=.01\paperwidth,ht=2.25ex,dp=10ex,center]{head1}%
+  \fontsize{5}{5}\selectfont
+  
+  \end{beamercolorbox}%
+  }\vspace{-10ex}
+}
+
+% greater line spacing for new slides
+\linespread{1.2} 

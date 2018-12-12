@@ -1,0 +1,124 @@
+\documentclass{beamer}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{10pt}}{\enditemize}
+
+\mode<presentation>
+	{
+	\usetheme{Moo}
+	%\usetheme{Pittsburgh}
+	\setbeamercovered{transparent = 28}
+	}
+
+%\usecolortheme{Moo} 
+%\useinnertheme{Moo}
+%\useoutertheme{Moo}
+
+
+
+\title{Introducing Moo}
+\subtitle{My Moo}
+\author{Madhav Kumar}\institute{We think therefore we R}
+
+
+
+\begin{document}
+
+
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+
+\AtBeginSection[]
+{
+   \begin{frame}
+       \frametitle{Outline}
+       \tableofcontents[currentsection]
+   \end{frame}
+}
+
+\section{The story of Moo}
+
+\begin{frame}
+	\frametitle{Who is Moo?}
+		\begin{itemize}
+ 			\item Moo is the name of this presentation
+ 			\item Moo is based on a simple theme
+ 			\item Moo shows how we can customize and make ``beamer" ours
+ 			\item Like the logo on the title slide
+ 			\item And the logo on the top right corner
+ 		\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{How tough is it to make Moo?}
+		\begin{wideitemize}
+			\item Not a lot
+			\item Simple commands with a concept in mind for
+			\pause
+			\item Colour
+			\pause
+			\item Font
+			\pause
+			\item Inner details
+			\pause
+			\item Outer details
+		\end{wideitemize}
+\end{frame}
+
+
+
+\section{What does Moo have?}
+
+
+
+\begin{frame}
+	\frametitle{Moo is a simple idea}
+		\begin{itemize}
+			\item Notice the footline
+			\item And the horizontal bar below the headline
+			\item The style of the itemized items
+				\begin{enumerate}					
+					\item And that of the enumerated items
+					\item The colours, the shape
+					\item Everything can be customized
+				\end{enumerate}		
+		\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Moo brings colours to life}
+		\begin{description}
+			\item [Blue] Notice the colour of description item title
+			\item [Still blue] It can be set globally
+			\item [\color{red} Red] \dots but can also be changed if required
+		\end{description}
+\end{frame}	
+
+
+
+\begin{frame}
+	\frametitle{You can personalize Moo. (S)he doesn't mind.}
+	
+		\begin{theorem}[It's a theorem]
+			You can change the way the boxes look and feel
+		\end{theorem}
+		
+		\begin{exampleblock}{Example}
+			Exemplify Moo.
+		\end{exampleblock}
+		
+		\begin{alertblock}{Alert}
+			Sometimes Moo gets carried away.
+		\end{alertblock}
+\end{frame}	
+
+
+\end{document}

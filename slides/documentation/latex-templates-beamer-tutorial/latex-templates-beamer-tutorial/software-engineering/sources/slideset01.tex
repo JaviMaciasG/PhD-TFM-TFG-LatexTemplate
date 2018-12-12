@@ -1,0 +1,124 @@
+\documentclass[xcolor=x11names,compress]{beamer}
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{textpos}
+\usepackage{color}
+\usepackage{hyperref}
+
+
+% --------------------------------------
+% Customizations 
+\newcommand{\logoimagepath}{../../logos/fastlogo}
+\newcommand{\highlightcolor}{DeepSkyBlue4}
+\newcommand{\authorname}{Nauman}
+\newcommand{\authoremail}{recluze@gmail.com}
+\newcommand{\authorweb}{http://csrdu.org/nauman}
+\newcommand{\authoraffiliation}{FAST National University of Computer and Emerging Sciences (FAST-NU) \\ Peshawar Campus}
+% --------------------------------------
+\newcommand{\coursetitle}{CS303 - Software Engineering}
+\newcommand{\slidesettitle}{Software Quality Assurance}
+\newcommand{\slidesetnumber}{03}
+% --------------------------------------
+
+
+
+\usetikzlibrary{decorations.fractals}
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+%\usepackage{utopia}
+
+
+
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=red} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\renewcommand{\(}{\begin{columns}}
+\renewcommand{\)}{\end{columns}}
+\newcommand{\<}[1]{\begin{column}{#1}}
+\renewcommand{\>}{\end{column}}
+
+% ======================================
+% custom commands 
+\newcommand{\cemph}[1]{\textcolor{\highlightcolor}{#1}}
+\renewcommand\frametitle[1]{{\textsc{\Large \textcolor{\highlightcolor}{#1}}}\vspace{0.6cm}\par}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\title{\slidesettitle} 
+\author{Nauman} 
+
+\begin{document}
+\begin{frame}
+\title{\slidesettitle}
+%\subtitle{SUBTITLE}
+\author{\footnotesize 
+	\textbf{\authorname}\\ \authoremail \\ {\scriptsize \url{\authorweb}} \\\vspace{12pt}
+	{\scriptsize \authoraffiliation}\\\vspace{6pt}
+	{\tiny \textcolor{gray}{\insertdate}}
+}
+\date{
+	{\scriptsize \today}
+}
+\begin{flushright}\includegraphics[width=0.15\textwidth]{\logoimagepath}\end{flushright}
+
+
+\begin{flushleft}
+\vspace{-1.5cm}{\small \textcolor{\highlightcolor}{\coursetitle}}\\\vspace{2cm}
+{\huge \slidesettitle} \\\vspace{20pt}
+\insertauthor 
+\end{flushleft}
+\end{frame}
+% custom footer after the title 
+\setbeamertemplate{navigation symbols}{\tiny \textcolor{gray}{\coursetitle\ [Slideset \slidesetnumber] -  }\textcolor{black}{\insertframenumber\ / \inserttotalframenumber}}
+
+
+% ================= BEGIN SLIDES ============================================
+
+\begin{frame}[t] % ----------------------------------------------------------
+
+\frametitle{Optional Title for My Slide}
+
+
+
+\begin{enumerate} 
+\item First thingy
+\begin{itemize} 
+\item It's important to realize the requirement for quality from the start of the project. It does \cemph{not} help to start later on. 
+\begin{itemize} 
+\item It's important to realize the requirement for quality from the start of the project. It does \cemph{not} help to start later on. 
+\item second thing
+\end{itemize}
+\item second thing
+\end{itemize}
+\item second thing
+\end{enumerate}
+
+\end{frame}
+\begin{frame}[t] % ----------------------------------------------------------
+\frametitle{Yet Another Slide}
+\begin{itemize} 
+\item It's important to realize the requirement for quality from the start of the project. It does \cemph{not} help to start later on. 
+\pause
+\item second thing
+\end{itemize}
+\end{frame}
+
+
+\end{document}
