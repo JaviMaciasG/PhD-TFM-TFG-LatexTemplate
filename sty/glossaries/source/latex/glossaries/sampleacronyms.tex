@@ -1,0 +1,42 @@
+ % This file is public domain
+ % If you want to use arara, you need the following directives:
+ % arara: pdflatex: { synctex: on }
+ % arara: makeglossaries
+ % arara: pdflatex: { synctex: on }
+\documentclass{article}
+
+\usepackage[acronym,acronymlists={main,acronym2}]{glossaries}
+
+\newglossary[alg2]{acronym2}{acr2}{acn2}{Statistical Acronyms}
+
+\makeglossaries
+
+ % Use long (short) acronym style:
+\setacronymstyle{long-short}
+
+ % Main glossary is a list of calculus acronyms
+
+\renewcommand{\glossaryname}{Calculus Acronyms}
+
+\newacronym[type=main]{vc}{VC}{Vector Calculus}
+\newacronym[type=main]{ftoc}{FTOC}{Fundamental Theorem of Calculus}
+
+ % "acronym" glossary is a list of computer related acronyms
+
+\renewcommand{\acronymname}{Computer Acronyms}
+
+\newacronym{kb}{kb}{KiloBit}
+\newacronym{kB}{kB}{KiloByte}
+
+ % "acronym2" glossary is a list of statistical acronyms
+
+\newacronym[type=acronym2]{svm}{SVM}{Support Vector Machine}
+
+\begin{document}
+\section{Sample Section}
+\gls{kb}. \gls{kB}. \gls{vc}. \gls{ftoc}. \gls{svm}.
+
+\gls{kb}. \gls{kB}. \gls{vc}. \gls{ftoc}. \gls{svm}.
+
+\printglossaries
+\end{document}

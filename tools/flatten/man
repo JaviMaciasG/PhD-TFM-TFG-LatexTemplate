@@ -1,0 +1,124 @@
+.TH FLATTEN 1 "29 October 1995"
+.SH NAME
+flatten \- recursively include files into a LaTeX source file
+.SH SYNOPSIS
+.B flatten
+[
+.I options
+]
+.IR infile 
+.IR outfile
+.br
+.SH DESCRIPTION
+The program
+.B flatten
+takes a LaTeX source file
+.I infile
+and recursively inserts the text of any files that
+.I infile
+`includes'. The result is written to file
+.I outfile
+which then consists of a single LaTeX source file.
+Note that
+.I infile
+must be the complete name of the LaTeX source file
+including the extension (e.g., root.tex).
+.PP
+When
+.B flatten
+finds an inclusion command it searches for the file
+to be included. If it finds it, it writes the
+file at the appropriate place in the
+.I outfile
+file, commenting out the inclusion command itself.
+An included file is terminated either by the TeX
+command \\endinput or the physical
+end of the file, whichever occurs first.
+If the file for inclusion is not found, an error is reported but
+processing continues.
+.PP
+.B Flatten
+automatically produces an error log file called
+.I flatten.err
+which is available for examination after each run.
+.PP
+For more information see the manual: Peter Wilson,
+"FLaTTeN: A Program to Flatten LaTeX Source Files",
+the source for which should be in directory DOCUMENTDIR.
+.SH OPTIONS
+.TP
+.B -d num
+Print diagnostic information to the error file
+.I flatten.err.
+A value of
+.I 1
+will print diagnostics related to file searching,
+while a value of 
+.I 2
+or more will print full diagnostics.
+.TP
+.B -f name
+File inclusion commands will be read from file
+.IR name. 
+By default, 
+.B flatten
+recognizes the LaTeX commands \\input and \\include
+as inclusion commands. When this option is used
+the default inclusion commands are replaced by
+the commands in the
+.I name
+file. The desired inclusion commands must be listed in
+.I name
+with one command per line and no blank lines. For example,
+if the desired inclusion commands are \\input and \\infile
+but excluding \\include, then the 
+.I name
+file will contain:
+.EX 4
+.IP
+\\input
+.br
+\\infile
+.br
+.EE
+.TP
+.B -D character
+The
+.I character
+the operating system uses for catenating directory names when
+forming a pathname.
+The default is the slash (/) character.
+.TP
+.B -P characters
+The
+.I characters
+the operating system uses when seperating pathnames in a list of
+pathnames. The default characters are space ( ), colon (:) and
+semi-colon (;). The space is always set as one of the 
+.IR characters.
+.SH ENVIRONMENT
+.B Flatten 
+searches for files in the directories in the paths defined by
+the FLATINPUTS environment variable. If this variable is not
+set then it only searches in the current directory. Note that
+.I infile
+is always assumed to be located in the current directory.
+.SH SOURCES
+Complete source files and documentation for
+.B flatten
+are maintained on the NIST SOLIS (STEP On Line Information Service)
+system in directory pub/step/latex/programs/flatten. SOLIS is
+accessible via:
+.br
+Anonymous ftp to ftp.cme.nist.gov
+.br
+the URL gopher://elib.cme.nist.gov 
+.br
+the URL http://elib.cme.nist.gov:70/
+.SH SEE ALSO
+.BR latex (1)
+.SH AUTHOR
+Peter Wilson, Catholic University of America and the National
+Institute of Standards and Technology (pwilson@cme.nist.gov).
+
+

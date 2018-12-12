@@ -1,0 +1,59 @@
+ % This file is part of the glossaries bundle
+ % These are test glossary entries with URLs stored in
+ % the user1 field.
+
+\newglossaryentry{aenean-url}{name={aenean},
+ description={adipiscing auctor est},
+ user1={http://uk.tug.org/}}
+
+\newglossaryentry{morbi-url}{name={morbi},
+ description={quam arcu, malesuada sed, volutpat et, elementum sit
+amet, libero},
+ user1={http://www.ctan.org/}}
+
+\newglossaryentry{duis-url}{name={duis},
+ description={mattis},
+ user1={http://www.tug.org/}}
+
+ % Now try an active character
+\newglossaryentry{sed-url}{name={sed},
+ description={cursus lectus quis odio (uses
+\texttt{\string\protect\string~})},
+ user1={http://theoval.cmp.uea.ac.uk/\protect~nlct/}}
+
+\newglossaryentry{sed2-url}{name={sed},
+ description={cursus lectus quis odio (uses
+\texttt{\string\string\string~})},
+ user1={http://theoval.cmp.uea.ac.uk/\string~nlct/}}
+
+\newglossaryentry{sed3-url}{name={sed},
+ description={cursus lectus quis odio (uses
+\texttt{\string\glstildechar})},
+ user1={http://theoval.cmp.uea.ac.uk/\glstildechar nlct/}}
+
+ % How do we deal with a percent character?
+
+ % Temporarily change the category code
+
+\catcode`\%=12
+\newglossaryentry{phasellus-url}{name={phasellus},
+ description={arcu (catcode change)},
+ user1=http://theoval.cmp.uea.ac.uk/%7Enlct
+}
+\catcode`\%=14
+
+ % Use \%
+
+\newglossaryentry{phasellus2-url}{name={phasellus},
+ description={arcu (uses \texttt{\string\%})},
+ user1=http://theoval.cmp.uea.ac.uk/\%7Enlct
+}
+
+ % Use \glspercentchar
+
+\newglossaryentry{phasellus3-url}{name={phasellus},
+ description={arcu  (uses
+ \texttt{\string\glspercentchar})},
+ user1=http://theoval.cmp.uea.ac.uk/\glspercentchar 7Enlct
+}
+

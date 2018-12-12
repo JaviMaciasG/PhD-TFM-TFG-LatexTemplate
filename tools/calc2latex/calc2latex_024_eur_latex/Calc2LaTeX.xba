@@ -1,0 +1,920 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Calc2LaTeX" script:language="StarBasic">REM  *****  BASIC  *****
+
+Option Explicit
+
+REM ***** USER SETTINGS ******
+&apos; Set the character encoding that should be used.
+&apos; The character encoding names refer to the document http://www.iana.org/assignments/character-sets.
+&apos; Which character sets are supported depends on the implementation. 
+&apos; For example, you can choose a charset from&quot;ASCII&quot;, &quot;Latin-1&quot;, &quot;ISO-8859-1&quot;, &quot;Latin-9&quot;, &quot;ISO-8859-15&quot;, 
+&apos; &quot;windows-1252&quot;,&quot;UTF-8&quot;, &quot;SJIS&quot;, &quot;EUC-JP&quot;, and so on.
+public const user_charset = &quot;ISO-8859-1&quot;
+
+&apos; Set the line feed character.
+&apos; You can choose from &quot;lf&quot;(for Linux), &quot;crlf&quot;(for Windows), and &quot;cr&quot;.
+public const user_linefeed = &quot;lf&quot; 
+REM ***** END ****************
+
+
+&apos; to save settings used by the &quot;save as&quot; file dialog
+Global dialogDirectory as string
+Global dialogFilename as string
+
+&apos; to save settings used by the GUI setting dialog
+&apos;Global aGlobalSetting as GlobalSettings
+Global aGlobalSetting_tabularEnable as Integer
+Global aGlobalSetting_labelString as String
+Global aGlobalSetting_captionString as String
+Global aGlobalSetting_captionPosition as Integer
+Global aGlobalSetting_horizontalPosition as Integer
+Global aGlobalSetting_insertPosition as Integer
+Global aGlobalSetting_ruledLine as Integer
+Global aGlobalSetting_formatCells as Integer
+Global aGlobalSetting_outputResult as Integer
+Global aGlobalSetting_replaceReservedWord as Integer
+
+public const strAppname = &quot;Calc2LaTeX&quot;
+public const strVersion = &quot;0.2.4&quot;
+
+public strEOL As String
+
+REM Reserved Word of TeX
+public const strBeginTabular = &quot;\begin{tabular}&quot;
+public const strEndTabular   = &quot;\end{tabular}&quot;
+public const strBeginLeft    = &quot;\begin{flushleft}&quot;
+public const strEndLeft      = &quot;\end{flushleft}&quot;
+public const strBeginCenter  = &quot;\begin{center}&quot;
+public const strEndCenter    = &quot;\end{center}&quot;
+public const strBeginRight   = &quot;\begin{flushright}&quot;
+public const strEndRight     = &quot;\end{flushright}&quot;
+
+public const strBeginTable   = &quot;\begin{table}&quot;
+public const strEndTable     = &quot;\end{table}&quot;
+
+public const strHeadLabel    = &quot;\label{&quot;
+public const strTailLabel    = &quot;}&quot;
+public const strHeadCaption  = &quot;\caption{&quot;
+public const strTailCaption  = &quot;}&quot;
+
+public const strHeadTabularOption = &quot;{&quot;
+public const strTailTabularOption = &quot;}&quot;
+
+public const strTabularOptionLeft   = &quot;l&quot;
+public const strTabularOptionCenter = &quot;c&quot;
+public const strTabularOptionRight  = &quot;r&quot;
+
+public const strTableHere       = &quot;[htbp]&quot;
+public const strTableTop        = &quot;[tbp]&quot;
+public const strTableBottom     = &quot;[bp]&quot;
+public const strTableUseOnePage = &quot;[p]&quot;
+
+public const strHeadMulticolumn = &quot;\multicolumn{&quot;
+public const strSplitMulticolumn = &quot;}{&quot;
+public const strTailMulticolumn = &quot;}&quot;
+
+public const strHeadTableIrregularCellPosition  = &quot;\multicolumn{1}{&quot;
+public const strSplitTableIrregularCellPosition = &quot;}{&quot;
+public const strTailTableIrregularCellPosition  = &quot;}&quot;
+
+public const strHoriBorderLine = &quot;\hline&quot;
+public const strVertBorderLine =&quot;|&quot;
+
+public const strHeadCline = &quot;\cline{&quot;
+public const strSplitCline =&quot;-&quot;
+public const strTailCline = &quot;}&quot;
+
+public const strSplit  = &quot; &amp; &quot; 
+public const strEndColumn = &quot; \\&quot;
+
+&apos; for replacement of reserved words
+&apos;public const strBackslash =&quot;\&quot;
+&apos;public const strReplacedBackslash = &quot;$\backslash$&quot; &apos; you can&apos;t use &quot;\verb|\|&quot; in multicolumn.
+public const strPercent =&quot;%&quot;
+public const strReplacedPercent =&quot;\%&quot;
+public const strOpenningBrace=&quot;{&quot;
+public const strReplacedOpenningBrace=&quot;\{&quot;
+public const strClosingBrace = &quot;}&quot;
+public const strReplacedClosingBrace = &quot;\}&quot;
+public const strUnderBar = &quot;_&quot;
+public const strReplacedUnderBar = &quot;\_&quot;
+public const strAmp = &quot;&amp;&quot;
+public const strReplacedAmp = &quot;\&amp;&quot;
+public const strSharp = &quot;#&quot;
+public const strReplacedSharp = &quot;\#&quot;
+public const strDollar = &quot;$&quot;
+public const strReplacedDollar = &quot;\$&quot;
+
+
+public const constON   As Boolean = True
+public const constOFF  As Boolean =  False
+
+Type ReturnValueOfSettings
+	strTableHead As String
+	strTableTail As String
+	bLineONOFF As Boolean
+	bEnableFormattingCells As Boolean
+	bResultWindow As Boolean
+	bEnableReplaceWords As Boolean
+End Type
+
+Public oDocument As Object
+
+REM MAIN
+Sub Main
+	&apos;init
+	&apos;static aGlobalSetting as GlobalSettings
+
+	Dim oSheet As Object
+	Dim oSelection As Object
+	Dim strTable As String
+	
+	&apos; ENTER 
+	&apos;strEOL = Chr(10) + Chr(13)
+	if user_linefeed = &quot;crlf&quot; then
+		strEOL =Chr(13) + Chr(10)
+	elseif  user_linefeed = &quot;lf&quot; then
+		strEOL = Chr(10)
+	else
+		strEOL = Chr(13)
+	endif
+	
+	oDocument = ThisComponent
+
+	oDocument.addActionLock
+
+	Dim aReturnValueOfSettings as ReturnValueOfSettings
+	aReturnValueOfSettings = Settings2()
+
+    oSelection = oDocument.CurrentController.Selection
+
+	strTable = makeTableBody(oSelection,aReturnvalueOfSettings.bLineONOFF, aReturnValueOfSettings.bEnableFormattingCells, _
+						aReturnValueOfSettings.bEnableReplaceWords)
+	strTable = strBeginTabular +  strTable + strEndTabular + strEOL
+	&apos; strTable = Settings(strTable)
+
+	strTable = aReturnValueOfSettings.strTableHead + strTable + aReturnValueOfSettings.strTableTail
+
+	&apos; UNDER DEVELOPMENT
+	If aReturnValueOfSettings.bResultWindow = constON then
+		ShowResults(strTable)
+	Else
+		outputResultWithFileDialog(strTable)
+	End If
+	
+	oDocument.removeActionLock    
+End Sub
+
+REM TABLE BODY
+Function MakeTableBody(oCellRange as Object, bONOFF as Boolean, bEnableFormattingCells as Boolean, bEnableReplaceWords as Boolean ) As String
+	Dim nCols,nRows As Long
+	Dim i,j As Long
+	Dim oCell As Object
+	Dim oBaseRangeAddress As New com.sun.star.table.CellRangeAddress
+	nCols                     = oCellRange.Columns.Count
+	nRows                    = oCellRange.Rows.Count
+	oBaseRangeAddress = oCellRange.getRangeAddress
+
+	Dim strTabularOption As String
+	strTabularOption = MakeTabularOption(oCellRange)
+
+	Dim strTable As String
+    strTable=&quot;&quot;
+	strTable = strTable + strHeadTabularOption+ insertBorderMark(strTabularOption,bONOFF) + _
+				strTailTabularOption + strEoL
+
+	strTable= strTable + makeHLine(bONOFF) + strEoL
+	
+
+	Dim flagMargedHidden As Integer
+    Dim oSheet As Object
+    Dim oCursor As Object
+    Dim oRangeAddress As New com.sun.star.table.CellRangeAddress
+
+	Dim nClinePrev As Integer
+	Dim strColumnLine As String
+
+	oSheet = ThisComponent.CurrentController.ActiveSheet
+	
+   	For j=0 To (nRows-1)
+				nClinePrev = 1
+				strColumnLine = &quot;&quot;
+	    For i=0 To (nCols-1)
+			&apos; Marged Cell Check
+
+    		oCell = oCellRange.getCellByPosition(i,j)
+			oCursor = oSheet.createCursor()
+			oCursor.gotoStart()
+
+REM [DEV  INFO] ver024 FIX BEGIN
+&apos; 			oCursor.gotoOffset(i+oBaseRangeAddress.StartColumn-1 ,j+oBaseRangeAddress.StartRow-1)
+			Dim offsetBaseColumn as long, offsetBaseRow as long
+			if oBaseRangeAddress.StartColumn = 0 then
+				offsetBaseColumn = oBaseRangeAddress.StartColumn
+			else
+				offsetBaseColumn = oBaseRangeAddress.StartColumn -1
+			endif
+			if oBaseRangeAddress.StartRow = 0 then
+				offsetBaseRow = oBaseRangeAddress.StartRow
+			else
+				offsetBaseRow = oBaseRangeAddress.StartRow -1
+			endif
+			oCursor.gotoOffset(i+offsetBaseColumn ,j+offsetBaseRow)
+REM [DEV  INFO] ver024 FIX END
+
+
+
+			oCursor.collapseToMergedArea()
+			oRangeAddress = oCursor.getRangeAddress()
+
+       		Dim strACellOutput As String
+			flagMargedHidden = 0
+
+			&apos; horizontal check
+			If (oRangeAddress.EndColumn &lt;&gt; oRangeAddress.StartColumn ) then
+				&apos; Marged
+				If (oRangeAddress.StartColumn - oBaseRangeAddress.StartColumn = i ) Then
+					&apos; First Column
+			  		strACellOutput = strHeadMulticolumn + str(oRangeAddress.EndColumn - oRangeAddress.StartColumn+1) + strSplitMulticolumn
+					If i=0 then
+				  		strACellOutput = strACellOutput + makeVLine(bONOFF) + convPositionToString(getPosition(oCell)) + makeVLine(bONOFF)
+					else
+						strACellOutput = strACellOutput + convPositionToString(getPosition(oCell)) +makeVLine(bONOFF)
+					end if
+						
+				    &apos;strACellOutput =  strACellOutput + strSplitMulticolumn + ReplaceReservedWords(oCell.String) +strTailMulticolumn
+					strACellOutput =  strACellOutput + strSplitMulticolumn + getFormattedCellString(ReplaceReservedWords(oCell.String, bEnableReplaceWords),oCell,bEnableFormattingCells) +strTailMulticolumn
+
+				  	&apos; cline
+				  	if((oRangeAddress.EndRow -oBaseRangeAddress.StartRow) &lt;&gt; j) And _
+				  		(nClinePrev &lt;=(i+1-1))  then
+				  		&apos;strColumnLine = strColumnLine + strHeadCline + Str(nClinePrev) + &quot;-&quot; + Str(i+1-1) + strTailCline
+						strColumnLine = strColumnLine + makeCLine(nClinePrev, i+1-1, bONOFF)
+						nClinePrev = i+2
+				  	endif
+			    else
+					&apos; Hidden Cells (Marged)
+					flagMargedHidden = 1
+				    strACellOutput=&quot;&quot;
+						&apos; cline
+				  	if((oRangeAddress.EndRow-oBaseRangeAddress.StartRow) &lt;&gt; j) then
+  						nClinePrev = i+2
+  					endif
+				endif
+				
+			&apos;  vertical  check
+			elseif oRangeAddress.EndRow &lt;&gt; oRangeAddress.StartRow then
+				&apos; marged
+			  	strACellOutput =strHeadMulticolumn+ str(oRangeAddress.EndColumn - oRangeAddress.StartColumn+1) + strSplitMulticolumn
+				If i=0 then
+					strACellOutput = strACellOutput + makeVLine(bONOFF) + convPositionToString(getPosition(oCell)) + makeVLine(bONOFF)
+				else
+					strACellOutput = strACellOutput + convPositionToString(getPosition(oCell)) +makeVLine(bONOFF)
+				end if
+				
+				&apos;strACellOutput =  strACellOutput + strSplitMulticolumn + ReplaceReservedWords(oCell.String) +strTailMulticolumn
+				&apos; hide cells which is covered with a marged cell
+				strACellOutput =  strACellOutput + strSplitMulticolumn
+				if oRangeAddress.StartRow-oBaseRangeAddress.StartRow = j then
+					&apos;strACellOutput =  strACellOutput + ReplaceReservedWords(oCell.String)
+					strACellOutput =  strACellOutput + getFormattedCellString(ReplaceReservedWords(oCell.String, bEnableReplaceWords),oCell,bEnableFormattingCells)
+
+				endif
+				strACellOutput =  strACellOutput + strTailMulticolumn
+				
+				&apos; cline
+				if((oRangeAddress.EndRow -oBaseRangeAddress.StartRow) &lt;&gt; j) And _
+					(nClinePrev &lt;=(i+1-1))  then
+					&apos;strColumnLine = strColumnLine + strHeadCline + Str(nClinePrev) +strSplitCline + Str(i+1-1) + strTailCline 
+					strColumnLine = strColumnLine + makeCLine(nClinePrev,i+1-1, bONOFF)
+				 endif
+				 if((oRangeAddress.EndRow -oBaseRangeAddress.StartRow) &lt;&gt; j) then
+					nClinePrev = i+2
+				 endif
+
+			else
+				&apos; not Marged
+				If StrComp(Mid(strTabularOption,i+1,1), _
+					convPositionToString(getPosition(oCell)))=0 Then
+&apos;					strACellOutput = ReplaceReservedWords(oCell.String)
+					strACellOutput = getFormattedCellString(ReplaceReservedWords(oCell.String, bEnableReplaceWords),oCell,bEnableFormattingCells)
+
+				else
+					strACellOutput =  strHeadTableIrregularCellPosition
+					If i=0 Then
+						strACellOutput = strACellOutput + makeVLine(bONOFF)
+					End If
+&apos;					strACellOutput =	strACellOutput + _
+&apos;								convPositionToString(getPosition(oCell)) + _
+&apos;								makeVLine(bONOFF) + _
+&apos;								strSplitTableIrregularCellPosition + _
+&apos;								ReplaceReservedWords(oCell.String)+strTailTableIrregularCellPosition
+
+					strACellOutput =	strACellOutput + _
+								convPositionToString(getPosition(oCell)) + _
+								makeVLine(bONOFF) + _
+								strSplitTableIrregularCellPosition + _
+								getFormattedCellString(ReplaceReservedWords(oCell.String, bEnableReplaceWords),oCell,bEnableFormattingCells) +strTailTableIrregularCellPosition
+
+				endif			
+			endif
+			oCursor = Nothing
+
+			strTable = strTable + strACellOutput
+	
+			If (i &lt;&gt; (nCols-1)) AND (flagMargedHidden &lt;&gt; 1) AND (oRangeAddress.EndColumn &lt;&gt; (oBaseRangeAddress.StartColumn + nCols-1)) Then
+					strTable = strTable + strSplit
+			End If
+		Next i
+
+		if(nClinePrev =1) then
+			&apos; this line is not marged
+			strTable = strTable + strEndColumn + &quot; &quot; + makeHLine(bONOFF) + strEOL
+		else
+			If nClinePrev &lt;= (nCols-1)+1 then
+				&apos; the last cell in this column isn&apos;t marged
+ 	        	&apos;strColumnLine = strColumnLine + strHeadCline + Str(nClinePrev) +strSplitCline + Str((nCols-1)+1) +strTailCline
+ 	        	strColumnLine = strColumnLine + makeCLine(nClinePrev, (nCols-1)+1, bONOFF)
+ 	        	
+			endif
+				
+			strTable = strTable + strEndColumn + &quot; &quot; + strColumnLine + strEOL
+		endif
+	Next j
+	
+	MakeTableBody = strTable
+End Function
+
+Function insertBorderMark(strTabularOption as String, bONOFF as Integer) As String
+	Dim i as Integer
+	Dim strRet As String
+
+	if bONOFF = constON then
+		strRet = &quot;&quot; + strVertBorderLine
+		For i=1 To Len(strTabularOption)
+			strRet = strRet + Mid(strTabularOption,i,1) + strVertBorderLine
+		Next i
+	else
+		strRet = strTabularOption
+	endif
+	insertBorderMark = strRet
+End Function
+
+
+Function convPositionToString(oPosition As Long) As String
+	If oPosition = com.sun.star.table.CellHoriJustify.LEFT Then
+			convPositionToString = strTabularOptionLeft
+	Elseif oPosition = com.sun.star.table.CellHoriJustify.CENTER Then
+			convPositionToString = strTabularOptionCenter
+	Elseif oPosition = com.sun.star.table.CellHoriJustify.RIGHT Then
+			convPositionToString = strTabularOptionRight
+	Else
+			convPositionToString = convStandardPosToString
+	End If
+End Function
+
+Function convStandardPosToString As String
+	convStandardPosToString = strTabularOptionLeft
+End Function
+
+Function getPosition(oCell As Object) As Long
+	Dim nPosition AS Integer
+	nPosition = oCell.HoriJustify
+	If nPosition = com.sun.star.table.CellHoriJustify.STANDARD Then
+		getPosition = getStandardPosition(oCell.getType)
+	Else
+		getPosition = nPosition
+	Endif
+End Function
+
+
+Function getStandardPosition(nCellContentType As Long) As Long
+	If nCellContentType = com.sun.star.table.CellContentType.FORMULA  Then
+		&apos;NEED TO FIX THIS CASE!!
+		getStandardPosition  = com.sun.star.table.CellHoriJustify.RIGHT
+	ElseIf nCellContentType = com.sun.star.table.CellContentType.VALUE Then
+		getStandardPosition = com.sun.star.table.CellHoriJustify.RIGHT
+	ElseIf nCellContentType = com.sun.star.table.CellContentType.TEXT Then
+		getStandardPosition  = com.sun.star.table.CellHoriJustify.LEFT
+	Else
+		getStandardPosition  = com.sun.star.table.CellHoriJustify.LEFT
+	Endif
+End Function
+
+Function makeHLine(bONOFF as Integer) As String
+	if(bONOFF = constON) then
+		makeHLine = strHoriBorderLine
+	else
+		makeHLine = &quot;&quot;
+	endif
+End Function
+
+Function makeVLine(bONOFF as Integer) As String
+	if(bONOFF = constON) then
+		makeVLine = strVertBorderLine
+	else
+		makeVLine = &quot;&quot;
+	endif
+End Function
+
+Function makeCLine(nStartColumn as Integer, nEndColumn as Integer, bONOFF) as String
+	if(bONOFF = constON) then
+		makeCLine = strHeadCline + Str(nStartColumn) +strSplitCline + Str(nEndColumn) + strTailCline 
+	else
+		makeCLine = &quot;&quot;
+	endif
+end Function
+
+Function MakeTabularOption(oCellRange As Object) As String
+	Dim i,j As Long
+	Dim nCols,nRows As Long
+	Dim nCountLeft,nCountCenter,nCount,nCountRight As Long
+	Dim strTabularOption As String
+	Dim oCell As Object
+	
+
+	nCols = oCellRange.Columns.Count
+	nRows = oCellRange.Rows.Count
+
+	For i=0 To (nCols-1)
+		nCountLeft   = 0
+		nCountCenter = 0
+		nCountRight  = 0
+
+		For j=0 To (nRows-1)
+			oCell = oCellRange.getCellByPosition(i,j)
+			
+			If convPositionToString(getPosition(oCell)) = strTabularOptionLeft Then
+				nCountLeft = nCountLeft  + 1
+			Elseif convPositionToString(getPosition(oCell)) = strTabularOptionCenter Then
+				nCountCenter = nCountCenter + 1
+			Elseif convPositionToString(getPosition(oCell)) = strTabularOptionRight Then
+				nCountRight = nCountRight  + 1				
+			Endif
+		Next j
+		strTabularOption = strTabularOption + detectMaxLCR(nCountLeft,nCountCenter,nCountRight)
+	Next i
+	MakeTabularOption = strTabularOption
+	
+End Function
+
+Function detectMaxLCR(nLeft As Long,nCenter As Long,nRight As Long) As String
+	If (nLeft &gt;= nCenter) And (nLeft &gt;= nRight) Then
+		&apos;detectMaxLCR = com.sun.star.table.CellHoriJustify.LEFT
+		detectMaxLCR = strTabularOptionLeft
+	Elseif (nCenter &gt;= nLeft) And (nCenter&gt;=nRight) Then
+		&apos;detectMaxLCR = com.sun.star.table.CellHoriJustify.CENTER
+		detectMaxLCR = strTabularOptionCenter
+	Else
+		&apos;detectMaxLCR = com.sun.star.table.CellHoriJustify.RIGHT
+		detectMaxLCR = strTabularOptionRight			
+	End If
+End Function
+
+&apos;ex)
+&apos;strItem=&quot;%a%bcde%f%g%&quot;
+&apos;strSign = &quot;%&quot;
+&apos;strReplacedSign = &quot;\%&quot;
+&apos;return = &quot;\%a\%bcde\%f\%g\%&quot;
+Sub ReplaceString(strItem As String,strSign As String,strReplacedSign As String) As String
+	Dim nSeek As Integer
+	Dim nItemLength As Integer
+
+	nSeek=InStr(1,strItem,strSign)
+	While(nSeek &lt;&gt; 0)
+		nItemLength = Len(strItem)
+		strItem = Left(strItem,nSeek-1)+ strReplacedSign + Right(strItem,nItemLength-nSeek)
+		nSeek=nSeek+Len(strReplacedSign)
+		nSeek=InStr(nSeek,strItem,strSign)
+	Wend
+	
+	ReplaceString=strItem
+End Sub
+
+&apos;FIX !
+Sub ReplaceReservedWords (Byval strItem As String, Byval bEnable as Boolean) As String
+	Dim reservedWords as variant
+	Dim replacedWords as variant
+
+&apos;	reservedWords = Array(strBackslash,strPercent,strOpenningBrace,strClosingBrace,strUnderBar,strAmp,strSharp,strDollar)
+&apos;	replacedWords = Array(strReplacedBackslash,strReplacedPercent,strReplacedOpenningBrace,strReplacedClosingBrace, _
+&apos;								strReplacedUnderBar,strReplacedAmp,strReplacedSharp,strReplacedDollar)
+	reservedWords = Array(strPercent,strOpenningBrace,strClosingBrace,strUnderBar,strAmp,strSharp,strDollar)
+	replacedWords = Array(strReplacedPercent,strReplacedOpenningBrace,strReplacedClosingBrace, _
+								strReplacedUnderBar,strReplacedAmp,strReplacedSharp,strReplacedDollar)
+
+	if (bEnable = constON) then	
+		Dim i as Integer
+		For i = LBound(reservedWords) to UBound(reservedWords)
+			strItem = ReplaceString(strItem,Cstr(reservedWords(i)),CStr(replacedWords(i)))
+		Next i
+	endif
+	
+	ReplaceReservedWords = strItem
+	
+	&apos; ReplaceReservedWords = ReplaceString(strItem,strPercent,strReplacedPercent)
+End Sub
+
+Function getFormattedCellString( strValue as String, oCell as Object, bEnable as Boolean) As String
+	Dim strRet as String
+	strRet = strValue
+
+	if(bEnable = constON) then
+		&apos;oCell.CharPostureAsian
+		if oCell.CharPosture = com.sun.star.awt.FontSlant.ITALIC then
+			strRet = &quot;\textit{&quot; + strRet + &quot;}&quot;
+		endif
+	
+		if oCell.CharWeight = com.sun.star.awt.FontWeight.BOLD then
+			strRet = &quot;\textbf{&quot; + strRet + &quot;}&quot;
+		endif
+	endif
+	
+	getFormattedCellString = strRet
+End Function
+
+
+REM ShowResults
+Function ShowResults(strTextTable As String)
+	Dim oDialog As Object
+	Dim oTextField As Object
+	
+	DialogLibraries.LoadLibrary( &quot;Calc2LaTeX&quot; )
+	oDialog = createUnoDialog( DialogLibraries.Calc2LaTeX.ShowResults)
+
+	&apos;MoDialog = oDialog.getModel()
+	oDialog.setTitle( &quot;Table&quot; )
+	
+	oTextField = oDialog.getControl(&quot;TextField1&quot;)
+	oTextField.setText( strTextTable )
+
+	&apos; select all strings	
+	Dim oSelection
+	oSelection = createUnoStruct( &quot;com.sun.star.awt.Selection&quot; ) 
+    With oSelection 
+       .Min = 0
+       .Max = len(strTextTable) 
+    End With 
+	oTextField.setSelection(oSelection)
+
+	oDialog.execute()  
+End Function
+
+
+public oDialog As Object
+REM SETTINGS UNDER DEVELOPMENT
+Function Settings2 () As ReturnValueOfSettings
+
+	
+	Dim oControl As Object
+
+	Dim aRetvalue As ReturnValueOfSettings
+	
+	DialogLibraries.LoadLibrary( &quot;Calc2LaTeX&quot; )
+	oDialog = createUnoDialog( DialogLibraries.Calc2LaTeX.DlgOption)
+	oDialog.setTitle( &quot;Settings&quot; )
+	oDialog.getControl(&quot;lblVersion&quot;).setText(strAppName +strEoL + strVersion  + strEoL + strEoL + user_charset + strEoL + user_linefeed)
+
+	&apos; load settings
+	&apos;On Error GoTo ERR1
+	oDialog.getControl(&quot;textLabelName&quot;).setText(aGlobalSetting_labelString)
+	oDialog.getControl(&quot;textCaption&quot;).setText(aGlobalSetting_captionString)
+
+	Select Case aGlobalSetting_tabularEnable
+		Case 0
+			oDialog.getControl(&quot;optTableAll&quot;).State =True
+		Case else
+			oDialog.getControl(&quot;optTableTabular&quot;).State =True
+	End Select
+	changeTableStatus()
+	
+	Select Case aGlobalSetting_captionPosition
+		Case 0
+			oDialog.getControl(&quot;optCaptionTop&quot;).State =True
+		Case else
+			oDialog.getControl(&quot;optCaptionBottom&quot;).State =True
+	End Select
+
+	Select Case aGlobalSetting_horizontalPosition
+		case 0
+			oDialog.getControl(&quot;optHpNone&quot;).State=true		
+		Case 1
+			oDialog.getControl(&quot;optHpLeft&quot;).State=true
+		Case 2
+			oDialog.getControl(&quot;optHpCenter&quot;).State = true
+		Case else
+			oDialog.getControl(&quot;optHpRight&quot;).State =  true
+	End Select
+
+	Select Case aGlobalSetting_insertPosition
+		Case 0
+			oDialog.getControl(&quot;optIpHere&quot;).State=true
+		Case 1
+			oDialog.getControl(&quot;optIpTop&quot;).State=true 
+		Case 2
+			oDialog.getControl(&quot;optIpBottom&quot;).State=true
+		Case else
+			oDialog.getControl(&quot;optIpOnePage&quot;).State=true
+	End Select
+
+	Select Case aGlobalSetting_ruledLine
+		Case 0
+			oDialog.getControl(&quot;ruled line on&quot;).State=true 
+		Case else
+			oDialog.getControl(&quot;ruled line off&quot;).State=true 
+	End Select
+	
+	Select Case aGlobalSetting_formatCells
+		Case 0
+			oDialog.getControl(&quot;FormatCellsOn&quot;).State=true
+		Case else
+			oDialog.getControl(&quot;FormatCellsOff&quot;).State=true
+	End Select	
+
+	Select Case aGlobalSetting_replaceReservedWord
+		Case 0
+			oDialog.getControl(&quot;ReplaceReservedWordsOn&quot;).State=true
+		Case else
+			oDialog.getControl(&quot;ReplaceReservedWordsOff&quot;).State=true
+	End Select
+	
+	
+	Select Case aGlobalSetting_outputResult
+		Case 0
+			oDialog.getControl(&quot;OptResultWindow&quot;).State=true
+		Case Else
+			oDialog.getControl(&quot;optResultFile&quot;).State=true
+	End Select
+
+	If oDialog.execute() &lt;&gt; 1 then
+		oDocument.removeActionLock
+		stop
+	end if
+
+	aGlobalSetting_labelString	 = oDialog.getControl(&quot;textLabelName&quot;).getText
+	aGlobalSetting_captionString = oDialog.getControl(&quot;textCaption&quot;).getText
+
+	
+	&apos; \begin{center}...\end{center} and so on
+	&apos; NOTICE oOption.State == 1 or True ? (See Developer&apos;s Guide pp768)
+	If oDialog.getControl(&quot;optHpLeft&quot;).State=true Then
+		&apos; strTextTable = strBeginLeft + strEoL + strTextTable + strEndLeft + strEoL
+		aRetValue.strTableHead = strBeginLeft + strEoL
+		aRetValue.strTableTail = strEndLeft + strEoL
+		aGlobalSetting_horizontalPosition = 1
+	Elseif oDialog.getControl(&quot;optHpCenter&quot;).State = true Then
+		&apos;strTextTable = strBeginCenter + strEoL + strTextTable + strEndCenter + strEoL
+		aRetValue.strTableHead = strBeginCenter + strEoL
+		aRetValue.strTableTail = strEndCenter + strEoL
+		aGlobalSetting_horizontalPosition = 2
+	Elseif oDialog.getControl(&quot;optHpRight&quot;).State =  true Then
+		&apos; strTextTable = strBeginRight + strEoL + strTextTable + strEndRight + strEoL
+		aRetValue.strTableHead = strBeginRight + strEoL
+		aRetValue.strTableTail = strEndRight + strEoL
+		aGlobalSetting_horizontalPosition = 3
+	Else
+		&apos; No Horizontal option
+		aRetValue.strTableHead = &quot;&quot;
+		aRetValue.strTableTail = &quot;&quot;
+		aGlobalSetting_horizontalPosition = 0
+	Endif
+
+	&apos; \caption
+	If oDialog.getControl(&quot;optCaptionTop&quot;).State =True Then
+&apos;		strTextTable = strHeadCaption + oDialog.getControl(&quot;textCaption&quot;).getText + _
+&apos;						strTailCaption + strEoL +strTextTable
+		aRetValue.strTableHead = strHeadCaption + oDialog.getControl(&quot;textCaption&quot;).getText + strTailCaption + strEoL + aRetValue.strTableHead
+		aGlobalSetting_captionPosition = 0
+	Else
+&apos;		strTextTable =  strTextTable +	 strHeadCaption + oDialog.getControl(&quot;textCaption&quot;).getText + _
+&apos;						strTailCaption+ strEoL 
+		aRetValue.strTableTail = aRetValue.strTableTail + strHeadCaption + oDialog.getControl(&quot;textCaption&quot;).getText + strTailCaption+ strEoL
+		aGlobalSetting_captionPosition = 1
+	Endif
+
+	
+	&apos; \label
+	&apos; strTextTable = strTextTable + strHeadLabel + oDialog.getControl(&quot;textLabelName&quot;).getText + strTailLabel + strEoL
+	aRetValue.strTableTail = aRetValue.strTableTail + strHeadLabel + oDialog.getControl(&quot;textLabelName&quot;).getText + strTailLabel + strEoL
+
+	&apos; \begin{table}...\end{table}
+	Dim strTableOption As String
+	
+	If oDialog.getControl(&quot;optIpHere&quot;).State=true Then
+	aGlobalSetting_insertPosition = 0
+		strTableOption = strTableHere
+	Elseif oDialog.getControl(&quot;optIpTop&quot;).State=true Then
+	aGlobalSetting_insertPosition = 1
+		strTableOption = strTableTop
+	Elseif oDialog.getControl(&quot;optIpBottom&quot;).State=true Then
+		strTableOption = strTableBottom
+	aGlobalSetting_insertPosition = 2
+	Else
+		strTableOption = strTableUseOnePage
+			aGlobalSetting_insertPosition = 3
+	Endif
+
+	If oDialog.getControl(&quot;ruled line on&quot;).State=true Then
+		aRetValue.bLineONOFF = constON
+		aGlobalSetting_ruledLine = 0
+	else
+		aRetValue.bLineONOFF = constOFF
+		aGlobalSetting_ruledLine = 1
+	endif
+
+
+	If oDialog.getControl(&quot;ReplaceReservedWordsOn&quot;).State=true Then
+		aRetValue.bEnableReplaceWords = constON
+		aGlobalSetting_replaceReservedWord = 0
+	else
+		aRetValue.bEnableReplaceWords = constOFF
+		aGlobalSetting_replaceReservedWord = 1
+	endif	
+
+
+	If oDialog.getControl(&quot;FormatCellsOn&quot;).State=true Then
+		aRetValue.bEnableFormattingCells = constON
+		aGlobalSetting_formatCells = 0
+	else
+		aRetValue.bEnableFormattingCells = constOFF
+		aGlobalSetting_formatCells = 1
+	endif	
+
+	&apos; strTextTable = strBeginTable + strTableOption + strEoL + strTextTable + strEndTable + strEoL
+
+	aRetValue.strTableHead = strBeginTable + strTableOption + strEoL + aRetValue.strTableHead
+	aRetValue.strTableTail = aRetValue.strTableTail +strEndTable + strEoL
+
+	If oDialog.getControl(&quot;optTableAll&quot;).State=true Then
+		aGlobalSetting_tabularEnable = 0
+	else
+		aRetValue.strTableHead = &quot;&quot;
+		aRetValue.strTableTail = &quot;&quot;
+		aGlobalSetting_tabularEnable = 1
+	end if	
+
+	If oDialog.getControl(&quot;OptResultWindow&quot;).State=true then
+		aRetValue.bResultWindow = constON
+		aGlobalSetting_outputResult = 0
+	Else
+		aRetValue.bResultWindow = constOFF
+		aGlobalSetting_outputResult = 1
+	End If
+
+
+	&apos;return
+	&apos; Settings = strTextTable
+	Settings2 = aRetValue	
+
+&apos;	exit function
+&apos;ERR1:
+&apos;	aGlobalSetting.labelString = &quot;&quot;
+&apos;	resume Next
+End Function
+
+
+
+REM SETTINGS
+Function Settings (strTextTable As String) As String
+	Dim oDialog As Object
+	Dim oControl As Object
+
+	DialogLibraries.LoadLibrary( &quot;Calc2LaTeX&quot; )
+	oDialog = createUnoDialog( DialogLibraries.Calc2LaTeX.DlgOption)
+	oDialog.setTitle( &quot;Settings&quot; )
+	oDialog.getControl(&quot;lblVersion&quot;).setText(strAppName +strEoL + strVersion)
+
+	oDialog.execute()
+	
+
+	&apos; \begin{center}...\end{center} and so on
+	&apos; NOTICE oOption.State == 1 or True ? (See Developer&apos;s Guide pp768)
+	If oDialog.getControl(&quot;optHpLeft&quot;).State=true Then
+		strTextTable = strBeginLeft + strEoL + strTextTable + strEndLeft + strEoL
+	Elseif oDialog.getControl(&quot;optHpCenter&quot;).State = true Then
+		strTextTable = strBeginCenter + strEoL + strTextTable + strEndCenter + strEoL
+	Elseif oDialog.getControl(&quot;optHpRight&quot;).State =  true Then
+		strTextTable = strBeginRight + strEoL + strTextTable + strEndRight + strEoL
+	Endif
+
+	&apos; \caption
+	If oDialog.getControl(&quot;optCaptionTop&quot;).State =True Then
+		strTextTable = strHeadCaption + oDialog.getControl(&quot;textCaption&quot;).getText + _
+						strTailCaption + strEoL +strTextTable
+	Else
+		strTextTable =  strTextTable +	 strHeadCaption + oDialog.getControl(&quot;textCaption&quot;).getText + _
+						strTailCaption+ strEoL 
+	Endif
+
+	
+	&apos; \label
+	strTextTable = strTextTable + strHeadLabel + oDialog.getControl(&quot;textLabelName&quot;).getText + strTailLabel + strEoL
+	
+
+	&apos; \begin{table}...\end{table}
+	Dim strTableOption As String
+	
+	If oDialog.getControl(&quot;optIpHere&quot;).State=true Then
+		strTableOption = strTableHere
+	Elseif oDialog.getControl(&quot;optIpTop&quot;).State=true Then
+		strTableOption = strTableTop
+	Elseif oDialog.getControl(&quot;optIpBottom&quot;).State=true Then
+		strTableOption = strTableBottom
+	Else
+		strTableOption = strTableUseOnePage
+	Endif
+
+	strTextTable = strBeginTable + strTableOption + strEoL + strTextTable + strEndTable + strEoL
+
+	&apos;return
+	Settings = strTextTable	
+End Function
+
+Sub Cancel
+	oDocument.removeActionLock
+	Stop
+End Sub
+
+Sub outputResultWithFileDialog(strMessage as string)
+	Dim oFilePicker As Object
+
+	oFilePicker = createUnoService( &quot;com.sun.star.ui.dialogs.FilePicker&quot; )
+
+	&apos; Settings of the file dialog
+	Dim nAny(0)
+	nAny(0) = com.sun.star.ui.dialogs.TemplateDescription.FILESAVE_AUTOEXTENSION
+&apos;	nAny(0) = com.sun.star.ui.dialogs.TemplateDescription.FILESAVE_SIMPLE
+	oFilePicker.Initialize( nAny() )
+
+	Dim nContentID, nAction As Integer
+	nContentID = com.sun.star.ui.dialogs.ExtendedFilePickerElementIds.CHECKBOX_AUTOEXTENSION
+	oFilePicker.setValue( nContentID, nAction, True )
+
+ 	oFilePicker.appendFilter( &quot;TeX (*.tex)&quot;, &quot;*.tex&quot; )
+ 	oFilePicker.appendFilter( &quot;All Files (*.*)&quot;, &quot;*.*&quot; )
+	oFilePicker.setCurrentFilter( &quot;TeX (*.tex)&quot; )
+
+	&apos; oFilePicker.setDisplayDirectory(dialogDirectory)
+	if dialogDirectory &lt;&gt; &quot;&quot; Then
+		oFilePicker.setDisplayDirectory(dialogDirectory)
+		oFilePicker.setDefaultName(dialogFilename)	 
+	end if
+	
+
+	&apos; Show the dialog &amp; output the result
+	If oFilePicker.execute() = 1 Then
+		dialogDirectory = oFilePicker.getDisplayDirectory()
+
+		Dim sFiles()
+		Dim sFileURL As String
+		sFiles() = oFilePicker.getFiles()
+		sFileURL = sFiles(0)
+
+		&apos; save the filename for the next running
+		GlobalScope.BasicLibraries.LoadLibrary(&quot;Tools&quot;)
+		dialogFilename = FileNameOutOfPath(sFileURL)
+
+		output2File(sFileURL, strMessage)
+	End If
+End Sub
+
+Sub output2File(strFileURL as string, strMessage as string)
+	Dim oFileAcc As Object
+	Dim oOutputStream As Object
+	Dim vData As Variant
+
+	oFileAcc = CreateUnoService(&quot;com.sun.star.ucb.SimpleFileAccess&quot;)
+	oOutputStream = CreateUnoService(&quot;com.sun.star.io.TextOutputStream&quot;)
+	oOutputStream.setEncoding(user_charset)
+
+	vData = oFileAcc.openFileWrite(strFileURL)
+	vData.truncate()
+	oOutputStream.setOutputStream(vData)
+
+	oOutputStream.writeString( strMessage )
+	oOutputStream.closeOutput()
+End Sub
+
+Sub changeTableStatus()
+	Dim switchStatus as boolean
+	
+	If oDialog.getControl(&quot;optTableAll&quot;).State =True then
+		switchStatus = true
+	Else
+		switchStatus = false
+	end if
+
+	Dim tableControls as Variant
+	tableControls = Array(&quot;Label1&quot;,&quot;textLabelName&quot;,&quot;optCaptionTop&quot;,&quot;optCaptionBottom&quot;, _
+			&quot;FrameControl3&quot;,&quot;textCaption&quot;, _
+			&quot;FrameControl1&quot;,&quot;optHpLeft&quot;,&quot;optHpCenter&quot;,&quot;optHpRight&quot;,&quot;optHpNone&quot;, _
+			&quot;FrameControl2&quot;,&quot;optIpHere&quot;,&quot;optIpTop&quot;,&quot;optIpBottom&quot;,&quot;optIpOnePage&quot;)
+
+	Dim i as integer
+	For i = LBound(tableControls) to UBound(tableControls)
+		oDialog.getControl( CStr(tableControls(i)) ).Enable=switchStatus
+	Next i
+End sub
+
+</script:module>

@@ -1,0 +1,25 @@
+ % This file is public domain
+ % If you want to use arara, you need the following directives:
+ % arara: pdflatex: { synctex: on }
+ % arara: makeglossaries
+ % arara: pdflatex: { synctex: on }
+\documentclass{article}
+
+\usepackage[colorlinks]{hyperref}
+\usepackage{glossaries}
+
+\newignoredglossary{common}
+
+\makeglossaries
+
+\newglossaryentry{sample}{name={sample},description={an example}}
+
+\newglossaryentry{commonex}{type=common,name={common term}}
+
+\begin{document}
+
+\gls{sample}. \gls{commonex}.
+
+\printglossaries
+
+\end{document}

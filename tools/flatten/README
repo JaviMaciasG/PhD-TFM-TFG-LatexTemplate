@@ -1,0 +1,88 @@
+FUNCTION
+
+    The flatten program will `flatten' LaTeX source files by
+including all the source of `inclusion' files into the source
+of a LaTeX root file. By default the inclusion files are
+those called for by the LaTeX \input and \include commands.
+Facilities are available for modifying this set of inclusion
+commands.
+
+FILES
+
+    Files in this distribution are:
+o README                     (this file)
+o flatten.l                  source for flatten to be processed by flex
+o flatten.c                  C code resulting from flexing
+o srchenv.c and srchenv.h    C code for directory searching
+o getopt.c and getpopt.h     C code for command line options
+o man                        manpage
+o makefile                   makefile for flatten
+o flatten.tex                User manual in LaTeX format
+o flatten.ps                 User manual in PostScript format
+and possibly
+o flatten.tar.gz             Tared and Zipped archive of all the above
+
+INSTALLATION
+
+    Flatten is written as a lexer. The main source is in flatten.l
+which is intended to be processed by flex into order to generate
+C code. This, together with some C code support functions, is
+then compiled and linked to form the working program.
+
+    If you do not change flatten.l, then flexing is not required as
+the supplied flatten.c has already been flexed.
+
+Via Make
+--------
+
+1. Edit the first part of makefile to match your system's configuration
+   If you are feeling brave, do `make all' followed by `make clean'. 
+   Otherwise:
+
+2. Do `make' (flexes flatten.l and compiles and links the program)
+
+3. (Optional) Set the environment variable FLATINPUTS to the
+   directories where LaTeX source files might be located
+
+4. Test the program
+
+5. Do `make install' (moves the binary into its final location)
+
+6. Do `make doc' (copies the user manual to its final location)
+
+7. Do `make manpage' (edits the manpage and copies it to its working location)
+
+8. Do `make clean' (deletes the object code files)
+
+By Hand
+-------
+
+0. Read the comments in the makefile for more information.
+
+1. Run flex on flatten.l
+
+2. Compile the flex output file
+
+3. Compile srchenv.c and getopt.c
+
+4. Link the compiled code to form the final program binary
+
+5. (Optional) Set the environment variable FLATINPUTS to the
+   directories where LaTeX source files might be located
+
+6. Test the program
+
+7. Move the binary to its final destination
+
+8. Copy the user manual sources to their final location
+
+9. Edit and copy the man file to its working location, renaming it appropriately
+
+10. Remove intermediate object files
+
+AUTHOR
+
+    Comments and suggestions should be sent to Peter Wilson (The Catholic
+University of America and NIST) pwilson@cme.nist.gov
+
+29 October 1995

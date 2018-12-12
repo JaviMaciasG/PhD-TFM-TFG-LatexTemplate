@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dlg:window PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "dialog.dtd">
+<dlg:window xmlns:dlg="http://openoffice.org/2000/dialog" xmlns:script="http://openoffice.org/2000/script" dlg:id="DlgOption" dlg:left="159" dlg:top="65" dlg:width="208" dlg:height="291" dlg:closeable="true" dlg:moveable="true">
+ <dlg:bulletinboard>
+  <dlg:textfield dlg:id="textLabelName" dlg:tab-index="2" dlg:left="33" dlg:top="41" dlg:width="121" dlg:height="13" dlg:tabstop="true"/>
+  <dlg:text dlg:id="Label1" dlg:tab-index="3" dlg:left="8" dlg:top="44" dlg:width="22" dlg:height="13" dlg:value="Label" dlg:tabstop="false"/>
+  <dlg:titledbox dlg:id="FrameControl3" dlg:tab-index="4" dlg:left="6" dlg:top="59" dlg:width="150" dlg:height="42">
+   <dlg:title dlg:value="Caption"/>
+  </dlg:titledbox>
+  <dlg:textfield dlg:id="textCaption" dlg:tab-index="5" dlg:left="13" dlg:top="69" dlg:width="135" dlg:height="13" dlg:tabstop="true"/>
+  <dlg:radiogroup>
+   <dlg:radio dlg:id="optCaptionTop" dlg:tab-index="6" dlg:left="69" dlg:top="86" dlg:width="38" dlg:height="10" dlg:tabstop="true" dlg:value="top" dlg:checked="true"/>
+   <dlg:radio dlg:id="optCaptionBottom" dlg:tab-index="7" dlg:left="112" dlg:top="86" dlg:width="38" dlg:height="10" dlg:tabstop="true" dlg:value="bottom"/>
+  </dlg:radiogroup>
+  <dlg:titledbox dlg:id="FrameControl1" dlg:tab-index="8" dlg:left="5" dlg:top="103" dlg:width="151" dlg:height="28">
+   <dlg:title dlg:value="Horizontal Position"/>
+  </dlg:titledbox>
+  <dlg:radiogroup>
+   <dlg:radio dlg:id="optHpLeft" dlg:tab-index="9" dlg:left="9" dlg:top="115" dlg:width="27" dlg:height="10" dlg:tabstop="true" dlg:value="left"/>
+   <dlg:radio dlg:id="optHpCenter" dlg:tab-index="10" dlg:left="36" dlg:top="115" dlg:width="36" dlg:height="10" dlg:tabstop="true" dlg:value="center" dlg:checked="true"/>
+   <dlg:radio dlg:id="optHpRight" dlg:tab-index="11" dlg:left="72" dlg:top="115" dlg:width="30" dlg:height="10" dlg:tabstop="true" dlg:value="right"/>
+  </dlg:radiogroup>
+  <dlg:titledbox dlg:id="FrameControl2" dlg:tab-index="13" dlg:left="5" dlg:top="133" dlg:width="151" dlg:height="38">
+   <dlg:title dlg:value="Insert Position"/>
+  </dlg:titledbox>
+  <dlg:radiogroup>
+   <dlg:radio dlg:id="optIpHere" dlg:tab-index="14" dlg:left="13" dlg:top="143" dlg:width="54" dlg:height="10" dlg:tabstop="true" dlg:value="here [htbp]" dlg:checked="true"/>
+   <dlg:radio dlg:id="optIpBottom" dlg:tab-index="15" dlg:left="72" dlg:top="143" dlg:width="72" dlg:height="10" dlg:value="bottom [bp]"/>
+   <dlg:radio dlg:id="optIpTop" dlg:tab-index="16" dlg:left="13" dlg:top="155" dlg:width="56" dlg:height="13" dlg:value="top[tbp]"/>
+   <dlg:radio dlg:id="optIpOnePage" dlg:tab-index="17" dlg:left="72" dlg:top="157" dlg:width="72" dlg:height="10" dlg:value="use one page [p]"/>
+  </dlg:radiogroup>
+  <dlg:button dlg:id="CommandButton1" dlg:tab-index="35" dlg:left="164" dlg:top="41" dlg:width="40" dlg:height="30" dlg:tabstop="true" dlg:default="true" dlg:value="convert" dlg:button-type="ok" dlg:checked="true"/>
+  <dlg:button dlg:id="CommandButton2" dlg:tab-index="36" dlg:left="164" dlg:top="79" dlg:width="40" dlg:height="30" dlg:tabstop="false" dlg:value="cancel" dlg:button-type="cancel">
+   <script:event script:event-name="on-mousedown" script:location="application" script:macro-name="calc2latex.Main.Cancel" script:language="StarBasic"/>
+  </dlg:button>
+  <dlg:radiogroup>
+   <dlg:radio dlg:id="Caption" dlg:tab-index="19" dlg:left="43" dlg:top="119" dlg:width="2" dlg:height="0" dlg:value="OptionButton3"/>
+   <dlg:radio dlg:id="OptionButton9" dlg:tab-index="20" dlg:left="36" dlg:top="127" dlg:width="0" dlg:height="3" dlg:value="OptionButton9"/>
+  </dlg:radiogroup>
+  <dlg:titledbox dlg:id="FrameControl4" dlg:tab-index="28" dlg:left="164" dlg:top="126" dlg:width="40" dlg:height="56"/>
+  <dlg:text dlg:id="lblVersion" dlg:tab-index="21" dlg:left="166" dlg:top="129" dlg:width="35" dlg:height="51" dlg:value="Label3" dlg:align="right" dlg:multiline="true" dlg:tabstop="false"/>
+  <dlg:titledbox dlg:id="FrameControl5" dlg:tab-index="22" dlg:left="5" dlg:top="235" dlg:width="151" dlg:height="25">
+   <dlg:title dlg:value="Replace Reserved Words (#, $, %, &amp;, _, {, })"/>
+  </dlg:titledbox>
+  <dlg:titledbox dlg:id="ruled line" dlg:tab-index="18" dlg:left="5" dlg:top="177" dlg:width="151" dlg:height="23">
+   <dlg:title dlg:value="Ruled Line"/>
+  </dlg:titledbox>
+  <dlg:radiogroup>
+   <dlg:radio dlg:id="ruled line on" dlg:tab-index="23" dlg:left="13" dlg:top="187" dlg:width="54" dlg:height="10" dlg:tabstop="true" dlg:value="on" dlg:checked="true"/>
+   <dlg:radio dlg:id="ruled line off" dlg:tab-index="24" dlg:left="76" dlg:top="187" dlg:width="56" dlg:height="10" dlg:tabstop="true" dlg:value="off"/>
+  </dlg:radiogroup>
+  <dlg:titledbox dlg:id="Format Cells" dlg:tab-index="25" dlg:left="5" dlg:top="205" dlg:width="151" dlg:height="25">
+   <dlg:title dlg:value="Format Cells (Bold/Italic)"/>
+  </dlg:titledbox>
+  <dlg:radiogroup>
+   <dlg:radio dlg:id="FormatCellsOn" dlg:tab-index="26" dlg:left="13" dlg:top="215" dlg:width="50" dlg:height="13" dlg:value="on" dlg:checked="true"/>
+   <dlg:radio dlg:id="FormatCellsOff" dlg:tab-index="27" dlg:left="76" dlg:top="215" dlg:width="52" dlg:height="10" dlg:tabstop="true" dlg:value="off"/>
+  </dlg:radiogroup>
+  <dlg:titledbox dlg:id="FrameControl6" dlg:tab-index="34" dlg:left="6" dlg:top="5" dlg:width="150" dlg:height="28">
+   <dlg:title dlg:value="Table Environment"/>
+  </dlg:titledbox>
+  <dlg:titledbox dlg:id="FrameControl7" dlg:tab-index="31" dlg:left="6" dlg:top="260" dlg:width="150" dlg:height="25">
+   <dlg:title dlg:value="Result Output"/>
+  </dlg:titledbox>
+  <dlg:radiogroup>
+   <dlg:radio dlg:id="optTableAll" dlg:tab-index="0" dlg:left="11" dlg:top="15" dlg:width="66" dlg:height="10" dlg:value="Table + Tabular" dlg:checked="true">
+    <script:event script:event-name="on-itemstatechange" script:location="application" script:macro-name="Calc2LaTeX.Main.changeTableStatus" script:language="StarBasic"/>
+   </dlg:radio>
+   <dlg:radio dlg:id="optTableTabular" dlg:tab-index="1" dlg:left="82" dlg:top="15" dlg:width="62" dlg:height="10" dlg:value="Tabular">
+    <script:event script:event-name="on-itemstatechange" script:location="application" script:macro-name="Calc2LaTeX.Main.changeTableStatus" script:language="StarBasic"/>
+   </dlg:radio>
+   <dlg:radio dlg:id="OptResultWindow" dlg:tab-index="32" dlg:left="14" dlg:top="270" dlg:width="59" dlg:height="10" dlg:value="Result Window" dlg:checked="true"/>
+   <dlg:radio dlg:id="optResultFile" dlg:tab-index="33" dlg:left="76" dlg:top="270" dlg:width="62" dlg:height="10" dlg:value="File Output"/>
+   <dlg:radio dlg:id="optHpNone" dlg:tab-index="12" dlg:left="104" dlg:top="115" dlg:width="49" dlg:height="10" dlg:value="(no option)"/>
+   <dlg:radio dlg:id="ReplaceReservedWordsOn" dlg:tab-index="29" dlg:left="13" dlg:top="245" dlg:width="50" dlg:height="10" dlg:value="on" dlg:checked="true"/>
+   <dlg:radio dlg:id="ReplaceReservedWordsOff" dlg:tab-index="30" dlg:left="76" dlg:top="245" dlg:width="58" dlg:height="10" dlg:value="off"/>
+  </dlg:radiogroup>
+ </dlg:bulletinboard>
+</dlg:window>

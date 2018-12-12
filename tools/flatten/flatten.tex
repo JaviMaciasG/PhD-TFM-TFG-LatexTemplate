@@ -1,0 +1,534 @@
+% flatten.tex      Description of the flatten program
+\ifx\documentclass\undefined
+  \documentstyle[11pt]{article}
+\else
+  \documentclass[11pt]{article}
+\fi
+\setlength{\textheight}{8.0in}
+\setlength{\textwidth}{6.0in}
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\evensidemargin}{0.25in}
+\setlength{\marginparwidth}{0.6in}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+% 2.09 definition of \LaTeX logo
+%\def\p@LaTeX{{\reset@font\rm L\kern-.36em\raise.3ex\hbox{\sc a}\kern-.15em%
+%              T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+%\def\LaTeX{\protect\p@LaTeX}
+
+\makeatletter
+\def\p@fl{{FL\kern-.36em\raise.3ex\hbox{\sc a}\kern-.15em%
+              TT\kern-.1667em\lower.7ex\hbox{E}\kern-.125emN}}
+\def\fl{\protect\p@fl}
+\makeatother
+
+\newcommand{\sref}[1]{\S\ref{#1}}
+\newcommand{\fid}[1]{{\tt #1}}
+\newenvironment{code}{\begin{small}}{\end{small}}
+
+\title{\fl: A Program to Flatten \LaTeX\ Source Files}
+\author{Peter R. Wilson \\
+        Catholic University of America and NIST \\
+        Email: {\tt pwilson@cme.nist.gov} }
+\date{October 1995}
+
+\begin{document}
+\bibliographystyle{unsrt}
+\pagenumbering{roman}
+\maketitle
+
+\begin{abstract}
+    \fl\ is a table-driven program that will automatically incorporate the
+text of `included' files into a \LaTeX\ root file.
+This report describes Version~1.1 of the program.
+\end{abstract}
+
+\tableofcontents
+
+\clearpage
+\pagenumbering{arabic}
+
+\section{Introduction}
+
+
+    \LaTeX\ is a popular document tagging and typesetting system~\cite{LAMPORT94}.
+A \LaTeX\ source file can reference other \LaTeX\ files whose contents are to
+be treated as an integral part of the source file. The standard \LaTeX\ has two
+{\em inclusion} commands for this purpose, 
+namely \verb|\input{FileName}| and \verb|\include{FileName}|.
+In its turn, a file that is \verb|\input|ed can recursively \verb|\input| other
+files. This \LaTeX\ facility provides a means of splitting a large document into
+several files. Sometimes, though, it is desirable to combine the individual
+files into a single source file. An example might be when storing a multi-file
+\LaTeX\ document into a text database where documents are maintained as one file
+per document.
+
+    The \fl\ program will read a \LaTeX\ source file and automatically incorporate
+the source of inclusion files that are designated via the appropriate \LaTeX\
+commands.
+
+\section{The program}
+
+    \fl\ requires two files to be specified: the name of the input source \LaTeX\ file
+and the name of the file to which the concatenated source is to be output. For
+example, if \verb|>| is the system prompt, then
+\begin{verbatim}
+> flatten in.tex inall.tex
+\end{verbatim}
+will read the file \fid{in.tex} and write out the source to file \fid{inall.tex},
+incorporating the source of any inclusion files identified within \fid{in.tex}. \fl\ will
+write progress reports to the terminal, and also to an error file called
+\fid{flatten.err}. This latter file can be examined using your favorite
+text editor after a run if required.
+
+    In the output file, \fl\ comments out any file inclusion commands, incorporates
+the source from the inclusion file, adds a comment at the end of this source, and
+then goes on outputting from the original source file. As far as \fl\
+is concerned a file ends when either it reaches the end of the file or when
+it comes across the \TeX\ \verb|\endinput| command before the file physically ends.
+
+    If \fl\ comes across an inclusion file that it cannot find or read for any reason,
+it prints a warning message, both to the user's terminal and as a
+\LaTeX\ comment in the output file, and then
+continues processing the current file.
+
+    \fl\ correctly ignores any inclusion commands that are embedded within \LaTeX\
+comments or are within verbatim text.
+
+\subsection{Command file}
+
+    By default, \fl\ uses the \LaTeX\ \verb|\input| and \verb|\include| commands
+as the inclusion commands\footnote{\fl\ does not recognize the 
+{\tt $\backslash$includeonly} command; do not attempt to make it do so.}. It may
+happen that other file inclusion commands have been defined in a macro package
+that is used by the source document. In this case, by using the \verb|-f| 
+option (see~\sref{sec:running}),
+\fl\ can be told at
+runtime about the relevant inclusion commands to be used.
+
+    The \verb|-f| option is used to specify a command table file. 
+\fl\ reads the designated file which must contain
+{\em all} the inclusion commands (including \verb|\input| and \verb|\include| if
+relevant). It will then use these commands for deciding upon inclusions instead
+of the default inclusions. The format
+of the command file is very simple --- no blank lines and one inclusion command per
+line. For example, here is a command file that contains three
+inclusion commands:
+\begin{code}
+\begin{verbatim}
+\input
+          \include
+    \infile
+\end{verbatim}
+\end{code}
+Note that a command does not have to be at the start of a line.
+In all cases, \fl\ assumes that an inclusion command, say \verb|\inclusion|, 
+has the syntax
+\begin{verbatim}
+\inclusion{filename}
+\end{verbatim}
+and further assumes that if \fid{filename} has no extension, then it is
+actually called \fid{filename.tex}. This means that \fl\ will not be able to
+process an inclusion command like \verb|\usepackage| because 
+(a) this command assumes a file name extension of \fid{.sty} and 
+(b) the command can take an optional first parameter.
+
+    An example \LaTeX\ source file could be like the following:
+\begin{code}
+\begin{verbatim}
+% root.tex starts here
+....
+\infile{file1}
+...
+\input{file2.mac}
+...
+\include{fileN}
+...
+% root.tex ends here
+\end{verbatim}
+\end{code}
+
+    Running \fl\ on this source file and the above command table file will 
+produce an output file along the lines of:
+\begin{code}
+\begin{verbatim}
+% root.tex starts here
+...
+%\infile{file1}
+         % contents of file1(.tex) here
+         % and any recursively called inclusions
+%    END file1.tex
+...
+%\input{file2.mac}
+         % contents of file2.mac here
+         % and any recursively called inclusions
+%    END file2.mac
+...
+%\include{fileN}
+         % contents of fileN(.tex) here
+         % and any recursively called inclusions
+%    END fileN.tex
+...
+% root.tex ends here
+\end{verbatim}
+\end{code}
+On the other hand, running \fl\ in its default mode will produce an output file
+similar to:
+\begin{code}
+\begin{verbatim}
+% root.tex starts here
+...
+\infile{file1}
+...
+%\input{file2.mac}
+         % contents of file2.mac here
+         % and any recursively called inclusions
+%    END file2.mac
+...
+%\include{fileN}
+         % contents of fileN(.tex) here
+         % and any recursively called inclusions
+%    END fileN.tex
+...
+% root.tex ends here
+\end{verbatim}
+\end{code}
+
+\section{Running \fl\ } \label{sec:running}
+
+    The full syntax of the command to run \fl\ is:
+\begin{verbatim}
+flatten [-d number] [-f CommandFile] [-D dir_cat_char] [-P path_separators]
+        InFile OutFile
+\end{verbatim}
+where the square brackets enclose runtime options.
+\begin{description}
+\item[{\tt -d}] An option to print debugging information to \fid{flatten.err}.
+A value of $1$ will print diagnostics related to file searching, while
+a value of $2$ or more will produce full diagnostic information.
+
+\item[{\tt -f}] An option to read file inclusion commands from the 
+file \fid{CommandFile}.
+
+\item[{\tt -D}] The value of this option is the character that the
+operating system uses to catenate directory names to form a path.
+The default value is a slash (i.e., \verb|/|). This could be changed
+to a backslash, for example, by including the option \verb|-D \|.
+(See~\sref{sec:srch}).
+
+\item[{\tt -P}] The character(s) that the operating system uses to separate
+path names in an environment variable. The default characters are space,
+colon and semi-colon (i.e. \verb*| :;|). The separator characters could be changed
+to colon and space by including the option \verb|-P :| (space
+is always available as a separator character).
+(See~\sref{sec:srch}).
+
+\item[{\tt InFile}] The name of the input file (including any extension).
+
+\item[{\tt OutFile}] The name of the output file.
+\end{description}
+
+\subsection{Directory searching} \label{sec:srch}
+
+    The program employs a search algorithm to find files that are not
+in the current directory. It first looks in the current directory and
+if a file of the given name is found, then that is used. If the file
+is not found, then it searches for it among directories that are
+specified in a system environment variable. This variable specifies
+a list of pathnames, where the directories forming the path are
+combined using a catenation character. For example, \verb|dir1/dir2/dir3|
+could be a pathname, where the slash (\verb|/|) is the catenation character.
+If it is looking for file \verb|afile.txt| it will catenate the file name
+to the path name (e.g. \verb|dir1/dir2/dir3/afile.txt|) and look for
+that. The pathnames in the list are separated by another character
+(in fact it can be one from a list of characters). For example here
+is a list of two pathnames; \verb|dir1/dir2;dir1/dir4|, where the semi-colon
+(\verb|;|) is the pathname separator.
+
+    By default, the program uses a slash (\verb|/|) as the directory
+catenation character and the pathname separators can be a space, or
+a colon or a semi-colon (i.e., any of \verb*| :;|). All these characters
+can be altered via the program command line options, and should be set to
+match the conventions of your operating system.
+
+    The environment variable used by the program is FLATINPUTS. 
+On the operating system that I use, I set this in my login file like:
+\begin{code}
+\begin{verbatim}
+setenv FLATINPUTS .:/dir1/dir2:/dir3/dir4
+\end{verbatim}
+\end{code}
+Your system may have different conventions.
+Note that if the environment variable is not set, then the
+program only looks for files in the current directory.
+
+
+\clearpage
+\appendix
+
+\section{System installation}
+
+    This section describes how to install the \fl\ program.
+
+    \fl\ is written using flex\footnote{flex is a version of the lex 
+program~\protect\cite{LESK75} but with
+increased functionality~\protect\cite{LEVINE92}.} 
+and C~\cite{KERNIGHAN88}. The system consists of the following source files:
+\begin{description}
+\item[\fid{flatten.l}] The main source for \fl.
+\item[\fid{getopt.c}] Functions for handling command line
+                     arguments~\cite[Chapter 6]{LIBES93}.
+\item[\fid{getopt.h}] A header file for \fid{getopt.c}.
+\item[\fid{srchenv.c}] Functions for directory searching~\cite[page 747]{HOLUB90}.
+\item[\fid{srchenv.h}] A header file for \fid{srchenv.c}
+\item[\fid{man}] A manpage for \fl.
+\end{description}
+
+    The file \fid{flatten.l} has to be processed by flex, or an
+equivalent tool, to generate C a file containing C code. This is
+then compiled and linked, together with the other system files,
+to form the executable program.
+ 
+\subsection{A {\tt make} file}
+
+    For those who understand such things, here is a \fid{make} 
+file~\cite{ORAM91} for \fl.
+\begin{code}
+\begin{verbatim}
+# makefile for program flatten --- include all "include" files
+#                                  into a LaTeX root file
+#
+##################### Change the following for your setup
+# The compiler
+CC = cc
+
+# We use flex (or equivalent) to generate the lexer
+LEX = flex
+# and the options
+LEXFLAGS = -v
+
+# Libraries to be used
+LIBS = -ll -lm
+
+# The root directory for installation (e.g., /usr/local )
+ROOTDIR = /proj/ltx/teTeX033
+
+# Where to place the running code (e.g. /usr/local/bin )
+BINDIR = ${ROOTDIR}/bin
+
+# Where to place the man page (e.g., /usr/local/man/man1 )
+MANEXT = 1
+MANDIR = ${ROOTDIR}/man/man${MANEXT}
+
+# Just in case you want to change the name of the binary
+# (and then you should also change the man page and documentation).
+# So, do not change this.
+PROG = flatten
+
+# Where to place the user documentation (e.g., /usr/local/doc/flatten )
+DOCDIR = ${ROOTDIR}/doc/${PROG}
+
+# The file copy command (copy but do not delete original)
+COPY = cp
+
+# The file move command (move and delete original)
+MOVE = mv
+
+# The file delete command
+DELETE = rm
+
+# The make directory (hierarchy) command
+MAKEDIR = mkdirhier
+
+# The stream editor command
+SED = sed
+
+################### You should not have to change anything after this
+
+# The object modules
+OBJS = flatten.o getopt.o srchenv.o
+
+# Link object code together into PROG
+flatten : ${OBJS}
+        ${CC} -o ${PROG} ${OBJS} ${LIBS}
+
+# Compile C source code into object code
+flatten.o : flatten.c getopt.h srchenv.h
+        ${CC} -c flatten.c
+getopt.o : getopt.c getopt.h
+        ${CC} -c getopt.c
+srchenv.o : srchenv.c
+        ${CC} -c srchenv.c
+
+# Generate C code via LEXing
+flatten.c : flatten.l
+        ${LEX} ${LEXFLAGS} flatten.l
+        ${MOVE} lex.yy.c flatten.c
+
+# Only call make install if BINDIR has been set
+install : flatten
+        ${MAKEDIR} ${BINDIR}
+        ${MOVE} ${PROG} ${BINDIR}
+
+# Edit file man to replace DOCUMENTDIR by the actual directory
+# where the user manual is to be placed.
+# Then copy the man page to the proper place.
+manpage :
+        ${SED} 's!DOCUMENTDIR!${DOCDIR}!' man > tman
+        ${MAKEDIR} ${MANDIR}
+        ${COPY} tman ${MANDIR}/${PROG}.${MANEXT}
+
+# Copy the user manuals to the proper place
+doc :
+        ${MAKEDIR} ${DOCDIR}
+        ${COPY} flatten.tex ${DOCDIR}/${PROG}.tex
+        ${COPY} flatten.ps ${DOCDIR}/${PROG}.ps
+
+# Do everything except clean up
+all : flatten install manpage doc
+
+# Call make clean to remove object files and edited man page
+clean :
+        ${DELETE} *.o
+        ${DELETE} tman
+\end{verbatim}
+\end{code}
+
+    When using this \fid{makefile}, edit the first part of the file
+to configure it for your system and environment. If you are brave,
+you can then do \verb|make all| followed by \verb|make clean|.
+Otherwise just do \verb|make| which will compile and link \fl.
+After testing \fl, do \verb|make install| to move the binary
+to its proper location, \verb|make manpage| to edit and copy the
+manpage to its desired location, and \verb|make doc| to copy
+the user documentation to its final location. Finally, do 
+\verb|make clean| to get rid of the temporary files.
+
+
+\subsection{Limits}
+
+    There are some built-in limits within \fl. If necessary, these can be changed and the
+system re-built.
+
+\begin{description}
+\item[{\tt MAX\_COMMANDS}] The maximum number of inclusion commands within a
+   command file.
+\item[{\tt MAX\_DEPTH}] The maximum allowable depth of file nesting. This is set to
+   a value that is probably greater than the number of simultaneously open files 
+  that your operating (and \LaTeX) system can support.
+\item[{\tt MAX\_ERRORS}] The maximum number of errors before \fl\ gives up.
+\item[{\tt MAX\_NAME}] The maximum number of characters in a file name.
+\item[{\tt MAX\_LINE}] The maximum length of a line in a \LaTeX\ input file.
+\item[{\tt MAX\_TABLE\_LINE}] The maximum number of characters for an inclusion command
+   in the command file.
+\end{description}
+
+\subsection{Availability}
+
+    Source code and documentation for \fl\ is available from the
+NIST SOLIS (STEP On-Line Information Service) system~\cite{RINAUDOT94}
+in directory
+{\tt pub/step/latex/programs/flatten}. SOLIS can be accessed by:
+\begin{itemize}
+\item Anonymous ftp to {\tt ftp.cme.nist.gov}
+\item URL {\tt gopher://elib.cme.nist.gov}
+\item URL {\tt http://elib.cme.nist.gov:70/}
+\end{itemize}
+
+\subsubsection{Copyright}
+
+    Development of this software was funded by the United States
+Government and is not subject to copyright.\\
+National Institute of Standards and Technology (NIST) \\
+Manufacturing Engineering Laboratory (MEL) \\
+Manufacturing Systems Integration Division (MSID)
+
+\subsubsection{Disclaimer}
+
+    There is no warranty for the \fl\ software. If the \fl\ software
+is modified by someone else and passed on, NIST wants the software's
+recipients to know that what they have is not what NIST distributed.
+
+\begin{description}
+\item[Policies] \mbox{}
+\begin{enumerate}
+\item Anyone may copy and distribute verbatim copies of the
+      source code as received in any medium.
+\item Anyone may modify your copy or copies of the \fl\ source
+      code or any portion of it, and copy and distribute such
+      modifications provided that all modifications are clearly 
+      associated with the entity that performs the modifications.
+\end{enumerate}
+
+\item[NO WARRANTY] \mbox{}
+
+    NIST PROVIDES ABSOLUTELY NO WARRANTY. THE \fl\ SOFTWARE IS
+PROVIDED `AS IS' WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED
+OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE
+RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU.
+SHOULD ANY PORTION OF THE \fl\ SOFTWARE PROVE DEFECTIVE, YOU ASSUME
+THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+
+    IN NO EVENT WILL NIST BE LIABLE FOR DAMAGES, INCLUDING ANY
+LOST PROFITS, LOST MONIES, OR OTHER SPECIAL, INCIDENTAL OR
+CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE
+(INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED
+INACCURATE OR LOSSES SUSTAINED BY THIRD PARTIES OR A FAILURE OF
+THE PROGRAM TO OPERATE WITH PROGRAMS NOT DISTRIBUTED BY NIST)
+THE PROGRAMS, EVEN IF YOU HAVE BEEN ADVISED OF THE POSSIBILITY 
+OF SUCH DAMAGES, OR FOR ANY CLAIM BY ANY OTHER PARTY.
+\end{description}
+
+\addcontentsline{toc}{section}{References}
+%\bibliography{/auto/home/pwilson/Rpi/refs,/auto/home/pwilson/Rpi/prw}
+
+\begin{thebibliography}{1}
+
+\bibitem{LAMPORT94}
+Leslie Lamport.
+\newblock {\em LaTeX: A Document Preparation System}.
+\newblock Addison-Wesley Publishing Company, second edition, 1994.
+
+\bibitem{LESK75}
+M.~E. Lesk and E.~Schmidt.
+\newblock `{LEX --- A Lexical Analyser Generator}'.
+\newblock In {\em UNIX Programmer's Manual 2}. AT\&T Bell Laboratories, Murray
+  Hill, NJ, 1975.
+
+\bibitem{LEVINE92}
+John~R. Levine, Tony Mason, and Doug Brown.
+\newblock {\em lex \& yacc}.
+\newblock O'Reilly \& Associates, Inc., second edition, 1992.
+
+\bibitem{KERNIGHAN88}
+Brian~W. Kernighan and Dennis~M. Ritchie.
+\newblock {\em The C Programming Language}.
+\newblock Prentice Hall, second edition, 1988.
+
+\bibitem{LIBES93}
+Don Libes.
+\newblock {\em Obfuscated C and Other Mysteries}.
+\newblock John Wiley \& Sons, Inc., 1993.
+
+\bibitem{HOLUB90}
+A.~I. Holub.
+\newblock {\em Compiler Design in C}.
+\newblock Prentice-Hall, Inc., 1990.
+
+\bibitem{ORAM91}
+Andrew Oram and Steve Talbott.
+\newblock {\em Managing Projects with make}.
+\newblock O'Reilly \& Associates, Inc., second edition, 1991.
+
+\bibitem{RINAUDOT94}
+Gaylen~R. Rinaudot.
+\newblock {\em {The IGES/PDES Organization STEP On-Line Information Service}}.
+\newblock NISTIR 5511, NIST, Gaithersburg, MD 20899, October 1994.
+
+\end{thebibliography}
+
+
+\end{document}
+

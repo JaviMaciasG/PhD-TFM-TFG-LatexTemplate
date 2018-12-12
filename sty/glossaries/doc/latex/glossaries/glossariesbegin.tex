@@ -1,0 +1,1208 @@
+\documentclass{nlctdoc}
+
+\usepackage[utf8]{inputenc}
+\ifpdf
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\usepackage[scaled=.88]{helvet}
+\usepackage{courier}
+\usepackage{xr-hyper}
+\fi
+
+\usepackage{alltt}
+\usepackage{pifont}
+\usepackage{array}
+
+\usepackage[colorlinks,pdfauthor={Nicola L.C. Talbot},
+            pdftitle={The glossaries package: a guide for beginners}]{hyperref}
+\usepackage[nomain]{glossaries}
+
+\newcommand*{\yes}{\ding{52}}
+\newcommand*{\no}{\ding{56}}
+
+\title{The glossaries package v4.11: 
+a guide for beginners}
+\author{Nicola L.C. Talbot}
+\date{2014-09-01}
+
+\ifpdf
+  \externaldocument{glossaries-user}
+\fi
+
+\makeatletter
+\newcommand*{\optionlabel}[1]{%
+ \@glstarget{option#1}{}\textbf{Option~#1}}
+\makeatother
+
+\newcommand*{\opt}[1]{\hyperlink{option#1}{Option~#1}}
+\newcommand*{\optsor}[2]{Options~\hyperlink{option#1}{#1}
+or~\hyperlink{option#2}{#2}}
+\newcommand*{\optsand}[2]{Options~\hyperlink{option#1}{#1}
+and~\hyperlink{option#2}{#2}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The \styfmt{glossaries} package is very flexible, but this means
+that it has a lot options, and since a user guide is supposed to
+provide a complete list of all the high-level user commands, the main
+user manual is quite big. This can be rather
+daunting for beginners, so this document is a brief introduction
+just to help get you started. If you find yourself saying, ``Yeah,
+but how can I do\ldots?'' then it's time to move on to the 
+\docref{main user manual}{glossaries-user}.
+
+I've made some statements in this document that don't actually tell
+you the full truth, but it would clutter the document and cause
+confusion if I keep writing ``except when \ldots'' or ``but you can
+also do this, that or the other'' or ``you can do it this way but
+you can also do it that way, but that way may cause complications
+under certain circumstances''.
+\end{abstract}
+
+\tableofcontents
+
+\section{Getting Started}
+\label{sec:start}
+
+As with all packages, you need to load \styfmt{glossaries} with
+\cs{usepackage}, but there are certain packages that must be loaded
+before \styfmt{glossaries}, if they are required: \sty{hyperref},
+\sty{babel}, \sty{polyglossia}, \sty{inputenc} and \sty{fontenc}.
+(You don't have to load these packages, but if you want them, you
+must load them before \styfmt{glossaries}.)
+
+Once you have loaded \styfmt{glossaries}, you need to define
+your terms in the preamble and then you can use them throughout the
+document. Here's a simple example:
+\begin{verbatim}
+\documentclass{article}
+
+\usepackage{glossaries}
+
+\newglossaryentry{ex}{name={sample},description={an example}}
+
+\begin{document}
+Here's my \gls{ex} term.
+\end{document}
+\end{verbatim}
+This produces:
+\begin{display}
+Here's my sample term.
+\end{display}
+Here's another example:
+\begin{verbatim}
+\documentclass{article}
+
+\usepackage{glossaries}
+
+\setacronymstyle{long-short}
+
+\newacronym{svm}{SVM}{support vector machine}
+
+\begin{document}
+First use: \gls{svm}. Second use: \gls{svm}.
+\end{document}
+\end{verbatim}
+This produces:
+\begin{display}
+First use: support vector machine (SVM). Second use: SVM.
+\end{display}
+In this case, the text produced by \verb|\gls{svm}| changed after the first
+use. The first use produced the long form followed by the short form
+in parentheses because I set the acronym style to
+\texttt{long-short}. I suggest you try the above two examples to
+make sure you have the package correctly installed.
+If you get an \texttt{undefined control sequence} error, check that
+the version number at the top of this document matches the version
+you have installed. (Open the \texttt{.log} file and search for the
+line that starts with \texttt{Package: glossaries} followed by a
+date and version.) 
+
+If you like, you can put all your definitions in another file (for
+example, \texttt{defns.tex}) and load that file in the preamble using
+\cs{loadglsentries} with the filename as the argument. For example:
+\begin{verbatim}
+\loadglsentries{defns}
+\end{verbatim}
+
+Don't try inserting formatting commands into the definitions as they
+can interfere with the underlying mechanism. Instead, the
+formatting should be done by the style. For example, suppose I~want
+to replace \texttt{SVM} in the above to \verb|\textsc{svm}|, then
+I~need to select a style that uses \cs{textsc}, like this:
+\begin{verbatim}
+\documentclass{article}
+
+\usepackage{glossaries}
+
+\setacronymstyle{long-sc-short}
+
+\newacronym{svm}{svm}{support vector machine}
+
+\begin{document}
+First use: \gls{svm}. Second use: \gls{svm}.
+\end{document}
+\end{verbatim}
+
+As you can hopefully see from the above examples, there are two main ways of
+defining a term. In both cases, the term is given
+a label. In the first case the label was \texttt{ex} and in the
+second case the label was \texttt{svm}. The label is just a way of
+identifying the term (like the standard \cs{label}\slash\cs{ref}
+mechanism). It's best to just use the following alphanumerics in the
+labels: \texttt{a}, \ldots, \texttt{z}, \texttt{A}, \ldots,
+\texttt{Z}, \texttt{0}, \ldots, \texttt{9}.  Sometimes you can also
+use punctuation characters but not if another package (such as
+\sty{babel}) meddles with them. Don't try using any characters
+outside of the basic Latin set (for example, \'e or \ss) or things
+will go horribly wrong.  This warning only applies to the label. It
+doesn't apply to the text that appears in the document.
+
+\begin{important}
+Don't use \cs{gls} in chapter or section headings as it can have
+some unpleasant side-effects. Instead use \cs{glsentrytext} for
+regular entries and one of \cs{glsentryshort}, \cs{glsentrylong}
+or \cs{glsentryfull} for acronyms.
+\end{important}
+
+The above examples are reasonably straightforward. The difficulty
+comes if you want to display a sorted list of all the entries you
+have used in the document. The \styfmt{glossaries} package provides
+three options: use \TeX\ to perform the sorting; use
+\texttt{makeindex} to perform the sorting; use \texttt{xindy} to
+perform the sorting.
+
+The first option (using \TeX) is the simplest and easiest method,
+but it's inefficient. To use this method, add \cs{makenoidxglossaries}
+to the preamble and put \cs{printnoidxglossaries} at the place where
+you want your glossary. For example:
+\begin{verbatim}
+\documentclass{article}
+
+\usepackage{glossaries}
+
+\makenoidxglossaries
+
+\newglossaryentry{potato}{name={potato},plural={potatoes},
+ description={starchy tuber}}
+
+\newglossaryentry{cabbage}{name={cabbage},
+ description={vegetable with thick green or purple leaves}}
+
+\newglossaryentry{carrot}{name={carrot},
+ description={orange root}}
+
+\begin{document}
+Chop the \gls{cabbage}, \glspl{potato} and \glspl{carrot}.
+
+\printnoidxglossaries
+\end{document}
+\end{verbatim}
+Try this out and run \LaTeX\ (or pdf\LaTeX) \emph{twice}. The first
+run won't show the glossary. It will only appear on the second run.
+The glossary has a vertical gap between the ``carrot'' term and the
+``potato'' term. This is because the entries in the glossaries are
+grouped according to their first letter. If you don't want this gap,
+just add \texttt{nogroupskip} to the package options:
+\begin{verbatim}
+\usepackage[nogroupskip]{glossaries}
+\end{verbatim}
+If you try out this example you may also notice that the description
+is followed by a full stop (period) and a number. The number is the
+location in the document where the entry was used, so you can lookup
+the term in the glossary and be directed to the relevant pages. It
+may be that you don't want this back-reference, in which case you
+can suppress it using the \texttt{nonumberlist} package option:
+\begin{verbatim}
+\usepackage[nonumberlist]{glossaries}
+\end{verbatim}
+If you don't like the terminating full stop, you can suppress that
+with the \texttt{nopostdot} package option:
+\begin{verbatim}
+\usepackage[nopostdot]{glossaries}
+\end{verbatim}
+
+You may have noticed that I've used another command in the above example:
+\cs{glspl}. This displays the plural form. By default, this is just
+the singular form with the letter ``s'' appended, but in the case of
+``potato'' I had to specify the correct plural using the
+\texttt{plural} key.
+
+As I mentioned earlier, using \TeX\ to sort the entries is the
+simplest but least efficient method. If you have a large glossary or
+if your terms contain non-Latin characters, then you will have a much
+faster build time if you use \texttt{makeindex} or \texttt{xindy}.
+If you are using extended Latin or non-Latin characters, then
+\texttt{xindy} is the recommended method. These two methods are
+described in more detail in \sectionref{sec:printglossaries}.
+
+The rest of this document briefly describes the main commands
+provided by the \styfmt{glossaries} package.
+
+\section{Defining Terms}
+\label{sec:defterm}
+
+When you use the \sty{glossaries} package, you need to define
+glossary entries in the document preamble. These entries could be
+a~word, phrase, acronym or symbol. They're usually accompanied by
+a~description, which could be a short sentence or an in-depth
+explanation that spans multiple paragraphs. The simplest method of
+defining an entry is to use:
+\begin{definition}
+\begin{alltt}
+\cs{newglossaryentry}\marg{label}
+\verb|{|
+  name=\marg{name},
+  description=\marg{description},
+  \meta{other options}
+\verb|}|
+\end{alltt}
+\end{definition}
+where \meta{label} is a unique label that identifies this entry.
+(Don't include the angle brackets \meta{ }. They just indicate the parts of
+the code you need to change when you use this command in your document.) 
+The \meta{name} is the word, phrase or symbol you are defining,
+and \meta{description} is the description to be displayed in the
+glossary.
+
+This command is a ``short'' command, which means that
+\meta{description} can't contain a~paragraph break. If you have
+a~long description, you can instead use:
+\begin{definition}
+\begin{alltt}
+\cs{longnewglossaryentry}\marg{label}
+\verb|{|
+  name=\marg{name},
+  \meta{other options}
+\verb|}|
+\marg{description}
+\end{alltt}
+\end{definition}
+
+Examples:
+\begin{enumerate}
+\item Define the term ``set'' with the label \texttt{set}:
+\begin{verbatim}
+\newglossaryentry{set}
+{
+  name={set},
+  description={a collection of objects}
+}
+\end{verbatim}
+
+\item Define the symbol $\emptyset$ with the label
+\texttt{emptyset}:
+\begin{verbatim}
+\newglossaryentry{emptyset}
+{
+  name={\ensuremath{\emptyset}},
+  description={the empty set}
+}
+\end{verbatim}
+
+\item Define the phrase ``Fish Age'' with the label
+\texttt{fishage}:
+\begin{verbatim}
+\longnewglossaryentry{fishage}
+{name={Fish Age}}
+{%
+  A common name for the Devonian geologic period 
+  spanning from the end of the Silurian Period to
+  the beginning of the Carboniferous Period.
+
+  This age was known for its remarkable variety of 
+  fish species.
+}
+\end{verbatim}
+(The percent character discards the end of line character that would
+otherwise cause an unwanted space to appear at the start of the
+description.)
+
+\item Take care if the first letter is an extended Latin or
+non-Latin character (either specified via a~command such as 
+\verb|\'e| or explicitly via the \sty{inputenc} package such 
+as \texttt{\'e}). This first letter must be placed in a~group:
+
+\begin{verbatim}
+\newglossaryentry{elite}
+{
+  name={{\'e}lite},
+  description={select group or class}
+}
+\end{verbatim}
+or
+\begin{alltt}
+\verb|\newglossaryentry{elite}|
+\verb|{|
+  name=\verb|{{|\'e\verb|}lite}|,
+  description=\verb|{select group or class}|
+\verb|}|
+\end{alltt}
+\end{enumerate}
+(For further details, see the section
+\qtdocref{UTF-8}{mfirstuc-manual} in the
+\sty{mfirstuc} user manual.)
+
+Acronyms or abbreviations can be defined using
+\begin{definition}
+\cs{newacronym}\marg{label}\marg{short}\marg{long}
+\end{definition}
+where \meta{label} is the label (as with the \cs{newglossaryentry}
+and the \cs{longnewglossaryentry} commands), \meta{short} is the abbreviation or
+acronym and \meta{long} is the long form. For example:
+\begin{verbatim}
+\newacronym{svm}{svm}{support vector machine}
+\end{verbatim}
+This defines a glossary entry with the label \texttt{svm}. By
+default, the \meta{name} is set to \meta{short} (``svm'' in the
+above example) and the \meta{description} is set to \meta{long}
+(``support vector machine'' in the above example). If, instead, you
+want to be able to specify your own description you can do this
+using the optional argument:
+\begin{verbatim}
+\newacronym
+ [description={statistical pattern recognition technique}]
+ {svm}{svm}{support vector machine}
+\end{verbatim}
+
+Before you define your acronyms, you need to specify which acronym
+style to use with
+\begin{definition}
+\cs{setacronymstyle}\marg{style name}
+\end{definition}
+where \meta{style name} is the name of the style. There are a number
+of predefined styles, such as: \texttt{long-short} (on first use
+display the long form with the short form in parentheses);
+\texttt{short-long} (on first use display the short form with the
+long form in parentheses); \texttt{long-short-desc} (like
+\texttt{long-short} but you need to specify the description); or
+\texttt{short-long-desc} (like \texttt{short-long} but you need to
+specify the description). There are some other styles as well that
+use \cs{textsc} to typeset the acronym or that use a footnote on
+first use. See the main user guide for further details.
+
+There are other keys you can use when you define an entry. For
+example, the \texttt{name} key used above indicates how the term
+should appear in the list of entries (glossary). If the term should
+appear differently when you reference it in the document, you need
+to use the \texttt{text} key as well.
+
+For example:
+\begin{verbatim}
+\newglossaryentry{latinalph}
+{
+  name={Latin Alphabet},
+  text={Latin alphabet},
+  description={alphabet consisting of the letters 
+  a, \ldots, z, A, \ldots, Z}
+}
+\end{verbatim}
+This will appear in the text as \qt{Latin alphabet} but will be listed in
+the glossary as \qt{Latin Alphabet}.
+
+Another commonly used key is \texttt{plural} for specifying the
+plural of the term. This defaults to the value of the \texttt{text}
+key with an ``s'' appended, but if this is incorrect, just use the
+\texttt{plural} key to override it:
+\begin{verbatim}
+\newglossaryentry{oesophagus}
+{
+  name={{\oe}sophagus},
+  plural={{\oe}sophagi},
+  description={canal from mouth to stomach}
+}
+\end{verbatim}
+(Remember from earlier that the initial ligature \cs{oe} needs to
+be grouped.)
+
+The plural forms for acronyms can be specified using the
+\texttt{longplural} and \texttt{shortplural} keys. For example:
+\begin{verbatim}
+\newacronym
+ [longplural={diagonal matrices}]
+ {dm}{DM}{diagonal matrix}
+\end{verbatim}
+If omitted, the defaults are again obtained by appending an ``s'' to
+the singular versions.
+
+It's also possible to have both a~name and a~corresponding symbol.
+Just use the \texttt{name} key for the name and the \texttt{symbol} key
+for the symbol. For example:
+\begin{verbatim}
+\newglossaryentry{emptyset}
+{
+  name={empty set},
+  symbol={\ensuremath{\emptyset}},
+  description={the set containing no elements}
+}
+\end{verbatim}
+
+\section{Using Entries}
+\label{sec:useterm}
+
+Once you have defined your entries, as described above, you can
+reference them in your document. There are a~number of commands to
+do this, but the most common one is:
+\begin{definition}
+\cs{gls}\marg{label}
+\end{definition}
+where \meta{label} is the label you assigned to the entry when you
+defined it. For example, \verb|\gls{fishage}| will display \qt{Fish
+Age} in the text (given the definition from the previous section).
+
+If you are using the \sty{hyperref} package (remember to load it
+before \styfmt{glossaries}) \cs{gls} will create a hyperlink to the
+corresponding entry in the glossary. If you want to suppress the
+hyperlink for a particular instance, use the starred form \cs{gls*}
+for example, \verb|\gls*{fishage}|. The other commands described in
+this section all have a similar starred form.
+
+If the entry was defined as an acronym (using \cs{newacronym}
+described above), then \cs{gls} will display the full form the first
+time it's used and just the short form on
+subsequent use. For example, if the acronym style is set to
+\texttt{long-short}, then \verb|\gls{svm}| will display \qt{support vector
+machine (svm)} the first time it's used, but the next occurrence of
+\verb|\gls{svm}| will just display \qt{svm}.
+
+If you want the plural form, you can use:
+\begin{definition}
+\cs{glspl}\marg{label}
+\end{definition}
+instead of \cs{gls}\marg{label}. For example, \verb|\glspl{set}|
+displays \qt{sets}.
+
+If the term appears at the start of a~sentence, you can convert the
+first letter to upper case using:
+\begin{definition}
+\cs{Gls}\marg{label}
+\end{definition}
+for the singular form or
+\begin{definition}
+\cs{Glspl}\marg{label}
+\end{definition}
+for the plural form. For example:
+\begin{verbatim}
+\Glspl{set} are collections.
+\end{verbatim}
+produces \qt{Sets are collections}.
+
+If you've specified a symbol using the \texttt{symbol} key, you can
+display it using:
+\begin{definition}
+\cs{glssymbol}\marg{label}
+\end{definition}
+
+\section{Displaying a List of Entries}
+\label{sec:printglossaries}
+
+In \sectionref{sec:start} I mentioned that there are three options
+you can choose from to create your glossary. Here they are again in
+a little more detail:
+
+\begin{description}
+\item[]\optionlabel1: 
+
+ This is the simplest option but it's slow and if
+ you want a sorted list, it doesn't work for non-Latin alphabets.
+
+  \begin{enumerate}
+    \item Add \cs{makenoidxglossaries} to your preamble (before you
+    start defining your entries, as described in
+    \sectionref{sec:defterm}).
+
+    \item Put
+\begin{definition}
+\cs{printnoidxglossary}[sort=\meta{order},\meta{other options}]
+\end{definition}
+    where you want your list of entries to appear. The sort
+    \meta{order} may be one of: \texttt{word} (word ordering),
+    \texttt{letter} (letter ordering), \texttt{case} (case-sensitive
+    letter ordering), \texttt{def} (in order of definition) or
+    \texttt{use} (in order of use). Alternatively, use
+\begin{definition}
+\cs{printnoidxglossaries}
+\end{definition}
+    to display all your glossaries (if you have more than one). This
+    command doesn't have any arguments.
+
+    \item Run \LaTeX\ twice on your document. (As you would do to
+    make a~table of contents appear.) For example, click twice on
+    the ``typeset'' or ``build'' or ``PDF\LaTeX'' button in your editor.
+  \end{enumerate}
+
+\item[]\optionlabel2:
+
+   This option uses an application called \texttt{makeindex} to sort 
+   the entries. This application comes with all modern \TeX\ distributions, 
+   but it's hard-coded for the non-extended Latin alphabet. This process 
+   involves making \LaTeX\ write the glossary information to a temporary 
+   file which \texttt{makeindex} reads. Then \texttt{makeindex} writes 
+   a~new file containing the code to typeset the glossary. \LaTeX\ then 
+   reads this file on the next run.
+
+   \begin{enumerate}
+    \item Add \cs{makeglossaries} to your preamble (before you start
+    defining your entries).
+
+    \item Put
+\begin{definition}
+\cs{printglossary}\oarg{options}
+\end{definition}
+    where you want your list of entries (glossary) to appear. (The
+    \texttt{sort} key isn't available in \meta{options}.)
+    Alternatively, use
+\begin{definition}
+\cs{printglossaries}
+\end{definition}
+    which will display all glossaries (if you have more than one).
+    This command doesn't have any arguments.
+
+    \item Run \LaTeX\ on your document. This creates files with the
+    extensions \texttt{.glo} and \texttt{.ist} (for example, if your 
+    \LaTeX\ document is called \texttt{myDoc.tex}, then you'll have 
+    two extra files called \texttt{myDoc.glo} and \texttt{myDoc.ist}).
+    If you look at your document at this point, you won't see the 
+    glossary as it hasn't been created yet.
+
+    \item Run \texttt{makeindex} with the \texttt{.glo} file as the
+    input file and the \texttt{.ist} file as the style so that
+    it creates an output file with the extension \texttt{.gls}. If
+    you have access to a terminal or a command prompt (for example, the
+    MSDOS command prompt for Windows users or the bash console for
+    Unix-like users) then you need to run the command:
+\begin{verbatim}
+makeindex -s myDoc.ist -o myDoc.gls myDoc.glo
+\end{verbatim}
+   (Replace \texttt{myDoc} with the base name of your \LaTeX\
+    document file. Avoid spaces in the file name.) If you don't know
+    how to use the command prompt, then you can probably access
+    \texttt{makeindex} via your text editor, but each editor has a
+    different method of doing this, so I~can't give a~general
+    description. You will have to check your editor's manual.
+
+    The default sort is word order (``sea lion'' comes before ``seal''). 
+    If you want letter ordering you need to add the \texttt{-l}
+    switch:
+\begin{verbatim}
+makeindex -l -s myDoc.ist -o myDoc.gls myDoc.glo
+\end{verbatim}
+
+    \item Once you have successfully completed the previous step,
+    you can now run \LaTeX\ on your document again.
+   \end{enumerate}
+
+\item[]\optionlabel3:
+
+   This option uses an application called
+   \texttt{xindy} to sort the entries. This application is more
+   flexible than \texttt{makeindex} and is able to sort extended
+   Latin or non-Latin alphabets. It comes with \TeX~Live but not
+   with MiK\TeX. Since \texttt{xindy} is a Perl script, if you are
+   using MiK\TeX\ you will not only need to install \texttt{xindy}, you
+   will also need to install Perl. In a~similar way to \opt2, this 
+   option involves making \LaTeX\ write the glossary information to 
+   a~temporary file which \texttt{xindy} reads. Then \texttt{xindy} 
+   writes a~new file containing the code to typeset the glossary. 
+   \LaTeX\ then reads this file on the next run.
+
+   \begin{enumerate}
+     \item Add the \texttt{xindy} option to the \sty{glossaries}
+package option list:
+\begin{verbatim}
+\usepackage[xindy]{glossaries}
+\end{verbatim}
+
+     \item Add \cs{makeglossaries} to your preamble (before you start
+     defining your entries).
+
+    \item Put
+\begin{definition}
+\cs{printglossary}\oarg{options}
+\end{definition}
+    where you want your list of entries (glossary) to appear. (The
+    \texttt{sort} key isn't available in \meta{options}.)
+    Alternatively, use
+\begin{definition}
+\cs{printglossaries}
+\end{definition}
+
+    \item Run \LaTeX\ on your document. This creates files with the
+    extensions \texttt{.glo} and \texttt{.xdy} (for example, if your 
+    \LaTeX\ document is called \texttt{myDoc.tex}, then you'll have 
+    two extra files called \texttt{myDoc.glo} and \texttt{myDoc.xdy}).
+    If you look at your document at this point, you won't see the 
+    glossary as it hasn't been created yet.
+
+    \item Run \texttt{xindy} with the \texttt{.glo} file as the
+    input file and the \texttt{.xdy} file as a~module so that
+    it creates an output file with the extension \texttt{.gls}. You 
+    also need to set the language name and input encoding. If
+    you have access to a terminal or a command prompt (for example, the
+    MSDOS command prompt for Windows users or the bash console for
+    Unix-like users) then you need to run the command (all on one
+    line):
+\begin{verbatim}
+xindy  -L english -C utf8 -I xindy -M myDoc 
+-t myDoc.glg -o myDoc.gls myDoc.glo
+\end{verbatim}
+    (Replace \texttt{myDoc} with the base name of your \LaTeX\
+    document file. Avoid spaces in the file name. If necessary, also replace
+    \texttt{english} with the name of your language and \texttt{utf8}
+    with your input encoding.) If you don't know
+    how to use the command prompt, then you can probably access
+    \texttt{xindy} via your text editor, but each editor has a
+    different method of doing this, so I~can't give a~general
+    description. You will have to check your editor's manual.
+
+    The default sort is word order (``sea lion'' comes before ``seal''). 
+    If you want letter ordering you need to add the
+    \texttt{order=letter} package option:
+\begin{verbatim}
+\usepackage[xindy,order=letter]{glossaries}
+\end{verbatim}
+
+    \item Once you have successfully completed the previous step,
+    you can now run \LaTeX\ on your document again.
+
+   \end{enumerate}
+
+\end{description}
+
+For \optsand23, it can be difficult to remember all the
+parameters required for \texttt{makeindex} or \texttt{xindy}, so the
+\sty{glossaries} package provides a~script called
+\texttt{makeglossaries} that reads the \texttt{.aux} file to
+determine what settings you have used and will then run
+\texttt{makeindex} or \texttt{xindy}. Again, this is a~command line
+application and can be run in a~terminal or command prompt. For
+example, if your \LaTeX\ document is in the file \texttt{myDoc.tex},
+then run:
+\begin{verbatim}
+makeglossaries myDoc
+\end{verbatim}
+(Replace \texttt{myDoc} with the base name of your \LaTeX\ document
+file. Avoid spaces in the file name.) If you don't know how to use
+the command prompt, you can probably access \texttt{makeglossaries}
+via your text editor. Check your editor's manual for advice. If you
+are using \texttt{arara} then you can just use the directives:
+\begin{verbatim}
+% arara: pdflatex
+% arara: makeglossaries
+% arara: pdflatex
+\end{verbatim}
+
+The \texttt{makeglossaries} script is written in Perl, so you need
+a~Perl interpreter installed. If you are using a~Unix-like operating
+system then you most likely have one installed. If you are using
+Windows with the \TeX~Live distribution, then you can use the Perl
+interpreter that comes with \TeX~Live. If you are using Windows and
+MiK\TeX\ then you need to install a~Perl distribution for Windows.
+If you are using \opt3, then you need to do this anyway as
+\texttt{xindy} is also written in Perl. If you are using \opt2
+and can't work out how to install Perl (or for some reason don't
+want to install it) then just use \texttt{makeindex} directly, as
+described above.
+
+As a last resort you can try the package option \texttt{automake}:
+\begin{verbatim}
+\usepackage[automake]{glossaries}
+\end{verbatim}
+This will attempt to use \TeX's \cs{write18} mechanism to run
+\texttt{makeindex} or \texttt{xindy}. It probably won't work for
+\texttt{xindy} and won't work at all if the shell escape has been
+disabled in your \TeX\ distribution. Most \TeX\ distributions will
+allow a restricted shell escape, which will only allow trusted
+applications to be run. If the \texttt{automake} option is
+successful, you will still need to run \LaTeX\ twice for the
+glossaries to be displayed.
+
+When sorting the entries, the string comparisons are made according
+to each entry's \texttt{sort} key. If this is omitted, the
+\texttt{name} key is used. For example, recall the earlier
+definition:
+\begin{verbatim}
+\newglossaryentry{elite}
+{
+  name={{\'e}lite},
+  description={select group or class}
+}
+\end{verbatim}
+No \texttt{sort} key was used, so it's set to the same as the
+\texttt{name} key: \verb|{\'e}lite|. How this is interpreted depends
+on which option you have used:
+\begin{description}
+\item[\opt1:] By default, the accent command will be stripped so the
+sort value will be \texttt{elite}. This will put the entry in the
+\qt{E} letter group. However if you use the
+\pkgopt[true]{sanitizesort} package option, the sort value will be
+interpreted as the sequence of characters: \verb|\| \texttt{'} \texttt{e}
+\texttt{l} \texttt{i} \texttt{t} and \texttt{e}. This will place
+this entry before the \qt{A} letter group since it starts with a symbol.
+
+\item[\opt2:] The sort key will be interpreted the sequence of characters:
+\verb|{| \verb|\| \verb|'| \texttt{e} \verb|}| \texttt{l} \texttt{i} \texttt{t}
+and \texttt{e}. The first character is an opening curly brace
+\verb|{| so \texttt{makeindex} will put this entry in the ``symbols'' group. 
+
+\item[\opt3:]
+\texttt{xindy} disregards \LaTeX\ commands so it sorts on
+\texttt{elite}, which puts this entry in the \qt{E} group.
+\end{description}
+
+
+If the \sty{inputenc} package is used and the entry is defined as:
+\begin{alltt}
+\verb|\newglossaryentry{elite}|
+\verb|{|
+  name=\verb|{{|\'e\verb|}lite},|
+  description=\verb|{select group or class}|
+\verb|}|
+\end{alltt}
+then:
+\begin{description}
+\item[\opt1:] By default the sort value will be interpreted as
+\texttt{elite} so the entry will be put in the \qt{E} letter group.
+If you use the \pkgopt[true]{sanitizesort} package option, the
+sort value will be interpreted as \texttt{\'elite} where \'e has
+been sanitized (so it's no longer an active character) which will
+put this entry before the \qt{A} letter group.
+
+\item[\opt2:] \texttt{makeindex} doesn't recognise \texttt{\'e} as
+a~letter so it will be put in the symbols group.
+
+\item[\opt3:] \texttt{xindy} will correctly recognise the sort value
+\texttt{\'elite} and will place it in whatever letter group is
+appropriate for the given language setting. (In English, this would
+just be the \qt{E} letter group.)
+\end{description}
+
+Therefore if you have extended Latin or non-Latin characters, your
+best option is to use \texttt{xindy} (\opt3) with the \sty{inputenc}
+package. If you use \texttt{makeindex} (\opt2) you need to specify the 
+\texttt{sort} key like this:
+\begin{verbatim}
+\newglossaryentry{elite}
+{
+  name={{\'e}lite},
+  sort={elite},
+  description={select group or class}
+}
+\end{verbatim}
+If you use \opt1, you may or may not need to use the \texttt{sort}
+key, but you will need to be careful about fragile commands in the
+\texttt{name} key if you don't set the \texttt{sort} key.
+
+\Tableref{tab:optionsp+c} summarises the main pros and cons of three
+options described above.
+
+\begin{table}[htbp]
+ \caption{Glossary Options: Pros and Cons}
+ \label{tab:optionsp+c}
+ {%
+ \centering
+ \begin{tabular}{>{\raggedright}p{0.3\textwidth}ccc}
+   & \bfseries \opt1 & \bfseries \opt2 & \bfseries \opt3\\
+   Requires an external application? &
+   \no & \yes & \yes\\
+   Requires Perl? &
+   \no & \no & \yes\\
+   Can sort extended Latin
+   or non-Latin alphabets? &
+   \no\textsuperscript{\textdagger} & \no & \yes\\
+   Efficient sort algorithm? &
+   \no & \yes & \yes\\
+   Can form ranges in the location lists? &
+   \no & \yes & \yes\\
+   Can have non-standard locations? &
+   \yes & \no & \yes
+ \end{tabular}
+ \par
+ }\textsuperscript{\textdagger} Strips standard \LaTeX\ accents so,
+for example, \verb|\AA| is treated the same as A.
+\end{table}
+
+\section{Customising the Glossary}
+\label{sec:glosstyle}
+
+The default glossary style uses the \env{description} environment
+to display the entry list. Each entry name is set in the optional
+argument of \cs{item} which means that it will typically be
+displayed in bold. You can switch to medium weight by redefining
+\cs{glsnamefont}:
+\begin{verbatim}
+\renewcommand*{\glsnamefont}[1]{\textmd{#1}}
+\end{verbatim}
+
+By default, a~full stop is appended to the description. To prevent
+this from happening use the \texttt{nopostdot} package option:
+\begin{verbatim}
+\usepackage[nopostdot]{glossaries}
+\end{verbatim}
+
+By default, a~location list is displayed for each entry. This refers
+to the document locations (for example, the page number) where the
+entry has been referenced. If you use \optsor23 described
+in \sectionref{sec:printglossaries} location ranges will be compressed.  For
+example, if an entry was used on pages~1, 2 and~3, with 
+\optsor23 the location list will appear as 1--3, but with \opt1 it
+will appear as 1, 2, 3. If you don't want the locations displayed
+you can hide them using the \texttt{nonumberlist} package option:
+\begin{verbatim}
+\usepackage[nonumberlist]{glossaries}
+\end{verbatim}
+
+Entries are grouped according to the first letter of
+each entry's \texttt{sort} key. By default a~vertical gap is placed
+between letter groups. You can suppress this with the
+\texttt{nogroupskip} package option:
+\begin{verbatim}
+\usepackage[nogroupskip]{glossaries}
+\end{verbatim}
+
+If the default style doesn't suit your document, you can change the
+style using:
+\begin{definition}
+\cs{setglossarystyle}\marg{style name}
+\end{definition}
+There are a~number of predefined styles. Glossaries can vary from
+a~list of symbols with a~terse description to a~list of words or
+phrases with descriptions that span multiple paragraphs, so there's
+no ``one style fits all'' solution. You need to choose a~style that
+suits your document.
+
+Examples:
+\begin{enumerate}
+ \item You have entries where the name is a~symbol and the
+ description is a~brief phrase or short sentence. Try one of the 
+ ``mcol'' styles defined in the \sty{glossary-mcols} package. For example:
+\begin{verbatim}
+\usepackage[nogroupskip,nopostdot]{glossaries}
+\usepackage{glossary-mcols}
+\setglossarystyle{mcolindex}
+\end{verbatim}
+
+ \item You have entries where the name is a~word or phrase and the
+description spans multiple paragraphs. Try one of the ``altlist'' styles. For
+example:
+\begin{verbatim}
+\usepackage[nopostdot]{glossaries}
+\setglossarystyle{altlist}
+\end{verbatim}
+
+ \item You have entries where the name is a~single word, the
+  description is brief, and an associated symbol has been set.
+  Use one of the styles that display the symbol (not all of them do). 
+  For example, one of the tabular styles:
+\begin{verbatim}
+\usepackage[nopostdot,nonumberlist]{glossaries}
+\setglossarystyle{long4col}
+\end{verbatim}
+or one of the ``tree'' styles:
+\begin{verbatim}
+\usepackage[nopostdot,nonumberlist]{glossaries}
+\setglossarystyle{tree}
+\end{verbatim}
+\end{enumerate}
+
+If your glossary consists of a~list of acronyms and you also want to
+specify a~description as well as the long form, then you need to use
+an acronym style that will suit the glossary style. For example,
+use the \texttt{long-short-desc} acronym style:
+\begin{verbatim}
+\setacronymstyle{long-short-desc}
+\end{verbatim}
+Define the acronyms with a~description:
+\begin{verbatim}
+\newacronym
+ [description={statistical pattern recognition technique}]
+ {svm}{svm}{support vector machine}
+\end{verbatim}
+Choose a~glossary style that suits wide entry names:
+\begin{verbatim}
+\setglossarystyle{altlist}
+\end{verbatim}
+
+\section{Multiple Glossaries}
+\label{sec:multigloss}
+
+The \sty{glossaries} package predefines a~default \texttt{main}
+glossary. When you define an entry (using one of the commands
+described in \sectionref{sec:defterm}), that entry is automatically
+assigned to the default glossary, unless you indicate otherwise 
+using the \texttt{type} key. However you first need to
+make sure the desired glossary has been defined. This is done using:
+\begin{definition}
+\cs{newglossary}\oarg{glg}\marg{label}\marg{gls}\marg{glo}\marg{title}
+\end{definition}
+The \meta{label} is a~label that uniquely identifies this new
+glossary. As with other types of identifying labels, be careful not
+to use active characters in \meta{label}. The final argument
+\meta{title} is the section or chapter heading used by
+\cs{printglossary} or \cs{printnoidxglossary}. The other arguments
+indicate the file extensions used by
+\texttt{makeindex}\slash\texttt{xindy} (described in
+\sectionref{sec:printglossaries}). If you use \opt1 described
+above, the \meta{glg}, \meta{gls} and \meta{glo} arguments are
+ignored, in which case you may prefer to use the starred version
+where you don't specify the extensions:
+\begin{definition}
+\cs{newglossary*}\marg{label}\marg{title}
+\end{definition}
+
+In the case of \optsor23, all glossary definitions must come before
+\cs{makeglossaries}.
+
+Since it's quite common for documents to have both a~list of terms
+and a~list of acronyms, the \sty{glossaries} package provides the
+package option \texttt{acronym} (or \texttt{acronyms}), which 
+is a~convenient shortcut for
+\begin{verbatim}
+\newglossary[alg]{acronym}{acr}{acn}{\acronymname}
+\end{verbatim}
+The option also changes the behaviour of \cs{newacronym} so that acronyms
+are automatically put in the list of acronyms instead of the main
+glossary.
+
+For example, suppose you want a~main glossary for terms, a~list of
+acronyms and a~list of notation:
+\begin{verbatim}
+\usepackage[acronyms]{glossaries}
+\newglossary[nlg]{notation}{not}{ntn}{Notation}
+\end{verbatim}
+After \cs{makeglossaries} (or \cs{makenoidxglossaries}) you can
+define the entries in the preamble. For example:
+\begin{verbatim}
+\newglossaryentry{gls:set}
+{% This entry goes in the `main' glossary
+  name=set,
+  description={A collection of distinct objects}
+}
+
+% This entry goes in the `acronym' glossary:
+\newacronym{svm}{svm}{support vector machine}
+
+\newglossaryentry{not:set}
+{% This entry goes in the `notation' glossary:
+  type=notation,
+  name={\ensuremath{\mathcal{S}}},
+  description={A set},
+  sort={S}}
+\end{verbatim}
+or if you don't like using \cs{ensuremath}:
+\begin{verbatim}
+\newglossaryentry{not:set}
+{% This entry goes in the `notation' glossary:
+  type=notation,
+  name={$\mathcal{S}$},
+  text={\mathcal{S}},
+  description={A set},
+  sort={S}}
+\end{verbatim}
+
+Each glossary is displayed using:
+\begin{definition}
+\cs{printnoidxglossary}[type=\meta{type}]
+\end{definition}
+(\opt1) or
+\begin{definition}
+\cs{printglossary}[type=\meta{type}]
+\end{definition}
+(\optsand23). Where \meta{type} is the glossary label. If the
+type is omitted the default \texttt{main} glossary is assumed.
+
+There's a~convenient shortcut that will display all the defined
+glossaries:
+\begin{definition}
+\cs{printnoidxglossaries}
+\end{definition}
+(\opt1) or
+\begin{definition}
+\cs{printglossaries}
+\end{definition}
+(\optsand23).
+
+If you use \opt1, you don't need to do anything else. If you use
+\optsor23 with the \texttt{makeglossaries} Perl script, you
+similarly don't need to do anything else. If you use \optsor23 
+without the \texttt{makeglossaries} Perl script then you need to
+make sure you run \texttt{makeindex}\slash\texttt{xindy} \emph{for
+each defined glossary}. The \meta{gls} and \meta{glo} arguments of
+\cs{newglossary} specify the file extensions to use instead of
+\texttt{.gls} and \texttt{.glo}. The optional argument \meta{glg} is
+the file extension for the transcript file. This should be different
+for each glossary in case you need to check for
+\texttt{makeindex}\slash\texttt{xindy} errors or warnings if things
+go wrong.
+
+For example, suppose you have three glossaries in your document
+(\texttt{main}, \texttt{acronym} and \texttt{notation}), 
+specified using:
+\begin{verbatim}
+\usepackage[acronyms]{glossaries}
+\newglossary[nlg]{notation}{not}{ntn}{Notation}
+\end{verbatim}
+Then (assuming your \LaTeX\ document is in a~file called
+\texttt{myDoc.tex}):
+
+\begin{description}
+\item\opt2:
+
+You need to run \texttt{makeindex} three times:
+\begin{verbatim}
+makeindex -t myDoc.glg -s myDoc.ist -o myDoc.gls myDoc.glo
+makeindex -t myDoc.alg -s myDoc.ist -o myDoc.acr myDoc.acn
+makeindex -t myDoc.nlg -s myDoc.ist -o myDoc.not myDoc.ntn
+\end{verbatim}
+
+\item\opt3:\nopagebreak
+
+You need to run \texttt{xindy} three times (be careful not to insert
+line breaks where the line has wrapped.)
+\begin{verbatim}
+xindy  -L english -C utf8 -I xindy -M myDoc -t myDoc.glg
+-o myDoc.gls myDoc.glo
+xindy  -L english -C utf8 -I xindy -M myDoc -t myDoc.alg
+-o myDoc.acr myDoc.acn
+xindy  -L english -C utf8 -I xindy -M myDoc -t myDoc.nlg
+-o myDoc.not myDoc.ntn
+\end{verbatim}
+\end{description}
+
+\section[glossaries and hyperref]{\styfmt{glossaries} and \styfmt{hyperref}}
+\label{sec:hyperref}
+
+Take care if you use the \sty{glossaries} package with
+\sty{hyperref}. Contrary to the usual advice that \sty{hyperref}
+should be loaded last, \sty{glossaries} must be loaded \emph{after}
+\sty{hyperref}:
+\begin{verbatim}
+\usepackage[colorlinks]{hyperref}
+\usepackage{glossaries}
+\end{verbatim}
+If you use \sty{hyperref} make sure you use PDF\LaTeX\ rather than
+the \LaTeX\ to DVI engine. The DVI format can't break hyperlinks across
+a~line so long glossary entries (such as the full form of acronyms)
+won't line wrap with the DVI engine. Also, hyperlinks in sub- or
+superscripts aren't correctly sized with the DVI format.
+
+By default, if the \sty{hyperref} package has been loaded, commands
+like \cs{gls} will form a~hyperlink to the relevant entry in the
+glossary. If you to disable this for \emph{all} your
+glossaries, then use
+\begin{definition}
+\cs{glsdisablehyper}
+\end{definition}
+If you want hyperlinks suppressed for entries in specific
+glossaries, then use the \texttt{nohypertypes} package option. For
+example, if you don't want hyperlinks for entries in the \texttt{acronym} and
+\texttt{notation} glossaries but you do want them for entries in the
+\texttt{main} glossary, then do:
+\begin{verbatim}
+\usepackage[colorlinks]{hyperref}
+\usepackage[acronym,nohypertypes={acronym,notation}]{glossaries}
+\newglossary[nlg]{notation}{not}{ntn}{Notation}
+\end{verbatim}
+
+If you want the hyperlinks suppressed the first time an entry is
+used, but you want hyperlinks for subsequence references then use
+the \texttt{hyperfirst=false} package option:
+\begin{verbatim}
+\usepackage[colorlinks]{hyperref}
+\usepackage[hyperfirst=false]{glossaries}
+\end{verbatim}
+
+Take care not to use non-expandable commands in PDF bookmarks. This
+isn't specific to the \sty{glossaries} package but is a~limitation
+of PDF bookmarks. Non-expandable commands include commands like 
+\cs{gls}, \cs{glspl}, \cs{Gls} and \cs{Glspl}. The \sty{hyperref}
+package provides a~way of specifying alternative text for the PDF
+bookmarks via \cs{texorpdfstring}. For example:
+\begin{verbatim}
+\section{The \texorpdfstring{\gls{fishage}}{Fish Age}}
+\end{verbatim}
+However, it's not a~good idea to use commands like \cs{gls} in
+a~section heading as you'll end up with the table of contents in 
+your location list. Instead you can use
+\begin{definition}
+\cs{glsentrytext}\marg{label}
+\end{definition}
+This is expandable provided that the \texttt{text} key doesn't
+contain non-expandable code. For example, the following works:
+\begin{verbatim}
+\section{The \glsentrytext{fishage}}
+\end{verbatim}
+and it doesn't put the table of contents in the location list.
+
+\section{Cross-References}
+\label{sec:xr}
+
+You can add a~reference to another entry in a~location list using
+the \texttt{see=}\marg{label} key when you define an entry. 
+The referenced entry must also be defined.
+
+For example:
+\begin{verbatim}
+\longnewglossaryentry{devonian}{name={Devonian}}%
+{%
+  The geologic period spanning from the end of the 
+  Silurian Period to the beginning of the Carboniferous Period.
+
+  This age was known for its remarkable variety of 
+  fish species.
+}
+
+\newglossaryentry{fishage}
+{
+  name={Fish Age},
+  description={Common name for the Devonian period},
+  see={devonian}
+}
+\end{verbatim}
+The cross-reference will appear as \qt{\emph{see} Devonian}. You can
+change the \qt{see} tag using the format
+\texttt{see=}\oarg{tag}\meta{label}. For example:
+\begin{verbatim}
+\newglossaryentry{latinalph}
+{
+  name={Latin alphabet},
+  description={alphabet consisting of the letters 
+  a, \ldots, z, A, \ldots, Z},
+  see=[see also]{exlatinalph}
+}
+\newglossaryentry{exlatinalph}
+{
+   name={extended Latin alphabet},
+   description={The Latin alphabet extended to include 
+   other letters such as ligatures or diacritics.}
+}
+\end{verbatim}
+If you use the \texttt{see} key in the optional argument of
+\cs{newacronym}, make sure you enclose the value in braces. For
+example:
+\begin{verbatim}
+\newacronym{ksvm}{ksvm}{kernel support vector machine}
+\newacronym
+ [see={[see also]{ksvm}}]
+ {svm}{svm}{support vector machine}
+\end{verbatim}
+
+Since the cross-reference appears in the location list, if you
+suppress the location list using the \texttt{nonumberlist} package
+option, then the cross-reference will also be suppressed.
+
+\section{Further Information}
+\label{sec:moreinfo}
+
+Further information can be found in the main \sty{glossaries}
+\docref{user manual}{glossaries-user} or in the 
+\href{http://www.dickimaw-books.com/faqs/glossariesfaq.html}{glossaries FAQ}.
+There is also an
+\href{http://www.latex-community.org/index.php?option=com_content&view=article&id=263:glossaries-nomenclature-lists-of-symbols-and-acronyms&catid=55:latex-general&Itemid=114}{article on the glossaries package}
+on the \urlfootref{http://www.latex-community.org/}{\LaTeX\ Community's}
+Know How section and a~chapter on the \sty{glossaries} package in
+\href{http://www.dickimaw-books.com/latex/thesis/}{Using
+\LaTeX\ to Write a PhD Thesis}.
+\end{document}

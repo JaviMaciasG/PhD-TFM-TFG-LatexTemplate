@@ -1,0 +1,714 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0078)http://ask.libreoffice.org/en/question/35598/where-are-lo-basic-macros-stored/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" class=" js history"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./WhereareLOBasicmacrosstored-AskLibreOffice/cb=gapi.loaded_1" async=""></script><script src="./WhereareLOBasicmacrosstored-AskLibreOffice/cb=gapi.loaded_0" async=""></script> <title>Where are LO Basic macros stored? - Ask LibreOffice</title>  <meta http-equiv="X-UA-Compatible" content="IE=EDGE"> <meta name="description" content="I want to transfer to a new computer a group of recorded macros backed up intotwo files, writer.xba and calc.xba. I have recorded a writer macro in v. 4.2.3.3 (in Qiana Mate), but can&#39;t find where it is stored. Can someone tell me? I don&#39;t need to keep the single macro already recorded in this version. Any reason why I shouldn&#39;t just replace the new file with the old one?"> <meta name="keywords" content="writer,macro,backup,LibreOffice,Writer,Calc,Impress,Base,Math,Draw,Office"> <meta name="referrer" content="always"> <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> <link rel="shortcut icon" href="http://ask.libreoffice.org/m/default/media/images/favicon.gif?v=20"> <link rel="alternate" type="application/rss+xml" title="RSS feed from AskLibO" href="http://ask.libreoffice.org/en/feeds/rss/"> <link rel="stylesheet" href="./WhereareLOBasicmacrosstored-AskLibreOffice/91bdf121a019.css" type="text/css"> <link href="./WhereareLOBasicmacrosstored-AskLibreOffice/custom.css" rel="stylesheet" type="text/css"> <link href="./WhereareLOBasicmacrosstored-AskLibreOffice/css" rel="stylesheet" type="text/css"> <link href="./WhereareLOBasicmacrosstored-AskLibreOffice/css(1)" rel="stylesheet" type="text/css"> <link rel="canonical" href="./WhereareLOBasicmacrosstored-AskLibreOffice/Where are LO Basic macros stored_ - Ask LibreOffice.html"> <link rel="stylesheet" type="text/css" href="./WhereareLOBasicmacrosstored-AskLibreOffice/wmd.css"> <script type="text/javascript" src="./WhereareLOBasicmacrosstored-AskLibreOffice/modernizr.custom.js"></script> <script type="text/javascript">
+    var askbot = {};
+    askbot['data'] = {};
+    askbot['data']['userIsAuthenticated'] = false;
+    askbot['data']['languageCode'] = 'en';
+    
+        askbot['data']['userReputation'] = 0;
+        askbot['data']['userEmail'] = null;
+        askbot['data']['userIsReadOnly'] = false;//in principle we allow anon users to start posting
+    
+    askbot['urls'] = {};
+    askbot['settings'] = {};
+    askbot['messages'] = {};
+</script> <script type="text/javascript" src="./WhereareLOBasicmacrosstored-AskLibreOffice/saved_resource"></script> <script type="text/javascript">
+        /*<![CDATA[*/
+        //below is pure cross-browser javascript, no jQuery
+        askbot['data']['userIsThreadModerator'] = false;
+        askbot['data']['oldestAnswerId'] = 35625;
+        askbot['data']['threadIsClosed'] = false;
+        
+        (function(){
+
+            var hasClass = function(node, selector) {
+                var classes = (" " + node.className + " ").split(' ');
+                for (var i = 0; i < classes.length; i++) {
+                    if (classes[i] === selector) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            var findClosestParentByClassName = function(node, className) {
+                if (hasClass(node, className)) {
+                    return node;
+                }
+                if (node.nodeName === 'BODY') {
+                    return false;
+                } else {
+                    return findClosestParentByClassName(node.parentNode, className);
+                }
+            };
+
+            var findChildrenByClassName = function(node, className) {
+                var nodes = [];
+                var walk = function(node) {
+                    if (hasClass(node, className)) {
+                        nodes.push(node);
+                    }
+                    if (node.childNodes) {
+                        for (var i=0; i < node.childNodes.length; i++) {
+                            walk(node.childNodes[i]);
+                        }
+                    }
+                };
+                walk(node);
+                return nodes;
+            };
+
+            var getTextContent = function(node) {
+                var text = node.innerText || node.textContent;
+                if (text === undefined) {
+                    return '';
+                } else {
+                    return text;
+                }
+            };
+
+            var hasAttribute = function(node, attrName) {
+                if (node.hasAttribute) {
+                    return node.hasAttribute(attrName);
+                } else {
+                    return (!(!(node.getAttribute(attrName))));
+                }
+            };
+
+            var findChildByAttribute = function(node, attrName, attrVal) {
+                var children = node.childNodes;
+                for (var i = 0; i < children.length; i++) {
+                    var child = children[i];
+                    if (child.getAttribute(attrName) === attrVal) {
+                        return child;
+                    }
+                };
+                return null;
+            };
+
+            var postIsComment = function(postId) {
+                if (document.getElementById('comment-' + postId)) {
+                    return true;
+                }
+                return false;
+            };
+
+            var postIsQuestion = function(postId) {
+                var content = document.getElementById('post-id-' + postId);
+                if (content) {
+                    if (findClosestParentByClassName(content, 'question')) {
+                        return true;
+                    }
+                }
+                return false;
+            };
+
+            var removeNode = function(node) {
+                node.parentNode.removeChild(node);
+            };
+
+            var trim = function(text) {
+                return text.replace(/^\s+|\s+$/g, '');
+            };
+
+            var data = askbot['data'];
+            var isAuthorOfPost = function(post_id) {
+                return (data['user_posts'] && data['user_posts'][post_id]);
+            };
+
+            if (data['userIsAuthenticated']){
+                var votes = {};
+                
+                data['user_votes'] = votes;
+                var posts = {};
+                
+                data['user_posts'] = posts;
+            }
+
+            function render_vote_buttons(post_type, post_id){
+                var upvote_btn = document.getElementById(
+                    post_type + '-img-upvote-' + post_id
+                );
+                var downvote_btn = document.getElementById(
+                    post_type + '-img-downvote-' + post_id
+                );
+                if (data['userIsAuthenticated']){
+                    if (post_id in data['user_votes']){
+                        var vote = data['user_votes'][post_id];
+                        if (vote == -1){
+                            var btn = downvote_btn;
+                        } else if (vote == 1){
+                            var btn = upvote_btn;
+                        } else {
+                            return;
+                        }
+                        if (post_type == 'comment'){
+                            btn.className = btn.className + ' upvoted';
+                        } else {
+                            btn.className = btn.className + ' on';
+                        }
+                    }
+                }
+            }
+
+            function hide_convert_answer_links(post_id){
+                var id1 = 'post-' + post_id + '-convert';//for repost as Q comment
+                var repostAsQuestionComment = document.getElementById(id1);
+                var id2 = 'post-' + post_id + '-repost-as-comment-under-previous-answer';
+                var repostAsPrevAnsComment = document.getElementById(id2);
+                var extraOptsList = repostAsQuestionComment.parentNode;
+                var extraOpts = extraOptsList.parentNode;
+
+                var isAuthenticated = data['userIsAuthenticated'];
+                var isMod = data['userIsAdminOrMod'];
+                if (isAuthenticated && (isMod || isAuthorOfPost(post_id))) {
+                    //still may need to hide because answer may be too long
+                    var answer_id = 'post-id-' + post_id;
+                    var answer_container = document.getElementById(answer_id);
+                    var answerBody = findChildrenByClassName(answer_container, 'post-body')[0];
+                    //todo: this is not reliable
+                    var answerBodyNodes = answerBody.childNodes;
+                    var answerElement = answerBodyNodes[answerBodyNodes.length - 1];
+                    if (trim(getTextContent(answerElement)).length > askbot['data']['maxCommentLength']) {
+                        repostAsQuestionComment.parentNode.removeChild(repostAsQuestionComment);
+                        repostAsPrevAnsComment.parentNode.removeChild(repostAsPrevAnsComment);
+                    } else if (parseInt(post_id) === data['oldestAnswerId']) {
+                        repostAsPrevAnsComment.parentNode.removeChild(repostAsPrevAnsComment);
+                    }
+                } else {
+                    repostAsQuestionComment.parentNode.removeChild(repostAsQuestionComment);
+                    repostAsPrevAnsComment.parentNode.removeChild(repostAsPrevAnsComment);
+                }
+
+                //if the whole control is empty - remove it
+                if (extraOptsList.getElementsByTagName('li').length === 0) {
+                    extraOpts.parentNode.removeChild(extraOpts);
+                }
+            }
+
+            function hidePublishAnswerLink(postId) {
+                if (data['userIsThreadModerator'] === false) {
+                    //hide publish/unpublish answer links
+                    var answerId = 'post-' + postId + '-publish';
+                    var pubBtn = document.getElementById(answerId);
+                    if (pubBtn) {
+                        removeNode(pubBtn);
+                    }
+                }
+            }
+
+            function remove_all_controls(post_id) {
+                var deleteBtn = document.getElementById('post-' + post_id + '-delete');
+                var controls = deleteBtn.parentNode;
+                if (controls.className == 'comment-content') {
+                    removeNode(deleteBtn);
+                    var convertLinks = findChildrenByClassName(controls, 'convert-comment');
+                    if (convertLinks.length) {
+                        removeNode(convertLinks[0]);
+                    }
+                    var editLinks = findChildrenByClassName(controls, 'edit');
+                    if (editLinks.length) {
+                        removeNode(editLinks[0]);
+                    }
+                } else {
+                    var buttons = controls.childNodes;
+                    var numButtons = buttons.length;
+                    for (var i = numButtons - 1; i >= 0; i--) {
+                        removeNode(buttons[i]);
+                    }
+                }
+            };
+
+            function render_post_controls(post_id, is_wiki){
+
+                //in this case remove all post controls
+                if (askbot['settings']['readOnlyModeEnabled'] === true) {
+                    remove_all_controls(post_id);
+                    return;
+                }
+
+                var deleteBtn = document.getElementById('post-' + post_id + '-delete');
+                var controls = deleteBtn.parentNode;
+                var mergeBtn = findChildrenByClassName(controls, 'question-merge');
+                if (mergeBtn.length === 1 && data['userIsThreadModerator'] === false) {
+                    removeNode(mergeBtn[0]);
+                }
+
+                if (data['userIsAdminOrMod']) {
+                    return;//all remaining functions stay on
+                }
+
+                
+
+                if (data['user_posts'] && post_id in data['user_posts']){
+                    if (postIsQuestion(post_id) && 2) {
+                        if (data['userReputation'] < 1) {
+                            if (!data['userIsAdminOrMod']) {
+                                removeNode(deleteBtn);
+                            }
+                        }
+                    }
+                    //todo: remove edit button from older comments
+                    return;
+                }
+
+                if (//maybe remove "delete" button
+                    (data['userReputation'] <
+                    200) || data['userIsReadOnly']
+                ) {
+                    removeNode(deleteBtn);
+                }
+
+                var canFlagPosts = data['userReputation'] >= 5;
+                var flags = findChildrenByClassName(controls, 'question-flag');
+                if (flags.length > 0 && !canFlagPosts) {
+                    for (var i = 0; i < flags.length; i++) {
+                        removeNode(flags[i]);
+                    }
+                }
+                var closeBtn = findChildrenByClassName(controls, 'question-close');
+                if (
+                    closeBtn.length === 1 &&
+                    (
+                        (data['userReputation'] < 200) ||
+                        data['userIsReadOnly']
+                    )
+                ) {
+                    removeNode(closeBtn[0]);
+                }
+                var enoughRep = (data['userReputation'] >= 200 ||
+                        (is_wiki && data['userReputation'] >= 75));
+                if (//maybe remove "edit" button
+                    !enoughRep || data['userIsReadOnly']//only authors edit comments
+                ){
+                    var editBtns = findChildrenByClassName(controls, 'js-edit');
+                    if (editBtns.length) {
+                        removeNode(editBtns[0]);
+                    }
+                }
+                if (//maybe remove retag button
+                    (data['userReputation'] <
+                    50) ||
+                    data['userIsReadOnly']
+                ){
+                    var retagBtn = document.getElementById('retag');
+                    if (retagBtn) {
+                        retagBtn.parentNode.removeChild(retagBtn);
+                    }
+                }
+            }
+
+            function render_add_answer_button(){
+                var add_answer_btn = document.getElementById('add-answer-btn');
+                if (askbot['data']['userIsAuthenticated']){
+                    if (askbot['data']['userId'] == 9336){
+                        add_answer_btn.className += ' answer-own-question';
+                        add_answer_btn.setAttribute(
+                            'value',
+                            'Answer Your Own Question'
+                        )
+                    } else {
+                        add_answer_btn.setAttribute(
+                           'value',
+                           'Post Your Answer'
+                        )
+                    }
+                } else {
+                    add_answer_btn.setAttribute(
+                        'value',
+                        'Login/Signup to Post'
+                    );
+                }
+            }
+
+            function hide_convert_links() {
+                var isAuthenticated = data['userIsAuthenticated'];
+                var isMod = data['userIsAdminOrMod'];
+                if (isAuthenticated && isMod) {
+                    return;
+                }
+                var convertForms = findChildrenByClassName(document, 'convert-comment');
+                for (var i = 0; i < convertForms.length; i++) {
+                    //get comment id
+                    var form = convertForms[i];
+                    var idInput = findChildByAttribute(form, 'name', 'comment_id');
+                    var commentId = idInput.getAttribute('value');
+                    if (! isAuthorOfPost(commentId) ) {
+                        form.setAttribute('style', 'display:none;');
+                    }
+                }
+            }
+
+            askbot['functions'] = askbot['functions'] || {};
+            askbot['functions']['renderPostVoteButtons'] = render_vote_buttons;
+            askbot['functions']['renderPostControls'] = render_post_controls;
+            askbot['functions']['renderAddAnswerButton'] = render_add_answer_button;
+            askbot['functions']['hideConvertLinks'] = hide_convert_links;
+            askbot['functions']['hideConvertAnswerLinks'] = hide_convert_answer_links;
+            askbot['functions']['hidePublishAnswerLink'] = hidePublishAnswerLink;
+        })();
+        /*]]>*/
+    </script> </head> <body class="two-col user-messages question-page anon lang-en"> <div class="notify"> <div class="content-wrapper"> <p class="notification">First time here? Check out the <a href="http://ask.libreoffice.org/faq/">FAQ</a>!</p> <a id="closeNotify" onclick="notify.close(true)"></a> </div> </div> <!-- template header.html --> <div id="header" class="with-logo"> <div class="content-wrapper"> <div id="userToolsNav"> <a href="http://ask.libreoffice.org/en/account/signin/?next=/en/question/35598/where-are-lo-basic-macros-stored/">Hi there! Please sign in</a> <a class="help" href="http://ask.libreoffice.org/en/help/" title="help">help</a> <span class="lang-nav dropdown-toggle"> <ul class="dropdown-menu"> <li> <a href="http://ask.libreoffice.org/hr/" data-lang="hr">Croatian</a> </li> <li> <a href="http://ask.libreoffice.org/de/" data-lang="de">German</a> </li> <li> <a href="http://ask.libreoffice.org/ko/" data-lang="ko">Korean</a> </li> <li> <a href="http://ask.libreoffice.org/it/" data-lang="it">Italian</a> </li> <li> <a href="http://ask.libreoffice.org/ar/" data-lang="ar">Arabic</a> </li> <li> <a href="http://ask.libreoffice.org/pt-br/" data-lang="pt-br">Portuguese</a> </li> <li> <a href="http://ask.libreoffice.org/ro/" data-lang="ro">Romanian</a> </li> <li> <a href="http://ask.libreoffice.org/ja/" data-lang="ja">Japanese</a> </li> <li> <a href="http://ask.libreoffice.org/es/" data-lang="es">Spanish</a> </li> </ul> <i class="fa fa-globe"></i> <span class="curr-lang">English</span> <span class="toggle">▼</span> </span> </div> <a id="logo" href="http://ask.libreoffice.org/en/questions/"><img src="./WhereareLOBasicmacrosstored-AskLibreOffice/tdf-logo.png" title="back to home page" alt="AskLibO logo"> </a> <div id="metaNav"> <a id="navTags" href="http://ask.libreoffice.org/en/tags/">tags</a> <a id="navUsers" href="http://ask.libreoffice.org/en/users/">users</a> <a id="navBadges" href="http://ask.libreoffice.org/en/badges/">badges</a> </div> <div class="clean"></div> </div> </div> <!-- end template header.html --> <!-- template secondary_header.html --> <div id="secondaryHeader"> <div class="content-wrapper"> <form action="http://ask.libreoffice.org/en/questions/" id="searchForm" class="scopes-True-True-False" method="get"> <table width="100%"> <tbody><tr> <td width="1"><a id="homeButton" href="http://ask.libreoffice.org/en/questions/"><i class="fa fa-home"></i></a></td> <td width="1"><div id="scopeNav"> <a class="scope-selector " href="http://ask.libreoffice.org/en/questions/scope:all/sort:activity-desc/page:1/">ALL</a> <a class="scope-selector " href="http://ask.libreoffice.org/en/questions/scope:unanswered/sort:answers-asc/page:1/">UNANSWERED</a> </div></td> <td width="*" class="search-bar"> <div id="searchBar" class="search-bar"><input class="searchInput" type="text" autocomplete="off" value="" name="query" placeholder="search or ask your question" id="keywords"><input type="submit" value="" name="search" class="searchBtn"><input type="button" value="X" name="reset_query" class="cancelSearchBtn" style="display: none;"><div class="search-drop-menu empty" style="display: none;"><ul></ul><div class="wait-icon-box" style="display: none;"><img src="./WhereareLOBasicmacrosstored-AskLibreOffice/ajax-loader.gif"></div><div class="footer"><button class="submit btn btn-default">Ask Your Question</button></div></div></div> </td> <td width="1"> <a id="askButton" class="button" href="http://ask.libreoffice.org/en/questions/ask/">
+            Ask Your Question
+        </a> </td> </tr> </tbody></table> </form> </div> </div> <div class="content-wrapper"> <div id="ContentLeft"> <div class="post js-question" data-post-id="35598"> <div class="vote-buttons"> <div id="question-img-upvote-35598" class="question-img-upvote post-vote upvote"> </div> <div id="question-vote-number-35598" class="vote-number" title="current number of votes">1</div> <div id="question-img-downvote-35598" class="question-img-downvote post-vote downvote"> </div> <script type="text/javascript">
+    askbot['functions']['renderPostVoteButtons']('question', '35598');
+</script> <a class="twitter-share icon" title="Share this content on twitter"></a> <a class="facebook-share icon" title="Share this content on facebook"></a> <a class="linkedin-share icon" title="Share this content on linkedin"></a> <a class="identica-share icon" title="Share this content on identica"></a> <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 24px; height: 15px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 24px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 15px;" tabindex="0" vspace="0" width="100%" id="I0_1434935679318" name="I0_1434935679318" src="./WhereareLOBasicmacrosstored-AskLibreOffice/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div> </div> <div id="post-id-35598" class="post-content"> <h1><a href="./WhereareLOBasicmacrosstored-AskLibreOffice/Where are LO Basic macros stored_ - Ask LibreOffice.html">Where are LO Basic macros stored?</a></h1> <ul id="question-tags" class="tags post-tags tags"> <li> <div class="js-tag "><a class="js-tag-name" rel="tag" href="http://ask.libreoffice.org/en/questions/scope:all/sort:activity-desc/tags:writer/page:1/" data-tag-name="writer">writer</a></div> </li> <li> <div class="js-tag "><a class="js-tag-name" rel="tag" href="http://ask.libreoffice.org/en/questions/scope:all/sort:activity-desc/tags:macro/page:1/" data-tag-name="macro">macro</a></div> </li> <li> <div class="js-tag "><a class="js-tag-name" rel="tag" href="http://ask.libreoffice.org/en/questions/scope:all/sort:activity-desc/tags:backup/page:1/" data-tag-name="backup">backup</a></div> </li> </ul> <div class="clearfix"></div> <div class="post-body"> <div class="post-update-info-container"> <div class="post-update-info"> <p style="line-height:12px;"> <a href="http://ask.libreoffice.org/en/questions/35598/revisions/">asked <strong><abbr class="timeago" title="2014-06-17 18:13:02 +0200">Jun 17 '14</abbr></strong></a> </p> <div class="user-card"> <a class="js-avatar-box" href="http://ask.libreoffice.org/en/users/9336/nsivin/"><img class="js-avatar gravatar" width="32" height="32" src="./WhereareLOBasicmacrosstored-AskLibreOffice/nophoto.png" title="nsivin" alt="nsivin gravatar image" style="max-width: 685px; height: auto;"></a> <div class="user-info"> <a href="http://ask.libreoffice.org/en/users/9336/nsivin/">nsivin</a> <br> <span class="reputation-score">71</span> <span class="badges" title="nsivin has 8 gold badges, 20 silver badges and 27 bronze badges"> <span class="badge1">●</span><span class="badgecount">8</span> <span class="badge2">●</span><span class="badgecount">20</span> <span class="badge3">●</span><span class="badgecount">27</span> </span> </div> </div> </div> </div> <p>I want to transfer to a new computer a group of recorded macros backed up intotwo files, writer.xba and calc.xba. I have recorded a writer macro in v. 4.2.3.3 (in Qiana Mate), but can't find where it is stored. Can someone tell me? I don't need to keep the single macro already recorded in this version. Any reason why I shouldn't just replace the new file with the old one? </p> </div> <div id="question-controls" class="post-controls"> <a id="post-35598-edit" class="question-edit" href="http://ask.libreoffice.org/en/questions/35598/edit/">edit</a>  <span id="question-offensive-flag-35598" class="offensive-flag" title="report as offensive (i.e containing spam, advertising, malicious text, etc.)">  </span>    <script type="text/javascript">
+    askbot['functions']['renderPostControls']('35598');
+</script> </div> <div class="comments empty ordering-forward" data-parent-post-type="question" data-parent-post-id="35598"><div class="content"></div><div class="controls"><a class="js-open-editor-btn">add a comment</a></div></div> </div> </div> <div class="clean"></div> <div class="tabBar tabBar-answer"> <h2 id="questionCount">
+        2 answers
+    </h2> <div class="tabsA"> <span class="label">
+                    Sort by »
+                    </span> <a id="oldest" href="http://ask.libreoffice.org/en/question/35598/where-are-lo-basic-macros-stored/?sort=oldest#sort-top"><span>oldest</span></a> <a id="latest" href="http://ask.libreoffice.org/en/question/35598/where-are-lo-basic-macros-stored/?sort=latest#sort-top"><span>newest</span></a> <a id="votes" href="http://ask.libreoffice.org/en/question/35598/where-are-lo-basic-macros-stored/?sort=votes#sort-top" classname="on"><span>most voted</span></a> </div> </div> <div class="clean"></div> <div class="pager"> </div> <div class="clean"></div> <a name="35625"></a> <div id="post-id-35625" data-post-id="35625" class="post answer   "> <div class="vote-buttons"> <div id="answer-img-upvote-35625" class="answer-img-upvote post-vote upvote"> </div> <div id="answer-vote-number-35625" class="vote-number" title="current number of votes">2</div> <div id="answer-img-downvote-35625" class="answer-img-downvote post-vote downvote"> </div> <script type="text/javascript">
+    askbot['functions']['renderPostVoteButtons']('answer', '35625');
+</script> <div id="answer-img-accept-35625" class="answer-img-accept" title="mark this answer as correct (click again to undo)"></div> </div> <div class="post-content"> <div class="post-body"> <div class="post-update-info-container"> <div class="post-update-info"> <p style="line-height:12px;"> <a href="http://ask.libreoffice.org/en/answers/35625/revisions/">answered <strong><abbr class="timeago" title="2014-06-18 00:36:02 +0200">Jun 18 '14</abbr></strong></a> </p> <div class="user-card"> <a class="js-avatar-box" href="http://ask.libreoffice.org/en/users/7415/regina/"><img class="js-avatar gravatar" width="32" height="32" src="./WhereareLOBasicmacrosstored-AskLibreOffice/nophoto.png" title="Regina" alt="Regina gravatar image" style="max-width: 685px; height: auto;"></a> <div class="user-info"> <a href="http://ask.libreoffice.org/en/users/7415/regina/">Regina</a> <img class="flag" src="./WhereareLOBasicmacrosstored-AskLibreOffice/de.gif" alt="flag of Germany" title="Regina is from Germany" style="max-width: 685px; height: auto;"> <br> <span class="reputation-score">3195</span> <span class="badges" title="Regina has 19 silver badges and 44 bronze badges"> <span class="badge2">●</span><span class="badgecount">19</span> <span class="badge3">●</span><span class="badgecount">44</span> </span> </div> </div> </div> <div class="post-update-info"> <p style="line-height:12px;"> <a href="http://ask.libreoffice.org/en/answers/35625/revisions/">updated <strong><abbr class="timeago" title="2014-06-19 13:16:47 +0200">Jun 19 '14</abbr></strong></a> </p> </div> </div> <p>The macros are grouped in modules and dialogs( =xba files). These are grouped in libraries. Which modules and dialogs belong to a library is record in script.xlb and dialog.xlb. These files together are stored in a folder. The files script.xlc and dialog xlc record, which such library folder exists. These files together with the library folders are stored in the directory "basic". Such directory exists for the single user in its LibreOffice user directory, and common for all users in the directory "share" in the LibreOffice installation. Because of the. xlb and .xlc files you cannot simple move the .xba files around.</p> <p>You can use the Organizer to administrate your macros. Find the Organizer in Tools &gt; Macros &gt; Organize Macros.</p> <p><img alt="image description" src="./WhereareLOBasicmacrosstored-AskLibreOffice/1403176184628469.png" style="max-width: 685px; height: auto;"></p> <p><img alt="image description" src="./WhereareLOBasicmacrosstored-AskLibreOffice/14031762634676193.png" style="max-width: 685px; height: auto;"></p> <p>The Organizer can export and import whole libraries (execpt for library "standard") in tab "Libraries".</p> <p><img alt="image description" src="./WhereareLOBasicmacrosstored-AskLibreOffice/14031763219781728.png" style="max-width: 685px; height: auto;"></p> <p>And you can move (mouse drag) and copy (mouse drag + Ctrl) modules between libraries and documents in tab "Modules".</p> <p><img alt="image description" src="./WhereareLOBasicmacrosstored-AskLibreOffice/14031764506238379.png" style="max-width: 685px; height: auto;"></p> <p>A single user cannot store a recorded macro into the common "Basic" directory, but he can only store it into its user directory, or he can store a macro into a module inside a document. If you have used the default settings, your macros are in the library "standard".</p> <p>To get the macros to the new computer, you can export the libraries on the old computer. That results in some folders. Copy these folders to the new computer. On the new computer import the libraries using the Organizer. To move the macros, which are inside the "Standard" library, make a dummy library "Transport" or use a document, copy the modules and dialog from "Standard" to "Transport" or to the document, and on the new computer move them from there to the new "Standard" library. Do this using the Organizer.</p> <p>Find more about organizing macros in the Basic guides, and in the Books and Articles by Andrew Pitonyak.</p> <hr> <p>If you never have used any own libraries you can transport macros as text files. Click on "Edit" in the Organizer to open the IDE. Click on icon "save BASIC" to write the macros to a .bas file. Copy the .bas file to the new computer. Open the IDE there and click on icon "Insert BASIC source" to read the macros.</p> </div> <div class="answer-controls post-controls"> <span id="post-35625-edit" class="action-link"> <a class="question-edit" href="http://ask.libreoffice.org/en/answers/35625/edit/">edit</a> </span> <span id="answer-offensive-flag-35625" class="action-link offensive-flag" title="report as offensive (i.e containing spam, advertising, malicious text, etc.)">  </span>  <span class="action-link"> <a class="permant-link" href="http://ask.libreoffice.org/en/question/35598/where-are-lo-basic-macros-stored/?answer=35625#post-id-35625" title="permanent link">
+        link
+    </a> </span>  <script type="text/javascript">
+    askbot['functions']['hideConvertAnswerLinks']('35625');
+    askbot['functions']['hidePublishAnswerLink']('35625');
+    askbot['functions']['renderPostControls']('35625');
+</script> </div> <div class="comments empty ordering-forward" data-parent-post-type="answer" data-parent-post-id="35625"><div class="content"></div><div class="controls"><a class="js-open-editor-btn">add a comment</a></div></div> </div> <div class="clean"></div> </div> <div class="clean"></div> <a name="35682"></a> <div id="post-id-35682" data-post-id="35682" class="post answer   answered-by-owner "> <div class="vote-buttons"> <div id="answer-img-upvote-35682" class="answer-img-upvote post-vote upvote"> </div> <div id="answer-vote-number-35682" class="vote-number" title="current number of votes">0</div> <div id="answer-img-downvote-35682" class="answer-img-downvote post-vote downvote"> </div> <script type="text/javascript">
+    askbot['functions']['renderPostVoteButtons']('answer', '35682');
+</script> <div id="answer-img-accept-35682" class="answer-img-accept" title="mark this answer as correct (click again to undo)"></div> </div> <div class="post-content"> <div class="post-body"> <div class="post-update-info-container"> <div class="post-update-info"> <p style="line-height:12px;"> <a href="http://ask.libreoffice.org/en/answers/35682/revisions/">answered <strong><abbr class="timeago" title="2014-06-19 01:47:23 +0200">Jun 19 '14</abbr></strong></a> </p> <div class="user-card"> <a class="js-avatar-box" href="http://ask.libreoffice.org/en/users/9336/nsivin/"><img class="js-avatar gravatar" width="32" height="32" src="./WhereareLOBasicmacrosstored-AskLibreOffice/nophoto.png" title="nsivin" alt="nsivin gravatar image" style="max-width: 685px; height: auto;"></a> <div class="user-info"> <a href="http://ask.libreoffice.org/en/users/9336/nsivin/">nsivin</a> <br> <span class="reputation-score">71</span> <span class="badges" title="nsivin has 8 gold badges, 20 silver badges and 27 bronze badges"> <span class="badge1">●</span><span class="badgecount">8</span> <span class="badge2">●</span><span class="badgecount">20</span> <span class="badge3">●</span><span class="badgecount">27</span> </span> </div> </div> </div> </div> <p>I appreciate your suggestions, but I suspect you are using a different version of Mint than I am (Qiana Mate). I have two modules (one for Writer macros and one for Calc macros ) in a dialog named Custom in the My Macros library. In the LO Basic Macro Organizer I have only four choices: Edit, Close, New..., and Delete.  In the LO Basic Macros Organizer the only choices offered are Run, Close, Assign..., Edit, Delete, Organizer, and Help. In neither of these dialogs, nor under any of their buttons, do I find any way to export these libraries, or import anything into a module. You didn''t explain what an IDE is, and despite usintg computers for 49 years, Ihaven't come across that acronym. </p> <p>I'd be grateful if you or someone else using v. 17 Mate can help me solve this problem.</p> </div> <div class="answer-controls post-controls"> <span id="post-35682-edit" class="action-link"> <a class="question-edit" href="http://ask.libreoffice.org/en/answers/35682/edit/">edit</a> </span> <span id="answer-offensive-flag-35682" class="action-link offensive-flag" title="report as offensive (i.e containing spam, advertising, malicious text, etc.)">  </span>  <span class="action-link"> <a class="permant-link" href="http://ask.libreoffice.org/en/question/35598/where-are-lo-basic-macros-stored/?answer=35682#post-id-35682" title="permanent link">
+        link
+    </a> </span>  <script type="text/javascript">
+    askbot['functions']['hideConvertAnswerLinks']('35682');
+    askbot['functions']['hidePublishAnswerLink']('35682');
+    askbot['functions']['renderPostControls']('35682');
+</script> </div> <h2 class="comment-title">Comments</h2><div class="clean"></div><div class="comments ordering-forward" data-parent-post-type="answer" data-parent-post-id="35682"><div class="content"><div id="post-id-35697" class="comment js-comment" data-comment-id="35697"><div class="comment-votes"><div id="comment-img-upvote-35697" class="upvote js-score"></div><script type="text/javascript">
+                askbot['functions']['renderPostVoteButtons']('comment', '35697');
+            </script></div><div class="comment-content"><div class="comment-body"><p> IDE = Integrated Development Environment , see  <a href="http://en.wikipedia.org/wiki/Integrated_development_environment">http://en.wikipedia.org/wiki/Integrat...</a></p><p> Find an introduction to the administrative dialogs in chapter "2. Getting Started" in "OpenOffice.org Macros Explained" by Andrew Pitonyak",  <a href="http://www.pitonyak.org/OOME_3_0.pdf">http://www.pitonyak.org/OOME_3_0.pdf</a></p><p>I'll add a picture of the dialog. Hopefully that will make it easier to find.</p></div><div class="comment-controls"><a class="js-avatar-box" href="http://ask.libreoffice.org/en/users/7415/regina/"><img class="js-avatar gravatar" width="16" height="16" src="./WhereareLOBasicmacrosstored-AskLibreOffice/nophoto.png" title="Regina" alt="Regina gravatar image"></a><a class="author" href="http://ask.libreoffice.org/en/users/7415/regina/">Regina</a><span class="age">&nbsp;(<abbr class="timeago" title="2014-06-19 13:08:15 +0200">Jun 19 '14</abbr>)</span></div></div></div><script type="text/javascript">
+        askbot['functions']['hideConvertLinks']();
+        askbot['functions']['renderPostControls']('35697');
+    </script></div><div class="controls"><a class="js-open-editor-btn">add a comment</a></div></div> </div> <div class="clean"></div> </div> <div class="clean"></div> <div class="pager"> </div> <div class="clean"></div> <form id="fmanswer" action="http://ask.libreoffice.org/en/questions/35598/answer/" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="mKy7nYL8FDp1UbKPd50c47ohyNZebV32"> <div style="clear:both"></div> <a class="button submit" href="http://ask.libreoffice.org/en/account/signin/?next=/en/question/35598/">Login/Signup to Answer</a> </form> </div> <div id="ContentRight"> <div class="box"> <h2>Resources</h2> <div style="font-size:75%;"> <ul> <li><a href="https://wiki.documentfoundation.org/Ask"><em>Ask</em> on the TDF wiki</a><br></li> <li><a href="https://wiki.documentfoundation.org/Ask/Getting_Started">How to use the <em>Ask</em> site</a></li> <li>Join <a href="https://wiki.documentfoundation.org/Ask#Mailing_List">our mailing list</a></li> <li>IRC: <a href="http://webchat.freenode.net/?channels=libreoffice"><code>#libreoffice</code></a></li> </ul> </div> </div> <div class="box vote-buttons"> <h2>Question Tools</h2> <button class="js-follow-question button large" data-is-on="false" data-off-prompt-text="Unfollow" data-on-prompt-text="Follow" data-on-state-text="Following" data-off-state-text="Follow" data-toggle-url="/en/toggle-follow-question/">
+        
+            Follow
+        
+    </button> <div class="clearfix"></div> <div class="js-question-follower-count">
+        
+        
+            2 followers
+        
+    </div> <div class="notify-sidebar"> <p class="rss"> <a href="http://ask.libreoffice.org/feeds/question/35598" title="subscribe to the rss feed">subscribe to rss feed</a> </p> </div> </div> <div class="clearfix"></div> <div class="box statsWidget"> <div class="clearfix"></div> <h2>Stats</h2> <p>
+        Asked: <strong><abbr class="timeago" title="2014-06-17 18:13:02 +0200">Jun 17 '14</abbr></strong> </p> <p> 
+        Seen: <strong>1,029 times</strong> </p> <p>
+        Last updated: <strong title="2014-06-19 13:16:47.796215">Jun 19 '14</strong> </p> </div> <div class="box"> <h2>Related questions</h2> <div class="questions-related"> <p> <a href="http://ask.libreoffice.org/en/question/12182/how-to-open-500-docs-and-save-as-html/">How to open 500+ docs and save as .html</a> </p> <p> <a href="http://ask.libreoffice.org/en/question/9515/manipulate-writer-selection-via-macro/">Manipulate Writer selection via macro</a> </p> <p> <a href="http://ask.libreoffice.org/en/question/21276/saved-over-document/">Saved over document</a> </p> <p> <a href="http://ask.libreoffice.org/en/question/9800/associate-odt-with-libreoffice/">Associate odt with Libreoffice</a> </p> <p> <a href="http://ask.libreoffice.org/en/question/19550/heading-for-endnotes-page/">Heading for endnotes page</a> </p> <p> <a href="http://ask.libreoffice.org/en/question/39186/how-do-i-change-my-line-spacing/">how do i change my line spacing</a> </p> <p> <a href="http://ask.libreoffice.org/en/question/2352/how-to-set-decimal-separator/">how to set decimal separator?</a> </p> <p> <a href="http://ask.libreoffice.org/en/question/8954/change-the-default-font/">Change the default font [closed]</a> </p> <p> <a href="http://ask.libreoffice.org/en/question/33714/libreoffice-writer-persian/">Libreoffice writer persian</a> </p> <p> <a href="http://ask.libreoffice.org/en/question/14661/bookmark-for-table-of-contents/">bookmark for table of contents</a> </p> </div> </div> </div> </div> <!-- template footer.html --> <div id="ground"> <div class="content-wrapper"> <div class="copyright"> <a href="http://creativecommons.org/licenses/by-sa/3.0/legalcode"> <img class="license-logo" src="./WhereareLOBasicmacrosstored-AskLibreOffice/cc-by-sa.png" title="cc-by-sa" alt="cc-by-sa"> </a>
+                
+                 Content on this site is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/legalcode">Creative Commons Attribution Share Alike 3.0</a> license.
+
+            </div> <div class="footer-links"> <a id="toTop" href="http://ask.libreoffice.org/en/question/35598/where-are-lo-basic-macros-stored/#" title="scroll to top of page" style="display: none;">⬆ to top</a> <a href="http://www.documentfoundation.org/imprint">impressum (legal info)</a><span class="link-separator"> |</span> <a href="http://ask.libreoffice.org/en/about/">about</a><span class="link-separator"> |</span> <a href="http://ask.libreoffice.org/en/faq/">faq</a><span class="link-separator"> |</span> <a href="http://ask.libreoffice.org/en/help/" title="help">help</a> <span class="link-separator"> |</span> <a href="http://www.documentfoundation.org/privacy">privacy policy</a><span class="link-separator"> |</span> <a href="http://ask.libreoffice.org/en/feedback/?next=/en/question/35598/where-are-lo-basic-macros-stored/">
+                        
+                        give feedback
+                    </a> </div> <div class="powered-link"> <a href="http://askbot.com/" target="_blank">
+                Powered by Askbot version 0.7.53
+            </a> </div> <div class="clean"></div> </div> </div> <!-- end template footer.html --> <div id="no-javascript"> <noscript class="noscript" style="padding: 0px; background-color: transparent;">
+        Please note: AskLibO requires javascript to work properly, please enable javascript in your browser, &lt;a href="https://www.google.com/support/bin/answer.py?answer=23852"&gt;here is how&lt;/a&gt; </noscript> <script type="text/javascript">
+        //IE fix to hide the red margin
+        var noscript = document.getElementsByTagName('noscript')[0];
+        noscript.style.padding = '0px';
+        noscript.style.backgroundColor = 'transparent';
+    </script> </div> <script type="text/javascript">
+    askbot['urls']['mark_read_message'] = '/en/messages/markread/';
+    askbot['urls']['get_tags_by_wildcard'] = '/en/get-tags-by-wildcard/';
+    askbot['urls']['get_tag_list'] = '/en/get-tag-list/';
+    askbot['urls']['follow_user'] = '/followit/follow/user/{{userId}}/';
+    askbot['urls']['unfollow_user'] = '/followit/unfollow/user/{{userId}}/';
+    askbot['urls']['user_signin'] = '/en/account/signin/';
+    askbot['urls']['getEditor'] = '/en/get-editor/';
+    
+        askbot['urls']['translateUrl'] = '/en/translate-url/';
+    
+    askbot['urls']['apiGetQuestions'] = '/en/api/get_questions/';
+    askbot['urls']['ask'] = '/en/questions/ask/';
+	askbot['urls']['questions'] = '/en/questions/';
+    askbot['settings']['groupsEnabled'] = false;
+    askbot['settings']['static_url'] = '/m/';
+    askbot['settings']['minSearchWordLength'] = 4;
+    askbot['settings']['mathjaxEnabled'] = false;
+    askbot['settings']['sharingSuffixText'] = '';
+    askbot['settings']['errorPlacement'] = 'after-label';
+    askbot['data']['maxCommentLength'] = 500;
+    askbot['settings']['editorType'] = 'markdown';
+    askbot['settings']['commentsEditorType'] = 'rich-text';
+    askbot['messages']['askYourQuestion'] = 'Ask Your Question';
+    askbot['messages']['questionSingular'] = 'question';
+    askbot['messages']['answerSingular'] = 'answer';
+    askbot['messages']['acceptOwnAnswer'] = 'accept or unaccept your own answer';
+    askbot['messages']['followQuestions'] = 'follow questions';
+    
+        askbot['settings']['allowedUploadFileTypes'] = [
+            "jpg", "jpeg", "gif", "bmp", "png", "tiff", "odt", "ods", "odp", "odg", "odc", "odf", "odi", "odm", "ott", "ots", "otp", "otg", "odb", "doc", "docx", "xls", "xlsx", "ppt", "pptx"
+        ];
+    
+    askbot['data']['haveFlashNotifications'] = true;
+    askbot['data']['activeTab'] = 'questions';
+    askbot['settings']['csrfCookieName'] = 'ask.libreoffice.org_en_csrf';
+    
+        askbot['data']['searchUrl'] = '';
+    
+</script> <script type="text/javascript" src="./WhereareLOBasicmacrosstored-AskLibreOffice/36e3f6479f6c.js"></script> <script type="text/javascript">
+    /*<![CDATA[*/
+    $('.mceStatusbar').remove();//a hack to remove the tinyMCE status bar
+    $(document).ready(function(){
+        // focus input on the search bar endcomment
+        var activeTab = askbot['data']['activeTab'];
+        if (inArray(activeTab, ['users', 'questions', 'tags', 'badges'])) {
+            var searchInput = $('#keywords');
+        } else if (activeTab === 'ask') {
+            var searchInput = $('#id_title');
+        } else {
+            var searchInput = undefined;
+            animateHashes();
+        }
+
+        if (searchInput) {
+            searchInput.focus();
+            putCursorAtEnd(searchInput);
+        }
+
+        var haveFullTextSearchTab = inArray(activeTab, ['questions', 'badges', 'ask']);
+        var haveUserProfilePage = $('body').hasClass('user-profile-page');
+        if ((haveUserProfilePage || haveFullTextSearchTab) && searchInput && searchInput.length) {
+            var search = new FullTextSearch();
+            askbot['controllers'] = askbot['controllers'] || {};
+            askbot['controllers']['fullTextSearch'] = search;
+            search.setSearchUrl(askbot['data']['searchUrl']);
+            if (activeTab === 'ask') {
+                search.setAskButtonEnabled(false);
+            }
+            search.decorate(searchInput);
+        } else if (activeTab === 'tags') {
+            var search = new TagSearch();
+            search.decorate(searchInput);
+        }
+
+        if (askbot['data']['userIsAdminOrMod']) {
+            $('body').addClass('admin');
+        }
+        if (askbot['settings']['groupsEnabled']) {
+            askbot['urls']['add_group'] = "/en/add-group/";
+            var group_dropdown = new GroupDropdown();
+            $('.groups-dropdown').append(group_dropdown.getElement());
+        }
+        var userRep = $('#userToolsNav .reputation');
+        if (userRep.length) {
+            var showPermsTrigger = new ShowPermsTrigger();
+            showPermsTrigger.decorate(userRep);
+        }
+    });
+    if (askbot['data']['haveFlashNotifications']) {
+        $('#validate_email_alert').click(function(){notify.close(true)})
+        notify.show();
+    }
+
+    var langNav = $('.lang-nav');
+    if (langNav.length) {
+        var nav = new LangNav();
+        nav.decorate(langNav);
+    }
+
+    $('abbr.timeago').timeago();
+    /*]]>*/
+</script> <script type="text/javascript">
+    $(document).ready(function() {
+        var toTop=$("#toTop");
+        if ($(window).scrollTop() == 0) {
+            toTop.fadeOut(1000);
+        }
+        $(window).scroll(function() {
+            if ($(this).scrollTop() != 0) {
+                toTop.fadeIn();
+            } else {
+                toTop.fadeOut();
+            }
+        });
+        toTop.click(function(event) {
+            event.preventDefault();
+            $("html,body").animate({scrollTop: 0},800);
+        });
+    });
+</script> <div class="js-templates" style="display: none;"><div id="post-id-0" class="comment js-comment" data-comment-id="0"><div class="comment-votes"><div id="comment-img-upvote-0" class="upvote js-score"></div></div><div class="comment-content"><div id="post-0-delete" class="comment-delete"><span class="js-delete-icon" title="delete this comment"></span></div><div class="comment-body"></div><div class="comment-controls"><a class="js-avatar-box" href=""><img class="js-avatar gravatar" width="16" height="16" src="" title="" alt=" gravatar image"></a><a class="author" href=""></a><span class="age">&nbsp;(<abbr class="timeago" title="2015-06-22 03:14:36 +0200">
+        2015-06-22 03:14:36 +0200
+    </abbr>)</span><a id="post-0-edit" class="js-edit">edit</a><form action="http://ask.libreoffice.org/en/comment/convert/" method="POST" accept-charset="utf-8" class="convert-comment"><input type="hidden" name="csrfmiddlewaretoken" value="None"><input type="hidden" value="0" name="comment_id"><input type="submit" value="convert to answer"></form></div></div></div><div class="js-simple-editor"><textarea></textarea></div><div class="js-tag "><a class="js-tag-name" rel="tag" href="http://ask.libreoffice.org/en/questions/scope:all/sort:activity-desc/tags:none/page:1/" data-tag-name="none">none</a></div></div> <script type="text/javascript">
+        
+        askbot['urls']['postComments'] = '/en/post_comments/';
+        askbot['urls']['editComment'] = '/en/edit_comment/';
+        askbot['urls']['deleteComment'] = '/en/comment/delete/';
+        askbot['urls']['convertComment'] = '/en/comment/convert/';
+        askbot['urls']['getComment'] = '/en/comment/get-text/';
+        askbot['urls']['saveDraftAnswer'] = '/en/save-draft-answer/';
+        askbot['urls']['vote_url'] = '/en/vote'
+        askbot['urls']['user_signin'] = '/en/account/signin/';
+        askbot['urls']['swap_question_with_answer'] = '/en/swap-question-with-answer/';
+        askbot['urls']['upvote_comment'] = '/en/comment/upvote/';
+        askbot['urls']['delete_post'] = '/en/post/delete/';
+        askbot['urls']['get_html_template'] = '/en/get-html-template/';
+        askbot['urls']['getGroupsList'] = '/en/get-groups-list/';
+        askbot['urls']['publishAnswer'] = '/en/answer/publish/';
+        askbot['urls']['apiV1Questions'] = '/en/api/v1/questions/';
+        askbot['urls']['mergeQuestions'] = '/en/merge-questions/';
+        
+        askbot['data']['questionAuthorId'] = 9336;
+        askbot['data']['answersSortTab'] = 'votes';
+        askbot['data']['questionId'] = 35598;
+        askbot['data']['threadSlug'] = 'where-are-lo-basic-macros-stored';
+        askbot['messages']['addComment'] = 'add a comment';
+        askbot['messages']['userNamePrompt'] = 'User name:';
+        askbot['messages']['userEmailPrompt'] = 'Email address:';
+        askbot['messages']['mergeQuestions'] = 'Merge duplicate questions';
+        askbot['messages']['enterDuplicateQuestionId'] = 'Enter duplicate question ID';
+        
+        askbot['settings']['saveCommentOnEnter'] = false;
+        askbot['settings']['tagSource'] = 'user-input';
+        askbot['settings']['enableSharingGoogle'] = true;
+        askbot['settings']['enableEmailAlerts'] = true;
+    </script> <script type="text/javascript">
+    
+    askbot['settings']['tagsAreRequired'] = true
+    askbot['settings']['maxTagLength'] = 20;
+    askbot['messages']['maxTagLength'] = "each tag must be shorter than 20 characters";
+    askbot['settings']['maxTagsPerPost'] = 10;
+    askbot['messages']['maxTagsPerPost'] = "please use 10 tags or less";
+    askbot['messages']['tagLimits'] = "please use up to 10 tags, less than 20 characters each";
+    askbot['urls']['upload'] = '/en/upload/';
+    askbot['settings']['minTitleLength'] = 10;
+    askbot['settings']['minQuestionBodyLength'] = 10;
+    askbot['settings']['minAnswerBodyLength'] = 10;
+    askbot['settings']['minCommentBodyLength'] = 10;
+    askbot['settings']['tag_editor'] = '{\u0022tag_forbidden_first_chars\u0022: \u0022#\u0022, \u0022max_tag_length\u0022: 20, \u0022tag_regex\u0022: \u0022^\u005C\u005Cw[\u005C\u005Cw+.#\u002D]+$\u0022, \u0022max_tags_per_post\u0022: 10, \u0022messages\u0022: {\u0022wrong_first_char\u0022: \u0022# is not a valid character at the beginning of tags, use only letters and numbers\u0022, \u0022wrong_chars\u0022: \u0022please use letters, numbers and characters \u005C\u0022\u002D+.#\u005C\u0022\u0022, \u0022required\u0022: \u0022tags are required\u0022}, \u0022tags_are_required\u0022: true, \u0022force_lowercase_tags\u0022: true}';
+    askbot['settings']['tinyMCEPlugins'] = JSON.parse('[]');
+</script> <script type="text/javascript">
+    (function() {
+        askbot['settings']['commentsReversed'] = false;
+        //make images always fit the screen
+        var images = $('.question-page .post-body img');
+        //these breakpoints must match those in css
+        //for explanation see utils.js:LimitedWidthImage
+        var breakpoints = [
+            [980, undefined],
+            [800, 55]
+        ];
+        var maxWidth = 685;
+        images.each(function(idx, item) {
+            var img = new LimitedWidthImage(breakpoints, maxWidth);
+            img.decorate($(item));
+        });
+    })();
+</script> <script type="text/javascript" src="./WhereareLOBasicmacrosstored-AskLibreOffice/0d4451ccbe84.js"></script> <script type="text/javascript">
+    // define reputation needs for comments
+    askbot['urls']['getPostHtml'] = '/en/get-post-html/';
+    askbot['urls']['retag'] = "/en/questions/35598/retag/";
+
+    
+    
+    askbot['settings']['commentAvatarSize'] = 16;
+
+    $(document).ready(function(){
+        $("#nav_questions").attr('className',"on");
+        $("#" + askbot['data']['answersSortTab']).attr('className',"on");
+
+        Vote.init(
+            askbot['data']['questionId'],
+            askbot['data']['threadSlug'],
+            askbot['data']['questionAuthorId'],
+            askbot['data']['userId']
+        );
+
+        if ((askbot['data']['threadIsClosed'] === false) && askbot['data']['userIsAuthenticated']) {
+            initEditor();
+        }
+
+        lanai.highlightSyntax();
+        $('#btLogin').bind('click', function(){
+            window.location.href='/en/account/signin/';
+        });
+        if (window.location.hash === 'fmanswer'){
+            $('#fmanswer textarea').focus();
+        }
+
+        if (askbot['settings']['enableSharingGoogle']) {
+            $.getScript("//apis.google.com/js/plusone.js");
+        }
+
+        if (askbot['data']['userId'] === askbot['data']['questionAuthorId']) {
+            $("#fmanswer_button").click(function() {
+                $("#fmanswer").show();
+                $("#fmanswer_button").hide();
+            });
+        }
+
+        if (askbot['data']['userIsAuthenticated']) {
+            var draftHandler = new DraftAnswer();
+            draftHandler.setThreadId(9187);
+            draftHandler.decorate($('body'));
+        }
+
+        var expanders = $('.expander');
+        expanders.each(function(idx, item) {
+            var expanderElement = $(item);
+            var post = expanderElement.closest('.post,.comment');
+            if (post.length === 1) {
+                var expander = new PostExpander();
+                expander.setPostId(post.data('postId'));
+                expander.decorate(expanderElement);
+            }
+        });
+
+        var followBtn = $('.js-follow-question');
+        if (followBtn.length) {
+            var toggle = new TwoStateToggle();
+            toggle.setPostData({'question_id': 35598 });
+            toggle.decorate(followBtn);
+            followBtn.bind('askbot.two-state-toggle.success', updateQuestionFollowerCount);
+        }
+    });
+
+    $(window).bind('hashchange', animate_hashes);
+
+    function animate_hashes(){
+      var id_value = window.location.hash;
+      if (id_value != ""){
+        var previous_color = $(id_value).css('background-color');
+        $(id_value).css('backgroundColor', '#FFF8C6');
+        $(id_value).animate(
+            {backgroundColor: '#ff7f2a'}, 1000
+        ).animate({backgroundColor: '#FFF8C6'}, 1000, function(){
+            $(id_value).css('backgroundColor', previous_color);
+        });
+      }
+    }
+
+
+    function initEditor(){
+        $('#editor').TextAreaResizer();
+        //highlight code synctax when editor has new text
+        $("#editor").typeWatch({highlight: false, wait: 3000,
+                         captureLength: 5, callback: lanai.highlightSyntax});
+
+        var display = true;
+        var txt = "[hide preview]";
+        $('#pre-collapse').text(txt);
+        $('#pre-collapse').bind('click', function(){
+            txt = display ? "[show preview]" : "[hide preview]";
+            display = !display;
+            $('#previewer').toggle();
+            $('#pre-collapse').text(txt);
+        });
+        setupFormValidation(
+            $("#fmanswer"),
+            CPValidator.getAnswerFormRules(),
+            CPValidator.getAnswerFormMessages()
+        );
+    }
+    (function() {
+        var editorBox = $('.folded-editor');
+        if (editorBox.length) {
+            var foldedEditor = new FoldedEditor();
+            foldedEditor.decorate(editorBox);
+        }
+    })();
+</script> <script type="text/javascript">
+            for (url_name in askbot['urls']){
+                askbot['urls'][url_name] = cleanUrl(askbot['urls'][url_name]);
+            }
+        </script>  <div id="directions_extension" style="display: none;"></div><iframe name="oauth2relay915330710" id="oauth2relay915330710" src="./WhereareLOBasicmacrosstored-AskLibreOffice/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>

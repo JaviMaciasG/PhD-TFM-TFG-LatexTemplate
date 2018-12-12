@@ -1,0 +1,13 @@
+El alumno:
++ Formulario de depósito
++ Carta de pago de matrícula
+
++ VB del tutor
++ PDF del libro
+-> Se lleva a secretaría
+
+Para la defensa:
++ Listado de notas de tener aprobado todo
++ Tutor solicita acta
++ Formulario publicación abierto
+
