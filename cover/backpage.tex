@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: backpage.tex,v 1.4 2014/01/08 22:56:05 macias Exp $
+% $Id: backpage.tex,v 1.5 2015/06/05 00:10:34 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -37,7 +37,12 @@
   \input{cover/backpage-tfg-uah.tex}
 }
 {
-
+\ifthenelse{\equal{\mybookworktype}{TFM}}
+{
+  \input{cover/backpage-tfg-uah.tex}
+}
+{
+}
 }
 
 %%% Local Variables:

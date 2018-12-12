@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: cover-pfc-tfg-tfm-uah.tex,v 1.11 2016/03/31 23:38:15 macias Exp $
+% $Id: cover-pfc-tfg-tfm-uah.tex,v 1.12 2018/12/12 13:48:22 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -64,7 +64,7 @@
   
   \vspace{1mm}
   
-  \ifthenelse{\equal{\mybooktutoresseparados}{true}}
+  \ifthenelse{\equal{\mybookSplittedAdvisors}{true}}
 {
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
@@ -129,15 +129,15 @@
 
 \begin{bottomparagraph}
   \begin{center}
-    \begin{tabular}{p{3cm}c}
+    \begin{tabular}{p{0cm}c}
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
-    &Calification: ..........................................................................\\ \\
-    &Date: ...................................................................................
+%    &Calification: ..........................................................................\\ \\
+    &Deposit date: \mydepositdateEnglish
   }
   {
-    &Calificación: ..........................................................................\\ \\
-    &Fecha: ...................................................................................
+%    &Calificación: ..........................................................................\\ \\
+    &Fecha de depósito: \mydepositdate{}
   }
     \end{tabular}
   \end{center}
