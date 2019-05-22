@@ -2,7 +2,7 @@
 # 
 # Makefile to generate book.pdf
 #
-# $Id: Makefile,v 1.21 2016/06/22 23:23:37 macias Exp $
+# $Id: Makefile,v 1.22 2016/07/14 23:37:33 macias Exp $
 #
 # By:
 #  + Javier Macías-Guarasa. 
@@ -50,6 +50,8 @@ APPENDIX_BARE_SOURCES=$(wildcard appendix/bare/*.tex)
 DIA_SOURCES=$(wildcard diagrams/*.dia)
 SVG_SOURCES=$(wildcard diagrams/*.svg)
 EPS_SOURCES=$(wildcard figures/*.eps) $(wildcard additional/*.eps) 
+
+TOOLS_SOURCES=$(wildcard tools/cals2latex/*.tex)
 
 PDFS_FROM_DIA=$(patsubst %.dia,%.pdf,$(DIA_SOURCES)) 
 PDFS_FROM_SVG=$(patsubst %.svg,%.pdf,$(SVG_SOURCES)) 
