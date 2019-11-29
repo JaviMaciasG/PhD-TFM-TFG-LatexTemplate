@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: postamble.tex,v 1.17 2018/12/12 13:06:52 macias Exp $
+% $Id: postamble.tex,v 1.18 2018/12/12 13:48:20 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -469,9 +469,43 @@
                                      }
                                    }
                                    {
-                                   \newcommand{\mybookworktype}{TFG}
-                                   \newcommand{\mydegreefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}} 
-                                   \newcommand{\mybookworktypefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}}
+                                     \ifthenelse{\equal{\mydegree}{GITI}}
+                                     {
+                                       \newcommand{\mydegreefull}{Grado en Ingeniería en Tecnologías Industriales}
+                                       \newcommand{\mybookworktype}{TFG}
+                                       \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                       {
+                                       \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                                       }
+                                       {
+                                       % This could be translated. I'm leaving this in Spanish...
+                                       % \newcommand{\mybookworktypefull}{Bachelor's Thesis}
+                                       \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                                       }
+                                     }
+                                     {
+                                       \ifthenelse{\equal{\mydegree}{GISI}}
+                                       {
+                                         \newcommand{\mydegreefull}{Grado en Ingeniería en Sistemas de Información}
+                                         \newcommand{\mybookworktype}{TFG}
+                                         \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                         {
+                                           \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                                         }
+                                         {
+                                           % This could be translated. I'm leaving this in Spanish...
+                                           % \newcommand{\mybookworktypefull}{Bachelor's Thesis}
+                                           \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                                         }
+                                       }
+                                       {
+                                         \newcommand{\mybookworktype}{TFG}
+                                         \newcommand{\mydegreefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}} 
+                                         \newcommand{\mybookworktypefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}}
+                                       }
+
+
+                                     }
                                    }
                                  }
                                
