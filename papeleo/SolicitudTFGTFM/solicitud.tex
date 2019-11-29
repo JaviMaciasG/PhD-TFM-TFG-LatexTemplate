@@ -2,7 +2,7 @@
 % 
 % Generic template for TFC/TFM/TFGs requests
 % 
-% $Id: solicitud.tex,v 1.7 2016/06/22 23:27:41 macias Exp $
+% $Id: solicitud.tex,v 1.8 2016/07/14 23:50:00 macias Exp $
 % 
 % By:
 % + Javier Macías-Guarasa. 
@@ -48,13 +48,24 @@
 % (some examples are provided).
 
 \input{../config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
-% "postamble" is not a valid word... :-)
+                                  % "postamble" is not a valid word... :-)
+
+\input{../config/postamble-solicitud.tex}   % DO NOT TOUCH THIS LINE. 
+                                            % Yes, I know, "postamble" 
+                                            % is not a valid word... :-)
+                                            % This is just to remove
+                                            % jury members in case the
+                                            % work is a TFG
 
 % path to directories containing images
 \graphicspath{{../logos/}{../figures/}{../diagrams/}} % Edit this to your
-% needs. Only logos is really required
-% when you generate your own content.
-% 
+                                                      % needs. Only
+                                                      % logos 
+                                                      % is really required
+                                                      % when you
+                                                      % generate 
+                                                      % your own content.
+ 
 % END Preamble and configuration section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
@@ -169,9 +180,9 @@
       \cellcolor{gray!10}\underline{TRIBUNAL CALIFICADOR:}\\
     }                                               
     \cellcolor{gray!10}\spacingFour{}Presidente: D/Dª. \longunderline{\mybookpresident}{\spacingFour{}Presidente: D/Dª. } \\
-    \cellcolor{gray!10}\spacingFour{}Vocal 1º: D/Dª. \longunderline{}{\spacingFour{}Vocal 1º: D/Dª. } \\
-    \cellcolor{gray!10}\spacingFour{}Vocal 2º: D/Dª. \longunderline{\mybookNameFirstAdvisor{}}{\spacingFour{}Vocal 2º: D/Dª. }\\
-    \cellcolor{gray!10}\spacingFour{}Suplente: D/Dª. \longunderline{}{\spacingFour{}Suplente: D/Dª. } \\
+    \cellcolor{gray!10}\spacingFour{}Vocal 1º: D/Dª. \longunderline{\mybookfirstvocal{}}{\spacingFour{}Vocal 1º: D/Dª. } \\
+    \cellcolor{gray!10}\spacingFour{}Vocal 2º: D/Dª. \longunderline{\mybooksecondvocal{}}{\spacingFour{}Vocal 2º: D/Dª. }\\
+    \cellcolor{gray!10}\spacingFour{}Suplente: D/Dª. \longunderline{\mybookalternatemember{}}{\spacingFour{}Suplente: D/Dª. } \\
     \cellcolor{gray!10} ~\\
 %    \cellcolor{gray!10} En caso de que el director del Trabajo no sea profesor de la escuela,
 %    el departamento nombra al vocal 2º como tutor/codirector del trabajo.
