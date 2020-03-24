@@ -2,18 +2,18 @@
 % 
 % Generic template for TFC/TFM/TFGs requests
 % 
-% $Id: solicitud.tex,v 1.8 2016/07/14 23:50:00 macias Exp $
+% $Id: solicitudDepositoDefensa.tex,v 1.1 2019/11/29 09:28:13 macias Exp $
 % 
 % By:
-% + Javier MacÌas-Guarasa. 
-% Departamento de ElectrÛnica
-% Universidad de Alcal·
+% + Javier Mac√≠as-Guarasa. 
+% Departamento de Electr√≥nica
+% Universidad de Alcal√°
 % + Roberto Barra-Chicote. 
-% Departamento de IngenierÌa ElectrÛnica
-% Universidad PolitÈcnica de Madrid   
+% Departamento de Ingenier√≠a Electr√≥nica
+% Universidad Polit√©cnica de Madrid   
 % 
-% Based on original sources by Roberto Barra, Manuel OcaÒa, Jes˙s Nuevo,
-% Pedro Revenga, Fernando Herr·nz and Noelia Hern·ndez. Thanks a lot to
+% Based on original sources by Roberto Barra, Manuel Oca√±a, Jes√∫s Nuevo,
+% Pedro Revenga, Fernando Herr√°nz and Noelia Hern√°ndez. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
 % 
@@ -58,7 +58,7 @@
 % END Preamble and configuration section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-\title{SOLICITUD DEP”SITO/DEFENSA DE \mybookworktypefull}        % DO NOT TOUCH THIS LINE
+\title{SOLICITUD DEP√ìSITO/DEFENSA DE \mybookworktypefull}        % DO NOT TOUCH THIS LINE
 %\date{\myanteproyectodate}                         % DO NOT TOUCH THIS LINE
 %\author{\mybookauthor}
 
@@ -84,7 +84,7 @@
 \begin{spacing}{1.0}
 \begin{center}
 
-  \Large\textbf{SOLICITUD DEP”SITO/DEFENSA DE \MakeUppercase{\mybookworktypefull}}
+  \Large\textbf{SOLICITUD DEP√ìSITO/DEFENSA DE \MakeUppercase{\mybookworktypefull}}
 
 %  \mybookdepartment
 
@@ -117,10 +117,10 @@
 
 \begin{tabularx}{\textwidth}{|X|}
   \hline
-  TÕTULO DEL \mybookworktype: \mybooktitlespanish \\
+  T√çTULO DEL \mybookworktype: \mybooktitlespanish \\
   \ifthenelse{\equal{\mybooklanguage}{english}}   
   {                                               
-  TÕTULO EN INGL…S: \mybooktitleenglish \\
+  T√çTULO EN INGL√âS: \mybooktitleenglish \\
   }                                               
   {                                               
   }                                               
@@ -130,14 +130,14 @@
 
 \begin{spacing}{1.0}
   \begin{tabularx}{\textwidth}{X}
-    TUTOR ACAD…MICO: \mybookNameFirstAdvisor\\
+    TUTOR ACAD√âMICO: \mybookNameFirstAdvisor\\
     COTUTOR (si procede): \mybookNameSecondAdvisor\\
     \begin{center}
-      Alcal· de Henares, \myanteproyectodate
+      Alcal√° de Henares, \myanteproyectodate
     \end{center}
  \end{tabularx}
   \begin{tabularx}{\textwidth}{X X}
-%    El tutor & V∫ B∫ \mybookDelOrDeLos~\mybookDirectorOrDirectores{} (si procede) \\
+%    El tutor & V¬∫ B¬∫ \mybookDelOrDeLos~\mybookDirectorOrDirectores{} (si procede) \\
     Visto bueno del tutor y cotutor & Alumno \\
     \\ % \includegraphics[width=0.2\textwidth]{firma_tutor_si_procede.png}
 %    \\ Firma \mybookDelOrDeLa{} \mybookAlumnoOrAlumna{} & ~ % \includegraphics[width=0.25\textwidth]{firma_de_directores_procede.png}
@@ -150,12 +150,12 @@
 \begin{spacing}{1.1}
   \begin{tabularx}{\textwidth}{| X |}
     \hline
-%\scriptsize{Nota: zona sombreada a cumplimentar por la administraciÛn.}\\
+%\scriptsize{Nota: zona sombreada a cumplimentar por la administraci√≥n.}\\
     \cellcolor{gray!10} ~\\
     \cellcolor{gray!10} \underline{\textbf{Acuerdo del Departamento (a
         rellenar por el Departamento)}} \\
     \cellcolor{gray!10} ~\\
-    \cellcolor{gray!10} Aceptado: $\Box$ SÌ $\Box$ No\spacingFour{}Fecha: \underscoreSpacingFour{}/\underscoreSpacingFour{}/\underscoreSpacingFour{}\underscoreSpacingFour{}\spacingFour{}Periodo de validez: \hrulefill\\
+    \cellcolor{gray!10} Aceptado: $\Box$ S√≠ $\Box$ No\spacingFour{}Fecha: \underscoreSpacingFour{}/\underscoreSpacingFour{}/\underscoreSpacingFour{}\underscoreSpacingFour{}\spacingFour{}Periodo de validez: \hrulefill\\
     \cellcolor{gray!10} Causa del rechazo: \hrulefill\\
     \cellcolor{gray!10} \hrulefill\\
     \cellcolor{gray!10} \hrulefill\\
@@ -164,24 +164,24 @@
     \ifthenelse{\equal{\mybookworktype}{TFM}}   
     {                                               
       \cellcolor{gray!10}\underline{TRIBUNAL CALIFICADOR (nombrado por
-        la ComisiÛn AcadÈmica del M·ster):}\\
+        la Comisi√≥n Acad√©mica del M√°ster):}\\
     }                                               
     {                                               
       \cellcolor{gray!10}\underline{TRIBUNAL CALIFICADOR:}\\
     }                                               
-    \cellcolor{gray!10}\spacingFour{}Presidente: D/D™. \longunderline{\mybookpresident}{\spacingFour{}Presidente: D/D™. } \\
-    \cellcolor{gray!10}\spacingFour{}Vocal 1∫: D/D™. \longunderline{}{\spacingFour{}Vocal 1∫: D/D™. } \\
-    \cellcolor{gray!10}\spacingFour{}Vocal 2∫: D/D™. \longunderline{\mybookNameFirstAdvisor{}}{\spacingFour{}Vocal 2∫: D/D™. }\\
-    \cellcolor{gray!10}\spacingFour{}Suplente: D/D™. \longunderline{}{\spacingFour{}Suplente: D/D™. } \\
+    \cellcolor{gray!10}\spacingFour{}Presidente: D/D¬™. \longunderline{\mybookpresident}{\spacingFour{}Presidente: D/D¬™. } \\
+    \cellcolor{gray!10}\spacingFour{}Vocal 1¬∫: D/D¬™. \longunderline{}{\spacingFour{}Vocal 1¬∫: D/D¬™. } \\
+    \cellcolor{gray!10}\spacingFour{}Vocal 2¬∫: D/D¬™. \longunderline{\mybookNameFirstAdvisor{}}{\spacingFour{}Vocal 2¬∫: D/D¬™. }\\
+    \cellcolor{gray!10}\spacingFour{}Suplente: D/D¬™. \longunderline{}{\spacingFour{}Suplente: D/D¬™. } \\
     \cellcolor{gray!10} ~\\
 %    \cellcolor{gray!10} En caso de que el director del Trabajo no sea profesor de la escuela,
-%    el departamento nombra al vocal 2∫ como tutor/codirector del trabajo.
+%    el departamento nombra al vocal 2¬∫ como tutor/codirector del trabajo.
 %    \cellcolor{gray!10} ~\\
 %    \cellcolor{gray!10} Observaciones: \hrulefill\\
 %    \cellcolor{gray!10} \hrulefill\\
 %    \cellcolor{gray!10} \hrulefill\\
     \cellcolor{gray!10} ~\\
-    \cellcolor{gray!10}  \begin{center}Alcal· de Henares, a \underscoreSpacingFour{}\underscoreSpacingFour{} de \underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{} de 20\underscoreSpacingFour{}\end{center}\\
+    \cellcolor{gray!10}  \begin{center}Alcal√° de Henares, a \underscoreSpacingFour{}\underscoreSpacingFour{} de \underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{} de 20\underscoreSpacingFour{}\end{center}\\
     \cellcolor{gray!10} ~\\
     \cellcolor{gray!10} \spacingFour{}\spacingFour{}\spacingFour{}Sello del Departamento\spacingFour{}\spacingFour{}\spacingFour{}\spacingFour{}\spacingFour{}Fdo: Secretario del Departamento
     \cellcolor{gray!10} ~\\

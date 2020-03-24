@@ -1,1341 +1,414 @@
-UNIVERSIDAD DE ALCALÁ
-ESCUELA POLITÉCNICA SUPERIOR
+UNIVERSIDAD DE ALCALÃ
+ESCUELA POLITÃCNICA SUPERIOR
 NORMATIVA SOBRE
 
 TRABAJOS FIN DE GRADO
-DE APLICACIÓN A LOS ESTUDIOS:
+DE APLICACIÃN A LOS ESTUDIOS:
 
-GRADO EN INGENIERÍA EN TECNOLOGÍAS DE TELECOMUNICACIÓN
-GRADO EN INGENIERÍA EN SISTEMAS DE TELECOMUNICACIÓN
-GRADO EN INGENIERÍA ELECTRÓNICA DE COMUNICACIONES
-GRADO EN INGENIERÍA TELEMÁTICA
-GRADO EN INGENIERÍA EN ELECTRÓNICA Y AUTOMÁTICA INDUSTRIAL
+GRADO EN INGENIERÃA EN TECNOLOGÃAS DE TELECOMUNICACIÃN
+GRADO EN INGENIERÃA EN SISTEMAS DE TELECOMUNICACIÃN
+GRADO EN INGENIERÃA ELECTRÃNICA DE COMUNICACIONES
+GRADO EN INGENIERÃA TELEMÃTICA
+GRADO EN INGENIERÃA EN ELECTRÃNICA Y AUTOMÃTICA INDUSTRIAL
 
-La presente normativa complementa a la “Normativa sobre los Trabajos de Fin de Grado en la
-Universidad de Alcalá”, aprobada en sesión ordinaria de Consejo de Gobierno de 24 de marzo de
+La presente normativa complementa a la âNormativa sobre los Trabajos de Fin de Grado en la
+Universidad de AlcalÃ¡â, aprobada en sesiÃ³n ordinaria de Consejo de Gobierno de 24 de marzo de
 2011.
 
 1
 
-ÍNDICE.
-ÍNDICE. ............................................................................................................................2
-1. Introducción. .................................................................................................................3
+ÃNDICE.
+ÃNDICE. ............................................................................................................................2
+1. IntroducciÃ³n. .................................................................................................................3
 2. Modalidades de los TFGs..............................................................................................3
-3. Recursos empleados en su realización. .........................................................................4
-4. Asignación del tema de trabajo, del tutor y del cotutor. ...............................................4
+3. Recursos empleados en su realizaciÃ³n. .........................................................................4
+4. AsignaciÃ³n del tema de trabajo, del tutor y del cotutor. ...............................................4
 5. Anteproyecto .................................................................................................................6
 6. Tribunal calificador .......................................................................................................7
-7. Matrícula .......................................................................................................................7
-8 Defensa y calificación del TFG.....................................................................................7
-9. Normas de presentación de la memoria ........................................................................9
+7. MatrÃ­cula .......................................................................................................................7
+8 Defensa y calificaciÃ³n del TFG.....................................................................................7
+9. Normas de presentaciÃ³n de la memoria ........................................................................9
 A) Formato. ..................................................................................................................9
 B) Cuerpo del Trabajo. .................................................................................................9
-10. Resumen de secuencia temporal habitual…………………………………..............12
-11. TFG realizado en el extranjero……………………………………………………..13
+10. Resumen de secuencia temporal habitualâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ..............12
+11. TFG realizado en el extranjeroâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ..13
 A) Alumnos de la EPS que realizan su TFG en el extranjero ....................................13
-Matriculación inicial……………………………………………………………13
-El Anteproyecto………………………………………………………………...13
-Defensa del TFG en la Universidad extranjera………………………………….14
-Formato de la memoria del TFG en la UAH………………………………….. 14
-Presentación de la memoria del TFG en la UAH………………………………15
-Exposición o examen del TFG en la UAH……………………………………..16
-Validación del TFG en la UAH……………………………………………….. 17
-Resumen de secuencia temporal habitual………………………………………17
-B) Alumnos extranjeros que realizan su TFG en la EPS……………………………19
-Primeros contactos…………………………………………………………….. 19
-Matriculación inicial……………………………………………………………19
-El Anteproyecto……………………………………………………………….. 19
-La memoria de TFG…………………………………………………………….19
-El examen……………………………………………………………………… 19
-12. Disposiciones transitorias………………………………………………..................20
-Anexo I: Hoja de Solicitud de TFG ……………… .......................................................21
-Anexo II: Ejemplo de Hoja de Control de Anteproyecto ……………………………...22
-Anexo III: Visto bueno del Tutor del TFG …………………………… ........................22
-Anexo IV: Autorización del Autor para la publicación electrónica................................24
-Anexo V: Autorización del tutor del TFG para su publicación en abierto. ....................26
+MatriculaciÃ³n inicialâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ13
+El AnteproyectoâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ...13
+Defensa del TFG en la Universidad extranjeraâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ.14
+Formato de la memoria del TFG en la UAHâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ.. 14
+PresentaciÃ³n de la memoria del TFG en la UAHâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ15
+ExposiciÃ³n o examen del TFG en la UAHâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ..16
+ValidaciÃ³n del TFG en la UAHâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ.. 17
+Resumen de secuencia temporal habitualâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ17
+B) Alumnos extranjeros que realizan su TFG en la EPSâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ19
+Primeros contactosâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ.. 19
+MatriculaciÃ³n inicialâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ19
+El AnteproyectoâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ.. 19
+La memoria de TFGâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ.19
+El examenâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ 19
+12. Disposiciones transitoriasâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ..................20
+Anexo I: Hoja de Solicitud de TFG âŠâŠâŠâŠâŠâŠ .......................................................21
+Anexo II: Ejemplo de Hoja de Control de Anteproyecto âŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ...22
+Anexo III: Visto bueno del Tutor del TFG âŠâŠâŠâŠâŠâŠâŠâŠâŠâŠâŠ ........................22
+Anexo IV: AutorizaciÃ³n del Autor para la publicaciÃ³n electrÃ³nica................................24
+Anexo V: AutorizaciÃ³n del tutor del TFG para su publicaciÃ³n en abierto. ....................26
 Anexo VI: Visto Bueno del Informe/Memoria de TFG realizado en el extranjero. .......27
 Anexo VII: Informe del profesor tutor sobre el TFG realizado en el extranjero. ...........28
-Anexo VIII: Autorización del tutor extranjero del TFG para su publicación en abierto.29
-Anexo IX: Guía para la realización del anteproyecto. ....................................................30
-Anexo X: Formato de la portada y tapa trasera del libro del TFG ……………...……. 31
+Anexo VIII: AutorizaciÃ³n del tutor extranjero del TFG para su publicaciÃ³n en abierto.29
+Anexo IX: GuÃ­a para la realizaciÃ³n del anteproyecto. ....................................................30
+Anexo X: Formato de la portada y tapa trasera del libro del TFG âŠâŠâŠâŠâŠ...âŠâŠ. 31
 
 2
 
-1. INTRODUCCIÓN
-El Trabajo Fin de Grado (TFG) es un trabajo original, autónomo e individual que cada estudiante
-realizará bajo la orientación de un tutor y que le permitirá mostrar de forma integrada los contenidos
-formativos recibidos y las competencias adquiridas asociadas al título de Grado. El término "original"
-queda referido a que en ningún caso puede ser un trabajo plagiado ni presentado con anterioridad por
-el alumno en alguna otra asignatura, no siendo necesario que sea un trabajo inédito.
+1. INTRODUCCIÃN
+El Trabajo Fin de Grado (TFG) es un trabajo original, autÃ³nomo e individual que cada estudiante
+realizarÃ¡ bajo la orientaciÃ³n de un tutor y que le permitirÃ¡ mostrar de forma integrada los contenidos
+formativos recibidos y las competencias adquiridas asociadas al tÃ­tulo de Grado. El tÃ©rmino "original"
+queda referido a que en ningÃºn caso puede ser un trabajo plagiado ni presentado con anterioridad por
+el alumno en alguna otra asignatura, no siendo necesario que sea un trabajo inÃ©dito.
 En el TFG cada estudiante aplica y desarrolla las competencias adquiridas durante la carrera,
-constituyendo una última prueba de madurez antes de pasar al campo profesional, y brindando su
-realización una oportunidad para el desarrollo de su creatividad.
-El TFG se realizará bajo la supervisión de un tutor que generalmente será un profesor de los
-departamentos que impartan docencia en el grado correspondiente, y que actuará también como tutor
-académico y director del trabajo. Si el TFG se va a desarrollar en otra Universidad o Institución,
-requerirá la figura de un cotutor en dicha Institución, que actuará como director del trabajo, y se
-nombrará un tutor académico en alguno de los citados departamentos.
-Por ser una labor personal, cada estudiante deberá entregar una memoria donde se describa de forma
-precisa en qué ha consistido dicho trabajo. Esta memoria podrá presentarse en idioma español o inglés.
-La carga de trabajo para la realización del TFG, se corresponderá con el número de créditos ECTS que
+constituyendo una Ãºltima prueba de madurez antes de pasar al campo profesional, y brindando su
+realizaciÃ³n una oportunidad para el desarrollo de su creatividad.
+El TFG se realizarÃ¡ bajo la supervisiÃ³n de un tutor que generalmente serÃ¡ un profesor de los
+departamentos que impartan docencia en el grado correspondiente, y que actuarÃ¡ tambiÃ©n como tutor
+acadÃ©mico y director del trabajo. Si el TFG se va a desarrollar en otra Universidad o InstituciÃ³n,
+requerirÃ¡ la figura de un cotutor en dicha InstituciÃ³n, que actuarÃ¡ como director del trabajo, y se
+nombrarÃ¡ un tutor acadÃ©mico en alguno de los citados departamentos.
+Por ser una labor personal, cada estudiante deberÃ¡ entregar una memoria donde se describa de forma
+precisa en quÃ© ha consistido dicho trabajo. Esta memoria podrÃ¡ presentarse en idioma espaÃ±ol o inglÃ©s.
+La carga de trabajo para la realizaciÃ³n del TFG, se corresponderÃ¡ con el nÃºmero de crÃ©ditos ECTS que
 le otorgue el plan de estudios.
-La Junta de Escuela nombrará, para cada curso académico, una Comisión delegada de Trabajos Fin de
-Grado (Comisión de TFGs), entre cuyas funciones se incluirán las siguientes:
-1. Establecer el número de TFGs a ofertar, en cada curso académico, por los diferentes
+La Junta de Escuela nombrarÃ¡, para cada curso acadÃ©mico, una ComisiÃ³n delegada de Trabajos Fin de
+Grado (ComisiÃ³n de TFGs), entre cuyas funciones se incluirÃ¡n las siguientes:
+1. Establecer el nÃºmero de TFGs a ofertar, en cada curso acadÃ©mico, por los diferentes
 departamentos implicados en la docencia del correspondiente Grado, primando la oferta por parte
-de aquellos departamentos que imparten materias tecnológicas.
+de aquellos departamentos que imparten materias tecnolÃ³gicas.
 2. Supervisar la oferta realizada por los departamentos, y publicarla.
-3. Establecer los criterios generales necesarios para la baremación de los estudiantes solicitantes de
-los TFGs para la asignación de los mismos.
+3. Establecer los criterios generales necesarios para la baremaciÃ³n de los estudiantes solicitantes de
+los TFGs para la asignaciÃ³n de los mismos.
 4. Atender los recursos presentados por los estudiantes contra las decisiones de los departamentos o
-de los tribunales de calificación relativos a los TFG
-5. Cualquiera otras que pudieran precisarse para el adecuado desempeño de las anteriores.
-La solicitud de recurso se entenderá como un procedimiento excepcional, deberá estar motivada y se
-presentará dirigida al Director de la Escuela Politécnica Superior en el plazo máximo de cinco días
-hábiles a partir de haberse hecho pública la decisión. La Comisión de TFGs dispondrá de un máximo
-de un mes natural para adoptar una decisión motivada.
-La Junta de Escuela, en última instancia, velará por que todos los estudiantes tengan asignado un TFG.
+de los tribunales de calificaciÃ³n relativos a los TFG
+5. Cualquiera otras que pudieran precisarse para el adecuado desempeÃ±o de las anteriores.
+La solicitud de recurso se entenderÃ¡ como un procedimiento excepcional, deberÃ¡ estar motivada y se
+presentarÃ¡ dirigida al Director de la Escuela PolitÃ©cnica Superior en el plazo mÃ¡ximo de cinco dÃ­as
+hÃ¡biles a partir de haberse hecho pÃºblica la decisiÃ³n. La ComisiÃ³n de TFGs dispondrÃ¡ de un mÃ¡ximo
+de un mes natural para adoptar una decisiÃ³n motivada.
+La Junta de Escuela, en Ãºltima instancia, velarÃ¡ por que todos los estudiantes tengan asignado un TFG.
 
 2. MODALIDADES DE LOS TFGs
-Los TFGs a realizar deberán encuadrarse en uno de los siguientes tipos:
+Los TFGs a realizar deberÃ¡n encuadrarse en uno de los siguientes tipos:
 1.
 
-Diseño y realización (parcial o total) de una aplicación o sistema informático o de ingeniería
-original que constituya una contribución a las técnicas de Ingeniería.
+DiseÃ±o y realizaciÃ³n (parcial o total) de una aplicaciÃ³n o sistema informÃ¡tico o de ingenierÃ­a
+original que constituya una contribuciÃ³n a las tÃ©cnicas de IngenierÃ­a.
 
 2.
 
-Elaboración de un proyecto informático o de ingeniería constituido por un conjunto de apartados
-que permitan la fabricación o instalación de un sistema o una serie de ellos.
+ElaboraciÃ³n de un proyecto informÃ¡tico o de ingenierÃ­a constituido por un conjunto de apartados
+que permitan la fabricaciÃ³n o instalaciÃ³n de un sistema o una serie de ellos.
 
 3.
 
-Estudio teórico de algún sistema informático o de ingeniería, materia o tecnología de carácter
-informático o de ingeniería avanzado, de interés por su novedad, reciente implantación, etc. y que
-tenga una aplicación práctica.
+Estudio teÃ³rico de algÃºn sistema informÃ¡tico o de ingenierÃ­a, materia o tecnologÃ­a de carÃ¡cter
+informÃ¡tico o de ingenierÃ­a avanzado, de interÃ©s por su novedad, reciente implantaciÃ³n, etc. y que
+tenga una aplicaciÃ³n prÃ¡ctica.
 
 3
 
 4.
 
 Trabajos desarrollados en centros oficiales o empresas, nacionales o extranjeras, en virtud de
-acuerdos o convenios al efecto. Para esta modalidad será necesario contar con un tutor adicional
-(cotutor), perteneciente a la institución dónde se realizará el TFG. Al ser las prácticas externas
-una materia obligatoria en el plan de estudios, la memoria de prácticas no puede ser empleada
-como TFG, sin perjuicio de que pueda existir relación temática, ajustándose a los requisitos
+acuerdos o convenios al efecto. Para esta modalidad serÃ¡ necesario contar con un tutor adicional
+(cotutor), perteneciente a la instituciÃ³n dÃ³nde se realizarÃ¡ el TFG. Al ser las prÃ¡cticas externas
+una materia obligatoria en el plan de estudios, la memoria de prÃ¡cticas no puede ser empleada
+como TFG, sin perjuicio de que pueda existir relaciÃ³n temÃ¡tica, ajustÃ¡ndose a los requisitos
 establecidos en esta normativa.
 
 5.
 
-Trabajos de investigación propuestos por profesores pertenecientes a los departamentos, Grupos
-de Investigación o Cátedras de Empresa.
+Trabajos de investigaciÃ³n propuestos por profesores pertenecientes a los departamentos, Grupos
+de InvestigaciÃ³n o CÃ¡tedras de Empresa.
 
 6.
 
-Trabajos experimentales, teóricos o de revisión e investigación bibliográfica relacionados con la
-titulación, que podrán desarrollarse en departamentos, Centros de la Universidad de Alcalá o en el
-ámbito de los Grupos de Investigación y Cátedras de Empresa.
+Trabajos experimentales, teÃ³ricos o de revisiÃ³n e investigaciÃ³n bibliogrÃ¡fica relacionados con la
+titulaciÃ³n, que podrÃ¡n desarrollarse en departamentos, Centros de la Universidad de AlcalÃ¡ o en el
+Ã¡mbito de los Grupos de InvestigaciÃ³n y CÃ¡tedras de Empresa.
 
 7.
 
-Otros trabajos, teóricos o prácticos, que corresponderán a ofertas de los departamentos o de los
+Otros trabajos, teÃ³ricos o prÃ¡cticos, que corresponderÃ¡n a ofertas de los departamentos o de los
 propios estudiantes, no ajustadas a las modalidades anteriores.
 
-3. RECURSOS EMPLEADOS EN SU REALIZACIÓN.
-Aparte del soporte proporcionado por el profesor tutor del trabajo, los departamentos podrán autorizar
+3. RECURSOS EMPLEADOS EN SU REALIZACIÃN.
+Aparte del soporte proporcionado por el profesor tutor del trabajo, los departamentos podrÃ¡n autorizar
 al alumno para acceder a los laboratorios en los que necesite desarrollar el TFG, siempre que tenga un
-anteproyecto aprobado y se encuentren en fase de realización del TFG. Para ello, el alumno, con el
-visto bueno del tutor, realizará la petición por escrito al Director del Departamento, que resolverá
+anteproyecto aprobado y se encuentren en fase de realizaciÃ³n del TFG. Para ello, el alumno, con el
+visto bueno del tutor, realizarÃ¡ la peticiÃ³n por escrito al Director del Departamento, que resolverÃ¡
 teniendo en cuenta los costes ocasionados y el beneficio que dicho TFG pudiera tener para el
-departamento en cuestión.
-Los medios necesarios para la realización del TFG podrán ser financiados por:
+departamento en cuestiÃ³n.
+Los medios necesarios para la realizaciÃ³n del TFG podrÃ¡n ser financiados por:
 1. El departamento interesado en el desarrollo del sistema.
-2. Cualquier empresa, organismo o institución interesada por el trabajo que será realizado.
+2. Cualquier empresa, organismo o instituciÃ³n interesada por el trabajo que serÃ¡ realizado.
 3. El propio estudiante.
-La propiedad intelectual del TFG quedará en poder del estudiante, tal y como se recoge en el Artículo
-8, apartado h, "Derechos específicos de los estudiantes de grado" del Real Decreto 1791/2010, de 30
+La propiedad intelectual del TFG quedarÃ¡ en poder del estudiante, tal y como se recoge en el ArtÃ­culo
+8, apartado h, "Derechos especÃ­ficos de los estudiantes de grado" del Real Decreto 1791/2010, de 30
 de diciembre, por el que se aprueba el Estatuto del Estudiante Universitario.
 
-4. ASIGNACIÓN DEL TEMA DE TRABAJO, DEL TUTOR Y
+4. ASIGNACIÃN DEL TEMA DE TRABAJO, DEL TUTOR Y
 DEL COTUTOR.
 A) TFGs propuestos por los departamentos.
-1. Una vez cerrado el plazo de matriculación de los estudiantes (finales de julio), y en el plazo de
-quince días hábiles, la Comisión de TFGs remitirá a los diferentes departamentos el número de
-trabajos a ofertar en cada Grado para el correspondiente curso académico, siendo los departamentos
-que imparten materias tecnológicas los que habrán de cubrir mayoritariamente la demanda de TFGs
-en las proporciones que establezca dicha Comisión.
-2. Hasta el 15 de octubre de cada año, los departamentos remitirán a la Comisión de Trabajos Fin de
-Grado el listado de TFGs propuestos. Los Grupos de Investigación y Cátedras de Empresa deberán
-comunicar sus posibles ofertas de TFGs a través de alguno de los departamentos en los que están
+1. Una vez cerrado el plazo de matriculaciÃ³n de los estudiantes (finales de julio), y en el plazo de
+quince dÃ­as hÃ¡biles, la ComisiÃ³n de TFGs remitirÃ¡ a los diferentes departamentos el nÃºmero de
+trabajos a ofertar en cada Grado para el correspondiente curso acadÃ©mico, siendo los departamentos
+que imparten materias tecnolÃ³gicas los que habrÃ¡n de cubrir mayoritariamente la demanda de TFGs
+en las proporciones que establezca dicha ComisiÃ³n.
+2. Hasta el 15 de octubre de cada aÃ±o, los departamentos remitirÃ¡n a la ComisiÃ³n de Trabajos Fin de
+Grado el listado de TFGs propuestos. Los Grupos de InvestigaciÃ³n y CÃ¡tedras de Empresa deberÃ¡n
+comunicar sus posibles ofertas de TFGs a travÃ©s de alguno de los departamentos en los que estÃ¡n
 adscritos sus profesores.
-3. Los temas propuestos deberán contribuir a la formación del estudiante y a potenciar las labores de
-investigación, desarrollo e innovación. En ellos se detallará la línea del trabajo a seguir así como
-los objetivos del TFG y el tutor propuesto. Además, en la realización de la oferta, se velará
-especialmente por adecuar la carga de trabajo con los créditos ECTS asignados al TFG. Será labor
-de la Comisión de TFGs, por delegación de la Junta de Centro, el validar o, en su caso, rechazar,
+3. Los temas propuestos deberÃ¡n contribuir a la formaciÃ³n del estudiante y a potenciar las labores de
+investigaciÃ³n, desarrollo e innovaciÃ³n. En ellos se detallarÃ¡ la lÃ­nea del trabajo a seguir asÃ­ como
+los objetivos del TFG y el tutor propuesto. AdemÃ¡s, en la realizaciÃ³n de la oferta, se velarÃ¡
+especialmente por adecuar la carga de trabajo con los crÃ©ditos ECTS asignados al TFG. SerÃ¡ labor
+de la ComisiÃ³n de TFGs, por delegaciÃ³n de la Junta de Centro, el validar o, en su caso, rechazar,
 las propuestas de TFG remitidas por los departamentos.
 
 4
 
 B) TFGs propuestos por los estudiantes.
-1. Los estudiantes pueden tomar también la iniciativa de proponer un tema propio que suscite su
-interés, de acuerdo con el apartado 2 de esta normativa, mediante la presentación al departamento
-de un Anteproyecto cuyas características se detallan en el punto 5 de esta Normativa, y con vistas a
-obtener su aceptación y la designación de un tutor/director. Dicho Anteproyecto debe ser
-presentado en la Secretaría del departamento hasta el 30 de septiembre de cada año.
-2. Si el TFG se va a realizar en una Universidad o Institución externa a la UAH, se hará constar de esta
-manera en el Anteproyecto, adjuntando un informe del posible cotutor de dicha Institución en el
-que manifieste el interés por el proyecto presentado.
-3. Una vez así presentada la solicitud, el departamento decidirá si la avala y la integra dentro de la
-oferta de la que se hace responsable. En caso de ser aceptada, quedará asignada al alumno
-proponente, se le asignará un Tutor académico del departamento y se incluirá en el listado de TFGs
-del departamento que será enviado a la Comisión de TFGs hasta el 15 de octubre de cada año.
-4. En el caso de que la propuesta de un estudiante sea rechazada por el departamento, se le comunicará
-tal hecho, indicando los motivos del rechazo. La decisión no podrá ser recurrida por el estudiante.
-5. El tutor asignado podrá ser cualquier profesor de un departamento que imparta docencia en el grado
+1. Los estudiantes pueden tomar tambiÃ©n la iniciativa de proponer un tema propio que suscite su
+interÃ©s, de acuerdo con el apartado 2 de esta normativa, mediante la presentaciÃ³n al departamento
+de un Anteproyecto cuyas caracterÃ­sticas se detallan en el punto 5 de esta Normativa, y con vistas a
+obtener su aceptaciÃ³n y la designaciÃ³n de un tutor/director. Dicho Anteproyecto debe ser
+presentado en la SecretarÃ­a del departamento hasta el 30 de septiembre de cada aÃ±o.
+2. Si el TFG se va a realizar en una Universidad o InstituciÃ³n externa a la UAH, se harÃ¡ constar de esta
+manera en el Anteproyecto, adjuntando un informe del posible cotutor de dicha InstituciÃ³n en el
+que manifieste el interÃ©s por el proyecto presentado.
+3. Una vez asÃ­ presentada la solicitud, el departamento decidirÃ¡ si la avala y la integra dentro de la
+oferta de la que se hace responsable. En caso de ser aceptada, quedarÃ¡ asignada al alumno
+proponente, se le asignarÃ¡ un Tutor acadÃ©mico del departamento y se incluirÃ¡ en el listado de TFGs
+del departamento que serÃ¡ enviado a la ComisiÃ³n de TFGs hasta el 15 de octubre de cada aÃ±o.
+4. En el caso de que la propuesta de un estudiante sea rechazada por el departamento, se le comunicarÃ¡
+tal hecho, indicando los motivos del rechazo. La decisiÃ³n no podrÃ¡ ser recurrida por el estudiante.
+5. El tutor asignado podrÃ¡ ser cualquier profesor de un departamento que imparta docencia en el grado
 correspondiente al estudiante, o cualquier profesional cualificado propuesto por el estudiante,
-aunque no pertenezca a los cuerpos docentes de la Universidad. Es misión del tutor supervisar al
-alumno en la toma de decisiones que afecten a la estructura del trabajo, metodología, tratamiento
-de los temas, correcta presentación, orientación bibliográfica y facilitar la gestión.
-6. Cuando el tutor del TFG no sea miembro de algún departamento que imparta docencia en el Grado
-correspondiente al alumno, el departamento que acepta la propuesta del estudiante nombrará un
-“tutor académico”, que compartirá con aquel tutor (denominado ahora “cotutor”) las tareas de
-dirección y orientación del estudiante, siendo en cualquier caso responsabilidad del tutor
-académico facilitar la gestión y la coordinación entre estudiante, cotutor y tribunal calificador.
+aunque no pertenezca a los cuerpos docentes de la Universidad. Es misiÃ³n del tutor supervisar al
+alumno en la toma de decisiones que afecten a la estructura del trabajo, metodologÃ­a, tratamiento
+de los temas, correcta presentaciÃ³n, orientaciÃ³n bibliogrÃ¡fica y facilitar la gestiÃ³n.
+6. Cuando el tutor del TFG no sea miembro de algÃºn departamento que imparta docencia en el Grado
+correspondiente al alumno, el departamento que acepta la propuesta del estudiante nombrarÃ¡ un
+âtutor acadÃ©micoâ, que compartirÃ¡ con aquel tutor (denominado ahora âcotutorâ) las tareas de
+direcciÃ³n y orientaciÃ³n del estudiante, siendo en cualquier caso responsabilidad del tutor
+acadÃ©mico facilitar la gestiÃ³n y la coordinaciÃ³n entre estudiante, cotutor y tribunal calificador.
 C) Procedimientos comunes.
-1. Antes del 20 de octubre de cada año la Comisión de TFGs hará público el listado global de TFGs
-aceptados para el correspondiente curso académico, incluyendo los TFGs que han sido propuestos
-por estudiantes y aceptados en el departamento. A partir de dicha publicación, los estudiantes
-podrán elegir libremente entre los distintos temas propuestos que aún no tengan estudiante
-asignado, solicitándolos a la Comisión de TFGs mediante el formulario que se adjunta como Anexo
-I en esta Normativa y que será entregado en la Dirección de la EPS antes del 31 de octubre de cada
-año.
-2. En un plazo máximo adicional de 15 días naturales, la Comisión de TFGs asignará los TFGs y
+1. Antes del 20 de octubre de cada aÃ±o la ComisiÃ³n de TFGs harÃ¡ pÃºblico el listado global de TFGs
+aceptados para el correspondiente curso acadÃ©mico, incluyendo los TFGs que han sido propuestos
+por estudiantes y aceptados en el departamento. A partir de dicha publicaciÃ³n, los estudiantes
+podrÃ¡n elegir libremente entre los distintos temas propuestos que aÃºn no tengan estudiante
+asignado, solicitÃ¡ndolos a la ComisiÃ³n de TFGs mediante el formulario que se adjunta como Anexo
+I en esta Normativa y que serÃ¡ entregado en la DirecciÃ³n de la EPS antes del 31 de octubre de cada
+aÃ±o.
+2. En un plazo mÃ¡ximo adicional de 15 dÃ­as naturales, la ComisiÃ³n de TFGs asignarÃ¡ los TFGs y
 tutores a los estudiantes solicitantes. Cuando concurran varias solicitudes a un mismo TFG
-propuesto por un departamento, la asignación deberá ser realizada de acuerdo a los principios de
-igualdad, mérito y capacidad de los estudiantes, y debiendo aplicarse en su procedimiento una
-baremación establecida por la Comisión de TFGs, en caso de ser necesario.
-3. Una vez realizada dicha asignación, la Comisión de TFGs comunicará la decisión a los
-departamentos y procederá a su publicación, incluyéndose el nombre del tutor de cada trabajo.
-Finalmente, cada estudiante deberá contactar con su tutor académico con objeto de completar el
-proceso de asignación mediante la presentación de un anteproyecto de TFG, si no ha sido ya
+propuesto por un departamento, la asignaciÃ³n deberÃ¡ ser realizada de acuerdo a los principios de
+igualdad, mÃ©rito y capacidad de los estudiantes, y debiendo aplicarse en su procedimiento una
+baremaciÃ³n establecida por la ComisiÃ³n de TFGs, en caso de ser necesario.
+3. Una vez realizada dicha asignaciÃ³n, la ComisiÃ³n de TFGs comunicarÃ¡ la decisiÃ³n a los
+departamentos y procederÃ¡ a su publicaciÃ³n, incluyÃ©ndose el nombre del tutor de cada trabajo.
+Finalmente, cada estudiante deberÃ¡ contactar con su tutor acadÃ©mico con objeto de completar el
+proceso de asignaciÃ³n mediante la presentaciÃ³n de un anteproyecto de TFG, si no ha sido ya
 presentado.
-4. La asignación definitiva del tema a desarrollar en el TFG y del tutor académico estará sujeta a la
-presentación por el estudiante, en el plazo de 2 meses desde la publicación de la lista de
-asignaciones, de un anteproyecto para su aprobación por el departamento. Transcurrido dicho plazo
-sin la presentación de un anteproyecto, el tema de TFG quedará sin asignar.
-5. La adjudicación de un TFG y de un tutor académico tendrá una validez máxima de dos años,
-transcurridos los cuales el alumno tendrá que volver a realizar un nuevo proceso de solicitud.
+4. La asignaciÃ³n definitiva del tema a desarrollar en el TFG y del tutor acadÃ©mico estarÃ¡ sujeta a la
+presentaciÃ³n por el estudiante, en el plazo de 2 meses desde la publicaciÃ³n de la lista de
+asignaciones, de un anteproyecto para su aprobaciÃ³n por el departamento. Transcurrido dicho plazo
+sin la presentaciÃ³n de un anteproyecto, el tema de TFG quedarÃ¡ sin asignar.
+5. La adjudicaciÃ³n de un TFG y de un tutor acadÃ©mico tendrÃ¡ una validez mÃ¡xima de dos aÃ±os,
+transcurridos los cuales el alumno tendrÃ¡ que volver a realizar un nuevo proceso de solicitud.
 
 5
 
-6. El departamento al que esté adscrito el tutor académico será responsable de la sustitución del
+6. El departamento al que estÃ© adscrito el tutor acadÃ©mico serÃ¡ responsable de la sustituciÃ³n del
 mismo, temporal o permanentemente, cuando se den casos de baja o ausencia prolongada o se
-produjera la finalización de la relación contractual con la Universidad de Alcalá.
-7. Si las características de un TFG aconsejan la dirección del mismo por parte de varios profesionales,
-el departamento responsable de su aceptación nombrará a uno de ellos como tutor y al resto como
+produjera la finalizaciÃ³n de la relaciÃ³n contractual con la Universidad de AlcalÃ¡.
+7. Si las caracterÃ­sticas de un TFG aconsejan la direcciÃ³n del mismo por parte de varios profesionales,
+el departamento responsable de su aceptaciÃ³n nombrarÃ¡ a uno de ellos como tutor y al resto como
 cotutores.
 
 5. ANTEPROYECTO
-1. Para completar el proceso de asignación de TFG, o para proponer una idea propia a un
-departamento, el estudiante deberá presentar en el departamento correspondiente un anteproyecto
-con el visto bueno de su tutor académico si se trata de un TFG propuesto por el departamento, o
+1. Para completar el proceso de asignaciÃ³n de TFG, o para proponer una idea propia a un
+departamento, el estudiante deberÃ¡ presentar en el departamento correspondiente un anteproyecto
+con el visto bueno de su tutor acadÃ©mico si se trata de un TFG propuesto por el departamento, o
 bien sin tutor asignado si se trata de la propuesta de una idea propia del alumno. Dicho
-anteproyecto deberá ser aprobado por el órgano competente del departamento.
+anteproyecto deberÃ¡ ser aprobado por el Ã³rgano competente del departamento.
 2. El anteproyecto consiste en un breve informe referente al TFG que el estudiante pretende realizar,
-en el que se resumen los objetivos de dicho trabajo, sus características, sus partes fundamentales
-(diagrama de bloques o modelos, si procede), su campo de aplicación, su nivel de innovación y
-demás aspectos que se consideren oportunos. También se indicarán claramente las fases de
-desarrollo que se van a seguir. Una guía para la realización del anteproyecto se puede encontrar en
+en el que se resumen los objetivos de dicho trabajo, sus caracterÃ­sticas, sus partes fundamentales
+(diagrama de bloques o modelos, si procede), su campo de aplicaciÃ³n, su nivel de innovaciÃ³n y
+demÃ¡s aspectos que se consideren oportunos. TambiÃ©n se indicarÃ¡n claramente las fases de
+desarrollo que se van a seguir. Una guÃ­a para la realizaciÃ³n del anteproyecto se puede encontrar en
 el Anexo IX de esta Normativa.
-3. El estudiante deberá presentar en la secretaría del departamento elegido una “Hoja de Control de
-Anteproyecto" (Anexo II) debidamente cumplimentada, firmada por él y por el tutor académico (en
-su caso), y donde se indicará si el TFG será desarrollado en idioma español o inglés.
-Adjuntará también cuatro copias impresas del anteproyecto, así como un justificante de estar
+3. El estudiante deberÃ¡ presentar en la secretarÃ­a del departamento elegido una âHoja de Control de
+Anteproyecto" (Anexo II) debidamente cumplimentada, firmada por Ã©l y por el tutor acadÃ©mico (en
+su caso), y donde se indicarÃ¡ si el TFG serÃ¡ desarrollado en idioma espaÃ±ol o inglÃ©s.
+AdjuntarÃ¡ tambiÃ©n cuatro copias impresas del anteproyecto, asÃ­ como un justificante de estar
 matriculado en el TFG.
-El alumno sólo se podrá matricular de TFG cuando esté matriculado de TODAS las asignaturas que
+El alumno sÃ³lo se podrÃ¡ matricular de TFG cuando estÃ© matriculado de TODAS las asignaturas que
 le queden para finalizar el plan de estudios.
-4. El departamento estudiará y evaluará el anteproyecto por el procedimiento que tenga establecido
-para aceptarlo o rechazarlo. En caso de ser aceptado, será el propio departamento, por delegación
-de la Junta de Escuela, el que asignará un tribunal calificador e informará al estudiante y a la
-Comisión de Trabajos Fin de Grado. Todas las conclusiones y dictámenes del departamento
-referentes a los anteproyectos evaluados serán comunicados al alumno por dicho departamento.
-5. El periodo de validez de un anteproyecto (tiempo que se concede para la realización del trabajo)
-será como máximo de dos años. Si transcurrido este plazo el trabajo no ha sido finalizado, pero se
-encuentra en fase de terminación, el estudiante, a través de su tutor académico, puede solicitar al
-departamento una prórroga especial para la terminación del TFG. El departamento aceptará o
-rechazará la petición y fijará la duración de la prórroga, si ésta es aceptada.
-6. Transcurrido el plazo de validez del anteproyecto, y si no ha sido aceptada la prórroga por parte del
-departamento, el estudiante deberá volver a presentar un nuevo anteproyecto. En este caso, si la
-solicitud de TFG partió del alumno, la nueva propuesta debería ser sensiblemente diferente a la
-propuesta de TFG para la que haya agotado su plazo máximo.
-7. Los estudiantes que deseen cambiar de tutor, deberán solicitarlo por escrito y de manera motivada al
-departamento en que le fue asignado el trabajo (por delegación de la Junta de Centro), en cualquier
-momento del año. El departamento resolverá si admite o no el cambio propuesto, procediendo, en
-caso afirmativo, a asignar nuevo tutor y/o tribunal calificador. Se deberá informar del cambio y de
-los motivos a la Comisión de TFGs. El plazo para la resolución de la aceptación o denegación del
-cambio solicitado será de quince días desde la solicitud.
+4. El departamento estudiarÃ¡ y evaluarÃ¡ el anteproyecto por el procedimiento que tenga establecido
+para aceptarlo o rechazarlo. En caso de ser aceptado, serÃ¡ el propio departamento, por delegaciÃ³n
+de la Junta de Escuela, el que asignarÃ¡ un tribunal calificador e informarÃ¡ al estudiante y a la
+ComisiÃ³n de Trabajos Fin de Grado. Todas las conclusiones y dictÃ¡menes del departamento
+referentes a los anteproyectos evaluados serÃ¡n comunicados al alumno por dicho departamento.
+5. El periodo de validez de un anteproyecto (tiempo que se concede para la realizaciÃ³n del trabajo)
+serÃ¡ como mÃ¡ximo de dos aÃ±os. Si transcurrido este plazo el trabajo no ha sido finalizado, pero se
+encuentra en fase de terminaciÃ³n, el estudiante, a travÃ©s de su tutor acadÃ©mico, puede solicitar al
+departamento una prÃ³rroga especial para la terminaciÃ³n del TFG. El departamento aceptarÃ¡ o
+rechazarÃ¡ la peticiÃ³n y fijarÃ¡ la duraciÃ³n de la prÃ³rroga, si Ã©sta es aceptada.
+6. Transcurrido el plazo de validez del anteproyecto, y si no ha sido aceptada la prÃ³rroga por parte del
+departamento, el estudiante deberÃ¡ volver a presentar un nuevo anteproyecto. En este caso, si la
+solicitud de TFG partiÃ³ del alumno, la nueva propuesta deberÃ­a ser sensiblemente diferente a la
+propuesta de TFG para la que haya agotado su plazo mÃ¡ximo.
+7. Los estudiantes que deseen cambiar de tutor, deberÃ¡n solicitarlo por escrito y de manera motivada al
+departamento en que le fue asignado el trabajo (por delegaciÃ³n de la Junta de Centro), en cualquier
+momento del aÃ±o. El departamento resolverÃ¡ si admite o no el cambio propuesto, procediendo, en
+caso afirmativo, a asignar nuevo tutor y/o tribunal calificador. Se deberÃ¡ informar del cambio y de
+los motivos a la ComisiÃ³n de TFGs. El plazo para la resoluciÃ³n de la aceptaciÃ³n o denegaciÃ³n del
+cambio solicitado serÃ¡ de quince dÃ­as desde la solicitud.
 8. Si durante el periodo de validez del anteproyecto el estudiante considera conveniente renunciar al
-anteproyecto, podrá hacerlo comunicándolo por escrito a la Secretaría del departamento implicado,
-que se lo comunicará al tutor en el plazo máximo de diez días hábiles. Esta información se
-trasladará a la Comisión de TFGs.
+anteproyecto, podrÃ¡ hacerlo comunicÃ¡ndolo por escrito a la SecretarÃ­a del departamento implicado,
+que se lo comunicarÃ¡ al tutor en el plazo mÃ¡ximo de diez dÃ­as hÃ¡biles. Esta informaciÃ³n se
+trasladarÃ¡ a la ComisiÃ³n de TFGs.
 
 6
 
-9. La Secretaría del departamento emitirá los oportunos permisos para acceso a los laboratorios y
-demás recursos del departamento a aquellos alumnos que se encuentren realizando el TFG, es
+9. La SecretarÃ­a del departamento emitirÃ¡ los oportunos permisos para acceso a los laboratorios y
+demÃ¡s recursos del departamento a aquellos alumnos que se encuentren realizando el TFG, es
 decir, que tengan un anteproyecto vigente.
 
 6. TRIBUNAL CALIFICADOR
-1. El tribunal será nombrado por el departamento al que se presentó el anteproyecto, por delegación de
-la Junta de Escuela, en el momento de la aprobación o aceptación del mismo.
-2. El tribunal calificador de un TFG estará compuesto por tres profesores de cualquier departamento
-de la Universidad de Alcalá, siendo necesaria la presencia de, al menos, dos profesores que
+1. El tribunal serÃ¡ nombrado por el departamento al que se presentÃ³ el anteproyecto, por delegaciÃ³n de
+la Junta de Escuela, en el momento de la aprobaciÃ³n o aceptaciÃ³n del mismo.
+2. El tribunal calificador de un TFG estarÃ¡ compuesto por tres profesores de cualquier departamento
+de la Universidad de AlcalÃ¡, siendo necesaria la presencia de, al menos, dos profesores que
 impartan docencia en la EPS.
-3. Estará formado por los siguientes miembros:
+3. EstarÃ¡ formado por los siguientes miembros:
 - El Presidente del Tribunal.
-- Un Vocal 1º.
-- Un Vocal 2º, que actuará como secretario.
+- Un Vocal 1Âº.
+- Un Vocal 2Âº, que actuarÃ¡ como secretario.
 Un suplente.
-4. El vocal segundo será el tutor del TFG, excepto si no es profesor de la Universidad de Alcalá
-(cotutor), en cuyo caso lo sustituirá el tutor académico asignado al trabajo. En el caso de ausencia
-de alguno de los titulares, el profesor suplente correspondiente actuará en su lugar.
-5. El cotutor, que no forma parte del tribunal, podrá estar presente en el acto de defensa y en la
-deliberación, teniendo derecho a voz pero no a voto. En caso de no estar presente, podrá enviar al
+4. El vocal segundo serÃ¡ el tutor del TFG, excepto si no es profesor de la Universidad de AlcalÃ¡
+(cotutor), en cuyo caso lo sustituirÃ¡ el tutor acadÃ©mico asignado al trabajo. En el caso de ausencia
+de alguno de los titulares, el profesor suplente correspondiente actuarÃ¡ en su lugar.
+5. El cotutor, que no forma parte del tribunal, podrÃ¡ estar presente en el acto de defensa y en la
+deliberaciÃ³n, teniendo derecho a voz pero no a voto. En caso de no estar presente, podrÃ¡ enviar al
 tribunal un informe sobre el TFG.
 
-7. MATRÍCULA DEL TFG
-1. Para poder realizar la matrícula en el TFG es requisito imprescindible haber superado todas las
-asignaturas del plan de estudios a excepción del TFG, o bien, matricularse simultáneamente del
-TFG y de todas las demás asignaturas necesarias para finalizar el plan de estudios. No obstante, el
+7. MATRÃCULA DEL TFG
+1. Para poder realizar la matrÃ­cula en el TFG es requisito imprescindible haber superado todas las
+asignaturas del plan de estudios a excepciÃ³n del TFG, o bien, matricularse simultÃ¡neamente del
+TFG y de todas las demÃ¡s asignaturas necesarias para finalizar el plan de estudios. No obstante, el
 TFG debe ser defendido y evaluado una vez que se tenga constancia fehaciente de que el estudiante
 ha superado todas las materias restantes del plan de estudios y dispone, por tanto, de todos los
-créditos necesarios para la obtención del título de Grado, salvo los correspondientes al propio TFG.
-2. La matrícula del TFG da derecho a dos convocatorias de examen en un mismo curso académico, y
-existirán tres únicas convocatorias de calificación a lo largo del curso, una en marzo, otra en julio y
+crÃ©ditos necesarios para la obtenciÃ³n del tÃ­tulo de Grado, salvo los correspondientes al propio TFG.
+2. La matrÃ­cula del TFG da derecho a dos convocatorias de examen en un mismo curso acadÃ©mico, y
+existirÃ¡n tres Ãºnicas convocatorias de calificaciÃ³n a lo largo del curso, una en marzo, otra en julio y
 otra en septiembre.
-3. Los alumnos que no superen el TFG en la convocatoria de septiembre, podrán excepcionalmente
-matricular de nuevo el TFG para el siguiente curso académico durante el mes de octubre.
-4. La matrícula tiene un plazo de validez máximo de un año académico, y finaliza el último día hábil
+3. Los alumnos que no superen el TFG en la convocatoria de septiembre, podrÃ¡n excepcionalmente
+matricular de nuevo el TFG para el siguiente curso acadÃ©mico durante el mes de octubre.
+4. La matrÃ­cula tiene un plazo de validez mÃ¡ximo de un aÃ±o acadÃ©mico, y finaliza el Ãºltimo dÃ­a hÃ¡bil
 del mes de septiembre. Transcurrido dicho plazo sin haber superado el examen del TFG, la
-matrícula pierde su validez. Este plazo no es el mismo que el plazo de validez del anteproyecto,
+matrÃ­cula pierde su validez. Este plazo no es el mismo que el plazo de validez del anteproyecto,
 que puede ser superior.
 
-8. DEFENSA Y CALIFICACIÓN DEL TFG
+8. DEFENSA Y CALIFICACIÃN DEL TFG
 1. Para solicitar la defensa del TFG es necesario que el estudiante se haya matriculado del mismo. La
-defensa podrá ser solicitada y realizada por el estudiante en cualquier momento del curso una vez
+defensa podrÃ¡ ser solicitada y realizada por el estudiante en cualquier momento del curso una vez
 que le haya dado el visto bueno su tutor y siempre que el alumno no haya agotado ya las dos
-convocatorias a que otorga derecho la matrícula. La calificación se hará constar en las actas de la
-convocatoria posterior más próxima, de entre las tres citadas de marzo, julio y septiembre. La
-defensa deberá efectuarse en todo caso con anterioridad al cierre de actas de esta última
-convocatoria; en caso contrario, el alumno deberá volver a matricularse del TFG en el curso
+convocatorias a que otorga derecho la matrÃ­cula. La calificaciÃ³n se harÃ¡ constar en las actas de la
+convocatoria posterior mÃ¡s prÃ³xima, de entre las tres citadas de marzo, julio y septiembre. La
+defensa deberÃ¡ efectuarse en todo caso con anterioridad al cierre de actas de esta Ãºltima
+convocatoria; en caso contrario, el alumno deberÃ¡ volver a matricularse del TFG en el curso
 siguiente.
 
 7
 
-2. En el momento en que se vaya a proceder a la defensa, el estudiante depositará en la Secretaría del
+2. En el momento en que se vaya a proceder a la defensa, el estudiante depositarÃ¡ en la SecretarÃ­a del
 departamento tres copias encuadernadas de la memoria del TFG, de acuerdo con lo establecido en
 la presente normativa, junto con los siguientes documentos:
-• Fotocopia de su resguardo de matrícula del TFG.
-• Justificante de haber superado todas las asignaturas restantes del plan de estudios.
-• Visto bueno del tutor académico, según el Anexo-III de esta Normativa.
-• Un soporte informático (CD o DVD) con el contenido completo de la memoria y los programas
+â¢ Fotocopia de su resguardo de matrÃ­cula del TFG.
+â¢ Justificante de haber superado todas las asignaturas restantes del plan de estudios.
+â¢ Visto bueno del tutor acadÃ©mico, segÃºn el Anexo-III de esta Normativa.
+â¢ Un soporte informÃ¡tico (CD o DVD) con el contenido completo de la memoria y los programas
 desarrollados (fuentes y ejecutables).
-• Un soporte informático (CD o DVD) con la memoria del TFG y los resúmenes en español y en
-inglés, todos ellos en formato PDF.
-• El documento "Autorización del alumno para publicación electrónica" que se adjunta como
-"Anexo IV", firmado por el alumno (sólo si el alumno consiente en tal publicación).
-• El documento "Autorización del Tutor para publicación del TFG en abierto" que se adjunta
-como "Anexo V", firmado por el Tutor (sólo si el alumno y el Tutor consienten en tal
-publicación en abierto).
-3. Una vez solicitada la defensa, la secretaría del departamento remitirá los tres tomos a los profesores
+â¢ Un soporte informÃ¡tico (CD o DVD) con la memoria del TFG y los resÃºmenes en espaÃ±ol y en
+inglÃ©s, todos ellos en formato PDF.
+â¢ El documento "AutorizaciÃ³n del alumno para publicaciÃ³n electrÃ³nica" que se adjunta como
+"Anexo IV", firmado por el alumno (sÃ³lo si el alumno consiente en tal publicaciÃ³n).
+â¢ El documento "AutorizaciÃ³n del Tutor para publicaciÃ³n del TFG en abierto" que se adjunta
+como "Anexo V", firmado por el Tutor (sÃ³lo si el alumno y el Tutor consienten en tal
+publicaciÃ³n en abierto).
+3. Una vez solicitada la defensa, la secretarÃ­a del departamento remitirÃ¡ los tres tomos a los profesores
 que formen parte del tribunal calificador, indicando la fecha en que se ha realizado dicha solicitud.
-Desde la solicitud de defensa del TFG hasta que ésta se produzca deberá transcurrir un plazo
-mínimo de cinco días lectivos (los sábados no se considerarán lectivos a estos efectos), con el
+Desde la solicitud de defensa del TFG hasta que Ã©sta se produzca deberÃ¡ transcurrir un plazo
+mÃ­nimo de cinco dÃ­as lectivos (los sÃ¡bados no se considerarÃ¡n lectivos a estos efectos), con el
 objetivo de que el tribunal calificador disponga del tiempo suficiente para conocer el trabajo.
-4. La fecha y el lugar del examen serán fijados por el tribunal calificador del TFG de mutuo acuerdo
-con el alumno, actuando como mediador el tutor, o, en su caso, el tutor académico. El examen es
-público debiendo ser anunciada su convocatoria por el departamento con una antelación mínima de
-48 horas, indicando la fecha, hora y lugar donde tendrá lugar la exposición. En el caso de que se
-trate de un trabajo cuyo contenido sea confidencial o sujeto a patente, la defensa del TFG será
+4. La fecha y el lugar del examen serÃ¡n fijados por el tribunal calificador del TFG de mutuo acuerdo
+con el alumno, actuando como mediador el tutor, o, en su caso, el tutor acadÃ©mico. El examen es
+pÃºblico debiendo ser anunciada su convocatoria por el departamento con una antelaciÃ³n mÃ­nima de
+48 horas, indicando la fecha, hora y lugar donde tendrÃ¡ lugar la exposiciÃ³n. En el caso de que se
+trate de un trabajo cuyo contenido sea confidencial o sujeto a patente, la defensa del TFG serÃ¡
 privada.
-5. La defensa del TFG consistirá en la exposición, por parte del estudiante, de los objetivos,
-metodología, desarrollo y principales conclusiones del trabajo. A continuación de la exposición, el
-estudiante contestará a las preguntas, dudas y sugerencias que realice el Tribunal. En ningún caso
-el tiempo conjunto entre ambas fases podrá superar una hora. Terminada la exposición y debate, el
-Tribunal deliberará sobre la calificación en sesión privada. La calificación tendrá en cuenta, entre
-otros criterios: la calidad del trabajo desarrollado, la claridad y corrección de la memoria
-presentada, la exposición y defensa realizados. Dicha calificación será remitida a la Comisión de
+5. La defensa del TFG consistirÃ¡ en la exposiciÃ³n, por parte del estudiante, de los objetivos,
+metodologÃ­a, desarrollo y principales conclusiones del trabajo. A continuaciÃ³n de la exposiciÃ³n, el
+estudiante contestarÃ¡ a las preguntas, dudas y sugerencias que realice el Tribunal. En ningÃºn caso
+el tiempo conjunto entre ambas fases podrÃ¡ superar una hora. Terminada la exposiciÃ³n y debate, el
+Tribunal deliberarÃ¡ sobre la calificaciÃ³n en sesiÃ³n privada. La calificaciÃ³n tendrÃ¡ en cuenta, entre
+otros criterios: la calidad del trabajo desarrollado, la claridad y correcciÃ³n de la memoria
+presentada, la exposiciÃ³n y defensa realizados. Dicha calificaciÃ³n serÃ¡ remitida a la ComisiÃ³n de
 Trabajos Fin de Grado para poder ser incorporada al acta de la asignatura.
 6. Si se tratase de un TFG con contenido confidencial o sujeto a patente, los miembros del Tribunal
-deberán firmar un acuerdo de confidencialidad. Dicho acuerdo permitirá al estudiante responder a
-las preguntas formuladas por los miembros del Tribunal sobre la metodología, técnicas o
-implementación desarrolladas y así proteger la confidencialidad del mismo. Una vez firmado el
-acuerdo de confidencialidad, el estudiante no podrá negarse a responder a ninguna de las preguntas
+deberÃ¡n firmar un acuerdo de confidencialidad. Dicho acuerdo permitirÃ¡ al estudiante responder a
+las preguntas formuladas por los miembros del Tribunal sobre la metodologÃ­a, tÃ©cnicas o
+implementaciÃ³n desarrolladas y asÃ­ proteger la confidencialidad del mismo. Una vez firmado el
+acuerdo de confidencialidad, el estudiante no podrÃ¡ negarse a responder a ninguna de las preguntas
 del Tribunal, aunque fuesen relativas al contenido confidencial del mismo.
-7. La calificación se otorgará conforme a la siguiente escala numérica de 0 a 10, con expresión de un
-decimal, a la que se añadirá su correspondiente calificación cualitativa:
-0 – 4,9: Suspenso (SS)
-5,0 – 6,9: Aprobado (AP)
-7,0 – 8,9: Notable (NT)
-9,0 – 10: Sobresaliente (SB)
-10: Matrícula de Honor (MH)
-8. En el caso de que un TFG obtuviera la calificación de suspenso, el Tribunal hará llegar un informe
-al estudiante y a su tutor con los criterios que han motivado dicha calificación. Además realizará
+7. La calificaciÃ³n se otorgarÃ¡ conforme a la siguiente escala numÃ©rica de 0 a 10, con expresiÃ³n de un
+decimal, a la que se aÃ±adirÃ¡ su correspondiente calificaciÃ³n cualitativa:
+0 â 4,9: Suspenso (SS)
+5,0 â 6,9: Aprobado (AP)
+7,0 â 8,9: Notable (NT)
+9,0 â 10: Sobresaliente (SB)
+10: MatrÃ­cula de Honor (MH)
+8. En el caso de que un TFG obtuviera la calificaciÃ³n de suspenso, el Tribunal harÃ¡ llegar un informe
+al estudiante y a su tutor con los criterios que han motivado dicha calificaciÃ³n. AdemÃ¡s realizarÃ¡
 una serie de recomendaciones para mejorar la calidad del mismo.
-9. En los casos en los que se haya otorgado la máxima calificación de Sobresaliente-10, el Tribunal
-podrá proponer a la Junta de Escuela, a través de la Comisión de Trabajos Fin de Grado, la
-mención de Matrícula de Honor. Dicha propuesta estará acompañada de un informe que justifique
-la concesión de dicha mención. La Comisión de TFGs deberá actuar de conformidad a lo dispuesto
-en el Real Decreto 1125/2003, de 5 de septiembre de 2003 referente al número máximo de
+9. En los casos en los que se haya otorgado la mÃ¡xima calificaciÃ³n de Sobresaliente-10, el Tribunal
+podrÃ¡ proponer a la Junta de Escuela, a travÃ©s de la ComisiÃ³n de Trabajos Fin de Grado, la
+menciÃ³n de MatrÃ­cula de Honor. Dicha propuesta estarÃ¡ acompaÃ±ada de un informe que justifique
+la concesiÃ³n de dicha menciÃ³n. La ComisiÃ³n de TFGs deberÃ¡ actuar de conformidad a lo dispuesto
+en el Real Decreto 1125/2003, de 5 de septiembre de 2003 referente al nÃºmero mÃ¡ximo de
 
 8
 
-matrículas de honor que pueden asignarse en un curso académico: dicho número no podrá exceder
-el cinco por ciento de todos los alumnos matriculados en la asignatura salvo que estos últimos sean
-menos de veinte, en cuyo caso sólo podrá otorgarse una mención. Para tal fin, la Comisión revisará
-para cada convocatoria de calificación de TFGs todos los informes que haya recibido por parte de
-los Tribunales en los que se ha solicitado la mención de Matrícula de Honor y hará públicos los
-TFG que han obtenido dicha mención.
-10. La Comisión de TFGs atenderá los recursos presentados por aquellos alumnos contra la decisión
+matrÃ­culas de honor que pueden asignarse en un curso acadÃ©mico: dicho nÃºmero no podrÃ¡ exceder
+el cinco por ciento de todos los alumnos matriculados en la asignatura salvo que estos Ãºltimos sean
+menos de veinte, en cuyo caso sÃ³lo podrÃ¡ otorgarse una menciÃ³n. Para tal fin, la ComisiÃ³n revisarÃ¡
+para cada convocatoria de calificaciÃ³n de TFGs todos los informes que haya recibido por parte de
+los Tribunales en los que se ha solicitado la menciÃ³n de MatrÃ­cula de Honor y harÃ¡ pÃºblicos los
+TFG que han obtenido dicha menciÃ³n.
+10. La ComisiÃ³n de TFGs atenderÃ¡ los recursos presentados por aquellos alumnos contra la decisiÃ³n
 adoptada por el Tribunal calificador. Dichos recursos deben ser excepcionales, debidamente
-motivados y se presentarán dirigidos al Director de Escuela en un plazo no superior a 5 días hábiles
-desde la defensa del TFG. La citada Comisión tendrá un plazo máximo de 15 días para adoptar una
-decisión motivada.
-11. Una vez realizado el examen, el tribunal firmará el acta del mismo y la enviará a la Comisión de
-TFGs. Esta finalmente la remitirá a la Secretaría de Alumnos para que sea incorporada al acta de la
-asignatura en la convocatoria posterior más próxima.
-12. En caso de haber aprobado el examen de TFG, el tribunal firmará también la primera hoja de los
-tres ejemplares de la memoria del TFG, haciendo constar la fecha y la calificación obtenida por el
-alumno. La calificación no se reflejará en uno de ellos (el ejemplar que irá a Biblioteca) ni en la
-copia electrónica de la memoria. A tal efecto, todas las memorias deberán incluir una primera
-página con el formato que se define en el punto 9. El acta y los tomos firmados se entregarán en la
-secretaría del departamento, la cual devolverá un ejemplar de la memoria al alumno. Otro tomo y el
-soporte informático, en el que se incluya tanto la aplicación como la memoria del TFG, se
-archivará en el departamento. El tercer tomo, junto con un soporte informático conteniendo los
-resúmenes en español y en inglés, se enviarán junto con el Acta a la Secretaría de Alumnos de la
-Escuela para gestionar la expedición del Título de Graduado y el posterior envío de dicho tomo a la
-biblioteca.
-13. Finalmente, al autor del TFG se le dará la opción de depositarlo en el repositorio institucional de
-documentos digitales de la Universidad (e_Buah), que ofrece acceso abierto a sus colecciones. Es
-una opción voluntaria que requiere el consentimiento expreso del tutor y del autor del trabajo,
-otorgados mediante la firma por el autor de la licencia aprobada en Consejo de Gobierno (Anexo
-IV) y la firma por el tutor de la autorización de publicación en abierto (Anexo V). Ambos
-documentos serán enviados a la Biblioteca junto con la copia electrónica.
-14. En el caso de que el TFG haya sido desarrollado en una empresa u otro organismo y deba ser
-confidencial o esté sujeto a patente dada la naturaleza del mismo, no será publicado en abierto.
-
-9. NORMAS DE PRESENTACIÓN DE LA MEMORIA
-A) FORMATO.
-- Tamaño normalizado UNE A-4 con impresión a doble cara.
-- Encuadernación en "rústica" con tapas de pasta blanda, con banda superior de color PANTONE
-nº 160C (marrón) en la cubierta, lomo y tapa trasera.
-- La cubierta y la tapa trasera se ajustan al modelo indicado en el Anexo X de este documento.
-
-B) CUERPO DEL TRABAJO.
-La memoria del TFG puede ser escrita en español o en inglés, a elección del alumno en el momento de
-presentar el anteproyecto. La aceptación de TFGs desarrollados en inglés estará sujeta a los criterios
-de disponibilidad que establezca el departamento.
-La memoria deberá contener como mínimo los siguientes apartados:
-1.
-
-Una primera hoja donde anotar el tribunal, calificación y fecha del examen, según el modelo que
-se indica a continuación:
-
-9
-
-UNIVERSIDAD DE ALCALÁ
-Escuela Politécnica Superior
-<<TITULACIÓN>>
-Trabajo Fin de Grado
-<< Título del Trabajo >>
-Autor: << Nombre y apellidos del alumno >>
-
-Director/es: <<Nombre y apellidos del director del TFG>>
-
-TRIBUNAL:
-(Espacio para la firma)
-
-Presidente: << Nombre y Apellidos >>
-(Espacio para la firma)
-
-Vocal 1º: << Nombre y Apellidos >>
-
-(Espacio para la firma)
-
-Vocal 2º: << Nombre y Apellidos >>
-
-CALIFICACIÓN: ...................................................
-FECHA: ............................................
-
-En el tomo que irá a Biblioteca y en la copia electrónica para publicar en abierto NO DEBERÁ
-incluirse el espacio para la CALIFICACIÓN del estudiante.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-
-AGRADECIMIENTOS Y DEDICATORIA, si procede.
-ÍNDICE detallado con referencia a las páginas donde se encuentran cada uno de los apartados.
-ÍNDICE de figuras, tablas y diagramas.
-ÍNDICE de código, si se incluyese.
-RESUMEN EN CASTELLANO del trabajo en un máximo de cien (100) palabras.
-RESUMEN EN INGLÉS del trabajo en un máximo de cien (100) palabras.
-PALABRAS CLAVE con un máximo de cinco.
-RESUMEN EXTENDIDO del trabajo en un máximo de 4 ó 5 página.
-MEMORIA del trabajo, que contendrá:
-a) Introducción en la que se indique el planteamiento del trabajo y los objetivos a conseguir.
-b) Base teórica en la que se expongan los conceptos teóricos utilizados para la realización del
-trabajo, así como los cálculos realizados.
-c) Descripción experimental, cuando sea necesario, descripción del diseño, resultados, etc.
-
-10
-
-11.
-
-12.
-
-13.
-
-14.
-
-15.
-
-16.
-
-17.
-
-d) Conclusiones y, en su caso, trabajo futuro.
-En caso de restricciones de confidencialidad se incluirán únicamente los apartados a) y b)
-DIAGRAMAS, entendiendo por tales los generales, diagramas de bloques, esquemas de detalle y
-planos, ajustados a la normativa existente sobre el análisis y el diseño de sistemas hardware y
-software. En caso de restricciones de confidencialidad se excluirá este apartado.
-PLIEGO DE CONDICIONES (en su caso), que incluya las condiciones generales (normativas),
-condiciones de materiales y de equipos (características técnicas) y condiciones de ejecución. En
-caso de restricciones de confidencialidad se excluirá este apartado.
-PRESUPUESTO, que incluya: ejecución material (materiales y mano de obra), gastos generales y
-beneficio industrial, honorarios de dirección y redacción (tarifas del Colegio, en su caso), coste de
-ejecución por contrata y presupuesto total. En caso de confidencialidad se excluirá este apartado.
-MANUAL DE USUARIO y/o de instalación y/o de mantenimiento, en todos aquellos equipos o
-programas que vayan a utilizarse posteriormente. En caso de restricciones de confidencialidad se
-excluirá este apartado.
-BIBLIOGRAFÍA, donde se indicará el conjunto de las referencias utilizadas como citas y otros
-materiales de consulta, conteniendo cada una los siguientes datos:
-- Autor/es.
-- Título del artículo, libro, monografía,...
-- Editorial o nombre de la revista y editorial.
-- Número de la revista, volumen y páginas consultadas.
-- Año de publicación.
-Asimismo, en este apartado se reseñarán los distintos catálogos utilizados.
-Se recomienda el estilo de citación y referencia APA y en su defecto el de IEEE.
-SOPORTE INFORMÁTICO (CD ó DVD) con el contenido de la memoria y los programas
-desarrollados (fuentes y ejecutables). El disco/s deberá colocarse en una funda adosada a la cara
-interna de la tapa de uno de los tres ejemplares de la memoria. Este ejemplar será el que quede en
-depósito en el departamento. En caso de restricciones de confidencialidad, únicamente se incluirá
-el resumen y el resumen extendido de la memoria.
-VERSIÓN ELECTRÓNICA DE LA MEMORIA DEL TFG (CD o DVD). El disco/s deberá
-colocarse en una funda perfectamente identificada con los datos del alumno y del TFG. Este
-soporte será el que empleará la Biblioteca para la publicación electrónica del TFG, caso de contar
-con el consentimiento de todas las partes implicadas. Dicho documento deberá estar en formato
-PDF. En caso de restricciones de confidencialidad, únicamente se incluirá el resumen y el
-resumen extendido de la memoria.
-
-10. RESUMEN DE SECUENCIA TEMPORAL HABITUAL
-A) Estudiantes que solicitan TFG propuesto por los departamentos:
-1º. Matriculación del estudiante en el TFG en julio, junto con todas las asignaturas restantes de la
-carrera.
-2º. Envío del número de TFGs a ofertar por cada departamento, desde la Comisión de TFGs a los
-departamentos, en plazo de 15 días hábiles desde cierre del periodo de matrículas.
-3º. Envío de la oferta de TFGs y tutores por los departamentos a la Comisión de TFGs hasta el 15 de
-octubre.
-B) Estudiantes que proponen su propia idea de TFG:
-1º. Matriculación del estudiante en el TFG en julio, junto con todas las asignaturas restantes de la
-carrera.
-2º. Redacción del anteproyecto.
-3º. Presentación de anteproyecto en el departamento junto con documentación adicional, hasta el 30 de
-septiembre.
-4º. Evaluación del anteproyecto en el departamento y asignación de Tutor. El tribunal completo se
-asignará más tarde.
-5º. Comunicación a la Comisión de TFGs hasta el 15 de octubre, junto con el listado de TFGs
-ofertados por el departamento.
-
-11
-
-PROCEDIMIENTOS COMUNES:
-6º. Publicación de la oferta de TFGs de todos los departamentos por parte de la Comisión de TFGs,
-hasta el 20 de octubre.
-7º. Periodo de presentación de solicitudes de los estudiantes a la Comisión de TFGs, excepto los que
-ya tienen tutor asignado, hasta 31 de octubre.
-8º. Asignación de TFG y tutor a los estudiantes por parte de la Comisión de TFGs, en un plazo de 15
-días, con comunicación a los departamentos y publicación de las asignaciones.
-9º. Contacto con tutores y redacción de anteproyectos por los estudiantes seleccionados que aún no lo
-han presentado, en un plazo de 2 meses.
-10º. Presentación de anteproyecto en el departamento junto con documentación adicional.
-11º. Evaluación de anteproyectos en el departamento y asignación de tribunales, con comunicación a
-la Comisión de TFGs y al estudiante.
-12º. Contacto del estudiante con su tutor y desarrollo del trabajo y de la memoria.
-13º. Aprobar todas las asignaturas de la carrera.
-14º. Solicitud de defensa en la Secretaría del departamento en cualquier momento del curso,
-entregando libros y documentación adicional.
-15º. Fijar fecha de lectura con el Tutor (mínimo 5 días desde la solicitud de defensa).
-16º. Realización del examen (máximo una hora de duración).
-17º. El departamento envía el Acta de Calificación a la Comisión de TFCs.
-18º. Calificación del TFG en la siguiente convocatoria.
-19º. Solicitud del Título de Graduado en la Secretaría por parte del estudiante.
-
-12
-
-11. TFG REALIZADO EN EL EXTRANJERO
-A) ALUMNOS DE LA EPS QUE REALIZAN SU TFG EN EL EXTRANJERO
-Los estudiantes de la EPS pueden solicitar la adjudicación de un TFG en una Universidad o Institución
-extranjera, siempre que cuente con un convenio de colaboración con la Universidad de Alcalá. La
-Junta de Centro delegará en los departamentos la tarea de estimar si el TFG propuesto por el
-estudiante es de interés, y serán también los departamentos quienes asignen un tutor académico de la
-UAH, nombrando como “cotutor” al tutor de la Universidad de destino propuesto por el estudiante.
-El Tribunal de Calificación del TFG estará formado por profesores de la Universidad de destino y la
-defensa del mismo será realizada allí.
-Matriculación inicial:
-El alumno que realiza su TFG en una Universidad extranjera en el marco de un programa de
-intercambio deberá matricularlo en la UAH antes de realizar el viaje y tener dicha matrícula activa
-durante su estancia en el extranjero, ya que tal matrícula es requisito imprescindible para poder
-presentar un Anteproyecto.
-El alumno sólo se podrá matricular de TFG cuando esté matriculado de TODAS las asignaturas que le
-queden para finalizar el plan de estudios.
-El Anteproyecto:
-1. El anteproyecto consiste en un breve informe referente al TFG que el alumno va a realizar, en el que
-se resumen los objetivos de dicho trabajo, sus características, sus partes fundamentales (diagrama
-de bloques o modelos, si procede), su campo de aplicación, su nivel de innovación y demás
-aspectos que se consideren oportunos. Una guía para la realización del anteproyecto se puede
-encontrar en el Anexo IX de esta Normativa.
-2. Cuando el estudiante se encuentra ya en el Centro de destino, y una vez conocido el Tutor asignado
-allí (denominado "cotutor" en la UAH) y el contenido del trabajo a realizar, habitualmente
-propuesto por aquella universidad, el estudiante enviará un Anteproyecto en idioma español o
-inglés al Coordinador de Programas Internacionales de la EPS, junto con los siguientes
-documentos:
-• Un justificante de estar matriculado en el TFG.
-• Un informe del cotutor en el que manifieste el interés por el Trabajo presentado.
-Este Anteproyecto puede ser enviado por el estudiante en cualquier momento del curso, y el
-estudiante indicará también al Coordinador el departamento al que desea tramitarlo.
-3. El coordinador imprimirá cinco copias del Anteproyecto, guardando una para adjuntar al expediente
-del programa de intercambio del estudiante. Las otras copias serán enviadas al departamento al que
-el estudiante desea adscribir el TFG, junto con el justificante de matrícula y una fotocopia de la
-"Ficha de Estudiante Internacional" del alumno, que sustituye a la "Hoja de Control de
-Anteproyecto" habitual.
-4. El departamento estudiará y evaluará el anteproyecto por el procedimiento que tenga establecido
-para aceptarlo o rechazarlo. En caso de ser aceptado, tendrá un periodo de validez de dos años, y
-será el propio departamento, por delegación de la Junta de Escuela, el que asignará un tribunal e
-informará a la Comisión de Trabajos Fin de Grado.
-El tribunal estará formado por los siguientes miembros:
-- El Presidente de Tribunal.
-- Un Vocal Primero.
-- Un Vocal Segundo, que actuará como secretario.
-- Un suplente.
-El vocal segundo será el Tutor Académico del TFG, y el tutor extranjero actuará como "cotutor" y
-director principal del trabajo.
-
-13
-
-Este tribunal intervendrá en el caso de tener que realizar en esta Escuela el examen o exposición
-oral del TFG. La composición del tribunal será comunicada por el departamento al Coordinador
-internacional, quien a su vez informará al estudiante.
-5. Para los aspectos referentes a caducidad del anteproyecto, solicitud de prórroga, posible cambio de
-tema o tutor y posible renuncia al anteproyecto, se aplicarán los mismos procedimientos indicados
-en el punto 5 de esta Normativa.
-Defensa del TFG en la Universidad extranjera:
-1. Cuando el estudiante haya terminado su trabajo en la Universidad extranjera y haya preparado un
-informe/memoria del mismo, no podrá producirse su lectura y defensa sin que el mencionado
-informe/memoria haya sido remitido por correo electrónico al tutor académico de la UAH y éste
-haya dado su visto bueno. El tutor podrá opcionalmente emitir un informe para el Tribunal de
-Calificación de aquella universidad, si desea transmitirles algún tipo de consideración antes del
-examen.
-Una vez concluida la defensa, el tribunal extranjero otorgará un documento en el que conste la
-calificación obtenida, la fecha de la defensa y el número de créditos ECTS del TFG realizado.
-2. Dicho tribunal podrá también proponer la mención de Matrícula de Honor. En tal caso, será la
-Comisión de Trabajos Fin de Grado de la Escuela la que decida si se otorga tal mención a la
-calificación del estudiante en la UAH, con los mismos procedimientos indicados en el punto 8 de
-esta Normativa.
-3. Concluida la defensa, el estudiante presentará a su Tutor extranjero el documento "Autorización del
-Tutor extranjero para publicación en abierto" para obtener su firma en él (si el tutor consiente). Este
-documento deberá ser entregado finalmente por el alumno a su Coordinador en la UAH.
-Formato de la memoria del TFG en la UAH:
-Cuando el estudiante haya terminado su trabajo, y una vez defendido en la Universidad extranjera,
-elaborará el informe/memoria del mismo para presentar en la UAH, que constará de los siguientes
-apartados:
-1.
-
-Una primera página donde anotar los datos fundamentales del TFG, las personas firmantes en la
-UAH, calificación y fecha de la convalidación, según el modelo que se indica más abajo.
-
-2.
-
-Una segunda página copia del Certificado de Notas oficial dado en el Centro de destino donde
-conste la calificación asignada al TFG y su número de créditos ECTS.
-
-3.
-
-Una tercera página de “Resumen” del TFG en español en no más de 100 palabras.
-
-4.
-
-Un “Resumen Ampliado” en español, de al menos 1500 palabras, que sintetice el trabajo
-desarrollado.
-
-5.
-
-La memoria completa del trabajo tal y como fue presentada en la Universidad extranjera, con sus
-apartados habituales de índices, resúmenes, memoria, diagramas, presupuesto, manual de usuario,
-bibliografía, etc. Esta memoria deberá ser traducida al español, salvo cuando el original esté en
-idioma inglés.
-
-14
-
-Formato de la primera página:
-
-UNIVERSIDAD DE ALCALÁ
-Escuela Politécnica Superior
-
-<<TITULACIÓN>>
-Trabajo Fin de Grado
-<< Título del Trabajo >>
-Autor: << Nombre y apellidos del alumno >>
-Trabajo realizado en la Universidad de: <<Nombre Universidad>>
-País: <<Nombre del país>>
-Profesor Tutor: <<Nombre del profesor Tutor extranjero>>
-FIRMAS:
-(Espacio para la firma)
-
-Secretario de la Escuela: D. Francisco J. Álvarez García
-(Espacio para la firma)
-
-Coordinador Internacional: D. Antonio Guerrero Baquero
-(Espacio para la firma)
-
-Tutor Académico: D/Dª << Nombre y Apellidos >>
-CALIFICACIÓN: ..................................................
-FECHA: .......................................
-En el tomo que irá a Biblioteca y en la copia electrónica para publicar en abierto NO DEBERÁ
-incluirse el espacio para la CALIFICACIÓN del estudiante.
-Presentación de la memoria del TFG en la UAH:
-1. El estudiante presentará un borrador del informe/memoria al Tutor Académico asignado al TFG,
-bien en papel o por correo electrónico en formato informático, junto con los siguientes documentos
-convenientemente cumplimentados:
-• El documento de "Visto Bueno del Tutor" que se adjunta como "Anexo VI" en esta Normativa.
-• El documento "Informe del Tutor sobre el TFG" que se adjunta como "Anexo VII".
-• El documento "Autorización del Tutor para publicación del TFG en abierto" que se adjunta
-como "Anexo V" (sólo si el alumno consiente en tal publicación en abierto).
-2. El tutor cotejará el informe/memoria con el anteproyecto que fue presentado por el alumno
-(archivado en el departamento) para confirmar que lo expresado en éste se corresponde con los
-
-15
-
-contenidos de aquél, y si está conforme firmará el documento de "Visto Bueno". Si no está
-conforme, el Tutor deberá informar al estudiante sobre las causas y le propondrá posibles vías de
-subsanación del problema. Si finalmente este Visto Bueno no es concedido, la convalidación del
-TFG no podrá llevarse a cabo.
-3. Si el Visto Bueno es concedido, el tutor también rellenará el "Informe del Tutor" anotando sus
-impresiones sobre el trabajo realizado, y firmará la "Autorización de publicación en abierto" si está
-conforme. Todos estos tres documentos serán enviados por el Tutor directamente al Coordinador
-internacional vía correo interno.
-4. El Coordinador Internacional pondrá en conocimiento del estudiante y del Tutor extranjero el visto
-bueno del Tutor académico de la EPS, con el fin de que se proceda a la defensa y calificación del
-TFG en los términos estipulados por la Universidad de destino.
-5. Calificado el TFG, el estudiante presentará al Coordinador internacional el mismo borrador del
-informe/memoria junto con los siguientes documentos convenientemente cumplimentados:
-• El certificado original de notas del Centro de destino en donde conste la calificación obtenida en
-el trabajo y su número de créditos ECTS.
-• El documento "Autorización del alumno para publicación electrónica" que se adjunta como
-"Anexo IV", firmado por el alumno (sólo si el alumno consiente en tal publicación).
-• El documento "Autorización del Tutor extranjero para publicación en abierto" que se adjunta
-como "Anexo VIII", firmado por dicho Tutor (sólo si el alumno y el mencionado tutor
-consienten en tal publicación).
-6. El Coordinador comprobará el correcto formato del informe/memoria, y si está conforme firmará
-también el documento de "Visto Bueno" del TFG y lo comunicará al alumno. Si no está conforme,
-el Coordinador deberá informar al estudiante sobre las causas y le propondrá posibles vías de
-subsanación del problema.
-El documento de Visto Bueno quedará finalmente en poder del Coordinador internacional, y no
-formará parte del libro del TFG. El Coordinador también archivará los demás documentos
-recibidos, que serán más tarde tramitados a la biblioteca de la Escuela para conseguir la publicación
-en abierto del TFG con todos los requisitos necesarios de aceptación de las partes implicadas.
-7. Una vez aprobado el borrador de informe/memoria por el Tutor Académico y por el Coordinador
-internacional, el alumno encuadernará TRES ejemplares del mismo según el formato indicado en el
-punto 9-A de esta Normativa, y los guardará hasta que tenga ya aprobadas todas las restantes
-asignaturas de la carrera.
-Una de las copias del libro llevará adjunto un disco CD-ROM o DVD que contenga los posibles
-códigos fuentes y ejecutables desarrollados en el TFG, así como el propio documento del
-informe/memoria. Esta copia será la que quede finalmente en poder del departamento.
-Otra de las copias del libro llevará adjunto un disco CD-ROM o DVD que contenga
-exclusivamente el documento de informe/memoria del TFG en formato PDF, incluyendo los
-resúmenes en español. Esta copia será enviada a la biblioteca del Centro para su publicación en
-abierto, caso de contar con el consentimiento de todas las partes implicadas.
-Para estos libros también serán de aplicación las posibles restricciones de confidencialidad
-indicadas en el punto 9 de esta Normativa.
-8. Una vez aprobadas todas las demás asignaturas de la carrera, el estudiante entregará los tres libros al
-Coordinador Internacional, junto con un justificante de haber superado todas las asignaturas
-restantes del plan de estudios.
-9. El Coordinador anotará en los tres ejemplares la calificación concedida en la Universidad extranjera
-(convertida al sistema de calificaciones de la UAH) junto con la fecha, los firmará y sellará. En este
-mismo momento elaborará un Acta extraordinaria de validación del TFG, la firmará y sellará, y
-recabará en ella y en los tres libros la firma del Secretario de la Escuela.
-
-16
-
-Exposición o examen del TFG en la UAH
-1. Si no ha sido concedida ninguna calificación en el Centro de destino, por no haberse concluido el
-TFG o no haberse realizado ningún examen del mismo, el estudiante se someterá a las
-recomendaciones marcadas por su Coordinador internacional de la UAH. Así, podrá exigirse la
-continuación del trabajo si éste está incompleto, para posteriormente someterse a examen ordinario
-del TFG ante el Tribunal designado en la UAH. En este caso, los procedimientos de calificación y
-gestión administrativa derivados serán los habituales para cualquier otro TFG de la Escuela.
-2. Caso de existir calificación por parte del Centro de destino, el Coordinador internacional entregará
-al Tutor Académico un ejemplar del TFG (el que contiene el disco CD-ROM para el
-departamento). El Tutor Académico podrá solicitar, en el plazo máximo de una semana natural, la
-exposición oral del trabajo por parte del estudiante ante el Tribunal asignado en la EPS, si
-considera beneficiosa la transferencia de información que ello conlleva. Caso de ser solicitada, tal
-exposición no afectará en ningún modo a la calificación otorgada en la universidad extranjera,
-aunque sí podrá ser emitido un informe final que será valorado si se ha solicitado en aquella
-universidad la mención de Matrícula de Honor. La exposición será realizada en la fecha y lugar
-acordados entre el Tutor y el estudiante. Durante la misma, los miembros del tribunal podrán
-realizar cuantas preguntas estimen oportunas con un plazo máximo de una hora.
-3. Haya o no exposición oral del trabajo, el Tutor Académico deberá finalmente firmar y entregar su
-ejemplar del libro del TFG a la Secretaría del departamento al que pertenece, para su conveniente
-tramitación y archivo. Igualmente el Tutor Académico será solicitado por el Coordinador
-internacional para que firme los restantes ejemplares del libro del TFG, así como el Acta
-extraordinaria del TFG.
-4. La segunda copia de la memoria del TFG, ya firmada por el Tutor Académico, será entregada por el
-Coordinador internacional al estudiante y quedará en poder de éste.
-Validación del TFG en la UAH
-1. El Coordinador internacional elaborará un documento de solicitud de validación internacional del
-TFG, semejante al habitual documento de petición de validación de asignaturas realizadas en el
-extranjero, documento que será firmado por el Director de la EPS. Este documento y el Acta
-extraordinaria del TFG ya completamente firmada serán adjuntados al tercero de los ejemplares del
-libro del TFG y entregados por el Coordinador en la Secretaría de la Escuela. La validación del
-TFG así solicitada será llevada a efecto en la siguiente convocatoria de calificaciones de TFGs
-(junio o septiembre), y siempre que el estudiante tenga ya aprobadas todas las asignaturas de su
-carrera. Finalmente el estudiante podrá solicitar la expedición de su Título oficial de Graduado en
-la Secretaría del Centro.
-2. El estudiante puede rehusar el procedimiento de validación automática y solicitar expresamente por
-escrito al Coordinador internacional la intervención del tribunal asignado en la Escuela,
-posiblemente para optar a una calificación distinta de la obtenida en el Centro de destino. En tal
-caso, el tribunal será libre de otorgar cualquier calificación al TFG, independientemente de la
-asignada en el Centro de destino, y los procedimientos de calificación y gestión administrativa
-derivados serán los habituales para cualquier otro TFG de la EPS.
-3. Finalmente, al autor del TFG se le dará la opción de depositarlo en el repositorio institucional de
-documentos digitales de la Universidad (e_Buah), que ofrece acceso abierto a sus colecciones. Es
-una opción voluntaria que requiere el consentimiento expreso del tutor académico de la UAH, del
-cotutor de la Universidad de destino y del estudiante autor del trabajo, consentimientos otorgados
-mediante la firma por el autor de la licencia aprobada en Consejo de Gobierno (Anexo IV) y la
-firma por los mencionados tutores de la autorización de publicación en abierto (Anexo V y Anexo
-VIII). Los tres documentos serán enviados a la Biblioteca junto con la copia electrónica.
-
-17
-
-Resumen de Secuencia Temporal Habitual
-1º. Matriculación del estudiante en el TFG en julio, junto con todas las asignaturas restantes de la
-carrera.
-2º. Viaje a la universidad extranjera, asignación de tutor extranjero y redacción del anteproyecto por
-parte del estudiante.
-3º. Envío del anteproyecto por correo electrónico al Coordinador Internacional de la EPS junto con
-documentación adicional, en cualquier momento del curso.
-4º. Envío del anteproyecto por el Coordinador al departamento solicitado por el estudiante.
-5º. Evaluación del anteproyecto en el departamento y asignación de Tutor académico y tribunal de la
-UAH, con comunicación al Coordinador y al estudiante. Periodo de validez de 2 años.
-6º. Contacto del estudiante con su tutor extranjero y desarrollo del trabajo y de la memoria extranjera.
-7º. Envío de la memoria extranjera al Tutor académico de la EPS para obtener su visto bueno previo a
-la defensa del TFG en aquella universidad.
-8º. Defensa del TFG en la universidad de destino, obtención de un certificado de calificación y del
-visto bueno de aquel Tutor para publicación del TFG en abierto.
-9º. Retorno a la UAH y elaboración de la memoria del TFG a presentar en la EPS.
-10º. Envío del borrador de dicha memoria al Tutor académico de la EPS y al Coordinador
-Internacional de la EPS junto con documentación adicional, en cualquier momento del curso,
-para obtener el visto bueno de ambos.
-11º. Encuadernar los 3 libros.
-12º. Aprobar todas las asignaturas de la carrera.
-13º. Entregar los 3 libros al Coordinador Internacional, junto con diversos soportes informáticos CD o
-DVD.
-14º. Posible exposición del trabajo ante el Tutor y tribunal de la EPS, sin comprometer la calificación
-obtenida en la universidad extranjera.
-15º. Tramitación y envío de los documentos de validación del TFG a la Secretaría de Alumnos de la
-EPS por parte del Coordinador.
-16º. Validación del TFG en la siguiente convocatoria de junio o septiembre.
-17º. Solicitud del Título de Graduado en la Secretaría por parte del estudiante.
-
-18
-
-B) ALUMNOS EXTRANJEROS QUE REALIZAN SU TFG EN LA EPS
-Primeros contactos
-El alumno, a través de su Coordinador internacional en su universidad de origen, hará llegar al
-Coordinador de Alcalá su solicitud de realización de un TFG en Alcalá, acompañada de su Currículum
-Vitae, su expediente académico y una lista de áreas o temas en los que desearía realizar su trabajo. El
-Coordinador internacional de Alcalá transferirá esta información y solicitud a la Comisión de Trabajos
-Fin de Grado, quien valorará el departamento más afín con las áreas especificadas y le transmitirá la
-petición. Si este departamento accede, adquiere el compromiso de asignarle un Tutor y un trabajo a
-realizar, bien cuando el estudiante llegue a Alcalá o bien antes, con contactos previos vía correo
-electrónico. Si el departamento no accede, la Comisión de Trabajos Fin de Grado puede intentarlo de
-nuevo en otros departamentos. Si ningún departamento accede, la solicitud del estudiante deberá ser
-denegada definitivamente.
-Matriculación inicial
-Cuando el alumno llega a Alcalá, acudirá primeramente al Coordinador internacional para que éste
-autorice su matriculación en la asignatura “Trabajo Fin de Grado” de la Titulación más afín con el área
-del TFG a realizar. Esta matrícula será gratuita para los estudiantes extranjeros del programa Erasmus,
-y no necesitará requisitos académicos previos. En caso de tratarse de un estudiante extranjero no
-perteneciente a un convenio Erasmus, deberá revisarse la gratuidad de la misma.
-El Anteproyecto
-A continuación el estudiante acudirá al departamento receptor, donde se le pondrá en contacto con su
-profesor Tutor. Una vez acordado con él el contenido del trabajo a realizar, que puede ser propuesto
-por el propio estudiante o por el departamento, el estudiante redactará el Anteproyecto y lo entregará
-por cuadruplicado en el departamento junto con la “Hoja de Control de Anteproyecto”, para su
-aceptación y asignación de tribunal calificador. Una quinta copia será entregada por el estudiante al
-Coordinador internacional, para su archivo en el expediente del alumno. A partir de aquí el
-procedimiento es el mismo que el de los estudiantes españoles.
-La memoria del TFG
-Una vez concluido el trabajo, el estudiante redactará y encuadernará por triplicado el informe/memoria
-del mismo, según las normas habituales de los TFG en la Escuela. Este informe puede ser redactado en
-inglés, si así lo solicita el estudiante para facilitar la futura presentación del mismo en su universidad
-de origen. En la primera página del mismo se incluirá también una referencia a la universidad de
-origen del estudiante extranjero y su profesor Tutor, o en su defecto Coordinador internacional, en
-dicha universidad, según el modelo que se indica más abajo.
-El examen
-El TFG será examinado y evaluado en Alcalá por el tribunal asignado al mismo, y esta evaluación será
-transferida al Acta de TFG habitual en la EPS, generada por la Secretaría de Alumnos. Antes de ser
-devuelta a Secretaría, una copia de dicha Acta será entregada por el departamento al Coordinador
-internacional de la Escuela, el cual generará un documento “Certificado de Notas” en idioma inglés
-(“Transcript of Records”). Ambos documentos, Acta en español y Certificado en inglés, serán
-enviados por el Coordinador internacional a la universidad de origen del estudiante.
-
-19
-
-Formato de la primera página:
-
-UNIVERSIDAD DE ALCALÁ
-Escuela Politécnica Superior
-
-<<TITULACIÓN>>
-Trabajo Fin de Grado
-<< Título del Trabajo >>
-Autor: << Nombre y apellidos del alumno >>
-Universidad de origen: <<Nombre Universidad>>
-País: <<Nombre del país>>
-Profesor Tutor: <<Nombre del profesor Tutor extranjero>>
-
-Presidente : D/Dª << Nombre y Apellidos >>
-(Espacio para la firma)
-
-Vocal 1: D/Dª << Nombre y Apellidos >>
-(Espacio para la firma)
-
-Vocal 2: D/Dª << Nombre y Apellidos >>
-CALIFICACIÓN: ..............................................
-FECHA: ..................................
-
-12. DISPOSICIONES TRANSITORIAS
-1. Los estudios oficiales previos al Espacio Europeo de Educación Superior que requieren un trabajo
-fin de carrera por parte del alumno para completar sus estudios seguirán guiándose por la
-normativa anterior aprobada a tal fin.
-2. Excepcionalmente, durante el curso académico 2011-12, para los estudiantes de los Cursos de
-Adaptación al Grado no serán de aplicación los plazos establecidos en esta Normativa.
-
-20
-
-Anexo I – Solicitud de Trabajo Fin de Grado
-Datos personales del Alumno:
-NOMBRE:
-DIRECCIÓN:
-POBLACIÓN:
-EMAIL:
-ESTUDIOS:
-
-Nº Pag.: ___
-D.N.I.:
-CÓDIGO POSTAL:
-TELÉFONO:
-
-PROVINCIA:
-
-CURSO ACADÉMICO:
-
-20
-
-/ 20
-
-Trabajos Fin de Grado solicitados:
-Orden de
-Código y Título del TFG
-Preferencia
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-* Utilícense más páginas si es necesario.
-
-Alcalá de Henares,
-
-Departamento
-
-de
-
-de
-
-Firma del ALUMNO:
-
-DICTAMEN (a rellenar por la Comisión de Trabajos Fin de Grado)
-Trabajo Fin de Grado asignado:
-Título:
-Departamento:
-Tutor:
-
-Alcalá de Henares, a _____ de ________________________ de 20____
-
-Sello
-
-Fdo: ______________________________
-La Comisión de TFGs
-
-Este formulario debe ser entregado en la Secretaría de Dirección de la EPS en los plazos
-establecidos.
-
-21
-
-Anexo II – Ejemplo de Hoja de control de anteproyecto
-DEPARTAMENTO DE ____________________________________________
-Datos personales del Alumno
-NOMBRE:
-DIRECCIÓN:
-POBLACIÓN:
-EMAIL:
-ESTUDIOS:
-
-D.N.I.:
-CÓDIGO POSTAL:
-TELÉFONO:
-
-PROVINCIA:
-
-ESPECIALIDAD:
-
-IDIOMA ESCOGIDO PARA DESARROLLAR EL TRABAJO:
-
-[__] ESPAÑOL
-
-[__] INGLÉS
-
-Datos de la Propuesta de Anteproyecto
-TÍTULO DEL
-ANTEPROYECTO:
-Director (si procede):
-
-Alcalá de Henares,
-Firma de Visto Bueno del Tutor (si procede),
-
-de
-
-de
-
-Firma del ALUMNO,
-
-Acuerdo del Departamento (a rellenar por el Departamento)
-ACEPTADO:  SI /  NO
-CAUSA DEL RECHAZO:
-
-FECHA: ___ / ___ / ____ PERIODO DE VALIDEZ: _________
-
-TRIBUNAL CALIFICADOR:
-
-Presidente:
-Vocal 1º:
-Vocal 2º:
-Suplente:
-
-D./Dª.
-D./Dª.
-D./Dª.
-D./Dª.
-
-En caso de que el director del Trabajo no sea profesor de la escuela, el departamento nombra al vocal
-2º como tutor/codirector del trabajo
-Alcalá de Henares, a _____ de ________________________ de 20____
-
-Sello del departamento
-
-Fdo: ______________________________
-Secretario del departamento
-22
-
-Anexo III – Visto bueno del tutor del TFG.
-
-D.
-
-_________________________________________________________,
-
-Tutor del Trabajo Fin de Grado de título de título:
-"____________________________________________________________
-____________________________________________________________”
-realizado por D. _______________________________________________,
-por la presente da su conformidad para que el citado trabajo sea presentado
-para su defensa.
-
- Sí
- No
-
-Alcalá de Henares, _____de ________________ de 20___.
-
-Fdo.: _______________________________
-
-23
-
-Anexo IV – Autorización del Autor para la publicación
-electrónica
-LICENCIA
-(Aprobada en Consejo de Gobierno el 18 de Diciembre de 2008)
-“E-ciencia” es un proyecto enmarcado en el contrato programa de cooperación
-interbibliotecaria entre la Comunidad de Madrid y el Consorcio Madroño, para crear una
-plataforma digital de acceso libre y abierto a la producción científica en la Comunidad de
-Madrid, con la participación de las universidades públicas y de los centros de
-investigación en este ámbito.
-El autor/a D/ña. __________________________________________________________
-(con DNI ) _______________________________, Adscrito/a a la Universidad de
-__________________________________________________________________ como
-________________________________, DECLARA que es el titular de los derechos de
-propiedad intelectual, objeto de la presente cesión, en relación con la obra:
-________________________________________________________________________
-_______________________________________________________________________ ,
-que ésta es una obra original, y que ostenta la condición de autor en el sentido que otorga
-la Ley de Propiedad Intelectual como titular único o cotitular de la obra.
-En caso de ser cotitular, el autor declara asimismo que cuenta con el consentimiento de
-los restantes titulares para hacer la presente cesión.
-O en caso de previa cesión a terceros de derechos de explotación de la obra, el autor
-declara que tiene la oportuna autorización de dichos titulares de derechos a los fines de
-esta cesión o bien que retiene la facultad de ceder estos derechos en la forma prevista en
-la presente cesión.
-Con el fin de dar la máxima difusión a mi obra citada, a través de este repositorio
-institucional, CEDO a la Universidad de Alcalá, de forma gratuita y no exclusiva, por el
-máximo plazo legal y con ámbito universal, para que pueda ser utilizada de forma libre y
-gratuita por todos los usuarios del repositorio y del portal e-ciencia, los derechos de
-reproducción, de distribución, de comunicación pública, incluido el derecho de puesta a
-disposición electrónica, y el de transformación.
-La cesión se realiza en las siguientes condiciones:
-El repositorio no asume la titularidad de la obra, que sigue correspondiendo al autor. Sin
-embargo, esta cesión de derechos sobre la obra permitirá al repositorio:
-(a) Transformarla, en la medida en que ello sea necesario, para adaptarla a
-cualquier tecnología susceptible de incorporación a Internet; realizar las
-adaptaciones necesarias para hacer posible la utilización de la obra en formatos
-electrónicos, así como incorporar los metadatos necesarios para realizar el registro
-de la obra, e incorporar también “marcas de agua” o cualquier otro sistema de
-seguridad o de protección.
-(b) Reproducirla en un soporte digital para su incorporación a una base de datos
-electrónica, incluyendo el derecho de reproducir y almacenar la obra en servidores
-a los efectos de seguridad, de conservación, y de preservación del formato.
-(c) Distribuir a los usuarios copias electrónicas de la obra en un soporte digital.
-
-24
-
-(d) Su comunicación pública y su puesta a disposición a través de un archivo
-abierto institucional, accesible de modo libre y gratuito a través de Internet.
-La cesión es no-exclusiva, por lo que el autor es libre de comunicar y dar publicidad a la
-obra, en esta y en posteriores versiones, a través de los medios que estime oportunos.
-El autor garantiza que el compromiso que aquí adquiere no infringe ningún derecho de
-terceros, ya sean de propiedad industrial, intelectual o cualquier otro.
-El autor garantiza asimismo que el contenido de las obras no atenta contra los derechos
-al honor, a la intimidad y a la imagen de terceros.
-El autor asume la responsabilidad para el caso de que la Universidad de Alcalá fuera
-condenada por infracción de derechos derivada de las obras objeto de la cesión.
-El autor, como garante de la autoría de las obras, asume toda reclamación o
-responsabilidad, incluyendo las indemnizaciones por daños, que pudieran ejercitarse
-contra la Universidad por terceros que vieran infringidos sus derechos e intereses a causa
-de la cesión.
-La obra se pondrá a disposición de los usuarios para que hagan de ella un uso justo y
-respetuoso con los derechos del autor, según lo permitido por la legislación aplicable, con
-fines de estudio, investigación, o cualquier otro fin lícito. El uso posterior, más allá de la
-copia privada, requerirá que se cite la fuente y se reconozca la autoría, que no se obtenga
-beneficio comercial, y que no se realicen obras derivadas.
-La Universidad deberá informar a los usuarios del archivo sobre los usos permitidos, y no
-garantiza ni asume responsabilidad alguna por otras formas en que los usuarios hagan un
-uso posterior de las obras no conforme con la legislación vigente.
-La Universidad no revisará el contenido de las obras, que en todo caso permanecerá bajo
-la responsabilidad exclusiva del autor.
-La Universidad no estará obligada a ejercitar acciones legales en nombre del autor en el
-supuesto de infracciones a derechos de propiedad intelectual derivados del depósito y
-archivo de las obras.
-El autor podrá solicitar la retirada de la obra del repositorio por causa justificada. A tal fin
-deberá ponerse en contacto con el responsable de e_Buah ( ebuah@uah.es ). Asimismo,
-el repositorio podrá retirar la obra, previa notificación al autor, en supuestos
-suficientemente justificados, o en caso de reclamaciones de terceros.
-El autor será convenientemente notificado de cualquier reclamación que puedan formular
-terceras personas en relación con la obra y, en particular, de reclamaciones relativas a los
-derechos de propiedad intelectual sobre ella.
-
-En Alcalá de Henares, a _____ del mes de ___________________ del año 20____
-
-POR LA UNIVERSIDAD POR EL AUTOR/A
-Excma. Sra. María Luisa Marina Alegre Don/Doña
-Vicerrectora de Investigación de la UAH
-
-25
-
-Anexo V – Autorización del tutor del TFG para su
-publicación en abierto.
-AUTORIZACIÓN DEL TUTOR DEL TRABAJO FIN DE GRADO PARA
-PUBLICAR EN EL REPOSITORIO INSTITUCIONAL E-BUAH
-
-D. _________________________________________________________,
-Tutor del Trabajo Fin de Grado de título de título:
-"____________________________________________________________
-____________________________________________________________”
-realizado por D. _______________________________________________,
-por la presente da su conformidad para que el citado trabajo sea incluido en
-el repositorio institucional de documentos digitales de la Universidad, e-Buah.
-
- Sí
- No
-
-Alcalá de Henares, _____de ________________ de 20___.
-
-Fdo.: _______________________________
-
-26
-
-Anexo VI: Visto Bueno del borrador de Informe/Memoria
-de TFG realizado en el extranjero.
-A RELLENAR POR EL ALUMNO:
-Trabajo Fin de Grado presentado por el alumno D/Dª:
-...................................................................................................................................................
-De Título:
-...................................................................................................................................................
-...................................................................................................................................................
-Correspondiente a la Titulación de...........................................................................................
-Presentado en el departamento de:…......................................................................................
-Realizado en la Universidad de: ..............................................................................................
-País: ....................................................................................
-A RELLENAR POR EL PROFESOR:
-El profesor Tutor Académico asignado al Trabajo Fin de Grado arriba mencionado,
-D/Dª...................................................................................................................., tras cotejar
-el borrador de Informe/Memoria presentado por el alumno con el Anteproyecto del mismo,
-otorga su VISTO BUENO a su presentación.
-FIRMA
-
-Fdo: D/Dª .........................................................................
-Alcalá de Henares, ....... de ................................ de 20.....
-A RELLENAR POR EL COORDINADOR:
-El Coordinador de Trabajos Fin de Grado realizados en el extranjero de la Escuela
-Politécnica Superior, D/Dª ..................................................................,
-tras comprobar el correcto formato del borrador de Informe/Memoria presentado por el
-alumno arriba mencionado, otorga su VISTO BUENO.
-FIRMA
-
-Fdo: D/Dª .............................................................................
-Alcalá de Henares, ....... de ................................ de 20.....
-Esta hoja, una vez firmada por el Profesor Tutor, debe ser devuelta al Coordinador
-Internacional vía correo interno.
-
-Anexo VII: Informe del profesor tutor sobre el TFG
-realizado en el extranjero.
-ALUMNO: .............................................................................................................................
-UNIVERSIDAD EXTRANJERA: .........................................................................................
-PROFESOR: …………………………………………………………………......................
-ENCUESTA AL PROFESOR TUTOR:
-Por favor, describa su impresión sobre los siguientes aspectos referentes al Trabajo
-presentado por el alumno:
-• Nivel técnico y/o científico del Trabajo:
-...........................................................................................................................................
-...........................................................................................................................................
-...........................................................................................................................................
-...........................................................................................................................................
-• Calidad de presentación:
-...........................................................................................................................................
-...........................................................................................................................................
-...........................................................................................................................................
-...........................................................................................................................................
-• Valoración de la calificación dada en la Universidad extranjera:
-...........................................................................................................................................
-...........................................................................................................................................
-...........................................................................................................................................
-...........................................................................................................................................
-
-Esta encuesta, una vez contestada por el Profesor Tutor, debe ser devuelta al
-Coordinador Internacional vía correo interno, NO a través del estudiante.
-
-Anexo VIII – Autorización del tutor del TFG de la
-Universidad extranjera para su publicación en abierto.
-FINAL PROJECT OPEN ACCESS PUBLICATION IN E-BUAH
-(INTERNATIONAL AUTHORIZATION)
-
-Mr /Ms / Mrs ________________________________________________,
-belonging to _____________________________________ University
-and Supervisor of the Final Project / Thesis entitled:
-"____________________________________________________________
-___________________________________________________________”,
-authored by the exchange student Mr/Ms/Mrs:
-____________________________________________________________
-___________________________________________________________,
-authorizes to upload this Final Project in the Open Digital Documents
-Repository of Alcala University (e-Buah).
-
- I agree
- I disagree
-
-Dated, signed and stamped in ________________________ on _____________
-(place)
-(dd/mm/yyyy)
-
-Anexo IX – Guía para la realización del anteproyecto.
-Un anteproyecto de TFG debería de tener la siguiente estructura y contenidos básicos
-desarrollados con una extensión aproximada de tres-cuatro páginas:
-Autor: el alumno.
-Tutor: si lo tiene ya asignado.
-Titulación.
-Título: a ser posible que aporte información.
-•
-•
-
-Un mal ejemplo: Control de procesos.
-Un buen ejemplo: Simulación de un proceso automatizado de manipulación de carne
-en una sala de despiece mediante bus de red local.
-
-1. Introducción.
-Fijar el contexto en el que se desenvolverá el TFG y sus antecedentes si existen.
-2. Objetivos y campo de aplicación.
-Delimitar y explicar con claridad los objetivos generales a conseguir con el TFG y la
-aplicación del mismo.
-3. Descripción del trabajo.
-Explicar en detalle qué se va a hacer, cómo y por qué. Sería interesante incluir un
-esquema/diagrama de bloques, si se puede.
-4. Metodología y plan de trabajo.
-Descripción (puede ser incluso una enumeración) clara de las etapas que se van a seguir,
-y si es posible se deberá incluir un diagrama de Gantt.
-5. Medios.
-Descripción de los medios necesarios para realizar el TFG.
-6. Bibliografía.
-Lista de recursos bibliográficos utilizados para la confección del anteproyecto y otros
-que ya se conoce/dispone para su utilización en la realización del TFG. El estilo de
-citación de referencias debe ser el de la APA o en su defecto el de IEEE.
-
-Anexo X – Portada y tapa trasera del libro del TFG:
-Para obtener la portada en formato DOC, pulse AQUÍ
-
-Universidad de Alcalá
-Escuela Politécnica Superior
-
-<<TITULACIÓN>>
-
-Trabajo Fin de Grado
-<<Título del Trabajo>>
-
-Autor: <<Nombre y apellidos del alumno>>
-Tutor/es: <<Nombre y apellidos del tutor/es>>
-
-<<Año de realización del examen>>
-
-Universidad de Alcalá
-Escuela Politécnica Superior
-
-
+motivados y se presentarÃ¡n dirigidos al Director de Escuela en un plazo no superior a 5 dÃ­as hÃ¡biles
+desde la defensa del TFG. La citada ComisiÃ³n tendrÃ¡ un plazo mÃ¡ximo de 15 dÃ­as para adoptar una
+decisiÃ³n motivada.
+11. Una vez realizado el examen, el tribunal firmarÃ¡ el acta del mismo y la enviarÃ¡ a la ComisiÃ³n de
+TFGs. Esta finalmente la remitirÃ¡ a la SecretarÃ­a de Alumnos para que sea incorporada al acta de la
+asignatura en la convocatoria posterior mÃ¡s prÃ³xima.
+12. En caso de haber aprobado el examen de TFG, el tribunal firmarÃ¡ tambiÃ©n la primera hoja de los
+tres ejemplares de la memoria del TFG, haciendo constar la fecha y la calificaciÃ³n obtenida por el
+alumno. La calificaciÃ³n no se reflejarÃ¡ en uno de ellos (el ejemplar que irÃ¡ a Biblioteca) ni en la
+copia electrÃ³nica de la memoria. A tal efecto, todas las memorias deberÃ¡n incluir una primera
+pÃ¡gina con el formato que se define en el punto 9. El acta y los tomos firmados se entregarÃ¡n en la
+secretarÃ­a del departamento, la cual devolverÃ¡ un ejemplar de la memoria al alumno. Otro tomo y el
+soporte informÃ¡tico, 

@@ -1,6 +1,6 @@
 Para subir la plantilla a distintos sitios:
 
-+ En www.depeca.uah.es est· en 
++ En www.depeca.uah.es est√° en 
   - https://www.depeca.uah.es/depeca/repositorio/otros/book-latex.zip
   - https://www.depeca.uah.es/depeca/repositorio/asignaturas/201760/CA_plantilla_TFM_latex.zip
 

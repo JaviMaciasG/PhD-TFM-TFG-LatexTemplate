@@ -2,18 +2,18 @@
 % 
 % Generic template for TFC/TFM/TFG/Tesis
 % 
-% $Id: preamble.tex,v 1.33 2016/03/31 10:46:01 macias Exp $
+% $Id: preamble.tex,v 1.34 2017/04/06 13:56:12 macias Exp $
 % 
 % By:
-% + Javier MacÌas-Guarasa. 
-%   Departamento de ElectrÛnica
-%   Universidad de Alcal·
+% + Javier Mac√≠as-Guarasa. 
+%   Departamento de Electr√≥nica
+%   Universidad de Alcal√°
 % + Roberto Barra-Chicote. 
-%   Departamento de IngenierÌa ElectrÛnica
-%   Universidad PolitÈcnica de Madrid   
+%   Departamento de Ingenier√≠a Electr√≥nica
+%   Universidad Polit√©cnica de Madrid   
 % 
-% Based on original sources by Roberto Barra, Manuel OcaÒa, Jes˙s Nuevo,
-% Pedro Revenga, Fernando Herr·nz and Noelia Hern·ndez. Thanks a lot to
+% Based on original sources by Roberto Barra, Manuel Oca√±a, Jes√∫s Nuevo,
+% Pedro Revenga, Fernando Herr√°nz and Noelia Hern√°ndez. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
 % 
@@ -52,11 +52,11 @@
   \PassOptionsToPackage{cmyk}{xcolor}% NB: put this *before* \usepackage{pst-all}
 }
 
-\usepackage[latin1]{inputenc} % Para poder escribir con acentos y Ò. en
+%\usepackage[latin1]{inputenc} % Para poder escribir con acentos y √±. en
                               % latin1
-%\usepackage[utf8]{inputenc} % Para poder escribir con acentos y Ò. en utf8
+\usepackage[utf8]{inputenc} % Para poder escribir con acentos y √±. en utf8
 \usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
-                              % usar si no es necesario, porque ralentiza muchisimo la compilaciÛn.
+                              % usar si no es necesario, porque ralentiza muchisimo la compilaci√≥n.
 \usepackage{ae}               % Para que todas las fuentes sean Type1, y ninguna Type3.
 \usepackage{lmodern}          % This generates a pdf with searchable
                               % accented characters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -175,7 +175,7 @@ hypertexnames=false,               %%% needed for correct links to
 % hypertexnames=true,               %%% needed for correct links on pagebackrefs!!!
 breaklinks=true,                   %%% breaks lines, but links are very small
 % pagebackref=true,
-% linktocpage=true,                 %%% enlace en el numero de p·gina.
+% linktocpage=true,                 %%% enlace en el numero de p√°gina.
 linktoc=all,
 colorlinks=true,
 linkcolor=blue,    
@@ -506,7 +506,7 @@ hyperfootnotes=false,
 % 
 % \begin{FraseCelebre}
 %   \begin{Frase}
-%     Y asÌ, del mucho leer y del poco dormir...
+%     Y as√≠, del mucho leer y del poco dormir...
 %   \end{Frase}
 %   \begin{Fuente}
 %     Don Quijote de la Mancha
@@ -517,21 +517,21 @@ hyperfootnotes=false,
 %     
 %     Resultado:
 %     
-%     AÒade la frase cÈlebre del principio de un capÌtulo.
+%     A√±ade la frase c√©lebre del principio de un cap√≠tulo.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
-\newenvironment{FraseCelebre}% DefiniciÛn del entorno de FraseCelebre
+\newenvironment{FraseCelebre}% Definici√≥n del entorno de FraseCelebre
 {\begin{list}{}{%
       \setlength{\leftmargin}{0.5\textwidth}% Desplazamos el inicio de
-      % los p·rrafos a la derecha la mitad
-      % de la anchura de la lÌnea de texto.
+      % los p√°rrafos a la derecha la mitad
+      % de la anchura de la l√≠nea de texto.
       % Puede que quieras cambiar esto
       % por otra cantidad como '5cm'.
-      \setlength{\parsep}{0cm}% La separaciÛn entre p·rrafos de la
+      \setlength{\parsep}{0cm}% La separaci√≥n entre p√°rrafos de la
       % frase o de la fuente es normal, sin
       % espacio extra.
-      \addtolength{\topsep}{0.5cm}% Aumentamos un poco la separaciÛn
-      % entre la parte de la fase cÈlebre
-      % y los p·rrafos de alrededor
+      \addtolength{\topsep}{0.5cm}% Aumentamos un poco la separaci√≥n
+      % entre la parte de la fase c√©lebre
+      % y los p√°rrafos de alrededor
     }
   }
   {\unskip \end{list}}
@@ -601,7 +601,7 @@ hyperfootnotes=false,
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Para control de viudas y huÈrfanas
+% Para control de viudas y hu√©rfanas
 \clubpenalty=10000
 \widowpenalty=10000
 

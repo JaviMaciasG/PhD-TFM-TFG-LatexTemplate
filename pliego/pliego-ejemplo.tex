@@ -2,18 +2,18 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: pliego-ejemplo.tex,v 1.1 2014/01/09 00:50:38 macias Exp $
+% $Id: pliego-ejemplo.tex,v 1.2 2015/06/05 00:10:36 macias Exp $
 %
 % By:
-%  + Javier MacÌas-Guarasa. 
-%    Departamento de ElectrÛnica
-%    Universidad de Alcal·
+%  + Javier Mac√≠as-Guarasa. 
+%    Departamento de Electr√≥nica
+%    Universidad de Alcal√°
 %  + Roberto Barra-Chicote. 
-%    Departamento de IngenierÌa ElectrÛnica
-%    Universidad PolitÈcnica de Madrid   
+%    Departamento de Ingenier√≠a Electr√≥nica
+%    Universidad Polit√©cnica de Madrid   
 % 
-% Based on original sources by Roberto Barra, Manuel OcaÒa, Jes˙s Nuevo,
-% Pedro Revenga, Fernando Herr·nz and Noelia Hern·ndez. Thanks a lot to
+% Based on original sources by Roberto Barra, Manuel Oca√±a, Jes√∫s Nuevo,
+% Pedro Revenga, Fernando Herr√°nz and Noelia Hern√°ndez. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
 %
@@ -31,67 +31,67 @@
 \chapter{Pliego de condiciones}
 \label{cha:pliego-de-condiciones}
 
-\section{IntroducciÛn}
+\section{Introducci√≥n}
 
-En este apartado se evaluaran las condiciones para poner en marcha el software que se ha especificado en los apartados anteriores. Cabe resaltar el car·cter de este proyecto, en el que se ha diseÒado una colecciÛn de funciones que facilitan al programador la correcta adquisiciÛn de datos sonoros, y por lo tanto no aplican las condiciones tÈcnicas o ambientales que pudieran afectarle, ya que las impone los requerimientos las aplicaciones que en un futuro se le quiera dar a este proyecto.
+En este apartado se evaluaran las condiciones para poner en marcha el software que se ha especificado en los apartados anteriores. Cabe resaltar el car√°cter de este proyecto, en el que se ha dise√±ado una colecci√≥n de funciones que facilitan al programador la correcta adquisici√≥n de datos sonoros, y por lo tanto no aplican las condiciones t√©cnicas o ambientales que pudieran afectarle, ya que las impone los requerimientos las aplicaciones que en un futuro se le quiera dar a este proyecto.
 
-Solamente afectan las condiciones de configuraciÛn hardware o software donde se quiera aplicar el programa inform·tico.
+Solamente afectan las condiciones de configuraci√≥n hardware o software donde se quiera aplicar el programa inform√°tico.
 
 \section{Requisitos de hardware}
 
-\subsection{Requisitos mÌnimos}
+\subsection{Requisitos m√≠nimos}
 \begin{itemize}
-  \item UtilizaciÛn de un PC de 32 bits de escritorio con tarjeta de sonido.
-  \item Un mÌnimo de 384 MB de memoria RAM.
+  \item Utilizaci√≥n de un PC de 32 bits de escritorio con tarjeta de sonido.
+  \item Un m√≠nimo de 384 MB de memoria RAM.
   \item Al menos 100 MB de memoria libre en disco duro.
 \end{itemize}
 
 \subsection{Requisitos de hardware recomendados}
-Estos requisitos son necesarios para implementar algoritmos de localizaciÛn basados en onda sonora.
+Estos requisitos son necesarios para implementar algoritmos de localizaci√≥n basados en onda sonora.
 \begin{itemize}
-  \item CPU de 64 bits con 4 Cores o m·s.
-  \item Sistema de adquisiciÛn con 8 canales o m·s.
-  \item UtilizaciÛn de al menos 4 Gb de memoria RAM.
+  \item CPU de 64 bits con 4 Cores o m√°s.
+  \item Sistema de adquisici√≥n con 8 canales o m√°s.
+  \item Utilizaci√≥n de al menos 4 Gb de memoria RAM.
 \end{itemize}
 
 \section{Condiciones hardware}
 
-El sistema de adquisiciÛn que se propone hace uso de 4 hilos independientes en la adquisiciÛn en tiempo real. Es por esta razÛn que se recomienda sistemas multiprocesador, que permitan realizar las tareas de cada hilo de manera independiente.
+El sistema de adquisici√≥n que se propone hace uso de 4 hilos independientes en la adquisici√≥n en tiempo real. Es por esta raz√≥n que se recomienda sistemas multiprocesador, que permitan realizar las tareas de cada hilo de manera independiente.
 
-Se precisa de un sistema de adquisiciÛn de audio profesional para la adquisiciÛn del audio proveniente de cada micrÛfono para ejecutar el algoritmo de localizaciÛn. Adem·s por esta razÛn y porque se van a generar gran cantidad de datos a procesar en la memoria RAM del equipo, es necesaria la utilizaciÛn de un volumen importante de memoria RAM, se recomienda que la cifra de partida sean 4 Gb que es la cifra m·xima que un sistema operativo de 32 bits basado en Linux puede direccionar.
+Se precisa de un sistema de adquisici√≥n de audio profesional para la adquisici√≥n del audio proveniente de cada micr√≥fono para ejecutar el algoritmo de localizaci√≥n. Adem√°s por esta raz√≥n y porque se van a generar gran cantidad de datos a procesar en la memoria RAM del equipo, es necesaria la utilizaci√≥n de un volumen importante de memoria RAM, se recomienda que la cifra de partida sean 4 Gb que es la cifra m√°xima que un sistema operativo de 32 bits basado en Linux puede direccionar.
 
-Se recomienda tener 100 MB de disco duro libre para poder hacer grabaciones de corta duraciÛn. Es altamente recomendable disponer de 10 GB libres si se van a realizar grabaciones multicanal y de larga duraciÛn.
+Se recomienda tener 100 MB de disco duro libre para poder hacer grabaciones de corta duraci√≥n. Es altamente recomendable disponer de 10 GB libres si se van a realizar grabaciones multicanal y de larga duraci√≥n.
  
 \section{Requisitos de software}
 
-\subsection{Requisitos mÌnimos}
+\subsection{Requisitos m√≠nimos}
 \begin{itemize}
-  \item UtilizaciÛn de un sistema operativo Ubuntu 12.04.
-  \item LibrerÌa \texttt{Rtaudio}.
-  \item LibrerÌa \texttt{SNDFile}.
-  \item Para el desarrollo del algoritmo de localizaciÛn se deben utilizar las librerÌas propias del grupo GEINTRA.
+  \item Utilizaci√≥n de un sistema operativo Ubuntu 12.04.
+  \item Librer√≠a \texttt{Rtaudio}.
+  \item Librer√≠a \texttt{SNDFile}.
+  \item Para el desarrollo del algoritmo de localizaci√≥n se deben utilizar las librer√≠as propias del grupo GEINTRA.
 \end{itemize}
 
 \subsection{Requisitos de software recomendados}
 \begin{itemize}
-  \item UtilizaciÛn de un sistema operativo de 64 bits, Ubuntu 12.04 o superior.
+  \item Utilizaci√≥n de un sistema operativo de 64 bits, Ubuntu 12.04 o superior.
 \end{itemize}
 
 \section{Condiciones software}
 
-En este apartado software se recomienda utilizar el sistema operativo Ubuntu 12.04 al ser LTS, y proporcionar la compatibilidad con las nuevas librerÌas Qt para realizar profiling mediante KCachegrind.
+En este apartado software se recomienda utilizar el sistema operativo Ubuntu 12.04 al ser LTS, y proporcionar la compatibilidad con las nuevas librer√≠as Qt para realizar profiling mediante KCachegrind.
 
-En el caso de disponer un sistema hardware con una memoria RAM superior a 4 GB es necesario utilizar, una verisÛn de Ubuntu de 64 bits para poder direccionarla. Es muy recomendable esta opciÛn para poder adquirir y procesar sonido multicanal.
+En el caso de disponer un sistema hardware con una memoria RAM superior a 4 GB es necesario utilizar, una veris√≥n de Ubuntu de 64 bits para poder direccionarla. Es muy recomendable esta opci√≥n para poder adquirir y procesar sonido multicanal.
 
 \newpage
 \section{Condiciones generales}
 
-La utilizaciÛn de esta librerÌa supone la posibilidad de ejecutar cualquier programa de procesamiento sobre ella que tenga en cuenta las siguientes condiciones:
+La utilizaci√≥n de esta librer√≠a supone la posibilidad de ejecutar cualquier programa de procesamiento sobre ella que tenga en cuenta las siguientes condiciones:
 
 \begin{itemize}
-  \item El ancho de banda de las seÒales ac˙sticas est· condicionado por el rango que permita la tarjeta de adquisiciÛn a utilizar, por lo general cumple aproximadamente la del espectro del oÌdo humano, de 20 a 20000 Hz.
-  \item El n˙mero de canales a utilizar lo limita la tarjeta de adquisiciÛn, la librerÌa est· preparada para adquirir, sea cual sea el rango multicanal.
-  \item Ante cualquier uso de esta librerÌa deber· tenerse en cuenta el reconocimiento (BY), que no es comercial (NC), y que las obras derivadas se compartan de igual manera (SA).
+  \item El ancho de banda de las se√±ales ac√∫sticas est√° condicionado por el rango que permita la tarjeta de adquisici√≥n a utilizar, por lo general cumple aproximadamente la del espectro del o√≠do humano, de 20 a 20000 Hz.
+  \item El n√∫mero de canales a utilizar lo limita la tarjeta de adquisici√≥n, la librer√≠a est√° preparada para adquirir, sea cual sea el rango multicanal.
+  \item Ante cualquier uso de esta librer√≠a deber√° tenerse en cuenta el reconocimiento (BY), que no es comercial (NC), y que las obras derivadas se compartan de igual manera (SA).
 
 \end{itemize}
 

@@ -2,18 +2,18 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: resultados.tex,v 1.6 2015/06/05 00:05:19 macias Exp $
+% $Id: resultados.tex,v 1.7 2016/03/31 10:44:23 macias Exp $
 %
 % By:
-%  + Javier MacÌas-Guarasa. 
-%    Departamento de ElectrÛnica
-%    Universidad de Alcal·
+%  + Javier Mac√≠as-Guarasa. 
+%    Departamento de Electr√≥nica
+%    Universidad de Alcal√°
 %  + Roberto Barra-Chicote. 
-%    Departamento de IngenierÌa ElectrÛnica
-%    Universidad PolitÈcnica de Madrid   
+%    Departamento de Ingenier√≠a Electr√≥nica
+%    Universidad Polit√©cnica de Madrid   
 % 
-% Based on original sources by Roberto Barra, Manuel OcaÒa, Jes˙s Nuevo,
-% Pedro Revenga, Fernando Herr·nz and Noelia Hern·ndez. Thanks a lot to
+% Based on original sources by Roberto Barra, Manuel Oca√±a, Jes√∫s Nuevo,
+% Pedro Revenga, Fernando Herr√°nz and Noelia Hern√°ndez. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
 %
@@ -34,23 +34,23 @@
 
 \begin{FraseCelebre}
   \begin{Frase}
-    % Si quieres ser leÌdo m·s de una vez, no vaciles en borrar a menudo.
-    Rem tene, verba sequentur (Si dominas el tema, las palabras vendr·n
+    % Si quieres ser le√≠do m√°s de una vez, no vaciles en borrar a menudo.
+    Rem tene, verba sequentur (Si dominas el tema, las palabras vendr√°n
     solas)\footnote{Tomado de ejemplos del proyecto \texis{}.}.
   \end{Frase}
   \begin{Fuente}
     % Horacio
-    CatÛn el Viejo
+    Cat√≥n el Viejo
   \end{Fuente}
 \end{FraseCelebre}
 
-\section{IntroducciÛn}
+\section{Introducci√≥n}
 \label{sec:introduccion-resultados}
 
-En este capÌtulo se introducir·n los resultados m·s relevantes del
+En este cap√≠tulo se introducir√°n los resultados m√°s relevantes del
 trabajo. 
 
-La estructura del capÌtulo es\ldots
+La estructura del cap√≠tulo es\ldots
 
 
 \section{Entorno experimental}
@@ -65,25 +65,25 @@ Blah, blah, blah.
 Blah, blah, blah.
 
 
-\subsection{MÈtricas de calidad}
+\subsection{M√©tricas de calidad}
 \label{sec:metricas-de-calidad}
 
 Blah, blah, blah.
 
 En la tabla\ref{pruebaCalc2LaTeX} pongo un ejemplo del uso del conversor
-de libreoffice a \LaTeX{} (cortesÌa de Roberto Chamorro). Para usarlo
-tienes que importar la macro que encontrar·s en el directorio
+de libreoffice a \LaTeX{} (cortes√≠a de Roberto Chamorro). Para usarlo
+tienes que importar la macro que encontrar√°s en el directorio
 \texttt{tools/calc2latex//calc2latex\_024\_eur\_latex}\footnote{Para
-  ello sigue el proceso de importaciÛn que se describe en
+  ello sigue el proceso de importaci√≥n que se describe en
   \url{http://ask.libreoffice.org/en/question/35598/where-are-lo-basic-macros-stored/},
   importando Cals
   y cuando ejecutes la macro hazlo por el punto de entrada
-  \texttt{Main}, despuÈs de seleccionar el rango de celdas de la tabla.}
+  \texttt{Main}, despu√©s de seleccionar el rango de celdas de la tabla.}
 
 \input{tools/calc2latex/sample.tex}
 
 
-\subsection{Estrategia y metodologÌa de experimentaciÛn}
+\subsection{Estrategia y metodolog√≠a de experimentaci√≥n}
 \label{sec:estr-y-metod}
 
 Blah, blah, blah.
@@ -92,7 +92,7 @@ Blah, blah, blah.
 \section{Resultados experimentales}
 \label{sec:result-experim}
 
-A continuaciÛn, se muestra un ejemplo de tabla simple (ver tabla \ref{table1}).
+A continuaci√≥n, se muestra un ejemplo de tabla simple (ver tabla \ref{table1}).
 
 \begin{table}
   % increase table row spacing, adjust to taste
@@ -116,23 +116,23 @@ A continuaciÛn, se muestra un ejemplo de tabla simple (ver tabla \ref{table1}).
   \end{center}
 \end{table}
 
-Cuando las tablas ocupan m·s de un p·gina se debe utilizar un tipo
-especial de tablas denominado \texttt{longtable}. A continuaciÛn, se
+Cuando las tablas ocupan m√°s de un p√°gina se debe utilizar un tipo
+especial de tablas denominado \texttt{longtable}. A continuaci√≥n, se
 muestra un ejemplo del mismo (ver tabla \ref{table2}).
 
 \begin{center}
 	\begin{longtable}{|c|c|c|c|}
-    \caption[Resultados de la correlaciÛn cruzada.]{Resultados de la correlaciÛn cruzada.} \label{table2} \\
+    \caption[Resultados de la correlaci√≥n cruzada.]{Resultados de la correlaci√≥n cruzada.} \label{table2} \\
     
-    \hline \multicolumn{1}{|c|}{\textbf{PosiciÛn Real}} & \multicolumn{1}{c|}{\textbf{PosiciÛn estimada}} & \multicolumn{1}{c|}{\textbf{Coef. CorrelaciÛn}} & \multicolumn{1}{c|}{\textbf{Acierto/Fallo}} \\ \hline 
+    \hline \multicolumn{1}{|c|}{\textbf{Posici√≥n Real}} & \multicolumn{1}{c|}{\textbf{Posici√≥n estimada}} & \multicolumn{1}{c|}{\textbf{Coef. Correlaci√≥n}} & \multicolumn{1}{c|}{\textbf{Acierto/Fallo}} \\ \hline 
     \endfirsthead
     
     \multicolumn{4}{c}%
-    {{\bfseries \tablename\ \thetable{} -- contin˙a en la p·gina anterior}} \\
-    \hline \multicolumn{1}{|c|}{\textbf{PosiciÛn Real}} & \multicolumn{1}{c|}{\textbf{PosiciÛn estimada}} & \multicolumn{1}{c|}{\textbf{Coef. CorrelaciÛn}} & \multicolumn{1}{c|}{\textbf{Acierto/Fallo}} \\ \hline 
+    {{\bfseries \tablename\ \thetable{} -- contin√∫a en la p√°gina anterior}} \\
+    \hline \multicolumn{1}{|c|}{\textbf{Posici√≥n Real}} & \multicolumn{1}{c|}{\textbf{Posici√≥n estimada}} & \multicolumn{1}{c|}{\textbf{Coef. Correlaci√≥n}} & \multicolumn{1}{c|}{\textbf{Acierto/Fallo}} \\ \hline 
     \endhead
     
-    \hline \multicolumn{4}{|r|}{{Contin˙a en la p·gina siguiente}} \\ \hline
+    \hline \multicolumn{4}{|r|}{{Contin√∫a en la p√°gina siguiente}} \\ \hline
     \endfoot
 
     \hline \hline
@@ -198,12 +198,12 @@ muestra un ejemplo del mismo (ver tabla \ref{table2}).
 \end{center}
 
 % OBSOLETED BY JMG ON 2014/09/01
-% En algunas ocasiones, tambiÈn resulta ˙til emplear el entorno
-% \texttt{subfloat} (del paquete \texttt{subfig}) para aÒadir m˙ltiples
-% im·genes dentro de la misma figura. A continuaciÛn, se muestra un
-% ejemplo del uso en la figura \ref{fig:fig2}. TambiÈn se pueden
+% En algunas ocasiones, tambi√©n resulta √∫til emplear el entorno
+% \texttt{subfloat} (del paquete \texttt{subfig}) para a√±adir m√∫ltiples
+% im√°genes dentro de la misma figura. A continuaci√≥n, se muestra un
+% ejemplo del uso en la figura \ref{fig:fig2}. Tambi√©n se pueden
 % referenciar las sub-figuras de forma individual, por ejemplo la
-% sub-figura \ref{fig:fig2b} (usando un mÈtodo de cita), o bien la
+% sub-figura \ref{fig:fig2b} (usando un m√©todo de cita), o bien la
 % sub-figura \ref{fig:fig2}\subref{fig:fig2b} (usando otro alternativo).
 
 % \begin{figure}[h]
@@ -220,11 +220,11 @@ muestra un ejemplo del mismo (ver tabla \ref{table2}).
 %   \label{fig:fig2}
 % \end{figure}
 
-En algunas ocasiones, tambiÈn resulta ˙til emplear el entorno
-\texttt{subfigure} para aÒadir m˙ltiples im·genes dentro de la misma
-figura. A continuaciÛn, se muestra un ejemplo del uso en la figura
-\ref{fig:fig3}. TambiÈn se pueden referenciar las sub-figuras de forma
-individual, por ejemplo la sub-figura \ref{fig:fig3b} (usando un mÈtodo
+En algunas ocasiones, tambi√©n resulta √∫til emplear el entorno
+\texttt{subfigure} para a√±adir m√∫ltiples im√°genes dentro de la misma
+figura. A continuaci√≥n, se muestra un ejemplo del uso en la figura
+\ref{fig:fig3}. Tambi√©n se pueden referenciar las sub-figuras de forma
+individual, por ejemplo la sub-figura \ref{fig:fig3b} (usando un m√©todo
 de cita), o bien la sub-figura \ref{fig:fig3}.\subref{fig:fig3b} (usando
 otro alternativo).
 
@@ -275,8 +275,8 @@ las subfigures en el caption principal.
   \label{fig:LIdiapRoom}
 \end{figure}
 
-Os incluimos a continuaciÛn un
-p·rrafo de un artÌculo en el que hacemos referencia a varias figuras y
+Os incluimos a continuaci√≥n un
+p√°rrafo de un art√≠culo en el que hacemos referencia a varias figuras y
 subfiguras: 
 
 \emph{The IDIAP Meeting Room (shown in figure~\ref{fig:LIdiapRoom}) is a $8.2m
@@ -322,7 +322,7 @@ description of the meeting room can be found in~\cite{moore2002}.}
 \end{figure}
 
 En la figura~\ref{fig:Sim_angles} mostramos un ejemplo de varias
-figuras organizadas de forma un poco m·s complejo.
+figuras organizadas de forma un poco m√°s complejo.
 
 \begin{figure}
   \centering
@@ -365,15 +365,15 @@ figuras organizadas de forma un poco m·s complejo.
   \caption{Comparison between the steered power response generated
     by the model (solid line) and that calculated using simulated
     waveforms in the AV16.3 environment (stems). Results for the
-    speaker in given angles and the array steered from -90∫ to
-    +90∫ are shown.}
+    speaker in given angles and the array steered from -90¬∫ to
+    +90¬∫ are shown.}
   \label{fig:Sim_angles}
 \end{figure}
 
-TambiÈn es posible incluir el cÛdigo de una figura en un fichero
-\texttt{.tex} independiente (para hacer m·s legible el cÛdigo del
-documento principal). Un ejemplo lo tenÈis a continuaciÛn, incluyendo el
-texto en inglÈs del documento original:
+Tambi√©n es posible incluir el c√≥digo de una figura en un fichero
+\texttt{.tex} independiente (para hacer m√°s legible el c√≥digo del
+documento principal). Un ejemplo lo ten√©is a continuaci√≥n, incluyendo el
+texto en ingl√©s del documento original:
 
 \emph{Figure~\ref{fig:SRPvsPatternSelected} includes the results of the
 comparison, for several speaker positions (1, 2, 4, 6, 8 and 16,
@@ -433,8 +433,8 @@ acoustic model is based on the simplistic image method model.}
 
 Otra posibilidad es utilizar el entorno \texttt{wrapfig} para hacer que
 el texto bordee a las figuras, como en la
-figura~\ref{fig:wrapfigure1}. AÒado ahora unas lÌneas de loren ipsum
-para que lo ve·is bien. \lipsum[1-1]
+figura~\ref{fig:wrapfigure1}. A√±ado ahora unas l√≠neas de loren ipsum
+para que lo ve√°is bien. \lipsum[1-1]
 
 % \lipsum[1-4]
 % \begin{wrapfigure}{R}{5cm}
@@ -447,7 +447,7 @@ para que lo ve·is bien. \lipsum[1-1]
 
 Incluso podemos poner una tabla ``apaisada'', como en la
 \ref{tablas2006}, donde se muestra un resumen de los resultados
-obtenidos en una serie de experimentos de localizaciÛn de locutores.
+obtenidos en una serie de experimentos de localizaci√≥n de locutores.
 
 \clearpage
 % \begin{table}[H]\centering

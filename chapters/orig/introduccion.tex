@@ -2,18 +2,18 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: introduccion.tex,v 1.21 2015/06/05 00:27:17 macias Exp $
+% $Id: introduccion.tex,v 1.2 2015/06/05 00:34:28 macias Exp $
 %
 % By:
-%  + Javier MacÌas-Guarasa. 
-%    Departamento de ElectrÛnica
-%    Universidad de Alcal·
+%  + Javier Mac√≠as-Guarasa. 
+%    Departamento de Electr√≥nica
+%    Universidad de Alcal√°
 %  + Roberto Barra-Chicote. 
-%    Departamento de IngenierÌa ElectrÛnica
-%    Universidad PolitÈcnica de Madrid   
+%    Departamento de Ingenier√≠a Electr√≥nica
+%    Universidad Polit√©cnica de Madrid   
 % 
-% Based on original sources by Roberto Barra, Manuel OcaÒa, Jes˙s Nuevo,
-% Pedro Revenga, Fernando Herr·nz and Noelia Hern·ndez. Thanks a lot to
+% Based on original sources by Roberto Barra, Manuel Oca√±a, Jes√∫s Nuevo,
+% Pedro Revenga, Fernando Herr√°nz and Noelia Hern√°ndez. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
 %
@@ -28,13 +28,13 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{IntroducciÛn}
+\chapter{Introducci√≥n}
 \label{cha:introduccion}
 
 \begin{FraseCelebre}
   \begin{Frase}
-    Desocupado lector, sin juramento me podr·s creer que quisiera que este
-    libro [...] fuera el m·s hermoso, el m·s gallardo y m·s discreto que
+    Desocupado lector, sin juramento me podr√°s creer que quisiera que este
+    libro [...] fuera el m√°s hermoso, el m√°s gallardo y m√°s discreto que
     pudiera imaginarse\footnote{Tomado de ejemplos del proyecto \texis{}.}.
   \end{Frase}
   \begin{Fuente}
@@ -43,33 +43,33 @@
 \end{FraseCelebre}
 
 
-\section{PresentaciÛn}
+\section{Presentaci√≥n}
 \label{sec:presentacion}
 
 
-Esta plantilla\footnote{Aseg˙rate de compilar de nuevo el documento
-  (como cuenta la secciÛn~\ref{sec:compilacion}), para verificar que
-  todo funciona y por si ha habido alg˙n cambio en los fuentes que no
-  est· reflejado en los pdf de ejemplo precompilados.} pretende
+Esta plantilla\footnote{Aseg√∫rate de compilar de nuevo el documento
+  (como cuenta la secci√≥n~\ref{sec:compilacion}), para verificar que
+  todo funciona y por si ha habido alg√∫n cambio en los fuentes que no
+  est√° reflejado en los pdf de ejemplo precompilados.} pretende
 proporcionar un conjunto de estilos consistentes y unificados para
-cubrir las necesidades de generaciÛn de memorias \LaTeX{} para cada uno
+cubrir las necesidades de generaci√≥n de memorias \LaTeX{} para cada uno
 de los TFCs/TFMs/TFGs y tesis doctorales que se generen en la Escuela
-PolitÈcnica Superior de la Universidad de Alcal·\footnote{TambiÈn se
-  incluye la definiciÛn para las tesis de la Escuela TÈcnica Superior de
-  Ingenieros de TelecomunicaciÛn de la Universidad PolitÈcnica de
-  Madrid. La extensiÛn a los TFGs de la misma es sencilla, aunque no se
+Polit√©cnica Superior de la Universidad de Alcal√°\footnote{Tambi√©n se
+  incluye la definici√≥n para las tesis de la Escuela T√©cnica Superior de
+  Ingenieros de Telecomunicaci√≥n de la Universidad Polit√©cnica de
+  Madrid. La extensi√≥n a los TFGs de la misma es sencilla, aunque no se
   ha realizado por el momento.}.
 
-Para utilizar la plantilla se han generado algunos capÌtulos genÈricos
+Para utilizar la plantilla se han generado algunos cap√≠tulos gen√©ricos
 en los que se han incluido secciones ``tutoriales'', en la que se
-explican algunas de sus caracterÌsticas y se muestran ejemplos de
-elementos tÌpicos que pueden ser de utilidad (pero sin el objetivo de
-que esto sea una guÌa de \LaTeX{}).
+explican algunas de sus caracter√≠sticas y se muestran ejemplos de
+elementos t√≠picos que pueden ser de utilidad (pero sin el objetivo de
+que esto sea una gu√≠a de \LaTeX{}).
 
 Igualmente se proporciona un modelo simplificado de un anteproyecto
-(para el caso de los TFCs/TFMs/TFGs), asÌ como parte de la documentaciÛn
+(para el caso de los TFCs/TFMs/TFGs), as√≠ como parte de la documentaci√≥n
 que hay que presentar para la defensa de los TFGs de la Universidad de
-Alcal·.
+Alcal√°.
 
 
 
@@ -80,115 +80,115 @@ Alcal·.
 \subsection{Prerrequisitos}
 \label{sec:prerrequisitos}
 
-Para usar la plantilla tal y como est· definida, hace falta disponer de
+Para usar la plantilla tal y como est√° definida, hace falta disponer de
 una serie de paquetes de estilos \LaTeX{} (ficheros \texttt{.sty}),
 todos ellos definidos en el fichero \texttt{config/preamble.tex}.
 
-No vamos a hacer un listado de todos lo necesarios (serÌa demasiado
-largo\footnote{Los que suelen no estar instalados en un ubuntu est·ndar
+No vamos a hacer un listado de todos lo necesarios (ser√≠a demasiado
+largo\footnote{Los que suelen no estar instalados en un ubuntu est√°ndar
   son \texttt{texlive-publishers}, \texttt{texlive-science}}), pero en
-la mayorÌa de distribuciones GNU/Linux ser·n f·ciles de conseguir en
-caso de que la compilaciÛn genere un error de fichero no encontrado. Si
+la mayor√≠a de distribuciones GNU/Linux ser√°n f√°ciles de conseguir en
+caso de que la compilaci√≥n genere un error de fichero no encontrado. Si
 os sucede, buscadlos en alguno de los paquetes \texttt{texlive-*}. En
-caso de no encontrarlos, una b˙squeda en google (que con casi total
-seguridad referenciar· a alguna p·gina en CTAN) os dar· el enlace a la
-descarga correspondiente. A partir de ahÌ, su inclusiÛn en directorios
-locales ser· suficiente (como por ejemplo hemos tenido que hacer con el
-paquete \texttt{background}, incluido en la distribuciÛn en el
-directorio \texttt{sty/background}). Lo m·s cÛmodo es hacer una
-instalaciÛn del \texttt{texlive-full}. 
+caso de no encontrarlos, una b√∫squeda en google (que con casi total
+seguridad referenciar√° a alguna p√°gina en CTAN) os dar√° el enlace a la
+descarga correspondiente. A partir de ah√≠, su inclusi√≥n en directorios
+locales ser√° suficiente (como por ejemplo hemos tenido que hacer con el
+paquete \texttt{background}, incluido en la distribuci√≥n en el
+directorio \texttt{sty/background}). Lo m√°s c√≥modo es hacer una
+instalaci√≥n del \texttt{texlive-full}. 
 
-Igualmente ser· necesario tener instaladas una serie de utilidades y
+Igualmente ser√° necesario tener instaladas una serie de utilidades y
 aplicaciones:
 
 \begin{itemize}
 \item \texttt{make}, si se quiere utilizar la facilidad del
-  \texttt{Makefile} suministrado. Est· disponible en todas las
+  \texttt{Makefile} suministrado. Est√° disponible en todas las
   distribuciones GNU/Linux.
-\item \texttt{rubber}, si se quiere utilizar la prestaciÛn de
-  compilaciÛn de cÛdigo \LaTeX{} incluida en el
-  \texttt{Makefile}. DeberÌa estar disponible en cualquier distribuciÛn
-  GNU/Linux, pero si no es asÌ, puedes optar por descargarla, o bien
-  usar la alternativa de \texttt{latexmk} (para el que tambiÈn se
-  incluyen targets especÌficos en el \texttt{Makefile} suministrado).
+\item \texttt{rubber}, si se quiere utilizar la prestaci√≥n de
+  compilaci√≥n de c√≥digo \LaTeX{} incluida en el
+  \texttt{Makefile}. Deber√≠a estar disponible en cualquier distribuci√≥n
+  GNU/Linux, pero si no es as√≠, puedes optar por descargarla, o bien
+  usar la alternativa de \texttt{latexmk} (para el que tambi√©n se
+  incluyen targets espec√≠ficos en el \texttt{Makefile} suministrado).
 \item \texttt{dia}, si se quiere utilizar el ejemplo proporcionado de
-  generaciÛn de esquemas con dicha herramienta.
+  generaci√≥n de esquemas con dicha herramienta.
 \item \texttt{epspdf}, si se quiere utilizar la facilidad de la
-  conversiÛn autom·tica de ficheros \texttt{eps} a \texttt{pdf} (tambiÈn
-  se usa en la conversiÛn de ficheros \texttt{.dia}).
-\item \texttt{makeglossaries}, si se quiere utilizar la prestaciÛn de
-  manejo de listas de acrÛnimos y variables. Suele estar en el paquete
+  conversi√≥n autom√°tica de ficheros \texttt{eps} a \texttt{pdf} (tambi√©n
+  se usa en la conversi√≥n de ficheros \texttt{.dia}).
+\item \texttt{makeglossaries}, si se quiere utilizar la prestaci√≥n de
+  manejo de listas de acr√≥nimos y variables. Suele estar en el paquete
   \texttt{texlive-latex-extra} en distribuciones basadas en Debian
   (como ubuntu y derivados).
 \item \texttt{latexdiff} y \texttt{latexpand}, si se quiere utilizar la
-  prestaciÛn de generaciÛn de ficheros pdf con control de cambios. El
+  prestaci√≥n de generaci√≥n de ficheros pdf con control de cambios. El
   primero suele ser un paquete independiente, y el segundo suele estar
   en el paquete \texttt{texlive-extra-utils}.
 \end{itemize}
 
 
-\subsection{CompilaciÛn}
+\subsection{Compilaci√≥n}
 \label{sec:compilacion}
 
-Para facilitar la generaciÛn del documento se incluye un
+Para facilitar la generaci√≥n del documento se incluye un
 \texttt{Makefile} relativamente sencillo. No somos expertos ni en
 \texttt{make} ni en \LaTeX, con lo que seguro que no es el mejor de los
-\texttt{Makefiles} del mundo, pero creemos que hace su funciÛn.
+\texttt{Makefiles} del mundo, pero creemos que hace su funci√≥n.
 
-El \texttt{Makefile} tiene las siguientes caracterÌsticas y
+El \texttt{Makefile} tiene las siguientes caracter√≠sticas y
 prestaciones:
 
 \begin{itemize}
 
 \item Hace uso de la herramienta \texttt{rubber}. En caso de no disponer
-  de ella, puede usarse \texttt{latexmk} (hay targets especÌficos de
-  ejemplo para ese caso), pero esta ˙ltima herramienta no ha sido
-  probada intensivamente. Si no se dispone de ninguna de ellas, habrÌa
-  que generar la estructura tÌpica de compilaciÛn: (al estilo
+  de ella, puede usarse \texttt{latexmk} (hay targets espec√≠ficos de
+  ejemplo para ese caso), pero esta √∫ltima herramienta no ha sido
+  probada intensivamente. Si no se dispone de ninguna de ellas, habr√≠a
+  que generar la estructura t√≠pica de compilaci√≥n: (al estilo
   \texttt{pdflatex + bibtex + pdflatex + pdflatex}).
-\item Soporta la generaciÛn autom·tica de ficheros \texttt{pdf} a partir
+\item Soporta la generaci√≥n autom√°tica de ficheros \texttt{pdf} a partir
   de los \texttt{dia} y \texttt{svg} (se han elegido estos a modo de
-  ejemplo, pero se puede adaptar f·cilmente a otras necesidades).
-\item Genera la informaciÛn de listas de acrÛnimos y sÌmbolos con la
+  ejemplo, pero se puede adaptar f√°cilmente a otras necesidades).
+\item Genera la informaci√≥n de listas de acr√≥nimos y s√≠mbolos con la
   herramienta \texttt{makeglossaries}. Es imprescindible tenerla
   instalada si se desea usar esa capacidad.
 \item Soporta los targets:
   \begin{itemize}
-  \item \texttt{all} (que es la opciÛn predeterminada si se ejecuta
-    \texttt{make} sin m·s argumentos), que genera el fichero
+  \item \texttt{all} (que es la opci√≥n predeterminada si se ejecuta
+    \texttt{make} sin m√°s argumentos), que genera el fichero
     \texttt{book.pdf} correspondiente, usando \texttt{rubber} y
-    \texttt{makeglossaries}. No nos hemos planteado la generaciÛn de
+    \texttt{makeglossaries}. No nos hemos planteado la generaci√≥n de
     ficheros en otros formatos.
   \item \texttt{all\_latexmk}, que genera el fichero \texttt{book.pdf}
     correspondiente, usando \texttt{latexmk} y
-    \texttt{makeglossaries}. Si Èsta  es tu opciÛn, sustituye el target
-    \texttt{all} por Èste, para facilitarte la compilaciÛn.
+    \texttt{makeglossaries}. Si √©sta  es tu opci√≥n, sustituye el target
+    \texttt{all} por √©ste, para facilitarte la compilaci√≥n.
 
   \item  \texttt{tar}, que genera un fichero \texttt{tgz} que contiene
-    todo lo necesario para la distribuciÛn de la plantilla.
+    todo lo necesario para la distribuci√≥n de la plantilla.
   \item \texttt{clean}, que borra todos los ficheros temporales usando
     \texttt{rubber} (para simplificar los targets, la limpieza se hace
-    tanto para los temporales de generaciÛn del \texttt{book.pdf} como
+    tanto para los temporales de generaci√≥n del \texttt{book.pdf} como
     los del \texttt{anteproyecto.pdf}).
   \item \texttt{clean\_latexmk}, que borra todos los ficheros temporales
-    usando \texttt{latexmk}. Si Èsta es tu opciÛn, sustituye el target
-    \texttt{clean} por Èste, para facilitarte la compilaciÛn (para
+    usando \texttt{latexmk}. Si √©sta es tu opci√≥n, sustituye el target
+    \texttt{clean} por √©ste, para facilitarte la compilaci√≥n (para
     simplificar los targets, la limpieza se hace tanto para los
-    temporales de generaciÛn del \texttt{book.pdf} como los del
+    temporales de generaci√≥n del \texttt{book.pdf} como los del
     \texttt{anteproyecto.pdf}).
 
   \item \texttt{bare}, que deja razonablemente limpios los ficheros de
-    los capÌtulos y apÈndices, adem·s de borrar los gr·ficos del
-    directorio \texttt{figures} y \texttt{diagrams}, para que sea m·s
-    f·cil comenzar a editar. \textbf{OJO: HAY CONSECUENCIAS NEGATIVAS NO
-      DESPRECIABLES PORQUE SE BORRAR¡ TODO LO QUE TENGAS EN ESOS
-      DIRECTORIOS Y S”LO DEBERÕA HACERSE CUANDO VAYAMOS A EMPEZAR A
+    los cap√≠tulos y ap√©ndices, adem√°s de borrar los gr√°ficos del
+    directorio \texttt{figures} y \texttt{diagrams}, para que sea m√°s
+    f√°cil comenzar a editar. \textbf{OJO: HAY CONSECUENCIAS NEGATIVAS NO
+      DESPRECIABLES PORQUE SE BORRAR√Å TODO LO QUE TENGAS EN ESOS
+      DIRECTORIOS Y S√ìLO DEBER√çA HACERSE CUANDO VAYAMOS A EMPEZAR A
       ESCRIBIR NUESTRA MEMORIA DEL TRABAJO REALIZADO}.
 
   \item \texttt{backup-chapters}, que hace un backup de los ficheros que
     hay en los directorios \texttt{chapters} y \texttt{appendix},
     creando directorios cuyo nombre es la fecha y hora actuales y que se
-    crean bajo los anteriores. No deberÌa hacer falta si usas un buen
+    crean bajo los anteriores. No deber√≠a hacer falta si usas un buen
     sistema de control de versiones.
   \end{itemize}
 
@@ -202,198 +202,198 @@ prestaciones:
 La plantilla definida presenta la siguiente estructura:
 
 \begin{itemize}
-\item Portada y p·gina de informaciÛn sobre el trabajo, que ser·
-  dependiente del tipo de trabajo y la titulaciÛn. Se genera
-  autom·ticamente a partir de la informaciÛn definida en la
-  secciÛn~\ref{sec:definicion-del-tipo}
+\item Portada y p√°gina de informaci√≥n sobre el trabajo, que ser√°
+  dependiente del tipo de trabajo y la titulaci√≥n. Se genera
+  autom√°ticamente a partir de la informaci√≥n definida en la
+  secci√≥n~\ref{sec:definicion-del-tipo}
 \item Dedicatoria, con un ejemplo incluido en el fichero
   \texttt{dedication/dedicatoria.tex}.
 \item Agradecimientos, con un ejemplo incluido en el fichero
   \texttt{dedication/agradecimientos.tex}.
-\item Resumen en espaÒol, con un ejemplo incluido en el fichero
+\item Resumen en espa√±ol, con un ejemplo incluido en el fichero
   \texttt{abstract/resumen.tex}.
-\item Resumen en inglÈs, con un ejemplo incluido en el fichero
+\item Resumen en ingl√©s, con un ejemplo incluido en el fichero
   \texttt{abstract/abstract.tex}.
-\item Resumen extendido en espaÒol (opcional en algunos tipos de
+\item Resumen extendido en espa√±ol (opcional en algunos tipos de
   documento), con un ejemplo incluido en el fichero
   \texttt{abstract/resumen-extendido.tex}.
-\item Õndice de contenidos, Ìndice de figuras e Ìndice de tablas.
-\item Õndices adicionales, de los que se incluye un ejemplo de listado
-  especÌfico en el fichero \texttt{cover/extralistings.tex}, que incluye
-  el listado de fragmentos de cÛdigo fuente definidos en el
+\item √çndice de contenidos, √≠ndice de figuras e √≠ndice de tablas.
+\item √çndices adicionales, de los que se incluye un ejemplo de listado
+  espec√≠fico en el fichero \texttt{cover/extralistings.tex}, que incluye
+  el listado de fragmentos de c√≥digo fuente definidos en el
   \texttt{appendix/manual.tex}.
-\item Listado de acrÛnimos utilizados, que se definen en el fichero
+\item Listado de acr√≥nimos utilizados, que se definen en el fichero
   \texttt{acronyms/defacronymsgl.tex} (con opciones adicionales de
-  configuraciÛn en \texttt{acronyms/acronymsgl.tex}), y del que
-  incluimos m·s informaciÛn en la secciÛn~\ref{sec:uso-de-acronimos}.
-\item Listado de sÌmbolos utilizados, que se definen en el fichero
+  configuraci√≥n en \texttt{acronyms/acronymsgl.tex}), y del que
+  incluimos m√°s informaci√≥n en la secci√≥n~\ref{sec:uso-de-acronimos}.
+\item Listado de s√≠mbolos utilizados, que se definen en el fichero
   \texttt{symbols/defsymbolsgl.tex} (con opciones adicionales de
-  configuraciÛn en \texttt{symbols/symbolsgl.tex}), y del que incluimos
-  m·s informaciÛn en la secciÛn~\ref{sec:simbolos}.
-\item CapÌtulos del documento, del que hay varios ejemplos que siguen la
-  estructura tÌpica (introducciÛn, estudio teÛrico, desarrollo,
+  configuraci√≥n en \texttt{symbols/symbolsgl.tex}), y del que incluimos
+  m√°s informaci√≥n en la secci√≥n~\ref{sec:simbolos}.
+\item Cap√≠tulos del documento, del que hay varios ejemplos que siguen la
+  estructura t√≠pica (introducci√≥n, estudio te√≥rico, desarrollo,
   resultados y conclusiones.
 \item Pliego de condiciones y presupuesto, opcionales (se incluyen un
-  par de ejemplos del trabajo fin de carrera de Jes˙s MartÌnez en los
+  par de ejemplos del trabajo fin de carrera de Jes√∫s Mart√≠nez en los
   ficheros \texttt{pliego/pliego-ejemplo.tex} y
   \texttt{presupuesto/presupuesto-ejemplo.tex}.
-\item BibliografÌa, de la que se puede cambiar el estilo utilizado y los
+\item Bibliograf√≠a, de la que se puede cambiar el estilo utilizado y los
   ficheros \texttt{.bib} en el fichero
   \texttt{biblio/bibliography.tex} (en el que hay que definir la lista
-  de ficheros de bibliografÌa que se usar·n (variables
+  de ficheros de bibliograf√≠a que se usar√°n (variables
   \texttt{\textbackslash{}mybibfileOne},
   \texttt{\textbackslash{}mybibfileTwo}, ...).
-\item ApÈndices, de los que ahora se incluyen dos ejemplos en los
+\item Ap√©ndices, de los que ahora se incluyen dos ejemplos en los
   ficheros \texttt{appendix/manual.tex} (que sirve de pretexto para
-  mostrar cÛmo se insertan fragmentos de cÛdigo fuente), y
+  mostrar c√≥mo se insertan fragmentos de c√≥digo fuente), y
   \texttt{appendix/herramientas.tex}.
-\item Contraportada, sÛlo para el caso de los TFGs en UAH.
+\item Contraportada, s√≥lo para el caso de los TFGs en UAH.
 \end{itemize}
 
 Por supuesto, modificad la estructura para que encaje en las directrices
-que teng·is al respecto de cÛmo documentar vuestro trabajo.
+que teng√°is al respecto de c√≥mo documentar vuestro trabajo.
 
 
-\subsection{Definiciones especÌficas del tipo de documento}
+\subsection{Definiciones espec√≠ficas del tipo de documento}
 \label{sec:definicion-del-tipo}
 
 Para comenzar a usar la plantilla es fundamental revisar el fichero
-\texttt{book.tex} en el que se incluyen todos los detalles genÈricos de
+\texttt{book.tex} en el que se incluyen todos los detalles gen√©ricos de
 la estructura usada en el documento, con comentarios que esperamos que
 os ayuden a entenderlo. Si sois de los impacientes, basta con que
-comencÈis por la parte en la que se incluyen los distintos capÌtulos
+comenc√©is por la parte en la que se incluyen los distintos cap√≠tulos
 (buscad la parte de los \texttt{\textbackslash{}input\{chapters/*.tex\}}).
 
-Uno de los ficheros de configuraciÛn m·s importantes es el
+Uno de los ficheros de configuraci√≥n m√°s importantes es el
 \texttt{config/myconfig.tex} en el que se incluyen elementos para
-determinar la configuraciÛn especÌfica de tu documento. El primero de
-ellos (para facilitar la generaciÛn de documentos en espaÒol o inglÈs),
+determinar la configuraci√≥n espec√≠fica de tu documento. El primero de
+ellos (para facilitar la generaci√≥n de documentos en espa√±ol o ingl√©s),
 es el que define el idioma que vas a utilizar. Para seleccionarlo, basta
 con asignar \texttt{spanish} o \texttt{english} a la variable
 \texttt{\textbackslash{}mybooklanguage}. A partir de ella, el sistema
-generar· las cabeceras y tÌtulos adecuados a cada una.
+generar√° las cabeceras y t√≠tulos adecuados a cada una.
 
-Igualmente, tendrÈis que definir las siguientes variables sobre el tipo
+Igualmente, tendr√©is que definir las siguientes variables sobre el tipo
 de trabajo y el autor:
 
 \begin{itemize} 
-\item AcrÛnimo de la titulaciÛn correspondiente al trabajo (variable
-  \texttt{\textbackslash{}mydegree}): Que se seleccionar· entre los
-  definidos (por ahora\footnote{Este documento se generÛ a finales de
+\item Acr√≥nimo de la titulaci√≥n correspondiente al trabajo (variable
+  \texttt{\textbackslash{}mydegree}): Que se seleccionar√° entre los
+  definidos (por ahora\footnote{Este documento se gener√≥ a finales de
     2013.} son \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST},
   \texttt{ITI}, \texttt{GIEC}, \texttt{GIEAI}, \texttt{GIST},
   \texttt{GITT}, \texttt{GIT}, \texttt{GIC}, \texttt{GII}, \texttt{GSI},
   \texttt{MUSEA}, \texttt{PHDUAH} y \texttt{PHDUPM}) y que
-  autom·ticamente configura portadas\footnote{Un comentario sobre el
+  autom√°ticamente configura portadas\footnote{Un comentario sobre el
     color de las bandas en la portada de los TFGs: de acuerdo con la
     normativa, dicho color debe ser PANTONE 160c. Yo he intentado
     utilizar dicho color, pero el aspecto con el que finalmente aparece
     no es ni de lejos similar al del modelo que proporciona la EPS, con
     lo que he optado por utilizar el que se ve realmente en dicho
     modelo. Si quieres cambiarlo, busca ``PANTONE'' en \texttt{config/preamble.tex}.}, entre otras cosas.
-\item TÌtulo del documento (variable \texttt{\textbackslash{}mybooktitle}).
+\item T√≠tulo del documento (variable \texttt{\textbackslash{}mybooktitle}).
 \item Nombre del autor del trabajo (variable \texttt{\textbackslash{}mybookauthor}).
 \item DNI del autor del trabajo, usado en el papeleo de los TFGs (variable \texttt{\textbackslash{}mybookDNI}).
 \item Departamento en el que se realiza el trabajo (variable
-  \texttt{\textbackslash{}mybookdepartment}, en espaÒol, y \texttt{\textbackslash{}mybookdepartmentEnglish}, en inglÈs).
+  \texttt{\textbackslash{}mybookdepartment}, en espa√±ol, y \texttt{\textbackslash{}mybookdepartmentEnglish}, en ingl√©s).
 \item Programa de Doctorado (en su caso) en el que se realiza el trabajo (variable
-  \texttt{\textbackslash{}mybookphdprogram}, en espaÒol, y
-  \texttt{\textbackslash{}mybookphdprogramEnglish}, en inglÈs). 
-\item Grupo de investigaciÛn en el que se realiza el trabajo (variable
+  \texttt{\textbackslash{}mybookphdprogram}, en espa√±ol, y
+  \texttt{\textbackslash{}mybookphdprogramEnglish}, en ingl√©s). 
+\item Grupo de investigaci√≥n en el que se realiza el trabajo (variable
   \texttt{\textbackslash{}mybookresearchgroup}.
-\item Centro en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybookschool}, que deberÌa ser la Escuela PolitÈnica Superior, pero se incluye por generalidad).
-\item Universidad en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybooksuniversidad}, que deberÌa ser la de Alcal·, pero se incluye por generalidad).
-\item TitulaciÛn del autor (usada en las tesis de UPM, (variable \texttt{\textbackslash{}mybookauthordegree})).
+\item Centro en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybookschool}, que deber√≠a ser la Escuela Polit√©nica Superior, pero se incluye por generalidad).
+\item Universidad en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybooksuniversidad}, que deber√≠a ser la de Alcal√°, pero se incluye por generalidad).
+\item Titulaci√≥n del autor (usada en las tesis de UPM, (variable \texttt{\textbackslash{}mybookauthordegree})).
 \item Email del autor (variable \texttt{\textbackslash{}mybookemail}).
-\item Nombre del primer (o ˙nico, en su caso) director del trabajo
+\item Nombre del primer (o √∫nico, en su caso) director del trabajo
   (variable \texttt{\textbackslash{}mybookNameFirstAdvisor}).
 \item Nombre del segundo (en su caso) director del trabajo (variable \texttt{\textbackslash{}mybookNameSecondAdvisor}).
 \item Nombre del presidente del tribunal (variable \texttt{\textbackslash{}mybookpresident}).
 \item Nombre del primer vocal del tribunal (variable \texttt{\textbackslash{}mybookfirstvocal}).
 \item Nombre del segundo vocal del tribunal (variable \texttt{\textbackslash{}mybooksecondvocal}).
 \item Nombre del secretario del tribunal, en su caso (variable \texttt{\textbackslash{}mybooksecretary}).
-\item AÒo del trabajo (variable \texttt{\textbackslash{}mybookyear}).
+\item A√±o del trabajo (variable \texttt{\textbackslash{}mybookyear}).
 \item Fecha del anteproyecto, en su caso (variable \texttt{\textbackslash{}mybookanteproyectodate}), en el caso de que se usen la plantilla del anteproyecto.
 \item Fecha de la defensa del trabajo, en su caso (variable
-  \texttt{\textbackslash{}mydefensedate}, en espaÒol, o
+  \texttt{\textbackslash{}mydefensedate}, en espa√±ol, o
   \texttt{\textbackslash{}mydefensedateEnglish}).
-\item Palabras clave en inglÈs (variable \texttt{\textbackslash{}mybookkeywords}).
-\item Palabras clave en espaÒol (variable \texttt{\textbackslash{}mybookpalabrasclave}).
+\item Palabras clave en ingl√©s (variable \texttt{\textbackslash{}mybookkeywords}).
+\item Palabras clave en espa√±ol (variable \texttt{\textbackslash{}mybookpalabrasclave}).
 \end{itemize}
 
-Y tambiÈn variables para el caso de los trabajos que necesitan papeleo
-adicional (publicaciÛn en abierto, autorizaciones, etc.).
+Y tambi√©n variables para el caso de los trabajos que necesitan papeleo
+adicional (publicaci√≥n en abierto, autorizaciones, etc.).
 
 \begin{itemize}
-\item Nombre del Secretario del Departamento (que firmar· parte del papeleo)
+\item Nombre del Secretario del Departamento (que firmar√° parte del papeleo)
   (variable \texttt{\textbackslash{}mybookdepartmentsecretary}).
-\item Fecha que aparecer· en la firma del papeleo (variable \texttt{\textbackslash{}mybookdateforpaperwork}).
+\item Fecha que aparecer√° en la firma del papeleo (variable \texttt{\textbackslash{}mybookdateforpaperwork}).
 \item DNI del alumno (variable
   \texttt{\textbackslash{}mybookDNIOpenPublishing}).
 \item Figura del autor del trabajo, que es normalmente ``alumno''
   (variable \texttt{\textbackslash{}mybookProfFigureOpenPublishing}).
-\item DNIs del/de los tutores, para los permisos de publicaciÛn en
+\item DNIs del/de los tutores, para los permisos de publicaci√≥n en
   abierto (variables \texttt{\textbackslash{}mybookDNIFirstAdvisor} y
   \texttt{\textbackslash{}mybookDNISecondAdvisor}, en su caso)
 \end{itemize}
 
-Se ha comenzado a trabajar en la versiÛn alfa del soporte para
+Se ha comenzado a trabajar en la versi√≥n alfa del soporte para
 \textit{research reports}, y en ese caso se usa la variable
 \texttt{\textbackslash{}mybookresearchreportID}.
 
-Parte de esa informaciÛn se utilizar· para rellenar la metainformaciÛn
+Parte de esa informaci√≥n se utilizar√° para rellenar la metainformaci√≥n
 incluida en el fichero \texttt{pdf} que se genera.
 
-TambiÈn se ha iniciado soporte b·sico para generar la hoja de control de
+Tambi√©n se ha iniciado soporte b√°sico para generar la hoja de control de
 anteproyecto que se usa en la solicitud, con lo que hay variables
 relacionadas con los datos personales del alumno:
 
 \begin{itemize}
-\item DirecciÛn: calle (variable \texttt{\textbackslash{}mystreet}),
-  ciudad (variable \texttt{\textbackslash{}mycity}), cÛdigo postal
+\item Direcci√≥n: calle (variable \texttt{\textbackslash{}mystreet}),
+  ciudad (variable \texttt{\textbackslash{}mycity}), c√≥digo postal
   (variable \texttt{\textbackslash{}mypostalcode}), provincia (variable
-  \texttt{\textbackslash{}myprovince}) y telÈfono (variable
+  \texttt{\textbackslash{}myprovince}) y tel√©fono (variable
   \texttt{\textbackslash{}mytelephone}).
 \end{itemize}
 
-TambiÈn se definen los colores que se usar·n en los hiperenlaces del
-documento. En concreto\footnote{Os rogamos encarecidamente que cambiÈis
+Tambi√©n se definen los colores que se usar√°n en los hiperenlaces del
+documento. En concreto\footnote{Os rogamos encarecidamente que cambi√©is
   los colores definidos actualmente, que se han usado para verificar que
   todo funciona correctamente.}:
 
 \begin{itemize}
-\item Color de los enlaces en el Ìndice de contenidos (variable
+\item Color de los enlaces en el √≠ndice de contenidos (variable
   \texttt{\textbackslash{}mytoclinkcolor}).
-\item Color de los enlaces en el Ìndice de figuras (variable
+\item Color de los enlaces en el √≠ndice de figuras (variable
   \texttt{\textbackslash{}myloflinkcolor}).
-\item Color de los enlaces en el Ìndice de tablas (variable
+\item Color de los enlaces en el √≠ndice de tablas (variable
   \texttt{\textbackslash{}mylotlinkcolor}).
-\item Color de los enlaces en otros Ìndices (variable
+\item Color de los enlaces en otros √≠ndices (variable
   \texttt{\textbackslash{}myothertoclinkcolor}), de los que ahora se
   incluye un ejemplo en el fichero \texttt{cover/extralistings.tex}.
 \item Color de los enlaces (\texttt{\textbackslash{}ref}) en el
   documento (variable \texttt{\textbackslash{}mylinkcolor}).
 \item Color de los enlaces a URLs (variable
   \texttt{\textbackslash{}myurlcolor}).
-\item Color de los enlaces a referencias bibliogr·ficas (variable
+\item Color de los enlaces a referencias bibliogr√°ficas (variable
   \texttt{\textbackslash{}mycitecolor}).
 \end{itemize}
 
-Basta con que defin·is las variables correspondientes y la plantilla
-generar· autom·ticamente las portadas adecuadas a la normativa y usar·
-las definiciones especÌficas que hayas seleccionado.
+Basta con que defin√°is las variables correspondientes y la plantilla
+generar√° autom√°ticamente las portadas adecuadas a la normativa y usar√°
+las definiciones espec√≠ficas que hayas seleccionado.
 
 Por si os hace falta, en \texttt{config/postamble.tex} se definen
 algunas variables relacionadas con el tipo de trabajo. Por ejemplo las
 variables \texttt{\textbackslash{}mydegreefull} (igual a
-``\mydegreefull'' en esta compilaciÛn),
+``\mydegreefull'' en esta compilaci√≥n),
 \texttt{\textbackslash{}mybookworktype} (igual a ``\mybookworktype'' en
-esta compilaciÛn) y \texttt{\textbackslash{}mybookworktypefull} (igual a
-``\mybookworktypefull'' en esta compilaciÛn). Otro ejemplo serÌa el
+esta compilaci√≥n) y \texttt{\textbackslash{}mybookworktypefull} (igual a
+``\mybookworktypefull'' en esta compilaci√≥n). Otro ejemplo ser√≠a el
 autor de contacto: \contactauthor.
 
-Importante para las tesis de UAH: si necesit·is incluir ficheros pdf
-(los de autorizaciÛn e informes de los tutores, por ejemplo), esta
+Importante para las tesis de UAH: si necesit√°is incluir ficheros pdf
+(los de autorizaci√≥n e informes de los tutores, por ejemplo), esta
 plantilla lo permite: mirad los \texttt{\textbackslash{}includepdf} en
 el \texttt{book.tex}.
 
@@ -404,13 +404,13 @@ Para el caso de los TFMs/TFGs/TFCs, se incluye una plantilla para
 realizar el anteproyecto.
 
 La plantilla se encuentra en el directorio \texttt{anteproyecto}, y en
-fichero \texttt{anteproyecto.tex} tenÈis un ejemplo. El
-\texttt{Makefile} genera autom·ticamente el \texttt{anteproyecto.pdf},
+fichero \texttt{anteproyecto.tex} ten√©is un ejemplo. El
+\texttt{Makefile} genera autom√°ticamente el \texttt{anteproyecto.pdf},
 haciendo un \texttt{make} en ese directorio, y tiene targets similares a los
 del \texttt{Makefile} del documento principal, incluyendo
-\texttt{flatten} y \texttt{latexdiff}, con lo que tambiÈn puede
+\texttt{flatten} y \texttt{latexdiff}, con lo que tambi√©n puede
 generarse el fichero con control de cambios, tal y como se describe en
-la secciÛn~\ref{sec:control-de-cambios} (cambiando las referencias a
+la secci√≥n~\ref{sec:control-de-cambios} (cambiando las referencias a
 \texttt{book...} por \texttt{anteproyecto...}).
 
 \subsection{Plantilla de hoja de control de anteproyecto}
@@ -420,15 +420,15 @@ Para el caso de los TFMs/TFGs/TFCs, se incluye una plantilla de la hoja
 de control de la solicitud del anteproyecto.
 
 La plantilla se encuentra en el directorio \texttt{solicitud}, y en
-fichero \texttt{solicitud.tex} tenÈis un ejemplo. El
-\texttt{Makefile} genera autom·ticamente el \texttt{solicitud.pdf},
+fichero \texttt{solicitud.tex} ten√©is un ejemplo. El
+\texttt{Makefile} genera autom√°ticamente el \texttt{solicitud.pdf},
 haciendo un \texttt{make} en ese directorio, y tiene targets similares a los
 del \texttt{Makefile} del documento principal, incluyendo
-\texttt{flatten} y \texttt{latexdiff}, con lo que tambiÈn puede
+\texttt{flatten} y \texttt{latexdiff}, con lo que tambi√©n puede
 generarse el fichero con control de cambios, tal y como se describe en
-la secciÛn~\ref{sec:control-de-cambios} (cambiando las referencias a
+la secci√≥n~\ref{sec:control-de-cambios} (cambiando las referencias a
 \texttt{book...} por \texttt{solicitud...}). En este caso el documento
-no hay que tocarlo pr·cticamente, salvo que le pase alguna cosa rara.
+no hay que tocarlo pr√°cticamente, salvo que le pase alguna cosa rara.
 
 
 \subsection{Papeleo adicional para la defensa de los TFGs}
@@ -439,13 +439,13 @@ el directorio \texttt{papeleo} algunos de los documentos que hay que
 generar en el momento de la defensa. En concreto:
 
 \begin{itemize}
-\item La autorizaciÛn del tutor para la publicaciÛn en abierto, en el
+\item La autorizaci√≥n del tutor para la publicaci√≥n en abierto, en el
   fichero \texttt{autorizacionTutorPublicarRepositorio.tex} para TFGs.
-\item La autorizaciÛn del autor para la publicaciÛn en abierto, en el
+\item La autorizaci√≥n del autor para la publicaci√≥n en abierto, en el
   fichero \texttt{autorizacionAutorPublicarRepositorio.tex}
 \item El visto bueno del tutor para la defensa del TFG
   \texttt{vistoBuenoTutorTFG.tex}
-\item La autorizaciÛn del autor y tutor/tutores para la publicaciÛn en
+\item La autorizaci√≥n del autor y tutor/tutores para la publicaci√≥n en
   abierto, en el fichero
   \texttt{autorizacionPublicarAbiertoTFM-MUSEA.tex}.
 \item El visto bueno del tutor para la defensa del TFM
@@ -454,28 +454,28 @@ generar en el momento de la defensa. En concreto:
 
 En el directorio se incluye un \texttt{Makefile} que genera los
 \texttt{pdfs} correspondientes a esos documentos. El sistema
-autom·ticamente adapta los singulares/plurales necesarios para el caso
+autom√°ticamente adapta los singulares/plurales necesarios para el caso
 de que haya uno o varios directores/tutores.
  
 
-\subsection{GeneraciÛn del documento con control de cambios (para revisiÛn)}
+\subsection{Generaci√≥n del documento con control de cambios (para revisi√≥n)}
 \label{sec:control-de-cambios}
 
-Uno de los problemas de \LaTeX{} frente a otros sistemas de ediciÛn de
-textos viene en el momento de la revisiÛn de cambios realizados a un
-documento. En el caso que nos ocupa serÌan los que nos sugiere nuestro
-tutor de TFC/TFG/TFG o director de tesis doctoral y que luego querr·
-verificar cÛmo se han aplicado. En un procesador al estilo de
-libreoffice (vaaaaaaaaale, o Microsoft Word tambiÈn), tenemos la opciÛn
+Uno de los problemas de \LaTeX{} frente a otros sistemas de edici√≥n de
+textos viene en el momento de la revisi√≥n de cambios realizados a un
+documento. En el caso que nos ocupa ser√≠an los que nos sugiere nuestro
+tutor de TFC/TFG/TFG o director de tesis doctoral y que luego querr√°
+verificar c√≥mo se han aplicado. En un procesador al estilo de
+libreoffice (vaaaaaaaaale, o Microsoft Word tambi√©n), tenemos la opci√≥n
 de comparar documentos o llevar el control de cambios y que el sistema
-autom·ticamente nos marque los aÒadidos o borrados. 
+autom√°ticamente nos marque los a√±adidos o borrados. 
 
-En \LaTeX{} tambiÈn es posible si usamos un sistema de control de
-versiones (y si no lo est·is usando, deberÌais plantearos seriamente el
+En \LaTeX{} tambi√©n es posible si usamos un sistema de control de
+versiones (y si no lo est√°is usando, deber√≠ais plantearos seriamente el
 hacerlo), con la ayuda de herramientas adicionales.
 
-Hay varias soluciones disponibles, la mayorÌa basada en el uso de la
-\texttt{latexdiff} \cite{latexdiff} (o derivados). Lo recomendable serÌa
+Hay varias soluciones disponibles, la mayor√≠a basada en el uso de la
+\texttt{latexdiff} \cite{latexdiff} (o derivados). Lo recomendable ser√≠a
 el uso de un sistema automatizado como el disponible en
 \texttt{git-latexdiff} \cite{git-latexdiff}, pero necesita el soporte de
 \texttt{git}, y por el momento estoy manteniendo esto en \texttt{cvs}
@@ -483,34 +483,34 @@ el uso de un sistema automatizado como el disponible en
 
 \texttt{latexdiff} permite comparar dos versiones de un documento y
 generar un nuevo fichero fuente en \LaTeX{} que, al compilarlo, muestra un
-pdf ``bonito'', con las marcas de las diferencias (resaltando lo aÒadido
-y lo quitado). El resultado es perfecto para hacer una buena revisiÛn de
-los cambios, y por supuesto no tiene punto de comparaciÛn con ver un
+pdf ``bonito'', con las marcas de las diferencias (resaltando lo a√±adido
+y lo quitado). El resultado es perfecto para hacer una buena revisi√≥n de
+los cambios, y por supuesto no tiene punto de comparaci√≥n con ver un
 \texttt{diff} a palo seco de las dos versiones del documento. 
 
 Lo que finalmente he implementado es muy ad-hoc, pero funciona. El
-procedimiento para hacer uso de ello serÌa (asumiendo que us·is
-\texttt{cvs} como sistema de control de versiones\footnote{Si us·is
-  \texttt{git} (lo que tambiÈn os recomiendo que hag·is), el proceso es
-  m·s sencillo porque \texttt{git-latexdiff} lo hace todo autom·tico,
-  aunque os tendrÈis que trabajar la parte correspondiente del
+procedimiento para hacer uso de ello ser√≠a (asumiendo que us√°is
+\texttt{cvs} como sistema de control de versiones\footnote{Si us√°is
+  \texttt{git} (lo que tambi√©n os recomiendo que hag√°is), el proceso es
+  m√°s sencillo porque \texttt{git-latexdiff} lo hace todo autom√°tico,
+  aunque os tendr√©is que trabajar la parte correspondiente del
   \texttt{Makefile}}:
 
 \begin{itemize}
-\item Primero hay que preparar la versiÛn base sobre la que luego se
-  har·n los cambios. Esa preparaciÛn se hace normalmente cuando se tiene
-  una versiÛn razonablemente estable, y con la que luego se quiere
+\item Primero hay que preparar la versi√≥n base sobre la que luego se
+  har√°n los cambios. Esa preparaci√≥n se hace normalmente cuando se tiene
+  una versi√≥n razonablemente estable, y con la que luego se quiere
   comparar (por ejemplo cuando le entregas a tu tutor tu primer borrador
-  del documento completo). La preparaciÛn es sencilla: basta hacer un
-  \texttt{make flatten}. Eso generar· un fichero
+  del documento completo). La preparaci√≥n es sencilla: basta hacer un
+  \texttt{make flatten}. Eso generar√° un fichero
   \texttt{book-flatten.tex} que contiene el estado actual del documento,
   expandido. Luego hay que registrarlo en el repositorio basta hacer un
   \texttt{cvs commit -m ``New flattened version'' book-flatten.tex}.
-\item A partir de ahÌ ya se puede trabajar en los cambios al documento,
+\item A partir de ah√≠ ya se puede trabajar en los cambios al documento,
   los que sean necesarios.
 \item Cuando se quiera obtener el fichero pdf con el control de cambios,
-  bastar· hacer un \texttt{make latexdiff}, que acabar· generando
-  \texttt{book-flatten-diff.pdf}, que ser· lo que est·bamos buscando.
+  bastar√° hacer un \texttt{make latexdiff}, que acabar√° generando
+  \texttt{book-flatten-diff.pdf}, que ser√° lo que est√°bamos buscando.
 \end{itemize}
 
 
@@ -518,38 +518,38 @@ procedimiento para hacer uso de ello serÌa (asumiendo que us·is
 \subsection{Problemas conocidos}
 \label{sec:problemas-conocidos}
 
-Resumimos a continuaciÛn los problemas con los que nos hemos ido
-encontrando tras el uso m·s generalizado de esta plantilla, y, en su
-caso, la soluciÛn propuesta/adoptada:
+Resumimos a continuaci√≥n los problemas con los que nos hemos ido
+encontrando tras el uso m√°s generalizado de esta plantilla, y, en su
+caso, la soluci√≥n propuesta/adoptada:
 
 \begin{itemize}
 
-\item Al menos en la versiÛn 12.04 de ubuntu, se producÌa un fallo de
-  compilaciÛn por un problema del \textit{option clash} del paquete
-  \texttt{xcolor}. La soluciÛn fue incluir las opciones
+\item Al menos en la versi√≥n 12.04 de ubuntu, se produc√≠a un fallo de
+  compilaci√≥n por un problema del \textit{option clash} del paquete
+  \texttt{xcolor}. La soluci√≥n fue incluir las opciones
   \texttt{[RGB,rgb]} de dicho paquete en el \texttt{documentclass}, y
-  eliminar la inclusiÛn de \texttt{xcolor} (que ya lo incluye, al menos,
-  \texttt{listings}). No es muy bonito como soluciÛn, pero
-  funcionaba. Eso dio lugar a otro problema, que hacÌa que todas las
-  p·gina aparecieran como en color cuando se llevaba a la imprenta (con
+  eliminar la inclusi√≥n de \texttt{xcolor} (que ya lo incluye, al menos,
+  \texttt{listings}). No es muy bonito como soluci√≥n, pero
+  funcionaba. Eso dio lugar a otro problema, que hac√≠a que todas las
+  p√°gina aparecieran como en color cuando se llevaba a la imprenta (con
   el consiguiente incremento de precio). Para intentar solucionarlo, he
   vuelto a eliminar las opciones \texttt{[RGB,rgb]} del
   \texttt{documentclass}, y se las paso con un
-  \texttt{PassOptionsToPackage}, pero est· pendiente de
-  verificaciÛn. Please, confirmadme que funciona (tanto lo del color
-  como la compilaciÛn en un ubuntu 12.04 (o posterior).
+  \texttt{PassOptionsToPackage}, pero est√° pendiente de
+  verificaci√≥n. Please, confirmadme que funciona (tanto lo del color
+  como la compilaci√≥n en un ubuntu 12.04 (o posterior).
 
-\item TambiÈn hemos observado en la versiÛn 12.04 de ubuntu que
-  \texttt{evince} no es capaz de visualizar la primera p·gina de los
+\item Tambi√©n hemos observado en la versi√≥n 12.04 de ubuntu que
+  \texttt{evince} no es capaz de visualizar la primera p√°gina de los
   TFGs (generada con \texttt{tikz}), y que \texttt{xpdf} genera un core
-  cuando intenta abrir el fichero compilado. La soluciÛn es usar
+  cuando intenta abrir el fichero compilado. La soluci√≥n es usar
   \texttt{qpdfview} o \texttt{acroread}. 
 
 \end{itemize}
 
-Si das con m·s problemas, escribid por favor a \contactauthor
-cont·ndonoslos y trataremos de solucionarlo (y si tenÈis la soluciÛn,
-cont·dnosla tambiÈn).
+Si das con m√°s problemas, escribid por favor a \contactauthor
+cont√°ndonoslos y trataremos de solucionarlo (y si ten√©is la soluci√≥n,
+cont√°dnosla tambi√©n).
 
 
 \section{Ejemplos de elementos de utilidad}
@@ -560,96 +560,96 @@ cont·dnosla tambiÈn).
 
 A modo de ejemplo, hemos definido el comando
 \texttt{\textbackslash{}texten\{\}} en \texttt{config/myconfig.tex} para
-usarlo, por ejemplo, para marcar palabras escritas en inglÈs (aka
+usarlo, por ejemplo, para marcar palabras escritas en ingl√©s (aka
 \texten{English}). Sigue el ejemplo para definir aquellos que utilices
 con frecuencia.
 
-Si quieres escribir el sÌmbolo \texttt{backslash} puedes usar el comando
+Si quieres escribir el s√≠mbolo \texttt{backslash} puedes usar el comando
 \texttt{\textbackslash{}backlash\{\}}:~\textbackslash{}.
 
-Lo mismo aplica para el sÌmbolo \texttt{tilde}, para lo que puedes usar
+Lo mismo aplica para el s√≠mbolo \texttt{tilde}, para lo que puedes usar
 el comando \texttt{\textbackslash{}textasciitilde\{\}}:~\textasciitilde{}.
 
 
-\subsection{Uso de ``frases cÈlebres''}
+\subsection{Uso de ``frases c√©lebres''}
 \label{sec:uso-de-frases}
 
-Respecto a la frase cÈlebre del inicio de los capÌtulos: todas las que
-hemos usado y las definiciones que las generen est·n sacadas del
-excelente trabajo de Marco Antonio Gomez-MartÌn y Pedro Pablo
-Gomez-MartÌn en el proyecto \texis, una plantilla para la creaciÛn de
+Respecto a la frase c√©lebre del inicio de los cap√≠tulos: todas las que
+hemos usado y las definiciones que las generen est√°n sacadas del
+excelente trabajo de Marco Antonio Gomez-Mart√≠n y Pedro Pablo
+Gomez-Mart√≠n en el proyecto \texis, una plantilla para la creaci√≥n de
 tesis y otros documentos y disponible en \cite{texis}.
 
 
-\subsection{InclusiÛn de diagramas}
+\subsection{Inclusi√≥n de diagramas}
 \label{sec:diagrama}
 
-Para incluir gr·ficos, la compilaciÛn que utilizamos permite usar
+Para incluir gr√°ficos, la compilaci√≥n que utilizamos permite usar
 ficheros \texttt{png}, \texttt{jpg} y \texttt{pdf}, en el comando
-\texttt{\textbackslash{}includegraphics}. Si querÈis ahorraros incluir
-el path a cada fichero, podÈis definir todos aquellos en los que haya
-ficheros gr·ficos en el \texttt{\textbackslash{}graphicspath} del
+\texttt{\textbackslash{}includegraphics}. Si quer√©is ahorraros incluir
+el path a cada fichero, pod√©is definir todos aquellos en los que haya
+ficheros gr√°ficos en el \texttt{\textbackslash{}graphicspath} del
 \texttt{book.tex}.
 
-En la figura \ref{fig:fig_clobj} se muestra un ejemplo de gr·fico
-generado autom·ticamente a partir de un fichero
+En la figura \ref{fig:fig_clobj} se muestra un ejemplo de gr√°fico
+generado autom√°ticamente a partir de un fichero
 \texttt{.dia}\footnote{Tomadas de los proyectos fin de carrera de David
   Casillas y Manuel Villaverde.}: \texttt{diagrams/Esquema\_objetos.dia}
-(podÈis generalizar su generaciÛn en el \texttt{Makefile}).
+(pod√©is generalizar su generaci√≥n en el \texttt{Makefile}).
 
 \begin{figure}[tphb]
   \centering
   \includegraphics{Esquema_objetos}
-  \caption{ClasificaciÛn de los objetos para la gram·tica (aquÌ tambiÈn
-    se pueden poner acrÛnimos como \acs{ETTS} y sÌmbolos como \ac{xidet})}
+  \caption{Clasificaci√≥n de los objetos para la gram√°tica (aqu√≠ tambi√©n
+    se pueden poner acr√≥nimos como \acs{ETTS} y s√≠mbolos como \ac{xidet})}
   \label{fig:fig_clobj}
 \end{figure}
 
 
-\subsection{DefiniciÛn y uso de acrÛnimos (aquÌ tambiÈn
-    se pueden poner acrÛnimos como \acs{ETTS})}
+\subsection{Definici√≥n y uso de acr√≥nimos (aqu√≠ tambi√©n
+    se pueden poner acr√≥nimos como \acs{ETTS})}
 \label{sec:uso-de-acronimos}
 
-El uso del paquete \texttt{glossaries} permite definir los acrÛnimos y
-el sistema autom·ticamente gestiona su inclusiÛn completa la primera vez
-que se usa. Los acrÛnimos de ejemplo est·n en el fichero
+El uso del paquete \texttt{glossaries} permite definir los acr√≥nimos y
+el sistema autom√°ticamente gestiona su inclusi√≥n completa la primera vez
+que se usa. Los acr√≥nimos de ejemplo est√°n en el fichero
 \texttt{acronyms/defacronymsgl.tex} (con opciones adicionales de
-configuraciÛn en \texttt{acronyms/acronymsgl.tex}).
+configuraci√≥n en \texttt{acronyms/acronymsgl.tex}).
 
-AsÌ, si nos referimos a \ac{ETTS} o bien a \ac{EMODB},
-veremos como aparecen expandidas la primera vez. A partir de ahÌ, sÛlo
-se usar· el acrÛnimo como puede verse al volver a hablar de \ac{ETTS} y
+As√≠, si nos referimos a \ac{ETTS} o bien a \ac{EMODB},
+veremos como aparecen expandidas la primera vez. A partir de ah√≠, s√≥lo
+se usar√° el acr√≥nimo como puede verse al volver a hablar de \ac{ETTS} y
 \ac{EMODB}.
 
-Tiene tambiÈn soporte para resetear todos los acrÛnimos como si no
-estuvieran usados. Vuelvo a incluir el p·rrafo anterior tras un reset
+Tiene tambi√©n soporte para resetear todos los acr√≥nimos como si no
+estuvieran usados. Vuelvo a incluir el p√°rrafo anterior tras un reset
 (que se hace con un \texttt{\textbackslash{}glsresetall[acronym]}):
 
 \glsresetall[acronym]
 
-El uso del paquete acronym permite definir los acrÛnimos y el sistema
-autom·ticamente gestiona su inclusiÛn completa la primera vez que se
-usa. AsÌ, si nos referimos a \ac{ETTS} o bien a \ac{EMODB}, veremos como
+El uso del paquete acronym permite definir los acr√≥nimos y el sistema
+autom√°ticamente gestiona su inclusi√≥n completa la primera vez que se
+usa. As√≠, si nos referimos a \ac{ETTS} o bien a \ac{EMODB}, veremos como
 aparecen expandidas de nuevo (como si fuera la primera vez que se
-usan). A partir de ahÌ, sÛlo se usar· el acrÛnimo como puede verse al
+usan). A partir de ah√≠, s√≥lo se usar√° el acr√≥nimo como puede verse al
 volver a hablar de \ac{ETTS} y \ac{EMODB}.
 
-Y permite tambiÈn forzar que se vuelva a citar completo aunque ya se
-haya utilizado (con el acrÛnimo entre parÈntesis), como puede verse en
+Y permite tambi√©n forzar que se vuelva a citar completo aunque ya se
+haya utilizado (con el acr√≥nimo entre par√©ntesis), como puede verse en
 \acl{ETTS} (equivalente a \glsdesc{ETTS} que vale para cualquier
-glosario), y tambiÈn a usar forzosamente el acrÛnimo. Primero reseteamos
+glosario), y tambi√©n a usar forzosamente el acr√≥nimo. Primero reseteamos
 de nuevo.
 
 \glsresetall[acronym]
 
-Y ahora forzamos el acrÛnimo: \acs{EMODB} (equivalente a
-\glsname{EMODB} que vale para cualquier glosario). TambiÈn podemos
+Y ahora forzamos el acr√≥nimo: \acs{EMODB} (equivalente a
+\glsname{EMODB} que vale para cualquier glosario). Tambi√©n podemos
 forzar a que lo ponga todo, con \acf{EMODB}.
 
 
-Podemos seguir definiendo entradas de acrÛnimos, referirnos a \ac{DBN}
-por primera vez, y las siguientes aparecer· como \ac{DBN}.  Pongo ahora
-el resto de acrÛnimos \ac{SQ}, \ac{EIR}, \ac{SIR} y
+Podemos seguir definiendo entradas de acr√≥nimos, referirnos a \ac{DBN}
+por primera vez, y las siguientes aparecer√° como \ac{DBN}.  Pongo ahora
+el resto de acr√≥nimos \ac{SQ}, \ac{EIR}, \ac{SIR} y
 \ac{ES}. Finalmente los repito para que se vea el efecto: \ac{SQ},
 \ac{EIR}, \ac{SIR} y \ac{ES}.
 
@@ -658,79 +658,15 @@ primera vez, y luego la segunda como \acp{SOC}. Y podemos volver al
 singular con \ac{SOC}.
 
 
-\subsection{DefiniciÛn y uso de sÌmbolos (aquÌ tambiÈn
-    se pueden sÌmbolos como \ac{xidet})}
+\subsection{Definici√≥n y uso de s√≠mbolos (aqu√≠ tambi√©n
+    se pueden s√≠mbolos como \ac{xidet})}
 \label{sec:simbolos}
 
-Los sÌmbolos definidos est·n incluidos en el fichero
-\texttt{symbols/defsymbolsgl.tex} (con configuraciÛn adicional en
-\texttt{symbols/symbolsgl.tex}) y en esta secciÛn mostramos algunos
+Los s√≠mbolos definidos est√°n incluidos en el fichero
+\texttt{symbols/defsymbolsgl.tex} (con configuraci√≥n adicional en
+\texttt{symbols/symbolsgl.tex}) y en esta secci√≥n mostramos algunos
 ejemplos.
 
-El \ac{angstrom} se usa en biologÌa estructural, mientras que el
-\ac{ohm} se usa en electrÛnica. TambiÈn podemos poner~\ac{xdet}. Y
-tambiÈn funciona en entornos \texttt{math} (\$...\$)
-$(\ac{xdet})$.
-
-Es posible incluso deshabilitar los hiperenlaces, usando un ``*'', como
-en ~\ac*{xdet} o \ac*{EMODB}.
-
-TambiÈn valen en entornos \texttt{equation}:
-
-\begin{equation}
-  \label{eq:1}
-  \ac{xdet}
-\end{equation}
-
-Y finalmente la que nos falta: \ac{xidet}, tambiÈn dentro de ecuaciones
-(otra cosa es que sea conveniente o ˙til):
-
-\begin{equation}
-  \label{eq:2}
-  \ac{xidet} = \sqrt{i}
-\end{equation}
-
-Acabamos con un par de acrÛnimos: \ac{TDPSOLA} y \ac{STRAIGHT}. 
-
-Recientemente nos han pedido informaciÛn sobre cÛmo introducir el
-comando de independencia incondicional y tambiÈn funciona (la definiciÛn
-est· en el \texttt{config/myconfig.tex}, y se usa tal cual en el
-\texttt{symbols/symbolsgl.tex} (revisadlos para ver cÛmo se implementa):
-\ac{condindep}. 
-
-
-% Y tambiÈn funcionan los caracteres acentuados:
-%
-% Y con el de acentos \ac{ACCCHARS} la primera vez, \ac{ACCCHARS} la
-% segunda, y luego acrÛnimo, descripciÛn y completo: \acs{ACCCHARS},
-% \acl{ACCCHARS} y \acf{ACCCHARS}.
-
-
-\section{MotivaciÛn y objetivos}
-\label{sec:motiv-y-objet}
-
-La motivaciÛn de este proyecto\ldots
-
-Los objetivos principales de este trabajo son (ejemplo utilizando
-''enumerate''):
-
-\begin{enumerate}
-\item Primer objetivo\ldots
-\item Segundo objetivo\ldots
-  \begin{enumerate}
-  \item Objetivo 2.1\ldots
-  \item Objetivo 2.2\ldots
-  \end{enumerate}
-\item Tercer objetivo\ldots
-\end{enumerate}
-
-
-
-\section{OrganizaciÛn de la memoria}
-\label{sec:organizacion-memoria}
-
-Esta memoria se organiza en cinco grandes capÌtulos. El primero \ldots
-
-%%% Local Variables:
-%%% TeX-master: "../book"
-%%% End:
+El \ac{angstrom} se usa en biolog√≠a estructural, mientras que el
+\ac{ohm} se usa en electr√≥nica. Tambi√©n podemos poner~\ac{xdet}. Y
+t
