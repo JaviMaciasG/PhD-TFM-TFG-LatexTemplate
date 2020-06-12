@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: introduccion.tex,v 1.21 2015/06/05 00:27:17 macias Exp $
+% $Id: introduccion.tex,v 1.22 2020/03/24 17:18:20 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -68,8 +68,8 @@ que esto sea una guía de \LaTeX{}).
 
 Igualmente se proporciona un modelo simplificado de un anteproyecto
 (para el caso de los TFCs/TFMs/TFGs), así como parte de la documentación
-que hay que presentar para la defensa de los TFGs de la Universidad de
-Alcalá.
+que hay que presentar para la defensa de los TFGs/TFMs de la Universidad
+de Alcalá.
 
 
 
@@ -195,6 +195,48 @@ prestaciones:
 \end{itemize}
 
 
+\subsection{Detalles específicos para sistemas basados en MacOS}
+\label{sec:detall-espec-para}
+
+Esta información es cortesía de Carlos Cruz (carlos.cruzt@uah.es), que
+se encontró con un problema en la generación de la lista de
+acrónimos. Copio a continuación los detalles al respecto.
+
+Hemos encontrado que la lista de acrónimos y/o símbolos no se genera en
+el entorno macOS. Recomendamos seguir las siguientes instrucciones para
+solucionar este problema:
+
+\begin{itemize}
+\item Tener el SO actualizado a la última versión. Actualmente (marzo de
+  2020) MacOS Catalina versión 10.15.2
+\item Instalar la última versión de MacTeX-2019. Esta distribución
+  requiere Mac OS 10.12, Sierra, o superior y funciona con procesadores
+  Intel (disponible en
+  \href{http://tug.org/mactex/mactex-download.html}{http://tug.org/mactex/mactex-download.html}).
+\item Trabajar en el entorno Texshop version 4.44:
+  \href{https://pages.uoregon.edu/koch/texshop/}{https://pages.uoregon.edu/koch/texshop/}.
+\end{itemize}
+
+Si compilamos la plantilla en el entorno Texshop, comprobamos que los
+listados de glosario y/o símbolos no se compilan con ninguno de los
+Typeset: Latex, Lualatex, Xelatex o pdflatexmk.
+
+Recomendamos inicialmente compilar por Terminal:
+
+\begin{itemize}
+\item pdflatex “nombre del fichero.tex” (compilar dos veces)
+\item makeglossaries “nombre del fichero”
+\item pdflatex “nombre del fichero” (compilar dos veces)
+\end{itemize}
+
+De esta forma, se crea correctamente la lista de acrónimos y símbolos. A
+continuación, se puede trabajar con futuros cambios en el proyecto
+mediante Texshop compilando Latex. Si quiere actualizar o modificar la
+lista de acrónimos y/o símbolos nuevamente, recomendamos borrar todos
+los ficheros salvo el fichero book.tex y compilar de nuevo por consola
+para crear la lista correctamente.
+
+
 
 \subsection{Estructura del documento generado por la plantilla}
 \label{sec:estr-del-docum}
@@ -202,14 +244,21 @@ prestaciones:
 La plantilla definida presenta la siguiente estructura:
 
 \begin{itemize}
+
 \item Portada y página de información sobre el trabajo, que será
   dependiente del tipo de trabajo y la titulación. Se genera
   automáticamente a partir de la información definida en la
   sección~\ref{sec:definicion-del-tipo}
+
+\item Ficheros pdf insertados, que aplican en algunos de los tipos de
+  documentos (por ejemplo en las tesis doctorales).
+
 \item Dedicatoria, con un ejemplo incluido en el fichero
   \texttt{dedication/dedicatoria.tex}.
 \item Agradecimientos, con un ejemplo incluido en el fichero
   \texttt{dedication/agradecimientos.tex}.
+
+
 \item Resumen en español, con un ejemplo incluido en el fichero
   \texttt{abstract/resumen.tex}.
 \item Resumen en inglés, con un ejemplo incluido en el fichero
@@ -217,11 +266,13 @@ La plantilla definida presenta la siguiente estructura:
 \item Resumen extendido en español (opcional en algunos tipos de
   documento), con un ejemplo incluido en el fichero
   \texttt{abstract/resumen-extendido.tex}.
+
 \item Índice de contenidos, índice de figuras e índice de tablas.
 \item Índices adicionales, de los que se incluye un ejemplo de listado
   específico en el fichero \texttt{cover/extralistings.tex}, que incluye
   el listado de fragmentos de código fuente definidos en el
   \texttt{appendix/manual.tex}.
+
 \item Listado de acrónimos utilizados, que se definen en el fichero
   \texttt{acronyms/defacronymsgl.tex} (con opciones adicionales de
   configuración en \texttt{acronyms/acronymsgl.tex}), y del que
@@ -230,24 +281,32 @@ La plantilla definida presenta la siguiente estructura:
   \texttt{symbols/defsymbolsgl.tex} (con opciones adicionales de
   configuración en \texttt{symbols/symbolsgl.tex}), y del que incluimos
   más información en la sección~\ref{sec:simbolos}.
+
+
 \item Capítulos del documento, del que hay varios ejemplos que siguen la
   estructura típica (introducción, estudio teórico, desarrollo,
   resultados y conclusiones.
-\item Pliego de condiciones y presupuesto, opcionales (se incluyen un
+
+\item Pliego de condiciones y presupuesto, opcionales en función del
+  tipo de documento que se genere (se incluyen un
   par de ejemplos del trabajo fin de carrera de Jesús Martínez en los
   ficheros \texttt{pliego/pliego-ejemplo.tex} y
-  \texttt{presupuesto/presupuesto-ejemplo.tex}.
+  \texttt{presupuesto/presupuesto-ejemplo.tex}. Es un trabajo antiguo y
+  es necesario que busquéis esquemas y contenidos actualizados para
+  estos capítulos.
+
 \item Bibliografía, de la que se puede cambiar el estilo utilizado y los
   ficheros \texttt{.bib} en el fichero
   \texttt{biblio/bibliography.tex} (en el que hay que definir la lista
   de ficheros de bibliografía que se usarán (variables
   \texttt{\textbackslash{}mybibfileOne},
   \texttt{\textbackslash{}mybibfileTwo}, ...).
+
 \item Apéndices, de los que ahora se incluyen dos ejemplos en los
   ficheros \texttt{appendix/manual.tex} (que sirve de pretexto para
   mostrar cómo se insertan fragmentos de código fuente), y
   \texttt{appendix/herramientas.tex}.
-\item Contraportada, sólo para el caso de los TFGs en UAH.
+\item Contraportada.
 \end{itemize}
 
 Por supuesto, modificad la estructura para que encaje en las directrices
@@ -279,23 +338,51 @@ de trabajo y el autor:
 \begin{itemize} 
 \item Acrónimo de la titulación correspondiente al trabajo (variable
   \texttt{\textbackslash{}mydegree}): Que se seleccionará entre los
-  definidos (por ahora\footnote{Este documento se generó a finales de
-    2013.} son \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST},
-  \texttt{ITI}, \texttt{GIEC}, \texttt{GIEAI}, \texttt{GIST},
-  \texttt{GITT}, \texttt{GIT}, \texttt{GIC}, \texttt{GII}, \texttt{GSI},
-  \texttt{MUSEA}, \texttt{PHDUAH} y \texttt{PHDUPM}) y que
+  definidos (por ahora\footnote{Este apartado se generó en marzo de
+    2020.} son \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST},
+  \texttt{ITI}, \texttt{GIEC}, \texttt{GIST}, \texttt{GITT},
+  \texttt{GIT}, \texttt{GIEAI}, \texttt{GITI}, \texttt{GIC},
+  \texttt{GII}, \texttt{GSI}, \texttt{GISI}, \texttt{MUSEA},
+  \texttt{MUIT}, \texttt{MUII}, \texttt{PHDUAH} y \texttt{PHDUPM}) y que
   automáticamente configura portadas\footnote{Un comentario sobre el
     color de las bandas en la portada de los TFGs: de acuerdo con la
     normativa, dicho color debe ser PANTONE 160c. Yo he intentado
     utilizar dicho color, pero el aspecto con el que finalmente aparece
     no es ni de lejos similar al del modelo que proporciona la EPS, con
     lo que he optado por utilizar el que se ve realmente en dicho
-    modelo. Si quieres cambiarlo, busca ``PANTONE'' en \texttt{config/preamble.tex}.}, entre otras cosas.
-\item Título del documento (variable \texttt{\textbackslash{}mybooktitle}).
-\item Nombre del autor del trabajo (variable \texttt{\textbackslash{}mybookauthor}).
-\item DNI del autor del trabajo, usado en el papeleo de los TFGs (variable \texttt{\textbackslash{}mybookDNI}).
+    modelo. Si quieres cambiarlo, busca ``PANTONE'' en
+    \texttt{config/preamble.tex}.}, entre otras cosas.
+
+\item Flag de división de directores (variable
+  \texttt{\textbackslash{}mybookSplittedAdvisors}). Si puesta a
+  \texttt{false} indicará ``Tutores/Advisors'' en las páginas de
+  portada. En caso contrario lo separará en líneas para
+  ``Tutor/Advisor'' y ``Cotutor/Co-Advisor''.
+
+\item Especialidad (nuevo en TFGs desde el curso 2015) (variable
+  \texttt{\textbackslash{}myspecialty})
+
+
+\item Título del documento en español (variable
+  \texttt{\textbackslash{}mybooktitlespanish}).
+\item Título del documento en inglés (variable
+  \texttt{\textbackslash{}mybooktitleenglish}).
+
+\item Nombre del autor del trabajo (variable
+  \texttt{\textbackslash{}mybookauthorname}).
+\item Apellidos del autor del trabajo (variable
+  \texttt{\textbackslash{}mybookauthorsurname}). La unión de esta
+  definición con la del nombre formará automáticamente la variable
+  \texttt{\textbackslash{}mybookauthorname}
+
+\item Género del autor (variable
+  \texttt{\textbackslash{}mybookauthorgender}), ``male'' or ``female''.
+
+\item DNI del autor del trabajo, usado en el papeleo de los TFGs
+  (variable \texttt{\textbackslash{}mybookDNI}).
 \item Departamento en el que se realiza el trabajo (variable
-  \texttt{\textbackslash{}mybookdepartment}, en español, y \texttt{\textbackslash{}mybookdepartmentEnglish}, en inglés).
+  \texttt{\textbackslash{}mybookdepartment}, en español, y
+  \texttt{\textbackslash{}mybookdepartmentEnglish}, en inglés).
 \item Programa de Doctorado (en su caso) en el que se realiza el trabajo (variable
   \texttt{\textbackslash{}mybookphdprogram}, en español, y
   \texttt{\textbackslash{}mybookphdprogramEnglish}, en inglés). 
