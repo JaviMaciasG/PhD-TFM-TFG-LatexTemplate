@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: postamble.tex,v 1.20 2019/11/29 10:25:52 macias Exp $
+% $Id: postamble.tex,v 1.21 2020/03/24 17:18:25 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -64,8 +64,8 @@
 \newcommand{\andOrY}{and} 
 }
 
-% Sex issues
-\ifthenelse{\equal{\mybookAcademicTutorSex}{male}}     
+% Gender issues
+\ifthenelse{\equal{\mybookAcademicTutorGender}{male}}     
 {                                                       
 \newcommand{\donOrDonaTutor}{D.}
 \newcommand{\drOrDraTutor}{Dr.}
@@ -75,7 +75,7 @@
 \newcommand{\drOrDraTutor}{Dra.}
 }
 
-\ifthenelse{\equal{\mybookCoTutorSex}{male}}     
+\ifthenelse{\equal{\mybookCoTutorGender}{male}}     
 {                                                       
 \newcommand{\donOrDonaCoTutor}{D.}
 \newcommand{\drOrDraCoTutor}{Dr.}
@@ -85,7 +85,7 @@
 \newcommand{\drOrDraCoTutor}{Dra.}
 }
 
-\ifthenelse{\equal{\mybookauthorsex}{male}}     
+\ifthenelse{\equal{\mybookauthorgender}{male}}     
 {                                                       
 \newcommand{\donOrDonaAutor}{D.}
 }
@@ -99,7 +99,7 @@
 \newcommand{\mybookadvisors}{\mybookNameAcademicTutor{}}
 \newcommand{\mybookadvisorsConDon}{\donOrDonaTutor{} \mybookNameAcademicTutor{}}
 \newcommand{\mybookadvisorsConDr}{\drOrDraTutor{} \mybookNameAcademicTutor{}}
-\ifthenelse{\equal{\mybookAcademicTutorSex}{male}}     
+\ifthenelse{\equal{\mybookAcademicTutorGender}{male}}     
 {                                                       
 \newcommand{\directorOrdirectora}{director}
 \newcommand{\mybookTutorOrTutores}{tutor}
@@ -135,7 +135,7 @@
 \newcommand{\mybookTutorOrTutores}{tutores}
 
 
-\ifthenelse{\equal{\mybookAcademicTutorSex}{male}}     
+\ifthenelse{\equal{\mybookAcademicTutorGender}{male}}     
 {                                                       
 \newcommand{\directorOrdirectora}{director}
 \newcommand{\mybookTutor}{tutor}
@@ -145,7 +145,7 @@
 \newcommand{\mybookTutor}{tutora}
 }
 
-\ifthenelse{\equal{\mybookCoTutorSex}{male}}     
+\ifthenelse{\equal{\mybookCoTutorGender}{male}}     
 {                                                       
 \newcommand{\mybookCoTutor}{cotutor}
 }
@@ -161,7 +161,7 @@
 }
 
 % Set Autor/Autora field
-\ifthenelse{\equal{\mybookauthorsex}{male}}     
+\ifthenelse{\equal{\mybookauthorgender}{male}}     
 {                                                       
 \newcommand{\mybookAutorOrAutora}{autor}                
 \newcommand{\mybookElOrLa}{el}                
