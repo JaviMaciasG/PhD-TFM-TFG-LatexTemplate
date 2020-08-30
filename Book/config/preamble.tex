@@ -605,6 +605,20 @@ hyperfootnotes=false,
 \clubpenalty=10000
 \widowpenalty=10000
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% As requested by Carlos Cruz on August 2020 To make "Appendix X
+% Appendix title" in TOC instead of simply "X Appendix title" (from
+% https://tex.stackexchange.com/questions/44858/adding-the-word-appendix-to-table-of-contents-in-latex/44971
+% and
+% https://tex.stackexchange.com/questions/58848/ap%C3%A9ndices-appendix-spanish-accent):
+\usepackage[titletoc]{appendix}
+\usepackage{etoolbox}
+\makeatletter
+\appto{\appendices}{\def\Hy@chapapp{Appendix}}
+\makeatother
+
+
 %%% Local Variables:
 %%% TeX-master: "../book"
 %%% End:
