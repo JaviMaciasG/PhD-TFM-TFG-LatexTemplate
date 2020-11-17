@@ -41,13 +41,17 @@ RM=rm -f
 
 DUMMY_TARGETS=solicitud
 
+# To use synctex 
+FLAGS_SYNCTEX_RUBBER=--synctex
+FLAGS_SYNCTEX_PDFLATEX=-synctex=1
+
 all: $(DUMMY_TARGETS)
-	$(RUBBER_TOOL) -f -d $(TEX_FILE)
-	$(RUBBER_TOOL) -f -d $(TEX_FILE)
+	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
+	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
 
 solicitud: $(TEX_FILENAME)
-	$(RUBBER_TOOL) -f -d $(TEX_FILE)
-	$(RUBBER_TOOL) -f -d $(TEX_FILE)
+	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
+	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
 
 solicitud_latexmk: $(TEX_FILENAME)
 	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_FILE)
@@ -64,7 +68,7 @@ latexdiff: flatten
 
 
 clean:
-	$(RUBBER_TOOL) --clean -d $(TEX_FILE)
+	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) --clean -d $(TEX_FILE)
 #	$(RM) $(PDFS_FROM_DIA)
 #	$(RM) $(PDFS_FROM_SVG)
 	$(RM) $(DUMMY_TARGETS)
