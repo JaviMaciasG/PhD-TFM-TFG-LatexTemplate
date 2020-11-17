@@ -61,18 +61,22 @@ DUMMY_TARGETS=pdf_dia_done pdf_svg_done pdf_eps_done
 
 DATE=$(shell date "+%C%y%m%d-%H%M%S")
 
+# To use synctex 
+FLAGS_SYNCTEX_RUBBER=--synctex
+FLAGS_SYNCTEX_PDFLATEX=-synctex=1
+
 all: $(DUMMY_TARGETS)
-	pdflatex $(TEX_FILE)
+	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	bibtex $(ROOT_FILENAME)
 	makeglossaries $(ROOT_FILENAME)
-	pdflatex $(TEX_FILE)
-	pdflatex $(TEX_FILE)
+	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
+	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 
 
 all_old: $(DUMMY_TARGETS)
-	$(RUBBER_TOOL) -f -d $(TEX_FILE)
+	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
 	makeglossaries $(ROOT_FILENAME)
-	$(RUBBER_TOOL) -f -d $(TEX_FILE)
+	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
 
 
 bare: backup-chapters bare-chapters clean-orig-figures clean-orig-diagrams
@@ -126,18 +130,18 @@ clean-orig-diagrams:
 
 
 all_latexmk: $(DUMMY_TARGETS)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_FILE)
+	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
 	makeglossaries $(ROOT_FILENAME)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_FILE)
+	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
 
 flatten: 
 	latexpand $(TEX_FILE) > $(FLATTEN_TEX_FILE)
 
 latexdiff: flatten
 	latexdiff-cvs --force -r $(FLATTEN_TEX_FILE)
-	rubber -d $(DIFF_FLATTEN_TEX_FILE)
+	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -d $(DIFF_FLATTEN_TEX_FILE)
 	makeglossaries $(DIFF_FLATTEN_ROOT_FILENAME)
-	rubber -d $(DIFF_FLATTEN_TEX_FILE)
+	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -d $(DIFF_FLATTEN_TEX_FILE)
 
 pdf_dia_done: $(PDFS_FROM_DIA)
 #	echo "Generating pdfs from DIA: [$(PDFS_FROM_DIA)]..."
@@ -176,7 +180,7 @@ tar:
 	zip -u $(ROOT_FILENAME)-latex.zip `find . -name Makefile -o -name README -o -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS" ` 
 
 clean:
-	$(RUBBER_TOOL) --clean -d $(TEX_FILE)
+	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) --clean -d $(TEX_FILE)
 #	$(RM) $(PDFS_FROM_DIA)
 #	$(RM) $(PDFS_FROM_SVG)
 	$(RM) $(DUMMY_TARGETS)
