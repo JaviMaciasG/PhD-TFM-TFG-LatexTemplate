@@ -500,32 +500,55 @@
                                          }
                                        }
                                        {
-                                         \newcommand{\mybookworktype}{TFG}
-                                         \newcommand{\mydegreefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}} 
-                                         \newcommand{\mybookworktypefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}}
+
+
+                                         \ifthenelse{\equal{\mydegree}{MUIE}}
+                                         {
+                                           
+                                           
+                                           
+                                           \newcommand{\mydegreefull}{Máster Universitario en Ingeniería Electrónica}
+                                           \newcommand{\mydegreefullwrapped}{Máster Universitario en Ingeniería Electrónica}
+                                           \newcommand{\mydegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería Electrónica}}
+                                           \newcommand{\mybookworktype}{TFM}
+                                           \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                           {
+                                             \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                                           }
+                                           {        
+                                             % This could be translated. I'm leaving this in Spanish...
+                                             % \newcommand{\mybookworktypefull}{Master's Thesis}
+                                             \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                                           }
+
+
+
+                                         }
+                                         {
+                                           \newcommand{\mybookworktype}{TFG}
+                                           \newcommand{\mydegreefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}} 
+                                           \newcommand{\mybookworktypefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}}
+                                         }
                                        }
-
-
                                      }
                                    }
                                  }
-                               
-                                }                               
-                              }                          
-                            }                          
-                          }                          
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+                               }                               
+                             }                          
+                           }                          
+                         }                          
+                       }
+                     }
+                   }
+                 }
+               }
+             }
+           }
+         }
+       }
+     }
+   }
+ }
 }
 
 
