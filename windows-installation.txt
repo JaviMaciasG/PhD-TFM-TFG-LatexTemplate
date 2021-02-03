@@ -1,0 +1,21 @@
+---------------------------------------------------------------------------
+Notas sobre qué he instalado en windows para compilar plantillas
+---------------------------------------------------------------------------
+
++ miktex (decirle que instale automáticamente lo que necesite)
+
++ texstudio
+
++ github desktop
+
++ Follow advice at https://tex.stackexchange.com/questions/156270/has-anyone-managed-to-use-glossaries-with-texstudio-on-windows
+
++ Me compila perfectamente, incluso con acrónimos y tal, sin tocar
+absolutamente nada.
+
+
+  Enjoy!!
+
+
+  Javi Macías
+  
