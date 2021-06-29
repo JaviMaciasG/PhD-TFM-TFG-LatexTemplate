@@ -9,7 +9,7 @@ The template uses configuration variables (defined in the `Book/config/myconfig.
 
 ### Configure your data
 
-   All the information you can customize is in the `Book/config/myconfig.tex` file. The variable names are all defined in `\newcommand{}{}` statements and all of then start with the `\my' prefix. Most of the names should be self-explanatory.
+   All the information you can customize is in the `config/myconfig.tex` file. The variable names are all defined in `\newcommand{}{}` statements and all of then start with the `\my' prefix. Most of the names should be self-explanatory.
 
 ### To fill in and generate the "anteproyecto"
 
