@@ -136,19 +136,20 @@
   \\
   \hline
 \end{tabularx}
+\makefirstuc{hola}
 
 \begin{spacing}{1.0}
   \begin{tabularx}{\textwidth}{X}
 %    \MakeUppercase{\mybookDirectorOrDirectores}: \mybookadvisors \\
-    TUTOR ACADÉMICO: \mybookNameFirstAdvisor\\
-    COTUTOR (si procede): \mybookNameSecondAdvisor\\
+    \MakeUppercase{\mybookTutor} \MakeUppercase{\mybookAcademico}: \mybookNameFirstAdvisor\\
+    \MakeUppercase{\mybookCoTutor} (si procede): \mybookNameSecondAdvisor\\
     \begin{center}
       Alcalá de Henares, \myanteproyectodate
     \end{center}
  \end{tabularx}
   \begin{tabularx}{\textwidth}{X X}
 %    El tutor & Vº Bº \mybookDelOrDeLos~\mybookDirectorOrDirectores{} (si procede) \\
-    Visto bueno del tutor y cotutor & Alumno \\
+    Visto bueno \mybookTutorDelOrDeLa{} \mybookTutor{} y \mybookCotutorDelOrDeLa{} \mybookCoTutor{} & \mybookAlumnoOrAlumnaUp{} \\
     \\ % \includegraphics[width=0.2\textwidth]{firma_tutor_si_procede.png}
 %    \\ Firma \mybookAutorDelOrDeLa{} \mybookAlumnoOrAlumna{} & ~ % \includegraphics[width=0.25\textwidth]{firma_de_directores_procede.png}
     \\ ~ % \includegraphics[width=0.2\textwidth]{firma_alumno_si_procede.png}
