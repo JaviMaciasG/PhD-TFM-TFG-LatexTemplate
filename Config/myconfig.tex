@@ -89,86 +89,97 @@
 
 \newcommand{\mySpecialty}{} % New in TFGs from 20151218!
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % General document information
 \newcommand{\myBookTitleSpanish}{Plantilla unificada para la generación de memorias de PFCs, TFGs, TFMs y tesis doctorales}
 \newcommand{\myBookTitleEnglish}{Unified Template for the Generation of PFCs, TFGs, TFMs and PhD Thesis}
+\newcommand{\myThesisKeywords}{Plantillas de trabajos fin de carrera/máster/grado y tesis doctorales, \LaTeX, soporte de español e inglés, generación automática} % (máximo de cinco)
+\newcommand{\myThesisKeywordsEnglish}{Bsc., Msc. and PhD. Thesis template, \LaTeX, English/Spanish support, automatic generation} % (up to a maximum of five)
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author data
 \newcommand{\myAuthorName}{Javier}
 \newcommand{\myAuthorSurname}{Macías Guarasa}
-\newcommand{\mybookauthor}{\myAuthorName{} \myAuthorSurname{}}
-%\newcommand{\mybookauthorgender}{female}
-\newcommand{\mybookauthorgender}{male}
+\newcommand{\myAuthorFullName}{\myAuthorName{} \myAuthorSurname{}}
+\newcommand{\myAuthorGender}{male} 
+\newcommand{\myAuthorEmail}{javier.maciasguarasa@uah.es}
+\newcommand{\myAuthorDNI}{12345678-L} 
+% Personal details for the anteproyecto request
+% Not required in some cases
+\newcommand{\myAuthorStreet}{C/ Calle de la Calle, 22}
+\newcommand{\myAuthorCity}{Meco}
+\newcommand{\myAuthorPostalCode}{28880}
+\newcommand{\myAuthorProvince}{Madrid}
+\newcommand{\myAuthorTelephone}{666666666}
 
-\newcommand{\myDepartment}{Departamento de Electrónica}
-\newcommand{\myDepartmentEnglish}{Departament of Electronics}
-\newcommand{\myPhDProgram}{Programa de Doctorado en Electrónica: Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
-\newcommand{\mybookphdprogramEnglish}{PhD. Program in Electronics: Advanced Electronic Systems. Intelligent Systems}
-\newcommand{\myResearchGroup}{GEINTRA}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Advisor data
+\newcommand{\myAcademicTutorFullName}{Roberto Barra Chicote} 
+\newcommand{\myAcademicTutorGender}{male}
+\newcommand{\myAcademicTutorDNI}{11111111-A}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CoAdvisor data
+\newcommand{\myCoTutorFullName}{Juana de Arco} 
+\newcommand{\myCoTutorGender}{female}
+\newcommand{\myCoTutorDNI}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Affiliation
 \newcommand{\mySchool}{Escuela Politécnica Superior}
 \newcommand{\myUniversity}{Universidad de Alcalá}
 \newcommand{\myUniversityAcronym}{UAH}
-\newcommand{\myUPMdegree}{Ingeniero de Telecomunicación} % Used in UPM
-\newcommand{\myAuthorEmail}{macias@depeca.uah.es}
 
-\newcommand{\myAcademicTutorFullName}{Roberto Barra Chicote} % This is the default in  TFGs from 20151218
-\newcommand{\myAcademicTutorGender}{male}
-\newcommand{\myCoTutorFullName}{Juana de Arco} % In case you need this for yout TF?
-\newcommand{\myCoTutorGender}{female}
+\newcommand{\myDepartment}{Departamento de Electrónica}
+\newcommand{\myDepartmentEnglish}{Departament of Electronics}
 
-\newcommand{\mybookNameFirstAdvisor}{\myAcademicTutorFullName} % This is deprecated: set to academic tutor
-\newcommand{\mybookNameSecondAdvisor}{\myCoTutorFullName} % This is deprecated: set to cotutor
+\newcommand{\myPhDProgram}{Programa de Doctorado en Electrónica: Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
+\newcommand{\myPhDProgramEnglish}{PhD. Program in Electronics: Advanced Electronic Systems. Intelligent Systems}
+
+\newcommand{\myResearchGroup}{GEINTRA}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tribunal members & department staff
 \newcommand{\myTribunalPresident}{Name of the tribunal president}
 \newcommand{\myTribunalFirstSpokesperson}{Name of the first vocal}
-\newcommand{\myTribunalSecondSpokesperson}{Name of the second vocal} % At UAH usually \mybookNameFirstAdvisor
+\newcommand{\myTribunalSecondSpokesperson}{Name of the second vocal} 
 \newcommand{\myTribunalAlternateMember}{Name of the alternate member}
 \newcommand{\myTribunalSecretary}{Name of the secretary (if needed)}
+\newcommand{\myDepartmentSecretary}{José Luis Martín Sánchez} % Por TFGs & TFMs & MUSEA-TFMs paperwork
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Calendar dates 
-\newcommand{\mybookyear}{2018}
 
-\newcommand{\myanteproyectodate}{6 de enero de 2018}
+\newcommand{\myThesisProposalDate}{6 de enero de 2018} % "Anteproyecto" date
 
-\newcommand{\mydepositdate}{1 de enero de 2018} % The date you deposit (submit) this document in the Department
-\newcommand{\mydepositdateEnglish}{January 1\textsuperscript{st}, 2018} 
+\newcommand{\myThesisDepositDate}{1 de enero de 2018}
+\newcommand{\myThesisDepositDateEnglish}{January 1\textsuperscript{st}, 2018} 
 
-% For RR, mydefensedate is date to be shown in the cover
-\newcommand{\mydefensedate}{6 de enero de 2018}
-\newcommand{\mydefensedateEnglish}{January 6\textsuperscript{th}, 2018}
+% For RR, myThesisDefenseDate is date to be shown in the cover
+\newcommand{\myThesisDefenseYear}{2018}
+\newcommand{\myThesisDefenseDate}{6 de enero de \myThesisDefenseYear{}}
+\newcommand{\myThesisdefenseDateEnglish}{January 6\textsuperscript{th}, \myThesisDefenseYear{}}
 % If you prefer British English for the date, use this:
-% \newcommand{\mydefensedateEnglish}{6\textsuperscript{th} of January, 2018}
+% \newcommand{\myThesisdefenseDateEnglish}{6\textsuperscript{th} of January, 2018}
 
-\newcommand{\mybookkeywords}{Bsc., Msc. and PhD. Thesis template, \LaTeX, English/Spanish support, automatic generation} % (up to a maximum of five)
-\newcommand{\mybookpalabrasclave}{Plantillas de trabajos fin de carrera/máster/grado y tesis doctorales, \LaTeX, soporte de español e inglés, generación automática} % (máximo de cinco)
+\newcommand{\myPaperworkDate}{22 de mayo de 2019}
+
+
 
 %\newcommand{\mybookvicerrectorinvestigacion}{Excma. Sra. María Luisa Marina Alegre}
 \newcommand{\mybookvicerrectorinvestigacion}{Excmo. Sr. Francisco J. de la Mata de la Mata}
 \newcommand{\mybookvicerrectorinvestigacionGender}{male}
 
-% Por TFGs & TFMs & MUSEA-TFMs paperwork
-\newcommand{\mybookdepartmentsecretary}{José Luis Martín Sánchez}
-\newcommand{\mybookdateforpaperwork}{22 de mayo de 2019}
-\newcommand{\mybookDNIOpenPublishing}{12345678-L} % Required for TFG's & MUSEA-TFMs
-                                % paperwork, must be the DNI of the student
-\newcommand{\mybookDNIAcademicTutor}{11111111-A}
-\newcommand{\mybookDNICotutor}{}
-\newcommand{\mybookDNIFirstAdvisor}{\mybookDNIAcademicTutor} % Deprecated: set to that of academic tutor
-\newcommand{\mybookDNISecondAdvisor}{\mybookDNICotutor} % Deprecated set to that of cotutor
-\newcommand{\mybookFigure}{alumno} % Required
-                                % for TFG's: the type of adscription of
-                                % the author signing the agreement
-                                % (should be "alumno" in most cases)
+
+
 
 \newcommand{\mybookresearchreportID}{RR-2018-01}
 
-% Personal details for the anteproyecto request
-% Not required in some cases
-\newcommand{\mystreet}{C/ Calle de la Calle, 22}
-\newcommand{\mycity}{Meco}
-\newcommand{\mypostalcode}{28880}
-\newcommand{\myprovince}{Madrid}
-\newcommand{\mytelephone}{666666666}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Link color definition
 % Color links of the toc/lot/lof entries
 %\newcommand{\mytoclinkcolor}{blue}
@@ -198,9 +209,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % BEGIN My bibliography database files
 % Define your own commands here
-
+%
 % This should be relative to the path in which book.tex is located
-\newcommand{\myreferences}{biblio/biblio}
+%\newcommand{\myreferences}{biblio/biblio}
 
 % END My bibliography database files
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -228,6 +239,19 @@
 
 % This is an example used in the sample chapters
 \newcommand{\verticalSpacingSRPMaps}{-0.3cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Deprecated and less useful definitions
+\newcommand{\mybookNameFirstAdvisor}{\myAcademicTutorFullName} % This is deprecated: set to academic tutor
+\newcommand{\mybookNameSecondAdvisor}{\myCoTutorFullName} % This is deprecated: set to cotutor
+\newcommand{\myFirstAdvisorDNI}{\myAcademicTutorDNI} % Deprecated: set to that of academic tutor
+\newcommand{\mySecondAdvisorDNI}{\myCoTutorDNI} % Deprecated set to that of cotutor
+\newcommand{\mybookFigure}{alumno} % Required
+                                % for TFG's: the type of adscription of
+                                % the author signing the agreement
+                                % (should be "alumno" in most cases)
+
+\newcommand{\myUPMdegree}{Ingeniero de Telecomunicación} % Used in UPM
 
 % END My own commands section 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 

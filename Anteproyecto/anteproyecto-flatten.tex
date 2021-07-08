@@ -264,7 +264,7 @@ urlcolor=azul,                                                        pdfborder=
 \newcommand{\myDegree}{GIEC}
 
 \newcommand{\mybooktitle}{Plantilla unificada para la generación de memorias de PFCs, TFGs, TFMs y tesis doctorales}
-\newcommand{\mybookauthor}{Javier Macías-Guarasa}
+\newcommand{\myAuthorFullName}{Javier Macías-Guarasa}
 \newcommand{\myDepartment}{Departamento de Electrónica}
 \newcommand{\myDepartmentEnglish}{Departament of Electronics}
 \newcommand{\myResearchGroup}{GEINTRA}
@@ -278,14 +278,14 @@ urlcolor=azul,                                                        pdfborder=
 \newcommand{\myTribunalFirstSpokesperson}{Name of the first vocal}
 \newcommand{\myTribunalSecondSpokesperson}{Name of the second vocal}
 \newcommand{\myTribunalSecretary}{Name of the secretary (if needed)}
-\newcommand{\mybookyear}{2014}
-\newcommand{\myanteproyectodate}{6 de enero de 2014}
-\newcommand{\mydefensedate}{6 de enero de 2014}
-\newcommand{\mybookkeywords}{Bsc., Msc. and PhD. Thesis template, \LaTeX, English/Spanish support, automatic generation} \newcommand{\mybookpalabrasclave}{Plantillas de trabajos fin de carrera/máster/grado y tesis doctorales, \LaTeX, soporte de español e inglés, generación automática} 
-\newcommand{\mybookdepartmentsecretary}{José Luis Martín Sánchez}
-\newcommand{\mybookdateforpaperwork}{30 de septiembre de 2014}
-\newcommand{\mybookDNIOpenPublishing}{12345678-L}                                 \newcommand{\mybookDNIFirstAdvisor}{11111111-A}
-\newcommand{\mybookDNISecondAdvisor}{}
+\newcommand{\myThesisDefenseYear}{2014}
+\newcommand{\myThesisProposalDate}{6 de enero de 2014}
+\newcommand{\myThesisDefenseDate}{6 de enero de 2014}
+\newcommand{\myThesisKeywordsEnglish}{Bsc., Msc. and PhD. Thesis template, \LaTeX, English/Spanish support, automatic generation} \newcommand{\myThesisKeywords}{Plantillas de trabajos fin de carrera/máster/grado y tesis doctorales, \LaTeX, soporte de español e inglés, generación automática} 
+\newcommand{\myDepartmentSecretary}{José Luis Martín Sánchez}
+\newcommand{\myPaperworkDate}{30 de septiembre de 2014}
+\newcommand{\myAuthorDNI}{12345678-L}                                 \newcommand{\myFirstAdvisorDNI}{11111111-A}
+\newcommand{\mySecondAdvisorDNI}{}
 \newcommand{\mybookFigure}{alumno}                                                                                                 
 \newcommand{\mybookresearchreportID}{RR-2014-01}
 
@@ -606,19 +606,19 @@ urlcolor=azul,                                                        pdfborder=
 
 
 
-\newcommand{\contactauthor}{\mybookauthor~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater}
+\newcommand{\contactauthor}{\myAuthorFullName~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater}
 
 \ifthenelse{\equal{\mybooklanguage}{english}}
 {
-  \newcommand{\keywordsforpdf}{\mybookkeywords}
+  \newcommand{\keywordsforpdf}{\myThesisKeywordsEnglish}
 }
 {
-  \newcommand{\keywordsforpdf}{\mybookpalabrasclave}
+  \newcommand{\keywordsforpdf}{\myThesisKeywords}
 }
 
 \hypersetup
 {
-  pdfauthor={\mybookauthor~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater},
+  pdfauthor={\myAuthorFullName~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater},
   pdftitle={\mybooktitle},
   pdfsubject={\myDegreefull, \mybookworktypefull},
   pdfkeywords={\keywordsforpdf},
@@ -636,7 +636,7 @@ urlcolor=azul,                                                        pdfborder=
     
                                
 \graphicspath{{../logos/}{../figures/}{../diagrams/}}                                                                 
-\title{Anteproyecto de \mybookworktypefull}        \date{\myanteproyectodate}                         \author{\mybookauthor}
+\title{Anteproyecto de \mybookworktypefull}        \date{\myThesisProposalDate}                         \author{\myAuthorFullName}
 
 \begin{document}                                   
 
@@ -669,7 +669,7 @@ urlcolor=azul,                                                        pdfborder=
 
 \maketitle
 
- \begin{description}                                \item[Título:] \mybooktitle                        \item[Departamento:] \myDepartment             \item[Autor:] \mybookauthor                        \item[\expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}:] \mybookadvisors                    \end{description}                                 
+ \begin{description}                                \item[Título:] \mybooktitle                        \item[Departamento:] \myDepartment             \item[Autor:] \myAuthorFullName                        \item[\expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}:] \mybookadvisors                    \end{description}                                 
 
 \section{Introducción}
 \label{sec:introduccion}

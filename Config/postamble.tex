@@ -85,7 +85,7 @@
   \newcommand{\drOrDraCoTutor}{Dra.}
 }
 
-\ifthenelse{\equal{\mybookauthorgender}{male}}     
+\ifthenelse{\equal{\myAuthorGender}{male}}     
 {                                                       
   \newcommand{\donOrDonaAutor}{D.}
 }
@@ -169,7 +169,7 @@
 }
 
 % Set Autor/Autora field
-\ifthenelse{\equal{\mybookauthorgender}{male}}     
+\ifthenelse{\equal{\myAuthorGender}{male}}     
 {                                                       
   \newcommand{\mybookAutorOrAutora}{autor}                
   \newcommand{\mybookAutorElOrLa}{el}                
@@ -578,15 +578,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % BEGIN Definition of the pdf document information data
 
-\newcommand{\contactauthor}{\mybookauthor~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater}
+\newcommand{\contactauthor}{\myAuthorFullName~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater}
 
 % Set keywords for pdf information
 \ifthenelse{\equal{\mybooklanguage}{english}}
 {
-  \newcommand{\keywordsforpdf}{\mybookkeywords}
+  \newcommand{\keywordsforpdf}{\myThesisKeywordsEnglish}
 }
 {
-  \newcommand{\keywordsforpdf}{\mybookpalabrasclave}
+  \newcommand{\keywordsforpdf}{\myThesisKeywords}
 }
 
 \newcommand{\underscoreSpacingFour}{\_\_\_\_}
@@ -594,12 +594,12 @@
 
 \hypersetup
 {
-  pdfauthor={\mybookauthor~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater},
+  pdfauthor={\myAuthorFullName~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater},
   pdftitle={\mybooktitle},
   pdfsubject={\myDegreefull, \mybookworktypefull},
   % Uncomment the English or Spanish version if you wish to hard-code them
-  % pdfkeywords={\mybookkeywords, \mybookworktypefull, \myDegreefull},
-  % pdfkeywords={\mybookpalabrasclave, \mybookworktypefull, \myDegreefull},
+  % pdfkeywords={\myThesisKeywordsEnglish, \mybookworktypefull, \myDegreefull},
+  % pdfkeywords={\myThesisKeywords, \mybookworktypefull, \myDegreefull},
   pdfkeywords={\keywordsforpdf},
   pdfcreator={\LaTeX with hyperref package},
   pdfproducer={rubber},
