@@ -9,7 +9,7 @@ The template uses configuration variables (defined in the `Book/config/myconfig.
 
 ### Configure your data
 
-   All the information you can customize is in the `Book/config/myconfig.tex` file. The variable names are all defined in `\newcommand{}{}` statements and all of then start with the `\my' prefix. Most of the names should be self-explanatory.
+   All the information you can customize is in the `config/myconfig.tex` file. The variable names are all defined in `\newcommand{}{}` statements and all of then start with the `\my' prefix. Most of the names should be self-explanatory.
 
 ### To fill in and generate the "anteproyecto"
 
@@ -22,7 +22,7 @@ The template uses configuration variables (defined in the `Book/config/myconfig.
 1. Go to the "Book" directory
 2. The main compilation file is `book.tex` that you can suit to your needs commenting out what you don't need. If you compile it "as provided" you will see a lot of examples that can be useful for your particular case.
 3. Edit the files you need (abstract files, chapter files, dedication files, appendix files, etc.) There is a specific directory for each of them
-4. Compile the book.tex (there is a `Makefile` available, but you can use your standard LaTeX build tool).
+4. Compile the book.tex (there is a `Makefile` available, but you can use your standard LaTeX build tools).
 
 ### To fill in and generate paperwork
 
