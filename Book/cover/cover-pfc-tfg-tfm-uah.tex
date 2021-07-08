@@ -55,10 +55,10 @@
   
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
-    Author: \mybookauthor
+    Author: \myAuthorFullName
   }
   {
-    \expandafter\makefirstuc\expandafter{\mybookAutorOrAutora}: \mybookauthor
+    \expandafter\makefirstuc\expandafter{\mybookAutorOrAutora}: \myAuthorFullName
   }
   
   
@@ -133,11 +133,11 @@
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
 %    &Calification: ..........................................................................\\ \\
-    &Deposit date: \mydepositdateEnglish
+    &Deposit date: \myThesisDepositDateEnglish
   }
   {
 %    &Calificación: ..........................................................................\\ \\
-    &Fecha de depósito: \mydepositdate{}
+    &Fecha de depósito: \myThesisDepositDate{}
   }
     \end{tabular}
   \end{center}

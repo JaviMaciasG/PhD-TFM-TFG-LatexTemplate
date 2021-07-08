@@ -292,13 +292,13 @@ de trabajo y el autor:
     lo que he optado por utilizar el que se ve realmente en dicho
     modelo. Si quieres cambiarlo, busca ``PANTONE'' en \texttt{config/preamble.tex}.}, entre otras cosas.
 \item Título del documento (variable \texttt{\textbackslash{}mybooktitle}).
-\item Nombre del autor del trabajo (variable \texttt{\textbackslash{}mybookauthor}).
+\item Nombre del autor del trabajo (variable \texttt{\textbackslash{}myAuthorFullName}).
 \item DNI del autor del trabajo, usado en el papeleo de los TFGs (variable \texttt{\textbackslash{}mybookDNI}).
 \item Departamento en el que se realiza el trabajo (variable
   \texttt{\textbackslash{}myDepartment}, en español, y \texttt{\textbackslash{}myDepartmentEnglish}, en inglés).
 \item Programa de Doctorado (en su caso) en el que se realiza el trabajo (variable
   \texttt{\textbackslash{}myPhDProgram}, en español, y
-  \texttt{\textbackslash{}mybookphdprogramEnglish}, en inglés). 
+  \texttt{\textbackslash{}myPhDProgramEnglish}, en inglés). 
 \item Grupo de investigación en el que se realiza el trabajo (variable
   \texttt{\textbackslash{}myResearchGroup}.
 \item Centro en el que se realiza el trabajo (variable \texttt{\textbackslash{}mySchool}, que debería ser la Escuela Politénica Superior, pero se incluye por generalidad).
@@ -312,13 +312,13 @@ de trabajo y el autor:
 \item Nombre del primer vocal del tribunal (variable \texttt{\textbackslash{}myTribunalFirstSpokesperson}).
 \item Nombre del segundo vocal del tribunal (variable \texttt{\textbackslash{}myTribunalSecondSpokesperson}).
 \item Nombre del secretario del tribunal, en su caso (variable \texttt{\textbackslash{}myTribunalSecretary}).
-\item Año del trabajo (variable \texttt{\textbackslash{}mybookyear}).
+\item Año del trabajo (variable \texttt{\textbackslash{}myThesisDefenseYear}).
 \item Fecha del anteproyecto, en su caso (variable \texttt{\textbackslash{}mybookanteproyectodate}), en el caso de que se usen la plantilla del anteproyecto.
 \item Fecha de la defensa del trabajo, en su caso (variable
-  \texttt{\textbackslash{}mydefensedate}, en español, o
-  \texttt{\textbackslash{}mydefensedateEnglish}).
-\item Palabras clave en inglés (variable \texttt{\textbackslash{}mybookkeywords}).
-\item Palabras clave en español (variable \texttt{\textbackslash{}mybookpalabrasclave}).
+  \texttt{\textbackslash{}myThesisDefenseDate}, en español, o
+  \texttt{\textbackslash{}myThesisdefenseDateEnglish}).
+\item Palabras clave en inglés (variable \texttt{\textbackslash{}myThesisKeywordsEnglish}).
+\item Palabras clave en español (variable \texttt{\textbackslash{}myThesisKeywords}).
 \end{itemize}
 
 Y también variables para el caso de los trabajos que necesitan papeleo
@@ -326,15 +326,15 @@ adicional (publicación en abierto, autorizaciones, etc.).
 
 \begin{itemize}
 \item Nombre del Secretario del Departamento (que firmará parte del papeleo)
-  (variable \texttt{\textbackslash{}mybookdepartmentsecretary}).
-\item Fecha que aparecerá en la firma del papeleo (variable \texttt{\textbackslash{}mybookdateforpaperwork}).
+  (variable \texttt{\textbackslash{}myDepartmentSecretary}).
+\item Fecha que aparecerá en la firma del papeleo (variable \texttt{\textbackslash{}myPaperworkDate}).
 \item DNI del alumno (variable
-  \texttt{\textbackslash{}mybookDNIOpenPublishing}).
+  \texttt{\textbackslash{}myAuthorDNI}).
 \item Figura del autor del trabajo, que es normalmente ``alumno''
   (variable \texttt{\textbackslash{}mybookProfFigureOpenPublishing}).
 \item DNIs del/de los tutores, para los permisos de publicación en
-  abierto (variables \texttt{\textbackslash{}mybookDNIFirstAdvisor} y
-  \texttt{\textbackslash{}mybookDNISecondAdvisor}, en su caso)
+  abierto (variables \texttt{\textbackslash{}myFirstAdvisorDNI} y
+  \texttt{\textbackslash{}mySecondAdvisorDNI}, en su caso)
 \end{itemize}
 
 Se ha comenzado a trabajar en la versión alfa del soporte para
@@ -349,11 +349,11 @@ anteproyecto que se usa en la solicitud, con lo que hay variables
 relacionadas con los datos personales del alumno:
 
 \begin{itemize}
-\item Dirección: calle (variable \texttt{\textbackslash{}mystreet}),
-  ciudad (variable \texttt{\textbackslash{}mycity}), código postal
-  (variable \texttt{\textbackslash{}mypostalcode}), provincia (variable
-  \texttt{\textbackslash{}myprovince}) y teléfono (variable
-  \texttt{\textbackslash{}mytelephone}).
+\item Dirección: calle (variable \texttt{\textbackslash{}myAuthorStreet}),
+  ciudad (variable \texttt{\textbackslash{}myAuthorCity}), código postal
+  (variable \texttt{\textbackslash{}myAuthorPostalCode}), provincia (variable
+  \texttt{\textbackslash{}myAuthorProvince}) y teléfono (variable
+  \texttt{\textbackslash{}myAuthorTelephone}).
 \end{itemize}
 
 También se definen los colores que se usarán en los hiperenlaces del

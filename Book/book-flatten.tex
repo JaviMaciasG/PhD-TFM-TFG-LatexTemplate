@@ -313,11 +313,11 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 \newcommand{\myDegree}{GIEC}
 
 \newcommand{\mybooktitle}{Plantilla unificada para la generación de memorias de PFCs, TFGs, TFMs y tesis doctorales}
-\newcommand{\mybookauthor}{Javier Macías-Guarasa}
+\newcommand{\myAuthorFullName}{Javier Macías-Guarasa}
 \newcommand{\myDepartment}{Departamento de Electrónica}
 \newcommand{\myDepartmentEnglish}{Departament of Electronics}
 \newcommand{\myPhDProgram}{Programa de Doctorado en Electrónica: Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
-\newcommand{\mybookphdprogramEnglish}{PhD. Program in Electronics: Advanced Electronic Systems. Intelligent Systems}
+\newcommand{\myPhDProgramEnglish}{PhD. Program in Electronics: Advanced Electronic Systems. Intelligent Systems}
 \newcommand{\myResearchGroup}{GEINTRA}
 \newcommand{\mySchool}{Escuela Politécnica Superior}
 \newcommand{\myUniversity}{Universidad de Alcalá}
@@ -329,15 +329,15 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 \newcommand{\myTribunalFirstSpokesperson}{Name of the first vocal}
 \newcommand{\myTribunalSecondSpokesperson}{Name of the second vocal}
 \newcommand{\myTribunalSecretary}{Name of the secretary (if needed)}
-\newcommand{\mybookyear}{2014}
-\newcommand{\myanteproyectodate}{6 de enero de 2014}
-\newcommand{\mydefensedate}{6 de enero de 2014}
-\newcommand{\mydefensedateEnglish}{January 6\textsuperscript{th}, 2014}
-\newcommand{\mybookkeywords}{Bsc., Msc. and PhD. Thesis template, \LaTeX, English/Spanish support, automatic generation} \newcommand{\mybookpalabrasclave}{Plantillas de trabajos fin de carrera/máster/grado y tesis doctorales, \LaTeX, soporte de español e inglés, generación automática} 
-\newcommand{\mybookdepartmentsecretary}{José Luis Martín Sánchez}
-\newcommand{\mybookdateforpaperwork}{30 de septiembre de 2014}
-\newcommand{\mybookDNIOpenPublishing}{12345678-L}                                 \newcommand{\mybookDNIFirstAdvisor}{11111111-A}
-\newcommand{\mybookDNISecondAdvisor}{}
+\newcommand{\myThesisDefenseYear}{2014}
+\newcommand{\myThesisProposalDate}{6 de enero de 2014}
+\newcommand{\myThesisDefenseDate}{6 de enero de 2014}
+\newcommand{\myThesisdefenseDateEnglish}{January 6\textsuperscript{th}, 2014}
+\newcommand{\myThesisKeywordsEnglish}{Bsc., Msc. and PhD. Thesis template, \LaTeX, English/Spanish support, automatic generation} \newcommand{\myThesisKeywords}{Plantillas de trabajos fin de carrera/máster/grado y tesis doctorales, \LaTeX, soporte de español e inglés, generación automática} 
+\newcommand{\myDepartmentSecretary}{José Luis Martín Sánchez}
+\newcommand{\myPaperworkDate}{30 de septiembre de 2014}
+\newcommand{\myAuthorDNI}{12345678-L}                                 \newcommand{\myFirstAdvisorDNI}{11111111-A}
+\newcommand{\mySecondAdvisorDNI}{}
 \newcommand{\mybookFigure}{alumno}                                                                                                 
 \newcommand{\mybookresearchreportID}{RR-2014-01}
 
@@ -668,19 +668,19 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 
 
 
-\newcommand{\contactauthor}{\mybookauthor~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater}
+\newcommand{\contactauthor}{\myAuthorFullName~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater}
 
 \ifthenelse{\equal{\mybooklanguage}{english}}
 {
-  \newcommand{\keywordsforpdf}{\mybookkeywords}
+  \newcommand{\keywordsforpdf}{\myThesisKeywordsEnglish}
 }
 {
-  \newcommand{\keywordsforpdf}{\mybookpalabrasclave}
+  \newcommand{\keywordsforpdf}{\myThesisKeywords}
 }
 
 \hypersetup
 {
-  pdfauthor={\mybookauthor~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater},
+  pdfauthor={\myAuthorFullName~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater},
   pdftitle={\mybooktitle},
   pdfsubject={\myDegreefull, \mybookworktypefull},
   pdfkeywords={\keywordsforpdf},
@@ -765,7 +765,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 
 \vspace{5cm}
 
-  \textbf{Autor:}  \mybookauthor 
+  \textbf{Autor:}  \myAuthorFullName 
 
 \vspace{0.5cm}
 
@@ -775,7 +775,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 
 \begin{bottomparagraph}
   \begin{center}
-    \huge{\mybookyear}
+    \huge{\myThesisDefenseYear}
   \end{center}
 \end{bottomparagraph}
 
@@ -807,7 +807,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 
   \vspace{1cm}
   
-  Autor: \mybookauthor
+  Autor: \myAuthorFullName
   
   \vspace{1mm}
   
@@ -876,13 +876,13 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 
   \vspace{2cm}
 
-  \mybookauthor
+  \myAuthorFullName
 
 \end{center}
 
 \begin{bottomparagraph}
   \begin{center}
-    \huge{\mybookyear}
+    \huge{\myThesisDefenseYear}
   \end{center}
 \end{bottomparagraph}
 
@@ -913,7 +913,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 
   \vspace{1cm}
   
-  Autor: \mybookauthor
+  Autor: \myAuthorFullName
   
   \vspace{1mm}
   
@@ -1005,9 +1005,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
   \node[yshift=-19cm] at (current page.north west)
   {
     \begin{tikzpicture}[remember picture, overlay]
-      \node [yshift=0,    xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Presentado por:\\\mybookauthor}\par};
+      \node [yshift=0,    xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Presentado por:\\\myAuthorFullName}\par};
       \node [yshift=-3cm, xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Dirigido por:\\\mybookadvisors}\par};
-      \node [yshift=-6cm, xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Alcalá de Henares, a \mydefensedate}\par};
+      \node [yshift=-6cm, xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Alcalá de Henares, a \myThesisDefenseDate}\par};
 
     \end{tikzpicture}
   };
@@ -1045,7 +1045,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
-    \huge{{\mybookphdprogramEnglish}}
+    \huge{{\myPhDProgramEnglish}}
   }
   {
     \huge{{\myPhDProgram}}
@@ -1071,7 +1071,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
   }
 
 
-  \huge{\textbf{\mybookauthor}}
+  \huge{\textbf{\myAuthorFullName}}
 
 
   
@@ -1080,7 +1080,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 
 \begin{bottomparagraph}
   \begin{center}
-    \huge{\mybookyear}
+    \huge{\myThesisDefenseYear}
   \end{center}
 \end{bottomparagraph}
 
@@ -1100,7 +1100,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
-    \huge{{\mybookphdprogramEnglish}}
+    \huge{{\myPhDProgramEnglish}}
   }
   {
     \huge{{\myPhDProgram}}
@@ -1120,7 +1120,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
     \huge{{Tesis Doctoral presentada por}}
   }
 
-  \huge{\textbf{\mybookauthor}}
+  \huge{\textbf{\myAuthorFullName}}
 
 
   \vspace{10mm}
@@ -1148,10 +1148,10 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 
     \ifthenelse{\equal{\mybooklanguage}{english}}
     {
-      \huge {Alcalá de Henares, \mydefensedateEnglish}
+      \huge {Alcalá de Henares, \myThesisdefenseDateEnglish}
     }
     { 
-      \huge {Alcalá de Henares, \mydefensedate}
+      \huge {Alcalá de Henares, \myThesisDefenseDate}
     }  
     \color{black}
 
