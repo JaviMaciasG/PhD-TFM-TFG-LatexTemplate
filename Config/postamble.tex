@@ -93,6 +93,32 @@
   \newcommand{\donOrDonaAutor}{Dª.}
 }
 
+
+\ifthenelse{\equal{\mybookAcademicTutorGender}{male}}     
+{                                                       
+  \newcommand{\directorOrdirectora}{director}
+  \newcommand{\mybookTutor}{tutor}
+  \newcommand{\mybookAcademico}{académico}
+  \newcommand{\mybookTutorDelOrDeLa}{del}
+}
+{
+  \newcommand{\directorOrdirectora}{directora}
+  \newcommand{\mybookTutor}{tutora}
+  \newcommand{\mybookAcademico}{académica}
+  \newcommand{\mybookTutorDelOrDeLa}{de la}
+}
+
+\ifthenelse{\equal{\mybookCoTutorGender}{male}}     
+{                                                       
+  \newcommand{\mybookCoTutor}{cotutor}
+  \newcommand{\mybookCotutorDelOrDeLa}{del}
+}
+{
+  \newcommand{\mybookCoTutor}{cotutora}
+  \newcommand{\mybookCotutorDelOrDeLa}{de la}
+}
+
+
 % Set name of advisors and define words depending on singular/plural
 \ifthenelse{\equal{\mybookNameCoTutor}{}}
 {
@@ -135,24 +161,6 @@
   \newcommand{\mybookTutorOrTutores}{tutores}
 
 
-  \ifthenelse{\equal{\mybookAcademicTutorGender}{male}}     
-  {                                                       
-    \newcommand{\directorOrdirectora}{director}
-    \newcommand{\mybookTutor}{tutor}
-  }
-  {
-    \newcommand{\directorOrdirectora}{directora}
-    \newcommand{\mybookTutor}{tutora}
-  }
-
-  \ifthenelse{\equal{\mybookCoTutorGender}{male}}     
-  {                                                       
-    \newcommand{\mybookCoTutor}{cotutor}
-  }
-  {
-    \newcommand{\mybookCoTutor}{cotutora}
-  }
-
 
   \newcommand{\mybookElOrLos}{Los}
   \newcommand{\mybookSuOrSus}{Su}
@@ -170,7 +178,10 @@
   \newcommand{\mybookAutorDonOrDona}{D}                
   \newcommand{\mybookAutorNotificadoOrNotificada}{notificado}                
   \newcommand{\mybookAutorAdscritoOrAdscrita}{adscrito}                
-  \newcommand{\mybookAlumnoOrAlumna}{alumno}                
+  \newcommand{\mybookAlumnoOrAlumna}{alumno}
+  % This is silly, but makefirstuc does not work properly...
+  \newcommand{\mybookAlumnoOrAlumnaUp}{Alumno}  
+  
 }                                               
 {
   \newcommand{\mybookAutorOrAutora}{autora}                
@@ -180,7 +191,9 @@
   \newcommand{\mybookAutorDonOrDona}{Dª}                
   \newcommand{\mybookAutorNotificadoOrNotificada}{notificada}    
   \newcommand{\mybookAutorAdscritoOrAdscrita}{adscrita}                
-  \newcommand{\mybookAlumnoOrAlumna}{alumna}                            
+  \newcommand{\mybookAlumnoOrAlumna}{alumna}
+  % This is silly, but makefirstuc does not work properly...
+  \newcommand{\mybookAlumnoOrAlumnaUp}{Alumna}
 }
 
 \ifthenelse{\equal{\mybookvicerrectorinvestigacionGender}{male}}     
