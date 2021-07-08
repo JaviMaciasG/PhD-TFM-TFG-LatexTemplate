@@ -33,3 +33,5 @@ vistoBuenoTutorTFM.out
 *.bak
 *.synctex.gz
 auto
+*.out
+
