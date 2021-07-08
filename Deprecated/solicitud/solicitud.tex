@@ -86,7 +86,7 @@
 
   \Large\textbf{SOLICITUD DE ANTEPROYECTO \MakeUppercase{\mybookworktypefull}}
 
-  \mybookdepartment
+  \myDepartment
 
 \end{center}
 \end{spacing}
@@ -101,8 +101,8 @@
     \MakeUppercase{NOMBRE Y APELLIDOS}: \mybookauthor & & DNI: \mybookDNIOpenPublishing \\
     \multicolumn{2}{l}{DIRECCIÓN: \mystreet}  & CÓDIGO POSTAL: \mypostalcode\\ 
     POBLACIÓN: \mycity         & PROVINCIA: \myprovince     & TELÉFONO: \mytelephone \\
-    EMAIL: \mybookemail & & \\
-    \multicolumn{2}{l}{ESTUDIOS: \mydegreefull} & ESPECIALIDAD: \myspecialty\\
+    EMAIL: \myAuthorEmail & & \\
+    \multicolumn{2}{l}{ESTUDIOS: \myDegreefull} & ESPECIALIDAD: \mySpecialty\\
     & & \\
     \multicolumn{3}{l}{IDIOMA ESCOGIDO PARA DESARROLLAR EL TRABAJO: [\xUseSpanish] ESPAÑOL ~~ [\xUseEnglish] INGLÉS}\\
     & &
@@ -115,10 +115,10 @@
 
 \begin{tabularx}{\textwidth}{|X|}
   \hline
-  TÍTULO DEL \mybookworktype: \mybooktitlespanish \\
+  TÍTULO DEL \mybookworktype: \myBookTitleSpanish \\
   \ifthenelse{\equal{\mybooklanguage}{english}}   
   {                                               
-  TÍTULO EN INGLÉS: \mybooktitleenglish \\
+  TÍTULO EN INGLÉS: \myBookTitleEnglish \\
   }                                               
   {                                               
   }                                               
@@ -168,7 +168,7 @@
     {                                               
       \cellcolor{gray!10}\underline{TRIBUNAL CALIFICADOR:}\\
     }                                               
-    \cellcolor{gray!10}\spacingFour{}Presidente: D/Dª. \longunderline{\mybookpresident}{\spacingFour{}Presidente: D/Dª. } \\
+    \cellcolor{gray!10}\spacingFour{}Presidente: D/Dª. \longunderline{\myTribunalPresident}{\spacingFour{}Presidente: D/Dª. } \\
     \cellcolor{gray!10}\spacingFour{}Vocal 1º: D/Dª. \longunderline{}{\spacingFour{}Vocal 1º: D/Dª. } \\
     \cellcolor{gray!10}\spacingFour{}Vocal 2º: D/Dª. \longunderline{\mybookNameFirstAdvisor{}}{\spacingFour{}Vocal 2º: D/Dª. }\\
     \cellcolor{gray!10}\spacingFour{}Suplente: D/Dª. \longunderline{}{\spacingFour{}Suplente: D/Dª. } \\

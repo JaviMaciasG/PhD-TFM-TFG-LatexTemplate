@@ -86,7 +86,7 @@
 
   \Large\textbf{SOLICITUD DEPÓSITO/DEFENSA DE \MakeUppercase{\mybookworktypefull}}
 
-%  \mybookdepartment
+%  \myDepartment
 
 \end{center}
 \end{spacing}
@@ -97,11 +97,11 @@
 \begin{spacing}{1.0}
 %  \begin{tabularx}{\textwidth}{lXr}
 \begin{tabularx}{\textwidth}{Xl}
-    \multicolumn{2}{l}{\begin{tabular}{l}Apellidos \longunderline{\mybookauthorsurname}{Apellidos }\end{tabular}}\\
+    \multicolumn{2}{l}{\begin{tabular}{l}Apellidos \longunderline{\myAuthorSurname}{Apellidos }\end{tabular}}\\
 
     \multicolumn{1}{l}{\begin{tabular}{L{.5\textwidth}}Nombre
-                         \longunderline{\mybookauthorname}{Nombre
-                         }\end{tabular}} & \multicolumn{1}{l}{\begin{tabular}{L{.485\textwidth}}NIF \longunderline{\mybookauthorname}{Nombre }\end{tabular}}\\
+                         \longunderline{\myAuthorName}{Nombre
+                         }\end{tabular}} & \multicolumn{1}{l}{\begin{tabular}{L{.485\textwidth}}NIF \longunderline{\myAuthorName}{Nombre }\end{tabular}}\\
 
 
 
@@ -117,10 +117,10 @@
 
 \begin{tabularx}{\textwidth}{|X|}
   \hline
-  TÍTULO DEL \mybookworktype: \mybooktitlespanish \\
+  TÍTULO DEL \mybookworktype: \myBookTitleSpanish \\
   \ifthenelse{\equal{\mybooklanguage}{english}}   
   {                                               
-  TÍTULO EN INGLÉS: \mybooktitleenglish \\
+  TÍTULO EN INGLÉS: \myBookTitleEnglish \\
   }                                               
   {                                               
   }                                               
@@ -169,7 +169,7 @@
     {                                               
       \cellcolor{gray!10}\underline{TRIBUNAL CALIFICADOR:}\\
     }                                               
-    \cellcolor{gray!10}\spacingFour{}Presidente: D/Dª. \longunderline{\mybookpresident}{\spacingFour{}Presidente: D/Dª. } \\
+    \cellcolor{gray!10}\spacingFour{}Presidente: D/Dª. \longunderline{\myTribunalPresident}{\spacingFour{}Presidente: D/Dª. } \\
     \cellcolor{gray!10}\spacingFour{}Vocal 1º: D/Dª. \longunderline{}{\spacingFour{}Vocal 1º: D/Dª. } \\
     \cellcolor{gray!10}\spacingFour{}Vocal 2º: D/Dª. \longunderline{\mybookNameFirstAdvisor{}}{\spacingFour{}Vocal 2º: D/Dª. }\\
     \cellcolor{gray!10}\spacingFour{}Suplente: D/Dª. \longunderline{}{\spacingFour{}Suplente: D/Dª. } \\

@@ -48,8 +48,8 @@
       {
         \begin{tikzpicture}[remember picture, overlay]
           \draw[fill=headingPortadaTFG,headingPortadaTFG] (0,0) rectangle (\paperwidth,5cm);
-          \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\mybookuniversity}};
-          \node [yshift=2cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\mybookschool}};
+          \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\myUniversity}};
+          \node [yshift=2cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\mySchool}};
 
         \end{tikzpicture}
       };
@@ -61,7 +61,7 @@
 \begin{center}
 
   % titulación a la que se opta
-  \LARGE\textbf{\mydegreefull}
+  \LARGE\textbf{\myDegreefull}
 
   \vspace{25mm}
 
@@ -92,31 +92,31 @@
 %   }
 
 % ---
-  \ifthenelse{\equal{\mybookSplittedAdvisors}{true}}
+  \ifthenelse{\equal{\myFlagSplittedAdvisors}{true}}
 {
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
 %    \expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}: \mybookadvisors
-    \textbf{\expandafter\makefirstuc\expandafter{\mybookAdvisor}:} \mybookNameAcademicTutor{}
+    \textbf{\expandafter\makefirstuc\expandafter{\mybookAdvisor}:} \myAcademicTutorFullName{}
 
-    \ifthenelse{\equal{\mybookNameCoTutor}{}}
+    \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-    \textbf{\expandafter\makefirstuc\expandafter{\mybookCoAdvisor}:} \mybookNameCoTutor{}
+    \textbf{\expandafter\makefirstuc\expandafter{\mybookCoAdvisor}:} \myCoTutorFullName{}
     }
 
   }
   {%
 %    \expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}: \mybookadvisors
 %    \expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}: \mybookadvisors
-    \textbf{\expandafter\makefirstuc\expandafter{\mybookTutor}:}    \mybookNameAcademicTutor{}
+    \textbf{\expandafter\makefirstuc\expandafter{\mybookTutor}:}    \myAcademicTutorFullName{}
 
-    \ifthenelse{\equal{\mybookNameCoTutor}{}}
+    \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-    \textbf{\expandafter\makefirstuc\expandafter{\mybookCoTutor}:} \mybookNameCoTutor{}
+    \textbf{\expandafter\makefirstuc\expandafter{\mybookCoTutor}:} \myCoTutorFullName{}
     }
   }
 }
