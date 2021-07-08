@@ -29,7 +29,12 @@
 
 SHELL=/bin/bash
 
+DEGREE_NAME=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myDegree" | cut -f 3 -d "{"| cut -f 1 -d "}")
+AUTHOR_NAME=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myAuthorName" | grep -v "myAuthorFullName" | cut -f 3 -d "{"| cut -f 1 -d "}" | tr -d " ")
+AUTHOR_SURNAME=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myAuthorSurname" | grep -v "myAuthorFullName" | cut -f 3 -d "{"| cut -f 1 -d "}" | tr -d " ")
+
 ROOT_FILENAME=book
+ROOT_FINAL_BOOK_FILENAME=$(ROOT_FILENAME)-$(DEGREE_NAME)-$(AUTHOR_SURNAME)-$(AUTHOR_NAME)
 TEX_FILE = $(ROOT_FILENAME).tex
 FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten.tex
 DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff
@@ -65,6 +70,7 @@ DATE=$(shell date "+%C%y%m%d-%H%M%S")
 FLAGS_SYNCTEX_RUBBER=--synctex
 FLAGS_SYNCTEX_PDFLATEX=-synctex=1
 
+# To generate 
 all: $(DUMMY_TARGETS)
 	# $(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
 	# makeglossaries $(ROOT_FILENAME)
@@ -74,7 +80,7 @@ all: $(DUMMY_TARGETS)
 	makeglossaries $(ROOT_FILENAME)
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
-
+	mv $(ROOT_FILENAME).pdf $(ROOT_FINAL_BOOK_FILENAME).pdf
 
 all_old: $(DUMMY_TARGETS)
 	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
