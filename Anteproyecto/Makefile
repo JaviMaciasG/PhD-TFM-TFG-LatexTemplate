@@ -39,8 +39,8 @@ RM=rm -f
 
 ###########################################################################
 # Support to automagically compile dia+svg files. Adapt to your own needs
-DIA_SOURCES=$(wildcard ../diagrams/*.dia)
-SVG_SOURCES=$(wildcard ../diagrams/*.svg)
+DIA_SOURCES=$(wildcard ../Book/diagrams/*.dia)
+SVG_SOURCES=$(wildcard ../Book/diagrams/*.svg)
 EPS_SOURCES=$(wildcard ../eps/*.eps) $(wildcard ../ALLcurvesROC-AV16.3/*.eps) $(wildcard ../ALLcurvesROC-HIFI-MM1/*.eps)
 
 PDFS_FROM_DIA=$(patsubst %.dia,%.pdf,$(DIA_SOURCES)) 
