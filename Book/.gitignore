@@ -110,3 +110,5 @@ proyecto.slg
 proyecto.sym
 proyecto.toc
 tex.list
+*.bak
+*.synctex.gz

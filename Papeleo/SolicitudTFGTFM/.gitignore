@@ -9,3 +9,5 @@ solicitud.out
 solicitudTFG-new.aux
 solicitudTFG-new.log
 solicitudTFG-new.out
+*.bak
+*.synctex.gz

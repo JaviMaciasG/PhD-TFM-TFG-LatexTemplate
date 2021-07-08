@@ -30,3 +30,5 @@ vistoBuenoTutorTFM-MUSEA.out
 vistoBuenoTutorTFM.aux
 vistoBuenoTutorTFM.log
 vistoBuenoTutorTFM.out
+*.bak
+*.synctex.gz
