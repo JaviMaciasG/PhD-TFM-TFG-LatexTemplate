@@ -337,7 +337,7 @@ de trabajo y el autor:
 
 \begin{itemize} 
 \item Acrónimo de la titulación correspondiente al trabajo (variable
-  \texttt{\textbackslash{}mydegree}): Que se seleccionará entre los
+  \texttt{\textbackslash{}myDegree}): Que se seleccionará entre los
   definidos (por ahora\footnote{Este apartado se generó en marzo de
     2020.} son \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST},
   \texttt{ITI}, \texttt{GIEC}, \texttt{GIST}, \texttt{GITT},
@@ -354,26 +354,26 @@ de trabajo y el autor:
     \texttt{config/preamble.tex}.}, entre otras cosas.
 
 \item Flag de división de directores (variable
-  \texttt{\textbackslash{}mybookSplittedAdvisors}). Si puesta a
+  \texttt{\textbackslash{}myFlagSplittedAdvisors}). Si puesta a
   \texttt{false} indicará ``Tutores/Advisors'' en las páginas de
   portada. En caso contrario lo separará en líneas para
   ``Tutor/Advisor'' y ``Cotutor/Co-Advisor''.
 
 \item Especialidad (nuevo en TFGs desde el curso 2015) (variable
-  \texttt{\textbackslash{}myspecialty})
+  \texttt{\textbackslash{}mySpecialty})
 
 
 \item Título del documento en español (variable
-  \texttt{\textbackslash{}mybooktitlespanish}).
+  \texttt{\textbackslash{}myBookTitleSpanish}).
 \item Título del documento en inglés (variable
-  \texttt{\textbackslash{}mybooktitleenglish}).
+  \texttt{\textbackslash{}myBookTitleEnglish}).
 
 \item Nombre del autor del trabajo (variable
-  \texttt{\textbackslash{}mybookauthorname}).
+  \texttt{\textbackslash{}myAuthorName}).
 \item Apellidos del autor del trabajo (variable
-  \texttt{\textbackslash{}mybookauthorsurname}). La unión de esta
+  \texttt{\textbackslash{}myAuthorSurname}). La unión de esta
   definición con la del nombre formará automáticamente la variable
-  \texttt{\textbackslash{}mybookauthorname}
+  \texttt{\textbackslash{}myAuthorName}
 
 \item Género del autor (variable
   \texttt{\textbackslash{}mybookauthorgender}), ``male'' or ``female''.
@@ -381,24 +381,24 @@ de trabajo y el autor:
 \item DNI del autor del trabajo, usado en el papeleo de los TFGs
   (variable \texttt{\textbackslash{}mybookDNI}).
 \item Departamento en el que se realiza el trabajo (variable
-  \texttt{\textbackslash{}mybookdepartment}, en español, y
-  \texttt{\textbackslash{}mybookdepartmentEnglish}, en inglés).
+  \texttt{\textbackslash{}myDepartment}, en español, y
+  \texttt{\textbackslash{}myDepartmentEnglish}, en inglés).
 \item Programa de Doctorado (en su caso) en el que se realiza el trabajo (variable
-  \texttt{\textbackslash{}mybookphdprogram}, en español, y
+  \texttt{\textbackslash{}myPhDProgram}, en español, y
   \texttt{\textbackslash{}mybookphdprogramEnglish}, en inglés). 
 \item Grupo de investigación en el que se realiza el trabajo (variable
-  \texttt{\textbackslash{}mybookresearchgroup}.
-\item Centro en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybookschool}, que debería ser la Escuela Politénica Superior, pero se incluye por generalidad).
+  \texttt{\textbackslash{}myResearchGroup}.
+\item Centro en el que se realiza el trabajo (variable \texttt{\textbackslash{}mySchool}, que debería ser la Escuela Politénica Superior, pero se incluye por generalidad).
 \item Universidad en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybooksuniversidad}, que debería ser la de Alcalá, pero se incluye por generalidad).
-\item Titulación del autor (usada en las tesis de UPM, (variable \texttt{\textbackslash{}mybookauthordegree})).
-\item Email del autor (variable \texttt{\textbackslash{}mybookemail}).
+\item Titulación del autor (usada en las tesis de UPM, (variable \texttt{\textbackslash{}myUPMdegree})).
+\item Email del autor (variable \texttt{\textbackslash{}myAuthorEmail}).
 \item Nombre del primer (o único, en su caso) director del trabajo
   (variable \texttt{\textbackslash{}mybookNameFirstAdvisor}).
 \item Nombre del segundo (en su caso) director del trabajo (variable \texttt{\textbackslash{}mybookNameSecondAdvisor}).
-\item Nombre del presidente del tribunal (variable \texttt{\textbackslash{}mybookpresident}).
-\item Nombre del primer vocal del tribunal (variable \texttt{\textbackslash{}mybookfirstvocal}).
-\item Nombre del segundo vocal del tribunal (variable \texttt{\textbackslash{}mybooksecondvocal}).
-\item Nombre del secretario del tribunal, en su caso (variable \texttt{\textbackslash{}mybooksecretary}).
+\item Nombre del presidente del tribunal (variable \texttt{\textbackslash{}myTribunalPresident}).
+\item Nombre del primer vocal del tribunal (variable \texttt{\textbackslash{}myTribunalFirstSpokesperson}).
+\item Nombre del segundo vocal del tribunal (variable \texttt{\textbackslash{}myTribunalSecondSpokesperson}).
+\item Nombre del secretario del tribunal, en su caso (variable \texttt{\textbackslash{}myTribunalSecretary}).
 \item Año del trabajo (variable \texttt{\textbackslash{}mybookyear}).
 \item Fecha del anteproyecto, en su caso (variable \texttt{\textbackslash{}mybookanteproyectodate}), en el caso de que se usen la plantilla del anteproyecto.
 \item Fecha de la defensa del trabajo, en su caso (variable
@@ -472,8 +472,8 @@ las definiciones específicas que hayas seleccionado.
 
 Por si os hace falta, en \texttt{config/postamble.tex} se definen
 algunas variables relacionadas con el tipo de trabajo. Por ejemplo las
-variables \texttt{\textbackslash{}mydegreefull} (igual a
-``\mydegreefull'' en esta compilación),
+variables \texttt{\textbackslash{}myDegreefull} (igual a
+``\myDegreefull'' en esta compilación),
 \texttt{\textbackslash{}mybookworktype} (igual a ``\mybookworktype'' en
 esta compilación) y \texttt{\textbackslash{}mybookworktypefull} (igual a
 ``\mybookworktypefull'' en esta compilación). Otro ejemplo sería el

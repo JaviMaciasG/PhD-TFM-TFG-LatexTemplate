@@ -32,16 +32,16 @@
 \large
 \begin{center}
 
-  \Huge\MakeUppercase{\mybookuniversity}
+  \Huge\MakeUppercase{\myUniversity}
 
 %  \vspace{1mm}
 
-  \Large{\MakeUppercase{\mybookschool}}
+  \Large{\MakeUppercase{\mySchool}}
 
   \vspace{7mm}
 
   % titulación a la que se opta
-  \Large\textbf{\mydegreefull}
+  \Large\textbf{\myDegreefull}
 
   \vspace{1cm}
 
@@ -64,31 +64,31 @@
   
   \vspace{1mm}
   
-  \ifthenelse{\equal{\mybookSplittedAdvisors}{true}}
+  \ifthenelse{\equal{\myFlagSplittedAdvisors}{true}}
 {
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
 %    \expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}: \mybookadvisors
-    \expandafter\makefirstuc\expandafter{\mybookAdvisor}: \mybookNameAcademicTutor{}
+    \expandafter\makefirstuc\expandafter{\mybookAdvisor}: \myAcademicTutorFullName{}
 
-    \ifthenelse{\equal{\mybookNameCoTutor}{}}
+    \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-    \expandafter\makefirstuc\expandafter{\mybookCoAdvisor}: \mybookNameCoTutor{}
+    \expandafter\makefirstuc\expandafter{\mybookCoAdvisor}: \myCoTutorFullName{}
     }
 
   }
   {%
 %    \expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}: \mybookadvisors
 %    \expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}: \mybookadvisors
-    \expandafter\makefirstuc\expandafter{\mybookTutor}:    \mybookNameAcademicTutor{}
+    \expandafter\makefirstuc\expandafter{\mybookTutor}:    \myAcademicTutorFullName{}
 
-    \ifthenelse{\equal{\mybookNameCoTutor}{}}
+    \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-    \expandafter\makefirstuc\expandafter{\mybookCoTutor}: \mybookNameCoTutor{}
+    \expandafter\makefirstuc\expandafter{\mybookCoTutor}: \myCoTutorFullName{}
     }
   }
 }
@@ -109,19 +109,19 @@
     &&\\
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
-    & \textbf{President:} & \mybookpresident\\ \\ \\
+    & \textbf{President:} & \myTribunalPresident\\ \\ \\
   }
   {
-    & \textbf{Presidente:} & \mybookpresident\\ \\ \\
+    & \textbf{Presidente:} & \myTribunalPresident\\ \\ \\
   }
   \ifthenelse{\equal{\mybooklanguage}{english}}
   {
-    & \textbf{1\textsuperscript{st} Vocal:}   & \mybookfirstvocal\\ \\ \\
-    & \textbf{2\textsuperscript{nd} Vocal:}   & \mybooksecondvocal\\ \\
+    & \textbf{1\textsuperscript{st} Vocal:}   & \myTribunalFirstSpokesperson\\ \\ \\
+    & \textbf{2\textsuperscript{nd} Vocal:}   & \myTribunalSecondSpokesperson\\ \\
   }
   {
-    & \textbf{Vocal 1º:}   & \mybookfirstvocal\\ \\ \\
-    & \textbf{Vocal 2º:}   & \mybooksecondvocal\\ \\
+    & \textbf{Vocal 1º:}   & \myTribunalFirstSpokesperson\\ \\ \\
+    & \textbf{Vocal 2º:}   & \myTribunalSecondSpokesperson\\ \\
   }
 \end{tabular}
 \end{center}

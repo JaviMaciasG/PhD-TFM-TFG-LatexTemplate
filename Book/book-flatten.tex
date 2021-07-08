@@ -310,25 +310,25 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 
 \newcommand{\mybooklanguage}{spanish}
 
-\newcommand{\mydegree}{GIEC}
+\newcommand{\myDegree}{GIEC}
 
 \newcommand{\mybooktitle}{Plantilla unificada para la generación de memorias de PFCs, TFGs, TFMs y tesis doctorales}
 \newcommand{\mybookauthor}{Javier Macías-Guarasa}
-\newcommand{\mybookdepartment}{Departamento de Electrónica}
-\newcommand{\mybookdepartmentEnglish}{Departament of Electronics}
-\newcommand{\mybookphdprogram}{Programa de Doctorado en Electrónica: Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
+\newcommand{\myDepartment}{Departamento de Electrónica}
+\newcommand{\myDepartmentEnglish}{Departament of Electronics}
+\newcommand{\myPhDProgram}{Programa de Doctorado en Electrónica: Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
 \newcommand{\mybookphdprogramEnglish}{PhD. Program in Electronics: Advanced Electronic Systems. Intelligent Systems}
-\newcommand{\mybookresearchgroup}{GEINTRA}
-\newcommand{\mybookschool}{Escuela Politécnica Superior}
-\newcommand{\mybookuniversity}{Universidad de Alcalá}
-\newcommand{\mybookuniversityacronym}{UAH}
-\newcommand{\mybookauthordegree}{Ingeniero de Telecomunicación} \newcommand{\mybookemail}{macias@depeca.uah.es}
+\newcommand{\myResearchGroup}{GEINTRA}
+\newcommand{\mySchool}{Escuela Politécnica Superior}
+\newcommand{\myUniversity}{Universidad de Alcalá}
+\newcommand{\myUniversityAcronym}{UAH}
+\newcommand{\myUPMdegree}{Ingeniero de Telecomunicación} \newcommand{\myAuthorEmail}{macias@depeca.uah.es}
 \newcommand{\mybookNameFirstAdvisor}{Roberto Barra Chicote}
 \newcommand{\mybookNameSecondAdvisor}{}
-\newcommand{\mybookpresident}{Name of the tribunal president}
-\newcommand{\mybookfirstvocal}{Name of the first vocal}
-\newcommand{\mybooksecondvocal}{Name of the second vocal}
-\newcommand{\mybooksecretary}{Name of the secretary (if needed)}
+\newcommand{\myTribunalPresident}{Name of the tribunal president}
+\newcommand{\myTribunalFirstSpokesperson}{Name of the first vocal}
+\newcommand{\myTribunalSecondSpokesperson}{Name of the second vocal}
+\newcommand{\myTribunalSecretary}{Name of the secretary (if needed)}
 \newcommand{\mybookyear}{2014}
 \newcommand{\myanteproyectodate}{6 de enero de 2014}
 \newcommand{\mydefensedate}{6 de enero de 2014}
@@ -393,10 +393,10 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 
 \ifthenelse{\equal{\mybooklanguage}{spanish}}
 {
-\newcommand{\mybookFullAffiliation}{Grupo de investigación \mybookresearchgroup \\ \mybookdepartment \\ \mybookuniversity} 
+\newcommand{\mybookFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity} 
 } 
 {
-\newcommand{\mybookFullAffiliation}{\mybookresearchgroup Research Group \\ \mybookdepartmentEnglish \\ \mybookuniversity} 
+\newcommand{\mybookFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversity} 
 }
 
 \ifthenelse{\equal{\mybookNameSecondAdvisor}{}}
@@ -421,9 +421,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 \newcommand{\mybookDelOrDeLos}{de los}
 }
 
-\ifthenelse{\equal{\mydegree}{IT}}
+\ifthenelse{\equal{\myDegree}{IT}}
 {
-  \newcommand{\mydegreefull}{Ingeniería de Telecomunicación}
+  \newcommand{\myDegreefull}{Ingeniería de Telecomunicación}
   \newcommand{\mybookworktype}{TFC}
   \ifthenelse{\equal{\mybooklanguage}{spanish}}
   {
@@ -434,9 +434,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
   }
 }
 {
-  \ifthenelse{\equal{\mydegree}{IE}}
+  \ifthenelse{\equal{\myDegree}{IE}}
   {
-    \newcommand{\mydegreefull}{Ingeniería Electrónica}
+    \newcommand{\myDegreefull}{Ingeniería Electrónica}
     \newcommand{\mybookworktype}{TFC}
     \ifthenelse{\equal{\mybooklanguage}{spanish}}
     {
@@ -447,9 +447,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
     }
   }
   {
-    \ifthenelse{\equal{\mydegree}{ITTSE}}
+    \ifthenelse{\equal{\myDegree}{ITTSE}}
     {
-      \newcommand{\mydegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas Electrónicos}
+      \newcommand{\myDegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas Electrónicos}
       \newcommand{\mybookworktype}{TFC}
       \ifthenelse{\equal{\mybooklanguage}{spanish}}
       {
@@ -460,9 +460,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
       }
     }
     {
-      \ifthenelse{\equal{\mydegree}{ITTST}}
+      \ifthenelse{\equal{\myDegree}{ITTST}}
       {
-        \newcommand{\mydegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas de Telecomunicación}
+        \newcommand{\myDegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas de Telecomunicación}
       \newcommand{\mybookworktype}{TFC}
         \ifthenelse{\equal{\mybooklanguage}{spanish}}
         {
@@ -473,9 +473,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
         }
       }
       {
-        \ifthenelse{\equal{\mydegree}{ITI}}
+        \ifthenelse{\equal{\myDegree}{ITI}}
         {
-          \newcommand{\mydegreefull}{Ingeniería Técnica Industrial, especialidad en Electrónica Industrial}
+          \newcommand{\myDegreefull}{Ingeniería Técnica Industrial, especialidad en Electrónica Industrial}
           \newcommand{\mybookworktype}{TFC}
           \ifthenelse{\equal{\mybooklanguage}{spanish}}
           {
@@ -486,9 +486,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
           }
         }
         {
-          \ifthenelse{\equal{\mydegree}{GIEC}}
+          \ifthenelse{\equal{\myDegree}{GIEC}}
           {
-            \newcommand{\mydegreefull}{Grado en Ingeniería Electrónica de Comunicaciones}
+            \newcommand{\myDegreefull}{Grado en Ingeniería Electrónica de Comunicaciones}
             \newcommand{\mybookworktype}{TFG}
             \ifthenelse{\equal{\mybooklanguage}{spanish}}
             {
@@ -499,9 +499,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
             }
           }
           {
-            \ifthenelse{\equal{\mydegree}{GIEAI}}
+            \ifthenelse{\equal{\myDegree}{GIEAI}}
             {
-              \newcommand{\mydegreefull}{Grado en Ingeniería en Electrónica y Automática Industrial}
+              \newcommand{\myDegreefull}{Grado en Ingeniería en Electrónica y Automática Industrial}
               \newcommand{\mybookworktype}{TFG}
               \ifthenelse{\equal{\mybooklanguage}{spanish}}
               {
@@ -512,9 +512,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
               }
             }
             {
-              \ifthenelse{\equal{\mydegree}{GIST}}
+              \ifthenelse{\equal{\myDegree}{GIST}}
               {
-                \newcommand{\mydegreefull}{Grado en Ingeniería en Sistemas de Telecomunicación}
+                \newcommand{\myDegreefull}{Grado en Ingeniería en Sistemas de Telecomunicación}
                 \newcommand{\mybookworktype}{TFG}
                 \ifthenelse{\equal{\mybooklanguage}{spanish}}
                 {
@@ -525,9 +525,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
                 }
               }
               {
-                \ifthenelse{\equal{\mydegree}{GITT}}
+                \ifthenelse{\equal{\myDegree}{GITT}}
                 {
-                  \newcommand{\mydegreefull}{Grado en Ingeniería en Tecnologías de la Telecomunicación}
+                  \newcommand{\myDegreefull}{Grado en Ingeniería en Tecnologías de la Telecomunicación}
                   \newcommand{\mybookworktype}{TFG}
                   \ifthenelse{\equal{\mybooklanguage}{spanish}}
                   {
@@ -538,9 +538,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
                   }
                 }
                 {
-                  \ifthenelse{\equal{\mydegree}{GIT}}
+                  \ifthenelse{\equal{\myDegree}{GIT}}
                   {
-                    \newcommand{\mydegreefull}{Grado en Ingeniería Telemática}
+                    \newcommand{\myDegreefull}{Grado en Ingeniería Telemática}
                     \newcommand{\mybookworktype}{TFG}
                     \ifthenelse{\equal{\mybooklanguage}{spanish}}
                     {
@@ -551,9 +551,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
                     }
                   }
                   {
-                    \ifthenelse{\equal{\mydegree}{GIC}}
+                    \ifthenelse{\equal{\myDegree}{GIC}}
                     {
-                      \newcommand{\mydegreefull}{Grado en Ingeniería de Computadores}
+                      \newcommand{\myDegreefull}{Grado en Ingeniería de Computadores}
                       \newcommand{\mybookworktype}{TFG}
                       \ifthenelse{\equal{\mybooklanguage}{spanish}}
                       {
@@ -564,9 +564,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
                       }
                     }
                     {
-                      \ifthenelse{\equal{\mydegree}{GII}}
+                      \ifthenelse{\equal{\myDegree}{GII}}
                       {
-                        \newcommand{\mydegreefull}{Grado en Ingeniería Informática}
+                        \newcommand{\myDegreefull}{Grado en Ingeniería Informática}
                         \newcommand{\mybookworktype}{TFG}
                         \ifthenelse{\equal{\mybooklanguage}{spanish}}
                         {
@@ -577,9 +577,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
                         }
                       }
                       {
-                        \ifthenelse{\equal{\mydegree}{GSI}}
+                        \ifthenelse{\equal{\myDegree}{GSI}}
                         {
-                          \newcommand{\mydegreefull}{Grado en Sistemas de Información}
+                          \newcommand{\myDegreefull}{Grado en Sistemas de Información}
                           \newcommand{\mybookworktype}{TFG}
                           \ifthenelse{\equal{\mybooklanguage}{spanish}}
                           {
@@ -590,10 +590,10 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
                           }
                         }
                         {
-                          \ifthenelse{\equal{\mydegree}{MUSEA}}
+                          \ifthenelse{\equal{\myDegree}{MUSEA}}
                           {
-                            \newcommand{\mydegreefull}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
-                            \newcommand{\mydegreefullwrapped}{Máster Universitario en Sistemas Electrónicos Avanzados\\Sistemas Inteligentes}
+                            \newcommand{\myDegreefull}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
+                            \newcommand{\myDegreefullwrapped}{Máster Universitario en Sistemas Electrónicos Avanzados\\Sistemas Inteligentes}
                             \newcommand{\mybookworktype}{TFM}
                             \ifthenelse{\equal{\mybooklanguage}{spanish}}
                             {
@@ -604,9 +604,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
                             }
                           }
                           {
-                            \ifthenelse{\equal{\mydegree}{PHDUAH}}
+                            \ifthenelse{\equal{\myDegree}{PHDUAH}}
                             {
-                              \newcommand{\mydegreefull}{Estudios de Doctorado}
+                              \newcommand{\myDegreefull}{Estudios de Doctorado}
                               \newcommand{\mybookworktype}{PHDUAH}
                               \ifthenelse{\equal{\mybooklanguage}{spanish}}
                               {
@@ -617,9 +617,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
                               }
                             }
                             {
-                              \ifthenelse{\equal{\mydegree}{PHDUPM}}
+                              \ifthenelse{\equal{\myDegree}{PHDUPM}}
                               {
-                                \newcommand{\mydegreefull}{Doctor Ingeniero de Telecomunicación}
+                                \newcommand{\myDegreefull}{Doctor Ingeniero de Telecomunicación}
                                 \newcommand{\mybookworktype}{PHDUPM}
                                 \ifthenelse{\equal{\mybooklanguage}{spanish}}
                                 {
@@ -630,22 +630,22 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
                                 }
                               }
                               {
-                                \ifthenelse{\equal{\mydegree}{GEINTRARR}}
+                                \ifthenelse{\equal{\myDegree}{GEINTRARR}}
                                 {
-                                  \newcommand{\mydegreefull}{GEINTRA Research Report}
+                                  \newcommand{\myDegreefull}{GEINTRA Research Report}
                                   \newcommand{\mybookworktype}{GEINTRARR}
                                   \ifthenelse{\equal{\mybooklanguage}{spanish}}
                                   {
-                                    \newcommand{\mybookworktypefull}{Informe técnico del Grupo de investigación \mybookresearchgroup{}}
+                                    \newcommand{\mybookworktypefull}{Informe técnico del Grupo de investigación \myResearchGroup{}}
                                   }
                                   {
-                                    \newcommand{\mybookworktypefull}{\mybookresearchgroup{} Research Report}
+                                    \newcommand{\mybookworktypefull}{\myResearchGroup{} Research Report}
                                   }
                                 }
                                 {
                                   \newcommand{\mybookworktype}{TFG}
-                                  \newcommand{\mydegreefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}} 
-                                  \newcommand{\mybookworktypefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}}
+                                  \newcommand{\myDegreefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}} 
+                                  \newcommand{\mybookworktypefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
                                 }                          
                               }                          
                             }                          
@@ -668,7 +668,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 
 
 
-\newcommand{\contactauthor}{\mybookauthor~\textless\href{mailto:\mybookemail}{\mybookemail}\textgreater}
+\newcommand{\contactauthor}{\mybookauthor~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater}
 
 \ifthenelse{\equal{\mybooklanguage}{english}}
 {
@@ -680,9 +680,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 
 \hypersetup
 {
-  pdfauthor={\mybookauthor~\textless\href{mailto:\mybookemail}{\mybookemail}\textgreater},
+  pdfauthor={\mybookauthor~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater},
   pdftitle={\mybooktitle},
-  pdfsubject={\mydegreefull, \mybookworktypefull},
+  pdfsubject={\myDegreefull, \mybookworktypefull},
   pdfkeywords={\keywordsforpdf},
   pdfcreator={\LaTeX with hyperref package},
   pdfproducer={rubber},
@@ -743,8 +743,8 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
       {
         \begin{tikzpicture}[remember picture, overlay]
           \draw[fill=headingPortadaTFG,headingPortadaTFG] (0,0) rectangle (\paperwidth,5cm);
-          \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\mybookuniversity}};
-          \node [yshift=2cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\mybookschool}};
+          \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\myUniversity}};
+          \node [yshift=2cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\mySchool}};
 
         \end{tikzpicture}
       };
@@ -755,7 +755,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 \vspace{5cm}
 \begin{center}
 
-    \LARGE\textbf{\mydegreefull}
+    \LARGE\textbf{\myDegreefull}
 
   \vspace{25mm}
 
@@ -788,14 +788,14 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 \large
 \begin{center}
 
-  \Huge\MakeUppercase{\mybookuniversity}
+  \Huge\MakeUppercase{\myUniversity}
 
 
-  \Large{\MakeUppercase{\mybookschool}}
+  \Large{\MakeUppercase{\mySchool}}
 
   \vspace{7mm}
 
-    \Large\textbf{\mydegreefull}
+    \Large\textbf{\myDegreefull}
 
   \vspace{1cm}
 
@@ -819,9 +819,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
   \begin{tabular}{rll}
     \textbf{Tribunal:} & &\\ 
     &&\\
-    & \textbf{Presidente:} & \mybookpresident\\ \\ \\
-    & \textbf{Vocal 1º:}   & \mybookfirstvocal\\ \\ \\
-    & \textbf{Vocal 2º:}   & \mybooksecondvocal\\ \\
+    & \textbf{Presidente:} & \myTribunalPresident\\ \\ \\
+    & \textbf{Vocal 1º:}   & \myTribunalFirstSpokesperson\\ \\ \\
+    & \textbf{Vocal 2º:}   & \myTribunalSecondSpokesperson\\ \\
   \end{tabular}
 \end{center}
 
@@ -853,14 +853,14 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 \vspace{3cm}
 \begin{center}
 
-  \Huge\textbf{\MakeUppercase{\mybookuniversity}}
+  \Huge\textbf{\MakeUppercase{\myUniversity}}
 
 
-  \textbf{\mybookschool}
+  \textbf{\mySchool}
 
   \vspace{1cm}
 
-  \huge\textbf{\mydegreefull}
+  \huge\textbf{\myDegreefull}
   
   \vspace{1cm}
 
@@ -894,14 +894,14 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
 \large
 \begin{center}
 
-  \Huge\MakeUppercase{\mybookuniversity}
+  \Huge\MakeUppercase{\myUniversity}
 
 
-  \Large{\MakeUppercase{\mybookschool}}
+  \Large{\MakeUppercase{\mySchool}}
 
   \vspace{7mm}
 
-    \Large\textbf{\mydegreefull}
+    \Large\textbf{\myDegreefull}
 
   \vspace{1cm}
 
@@ -925,9 +925,9 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
   \begin{tabular}{rll}
     \textbf{Tribunal:} & &\\ 
     &&\\
-    & \textbf{Presidente:} & \mybookpresident\\ \\ \\
-    & \textbf{Vocal 1º:}   & \mybookfirstvocal\\ \\ \\
-    & \textbf{Vocal 2º:}   & \mybooksecondvocal\\ \\
+    & \textbf{Presidente:} & \myTribunalPresident\\ \\ \\
+    & \textbf{Vocal 1º:}   & \myTribunalFirstSpokesperson\\ \\ \\
+    & \textbf{Vocal 2º:}   & \myTribunalSecondSpokesperson\\ \\
   \end{tabular}
 \end{center}
 
@@ -963,7 +963,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
   {
     \begin{tikzpicture}[remember picture, overlay]
       \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (6cm,14cm);
-      \node [yshift=7cm, xshift=3cm, text centered, midway, rotate=+90] {\color{white}\fontsize{110}{132}\selectfont\mybookuniversityacronym};
+      \node [yshift=7cm, xshift=3cm, text centered, midway, rotate=+90] {\color{white}\fontsize{110}{132}\selectfont\myUniversityAcronym};
     \end{tikzpicture}
   };
 \end{tikzpicture}
@@ -995,8 +995,8 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
   {
     \begin{tikzpicture}[remember picture, overlay]
       \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2.8cm);
-      \node [yshift=1.8cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{15}\selectfont\textbf{\mydegreefullwrapped}\par};
-      \node [yshift=0.5cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{26}\selectfont\textbf{\mybookdepartment}};
+      \node [yshift=1.8cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{15}\selectfont\textbf{\myDegreefullwrapped}\par};
+      \node [yshift=0.5cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{26}\selectfont\textbf{\myDepartment}};
     \end{tikzpicture}
   };
 \end{tikzpicture}
@@ -1048,7 +1048,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
     \huge{{\mybookphdprogramEnglish}}
   }
   {
-    \huge{{\mybookphdprogram}}
+    \huge{{\myPhDProgram}}
   }
   
 
@@ -1103,7 +1103,7 @@ urlcolor=blue,                     pdfborder={0 0 112.0},              hyperfoot
     \huge{{\mybookphdprogramEnglish}}
   }
   {
-    \huge{{\mybookphdprogram}}
+    \huge{{\myPhDProgram}}
   }
 
   \vspace{2cm}   

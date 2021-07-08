@@ -33,12 +33,12 @@
 % You should not need to edit this file. Yes, I know the name is not a
 % valid word... :-)
 % 
-% Here we define \mydegreefull, \mybookworktype and \mybookworktypefull 
+% Here we define \myDegreefull, \mybookworktype and \mybookworktypefull 
 % that will be used by other modules. The decision is based on the
-% \mydegree variable set by the user.
+% \myDegree variable set by the user.
 % 
-% In case the \mydegree variable is now known, the module will generate 
-% an error message in \mydegreefull and \mybookworktypefull, but will 
+% In case the \myDegree variable is now known, the module will generate 
+% an error message in \myDegreefull and \mybookworktypefull, but will 
 % generate a valid \mybookworktype, to be able to generate front and
 % cover pages (TFG by default)
 % 
@@ -47,13 +47,13 @@
 \ifthenelse{\equal{\mybooklanguage}{spanish}}
 {
   \usepackage[spanish, english]{babel}
-  \newcommand{\mybookFullAffiliation}{Grupo de investigación \mybookresearchgroup \\ \mybookdepartment \\ \mybookuniversity} 
-  \newcommand{\mybooktitle}{\mybooktitlespanish}
+  \newcommand{\mybookFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity} 
+  \newcommand{\mybooktitle}{\myBookTitleSpanish}
 } 
 {
   \usepackage[english, spanish]{babel}
-  \newcommand{\mybookFullAffiliation}{\mybookresearchgroup Research Group \\ \mybookdepartmentEnglish \\ \mybookuniversity} 
-  \newcommand{\mybooktitle}{\mybooktitleenglish}
+  \newcommand{\mybookFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversity} 
+  \newcommand{\mybooktitle}{\myBookTitleEnglish}
 }
 
 \ifthenelse{\equal{\mybooklanguage}{spanish}}
@@ -65,7 +65,7 @@
 }
 
 % Gender issues
-\ifthenelse{\equal{\mybookAcademicTutorGender}{male}}     
+\ifthenelse{\equal{\myAcademicTutorGender}{male}}     
 {                                                       
   \newcommand{\donOrDonaTutor}{D.}
   \newcommand{\drOrDraTutor}{Dr.}
@@ -75,7 +75,7 @@
   \newcommand{\drOrDraTutor}{Dra.}
 }
 
-\ifthenelse{\equal{\mybookCoTutorGender}{male}}     
+\ifthenelse{\equal{\myCoTutorGender}{male}}     
 {                                                       
   \newcommand{\donOrDonaCoTutor}{D.}
   \newcommand{\drOrDraCoTutor}{Dr.}
@@ -94,7 +94,7 @@
 }
 
 
-\ifthenelse{\equal{\mybookAcademicTutorGender}{male}}     
+\ifthenelse{\equal{\myAcademicTutorGender}{male}}     
 {                                                       
   \newcommand{\directorOrdirectora}{director}
   \newcommand{\mybookTutor}{tutor}
@@ -108,7 +108,7 @@
   \newcommand{\mybookTutorDelOrDeLa}{de la}
 }
 
-\ifthenelse{\equal{\mybookCoTutorGender}{male}}     
+\ifthenelse{\equal{\myCoTutorGender}{male}}     
 {                                                       
   \newcommand{\mybookCoTutor}{cotutor}
   \newcommand{\mybookCotutorDelOrDeLa}{del}
@@ -120,12 +120,12 @@
 
 
 % Set name of advisors and define words depending on singular/plural
-\ifthenelse{\equal{\mybookNameCoTutor}{}}
+\ifthenelse{\equal{\myCoTutorFullName}{}}
 {
-  \newcommand{\mybookadvisors}{\mybookNameAcademicTutor{}}
-  \newcommand{\mybookadvisorsConDon}{\donOrDonaTutor{} \mybookNameAcademicTutor{}}
-  \newcommand{\mybookadvisorsConDr}{\drOrDraTutor{} \mybookNameAcademicTutor{}}
-  \ifthenelse{\equal{\mybookAcademicTutorGender}{male}}     
+  \newcommand{\mybookadvisors}{\myAcademicTutorFullName{}}
+  \newcommand{\mybookadvisorsConDon}{\donOrDonaTutor{} \myAcademicTutorFullName{}}
+  \newcommand{\mybookadvisorsConDr}{\drOrDraTutor{} \myAcademicTutorFullName{}}
+  \ifthenelse{\equal{\myAcademicTutorGender}{male}}     
   {                                                       
     \newcommand{\directorOrdirectora}{director}
     \newcommand{\mybookTutorOrTutores}{tutor}
@@ -148,9 +148,9 @@
   \newcommand{\mybookHagoOrHacemos}{hago}
 }
 {
-  \newcommand{\mybookadvisors}{\mybookNameAcademicTutor{} \andOrY{} \mybookNameCoTutor{}}
-  \newcommand{\mybookadvisorsConDon}{\donOrDonaTutor{} \mybookNameAcademicTutor{} \andOrY{} \donOrDonaCoTutor{} \mybookNameCoTutor{}}
-  \newcommand{\mybookadvisorsConDr}{\drOrDraTutor{} \mybookNameAcademicTutor{}\\\drOrDraCoTutor{} \mybookNameCoTutor{}}
+  \newcommand{\mybookadvisors}{\myAcademicTutorFullName{} \andOrY{} \myCoTutorFullName{}}
+  \newcommand{\mybookadvisorsConDon}{\donOrDonaTutor{} \myAcademicTutorFullName{} \andOrY{} \donOrDonaCoTutor{} \myCoTutorFullName{}}
+  \newcommand{\mybookadvisorsConDr}{\drOrDraTutor{} \myAcademicTutorFullName{}\\\drOrDraCoTutor{} \myCoTutorFullName{}}
 
   \newcommand{\mybookDirectorOrDirectores}{directores}
   \newcommand{\mybookAdvisorOrAdvisors}{advisors}
@@ -181,7 +181,6 @@
   \newcommand{\mybookAlumnoOrAlumna}{alumno}
   % This is silly, but makefirstuc does not work properly...
   \newcommand{\mybookAlumnoOrAlumnaUp}{Alumno}  
-  
 }                                               
 {
   \newcommand{\mybookAutorOrAutora}{autora}                
@@ -206,9 +205,9 @@
 
 
 % Set degree name and type of document, depending on the user defined degree
-\ifthenelse{\equal{\mydegree}{IT}}
+\ifthenelse{\equal{\myDegree}{IT}}
 {
-  \newcommand{\mydegreefull}{Ingeniería de Telecomunicación}
+  \newcommand{\myDegreefull}{Ingeniería de Telecomunicación}
   \newcommand{\mybookworktype}{TFC}
   \ifthenelse{\equal{\mybooklanguage}{spanish}}
   {
@@ -221,9 +220,9 @@
   }
 }
 {
-  \ifthenelse{\equal{\mydegree}{IE}}
+  \ifthenelse{\equal{\myDegree}{IE}}
   {
-    \newcommand{\mydegreefull}{Ingeniería Electrónica}
+    \newcommand{\myDegreefull}{Ingeniería Electrónica}
     \newcommand{\mybookworktype}{TFC}
     \ifthenelse{\equal{\mybooklanguage}{spanish}}
     {
@@ -236,9 +235,9 @@
     }
   }
   {
-    \ifthenelse{\equal{\mydegree}{ITTSE}}
+    \ifthenelse{\equal{\myDegree}{ITTSE}}
     {
-      \newcommand{\mydegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas Electrónicos}
+      \newcommand{\myDegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas Electrónicos}
       \newcommand{\mybookworktype}{TFC}
       \ifthenelse{\equal{\mybooklanguage}{spanish}}
       {
@@ -251,9 +250,9 @@
       }
     }
     {
-      \ifthenelse{\equal{\mydegree}{ITTST}}
+      \ifthenelse{\equal{\myDegree}{ITTST}}
       {
-        \newcommand{\mydegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas de Telecomunicación}
+        \newcommand{\myDegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas de Telecomunicación}
         \newcommand{\mybookworktype}{TFC}
         \ifthenelse{\equal{\mybooklanguage}{spanish}}
         {
@@ -266,9 +265,9 @@
         }
       }
       {
-        \ifthenelse{\equal{\mydegree}{ITI}}
+        \ifthenelse{\equal{\myDegree}{ITI}}
         {
-          \newcommand{\mydegreefull}{Ingeniería Técnica Industrial, especialidad en Electrónica Industrial}
+          \newcommand{\myDegreefull}{Ingeniería Técnica Industrial, especialidad en Electrónica Industrial}
           \newcommand{\mybookworktype}{TFC}
           \ifthenelse{\equal{\mybooklanguage}{spanish}}
           {
@@ -281,9 +280,9 @@
           }
         }
         {
-          \ifthenelse{\equal{\mydegree}{GIEC}}
+          \ifthenelse{\equal{\myDegree}{GIEC}}
           {
-            \newcommand{\mydegreefull}{Grado en Ingeniería Electrónica de Comunicaciones}
+            \newcommand{\myDegreefull}{Grado en Ingeniería Electrónica de Comunicaciones}
             \newcommand{\mybookworktype}{TFG}
             \ifthenelse{\equal{\mybooklanguage}{spanish}}
             {
@@ -296,9 +295,9 @@
             }
           }
           {
-            \ifthenelse{\equal{\mydegree}{GIEAI}}
+            \ifthenelse{\equal{\myDegree}{GIEAI}}
             {
-              \newcommand{\mydegreefull}{Grado en Ingeniería en Electrónica y Automática Industrial}
+              \newcommand{\myDegreefull}{Grado en Ingeniería en Electrónica y Automática Industrial}
               \newcommand{\mybookworktype}{TFG}
               \ifthenelse{\equal{\mybooklanguage}{spanish}}
               {
@@ -311,9 +310,9 @@
               }
             }
             {
-              \ifthenelse{\equal{\mydegree}{GIST}}
+              \ifthenelse{\equal{\myDegree}{GIST}}
               {
-                \newcommand{\mydegreefull}{Grado en Ingeniería en Sistemas de Telecomunicación}
+                \newcommand{\myDegreefull}{Grado en Ingeniería en Sistemas de Telecomunicación}
                 \newcommand{\mybookworktype}{TFG}
                 \ifthenelse{\equal{\mybooklanguage}{spanish}}
                 {
@@ -326,9 +325,9 @@
                 }
               }
               {
-                \ifthenelse{\equal{\mydegree}{GITT}}
+                \ifthenelse{\equal{\myDegree}{GITT}}
                 {
-                  \newcommand{\mydegreefull}{Grado en Ingeniería en Tecnologías de la Telecomunicación}
+                  \newcommand{\myDegreefull}{Grado en Ingeniería en Tecnologías de la Telecomunicación}
                   \newcommand{\mybookworktype}{TFG}
                   \ifthenelse{\equal{\mybooklanguage}{spanish}}
                   {
@@ -341,9 +340,9 @@
                   }
                 }
                 {
-                  \ifthenelse{\equal{\mydegree}{GIT}}
+                  \ifthenelse{\equal{\myDegree}{GIT}}
                   {
-                    \newcommand{\mydegreefull}{Grado en Ingeniería Telemática}
+                    \newcommand{\myDegreefull}{Grado en Ingeniería Telemática}
                     \newcommand{\mybookworktype}{TFG}
                     \ifthenelse{\equal{\mybooklanguage}{spanish}}
                     {
@@ -356,9 +355,9 @@
                     }
                   }
                   {
-                    \ifthenelse{\equal{\mydegree}{GIC}}
+                    \ifthenelse{\equal{\myDegree}{GIC}}
                     {
-                      \newcommand{\mydegreefull}{Grado en Ingeniería de Computadores}
+                      \newcommand{\myDegreefull}{Grado en Ingeniería de Computadores}
                       \newcommand{\mybookworktype}{TFG}
                       \ifthenelse{\equal{\mybooklanguage}{spanish}}
                       {
@@ -371,9 +370,9 @@
                       }
                     }
                     {
-                      \ifthenelse{\equal{\mydegree}{GII}}
+                      \ifthenelse{\equal{\myDegree}{GII}}
                       {
-                        \newcommand{\mydegreefull}{Grado en Ingeniería Informática}
+                        \newcommand{\myDegreefull}{Grado en Ingeniería Informática}
                         \newcommand{\mybookworktype}{TFG}
                         \ifthenelse{\equal{\mybooklanguage}{spanish}}
                         {
@@ -386,9 +385,9 @@
                         }
                       }
                       {
-                        \ifthenelse{\equal{\mydegree}{GSI}}
+                        \ifthenelse{\equal{\myDegree}{GSI}}
                         {
-                          \newcommand{\mydegreefull}{Grado en Sistemas de Información}
+                          \newcommand{\myDegreefull}{Grado en Sistemas de Información}
                           \newcommand{\mybookworktype}{TFG}
                           \ifthenelse{\equal{\mybooklanguage}{spanish}}
                           {
@@ -401,11 +400,11 @@
                           }
                         }
                         {
-                          \ifthenelse{\equal{\mydegree}{MUSEA}}
+                          \ifthenelse{\equal{\myDegree}{MUSEA}}
                           {
-                            \newcommand{\mydegreefull}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
-                            \newcommand{\mydegreefullwrapped}{Máster Universitario en Sistemas Electrónicos Avanzados\\Sistemas Inteligentes}
-                            \newcommand{\mydegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería de Telecomunicación}}
+                            \newcommand{\myDegreefull}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
+                            \newcommand{\myDegreefullwrapped}{Máster Universitario en Sistemas Electrónicos Avanzados\\Sistemas Inteligentes}
+                            \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería de Telecomunicación}}
                             \newcommand{\mybookworktype}{TFM}
                             \ifthenelse{\equal{\mybooklanguage}{spanish}}
                             {
@@ -418,9 +417,9 @@
                             }
                           }
                           {
-                            \ifthenelse{\equal{\mydegree}{PHDUAH}}
+                            \ifthenelse{\equal{\myDegree}{PHDUAH}}
                             {
-                              \newcommand{\mydegreefull}{Estudios de Doctorado}
+                              \newcommand{\myDegreefull}{Estudios de Doctorado}
                               \newcommand{\mybookworktype}{PHDUAH}
                               \ifthenelse{\equal{\mybooklanguage}{spanish}}
                               {
@@ -431,9 +430,9 @@
                               }
                             }
                             {
-                              \ifthenelse{\equal{\mydegree}{PHDUPM}}
+                              \ifthenelse{\equal{\myDegree}{PHDUPM}}
                               {
-                                \newcommand{\mydegreefull}{Doctor Ingeniero de Telecomunicación}
+                                \newcommand{\myDegreefull}{Doctor Ingeniero de Telecomunicación}
                                 \newcommand{\mybookworktype}{PHDUPM}
                                 \ifthenelse{\equal{\mybooklanguage}{spanish}}
                                 {
@@ -444,24 +443,24 @@
                                 }
                               }
                               {
-                                \ifthenelse{\equal{\mydegree}{GEINTRARR}}
+                                \ifthenelse{\equal{\myDegree}{GEINTRARR}}
                                 {
-                                  \newcommand{\mydegreefull}{GEINTRA Research Report}
+                                  \newcommand{\myDegreefull}{GEINTRA Research Report}
                                   \newcommand{\mybookworktype}{GEINTRARR}
                                   \ifthenelse{\equal{\mybooklanguage}{spanish}}
                                   {
-                                    \newcommand{\mybookworktypefull}{Informe técnico del Grupo de investigación \mybookresearchgroup{}}
+                                    \newcommand{\mybookworktypefull}{Informe técnico del Grupo de investigación \myResearchGroup{}}
                                   }
                                   {
-                                    \newcommand{\mybookworktypefull}{\mybookresearchgroup{} Research Report}
+                                    \newcommand{\mybookworktypefull}{\myResearchGroup{} Research Report}
                                   }
                                 }
                                 {
-                                  \ifthenelse{\equal{\mydegree}{MUIT}}
+                                  \ifthenelse{\equal{\myDegree}{MUIT}}
                                   {
-                                    \newcommand{\mydegreefull}{Máster Universitario en Ingeniería de Telecomunicación}
-                                    \newcommand{\mydegreefullwrapped}{Máster Universitario en Ingeniería de Telecomunicación}
-                                    \newcommand{\mydegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería de Telecomunicación}}
+                                    \newcommand{\myDegreefull}{Máster Universitario en Ingeniería de Telecomunicación}
+                                    \newcommand{\myDegreefullwrapped}{Máster Universitario en Ingeniería de Telecomunicación}
+                                    \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería de Telecomunicación}}
                                     \newcommand{\mybookworktype}{TFM}
                                     \ifthenelse{\equal{\mybooklanguage}{spanish}}
                                     {
@@ -474,11 +473,11 @@
                                     }
                                   }
                                   {
-                                    \ifthenelse{\equal{\mydegree}{MUII}}
+                                    \ifthenelse{\equal{\myDegree}{MUII}}
                                     {
-                                      \newcommand{\mydegreefull}{Máster Universitario en Ingeniería Industrial}
-                                      \newcommand{\mydegreefullwrapped}{Máster Universitario en Ingeniería Industrial}
-                                      \newcommand{\mydegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería Industrial}}
+                                      \newcommand{\myDegreefull}{Máster Universitario en Ingeniería Industrial}
+                                      \newcommand{\myDegreefullwrapped}{Máster Universitario en Ingeniería Industrial}
+                                      \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería Industrial}}
                                       \newcommand{\mybookworktype}{TFM}
                                       \ifthenelse{\equal{\mybooklanguage}{spanish}}
                                       {
@@ -491,9 +490,9 @@
                                       }
                                     }
                                     {
-                                      \ifthenelse{\equal{\mydegree}{GITI}}
+                                      \ifthenelse{\equal{\myDegree}{GITI}}
                                       {
-                                        \newcommand{\mydegreefull}{Grado en Ingeniería en Tecnologías Industriales}
+                                        \newcommand{\myDegreefull}{Grado en Ingeniería en Tecnologías Industriales}
                                         \newcommand{\mybookworktype}{TFG}
                                         \ifthenelse{\equal{\mybooklanguage}{spanish}}
                                         {
@@ -507,9 +506,9 @@
                                       }
                                       {
 
-                                        \ifthenelse{\equal{\mydegree}{GISI}}
+                                        \ifthenelse{\equal{\myDegree}{GISI}}
                                         {
-                                          \newcommand{\mydegreefull}{Grado en Ingeniería en Sistemas de Información}
+                                          \newcommand{\myDegreefull}{Grado en Ingeniería en Sistemas de Información}
                                           \newcommand{\mybookworktype}{TFG}
                                           \ifthenelse{\equal{\mybooklanguage}{spanish}}
                                           {
@@ -524,14 +523,14 @@
                                         {
 
 
-                                          \ifthenelse{\equal{\mydegree}{MUIE}}
+                                          \ifthenelse{\equal{\myDegree}{MUIE}}
                                           {
                                             
                                             
                                             
-                                            \newcommand{\mydegreefull}{Máster Universitario en Ingeniería Electrónica}
-                                            \newcommand{\mydegreefullwrapped}{Máster Universitario en Ingeniería Electrónica}
-                                            \newcommand{\mydegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería Electrónica}}
+                                            \newcommand{\myDegreefull}{Máster Universitario en Ingeniería Electrónica}
+                                            \newcommand{\myDegreefullwrapped}{Máster Universitario en Ingeniería Electrónica}
+                                            \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería Electrónica}}
                                             \newcommand{\mybookworktype}{TFM}
                                             \ifthenelse{\equal{\mybooklanguage}{spanish}}
                                             {
@@ -548,8 +547,8 @@
                                           }
                                           {
                                             \newcommand{\mybookworktype}{TFG}
-                                            \newcommand{\mydegreefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}} 
-                                            \newcommand{\mybookworktypefull}{ERROR: Defined degree (\mydegree) unknown, check \texttt{config/myconfig.tex}}
+                                            \newcommand{\myDegreefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}} 
+                                            \newcommand{\mybookworktypefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
                                           }
                                         }
                                       }
@@ -579,7 +578,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % BEGIN Definition of the pdf document information data
 
-\newcommand{\contactauthor}{\mybookauthor~\textless\href{mailto:\mybookemail}{\mybookemail}\textgreater}
+\newcommand{\contactauthor}{\mybookauthor~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater}
 
 % Set keywords for pdf information
 \ifthenelse{\equal{\mybooklanguage}{english}}
@@ -595,12 +594,12 @@
 
 \hypersetup
 {
-  pdfauthor={\mybookauthor~\textless\href{mailto:\mybookemail}{\mybookemail}\textgreater},
+  pdfauthor={\mybookauthor~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater},
   pdftitle={\mybooktitle},
-  pdfsubject={\mydegreefull, \mybookworktypefull},
+  pdfsubject={\myDegreefull, \mybookworktypefull},
   % Uncomment the English or Spanish version if you wish to hard-code them
-  % pdfkeywords={\mybookkeywords, \mybookworktypefull, \mydegreefull},
-  % pdfkeywords={\mybookpalabrasclave, \mybookworktypefull, \mydegreefull},
+  % pdfkeywords={\mybookkeywords, \mybookworktypefull, \myDegreefull},
+  % pdfkeywords={\mybookpalabrasclave, \mybookworktypefull, \myDegreefull},
   pdfkeywords={\keywordsforpdf},
   pdfcreator={\LaTeX with hyperref package},
   pdfproducer={rubber},
