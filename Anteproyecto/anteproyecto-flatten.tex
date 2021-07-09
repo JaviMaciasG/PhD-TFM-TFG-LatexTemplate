@@ -259,7 +259,7 @@ urlcolor=azul,                                                        pdfborder=
 \makeatletter{}
 
 
-\newcommand{\mybooklanguage}{spanish}
+\newcommand{\myLanguage}{spanish}
 
 \newcommand{\myDegree}{GIEC}
 
@@ -272,8 +272,8 @@ urlcolor=azul,                                                        pdfborder=
 \newcommand{\myUniversity}{Universidad de Alcalá}
 \newcommand{\myUniversityAcronym}{UAH}
 \newcommand{\myUPMdegree}{Ingeniero de Telecomunicación} \newcommand{\myAuthorEmail}{macias@depeca.uah.es}
-\newcommand{\mybookNameFirstAdvisor}{Roberto Barra Chicote}
-\newcommand{\mybookNameSecondAdvisor}{}
+\newcommand{\myFirstAdvisorFullName}{Roberto Barra Chicote}
+\newcommand{\mySecondAdvisorFullName}{}
 \newcommand{\myTribunalPresident}{Name of the tribunal president}
 \newcommand{\myTribunalFirstSpokesperson}{Name of the first vocal}
 \newcommand{\myTribunalSecondSpokesperson}{Name of the second vocal}
@@ -287,7 +287,7 @@ urlcolor=azul,                                                        pdfborder=
 \newcommand{\myAuthorDNI}{12345678-L}                                 \newcommand{\myFirstAdvisorDNI}{11111111-A}
 \newcommand{\mySecondAdvisorDNI}{}
 \newcommand{\mybookFigure}{alumno}                                                                                                 
-\newcommand{\mybookresearchreportID}{RR-2014-01}
+\newcommand{\myResearchReportID}{RR-2014-01}
 
 \newcommand{\mytoclinkcolor}{blue}
 \newcommand{\myloflinkcolor}{red}
@@ -329,7 +329,7 @@ urlcolor=azul,                                                        pdfborder=
                                                                                                                                                                                                                                                         
 \makeatletter{}
 
-\ifthenelse{\equal{\mybooklanguage}{spanish}}
+\ifthenelse{\equal{\myLanguage}{spanish}}
 {
 \newcommand{\mybookFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity} 
 } 
@@ -337,9 +337,9 @@ urlcolor=azul,                                                        pdfborder=
 \newcommand{\mybookFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversity} 
 }
 
-\ifthenelse{\equal{\mybookNameSecondAdvisor}{}}
+\ifthenelse{\equal{\mySecondAdvisorFullName}{}}
 {
-\newcommand{\mybookadvisors}{\mybookNameFirstAdvisor{}}
+\newcommand{\mybookadvisors}{\myFirstAdvisorFullName{}}
 \newcommand{\mybookDirectorOrDirectores}{director}
 \newcommand{\mybookAdvisorOrAdvisors}{advisor}
 \newcommand{\mybookDaOrDan}{da}
@@ -349,7 +349,7 @@ urlcolor=azul,                                                        pdfborder=
 \newcommand{\mybookDelOrDeLos}{del}
 }
 {
-\newcommand{\mybookadvisors}{\mybookNameFirstAdvisor{} y \mybookNameSecondAdvisor{}}
+\newcommand{\mybookadvisors}{\myFirstAdvisorFullName{} y \mySecondAdvisorFullName{}}
 \newcommand{\mybookDirectorOrDirectores}{directores}
 \newcommand{\mybookAdvisorOrAdvisors}{advisors}
 \newcommand{\mybookDaOrDan}{dan}
@@ -363,7 +363,7 @@ urlcolor=azul,                                                        pdfborder=
 {
   \newcommand{\myDegreefull}{Ingeniería de Telecomunicación}
   \newcommand{\mybookworktype}{TFC}
-  \ifthenelse{\equal{\mybooklanguage}{spanish}}
+  \ifthenelse{\equal{\myLanguage}{spanish}}
   {
     \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
   }
@@ -376,7 +376,7 @@ urlcolor=azul,                                                        pdfborder=
   {
     \newcommand{\myDegreefull}{Ingeniería Electrónica}
     \newcommand{\mybookworktype}{TFC}
-    \ifthenelse{\equal{\mybooklanguage}{spanish}}
+    \ifthenelse{\equal{\myLanguage}{spanish}}
     {
       \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
     }
@@ -389,7 +389,7 @@ urlcolor=azul,                                                        pdfborder=
     {
       \newcommand{\myDegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas Electrónicos}
       \newcommand{\mybookworktype}{TFC}
-      \ifthenelse{\equal{\mybooklanguage}{spanish}}
+      \ifthenelse{\equal{\myLanguage}{spanish}}
       {
         \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
       }
@@ -402,7 +402,7 @@ urlcolor=azul,                                                        pdfborder=
       {
         \newcommand{\myDegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas de Telecomunicación}
       \newcommand{\mybookworktype}{TFC}
-        \ifthenelse{\equal{\mybooklanguage}{spanish}}
+        \ifthenelse{\equal{\myLanguage}{spanish}}
         {
           \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
         }
@@ -415,7 +415,7 @@ urlcolor=azul,                                                        pdfborder=
         {
           \newcommand{\myDegreefull}{Ingeniería Técnica Industrial, especialidad en Electrónica Industrial}
           \newcommand{\mybookworktype}{TFC}
-          \ifthenelse{\equal{\mybooklanguage}{spanish}}
+          \ifthenelse{\equal{\myLanguage}{spanish}}
           {
             \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
           }
@@ -428,7 +428,7 @@ urlcolor=azul,                                                        pdfborder=
           {
             \newcommand{\myDegreefull}{Grado en Ingeniería Electrónica de Comunicaciones}
             \newcommand{\mybookworktype}{TFG}
-            \ifthenelse{\equal{\mybooklanguage}{spanish}}
+            \ifthenelse{\equal{\myLanguage}{spanish}}
             {
               \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
             }
@@ -441,7 +441,7 @@ urlcolor=azul,                                                        pdfborder=
             {
               \newcommand{\myDegreefull}{Grado en Ingeniería en Electrónica y Automática Industrial}
               \newcommand{\mybookworktype}{TFG}
-              \ifthenelse{\equal{\mybooklanguage}{spanish}}
+              \ifthenelse{\equal{\myLanguage}{spanish}}
               {
                 \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
               }
@@ -454,7 +454,7 @@ urlcolor=azul,                                                        pdfborder=
               {
                 \newcommand{\myDegreefull}{Grado en Ingeniería en Sistemas de Telecomunicación}
                 \newcommand{\mybookworktype}{TFG}
-                \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                \ifthenelse{\equal{\myLanguage}{spanish}}
                 {
                   \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
                 }
@@ -467,7 +467,7 @@ urlcolor=azul,                                                        pdfborder=
                 {
                   \newcommand{\myDegreefull}{Grado en Ingeniería en Tecnologías de la Telecomunicación}
                   \newcommand{\mybookworktype}{TFG}
-                  \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                  \ifthenelse{\equal{\myLanguage}{spanish}}
                   {
                     \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
                   }
@@ -480,7 +480,7 @@ urlcolor=azul,                                                        pdfborder=
                   {
                     \newcommand{\myDegreefull}{Grado en Ingeniería Telemática}
                     \newcommand{\mybookworktype}{TFG}
-                    \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                    \ifthenelse{\equal{\myLanguage}{spanish}}
                     {
                       \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
                     }
@@ -493,7 +493,7 @@ urlcolor=azul,                                                        pdfborder=
                     {
                       \newcommand{\myDegreefull}{Grado en Ingeniería de Computadores}
                       \newcommand{\mybookworktype}{TFG}
-                      \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                      \ifthenelse{\equal{\myLanguage}{spanish}}
                       {
                         \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
                       }
@@ -506,7 +506,7 @@ urlcolor=azul,                                                        pdfborder=
                       {
                         \newcommand{\myDegreefull}{Grado en Ingeniería Informática}
                         \newcommand{\mybookworktype}{TFG}
-                        \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                        \ifthenelse{\equal{\myLanguage}{spanish}}
                         {
                           \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
                         }
@@ -519,7 +519,7 @@ urlcolor=azul,                                                        pdfborder=
                         {
                           \newcommand{\myDegreefull}{Grado en Sistemas de Información}
                           \newcommand{\mybookworktype}{TFG}
-                          \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                          \ifthenelse{\equal{\myLanguage}{spanish}}
                           {
                             \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
                           }
@@ -533,7 +533,7 @@ urlcolor=azul,                                                        pdfborder=
                             \newcommand{\myDegreefull}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
                             \newcommand{\myDegreefullwrapped}{Máster Universitario en Sistemas Electrónicos Avanzados\\Sistemas Inteligentes}
                             \newcommand{\mybookworktype}{TFM}
-                            \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                            \ifthenelse{\equal{\myLanguage}{spanish}}
                             {
                               \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
                             }
@@ -546,7 +546,7 @@ urlcolor=azul,                                                        pdfborder=
                             {
                               \newcommand{\myDegreefull}{Estudios de Doctorado}
                               \newcommand{\mybookworktype}{PHDUAH}
-                              \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                              \ifthenelse{\equal{\myLanguage}{spanish}}
                               {
                                 \newcommand{\mybookworktypefull}{Tesis Doctoral}
                               }
@@ -559,7 +559,7 @@ urlcolor=azul,                                                        pdfborder=
                               {
                                 \newcommand{\myDegreefull}{Doctor Ingeniero de Telecomunicación}
                                 \newcommand{\mybookworktype}{PHDUPM}
-                                \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                \ifthenelse{\equal{\myLanguage}{spanish}}
                                 {
                                   \newcommand{\mybookworktypefull}{Tesis Doctoral}
                                 }
@@ -572,7 +572,7 @@ urlcolor=azul,                                                        pdfborder=
                                 {
                                   \newcommand{\myDegreefull}{GEINTRA Research Report}
                                   \newcommand{\mybookworktype}{GEINTRARR}
-                                  \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                  \ifthenelse{\equal{\myLanguage}{spanish}}
                                   {
                                     \newcommand{\mybookworktypefull}{Informe técnico del Grupo de investigación \myResearchGroup{}}
                                   }
@@ -608,7 +608,7 @@ urlcolor=azul,                                                        pdfborder=
 
 \newcommand{\contactauthor}{\myAuthorFullName~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater}
 
-\ifthenelse{\equal{\mybooklanguage}{english}}
+\ifthenelse{\equal{\myLanguage}{english}}
 {
   \newcommand{\keywordsforpdf}{\myThesisKeywordsEnglish}
 }
@@ -642,7 +642,7 @@ urlcolor=azul,                                                        pdfborder=
 
 \makeatletter{}
 
-\ifthenelse{\equal{\mybooklanguage}{english}}
+\ifthenelse{\equal{\myLanguage}{english}}
 {
   \selectlanguage{english}
 

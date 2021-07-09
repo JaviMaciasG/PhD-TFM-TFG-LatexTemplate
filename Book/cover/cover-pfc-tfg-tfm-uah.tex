@@ -53,7 +53,7 @@
 
   \vspace{1cm}
   
-  \ifthenelse{\equal{\mybooklanguage}{english}}
+  \ifthenelse{\equal{\myLanguage}{english}}
   {
     Author: \myAuthorFullName
   }
@@ -66,7 +66,7 @@
   
   \ifthenelse{\equal{\myFlagSplittedAdvisors}{true}}
 {
-  \ifthenelse{\equal{\mybooklanguage}{english}}
+  \ifthenelse{\equal{\myLanguage}{english}}
   {
 %    \expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}: \mybookadvisors
     \expandafter\makefirstuc\expandafter{\mybookAdvisor}: \myAcademicTutorFullName{}
@@ -93,7 +93,7 @@
   }
 }
 {
-  \ifthenelse{\equal{\mybooklanguage}{english}}
+  \ifthenelse{\equal{\myLanguage}{english}}
   {
     \expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}: \mybookadvisors
   }
@@ -107,14 +107,14 @@
   \begin{tabular}{rll}
     \textbf{Tribunal:} & &\\ 
     &&\\
-  \ifthenelse{\equal{\mybooklanguage}{english}}
+  \ifthenelse{\equal{\myLanguage}{english}}
   {
     & \textbf{President:} & \myTribunalPresident\\ \\ \\
   }
   {
     & \textbf{Presidente:} & \myTribunalPresident\\ \\ \\
   }
-  \ifthenelse{\equal{\mybooklanguage}{english}}
+  \ifthenelse{\equal{\myLanguage}{english}}
   {
     & \textbf{1\textsuperscript{st} Vocal:}   & \myTribunalFirstSpokesperson\\ \\ \\
     & \textbf{2\textsuperscript{nd} Vocal:}   & \myTribunalSecondSpokesperson\\ \\
@@ -130,7 +130,7 @@
 \begin{bottomparagraph}
   \begin{center}
     \begin{tabular}{p{0cm}c}
-  \ifthenelse{\equal{\mybooklanguage}{english}}
+  \ifthenelse{\equal{\myLanguage}{english}}
   {
 %    &Calification: ..........................................................................\\ \\
     &Deposit date: \myThesisDepositDateEnglish

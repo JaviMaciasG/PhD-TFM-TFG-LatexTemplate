@@ -147,10 +147,17 @@ flatten:
 	latexpand $(TEX_FILE) > $(FLATTEN_TEX_FILE)
 
 latexdiff: flatten
-	latexdiff-cvs --force -r $(FLATTEN_TEX_FILE)
-	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -d $(DIFF_FLATTEN_TEX_FILE)
+	latexdiff-git --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*"  --force -r $(FLATTEN_TEX_FILE)
+#	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -d $(DIFF_FLATTEN_TEX_FILE)
+#	makeglossaries $(DIFF_FLATTEN_ROOT_FILENAME)
+#	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -d $(DIFF_FLATTEN_TEX_FILE)
+	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
+	bibtex $(DIFF_FLATTEN_ROOT_FILENAME)
 	makeglossaries $(DIFF_FLATTEN_ROOT_FILENAME)
-	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -d $(DIFF_FLATTEN_TEX_FILE)
+	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
+	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
+
+
 
 pdf_dia_done: $(PDFS_FROM_DIA)
 #	echo "Generating pdfs from DIA: [$(PDFS_FROM_DIA)]..."

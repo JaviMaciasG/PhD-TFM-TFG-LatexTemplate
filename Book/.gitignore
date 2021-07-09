@@ -112,3 +112,5 @@ proyecto.toc
 tex.list
 *.bak
 *.synctex.gz
+*.log
+

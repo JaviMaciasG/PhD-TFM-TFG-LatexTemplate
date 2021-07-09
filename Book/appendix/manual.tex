@@ -28,6 +28,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \chapter{Manual de usuario}
 \label{cha:manual-de-usuario}
 
@@ -48,7 +49,7 @@ Pues eso.
 
 Para la inclusión de código fuente se utiliza el paquete
 \texttt{listings}, para el que se han definido algunos estilos de
-ejemplo que pueden verse en el fichero \texttt{config/preamble.tex} y
+ejemplo que pueden verse en el fichero \texttt{Config/preamble.tex} y
 que se usan a continuación.
 
 Así se inserta código fuente, usando el estilo \texttt{CppExample} que
@@ -72,7 +73,7 @@ void funcionPrueba(int argumento)
 O bien insertando directamente código de un fichero externo, como en el
 ejemplo \ref{cod:sample1}, usando
 \texttt{\textbackslash{}lstinputlisting} y cambiando el estilo a
-\texttt{Cbluebox} (ademÃ¡s de usar el entorno \texttt{codefloat} para
+\texttt{Cbluebox} (además de usar el entorno \texttt{codefloat} para
 evitar pagebreaks, etc.).
 
 \begin{codefloat}
@@ -104,7 +105,7 @@ c = a+b;
 fprintf(1, 'La suma de %d y %d es igual a %d\n', a, b, c);
 \end{lstlisting}
 
-O incluso como en el listado \ref{cod:sample2}, usando un layout mÃ¡s refinado (con
+O incluso como en el listado \ref{cod:sample2}, usando un layout más refinado (con
 los settings de \url{http://www.rafalinux.com/?p=599} en un \texttt{lststyle}
 \texttt{Cnice}).
 
@@ -116,7 +117,7 @@ los settings de \url{http://www.rafalinux.com/?p=599} en un \texttt{lststyle}
 \label{cod:sample2}
 \end{codefloat}
 
-Y podemos reutilizar estilos cambiando algÃºn parÃ¡metro, como podemos ver
+Y podemos reutilizar estilos cambiando algún parámetro, como podemos ver
 en el listado \ref{cod:sample3}, en el que hemos vuelto a usar el estilo
 \texttt{Cnice} eliminando la numeración.
 
@@ -137,7 +138,7 @@ Ahora compila usando \texttt{gcc}:
 $ gcc  -o hello hello.c
 \end{lstlisting}
 
-Y tambiÃ©n podemos poner ejemplos de código \textit{coloreado}, como se
+Y también podemos poner ejemplos de código \textit{coloreado}, como se
 muestra en el \ref{cod:sample5}.
 
 \begin{codefloat}
@@ -146,7 +147,7 @@ muestra en el \ref{cod:sample5}.
 \label{cod:sample5}
 \end{codefloat}
 
-Finalmente aquÃ­ tenÃ©is un ejemplo de código shell, usando el estilo
+Finalmente aquí tenéis un ejemplo de código shell, usando el estilo
 \texttt{BashInputStyle}:
 
 \begin{lstlisting}[style=BashInputStyle, numbers=none]
@@ -162,13 +163,14 @@ do
 done
 \end{lstlisting}
 
+
 \section{Ejemplos de inclusión de algoritmos}
 \label{sec:algoritmos}
 
-En la versión actual (abril de 2014), empezamos a usar el paquete
-\texttt{algorithm2e} para incluir algoritmos, y hay ajustes especÃ­ficos
-y dependientes de este paquete tanto en \texttt{config/preamble.tex}
-como en \texttt{cover/extralistings.tex} (editadlos segÃºn vuestras
+Desde la versión de abril de 2014, empezamos a usar el paquete
+\texttt{algorithm2e} para incluir algoritmos, y hay ajustes específicos
+y dependientes de este paquete tanto en \texttt{Config/preamble.tex}
+como en \texttt{cover/extralistings.tex} (editadlos según vuestras
 necesidades). 
 
 Hay otras opciones disponibles (por ejemplo las descritas en
@@ -176,7 +178,7 @@ Hay otras opciones disponibles (por ejemplo las descritas en
 abordarlas, pero por el momento nos quedamos con \texttt{algorithm2e}.
 
 Incluimos dos ejemplos directamente del manual: uno sencillo en el
-algoritmo~\ref{alg:howto}, y otro un poco mÃ¡s complicado en el
+algoritmo~\ref{alg:howto}, y otro un poco más complicado en el
 algoritmo~\ref{alg:restriction}.
 
 \begin{algorithm}[H]
