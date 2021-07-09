@@ -44,7 +44,7 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-\ifthenelse{\equal{\mybooklanguage}{spanish}}
+\ifthenelse{\equal{\myLanguage}{spanish}}
 {
   \usepackage[spanish, english]{babel}
   \newcommand{\mybookFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity} 
@@ -56,7 +56,7 @@
   \newcommand{\mybooktitle}{\myBookTitleEnglish}
 }
 
-\ifthenelse{\equal{\mybooklanguage}{spanish}}
+\ifthenelse{\equal{\myLanguage}{spanish}}
 {
   \newcommand{\andOrY}{y} 
 } 
@@ -195,7 +195,7 @@
   \newcommand{\mybookAlumnoOrAlumnaUp}{Alumna}
 }
 
-\ifthenelse{\equal{\mybookvicerrectorinvestigacionGender}{male}}     
+\ifthenelse{\equal{\myResearchVicerrectorGender}{male}}     
 {                                                       
   \newcommand{\mybookVicerrectorOrVicerrectora}{Vicerrector}
 }                                               
@@ -209,7 +209,7 @@
 {
   \newcommand{\myDegreefull}{Ingeniería de Telecomunicación}
   \newcommand{\mybookworktype}{TFC}
-  \ifthenelse{\equal{\mybooklanguage}{spanish}}
+  \ifthenelse{\equal{\myLanguage}{spanish}}
   {
     \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
   }
@@ -224,7 +224,7 @@
   {
     \newcommand{\myDegreefull}{Ingeniería Electrónica}
     \newcommand{\mybookworktype}{TFC}
-    \ifthenelse{\equal{\mybooklanguage}{spanish}}
+    \ifthenelse{\equal{\myLanguage}{spanish}}
     {
       \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
     }
@@ -239,7 +239,7 @@
     {
       \newcommand{\myDegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas Electrónicos}
       \newcommand{\mybookworktype}{TFC}
-      \ifthenelse{\equal{\mybooklanguage}{spanish}}
+      \ifthenelse{\equal{\myLanguage}{spanish}}
       {
         \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
       }
@@ -254,7 +254,7 @@
       {
         \newcommand{\myDegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas de Telecomunicación}
         \newcommand{\mybookworktype}{TFC}
-        \ifthenelse{\equal{\mybooklanguage}{spanish}}
+        \ifthenelse{\equal{\myLanguage}{spanish}}
         {
           \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
         }
@@ -269,7 +269,7 @@
         {
           \newcommand{\myDegreefull}{Ingeniería Técnica Industrial, especialidad en Electrónica Industrial}
           \newcommand{\mybookworktype}{TFC}
-          \ifthenelse{\equal{\mybooklanguage}{spanish}}
+          \ifthenelse{\equal{\myLanguage}{spanish}}
           {
             \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
           }
@@ -284,7 +284,7 @@
           {
             \newcommand{\myDegreefull}{Grado en Ingeniería Electrónica de Comunicaciones}
             \newcommand{\mybookworktype}{TFG}
-            \ifthenelse{\equal{\mybooklanguage}{spanish}}
+            \ifthenelse{\equal{\myLanguage}{spanish}}
             {
               \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
             }
@@ -299,7 +299,7 @@
             {
               \newcommand{\myDegreefull}{Grado en Ingeniería en Electrónica y Automática Industrial}
               \newcommand{\mybookworktype}{TFG}
-              \ifthenelse{\equal{\mybooklanguage}{spanish}}
+              \ifthenelse{\equal{\myLanguage}{spanish}}
               {
                 \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
               }
@@ -314,7 +314,7 @@
               {
                 \newcommand{\myDegreefull}{Grado en Ingeniería en Sistemas de Telecomunicación}
                 \newcommand{\mybookworktype}{TFG}
-                \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                \ifthenelse{\equal{\myLanguage}{spanish}}
                 {
                   \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
                 }
@@ -329,7 +329,7 @@
                 {
                   \newcommand{\myDegreefull}{Grado en Ingeniería en Tecnologías de la Telecomunicación}
                   \newcommand{\mybookworktype}{TFG}
-                  \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                  \ifthenelse{\equal{\myLanguage}{spanish}}
                   {
                     \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
                   }
@@ -344,7 +344,7 @@
                   {
                     \newcommand{\myDegreefull}{Grado en Ingeniería Telemática}
                     \newcommand{\mybookworktype}{TFG}
-                    \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                    \ifthenelse{\equal{\myLanguage}{spanish}}
                     {
                       \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
                     }
@@ -359,7 +359,7 @@
                     {
                       \newcommand{\myDegreefull}{Grado en Ingeniería de Computadores}
                       \newcommand{\mybookworktype}{TFG}
-                      \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                      \ifthenelse{\equal{\myLanguage}{spanish}}
                       {
                         \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
                       }
@@ -374,7 +374,7 @@
                       {
                         \newcommand{\myDegreefull}{Grado en Ingeniería Informática}
                         \newcommand{\mybookworktype}{TFG}
-                        \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                        \ifthenelse{\equal{\myLanguage}{spanish}}
                         {
                           \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
                         }
@@ -389,7 +389,7 @@
                         {
                           \newcommand{\myDegreefull}{Grado en Sistemas de Información}
                           \newcommand{\mybookworktype}{TFG}
-                          \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                          \ifthenelse{\equal{\myLanguage}{spanish}}
                           {
                             \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
                           }
@@ -406,7 +406,7 @@
                             \newcommand{\myDegreefullwrapped}{Máster Universitario en Sistemas Electrónicos Avanzados\\Sistemas Inteligentes}
                             \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería de Telecomunicación}}
                             \newcommand{\mybookworktype}{TFM}
-                            \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                            \ifthenelse{\equal{\myLanguage}{spanish}}
                             {
                               \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
                             }
@@ -421,7 +421,7 @@
                             {
                               \newcommand{\myDegreefull}{Estudios de Doctorado}
                               \newcommand{\mybookworktype}{PHDUAH}
-                              \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                              \ifthenelse{\equal{\myLanguage}{spanish}}
                               {
                                 \newcommand{\mybookworktypefull}{Tesis Doctoral}
                               }
@@ -434,7 +434,7 @@
                               {
                                 \newcommand{\myDegreefull}{Doctor Ingeniero de Telecomunicación}
                                 \newcommand{\mybookworktype}{PHDUPM}
-                                \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                \ifthenelse{\equal{\myLanguage}{spanish}}
                                 {
                                   \newcommand{\mybookworktypefull}{Tesis Doctoral}
                                 }
@@ -447,7 +447,7 @@
                                 {
                                   \newcommand{\myDegreefull}{GEINTRA Research Report}
                                   \newcommand{\mybookworktype}{GEINTRARR}
-                                  \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                  \ifthenelse{\equal{\myLanguage}{spanish}}
                                   {
                                     \newcommand{\mybookworktypefull}{Informe técnico del Grupo de investigación \myResearchGroup{}}
                                   }
@@ -462,7 +462,7 @@
                                     \newcommand{\myDegreefullwrapped}{Máster Universitario en Ingeniería de Telecomunicación}
                                     \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería de Telecomunicación}}
                                     \newcommand{\mybookworktype}{TFM}
-                                    \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                    \ifthenelse{\equal{\myLanguage}{spanish}}
                                     {
                                       \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
                                     }
@@ -479,7 +479,7 @@
                                       \newcommand{\myDegreefullwrapped}{Máster Universitario en Ingeniería Industrial}
                                       \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería Industrial}}
                                       \newcommand{\mybookworktype}{TFM}
-                                      \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                      \ifthenelse{\equal{\myLanguage}{spanish}}
                                       {
                                         \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
                                       }
@@ -494,7 +494,7 @@
                                       {
                                         \newcommand{\myDegreefull}{Grado en Ingeniería en Tecnologías Industriales}
                                         \newcommand{\mybookworktype}{TFG}
-                                        \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                        \ifthenelse{\equal{\myLanguage}{spanish}}
                                         {
                                           \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
                                         }
@@ -510,7 +510,7 @@
                                         {
                                           \newcommand{\myDegreefull}{Grado en Ingeniería en Sistemas de Información}
                                           \newcommand{\mybookworktype}{TFG}
-                                          \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                          \ifthenelse{\equal{\myLanguage}{spanish}}
                                           {
                                             \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
                                           }
@@ -532,7 +532,7 @@
                                             \newcommand{\myDegreefullwrapped}{Máster Universitario en Ingeniería Electrónica}
                                             \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería Electrónica}}
                                             \newcommand{\mybookworktype}{TFM}
-                                            \ifthenelse{\equal{\mybooklanguage}{spanish}}
+                                            \ifthenelse{\equal{\myLanguage}{spanish}}
                                             {
                                               \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
                                             }
@@ -581,7 +581,7 @@
 \newcommand{\contactauthor}{\myAuthorFullName~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater}
 
 % Set keywords for pdf information
-\ifthenelse{\equal{\mybooklanguage}{english}}
+\ifthenelse{\equal{\myLanguage}{english}}
 {
   \newcommand{\keywordsforpdf}{\myThesisKeywordsEnglish}
 }

@@ -26,3 +26,5 @@ echo $FILES_ALL
 
 tar czvf $DIST_FILE.tgz $FILES_ALL
 zip $DIST_FILE.zip $FILES_ALL
+
+rsync -avu $DIST_FILE.tgz $DIST_FILE.zip ~/Dropbox/PhDTFMTFG-LaTeX-Template/

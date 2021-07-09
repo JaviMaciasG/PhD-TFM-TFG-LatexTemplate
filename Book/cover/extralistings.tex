@@ -30,7 +30,7 @@
 
 % Include the list of source code listings (if this is the case)
 \hypersetup{linkcolor=\myothertoclinkcolor}
-\ifthenelse{\equal{\mybooklanguage}{english}}
+\ifthenelse{\equal{\myLanguage}{english}}
 {
   \listof{codefloat}{List of source code listings}
   \addcontentsline{toc}{chapter}{List of source code listings}
@@ -41,7 +41,7 @@
 }
 
 
-\ifthenelse{\equal{\mybooklanguage}{english}}
+\ifthenelse{\equal{\myLanguage}{english}}
 {
 \renewcommand*{\algorithmcfname}{Algorithm}
 \renewcommand{\listofalgorithms}{\begingroup

@@ -71,7 +71,7 @@
 
 \vspace{5cm}
 
-\ifthenelse{\equal{\mybooklanguage}{english}}
+\ifthenelse{\equal{\myLanguage}{english}}
 {
   \textbf{Author:}  \myAuthorFullName 
 }
@@ -82,7 +82,7 @@
 \vspace{0.5cm}
 
 % If also director: add corresponding line (mybookDirectors IS NOT DEFINED AS FOR ME (JMG)
-%   \ifthenelse{\equal{\mybooklanguage}{english}}
+%   \ifthenelse{\equal{\myLanguage}{english}}
 %   {
 %     \textbf{\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}:} \mybookadvisors
 %   }
@@ -94,7 +94,7 @@
 % ---
   \ifthenelse{\equal{\myFlagSplittedAdvisors}{true}}
 {
-  \ifthenelse{\equal{\mybooklanguage}{english}}
+  \ifthenelse{\equal{\myLanguage}{english}}
   {
 %    \expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}: \mybookadvisors
     \textbf{\expandafter\makefirstuc\expandafter{\mybookAdvisor}:} \myAcademicTutorFullName{}
@@ -121,7 +121,7 @@
   }
 }
 {
-  \ifthenelse{\equal{\mybooklanguage}{english}}
+  \ifthenelse{\equal{\myLanguage}{english}}
   {
     \textbf{\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}:} \mybookadvisors
   }

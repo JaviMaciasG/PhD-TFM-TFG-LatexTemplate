@@ -2064,8 +2064,7 @@ En la versión actual, la mayor parte de las definiciones de estilos de
 partida proceden de la tesis doctoral de Roberto Barra-Chicote, con lo
 que gracias muy especiales para él.
 
-También damos las gracias a Manuel Villaverde, David Casillas, Jesús Pablo Martínez, José Francisco
-Velasco Cerpa, Roberto Chamorro, Carlos Cruz, Cristina Losada.
+También damos las gracias a Manuel Villaverde, David Casillas, Jesús Pablo Martínez, José Francisco Velasco Cerpa, Roberto Chamorro, Carlos Cruz, Cristina Losada.
 
   que nos
 han proporcionado secciones completas y ejemplos puntuales de sus
@@ -2999,15 +2998,16 @@ procedimiento para hacer uso de ello sería (asumiendo que usáis
 
 \begin{itemize}
 \item Primero hay que preparar la versión base sobre la que luego se
-  harán los cambios. Esa preparación se hace normalmente cuando se tiene
-  una versión razonablemente estable, y con la que luego se quiere
-  comparar (por ejemplo cuando le entregas a tu tutor tu primer borrador
-  del documento completo). La preparación es sencilla: basta hacer un
-  \texttt{make flatten}. Eso generará un fichero
-  \texttt{book-flatten.tex} que contiene el estado actual del documento,
-  expandido. Luego hay que registrarlo en el repositorio con un
-  \texttt{cvs commit -m ``New flattened version'' book-flatten.tex} o
-  el estándar add y commit que se usa en git.
+  harán los cambios. Esa preparación se hace normalmente cuando se
+  tiene una versión razonablemente estable, y con la que luego se
+  quiere comparar (por ejemplo cuando le entregas a tu tutor tu primer
+  borrador del documento completo). La preparación es sencilla: basta
+  hacer un \texttt{make flatten}. Eso generará un fichero
+  \texttt{book-flatten.tex} que contiene el estado actual del
+  documento, expandido. Luego hay que registrarlo en el repositorio
+  con un \texttt{cvs commit -m ``New flattened version''
+    book-flatten.tex} o \texttt{git add book-flatten.tex; git commit
+    -m ``New flattened version''} en git.
 \item A partir de ahí ya se puede trabajar en los cambios al documento,
   los que sean necesarios.
 \item Cuando se quiera obtener el fichero pdf con el control de cambios,
@@ -3049,7 +3049,7 @@ caso, la solución propuesta/adoptada:
 
 \end{itemize}
 
-Si das con más problemas, escribid por favor a \contactauthor
+Si das con más problemas, escribe por favor a \contactauthor
 contándonoslos y trataremos de solucionarlo (y si tenéis la solución,
 contádnosla también).
 
@@ -3946,6 +3946,7 @@ Blah, blah, blah.
 \begin{appendices}
   
 
+
 \chapter{Manual de usuario}
 \label{cha:manual-de-usuario}
 
@@ -3988,7 +3989,7 @@ void funcionPrueba(int argumento)
 O bien insertando directamente código de un fichero externo, como en el
 ejemplo \ref{cod:sample1}, usando
 \texttt{\textbackslash{}lstinputlisting} y cambiando el estilo a
-\texttt{Cbluebox} (ademÃ¡s de usar el entorno \texttt{codefloat} para
+\texttt{Cbluebox} (además de usar el entorno \texttt{codefloat} para
 evitar pagebreaks, etc.).
 
 \begin{codefloat}
@@ -4016,7 +4017,7 @@ c = a+b;
 
 fprintf(1, 'La suma de \end{lstlisting}
 
-O incluso como en el listado \ref{cod:sample2}, usando un layout mÃ¡s refinado (con
+O incluso como en el listado \ref{cod:sample2}, usando un layout más refinado (con
 los settings de \url{http://www.rafalinux.com/?p=599} en un \texttt{lststyle}
 \texttt{Cnice}).
 
@@ -4028,7 +4029,7 @@ los settings de \url{http://www.rafalinux.com/?p=599} en un \texttt{lststyle}
 \label{cod:sample2}
 \end{codefloat}
 
-Y podemos reutilizar estilos cambiando algÃºn parÃ¡metro, como podemos ver
+Y podemos reutilizar estilos cambiando algún parámetro, como podemos ver
 en el listado \ref{cod:sample3}, en el que hemos vuelto a usar el estilo
 \texttt{Cnice} eliminando la numeración.
 
@@ -4049,7 +4050,7 @@ Ahora compila usando \texttt{gcc}:
 $ gcc  -o hello hello.c
 \end{lstlisting}
 
-Y tambiÃ©n podemos poner ejemplos de código \textit{coloreado}, como se
+Y también podemos poner ejemplos de código \textit{coloreado}, como se
 muestra en el \ref{cod:sample5}.
 
 \begin{codefloat}
@@ -4058,7 +4059,7 @@ muestra en el \ref{cod:sample5}.
 \label{cod:sample5}
 \end{codefloat}
 
-Finalmente aquÃ­ tenÃ©is un ejemplo de código shell, usando el estilo
+Finalmente aquí tenéis un ejemplo de código shell, usando el estilo
 \texttt{BashInputStyle}:
 
 \begin{lstlisting}[style=BashInputStyle, numbers=none]
@@ -4074,13 +4075,14 @@ do
 done
 \end{lstlisting}
 
+
 \section{Ejemplos de inclusión de algoritmos}
 \label{sec:algoritmos}
 
-En la versión actual (abril de 2014), empezamos a usar el paquete
-\texttt{algorithm2e} para incluir algoritmos, y hay ajustes especÃ­ficos
+Desde la versión de abril de 2014, empezamos a usar el paquete
+\texttt{algorithm2e} para incluir algoritmos, y hay ajustes específicos
 y dependientes de este paquete tanto en \texttt{Config/preamble.tex}
-como en \texttt{cover/extralistings.tex} (editadlos segÃºn vuestras
+como en \texttt{cover/extralistings.tex} (editadlos según vuestras
 necesidades). 
 
 Hay otras opciones disponibles (por ejemplo las descritas en
@@ -4088,7 +4090,7 @@ Hay otras opciones disponibles (por ejemplo las descritas en
 abordarlas, pero por el momento nos quedamos con \texttt{algorithm2e}.
 
 Incluimos dos ejemplos directamente del manual: uno sencillo en el
-algoritmo~\ref{alg:howto}, y otro un poco mÃ¡s complicado en el
+algoritmo~\ref{alg:howto}, y otro un poco más complicado en el
 algoritmo~\ref{alg:restriction}.
 
 \begin{algorithm}[H]

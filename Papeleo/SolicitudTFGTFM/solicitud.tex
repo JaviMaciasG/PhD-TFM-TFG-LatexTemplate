@@ -127,7 +127,7 @@
 \begin{tabularx}{\textwidth}{|X|}
   \hline
   TÍTULO DEL \mybookworktype: \myBookTitleSpanish \\
-  \ifthenelse{\equal{\mybooklanguage}{english}}   
+  \ifthenelse{\equal{\myLanguage}{english}}   
   {                                               
   TÍTULO EN INGLÉS: \myBookTitleEnglish \\
   }                                               
@@ -141,8 +141,8 @@
 \begin{spacing}{1.0}
   \begin{tabularx}{\textwidth}{X}
 %    \MakeUppercase{\mybookDirectorOrDirectores}: \mybookadvisors \\
-    \MakeUppercase{\mybookTutor} \MakeUppercase{\mybookAcademico}: \mybookNameFirstAdvisor\\
-    \MakeUppercase{\mybookCoTutor} (si procede): \mybookNameSecondAdvisor\\
+    \MakeUppercase{\mybookTutor} \MakeUppercase{\mybookAcademico}: \myFirstAdvisorFullName\\
+    \MakeUppercase{\mybookCoTutor} (si procede): \mySecondAdvisorFullName\\
     \begin{center}
       Alcalá de Henares, \myThesisProposalDate
     \end{center}
