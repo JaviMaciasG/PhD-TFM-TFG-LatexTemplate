@@ -12,8 +12,8 @@ The template uses configuration variables (defined in the `Config/myconfig.tex` 
 The template is accessible in two ways:
 
 1. In github, in case you want to clone or fork my working version. It is available at 
-https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate, so that you can clone from  https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git. Beware that it has a lot of extra files that should not be useful for the general user
-2. In my dropbox, in zip and tgz formats, accesible at https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0 .  At this location you will also be able to access the sample book files for all the different flavours (degrees...) and in Spanish and English versions. Please note that the introduction chapter will provide you with general instructions and details on the use of the template. Please do read it. The rests of the chapters provide you with sample code to do a varity of (IMHO) nice things you might need.
+[my gitHub account project page](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate), so that you can clone it from [the clone URL](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git). Beware that it has a lot of extra files that should not be useful for the general user
+2. In my dropbox, in zip and tgz formats, accesible at [this Dropbox download folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0).  At this location you will also be able to access the sample book files for all the different flavours (degrees...) and in Spanish and English versions. Please note that the introduction chapter will provide you with general instructions and details on the use of the template. Please do read it. The rests of the chapters provide you with sample code to do a varity of (IMHO) nice things you might need.
 
 ### Configure your data
 
@@ -38,11 +38,13 @@ https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate, so that you can clone 
 2. Edit the files you need and compile them by using the corresponding `Makefile`s or your standard LaTeX build tool.
 
 
-## Disclaimer
+## Disclaimer & request for help & offer to help
 
 There is a lot of work to do in documenting this template, and I'll do my best to do it, but I can't promise you anything. 
 
-If you need help, or you are unable to make this work, or you have any compilation errors, or you have suggestions for improvements, please contact me at [my email address](mailto:javier.maciasguarasa@uah.es).
+There are a lot of bad and very unprofessional coding habits (see Book/Makefile for a sample), but I'm not an expert and I just tried to make things work out of the box. It would be great if you can contribute in any way to improve this template, so that [drop me a message](mailto:javier.maciasguarasa@uah.es) or consider submitting a pull request.
+
+Also, if you need help, or you are unable to make this work, or you have any compilation errors, or you have suggestions for improvements, please contact me at [my email address](mailto:javier.maciasguarasa@uah.es).
 
 Enjoy!
 
