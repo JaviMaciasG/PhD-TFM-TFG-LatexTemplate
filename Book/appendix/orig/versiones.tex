@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: versiones.tex,v 1.1 2015/06/05 00:00:54 macias Exp $
+% $Id: versiones.tex,v 1.6 2020/03/24 17:18:13 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -41,21 +41,53 @@ sufriendo esta plantilla.
 
 \begin{itemize}
 
+  
+\item Julio 2021
+  \begin{itemize}
+    
+  \item El salto gigante desde el 2015 no es porque no haya ido
+    haciendo cambios, pero no he tenido el tiempo necesario para
+    documentarlos.
+    
+  \item Ahora la plantilla está accesible de dos formas:
+    \begin{itemize}
+    
+    \item En github, por si a los que lo queráis usar os es más fácil
+      clonar o hacer un fork. Está disponible en
+      \url{https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate} y
+      podéis clonarlo desde
+      \url{https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git}. Ojo
+      que tiene morralla variada que puede que no os interese.
+    \item En mi dropbox, en formatos zip y tgz, accesible en
+      \url{https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0}
+      y sin la morralla que os decía.
+      
+    \end{itemize}
+    
+  \item Reestructuración completa de la estructura de directorios
+  \item Soporte para el manejo adecuado de los ``géneros'', para lo
+    que hay que definirlos en el fichero de configuración. Creo que es
+    completo, pero si veis algún error, dadme un toque.
+  \item Soporte completo (por fin) de utf-8, salvo en los ficheros
+    .bib que no lo he conseguido.    
+  \end{itemize}
+  
+\item Mayo 2015:
+  \begin{itemize}
+  \item Hay disponible un \texttt{make bare} para que deje los capítulos
+    mondos y lirondos y se pueda escribir desde casi cero sin tener que
+    andar borrando manualmente.
+  \end{itemize}
+
+
 \item Abril 2015:
   \begin{itemize}
   \item Ahora manejamos masculino/femenino en algunos sitios (el/la,
     autor/autora, alumno/alumna, del/de la, ...). Hay que definir
-    variable con el sexo del autor (todavía queda pendiente lo de los
+    variable con el género del autor (todavía queda pendiente lo de los
     tutores y tal). NOT FINISHED!!
   \end{itemize}
 
-\item Abril 2015:
-  \begin{itemize}
-  \item Comienzo de intento de hacer un \texttt{make bare} para que deje
-    los capítulos mondos y lirondos. Afecta a la creación de ficheros
-    \texttt{*-bare.tex} en los directorios \texttt{./chapters} y
-    \texttt{./appendix}. NOT FINISHED!!
-  \end{itemize}
 
 \item Enero 2015:
   \begin{itemize}
