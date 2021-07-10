@@ -32,9 +32,12 @@ SHELL=/bin/bash
 DEGREE_NAME=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myDegree" | cut -f 3 -d "{"| cut -f 1 -d "}")
 AUTHOR_NAME=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myAuthorName" | grep -v "myAuthorFullName" | cut -f 3 -d "{"| cut -f 1 -d "}" | tr -d " ")
 AUTHOR_SURNAME=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myAuthorSurname" | grep -v "myAuthorFullName" | cut -f 3 -d "{"| cut -f 1 -d "}" | tr -d " ")
+BOOK_LANGUAGE=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myLanguage" | cut -f 3 -d "{"| cut -f 1 -d "}")
+BOOK_TYPE=$(shell cat ../Config/worktypes.txt | grep -w $(DEGREE_NAME) | tr -s " " | cut -f 2 -d " ")
 
 ROOT_FILENAME=book
-ROOT_FINAL_BOOK_FILENAME=$(ROOT_FILENAME)-$(DEGREE_NAME)-$(AUTHOR_SURNAME)-$(AUTHOR_NAME)
+#ROOT_FINAL_BOOK_FILENAME=$(ROOT_FILENAME)-$(DEGREE_NAME)-$(AUTHOR_SURNAME)-$(AUTHOR_NAME)-$(BOOK_LANGUAGE)
+ROOT_FINAL_BOOK_FILENAME=$(BOOK_TYPE)-$(DEGREE_NAME)-$(AUTHOR_SURNAME)-$(AUTHOR_NAME)-$(BOOK_LANGUAGE)
 TEX_FILE = $(ROOT_FILENAME).tex
 FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten.tex
 DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff

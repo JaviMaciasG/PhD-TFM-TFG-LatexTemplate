@@ -48,7 +48,7 @@
 
   \vspace{1cm}   
 
-  \Large\textbf{\mybooktitle}
+  \Large\textbf{\myBookTitle}
 
   \vspace{2cm}
   
@@ -57,7 +57,7 @@
     \textbf {Author}
   }
   {
-    \textbf {\expandafter\makefirstuc\expandafter{\mybookAutorOrAutora}}
+    \textbf {\expandafter\makefirstuc\expandafter{\wordAutorOrAutora}}
   }
   
   % \vspace{5mm}
@@ -68,14 +68,14 @@
   
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-    \textbf {\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}}
+    \textbf {\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}}
   }
   {
-    \textbf {\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}}
+    \textbf {\expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}}
   }  
   % \vspace{5mm}
   
-  \mybookadvisors
+  \myAdvisors
   
   
 \end{center}
@@ -84,7 +84,7 @@
   \begin{center}
     \textbf{\myThesisDefenseYear}\\
     \vspace{5mm}
-    \textbf{\mybookworktypefull}
+    \textbf{\myWorkTypeFull}
   \end{center}
 \end{bottomparagraph}
 

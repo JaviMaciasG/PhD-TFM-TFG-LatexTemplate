@@ -263,7 +263,7 @@ urlcolor=azul,                                                        pdfborder=
 
 \newcommand{\myDegree}{GIEC}
 
-\newcommand{\mybooktitle}{Plantilla unificada para la generación de memorias de PFCs, TFGs, TFMs y tesis doctorales}
+\newcommand{\myBookTitle}{Plantilla unificada para la generación de memorias de PFCs, TFGs, TFMs y tesis doctorales}
 \newcommand{\myAuthorFullName}{Javier Macías-Guarasa}
 \newcommand{\myDepartment}{Departamento de Electrónica}
 \newcommand{\myDepartmentEnglish}{Departament of Electronics}
@@ -331,200 +331,200 @@ urlcolor=azul,                                                        pdfborder=
 
 \ifthenelse{\equal{\myLanguage}{spanish}}
 {
-\newcommand{\mybookFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity} 
+\newcommand{\myFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity} 
 } 
 {
-\newcommand{\mybookFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversity} 
+\newcommand{\myFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversity} 
 }
 
 \ifthenelse{\equal{\mySecondAdvisorFullName}{}}
 {
-\newcommand{\mybookadvisors}{\myFirstAdvisorFullName{}}
-\newcommand{\mybookDirectorOrDirectores}{director}
-\newcommand{\mybookAdvisorOrAdvisors}{advisor}
-\newcommand{\mybookDaOrDan}{da}
-\newcommand{\mybookTutorOrTutores}{tutor}
-\newcommand{\mybookElOrLos}{El}
-\newcommand{\mybookSuOrSus}{su}
-\newcommand{\mybookDelOrDeLos}{del}
+\newcommand{\myAdvisors}{\myFirstAdvisorFullName{}}
+\newcommand{\wordDirectorOrDirectores}{director}
+\newcommand{\wordAdvisorOrAdvisors}{advisor}
+\newcommand{\wordDaOrDan}{da}
+\newcommand{\wordTutorOrTutores}{tutor}
+\newcommand{\wordElOrLos}{El}
+\newcommand{\wordSuOrSus}{su}
+\newcommand{\wordDelOrDeLos}{del}
 }
 {
-\newcommand{\mybookadvisors}{\myFirstAdvisorFullName{} y \mySecondAdvisorFullName{}}
-\newcommand{\mybookDirectorOrDirectores}{directores}
-\newcommand{\mybookAdvisorOrAdvisors}{advisors}
-\newcommand{\mybookDaOrDan}{dan}
-\newcommand{\mybookTutorOrTutores}{tutores}
-\newcommand{\mybookElOrLos}{Los}
-\newcommand{\mybookSuOrSus}{Su}
-\newcommand{\mybookDelOrDeLos}{de los}
+\newcommand{\myAdvisors}{\myFirstAdvisorFullName{} y \mySecondAdvisorFullName{}}
+\newcommand{\wordDirectorOrDirectores}{directores}
+\newcommand{\wordAdvisorOrAdvisors}{advisors}
+\newcommand{\wordDaOrDan}{dan}
+\newcommand{\wordTutorOrTutores}{tutores}
+\newcommand{\wordElOrLos}{Los}
+\newcommand{\wordSuOrSus}{Su}
+\newcommand{\wordDelOrDeLos}{de los}
 }
 
 \ifthenelse{\equal{\myDegree}{IT}}
 {
   \newcommand{\myDegreefull}{Ingeniería de Telecomunicación}
-  \newcommand{\mybookworktype}{TFC}
+  \newcommand{\myWorkType}{TFC}
   \ifthenelse{\equal{\myLanguage}{spanish}}
   {
-    \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+    \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
   }
   {
-            \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+            \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
   }
 }
 {
   \ifthenelse{\equal{\myDegree}{IE}}
   {
     \newcommand{\myDegreefull}{Ingeniería Electrónica}
-    \newcommand{\mybookworktype}{TFC}
+    \newcommand{\myWorkType}{TFC}
     \ifthenelse{\equal{\myLanguage}{spanish}}
     {
-      \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+      \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
     }
     {
-                  \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+                  \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
     }
   }
   {
     \ifthenelse{\equal{\myDegree}{ITTSE}}
     {
       \newcommand{\myDegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas Electrónicos}
-      \newcommand{\mybookworktype}{TFC}
+      \newcommand{\myWorkType}{TFC}
       \ifthenelse{\equal{\myLanguage}{spanish}}
       {
-        \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+        \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
       }
       {
-                        \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+                        \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
       }
     }
     {
       \ifthenelse{\equal{\myDegree}{ITTST}}
       {
         \newcommand{\myDegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas de Telecomunicación}
-      \newcommand{\mybookworktype}{TFC}
+      \newcommand{\myWorkType}{TFC}
         \ifthenelse{\equal{\myLanguage}{spanish}}
         {
-          \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+          \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
         }
         {
-                              \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+                              \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
         }
       }
       {
         \ifthenelse{\equal{\myDegree}{ITI}}
         {
           \newcommand{\myDegreefull}{Ingeniería Técnica Industrial, especialidad en Electrónica Industrial}
-          \newcommand{\mybookworktype}{TFC}
+          \newcommand{\myWorkType}{TFC}
           \ifthenelse{\equal{\myLanguage}{spanish}}
           {
-            \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+            \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
           }
           {
-                                    \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+                                    \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
           }
         }
         {
           \ifthenelse{\equal{\myDegree}{GIEC}}
           {
             \newcommand{\myDegreefull}{Grado en Ingeniería Electrónica de Comunicaciones}
-            \newcommand{\mybookworktype}{TFG}
+            \newcommand{\myWorkType}{TFG}
             \ifthenelse{\equal{\myLanguage}{spanish}}
             {
-              \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+              \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
             }
             {
-                                          \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                                          \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
             }
           }
           {
             \ifthenelse{\equal{\myDegree}{GIEAI}}
             {
               \newcommand{\myDegreefull}{Grado en Ingeniería en Electrónica y Automática Industrial}
-              \newcommand{\mybookworktype}{TFG}
+              \newcommand{\myWorkType}{TFG}
               \ifthenelse{\equal{\myLanguage}{spanish}}
               {
-                \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
               }
               {
-                                                \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                                                \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
               }
             }
             {
               \ifthenelse{\equal{\myDegree}{GIST}}
               {
                 \newcommand{\myDegreefull}{Grado en Ingeniería en Sistemas de Telecomunicación}
-                \newcommand{\mybookworktype}{TFG}
+                \newcommand{\myWorkType}{TFG}
                 \ifthenelse{\equal{\myLanguage}{spanish}}
                 {
-                  \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                  \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                 }
                 {
-                                                      \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                                                      \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                 }
               }
               {
                 \ifthenelse{\equal{\myDegree}{GITT}}
                 {
                   \newcommand{\myDegreefull}{Grado en Ingeniería en Tecnologías de la Telecomunicación}
-                  \newcommand{\mybookworktype}{TFG}
+                  \newcommand{\myWorkType}{TFG}
                   \ifthenelse{\equal{\myLanguage}{spanish}}
                   {
-                    \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                    \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                   }
                   {
-                                                            \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                                                            \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                   }
                 }
                 {
                   \ifthenelse{\equal{\myDegree}{GIT}}
                   {
                     \newcommand{\myDegreefull}{Grado en Ingeniería Telemática}
-                    \newcommand{\mybookworktype}{TFG}
+                    \newcommand{\myWorkType}{TFG}
                     \ifthenelse{\equal{\myLanguage}{spanish}}
                     {
-                      \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                      \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                     }
                     {
-                                                                  \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                                                                  \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                     }
                   }
                   {
                     \ifthenelse{\equal{\myDegree}{GIC}}
                     {
                       \newcommand{\myDegreefull}{Grado en Ingeniería de Computadores}
-                      \newcommand{\mybookworktype}{TFG}
+                      \newcommand{\myWorkType}{TFG}
                       \ifthenelse{\equal{\myLanguage}{spanish}}
                       {
-                        \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                        \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                       }
                       {
-                                                                        \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                                                                        \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                       }
                     }
                     {
                       \ifthenelse{\equal{\myDegree}{GII}}
                       {
                         \newcommand{\myDegreefull}{Grado en Ingeniería Informática}
-                        \newcommand{\mybookworktype}{TFG}
+                        \newcommand{\myWorkType}{TFG}
                         \ifthenelse{\equal{\myLanguage}{spanish}}
                         {
-                          \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                          \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                         }
                         {
-                                                                              \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                                                                              \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                         }
                       }
                       {
-                        \ifthenelse{\equal{\myDegree}{GSI}}
+                        \ifthenelse{\equal{\myDegree}{GISI}}
                         {
                           \newcommand{\myDegreefull}{Grado en Sistemas de Información}
-                          \newcommand{\mybookworktype}{TFG}
+                          \newcommand{\myWorkType}{TFG}
                           \ifthenelse{\equal{\myLanguage}{spanish}}
                           {
-                            \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                            \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                           }
                           {
-                                                                                    \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                                                                                    \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                           }
                         }
                         {
@@ -532,58 +532,58 @@ urlcolor=azul,                                                        pdfborder=
                           {
                             \newcommand{\myDegreefull}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
                             \newcommand{\myDegreefullwrapped}{Máster Universitario en Sistemas Electrónicos Avanzados\\Sistemas Inteligentes}
-                            \newcommand{\mybookworktype}{TFM}
+                            \newcommand{\myWorkType}{TFM}
                             \ifthenelse{\equal{\myLanguage}{spanish}}
                             {
-                              \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                              \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
                             }
                             {
-                                                                                          \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                                                                                          \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
                             }
                           }
                           {
                             \ifthenelse{\equal{\myDegree}{PHDUAH}}
                             {
                               \newcommand{\myDegreefull}{Estudios de Doctorado}
-                              \newcommand{\mybookworktype}{PHDUAH}
+                              \newcommand{\myWorkType}{PHDUAH}
                               \ifthenelse{\equal{\myLanguage}{spanish}}
                               {
-                                \newcommand{\mybookworktypefull}{Tesis Doctoral}
+                                \newcommand{\myWorkTypeFull}{Tesis Doctoral}
                               }
                               {
-                                \newcommand{\mybookworktypefull}{Doctoral Thesis}
+                                \newcommand{\myWorkTypeFull}{Doctoral Thesis}
                               }
                             }
                             {
                               \ifthenelse{\equal{\myDegree}{PHDUPM}}
                               {
                                 \newcommand{\myDegreefull}{Doctor Ingeniero de Telecomunicación}
-                                \newcommand{\mybookworktype}{PHDUPM}
+                                \newcommand{\myWorkType}{PHDUPM}
                                 \ifthenelse{\equal{\myLanguage}{spanish}}
                                 {
-                                  \newcommand{\mybookworktypefull}{Tesis Doctoral}
+                                  \newcommand{\myWorkTypeFull}{Tesis Doctoral}
                                 }
                                 {
-                                  \newcommand{\mybookworktypefull}{Doctoral Thesis}
+                                  \newcommand{\myWorkTypeFull}{Doctoral Thesis}
                                 }
                               }
                               {
                                 \ifthenelse{\equal{\myDegree}{GEINTRARR}}
                                 {
                                   \newcommand{\myDegreefull}{GEINTRA Research Report}
-                                  \newcommand{\mybookworktype}{GEINTRARR}
+                                  \newcommand{\myWorkType}{GEINTRARR}
                                   \ifthenelse{\equal{\myLanguage}{spanish}}
                                   {
-                                    \newcommand{\mybookworktypefull}{Informe técnico del Grupo de investigación \myResearchGroup{}}
+                                    \newcommand{\myWorkTypeFull}{Informe técnico del Grupo de investigación \myResearchGroup{}}
                                   }
                                   {
-                                    \newcommand{\mybookworktypefull}{\myResearchGroup{} Research Report}
+                                    \newcommand{\myWorkTypeFull}{\myResearchGroup{} Research Report}
                                   }
                                 }
                                 {
-                                  \newcommand{\mybookworktype}{TFG}
+                                  \newcommand{\myWorkType}{TFG}
                                   \newcommand{\myDegreefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}} 
-                                  \newcommand{\mybookworktypefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
+                                  \newcommand{\myWorkTypeFull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
                                 }                          
                               }                          
                             }                          
@@ -619,8 +619,8 @@ urlcolor=azul,                                                        pdfborder=
 \hypersetup
 {
   pdfauthor={\myAuthorFullName~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater},
-  pdftitle={\mybooktitle},
-  pdfsubject={\myDegreefull, \mybookworktypefull},
+  pdftitle={\myBookTitle},
+  pdfsubject={\myDegreefull, \myWorkTypeFull},
   pdfkeywords={\keywordsforpdf},
   pdfcreator={\LaTeX with hyperref package},
   pdfproducer={rubber},
@@ -636,7 +636,7 @@ urlcolor=azul,                                                        pdfborder=
     
                                
 \graphicspath{{../logos/}{../figures/}{../diagrams/}}                                                                 
-\title{Anteproyecto de \mybookworktypefull}        \date{\myThesisProposalDate}                         \author{\myAuthorFullName}
+\title{Anteproyecto de \myWorkTypeFull}        \date{\myThesisProposalDate}                         \author{\myAuthorFullName}
 
 \begin{document}                                   
 
@@ -669,7 +669,7 @@ urlcolor=azul,                                                        pdfborder=
 
 \maketitle
 
- \begin{description}                                \item[Título:] \mybooktitle                        \item[Departamento:] \myDepartment             \item[Autor:] \myAuthorFullName                        \item[\expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}:] \mybookadvisors                    \end{description}                                 
+ \begin{description}                                \item[Título:] \myBookTitle                        \item[Departamento:] \myDepartment             \item[Autor:] \myAuthorFullName                        \item[\expandafter\makefirstuc\expandafter{\wordTutorOrTutores}:] \myAdvisors                    \end{description}                                 
 
 \section{Introducción}
 \label{sec:introduccion}

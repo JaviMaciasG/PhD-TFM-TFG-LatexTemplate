@@ -33,19 +33,19 @@
 % turn depends on the \myDegree variable
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ifthenelse{\equal{\mybookworktype}{TFG}}
+\ifthenelse{\equal{\myWorkType}{TFG}}
 {
   \input{cover/portada-tfg-uah.tex}
   \input{cover/cover-pfc-tfg-tfm-uah.tex}
 }
 {
-  \ifthenelse{\equal{\mybookworktype}{TFC}}
+  \ifthenelse{\equal{\myWorkType}{TFC}}
   {
     \input{cover/portada-pfc-uah.tex}
     \input{cover/cover-pfc-tfg-tfm-uah.tex}
   }
   {
-  \ifthenelse{\equal{\mybookworktype}{TFM}}
+  \ifthenelse{\equal{\myWorkType}{TFM}}
   {
     % Same than TFGs from 2016
     \input{cover/portada-tfg-uah.tex}
@@ -54,26 +54,26 @@
     %      \input{cover/cover-pfc-tfg-tfm-uah.tex}
     }
     {
-      \ifthenelse{\equal{\mybookworktype}{PHDUAH}}
+      \ifthenelse{\equal{\myWorkType}{PHDUAH}}
       {
 %        \input{cover/portada-phd-uah.tex}
         \input{cover/cover-phd-uah.tex}
       }
       {
-        \ifthenelse{\equal{\mybookworktype}{PHDUPM}}
+        \ifthenelse{\equal{\myWorkType}{PHDUPM}}
         {
           \input{cover/portada-phd-upm.tex}
           \input{cover/cover-phd-upm.tex}
         }
         {
-          \ifthenelse{\equal{\mybookworktype}{GEINTRARR}}
+          \ifthenelse{\equal{\myWorkType}{GEINTRARR}}
           {
             \input{cover/portada-geintra-rr.tex}
 %            \input{cover/cover-geintra-rr.tex}
           }
           {
-            ERROR: in \texttt{cover/cover.tex} Defined book type (\mybookworktype) unknown so that work type is
-            undefined or wrong (\mybookworktype), check also \texttt{config/myconfig.tex}
+            ERROR: in \texttt{cover/cover.tex} Defined book type (\myWorkType) unknown so that work type is
+            undefined or wrong (\myWorkType), check also \texttt{config/myconfig.tex}
           }
         }
       }

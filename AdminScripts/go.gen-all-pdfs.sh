@@ -31,9 +31,16 @@ DEGREES_ENG_SPA="PHDUAH PHDUPM"
 DEGREES_ENG_SPA="PHDUAH"
 DEGREES_SPA="IT IE ITTSE ITTST ITI GIEAI GITI GIST GITT GIT GIC GII GSI GISI MUSEA MUIT MUII GIEC"
 DEGREES_SPA="GIEAI GITI GIST GITT GIT GIC GII GSI GISI MUSEA MUIT MUII GIEC"
-MYCONFIG_ORIG="config/myconfig.tex.orig"
-MYCONFIG="config/myconfig.tex"
+DEGREES_ENG_SPA="GIEC GIEAI GITI GIST GITT GIT GIC GII GISI MUSEA MUIT MUII MUIE PHDUAH"
+DEGREES_SPA=""
+
+MYCONFIG_VARS="../Config/myconfig.tex.vars"
+MYCONFIG="../Config/myconfig.tex"
 BOOK="book"
+
+cat $MYCONFIG |sed -E "s/newcommand[{][\\]myLanguage[}][{](.*)[}]/newcommand{\\\myLanguage}{__LANG__}/g" |sed -E "s/newcommand[{][\\]myDegree[}][{](.*)[}]/newcommand{\\\myDegree}{__DEGREE__}/g" > $MYCONFIG_VARS
+
+#exit
 
 cp $MYCONFIG $MYCONFIG.before
 
@@ -42,7 +49,7 @@ do
 		for degree in $DEGREES_ENG_SPA
 		do
 				echo "Making for degree $degree"
-				cat $MYCONFIG_ORIG | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
+				cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
 				make clean
 				make 
 				cp $BOOK.pdf $BOOK-$degree-$lang.pdf
@@ -53,7 +60,7 @@ lang="spanish"
 for degree in $DEGREES_SPA
 do
 		echo "Making for degree $degree"
-		cat $MYCONFIG_ORIG | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
+		cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
 		make clean
 		make 
 		cp $BOOK.pdf $BOOK-$degree-$lang.pdf

@@ -27,7 +27,7 @@
 % comments or suggestions!!!
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
+ 
 \thispagestyle{empty}
 \large
 \begin{center}
@@ -46,7 +46,74 @@
 
   \vspace{2cm}   
   
-  \Huge\textbf{\mybooktitle}
+  \Huge\textbf{\myBookTitle}
+
+  \vspace{5cm}
+  
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+    \huge{{PhD. Thesis Presented by}}
+  }
+  {
+    \huge{{Tesis Doctoral presentada por}}
+  }
+
+  \huge{\textbf{\myAuthorFullName}}
+
+
+  \vspace{10mm}
+
+  % \ifthenelse{\equal{\myLanguage}{english}}
+  % {
+  %   \huge {\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}}
+  % }
+  % {
+  %   \huge {\expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}}
+  % }  
+
+  % \textbf{\myAdvisorsConDrOrDra}
+
+  % \LARGE\textbf{\myWorkTypeFull}
+
+  \color{black}
+  
+
+\end{center}
+
+\begin{bottomparagraph}
+  \begin{center}
+
+    \color{pantone293}
+
+      \huge {\myThesisDefenseYear}
+    \color{black}
+
+  \end{center}
+\end{bottomparagraph}
+
+
+\clearemptydoublepage
+
+ 
+\thispagestyle{empty}
+\large
+\begin{center}
+
+  \color{pantone293}
+
+  \centerline{\includegraphics[height=3cm]{uah/01_logo-vA_pant293.pdf}}
+
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+    \huge{{\myPhDProgramEnglish}}
+  }
+  {
+    \huge{{\myPhDProgram}}
+  }
+
+  \vspace{2cm}   
+  
+  \Huge\textbf{\myBookTitle}
 
   \vspace{10mm}
   
@@ -65,15 +132,15 @@
 
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-    \huge {\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}}
+    \huge {\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}}
   }
   {
-    \huge {\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}}
+    \huge {\expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}}
   }  
 
-  \textbf{\mybookadvisorsConDr}
+  \textbf{\myAdvisorsConDrOrDra}
 
-  % \LARGE\textbf{\mybookworktypefull}
+  % \LARGE\textbf{\myWorkTypeFull}
 
   \color{black}
   

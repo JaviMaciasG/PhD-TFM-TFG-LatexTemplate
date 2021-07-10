@@ -515,13 +515,13 @@ linewidth=0.9\linewidth,
 \ifthenelse{\equal{\myLanguage}{spanish}}
 {
   \usepackage[spanish, english]{babel}
-  \newcommand{\mybookFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity} 
-  \newcommand{\mybooktitle}{\myBookTitleSpanish}
+  \newcommand{\myFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity} 
+  \newcommand{\myBookTitle}{\myBookTitleSpanish}
 } 
 {
   \usepackage[english, spanish]{babel}
-  \newcommand{\mybookFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversity} 
-  \newcommand{\mybooktitle}{\myBookTitleEnglish}
+  \newcommand{\myFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversity} 
+  \newcommand{\myBookTitle}{\myBookTitleEnglish}
 }
 
 \ifthenelse{\equal{\myLanguage}{spanish}}
@@ -534,305 +534,305 @@ linewidth=0.9\linewidth,
 
 \ifthenelse{\equal{\myAcademicTutorGender}{male}}     
 {                                                       
-  \newcommand{\donOrDonaTutor}{D.}
-  \newcommand{\drOrDraTutor}{Dr.}
+  \newcommand{\wordDonOrDonaTutor}{D.}
+  \newcommand{\wordDrOrDraTutor}{Dr.}
 }
 {
-  \newcommand{\donOrDonaTutor}{Dª.}
-  \newcommand{\drOrDraTutor}{Dra.}
+  \newcommand{\wordDonOrDonaTutor}{Dª.}
+  \newcommand{\wordDrOrDraTutor}{Dra.}
 }
 
 \ifthenelse{\equal{\myCoTutorGender}{male}}     
 {                                                       
-  \newcommand{\donOrDonaCoTutor}{D.}
-  \newcommand{\drOrDraCoTutor}{Dr.}
+  \newcommand{\wordDonOrDonaCoTutor}{D.}
+  \newcommand{\wordDrOrDraCoTutor}{Dr.}
 }
 {
-  \newcommand{\donOrDonaCoTutor}{Dª.}
-  \newcommand{\drOrDraCoTutor}{Dra.}
+  \newcommand{\wordDonOrDonaCoTutor}{Dª.}
+  \newcommand{\wordDrOrDraCoTutor}{Dra.}
 }
 
 \ifthenelse{\equal{\myAuthorGender}{male}}     
 {                                                       
-  \newcommand{\donOrDonaAutor}{D.}
+  \newcommand{\wordDonOrDonaAutor}{D.}
 }
 {
-  \newcommand{\donOrDonaAutor}{Dª.}
+  \newcommand{\wordDonOrDonaAutor}{Dª.}
 }
 
 
 \ifthenelse{\equal{\myAcademicTutorGender}{male}}     
 {                                                       
-  \newcommand{\directorOrdirectora}{director}
-  \newcommand{\mybookTutor}{tutor}
-  \newcommand{\mybookAcademico}{académico}
-  \newcommand{\mybookTutorDelOrDeLa}{del}
+  \newcommand{\wordDirectorOrdirectora}{director}
+  \newcommand{\wordTutorOrTutora}{tutor}
+  \newcommand{\wordAcademicoOrAcademica}{académico}
+  \newcommand{\wordTutorDelOrDeLa}{del}
 }
 {
-  \newcommand{\directorOrdirectora}{directora}
-  \newcommand{\mybookTutor}{tutora}
-  \newcommand{\mybookAcademico}{académica}
-  \newcommand{\mybookTutorDelOrDeLa}{de la}
+  \newcommand{\wordDirectorOrdirectora}{directora}
+  \newcommand{\wordTutorOrTutora}{tutora}
+  \newcommand{\wordAcademicoOrAcademica}{académica}
+  \newcommand{\wordTutorDelOrDeLa}{de la}
 }
 
 \ifthenelse{\equal{\myCoTutorGender}{male}}     
 {                                                       
-  \newcommand{\mybookCoTutor}{cotutor}
-  \newcommand{\mybookCotutorDelOrDeLa}{del}
+  \newcommand{\wordCoTutorOrCoTutora}{cotutor}
+  \newcommand{\wordCoTutorDelOrDeLa}{del}
 }
 {
-  \newcommand{\mybookCoTutor}{cotutora}
-  \newcommand{\mybookCotutorDelOrDeLa}{de la}
+  \newcommand{\wordCoTutorOrCoTutora}{cotutora}
+  \newcommand{\wordCoTutorDelOrDeLa}{de la}
 }
 
 
 \ifthenelse{\equal{\myCoTutorFullName}{}}
 {
-  \newcommand{\mybookadvisors}{\myAcademicTutorFullName{}}
-  \newcommand{\mybookadvisorsConDon}{\donOrDonaTutor{} \myAcademicTutorFullName{}}
-  \newcommand{\mybookadvisorsConDr}{\drOrDraTutor{} \myAcademicTutorFullName{}}
+  \newcommand{\myAdvisors}{\myAcademicTutorFullName{}}
+  \newcommand{\myAdvisorsWithDonOrDona}{\wordDonOrDonaTutor{} \myAcademicTutorFullName{}}
+  \newcommand{\myAdvisorsConDrOrDra}{\wordDrOrDraTutor{} \myAcademicTutorFullName{}}
   \ifthenelse{\equal{\myAcademicTutorGender}{male}}     
   {                                                       
-    \newcommand{\directorOrdirectora}{director}
-    \newcommand{\mybookTutorOrTutores}{tutor}
-    \newcommand{\mybookTutor}{tutor}
+    \newcommand{\wordDirectorOrdirectora}{director}
+    \newcommand{\wordTutorOrTutores}{tutor}
+    \newcommand{\wordTutorOrTutora}{tutor}
   }
   {
-    \newcommand{\directorOrdirectora}{directora}
-    \newcommand{\mybookTutorOrTutores}{tutora}
-    \newcommand{\mybookTutor}{tutora}
+    \newcommand{\wordDirectorOrdirectora}{directora}
+    \newcommand{\wordTutorOrTutores}{tutora}
+    \newcommand{\wordTutorOrTutora}{tutora}
   }
-  \newcommand{\mybookDirectorOrDirectores}{\directorOrdirectora}
-  \newcommand{\mybookAdvisorOrAdvisors}{advisor}
-  \newcommand{\mybookAdvisor}{advisor}
-  \newcommand{\mybookCoAdvisor}{co-advisor}
-  \newcommand{\mybookDaOrDan}{da}
-  \newcommand{\mybookEmiteOrEmiten}{emite}
-  \newcommand{\mybookElOrLos}{El}
-  \newcommand{\mybookSuOrSus}{su}
-  \newcommand{\mybookDelOrDeLos}{del}
-  \newcommand{\mybookHagoOrHacemos}{hago}
+  \newcommand{\wordDirectorOrDirectores}{\wordDirectorOrdirectora}
+  \newcommand{\wordAdvisorOrAdvisors}{advisor}
+  \newcommand{\wordAdvisor}{advisor}
+  \newcommand{\wordCoAdvisor}{co-advisor}
+  \newcommand{\wordDaOrDan}{da}
+  \newcommand{\wordEmiteOrEmiten}{emite}
+  \newcommand{\wordElOrLos}{El}
+  \newcommand{\wordSuOrSus}{su}
+  \newcommand{\wordDelOrDeLos}{del}
+  \newcommand{\wordHagoOrHacemos}{hago}
 }
 {
-  \newcommand{\mybookadvisors}{\myAcademicTutorFullName{} \andOrY{} \myCoTutorFullName{}}
-  \newcommand{\mybookadvisorsConDon}{\donOrDonaTutor{} \myAcademicTutorFullName{} \andOrY{} \donOrDonaCoTutor{} \myCoTutorFullName{}}
-  \newcommand{\mybookadvisorsConDr}{\drOrDraTutor{} \myAcademicTutorFullName{}\\\drOrDraCoTutor{} \myCoTutorFullName{}}
+  \newcommand{\myAdvisors}{\myAcademicTutorFullName{} \andOrY{} \myCoTutorFullName{}}
+  \newcommand{\myAdvisorsWithDonOrDona}{\wordDonOrDonaTutor{} \myAcademicTutorFullName{} \andOrY{} \wordDonOrDonaCoTutor{} \myCoTutorFullName{}}
+  \newcommand{\myAdvisorsConDrOrDra}{\wordDrOrDraTutor{} \myAcademicTutorFullName{}\\\wordDrOrDraCoTutor{} \myCoTutorFullName{}}
 
-  \newcommand{\mybookDirectorOrDirectores}{directores}
-  \newcommand{\mybookAdvisorOrAdvisors}{advisors}
-  \newcommand{\mybookAdvisor}{advisor}
-  \newcommand{\mybookCoAdvisor}{co-advisor}
-  \newcommand{\mybookDaOrDan}{dan}
-  \newcommand{\mybookEmiteOrEmiten}{emiten}
-  \newcommand{\mybookTutorOrTutores}{tutores}
+  \newcommand{\wordDirectorOrDirectores}{directores}
+  \newcommand{\wordAdvisorOrAdvisors}{advisors}
+  \newcommand{\wordAdvisor}{advisor}
+  \newcommand{\wordCoAdvisor}{co-advisor}
+  \newcommand{\wordDaOrDan}{dan}
+  \newcommand{\wordEmiteOrEmiten}{emiten}
+  \newcommand{\wordTutorOrTutores}{tutores}
 
 
 
-  \newcommand{\mybookElOrLos}{Los}
-  \newcommand{\mybookSuOrSus}{Su}
-  \newcommand{\mybookDelOrDeLos}{de los}
-  \newcommand{\mybookHagoOrHacemos}{hacemos}
+  \newcommand{\wordElOrLos}{Los}
+  \newcommand{\wordSuOrSus}{Su}
+  \newcommand{\wordDelOrDeLos}{de los}
+  \newcommand{\wordHagoOrHacemos}{hacemos}
 }
 
 \ifthenelse{\equal{\myAuthorGender}{male}}     
 {                                                       
-  \newcommand{\mybookAutorOrAutora}{autor}                
-  \newcommand{\mybookAutorElOrLa}{el}                
-  \newcommand{\mybookAutorAlOrALa}{al}                
-  \newcommand{\mybookAutorDelOrDeLa}{del}                
-  \newcommand{\mybookAutorDonOrDona}{D}                
-  \newcommand{\mybookAutorNotificadoOrNotificada}{notificado}                
-  \newcommand{\mybookAutorAdscritoOrAdscrita}{adscrito}                
-  \newcommand{\mybookAlumnoOrAlumna}{alumno}
-\newcommand{\mybookAlumnoOrAlumnaUp}{Alumno}  
+  \newcommand{\wordAutorOrAutora}{autor}                
+  \newcommand{\wordAutorElOrLa}{el}                
+  \newcommand{\wordAutorAlOrALa}{al}                
+  \newcommand{\wordAutorDelOrDeLa}{del}                
+  \newcommand{\wordAutorDonOrDona}{D}                
+  \newcommand{\wordAutorNotificadoOrNotificada}{notificado}                
+  \newcommand{\wordAutorAdscritoOrAdscrita}{adscrito}                
+  \newcommand{\wordAlumnoOrAlumna}{alumno}
+\newcommand{\wordAlumnoOrAlumnaUpcaseFirt}{Alumno}  
 }                                               
 {
-  \newcommand{\mybookAutorOrAutora}{autora}                
-  \newcommand{\mybookAutorElOrLa}{la}                
-  \newcommand{\mybookAutorAlOrALa}{a la}                
-  \newcommand{\mybookAutorDelOrDeLa}{de la}                
-  \newcommand{\mybookAutorDonOrDona}{Dª}                
-  \newcommand{\mybookAutorNotificadoOrNotificada}{notificada}    
-  \newcommand{\mybookAutorAdscritoOrAdscrita}{adscrita}                
-  \newcommand{\mybookAlumnoOrAlumna}{alumna}
-\newcommand{\mybookAlumnoOrAlumnaUp}{Alumna}
+  \newcommand{\wordAutorOrAutora}{autora}                
+  \newcommand{\wordAutorElOrLa}{la}                
+  \newcommand{\wordAutorAlOrALa}{a la}                
+  \newcommand{\wordAutorDelOrDeLa}{de la}                
+  \newcommand{\wordAutorDonOrDona}{Dª}                
+  \newcommand{\wordAutorNotificadoOrNotificada}{notificada}    
+  \newcommand{\wordAutorAdscritoOrAdscrita}{adscrita}                
+  \newcommand{\wordAlumnoOrAlumna}{alumna}
+\newcommand{\wordAlumnoOrAlumnaUpcaseFirt}{Alumna}
 }
 
 \ifthenelse{\equal{\myResearchVicerrectorGender}{male}}     
 {                                                       
-  \newcommand{\mybookVicerrectorOrVicerrectora}{Vicerrector}
+  \newcommand{\wordVicerrectorOrVicerrectora}{Vicerrector}
 }                                               
 {
-  \newcommand{\mybookVicerrectorOrVicerrectora}{Vicerrectora}
+  \newcommand{\wordVicerrectorOrVicerrectora}{Vicerrectora}
 }
 
 
 \ifthenelse{\equal{\myDegree}{IT}}
 {
   \newcommand{\myDegreefull}{Ingeniería de Telecomunicación}
-  \newcommand{\mybookworktype}{TFC}
+  \newcommand{\myWorkType}{TFC}
   \ifthenelse{\equal{\myLanguage}{spanish}}
   {
-    \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+    \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
   }
   {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
   }
 }
 {
   \ifthenelse{\equal{\myDegree}{IE}}
   {
     \newcommand{\myDegreefull}{Ingeniería Electrónica}
-    \newcommand{\mybookworktype}{TFC}
+    \newcommand{\myWorkType}{TFC}
     \ifthenelse{\equal{\myLanguage}{spanish}}
     {
-      \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+      \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
     }
     {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
     }
   }
   {
     \ifthenelse{\equal{\myDegree}{ITTSE}}
     {
       \newcommand{\myDegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas Electrónicos}
-      \newcommand{\mybookworktype}{TFC}
+      \newcommand{\myWorkType}{TFC}
       \ifthenelse{\equal{\myLanguage}{spanish}}
       {
-        \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+        \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
       }
       {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
       }
     }
     {
       \ifthenelse{\equal{\myDegree}{ITTST}}
       {
         \newcommand{\myDegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas de Telecomunicación}
-        \newcommand{\mybookworktype}{TFC}
+        \newcommand{\myWorkType}{TFC}
         \ifthenelse{\equal{\myLanguage}{spanish}}
         {
-          \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+          \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
         }
         {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
         }
       }
       {
         \ifthenelse{\equal{\myDegree}{ITI}}
         {
           \newcommand{\myDegreefull}{Ingeniería Técnica Industrial, especialidad en Electrónica Industrial}
-          \newcommand{\mybookworktype}{TFC}
+          \newcommand{\myWorkType}{TFC}
           \ifthenelse{\equal{\myLanguage}{spanish}}
           {
-            \newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+            \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
           }
           {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Carrera}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
           }
         }
         {
           \ifthenelse{\equal{\myDegree}{GIEC}}
           {
             \newcommand{\myDegreefull}{Grado en Ingeniería Electrónica de Comunicaciones}
-            \newcommand{\mybookworktype}{TFG}
+            \newcommand{\myWorkType}{TFG}
             \ifthenelse{\equal{\myLanguage}{spanish}}
             {
-              \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+              \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
             }
             {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
             }
           }
           {
             \ifthenelse{\equal{\myDegree}{GIEAI}}
             {
               \newcommand{\myDegreefull}{Grado en Ingeniería en Electrónica y Automática Industrial}
-              \newcommand{\mybookworktype}{TFG}
+              \newcommand{\myWorkType}{TFG}
               \ifthenelse{\equal{\myLanguage}{spanish}}
               {
-                \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
               }
               {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
               }
             }
             {
               \ifthenelse{\equal{\myDegree}{GIST}}
               {
                 \newcommand{\myDegreefull}{Grado en Ingeniería en Sistemas de Telecomunicación}
-                \newcommand{\mybookworktype}{TFG}
+                \newcommand{\myWorkType}{TFG}
                 \ifthenelse{\equal{\myLanguage}{spanish}}
                 {
-                  \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                  \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                 }
                 {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                 }
               }
               {
                 \ifthenelse{\equal{\myDegree}{GITT}}
                 {
                   \newcommand{\myDegreefull}{Grado en Ingeniería en Tecnologías de la Telecomunicación}
-                  \newcommand{\mybookworktype}{TFG}
+                  \newcommand{\myWorkType}{TFG}
                   \ifthenelse{\equal{\myLanguage}{spanish}}
                   {
-                    \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                    \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                   }
                   {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                   }
                 }
                 {
                   \ifthenelse{\equal{\myDegree}{GIT}}
                   {
                     \newcommand{\myDegreefull}{Grado en Ingeniería Telemática}
-                    \newcommand{\mybookworktype}{TFG}
+                    \newcommand{\myWorkType}{TFG}
                     \ifthenelse{\equal{\myLanguage}{spanish}}
                     {
-                      \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                      \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                     }
                     {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                     }
                   }
                   {
                     \ifthenelse{\equal{\myDegree}{GIC}}
                     {
                       \newcommand{\myDegreefull}{Grado en Ingeniería de Computadores}
-                      \newcommand{\mybookworktype}{TFG}
+                      \newcommand{\myWorkType}{TFG}
                       \ifthenelse{\equal{\myLanguage}{spanish}}
                       {
-                        \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                        \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                       }
                       {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                       }
                     }
                     {
                       \ifthenelse{\equal{\myDegree}{GII}}
                       {
                         \newcommand{\myDegreefull}{Grado en Ingeniería Informática}
-                        \newcommand{\mybookworktype}{TFG}
+                        \newcommand{\myWorkType}{TFG}
                         \ifthenelse{\equal{\myLanguage}{spanish}}
                         {
-                          \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                          \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                         }
                         {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                         }
                       }
                       {
-                        \ifthenelse{\equal{\myDegree}{GSI}}
+                        \ifthenelse{\equal{\myDegree}{GISI}}
                         {
                           \newcommand{\myDegreefull}{Grado en Sistemas de Información}
-                          \newcommand{\mybookworktype}{TFG}
+                          \newcommand{\myWorkType}{TFG}
                           \ifthenelse{\equal{\myLanguage}{spanish}}
                           {
-                            \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                            \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                           }
                           {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                           }
                         }
                         {
@@ -841,52 +841,52 @@ linewidth=0.9\linewidth,
                             \newcommand{\myDegreefull}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
                             \newcommand{\myDegreefullwrapped}{Máster Universitario en Sistemas Electrónicos Avanzados\\Sistemas Inteligentes}
                             \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería de Telecomunicación}}
-                            \newcommand{\mybookworktype}{TFM}
+                            \newcommand{\myWorkType}{TFM}
                             \ifthenelse{\equal{\myLanguage}{spanish}}
                             {
-                              \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                              \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
                             }
                             {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
                             }
                           }
                           {
                             \ifthenelse{\equal{\myDegree}{PHDUAH}}
                             {
                               \newcommand{\myDegreefull}{Estudios de Doctorado}
-                              \newcommand{\mybookworktype}{PHDUAH}
+                              \newcommand{\myWorkType}{PHDUAH}
                               \ifthenelse{\equal{\myLanguage}{spanish}}
                               {
-                                \newcommand{\mybookworktypefull}{Tesis Doctoral}
+                                \newcommand{\myWorkTypeFull}{Tesis Doctoral}
                               }
                               {
-                                \newcommand{\mybookworktypefull}{Doctoral Thesis}
+                                \newcommand{\myWorkTypeFull}{Doctoral Thesis}
                               }
                             }
                             {
                               \ifthenelse{\equal{\myDegree}{PHDUPM}}
                               {
                                 \newcommand{\myDegreefull}{Doctor Ingeniero de Telecomunicación}
-                                \newcommand{\mybookworktype}{PHDUPM}
+                                \newcommand{\myWorkType}{PHDUPM}
                                 \ifthenelse{\equal{\myLanguage}{spanish}}
                                 {
-                                  \newcommand{\mybookworktypefull}{Tesis Doctoral}
+                                  \newcommand{\myWorkTypeFull}{Tesis Doctoral}
                                 }
                                 {
-                                  \newcommand{\mybookworktypefull}{Doctoral Thesis}
+                                  \newcommand{\myWorkTypeFull}{Doctoral Thesis}
                                 }
                               }
                               {
                                 \ifthenelse{\equal{\myDegree}{GEINTRARR}}
                                 {
                                   \newcommand{\myDegreefull}{GEINTRA Research Report}
-                                  \newcommand{\mybookworktype}{GEINTRARR}
+                                  \newcommand{\myWorkType}{GEINTRARR}
                                   \ifthenelse{\equal{\myLanguage}{spanish}}
                                   {
-                                    \newcommand{\mybookworktypefull}{Informe técnico del Grupo de investigación \myResearchGroup{}}
+                                    \newcommand{\myWorkTypeFull}{Informe técnico del Grupo de investigación \myResearchGroup{}}
                                   }
                                   {
-                                    \newcommand{\mybookworktypefull}{\myResearchGroup{} Research Report}
+                                    \newcommand{\myWorkTypeFull}{\myResearchGroup{} Research Report}
                                   }
                                 }
                                 {
@@ -895,13 +895,13 @@ linewidth=0.9\linewidth,
                                     \newcommand{\myDegreefull}{Máster Universitario en Ingeniería de Telecomunicación}
                                     \newcommand{\myDegreefullwrapped}{Máster Universitario en Ingeniería de Telecomunicación}
                                     \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería de Telecomunicación}}
-                                    \newcommand{\mybookworktype}{TFM}
+                                    \newcommand{\myWorkType}{TFM}
                                     \ifthenelse{\equal{\myLanguage}{spanish}}
                                     {
-                                      \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                                      \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
                                     }
                                     {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
                                     }
                                   }
                                   {
@@ -910,26 +910,26 @@ linewidth=0.9\linewidth,
                                       \newcommand{\myDegreefull}{Máster Universitario en Ingeniería Industrial}
                                       \newcommand{\myDegreefullwrapped}{Máster Universitario en Ingeniería Industrial}
                                       \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería Industrial}}
-                                      \newcommand{\mybookworktype}{TFM}
+                                      \newcommand{\myWorkType}{TFM}
                                       \ifthenelse{\equal{\myLanguage}{spanish}}
                                       {
-                                        \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                                        \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
                                       }
                                       {        
-\newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
                                       }
                                     }
                                     {
                                       \ifthenelse{\equal{\myDegree}{GITI}}
                                       {
                                         \newcommand{\myDegreefull}{Grado en Ingeniería en Tecnologías Industriales}
-                                        \newcommand{\mybookworktype}{TFG}
+                                        \newcommand{\myWorkType}{TFG}
                                         \ifthenelse{\equal{\myLanguage}{spanish}}
                                         {
-                                          \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                                          \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                                         }
                                         {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                                         }
                                       }
                                       {
@@ -937,13 +937,13 @@ linewidth=0.9\linewidth,
                                         \ifthenelse{\equal{\myDegree}{GISI}}
                                         {
                                           \newcommand{\myDegreefull}{Grado en Ingeniería en Sistemas de Información}
-                                          \newcommand{\mybookworktype}{TFG}
+                                          \newcommand{\myWorkType}{TFG}
                                           \ifthenelse{\equal{\myLanguage}{spanish}}
                                           {
-                                            \newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+                                            \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                                           }
                                           {
-\newcommand{\mybookworktypefull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                                           }
                                         }
                                         {
@@ -957,22 +957,22 @@ linewidth=0.9\linewidth,
                                             \newcommand{\myDegreefull}{Máster Universitario en Ingeniería Electrónica}
                                             \newcommand{\myDegreefullwrapped}{Máster Universitario en Ingeniería Electrónica}
                                             \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería Electrónica}}
-                                            \newcommand{\mybookworktype}{TFM}
+                                            \newcommand{\myWorkType}{TFM}
                                             \ifthenelse{\equal{\myLanguage}{spanish}}
                                             {
-                                              \newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+                                              \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
                                             }
                                             {        
-\newcommand{\mybookworktypefull}{Trabajo Fin de Máster}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
                                             }
 
 
 
                                           }
                                           {
-                                            \newcommand{\mybookworktype}{TFG}
+                                            \newcommand{\myWorkType}{TFG}
                                             \newcommand{\myDegreefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}} 
-                                            \newcommand{\mybookworktypefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
+                                            \newcommand{\myWorkTypeFull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
                                           }
                                         }
                                       }
@@ -1017,8 +1017,8 @@ linewidth=0.9\linewidth,
 \hypersetup
 {
   pdfauthor={\myAuthorFullName~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater},
-  pdftitle={\mybooktitle},
-  pdfsubject={\myDegreefull, \mybookworktypefull},
+  pdftitle={\myBookTitle},
+  pdfsubject={\myDegreefull, \myWorkTypeFull},
 pdfkeywords={\keywordsforpdf},
   pdfcreator={\LaTeX with hyperref package},
   pdfproducer={rubber},
@@ -1081,7 +1081,7 @@ urlcolor=\myurlcolor,
 
 
 
-\ifthenelse{\equal{\mybookworktype}{TFG}}
+\ifthenelse{\equal{\myWorkType}{TFG}}
 {
   
 
@@ -1112,9 +1112,9 @@ urlcolor=\myurlcolor,
 
   \vspace{25mm}
 
-  \LARGE\textbf{\mybookworktypefull}
+  \LARGE\textbf{\myWorkTypeFull}
 
-  \LARGE{\mybooktitle}
+  \LARGE{\myBookTitle}
 
 \vspace{5cm}
 
@@ -1134,33 +1134,33 @@ urlcolor=\myurlcolor,
 {
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-\textbf{\expandafter\makefirstuc\expandafter{\mybookAdvisor}:} \myAcademicTutorFullName{}
+\textbf{\expandafter\makefirstuc\expandafter{\wordAdvisor}:} \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-    \textbf{\expandafter\makefirstuc\expandafter{\mybookCoAdvisor}:} \myCoTutorFullName{}
+    \textbf{\expandafter\makefirstuc\expandafter{\wordCoAdvisor}:} \myCoTutorFullName{}
     }
 
   }
-  {\textbf{\expandafter\makefirstuc\expandafter{\mybookTutor}:}    \myAcademicTutorFullName{}
+  {\textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:}    \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-    \textbf{\expandafter\makefirstuc\expandafter{\mybookCoTutor}:} \myCoTutorFullName{}
+    \textbf{\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}:} \myCoTutorFullName{}
     }
   }
 }
 {
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-    \textbf{\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}:} \mybookadvisors
+    \textbf{\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}:} \myAdvisors
   }
   {
-    \textbf{\expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}:} \mybookadvisors
+    \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutores}:} \myAdvisors
   }
 }  
 
@@ -1197,11 +1197,11 @@ urlcolor=\myurlcolor,
 
   \vspace{1cm}
 
-  \Large\textbf{\mybookworktypefull}
+  \Large\textbf{\myWorkTypeFull}
         
   \vspace{1cm}   
 
-  \Large\textbf{\mybooktitle}
+  \Large\textbf{\myBookTitle}
 
   \vspace{1cm}
   
@@ -1210,7 +1210,7 @@ urlcolor=\myurlcolor,
     Author: \myAuthorFullName
   }
   {
-    \expandafter\makefirstuc\expandafter{\mybookAutorOrAutora}: \myAuthorFullName
+    \expandafter\makefirstuc\expandafter{\wordAutorOrAutora}: \myAuthorFullName
   }
   
   
@@ -1220,33 +1220,33 @@ urlcolor=\myurlcolor,
 {
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-\expandafter\makefirstuc\expandafter{\mybookAdvisor}: \myAcademicTutorFullName{}
+\expandafter\makefirstuc\expandafter{\wordAdvisor}: \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-    \expandafter\makefirstuc\expandafter{\mybookCoAdvisor}: \myCoTutorFullName{}
+    \expandafter\makefirstuc\expandafter{\wordCoAdvisor}: \myCoTutorFullName{}
     }
 
   }
-  {\expandafter\makefirstuc\expandafter{\mybookTutor}:    \myAcademicTutorFullName{}
+  {\expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:    \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-    \expandafter\makefirstuc\expandafter{\mybookCoTutor}: \myCoTutorFullName{}
+    \expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}: \myCoTutorFullName{}
     }
   }
 }
 {
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-    \expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}: \mybookadvisors
+    \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
   }
   {
-    \expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}: \mybookadvisors
+    \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}: \myAdvisors
   }
 }  
 
@@ -1299,7 +1299,7 @@ urlcolor=\myurlcolor,
 
  }
 {
-  \ifthenelse{\equal{\mybookworktype}{TFC}}
+  \ifthenelse{\equal{\myWorkType}{TFC}}
   {
     
 
@@ -1324,11 +1324,11 @@ urlcolor=\myurlcolor,
 
   \vspace{1cm}
 
-  \Large\textbf{\mybookworktypefull}
+  \Large\textbf{\myWorkTypeFull}
 
   \vspace{0.5cm}   
 
-  \LARGE\textbf{\mybooktitle}
+  \LARGE\textbf{\myBookTitle}
 
   \vspace{2cm}
 
@@ -1362,11 +1362,11 @@ urlcolor=\myurlcolor,
 
   \vspace{1cm}
 
-  \Large\textbf{\mybookworktypefull}
+  \Large\textbf{\myWorkTypeFull}
         
   \vspace{1cm}   
 
-  \Large\textbf{\mybooktitle}
+  \Large\textbf{\myBookTitle}
 
   \vspace{1cm}
   
@@ -1375,7 +1375,7 @@ urlcolor=\myurlcolor,
     Author: \myAuthorFullName
   }
   {
-    \expandafter\makefirstuc\expandafter{\mybookAutorOrAutora}: \myAuthorFullName
+    \expandafter\makefirstuc\expandafter{\wordAutorOrAutora}: \myAuthorFullName
   }
   
   
@@ -1385,33 +1385,33 @@ urlcolor=\myurlcolor,
 {
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-\expandafter\makefirstuc\expandafter{\mybookAdvisor}: \myAcademicTutorFullName{}
+\expandafter\makefirstuc\expandafter{\wordAdvisor}: \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-    \expandafter\makefirstuc\expandafter{\mybookCoAdvisor}: \myCoTutorFullName{}
+    \expandafter\makefirstuc\expandafter{\wordCoAdvisor}: \myCoTutorFullName{}
     }
 
   }
-  {\expandafter\makefirstuc\expandafter{\mybookTutor}:    \myAcademicTutorFullName{}
+  {\expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:    \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-    \expandafter\makefirstuc\expandafter{\mybookCoTutor}: \myCoTutorFullName{}
+    \expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}: \myCoTutorFullName{}
     }
   }
 }
 {
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-    \expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}: \mybookadvisors
+    \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
   }
   {
-    \expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}: \mybookadvisors
+    \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}: \myAdvisors
   }
 }  
 
@@ -1464,7 +1464,7 @@ urlcolor=\myurlcolor,
 
    }
   {
-  \ifthenelse{\equal{\mybookworktype}{TFM}}
+  \ifthenelse{\equal{\myWorkType}{TFM}}
   {
 
 
@@ -1495,9 +1495,9 @@ urlcolor=\myurlcolor,
 
   \vspace{25mm}
 
-  \LARGE\textbf{\mybookworktypefull}
+  \LARGE\textbf{\myWorkTypeFull}
 
-  \LARGE{\mybooktitle}
+  \LARGE{\myBookTitle}
 
 \vspace{5cm}
 
@@ -1517,33 +1517,33 @@ urlcolor=\myurlcolor,
 {
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-\textbf{\expandafter\makefirstuc\expandafter{\mybookAdvisor}:} \myAcademicTutorFullName{}
+\textbf{\expandafter\makefirstuc\expandafter{\wordAdvisor}:} \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-    \textbf{\expandafter\makefirstuc\expandafter{\mybookCoAdvisor}:} \myCoTutorFullName{}
+    \textbf{\expandafter\makefirstuc\expandafter{\wordCoAdvisor}:} \myCoTutorFullName{}
     }
 
   }
-  {\textbf{\expandafter\makefirstuc\expandafter{\mybookTutor}:}    \myAcademicTutorFullName{}
+  {\textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:}    \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-    \textbf{\expandafter\makefirstuc\expandafter{\mybookCoTutor}:} \myCoTutorFullName{}
+    \textbf{\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}:} \myCoTutorFullName{}
     }
   }
 }
 {
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-    \textbf{\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}:} \mybookadvisors
+    \textbf{\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}:} \myAdvisors
   }
   {
-    \textbf{\expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}:} \mybookadvisors
+    \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutores}:} \myAdvisors
   }
 }  
 
@@ -1580,11 +1580,11 @@ urlcolor=\myurlcolor,
 
   \vspace{1cm}
 
-  \Large\textbf{\mybookworktypefull}
+  \Large\textbf{\myWorkTypeFull}
         
   \vspace{1cm}   
 
-  \Large\textbf{\mybooktitle}
+  \Large\textbf{\myBookTitle}
 
   \vspace{1cm}
   
@@ -1593,7 +1593,7 @@ urlcolor=\myurlcolor,
     Author: \myAuthorFullName
   }
   {
-    \expandafter\makefirstuc\expandafter{\mybookAutorOrAutora}: \myAuthorFullName
+    \expandafter\makefirstuc\expandafter{\wordAutorOrAutora}: \myAuthorFullName
   }
   
   
@@ -1603,33 +1603,33 @@ urlcolor=\myurlcolor,
 {
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-\expandafter\makefirstuc\expandafter{\mybookAdvisor}: \myAcademicTutorFullName{}
+\expandafter\makefirstuc\expandafter{\wordAdvisor}: \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-    \expandafter\makefirstuc\expandafter{\mybookCoAdvisor}: \myCoTutorFullName{}
+    \expandafter\makefirstuc\expandafter{\wordCoAdvisor}: \myCoTutorFullName{}
     }
 
   }
-  {\expandafter\makefirstuc\expandafter{\mybookTutor}:    \myAcademicTutorFullName{}
+  {\expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:    \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-    \expandafter\makefirstuc\expandafter{\mybookCoTutor}: \myCoTutorFullName{}
+    \expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}: \myCoTutorFullName{}
     }
   }
 }
 {
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-    \expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}: \mybookadvisors
+    \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
   }
   {
-    \expandafter\makefirstuc\expandafter{\mybookTutorOrTutores}: \mybookadvisors
+    \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}: \myAdvisors
   }
 }  
 
@@ -1682,7 +1682,7 @@ urlcolor=\myurlcolor,
 
  }
     {
-      \ifthenelse{\equal{\mybookworktype}{PHDUAH}}
+      \ifthenelse{\equal{\myWorkType}{PHDUAH}}
       {
 
 
@@ -1704,7 +1704,7 @@ urlcolor=\myurlcolor,
 
   \vspace{2cm}   
   
-  \Huge\textbf{\mybooktitle}
+  \Huge\textbf{\myBookTitle}
 
   \vspace{10mm}
   
@@ -1723,13 +1723,13 @@ urlcolor=\myurlcolor,
 
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-    \huge {\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}}
+    \huge {\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}}
   }
   {
-    \huge {\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}}
+    \huge {\expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}}
   }  
 
-  \textbf{\mybookadvisorsConDr}
+  \textbf{\myAdvisorsConDrOrDra}
 
 
 
@@ -1766,7 +1766,7 @@ urlcolor=\myurlcolor,
 
        }
       {
-        \ifthenelse{\equal{\mybookworktype}{PHDUPM}}
+        \ifthenelse{\equal{\myWorkType}{PHDUPM}}
         {
           
 
@@ -1795,7 +1795,7 @@ urlcolor=\myurlcolor,
   
 
 
-  \LARGE\textbf{\mybooktitle}
+  \LARGE\textbf{\myBookTitle}
   
 
 
@@ -1836,7 +1836,7 @@ urlcolor=\myurlcolor,
 
 
 
-  \Large\textbf{\mybooktitle}
+  \Large\textbf{\myBookTitle}
 
 
 
@@ -1845,7 +1845,7 @@ urlcolor=\myurlcolor,
     \textbf {Author}
   }
   {
-    \textbf {\expandafter\makefirstuc\expandafter{\mybookAutorOrAutora}}
+    \textbf {\expandafter\makefirstuc\expandafter{\wordAutorOrAutora}}
   }
   
 
@@ -1856,14 +1856,14 @@ urlcolor=\myurlcolor,
   
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-    \textbf {\expandafter\makefirstuc\expandafter{\mybookAdvisorOrAdvisors}}
+    \textbf {\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}}
   }
   {
-    \textbf {\expandafter\makefirstuc\expandafter{\mybookDirectorOrDirectores}}
+    \textbf {\expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}}
   }  
 
 
-  \mybookadvisors
+  \myAdvisors
   
 \end{center}
 
@@ -1871,7 +1871,7 @@ urlcolor=\myurlcolor,
   \begin{center}
     \textbf{\myThesisDefenseYear}\\
     \vspace{5mm}
-    \textbf{\mybookworktypefull}
+    \textbf{\myWorkTypeFull}
   \end{center}
 \end{bottomparagraph}
 
@@ -1885,7 +1885,7 @@ urlcolor=\myurlcolor,
 
          }
         {
-          \ifthenelse{\equal{\mybookworktype}{GEINTRARR}}
+          \ifthenelse{\equal{\myWorkType}{GEINTRARR}}
           {
             
 
@@ -1909,7 +1909,7 @@ urlcolor=\myurlcolor,
   \node [xshift=7cm] at (current page.north west)
   {\begin{tikzpicture}[remember picture, overlay]
     
-       \node [yshift=-3.5cm, xshift=0.5\paperwidth, align=center, text width=14cm, text centered, midway] {\begin{minipage}[c][13cm][c]{13cm}\centering\color{black}\fontsize{26}{31}\selectfont\textbf{\mybooktitle{}\\}\par\fontsize{18}{26}\selectfont\textbf{[\myResearchReportID{}]}\par\end{minipage}};
+       \node [yshift=-3.5cm, xshift=0.5\paperwidth, align=center, text width=14cm, text centered, midway] {\begin{minipage}[c][13cm][c]{13cm}\centering\color{black}\fontsize{26}{31}\selectfont\textbf{\myBookTitle{}\\}\par\fontsize{18}{26}\selectfont\textbf{[\myResearchReportID{}]}\par\end{minipage}};
 
 
    
@@ -1933,7 +1933,7 @@ urlcolor=\myurlcolor,
   {
     \begin{tikzpicture}[remember picture, overlay]
       \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2.8cm);
-      \node [yshift=1.8cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{15}\selectfont\textbf{\mybookworktypefull}\par};
+      \node [yshift=1.8cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{15}\selectfont\textbf{\myWorkTypeFull}\par};
       \node [yshift=0.5cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{26}\selectfont\textbf{\myDepartment}};
     \end{tikzpicture}
   };
@@ -1968,8 +1968,8 @@ urlcolor=\myurlcolor,
 
  }
           {
-            ERROR: in \texttt{cover/cover.tex} Defined book type (\mybookworktype) unknown so that work type is
-            undefined or wrong (\mybookworktype), check also \texttt{config/myconfig.tex}
+            ERROR: in \texttt{cover/cover.tex} Defined book type (\myWorkType) unknown so that work type is
+            undefined or wrong (\myWorkType), check also \texttt{config/myconfig.tex}
           }
         }
       }
@@ -2683,7 +2683,7 @@ de trabajo y el autor:
     2020.} son \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST},
   \texttt{ITI}, \texttt{GIEC}, \texttt{GIST}, \texttt{GITT},
   \texttt{GIT}, \texttt{GIEAI}, \texttt{GITI}, \texttt{GIC},
-  \texttt{GII}, \texttt{GSI}, \texttt{GISI}, \texttt{MUSEA},
+  \texttt{GII}, \texttt{GISI}, \texttt{GISI}, \texttt{MUSEA},
   \texttt{MUIT}, \texttt{MUII}, \texttt{PHDUAH} y \texttt{PHDUPM}) y que
   automáticamente configura portadas\footnote{Un comentario sobre el
     color de las bandas en la portada de los TFGs: de acuerdo con la
@@ -2882,9 +2882,9 @@ Por si os hace falta, en \texttt{Config/postamble.tex} se definen
 algunas variables relacionadas con el tipo de trabajo. Por ejemplo las
 variables \texttt{\textbackslash{}myDegreefull} (igual a
 ``\myDegreefull'' en esta compilación),
-\texttt{\textbackslash{}mybookworktype} (igual a ``\mybookworktype'' en
-esta compilación) y \texttt{\textbackslash{}mybookworktypefull} (igual a
-``\mybookworktypefull'' en esta compilación). Otro ejemplo sería el
+\texttt{\textbackslash{}myWorkType} (igual a ``\myWorkType'' en
+esta compilación) y \texttt{\textbackslash{}myWorkTypeFull} (igual a
+``\myWorkTypeFull'' en esta compilación). Otro ejemplo sería el
 autor de contacto: \contactauthor.
 
 Importante para las tesis de UAH: si necesitáis incluir ficheros pdf
@@ -4272,7 +4272,7 @@ sufriendo esta plantilla.
 
 
 
-\ifthenelse{\equal{\mybookworktype}{TFG}}
+\ifthenelse{\equal{\myWorkType}{TFG}}
 {
   
 
@@ -4315,7 +4315,7 @@ sufriendo esta plantilla.
 
  }
 {
-\ifthenelse{\equal{\mybookworktype}{TFM}}
+\ifthenelse{\equal{\myWorkType}{TFM}}
 {
   
 

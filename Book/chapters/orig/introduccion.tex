@@ -1,32 +1,32 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% 
 % Generic template for TFC/TFM/TFG/Tesis
-%
-% $Id: introduccion.tex,v 1.2 2015/06/05 00:34:28 macias Exp $
-%
+% 
+% $Id: introduccion.tex,v 1.22 2020/03/24 17:18:20 macias Exp $
+% 
 % By:
-%  + Javier Macías-Guarasa. 
-%    Departamento de Electrónica
-%    Universidad de Alcalá
-%  + Roberto Barra-Chicote. 
-%    Departamento de Ingeniería Electrónica
-%    Universidad Politécnica de Madrid   
+% + Javier Macías-Guarasa. 
+% Departamento de Electrónica
+% Universidad de Alcalá
+% + Roberto Barra-Chicote. 
+% Departamento de Ingeniería Electrónica
+% Universidad Politécnica de Madrid   
 % 
 % Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
 % Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
 % google) that provided help in setting all this up.
-%
+% 
 % See also the additionalContributors.txt file to check the name of
 % additional contributors to this work.
-%
+% 
 % If you think you can add pieces of relevant/useful examples,
 % improvements, please contact us at (macias@depeca.uah.es)
-%
+% 
 % You can freely use this template and please contribute with
 % comments or suggestions!!!
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \chapter{Introducción}
 \label{cha:introduccion}
@@ -68,8 +68,8 @@ que esto sea una guía de \LaTeX{}).
 
 Igualmente se proporciona un modelo simplificado de un anteproyecto
 (para el caso de los TFCs/TFMs/TFGs), así como parte de la documentación
-que hay que presentar para la defensa de los TFGs de la Universidad de
-Alcalá.
+que hay que presentar para la defensa de los TFGs/TFMs de la Universidad
+de Alcalá.
 
 
 
@@ -82,7 +82,7 @@ Alcalá.
 
 Para usar la plantilla tal y como está definida, hace falta disponer de
 una serie de paquetes de estilos \LaTeX{} (ficheros \texttt{.sty}),
-todos ellos definidos en el fichero \texttt{config/preamble.tex}.
+todos ellos definidos en el fichero \texttt{Config/preamble.tex}.
 
 No vamos a hacer un listado de todos lo necesarios (sería demasiado
 largo\footnote{Los que suelen no estar instalados en un ubuntu estándar
@@ -93,39 +93,66 @@ os sucede, buscadlos en alguno de los paquetes \texttt{texlive-*}. En
 caso de no encontrarlos, una búsqueda en google (que con casi total
 seguridad referenciará a alguna página en CTAN) os dará el enlace a la
 descarga correspondiente. A partir de ahí, su inclusión en directorios
-locales será suficiente (como por ejemplo hemos tenido que hacer con el
-paquete \texttt{background}, incluido en la distribución en el
-directorio \texttt{sty/background}). Lo más cómodo es hacer una
-instalación del \texttt{texlive-full}. 
+locales será suficiente.
+% (como por ejemplo hemos tenido que hacer con el
+% paquete \texttt{background}, incluido en la distribución en el
+% directorio \texttt{sty/background}). Lo más cómodo es hacer una
+% instalación del \texttt{texlive-full}. 
 
 Igualmente será necesario tener instaladas una serie de utilidades y
 aplicaciones:
 
 \begin{itemize}
-\item \texttt{make}, si se quiere utilizar la facilidad del
-  \texttt{Makefile} suministrado. Está disponible en todas las
-  distribuciones GNU/Linux.
-\item \texttt{rubber}, si se quiere utilizar la prestación de
-  compilación de código \LaTeX{} incluida en el
-  \texttt{Makefile}. Debería estar disponible en cualquier distribución
-  GNU/Linux, pero si no es así, puedes optar por descargarla, o bien
-  usar la alternativa de \texttt{latexmk} (para el que también se
-  incluyen targets específicos en el \texttt{Makefile} suministrado).
-\item \texttt{dia}, si se quiere utilizar el ejemplo proporcionado de
-  generación de esquemas con dicha herramienta.
-\item \texttt{epspdf}, si se quiere utilizar la facilidad de la
-  conversión automática de ficheros \texttt{eps} a \texttt{pdf} (también
-  se usa en la conversión de ficheros \texttt{.dia}).
-\item \texttt{makeglossaries}, si se quiere utilizar la prestación de
-  manejo de listas de acrónimos y variables. Suele estar en el paquete
-  \texttt{texlive-latex-extra} en distribuciones basadas en Debian
-  (como ubuntu y derivados).
-\item \texttt{latexdiff} y \texttt{latexpand}, si se quiere utilizar la
-  prestación de generación de ficheros pdf con control de cambios. El
-  primero suele ser un paquete independiente, y el segundo suele estar
-  en el paquete \texttt{texlive-extra-utils}.
-\end{itemize}
+\item En Linux
 
+  \begin{itemize}
+  \item \texttt{make}, si se quiere utilizar la facilidad del
+    \texttt{Makefile} suministrado. Está disponible en todas las
+    distribuciones GNU/Linux.
+  \item \texttt{rubber}, si se quiere utilizar la prestación de
+    compilación de código \LaTeX{} incluida en el
+    \texttt{Makefile}. Debería estar disponible en cualquier distribución
+    GNU/Linux, pero si no es así, puedes optar por descargarla, o bien
+    usar la alternativa de \texttt{latexmk} (para el que también se
+    incluyen targets específicos en el \texttt{Makefile} suministrado).
+  \item \texttt{dia}, si se quiere utilizar el ejemplo proporcionado de
+    generación de esquemas con dicha herramienta.
+  \item \texttt{epspdf}, si se quiere utilizar la facilidad de la
+    conversión automática de ficheros \texttt{eps} a \texttt{pdf} (también
+    se usa en la conversión de ficheros \texttt{.dia}).
+  \item \texttt{makeglossaries}, si se quiere utilizar la prestación de
+    manejo de listas de acrónimos y variables. Suele estar en el paquete
+    \texttt{texlive-latex-extra} en distribuciones basadas en Debian
+    (como ubuntu y derivados).
+  \item \texttt{latexdiff} y \texttt{latexpand}, si se quiere utilizar la
+    prestación de generación de ficheros pdf con control de cambios. El
+    primero suele ser un paquete independiente, y el segundo suele estar
+    en el paquete \texttt{texlive-extra-utils}.
+  \end{itemize}
+
+\item En Windows (os cuento la configuración que he probado en algún momento):
+
+  \begin{itemize}
+  \item \texttt{miktex} como sistema de compilación \LaTeX{}, diciéndole
+    que instale todo lo que necesite.
+  \item \texttt{TeXstudio} o \texttt{TeXMaker} como editor.
+  \item Para usar glossaries, echadle un ojo a
+    \url{https://tex.stackexchange.com/questions/156270/has-anyone-managed-to-use-glossaries-with-texstudio-on-windows}. Os
+    copio aquí info que nos han pasado al respecto (gracias Cristina
+    Losada): En Texmaker se puede configurar la “Compilacion rápida”
+    con los comandos que queramos. Eso está en el menú Opciones a
+    Configurar Texmaker, y a la izquierda de la ventana que sale hay
+    que elegir “Compilación rápida”. Hay las opciones típicas, y
+    además permite usar los comandos elegidos por el usuario. Ahí yo
+    tengo esta configuración (compila con pdflatex, llama además a
+    bibtex y makeglossaries y al final muestra el pdf):
+    \texttt{pdflatex -synctex=1 -interaction=nonstopmode \%.tex|bibtex \%|makeglossaries \%|pdflatex -synctex=1 -interaction=nonstopmode \%.tex|pdflatex -synctex=1 -interaction=nonstopmode \%.tex|}''\texttt{C:/Program Files (x86)/Adobe/Acrobat Reader DC/Reader/AcroRd32.exe}''\texttt{ \%.pdf}
+  \item \texttt{make}, si se quiere utilizar la facilidad del
+    \texttt{Makefile} suministrado. Hay varias opciones y que necesita
+    un intérprete de comandos (es posible que con el nuevo WSL sea más
+    fácil todavía).
+  \end{itemize}
+\end{itemize}
 
 \subsection{Compilación}
 \label{sec:compilacion}
@@ -195,6 +222,48 @@ prestaciones:
 \end{itemize}
 
 
+\subsection{Detalles específicos para sistemas basados en MacOS}
+\label{sec:detall-espec-para}
+
+Esta información es cortesía de Carlos Cruz (carlos.cruzt@uah.es), que
+se encontró con un problema en la generación de la lista de
+acrónimos. Copio a continuación los detalles al respecto.
+
+Hemos encontrado que la lista de acrónimos y/o símbolos no se genera en
+el entorno macOS. Recomendamos seguir las siguientes instrucciones para
+solucionar este problema:
+
+\begin{itemize}
+\item Tener el SO actualizado a la última versión. Actualmente (marzo de
+  2020) MacOS Catalina versión 10.15.2
+\item Instalar la última versión de MacTeX-2019. Esta distribución
+  requiere Mac OS 10.12, Sierra, o superior y funciona con procesadores
+  Intel (disponible en
+  \href{http://tug.org/mactex/mactex-download.html}{http://tug.org/mactex/mactex-download.html}).
+\item Trabajar en el entorno Texshop version 4.44:
+  \href{https://pages.uoregon.edu/koch/texshop/}{https://pages.uoregon.edu/koch/texshop/}.
+\end{itemize}
+
+Si compilamos la plantilla en el entorno Texshop, comprobamos que los
+listados de glosario y/o símbolos no se compilan con ninguno de los
+Typeset: Latex, Lualatex, Xelatex o pdflatexmk.
+
+Recomendamos inicialmente compilar por Terminal:
+
+\begin{itemize}
+\item pdflatex “nombre del fichero.tex” (compilar dos veces)
+\item makeglossaries “nombre del fichero”
+\item pdflatex “nombre del fichero” (compilar dos veces)
+\end{itemize}
+
+De esta forma, se crea correctamente la lista de acrónimos y símbolos. A
+continuación, se puede trabajar con futuros cambios en el proyecto
+mediante Texshop compilando Latex. Si quiere actualizar o modificar la
+lista de acrónimos y/o símbolos nuevamente, recomendamos borrar todos
+los ficheros salvo el fichero book.tex y compilar de nuevo por consola
+para crear la lista correctamente.
+
+
 
 \subsection{Estructura del documento generado por la plantilla}
 \label{sec:estr-del-docum}
@@ -202,14 +271,21 @@ prestaciones:
 La plantilla definida presenta la siguiente estructura:
 
 \begin{itemize}
+
 \item Portada y página de información sobre el trabajo, que será
   dependiente del tipo de trabajo y la titulación. Se genera
   automáticamente a partir de la información definida en la
   sección~\ref{sec:definicion-del-tipo}
+
+\item Ficheros pdf insertados, que aplican en algunos de los tipos de
+  documentos (por ejemplo en las tesis doctorales).
+
 \item Dedicatoria, con un ejemplo incluido en el fichero
   \texttt{dedication/dedicatoria.tex}.
 \item Agradecimientos, con un ejemplo incluido en el fichero
   \texttt{dedication/agradecimientos.tex}.
+
+
 \item Resumen en español, con un ejemplo incluido en el fichero
   \texttt{abstract/resumen.tex}.
 \item Resumen en inglés, con un ejemplo incluido en el fichero
@@ -217,11 +293,13 @@ La plantilla definida presenta la siguiente estructura:
 \item Resumen extendido en español (opcional en algunos tipos de
   documento), con un ejemplo incluido en el fichero
   \texttt{abstract/resumen-extendido.tex}.
+
 \item Índice de contenidos, índice de figuras e índice de tablas.
 \item Índices adicionales, de los que se incluye un ejemplo de listado
   específico en el fichero \texttt{cover/extralistings.tex}, que incluye
   el listado de fragmentos de código fuente definidos en el
   \texttt{appendix/manual.tex}.
+
 \item Listado de acrónimos utilizados, que se definen en el fichero
   \texttt{acronyms/defacronymsgl.tex} (con opciones adicionales de
   configuración en \texttt{acronyms/acronymsgl.tex}), y del que
@@ -230,24 +308,32 @@ La plantilla definida presenta la siguiente estructura:
   \texttt{symbols/defsymbolsgl.tex} (con opciones adicionales de
   configuración en \texttt{symbols/symbolsgl.tex}), y del que incluimos
   más información en la sección~\ref{sec:simbolos}.
+
+
 \item Capítulos del documento, del que hay varios ejemplos que siguen la
   estructura típica (introducción, estudio teórico, desarrollo,
   resultados y conclusiones.
-\item Pliego de condiciones y presupuesto, opcionales (se incluyen un
+
+\item Pliego de condiciones y presupuesto, opcionales en función del
+  tipo de documento que se genere (se incluyen un
   par de ejemplos del trabajo fin de carrera de Jesús Martínez en los
   ficheros \texttt{pliego/pliego-ejemplo.tex} y
-  \texttt{presupuesto/presupuesto-ejemplo.tex}.
+  \texttt{presupuesto/presupuesto-ejemplo.tex}. Es un trabajo antiguo y
+  es necesario que busquéis esquemas y contenidos actualizados para
+  estos capítulos.
+
 \item Bibliografía, de la que se puede cambiar el estilo utilizado y los
   ficheros \texttt{.bib} en el fichero
   \texttt{biblio/bibliography.tex} (en el que hay que definir la lista
   de ficheros de bibliografía que se usarán (variables
   \texttt{\textbackslash{}mybibfileOne},
   \texttt{\textbackslash{}mybibfileTwo}, ...).
+
 \item Apéndices, de los que ahora se incluyen dos ejemplos en los
   ficheros \texttt{appendix/manual.tex} (que sirve de pretexto para
   mostrar cómo se insertan fragmentos de código fuente), y
   \texttt{appendix/herramientas.tex}.
-\item Contraportada, sólo para el caso de los TFGs en UAH.
+\item Contraportada.
 \end{itemize}
 
 Por supuesto, modificad la estructura para que encaje en las directrices
@@ -264,14 +350,16 @@ os ayuden a entenderlo. Si sois de los impacientes, basta con que
 comencéis por la parte en la que se incluyen los distintos capítulos
 (buscad la parte de los \texttt{\textbackslash{}input\{chapters/*.tex\}}).
 
-Uno de los ficheros de configuración más importantes es el
-\texttt{config/myconfig.tex} en el que se incluyen elementos para
-determinar la configuración específica de tu documento. El primero de
-ellos (para facilitar la generación de documentos en español o inglés),
-es el que define el idioma que vas a utilizar. Para seleccionarlo, basta
-con asignar \texttt{spanish} o \texttt{english} a la variable
-\texttt{\textbackslash{}myLanguage}. A partir de ella, el sistema
-generará las cabeceras y títulos adecuados a cada una.
+El fichero de configuración más importantes es el
+\texttt{Config/myconfig.tex} en el que se incluyen elementos para
+determinar la configuración específica de tu documento y que es de
+donde se toman los datos para las muchas automatizaciones del proceso
+de generación. El primero de ellos (para facilitar la generación de
+documentos en español o inglés), es el que define el idioma que vas a
+utilizar. Para seleccionarlo, basta con asignar \texttt{spanish} o
+\texttt{english} a la variable \texttt{\textbackslash{}myLanguage}. A
+partir de ella, el sistema generará las cabeceras y títulos adecuados
+a cada una.
 
 Igualmente, tendréis que definir las siguientes variables sobre el tipo
 de trabajo y el autor:
@@ -279,87 +367,182 @@ de trabajo y el autor:
 \begin{itemize} 
 \item Acrónimo de la titulación correspondiente al trabajo (variable
   \texttt{\textbackslash{}myDegree}): Que se seleccionará entre los
-  definidos (por ahora\footnote{Este documento se generó a finales de
-    2013.} son \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST},
-  \texttt{ITI}, \texttt{GIEC}, \texttt{GIEAI}, \texttt{GIST},
-  \texttt{GITT}, \texttt{GIT}, \texttt{GIC}, \texttt{GII}, \texttt{GSI},
-  \texttt{MUSEA}, \texttt{PHDUAH} y \texttt{PHDUPM}) y que
+  definidos (por ahora\footnote{Este apartado se generó en marzo de
+    2020.} son \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST},
+  \texttt{ITI}, \texttt{GIEC}, \texttt{GIST}, \texttt{GITT},
+  \texttt{GIT}, \texttt{GIEAI}, \texttt{GITI}, \texttt{GIC},
+  \texttt{GII}, \texttt{GISI}, \texttt{GISI}, \texttt{MUSEA},
+  \texttt{MUIT}, \texttt{MUII}, \texttt{PHDUAH} y \texttt{PHDUPM}) y que
   automáticamente configura portadas\footnote{Un comentario sobre el
     color de las bandas en la portada de los TFGs: de acuerdo con la
     normativa, dicho color debe ser PANTONE 160c. Yo he intentado
     utilizar dicho color, pero el aspecto con el que finalmente aparece
     no es ni de lejos similar al del modelo que proporciona la EPS, con
     lo que he optado por utilizar el que se ve realmente en dicho
-    modelo. Si quieres cambiarlo, busca ``PANTONE'' en \texttt{config/preamble.tex}.}, entre otras cosas.
-\item Título del documento (variable \texttt{\textbackslash{}mybooktitle}).
-\item Nombre del autor del trabajo (variable \texttt{\textbackslash{}myAuthorFullName}).
-\item DNI del autor del trabajo, usado en el papeleo de los TFGs (variable \texttt{\textbackslash{}mybookDNI}).
-\item Departamento en el que se realiza el trabajo (variable
-  \texttt{\textbackslash{}myDepartment}, en español, y \texttt{\textbackslash{}myDepartmentEnglish}, en inglés).
-\item Programa de Doctorado (en su caso) en el que se realiza el trabajo (variable
-  \texttt{\textbackslash{}myPhDProgram}, en español, y
-  \texttt{\textbackslash{}myPhDProgramEnglish}, en inglés). 
-\item Grupo de investigación en el que se realiza el trabajo (variable
-  \texttt{\textbackslash{}myResearchGroup}.
-\item Centro en el que se realiza el trabajo (variable \texttt{\textbackslash{}mySchool}, que debería ser la Escuela Politénica Superior, pero se incluye por generalidad).
-\item Universidad en el que se realiza el trabajo (variable \texttt{\textbackslash{}mybooksuniversidad}, que debería ser la de Alcalá, pero se incluye por generalidad).
-\item Titulación del autor (usada en las tesis de UPM, (variable \texttt{\textbackslash{}myUPMdegree})).
-\item Email del autor (variable \texttt{\textbackslash{}myAuthorEmail}).
-\item Nombre del primer (o único, en su caso) director del trabajo
-  (variable \texttt{\textbackslash{}myFirstAdvisorFullName}).
-\item Nombre del segundo (en su caso) director del trabajo (variable \texttt{\textbackslash{}mySecondAdvisorFullName}).
-\item Nombre del presidente del tribunal (variable \texttt{\textbackslash{}myTribunalPresident}).
-\item Nombre del primer vocal del tribunal (variable \texttt{\textbackslash{}myTribunalFirstSpokesperson}).
-\item Nombre del segundo vocal del tribunal (variable \texttt{\textbackslash{}myTribunalSecondSpokesperson}).
-\item Nombre del secretario del tribunal, en su caso (variable \texttt{\textbackslash{}myTribunalSecretary}).
-\item Año del trabajo (variable \texttt{\textbackslash{}myThesisDefenseYear}).
-\item Fecha del anteproyecto, en su caso (variable \texttt{\textbackslash{}mybookanteproyectodate}), en el caso de que se usen la plantilla del anteproyecto.
-\item Fecha de la defensa del trabajo, en su caso (variable
-  \texttt{\textbackslash{}myThesisDefenseDate}, en español, o
-  \texttt{\textbackslash{}myThesisdefenseDateEnglish}).
-\item Palabras clave en inglés (variable \texttt{\textbackslash{}myThesisKeywordsEnglish}).
-\item Palabras clave en español (variable \texttt{\textbackslash{}myThesisKeywords}).
+    modelo. Si quieres cambiarlo, busca ``PANTONE'' en
+    \texttt{Config/preamble.tex}.}, entre otras cosas.
+
+\item Flag de división de directores (variable
+  \texttt{\textbackslash{}myFlagSplittedAdvisors}). Si puesta a
+  \texttt{false} indicará ``Tutores/Advisors'' en las páginas de
+  portada. En caso contrario lo separará en líneas para
+  ``Tutor/Advisor'' y ``Cotutor/Co-Advisor''.
+
+\item Especialidad (nuevo en TFGs desde el curso 2015) (variable
+  \texttt{\textbackslash{}mySpecialty})
+
 \end{itemize}
 
-Y también variables para el caso de los trabajos que necesitan papeleo
-adicional (publicación en abierto, autorizaciones, etc.).
+Sobre el documento en general:
 
 \begin{itemize}
-\item Nombre del Secretario del Departamento (que firmará parte del papeleo)
-  (variable \texttt{\textbackslash{}myDepartmentSecretary}).
-\item Fecha que aparecerá en la firma del papeleo (variable \texttt{\textbackslash{}myPaperworkDate}).
-\item DNI del alumno (variable
-  \texttt{\textbackslash{}myAuthorDNI}).
-\item Figura del autor del trabajo, que es normalmente ``alumno''
-  (variable \texttt{\textbackslash{}mybookProfFigureOpenPublishing}).
-\item DNIs del/de los tutores, para los permisos de publicación en
-  abierto (variables \texttt{\textbackslash{}myFirstAdvisorDNI} y
-  \texttt{\textbackslash{}mySecondAdvisorDNI}, en su caso)
+\item Título del documento en español (variable
+  \texttt{\textbackslash{}myBookTitleSpanish}).
+\item Título del documento en inglés (variable
+  \texttt{\textbackslash{}myBookTitleEnglish}).
+\item Palabras clave en inglés (variable \texttt{\textbackslash{}myThesisKeywordsEnglish}).
+\item Palabras clave en español (variable \texttt{\textbackslash{}myThesisKeywords}).
+
+
+\end{itemize}
+
+Sobre el autor y el tutor y cotutor:
+
+\begin{itemize}
+  
+\item Nombre del autor del trabajo (variable
+  \texttt{\textbackslash{}myAuthorName}).
+\item Apellidos del autor del trabajo (variable
+  \texttt{\textbackslash{}myAuthorSurname}). La unión de esta
+  definición con la del nombre formará automáticamente la variable
+  \texttt{\textbackslash{}myAuthorFullName}
+\item Género del autor (variable
+  \texttt{\textbackslash{}myAuthorGender}), ``male'' or ``female''.
+\item Email del autor (variable
+  \texttt{\textbackslash{}myAuthorEmail}).
+\item DNI del autor del trabajo, usado en el papeleo de los TFGs
+  (variable \texttt{\textbackslash{}mybookDNI}).
+
+\item También se ha iniciado soporte básico para generar la hoja de
+  control de anteproyecto que se usa en la solicitud, con lo que hay
+  variables relacionadas con los datos personales del alumno:
+
+  \begin{itemize}
+  \item Dirección: calle (variable \texttt{\textbackslash{}myAuthorStreet}),
+    ciudad (variable \texttt{\textbackslash{}myAuthorCity}), código postal
+    (variable \texttt{\textbackslash{}myAuthorPostalCode}), provincia (variable
+    \texttt{\textbackslash{}myAuthorProvince}) y teléfono (variable
+    \texttt{\textbackslash{}myAuthorTelephone}).
+  \end{itemize}
+
+\item Nombre del primer (o único, en su caso) director/tutor del trabajo
+  (variable \texttt{\textbackslash{}myAcademicTutorFullName}).
+\item Género del primer director/tutor (variable
+  \texttt{\textbackslash{}myAcademicTutorGender}), ``male'' or
+  ``female''.
+\item DNI del primer direector, para los permisos de publicación en
+  abierto (variable \texttt{\textbackslash{}myFirstAdvisorDNI}
+
+  
+\item Nombre del segundo (en su caso) director/tutor del trabajo (variable
+  \texttt{\textbackslash{}myCoTutoroFullName}).
+\item Género del segundo director/tutor (variable
+  \texttt{\textbackslash{}myCoTutorGender}), ``male'' or
+  ``female''.
+\item DNI del segundo director, para los permisos de publicación en
+  abierto (variable \texttt{\textbackslash{}mySecondAdvisorDNI}), en
+  su caso
+
+  \end{itemize}
+
+Sobre la filiación del autor y el trabajo:
+
+\begin{itemize}
+
+\item Centro en el que se realiza el trabajo (variable
+  \texttt{\textbackslash{}mySchool}, que debería ser la Escuela
+  Politénica Superior, pero se incluye por generalidad).
+\item Universidad en el que se realiza el trabajo (variable
+  \texttt{\textbackslash{}myUniversity}, que debería ser la de
+  Alcalá, pero se incluye por generalidad).
+\item Acrónimo de la Universidad (variable
+  \texttt{\textbackslash{}myUniversityAcronym}).
+
+\item Departamento en el que se realiza el trabajo (variable
+  \texttt{\textbackslash{}myDepartment}, en español, y
+  \texttt{\textbackslash{}myDepartmentEnglish}, en inglés).
+  
+\item Programa de Doctorado (en su caso) en el que se realiza el
+  trabajo (variable \texttt{\textbackslash{}myPhDProgram}, en español,
+  y \texttt{\textbackslash{}myPhDProgramEnglish}, en inglés).
+\item Grupo de investigación en el que se realiza el trabajo (variable
+  \texttt{\textbackslash{}myResearchGroup}.
+
+  \end{itemize}
+
+Sobre el tribunal:
+
+\begin{itemize}
+
+\item Nombre del presidente del tribunal (variable
+  \texttt{\textbackslash{}myTribunalPresident}).
+\item Nombre del primer vocal del tribunal (variable
+  \texttt{\textbackslash{}myTribunalFirstSpokesperson}).
+\item Nombre del segundo vocal del tribunal (variable
+  \texttt{\textbackslash{}myTribunalSecondSpokesperson}).
+\item Nombre del suplente del tribunal (variable
+  \texttt{\textbackslash{}myTribunalAlternateMember}).
+\item Nombre del secretario del tribunal, en su caso (variable
+  \texttt{\textbackslash{}myTribunalSecretary}).
+\item Nombre del Secretario del Departamento (que firmará parte del
+  papeleo) (variable \texttt{\textbackslash{}myDepartmentSecretary}).
+
+\end{itemize}
+
+Sobre fechas varias:
+
+\begin{itemize}
+  
+\item Fecha del anteproyecto, en su caso (variable
+  \texttt{\textbackslash{}myThesisProposalDate}), en el caso de que se
+  use la plantilla del anteproyecto
+\item Fecha del anteproyecto en inglés, en su caso (variable
+  \texttt{\textbackslash{}myThesisProposalDateEnglish}), en el caso de
+  que se usen la plantilla del anteproyecto.
+
+\item Fecha del depósito del trabajo (variable
+  \texttt{\textbackslash{}myThesisDepositDate})
+\item Fecha del depósito del trabajo en inglés (variable
+  \texttt{\textbackslash{}myThesisDepositDateEnglish})
+
+\item Año del trabajo (variable
+  \texttt{\textbackslash{}myThesisDefenseYear}).
+\item Fecha de la defensa del trabajo, en su caso (variable
+  \texttt{\textbackslash{}myThesisDefenseDate}, en español, o
+  \texttt{\textbackslash{}myThesisdefenseDateEnglish} en inglés).
+
+\item Fecha que aparecerá en la firma del papeleo (variable
+  \texttt{\textbackslash{}myPaperworkDate}).
+  
+\item Nombre del vicerrector (variable
+  \texttt{\textbackslash{}myResearchVicerrector}).
+\item Género del vicerrector (variable
+  \texttt{\textbackslash{}myResearchVicerrectorGender}).
 \end{itemize}
 
 Se ha comenzado a trabajar en la versión alfa del soporte para
 \textit{research reports}, y en ese caso se usa la variable
 \texttt{\textbackslash{}myResearchReportID}.
 
+Y también hay otras variables de menor interés o en desuso en las que
+no vamos a entrar.
+
 Parte de esa información se utilizará para rellenar la metainformación
 incluida en el fichero \texttt{pdf} que se genera.
 
-También se ha iniciado soporte básico para generar la hoja de control de
-anteproyecto que se usa en la solicitud, con lo que hay variables
-relacionadas con los datos personales del alumno:
-
-\begin{itemize}
-\item Dirección: calle (variable \texttt{\textbackslash{}myAuthorStreet}),
-  ciudad (variable \texttt{\textbackslash{}myAuthorCity}), código postal
-  (variable \texttt{\textbackslash{}myAuthorPostalCode}), provincia (variable
-  \texttt{\textbackslash{}myAuthorProvince}) y teléfono (variable
-  \texttt{\textbackslash{}myAuthorTelephone}).
-\end{itemize}
 
 También se definen los colores que se usarán en los hiperenlaces del
-documento. En concreto\footnote{Os rogamos encarecidamente que cambiéis
-  los colores definidos actualmente, que se han usado para verificar que
-  todo funciona correctamente.}:
+documento:
 
 \begin{itemize}
 \item Color de los enlaces en el índice de contenidos (variable
@@ -383,13 +566,13 @@ Basta con que defináis las variables correspondientes y la plantilla
 generará automáticamente las portadas adecuadas a la normativa y usará
 las definiciones específicas que hayas seleccionado.
 
-Por si os hace falta, en \texttt{config/postamble.tex} se definen
+Por si os hace falta, en \texttt{Config/postamble.tex} se definen
 algunas variables relacionadas con el tipo de trabajo. Por ejemplo las
 variables \texttt{\textbackslash{}myDegreefull} (igual a
 ``\myDegreefull'' en esta compilación),
-\texttt{\textbackslash{}mybookworktype} (igual a ``\mybookworktype'' en
-esta compilación) y \texttt{\textbackslash{}mybookworktypefull} (igual a
-``\mybookworktypefull'' en esta compilación). Otro ejemplo sería el
+\texttt{\textbackslash{}myWorkType} (igual a ``\myWorkType'' en
+esta compilación) y \texttt{\textbackslash{}myWorkTypeFull} (igual a
+``\myWorkTypeFull'' en esta compilación). Otro ejemplo sería el
 autor de contacto: \contactauthor.
 
 Importante para las tesis de UAH: si necesitáis incluir ficheros pdf
@@ -403,7 +586,7 @@ el \texttt{book.tex}.
 Para el caso de los TFMs/TFGs/TFCs, se incluye una plantilla para
 realizar el anteproyecto.
 
-La plantilla se encuentra en el directorio \texttt{anteproyecto}, y en
+La plantilla se encuentra en el directorio \texttt{Anteproyecto}, y en
 fichero \texttt{anteproyecto.tex} tenéis un ejemplo. El
 \texttt{Makefile} genera automáticamente el \texttt{anteproyecto.pdf},
 haciendo un \texttt{make} en ese directorio, y tiene targets similares a los
@@ -419,7 +602,7 @@ la sección~\ref{sec:control-de-cambios} (cambiando las referencias a
 Para el caso de los TFMs/TFGs/TFCs, se incluye una plantilla de la hoja
 de control de la solicitud del anteproyecto.
 
-La plantilla se encuentra en el directorio \texttt{solicitud}, y en
+La plantilla se encuentra en el directorio \texttt{Papeleo/SolicitudTFGTFM/}, y en
 fichero \texttt{solicitud.tex} tenéis un ejemplo. El
 \texttt{Makefile} genera automáticamente el \texttt{solicitud.pdf},
 haciendo un \texttt{make} en ese directorio, y tiene targets similares a los
@@ -431,34 +614,37 @@ la sección~\ref{sec:control-de-cambios} (cambiando las referencias a
 no hay que tocarlo prácticamente, salvo que le pase alguna cosa rara.
 
 
-\subsection{Papeleo adicional para la defensa de los TFGs}
+\subsection{Papeleo adicional}
 \label{sec:introapp1}
 
-Para el caso de los TFGs y TFMs (al menos los del MUSEA), se incluyen en
-el directorio \texttt{papeleo} algunos de los documentos que hay que
-generar en el momento de la defensa. En concreto:
+Para el caso de los TFGs y TFMs se incluyen en el directorio
+\texttt{papeleo} algunos de los documentos que hay que generar en el
+momento de la defensa. En concreto:
 
 \begin{itemize}
 \item La autorización del tutor para la publicación en abierto, en el
-  fichero \texttt{autorizacionTutorPublicarRepositorio.tex} para TFGs.
+  fichero
+  \texttt{Papeleo/AutorizacionRepoInstit/autorizacionTutorPublicarRepositorio.tex}
+  para TFGs.
 \item La autorización del autor para la publicación en abierto, en el
-  fichero \texttt{autorizacionAutorPublicarRepositorio.tex}
+  fichero
+  \texttt{Papeleo/AutorizacionRepoInstit/autorizacionAutorPublicarRepositorio.tex}
 \item El visto bueno del tutor para la defensa del TFG
-  \texttt{vistoBuenoTutorTFG.tex}
-\item La autorización del autor y tutor/tutores para la publicación en
-  abierto, en el fichero
-  \texttt{autorizacionPublicarAbiertoTFM-MUSEA.tex}.
+  \texttt{Papeleo/TFG/vistoBuenoTutorTFG.tex}
+\item La solicitud de acta para la defensa del TFG
+  \texttt{Papeleo/TFG/solicitudActaTFG.tex}
 \item El visto bueno del tutor para la defensa del TFM
-  \texttt{vistoBuenoTutorTFM-MUSEA.tex}
+  \texttt{Papeleo/TFM/vistoBuenoTutorTFM.tex}
 \end{itemize}
 
-En el directorio se incluye un \texttt{Makefile} que genera los
-\texttt{pdfs} correspondientes a esos documentos. El sistema
-automáticamente adapta los singulares/plurales necesarios para el caso
-de que haya uno o varios directores/tutores.
- 
+En cada uno de esos directorios se incluye un \texttt{Makefile} que
+genera los \texttt{pdfs} correspondientes a esos documentos. El
+sistema automáticamente adapta los singulares/plurales necesarios para
+el caso de que haya uno o varios directores/tutores.
 
-\subsection{Generación del documento con control de cambios (para revisión)}
+
+\subsection{Generación del documento con control de cambios (para
+  revisión)}
 \label{sec:control-de-cambios}
 
 Uno de los problemas de \LaTeX{} frente a otros sistemas de edición de
@@ -475,11 +661,13 @@ versiones (y si no lo estáis usando, deberíais plantearos seriamente el
 hacerlo), con la ayuda de herramientas adicionales.
 
 Hay varias soluciones disponibles, la mayoría basada en el uso de la
-\texttt{latexdiff} \cite{latexdiff} (o derivados). Lo recomendable sería
-el uso de un sistema automatizado como el disponible en
-\texttt{git-latexdiff} \cite{git-latexdiff}, pero necesita el soporte de
-\texttt{git}, y por el momento estoy manteniendo esto en \texttt{cvs}
-(flames to \texttt{/dev/null}, please).
+\texttt{latexdiff} \cite{latexdiff} (o derivados). Lo recomendable
+sería el uso de un sistema automatizado como el disponible en
+\texttt{git-latexdiff} \cite{git-latexdiff}, pero necesita el soporte
+de \texttt{git}, y dados los orígenes en los que mantenía esto en
+\texttt{cvs} (flames to \texttt{/dev/null}, please), el mecanismo que
+uso es un poco más rupestre (si quieres ayudarme en esto, sería
+perfecto).
 
 \texttt{latexdiff} permite comparar dos versiones de un documento y
 generar un nuevo fichero fuente en \LaTeX{} que, al compilarlo, muestra un
@@ -498,14 +686,16 @@ procedimiento para hacer uso de ello sería (asumiendo que usáis
 
 \begin{itemize}
 \item Primero hay que preparar la versión base sobre la que luego se
-  harán los cambios. Esa preparación se hace normalmente cuando se tiene
-  una versión razonablemente estable, y con la que luego se quiere
-  comparar (por ejemplo cuando le entregas a tu tutor tu primer borrador
-  del documento completo). La preparación es sencilla: basta hacer un
-  \texttt{make flatten}. Eso generará un fichero
-  \texttt{book-flatten.tex} que contiene el estado actual del documento,
-  expandido. Luego hay que registrarlo en el repositorio basta hacer un
-  \texttt{cvs commit -m ``New flattened version'' book-flatten.tex}.
+  harán los cambios. Esa preparación se hace normalmente cuando se
+  tiene una versión razonablemente estable, y con la que luego se
+  quiere comparar (por ejemplo cuando le entregas a tu tutor tu primer
+  borrador del documento completo). La preparación es sencilla: basta
+  hacer un \texttt{make flatten}. Eso generará un fichero
+  \texttt{book-flatten.tex} que contiene el estado actual del
+  documento, expandido. Luego hay que registrarlo en el repositorio
+  con un \texttt{cvs commit -m ``New flattened version''
+    book-flatten.tex} o \texttt{git add book-flatten.tex; git commit
+    -m ``New flattened version''} en git.
 \item A partir de ahí ya se puede trabajar en los cambios al documento,
   los que sean necesarios.
 \item Cuando se quiera obtener el fichero pdf con el control de cambios,
@@ -547,7 +737,7 @@ caso, la solución propuesta/adoptada:
 
 \end{itemize}
 
-Si das con más problemas, escribid por favor a \contactauthor
+Si das con más problemas, escribe por favor a \contactauthor
 contándonoslos y trataremos de solucionarlo (y si tenéis la solución,
 contádnosla también).
 
@@ -559,7 +749,7 @@ contádnosla también).
 \label{sec:uso-de-comandos}
 
 A modo de ejemplo, hemos definido el comando
-\texttt{\textbackslash{}texten\{\}} en \texttt{config/myconfig.tex} para
+\texttt{\textbackslash{}texten\{\}} en \texttt{Config/myconfig.tex} para
 usarlo, por ejemplo, para marcar palabras escritas en inglés (aka
 \texten{English}). Sigue el ejemplo para definir aquellos que utilices
 con frecuencia.
@@ -607,7 +797,7 @@ generado automáticamente a partir de un fichero
 
 
 \subsection{Definición y uso de acrónimos (aquí también
-    se pueden poner acrónimos como \acs{ETTS})}
+  se pueden poner acrónimos como \acs{ETTS})}
 \label{sec:uso-de-acronimos}
 
 El uso del paquete \texttt{glossaries} permite definir los acrónimos y
@@ -659,7 +849,7 @@ singular con \ac{SOC}.
 
 
 \subsection{Definición y uso de símbolos (aquí también
-    se pueden símbolos como \ac{xidet})}
+  se pueden símbolos como \ac{xidet})}
 \label{sec:simbolos}
 
 Los símbolos definidos están incluidos en el fichero
@@ -669,4 +859,3 @@ ejemplos.
 
 El \ac{angstrom} se usa en biología estructural, mientras que el
 \ac{ohm} se usa en electrónica. También podemos poner~\ac{xdet}. Y
-t
