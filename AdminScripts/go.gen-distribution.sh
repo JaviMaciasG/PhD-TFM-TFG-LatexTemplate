@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-DIST_FILE="PhDTFMTFG-LaTeX-Template-UAH"
+DIST_FILE="00-PhDTFMTFG-LaTeX-Template-UAH"
 DIRS="Anteproyecto Book Config Papeleo"
 
 FILES_ALL="windows-installation.txt Book/additionalContributors.txt"

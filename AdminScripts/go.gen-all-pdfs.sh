@@ -68,3 +68,12 @@ done
 
 cp $MYCONFIG.before $MYCONFIG
 
+for f in `ls *.pdf`
+do
+    NEWNAME=`echo $f | cut -f 1,2,5 -d "-"`
+    mv $f $NEWNAME
+done
+
+
+cp *.pdf ~/Dropbox/PhDTFMTFG-LaTeX-Template/
+
