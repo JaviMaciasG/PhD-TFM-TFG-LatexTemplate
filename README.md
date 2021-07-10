@@ -2,10 +2,18 @@
 
 This repo contains a generic template for PhD, Msc (TFM) and BsC (TFG) thesis documents mainly designed to be used at the University of Alcala (UAH), so that it is written in Spanish, although the template can generate the documents in English (just setting a variable in the configuration file).
 
-The template uses configuration variables (defined in the `Book/config/myconfig.tex` file) to customize all the document generation process.
+The template uses configuration variables (defined in the `Config/myconfig.tex` file) to customize all the document generation process.
 
 
 ## Quick start
+
+### Download the template
+
+The template is accessible in two ways:
+
+1. In github, in case you want to clone or fork my working version. It is available at 
+https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate, so that you can clone from  https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git. Beware that it has a lot of extra files that should not be useful for the general user
+2. In my dropbox, in zip and tgz formats, accesible at https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0 .  At this location you will also be able to access the sample book files for all the different flavours (degrees...) and in Spanish and English versions. Please note that the introduction chapter will provide you with general instructions and details on the use of the template. Please do read it. The rests of the chapters provide you with sample code to do a varity of (IMHO) nice things you might need.
 
 ### Configure your data
 
