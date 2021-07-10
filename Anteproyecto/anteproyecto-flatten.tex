@@ -1,11 +1,18 @@
 
 
-\makeatletter{}
+
+
+
+
 \documentclass[11pt,a4paper,oneside]{article}
 
+\synctex=1
 
 
-\usepackage[latin1]{inputenc} \usepackage[T1]{fontenc}                                    \usepackage{ae}               
+
+
+
+\usepackage[utf8]{inputenc} \usepackage[T1]{fontenc}      \usepackage{ae}               \usepackage{cmap}
 \usepackage[spanish, english]{babel}
 
 \usepackage[final]{pdfpages}
@@ -31,7 +38,8 @@
 \usepackage{supertabular}
 \usepackage{hhline}
 \usepackage{array}
-\usepackage[noadjust]{cite}                                                                                                                                                                                                                                                                                                                                                                              
+\usepackage[noadjust]{cite}      
+
 
 \usepackage{caption}
 
@@ -53,15 +61,18 @@
 \usepackage{pdftexcmds}
 
 
+
 \usepackage{geometry}
 \geometry{verbose,a4paper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
 
+
 \usepackage[
-bookmarks=true,bookmarksnumbered=true,            hypertexnames=false,                                                  breaklinks=true,                   linktoc=all,
+bookmarks=true,bookmarksnumbered=true,            hypertexnames=false,               breaklinks=true,                   linktoc=all,
 colorlinks=true,
 linkcolor=azul,    
 citecolor=verde,
-urlcolor=azul,                                                        pdfborder={0 0 112.0}              ]{hyperref}                        
+urlcolor=azul,                     pdfborder={0 0 112.0}              ]{hyperref}                        
+
 
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
@@ -78,19 +89,19 @@ urlcolor=azul,                                                        pdfborder=
 \usepackage{setspace}
 \newcommand{\mycaptiontable}[1]{
 \begin{spacing}{0.6}
-    \begin{quote}
-                {{Table} \thechapter.\arabic{table}: #1}
-      \end{quote}
-    \end{spacing}
+\begin{quote}
+{{Table} \thechapter.\arabic{table}: #1}
+\end{quote}
+\end{spacing}
   \stepcounter{table}
 }
 
 \newcommand{\mycaptionfigure}[1]{
-    \begin{spacing}{0.6}
+\begin{spacing}{0.6}
   \begin{quote}
-                {{Figure} \thechapter.\arabic{figure}: #1}
-      \end{quote}
-    \end{spacing}
+{{Figure} \thechapter.\arabic{figure}: #1}
+\end{quote}
+\end{spacing}
   \stepcounter{figure}
 }
 
@@ -101,6 +112,7 @@ urlcolor=azul,                                                        pdfborder=
 \usepackage{multirow}
 \usepackage{rotating}
 \usepackage{setspace, amssymb, amsmath, epsfig, multirow, colortbl, tabularx}
+
 \usepackage[acronym,shortcuts,nomain]{glossaries}
 
 \usepackage{ifthen}
@@ -114,6 +126,7 @@ urlcolor=azul,                                                        pdfborder=
 \providecommand\phantomsection{}
 \onehalfspacing
 \sloppy  
+
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}{}}
 
 \fancyhf{}
@@ -148,8 +161,17 @@ urlcolor=azul,                                                        pdfborder=
 
 
 
+
+
+
+
+
+
+
+
+
 \makeatletter
-\newcommand*{\cleartoleftpage}{  \clearpage
+\newcommand*{\cleartoleftpage}{\clearpage
     \if@twoside
     \ifodd\c@page
       \hbox{}\newpage
@@ -163,6 +185,7 @@ urlcolor=azul,                                                        pdfborder=
 
 \usepackage{float}
 \floatstyle{plaintop} 
+
 \lstdefinestyle{console}
                {
                  basicstyle=\scriptsize\bf\ttfamily,
@@ -190,12 +213,12 @@ urlcolor=azul,                                                        pdfborder=
   rulesep=.4pt,
   backgroundcolor=\color{gray97},
   rulesepcolor=\color{black},
-    stringstyle=\ttfamily,
+stringstyle=\ttfamily,
   showstringspaces = false,
-  basicstyle=\footnotesize\ttfamily,
+basicstyle=\footnotesize\ttfamily,
   commentstyle=\color{gray45},
   keywordstyle=\bfseries,
-    numbers=left,
+numbers=left,
   numbersep=15pt,
   numberstyle=\tiny,
   numberfirstline = false,
@@ -230,79 +253,140 @@ urlcolor=azul,                                                        pdfborder=
 \usepackage{sidecap}
 
 \def\texis{\TeX \raise.15em\hbox{\textsc{i}}S}
-\newenvironment{FraseCelebre} {\begin{list}{}{     \setlength{\leftmargin}{0.5\textwidth}                                                                                                                                         \setlength{\parsep}{0cm}                                                               \addtolength{\topsep}{0.5cm}                                                                     }
+\newenvironment{FraseCelebre}{\begin{list}{}{\setlength{\leftmargin}{0.5\textwidth}\setlength{\parsep}{0cm}\addtolength{\topsep}{0.5cm}}
  }
  {\unskip \end{list}}
 
-\newenvironment{Frase}  {\item \begin{flushright}\small\em}  {\end{flushright}}
+\newenvironment{Frase}{\item \begin{flushright}\small\em}{\end{flushright}}
 
-\newenvironment{Fuente}  {\item \begin{flushright}\small}  {\end{flushright}}
+\newenvironment{Fuente}{\item \begin{flushright}\small}{\end{flushright}}
 
 
 \newenvironment{bottomparagraph}{\par\vspace*{\fill}}{\clearpage}
+
 
 \usepackage{wasysym}
 
 \usepackage{mfirstuc}
 
+
 \makeatletter
 \def\input@path{{../}{../biblio/}}
 \makeatother
 
-\newcommand{\myreferencespath}{../}
+\newcommand{\myreferencespath}{../Book/}
+
+
+
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\textbf{#1}}}
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                     
 
 
 
 
-     
-                                                                  
-\makeatletter{}
+
+ 
+
+
+
+
+
 
 
 \newcommand{\myLanguage}{spanish}
 
 \newcommand{\myDegree}{GIEC}
 
-\newcommand{\myBookTitle}{Plantilla unificada para la generación de memorias de PFCs, TFGs, TFMs y tesis doctorales}
-\newcommand{\myAuthorFullName}{Javier Macías-Guarasa}
-\newcommand{\myDepartment}{Departamento de Electrónica}
-\newcommand{\myDepartmentEnglish}{Departament of Electronics}
-\newcommand{\myResearchGroup}{GEINTRA}
+\newcommand{\myFlagSplittedAdvisors}{true} 
+
+
+\newcommand{\mySpecialty}{} 
+
+\newcommand{\myBookTitleSpanish}{Plantilla unificada para la generación de memorias de PFCs, TFGs, TFMs y tesis doctorales}
+\newcommand{\myBookTitleEnglish}{Unified Template for the Generation of PFCs, TFGs, TFMs and PhD Thesis}
+\newcommand{\myThesisKeywords}{Plantillas de trabajos fin de carrera/máster/grado y tesis doctorales, \LaTeX, soporte de español e inglés, generación automática} \newcommand{\myThesisKeywordsEnglish}{Bsc., Msc. and PhD. Thesis template, \LaTeX, English/Spanish support, automatic generation} 
+
+\newcommand{\myAuthorName}{Javier}
+\newcommand{\myAuthorSurname}{Macías Guarasa}
+\newcommand{\myAuthorFullName}{\myAuthorName{} \myAuthorSurname{}}
+\newcommand{\myAuthorGender}{male} 
+\newcommand{\myAuthorEmail}{javier.maciasguarasa@uah.es}
+\newcommand{\myAuthorDNI}{12345678-L} 
+\newcommand{\myAuthorStreet}{C/ Calle de la Calle, 22}
+\newcommand{\myAuthorCity}{Meco}
+\newcommand{\myAuthorPostalCode}{28880}
+\newcommand{\myAuthorProvince}{Madrid}
+\newcommand{\myAuthorTelephone}{666666666}
+
+
+\newcommand{\myAcademicTutorFullName}{Roberto Barra Chicote} 
+\newcommand{\myAcademicTutorGender}{male}
+\newcommand{\myAcademicTutorDNI}{11111111-A}
+
+\newcommand{\myCoTutorFullName}{Juana de Arco} 
+\newcommand{\myCoTutorGender}{female}
+\newcommand{\myCoTutorDNI}{22222222-B}
+
 \newcommand{\mySchool}{Escuela Politécnica Superior}
 \newcommand{\myUniversity}{Universidad de Alcalá}
 \newcommand{\myUniversityAcronym}{UAH}
-\newcommand{\myUPMdegree}{Ingeniero de Telecomunicación} \newcommand{\myAuthorEmail}{macias@depeca.uah.es}
-\newcommand{\myFirstAdvisorFullName}{Roberto Barra Chicote}
-\newcommand{\mySecondAdvisorFullName}{}
+
+\newcommand{\myDepartment}{Departamento de Electrónica}
+\newcommand{\myDepartmentEnglish}{Departament of Electronics}
+
+\newcommand{\myPhDProgram}{Programa de Doctorado en Electrónica: Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
+\newcommand{\myPhDProgramEnglish}{PhD. Program in Electronics: Advanced Electronic Systems. Intelligent Systems}
+
+\newcommand{\myResearchGroup}{GEINTRA}
+
+
 \newcommand{\myTribunalPresident}{Name of the tribunal president}
 \newcommand{\myTribunalFirstSpokesperson}{Name of the first vocal}
-\newcommand{\myTribunalSecondSpokesperson}{Name of the second vocal}
+\newcommand{\myTribunalSecondSpokesperson}{Name of the second vocal} 
+\newcommand{\myTribunalAlternateMember}{Name of the alternate member}
 \newcommand{\myTribunalSecretary}{Name of the secretary (if needed)}
-\newcommand{\myThesisDefenseYear}{2014}
-\newcommand{\myThesisProposalDate}{6 de enero de 2014}
-\newcommand{\myThesisDefenseDate}{6 de enero de 2014}
-\newcommand{\myThesisKeywordsEnglish}{Bsc., Msc. and PhD. Thesis template, \LaTeX, English/Spanish support, automatic generation} \newcommand{\myThesisKeywords}{Plantillas de trabajos fin de carrera/máster/grado y tesis doctorales, \LaTeX, soporte de español e inglés, generación automática} 
-\newcommand{\myDepartmentSecretary}{José Luis Martín Sánchez}
-\newcommand{\myPaperworkDate}{30 de septiembre de 2014}
-\newcommand{\myAuthorDNI}{12345678-L}                                 \newcommand{\myFirstAdvisorDNI}{11111111-A}
-\newcommand{\mySecondAdvisorDNI}{}
-\newcommand{\mybookFigure}{alumno}                                                                                                 
-\newcommand{\myResearchReportID}{RR-2014-01}
+\newcommand{\myDepartmentSecretary}{José Luis Martín Sánchez} 
 
-\newcommand{\mytoclinkcolor}{blue}
-\newcommand{\myloflinkcolor}{red}
-\newcommand{\mylotlinkcolor}{green}
 
-\newcommand{\myothertoclinkcolor}{magenta}
+
+
+\newcommand{\myThesisProposalDate}{6 de enero de 2018} 
+
+\newcommand{\myThesisDepositDate}{1 de enero de 2018}
+\newcommand{\myThesisDepositDateEnglish}{January 1\textsuperscript{st}, 2018} 
+
+\newcommand{\myThesisDefenseYear}{2018}
+\newcommand{\myThesisDefenseDate}{6 de enero de \myThesisDefenseYear{}}
+\newcommand{\myThesisdefenseDateEnglish}{January 6\textsuperscript{th}, \myThesisDefenseYear{}}
+
+
+\newcommand{\myPaperworkDate}{22 de mayo de 2019}
+
+
+
+\newcommand{\myResearchVicerrector}{Excmo. Sr. Francisco J. de la Mata de la Mata}
+\newcommand{\myResearchVicerrectorGender}{male}
+
+
+
+
+\newcommand{\myResearchReportID}{RR-2018-01}
+
+
+\newcommand{\mytoclinkcolor}{black}
+\newcommand{\myloflinkcolor}{black}
+\newcommand{\mylotlinkcolor}{black}
+
+\newcommand{\myothertoclinkcolor}{black}
 
 \newcommand{\mylinkcolor}{blue}
+
 
 \newcommand{\myurlcolor}{blue}
 \newcommand{\mycitecolor}{green}
 
 
 
-\newcommand{\myreferences}{biblio/biblio}
 
 
 
@@ -325,39 +409,175 @@ urlcolor=azul,                                                        pdfborder=
 
 
 
-     
-                                                                                                                                                                                                                                                        
-\makeatletter{}
+\newcommand{\myFirstAdvisorFullName}{\myAcademicTutorFullName} \newcommand{\mySecondAdvisorFullName}{\myCoTutorFullName} \newcommand{\myFirstAdvisorDNI}{\myAcademicTutorDNI} \newcommand{\mySecondAdvisorDNI}{\myCoTutorDNI} \newcommand{\mybookFigure}{alumno} 
+
+\newcommand{\myUPMdegree}{Ingeniero de Telecomunicación} 
+
+
+
+
+
+
+ 
+
+
+
+
 
 \ifthenelse{\equal{\myLanguage}{spanish}}
 {
-\newcommand{\myFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity} 
+  \usepackage[spanish, english]{babel}
+  \newcommand{\myFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity} 
+  \newcommand{\myBookTitle}{\myBookTitleSpanish}
 } 
 {
-\newcommand{\myFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversity} 
+  \usepackage[english, spanish]{babel}
+  \newcommand{\myFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversity} 
+  \newcommand{\myBookTitle}{\myBookTitleEnglish}
 }
 
-\ifthenelse{\equal{\mySecondAdvisorFullName}{}}
+\ifthenelse{\equal{\myLanguage}{spanish}}
 {
-\newcommand{\myAdvisors}{\myFirstAdvisorFullName{}}
-\newcommand{\wordDirectorOrDirectores}{director}
-\newcommand{\wordAdvisorOrAdvisors}{advisor}
-\newcommand{\wordDaOrDan}{da}
-\newcommand{\wordTutorOrTutores}{tutor}
-\newcommand{\wordElOrLos}{El}
-\newcommand{\wordSuOrSus}{su}
-\newcommand{\wordDelOrDeLos}{del}
+  \newcommand{\andOrY}{y} 
+} 
+{
+  \newcommand{\andOrY}{and} 
+}
+
+\ifthenelse{\equal{\myAcademicTutorGender}{male}}     
+{                                                       
+  \newcommand{\wordDonOrDonaTutor}{D.}
+  \newcommand{\wordDrOrDraTutor}{Dr.}
 }
 {
-\newcommand{\myAdvisors}{\myFirstAdvisorFullName{} y \mySecondAdvisorFullName{}}
-\newcommand{\wordDirectorOrDirectores}{directores}
-\newcommand{\wordAdvisorOrAdvisors}{advisors}
-\newcommand{\wordDaOrDan}{dan}
-\newcommand{\wordTutorOrTutores}{tutores}
-\newcommand{\wordElOrLos}{Los}
-\newcommand{\wordSuOrSus}{Su}
-\newcommand{\wordDelOrDeLos}{de los}
+  \newcommand{\wordDonOrDonaTutor}{Dª.}
+  \newcommand{\wordDrOrDraTutor}{Dra.}
 }
+
+\ifthenelse{\equal{\myCoTutorGender}{male}}     
+{                                                       
+  \newcommand{\wordDonOrDonaCoTutor}{D.}
+  \newcommand{\wordDrOrDraCoTutor}{Dr.}
+}
+{
+  \newcommand{\wordDonOrDonaCoTutor}{Dª.}
+  \newcommand{\wordDrOrDraCoTutor}{Dra.}
+}
+
+\ifthenelse{\equal{\myAuthorGender}{male}}     
+{                                                       
+  \newcommand{\wordDonOrDonaAutor}{D.}
+}
+{
+  \newcommand{\wordDonOrDonaAutor}{Dª.}
+}
+
+
+\ifthenelse{\equal{\myAcademicTutorGender}{male}}     
+{                                                       
+  \newcommand{\wordDirectorOrdirectora}{director}
+  \newcommand{\wordTutorOrTutora}{tutor}
+  \newcommand{\wordAcademicoOrAcademica}{académico}
+  \newcommand{\wordTutorDelOrDeLa}{del}
+}
+{
+  \newcommand{\wordDirectorOrdirectora}{directora}
+  \newcommand{\wordTutorOrTutora}{tutora}
+  \newcommand{\wordAcademicoOrAcademica}{académica}
+  \newcommand{\wordTutorDelOrDeLa}{de la}
+}
+
+\ifthenelse{\equal{\myCoTutorGender}{male}}     
+{                                                       
+  \newcommand{\wordCoTutorOrCoTutora}{cotutor}
+  \newcommand{\wordCoTutorDelOrDeLa}{del}
+}
+{
+  \newcommand{\wordCoTutorOrCoTutora}{cotutora}
+  \newcommand{\wordCoTutorDelOrDeLa}{de la}
+}
+
+
+\ifthenelse{\equal{\myCoTutorFullName}{}}
+{
+  \newcommand{\myAdvisors}{\myAcademicTutorFullName{}}
+  \newcommand{\myAdvisorsWithDonOrDona}{\wordDonOrDonaTutor{} \myAcademicTutorFullName{}}
+  \newcommand{\myAdvisorsConDrOrDra}{\wordDrOrDraTutor{} \myAcademicTutorFullName{}}
+  \ifthenelse{\equal{\myAcademicTutorGender}{male}}     
+  {                                                       
+    \newcommand{\wordDirectorOrdirectora}{director}
+    \newcommand{\wordTutorOrTutores}{tutor}
+    \newcommand{\wordTutorOrTutora}{tutor}
+  }
+  {
+    \newcommand{\wordDirectorOrdirectora}{directora}
+    \newcommand{\wordTutorOrTutores}{tutora}
+    \newcommand{\wordTutorOrTutora}{tutora}
+  }
+  \newcommand{\wordDirectorOrDirectores}{\wordDirectorOrdirectora}
+  \newcommand{\wordAdvisorOrAdvisors}{advisor}
+  \newcommand{\wordAdvisor}{advisor}
+  \newcommand{\wordCoAdvisor}{co-advisor}
+  \newcommand{\wordDaOrDan}{da}
+  \newcommand{\wordEmiteOrEmiten}{emite}
+  \newcommand{\wordElOrLos}{El}
+  \newcommand{\wordSuOrSus}{su}
+  \newcommand{\wordDelOrDeLos}{del}
+  \newcommand{\wordHagoOrHacemos}{hago}
+}
+{
+  \newcommand{\myAdvisors}{\myAcademicTutorFullName{} \andOrY{} \myCoTutorFullName{}}
+  \newcommand{\myAdvisorsWithDonOrDona}{\wordDonOrDonaTutor{} \myAcademicTutorFullName{} \andOrY{} \wordDonOrDonaCoTutor{} \myCoTutorFullName{}}
+  \newcommand{\myAdvisorsConDrOrDra}{\wordDrOrDraTutor{} \myAcademicTutorFullName{}\\\wordDrOrDraCoTutor{} \myCoTutorFullName{}}
+
+  \newcommand{\wordDirectorOrDirectores}{directores}
+  \newcommand{\wordAdvisorOrAdvisors}{advisors}
+  \newcommand{\wordAdvisor}{advisor}
+  \newcommand{\wordCoAdvisor}{co-advisor}
+  \newcommand{\wordDaOrDan}{dan}
+  \newcommand{\wordEmiteOrEmiten}{emiten}
+  \newcommand{\wordTutorOrTutores}{tutores}
+
+
+
+  \newcommand{\wordElOrLos}{Los}
+  \newcommand{\wordSuOrSus}{Su}
+  \newcommand{\wordDelOrDeLos}{de los}
+  \newcommand{\wordHagoOrHacemos}{hacemos}
+}
+
+\ifthenelse{\equal{\myAuthorGender}{male}}     
+{                                                       
+  \newcommand{\wordAutorOrAutora}{autor}                
+  \newcommand{\wordAutorElOrLa}{el}                
+  \newcommand{\wordAutorAlOrALa}{al}                
+  \newcommand{\wordAutorDelOrDeLa}{del}                
+  \newcommand{\wordAutorDonOrDona}{D}                
+  \newcommand{\wordAutorNotificadoOrNotificada}{notificado}                
+  \newcommand{\wordAutorAdscritoOrAdscrita}{adscrito}                
+  \newcommand{\wordAlumnoOrAlumna}{alumno}
+\newcommand{\wordAlumnoOrAlumnaUpcaseFirt}{Alumno}  
+}                                               
+{
+  \newcommand{\wordAutorOrAutora}{autora}                
+  \newcommand{\wordAutorElOrLa}{la}                
+  \newcommand{\wordAutorAlOrALa}{a la}                
+  \newcommand{\wordAutorDelOrDeLa}{de la}                
+  \newcommand{\wordAutorDonOrDona}{Dª}                
+  \newcommand{\wordAutorNotificadoOrNotificada}{notificada}    
+  \newcommand{\wordAutorAdscritoOrAdscrita}{adscrita}                
+  \newcommand{\wordAlumnoOrAlumna}{alumna}
+\newcommand{\wordAlumnoOrAlumnaUpcaseFirt}{Alumna}
+}
+
+\ifthenelse{\equal{\myResearchVicerrectorGender}{male}}     
+{                                                       
+  \newcommand{\wordVicerrectorOrVicerrectora}{Vicerrector}
+}                                               
+{
+  \newcommand{\wordVicerrectorOrVicerrectora}{Vicerrectora}
+}
+
 
 \ifthenelse{\equal{\myDegree}{IT}}
 {
@@ -368,7 +588,7 @@ urlcolor=azul,                                                        pdfborder=
     \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
   }
   {
-            \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
   }
 }
 {
@@ -381,7 +601,7 @@ urlcolor=azul,                                                        pdfborder=
       \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
     }
     {
-                  \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
     }
   }
   {
@@ -394,20 +614,20 @@ urlcolor=azul,                                                        pdfborder=
         \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
       }
       {
-                        \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
       }
     }
     {
       \ifthenelse{\equal{\myDegree}{ITTST}}
       {
         \newcommand{\myDegreefull}{Ingeniería Técnica de Telecomunicación, especialidad en Sistemas de Telecomunicación}
-      \newcommand{\myWorkType}{TFC}
+        \newcommand{\myWorkType}{TFC}
         \ifthenelse{\equal{\myLanguage}{spanish}}
         {
           \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
         }
         {
-                              \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
         }
       }
       {
@@ -420,7 +640,7 @@ urlcolor=azul,                                                        pdfborder=
             \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
           }
           {
-                                    \newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Carrera}
           }
         }
         {
@@ -433,7 +653,7 @@ urlcolor=azul,                                                        pdfborder=
               \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
             }
             {
-                                          \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
             }
           }
           {
@@ -446,7 +666,7 @@ urlcolor=azul,                                                        pdfborder=
                 \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
               }
               {
-                                                \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
               }
             }
             {
@@ -459,7 +679,7 @@ urlcolor=azul,                                                        pdfborder=
                   \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                 }
                 {
-                                                      \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                 }
               }
               {
@@ -472,7 +692,7 @@ urlcolor=azul,                                                        pdfborder=
                     \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                   }
                   {
-                                                            \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                   }
                 }
                 {
@@ -485,7 +705,7 @@ urlcolor=azul,                                                        pdfborder=
                       \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                     }
                     {
-                                                                  \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                     }
                   }
                   {
@@ -498,7 +718,7 @@ urlcolor=azul,                                                        pdfborder=
                         \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                       }
                       {
-                                                                        \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                       }
                     }
                     {
@@ -511,11 +731,11 @@ urlcolor=azul,                                                        pdfborder=
                           \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                         }
                         {
-                                                                              \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                         }
                       }
                       {
-                        \ifthenelse{\equal{\myDegree}{GISI}}
+                        \ifthenelse{\equal{\myDegree}{GIS}}
                         {
                           \newcommand{\myDegreefull}{Grado en Sistemas de Información}
                           \newcommand{\myWorkType}{TFG}
@@ -524,7 +744,7 @@ urlcolor=azul,                                                        pdfborder=
                             \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                           }
                           {
-                                                                                    \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                           }
                         }
                         {
@@ -532,13 +752,14 @@ urlcolor=azul,                                                        pdfborder=
                           {
                             \newcommand{\myDegreefull}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
                             \newcommand{\myDegreefullwrapped}{Máster Universitario en Sistemas Electrónicos Avanzados\\Sistemas Inteligentes}
+                            \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería de Telecomunicación}}
                             \newcommand{\myWorkType}{TFM}
                             \ifthenelse{\equal{\myLanguage}{spanish}}
                             {
                               \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
                             }
                             {
-                                                                                          \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
                             }
                           }
                           {
@@ -581,10 +802,95 @@ urlcolor=azul,                                                        pdfborder=
                                   }
                                 }
                                 {
-                                  \newcommand{\myWorkType}{TFG}
-                                  \newcommand{\myDegreefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}} 
-                                  \newcommand{\myWorkTypeFull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
-                                }                          
+                                  \ifthenelse{\equal{\myDegree}{MUIT}}
+                                  {
+                                    \newcommand{\myDegreefull}{Máster Universitario en Ingeniería de Telecomunicación}
+                                    \newcommand{\myDegreefullwrapped}{Máster Universitario en Ingeniería de Telecomunicación}
+                                    \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería de Telecomunicación}}
+                                    \newcommand{\myWorkType}{TFM}
+                                    \ifthenelse{\equal{\myLanguage}{spanish}}
+                                    {
+                                      \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
+                                    }
+                                    {
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
+                                    }
+                                  }
+                                  {
+                                    \ifthenelse{\equal{\myDegree}{MUII}}
+                                    {
+                                      \newcommand{\myDegreefull}{Máster Universitario en Ingeniería Industrial}
+                                      \newcommand{\myDegreefullwrapped}{Máster Universitario en Ingeniería Industrial}
+                                      \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería Industrial}}
+                                      \newcommand{\myWorkType}{TFM}
+                                      \ifthenelse{\equal{\myLanguage}{spanish}}
+                                      {
+                                        \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
+                                      }
+                                      {        
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
+                                      }
+                                    }
+                                    {
+                                      \ifthenelse{\equal{\myDegree}{GITI}}
+                                      {
+                                        \newcommand{\myDegreefull}{Grado en Ingeniería en Tecnologías Industriales}
+                                        \newcommand{\myWorkType}{TFG}
+                                        \ifthenelse{\equal{\myLanguage}{spanish}}
+                                        {
+                                          \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
+                                        }
+                                        {
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
+                                        }
+                                      }
+                                      {
+
+                                        \ifthenelse{\equal{\myDegree}{GISI}}
+                                        {
+                                          \newcommand{\myDegreefull}{Grado en Ingeniería en Sistemas de Información}
+                                          \newcommand{\myWorkType}{TFG}
+                                          \ifthenelse{\equal{\myLanguage}{spanish}}
+                                          {
+                                            \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
+                                          }
+                                          {
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
+                                          }
+                                        }
+                                        {
+
+
+                                          \ifthenelse{\equal{\myDegree}{MUIE}}
+                                          {
+                                            
+                                            
+                                            
+                                            \newcommand{\myDegreefull}{Máster Universitario en Ingeniería Electrónica}
+                                            \newcommand{\myDegreefullwrapped}{Máster Universitario en Ingeniería Electrónica}
+                                            \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería Electrónica}}
+                                            \newcommand{\myWorkType}{TFM}
+                                            \ifthenelse{\equal{\myLanguage}{spanish}}
+                                            {
+                                              \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
+                                            }
+                                            {        
+\newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
+                                            }
+
+
+
+                                          }
+                                          {
+                                            \newcommand{\myWorkType}{TFG}
+                                            \newcommand{\myDegreefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}} 
+                                            \newcommand{\myWorkTypeFull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }                               
                               }                          
                             }                          
                           }                          
@@ -606,6 +912,7 @@ urlcolor=azul,                                                        pdfborder=
 
 
 
+
 \newcommand{\contactauthor}{\myAuthorFullName~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater}
 
 \ifthenelse{\equal{\myLanguage}{english}}
@@ -616,16 +923,19 @@ urlcolor=azul,                                                        pdfborder=
   \newcommand{\keywordsforpdf}{\myThesisKeywords}
 }
 
+\newcommand{\underscoreSpacingFour}{\_\_\_\_}
+\newcommand{\spacingFour}{~~~~}
+
 \hypersetup
 {
   pdfauthor={\myAuthorFullName~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater},
   pdftitle={\myBookTitle},
   pdfsubject={\myDegreefull, \myWorkTypeFull},
-  pdfkeywords={\keywordsforpdf},
+pdfkeywords={\keywordsforpdf},
   pdfcreator={\LaTeX with hyperref package},
   pdfproducer={rubber},
   pdffitwindow={true},
-  urlcolor=\myurlcolor,
+urlcolor=\myurlcolor,
   linkcolor=\mylinkcolor,
   citecolor=\mycitecolor
 }
@@ -633,26 +943,38 @@ urlcolor=azul,                                                        pdfborder=
 
 
 
-    
-                               
-\graphicspath{{../logos/}{../figures/}{../diagrams/}}                                                                 
+
+
+ 
+
+\graphicspath{{../Book/logos/}{../Book/figures/}{../Book/diagrams/}} 
+
 \title{Anteproyecto de \myWorkTypeFull}        \date{\myThesisProposalDate}                         \author{\myAuthorFullName}
 
 \begin{document}                                   
 
-\makeatletter{}
+
+
+
+
+
 
 \ifthenelse{\equal{\myLanguage}{english}}
 {
   \selectlanguage{english}
 
+  \newcommand{\xUseSpanish}{~}    
+  \newcommand{\xUseEnglish}{X}  
+
   \floatname{codefloat}{Listing}
   \renewcommand{\lstlistingname}{Listing}
 
-                }
+}
 {
   \selectlanguage{spanish}
-  
+
+  \newcommand{\xUseSpanish}{X}    
+  \newcommand{\xUseEnglish}{~}  
   \renewcommand{\tablename}{Tabla}
   \renewcommand{\listtablename}{Índice de tablas}
 
@@ -660,31 +982,35 @@ urlcolor=azul,                                                        pdfborder=
   \renewcommand{\lstlistingname}{Listado}
 
 
-                }
+}
 
 
 
-  
-                                              
+
+ 
+
+
 
 \maketitle
 
- \begin{description}                                \item[Título:] \myBookTitle                        \item[Departamento:] \myDepartment             \item[Autor:] \myAuthorFullName                        \item[\expandafter\makefirstuc\expandafter{\wordTutorOrTutores}:] \myAdvisors                    \end{description}                                 
+\begin{description}                               \item[Título:] \myBookTitleSpanish                \ifthenelse{\equal{\myLanguage}{english}}   {                                               \item[Título en inglés:] \myBookTitleEnglish    }                                               {                                               }                                               \item[Departamento:] \myDepartment            \item[\expandafter\makefirstuc\expandafter{\wordAutorOrAutora}:] \myAuthorFullName                       \item[\expandafter\makefirstuc\expandafter{\wordTutorOrTutores}:] \myAdvisors                   \end{description}                                 
+
+
 
 \section{Introducción}
 \label{sec:introduccion}
 
 \textit{En este apartado se describirá el contexto en el que se desenvolverá el
-TFG y sus antecedentes si existen. Recuerda que en el anteproyecto
-también se pueden poner referencias bibliográficas como \cite{texis}}.
+  TFG y sus antecedentes si existen. Recuerda que en el anteproyecto
+  también se pueden poner referencias bibliográficas como \cite{moore2002}}.
 
 
 \section{Objetivos y desarrollo}
 \label{sec:objetivos-y-campo}
 
 \textit{En este apartado se delimitan y explican con claridad los objetivos
-generales a conseguir con el TFG y la aplicación del mismo, así como los
-objetivos específicos en su caso. Algo del tipo:}
+  generales a conseguir con el TFG y la aplicación del mismo, así como los
+  objetivos específicos en su caso. Algo del tipo:}
 
 El objetivo fundamental de este proyecto es el diseño, implementación y
 evaluación de \ldots
@@ -710,20 +1036,20 @@ Los objetivos específicos de este proyecto son los siguientes:
 
 \end{itemize}
 
-  \begin{figure}[tphb]
-    \centering
-    \includegraphics[width=3in]{Diagrama2.pdf}
-    \caption{Arquitectura del sistema completo.}
-    \label{fig_arquitectura}
-  \end{figure}
+\begin{figure}[tphb]
+  \centering
+  \includegraphics[width=3in]{Diagrama2.pdf}
+  \caption{Arquitectura del sistema completo.}
+  \label{fig_arquitectura}
+\end{figure}
 
 
 \section{Metodología y plan de trabajo}
 \label{sec:metodologia-y-plan}
 
 \textit{Aquí se incluirá una descripción (puede ser incluso una enumeración)
-clara de las etapas que se van a seguir, y si es posible se deberá
-incluir un diagrama de Gantt. Por ejemplo algo del estilo a:}
+  clara de las etapas que se van a seguir, y si es posible se deberá
+  incluir un diagrama de Gantt. Por ejemplo algo del estilo a:}
 
 Estas son las fases de desarrollo que se van a seguir para la
 consecución de los objetivos del proyecto descritos en la sección~\ref{sec:objetivos-y-campo}:
@@ -769,7 +1095,7 @@ consecución de los objetivos del proyecto descritos en la sección~\ref{sec:obj
 \label{sec:medios}
 
 \textit{Aquí se describen de los medios necesarios para realizar el TFG. Por
-ejemplo:}
+  ejemplo:}
 
 Las herramientas que van a ser necesarias para desarrollar este proyecto
 son las siguientes:
@@ -787,6 +1113,8 @@ son las siguientes:
 \item  \ldots
 \end{itemize}
 
+
+
 Otros recursos necesarios para la elaboración del proyecto son:
 
 \begin{itemize}
@@ -800,20 +1128,25 @@ Otros recursos necesarios para la elaboración del proyecto son:
 
 
 
-\makeatletter{}
+
+
+
 \bibliographystyle{IEEEtran}
 
-\newcommand{\mybibfileOne}{biblio/biblio}
-\newcommand{\mybibfileTwo}{biblio/biblio2}
+\newcommand{\mybibfileOne}{biblio/biblio.bib}
+
 
 \newcommand{\mybibfiles}{\myreferencespath\mybibfileOne}
 
+
+\inputencoding{latin1}
 \bibliography{\mybibfiles}
+\inputencoding{utf8}
 
 
 
 
-                
+ 
 
 
 
