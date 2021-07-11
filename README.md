@@ -46,7 +46,7 @@ There is a lot of work to do in documenting this template, and I'll do my best t
 
 There are a lot of bad and very unprofessional coding habits (see Book/Makefile for a sample), but I'm not an expert and I just tried to make things work out of the box. It would be great if you can contribute in any way to improve this template, so that [drop me a message](mailto:javier.maciasguarasa@uah.es) or consider submitting a pull request.
 
-Also, if you need help, or you are unable to make this work, or you have any compilation errors, or you have suggestions for improvements, please contact me at [my email address](mailto:javier.maciasguarasa@uah.es).
+Also, if you need help to make this work, or you have any compilation errors, or even suggestions for improvements, please contact me at [my email address](mailto:javier.maciasguarasa@uah.es).
 
 Enjoy!
 
