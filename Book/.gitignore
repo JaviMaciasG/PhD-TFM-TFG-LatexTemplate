@@ -40,6 +40,8 @@ core
 *.glsdefs
 *.ist
 *.loa
+*.lof
+*.out
 *.lot
 *.sbl
 *.sbl
@@ -52,3 +54,4 @@ pdf_eps_done
 pdf_svg_done
 *.synctex.gz
 *.log
+*oldtmp*.tex
