@@ -3018,14 +3018,13 @@ versiones (y si no lo estáis usando, deberíais plantearos seriamente el
 hacerlo), con la ayuda de herramientas adicionales.
 
 Hay varias soluciones disponibles, la mayoría basada en el uso de la
-\texttt{latexdiff}~\cite{latexdiff} (o derivados). Lo recomendable
+\texttt{latexdiff} \cite{latexdiff} (o derivados). Lo recomendable
 sería el uso de un sistema automatizado como el disponible en
 \texttt{git-latexdiff} \cite{git-latexdiff}, pero necesita el soporte
 de \texttt{git}, y dados los orígenes en los que mantenía esto en
-\texttt{cvs} (flames to \texttt{/dev/null}, please), o pensando en los
-que no usaréis ningún sistema de control de versions (mal hecho, por
-cierto) el mecanismo que uso es un poco más rupestre (si quieres
-ayudarme a generalizar esto, sería perfecto).
+\texttt{cvs} (flames to \texttt{/dev/null}, please), el mecanismo que
+uso es un poco más rupestre (si quieres ayudarme en esto, sería
+perfecto).
 
 \texttt{latexdiff} permite comparar dos versiones de un documento y
 generar un nuevo fichero fuente en \LaTeX{} que, al compilarlo, muestra un
@@ -3035,7 +3034,12 @@ los cambios, y por supuesto no tiene punto de comparación con ver un
 \texttt{diff} a palo seco de las dos versiones del documento. 
 
 Lo que finalmente he implementado es muy ad-hoc, pero funciona. El
-procedimiento para hacer uso de ello sería:
+procedimiento para hacer uso de ello sería (asumiendo que usáis
+\texttt{cvs} como sistema de control de versiones\footnote{Si usáis
+  \texttt{git} (lo que también os recomiendo que hagáis), el proceso es
+  más sencillo porque \texttt{git-latexdiff} lo hace todo automático,
+  aunque os tendréis que trabajar la parte correspondiente del
+  \texttt{Makefile}}:
 
 \begin{itemize}
 \item Primero hay que preparar la versión base sobre la que luego se
@@ -3043,11 +3047,11 @@ procedimiento para hacer uso de ello sería:
   tiene una versión razonablemente estable, y con la que luego se
   quiere comparar (por ejemplo cuando le entregas a tu tutor tu primer
   borrador del documento completo). La preparación es sencilla: basta
-  hacer un \texttt{make snapshot}. Eso generará un fichero
-  \texttt{book-flatten-snapshot.tex} que contiene el estado actual del
+  hacer un \texttt{make flatten}. Eso generará un fichero
+  \texttt{book-flatten.tex} que contiene el estado actual del
   documento, expandido. Luego hay que registrarlo en el repositorio
   con un \texttt{cvs commit -m ``New flattened version''
-    book-flatten-snapshot.tex} o \texttt{git add book-flatten-snapshoot.tex; git commit
+    book-flatten.tex} o \texttt{git add book-flatten.tex; git commit
     -m ``New flattened version''} en git.
 \item A partir de ahí ya se puede trabajar en los cambios al documento,
   los que sean necesarios.

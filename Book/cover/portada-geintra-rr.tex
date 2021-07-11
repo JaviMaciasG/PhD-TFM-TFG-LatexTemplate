@@ -56,15 +56,11 @@
 % title box
 \begin{tikzpicture}
   \node [xshift=7cm] at (current page.north west)
-  {%
-     \begin{tikzpicture}[remember picture, overlay]
-    
-       \node [yshift=-3.5cm, xshift=0.5\paperwidth, align=center, text width=14cm, text centered, midway] {\begin{minipage}[c][13cm][c]{13cm}\centering\color{black}\fontsize{26}{31}\selectfont\textbf{\myBookTitle{}\\}\par\fontsize{18}{26}\selectfont\textbf{[\myResearchReportID{}]}\par\end{minipage}};
-%      \color{black}\fontsize{30}{36}\selectfont\textbf{\myBookTitle}
+  {
+    \begin{tikzpicture}[remember picture, overlay]
       
-   
-     \end{tikzpicture}
-    
+      \node [yshift=-3.5cm, xshift=0.5\paperwidth, align=center, text width=14cm, text centered, midway] {\begin{minipage}[c][13cm][c]{13cm}\centering\color{black}\fontsize{26}{31}\selectfont\textbf{\myBookTitle{}\\}\par\fontsize{18}{26}\selectfont\textbf{[\myResearchReportID{}]}\par\end{minipage}};
+    \end{tikzpicture}
   };
 \end{tikzpicture}
 
@@ -76,7 +72,6 @@
     \end{tikzpicture}
   };
 \end{tikzpicture}
-
 
 % Middle rectangle
 \begin{tikzpicture}[remember picture,overlay]
@@ -96,9 +91,7 @@
   {
     \begin{tikzpicture}[remember picture, overlay]
       \node [yshift=0,    xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{\myAuthorFullName}\par};
-%      \node [yshift=-3cm, xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Dirigido por:\\\myAdvisors}\par};
       \node [yshift=-6cm, xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Alcalá de Henares, \myThesisDefenseDate}\par};
-
     \end{tikzpicture}
   };
 \end{tikzpicture}
@@ -113,8 +106,6 @@
   };
 \end{tikzpicture}
 
-
-
 % \begin{bottomparagraph}
 %   \begin{center}
 %     \huge{\myThesisDefenseYear}
@@ -123,7 +114,6 @@
 
 %\newpage
 \clearemptydoublepage
-
 
 %%% Local Variables:
 %%% TeX-master: "../book"
