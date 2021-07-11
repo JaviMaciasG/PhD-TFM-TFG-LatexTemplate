@@ -153,6 +153,10 @@ snapshot:
 flatten: 
 	latexpand $(TEX_FILE) > $(FLATTEN_TEX_FILE)
 
+# The very dirty hack you can see in the latexdiff command below is
+# meant to fix the wrong code generation by latexdiff as of july
+# 2021. This will very probably break in the future, but it just work
+# now. 
 latexdiff: flatten
 	latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $(SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE)| sed -e 's/^[ ]*//g' | sed -e 's/[ ]*$$//g' | perl -0777  -pe 's/[}]\n\\end[{]tikzpicture[}];\n\\end[{]tikzpicture[}]/\\end{tikzpicture}\n};\n\\end{tikzpicture}/g' >  $(DIFF_FLATTEN_TEX_FILE)
 #	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -d $(DIFF_FLATTEN_TEX_FILE)
