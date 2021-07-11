@@ -40,6 +40,7 @@ ROOT_FILENAME=book
 ROOT_FINAL_BOOK_FILENAME=$(BOOK_TYPE)-$(DEGREE_NAME)-$(AUTHOR_SURNAME)-$(AUTHOR_NAME)-$(BOOK_LANGUAGE)
 TEX_FILE = $(ROOT_FILENAME).tex
 FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten.tex
+SNAPSHOT_FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten-snapshot.tex
 DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff
 DIFF_FLATTEN_TEX_FILE = $(DIFF_FLATTEN_ROOT_FILENAME).tex
 RUBBER_TOOL=rubber
@@ -146,11 +147,14 @@ all_latexmk: $(DUMMY_TARGETS)
 	makeglossaries $(ROOT_FILENAME)
 	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
 
+snapshot:
+	latexpand $(TEX_FILE) > $(SNAPSHOT_FLATTEN_TEX_FILE)
+
 flatten: 
 	latexpand $(TEX_FILE) > $(FLATTEN_TEX_FILE)
 
 latexdiff: flatten
-	latexdiff-git --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*"  --force -r $(FLATTEN_TEX_FILE)
+	latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $(SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE)| sed -e 's/^[ ]*//g' | sed -e 's/[ ]*$$//g' | perl -0777  -pe 's/[}]\n\\end[{]tikzpicture[}];\n\\end[{]tikzpicture[}]/\\end{tikzpicture}\n};\n\\end{tikzpicture}/g' >  $(DIFF_FLATTEN_TEX_FILE)
 #	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -d $(DIFF_FLATTEN_TEX_FILE)
 #	makeglossaries $(DIFF_FLATTEN_ROOT_FILENAME)
 #	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -d $(DIFF_FLATTEN_TEX_FILE)

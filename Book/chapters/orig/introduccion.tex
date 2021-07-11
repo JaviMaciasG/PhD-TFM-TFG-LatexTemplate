@@ -124,10 +124,10 @@ aplicaciones:
     manejo de listas de acrónimos y variables. Suele estar en el paquete
     \texttt{texlive-latex-extra} en distribuciones basadas en Debian
     (como ubuntu y derivados).
-  \item \texttt{latexdiff} y \texttt{latexpand}, si se quiere utilizar la
-    prestación de generación de ficheros pdf con control de cambios. El
-    primero suele ser un paquete independiente, y el segundo suele estar
-    en el paquete \texttt{texlive-extra-utils}.
+  % \item \texttt{latexdiff} y \texttt{latexpand}, si se quiere utilizar la
+  %   prestación de generación de ficheros pdf con control de cambios. El
+  %   primero suele ser un paquete independiente, y el segundo suele estar
+  %   en el paquete \texttt{texlive-extra-utils}.
   \end{itemize}
 
 \item En Windows (os cuento la configuración que he probado en algún momento):
@@ -225,9 +225,9 @@ prestaciones:
 \subsection{Detalles específicos para sistemas basados en MacOS}
 \label{sec:detall-espec-para}
 
-Esta información es cortesía de Carlos Cruz (carlos.cruzt@uah.es), que
-se encontró con un problema en la generación de la lista de
-acrónimos. Copio a continuación los detalles al respecto.
+Esta información es cortesía de Carlos Cruz, que se encontró con un
+problema en la generación de la lista de acrónimos. Copio a
+continuación los detalles al respecto.
 
 Hemos encontrado que la lista de acrónimos y/o símbolos no se genera en
 el entorno macOS. Recomendamos seguir las siguientes instrucciones para
@@ -371,7 +371,7 @@ de trabajo y el autor:
     2020.} son \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST},
   \texttt{ITI}, \texttt{GIEC}, \texttt{GIST}, \texttt{GITT},
   \texttt{GIT}, \texttt{GIEAI}, \texttt{GITI}, \texttt{GIC},
-  \texttt{GII}, \texttt{GISI}, \texttt{GISI}, \texttt{MUSEA},
+  \texttt{GII}, \texttt{GSI}, \texttt{GISI}, \texttt{MUSEA},
   \texttt{MUIT}, \texttt{MUII}, \texttt{PHDUAH} y \texttt{PHDUPM}) y que
   automáticamente configura portadas\footnote{Un comentario sobre el
     color de las bandas en la portada de los TFGs: de acuerdo con la
@@ -562,18 +562,20 @@ documento:
   \texttt{\textbackslash{}mycitecolor}).
 \end{itemize}
 
-Basta con que defináis las variables correspondientes y la plantilla
+Basta con que definas las variables correspondientes y la plantilla
 generará automáticamente las portadas adecuadas a la normativa y usará
 las definiciones específicas que hayas seleccionado.
 
 Por si os hace falta, en \texttt{Config/postamble.tex} se definen
-algunas variables relacionadas con el tipo de trabajo. Por ejemplo las
-variables \texttt{\textbackslash{}myDegreefull} (igual a
-``\myDegreefull'' en esta compilación),
-\texttt{\textbackslash{}myWorkType} (igual a ``\myWorkType'' en
-esta compilación) y \texttt{\textbackslash{}myWorkTypeFull} (igual a
-``\myWorkTypeFull'' en esta compilación). Otro ejemplo sería el
-autor de contacto: \contactauthor.
+muchas variables relacionadas con el tipo de trabajo, la
+personalización y adaptación a género y número en distintos
+documentos, etc. Por ejemplo las variables
+\texttt{\textbackslash{}myDegreefull} (igual a ``\myDegreefull'' en
+esta compilación), \texttt{\textbackslash{}myWorkType} (igual a
+``\myWorkType'' en esta compilación) y
+\texttt{\textbackslash{}myWorkTypeFull} (igual a ``\myWorkTypeFull''
+en esta compilación). Otro ejemplo sería el autor de contacto:
+\contactauthor.
 
 Importante para las tesis de UAH: si necesitáis incluir ficheros pdf
 (los de autorización e informes de los tutores, por ejemplo), esta
@@ -661,28 +663,32 @@ versiones (y si no lo estáis usando, deberíais plantearos seriamente el
 hacerlo), con la ayuda de herramientas adicionales.
 
 Hay varias soluciones disponibles, la mayoría basada en el uso de la
-\texttt{latexdiff} \cite{latexdiff} (o derivados). Lo recomendable
+\texttt{latexdiff}~\cite{latexdiff} (o derivados). Lo recomendable
 sería el uso de un sistema automatizado como el disponible en
 \texttt{git-latexdiff} \cite{git-latexdiff}, pero necesita el soporte
 de \texttt{git}, y dados los orígenes en los que mantenía esto en
-\texttt{cvs} (flames to \texttt{/dev/null}, please), el mecanismo que
-uso es un poco más rupestre (si quieres ayudarme en esto, sería
+\texttt{cvs} (flames to \texttt{/dev/null}, please), o pensando en los
+que no usaréis ningún sistema de control de versiones (si es así, mal
+hecho, por cierto, deberías usar alguno) el mecanismo que uso es un
+poco más rupestre (si quieres ayudarme a generalizar esto, sería
 perfecto).
 
 \texttt{latexdiff} permite comparar dos versiones de un documento y
 generar un nuevo fichero fuente en \LaTeX{} que, al compilarlo, muestra un
-pdf ``bonito'', con las marcas de las diferencias (resaltando lo añadido
+pdf  ``bonito'', con las marcas de las diferencias (resaltando lo añadido
 y lo quitado). El resultado es perfecto para hacer una buena revisión de
 los cambios, y por supuesto no tiene punto de comparación con ver un
 \texttt{diff} a palo seco de las dos versiones del documento. 
 
-Lo que finalmente he implementado es muy ad-hoc, pero funciona. El
-procedimiento para hacer uso de ello sería (asumiendo que usáis
-\texttt{cvs} como sistema de control de versiones\footnote{Si usáis
-  \texttt{git} (lo que también os recomiendo que hagáis), el proceso es
-  más sencillo porque \texttt{git-latexdiff} lo hace todo automático,
-  aunque os tendréis que trabajar la parte correspondiente del
-  \texttt{Makefile}}:
+Lo que finalmente he implementado es muy ad-hoc, pero
+funciona\footnote{por algún motivo, a fecha de julio de 2021,
+  \texttt{latexdiff} genera código erróneo, y he tenido que hacer una
+  super ñapa en el \texttt{Makefile} para solucionarlo, así que en el
+  futuro seguro que da problemas. Be warned!}.
+
+El procedimiento para generar un documento que muestre las
+diferencias es el siguiente (asumo disponible un intérprete de
+comandos y la utilidad \texttt{make}):
 
 \begin{itemize}
 \item Primero hay que preparar la versión base sobre la que luego se
@@ -690,20 +696,45 @@ procedimiento para hacer uso de ello sería (asumiendo que usáis
   tiene una versión razonablemente estable, y con la que luego se
   quiere comparar (por ejemplo cuando le entregas a tu tutor tu primer
   borrador del documento completo). La preparación es sencilla: basta
-  hacer un \texttt{make flatten}. Eso generará un fichero
-  \texttt{book-flatten.tex} que contiene el estado actual del
-  documento, expandido. Luego hay que registrarlo en el repositorio
-  con un \texttt{cvs commit -m ``New flattened version''
-    book-flatten.tex} o \texttt{git add book-flatten.tex; git commit
-    -m ``New flattened version''} en git.
+  hacer un \texttt{make snapshot}. Eso generará un fichero
+  \texttt{book-flatten-snapshot.tex} que contiene el estado actual del
+  documento, expandido. Lo suyo sería luego registrarlo en el
+  repositorio con un \texttt{cvs commit -m ``New flattened version''
+    book-flatten-snapshot.tex} o \texttt{git add
+    book-flatten-snapshoot.tex; git commit -m ``New flattened
+    version''} en git.
 \item A partir de ahí ya se puede trabajar en los cambios al documento,
   los que sean necesarios.
 \item Cuando se quiera obtener el fichero pdf con el control de cambios,
   bastará hacer un \texttt{make latexdiff}, que acabará generando
   \texttt{book-flatten-diff.pdf}, que será lo que estábamos buscando.
+  
+\item Cuando queráis ``resetear'' el documento con el que se comparará,
+  basta hacer un nuevo \texttt{make snapshot}.
 \end{itemize}
 
+Cristina Losada ha conseguido ejecutar el latexdiff en un windows sin
+necesidad de disponer de \texttt{make}, para lo cual es necesario:
 
+\begin{itemize}
+\item Instalar un intérprete de comandos (ella usó
+  \url{http://strawberryperl.com/releases.html}).
+  
+\item MikTeX ya tiene un ejecutable de \texttt{latexdiff}.
+  
+\item Guardar ``a mano'' una versión del documento correspondiente con la
+  que compararemos los cambios futuros. Si estamos con el documento de la
+  memoria \texttt{book.tex}, bastaría copiarlo a, por ejemplo,
+  \texttt{book-snapshot.tex}.
+  
+\item Hacer las modificaciones que procedan en el  \texttt{book.tex}.
+  
+\item Ejecutar en línea de comandos \texttt{latexdiff --flatten
+    book-snapshot.tex book.tex > book-flatten-diff.tex}
+  
+\item Compilar ese \texttt{book-flatten-diff.tex} que generará el pdf.
+  
+\end{itemize}
 
 \subsection{Problemas conocidos}
 \label{sec:problemas-conocidos}
