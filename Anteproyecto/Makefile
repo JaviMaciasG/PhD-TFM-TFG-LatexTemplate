@@ -30,6 +30,7 @@
 ROOT_FILENAME=anteproyecto
 TEX_FILE = $(ROOT_FILENAME).tex
 FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten.tex
+SNAPSHOT_FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten-snapshot.tex
 DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff
 DIFF_FLATTEN_TEX_FILE = $(DIFF_FLATTEN_ROOT_FILENAME).tex
 RUBBER_TOOL=rubber
@@ -69,13 +70,22 @@ anteproyecto_latexmk: $(TEX_FILENAME)
 	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
 	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
 
+snapshot:
+	latexpand $(TEX_FILE) > $(SNAPSHOT_FLATTEN_TEX_FILE)
+
 flatten: 
 	latexpand $(TEX_FILE) > $(FLATTEN_TEX_FILE)
 
 latexdiff: flatten
-	latexdiff-cvs --force -r $(FLATTEN_TEX_FILE)
-	$(RUBBER_TOOL) -d $(DIFF_FLATTEN_TEX_FILE)
-	$(RUBBER_TOOL) -d $(DIFF_FLATTEN_TEX_FILE)
+#	latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $((SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE)
+	latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $(SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE) > $(DIFF_FLATTEN_TEX_FILE)
+#latexdiff-git --force -r $(FLATTEN_TEX_FILE)
+	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_ROOT_FILENAME)
+	bibtex  $(DIFF_FLATTEN_ROOT_FILENAME)
+	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_ROOT_FILENAME)
+	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_ROOT_FILENAME)
+#	$(RUBBER_TOOL) -d $(DIFF_FLATTEN_TEX_FILE)
+#	$(RUBBER_TOOL) -d $(DIFF_FLATTEN_TEX_FILE)
 
 
 pdf_dia_done: $(PDFS_FROM_DIA)
