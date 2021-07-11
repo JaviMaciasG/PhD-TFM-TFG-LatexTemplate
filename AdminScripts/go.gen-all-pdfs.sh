@@ -46,24 +46,31 @@ cp $MYCONFIG $MYCONFIG.before
 
 for lang in english spanish
 do
-		for degree in $DEGREES_ENG_SPA
-		do
-				echo "Making for degree $degree"
-				cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
-				make clean
-				make 
-				cp $BOOK.pdf $BOOK-$degree-$lang.pdf
-		done
+    for degree in $DEGREES_ENG_SPA
+    do
+	TYPE=`cat ../Config/worktypes.txt | grep -w $degree | tr -s " " | cut -f 2 -d " "`
+	OUTPUT_NAME=$TYPE-$degree-$lang.pdf
+	echo -n "Making for degree $degree, generating $OUTPUT_NAME..."
+	cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
+	make clean >& /dev/null
+	make  >& /dev/null
+#	mv $BOOK*.pdf $OUTPUT_NAME
+	echo " Done!"
+##	exit
+    done
 done
 
 lang="spanish"
 for degree in $DEGREES_SPA
 do
-		echo "Making for degree $degree"
-		cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
-		make clean
-		make 
-		cp $BOOK.pdf $BOOK-$degree-$lang.pdf
+    TYPE=`cat ../Config/worktypes.txt | grep -w $degree | tr -s " " | cut -f 2 -d " "`
+    OUTPUT_NAME=$TYPE-$degree-$lang.pdf
+    echo -n "Making for degree $degree, generating $OUTPUT_NAME..."
+    cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
+    make clean >& /dev/null
+    make >& /dev/null
+#    mv $BOOK*.pdf $OUTPUT_NAME
+    echo " Done!"
 done
 
 cp $MYCONFIG.before $MYCONFIG
