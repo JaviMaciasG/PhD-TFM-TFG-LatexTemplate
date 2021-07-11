@@ -27,7 +27,6 @@ _$*
 core
 # CVS default ignores end
 .autolatex_stamp
-.new.book-GII-
 *.aux
 *.bbl
 *.log
