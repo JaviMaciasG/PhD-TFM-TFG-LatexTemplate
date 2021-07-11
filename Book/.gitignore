@@ -37,7 +37,7 @@ core
 *.alg
 *.aux
 *.cod
-*.gsldefs
+*.glsdefs
 *.ist
 *.loa
 *.lot
