@@ -70,7 +70,7 @@
 
 \thispagestyle{empty}
 
-\vspace{1cm}
+% \vspace{1cm}
 
 \myAdvisorsWithDonOrDona, \wordTutorOrTutores{} del Trabajo Fin de Máster
 ``\myBookTitle'' realizado por \wordDonOrDonaAutor{} \myAuthorFullName, por la
@@ -80,6 +80,30 @@ presentado para su defensa.
 \vspace{1cm}
 
 $\XBox$ Sí
+
+\ifthenelse{\equal{\myDegree}{MUIE}}
+{
+  \vspace{0.5cm}
+  \ifthenelse{\equal{\myConfidentialContent}{No}}
+  {
+    ~~~~$\XBox$ NO sujeto a confidencialidad
+    
+    \vspace{0.5cm}
+    
+    ~~~~$\Box$ SÍ sujeto a confidencialidad
+    
+  }
+  {
+    ~~~~$\Box$ NO sujeto a confidencialidad
+    
+    \vspace{0.5cm}
+    
+    ~~~~$\XBox$ SÍ sujeto a confidencialidad
+    
+  }
+}
+{
+}
 
 \vspace{0.5cm}
 
