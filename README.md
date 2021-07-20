@@ -15,11 +15,11 @@ The template is accessible in two ways:
 
 1. In github, in case you want to clone or fork my working version. It is available at 
 [my gitHub account project page](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate), so that you can clone it from [the clone URL](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git). Beware that it has a lot of extra files that should not be useful for the general user
-2. In my dropbox, in zip and tgz formats, accesible at [this Dropbox download folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0).  At this location you will also be able to access the sample book files for all the different flavours (degrees...) and in Spanish and English versions. Please note that the introduction chapter will provide you with general instructions and details on the use of the template. Please do read it. The rests of the chapters provide you with sample code to do a varity of (IMHO) nice things you might need.
+2. In my dropbox, in zip and tgz formats, accesible at [this Dropbox download folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0).  At this location you will also be able to access the sample book files for all the different flavours (degrees...) and in Spanish and English versions. Note that the introduction chapter will provide you with general instructions and details on the use of the template. Please do read it. The rests of the chapters provide you with sample code to do a varity of (IMHO) nice things you might find useful.
 
 ### Configure your data
 
-   All the information you can customize is in the `Config/myconfig.tex` file. The variable names are all defined in `\newcommand{}{}` statements and all of then start with the `\my' prefix. Most of the names should be self-explanatory.
+   All the information you can customize is in the `Config/myconfig.tex` file. The variable names are all defined in `\newcommand{}{}` statements and all of then start with the `\my' prefix. Most of the variable names should be self-explanatory, and you can find additional information in the introduction chapter (check any pdf file in [the distribution Dropbox folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)).
 
 ### To fill in and generate the "anteproyecto"
 
@@ -46,7 +46,7 @@ There is a lot of work to do in documenting this template, and I'll do my best t
 
 There are a lot of bad and very unprofessional coding habits (see Book/Makefile for a sample), but I'm not an expert and I just tried to make things work out of the box. It would be great if you can contribute in any way to improve this template, so that [drop me a message](mailto:javier.maciasguarasa@uah.es) or consider submitting a pull request.
 
-Also, if you need help, or you are unable to make this work, or you have any compilation errors, or you have suggestions for improvements, please contact me at [my email address](mailto:javier.maciasguarasa@uah.es).
+Also, if you need help to make this work, or you have any compilation errors, or even suggestions for improvements, please contact me at [my email address](mailto:javier.maciasguarasa@uah.es).
 
 Enjoy!
 
