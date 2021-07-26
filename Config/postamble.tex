@@ -96,14 +96,16 @@
 
 \ifthenelse{\equal{\myAcademicTutorGender}{male}}     
 {                                                       
-%  \newcommand{\wordDirectorOrdirectora}{director}
-%  \newcommand{\wordTutorOrTutora}{tutor}
+  \newcommand{\wordDirectorOrdirectora}{director}
+  \newcommand{\wordDirectorElOrLa}{el}
+  \newcommand{\wordTutorOrTutora}{tutor}
   \newcommand{\wordAcademicoOrAcademica}{académico}
   \newcommand{\wordTutorDelOrDeLa}{del}
 }
 {
-%  \newcommand{\wordDirectorOrdirectora}{directora}
-%  \newcommand{\wordTutorOrTutora}{tutora}
+  \newcommand{\wordDirectorOrdirectora}{directora}
+  \newcommand{\wordDirectorElOrLa}{la}
+  \newcommand{\wordTutorOrTutora}{tutora}
   \newcommand{\wordAcademicoOrAcademica}{académica}
   \newcommand{\wordTutorDelOrDeLa}{de la}
 }
@@ -127,9 +129,9 @@
   \newcommand{\myAdvisorsConDrOrDra}{\wordDrOrDraTutor{} \myAcademicTutorFullName{}}
   \ifthenelse{\equal{\myAcademicTutorGender}{male}}     
   {                                                       
-    \newcommand{\wordDirectorOrdirectora}{director}
+%    \newcommand{\wordDirectorOrdirectora}{director}
     \newcommand{\wordTutorOrTutores}{tutor}
-    \newcommand{\wordTutorOrTutora}{tutor}
+%    \newcommand{\wordTutorOrTutora}{tutor}
   }
   {
     \newcommand{\wordDirectorOrdirectora}{directora}
