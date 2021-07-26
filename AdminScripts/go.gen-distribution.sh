@@ -1,30 +1,60 @@
 #!/bin/bash
 
 
-DIST_FILE="00-PhDTFMTFG-LaTeX-Template-UAH"
-DIRS="Anteproyecto Book Config Papeleo"
+echo "Showing distribution tags:"
+git tag
 
-FILES_ALL="windows-installation.txt Book/additionalContributors.txt"
-for d in $DIRS
-do
+echo ""
+echo "Now you must create a required tag name and tag message"
+echo -n "Please enter the tag name: "
+read tagname
 
-    FILES=`find $d -name "*.tex" -o -name "*.bib" -o -name "*.png" -o -name "*.jpg" -o -name "Makefile" -o -name "*.dia"`
+echo -n "Please enter the tag message: "
+read tagmessage
+
+
+
+
+echo "The tag name you selected is [$tagname]"
+echo "The tag message you selected is [$tagmessage]"
+echo -n "Is it correct? (Y/N) "
+read answer
+
+if [ "$answer" == "Y" ]
+then
+    DIST_FILE="00-PhDTFMTFG-LaTeX-Template-UAH-$tagname"
+    DIRS="Anteproyecto Book Config Papeleo"
+
+    echo "Tagging distribution with tag name [$tagname] and tag message [$tagmessage]..."
+    git tag -a $tagname -m "$tagmessage"
+    echo "Now generating distribution..."
+
+    FILES_ALL="windows-installation.txt Book/additionalContributors.txt"
+    for d in $DIRS
+    do
+
+	FILES=`find $d -name "*.tex" -o -name "*.bib" -o -name "*.png" -o -name "*.jpg" -o -name "Makefile" -o -name "*.dia"`
+	FILES_ALL="$FILES_ALL $FILES"
+    done
+
+    # directorios especiales
+    FILES=`find Book/letters`
     FILES_ALL="$FILES_ALL $FILES"
-done
+    FILES=`find Book/figures -name "*.eps"`
+    FILES_ALL="$FILES_ALL $FILES"
+    FILES=`find Book/appendix -name "*.c"`
+    FILES_ALL="$FILES_ALL $FILES"
+    FILES=`find Book/logos -name "*.pdf"`
+    FILES_ALL="$FILES_ALL $FILES"
 
-# directorios especiales
-FILES=`find Book/letters`
-FILES_ALL="$FILES_ALL $FILES"
-FILES=`find Book/figures -name "*.eps"`
-FILES_ALL="$FILES_ALL $FILES"
-FILES=`find Book/appendix -name "*.c"`
-FILES_ALL="$FILES_ALL $FILES"
-FILES=`find Book/logos -name "*.pdf"`
-FILES_ALL="$FILES_ALL $FILES"
+    echo $FILES_ALL
 
-echo $FILES_ALL
+    tar czvf $DIST_FILE.tgz $FILES_ALL
+    zip $DIST_FILE.zip $FILES_ALL
 
-tar czvf $DIST_FILE.tgz $FILES_ALL
-zip $DIST_FILE.zip $FILES_ALL
-
-rsync -avu $DIST_FILE.tgz $DIST_FILE.zip ~/Dropbox/PhDTFMTFG-LaTeX-Template/
+    rsync -avu $DIST_FILE.tgz $DIST_FILE.zip ~/Dropbox/PhDTFMTFG-LaTeX-Template/
+    cp README.md ~/Dropbox/PhDTFMTFG-LaTeX-Template/00-README.md
+else
+    echo "You replied something different from 'Y', so that I'm exiting..."
+    exit 1
+fi
