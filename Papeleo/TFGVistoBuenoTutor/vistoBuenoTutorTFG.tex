@@ -1,0 +1,102 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for the anteproyectos of TFC/TFM/TFGs
+%
+% $Id: vistoBuenoTutorTFG.tex,v 1.1 2018/12/12 13:18:08 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% You can freely use this template and please contribute with
+% comments or suggestions!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This is for rubber to clean additional files
+% rubber: clean anteproyecto.acn anteproyecto.acr anteproyecto.alg anteproyecto.cod anteproyecto.ist anteproyecto.out anteproyecto.sbl anteproyecto.slg anteproyecto.sym anteproyecto.lor
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Preamble and configuration section
+%
+\input{../../Config/preamble-letter.tex}    % DO NOT TOUCH THIS LINE. You can edit
+                               % the file to modify some default settings
+                                   
+\input{../../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE 
+                               % to set your specific settings (related
+                               % to the document language, your degree,
+                               % document details (such as title, author
+                               % (you), your email, name of the tribunal
+                               % members, document year, keyword and
+                               % palabras clave) and link colors), and
+                               % define your commonly used commands
+                               % (some examples are provided).
+
+\input{../../Config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
+                               % "postamble" is not a valid word... :-)
+
+
+%
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{INFORME \MakeUppercase{\wordDelOrDeLos{} \wordTutorOrTutores}
+  SOBRE EL TRABAJO FIN DE GRADO} 
+                                                   % DO NOT TOUCH THIS LINE
+\date{}                                            % DO NOT TOUCH THIS LINE
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Let's start with the real stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}                                   % DO NOT TOUCH THIS LINE
+
+{\Large
+\maketitle 
+
+\thispagestyle{empty}
+
+\vspace{1cm}
+
+\myAdvisorsWithDonOrDona, \wordTutorOrTutores{} del Trabajo Fin de Grado
+``\myBookTitle'', realizado por \wordDonOrDonaAutor{} \myAuthorFullName, por la
+presente, \wordEmiteOrEmiten{} el siguiente informe sobre el citado
+trabajo:
+
+\vspace{1cm}
+
+$\XBox$ Favorable
+
+\vspace{0.5cm}
+
+$\Box$ Desfavorable
+
+\vspace{1cm}
+
+COMENTARIOS:
+
+\vspace{2cm}
+
+\flushright{Alcalá de Henares, \myPaperworkDate.}
+
+\vspace{4cm}
+
+\flushright{Fdo.: \myAdvisors}
+
+}
+\end{document}
+
