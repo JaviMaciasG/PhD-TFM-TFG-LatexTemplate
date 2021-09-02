@@ -1,2 +1,4 @@
 auto
 *~
+*.tgz
+*.zip
