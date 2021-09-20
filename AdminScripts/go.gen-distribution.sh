@@ -13,8 +13,6 @@ echo -n "Please enter the tag message: "
 read tagmessage
 
 
-
-
 echo "The tag name you selected is [$tagname]"
 echo "The tag message you selected is [$tagmessage]"
 echo -n "Is it correct? (Y/N) "
@@ -45,6 +43,8 @@ then
     FILES=`find Book/appendix -name "*.c"`
     FILES_ALL="$FILES_ALL $FILES"
     FILES=`find Book/logos -name "*.pdf"`
+    FILES_ALL="$FILES_ALL $FILES"
+    FILES="Config/worktypes.txt"
     FILES_ALL="$FILES_ALL $FILES"
 
     echo $FILES_ALL
