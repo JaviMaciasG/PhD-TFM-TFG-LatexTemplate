@@ -110,7 +110,7 @@
   \newcommand{\wordTutorDelOrDeLa}{de la}
 }
 
-\ifthenelse{\equal{\myCoTutorGender}{male}}     
+\ifthenelse{\equal{\myCoTutorGender}{male}}
 {                                                       
   \newcommand{\wordCoTutorOrCoTutora}{cotutor}
   \newcommand{\wordCoTutorDelOrDeLa}{del}
@@ -206,12 +206,15 @@
 }
 
 
+% This is to write or not signed by cotutor/cotutora
 \ifthenelse{\equal{\myCoTutorFullName}{}}
 {
   \newcommand{\okCoTutorOrCotutora}{}
+\newcommand{\signedByCoTutorOrCoTutora}{}
 }
 {
   \newcommand{\okCoTutorOrCotutora}{y \wordCoTutorDelOrDeLa{} \wordCoTutorOrCoTutora{}}
+  \newcommand{\signedByCoTutorOrCoTutora}{\MakeUppercase{\wordCoTutorOrCoTutora} (si procede): \mySecondAdvisorFullName}
 }
 
 
