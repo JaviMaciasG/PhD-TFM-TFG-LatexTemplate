@@ -206,6 +206,18 @@
 }
 
 
+\ifthenelse{\equal{\myCoTutorFullName}{}}
+{
+  \newcommand{\okCoTutorOrCotutora}{}
+}
+{
+  \newcommand{\okCoTutorOrCotutora}{y \wordCoTutorDelOrDeLa{} \wordCoTutorOrCoTutora{}}
+}
+
+
+
+
+
 % Set degree name and type of document, depending on the user defined degree
 \ifthenelse{\equal{\myDegree}{IT}}
 {
@@ -329,7 +341,7 @@
               {
                 \ifthenelse{\equal{\myDegree}{GITT}}
                 {
-                  \newcommand{\myDegreefull}{Grado en Ingeniería en Tecnologías de la Telecomunicación}
+                  \newcommand{\myDegreefull}{Grado en Ingeniería en Tecnologías de Telecomunicación}
                   \newcommand{\myWorkType}{TFG}
                   \ifthenelse{\equal{\myLanguage}{spanish}}
                   {
