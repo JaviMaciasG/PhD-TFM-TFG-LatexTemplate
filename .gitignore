@@ -12,6 +12,7 @@ auto
 *.glsdefs
 *.ist
 *.loa
+*.lof
 *.log
 *.log
 *.lot
