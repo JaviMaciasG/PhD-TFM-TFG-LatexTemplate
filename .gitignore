@@ -1,7 +1,3 @@
-auto
-*~
-*.tgz
-*.zip
 *.acn
 *.acr
 *.alg
@@ -9,6 +5,7 @@ auto
 *.bbl
 *.blg
 *.cod
+*.fls
 *.glsdefs
 *.ist
 *.loa
@@ -20,8 +17,13 @@ auto
 *.sbl
 *.slg
 *.sym
-*.toc
 *.synctex.gz
+*.tgz
+*.toc
+*.zip
+*_latexmk
+*~
+auto
 pdf_dia_done
 pdf_eps_done
 pdf_svg_done
