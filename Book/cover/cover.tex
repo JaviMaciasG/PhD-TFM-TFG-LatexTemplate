@@ -47,11 +47,21 @@
   {
   \ifthenelse{\equal{\myWorkType}{TFM}}
   {
-    % Same than TFGs from 2016
-    \input{cover/portada-tfg-uah.tex}
-    \input{cover/cover-pfc-tfg-tfm-uah.tex}
-    %      \input{cover/portada-tfm-uah.tex}
-    %      \input{cover/cover-pfc-tfg-tfm-uah.tex}
+  % Exception for MUCTE
+    \ifthenelse{\equal{\myDegree}{MUCTE}}
+      { 
+      \input{cover/portada-tfm-uah-pre2016.tex}
+      \input{cover/portada-tfm-uah-antigua.tex}
+      \input{cover/cover-pfc-tfg-tfm-uah.tex}
+      }
+      {
+      %  Same than TFGs from 2016
+      \input{cover/portada-tfg-uah.tex}
+      \input{cover/cover-pfc-tfg-tfm-uah.tex}
+      %      \input{cover/portada-tfm-uah.tex}
+      %      \input{cover/cover-pfc-tfg-tfm-uah.tex}
+      }
+    
     }
     {
       \ifthenelse{\equal{\myWorkType}{PHDUAH}}
