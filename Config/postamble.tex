@@ -120,6 +120,14 @@
   \newcommand{\wordCoTutorDelOrDeLa}{de la}
 }
 
+\ifthenelse{\equal{\myDepartmentSecretaryGender}{male}}     
+{                                                       
+  \newcommand{\wordSecretarioOrSecretaria}{Secretario}
+}
+{
+  \newcommand{\wordSecretarioOrSecretaria}{Secretaria}
+}
+
 
 % Set name of advisors and define words depending on singular/plural
 \ifthenelse{\equal{\myCoTutorFullName}{}}
