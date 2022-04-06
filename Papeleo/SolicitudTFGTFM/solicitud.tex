@@ -95,7 +95,13 @@
 \begin{spacing}{1.0}
 \begin{center}
 
-  \Large\textbf{SOLICITUD DE ANTEPROYECTO \MakeUppercase{\myWorkTypeFull}}
+  \ifthenelse{\equal{\myDegree}{MUIE}}
+  {
+    \Large\textbf{CONTROL DE ANTEPROYECTO DE \MakeUppercase{\myWorkType}}
+  }
+  {
+    \Large\textbf{HOJA DE CONTROL DE ANTEPROYECTO DE \MakeUppercase{\myWorkType}}
+  }
 
   \myDepartment
 
@@ -161,8 +167,13 @@
     \hline
 %\scriptsize{Nota: zona sombreada a cumplimentar por la administración.}\\
     \cellcolor{gray!10} ~\\
-    \cellcolor{gray!10} \underline{\textbf{Acuerdo del Departamento (a
-        rellenar por el Departamento)}} \\
+    \ifthenelse{\equal{\myDegree}{MUIE}}
+    {
+      \cellcolor{gray!10} \underline{\textbf{Acuerdo de la Comisión de TFM (\emph{a rellenar por la Comisión})}} \\
+    }
+    {
+      \cellcolor{gray!10} \underline{\textbf{Acuerdo del Departamento (\emph{a rellenar por el Departamento})}} \\
+    }    
     \cellcolor{gray!10} ~\\
     \cellcolor{gray!10} Aceptado: $\Box$ Sí $\Box$ No\spacingFour{}Fecha: \underscoreSpacingFour{}/\underscoreSpacingFour{}/\underscoreSpacingFour{}\underscoreSpacingFour{}\spacingFour{}Periodo de validez: \hrulefill\\
     \cellcolor{gray!10} Causa del rechazo: \hrulefill\\
@@ -192,7 +203,7 @@
     \cellcolor{gray!10} ~\\
     \cellcolor{gray!10}  \begin{center}Alcalá de Henares, a \underscoreSpacingFour{}\underscoreSpacingFour{} de \underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{} de 20\underscoreSpacingFour{}\end{center}\\
     \cellcolor{gray!10} ~\\
-    \cellcolor{gray!10} \spacingFour{}\spacingFour{}\spacingFour{}Sello del Departamento\spacingFour{}\spacingFour{}\spacingFour{}\spacingFour{}\spacingFour{}Fdo: Secretario del Departamento
+    \cellcolor{gray!10} \spacingFour{}\spacingFour{}\spacingFour{}Sello del Departamento\spacingFour{}\spacingFour{}\spacingFour{}\spacingFour{}\spacingFour{}Fdo: \wordSecretarioOrSecretaria{} del Departamento
     \cellcolor{gray!10} ~\\
     \cellcolor{gray!10} ~\\
     \cellcolor{gray!10} ~\\
