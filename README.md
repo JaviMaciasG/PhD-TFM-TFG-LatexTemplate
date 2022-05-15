@@ -9,13 +9,18 @@ Support to generate the "anteproyecto" is also provided, along with some of the 
 
 ## Quick start
 
+### Prerrequisites
+
+You will need a good \LaTeX{} distribution (TexLive, MikTex, MacTeX, etc.). Most of the ones you can get out there will cover almost every required packages, being typical exceptions `texlive-publishers`, `texlive-lang-spanish` and `texlive-lang-english`. For a list of all required packages, you can have a look at the `\usepackage{...}` statements in the file `Config/preamble.tex`. Beware that the main compilation is done using `pdflatex`. The preferred compilation method is by using the provided `make`, but if you are in a Windows environment without this utility, a good \LaTeX{} editor will do fine. Please carefully read chapter 1 of any of the precompiled examples in the dropbox distribuition (for example that for the [GIEC TFG at UAH](https://www.dropbox.com/s/p8htef58cusv4x6/TFG-GIEC-spanish.pdf?dl=0)).
+  
+  
 ### Download the template
 
 The template is accessible in two ways:
 
 1. In github, in case you want to clone or fork my working version. It is available at 
 [my gitHub account project page](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate), so that you can clone it from [the clone URL](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git). Beware that it has a lot of extra files that should not be useful for the general user
-2. In my dropbox, in zip and tgz formats, accesible at [this Dropbox download folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0).  At this location you will also be able to access the sample book files for all the different flavours (degrees...) and in Spanish and English versions. Note that the introduction chapter will provide you with general instructions and details on the use of the template. Please do read it. The rests of the chapters provide you with sample code to do a varity of (IMHO) nice things you might find useful.
+2. In my dropbox, in zip and tgz formats, accesible at [this Dropbox download folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0).  At this location you will also be able to access the sample book files for all the different flavours (degrees...) and in Spanish and English versions. Note that the introduction chapter will provide you with general instructions and details on the use of the template. **Please do read it**. The rests of the chapters provide you with sample code to do a varity of (IMHO) nice things you might find useful.
 
 ### Configure your data
 
