@@ -112,11 +112,13 @@
 
 \ifthenelse{\equal{\myCoTutorGender}{male}}
 {                                                       
-  \newcommand{\wordCoTutorOrCoTutora}{cotutor}
+  \newcommand{\wordCoDirectorOrCoDirectora}{codirector}
+  \newcommand{\wordCoDirectorElOrLa}{el}  \newcommand{\wordCoTutorOrCoTutora}{cotutor}
   \newcommand{\wordCoTutorDelOrDeLa}{del}
 }
 {
-  \newcommand{\wordCoTutorOrCoTutora}{cotutora}
+  \newcommand{\wordCoDirectorOrCoDirectora}{codirectora}
+  \newcommand{\wordCoDirectorElOrLa}{la}  \newcommand{\wordCoTutorOrCoTutora}{cotutora}
   \newcommand{\wordCoTutorDelOrDeLa}{de la}
 }
 
@@ -615,7 +617,62 @@
   }
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Now open publishing options
+\ifthenelse{\equal{\myAuthorizationOpenPublishing}{Yes}}
+{
+\newcommand{\boxAuthorizeOpenPublishing}{$\XBox$}
+\newcommand{\boxDoNotAuthorizeOpenPublishing}{$\Box$}
 
+\ifthenelse{\equal{\myAuthorizationOpenPublishingEmbargoMonths}{0}}
+{
+\newcommand{\boxEmbargoZeroMonths}{$\XBox$}
+}
+{
+\newcommand{\boxEmbargoZeroMonths}{$\Box$}
+}
+
+\ifthenelse{\equal{\myAuthorizationOpenPublishingEmbargoMonths}{6}}
+{
+\newcommand{\boxEmbargoSixMonths}{$\XBox$}
+}
+{
+\newcommand{\boxEmbargoSixMonths}{$\Box$}
+}
+
+\ifthenelse{\equal{\myAuthorizationOpenPublishingEmbargoMonths}{12}}
+{
+\newcommand{\boxEmbargoTwelveMonths}{$\XBox$}
+}
+{
+\newcommand{\boxEmbargoTwelveMonths}{$\Box$}
+}
+
+\ifthenelse{\equal{\myAuthorizationOpenPublishingEmbargoMonths}{18}}
+{
+\newcommand{\boxEmbargoEighteenMonths}{$\XBox$}
+}
+{
+\newcommand{\boxEmbargoEighteenMonths}{$\Box$}
+}
+
+\ifthenelse{\equal{\myAuthorizationOpenPublishingEmbargoMonths}{24}}
+{
+\newcommand{\boxEmbargoTwentyfourMonths}{$\XBox$}
+}
+{
+\newcommand{\boxEmbargoTwentyfourMonths}{$\Box$}
+}
+}
+{
+\newcommand{\boxAuthorizeOpenPublishing}{$\Box$}
+\newcommand{\boxEmbargoZeroMonths}{$\Box$}
+\newcommand{\boxEmbargoSixMonths}{$\Box$}
+\newcommand{\boxEmbargoTwelveMonths}{$\Box$}
+\newcommand{\boxEmbargoEighteenMonths}{$\Box$}
+\newcommand{\boxEmbargoTwentyfourMonths}{$\Box$}
+\newcommand{\boxDoNotAuthorizeOpenPublishing}{$\XBox$}
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 

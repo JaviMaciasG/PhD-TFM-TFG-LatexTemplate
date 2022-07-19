@@ -38,6 +38,10 @@
 
 \synctex=1
 
+% To allow simple notes to be used in the review process (see defined
+% commands at the end of this file)
+\usepackage{todonotes} 
+
 % ifthen to allow using language dependent settings
 \usepackage{ifthen}
 
@@ -621,6 +625,13 @@ hyperfootnotes=false,
 \appto{\appendices}{\def\Hy@chapapp{Appendix}}
 \makeatother
 
+
+% Comments. Here you should change JMG, MAS to follow the initials of
+% the involved reviewers (usually the author and the advisor(s))
+\newcommand{\todosidejmg}{\todo[author=JMG, noinline, color=red!40]}
+\newcommand{\todosidemas}{\todo[author=MAS, noinline, color=blue!60]}
+\newcommand{\todojmg}{\todo[author=JMG, inline, color=red!40]}
+\newcommand{\todomas}{\todo[author=MAS, inline, color=blue!60]}
 
 %%% Local Variables:
 %%% TeX-master: "../book"
