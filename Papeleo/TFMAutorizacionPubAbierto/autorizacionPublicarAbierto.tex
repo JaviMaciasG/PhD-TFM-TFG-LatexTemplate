@@ -71,9 +71,9 @@
 
 
 
-\title{Solicitud de anteproyecto de \myWorkTypeFull} % DO NOT TOUCH THIS LINE
-\date{\myThesisProposalDate}                               % DO NOT TOUCH THIS LINE
-\author{\myAuthorFullName}
+%\title{Solicitud de anteproyecto de \myWorkTypeFull} % DO NOT TOUCH THIS LINE
+%\date{\myThesisProposalDate}                               % DO NOT TOUCH THIS LINE
+%\author{\myAuthorFullName}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Let's start with the real stuff
@@ -98,40 +98,19 @@
 \begin{center}
 
   \Large\textbf{FORMULARIO DE AUTORIZACIÓN PARA LA INCLUSIÓN DEL
-    TRABAJO FIN DE MÁSTER EN EL ARCHIVO ABIERTO INSTITUCIONAL E-BUAH
+    \MakeUppercase{\myWorkTypeFull} EN EL ARCHIVO ABIERTO INSTITUCIONAL E-BUAH
     DE LA UNIVERSIDAD DE ALCALÁ}
 
 \end{center}
 \end{spacing}
 \vspace{0.5cm}
 
-% \underline{\textbf{Datos personales \wordAutorDelOrDeLa{} \wordAlumnoOrAlumna}}
-% \small
-% \begin{spacing}{1.0}
-%   \begin{tabularx}{\textwidth}{lXr}
-%     % & & \\
-% %    \MakeUppercase{\wordAlumnoOrAlumna}: \myAuthorFullName & & DNI: \myAuthorDNI \\
-%     \MakeUppercase{NOMBRE Y APELLIDOS}: \myAuthorFullName & & DNI: \myAuthorDNI \\
-%     \multicolumn{2}{l}{DIRECCIÓN: \myAuthorStreet}  & CÓDIGO POSTAL: \myAuthorPostalCode\\ 
-%     POBLACIÓN: \myAuthorCity         & PROVINCIA: \myAuthorProvince     & TELÉFONO: \myAuthorTelephone \\
-%     EMAIL: \myAuthorEmail & & \\
-%     \multicolumn{2}{l}{ESTUDIOS: \myDegreefull} & ESPECIALIDAD: \mySpecialty\\
-%     & & \\
-%     \multicolumn{3}{l}{IDIOMA ESCOGIDO PARA DESARROLLAR EL TRABAJO: [\xUseSpanish] ESPAÑOL ~~ [\xUseEnglish] INGLÉS}\\
-%     & &
-%   \end{tabularx}
-% \end{spacing}
-
-%\normalsize
-%\underline{\textbf{Datos de la propuesta de anteproyecto}}
-%\small
-
 \begin{tabularx}{\textwidth}{|X|}
   \hline
   TÍTULO DEL \myWorkType: \myBookTitleSpanish \\
   \ifthenelse{\equal{\myLanguage}{english}}   
   {                                               
-  TÍTULO EN INGLÉS: \myBookTitleEnglish \\
+    TÍTULO EN INGLÉS: \myBookTitleEnglish \\
   }                                               
   {                                               
   }                                               
@@ -154,7 +133,7 @@
 \end{spacing}
 
 \vspace{0.5cm}
-\textbf{2. \MakeUppercase{\wordDirectorOrdirectora} DEL TRABAJO FIN DE MÁSTER}
+\textbf{2. \MakeUppercase{\wordDirectorOrdirectora} DEL \MakeUppercase{\myWorkTypeFull}}
 
 %\small
 \begin{spacing}{1.0}
@@ -167,37 +146,56 @@
   \end{tabularx}
 \end{spacing}
 
+\ifthenelse{\equal{\myCoTutorFullName}{}}
+{
+}
+{
+  \vspace{0.5cm}
+  \textbf{3. \MakeUppercase{\wordCoDirectorOrCoDirectora} DEL \MakeUppercase{\myWorkTypeFull}}
+  
+  % \small
+  \begin{spacing}{1.0}
+    \begin{tabularx}{\textwidth}{|X|l|}
+      \hline
+      \MakeUppercase{NOMBRE Y APELLIDOS}: \myCoTutorFullName{} & DNI: \myCoTutorDNI \\
+      \hline
+      \multicolumn{2}{|l|}{DEPARTAMENTO O INSTITUCIÓN: \myCoTutorDepartmentOrInstitution} \\
+      \hline
+    \end{tabularx}
+  \end{spacing}
+}
+
 \vspace{0.5cm}
 
 \textbf{Los abajo firmantes:}
 
-$\XBox$ AUTORIZAN (en caso de autorizar, elegir la opción deseada)
+\boxAuthorizeOpenPublishing AUTORIZAN (en caso de autorizar, elegir la opción deseada)
 
 \vspace{-0.3cm}
 
-~~~$\XBox$ SIN PERIODO DE EMBARGO
+~~~\boxEmbargoZeroMonths SIN PERIODO DE EMBARGO
 
 \vspace{-0.3cm}
 
-~~~$\Box$ CON PERIODO DE EMBARGO DE 6 MESES
+~~~\boxEmbargoSixMonths CON PERIODO DE EMBARGO DE 6 MESES
 
 \vspace{-0.3cm}
 
-~~~$\Box$ CON PERIODO DE EMBARGO DE 12 MESES
+~~~\boxEmbargoTwelveMonths CON PERIODO DE EMBARGO DE 12 MESES
 
 \vspace{-0.3cm}
 
-~~~$\Box$ CON PERIODO DE EMBARGO DE 18 MESES
+~~~\boxEmbargoEighteenMonths CON PERIODO DE EMBARGO DE 18 MESES
 
 \vspace{-0.3cm}
 
-~~~$\Box$ CON PERIODO DE EMBARGO DE 24 MESES
+~~~\boxEmbargoTwentyfourMonths CON PERIODO DE EMBARGO DE 24 MESES
 
 \vspace{-0.1cm}
 
-$\Box$ NO AUTORIZAN
+\boxDoNotAuthorizeOpenPublishing NO AUTORIZAN
 
-\vspace{0.5cm}
+\vspace{0.1cm}
 
 \begin{spacing}{0.8}
 
@@ -211,7 +209,9 @@ Reconocimiento-NoComercial-Sin-ObraDerivada.  Más información en:
 \vspace{0.5cm}  
 %\small
 \begin{spacing}{1.0}
-  \begin{tabularx}{\textwidth}{|X|X|}
+\ifthenelse{\equal{\myCoTutorFullName}{}}
+{
+    \begin{tabularx}{\textwidth}{|X|X|}
     \hline
     Firmado: \wordAutorElOrLa{} \wordAutorOrAutora & Firmado: \wordDirectorElOrLa{} \wordDirectorOrdirectora \\
     & \\
@@ -219,13 +219,24 @@ Reconocimiento-NoComercial-Sin-ObraDerivada.  Más información en:
     & \\
     \hline
   \end{tabularx}
+}
+{
+   \begin{tabularx}{\textwidth}{|X|X|X|}
+   \hline
+    Firmado: \wordAutorElOrLa{} \wordAutorOrAutora & Firmado: \wordDirectorElOrLa{} \wordDirectorOrdirectora & Firmado: \wordCoDirectorElOrLa{} \wordCoDirectorOrCoDirectora \\
+    & & \\
+    & & \\
+    & & \\
+    \hline
+  \end{tabularx}
+}
 \end{spacing}
 
-\vspace{0.3cm}
+\vspace{0.1cm}
 
 {\footnotesize \url{https://ebuah.uah.es}}
 
-\vspace{0.1cm}
+%\vspace{0.1cm}
 
 \begin{spacing}{0.8}
 
