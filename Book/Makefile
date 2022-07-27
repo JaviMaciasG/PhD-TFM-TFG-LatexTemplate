@@ -51,12 +51,23 @@ DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff
 DIFF_FLATTEN_TEX_FILE = $(DIFF_FLATTEN_ROOT_FILENAME).tex
 RUBBER_TOOL=rubber
 LATEXMK_TOOL=latexmk
+PDF_TOOL=pdflatex
 EPSPDF_TOOL=epspdf
 RM=rm -f
 ifeq ($(BIBLIO_PACKAGE),bibtex)
 	BIBLIO_TOOL := bibtex
 else
 	BIBLIO_TOOL := biber
+endif
+
+# PDF_TOOL=pdflatex
+# PDF_TOOL=xelatex
+PDF_TOOL=lualatex
+
+ifeq ($(PDF_TOOL),pdflatex)
+	PDF_PREFIX := $(shell echo $(PDF_TOOL) | sed -e "s/latex//")
+else
+	PDF_PREFIX := pdf$(shell echo $(PDF_TOOL) | sed -e "s/latex//" )
 endif
 
 ###########################################################################
@@ -91,12 +102,11 @@ all: $(DUMMY_TARGETS)
 	# makeglossaries $(ROOT_FILENAME)
 	# $(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
 	# Generate pdf metadata
-	cat ../Config/$(ROOT_FILENAME).xmpdata.vars | sed "s/__DEGREE__/$degree/g" 
-	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	$(BIBLIO_TOOL) $(ROOT_FILENAME)
 	makeglossaries $(ROOT_FILENAME)
-	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
-	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	echo $(ROOT_FINAL_BOOK_FILENAME)
 	echo "[$(BOOK_TYPE)][$(DEGREE_NAME)][$(AUTHOR_SURNAME)][$(AUTHOR_NAME)][$(BOOK_LANGUAGE)]"
 	mv $(ROOT_FILENAME).pdf $(ROOT_FINAL_BOOK_FILENAME).pdf
@@ -158,9 +168,13 @@ clean-orig-diagrams:
 
 
 all_latexmk: $(DUMMY_TARGETS)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
+	# Note: pdflatex/lualatex, etc option when provided with the COMMAND
+	# argument only sets the command for invoking pdflatex; it does not turn on
+	# the use of pdflatex. That is done by other options or in an
+	# initialization file. (Or using -pdf, -xepdf, -luapdf) as specified in $(PDF_TOOL)
+	$(LATEXMK_TOOL) -$(PDF_PREFIX) -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -xelatex="xelatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -lualatex="lualatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
 	makeglossaries $(ROOT_FILENAME)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
+	$(LATEXMK_TOOL) -$(PDF_PREFIX) -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -xelatex="xelatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -lualatex="lualatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
 
 snapshot:
 	latexpand $(TEX_FILE) > $(SNAPSHOT_FLATTEN_TEX_FILE)
@@ -177,11 +191,11 @@ latexdiff: flatten
 #	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -d $(DIFF_FLATTEN_TEX_FILE)
 #	makeglossaries $(DIFF_FLATTEN_ROOT_FILENAME)
 #	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -d $(DIFF_FLATTEN_TEX_FILE)
-	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
 	$(BIBLIO_TOOL) $(DIFF_FLATTEN_ROOT_FILENAME)
 	makeglossaries $(DIFF_FLATTEN_ROOT_FILENAME)
-	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
-	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
 
 
 

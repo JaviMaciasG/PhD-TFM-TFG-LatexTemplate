@@ -34,6 +34,16 @@ LATEXMK_TOOL=latexmk
 EPSPDF_TOOL=epspdf
 RM=rm -f
 
+# PDF_TOOL=pdflatex
+# PDF_TOOL=xelatex
+PDF_TOOL=lualatex
+
+ifeq ($(PDF_TOOL),pdflatex)
+	PDF_PREFIX := $(shell echo $(PDF_TOOL) | sed -e "s/latex//")
+else
+	PDF_PREFIX := pdf$(shell echo $(PDF_TOOL) | sed -e "s/latex//" )
+endif
+
 ###########################################################################
 # Support to automagically compile dia+svg files. Adapt to your own needs
 DIA_SOURCES=$(wildcard ../diagrams/*.dia)
