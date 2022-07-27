@@ -28,30 +28,45 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\bibliographystyle{plainnat}
-%\bibliographystyle{dinat}
-%\bibliographystyle{unsrt}
-\bibliographystyle{IEEEtran}
+\ifthenelse{\equal{\bibliosystem}{biblatex}}
+{
+  % Use biblatex instead of bibtex
+  % \newcommand{\mybibfileOne}{biblio/biblio.bib}
+  % \addbibresource{\myreferencespath\mybibfileOne}
+  \printbibliography
+}
+{
+  % Use bibtex
 
-% The following is overly complicated because I was not able to do so in
-% another way. The problem is the bibliography command being "called"
-% from both the root and anteproyecto directories...
-%
-% Here define as many bibfiles as needed
-\newcommand{\mybibfileOne}{biblio/biblio.bib}
-%\newcommand{\mybibfileTwo}{biblio/biblio2.bib}
-%...
-%\newcommand{\mybibfileN}{biblio/biblioN}
+  %\bibliographystyle{plainnat}
+  %\bibliographystyle{dinat}
+  %\bibliographystyle{unsrt}
+  \bibliographystyle{IEEEtran}
 
-% This is for a single bib file
-\newcommand{\mybibfiles}{\myreferencespath\mybibfileOne}
-% but do this for multiple files
-%\newcommand{\mybibfiles}{\myreferencespath\mybibfile1,\myreferencespath\mybibfile2,...,\myreferencespath\mybibfileN}
+  % The following is overly complicated because I was not able to do so in
+  % another way. The problem is the bibliography command being "called"
+  % from both the root and anteproyecto directories...
+  %
+  % Here define as many bibfiles as needed
+  \newcommand{\mybibfileOne}{biblio/biblio.bib}
+  %\newcommand{\mybibfileTwo}{biblio/biblio2.bib}
+  %...
+  %\newcommand{\mybibfileN}{biblio/biblioN}
 
-% Do not touch this
-\inputencoding{latin1}
-\bibliography{\mybibfiles}
-\inputencoding{utf8}
+  % This is for a single bib file
+  \newcommand{\mybibfiles}{\myreferencespath\mybibfileOne}
+  % but do this for multiple files
+  %\newcommand{\mybibfiles}{\myreferencespath\mybibfile1,\myreferencespath\mybibfile2,...,\myreferencespath\mybibfileN}
+
+  % Do not touch this
+  \ifpdftex
+  \inputencoding{latin1}
+  \fi
+  \bibliography{\mybibfiles}
+  \ifpdftex
+  \inputencoding{utf8}
+  \fi
+}
 
 %%% Local Variables:
 %%% TeX-master: "../book"
