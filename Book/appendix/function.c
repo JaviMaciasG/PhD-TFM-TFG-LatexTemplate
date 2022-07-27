@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// Esto es una función de prueba
+// Esto es una funciÃ³n de prueba
 void funcionPrueba(int argumento)
 {	
 	int prueba = 1;

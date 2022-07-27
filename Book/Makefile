@@ -5,15 +5,15 @@
 # $Id: Makefile,v 1.22 2016/07/14 23:37:33 macias Exp $
 #
 # By:
-#  + Javier Macías-Guarasa. 
-#    Departamento de Electrónica
-#    Universidad de Alcalá
+#  + Javier MacÃƒÂ­as-Guarasa. 
+#    Departamento de ElectrÃƒÂ³nica
+#    Universidad de AlcalÃƒÂ¡
 #  + Roberto Barra-Chicote. 
-#    Departamento de Ingeniería Electrónica
-#    Universidad Politécnica de Madrid   
+#    Departamento de IngenierÃƒÂ­a ElectrÃƒÂ³nica
+#    Universidad PolitÃƒÂ©cnica de Madrid   
 # 
-# Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
-# Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+# Based on original sources by Roberto Barra, Manuel OcaÃƒÂ±a, JesÃƒÂºs Nuevo,
+# Pedro Revenga, Fernando HerrÃƒÂ¡nz and Noelia HernÃƒÂ¡ndez. Thanks a lot to
 # all of them, and to the many anonymous contributors found (thanks to
 # google) that provided help in setting all this up.
 #
@@ -30,13 +30,13 @@
 SHELL=/bin/bash
 
 DEGREE_NAME=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myDegree" | cut -f 3 -d "{"| cut -f 1 -d "}")
-# Here you can use "iconv -f utf8 -t ascii//TRANSLIT test1" or sed "y/áéíóúñüÁÉÍÓÚÑÜ/aeiounuAEIOUNU/"
+# Here you can use "iconv -f utf8 -t ascii//TRANSLIT test1"
 AUTHOR_NAME=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myAuthorName" | grep -v "myAuthorFullName" | cut -f 3 -d "{"| cut -f 1 -d "}" | tr -d " ")
 AUTHOR_SURNAME=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myAuthorSurname" | grep -v "myAuthorFullName" | cut -f 3 -d "{"| cut -f 1 -d "}" | tr -d " ")
 BOOK_LANGUAGE=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myLanguage" | cut -f 3 -d "{"| cut -f 1 -d "}")
 BOOK_TYPE=$(shell cat ../Config/worktypes.txt | grep -w $(DEGREE_NAME) | tr -s " " | cut -f 2 -d " " | tr -d " ")
 
-#TENGO QUE VER SÓMO GENERAR EL XMPDATA PARA INCLUIRLO... GENERO ERROR APOSTA...
+#TENGO QUE VER COMO GENERAR EL XMPDATA PARA INCLUIRLO... GENERO ERROR APOSTA...
 TFX_TITLE=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myBookTitle" | cut -f 3 -d "{"| cut -f 1 -d "}")
 
 
