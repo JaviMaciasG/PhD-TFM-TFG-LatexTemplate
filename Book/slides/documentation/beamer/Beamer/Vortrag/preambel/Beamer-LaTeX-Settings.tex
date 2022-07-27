@@ -1,6 +1,9 @@
 % *** Sprache *****************************
 \usepackage[ngerman]{babel}
-\usepackage[latin1]{inputenc}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[latin1]{inputenc} % Para poder escribir con acentos y ñ.
+\fi                                % usar si no es necesario, porque ralentiza muchisimo la compilación.
 %------------------------------------------
 
 

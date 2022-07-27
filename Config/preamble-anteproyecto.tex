@@ -38,11 +38,15 @@
 %% FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR
 %\PassOptionsToPackage{cmyk}{xcolor}% NB: put this *before* \usepackage{pst-all}
 
-\usepackage[utf8]{inputenc} % Para poder escribir con acentos y ñ.
-\usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
-                              % usar si no es necesario, porque ralentiza muchisimo la compilación.
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc} % Para poder escribir con acentos y ñ.
+  \usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
+\fi                             % usar si no es necesario, porque ralentiza muchisimo la compilación.
 \usepackage{ae}               % Para que todas las fuentes sean Type1, y ninguna Type3.
-\usepackage{cmap}
+\ifPDFTeX
+  \usepackage{cmap} % This package produces an error if we are not using pdflatex
+\fi
 \usepackage[spanish, english]{babel}
 
 % Use this if you want to include pdf files in the final document
