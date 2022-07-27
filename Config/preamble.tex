@@ -361,6 +361,10 @@ hyperfootnotes=false,
 %\usepackage[pages=some]{sty/background}
 \usepackage[pages=some]{background}
 
+% Note that we also set the opacity in the first page of the tfg due to a bug,
+% so it you modify it here remember to modify the value in Book/cover/portada-tfm-uah.tex
+% https://tex.stackexchange.com/questions/649514/how-to-produce-a-transparent-image-with-xelatex/649518#649518
+% https://tex.stackexchange.com/questions/640574/using-a-tikzpicture-disables-opacity-for-first-bgthispage-how-can-i-fix-this
 \ifthenelse{\equal{\colorspaceused}{rgb}}
 {
   \backgroundsetup{ scale=1, angle=0, opacity=.1, color=pink,
