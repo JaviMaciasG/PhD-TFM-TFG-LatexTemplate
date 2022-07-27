@@ -5,15 +5,15 @@
 # $Id: Makefile,v 1.2 2014/10/13 12:57:40 macias Exp $
 #
 # By:
-#  + Javier MacÃ­as-Guarasa. 
-#    Departamento de ElectrÃ³nica
-#    Universidad de AlcalÃ¡
+#  + Javier Macías-Guarasa. 
+#    Departamento de Electrónica
+#    Universidad de Alcalá
 #  + Roberto Barra-Chicote. 
-#    Departamento de IngenierÃ­a ElectrÃ³nica
-#    Universidad PolitÃ©cnica de Madrid   
+#    Departamento de Ingeniería Electrónica
+#    Universidad Politécnica de Madrid   
 # 
-# Based on original sources by Roberto Barra, Manuel OcaÃ±a, JesÃºs Nuevo,
-# Pedro Revenga, Fernando HerrÃ¡nz and Noelia HernÃ¡ndez. Thanks a lot to
+# Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+# Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
 # all of them, and to the many anonymous contributors found (thanks to
 # google) that provided help in setting all this up.
 #
@@ -57,12 +57,12 @@ PDFS_FROM_EPS=$(patsubst %.eps,%.pdf,$(EPS_SOURCES))
 DUMMY_TARGETS=pdf_dia_done pdf_svg_done pdf_eps_done
 
 all: $(DUMMY_TARGETS) $(TEX_FILE)
-	$(RUBBER_TOOL) -f -d $(TEX_FILE)
-	$(RUBBER_TOOL) -f -d $(TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 
 all_latexmk: $(DUMMY_TARGETS)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_FILE)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_FILE)
+	$(LATEXMK_TOOL) -$(PDF_PREFIX) -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -xelatex="xelatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -lualatex="lualatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
 
 pdf_dia_done: $(PDFS_FROM_DIA)
 	echo "Generating pdfs from DIA: [$(PDFS_FROM_DIA)]..."
