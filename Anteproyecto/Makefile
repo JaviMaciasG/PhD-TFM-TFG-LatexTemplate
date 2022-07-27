@@ -38,6 +38,13 @@ LATEXMK_TOOL=latexmk
 EPSPDF_TOOL=epspdf
 RM=rm -f
 
+BIBLIO_PACKAGE=$(shell cat ../Config/preamble-anteproyecto.tex | grep -e bibliosystem | grep -v ifthenelse | grep newcommand | grep -v "^\%" | cut -d'{' -f3 | cut -d'}' -f1 | tr -d " ")
+ifeq ($(BIBLIO_PACKAGE),bibtex)
+	BIBLIO_TOOL := bibtex
+else
+	BIBLIO_TOOL := biber
+endif
+
 ###########################################################################
 # Support to automagically compile dia+svg files. Adapt to your own needs
 DIA_SOURCES=$(wildcard ../Book/diagrams/*.dia)
@@ -60,11 +67,11 @@ all: $(DUMMY_TARGETS) anteproyecto
 
 anteproyecto: $(TEX_FILENAME)
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
-	bibtex $(ROOT_FILENAME)	
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 #	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 #	$(RUBBER_TOOL) -f -d $(TEX_FILE)
+	$(BIBLIO_TOOL) $(ROOT_FILENAME)	
 
 anteproyecto_latexmk: $(TEX_FILENAME)
 	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
@@ -81,11 +88,11 @@ latexdiff: flatten
 	latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $(SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE) > $(DIFF_FLATTEN_TEX_FILE)
 #latexdiff-git --force -r $(FLATTEN_TEX_FILE)
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_ROOT_FILENAME)
-	bibtex  $(DIFF_FLATTEN_ROOT_FILENAME)
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_ROOT_FILENAME)
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_ROOT_FILENAME)
 #	$(RUBBER_TOOL) -d $(DIFF_FLATTEN_TEX_FILE)
 #	$(RUBBER_TOOL) -d $(DIFF_FLATTEN_TEX_FILE)
+	$(BIBLIO_TOOL)  $(DIFF_FLATTEN_ROOT_FILENAME)
 
 
 pdf_dia_done: $(PDFS_FROM_DIA)

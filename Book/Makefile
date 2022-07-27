@@ -44,6 +44,7 @@ ROOT_FILENAME=book
 #ROOT_FINAL_BOOK_FILENAME=$(ROOT_FILENAME)-$(DEGREE_NAME)-$(AUTHOR_SURNAME)-$(AUTHOR_NAME)-$(BOOK_LANGUAGE)
 ROOT_FINAL_BOOK_FILENAME=$(BOOK_TYPE)-$(DEGREE_NAME)-$(AUTHOR_SURNAME)-$(AUTHOR_NAME)-$(BOOK_LANGUAGE)
 TEX_FILE = $(ROOT_FILENAME).tex
+BIBLIO_PACKAGE=$(shell cat ../Config/preamble.tex | grep -e bibliosystem | grep -v ifthenelse | grep newcommand | grep -v "^\%" | cut -d'{' -f3 | cut -d'}' -f1 | tr -d " ")
 FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten.tex
 SNAPSHOT_FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten-snapshot.tex
 DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff
@@ -52,6 +53,11 @@ RUBBER_TOOL=rubber
 LATEXMK_TOOL=latexmk
 EPSPDF_TOOL=epspdf
 RM=rm -f
+ifeq ($(BIBLIO_PACKAGE),bibtex)
+	BIBLIO_TOOL := bibtex
+else
+	BIBLIO_TOOL := biber
+endif
 
 ###########################################################################
 # Support to automagically compile dia+svg files. Adapt to your own needs
@@ -87,7 +93,7 @@ all: $(DUMMY_TARGETS)
 	# Generate pdf metadata
 	cat ../Config/$(ROOT_FILENAME).xmpdata.vars | sed "s/__DEGREE__/$degree/g" 
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
-	bibtex $(ROOT_FILENAME)
+	$(BIBLIO_TOOL) $(ROOT_FILENAME)
 	makeglossaries $(ROOT_FILENAME)
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
@@ -172,7 +178,7 @@ latexdiff: flatten
 #	makeglossaries $(DIFF_FLATTEN_ROOT_FILENAME)
 #	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -d $(DIFF_FLATTEN_TEX_FILE)
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
-	bibtex $(DIFF_FLATTEN_ROOT_FILENAME)
+	$(BIBLIO_TOOL) $(DIFF_FLATTEN_ROOT_FILENAME)
 	makeglossaries $(DIFF_FLATTEN_ROOT_FILENAME)
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)

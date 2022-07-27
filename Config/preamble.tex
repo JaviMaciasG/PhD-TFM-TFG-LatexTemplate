@@ -98,22 +98,6 @@
 \usepackage{supertabular}
 \usepackage{hhline}
 \usepackage{array}
-\usepackage[noadjust]{cite}      % Written by Donald Arseneau
-% V1.6 and later of IEEEtran pre-defines the format
-% of the cite.sty package \cite{} output to follow
-% that of IEEE. Loading the cite package will
-% result in citation numbers being automatically
-% sorted and properly "ranged". i.e.,
-% [1], [9], [2], [7], [5], [6]
-% (without using cite.sty)
-% will become:
-% [1], [2], [5]--[7], [9] (using cite.sty)
-% cite.sty's \cite will automatically add leading
-% space, if needed. Use cite.sty's noadjust option
-% (cite.sty V3.8 and later) if you want to turn this
-% off. cite.sty is already installed on most LaTeX
-% systems. The latest version can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/supported/cite/
 
 
 \usepackage[center]{caption}
@@ -625,13 +609,41 @@ hyperfootnotes=false,
 \appto{\appendices}{\def\Hy@chapapp{Appendix}}
 \makeatother
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography backend control. It is recommended  that we use biblatex, as it
+% supports more keys (for example, when we cite a website we can specify the
+% visited date, in the .bib file). It also support multiple files more easily
+% and more bibliography styles
 
-% Comments. Here you should change JMG, MAS to follow the initials of
-% the involved reviewers (usually the author and the advisor(s))
-\newcommand{\todosidejmg}{\todo[author=JMG, noinline, color=red!40]}
-\newcommand{\todosidemas}{\todo[author=MAS, noinline, color=blue!60]}
-\newcommand{\todojmg}{\todo[author=JMG, inline, color=red!40]}
-\newcommand{\todomas}{\todo[author=MAS, inline, color=blue!60]}
+% \newcommand{\bibliosystem}{bibtex} % Valid options are biblatex or bibtex
+\newcommand{\bibliosystem}{biblatex} % Valid options are biblatex or bibtex
+
+\ifthenelse{\equal{\bibliosystem}{biblatex}}
+{
+  % Use biblatex instead of bibtex
+  \usepackage[style=ieee]{biblatex}
+  \newcommand{\mybibfileOne}{biblio/biblio.bib}
+  \addbibresource{\myreferencespath\mybibfileOne}
+}
+{
+  % Use bibtex
+  \usepackage[noadjust]{cite}      % Written by Donald Arseneau
+  % V1.6 and later of IEEEtran pre-defines the format
+  % of the cite.sty package \cite{} output to follow
+  % that of IEEE. Loading the cite package will
+  % result in citation numbers being automatically
+  % sorted and properly "ranged". i.e.,
+  % [1], [9], [2], [7], [5], [6]
+  % (without using cite.sty)
+  % will become:
+  % [1], [2], [5]--[7], [9] (using cite.sty)
+  % cite.sty's \cite will automatically add leading
+  % space, if needed. Use cite.sty's noadjust option
+  % (cite.sty V3.8 and later) if you want to turn this
+  % off. cite.sty is already installed on most LaTeX
+  % systems. The latest version can be obtained at:
+  % http://www.ctan.org/tex-archive/macros/latex/contrib/supported/cite/
+}
 
 %%% Local Variables:
 %%% TeX-master: "../book"
