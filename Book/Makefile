@@ -36,6 +36,10 @@ AUTHOR_SURNAME=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myAuthor
 BOOK_LANGUAGE=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myLanguage" | cut -f 3 -d "{"| cut -f 1 -d "}")
 BOOK_TYPE=$(shell cat ../Config/worktypes.txt | grep -w $(DEGREE_NAME) | tr -s " " | cut -f 2 -d " " | tr -d " ")
 
+#TENGO QUE VER SÓMO GENERAR EL XMPDATA PARA INCLUIRLO... GENERO ERROR APOSTA...
+TFX_TITLE=$(shell cat ../Config/myconfig.tex | grep -v "%" | grep "myBookTitle" | cut -f 3 -d "{"| cut -f 1 -d "}")
+
+
 ROOT_FILENAME=book
 #ROOT_FINAL_BOOK_FILENAME=$(ROOT_FILENAME)-$(DEGREE_NAME)-$(AUTHOR_SURNAME)-$(AUTHOR_NAME)-$(BOOK_LANGUAGE)
 ROOT_FINAL_BOOK_FILENAME=$(BOOK_TYPE)-$(DEGREE_NAME)-$(AUTHOR_SURNAME)-$(AUTHOR_NAME)-$(BOOK_LANGUAGE)
@@ -80,6 +84,8 @@ all: $(DUMMY_TARGETS)
 	# $(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
 	# makeglossaries $(ROOT_FILENAME)
 	# $(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
+	# Generate pdf metadata
+	cat ../Config/$(ROOT_FILENAME).xmpdata.vars | sed "s/__DEGREE__/$degree/g" 
 	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	bibtex $(ROOT_FILENAME)
 	makeglossaries $(ROOT_FILENAME)
