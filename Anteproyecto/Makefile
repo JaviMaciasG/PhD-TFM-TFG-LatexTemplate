@@ -36,6 +36,16 @@ DIFF_FLATTEN_TEX_FILE = $(DIFF_FLATTEN_ROOT_FILENAME).tex
 RUBBER_TOOL=rubber
 LATEXMK_TOOL=latexmk
 EPSPDF_TOOL=epspdf
+PDF_TOOL=pdflatex
+# PDF_TOOL=xelatex
+# PDF_TOOL=lualatex
+
+ifeq ($(PDF_TOOL),pdflatex)
+	PDF_PREFIX := $(shell echo $(PDF_TOOL) | sed -e "s/latex//")
+else
+	PDF_PREFIX := pdf$(shell echo $(PDF_TOOL) | sed -e "s/latex//" )
+endif
+
 RM=rm -f
 
 BIBLIO_PACKAGE=$(shell cat ../Config/preamble-anteproyecto.tex | grep -e bibliosystem | grep -v ifthenelse | grep newcommand | grep -v "^\%" | cut -d'{' -f3 | cut -d'}' -f1 | tr -d " ")
@@ -66,16 +76,19 @@ all: $(DUMMY_TARGETS) anteproyecto
 #	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 
 anteproyecto: $(TEX_FILENAME)
-	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
-	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
-	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 #	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 #	$(RUBBER_TOOL) -f -d $(TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	$(BIBLIO_TOOL) $(ROOT_FILENAME)	
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 
 anteproyecto_latexmk: $(TEX_FILENAME)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
+	# Note: pdflatex/lualatex, etc option when provided with the COMMAND
+	# argument only sets the command for invoking pdflatex; it does not turn on
+	# the use of pdflatex. That is done by other options or in an
+	# initialization file. (Or using -pdf, -xepdf, -luapdf) as specified in $(PDF_TOOL)
+	$(LATEXMK_TOOL) -$(PDF_PREFIX) -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -xelatex="xelatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -lualatex="lualatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
 
 snapshot:
 	latexpand $(TEX_FILE) > $(SNAPSHOT_FLATTEN_TEX_FILE)
@@ -84,15 +97,15 @@ flatten:
 	latexpand $(TEX_FILE) > $(FLATTEN_TEX_FILE)
 
 latexdiff: flatten
-#	latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $((SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE)
+	# latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $((SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE)
 	latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $(SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE) > $(DIFF_FLATTEN_TEX_FILE)
-#latexdiff-git --force -r $(FLATTEN_TEX_FILE)
-	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_ROOT_FILENAME)
-	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_ROOT_FILENAME)
-	pdflatex $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_ROOT_FILENAME)
 #	$(RUBBER_TOOL) -d $(DIFF_FLATTEN_TEX_FILE)
 #	$(RUBBER_TOOL) -d $(DIFF_FLATTEN_TEX_FILE)
+	# latexdiff-git --force -r $(FLATTEN_TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_ROOT_FILENAME)
 	$(BIBLIO_TOOL)  $(DIFF_FLATTEN_ROOT_FILENAME)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_ROOT_FILENAME)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_ROOT_FILENAME)
 
 
 pdf_dia_done: $(PDFS_FROM_DIA)
