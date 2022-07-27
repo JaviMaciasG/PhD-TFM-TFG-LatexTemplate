@@ -5,15 +5,15 @@
 # $Id: Makefile,v 1.22 2016/07/14 23:37:33 macias Exp $
 #
 # By:
-#  + Javier MacÃ­as-Guarasa. 
-#    Departamento de ElectrÃ³nica
-#    Universidad de AlcalÃ¡
+#  + Javier Macías-Guarasa. 
+#    Departamento de Electrónica
+#    Universidad de Alcalá
 #  + Roberto Barra-Chicote. 
-#    Departamento de IngenierÃ­a ElectrÃ³nica
-#    Universidad PolitÃ©cnica de Madrid   
+#    Departamento de Ingeniería Electrónica
+#    Universidad Politécnica de Madrid   
 # 
-# Based on original sources by Roberto Barra, Manuel OcaÃ±a, JesÃºs Nuevo,
-# Pedro Revenga, Fernando HerrÃ¡nz and Noelia HernÃ¡ndez. Thanks a lot to
+# Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+# Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
 # all of them, and to the many anonymous contributors found (thanks to
 # google) that provided help in setting all this up.
 #
@@ -49,7 +49,6 @@ FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten.tex
 SNAPSHOT_FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten-snapshot.tex
 DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff
 DIFF_FLATTEN_TEX_FILE = $(DIFF_FLATTEN_ROOT_FILENAME).tex
-RUBBER_TOOL=rubber
 LATEXMK_TOOL=latexmk
 PDF_TOOL=pdflatex
 EPSPDF_TOOL=epspdf
@@ -93,15 +92,10 @@ DUMMY_TARGETS=pdf_dia_done pdf_svg_done pdf_eps_done
 DATE=$(shell date "+%C%y%m%d-%H%M%S")
 
 # To use synctex 
-FLAGS_SYNCTEX_RUBBER=--synctex
 FLAGS_SYNCTEX_PDFLATEX=-synctex=1
 
 # To generate 
 all: $(DUMMY_TARGETS)
-	# $(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
-	# makeglossaries $(ROOT_FILENAME)
-	# $(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
-	# Generate pdf metadata
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	$(BIBLIO_TOOL) $(ROOT_FILENAME)
 	makeglossaries $(ROOT_FILENAME)
@@ -110,12 +104,6 @@ all: $(DUMMY_TARGETS)
 	echo $(ROOT_FINAL_BOOK_FILENAME)
 	echo "[$(BOOK_TYPE)][$(DEGREE_NAME)][$(AUTHOR_SURNAME)][$(AUTHOR_NAME)][$(BOOK_LANGUAGE)]"
 	mv $(ROOT_FILENAME).pdf $(ROOT_FINAL_BOOK_FILENAME).pdf
-
-all_old: $(DUMMY_TARGETS)
-	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
-	makeglossaries $(ROOT_FILENAME)
-	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -f -d $(TEX_FILE)
-
 
 bare: backup-chapters bare-chapters clean-orig-figures clean-orig-diagrams
 
@@ -188,9 +176,6 @@ flatten:
 # now. 
 latexdiff: flatten
 	latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $(SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE)| sed -e 's/^[ ]*//g' | sed -e 's/[ ]*$$//g' | perl -0777  -pe 's/[}]\n\\end[{]tikzpicture[}];\n\\end[{]tikzpicture[}]/\\end{tikzpicture}\n};\n\\end{tikzpicture}/g' >  $(DIFF_FLATTEN_TEX_FILE)
-#	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -d $(DIFF_FLATTEN_TEX_FILE)
-#	makeglossaries $(DIFF_FLATTEN_ROOT_FILENAME)
-#	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) -d $(DIFF_FLATTEN_TEX_FILE)
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
 	$(BIBLIO_TOOL) $(DIFF_FLATTEN_ROOT_FILENAME)
 	makeglossaries $(DIFF_FLATTEN_ROOT_FILENAME)
@@ -236,7 +221,6 @@ tar:
 	zip -u $(ROOT_FILENAME)-latex.zip `find . -name Makefile -o -name README -o -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS" ` 
 
 clean:
-	$(RUBBER_TOOL) $(FLAGS_SYNCTEX_RUBBER) --clean -d $(TEX_FILE)
 #	$(RM) $(PDFS_FROM_DIA)
 #	$(RM) $(PDFS_FROM_SVG)
 	$(RM) $(DUMMY_TARGETS)

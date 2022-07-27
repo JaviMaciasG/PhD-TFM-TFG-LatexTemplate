@@ -5,15 +5,15 @@
 # $Id: Makefile,v 1.4 2016/03/31 23:38:15 macias Exp $
 #
 # By:
-#  + Javier MacÃ­as-Guarasa. 
-#    Departamento de ElectrÃ³nica
-#    Universidad de AlcalÃ¡
+#  + Javier Macías-Guarasa. 
+#    Departamento de Electrónica
+#    Universidad de Alcalá
 #  + Roberto Barra-Chicote. 
-#    Departamento de IngenierÃ­a ElectrÃ³nica
-#    Universidad PolitÃ©cnica de Madrid   
+#    Departamento de Ingeniería Electrónica
+#    Universidad Politécnica de Madrid   
 # 
-# Based on original sources by Roberto Barra, Manuel OcaÃ±a, JesÃºs Nuevo,
-# Pedro Revenga, Fernando HerrÃ¡nz and Noelia HernÃ¡ndez. Thanks a lot to
+# Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+# Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
 # all of them, and to the many anonymous contributors found (thanks to
 # google) that provided help in setting all this up.
 #
@@ -33,7 +33,6 @@ FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten.tex
 SNAPSHOT_FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten-snapshot.tex
 DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff
 DIFF_FLATTEN_TEX_FILE = $(DIFF_FLATTEN_ROOT_FILENAME).tex
-RUBBER_TOOL=rubber
 LATEXMK_TOOL=latexmk
 EPSPDF_TOOL=epspdf
 PDF_TOOL=pdflatex
@@ -68,16 +67,11 @@ PDFS_FROM_EPS=$(patsubst %.eps,%.pdf,$(EPS_SOURCES))
 DUMMY_TARGETS=pdf_dia_done pdf_svg_done pdf_eps_done
 
 # To use synctex 
-FLAGS_SYNCTEX_RUBBER=--synctex
 FLAGS_SYNCTEX_PDFLATEX=-synctex=1
 
 all: $(DUMMY_TARGETS) anteproyecto
-#	$(RUBBER_TOOL) -f -d $(TEX_FILE)
-#	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 
 anteproyecto: $(TEX_FILENAME)
-#	$(RUBBER_TOOL) -f -d $(TEX_FILE)
-#	$(RUBBER_TOOL) -f -d $(TEX_FILE)
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	$(BIBLIO_TOOL) $(ROOT_FILENAME)	
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
@@ -99,8 +93,6 @@ flatten:
 latexdiff: flatten
 	# latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $((SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE)
 	latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $(SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE) > $(DIFF_FLATTEN_TEX_FILE)
-#	$(RUBBER_TOOL) -d $(DIFF_FLATTEN_TEX_FILE)
-#	$(RUBBER_TOOL) -d $(DIFF_FLATTEN_TEX_FILE)
 	# latexdiff-git --force -r $(FLATTEN_TEX_FILE)
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_ROOT_FILENAME)
 	$(BIBLIO_TOOL)  $(DIFF_FLATTEN_ROOT_FILENAME)
@@ -142,7 +134,6 @@ tar:
 	zip -u $(ROOT_FILENAME)-latex.zip `find . -name Makefile -o -name README -o -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS"` 
 
 clean:
-	$(RUBBER_TOOL) --clean -d $(TEX_FILE)
 #	$(RM) $(PDFS_FROM_DIA)
 #	$(RM) $(PDFS_FROM_SVG)
 	$(RM) $(DUMMY_TARGETS)
