@@ -5,15 +5,15 @@
 # $Id: Makefile,v 1.2 2014/10/13 12:57:40 macias Exp $
 #
 # By:
-#  + Javier Mac�as-Guarasa. 
-#    Departamento de Electr�nica
-#    Universidad de Alcal�
+#  + Javier MacÃ­as-Guarasa. 
+#    Departamento de ElectrÃ³nica
+#    Universidad de AlcalÃ¡
 #  + Roberto Barra-Chicote. 
-#    Departamento de Ingenier�a Electr�nica
-#    Universidad Polit�cnica de Madrid   
+#    Departamento de IngenierÃ­a ElectrÃ³nica
+#    Universidad PolitÃ©cnica de Madrid   
 # 
-# Based on original sources by Roberto Barra, Manuel Oca�a, Jes�s Nuevo,
-# Pedro Revenga, Fernando Herr�nz and Noelia Hern�ndez. Thanks a lot to
+# Based on original sources by Roberto Barra, Manuel OcaÃ±a, JesÃºs Nuevo,
+# Pedro Revenga, Fernando HerrÃ¡nz and Noelia HernÃ¡ndez. Thanks a lot to
 # all of them, and to the many anonymous contributors found (thanks to
 # google) that provided help in setting all this up.
 #
