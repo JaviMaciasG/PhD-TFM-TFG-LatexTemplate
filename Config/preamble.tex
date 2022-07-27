@@ -58,11 +58,13 @@
   \PassOptionsToPackage{cmyk}{xcolor}% NB: put this *before* \usepackage{pst-all}
 }
 
+\usepackage{iftex}
 %\usepackage[latin1]{inputenc} % Para poder escribir con acentos y ñ. en
                               % latin1
-\usepackage[utf8]{inputenc} % Para poder escribir con acentos y ñ. en utf8
-\usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
-                              % usar si no es necesario, porque ralentiza muchisimo la compilación.
+\ifPDFTeX
+  \usepackage[utf8]{inputenc} % Para poder escribir con acentos y ñ.
+  \usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
+\fi                                % usar si no es necesario, porque ralentiza muchisimo la compilación.
 \usepackage{ae}               % Para que todas las fuentes sean Type1, y ninguna Type3.
 \usepackage{lmodern}          % This generates a pdf with searchable
                               % accented characters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
