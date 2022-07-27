@@ -34,10 +34,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN Preamble and configuration section
 %
-\input{../config/preamble-letter.tex}    % DO NOT TOUCH THIS LINE. You can edit
+\input{../../Config/preamble-letter.tex}    % DO NOT TOUCH THIS LINE. You can edit
                                % the file to modify some default settings
                                    
-\input{../config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE 
+\input{../../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE 
                                % to set your specific settings (related
                                % to the document language, your degree,
                                % document details (such as title, author
@@ -47,79 +47,88 @@
                                % define your commonly used commands
                                % (some examples are provided).
 
-\input{../config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
+\input{../../Config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
                                % "postamble" is not a valid word... :-)
 
+\usepackage{fancyhdr}
+\fancyhead[LO,LE]{\hspace{-1.5cm}\includegraphics[width=.4\textwidth]{../../Book/logos/logoUAH.jpg}}
+\fancyhead[RO,RE]{\scriptsize\textcolor{blue}{DEPARTAMENTO DE ELECTRÓNICA}\\
+Edificio Politécnico\\
+Campus Universitario s/n\\
+28805 Alcalá de Henares (Madrid)\\
+Teléfono: 91 885 65 40\\
+email: \href{mailto:dd}%javier.maciasguarasa@uah.es}
+}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{geometry}
+\geometry{}
+\setlength{\textwidth}{17cm}
+
+
+%\fancyhead[CO,CE]{---Draft---}
 
 %
 % END Preamble and configuration section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{VISTO BUENO \MakeUppercase{\wordDelOrDeLos{}
-    \wordTutorOrTutores} PARA EL DEPÓSITO DEL TRABAJO FIN DE MÁSTER} 
+    \wordTutorOrTutores} PARA LA DEFENSA DE LA TESIS DOCTORAL} 
                                                    % DO NOT TOUCH THIS LINE
-\date{}                                            % DO NOT TOUCH THIS LINE
+\date{\myPaperworkDate}                                            % DO NOT TOUCH THIS LINE
+
+\pagestyle{fancy}
+\usepackage[all]{background}
+
+\SetBgContents{{\tiny\textcolor{blue}{UNIVERSIDAD DE ALCALÁ. PATRIMONIO DE LA HUMANIDAD}}}% Set contents
+\SetBgPosition{current page.west}% Select location
+\SetBgVshift{-0.6cm}% Add vertical shift (results in a shift in x direction due to rotation)
+\SetBgOpacity{1.0}% Select opacity
+\SetBgAngle{90.0}% Select rotation of logo
+\SetBgScale{2.0}% Select scale factor of logo
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Let's start with the real stuff
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}                                   % DO NOT TOUCH THIS LINE
 
-{\Large
-\maketitle 
+%\topskip0pt
 
-\thispagestyle{empty}
+\vspace*{\fill}
+
+Dr. \myCoTutorFullName, Catedrático de Universidad de
+Departamento de Electrónica de la Universidad de Alcalá
+
+Dr. \myAcademicTutorFullName, Titular de Universidad de
+Departamento de Electrónica de la Universidad de Alcalá
+
 
 \vspace{1cm}
 
-
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-NO ESTÁ HECHO TODAVÍA
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-lcalá
-Dr. Xx Yy Zz, Profesor Ayudante Doctor del Departamento de Electrónica de la Universidad de Alcalá
-
-
-
-
-INFORMAN: Que la Tesis Doctoral titulada ``XX YY ZZ'' presentada por D. Xx
-Yy Zz, y realizada bajo la dirección de los doctores D. Xx Yy Zz y D. Xx
-Yy Zz, dentro del campo de Xx Yy Zz, reúne los méritos de calidad y
-originalidad para optar al Grado de Doctor.
-
-
-	Alcalá de Henares,          de                      de 
-
-
-
-
-
-
-	Fdo. D.  Xx Yy Zz                                       Fdo. D.  Xx Yy Zz
-
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-\myAdvisorsWithDonOrDona, \wordTutorOrTutores{} del Trabajo Fin de Máster
-``\myBookTitle'' realizado por \wordDonOrDonaAutor{} \myAuthorFullName, por la
-presente \wordDaOrDan{} su conformidad para que el citado trabajo sea
-presentado para su defensa.
+\begin{table}[h!]
+  \begin{tabularx}{\textwidth}{cX}
+    \textbf{INFORMAN}: & Que la Tesis Doctoral titulada
+``\myBookTitleSpanish'' presentada por D. \myAuthorFullName, y
+realizada bajo la dirección de los doctores
+D. \myAcademicTutorFullName{} y D. \myCoTutorFullName{}, dentro del campo
+del procesado de audio con agrupaciones de micrófonos reúne los
+méritos de calidad y originalidad
+para optar al Grado de Doctor.
+  \end{tabularx}
+\end{table}
 
 \vspace{1cm}
 
-$\XBox$ Sí
+\centering	Alcalá de Henares, \myPaperworkDate 
 
-\vspace{0.5cm}
+\vspace{3cm}
 
-$\Box$ No
+\centering {Fdo.: \myAdvisors}
 
-\vspace{2cm}
+\vspace*{\fill}
 
-\flushright{Alcalá de Henares, \myPaperworkDate.}
-
-\vspace{4cm}
-
-\flushright{Fdo.: \myAdvisors}
-
-}
 \end{document}
 
