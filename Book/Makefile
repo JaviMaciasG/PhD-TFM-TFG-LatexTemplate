@@ -50,7 +50,6 @@ SNAPSHOT_FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten-snapshot.tex
 DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff
 DIFF_FLATTEN_TEX_FILE = $(DIFF_FLATTEN_ROOT_FILENAME).tex
 LATEXMK_TOOL=latexmk
-PDF_TOOL=pdflatex
 EPSPDF_TOOL=epspdf
 RM=rm -f
 ifeq ($(BIBLIO_PACKAGE),bibtex)
@@ -59,9 +58,9 @@ else
 	BIBLIO_TOOL := biber
 endif
 
-# PDF_TOOL=pdflatex
+PDF_TOOL=pdflatex
 # PDF_TOOL=xelatex
-PDF_TOOL=lualatex
+# PDF_TOOL=lualatex
 
 ifeq ($(PDF_TOOL),pdflatex)
 	PDF_PREFIX := $(shell echo $(PDF_TOOL) | sed -e "s/latex//")
