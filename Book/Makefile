@@ -95,6 +95,8 @@ FLAGS_SYNCTEX_PDFLATEX=-synctex=1
 
 # To generate 
 all: $(DUMMY_TARGETS)
+	echo "Processing LaTeX code with $(PDF_TOOL)"
+	echo "Processing bibliography with $(BIBLIO_TOOL)"
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	$(BIBLIO_TOOL) $(ROOT_FILENAME)
 	makeglossaries $(ROOT_FILENAME)
@@ -223,6 +225,7 @@ clean:
 #	$(RM) $(PDFS_FROM_DIA)
 #	$(RM) $(PDFS_FROM_SVG)
 	$(RM) $(DUMMY_TARGETS)
+	$(RM) $(ROOT_FILENAME).acn $(ROOT_FILENAME).sbl $(ROOT_FILENAME).out $(ROOT_FILENAME).log $(ROOT_FILENAME).bcf $(ROOT_FILENAME).aux $(ROOT_FILENAME).bbl  $(ROOT_FILENAME).blg  $(ROOT_FILENAME).ist $(ROOT_FILENAME).glsdefs $(ROOT_FILENAME).toc $(ROOT_FILENAME).run.xml $(ROOT_FILENAME).lot $(ROOT_FILENAME).lof $(ROOT_FILENAME).loa $(ROOT_FILENAME).cod $(ROOT_FILENAME).pdf
 
 
 clean_latexmk:
