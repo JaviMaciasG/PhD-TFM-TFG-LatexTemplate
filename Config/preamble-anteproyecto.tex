@@ -536,16 +536,85 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 % visited date, in the .bib file). It also support multiple files more easily
 % and more bibliography styles
 
-% \newcommand{\bibliosystem}{bibtex} % Valid options are biblatex or bibtex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography backend control. It is recommended  that we use biblatex, as it
+% supports more keys (for example, when we cite a website we can specify the
+% visited date, in the .bib file). It also support multiple files more easily
+% and more bibliography styles
+
+%\newcommand{\bibliosystem}{bibtex} % Valid options are biblatex or bibtex
 \newcommand{\bibliosystem}{biblatex} % Valid options are biblatex or bibtex
 
 \ifthenelse{\equal{\bibliosystem}{biblatex}}
 {
   % Use biblatex instead of bibtex
   \usepackage[style=ieee]{biblatex}
-  % \newcommand{\mybibfileOne}{biblio/biblio.bib}
-  % \addbibresource{\myreferencespath\mybibfileOne}
-  \addbibresource{../Book/biblio/biblio.bib}
+  % This is a dirty hack, but should work... The reason to do so is to avoid
+  % the need of editing this file by the user (see Book/biblio files for more
+  % details)
+  \input{../Book/biblio/bibliofiles.tex}
+
+  \ifdef{\mybibfileOne}
+  {
+  \addbibresource{\myreferencespath\mybibfileOne}
+  }
+  {
+  \errorYOUmustDEFINEatLEASTmybibfileOneInbibliofilesDOTtex
+  }
+  \ifdef{\mybibfileTwo}
+  {
+  \addbibresource{\myreferencespath\mybibfileTwo}
+  }
+  {
+  }
+  \ifdef{\mybibfileThree}
+  {
+  \addbibresource{\myreferencespath\mybibfileThree}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileFour}
+  {
+  \addbibresource{\myreferencespath\mybibfileFour}
+  }
+  {
+  }
+  \ifdef{\mybibfileSix}
+  {
+  \addbibresource{\myreferencespath\mybibfileSix}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileSeven}
+  {
+  \addbibresource{\myreferencespath\mybibfileSeven}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileEight}
+  {
+  \addbibresource{\myreferencespath\mybibfileEight}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileNine}
+  {
+  \addbibresource{\myreferencespath\mybibfileNine}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileTen}
+  {
+  \addbibresource{\myreferencespath\mybibfileTen}
+  }
+  {
+  }
+
 }
 {
   % Use bibtex
@@ -566,6 +635,7 @@ pdfborder={0 0 112.0}              %%% border-width of frames
   % systems. The latest version can be obtained at:
   % http://www.ctan.org/tex-archive/macros/latex/contrib/supported/cite/
 }
+
 %%% Local Variables:
 %%% TeX-master: "../book"
 %%% End:
