@@ -4,7 +4,6 @@
 #
 ###########################################################################
 
-
 ROOT_CARTA3 = vistoBuenoTutorTesis
 TEX_CARTA3 = $(ROOT_CARTA3).tex
 RUBBER_TOOL=rubber
