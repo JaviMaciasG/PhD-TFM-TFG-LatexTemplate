@@ -531,3 +531,7 @@ xcuserdata/
 
 # Don't check flatten or diffed files into git
 *flatten*.tex
+
+# Zipped files with the template distribution
+00*zip
+00*tgz
