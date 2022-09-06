@@ -37,10 +37,11 @@
 
 % ifthen to allow using language dependent settings
 \usepackage{ifthen}
-
-\usepackage[utf8]{inputenc} % Para poder escribir con acentos y ñ.
-\usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
-                              % usar si no es necesario, porque ralentiza muchisimo la compilación.
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc} % Para poder escribir con acentos y ñ.
+  \usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
+\fi                                % usar si no es necesario, porque ralentiza muchisimo la compilación.
 \usepackage{ae}               % Para que todas las fuentes sean Type1, y ninguna Type3.
 
 \usepackage[spanish, english]{babel}

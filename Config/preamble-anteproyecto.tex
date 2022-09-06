@@ -38,11 +38,15 @@
 %% FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR
 %\PassOptionsToPackage{cmyk}{xcolor}% NB: put this *before* \usepackage{pst-all}
 
-\usepackage[utf8]{inputenc} % Para poder escribir con acentos y ñ.
-\usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
-                              % usar si no es necesario, porque ralentiza muchisimo la compilación.
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc} % Para poder escribir con acentos y ñ.
+  \usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
+\fi                             % usar si no es necesario, porque ralentiza muchisimo la compilación.
 \usepackage{ae}               % Para que todas las fuentes sean Type1, y ninguna Type3.
-\usepackage{cmap}
+\ifPDFTeX
+  \usepackage{cmap} % This package produces an error if we are not using pdflatex
+\fi
 \usepackage[spanish, english]{babel}
 
 % Use this if you want to include pdf files in the final document
@@ -72,23 +76,6 @@
 \usepackage{supertabular}
 \usepackage{hhline}
 \usepackage{array}
-\usepackage[noadjust]{cite}      % Written by Donald Arseneau
-                        % V1.6 and later of IEEEtran pre-defines the format
-                        % of the cite.sty package \cite{} output to follow
-                        % that of IEEE. Loading the cite package will
-                        % result in citation numbers being automatically
-                        % sorted and properly "ranged". i.e.,
-                        % [1], [9], [2], [7], [5], [6]
-                        % (without using cite.sty)
-                        % will become:
-                        % [1], [2], [5]--[7], [9] (using cite.sty)
-                        % cite.sty's \cite will automatically add leading
-                        % space, if needed. Use cite.sty's noadjust option
-                        % (cite.sty V3.8 and later) if you want to turn this
-                        % off. cite.sty is already installed on most LaTeX
-                        % systems. The latest version can be obtained at:
-                        % http://www.ctan.org/tex-archive/macros/latex/contrib/supported/cite/
-
 
 \usepackage{caption}
 
@@ -353,6 +340,34 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 \floatstyle{plaintop} % optionally change the style of the new float
 %\newfloat{codefloat}{H}{cod}[chapter]
 
+% Support utf-8 in listings. 
+% The way the inputenc package works with non-ASCII UTF-8-encoded characters (by
+% making the first byte active and then reading the following ones as arguments)
+% is fundamentally incompatible with the way the listing package works, which
+% reads each byte individually and expects it to be an individual character.
+% See https://tex.stackexchange.com/questions/24528/having-problems-with-listings-and-utf-8-can-it-be-fixed
+\lstset{
+    inputencoding = utf8,  % Input encoding
+    extendedchars = true,  % Extended ASCII
+    literate      =        % Support additional characters
+      {á}{{\'a}}1  {é}{{\'e}}1  {í}{{\'i}}1 {ó}{{\'o}}1  {ú}{{\'u}}1
+      {Á}{{\'A}}1  {É}{{\'E}}1  {Í}{{\'I}}1 {Ó}{{\'O}}1  {Ú}{{\'U}}1
+      {à}{{\`a}}1  {è}{{\`e}}1  {ì}{{\`i}}1 {ò}{{\`o}}1  {ù}{{\`u}}1
+      {À}{{\`A}}1  {È}{{\'E}}1  {Ì}{{\`I}}1 {Ò}{{\`O}}1  {Ù}{{\`U}}1
+      {ä}{{\"a}}1  {ë}{{\"e}}1  {ï}{{\"i}}1 {ö}{{\"o}}1  {ü}{{\"u}}1
+      {Ä}{{\"A}}1  {Ë}{{\"E}}1  {Ï}{{\"I}}1 {Ö}{{\"O}}1  {Ü}{{\"U}}1
+      {â}{{\^a}}1  {ê}{{\^e}}1  {î}{{\^i}}1 {ô}{{\^o}}1  {û}{{\^u}}1
+      {Â}{{\^A}}1  {Ê}{{\^E}}1  {Î}{{\^I}}1 {Ô}{{\^O}}1  {Û}{{\^U}}1
+      {œ}{{\oe}}1  {Œ}{{\OE}}1  {æ}{{\ae}}1 {Æ}{{\AE}}1  {ß}{{\ss}}1
+      {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1  {Ø}{{\O}}1   {å}{{\r a}}1
+      {Å}{{\r A}}1 {ã}{{\~a}}1  {õ}{{\~o}}1 {Ã}{{\~A}}1  {Õ}{{\~O}}1
+      {ñ}{{\~n}}1  {Ñ}{{\~N}}1  {¿}{{?`}}1  {¡}{{!`}}1
+      {°}{{\textdegree}}1 {º}{{\textordmasculine}}1 {ª}{{\textordfeminine}}1
+      % ¿ and ¡ are not correctly displayed if inconsolata font is used
+      % together with the lstlisting environment. Consider typing code in
+      % external files and using \lstinputlisting to display them instead.      
+  }
+
 \lstdefinestyle{console}
                {
                  basicstyle=\scriptsize\bf\ttfamily,
@@ -514,6 +529,112 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 %\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}}
 \providecommand{\DIFadd}[1]{{\protect\color{blue}\textbf{#1}}}
 \providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                     
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography backend control. It is recommended  that we use biblatex, as it
+% supports more keys (for example, when we cite a website we can specify the
+% visited date, in the .bib file). It also support multiple files more easily
+% and more bibliography styles
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography backend control. It is recommended  that we use biblatex, as it
+% supports more keys (for example, when we cite a website we can specify the
+% visited date, in the .bib file). It also support multiple files more easily
+% and more bibliography styles
+
+%\newcommand{\bibliosystem}{bibtex} % Valid options are biblatex or bibtex
+\newcommand{\bibliosystem}{biblatex} % Valid options are biblatex or bibtex
+
+\ifthenelse{\equal{\bibliosystem}{biblatex}}
+{
+  % Use biblatex instead of bibtex
+  \usepackage[style=ieee]{biblatex}
+  % This is a dirty hack, but should work... The reason to do so is to avoid
+  % the need of editing this file by the user (see Book/biblio files for more
+  % details)
+  \input{../Book/biblio/bibliofiles.tex}
+
+  \ifdef{\mybibfileOne}
+  {
+  \addbibresource{\myreferencespath\mybibfileOne}
+  }
+  {
+  \errorYOUmustDEFINEatLEASTmybibfileOneInbibliofilesDOTtex
+  }
+  \ifdef{\mybibfileTwo}
+  {
+  \addbibresource{\myreferencespath\mybibfileTwo}
+  }
+  {
+  }
+  \ifdef{\mybibfileThree}
+  {
+  \addbibresource{\myreferencespath\mybibfileThree}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileFour}
+  {
+  \addbibresource{\myreferencespath\mybibfileFour}
+  }
+  {
+  }
+  \ifdef{\mybibfileSix}
+  {
+  \addbibresource{\myreferencespath\mybibfileSix}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileSeven}
+  {
+  \addbibresource{\myreferencespath\mybibfileSeven}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileEight}
+  {
+  \addbibresource{\myreferencespath\mybibfileEight}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileNine}
+  {
+  \addbibresource{\myreferencespath\mybibfileNine}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileTen}
+  {
+  \addbibresource{\myreferencespath\mybibfileTen}
+  }
+  {
+  }
+
+}
+{
+  % Use bibtex
+  \usepackage[noadjust]{cite}      % Written by Donald Arseneau
+  % V1.6 and later of IEEEtran pre-defines the format
+  % of the cite.sty package \cite{} output to follow
+  % that of IEEE. Loading the cite package will
+  % result in citation numbers being automatically
+  % sorted and properly "ranged". i.e.,
+  % [1], [9], [2], [7], [5], [6]
+  % (without using cite.sty)
+  % will become:
+  % [1], [2], [5]--[7], [9] (using cite.sty)
+  % cite.sty's \cite will automatically add leading
+  % space, if needed. Use cite.sty's noadjust option
+  % (cite.sty V3.8 and later) if you want to turn this
+  % off. cite.sty is already installed on most LaTeX
+  % systems. The latest version can be obtained at:
+  % http://www.ctan.org/tex-archive/macros/latex/contrib/supported/cite/
+}
 
 %%% Local Variables:
 %%% TeX-master: "../book"
