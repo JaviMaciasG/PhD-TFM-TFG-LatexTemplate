@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: pliego.tex,v 1.5 2015/06/05 00:10:36 macias Exp $
+% $Id: pliego-ejemplo.tex,v 1.2 2015/06/05 00:10:36 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -31,7 +31,69 @@
 \chapter{Pliego de condiciones}
 \label{cha:pliego-de-condiciones}
 
-Blah, blah, blah.
+\section{Introducción}
+
+En este apartado se evaluaran las condiciones para poner en marcha el software que se ha especificado en los apartados anteriores. Cabe resaltar el carácter de este proyecto, en el que se ha diseñado una colección de funciones que facilitan al programador la correcta adquisición de datos sonoros, y por lo tanto no aplican las condiciones técnicas o ambientales que pudieran afectarle, ya que las impone los requerimientos las aplicaciones que en un futuro se le quiera dar a este proyecto.
+
+Solamente afectan las condiciones de configuración hardware o software donde se quiera aplicar el programa informático.
+
+\section{Requisitos de hardware}
+
+\subsection{Requisitos mínimos}
+\begin{itemize}
+  \item Utilización de un PC de 32 bits de escritorio con tarjeta de sonido.
+  \item Un mínimo de 384 MB de memoria RAM.
+  \item Al menos 100 MB de memoria libre en disco duro.
+\end{itemize}
+
+\subsection{Requisitos de hardware recomendados}
+Estos requisitos son necesarios para implementar algoritmos de localización basados en onda sonora.
+\begin{itemize}
+  \item CPU de 64 bits con 4 Cores o más.
+  \item Sistema de adquisición con 8 canales o más.
+  \item Utilización de al menos 4 Gb de memoria RAM.
+\end{itemize}
+
+\section{Condiciones hardware}
+
+El sistema de adquisición que se propone hace uso de 4 hilos independientes en la adquisición en tiempo real. Es por esta razón que se recomienda sistemas multiprocesador, que permitan realizar las tareas de cada hilo de manera independiente.
+
+Se precisa de un sistema de adquisición de audio profesional para la adquisición del audio proveniente de cada micrófono para ejecutar el algoritmo de localización. Además por esta razón y porque se van a generar gran cantidad de datos a procesar en la memoria RAM del equipo, es necesaria la utilización de un volumen importante de memoria RAM, se recomienda que la cifra de partida sean 4 Gb que es la cifra máxima que un sistema operativo de 32 bits basado en Linux puede direccionar.
+
+Se recomienda tener 100 MB de disco duro libre para poder hacer grabaciones de corta duración. Es altamente recomendable disponer de 10 GB libres si se van a realizar grabaciones multicanal y de larga duración.
+ 
+\section{Requisitos de software}
+
+\subsection{Requisitos mínimos}
+\begin{itemize}
+  \item Utilización de un sistema operativo Ubuntu 12.04.
+  \item Librería \texttt{Rtaudio}.
+  \item Librería \texttt{SNDFile}.
+  \item Para el desarrollo del algoritmo de localización se deben utilizar las librerías propias del grupo GEINTRA.
+\end{itemize}
+
+\subsection{Requisitos de software recomendados}
+\begin{itemize}
+  \item Utilización de un sistema operativo de 64 bits, Ubuntu 12.04 o superior.
+\end{itemize}
+
+\section{Condiciones software}
+
+En este apartado software se recomienda utilizar el sistema operativo Ubuntu 12.04 al ser LTS, y proporcionar la compatibilidad con las nuevas librerías Qt para realizar profiling mediante KCachegrind.
+
+En el caso de disponer un sistema hardware con una memoria RAM superior a 4 GB es necesario utilizar, una verisón de Ubuntu de 64 bits para poder direccionarla. Es muy recomendable esta opción para poder adquirir y procesar sonido multicanal.
+
+\newpage
+\section{Condiciones generales}
+
+La utilización de esta librería supone la posibilidad de ejecutar cualquier programa de procesamiento sobre ella que tenga en cuenta las siguientes condiciones:
+
+\begin{itemize}
+  \item El ancho de banda de las señales acústicas está condicionado por el rango que permita la tarjeta de adquisición a utilizar, por lo general cumple aproximadamente la del espectro del oído humano, de 20 a 20000 Hz.
+  \item El número de canales a utilizar lo limita la tarjeta de adquisición, la librería está preparada para adquirir, sea cual sea el rango multicanal.
+  \item Ante cualquier uso de esta librería deberá tenerse en cuenta el reconocimiento (BY), que no es comercial (NC), y que las obras derivadas se compartan de igual manera (SA).
+
+\end{itemize}
 
 %%% Local Variables:
 %%% TeX-master: "../book"
