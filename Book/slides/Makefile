@@ -5,15 +5,15 @@
 # $Id: Makefile,v 1.2 2014/10/13 12:57:40 macias Exp $
 #
 # By:
-#  + Javier MacÌas-Guarasa. 
-#    Departamento de ElectrÛnica
-#    Universidad de Alcal·
+#  + Javier Mac√≠as-Guarasa. 
+#    Departamento de Electr√≥nica
+#    Universidad de Alcal√°
 #  + Roberto Barra-Chicote. 
-#    Departamento de IngenierÌa ElectrÛnica
-#    Universidad PolitÈcnica de Madrid   
+#    Departamento de Ingenier√≠a Electr√≥nica
+#    Universidad Polit√©cnica de Madrid   
 # 
-# Based on original sources by Roberto Barra, Manuel OcaÒa, Jes˙s Nuevo,
-# Pedro Revenga, Fernando Herr·nz and Noelia Hern·ndez. Thanks a lot to
+# Based on original sources by Roberto Barra, Manuel Oca√±a, Jes√∫s Nuevo,
+# Pedro Revenga, Fernando Herr√°nz and Noelia Hern√°ndez. Thanks a lot to
 # all of them, and to the many anonymous contributors found (thanks to
 # google) that provided help in setting all this up.
 #
@@ -34,6 +34,16 @@ LATEXMK_TOOL=latexmk
 EPSPDF_TOOL=epspdf
 RM=rm -f
 
+# PDF_TOOL=pdflatex
+# PDF_TOOL=xelatex
+PDF_TOOL=lualatex
+
+ifeq ($(PDF_TOOL),pdflatex)
+	PDF_PREFIX := $(shell echo $(PDF_TOOL) | sed -e "s/latex//")
+else
+	PDF_PREFIX := pdf$(shell echo $(PDF_TOOL) | sed -e "s/latex//" )
+endif
+
 ###########################################################################
 # Support to automagically compile dia+svg files. Adapt to your own needs
 DIA_SOURCES=$(wildcard ../diagrams/*.dia)
@@ -47,12 +57,12 @@ PDFS_FROM_EPS=$(patsubst %.eps,%.pdf,$(EPS_SOURCES))
 DUMMY_TARGETS=pdf_dia_done pdf_svg_done pdf_eps_done
 
 all: $(DUMMY_TARGETS) $(TEX_FILE)
-	$(RUBBER_TOOL) -f -d $(TEX_FILE)
-	$(RUBBER_TOOL) -f -d $(TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
+	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 
 all_latexmk: $(DUMMY_TARGETS)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_FILE)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_FILE)
+	$(LATEXMK_TOOL) -$(PDF_PREFIX) -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -xelatex="xelatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -lualatex="lualatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
 
 pdf_dia_done: $(PDFS_FROM_DIA)
 	echo "Generating pdfs from DIA: [$(PDFS_FROM_DIA)]..."

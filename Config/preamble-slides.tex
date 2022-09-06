@@ -30,10 +30,11 @@
 
 % ifthen to allow using language dependent settings
 \usepackage{ifthen}
-
-\usepackage[utf8]{inputenc} % Para poder escribir con acentos y ñ.
-\usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
-                              % usar si no es necesario, porque ralentiza muchisimo la compilación.
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc} % Para poder escribir con acentos y ñ.
+  \usepackage[T1]{fontenc}      % Para que haga bien la ``hyphenation''. No
+\fi                                % usar si no es necesario, porque ralentiza muchisimo la compilación.
 \usepackage{ae}               % Para que todas las fuentes sean Type1, y ninguna Type3.
 \usepackage{lmodern}          % This generates a pdf with searchable
                               % accented characters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -367,7 +368,7 @@
 \definecolor{titlecolor}{RGB}{0,173,239}
 
 \mode<presentation>{
-  % % \usetheme{Warsaw}
+  % \usetheme{Warsaw}
   % \usefonttheme{structurebold}
   % \setbeamerfont{title}{family={\fontfamily{ppl}},series=\bfseries,size=\LARGE,shape=\itshape}
   
@@ -385,47 +386,51 @@
   
   \setbeamertemplate{navigation symbols}{}
 
+  % \setbeamertemplate{itemize items}[square]
 
-%  \setbeamertemplate{itemize items}[square]
+  \transduration{1}
+  % \addtobeamertemplate{background canvas}{\transuncover[duration=1,direction=270]}{}
+  % \addtobeamertemplate{background canvas}{\transdissolve[duration=0.5,direction=90]}{}
+  % \addtobeamertemplate{background canvas}{\transglitter[direction=90]}{}
 
-\transduration{1}
-%\addtobeamertemplate{background canvas}{\transuncover[duration=1,direction=270]}{}
-%\addtobeamertemplate{background canvas}{\transdissolve[duration=0.5,direction=90]}{}
-%\addtobeamertemplate{background canvas}{\transglitter[direction=90]}{}
+  \setbeamertemplate{frametitle}{\Large\insertframetitle\\\large\textcolor{blue}{\insertframesubtitle}}
 
-\setbeamertemplate{frametitle}{\Large\insertframetitle\\\large\textcolor{blue}{\insertframesubtitle}}
+  \setbeamercolor{item}{fg=red} % color of bullets
+  \setbeamertemplate{itemize item}{$\bm{\Box}$}
+  \setbeamercolor{itemize/enumerate body}{fg=black}
 
-\setbeamercolor{item}{fg=red} % color of bullets
-\setbeamertemplate{itemize item}{$\bm{\Box}$}
-\setbeamercolor{itemize/enumerate body}{fg=black}
+  \setbeamertemplate{itemize subitem}{\scriptsize$\blacksquare$}
+  % Fix compilation error in modern latex the shape key does not exists
+  % \setbeamercolor{itemize/enumerate subbody}{fg=blue,shape=\itshape}
+  \setbeamercolor{itemize/enumerate subbody}{fg=blue}
 
-\setbeamertemplate{itemize subitem}{\scriptsize$\blacksquare$}
-\setbeamercolor{itemize/enumerate subbody}{fg=blue,shape=\itshape}
+  \setbeamertemplate{itemize subsubitem}{\tiny$\Box$}
+  % Fix compilation error in modern latex the shape key does not exists
+  % \setbeamercolor{itemize/enumerate subsubbody}{fg=red,shape=\itshape}
+  \setbeamercolor{itemize/enumerate subsubbody}{fg=red}
 
-\setbeamertemplate{itemize subsubitem}{\tiny$\Box$}
-\setbeamercolor{itemize/enumerate subsubbody}{fg=red,shape=\itshape}
+  \setbeamercolor{frametitle}{fg=black}
+  \setbeamercolor{framesubtitle}{fg=blue}
+  \setbeamerfont{framesubtitle}{size=\Large}
 
-\setbeamercolor{frametitle}{fg=black}
-\setbeamercolor{framesubtitle}{fg=blue}
-\setbeamerfont{framesubtitle}{size=\Large}
+  %\setbeamercolor{subitem}{fg=red}
+  %\setbeamercolor{itemize/enumerate subbody}{fg=gray}
+  %\setbeamertemplate{itemize subitem}{{\textendash}}
+  %\setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
+  %\setbeamerfont{itemize/enumerate subitem}{size=\footnotesize}
 
-
-%\setbeamercolor{subitem}{fg=red}
-%\setbeamercolor{itemize/enumerate subbody}{fg=gray}
-%\setbeamertemplate{itemize subitem}{{\textendash}}
-%\setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
-%\setbeamerfont{itemize/enumerate subitem}{size=\footnotesize}
-
-%   \setbeamertemplate{itemize items}{\scriptsize\raise1.25pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
-%   \setbeamertemplate{itemize subitems}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
-%   \setbeamertemplate{itemize subsubitems}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
+  % \setbeamertemplate{itemize items}{\scriptsize\raise1.25pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
+  % \setbeamertemplate{itemize subitems}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
+  % \setbeamertemplate{itemize subsubitems}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
   % \setbeamertemplate{enumerate items}{\insertenumlabel.}
   % \setbeamertemplate{enumerate subitems}{\insertenumlabel.\insertsubenumlabel}
   % \setbeamertemplate{enumerate subsubitems}{\insertenumlabel.\insertsubenumlabel.\insertsubsubenumlabel}
   % \setbeamertemplate{enumerate mini template}{\insertenumlabel}
   
   \let\Tiny=\tiny
-  \setbeamersize{text margin left=0.3cm,text margin right=0.3cm, text margin top=0.3cm, text margin bottom=0.3cm}
+  % Fix compilation error in modern latex the margin top/bottom keys don't exists
+  % \setbeamersize{text margin left=0.3cm,text margin right=0.3cm, text margin top=0.3cm, text margin bottom=0.3cm}
+  \setbeamersize{text margin left=0.3cm,text margin right=0.3cm}
 }
 
 \addtobeamertemplate{title page}{}{%

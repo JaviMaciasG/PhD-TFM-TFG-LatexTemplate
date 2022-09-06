@@ -43,11 +43,16 @@
 % };
 % \end{tikzpicture}
 
+% Add opacity here explicitly see:
+% https://tex.stackexchange.com/questions/649514/how-to-produce-a-transparent-image-with-xelatex/649518#649518
+% https://tex.stackexchange.com/questions/640574/using-a-tikzpicture-disables-opacity-for-first-bgthispage-how-can-i-fix-this
+% Remember to also change the default value in Config/preamble.tex if you need
+% to modify it.
 \begin{tikzpicture}[remember picture,overlay]
   \node[yshift=-5cm] at (current page.north west)
   {
     \begin{tikzpicture}[remember picture, overlay]
-      \draw[fill=headingPortadaTFG,headingPortadaTFG] (0,0) rectangle (\paperwidth,5cm);
+      \draw[fill=headingPortadaTFG,headingPortadaTFG, fill opacity=1] (0,0) rectangle (\paperwidth,5cm);
       \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\myUniversity}};
       \node [yshift=2cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\mySchool}};
     \end{tikzpicture}

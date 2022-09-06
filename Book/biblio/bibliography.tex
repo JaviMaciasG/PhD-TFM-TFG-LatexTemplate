@@ -28,30 +28,140 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\bibliographystyle{plainnat}
-%\bibliographystyle{dinat}
-%\bibliographystyle{unsrt}
-\bibliographystyle{IEEEtran}
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
+% IMPORTANT: YOU DON'T HAVE TO EDIT THIS FILE, JUST EDIT THE bibliofiles.tex file
 
-% The following is overly complicated because I was not able to do so in
-% another way. The problem is the bibliography command being "called"
-% from both the root and anteproyecto directories...
-%
-% Here define as many bibfiles as needed
-\newcommand{\mybibfileOne}{biblio/biblio.bib}
-%\newcommand{\mybibfileTwo}{biblio/biblio2.bib}
-%...
-%\newcommand{\mybibfileN}{biblio/biblioN}
 
-% This is for a single bib file
-\newcommand{\mybibfiles}{\myreferencespath\mybibfileOne}
-% but do this for multiple files
-%\newcommand{\mybibfiles}{\myreferencespath\mybibfile1,\myreferencespath\mybibfile2,...,\myreferencespath\mybibfileN}
+\ifthenelse{\equal{\bibliosystem}{biblatex}}
+{
+  % Use biblatex instead of bibtex
 
-% Do not touch this
-\inputencoding{latin1}
-\bibliography{\mybibfiles}
-\inputencoding{utf8}
+  %% Wen changing to biblatex, we could not define here the bibliography files, so that
+  %% You need to edit the bibliofiles.tex file to do so
+
+  %% % Now add all bib files to be processed
+  %% \addbibresource{\myreferencespath\mybibfileOne}
+  %% % \addbibresource{\myreferencespath\mybibfileTwo}
+  %% % ...
+  %% % \addbibresource{\myreferencespath\mybibfileN}
+
+  \printbibliography[heading=bibintoc]
+
+
+}
+{
+  % Use bibtex
+
+  %\bibliographystyle{plainnat}
+  %\bibliographystyle{dinat}
+  %\bibliographystyle{unsrt}
+  \bibliographystyle{IEEEtran}
+
+  % The following is overly complicated because I was not able to do so in
+  % another way. The problem is the bibliography command being "called"
+  % from both the root and anteproyecto directories...
+  %
+  \input{biblio/bibliofiles}
+
+  \newcommand{\mybibfiles}{}
+  \ifdef{\mybibfileOne}
+  {
+  \let\oldmybibfiles\mybibfiles
+  \renewcommand{\mybibfiles}{\myreferencespath\mybibfileOne}
+  }
+  {
+  \errorYOUmustDEFINEatLEASTmybibfileOneInbibliofilesDOTtex
+  }
+  \ifdef{\mybibfileTwo}
+  {
+  \let\oldmybibfiles\mybibfiles
+  \renewcommand{\mybibfiles}{\oldmybibfiles,\myreferencespath\mybibfileTwo}
+  }
+  {
+  }
+  \ifdef{\mybibfileThree}
+  {
+  \let\oldmybibfiles\mybibfiles
+  \renewcommand{\mybibfiles}{\oldmybibfiles,\myreferencespath\mybibfileThree}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileFour}
+  {
+  \let\oldmybibfiles\mybibfiles
+  \renewcommand{\mybibfiles}{\oldmybibfiles,\myreferencespath\mybibfileFour}
+  }
+  {
+  }
+  \ifdef{\mybibfileSix}
+  {
+  \let\oldmybibfiles\mybibfiles
+  \renewcommand{\mybibfiles}{\oldmybibfiles,\myreferencespath\mybibfileSix}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileSeven}
+  {
+  \let\oldmybibfiles\mybibfiles
+  \renewcommand{\mybibfiles}{\oldmybibfiles,\myreferencespath\mybibfileSeven}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileEight}
+  {
+  \let\oldmybibfiles\mybibfiles
+  \renewcommand{\mybibfiles}{\oldmybibfiles,\myreferencespath\mybibfileEight}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileNine}
+  {
+  \let\oldmybibfiles\mybibfiles
+  \renewcommand{\mybibfiles}{\oldmybibfiles,\myreferencespath\mybibfileNine}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileTen}
+  {
+  \let\oldmybibfiles\mybibfiles
+  \renewcommand{\mybibfiles}{\oldmybibfiles,\myreferencespath\mybibfileTen}
+  }
+  {
+  }
+
+  % Do not touch this
+  % The commands around the \bibliography{} command should be included if using bibtex, but
+  % according to Gonzalo Corral's PR on July 2022, they break compilation in overleaf. I think
+  % this should not happen if the bib files are in iso-8859-1 when using bibtex instead of
+  % biber, but need to be tested (TODO)
+  \inputencoding{latin1}
+  \bibliography{\mybibfiles}
+  \inputencoding{utf8}
+}
 
 %%% Local Variables:
 %%% TeX-master: "../book"
