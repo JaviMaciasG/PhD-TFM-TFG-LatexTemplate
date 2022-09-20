@@ -54,6 +54,20 @@
 
 \input{../Config/glossaries.tex}  % EDIT THIS FILE to include your glossaries
 
+% If this is the case, include definitions of acronyms (it's
+% included before resumen.tex and abstract.tex in case you want
+% to use them here
+\input{acronyms/defacronymsgl.tex}            % EDIT this file or
+                                              % comment it out if you do
+                                              % not use acronyms
+
+% If this is the case, include definitions of acronyms (it's
+% included before resumen.tex and abstract.tex in case you want
+% to use them there
+\input{symbols/defsymbolsgl.tex}              % EDIT this file or
+                                              % comment it out if you do
+                                              % not use acronyms
+
 \input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
                                % "postamble" is not a valid word... :-)
 
@@ -119,20 +133,6 @@
                                               % comment it out
 \input{acknowledgements/agradecimientos.tex}  % EDIT this file or
                                               % comment it out
-
-% If this is the case, include definitions of acronyms (it's
-% included before resumen.tex and abstract.tex in case you want
-% to use them here
-\input{acronyms/defacronymsgl.tex}            % EDIT this file or
-                                              % comment it out if you do
-                                              % not use acronyms
-
-% If this is the case, include definitions of acronyms (it's
-% included before resumen.tex and abstract.tex in case you want
-% to use them there
-\input{symbols/defsymbolsgl.tex}              % EDIT this file or
-                                              % comment it out if you do
-                                              % not use acronyms
 
 % Now include resumen and abstract
 \input{abstract/resumen.tex}                  % EDIT this file
