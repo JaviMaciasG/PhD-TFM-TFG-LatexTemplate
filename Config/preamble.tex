@@ -643,6 +643,12 @@ hyperfootnotes=false,
 \appto{\appendices}{\def\Hy@chapapp{Appendix}}
 \makeatother
 
+% Symbols and acronym's backend selection. Note that the makeglossaries
+% requires an external program and makenoidxglossaries may have problems when
+% using UTF-8 encoded acronyms.
+\newcommand{\glossariessystem}{makeglossaries} % Valid options are makeglossaries or makenoidxglossaries.
+% \newcommand{\glossariessystem}{makenoidxglossaries} % Valid options are makeglossaries or makenoidxglossaries.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography backend control. It is recommended  that we use biblatex, as it
 % supports more keys (for example, when we cite a website we can specify the

@@ -32,7 +32,16 @@
 % Define a new glossary type for symbols used in equations (example)
 \newglossary[slg]{symbols}{sym}{sbl}{List of Symbols}
 
-\makeglossaries               % DO NOT TOUCH THIS!
+% Compile the glossary with an external program makeglossaries or with latex
+% itself. Note that if you are on overleaf the makeglossaries program doesn't
+% work unless the book.tex is in the root folder.
+\ifthenelse{\equal{\glossariessystem}{makeglossaries}}
+{
+    \makeglossaries               % DO NOT TOUCH THIS!
+}
+{
+    \makenoidxglossaries
+}
 
 
 %%% Local Variables:
