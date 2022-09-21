@@ -33,6 +33,14 @@
 % turn depends on the \myDegree variable
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% \ifthenelse{\equal{\myLanguage}{spanish}}
+% {
+%   \addcontentsline{toc}{chapter}{Portada}
+% }
+% {
+%   \addcontentsline{toc}{chapter}{Cover page}
+% }
+
 \ifthenelse{\equal{\myWorkType}{TFG}}
 {
   \input{cover/portada-tfg-uah.tex}
