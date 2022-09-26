@@ -43,8 +43,12 @@
   \newcommand{\xUseEnglish}{X}  
 
   \floatname{codefloat}{Listing}
-  \renewcommand{\lstlistingname}{Listing}
 
+  \ifthenelse{\equal{\codesystem}{listings}}
+  {
+  \renewcommand{\lstlistingname}{Listing}
+  }
+  
   %% \DeclareFloatingEnvironment[
   %%       fileext=lox,
   %%       listname={Source code listing},
@@ -63,7 +67,10 @@
   \renewcommand{\listtablename}{Índice de tablas}
 
   \floatname{codefloat}{Listado}
-  \renewcommand{\lstlistingname}{Listado}
+  \ifthenelse{\equal{\codesystem}{listings}}
+  {
+    \renewcommand{\lstlistingname}{Listado}
+  }
 
 
   %% \DeclareFloatingEnvironment[
