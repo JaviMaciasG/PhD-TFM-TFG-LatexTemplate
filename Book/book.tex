@@ -232,7 +232,14 @@
 %\appendix                                         % DO NOT TOUCH THIS LINE!
 
 \begin{appendices}
-  \input{appendix/manual.tex}
+
+  \ifthenelse{\equal{\codesystem}{listings}}
+  {
+    \input{appendix/manual_listings.tex}
+  }
+  {
+    \input{appendix/manual_minted.tex}
+  }
   \input{appendix/herramientas.tex}
   \input{appendix/versiones.tex}
 \end{appendices}

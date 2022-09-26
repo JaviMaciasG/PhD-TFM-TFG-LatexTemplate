@@ -1,0 +1,180 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: manual.tex,v 1.14 2016/03/31 10:44:12 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% You can freely use this template and please contribute with
+% comments or suggestions!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chapter{Manual de usuario}
+\label{cha:manual-de-usuario}
+
+\section{Introducción}
+\label{sec:intro-manual-de-usuario}
+
+Blah, blah, blah\ldots
+
+
+\section{Manual}
+\label{sec:sec-manual-de-usuario}
+
+Pues eso.
+
+
+\section{Ejemplos de inclusión de fragmentos de código fuente}
+\label{sec:codigo-fuente}
+
+Para la inclusión de código fuente se utiliza el paquete
+\texttt{minted}.
+
+Así se inserta código fuente, usando el estilo que hemos definido en el
+preamble, escribiendo el código directamente:
+
+\begin{minted}[]{c}
+#include <stdio.h>
+
+// Esto es una funcion de prueba
+void funcionPrueba(int argumento)
+{	
+	int prueba = 1;
+
+  printf("Esto es una prueba [%d][%d]\n", argumento, prueba);
+
+}
+\end{minted}
+
+O bien insertando directamente código de un fichero externo, como en el ejemplo
+\ref{cod:sample1}, usando \texttt{\textbackslash{}inputminted}.(además de usar
+el entorno \texttt{codefloat} para evitar pagebreaks, etc.).
+
+\begin{codefloat}
+\inputminted{c}{appendix/function.c}
+\caption{Ejemplo de código fuente con un \texttt{inputminted} dentro
+de un \texttt{codefloat}}
+\label{cod:sample1}
+\end{codefloat}
+
+El estilo que usamos es el que esta por defecto con las opciones:
+\begin{itemize}
+  \item linenos: Muestra los números de linea.
+  \item tabsize=4: El tamaño de los tabuladores es 4 espacios.
+  \item mathescape: Permite la inserción de formulas matemáticas latex.
+  \item autogobble: Elimina espacios en blanco innecesarios.
+  \item breaklines: Permite la ruptura de lineas muy largas.
+\end{itemize}
+
+El estilo por defecto se puede cambiar usando
+\textbackslash{}{usemintedstyle\{tango\}}, por ejemplo. Si quieres cambiar las
+opciones del entorno, se puede hacer al incluir el codigo:
+\textbackslash{}{minted[opciones]\{lenguaje\}\{Fichero\}}, por ejemplo
+\textbackslash{}{begin\{minted\}[frame=lines, framesep=2mm, baselinestretch=1.2, bgcolor=LightGray, fontsize=\textbackslash{}{footnotesize}, linenos] \{python\}}
+
+Para mas información recomendamos la referencia de minted en
+\href{https://es.overleaf.com/learn/latex/Code_Highlighting_with_minted}{overleaf}.
+
+\section{Ejemplos de inclusión de algoritmos}
+\label{sec:algoritmos}
+
+Desde la versión de abril de 2014, empezamos a usar el paquete
+\texttt{algorithm2e} para incluir algoritmos, y hay ajustes específicos
+y dependientes de este paquete tanto en \texttt{Config/preamble.tex}
+como en \texttt{cover/extralistings.tex} (editadlos según vuestras
+necesidades). 
+
+Hay otras opciones disponibles (por ejemplo las descritas en
+\url{http://en.wikibooks.org/wiki/LaTeX/Algorithm}), y podemos
+abordarlas, pero por el momento nos quedamos con \texttt{algorithm2e}.
+
+Incluimos dos ejemplos directamente del manual: uno sencillo en el
+algoritmo~\ref{alg:howto}, y otro un poco más complicado en el
+algoritmo~\ref{alg:restriction}.
+
+\begin{algorithm}[H]
+ \caption{How to write algorithms}
+ \label{alg:howto}
+ \KwData{this text}
+ \KwResult{how to write algorithm with \LaTeX2e }
+ initialization\;
+ \While{not at end of this document}{
+  read current\;
+  \eIf{understand}{
+   go to next section\;
+   current section becomes this one\;
+   }{
+   go back to the beginning of current section\;
+  }
+ }
+\end{algorithm}
+
+
+\begin{algorithm}
+  \caption{IntervalRestriction\label{IR}}
+  \label{alg:restriction}
+  \DontPrintSemicolon
+  % \dontprintsemicolon
+  \KwData{$G=(X,U)$ such that $G^{tc}$ is an order.}
+  \KwResult{$G'=(X,V)$ with $V\subseteq U$ such that $G'^{tc}$ is an
+    interval order.}
+  \Begin{
+    $V \longleftarrow U$\;
+    $S \longleftarrow \emptyset$\;
+    \For{$x\in X$}{
+      $NbSuccInS(x) \longleftarrow 0$\;
+      $NbPredInMin(x) \longleftarrow 0$\;
+      $NbPredNotInMin(x) \longleftarrow |ImPred(x)|$\;
+    }
+    \For{$x \in X$}{
+      \If{$NbPredInMin(x) = 0$ {\bf and} $NbPredNotInMin(x) = 0$}{
+        $AppendToMin(x)$}
+    }
+    \nl\While{$S \neq \emptyset$}{\label{InRes1}
+      \nlset{REM} remove $x$ from the list of $T$ of maximal index\;\label{InResR}
+      \lnl{InRes2}\While{$|S \cap ImSucc(x)| \neq |S|$}{
+        \For{$ y \in S-ImSucc(x)$}{
+          \{ remove from $V$ all the arcs $zy$ : \}\;
+          \For{$z \in ImPred(y) \cap Min$}{
+            remove the arc $zy$ from $V$\;
+            $NbSuccInS(z) \longleftarrow NbSuccInS(z) - 1$\;
+            move $z$ in $T$ to the list preceding its present list\;
+            \{i.e. If $z \in T[k]$, move $z$ from $T[k]$ to
+            $T[k-1]$\}\;
+          }
+          $NbPredInMin(y) \longleftarrow 0$\;
+          $NbPredNotInMin(y) \longleftarrow 0$\;
+          $S \longleftarrow S - \{y\}$\;
+          $AppendToMin(y)$\;
+        }
+      }
+      $RemoveFromMin(x)$\;
+    }
+  }
+\end{algorithm}
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
+
+
