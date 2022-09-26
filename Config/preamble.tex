@@ -28,6 +28,7 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
+
 %% FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR \documentclass[RGB,rgb,svgnames,spanish,openright]{book}
 %\documentclass[spanish,openright]{book}
 % \documentclass[english,openright]{book}
@@ -38,12 +39,17 @@
 
 \synctex=1
 
-% To allow simple notes to be used in the review process (see defined
-% commands at the end of this file)
-\usepackage{todonotes} 
+% morewrites/scrwfile allow to open more than 16 files concurrently, see
+% https://latex.org/forum/viewtopic.php?t=12655
+% We choose to use scrwfile because the morewrites package seems to have some bugs.
+\usepackage{scrwfile}
 
 % ifthen to allow using language dependent settings
 \usepackage{ifthen}
+
+% To allow simple notes to be used in the review process (see defined
+% commands at the end of this file)
+\usepackage{todonotes} 
 
 %% JMG: FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR
 % This should not be touched, as it should work as it is know.
@@ -69,7 +75,6 @@
 \usepackage{lmodern}          % This generates a pdf with searchable
                               % accented characters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
 \usepackage{wrapfig}
 \usepackage{lipsum}
 
@@ -82,7 +87,6 @@
 % \usepackage[nottoc]{tocbibind}
 \usepackage{tocbibind}
 
-\usepackage{listings}
 \usepackage{longtable}
 \usepackage{afterpage}
 
@@ -392,130 +396,146 @@ hyperfootnotes=false,
 }
 \makeatother
 
-% Let's define some styles for source code listings:
-% 
-% minimizar fragmentado de listados (from
-% http://www.rafalinux.com/?p=599), pero no me funciona:
-% \lstnewenvironment{codelisting}[1][]
-% {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
-% 
+
 % This was using the float package
 \usepackage{float}
 \floatstyle{plaintop} % optionally change the style of the new float
 \newfloat{codefloat}{H}{cod}[chapter]
 
-% Support utf-8 in listings. 
-% The way the inputenc package works with non-ASCII UTF-8-encoded characters (by
-% making the first byte active and then reading the following ones as arguments)
-% is fundamentally incompatible with the way the listing package works, which
-% reads each byte individually and expects it to be an individual character.
-% See https://tex.stackexchange.com/questions/24528/having-problems-with-listings-and-utf-8-can-it-be-fixed
-\lstset{
-    inputencoding = utf8,  % Input encoding
-    extendedchars = true,  % Extended ASCII
-    literate      =        % Support additional characters
-      {á}{{\'a}}1  {é}{{\'e}}1  {í}{{\'i}}1 {ó}{{\'o}}1  {ú}{{\'u}}1
-      {Á}{{\'A}}1  {É}{{\'E}}1  {Í}{{\'I}}1 {Ó}{{\'O}}1  {Ú}{{\'U}}1
-      {à}{{\`a}}1  {è}{{\`e}}1  {ì}{{\`i}}1 {ò}{{\`o}}1  {ù}{{\`u}}1
-      {À}{{\`A}}1  {È}{{\'E}}1  {Ì}{{\`I}}1 {Ò}{{\`O}}1  {Ù}{{\`U}}1
-      {ä}{{\"a}}1  {ë}{{\"e}}1  {ï}{{\"i}}1 {ö}{{\"o}}1  {ü}{{\"u}}1
-      {Ä}{{\"A}}1  {Ë}{{\"E}}1  {Ï}{{\"I}}1 {Ö}{{\"O}}1  {Ü}{{\"U}}1
-      {â}{{\^a}}1  {ê}{{\^e}}1  {î}{{\^i}}1 {ô}{{\^o}}1  {û}{{\^u}}1
-      {Â}{{\^A}}1  {Ê}{{\^E}}1  {Î}{{\^I}}1 {Ô}{{\^O}}1  {Û}{{\^U}}1
-      {œ}{{\oe}}1  {Œ}{{\OE}}1  {æ}{{\ae}}1 {Æ}{{\AE}}1  {ß}{{\ss}}1
-      {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1  {Ø}{{\O}}1   {å}{{\r a}}1
-      {Å}{{\r A}}1 {ã}{{\~a}}1  {õ}{{\~o}}1 {Ã}{{\~A}}1  {Õ}{{\~O}}1
-      {ñ}{{\~n}}1  {Ñ}{{\~N}}1  {¿}{{?`}}1  {¡}{{!`}}1
-      {°}{{\textdegree}}1 {º}{{\textordmasculine}}1 {ª}{{\textordfeminine}}1
-      % ¿ and ¡ are not correctly displayed if inconsolata font is used
-      % together with the lstlisting environment. Consider typing code in
-      % external files and using \lstinputlisting to display them instead.      
+% \newcommand{\codesystem}{listings} % Valid options are biblatex or bibtex
+\newcommand{\codesystem}{minted} % Valid options are biblatex or bibtex
+
+\ifthenelse{\equal{\codesystem}{listings}}
+{
+  \usepackage{listings}
+
+  % Support utf-8 in listings. 
+  % The way the inputenc package works with non-ASCII UTF-8-encoded characters (by
+  % making the first byte active and then reading the following ones as arguments)
+  % is fundamentally incompatible with the way the listing package works, which
+  % reads each byte individually and expects it to be an individual character.
+  % See https://tex.stackexchange.com/questions/24528/having-problems-with-listings-and-utf-8-can-it-be-fixed
+  \lstset{
+      inputencoding = utf8,  % Input encoding
+      extendedchars = true,  % Extended ASCII
+      literate      =        % Support additional characters
+        {á}{{\'a}}1  {é}{{\'e}}1  {í}{{\'i}}1 {ó}{{\'o}}1  {ú}{{\'u}}1
+        {Á}{{\'A}}1  {É}{{\'E}}1  {Í}{{\'I}}1 {Ó}{{\'O}}1  {Ú}{{\'U}}1
+        {à}{{\`a}}1  {è}{{\`e}}1  {ì}{{\`i}}1 {ò}{{\`o}}1  {ù}{{\`u}}1
+        {À}{{\`A}}1  {È}{{\'E}}1  {Ì}{{\`I}}1 {Ò}{{\`O}}1  {Ù}{{\`U}}1
+        {ä}{{\"a}}1  {ë}{{\"e}}1  {ï}{{\"i}}1 {ö}{{\"o}}1  {ü}{{\"u}}1
+        {Ä}{{\"A}}1  {Ë}{{\"E}}1  {Ï}{{\"I}}1 {Ö}{{\"O}}1  {Ü}{{\"U}}1
+        {â}{{\^a}}1  {ê}{{\^e}}1  {î}{{\^i}}1 {ô}{{\^o}}1  {û}{{\^u}}1
+        {Â}{{\^A}}1  {Ê}{{\^E}}1  {Î}{{\^I}}1 {Ô}{{\^O}}1  {Û}{{\^U}}1
+        {œ}{{\oe}}1  {Œ}{{\OE}}1  {æ}{{\ae}}1 {Æ}{{\AE}}1  {ß}{{\ss}}1
+        {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1  {Ø}{{\O}}1   {å}{{\r a}}1
+        {Å}{{\r A}}1 {ã}{{\~a}}1  {õ}{{\~o}}1 {Ã}{{\~A}}1  {Õ}{{\~O}}1
+        {ñ}{{\~n}}1  {Ñ}{{\~N}}1  {¿}{{?`}}1  {¡}{{!`}}1
+        {°}{{\textdegree}}1 {º}{{\textordmasculine}}1 {ª}{{\textordfeminine}}1
+        % ¿ and ¡ are not correctly displayed if inconsolata font is used
+        % together with the lstlisting environment. Consider typing code in
+        % external files and using \lstinputlisting to display them instead.      
+    }
+
+  % Let's define some styles for source code listings:
+  % minimizar fragmentado de listados (from
+  % http://www.rafalinux.com/?p=599), pero no me funciona:
+  % \lstnewenvironment{codelisting}[1][]
+  % {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+  \lstdefinestyle{console}
+  {
+    basicstyle=\scriptsize\bf\ttfamily,
+    backgroundcolor=\color{gray75},
   }
 
-\lstdefinestyle{console}
-{
-  basicstyle=\scriptsize\bf\ttfamily,
-  backgroundcolor=\color{gray75},
+  \lstdefinestyle{Cbluebox}
+  {
+    language=C,
+    frame=shadowbox, 
+    rulesepcolor=\color{blue}
+  }
+
+  \lstdefinestyle{Cnice}
+  {
+    language=C,
+    frame=Ltb,
+    framerule=0pt,
+    tabsize=2,
+    aboveskip=0.5cm,
+    framextopmargin=3pt,
+    framexbottommargin=3pt,
+    framexleftmargin=0.4cm,
+    framesep=0pt,
+    rulesep=.4pt,
+    backgroundcolor=\color{gray97},
+    rulesepcolor=\color{black},
+    % 
+    stringstyle=\ttfamily,
+    showstringspaces = false,
+    % basicstyle=\small\ttfamily,
+    basicstyle=\footnotesize\ttfamily,
+    commentstyle=\color{gray45},
+    keywordstyle=\bfseries,
+    % 
+    numbers=left,
+    numbersep=15pt,
+    numberstyle=\tiny,
+    numberfirstline = false,
+    breaklines=true,
+  }	
+
+  \lstdefinestyle{CppExample}
+  {
+    language=C++,
+    frame=trbl,
+    tabsize=2,
+    commentstyle=\textit,
+    stringstyle=\ttfamily, 
+    basicstyle=\small,
+  }	
+
+  % This one from http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+  \lstdefinestyle{Ccolor}
+  {
+    belowcaptionskip=1\baselineskip,
+    breaklines=true,
+    frame=L,
+    xleftmargin=\parindent,
+    language=C,
+    showstringspaces=false,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\bfseries\color{green!40!black},
+    commentstyle=\itshape\color{purple!40!black},
+    identifierstyle=\color{blue},
+    stringstyle=\color{orange},
+  }
+
+  % From http://tex.stackexchange.com/questions/46953/unix-command-highlighting-latex
+  \lstdefinestyle{BashInputStyle}{
+    language=bash,
+    basicstyle=\small\sffamily,
+    numbers=left,
+    numberstyle=\tiny,
+    numbersep=3pt,
+    frame=tb, 
+    showspaces=false, 
+    showtabs=false,
+    showstringspaces=false,
+    columns=fullflexible,
+    backgroundcolor=\color{gray97},
+    % backgroundcolor=\color{yellow!20},
+    linewidth=0.9\linewidth,
+    xleftmargin=0.05\linewidth
+  }
 }
-
-\lstdefinestyle{Cbluebox}
 {
-  language=C,
-  frame=shadowbox, 
-  rulesepcolor=\color{blue}
-}
-
-\lstdefinestyle{Cnice}
-{
-  language=C,
-  frame=Ltb,
-  framerule=0pt,
-  tabsize=2,
-  aboveskip=0.5cm,
-  framextopmargin=3pt,
-  framexbottommargin=3pt,
-  framexleftmargin=0.4cm,
-  framesep=0pt,
-  rulesep=.4pt,
-  backgroundcolor=\color{gray97},
-  rulesepcolor=\color{black},
-  % 
-  stringstyle=\ttfamily,
-  showstringspaces = false,
-  % basicstyle=\small\ttfamily,
-  basicstyle=\footnotesize\ttfamily,
-  commentstyle=\color{gray45},
-  keywordstyle=\bfseries,
-  % 
-  numbers=left,
-  numbersep=15pt,
-  numberstyle=\tiny,
-  numberfirstline = false,
-  breaklines=true,
-}	
-
-\lstdefinestyle{CppExample}
-{
-  language=C++,
-  frame=trbl,
-  tabsize=2,
-  commentstyle=\textit,
-  stringstyle=\ttfamily, 
-  basicstyle=\small,
-}	
-
-% This one from http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
-\lstdefinestyle{Ccolor}
-{
-  belowcaptionskip=1\baselineskip,
-  breaklines=true,
-  frame=L,
-  xleftmargin=\parindent,
-  language=C,
-  showstringspaces=false,
-  basicstyle=\footnotesize\ttfamily,
-  keywordstyle=\bfseries\color{green!40!black},
-  commentstyle=\itshape\color{purple!40!black},
-  identifierstyle=\color{blue},
-  stringstyle=\color{orange},
-}
-
-% From http://tex.stackexchange.com/questions/46953/unix-command-highlighting-latex
-\lstdefinestyle{BashInputStyle}{
-  language=bash,
-  basicstyle=\small\sffamily,
-  numbers=left,
-  numberstyle=\tiny,
-  numbersep=3pt,
-  frame=tb, 
-  showspaces=false, 
-  showtabs=false,
-  showstringspaces=false,
-  columns=fullflexible,
-  backgroundcolor=\color{gray97},
-  % backgroundcolor=\color{yellow!20},
-  linewidth=0.9\linewidth,
-  xleftmargin=0.05\linewidth
+  \usepackage[chapter,]{minted}
+  \setminted[]{linenos,
+  tabsize=4,
+  mathescape,
+  autogobble,
+  breaklines}
+ 
 }
 
 
