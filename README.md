@@ -6,20 +6,22 @@ The template uses configuration variables (defined in the `Config/myconfig.tex` 
 
 Support to generate the "anteproyecto" is also provided, along with some of the paperwork required by the current regulations, that will be useful for you and your advisor/s (request for anteproyecto, deposit, authoratization for the defense, authorization for open publication in the institutional repository, request for "acta", etc.).
 
+Please carefully read chapter 1 of any of the precompiled examples in the dropbox distribuition (for example that for the [GIEC TFG at UAH](https://www.dropbox.com/s/p8htef58cusv4x6/TFG-GIEC-spanish.pdf?dl=0)).
+
 
 ## Quick start
 
 ### Prerrequisites
 
-You have two main options: Do your work locally in any PC, or use overleaf.
+You have two main options to work with the template: Do your work locally in any PC, or use [Overleaf](https://www.overleaf.com/). Both options are described below
 
 
 #### Working on a local machine
 
-You will need a good \LaTeX{} distribution (TexLive, MikTex, MacTeX, etc.). For a list of all required packages, you can have a look at the `\usepackage{...}` statements in the file `Config/preamble.tex`, but this should not be a problem as most distributions would have everything you need. If you run into errors due to packages not being available, install them (this should be easy enough).
+You will need a good \LaTeX{} distribution (TexLive, MikTex, MacTeX, etc., depending on your distribution). For a list of all required packages, you can have a look at the `\usepackage{...}` statements in the file `Config/preamble.tex`, but this should not be a problem as most distributions would have everything you need. If you run into errors due to packages not being available, install them (this should be easy enough).
 
-Beware that the main compilation is done using `pdflatex+biber`. The preferred compilation method is by using the provided `make` as it will do most of the required work automatically, but if you are in a Windows environment without this utility, my recommendation for you is to use TexStudio (any good \LaTeX{} editor will do fine, however). Please carefully read chapter 1 of any of the precompiled examples in the dropbox distribuition (for example that for the [GIEC TFG at UAH](https://www.dropbox.com/s/p8htef58cusv4x6/TFG-GIEC-spanish.pdf?dl=0)).
-  
+Beware that the main compilation is done using `pdflatex+biber`. The preferred compilation method is by using the provided `make` as it will do most of the required work automatically, but if you are in a Windows environment without this utility, my recommendation for you is to use TexStudio (any good \LaTeX{} editor will do fine, however). 
+
   
 ##### Notes on GNU/Linux installation
 
@@ -27,7 +29,7 @@ I would recommend you to install the TexLive distribution (`sudo apt-get install
 
 You can also use `sudo apt-get install texlive-full` for an overloaded full texlive distribution, but this will take a lot of disk space.
 
-Regarding editors, I would suggest you to use `TeXLives` or `emacs` (I personally use the latter, but the learning curve can be really steep)..
+Regarding editors, I would suggest you to use `TeXLive` or `emacs` (I personally use the latter, but the learning curve can be really steep).
 
 
 ##### Notes on Windows installation
@@ -35,13 +37,13 @@ Regarding editors, I would suggest you to use `TeXLives` or `emacs` (I personall
 This is my recommended route to have everything ready to go:
 
 
-1. Install the latest version of miktex (https://www.miktex.org). Select install required packages on the fly (either "Yes" or "Ask me first")
+1. Install the latest version of [MikTeX](https://www.miktex.org). Select install required packages on the fly (either "Yes" or "Ask me first")
 
-1.1 Run MiKTeX Console and "Check for updates" (otherwise you'll probably get an error when compiling LaTeX sources)
+1.1. Run `MiKTeX Console` and `Check for updates` (otherwise you'll probably get an error when compiling LaTeX sources)
 
-1.2 In MiKTeX Console, run Updates|Update now
+1.2. In `MiKTeX Console`, run `Updates|Update` now
 
-2. Install the latest version of TexStudio (https://www.texstudio.org/)
+2. Install the latest version of [TexStudio](https://www.texstudio.org/)
 
 3. Install a perl interpreter (if you plan to use acronyms, handled by `makeglossaries` in the template, which I fully recommend). I used Strawberry perl from https://strawberryperl.com/, but you can go to the perl site (https://www.perl.org/get.html) and check other alternatives.
 
@@ -51,26 +53,17 @@ This is my recommended route to have everything ready to go:
 The bibliography backend is now biber (from 2022), so that you have to configure TeXStudio to use biber as the bibliography processor. In the application just go to "Options > Configure TeXstudio > Build > Default Bibliography > Biber"
 
   
-#### Working in overleaf 
+#### Working in [Overleaf](https://www.overleaf.com/) 
   
-If you want to work with the template in overleaf, it's pretty easy.
+If you want to work with the template in [Overleaf](https://www.overleaf.com/), it's pretty easy. Here you are the main steps:
 
-Here you are the main steps:
+1. Log in to [Overleaf](https://www.overleaf.com/)
+2. In the main page, select the `New Project` button
+3. Select `Upload project`
+4. Select the corresponding zip among the ones you may find in the [template dropbox folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0e)
+5. [Overleaf](https://www.overleaf.com/) will do its magic and in a few seconds you'll have the template installed
 
-1. Log in to overleaf
-2. In the main page, select the "New Project" button
-3. Select "Upload project"
-4. Select the corresponding zip among the ones you may find in the template dropbox folder (https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0e)
-5. Overleaf will do its magic and in a few seconds you'll have the template installed
-
-The next step is configuring your data in the `Config/myconfig.tex`, and then you will have to select the "main document" (access it through the options you will find pressing the overleaf logo in the top left corner of the project main page).
-
-These are the most relevant files to select as "main document":
-
-+ Anteproyecto/anteproyecto.tex: to write your anteproyecto...
-+ Book/book.tex: to write the Thesis/TFM/TFG report
-+ Papeleo/SolicitudTFGTFM/solicitud.tex: to submit along with your anteproyecto for it to be evaluated
-+ You can also have a look to the Papeleo subdirectories...
+Remember that you will have to select the "main document" (access it through the options you will find pressing the overleaf logo in the top left corner of the project main page). See below in the "To fill in and generate..." to see which are the main files you have availableThese are the most relevant files to select as "main document":
 
   
 ### Download the template
@@ -87,7 +80,7 @@ The template is accessible in two ways:
 
 ### To fill in and generate the "anteproyecto"
 
-1. Go to the "Anteproyecto" directory, where you will find the `anteproyecto.tex` file. This is the one you should work in. An example is provided in the repo file.
+1. Go to the `Anteproyecto` directory, where you will find the `anteproyecto.tex` file. This is the one you should work in. An example is provided in the repo file.
 2. Edit the file to suit your needs
 3. Compile it (there is a `Makefile` available, but you can use your standard LaTeX build tool).
 
@@ -96,7 +89,7 @@ The template is accessible in two ways:
 1. Go to the "Book" directory
 2. The main compilation file is `book.tex` that you can suit to your needs commenting out what you don't need. If you compile it "as provided" you will see a lot of examples that can be useful for your particular case.
 3. Edit the files you need (abstract files, chapter files, dedication files, appendix files, etc.) There is a specific directory for each of them
-4. Compile the book.tex (there is a `Makefile` available, but you can use your standard LaTeX build tools).
+4. Compile the `book.tex` file (there is a `Makefile` available, but you can use your standard LaTeX build tools).
 
 ### To fill in and generate paperwork
 
