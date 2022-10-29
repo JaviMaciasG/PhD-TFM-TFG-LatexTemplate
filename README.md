@@ -11,8 +11,67 @@ Support to generate the "anteproyecto" is also provided, along with some of the 
 
 ### Prerrequisites
 
-You will need a good \LaTeX{} distribution (TexLive, MikTex, MacTeX, etc.). Most of the ones you can get out there will cover almost every required packages, being typical exceptions `texlive-publishers`, `texlive-lang-spanish` and `texlive-lang-english`. For a list of all required packages, you can have a look at the `\usepackage{...}` statements in the file `Config/preamble.tex`. Beware that the main compilation is done using `pdflatex`. The preferred compilation method is by using the provided `make`, but if you are in a Windows environment without this utility, a good \LaTeX{} editor will do fine. Please carefully read chapter 1 of any of the precompiled examples in the dropbox distribuition (for example that for the [GIEC TFG at UAH](https://www.dropbox.com/s/p8htef58cusv4x6/TFG-GIEC-spanish.pdf?dl=0)).
+You have two main options: Do your work locally in any PC, or use overleaf.
+
+
+#### Working on a local machine
+
+You will need a good \LaTeX{} distribution (TexLive, MikTex, MacTeX, etc.). For a list of all required packages, you can have a look at the `\usepackage{...}` statements in the file `Config/preamble.tex`, but this should not be a problem as most distributions would have everything you need. If you run into errors due to packages not being available, install them (this should be easy enough).
+
+Beware that the main compilation is done using `pdflatex+biber`. The preferred compilation method is by using the provided `make` as it will do most of the required work automatically, but if you are in a Windows environment without this utility, my recommendation for you is to use TexStudio (any good \LaTeX{} editor will do fine, however). Please carefully read chapter 1 of any of the precompiled examples in the dropbox distribuition (for example that for the [GIEC TFG at UAH](https://www.dropbox.com/s/p8htef58cusv4x6/TFG-GIEC-spanish.pdf?dl=0)).
   
+  
+##### Notes on GNU/Linux installation
+
+I would recommend you to install the TexLive distribution (`sudo apt-get install texlive` will do in an Ubuntu box, for example). Most of the required packages will be installed by default being typical exceptions `texlive-publishers`, `texlive-lang-spanish` and `texlive-lang-english`. Do install them. 
+
+You can also use `sudo apt-get install texlive-full` for an overloaded full texlive distribution, but this will take a lot of disk space.
+
+Regarding editors, I would suggest you to use `TeXLives` or `emacs` (I personally use the latter, but the learning curve can be really steep)..
+
+
+##### Notes on Windows installation
+
+This is my recommended route to have everything ready to go:
+
+
+1. Install the latest version of miktex (https://www.miktex.org). Select install required packages on the fly (either "Yes" or "Ask me first")
+
+1.1 Run MiKTeX Console and "Check for updates" (otherwise you'll probably get an error when compiling LaTeX sources)
+
+1.2 In MiKTeX Console, run Updates|Update now
+
+2. Install the latest version of TexStudio (https://www.texstudio.org/)
+
+3. Install a perl interpreter (if you plan to use acronyms, handled by `makeglossaries` in the template, which I fully recommend). I used Strawberry perl from https://strawberryperl.com/, but you can go to the perl site (https://www.perl.org/get.html) and check other alternatives.
+
+
+##### Notes on TeXStudio configuration (VERY IMPORTANT)
+
+The bibliography backend is now biber (from 2022), so that you have to configure TeXStudio to use biber as the bibliography processor. In the application just go to "Options > Configure TeXstudio > Build > Default Bibliography > Biber"
+
+  
+#### Working in overleaf 
+  
+If you want to work with the template in overleaf, it's pretty easy.
+
+Here you are the main steps:
+
+1. Log in to overleaf
+2. In the main page, select the "New Project" button
+3. Select "Upload project"
+4. Select the corresponding zip among the ones you may find in the template dropbox folder (https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0e)
+5. Overleaf will do its magic and in a few seconds you'll have the template installed
+
+The next step is configuring your data in the `Config/myconfig.tex`, and then you will have to select the "main document" (access it through the options you will find pressing the overleaf logo in the top left corner of the project main page).
+
+These are the most relevant files to select as "main document":
+
++ Anteproyecto/anteproyecto.tex: to write your anteproyecto...
++ Book/book.tex: to write the Thesis/TFM/TFG report
++ Papeleo/SolicitudTFGTFM/solicitud.tex: to submit along with your anteproyecto for it to be evaluated
++ You can also have a look to the Papeleo subdirectories...
+
   
 ### Download the template
 
