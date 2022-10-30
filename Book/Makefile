@@ -68,6 +68,15 @@ else
 	PDF_PREFIX := pdf$(shell echo $(PDF_TOOL) | sed -e "s/latex//" )
 endif
 
+GLOSSARIES_PACKAGE=$(shell cat ../Config/preamble.tex | grep -e glossariessystem | grep -v ifthenelse | grep newcommand | grep -v "^\%" | cut -d'{' -f3 | cut -d'}' -f1 | tr -d " ")
+
+ifeq ($(GLOSSARIES_PACKAGE),makeglossaries)
+	GLOSSARIES_TOOL := makeglossaries
+else
+	# If we are not using an external program simply echo the command.
+	GLOSSARIES_TOOL := echo "Processing bibliography with latex in "
+endif
+
 ###########################################################################
 # Support to automagically compile dia+svg files. Adapt to your own needs
 CHAPTER_SOURCES=$(wildcard chapters/*.tex)
@@ -99,7 +108,7 @@ all: $(DUMMY_TARGETS)
 	echo "Processing bibliography with $(BIBLIO_TOOL)"
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	$(BIBLIO_TOOL) $(ROOT_FILENAME)
-	makeglossaries $(ROOT_FILENAME)
+	$(GLOSSARIES_TOOL) $(ROOT_FILENAME)
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	echo $(ROOT_FINAL_BOOK_FILENAME)
@@ -162,7 +171,7 @@ all_latexmk: $(DUMMY_TARGETS)
 	# the use of pdflatex. That is done by other options or in an
 	# initialization file. (Or using -pdf, -xepdf, -luapdf) as specified in $(PDF_TOOL)
 	$(LATEXMK_TOOL) -$(PDF_PREFIX) -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -xelatex="xelatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -lualatex="lualatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
-	makeglossaries $(ROOT_FILENAME)
+	$(GLOSSARIES_TOOL) $(ROOT_FILENAME)
 	$(LATEXMK_TOOL) -$(PDF_PREFIX) -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -xelatex="xelatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -lualatex="lualatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
 
 snapshot:
@@ -179,7 +188,7 @@ latexdiff: flatten
 	latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $(SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE)| sed -e 's/^[ ]*//g' | sed -e 's/[ ]*$$//g' | perl -0777  -pe 's/[}]\n\\end[{]tikzpicture[}];\n\\end[{]tikzpicture[}]/\\end{tikzpicture}\n};\n\\end{tikzpicture}/g' >  $(DIFF_FLATTEN_TEX_FILE)
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
 	$(BIBLIO_TOOL) $(DIFF_FLATTEN_ROOT_FILENAME)
-	makeglossaries $(DIFF_FLATTEN_ROOT_FILENAME)
+	$(GLOSSARIES_TOOL) $(DIFF_FLATTEN_ROOT_FILENAME)
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
 
