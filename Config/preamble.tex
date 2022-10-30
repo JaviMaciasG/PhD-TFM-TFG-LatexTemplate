@@ -646,7 +646,11 @@ hyperfootnotes=false,
 
 % Symbols and acronym's backend selection. Note that the makeglossaries
 % requires an external program and makenoidxglossaries may have problems when
-% using UTF-8 encoded acronyms.
+% using UTF-8 encoded acronyms. To simplify your life:
+% + If you have the external makeglossaries program, just leave \glossariessystem
+%   to be igual to makeglossaries
+% + If you don't have the application, or you are using overleaf, set
+%   \glossaryessystem to makenoidxglossaries
 \newcommand{\glossariessystem}{makeglossaries} % Valid options are makeglossaries or makenoidxglossaries.
 % \newcommand{\glossariessystem}{makenoidxglossaries} % Valid options are makeglossaries or makenoidxglossaries.
 
