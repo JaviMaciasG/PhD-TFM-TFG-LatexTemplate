@@ -33,6 +33,7 @@ DEGREES_SPA="GIEAI GITI GIST GITT GIT GIC GII GSI GISI MUSEA MUIT MUII MUCTE GIE
 DEGREES_ENG_SPA="GIEC GIEAI GITI GIST GITT GIT GIC GII GISI MUIT MUII MUIE MUCTE PHDUAH"
 DEGREES_ENG_SPA="MUCTE"
 DEGREES_SPA=""
+DEGREES_ENG_SPA="GIEC GIEAI GITI GIST GITT GIT GIC GII GISI MUIT MUII MUIE MUCTE PHDUAH"
 
 MYCONFIG_VARS="../Config/myconfig.tex.vars"
 MYCONFIG="../Config/myconfig.tex"
@@ -60,24 +61,25 @@ do
     done
 done
 
-lang="spanish"
-for degree in $DEGREES_SPA
-do
-    TYPE=`cat ../Config/worktypes.txt | grep -w $degree | tr -s " " | cut -f 2 -d " "`
-    OUTPUT_NAME=$TYPE-$degree-$lang.pdf
-    echo -n "Making for degree $degree, generating $OUTPUT_NAME..."
-    cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
-    make clean >& /dev/null
-    make >& /dev/null
-#    mv $BOOK*.pdf $OUTPUT_NAME
-    echo " Done!"
-done
+# lang="spanish"
+# for degree in $DEGREES_SPA
+# do
+#     TYPE=`cat ../Config/worktypes.txt | grep -w $degree | tr -s " " | cut -f 2 -d " "`
+#     OUTPUT_NAME=$TYPE-$degree-$lang.pdf
+#     echo -n "Making for degree $degree, generating $OUTPUT_NAME..."
+#     cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
+#     make clean >& /dev/null
+#     make >& /dev/null
+# #    mv $BOOK*.pdf $OUTPUT_NAME
+#     echo " Done!"
+# done
 
 cp $MYCONFIG.before $MYCONFIG
 
 for f in `ls *.pdf`
 do
     NEWNAME=`echo $f | cut -f 1,2,5 -d "-"`
+    echo "Trying to move $f to $NEWNAME"
     mv $f $NEWNAME
 done
 
