@@ -74,7 +74,7 @@ ifeq ($(GLOSSARIES_PACKAGE),makeglossaries)
 	GLOSSARIES_TOOL := makeglossaries
 else
 	# If we are not using an external program simply echo the command.
-	GLOSSARIES_TOOL := echo "Processing bibliography with latex in "
+	GLOSSARIES_TOOL := echo "Processing glossaries with internal tool for "
 endif
 
 ###########################################################################
