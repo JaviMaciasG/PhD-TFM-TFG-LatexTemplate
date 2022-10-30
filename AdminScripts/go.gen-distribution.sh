@@ -46,6 +46,8 @@ then
     FILES_ALL="$FILES_ALL $FILES"
     FILES="Config/worktypes.txt"
     FILES_ALL="$FILES_ALL $FILES"
+    FILES="README.md IMPORTANT-BIBLIOGRAPHY.md"
+    FILES_ALL="$FILES_ALL $FILES"
 
     echo $FILES_ALL
 
