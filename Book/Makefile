@@ -45,6 +45,7 @@ ROOT_FILENAME=book
 ROOT_FINAL_BOOK_FILENAME=$(BOOK_TYPE)-$(DEGREE_NAME)-$(AUTHOR_SURNAME)-$(AUTHOR_NAME)-$(BOOK_LANGUAGE)
 TEX_FILE = $(ROOT_FILENAME).tex
 BIBLIO_PACKAGE=$(shell cat ../Config/preamble.tex | grep -e bibliosystem | grep -v ifthenelse | grep newcommand | grep -v "^\%" | cut -d'{' -f3 | cut -d'}' -f1 | tr -d " ")
+CODE_PACKAGE=$(shell cat ../Config/preamble.tex | grep -e codesystem | grep -v ifthenelse | grep newcommand | grep -v "^\%" | cut -d'{' -f3 | cut -d'}' -f1 | tr -d " ")
 FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten.tex
 SNAPSHOT_FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten-snapshot.tex
 DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff
@@ -99,8 +100,12 @@ DUMMY_TARGETS=pdf_dia_done pdf_svg_done pdf_eps_done
 
 DATE=$(shell date "+%C%y%m%d-%H%M%S")
 
-# To use synctex 
-FLAGS_SYNCTEX_PDFLATEX=-synctex=1
+# To use synctex and minted, when it is active.
+ifeq ($(CODE_PACKAGE),listings)
+	FLAGS_SYNCTEX_PDFLATEX := -synctex=1 
+else
+	FLAGS_SYNCTEX_PDFLATEX := -synctex=1 -shell-escape
+endif
 
 # To generate 
 all: $(DUMMY_TARGETS)
