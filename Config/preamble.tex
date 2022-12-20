@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
 % Generic template for TFC/TFM/TFG/Tesis
 % 
@@ -654,7 +654,203 @@ hyperfootnotes=false,
 %\newcommand{\glossariessystem}{makeglossaries} % Valid options are makeglossaries or makenoidxglossaries.
 \newcommand{\glossariessystem}{makenoidxglossaries} % Valid options are makeglossaries or makenoidxglossaries.
 
-\input{../Config/config-bibbackend.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography backend control. It is recommended  that we use biblatex, as it
+% supports more keys (for example, when we cite a website we can specify the
+% visited date, in the .bib file). It also support multiple files more easily
+% and more bibliography styles
+
+%\newcommand{\bibliosystem}{bibtex} % Valid options are biblatex or bibtex
+\newcommand{\bibliosystem}{biblatex} % Valid options are biblatex or bibtex
+
+\ifthenelse{\equal{\bibliosystem}{biblatex}}
+{
+  % Use biblatex instead of bibtex
+  \usepackage[style=ieee]{biblatex}
+  % This is a dirty hack, but should work... The reason to do so is to avoid
+  % the need of editing this file by the user (see Book/biblio files for more
+  % details)
+  \input{../Book/biblio/bibliofiles.tex}
+
+  \ifdef{\mybibfileOne}
+  {
+  \addbibresource{\myreferencespath\mybibfileOne}
+  }
+  {
+  \errorYOUmustDEFINEatLEASTmybibfileOneInbibliofilesDOTtex
+  }
+  \ifdef{\mybibfileTwo}
+  {
+  \addbibresource{\myreferencespath\mybibfileTwo}
+  }
+  {
+  }
+  \ifdef{\mybibfileThree}
+  {
+  \addbibresource{\myreferencespath\mybibfileThree}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileFour}
+  {
+  \addbibresource{\myreferencespath\mybibfileFour}
+  }
+  {
+  }
+  \ifdef{\mybibfileSix}
+  {
+  \addbibresource{\myreferencespath\mybibfileSix}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileSeven}
+  {
+  \addbibresource{\myreferencespath\mybibfileSeven}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileEight}
+  {
+  \addbibresource{\myreferencespath\mybibfileEight}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileNine}
+  {
+  \addbibresource{\myreferencespath\mybibfileNine}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileTen}
+  {
+  \addbibresource{\myreferencespath\mybibfileTen}
+  }
+  {
+  }
+
+    \ifdef{\mybibfileEleven}
+  {
+    \addbibresource{\myreferencespath\mybibfileEleven}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileThirteen}
+  {
+    \addbibresource{\myreferencespath\mybibfileThirteen}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileFourteen}
+  {
+    \addbibresource{\myreferencespath\mybibfileFourteen}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileFifteen}
+  {
+    \addbibresource{\myreferencespath\mybibfileFifteen}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileSixteen}
+  {
+    \addbibresource{\myreferencespath\mybibfileSixteen}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileSeventeen}
+  {
+    \addbibresource{\myreferencespath\mybibfileSeventeen}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileEighteen}
+  {
+    \addbibresource{\myreferencespath\mybibfileEighteen}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileNineteen}
+  {
+    \addbibresource{\myreferencespath\mybibfileNineteen}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileTwenty}
+  {
+    \addbibresource{\myreferencespath\mybibfileTwenty}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileTwentyone}
+  {
+    \addbibresource{\myreferencespath\mybibfileTwentyone}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileTwentytwo}
+  {
+    \addbibresource{\myreferencespath\mybibfileTwentytwo}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileTwentythree}
+  {
+    \addbibresource{\myreferencespath\mybibfileTwentythree}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileTwentyfour}
+  {
+    \addbibresource{\myreferencespath\mybibfileTwentyfour}
+  }
+  {
+  }
+
+  \ifdef{\mybibfileTwentyfive}
+  {
+    \addbibresource{\myreferencespath\mybibfileTwentyfive}
+  }
+  {
+  }
+
+}
+{
+  % Use bibtex
+  \usepackage[noadjust]{cite}      % Written by Donald Arseneau
+  % V1.6 and later of IEEEtran pre-defines the format
+  % of the cite.sty package \cite{} output to follow
+  % that of IEEE. Loading the cite package will
+  % result in citation numbers being automatically
+  % sorted and properly "ranged". i.e.,
+  % [1], [9], [2], [7], [5], [6]
+  % (without using cite.sty)
+  % will become:
+  % [1], [2], [5]--[7], [9] (using cite.sty)
+  % cite.sty's \cite will automatically add leading
+  % space, if needed. Use cite.sty's noadjust option
+  % (cite.sty V3.8 and later) if you want to turn this
+  % off. cite.sty is already installed on most LaTeX
+  % systems. The latest version can be obtained at:
+  % http://www.ctan.org/tex-archive/macros/latex/contrib/supported/cite/
+}
 
 % From https://tex.stackexchange.com/questions/50830/do-i-have-to-care-about-bad-boxes/50850#50850
 % To hide warning messages about slightly overfilled paragraphs
