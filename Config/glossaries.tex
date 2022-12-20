@@ -35,10 +35,6 @@
 % Compile the glossary with an external program makeglossaries or with latex
 % itself. Note that if you are on overleaf the makeglossaries program doesn't
 % work unless the book.tex is in the root folder.
-% The variable \glossariessystem is set in preamble.tex. For the default method
-% (using \glossariessystem=makeglossaries), you don't have to do anything.
-% If you want to use glossaries in overleaf, you need to define \glossariessystem to be
-% equal to makenoidxglossaries
 \ifthenelse{\equal{\glossariessystem}{makeglossaries}}
 {
     \makeglossaries               % DO NOT TOUCH THIS!
