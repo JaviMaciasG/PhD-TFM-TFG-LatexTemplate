@@ -82,16 +82,17 @@
 \maketitle
 
 \begin{description}                               % DO NOT TOUCH THIS LINE
-\item[Título:] \myBookTitleSpanish                % DO NOT TOUCH THIS LINE
-  \ifthenelse{\equal{\myLanguage}{english}}   % DO NOT TOUCH THIS LINE
+\item[\expandafter\makefirstuc\expandafter{\wordAutorOrAutora}:] \myAuthorFullName                       % DO NOT TOUCH THIS LINE
+\item[\expandafter\makefirstuc\expandafter{\wordTutorOrTutores}:] \myAdvisors                   % DO NOT TOUCH THIS LINE
+  \item[Titulación:] \myDegreefull                % DO NOT TOUCH THIS LINE
+  \item[Título:] \myBookTitleSpanish              % DO NOT TOUCH THIS LINE
+  \ifthenelse{\equal{\myLanguage}{english}}       % DO NOT TOUCH THIS LINE
   {                                               % DO NOT TOUCH THIS LINE
   \item[Título en inglés:] \myBookTitleEnglish    % DO NOT TOUCH THIS LINE
   }                                               % DO NOT TOUCH THIS LINE
   {                                               % DO NOT TOUCH THIS LINE
   }                                               % DO NOT TOUCH THIS LINE
-\item[Departamento:] \myDepartment            % DO NOT TOUCH THIS LINE
-\item[\expandafter\makefirstuc\expandafter{\wordAutorOrAutora}:] \myAuthorFullName                       % DO NOT TOUCH THIS LINE
-\item[\expandafter\makefirstuc\expandafter{\wordTutorOrTutores}:] \myAdvisors                   % DO NOT TOUCH THIS LINE
+\item[Departamento:] \myDepartment                % DO NOT TOUCH THIS LINE
 \end{description}                                 % DO NOT TOUCH THIS LINE
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
