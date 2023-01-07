@@ -20,16 +20,18 @@ You have two main options to work with the template: Do your work locally in any
 
 You will need a good \LaTeX{} distribution (TexLive, MikTex, MacTeX, etc., depending on your distribution). For a list of all required packages, you can have a look at the `\usepackage{...}` statements in the file `Config/preamble.tex`, but this should not be a problem as most distributions would have everything you need. If you run into errors due to packages not being available, install them (this should be easy enough).
 
-Beware that the main compilation is done using `pdflatex+biber`. The preferred compilation method is by using the provided `make` as it will do most of the required work automatically, but if you are in a Windows environment without this utility, my recommendation for you is to use TexStudio (any good \LaTeX{} editor will do fine, however). 
+Beware that the main compilation is done using `pdflatex+biber`. The preferred compilation method is by using the provided `make` as it will do most of the required work automatically, but if you are in a Windows environment without this utility, my recommendation for you is to use `TexStudio` (any good \LaTeX{} editor will do fine, however). 
 
   
 ##### Notes on GNU/Linux installation
+
+I'm talking here about debian-like distributions (mainly Ubuntu), but package instructions and package names will be similar.
 
 I would recommend you to install the TexLive distribution (`sudo apt-get install texlive` will do in an Ubuntu box, for example). Most of the required packages will be installed by default being typical exceptions `texlive-publishers`, `texlive-lang-spanish` and `texlive-lang-english`. Do install them. 
 
 You can also use `sudo apt-get install texlive-full` for an overloaded full texlive distribution, but this will take a lot of disk space.
 
-Regarding editors, I would suggest you to use `TeXLive` or `emacs` (I personally use the latter, but the learning curve can be really steep).
+Regarding editors, I would suggest you to use `TeXStudio` or `emacs` (I personally use the latter, but the learning curve can be really steep).
 
 
 ##### Notes on Windows installation
