@@ -1,0 +1,131 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: cover-pfc-tfg-tfm-uah.tex,v 1.13 2018/12/12 15:29:21 macias Exp $
+%
+% By:
+% + Javier Macías-Guarasa.
+% Departamento de Electrónica
+% Universidad de Alcalá
+% + Roberto Barra-Chicote.
+% Departamento de Ingeniería Electrónica
+% Universidad Politécnica de Madrid
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% You can freely use this template and please contribute with
+% comments or suggestions!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+
+\hspace{-1cm}\begin{tabular}[c]{p{.5\textwidth}p{.5\textwidth}}
+\includegraphics[height=2.5cm,left]{uah/01_logo-vA_pant293.pdf} & \includegraphics[height=2.5cm,right]{srg4.png}
+\end{tabular}
+
+  \vspace{1cm}
+
+\large
+\begin{center}
+
+  \huge\MakeUppercase{\textbf{\myUniversity}}
+
+  % \vspace{1mm}
+
+  \huge{\MakeUppercase{\mySchool}}
+
+  \vspace{7mm}
+
+  % titulación a la que se opta
+  \huge{\myDegreefull}
+
+  \vspace{1.5cm}
+
+  \huge{\myWorkTypeFull}
+
+  \vspace{1.5cm}
+
+  \huge\textbf{\myBookTitle}
+
+  \vspace{1.5cm}
+  
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+    Author: \myAuthorFullName
+  }
+  {
+    \expandafter\makefirstuc\expandafter{\wordAutorOrAutora}: \myAuthorFullName
+  }
+  
+  
+  \vspace{1mm}
+  
+  \ifthenelse{\equal{\myFlagSplittedAdvisors}{true}}
+  {
+    \ifthenelse{\equal{\myLanguage}{english}}
+    {
+      % \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
+      \expandafter\makefirstuc\expandafter{\wordAdvisor}: \myAcademicTutorFullName{}
+
+      \ifthenelse{\equal{\myCoTutorFullName}{}}
+      {
+      }
+      {
+        \expandafter\makefirstuc\expandafter{\wordCoAdvisor}: \myCoTutorFullName{}
+      }
+
+    }
+    {%
+      % \expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}: \myAdvisors
+      % \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}: \myAdvisors
+      \expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:    \myAcademicTutorFullName{}
+
+      \ifthenelse{\equal{\myCoTutorFullName}{}}
+      {
+      }
+      {
+        \expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}: \myCoTutorFullName{}
+      }
+    }
+  }
+  {
+    \ifthenelse{\equal{\myLanguage}{english}}
+    {
+      \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
+    }
+    {
+      \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}: \myAdvisors
+    }
+  }
+
+  \vspace{1cm}
+
+\end{center}
+
+
+\normalsize
+
+\begin{bottomparagraph}
+  \begin{center}
+    \huge{\myThesisDefenseDate}
+  \end{center}
+\end{bottomparagraph}
+
+\clearemptydoublepage
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
+
+

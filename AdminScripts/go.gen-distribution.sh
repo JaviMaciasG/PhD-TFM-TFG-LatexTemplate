@@ -1,5 +1,7 @@
 #!/bin/bash
 
+pandoc README.yaml README.md -t pdf -o README.pdf --variable urlcolor=blue --number-sections --table-of-contents --highlight-style kate -V colorlinks -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"  --toc-depth=4
+
 
 echo "Showing distribution tags:"
 git tag
