@@ -48,7 +48,7 @@ then
     FILES_ALL="$FILES_ALL $FILES"
     FILES="Config/worktypes.txt"
     FILES_ALL="$FILES_ALL $FILES"
-    FILES="README.md IMPORTANT-BIBLIOGRAPHY.md"
+    FILES="README.md README.yaml IMPORTANT-BIBLIOGRAPHY.md"
     FILES_ALL="$FILES_ALL $FILES"
 
     echo $FILES_ALL
@@ -58,6 +58,7 @@ then
 
     rsync -avu $DIST_FILE.tgz $DIST_FILE.zip ~/Dropbox/PhDTFMTFG-LaTeX-Template/
     cp README.md ~/Dropbox/PhDTFMTFG-LaTeX-Template/00-README.md
+    cp README.pdf ~/Dropbox/PhDTFMTFG-LaTeX-Template/00-README.pdf
 else
     echo "You replied something different from 'Y', so that I'm exiting..."
     exit 1
