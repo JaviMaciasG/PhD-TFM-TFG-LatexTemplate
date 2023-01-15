@@ -49,11 +49,13 @@
   \usepackage[spanish, english]{babel}
   \newcommand{\myFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity} 
   \newcommand{\myBookTitle}{\myBookTitleSpanish}
+  \newcommand{\mypdflang}{es}
 } 
 {
   \usepackage[english, spanish]{babel}
   \newcommand{\myFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversity} 
   \newcommand{\myBookTitle}{\myBookTitleEnglish}
+  \newcommand{\mypdflang}{en}
 }
 
 \ifthenelse{\equal{\myLanguage}{spanish}}
@@ -692,16 +694,17 @@
 \newcommand{\underscoreSpacingFour}{\_\_\_\_}
 \newcommand{\spacingFour}{~~~~}
 
+
 \hypersetup
 {
-  pdfauthor={\myAuthorFullName~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater},
   pdftitle={\myBookTitle},
+  pdfauthor={\myAuthorFullName~\textless\href{mailto:\myAuthorEmail}{\myAuthorEmail}\textgreater},
   pdfsubject={\myDegreefull, \myWorkTypeFull},
-  % Uncomment the English or Spanish version if you wish to hard-code them
-  % pdfkeywords={\myThesisKeywordsEnglish, \myWorkTypeFull, \myDegreefull},
-  % pdfkeywords={\myThesisKeywords, \myWorkTypeFull, \myDegreefull},
   pdfkeywords={\keywordsforpdf},
   pdfcreator={\LaTeX with hyperref package},
+  pdfcopyright={\myCopyrightStatement},
+  pdflicenseurl={\myLicenseURL},
+  pdflang={\mypdflang}
   % pdfproducer={rubber},
   pdffitwindow={true},
   % This can be set in myconfig.tex
