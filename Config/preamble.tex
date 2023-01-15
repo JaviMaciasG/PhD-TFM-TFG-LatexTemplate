@@ -38,6 +38,9 @@
 
 \synctex=1
 
+% To generate a proper PDF/A document
+%\usepackage[a-1b]{pdfx}
+
 % To allow changing the default alignment of an image
 \usepackage[export]{adjustbox}
 
@@ -159,6 +162,7 @@
 
 %\usepackage[hang, flushmargin]{footmisc}   
 
+\usepackage{hyperxmp}
 \usepackage[
 %% ps2pdf,                %%% hyper-references for ps2pdf
 bookmarks=true,%                   %%% generate bookmarks ...
@@ -177,9 +181,11 @@ urlcolor=blue,                     %%% texto  con color (further
 %%% modified in myconfig.tex)
 % linkbordercolor={0 0 1},           %%% blue frames around links
 pdfborder={0 0 112.0},              %%% border-width of frames 
-hyperfootnotes=false,
+hyperfootnotes=false
 ]{hyperref}                        %%% will be multiplied with 0.009 by ps2pdf
-%\usepackage[all]{hypcap}
+
+
+% \usepackage[all]{hypcap}
 \usepackage[center]{caption}
 \usepackage{subcaption}
 
