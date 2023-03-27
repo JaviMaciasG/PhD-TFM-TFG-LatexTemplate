@@ -67,6 +67,19 @@
 }
 
 \listofalgorithms
+\clearemptydoublepage
+
+\hypersetup{linkcolor=\myothertoclinkcolor}
+%\cleardoublepage
+% This is code to add a list of videos if used
+\ifthenelse{\equal{\myLanguage}{english}}
+{
+  \addcontentsline{toc}{chapter}{List of videos}
+}
+{
+  \addcontentsline{toc}{chapter}{Índice de vídeos}
+}
+\listofvideos
 
 \hypersetup{linkcolor=\mylinkcolor}
 
