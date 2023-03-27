@@ -26,6 +26,7 @@ pdf_svg_done
 *.cb
 *.cb2
 .*.lb
+*.vdo
 
 ## Intermediate documents:
 *.dvi
