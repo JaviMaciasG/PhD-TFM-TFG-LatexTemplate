@@ -715,26 +715,26 @@
   pdfpagemode=UseOutlines
 }
 
-% Added conflicting options of tocloft with subfigure, fixing by adding subfigure option
-%\usepackage[subfigure]{tocloft}
+% % Added conflicting options of tocloft with subfigure, fixing by adding subfigure option
+% %\usepackage[subfigure]{tocloft}
 
-\usepackage{tocloft}
+% \usepackage{tocloft}
 
-\ifthenelse{\equal{\myLanguage}{english}}
-{
-  \newlistof{videos}{vdo}{List of videos}
-\newcommand{\videoLink}[2]{%
-  \refstepcounter{videos}%
-  \phantomsection%
-  \addcontentsline{vdo}{videos}{\protect\numberline{\thechapter.\thevideos\hspace{4em}}\hspace{4em}#1 (\href{#2}{link to video})}\href{#2}{#1}}
-}
-{
-  \newlistof{videos}{vdo}{Índice de vídeos}
-\newcommand{\videoLink}[2]{%
-  \refstepcounter{videos}%
-  \phantomsection%
-  \addcontentsline{vdo}{videos}{\protect\numberline{\thechapter.\thevideos\hspace{4em}}\hspace{4em}#1 (\href{#2}{enlace al vídeo})}\href{#2}{#1}}
-}
+% \ifthenelse{\equal{\myLanguage}{english}}
+% {
+%   \newlistof{videos}{vdo}{List of videos}
+% \newcommand{\videoLink}[2]{%
+%   \refstepcounter{videos}%
+%   \phantomsection%
+%   \addcontentsline{vdo}{videos}{\protect\numberline{\thechapter.\thevideos\hspace{4em}}\hspace{4em}#1 (\href{#2}{link to video})}\href{#2}{#1}}
+% }
+% {
+%   \newlistof{videos}{vdo}{Índice de vídeos}
+% \newcommand{\videoLink}[2]{%
+%   \refstepcounter{videos}%
+%   \phantomsection%
+%   \addcontentsline{vdo}{videos}{\protect\numberline{\thechapter.\thevideos\hspace{4em}}\hspace{4em}#1 (\href{#2}{enlace al vídeo})}\href{#2}{#1}}
+% }
 
 
 % \newcommand{\videoLink}[3]{%
