@@ -29,7 +29,7 @@ then
     git tag -a $tagname -m "$tagmessage"
     echo "Now generating distribution..."
 
-    FILES_ALL="windows-installation.txt Book/additionalContributors.txt"
+    FILES_ALL=".latexmkrc windows-installation.txt Book/additionalContributors.txt"
     for d in $DIRS
     do
 
