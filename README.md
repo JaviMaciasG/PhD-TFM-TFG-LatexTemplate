@@ -1,4 +1,4 @@
-# PhD-TFM-TFG-LatexTemplate
+# Introduction
 
 This repo contains a generic template for PhD, Msc (TFM) and BsC (TFG) thesis documents mainly designed to be used at the University of Alcala (UAH), so that it is written in Spanish, although the template can generate the documents in English (just setting a variable in the configuration file).
 
