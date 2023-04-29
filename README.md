@@ -105,7 +105,7 @@ The template is accessible in two ways:
 
 Regarding bibliography files, you just have to edit the `Book/bibliofiles.tex`
 file, stating (uncommenting) which files you need for the bibliography. No
-changes are needed elseware.
+changes are needed elsewhere.
 
 The default bibliography processing backend is now `biber` (from september 2022
 onwards). This implies that you have to tell your IDE that you are using `biber`
