@@ -132,7 +132,7 @@ required biblio files.
 
 Gonzalo still kept some support for `bibtex` in the `Makefile` and `Book/book.tex` files. If you want to use the `bibtex` you have to:
 
-- Define the ``\bibliosystem` variable in `Config/preamble.tex` to be equal to `bibtex`
+- Define the `\bibliosystem` variable in `Config/preamble.tex` to be equal to `bibtex`
 - Convert the `biblio/biblio.bib` file to ISO-8859-1 encoding
 
 
