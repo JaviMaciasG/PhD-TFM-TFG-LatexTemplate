@@ -4,7 +4,7 @@ This repo contains a generic template for PhD, Msc (TFM) and BsC (TFG) thesis do
 
 The template uses configuration variables (defined in the `Config/myconfig.tex` file) to customize all the document generation process, so that you don't need to devote any effort to comply with formatting requirements (cover and back pages for example), document layout, etc.
 
-Support to generate the "anteproyecto" is also provided, along with some of the paperwork required by the current regulations, that will be useful for you and your advisor/s (request for anteproyecto, deposit, authoratization for the defense, authorization for open publication in the institutional repository, request for "acta", etc.).
+Support to generate the "anteproyecto" is also provided, along with some of the paperwork required by the current regulations, that will be useful for you and your advisor/s (request for anteproyecto, deposit, authorization for the defense, authorization for open publication in the institutional repository, request for "acta", etc.).
 
 Please carefully read chapter 1 of any of the precompiled examples in the dropbox distribuition (for example that for the [GIEC TFG at UAH](https://www.dropbox.com/s/p8htef58cusv4x6/TFG-GIEC-spanish.pdf?dl=0)).
 
@@ -18,20 +18,20 @@ You have two main options to work with the template: Do your work locally in any
 
 ### Working on a local machine
 
-You will need a good \LaTeX{} distribution (TexLive, MikTex, MacTeX, etc., depending on your distribution). For a list of all required packages, you can have a look at the `\usepackage{...}` statements in the file `Config/preamble.tex`, but this should not be a problem as most distributions would have everything you need. If you run into errors due to packages not being available, install them (this should be easy enough).
+You will need a good \LaTeX{} distribution (TexLive, MikTex, MacTeX, etc., depending on your working environment). For a list of all required packages, you can have a look at the `\usepackage{...}` statements in the file `Config/preamble.tex`, but this should not be a problem as most distributions would have everything you need. If you run into errors due to packages not being available, install them (this should be easy enough).
 
-Beware that the main compilation is done using `pdflatex+biber`. The preferred compilation method is by using the provided `make` as it will do most of the required work automatically, but if you are in a Windows environment without this utility, my recommendation for you is to use `TexStudio` (any good \LaTeX{} editor will do fine, however). 
+Beware that the main compilation is done using `pdflatex+biber`. The preferred compilation method is by using the provided `make` as it will do most of the required work automatically, but if you are in a Windows environment without this utility, my recommendation for you is to use `TexStudio` although any good \LaTeX{} editor should do fine. 
 
   
 #### Notes on GNU/Linux installation
 
-I'm talking here about debian-like distributions (mainly Ubuntu), but package instructions and package names will be similar.
+I'm talking here about debian-like distributions (mainly Ubuntu), but package instructions and package names should be similar across other ones.
 
 I would recommend you to install the TexLive distribution (`sudo apt-get install texlive` will do in an Ubuntu box, for example). Most of the required packages will be installed by default being typical exceptions `texlive-publishers`, `texlive-lang-spanish` and `texlive-lang-english`. Do install them. 
 
 You can also use `sudo apt-get install texlive-full` for an overloaded full texlive distribution, but this will take a lot of disk space.
 
-Regarding editors, I would suggest you to use `TeXStudio` or `emacs` (I personally use the latter, but the learning curve can be really steep).
+Regarding editors I would suggest you to use `TeXStudio` or `emacs` (I personally use the latter, but the learning curve can be really steep).
 
 
 #### Notes on Windows installation
@@ -74,7 +74,7 @@ The template is accessible in two ways:
 
 1. In github, in case you want to clone or fork my working version. It is available at 
 [my gitHub account project page](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate), so that you can clone it from [the clone URL](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git). Beware that it has a lot of extra files that should not be useful for the general user
-2. In my dropbox, in zip and tgz formats, accesible at [this Dropbox download folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0).  At this location you will also be able to access the sample book files for all the different flavours (degrees...) and in Spanish and English versions. Note that the introduction chapter will provide you with general instructions and details on the use of the template. **Please do read it**. The rests of the chapters provide you with sample code to do a varity of (IMHO) nice things you might find useful.
+2. In my dropbox, in zip and tgz formats, accesible at [this Dropbox download folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0).  At this location you will also be able to access the sample book files for all the different flavours (degrees, masters, PhD programs) and in Spanish and English versions. Note that the introduction chapter will provide you with general instructions and details on the use of the template. **Please do read it**. The rests of the chapters provide you with sample code to do a variety of (IMHO) nice things you might find useful.
 
 ## Configure your data
 
@@ -96,7 +96,44 @@ The template is accessible in two ways:
 ## To fill in and generate paperwork
 
 1. Go to the `Papeleo` directory where you will find general files required for all document types, and specific subdirectories for PhDs, TFGs and TFMs
-2. Edit the files you need and compile them by using the corresponding `Makefile`s or your standard LaTeX build tool.
+2. Edit the files you need and compile them by using the corresponding `Makefile`s or your standard LaTeX build tool. If you use overleaf, change the `main document` to be the one you want to compile.
+
+
+# Important note about bibliography handling
+
+## For the impatient
+
+Regarding bibliography files, you just have to edit the `Book/bibliofiles.tex`
+file, stating (uncommenting) which files you need for the bibliography. No
+changes are needed elseware.
+
+The default bibliography processing backend is now `biber` (from september 2022
+onwards). This implies that you have to tell your IDE that you are using `biber`
+instead of `bibtex`. This applies to TeXStudio for example.
+
+## More details
+
+As of September 2022, nice work from Gonzalo Corral abandoned the `bibtex`
+processing tool in favour of `biber`.
+
+There a number of advantages and disadvantages on using `biber` (see for example
+[here](https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib)
+and [here](https://tex.stackexchange.com/questions/53247/why-is-biber-so-slow))
+but the fact that it can use UTF-8 as the encoding for the bib files was the
+number one reason for accepting this change.
+
+The change in the backend processor caused a major headeache as `biblatex`
+requires specifying the bib files in the preamble, and we did not want to make
+users deal with it. The solution we found was quick and dirty but it seems to
+work: now the users just have to edit the `Book/bibliofiles` file to include the
+required biblio files.
+
+## If you still prefer (for whatever reason) `bibtex` as your backend
+
+Gonzalo still kept some support for `bibtex` in the `Makefile` and `Book/book.tex` files. If you want to use the `bibtex` you have to:
+
+- Define the ``\bibliosystem` variable in `Config/preamble.tex` to be equal to `bibtex`
+- Convert the `biblio/biblio.bib` file to ISO-8859-1 encoding
 
 
 # Disclaimer & request for help & offer to help
