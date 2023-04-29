@@ -86,6 +86,8 @@ PDFS_FROM_DIA=$(patsubst %.dia,%.pdf,$(DIA_SOURCES))
 PDFS_FROM_SVG=$(patsubst %.svg,%.pdf,$(SVG_SOURCES)) 
 PDFS_FROM_EPS=$(patsubst %.eps,%.pdf,$(EPS_SOURCES)) 
 
+DUMMY_MAIN_TARGETS=all bare backup-chapters orig-chapters bare-chapters clean-orig-figures clean-orig-diagrams all_latexmk tar clean clean_latexmk
+DUMMY_DIFF_TARGETS=snapshot flatten latexdiff
 DUMMY_TARGETS=pdf_dia_done pdf_svg_done pdf_eps_done
 
 DATE=$(shell date "+%C%y%m%d-%H%M%S")
@@ -243,6 +245,4 @@ clean_latexmk:
 	-$(RM) $(ROOT_FILENAME).slg
 	$(RM) $(DUMMY_TARGETS)
 
-.PHONY:	all pdf clean tar $(DUMMY_TARGETS)
-
-
+.PHONY:	$(DUMMY_MAIN_TARGETS) $(DUMMY_DIFF_TARGETS) $(DUMMY_TARGETS)
