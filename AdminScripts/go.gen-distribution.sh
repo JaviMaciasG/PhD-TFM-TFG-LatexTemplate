@@ -1,7 +1,10 @@
 #!/bin/bash
 
-pandoc README.yaml README.md -t pdf -o README.pdf --variable urlcolor=blue --number-sections --table-of-contents --highlight-style kate -V colorlinks -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"  --toc-depth=4
 
+# First make sure README.md is compiled
+make 00-README.pdf
+
+#pandoc README.yaml README.md -t pdf -o README.pdf --variable urlcolor=blue --number-sections --table-of-contents --highlight-style kate -V colorlinks -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"  --toc-depth=4
 
 echo "Showing distribution tags:"
 git tag
@@ -58,7 +61,7 @@ then
 
     rsync -avu $DIST_FILE.tgz $DIST_FILE.zip ~/Dropbox/PhDTFMTFG-LaTeX-Template/
     cp README.md ~/Dropbox/PhDTFMTFG-LaTeX-Template/00-README.md
-    cp README.pdf ~/Dropbox/PhDTFMTFG-LaTeX-Template/00-README.pdf
+    cp 00-README.pdf ~/Dropbox/PhDTFMTFG-LaTeX-Template/00-README.pdf
 else
     echo "You replied something different from 'Y', so that I'm exiting..."
     exit 1
