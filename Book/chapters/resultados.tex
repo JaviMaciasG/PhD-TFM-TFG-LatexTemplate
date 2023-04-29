@@ -5,26 +5,20 @@
 % $Id: resultados.tex,v 1.7 2016/03/31 10:44:23 macias Exp $
 %
 % By:
-%  + Javier Macías-Guarasa. 
+%  + Javier Macías-Guarasa.
 %    Departamento de Electrónica
 %    Universidad de Alcalá
-%  + Roberto Barra-Chicote. 
+%  + Roberto Barra-Chicote.
 %    Departamento de Ingeniería Electrónica
-%    Universidad Politécnica de Madrid   
+%    Universidad Politécnica de Madrid
 % 
-% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
-% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
-% all of them, and to the many anonymous contributors found (thanks to
-% google) that provided help in setting all this up.
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo, Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to all of them, and to the many anonymous contributors found (thanks to google) that provided help in setting all this up.
 %
-% See also the additionalContributors.txt file to check the name of
-% additional contributors to this work.
+% See also the additionalContributors.txt file to check the name of additional contributors to this work.
 %
-% If you think you can add pieces of relevant/useful examples,
-% improvements, please contact us at (macias@depeca.uah.es)
+% If you think you can add pieces of relevant/useful examples, improvements, please contact us at (macias@depeca.uah.es)
 %
-% You can freely use this template and please contribute with
-% comments or suggestions!!!
+% You can freely use this template and please contribute with comments or suggestions!!!
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -35,8 +29,7 @@
 \begin{FraseCelebre}
   \begin{Frase}
     % Si quieres ser leído más de una vez, no vaciles en borrar a menudo.
-    Rem tene, verba sequentur (Si dominas el tema, las palabras vendrán
-    solas)\footnote{Tomado de ejemplos del proyecto \texis{}.}.
+    Rem tene, verba sequentur (Si dominas el tema, las palabras vendrán solas)\footnote{Tomado de ejemplos del proyecto \texis{}.}.
   \end{Frase}
   \begin{Fuente}
     % Horacio
@@ -47,8 +40,7 @@
 \section{Introducción}
 \label{sec:introduccion-resultados}
 
-En este capítulo se introducirán los resultados más relevantes del
-trabajo. 
+En este capítulo se introducirán los resultados más relevantes del trabajo.
 
 La estructura del capítulo es\ldots
 
@@ -70,15 +62,7 @@ Blah, blah, blah.
 
 Blah, blah, blah.
 
-En la tabla\ref{pruebaCalc2LaTeX} pongo un ejemplo del uso del conversor
-de libreoffice a \LaTeX{} (cortesía de Roberto Chamorro). Para usarlo
-tienes que importar la macro que encontrarás en el directorio
-\texttt{Tools/calc2latex//calc2latex\_024\_eur\_latex}\footnote{Para
-  ello sigue el proceso de importación que se describe en
-  \url{http://ask.libreoffice.org/en/question/35598/where-are-lo-basic-macros-stored/},
-  importando Cals
-  y cuando ejecutes la macro hazlo por el punto de entrada
-  \texttt{Main}, después de seleccionar el rango de celdas de la tabla.}
+En la tabla\ref{pruebaCalc2LaTeX} pongo un ejemplo del uso del conversor de libreoffice a \LaTeX{} (cortesía de Roberto Chamorro). Para usarlo tienes que importar la macro que encontrarás en el directorio \texttt{Tools/calc2latex//calc2latex\_024\_eur\_latex}\footnote{Para ello sigue el proceso de importación que se describe en \url{http://ask.libreoffice.org/en/question/35598/where-are-lo-basic-macros-stored/}, importando Cals y cuando ejecutes la macro hazlo por el punto de entrada \texttt{Main}, después de seleccionar el rango de celdas de la tabla.}
 
 \input{Tools/calc2latex/sample.tex}
 
@@ -100,8 +84,7 @@ A continuación, se muestra un ejemplo de tabla simple (ver tabla \ref{tab:table
   \caption{Comparativa.}
   \label{tab:table1}
   \begin{center}
-    % Some packages, such as MDW tools, offer better commands for making tables
-    % than the plain LaTeX2e tabular which is used here.
+    % Some packages, such as MDW tools, offer better commands for making tables than the plain LaTeX2e tabular which is used here.
     \begin{tabular}{|c|c|c|}
       \hline
       Method & Training Time & Man-Work (\%)\\
@@ -116,9 +99,7 @@ A continuación, se muestra un ejemplo de tabla simple (ver tabla \ref{tab:table
   \end{center}
 \end{table}
 
-Cuando las tablas ocupan más de un página se debe utilizar un tipo
-especial de tablas denominado \texttt{longtable}. A continuación, se
-muestra un ejemplo del mismo (ver tabla \ref{table2}).
+Cuando las tablas ocupan más de un página se debe utilizar un tipo especial de tablas denominado \texttt{longtable}. A continuación, se muestra un ejemplo del mismo (ver tabla \ref{table2}).
 
 \begin{center}
 	\begin{longtable}{|c|c|c|c|}
@@ -197,29 +178,6 @@ muestra un ejemplo del mismo (ver tabla \ref{table2}).
 	\end{longtable}
 \end{center}
 
-% OBSOLETED BY JMG ON 2014/09/01
-% En algunas ocasiones, también resulta útil emplear el entorno
-% \texttt{subfloat} (del paquete \texttt{subfig}) para añadir múltiples
-% imágenes dentro de la misma figura. A continuación, se muestra un
-% ejemplo del uso en la figura \ref{fig:fig2}. También se pueden
-% referenciar las sub-figuras de forma individual, por ejemplo la
-% sub-figura \ref{fig:fig2b} (usando un método de cita), o bien la
-% sub-figura \ref{fig:fig2}\subref{fig:fig2b} (usando otro alternativo).
-
-% \begin{figure}[h]
-%   \centerline{\subfloat[Mean entropy]{\includegraphics[width=3in]{Figure2}
-%       % where an .eps filename suffix will be assumed under latex, 
-%       % and a .pdf suffix will be assumed for pdflatex
-%       \label{fig:fig2a}}
-%     \hfil
-%     \subfloat[Error Percentage]{\includegraphics[width=2.7in]{Figure3}
-%       % where an .eps filename suffix will be assumed under latex, 
-%       % and a .pdf suffix will be assumed for pdflatex
-%       \label{fig:fig2b}}}
-%   \caption{Optimal number of frames in the training data set.}
-%   \label{fig:fig2}
-% \end{figure}
-
 En algunas ocasiones, también resulta útil emplear el entorno
 \texttt{subfigure} para añadir múltiples imágenes dentro de la misma
 figura. A continuación, se muestra un ejemplo del uso en la figura
@@ -250,8 +208,7 @@ otro alternativo).
   \label{fig:fig3}
 \end{figure}
 
-La figura~\ref{fig:LIdiapRoom} muestra otro ejemplo con referencias a
-las subfigures en el caption principal. 
+La figura~\ref{fig:LIdiapRoom} muestra otro ejemplo con referencias a las subfigures en el caption principal.
 
 \begin{figure}
   \centering
@@ -267,31 +224,13 @@ las subfigures en el caption principal.
     \caption{}
     \label{fig:RoomPicture}
   \end{subfigure}
-  \caption{Idiap Smart Meeting Room for AV16.3 recordings.
-    (\protect\subref{fig:RoomLayout}) Room layout showing the centered
-    table, and the microphones arranged in two circular arrays.
-    (\protect\subref{fig:RoomPicture}) Sample of recorded video frame
-    showing the arrays area. \vspace{-0.3cm}}
+  \caption{Idiap Smart Meeting Room for AV16.3 recordings. (\protect\subref{fig:RoomLayout}) Room layout showing the centered table, and the microphones arranged in two circular arrays. (\protect\subref{fig:RoomPicture}) Sample of recorded video frame showing the arrays area. \vspace{-0.3cm}}
   \label{fig:LIdiapRoom}
 \end{figure}
 
-Os incluimos a continuación un
-párrafo de un artículo en el que hacemos referencia a varias figuras y
-subfiguras: 
+Os incluimos a continuación un párrafo de un artículo en el que hacemos referencia a varias figuras y subfiguras:
 
-\emph{The IDIAP Meeting Room (shown in figure~\ref{fig:LIdiapRoom}) is a $8.2m
-\times 3.6m \times 2.4m$ rectangular space containing a centrally
-located $4.8m \times 1.2m$ rectangular table, on top of which two
-circular microphone arrays of $10 cm$ radius are located, each of them
-composed by 8 microphones. The centers of the two arrays are separated
-by $80 cm$ and the origin of coordinates is located in the middle point
-between the two arrays. The arrays can be also seen in
-figures~\ref{fig:simureal_positions}.\subref{fig:Simulated_positions},
-~\ref{fig:simureal_positions}.\subref{fig:real_positions_short}, and
-~\ref{fig:simureal_positions}.\subref{fig:real_positions_long}, in which
-only the relevant section of the room is displayed, each one showing
-different scenarios that were used in the experiments. A detailed
-description of the meeting room can be found in~\cite{moore2002}.}
+\emph{The IDIAP Meeting Room (shown in figure~\ref{fig:LIdiapRoom}) is a $8.2m \times 3.6m \times 2.4m$ rectangular space containing a centrally located $4.8m \times 1.2m$ rectangular table, on top of which two circular microphone arrays of $10 cm$ radius are located, each of them composed by 8 microphones. The centers of the two arrays are separated by $80 cm$ and the origin of coordinates is located in the middle point between the two arrays. The arrays can be also seen in figures~\ref{fig:simureal_positions}.\subref{fig:Simulated_positions}, ~\ref{fig:simureal_positions}.\subref{fig:real_positions_short}, and ~\ref{fig:simureal_positions}.\subref{fig:real_positions_long}, in which only the relevant section of the room is displayed, each one showing different scenarios that were used in the experiments. A detailed description of the meeting room can be found in~\cite{moore2002}.}
 
 \begin{figure}
   \centering
@@ -362,61 +301,23 @@ figuras organizadas de forma un poco más complejo.
     \label{fig:Sim_ang162}
   \end{subfigure}
 
-  \caption{Comparison between the steered power response generated
-    by the model (solid line) and that calculated using simulated
-    waveforms in the AV16.3 environment (stems). Results for the
-    speaker in given angles and the array steered from -90º to
-    +90º are shown.}
+  \caption{Comparison between the steered power response generated by the model (solid line) and that calculated using simulated waveforms in the AV16.3 environment (stems). Results for the speaker in given angles and the array steered from -90º to +90º are shown.}
   \label{fig:Sim_angles}
 \end{figure}
 
-También es posible incluir el código de una figura en un fichero
-\texttt{.tex} independiente (para hacer más legible el código del
-documento principal). Un ejemplo lo tenéis a continuación, incluyendo el
-texto en inglés del documento original:
+También es posible incluir el código de una figura en un fichero \texttt{.tex} independiente (para hacer más legible el código del documento principal). Un ejemplo lo tenéis a continuación, incluyendo el texto en inglés del documento original:
 
-\emph{Figure~\ref{fig:SRPvsPatternSelected} includes the results of the
-comparison, for several speaker positions (1, 2, 4, 6, 8 and 16,
-emphasized in
-figure~\ref{fig:simureal_positions}.\subref{fig:real_positions_short}),
-and selected to provide different acoustic situations, both in terms of
-distance and angular position with respect to the arrays. All the
-graphics show the acoustic power map (predicted or calculated) for a
-regular two-dimensional grid of $10~cm$. The plot is provided from a top
-view of the room, spanning the full plan at a height of $61~cm$ above the
-microphone arrays (this height was the ground truth one for sequence
-01). For each speaker position shown, three graphics are plotted:}
+\emph{Figure~\ref{fig:SRPvsPatternSelected} includes the results of the comparison, for several speaker positions (1, 2, 4, 6, 8 and 16, emphasized in figure~\ref{fig:simureal_positions}.\subref{fig:real_positions_short}), and selected to provide different acoustic situations, both in terms of distance and angular position with respect to the arrays. All the graphics show the acoustic power map (predicted or calculated) for a regular two-dimensional grid of $10~cm$. The plot is provided from a top view of the room, spanning the full plan at a height of $61~cm$ above the microphone arrays (this height was the ground truth one for sequence 01). For each speaker position shown, three graphics are plotted:}
 
 \begin{itemize}
-\item \emph{The graphics on the left show the SRP-PHAT acoustic power maps
-  generated by the proposed model (for example, the left graphic in
-  figure~\ref{fig:SRPvsPatternSelected}.\subref{fig:SRPvsModel_Fo1500_position1}
-  for position 1).}
-\item \emph{The graphics in the middle show the real SRP-PHAT acoustic power
-  maps calculated using the real acoustic waveforms (for example, the
-  middle graphic in
-  figure~\ref{fig:SRPvsPatternSelected}.\subref{fig:SRPvsModel_Fo1500_position1}
-  for position 1), for a single selected frame.}
-\item \emph{The graphics on the right show the average real SRP-PHAT acoustic
-  power maps, averaging for all the frames in which the user was in the
-  given position (for example, the right graphic in
-  figure~\ref{fig:SRPvsPatternSelected}.\subref{fig:SRPvsModel_Fo1500_position1}
-  for position 1).}
+  \item \emph{The graphics on the left show the SRP-PHAT acoustic power maps generated by the proposed model (for example, the left graphic in figure~\ref{fig:SRPvsPatternSelected}.\subref{fig:SRPvsModel_Fo1500_position1} for position 1).}
+  \item \emph{The graphics in the middle show the real SRP-PHAT acoustic power maps calculated using the real acoustic waveforms (for example, the middle graphic in figure~\ref{fig:SRPvsPatternSelected}.\subref{fig:SRPvsModel_Fo1500_position1} for position 1), for a single selected frame.}
+  \item \emph{The graphics on the right show the average real SRP-PHAT acoustic power maps, averaging for all the frames in which the user was in the given position (for example, the right graphic in figure~\ref{fig:SRPvsPatternSelected}.\subref{fig:SRPvsModel_Fo1500_position1} for position 1).}
 \end{itemize}
 
-\emph{The green point represents the real (ground truth) speaker
-position, and the black dots represent the positions of the four
-microphones used. The hyperbolic shapes found in the figure are
-consistent with the fact that the place of points with equal acoustic
-power value, for a given microphone pair, is a hyperbola (in our
-two-dimensional case, being a hyperboloid of revolution in the
-three-dimensional case).}
+\emph{The green point represents the real (ground truth) speaker position, and the black dots represent the positions of the four microphones used. The hyperbolic shapes found in the figure are consistent with the fact that the place of points with equal acoustic power value, for a given microphone pair, is a hyperbola (in our two-dimensional case, being a hyperboloid of revolution in the three-dimensional case).}
 
-\emph{From figure~\ref{fig:SRPvsPatternSelected}, it can clearly be seen that,
-again, the predictions closely match the results with real data for the
-different acoustic conditions, even when the simulations are using fixed
-and frequency independent average reflection coefficients, and that the
-acoustic model is based on the simplistic image method model.}
+\emph{From figure~\ref{fig:SRPvsPatternSelected}, it can clearly be seen that, again, the predictions closely match the results with real data for the different acoustic conditions, even when the simulations are using fixed and frequency independent average reflection coefficients, and that the acoustic model is based on the simplistic image method model.}
 
 \input{chapters/figure-ComparisonMap} 
 
@@ -431,10 +332,7 @@ acoustic model is based on the simplistic image method model.}
   \vspace{1pt}
 \end{wrapfigure} 
 
-Otra posibilidad es utilizar el entorno \texttt{wrapfig} para hacer que
-el texto bordee a las figuras, como en la
-figura~\ref{fig:wrapfigure1}. Añado ahora unas líneas de loren ipsum
-para que lo veáis bien. \lipsum[1-1]
+Otra posibilidad es utilizar el entorno \texttt{wrapfig} para hacer que el texto bordee a las figuras, como en la figura~\ref{fig:wrapfigure1}. Añado ahora unas líneas de loren ipsum para que lo veáis bien. \lipsum[1-1]
 
 % \lipsum[1-4]
 % \begin{wrapfigure}{R}{5cm}
@@ -443,11 +341,7 @@ para que lo veáis bien. \lipsum[1-1]
 % \end{wrapfigure}
 % \lipsum[1-6]
 
-
-
-Incluso podemos poner una tabla ``apaisada'', como en la
-\ref{tab:tablas2006}, donde se muestra un resumen de los resultados
-obtenidos en una serie de experimentos de localización de locutores.
+Incluso podemos poner una tabla ``apaisada'', como en la \ref{tab:tablas2006}, donde se muestra un resumen de los resultados obtenidos en una serie de experimentos de localización de locutores.
 
 \clearpage
 % \begin{table}[H]\centering
