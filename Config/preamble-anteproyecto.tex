@@ -515,6 +515,18 @@ pdfborder={0 0 112.0}              %%% border-width of frames
 %\newcommand{\abc}{abc}  
 %\expandafter\makefirstuc\expandafter{\abc} 
 
+% This allow for easy break lines in table cells (see https://tex.stackexchange.com/questions/2441/how-to-add-a-forced-line-break-inside-a-table-cell)
+% Just use \thead{This is first line \\ and second line}
+% or \makecell{This is first line \\ and second line}
+% To change default horizontal and vertical alignments (default is cc)
+% \renewcommand{\cellalign}{vh}
+% \renewcommand{\theadalign}{vh}
+% where v is one of t, c, or b and h one of l, c, or r. Alternatively, for a single cell, you can
+% use the \makecell or \thead commands with the optional argument [vh].
+usepackage{makecell}
+
+
+
 \makeatletter
 \def\input@path{{../}{../biblio/}}
 %or: \def\input@path{{/path/to/folder}{/path/to/other/folder}}
