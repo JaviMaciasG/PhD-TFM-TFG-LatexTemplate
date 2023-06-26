@@ -78,7 +78,9 @@ But you should also have a look to the paperwork related ones:
 + `Papeleo/TFMAutorizacionPubAbierto//autorizacionPublicarAbierto.tex`
 + etc.
 
-  
+We have had a number of issues with overleaf in the past (mainly regarding glossaries), and they should be fully working. If new issues arise in the future, [this repo](https://github.com/gkilleen33/overleaf-offline/tree/master) has nice configurations for `latexmkrc` that should provide hints on how to solve them).
+
+
 ## Download the template
 
 The template is accessible in two ways:
