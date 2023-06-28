@@ -21,3 +21,5 @@
   - Sugerir sumatra
    
 + Use autolatex instead of rubber?.... Done! To be carefully checked
+
++ Change background mechanism. Right now background requires everypage, but everypage is in legacy status...
