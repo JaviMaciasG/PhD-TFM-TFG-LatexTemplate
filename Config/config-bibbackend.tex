@@ -9,6 +9,13 @@
 
 \ifthenelse{\equal{\bibliosystem}{biblatex}}
 {
+  % Suggestion by Miguel Cubero (2023)
+  % When using babel or polyglossia with biblatex, loading csquotes is
+  % recommended to ensure that quoted texts are typeset according to the
+  % rules of your main language.
+
+  \usepackage{csquotes}
+
   % Use biblatex instead of bibtex
   \usepackage[backend=biber,style=ieee]{biblatex}
   % This is a dirty hack, but should work... The reason to do so is to avoid
