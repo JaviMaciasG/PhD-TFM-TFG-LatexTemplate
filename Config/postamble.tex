@@ -158,8 +158,14 @@
   \newcommand{\wordEmiteOrEmiten}{emite}
   \newcommand{\wordElOrLos}{El}
   \newcommand{\wordSuOrSus}{su}
+\ifthenelse{\equal{\myAcademicTutorGender}{male}}
+{
   \newcommand{\wordDelOrDeLos}{del}
-  \newcommand{\wordHagoOrHacemos}{hago}
+}
+{
+  \newcommand{\wordDelOrDeLos}{de la}
+}
+\newcommand{\wordHagoOrHacemos}{hago}
 }
 {
   \newcommand{\myAdvisors}{\myAcademicTutorFullName{} \andOrY{} \myCoTutorFullName{}}
