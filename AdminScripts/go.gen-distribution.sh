@@ -36,7 +36,8 @@ then
     for d in $DIRS
     do
 
-	FILES=`find $d -name "*.tex" -o -name "*.bib" -o -name "*.png" -o -name "*.jpg" -o -name "Makefile" -o -name "*.dia"`
+    # I add here Esquema_objetos.pdf to allow compilation
+	FILES=`find $d -name "*.tex" -o -name "*.bib" -o -name "*.png" -o -name "*.jpg" -o -name "Makefile" -o -name "*.dia" -o -name "Esquema_objetos.pdf"`
 	FILES_ALL="$FILES_ALL $FILES"
     done
 
