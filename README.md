@@ -116,7 +116,7 @@ The template is accessible in two ways:
 
 ## For the impatient
 
-Regarding bibliography files, you just have to edit the `Book/bibliofiles.tex`
+Regarding bibliography files, you just have to edit the `Book/biblio/bibliofiles.tex`
 file, stating (uncommenting) which files you need for the bibliography. No
 changes are needed elsewhere.
 
@@ -138,7 +138,7 @@ number one reason for accepting this change.
 The change in the backend processor caused a major headeache as `biblatex`
 requires specifying the bib files in the preamble, and we did not want to make
 users deal with it. The solution we found was quick and dirty but it seems to
-work: now the users just have to edit the `Book/bibliofiles` file to include the
+work: now the users just have to edit the `Book/biblio/bibliofiles.tex` file to include the
 required biblio files.
 
 ## If you still prefer (for whatever reason) `bibtex` as your backend
