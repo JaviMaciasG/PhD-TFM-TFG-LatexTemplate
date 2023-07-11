@@ -26,6 +26,8 @@
 # Final draft before releasing
 #
 
+DST_DIR="/home/macias/Dropbox/PhDTFMTFG-LaTeX-Template"
+
 #DEGREES="IT IE ITTSE ITTST ITI GIEAI GIST GITT GIT GIC GII GSI MUSEA PHDUAH PHDUPM GIEC"
 DEGREES_ENG_SPA="PHDUAH PHDUPM"
 DEGREES_SPA="IT IE ITTSE ITTST ITI GIEAI GITI GIST GITT GIT GIC GII GSI GISI MUSEA MUIT MUII MUCTE GIEC"
@@ -45,7 +47,7 @@ cat $MYCONFIG |sed -E "s/newcommand[{][\\]myLanguage[}][{](.*)[}]/newcommand{\\\
 
 cp $MYCONFIG $MYCONFIG.before
 
-for lang in english spanish
+for lang in spanish english
 do
     for degree in $DEGREES_ENG_SPA
     do
@@ -55,9 +57,10 @@ do
 	cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
 	make clean >& /dev/null
 	make  >& /dev/null
-#	mv $BOOK*.pdf $OUTPUT_NAME
+	#echo "mv book.pdf $DST_DIR/$OUTPUT_NAME"
+    mv book.pdf $DST_DIR/$OUTPUT_NAME
 	echo " Done!"
-##	exit
+	#exit
     done
 done
 
