@@ -6,12 +6,12 @@ The template uses configuration variables (defined in the `Config/myconfig.tex` 
 
 Support to generate the "anteproyecto" is also provided, along with some of the paperwork required by the current regulations, that will be useful for you and your advisor/s (request for anteproyecto, deposit, authorization for the defense, authorization for open publication in the institutional repository, request for "acta", etc.).
 
-Please carefully read chapter 1 of any of the precompiled examples in the dropbox distribuition (for example that for the [GIEC TFG at UAH](https://www.dropbox.com/s/p8htef58cusv4x6/TFG-GIEC-spanish.pdf?dl=0)).
-
+Please carefully read chapter 1 of any of the precompiled examples in the dropbox distribution (for example that for the [GIEC TFG at UAH](https://www.dropbox.com/s/69ppvvp9i03sp4m/TFG-GIEC-spanish.pdf?dl=0)).
+     
 
 # Quick start
 
-## Prerrequisites
+## Prerequisites
 
 You have two main options to work with the template: Do your work locally in any PC, or use [Overleaf](https://www.overleaf.com/). Both options are described below
 
@@ -85,9 +85,9 @@ We have had a number of issues with overleaf in the past (mainly regarding gloss
 
 The template is accessible in two ways:
 
-1. In github, in case you want to clone or fork my working version. It is available at 
-[my gitHub account project page](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate), so that you can clone it from [the clone URL](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git). Beware that it has a lot of extra files that should not be useful for the general user
-2. In my dropbox, in zip and tgz formats, accesible at [this Dropbox download folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0).  At this location you will also be able to access the sample book files for all the different flavours (degrees, masters, PhD programs) and in Spanish and English versions. Note that the introduction chapter will provide you with general instructions and details on the use of the template. **Please do read it**. The rests of the chapters provide you with sample code to do a variety of (IMHO) nice things you might find useful.
+1. In GitHub, in case you want to clone or fork my working version. It is available at 
+[my GitHub account project page](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate), so that you can clone it from [the clone URL](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git). Beware that it has a lot of extra files that should not be useful for the general user
+2. In my dropbox, in zip and tgz formats, accessible at [this Dropbox download folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0).  At this location you will also be able to access the sample book files for all the different flavors (degrees, masters, PhD programs) and in Spanish and English versions. Note that the introduction chapter will provide you with general instructions and details on the use of the template. **Please do read it**. The rests of the chapters provide you with sample code to do a variety of (IMHO) nice things you might find useful.
 
 ## Configure your data
 
@@ -120,14 +120,14 @@ Regarding bibliography files, you just have to edit the `Book/biblio/bibliofiles
 file, stating (uncommenting) which files you need for the bibliography. No
 changes are needed elsewhere.
 
-The default bibliography processing backend is now `biber` (from september 2022
+The default bibliography processing backend is now `biber` (from September 2022
 onwards). This implies that you have to tell your IDE that you are using `biber`
 instead of `bibtex`. This applies to TeXStudio for example.
 
 ## More details
 
 As of September 2022, nice work from Gonzalo Corral abandoned the `bibtex`
-processing tool in favour of `biber`.
+processing tool in favor of `biber`.
 
 There a number of advantages and disadvantages on using `biber` (see for example
 [here](https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib)
@@ -135,7 +135,7 @@ and [here](https://tex.stackexchange.com/questions/53247/why-is-biber-so-slow))
 but the fact that it can use UTF-8 as the encoding for the bib files was the
 number one reason for accepting this change.
 
-The change in the backend processor caused a major headeache as `biblatex`
+The change in the backend processor caused a major headache as `biblatex`
 requires specifying the bib files in the preamble, and we did not want to make
 users deal with it. The solution we found was quick and dirty but it seems to
 work: now the users just have to edit the `Book/biblio/bibliofiles.tex` file to include the
