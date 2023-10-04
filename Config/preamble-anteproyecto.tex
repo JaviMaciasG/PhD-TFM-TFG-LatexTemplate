@@ -113,26 +113,28 @@
 \geometry{verbose,a4paper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
 %\geometry{paperwidth=210mm,paperheight=297mm}
 
+\usepackage{hyperref}
 \usepackage{hyperxmp}
-\usepackage[
-%%ps2pdf,                          %%% hyper-references for ps2pdf
+\hypersetup{
+%% ps2pdf,                %%% hyper-references for ps2pdf
 bookmarks=true,%                   %%% generate bookmarks ...
 bookmarksnumbered=true,            %%% ... with numbers
 hypertexnames=false,               %%% needed for correct links to
-                                   %%% figures!!!
-%hypertexnames=true,               %%% needed for correct links on pagebackrefs!!!
+%%% figures!!!
+% hypertexnames=true,               %%% needed for correct links on pagebackrefs!!!
 breaklinks=true,                   %%% breaks lines, but links are very small
-%pagebackref=true,
-%linktocpage=true,                 %%% enlace en el numero de página.
+% pagebackref=true,
+% linktocpage=true,                 %%% enlace en el numero de página.
 linktoc=all,
 colorlinks=true,
-linkcolor=azul,    
-citecolor=verde,
-urlcolor=azul,                     %%% texto  con color (further
-                                   %%% modified in myconfig.tex)
-%linkbordercolor={0 0 1},           %%% blue frames around links
-pdfborder={0 0 112.0}              %%% border-width of frames 
-]{hyperref}                        %%% will be multiplied with 0.009 by ps2pdf
+linkcolor=blue,
+citecolor=green,
+urlcolor=blue,                     %%% texto  con color (further
+%%% modified in myconfig.tex)
+% linkbordercolor={0 0 1},           %%% blue frames around links
+pdfborder={0 0 112.0},              %%% border-width of frames
+hyperfootnotes=false
+}                        %%% will be multiplied with 0.009 by ps2pdf
 
 
 % Para numerar las \subsubsection
