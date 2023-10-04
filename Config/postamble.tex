@@ -700,7 +700,18 @@
 \newcommand{\underscoreSpacingFour}{\_\_\_\_}
 \newcommand{\spacingFour}{~~~~}
 
+% \makeatletter%
+%   \hypersetup{%
+%     pdfinfo={%
+%     Title={\@title},%
+%     Author={\@author},%
+%     Subject={subject},%
+%     Producer={pdfTeX},%
+%     Creator={\@author},%
+%     Keywords={Apunts},%
+%     },%
 
+% }
 \hypersetup
 {
   pdftitle={\myBookTitle},
@@ -718,7 +729,13 @@
   linkcolor=\mylinkcolor,
   citecolor=\mycitecolor,
   pdfstartview=Fit,
-  pdfpagemode=UseOutlines
+  pdfpagemode=UseOutlines,
+  pdfinfo={
+    License={\myLicenseURL},
+    Language={\mypdflang},
+    Copyright={\myCopyrightStatement},
+  },
+  keeppdfinfo %keep info entries
 }
 
 % Added conflicting options of tocloft with subfigure, fixing by adding subfigure option
