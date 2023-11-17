@@ -537,6 +537,11 @@ hyperfootnotes=false
 % This should be relative to the anteproyecto path
 \newcommand{\myreferencespath}{../Book/}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% To allow checking for initial letter of string being a given one
+\usepackage{xstring}
+
+
 %\providecommand{\DIFadd}[1]{{\protect\color{blue}#1}} %DIF PREAMBLE
 %\providecommand{\DIFdel}[1]{{\protect\color{red}\protect\scriptsize{#1}}}
 
@@ -545,6 +550,7 @@ hyperfootnotes=false
 \providecommand{\DIFadd}[1]{{\protect\color{blue}\textbf{#1}}}
 \providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                     
 \input{../Config/config-bibbackend.tex}
+
 
 %%% Local Variables:
 %%% TeX-master: "../book"
