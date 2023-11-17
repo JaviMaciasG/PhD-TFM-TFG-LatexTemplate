@@ -60,10 +60,15 @@
 
 \ifthenelse{\equal{\myLanguage}{spanish}}
 {
-  \newcommand{\andOrY}{y} 
+  \newcommand{\andOrYDon}{y}
+  % From https://tex.stackexchange.com/questions/132248/test-if-the-first-character-of-a-string-is-a
+  \StrLeft{\myCoTutorFullName{}}{1}[\firstchar]%
+  \IfStrEq{\firstchar}{I}{\newcommand{\andOrY}{e}}{\newcommand{\andOrY}{y}}%
+
 } 
 {
-  \newcommand{\andOrY}{and} 
+  \newcommand{\andOrYDon}{and}
+  \newcommand{\andOrY}{and}
 }
 
 % Gender issues
@@ -163,7 +168,7 @@
 }
 {
   \newcommand{\myAdvisors}{\myAcademicTutorFullName{} \andOrY{} \myCoTutorFullName{}}
-  \newcommand{\myAdvisorsWithDonOrDona}{\wordDonOrDonaTutor{} \myAcademicTutorFullName{} \andOrY{} \wordDonOrDonaCoTutor{} \myCoTutorFullName{}}
+  \newcommand{\myAdvisorsWithDonOrDona}{\wordDonOrDonaTutor{} \myAcademicTutorFullName{} \andOrYDon{} \wordDonOrDonaCoTutor{} \myCoTutorFullName{}}
   \newcommand{\myAdvisorsConDrOrDra}{\wordDrOrDraTutor{} \myAcademicTutorFullName{}\\\wordDrOrDraCoTutor{} \myCoTutorFullName{}}
 
   \newcommand{\wordDirectorOrDirectores}{directores}
