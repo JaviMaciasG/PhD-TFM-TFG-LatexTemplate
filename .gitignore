@@ -535,3 +535,14 @@ xcuserdata/
 # Zipped files with the template distribution
 00*zip
 00*tgz
+
+# UAH template specifics
+*.cod
+*.ist
+*.sbl
+*.slg
+*.sym
+*.vdo
+pdf_dia_done
+pdf_eps_done
+pdf_svg_done
