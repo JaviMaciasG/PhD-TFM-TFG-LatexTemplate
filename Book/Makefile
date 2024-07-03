@@ -31,6 +31,7 @@ AUTHOR_NAME = $(shell grep -v "%" $(CONFIG_FILE) | grep "myAuthorName" | grep -v
 AUTHOR_SURNAME = $(shell grep -v "%" $(CONFIG_FILE) | grep "myAuthorSurname" | grep -v "myAuthorFullName" | cut -f 3 -d "{" | cut -f 1 -d "}" | tr -d " " | iconv -f utf8 -t ascii//TRANSLIT)
 BOOK_LANGUAGE = $(shell grep -v "%" $(CONFIG_FILE) | grep "myLanguage" | cut -f 3 -d "{" | cut -f 1 -d "}")
 BOOK_TYPE = $(shell grep -w $(DEGREE_NAME) $(WORKTYPES_FILE) | tr -s " " | cut -f 2 -d " " | tr -d " ")
+RELEASE = $(shell git describe --tags --abbrev=0)
 
 # Filenames
 ROOT_FILENAME = book
@@ -76,6 +77,11 @@ all: $(DUMMY_TARGETS)
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	cp $(ROOT_FILENAME).pdf $(ROOT_FINAL_BOOK_FILENAME).pdf
+	@echo "Generating release number"
+	-rm ../RELEASE.txt
+	echo "$(RELEASE)" > ../RELEASE.txt
+	git add ../RELEASE.txt
+
 
 bare: backup-chapters bare-chapters clean-orig-figures clean-orig-diagrams
 

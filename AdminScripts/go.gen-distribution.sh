@@ -1,9 +1,6 @@
 #!/bin/bash
 
 
-# First make sure README.md is compiled
-make 00-README.pdf
-
 #pandoc README.yaml README.md -t pdf -o README.pdf --variable urlcolor=blue --number-sections --table-of-contents --highlight-style kate -V colorlinks -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"  --toc-depth=4
 
 echo "Showing distribution tags:"
@@ -25,6 +22,10 @@ read answer
 
 if [ "$answer" == "Y" ]
 then
+    # First make sure README.md is compiled
+    make 00-README.pdf
+    make -C Book
+
     DIST_FILE="00-PhDTFMTFG-LaTeX-Template-UAH-$tagname"
     DIRS="Anteproyecto Book Config Papeleo"
 
@@ -52,7 +53,7 @@ then
     FILES_ALL="$FILES_ALL $FILES"
     FILES="Config/worktypes.txt"
     FILES_ALL="$FILES_ALL $FILES"
-    FILES="README.md README.yaml IMPORTANT-BIBLIOGRAPHY.md"
+    FILES="00-README.pdf RELEASE.txt"
     FILES_ALL="$FILES_ALL $FILES"
 
     echo $FILES_ALL
