@@ -13,14 +13,14 @@ Please carefully read chapter 1 of any of the precompiled examples in the dropbo
 
 ## Prerequisites
 
-You have two main options to work with the template: Do your work locally in any PC, or use [Overleaf](https://www.overleaf.com/). Both options are described below
+You have two main options to work with the template: Do your work locally in any PC (my preferred configuration is using [TexStudio](https://www.texstudio.org/)), or do it online using [Overleaf](https://www.overleaf.com/). Both options are described below.
 
 
 ### Working on a local machine
 
 You will need a good \LaTeX{} distribution (TexLive, MikTex, MacTeX, etc., depending on your working environment). For a list of all required packages, you can have a look at the `\usepackage{...}` statements in the file `Config/preamble.tex`, but this should not be a problem as most distributions would have everything you need. If you run into errors due to packages not being available, install them (this should be easy enough).
 
-Beware that the main compilation is done using `pdflatex+biber`. The preferred compilation method is by using the provided `make` as it will do most of the required work automatically, but if you are in a Windows environment without this utility, my recommendation for you is to use `TexStudio` although any good \LaTeX{} editor should do fine. 
+Beware that the main compilation is done using `pdflatex+biber`. The preferred compilation method is by using the provided `make` as it will do most of the required work automatically, but if you are in a Windows environment without this utility, my recommendation for you is to use [TexStudio](https://www.texstudio.org/) although any good \LaTeX{} editor should do fine. 
 
   
 #### Notes on GNU/Linux installation
@@ -31,7 +31,7 @@ I would recommend you to install the TexLive distribution (`sudo apt-get install
 
 You can also use `sudo apt-get install texlive-full` for an overloaded full texlive distribution, but this will take a lot of disk space.
 
-Regarding editors I would suggest you to use `TeXStudio` or `emacs` (I personally use the latter, but the learning curve can be really steep).
+Regarding editors I would suggest you to use [TexStudio](https://www.texstudio.org/) or [emacs](https://www.gnu.org/software/emacs/). I personally use the latter, with the [Doom emacs configuration](https://github.com/doomemacs/doomemacs), but the learning curve can be really steep, so that [TexStudio](https://www.texstudio.org/) is, IMHO, a safer bet.
 
 
 #### Notes on Windows installation
@@ -41,9 +41,9 @@ This is my recommended route to have everything ready to go:
 
 1. Install the latest version of [MikTeX](https://www.miktex.org). Select install required packages on the fly (either "Yes" or "Ask me first")
 
-1.1. Run `MiKTeX Console` and `Check for updates` (otherwise you'll probably get an error when compiling LaTeX sources)
+   1.1. Run `MiKTeX Console` and `Check for updates` (otherwise you'll probably get an error when compiling LaTeX sources)
 
-1.2. In `MiKTeX Console`, run `Updates|Update` now
+   1.2. In `MiKTeX Console`, run `Updates|Update` now
 
 2. Install the latest version of [TexStudio](https://www.texstudio.org/)
 
@@ -57,7 +57,9 @@ The bibliography backend is now biber (from 2022), so that you have to configure
   
 ### Working in [Overleaf](https://www.overleaf.com/) 
   
-If you want to work with the template in [Overleaf](https://www.overleaf.com/), it's pretty easy. Here you are the main steps:
+First of all I have bad news on using [Overleaf](https://www.overleaf.com/) to compile your work: the [Overleaf](https://www.overleaf.com/) free plan option (from 2024, with their new restrictions) will not assign you enough compile time to generate the pdf file :-(.  
+
+Anyway, if you want to work with the template in [Overleaf](https://www.overleaf.com/) (using one of the paid plans), it's pretty easy. Here you are the main steps:
 
 1. Log in to [Overleaf](https://www.overleaf.com/)
 2. In the main page, select the `New Project` button
@@ -65,7 +67,7 @@ If you want to work with the template in [Overleaf](https://www.overleaf.com/), 
 4. Select the corresponding zip among the ones you may find in the [template dropbox folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0e)
 5. [Overleaf](https://www.overleaf.com/) will do its magic and in a few seconds you'll have the template installed
 
-Remember that you will have to select the "main document" (access it through the options you will find pressing the overleaf logo in the top left corner of the project main page). See below in the "To fill in and generate..." to see which are the main files you have available. The most relevant files to select as "main document" are: 
+Remember that you will have to select the "main document" (access it through the options you will find clicking the overleaf logo in the top left corner of the project main page). See below in the "To fill in and generate..." to see which are the main files you have available. The most relevant files to select as "main document" are: 
 
 + `Anteproyecto/anteproyecto.tex`
 + `Book/book.tex`
@@ -78,7 +80,7 @@ But you should also have a look to the paperwork related ones:
 + `Papeleo/TFMAutorizacionPubAbierto//autorizacionPublicarAbierto.tex`
 + etc.
 
-We have had a number of issues with overleaf in the past (mainly regarding glossaries), and they should be fully working. If new issues arise in the future, [this repo](https://github.com/gkilleen33/overleaf-offline/tree/master) has nice configurations for `latexmkrc` that should provide hints on how to solve them).
+We have had a number of issues with [Overleaf](https://www.overleaf.com/) in the past (mainly regarding glossaries), and they should be fully working. If new issues arise in the future, [this repo](https://github.com/gkilleen33/overleaf-offline/tree/master) has nice configurations for `latexmkrc` that should provide hints on how to solve them).
 
 
 ## Download the template
@@ -109,7 +111,7 @@ The template is accessible in two ways:
 ## To fill in and generate paperwork
 
 1. Go to the `Papeleo` directory where you will find general files required for all document types, and specific subdirectories for PhDs, TFGs and TFMs
-2. Edit the files you need and compile them by using the corresponding `Makefile`s or your standard LaTeX build tool. If you use overleaf, change the `main document` to be the one you want to compile.
+2. Edit the files you need and compile them by using the corresponding `Makefile`s or your standard LaTeX build tool. If you use [Overleaf](https://www.overleaf.com/), change the `main document` to be the one you want to compile.
 
 
 # Important note about bibliography handling
@@ -149,9 +151,25 @@ Gonzalo still kept some support for `bibtex` in the `Makefile` and `Book/book.te
 - Convert the `biblio/biblio.bib` file to ISO-8859-1 encoding
 
 
+## Collaboration with your advisor or colleagues
+
+### Using GitHub for Version Control
+
+I strongly recommend using [GitHub](https://www.github.com) to keep track of your LaTeX source code. Version control allows you to:
+
+- Track changes over time.
+- Collaborate with your advisor or colleagues.
+- Keep a backup of your work in a remote repository.
+
+You will find lot of useful information on [GitHub](https://www.github.com) out there, so that I will not bore you here with the details
+
+### Managing the revision of the document
+
+In order to manage the revision of the document (by your advisor for example), you can make use of the [GitHub](https://www.github.com) repository tools. I also found useful the revision process by using the `todonotes` package. It is installed by default and we defined some useful macros at the end of the `Config/myconfig.tex` file. Check them if you are interested.
+
 # Disclaimer & request for help & offer to help
 
-There is a lot of work to do in documenting this template, and I'll do my best to do it, but I can't promise you anything. 
+There is a lot of work to do in documenting this template, and I'll do my best to do it, but I can't promise you anything. I know the structure and complexity of the template can be overwhelming when you first face it, so that I would like you to contribute with ideas or suggestions on how to make it easier to understand and use.
 
 There are a lot of bad and very unprofessional coding habits (see Book/Makefile for a sample), but I'm not an expert and I just tried to make things work out of the box. It would be great if you can contribute in any way to improve this template, so that [drop me a message](mailto:javier.maciasguarasa@uah.es) or consider submitting a pull request.
 
