@@ -603,9 +603,28 @@
                                               }
                                             }
                                             {
+
+                                            \ifthenelse{\equal{\myDegree}{GMC}}
+                                            {
+                                              \newcommand{\myDegreefull}{Grado en Matemáticas y Computación}
+                                              \newcommand{\myDegreefullwrapped}{Grado en Matemáticas y Computación}
+                                              \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Grado en Matemáticas y Computación}}
                                               \newcommand{\myWorkType}{TFG}
-                                              \newcommand{\myDegreefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}} 
+                                              \ifthenelse{\equal{\myLanguage}{spanish}}
+                                              {
+                                                \newcommand{\myWorkTypeFull}{Trabajo de Fin de Carrera}
+                                              }
+                                              {
+                                                % This could be translated. I'm leaving this in Spanish...
+                                                % \newcommand{\myWorkTypeFull}{Master's Thesis}
+                                                \newcommand{\myWorkTypeFull}{Trabajo de Fin de Carrera}
+                                              }
+                                            }
+                                            {
+                                              \newcommand{\myWorkType}{TFG}
+                                              \newcommand{\myDegreefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
                                               \newcommand{\myWorkTypeFull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
+                                            }
                                             }
                                           }
                                         }
