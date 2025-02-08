@@ -183,30 +183,73 @@ consecución de los objetivos del proyecto descritos en la sección~\ref{sec:obj
   \item  \ldots
   \end{itemize}
 
-\item Diseño del entorno \ldots (0,5 meses)
+\item Diseño del entorno (0,5 meses)
 
-\item Diseño, implementación y evaluación del  \ldots (2 meses)
+\item Diseño, implementación y evaluación del módulo 1 (2 meses)
   \begin{itemize}
   \item Definición del  \ldots
   \item Implementación del  \ldots
   \item Evaluación del  \ldots
   \end{itemize}
   
-\item Implementación y evaluación de  \ldots (1 mes)
-
-\item Diseño, implementación y evaluación del módulo  \ldots (1 mes):
+\item Diseño, implementación y evaluación del módulo 2 (1 mes):
   \begin{itemize}
   \item Definición de  \ldots
   \item Definición de  \ldots
   \item Implementación y evaluación  \ldots
   \end{itemize}
 
-\item Integración y  \ldots (1 mes)
+\item Integración y pruebas (1 mes)
 
-\item Documentación  \ldots (0,5 meses)
+\item Documentación (a lo largo de todo el proyecto)
 
 \end{enumerate}
 
+El diagrama de Gantt asociado a esa definición es el mostrado en la figura~\ref{fig:diagrama-gantt} (\textit{para lo que he usado la funcionalidad del paquete} \texttt{pgfgantt} \textit{pero que puedes hacer con cualquier otra herramienta}).
+
+\begin{figure}[H]
+  \centering
+
+  \begin{ganttchart}[
+    title height=1,
+    x unit=0.05cm, % Adjusts the width of the chart
+    y unit title=0.6cm, % Adjusts the height of titles
+    y unit chart=0.5cm, % Adjusts the height of tasks
+    group height=0.5,
+    bar height=0.5,
+    vgrid={*{6}{draw=none}, *1{draw, dotted}}, % Vertical lines only at month start
+    hgrid,
+    time slot format=isodate,
+    group label font=\bfseries\footnotesize,
+    bar label font=\footnotesize,
+    title label font=\footnotesize,
+    group/.append style={fill=gray!75}, % Change group bar fill to gray
+    group peaks height=0.3, % Increase the height of the vertical marks
+    group peaks width=2, % Increase the width of the vertical marks
+    group peaks tip position=0, % Center the vertical marks
+    ]{2025-01-23}{2025-06-30} % Adjust dates as needed
+
+    % Define months
+    \gantttitlecalendar{year, month} \\
+
+    % Tasks
+    \ganttbar{Formación inicial}{2025-02-01}{2025-02-28} \\
+    \ganttbar{Diseño del entorno}{2025-02-28}{2025-03-15} \\
+    \ganttgroup{Módulo 1}{2025-03-01}{2025-05-01} \\
+    \ganttbar{Definición}{2025-03-01}{2025-03-07} \\
+    \ganttbar{Implementación}{2025-03-07}{2025-04-20} \\
+    \ganttbar{Evaluación}{2025-03-20}{2025-05-01} \\
+    \ganttgroup{Módulo 2}{2025-04-01}{2025-06-01} \\
+    \ganttbar{Definición}{2025-04-01}{2025-04-07} \\
+    \ganttbar{Implementación}{2025-04-07}{2025-05-20} \\
+    \ganttbar{Evaluación}{2025-04-20}{2025-06-01} \\
+    \ganttbar{Integración y pruebas}{2025-04-15}{2025-06-15} \\
+    \ganttbar{Documentación}{2025-02-01}{2025-06-15}
+  \end{ganttchart}
+  \caption{Diagrama de Gantt de la planificación del trabajo.}
+  \label{fig:diagrama-gantt}
+
+\end{figure}
 
 \section{Medios}
 \label{sec:medios}
