@@ -692,6 +692,34 @@ hyperfootnotes=false
 % \usepackage{helvet}
 % \renewcommand{\familydefault}{\sfdefault}
 
+\usepackage{eso-pic}
+
+\newcommand\PutFrontPageBackground{%
+    \AddToShipoutPicture*{%
+        \put(0,0){%
+            \parbox[b][\paperheight]{\paperwidth}{%
+                \includegraphics[width=\paperwidth,height=\paperheight]{cover/imagen-portada-tfg2024.png}%
+            }%
+        }%
+    }%
+}
+\newcommand\PutBackPageBackground{%
+    \AddToShipoutPicture*{%
+        \put(0,0){%
+            \parbox[b][\paperheight]{\paperwidth}{%
+              \includegraphics[width=\paperwidth,height=\paperheight]{cover/imagen-contraportada-tfg2024.png}%
+            }%
+        }%
+    }%
+}
+
+\definecolor{UAHcolorpantone293}{rgb}{0, 0.239, 0.647}
+\newcommand{\colorUAH}{\color{UAHcolorpantone293}}
+
+
+%\usepackage{tgheros}  % Load TeX Gyre Heros
+%\usepackage{helvet}   % Load Helvetica
+
 
 %%% Local Variables:
 %%% TeX-master: "../book"
