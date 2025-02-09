@@ -184,7 +184,7 @@ Para comenzar a usar la plantilla es fundamental revisar el fichero \texttt{book
 
 El fichero de configuración más importantes es el \texttt{Config/myconfig.tex} en el que se incluyen elementos para determinar la configuración específica de tu documento y que es de donde se toman los datos para las muchas automatizaciones del proceso de generación. El primero de ellos (para facilitar la generación de documentos en español o inglés), es el que define el idioma que vas a utilizar. Para seleccionarlo, basta con asignar \texttt{spanish} o \texttt{english} a la variable \texttt{\textbackslash{}myLanguage}. A partir de ella, el sistema generará las cabeceras y títulos adecuados a cada una.
 
-Igualmente, tendréis que definir las siguientes variables sobre el tipo de trabajo y el autor:
+Igualmente, tendréis que definir las siguientes variables sobre el tipo de trabajo y el autor\footnote{El fichero  \texttt{Config/myconfig.tex} ``sufre'' modificaciones frecuentes con la adición de nuevas variables para soportar un mayor número de automatismos (por ejemplo los que tienen que ver con los documento de papeleo necesarios), con lo que es seguro que encontrarás más variables en la versión actual del fichero que los que aquí hemos descrito. En cualquier caso, relax, porque los nombres son autoexplicativos.}:
 
 \begin{itemize}
   \item Acrónimo de la titulación correspondiente al trabajo (variable \texttt{\textbackslash{}myDegree}): Que se seleccionará entre los definidos (por ahora\footnote{Este apartado se generó en marzo de 2020.} son \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST}, \texttt{ITI}, \texttt{GIEC}, \texttt{GIST}, \texttt{GITT}, \texttt{GIT}, \texttt{GIEAI}, \texttt{GITI}, \texttt{GIC}, \texttt{GII}, \texttt{GSI}, \texttt{GISI}, \texttt{MUSEA}, \texttt{MUIT}, \texttt{MUII}, \texttt{PHDUAH} y \texttt{PHDUPM}) y que automáticamente configura portadas\footnote{Un comentario sobre el color de las bandas en la portada de los TFGs: de acuerdo con la normativa, dicho color debe ser PANTONE 160c. Yo he intentado utilizar dicho color, pero el aspecto con el que finalmente aparece no es ni de lejos similar al del modelo que proporciona la EPS, con lo que he optado por utilizar el que se ve realmente en dicho modelo. Si quieres cambiarlo, busca ``PANTONE'' en \texttt{Config/preamble.tex}.}, entre otras cosas.
@@ -227,7 +227,7 @@ Sobre el autor y el tutor y cotutor:
   \item DNI del primer direector, para los permisos de publicación en abierto (variable \texttt{\textbackslash{}myFirstAdvisorDNI}
 
   
-  \item Nombre del segundo (en su caso) director/tutor del trabajo (variable \texttt{\textbackslash{}myCoTutoroFullName}).
+  \item Nombre del segundo (en su caso) director/tutor del trabajo (variable \texttt{\textbackslash{}myCoTutorFullName}).
   \item Género del segundo director/tutor (variable \texttt{\textbackslash{}myCoTutorGender}), ``male'' or ``female''.
   \item DNI del segundo director, para los permisos de publicación en abierto (variable \texttt{\textbackslash{}mySecondAdvisorDNI}), en su caso
 
@@ -312,28 +312,28 @@ Para el caso de los TFMs/TFGs/TFCs, se incluye una plantilla para realizar el an
 
 La plantilla se encuentra en el directorio \texttt{Anteproyecto}, y en fichero \texttt{anteproyecto.tex} tenéis un ejemplo. El \texttt{Makefile} genera automáticamente el \texttt{anteproyecto.pdf}, haciendo un \texttt{make} en ese directorio, y tiene targets similares a los del \texttt{Makefile} del documento principal, incluyendo \texttt{flatten} y \texttt{latexdiff}, con lo que también puede generarse el fichero con control de cambios, tal y como se describe en la sección~\ref{sec:control-de-cambios} (cambiando las referencias a \texttt{book...} por \texttt{anteproyecto...}).
 
-\subsection{Plantilla de hoja de control de anteproyecto}
-\label{sec:plantilla-de-hoja-control-anteproyecto}
-
-Para el caso de los TFMs/TFGs/TFCs, se incluye una plantilla de la hoja de control de la solicitud del anteproyecto.
-
-La plantilla se encuentra en el directorio \texttt{Papeleo/SolicitudTFGTFM/}, y en fichero \texttt{solicitud.tex} tenéis un ejemplo. El \texttt{Makefile} genera automáticamente el \texttt{solicitud.pdf}, haciendo un \texttt{make} en ese directorio, y tiene targets similares a los del \texttt{Makefile} del documento principal, incluyendo \texttt{flatten} y \texttt{latexdiff}, con lo que también puede generarse el fichero con control de cambios, tal y como se describe en la sección~\ref{sec:control-de-cambios} (cambiando las referencias a \texttt{book...} por \texttt{solicitud...}). En este caso el documento no hay que tocarlo prácticamente, salvo que le pase alguna cosa rara.
 
 
 \subsection{Papeleo adicional}
 \label{sec:introapp1}
 
-Para el caso de los TFGs y TFMs se incluyen en el directorio \texttt{papeleo} algunos de los documentos que hay que generar en el momento de la defensa. En concreto:
+Para el caso de los TFGs y TFMs se incluyen en el directorio \texttt{Papeleo} algunos de los documentos que hay que generar en el momento de la defensa. En concreto, para TFGs:
 
 \begin{itemize}
-  \item La autorización del tutor para la publicación en abierto, en el fichero \texttt{Papeleo/AutorizacionRepoInstit/autorizacionTutorPublicarRepositorio.tex} para TFGs.
-  \item La autorización del autor para la publicación en abierto, en el fichero \texttt{Papeleo/AutorizacionRepoInstit/autorizacionAutorPublicarRepositorio.tex}
-  \item El visto bueno del tutor para la defensa del TFG \texttt{Papeleo/TFG/vistoBuenoTutorTFG.tex}
-  \item La solicitud de acta para la defensa del TFG \texttt{Papeleo/TFG/solicitudActaTFG.tex}
-  \item El visto bueno del tutor para la defensa del TFM \texttt{Papeleo/TFM/vistoBuenoTutorTFM.tex}
+  \item La autorización del tutor para la publicación en abierto, en el fichero \texttt{Papeleo/TFG/TFG-AutorizacionTutorPubAbierto.tex} para TFGs.
+  \item La autorización del autor para la publicación en abierto, en el fichero \texttt{Papeleo/TFG/TFG-AutorizacionAutorPubAbierto.tex}
+  \item La autorización del tutor extranjero para la publicación en abierto, en el fichero \texttt{Papeleo/TFG/TFG-AutorizacionTutorExtranjeroPubAbierto.tex}
+  \item El informe y rúbrica del tutor para la defensa del TFG \texttt{Papeleo/TFG/TFG-InformeTutorYRubrica.tex}
+  \item El acta y rúbrica del tribunal para la defensa del TFG \texttt{Papeleo/TFG/TFG-ActaYRubricaDefensa.tex}
 \end{itemize}
 
-En cada uno de esos directorios se incluye un \texttt{Makefile} que genera los \texttt{pdfs} correspondientes a esos documentos. El sistema automáticamente adapta los singulares/plurales necesarios para el caso de que haya uno o varios directores/tutores.
+Y para TFMs:
+
+\begin{itemize}
+  \item La autorización del tutor y autor para la publicación en abierto, en el fichero \texttt{Papeleo/TFM/autorizacionPublicarAbierto.tex} para TFMs.
+\end{itemize}
+
+Para compilarlos, encontrarás un \texttt{Makefile} que genera los \texttt{pdfs} correspondientes a esos documentos. El sistema automáticamente adapta los términos masculinos/femeninos correspondientes y los singulares/plurales necesarios para el caso de que haya uno o varios directores/tutores.
 
 
 \subsection{Generación del documento con control de cambios (para revisión)}
@@ -389,7 +389,7 @@ Resumimos a continuación los problemas con los que nos hemos ido encontrando tr
 
 \end{itemize}
 
-Si das con más problemas, escribe por favor a \contactauthor contándonoslos y trataremos de solucionarlo (y si tenéis la solución, contádnosla también).
+Si das con más problemas, escribe por favor a \contactauthor{} contándonoslos y trataremos de solucionarlo (y si tenéis la solución, contádnosla también).
 
 
 \section{Ejemplos de elementos de utilidad}
