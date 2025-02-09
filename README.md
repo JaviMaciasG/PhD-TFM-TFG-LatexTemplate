@@ -4,7 +4,7 @@ This repo contains a generic template for PhD, Msc (TFM) and BsC (TFG) thesis do
 
 The template uses configuration variables (defined in the `Config/myconfig.tex` file) to customize all the document generation process, so that you don't need to devote any effort to comply with formatting requirements (cover and back pages for example), document layout, etc.
 
-Support to generate the "anteproyecto" is also provided, along with some of the paperwork required by the current regulations, that will be useful for you and your advisor/s (request for anteproyecto, deposit, authorization for the defense, authorization for open publication in the institutional repository, request for "acta", etc.).
+Support to generate the "anteproyecto" is also provided (in the `Anteproyecto` folder), along with some of the paperwork required by the current regulations. As of February 2025 I have reworked all the paperwork required for the UAH TFGs (in the `Papeleo/TFG` folder) to comply with recently approved regulations. This support will be useful for you and your advisor/s (advisor report and rubric, defense rubric, and authorization for open publishing (for advisor/author/foreign advisor)). Paperwork support for TFM and PhD is pending to be fully re-checked against new regulations, but you can fully use the template to write the document itself.
 
 Please carefully read chapter 1 of any of the precompiled examples in the dropbox distribution (for example that for the [GIEC TFG at UAH](https://www.dropbox.com/s/69ppvvp9i03sp4m/TFG-GIEC-spanish.pdf?dl=0)).
      
