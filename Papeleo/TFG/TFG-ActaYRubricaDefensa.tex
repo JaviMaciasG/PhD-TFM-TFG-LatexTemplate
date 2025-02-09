@@ -1,0 +1,138 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Report for the Final Degree Project (TFG) Advisor
+%
+% Based on the structure of anteproyecto.tex
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{../../Config/preamble-informes.tex}        % DO NOT TOUCH THIS LINE.
+\input{../../Config/myconfig.tex}                 % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
+\input{../../Config/postamble-informes.tex}   % DO NOT TOUCH THIS LINE.
+\input{../../Config/grades-calculation.tex}       % DO NOT TOUCH THIS LINE.
+
+% Path to directories containing images
+\graphicspath{{../../Book/logos/}{../../Book/figures/}{../../Book/diagrams/}} % Edit this to your needs.
+
+\title{Acta y rúbrica de defensa de TFG}  % Title of the report
+\date{\today}                                  % Date of the report
+\author{\myAcademicTutorFullName}                           % Advisor's name
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Let's start with the real stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN within-document configuration, frontpage and cover pages generation
+%
+\input{../../Config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
+%
+% END within-document configuration, frontpage and cover pages generation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Report content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent \textbf{ACTA Y RÚBRICA DE DEFENSA DE TRABAJO DE FIN DE GRADO. CURSO \myThesisAcademicYear}
+
+%\vspace{0.5cm}
+
+
+\section*{ESTUDIANTE}
+
+\begin{description}
+  \item[Título del TFG:] \myBookTitleSpanish
+  \ifthenelse{\equal{\myLanguage}{english}}       % DO NOT TOUCH THIS LINE
+  {                                               % DO NOT TOUCH THIS LINE
+  \item[Título en inglés:] \myBookTitleEnglish    % DO NOT TOUCH THIS LINE
+  }                                               % DO NOT TOUCH THIS LINE
+  {                                               % DO NOT TOUCH THIS LINE
+  }                                               % DO NOT TOUCH THIS LINE
+  \item[Autor:] \myAuthorFullName
+  \item[DNI:] \myAuthorDNI
+  \item[Titulación:] \myDegreefull
+\end{description}
+
+%\vspace{0.5cm}
+
+
+\section*{\MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}
+
+\begin{description}
+  \item[\expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:] \myAcademicTutorFullName
+        \ifthenelse{\equal{\myCoTutorFullName}{}}
+        {
+        }
+        {
+  \item[\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}:] \myCoTutorFullName
+        }
+  \item[Departmento:] \myDepartment
+
+        \ifthenelse{\equal{\myCoTutorFullName}{}}
+        {
+  \item[Calificación \wordTutorDelOrDeLa{} \wordTutorOrTutora:] \myAcademicTutorGrade
+      }
+        {
+  \item[Calificación \wordTutorDelOrDeLa{} \wordTutorOrTutora{} y \wordCoTutorDelOrDeLa{} \wordCoTutorOrCoTutora:] \myAcademicTutorGrade
+          }
+\end{description}
+
+%\vspace{0.5cm}
+
+\section*{TRIBUNAL CALIFICADOR}
+
+\begin{description}
+  \item[Calificación del tribunal (hasta 3 puntos, según rúbrica):] \myTribunalGrade{}
+\end{description}
+
+%\vspace{1cm}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabularx}{\textwidth}{|X|}
+    \hline
+    \vspace{-1mm}
+    \textbf{Calificación final:}\newline
+    \indent ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   \myFinalGrade{}, \myFinalGradeName{}
+    \vspace{1mm} \\ \hline
+  \end{tabularx}
+\end{table}
+
+\noindent\textbf{Propuesto para Matrícula de Honor}$\mathbf{^{*}}$ ~~~~~~~~ \MHProposalBoxes{}
+
+\noindent$^{*}$ El Tribunal podrá proponer para Matrícula de Honor un TFG con calificación de Sobresaliente. Si el estudiante es propuesto para Matrícula de Honor, se debe rellenar obligatoriamente el campo de ``Observaciones del Tribunal''.
+
+\noindent El estudiante que, habiendo sido propuesto para Matrícula de Honor, solicitara la expedición de su Título de Graduado con anterioridad a su resolución por la Comisión Docente, y que posteriormente le fuera concedida la calificación de Matrícula de Honor, dicha calificación no se verá reflejada en su expediente académico, si bien se le comunicará mediante resolución del Secretario de la Comisión a los efectos oportunos que considere el beneficiario. En todo caso, se informa que las Matrículas de Honor no afectan al cálculo de la media de su expediente académico, al ser una calificación honorífica.
+
+\newpage
+
+\thispagestyle{empty} % Remove headers/footers
+
+\begin{tikzpicture}[remember picture, overlay]
+  % Draw a rectangle that perfectly aligns with text margins
+  \draw [thick]
+    ($(current page.north west) + (\dimexpr\oddsidemargin+0.9in, -\dimexpr\topmargin+1in)$)
+    rectangle
+    ($(current page.south east) + (-\dimexpr\evensidemargin+1in, \dimexpr-\textheight-1in+\paperheight)$);
+\end{tikzpicture}
+
+% Content inside the rectangle
+\vspace*{-.8in} % Adjust text alignment
+
+\noindent\textbf{OBSERVACIONES DEL TRIBUNAL:}
+
+\newpage
+
+\input{../../Config/rubricaTFGTribunal.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END Report content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
