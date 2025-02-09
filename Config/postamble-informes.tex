@@ -46,13 +46,13 @@
 
 \ifthenelse{\equal{\myLanguage}{spanish}}
 {
-  \usepackage[english, spanish]{babel}
+  \usepackage[spanish, english]{babel}
   \newcommand{\myFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity} 
   \newcommand{\myBookTitle}{\myBookTitleSpanish}
   \newcommand{\mypdflang}{es}
 } 
 {
-  \usepackage[spanish, english]{babel}
+  \usepackage[english, spanish]{babel}
   \newcommand{\myFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversity} 
   \newcommand{\myBookTitle}{\myBookTitleEnglish}
   \newcommand{\mypdflang}{en}
@@ -65,7 +65,7 @@
   \StrLeft{\myCoTutorFullName{}}{1}[\firstchar]%
   \IfStrEq{\firstchar}{I}{\newcommand{\andOrY}{e}}{\newcommand{\andOrY}{y}}%
 
-}
+} 
 {
   \newcommand{\andOrYDon}{and}
   \newcommand{\andOrY}{and}
@@ -116,7 +116,7 @@
   \newcommand{\wordVocalPrimeroOrPrimera}{Vocal 1ª}
 }
 
-\ifthenelse{\equal{\myAcademicTutorGender}{male}}
+\ifthenelse{\equal{\myAcademicTutorGender}{male}}     
 {                                                       
   \newcommand{\wordDirectorOrdirectora}{director}
   \newcommand{\wordDirectorElOrLa}{el}
@@ -178,32 +178,29 @@
   \newcommand{\wordEmiteOrEmiten}{emite}
   \newcommand{\wordElOrLos}{El}
   \newcommand{\wordSuOrSus}{su}
-  \ifthenelse{\equal{\myAcademicTutorGender}{male}}
-  {
-    \newcommand{\wordDelOrDeLos}{del}
-  }
-  {
-    \newcommand{\wordDelOrDeLos}{de la}
-  }
-    \newcommand{\wordHagoOrHacemos}{hago}
-  }
-  {
-    \newcommand{\myAdvisors}{\myAcademicTutorFullName{} \andOrY{} \myCoTutorFullName{}}
-    \newcommand{\myAdvisorsWithDonOrDona}{\wordDonOrDonaTutor{} \myAcademicTutorFullName{} \andOrYDon{} \wordDonOrDonaCoTutor{} \myCoTutorFullName{}}
-    \newcommand{\myAdvisorsConDrOrDra}{\wordDrOrDraTutor{} \myAcademicTutorFullName{}\\\wordDrOrDraCoTutor{} \myCoTutorFullName{}}
+  \newcommand{\wordDelOrDeLos}{del}
+  \newcommand{\wordHagoOrHacemos}{hago}
+}
+{
+  \newcommand{\myAdvisors}{\myAcademicTutorFullName{} \andOrY{} \myCoTutorFullName{}}
+  \newcommand{\myAdvisorsWithDonOrDona}{\wordDonOrDonaTutor{} \myAcademicTutorFullName{} \andOrYDon{} \wordDonOrDonaCoTutor{} \myCoTutorFullName{}}
+  \newcommand{\myAdvisorsConDrOrDra}{\wordDrOrDraTutor{} \myAcademicTutorFullName{}\\\wordDrOrDraCoTutor{} \myCoTutorFullName{}}
 
-    \newcommand{\wordDirectorOrDirectores}{directores}
-    \newcommand{\wordAdvisorOrAdvisors}{advisors}
-    \newcommand{\wordAdvisor}{advisor}
-    \newcommand{\wordCoAdvisor}{co-advisor}
-    \newcommand{\wordDaOrDan}{dan}
-    \newcommand{\wordEmiteOrEmiten}{emiten}
-    \newcommand{\wordTutorOrTutores}{tutores}
-    \newcommand{\wordElOrLos}{Los}
-    \newcommand{\wordSuOrSus}{Su}
-    \newcommand{\wordDelOrDeLos}{de los}
-    \newcommand{\wordHagoOrHacemos}{hacemos}
-  }
+  \newcommand{\wordDirectorOrDirectores}{directores}
+  \newcommand{\wordAdvisorOrAdvisors}{advisors}
+  \newcommand{\wordAdvisor}{advisor}
+  \newcommand{\wordCoAdvisor}{co-advisor}
+  \newcommand{\wordDaOrDan}{dan}
+  \newcommand{\wordEmiteOrEmiten}{emiten}
+  \newcommand{\wordTutorOrTutores}{tutores}
+
+
+
+  \newcommand{\wordElOrLos}{Los}
+  \newcommand{\wordSuOrSus}{Su}
+  \newcommand{\wordDelOrDeLos}{de los}
+  \newcommand{\wordHagoOrHacemos}{hacemos}
+}
 
 % Set Autor/Autora field
 \ifthenelse{\equal{\myAuthorGender}{male}}     
@@ -338,12 +335,12 @@
             \newcommand{\myWorkType}{TFG}
             \ifthenelse{\equal{\myLanguage}{spanish}}
             {
-              \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+              \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
             }
             {
               % This could be translated. I'm leaving this in Spanish...
               % \newcommand{\myWorkTypeFull}{Bachelor's Thesis}
-              \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+              \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
             }
           }
           {
@@ -353,12 +350,12 @@
               \newcommand{\myWorkType}{TFG}
               \ifthenelse{\equal{\myLanguage}{spanish}}
               {
-                \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
               }
               {
                 % This could be translated. I'm leaving this in Spanish...
                 % \newcommand{\myWorkTypeFull}{Bachelor's Thesis}
-                \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
               }
             }
             {
@@ -368,12 +365,12 @@
                 \newcommand{\myWorkType}{TFG}
                 \ifthenelse{\equal{\myLanguage}{spanish}}
                 {
-                  \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                  \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                 }
                 {
                   % This could be translated. I'm leaving this in Spanish...
                   % \newcommand{\myWorkTypeFull}{Bachelor's Thesis}
-                  \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                  \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                 }
               }
               {
@@ -383,12 +380,12 @@
                   \newcommand{\myWorkType}{TFG}
                   \ifthenelse{\equal{\myLanguage}{spanish}}
                   {
-                    \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                    \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                   }
                   {
                     % This could be translated. I'm leaving this in Spanish...
                     % \newcommand{\myWorkTypeFull}{Bachelor's Thesis}
-                    \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                    \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                   }
                 }
                 {
@@ -398,12 +395,12 @@
                     \newcommand{\myWorkType}{TFG}
                     \ifthenelse{\equal{\myLanguage}{spanish}}
                     {
-                      \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                      \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                     }
                     {
                       % This could be translated. I'm leaving this in Spanish...
                       % \newcommand{\myWorkTypeFull}{Bachelor's Thesis}
-                      \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                      \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                     }
                   }
                   {
@@ -413,12 +410,12 @@
                       \newcommand{\myWorkType}{TFG}
                       \ifthenelse{\equal{\myLanguage}{spanish}}
                       {
-                        \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                        \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                       }
                       {
                         % This could be translated. I'm leaving this in Spanish...
                         % \newcommand{\myWorkTypeFull}{Bachelor's Thesis}
-                        \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                        \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                       }
                     }
                     {
@@ -428,12 +425,12 @@
                         \newcommand{\myWorkType}{TFG}
                         \ifthenelse{\equal{\myLanguage}{spanish}}
                         {
-                          \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                          \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                         }
                         {
                           % This could be translated. I'm leaving this in Spanish...
                           % \newcommand{\myWorkTypeFull}{Bachelor's Thesis}
-                          \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                          \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                         }
                       }
                       {
@@ -443,12 +440,12 @@
                           \newcommand{\myWorkType}{TFG}
                           \ifthenelse{\equal{\myLanguage}{spanish}}
                           {
-                            \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                            \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                           }
                           {
                             % This could be translated. I'm leaving this in Spanish...
                             % \newcommand{\myWorkTypeFull}{Bachelor's Thesis}
-                            \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                            \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                           }
                         }
                         {
@@ -548,12 +545,12 @@
                                         \newcommand{\myWorkType}{TFG}
                                         \ifthenelse{\equal{\myLanguage}{spanish}}
                                         {
-                                          \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                                          \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                                         }
                                         {
                                           % This could be translated. I'm leaving this in Spanish...
                                           % \newcommand{\myWorkTypeFull}{Bachelor's Thesis}
-                                          \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                                          \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                                         }
                                       }
                                       {
@@ -564,12 +561,12 @@
                                           \newcommand{\myWorkType}{TFG}
                                           \ifthenelse{\equal{\myLanguage}{spanish}}
                                           {
-                                            \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                                            \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                                           }
                                           {
                                             % This could be translated. I'm leaving this in Spanish...
                                             % \newcommand{\myWorkTypeFull}{Bachelor's Thesis}
-                                            \newcommand{\myWorkTypeFull}{Trabajo de Fin de Grado}
+                                            \newcommand{\myWorkTypeFull}{Trabajo Fin de Grado}
                                           }
                                         }
                                         {
@@ -615,28 +612,9 @@
                                               }
                                             }
                                             {
-
-                                            \ifthenelse{\equal{\myDegree}{GMC}}
-                                            {
-                                              \newcommand{\myDegreefull}{Grado en Matemáticas y Computación}
-                                              \newcommand{\myDegreefullwrapped}{Grado en Matemáticas y Computación}
-                                              \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Grado en Matemáticas y Computación}}
                                               \newcommand{\myWorkType}{TFG}
-                                              \ifthenelse{\equal{\myLanguage}{spanish}}
-                                              {
-                                                \newcommand{\myWorkTypeFull}{Trabajo de Fin de Carrera}
-                                              }
-                                              {
-                                                % This could be translated. I'm leaving this in Spanish...
-                                                % \newcommand{\myWorkTypeFull}{Master's Thesis}
-                                                \newcommand{\myWorkTypeFull}{Trabajo de Fin de Carrera}
-                                              }
-                                            }
-                                            {
-                                              \newcommand{\myWorkType}{TFG}
-                                              \newcommand{\myDegreefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
+                                              \newcommand{\myDegreefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}} 
                                               \newcommand{\myWorkTypeFull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
-                                            }
                                             }
                                           }
                                         }
@@ -736,18 +714,7 @@
 \newcommand{\underscoreSpacingFour}{\_\_\_\_}
 \newcommand{\spacingFour}{~~~~}
 
-% \makeatletter%
-%   \hypersetup{%
-%     pdfinfo={%
-%     Title={\@title},%
-%     Author={\@author},%
-%     Subject={subject},%
-%     Producer={pdfTeX},%
-%     Creator={\@author},%
-%     Keywords={Apunts},%
-%     },%
 
-% }
 \hypersetup
 {
   pdftitle={\myBookTitle},
@@ -765,35 +732,29 @@
   linkcolor=\mylinkcolor,
   citecolor=\mycitecolor,
   pdfstartview=Fit,
-  pdfpagemode=UseOutlines,
-  pdfinfo={
-    License={\myLicenseURL},
-    Language={\mypdflang},
-    Copyright={\myCopyrightStatement},
-  },
-  keeppdfinfo %keep info entries
+  pdfpagemode=UseOutlines
 }
 
-% Added conflicting options of tocloft with subfigure, fixing by adding subfigure option
-%\usepackage[subfigure]{tocloft}
+% % Added conflicting options of tocloft with subfigure, fixing by adding subfigure option
+% %\usepackage[subfigure]{tocloft}
 
-\usepackage{tocloft}
+% \usepackage{tocloft}
 
-\ifthenelse{\equal{\myLanguage}{english}}
-{
-  \newlistof{videos}{vdo}{List of videos}
-\newcommand{\videoLink}[2]{%
-  \refstepcounter{videos}%
-  \phantomsection%
-  \addcontentsline{vdo}{videos}{\protect\numberline{\thechapter.\thevideos\hspace{4em}}\hspace{4em}#1 (\href{#2}{link to video})}\href{#2}{#1}}
-}
-{
-  \newlistof{videos}{vdo}{Índice de vídeos}
-\newcommand{\videoLink}[2]{%
-  \refstepcounter{videos}%
-  \phantomsection%
-  \addcontentsline{vdo}{videos}{\protect\numberline{\thechapter.\thevideos\hspace{4em}}\hspace{4em}#1 (\href{#2}{enlace al vídeo})}\href{#2}{#1}}
-}
+% \ifthenelse{\equal{\myLanguage}{english}}
+% {
+%   \newlistof{videos}{vdo}{List of videos}
+% \newcommand{\videoLink}[2]{%
+%   \refstepcounter{videos}%
+%   \phantomsection%
+%   \addcontentsline{vdo}{videos}{\protect\numberline{\thechapter.\thevideos\hspace{4em}}\hspace{4em}#1 (\href{#2}{link to video})}\href{#2}{#1}}
+% }
+% {
+%   \newlistof{videos}{vdo}{Índice de vídeos}
+% \newcommand{\videoLink}[2]{%
+%   \refstepcounter{videos}%
+%   \phantomsection%
+%   \addcontentsline{vdo}{videos}{\protect\numberline{\thechapter.\thevideos\hspace{4em}}\hspace{4em}#1 (\href{#2}{enlace al vídeo})}\href{#2}{#1}}
+% }
 
 
 % \newcommand{\videoLink}[3]{%

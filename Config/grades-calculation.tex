@@ -1,0 +1,42 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Grades calculation
+% Define two variables
+\pgfmathsetmacro{\varA}{\myAcademicTutorGrade}
+\pgfmathsetmacro{\varB}{\myTribunalGrade}
+\pgfmathsetmacro{\myFinalGrade}{\varA + \varB}
+
+% % Assign category based on number range using step-by-step conditions
+% \pgfmathparse{
+%   (\myFinalGrade < 5) * 1 +
+%   (\myFinalGrade >= 5) * (\myFinalGrade < 7) * 2 +
+%   (\myFinalGrade >= 7) * (\myFinalGrade < 9) * 3 +
+%   (\myFinalGrade >= 9) * 4
+% }
+% \edef\gradeCategory{\pgfmathresult}
+
+\pgfmathparse{
+  int( (\myFinalGrade < 5) * 1 +
+  (\myFinalGrade >= 5) * (\myFinalGrade < 7) * 2 +
+  (\myFinalGrade >= 7) * (\myFinalGrade < 9) * 3 +
+  (\myFinalGrade >= 9) * 4 )
+}
+\edef\gradeCategory{\pgfmathresult} % Store as an integer
+
+% Convert numeric category to text
+\def\myFinalGradeName{%
+  \ifnum\gradeCategory=1 suspenso%
+  \else\ifnum\gradeCategory=2 aprobado%
+  \else\ifnum\gradeCategory=3 notable%
+  \else sobresaliente%
+  \fi\fi\fi
+}
+
+
+\ifthenelse{\equal{\myTribunalMHProposal}{YES}}
+  {
+    \newcommand{\MHProposalBoxes}{$\XBox$ Sí ~~~~ $\Box$ No}
+  }
+  {
+    \newcommand{\MHProposalBoxes}{$\Box$ Sí ~~~~ $\XBox$ No}
+  }
+  
