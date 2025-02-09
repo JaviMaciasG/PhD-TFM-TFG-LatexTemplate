@@ -7,6 +7,7 @@ all: $(PDFFILES)
 # Implicit rule to convert .tex to .pdf
 %.pdf: %.tex
 	pdflatex -interaction=nonstopmode -halt-on-error $<
+	pdflatex -interaction=nonstopmode -halt-on-error $<
 
 # Clean auxiliary files
 clean:
