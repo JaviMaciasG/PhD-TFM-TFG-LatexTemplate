@@ -54,6 +54,8 @@
 
 \end{description}
 
+\vspace{0.5cm}
+
 \section*{RESULTADOS DE LA APLICACIÓN DE LA HERRAMIENTA ANTIPLAGIO}
 
 \begin{description}
@@ -69,6 +71,8 @@
 
 \noindent \textbf{ACTA Y RÚBRICA DE DEFENSA DE TRABAJO DE FIN DE GRADO. CURSO \myThesisAcademicYear}
 
+\vspace{0.5cm}
+
 \section*{\MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}
 
 \begin{description}
@@ -77,11 +81,13 @@
   \item[Correo electrónico:] \myAcademicTutorEmail
 \end{description}
 
+\vspace{0.5cm}
+
 \ifthenelse{\equal{\myCoTutorFullName}{}}
 {
 }
 {
-\section*{\MakeUppercase{\wordCoDirectorOrCoDirectora}}
+\section*{\MakeUppercase{\wordCoTutorOrCoTutora}}
 
 \begin{description}
   \item[Nombre:] \myCoTutorFullName
@@ -89,6 +95,8 @@
   \item[Correo electrónico:] \myCoTutorEmail
 \end{description}
 }
+
+\vspace{0.5cm}
 
 \section*{CALIFICACIÓN (hasta 7 puntos, según rúbrica de evaluación):}
 
@@ -104,9 +112,10 @@
   \centering
 \begin{table}[ht]
   \centering
-  \begin{tabularx}{\linewidth}{|p{7cm}|} % Using p{} for fixed-width columns
+
+  \begin{tabular}{|p{8cm}|} % Using p{} for fixed-width columns
     \cline{1-1}
-    \begin{minipage}{7cm} % Corrected minipage usage
+    \begin{minipage}{8cm} % Corrected minipage usage
       \centering
       \vspace{0.5cm} % Space for signature
       \expandafter\makefirstuc\expandafter{\wordTutorOrTutora} \\
@@ -116,104 +125,42 @@
     \end{minipage}
     \\ \cline{1-1}
   \end{tabularx}
+
 \end{table}
 }
 {
 \begin{table}[ht]
   \centering
-  \begin{tabularx}{\linewidth}{|p{7cm}|p{7cm}|} % Using p{} for fixed-width columns
+
+  \begin{tabular}{|p{8cm}|p{8cm}|} % Using p{} for fixed-width columns
     \cline{1-2}
-    \begin{minipage}{7cm} % Corrected minipage usage
+    \begin{minipage}{8cm} % Corrected minipage usage
       \centering
-      \vspace{0.5cm} % Space for signature
+      \vspace{0.2cm} % Space for signature
       \expandafter\makefirstuc\expandafter{\wordTutorOrTutora} \\
       \vspace{2cm} % Space for signature
       Fdo: \myAcademicTutorFullName
-      \vspace{0.5cm} % Space for signature
+      \vspace{0.2cm} % Space for signature
     \end{minipage}
     &
-    \begin{minipage}{7cm} % Corrected minipage usage
+    \begin{minipage}{8cm} % Corrected minipage usage
       \centering
-      \vspace{0.5cm} % Space for signature
-      \expandafter\makefirstuc\expandafter{\wordCoDirectorOrCoDirectora} \\
+      \vspace{0.2cm} % Space for signature
+      \expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora} \\
       \vspace{2cm} % Space for signature
       Fdo: \myCoTutorFullName
-      \vspace{0.5cm} % Space for signature
+      \vspace{0.2cm} % Space for signature
     \end{minipage}
     \\
     \cline{1-2}
-  \end{tabularx}
+  \end{tabular}
+
 \end{table}
 }
 
 \newpage
 
-\begin{landscape}
-\thispagestyle{plain}
-\noindent \textbf{RÚBRICA PARA LA EVALUACIÓN DEL DESARROLLO DEL TFG}\footnote{Aprobado en Comisión de Calidad el 25 de junio de 2024}
-\renewcommand{\arraystretch}{1.3} % Increases row height
-
-\begin{table}[ht]
-  \centering
-  \small
-\begin{tabularx}{\linewidth}{|p{7cm}|p{9cm}|p{1cm}|p{1cm}|p{5cm}|}
-\cline{1-5}
-\textbf{Resultados de aprendizaje} & \textbf{Criterios de Evaluación} & \textbf{Peso} & \textbf{Calif} & \textbf{Informe del Tribunal} \\ \cline{1-5}
-  \multirow{7}{=}{%
-  \begin{minipage}[t]{7cm}
-    \textbf{BLOQUE 1: Proyecto}
-    \begin{itemize}[left=5pt, itemsep=1pt, topsep=1pt]
-      \item Proyecto relacionado con el ámbito con estándar de calidad adecuado (RATFG2)
-      \item Aspectos regulatorios de los proyectos en el ámbito (RATFG4)
-      \item Integración de competencias adquiridas (RATFG5)
-    \end{itemize}
-  \end{minipage}}
-    & Integra competencias (CE1) &  &  & \multirow[t]{7}{=}{} \\ \cline{2-4}
-    & Iniciativa, toma de decisiones y creatividad (CE2) &  &  &  \\ \cline{2-4}
-    & Maneja especificaciones, reglamentos y normativa (CE3) &  &  &  \\ \cline{2-4}
-    & Proyectos con estándar de calidad adecuado (CE4) &  &  &  \\ \cline{2-4}
-    & Defiende un proyecto en el ámbito de la profesión (CE5) &  &  &  \\ \cline{2-4}
-    & \cellcolor[HTML]{C0C0C0}Peso Máximo / Calificación &  &  &  \\
-    & \cellcolor[HTML]{C0C0C0}(Peso máximo: 2 puntos) &  &  &  \\ \cline{1-5}
-  \multirow{6}{=}{%
-  \begin{minipage}[t]{7cm}
-    \vspace{1mm}
-    \textbf{BLOQUE 2: Desarrollo del trabajo}
-    \begin{itemize}[left=5pt, itemsep=1pt, topsep=1pt]
-      \item Interpretar, comprender y diseñar una aproximación al problema con creatividad e iniciativa (RATFG1)
-      \item Trabajar de forma autónoma (RATFG10)
-      \item Buscar y gestionar la información necesaria para dar respuesta a los retos del proyecto (RATFG6)
-      \item Planificación de tareas (RATFG7)
-    \end{itemize}
-  \end{minipage}}
-
-    & \makecell[l]{Búsqueda de información (CE6)} &  &  &  \multirow[t]{7}{=}{} \\ \cline{2-4}
-    & Sintetizar la información, visión global y estado del arte (CE7) &  &  &  \\ \cline{2-4}
-    & Iniciativa y capacidad para tomar decisiones y aprender de forma autónoma (CE8) &  &  &  \\ \cline{2-4}
-    & Planificación del trabajo y análisis/justificación de desviaciones respecto a esa planificación (CE9) &  &  &  \\ \cline{2-4}
-    & \cellcolor[HTML]{C0C0C0}Peso Máximo / Calificación &  &  &  \\
-    & \cellcolor[HTML]{C0C0C0}(Peso máximo: 3 puntos) &  &  &  \\ \cline{1-5}
-
-  \multirow{4}{=}{
-  \begin{minipage}[t]{7cm}
-    \vspace{-5mm}
-    \textbf{BLOQUE 3: Memoria}
-    \begin{itemize}[left=5pt, itemsep=1pt, topsep=1pt]
-      \item Calidad del informe (memoria): estado del arte, resultados, valoración de los mismos y propuesta de mejoras (RATFG8)
-    \end{itemize}
-  \end{minipage}}
-    & Memoria sigue la normativa (CE14) &  &  &  \multirow[t]{7}{=}{} \\ \cline{2-4}
-    & Memoria y trabajo desarrollado coinciden (CE16) &  &  &  \\ \cline{2-4}
-    & \cellcolor[HTML]{C0C0C0}Peso Máximo / Calificación &  &  &  \\
-    & \cellcolor[HTML]{C0C0C0}(Peso máximo: 2 puntos) &  &  &  \\ \cline{1-5}
-\end{tabularx}
-%\caption{Rúbrica para la evaluación del desarrollo del TFG}
-\label{tab:evaluacion_tfg}
-
-\end{table}
-
-\end{landscape}
-
+\input{../../Config/rubricaTFGTutor.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % END Report content
