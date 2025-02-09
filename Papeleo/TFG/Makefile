@@ -1,29 +1,17 @@
-# Makefile for compiling LaTeX documents
+TEXFILES := $(wildcard *.tex)
+PDFFILES := $(TEXFILES:.tex=.pdf)
 
-# Name of the main LaTeX file (without .tex extension)
-MAIN = TFG-InformeTutorYRubrica
+# Default target: generate all PDFs
+all: $(PDFFILES)
 
-# LaTeX compiler
-LATEX = pdflatex
+# Implicit rule to convert .tex to .pdf
+%.pdf: %.tex
+	pdflatex -interaction=nonstopmode -halt-on-error $<
 
-PDF = $(MAIN).pdf
-
-# Default target
-all: $(PDF)
-
-# Rule to compile the LaTeX document into a PDF
-$(PDF): $(MAIN).tex
-	$(LATEX) $(MAIN).tex
-	$(LATEX) $(MAIN).tex
-	$(LATEX) $(MAIN).tex
-
-# Rule to clean up auxiliary files
+# Clean auxiliary files
 clean:
-	rm -f *.pdf *.aux *.log *.out *.toc *.bbl *.blg *.idx *.ilg *.ind *.lof *.lot *.lol *.synctex.gz
+	rm -f $(PDFFILES) *.aux *.log *.out *.toc *.lof *.lot *.bbl *.blg *.synctex.gz *.fls *.fdb_latexmk
 
-# Rule to clean up everything except the PDF
-distclean: clean
-	rm -f $(PDF)
-
-# Phony targets (not actual files)
-.PHONY: all clean distclean
+# Remove PDFs as well
+cleanall: clean
+	rm -f $(PDFFILES)
