@@ -1,0 +1,142 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% 
+% Generic template for TFC/TFM/TFG/Tesis
+% 
+% $Id: portada-tfg-uah.tex,v 1.14 2018/12/12 15:30:46 macias Exp $
+% 
+% By:
+% + Javier Macías-Guarasa. 
+% Departamento de Electrónica
+% Universidad de Alcalá
+% + Roberto Barra-Chicote. 
+% Departamento de Ingeniería Electrónica
+% Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+% 
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+% 
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+% 
+% You can freely use this template and please contribute with
+% comments or suggestions!!!
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\thispagestyle{empty}
+
+%\begingroup
+%\fontfamily{qhv}\selectfont  % Change to Helvetica (phv)
+
+\PutFrontPageBackground
+
+%\large
+\null
+\vspace{2.5cm}
+\begin{center}
+
+
+  \colorUAH \fontsize{25}{25} \selectfont \textbf{\MakeUppercase{\myWorkTypeFull}}
+  \vspace{10mm}
+
+  % titulación a la que se opta
+  \colorUAH \fontsize{20}{20} \selectfont \myDegreefull
+
+  \vspace{10mm}
+
+  \colorUAH \fontsize{20}{20} \selectfont {\MakeUppercase{\mySchool}}
+
+  \vspace{25mm}
+
+  \colorUAH \fontsize{20}{20} \selectfont \myBookTitle
+
+  \vspace{25mm}
+
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+    % \colorUAH \textbf{Author:}  \myAuthorFullName
+    \colorUAH \myAuthorFullName
+  }
+  {
+    % \colorUAH \textbf{Autor:}  \myAuthorFullName
+    \colorUAH \myAuthorFullName
+  }
+
+  \vspace{0.5cm}
+
+  % If also director: add corresponding line (mybookDirectors IS NOT DEFINED AS FOR ME (JMG)
+  % \ifthenelse{\equal{\myLanguage}{english}}
+  % {
+  % \textbf{\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}:} \myAdvisors
+  % }
+  %   {
+  %   \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutores}:}  \myAdvisors
+  % %   \textbf{\expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}:}  \mybookdirectors
+  % }
+
+  %   ---
+  \ifthenelse{\equal{\myFlagSplittedAdvisors}{true}}
+  {
+    \ifthenelse{\equal{\myLanguage}{english}}
+    {
+      % \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
+      \colorUAH {\expandafter\makefirstuc\expandafter{\wordAdvisor}:} \myAcademicTutorFullName{}
+
+      \ifthenelse{\equal{\myCoTutorFullName}{}}
+      {
+      }
+      {
+        \colorUAH {\expandafter\makefirstuc\expandafter{\wordCoAdvisor}:} \myCoTutorFullName{}
+      }
+
+    }
+    {%
+      % \expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}: \myAdvisors
+      % \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}: \myAdvisors
+      \colorUAH {\expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:}    \myAcademicTutorFullName{}
+
+      \ifthenelse{\equal{\myCoTutorFullName}{}}
+      {
+      }
+      {
+        \colorUAH {\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}:} \myCoTutorFullName{}
+      }
+    }
+  }
+  {
+    \ifthenelse{\equal{\myLanguage}{english}}
+    {
+      \colorUAH {\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}:} \myAdvisors
+    }
+    {
+      \colorUAH {\expandafter\makefirstuc\expandafter{\wordTutorOrTutores}:} \myAdvisors
+    }
+  }  
+
+
+  % ---
+
+
+\end{center}
+
+\begin{bottomparagraph}
+  \begin{center}
+    \colorUAH \huge{\myThesisDefenseYear}
+    \vspace{2cm}
+  \end{center}
+\end{bottomparagraph}
+
+%\endgroup
+
+% \newpage
+\clearemptydoublepage
+
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
