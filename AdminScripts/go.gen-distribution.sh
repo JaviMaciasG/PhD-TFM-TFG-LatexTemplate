@@ -30,6 +30,9 @@ then
     DIRS="Anteproyecto Book Config Papeleo"
 
     echo "Tagging distribution with tag name [$tagname] and tag message [$tagmessage]..."
+    echo "$tagname" > RELEASE.txt
+    git add RELEASE.txt
+    git commit -m "Release $tagname"
     git tag -a $tagname -m "$tagmessage"
     echo "Now generating distribution..."
 
