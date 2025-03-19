@@ -11,7 +11,7 @@ all: $(PDFFILES)
 
 # Clean auxiliary files
 clean:
-	rm -f $(PDFFILES) *.aux *.log *.out *.toc *.lof *.lot *.bbl *.blg *.synctex.gz *.fls *.fdb_latexmk
+	rm -f $(PDFFILES) *.aux *.log *.out *.toc *.lof *.lot *.bbl *.blg *.synctex.gz *.fls *.fdb_latexmk *.bcf *.run.xml
 
 # Remove PDFs as well
 cleanall: clean

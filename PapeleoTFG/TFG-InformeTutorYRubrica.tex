@@ -6,12 +6,16 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{../../Config/preamble-informes.tex}    % DO NOT TOUCH THIS LINE. You can edit
-\input{../../Config/myconfig.tex}                 % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
-\input{../../Config/postamble-anteproyecto.tex}   % DO NOT TOUCH THIS LINE.
+\documentclass[11pt,a4paper,oneside]{article}
+
+% \input{../Config/preamble-informes.tex}    % DO NOT TOUCH THIS LINE. You
+\input{../Config/preamble.tex}    % DO NOT TOUCH THIS LINE. You can edit
+\input{../Config/myconfig.tex}                 % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
+% \input{../Config/postamble-anteproyecto.tex}   % DO NOT TOUCH THIS LINE.
+\input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE.
 
 % Path to directories containing images
-\graphicspath{{../../Book/logos/}{../../Book/figures/}{../../Book/diagrams/}} % Edit this to your needs.
+\graphicspath{{../Book/logos/}{../Book/figures/}{../Book/diagrams/}} % Edit this to your needs.
 
 \title{Informe del Tutor Académico y Rúbrica}  % Title of the report
 \date{\today}                                  % Date of the report
@@ -25,7 +29,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN within-document configuration, frontpage and cover pages generation
 %
-\input{../../Config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
+\input{../Config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
 %
 % END within-document configuration, frontpage and cover pages generation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -54,6 +58,12 @@
 
 \end{description}
 
+\thispagestyle{plain}
+%\pagestyle{empty} % Remove headers and footers
+\fancyhf{} % Clear existing headers and footers
+\fancyfoot[C]{\thepage} % Print page number at the center bottom
+
+
 \vspace{0.5cm}
 
 \section*{RESULTADOS DE LA APLICACIÓN DE LA HERRAMIENTA ANTIPLAGIO}
@@ -69,6 +79,8 @@
 
 \newpage
 
+\thispagestyle{plain}
+
 \noindent \textbf{ACTA Y RÚBRICA DE DEFENSA DE TRABAJO DE FIN DE GRADO. CURSO \myThesisAcademicYear}
 
 \vspace{0.5cm}
@@ -81,7 +93,7 @@
   \item[Correo electrónico:] \myAcademicTutorEmail
 \end{description}
 
-\vspace{0.5cm}
+\vspace{0.25cm}
 
 \ifthenelse{\equal{\myCoTutorFullName}{}}
 {
@@ -96,14 +108,14 @@
 \end{description}
 }
 
-\vspace{0.5cm}
+\vspace{0.25cm}
 
-\section*{CALIFICACIÓN (hasta 7 puntos, según rúbrica de evaluación):}
+\section*{CALIFICACIÓN (hasta 7 puntos, según rúbrica de evaluación):  \myAcademicTutorGrade}
 
 \begin{description}
   \item[Comentarios:] %\textit{(A rellenar por el/la tutor/a)}
 \end{description}
-\vspace{5cm}
+\vspace{4cm}
 
 \noindent En Alcalá de Henares a \myThesisDefenseDate
 
@@ -160,7 +172,10 @@
 
 \newpage
 
-\input{../../Config/rubricaTFGTutor.tex}
+\thispagestyle{plain}
+
+
+\input{../Config/rubricaTFGTutor.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % END Report content
