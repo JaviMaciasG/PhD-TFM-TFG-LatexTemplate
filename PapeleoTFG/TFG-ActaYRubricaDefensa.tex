@@ -6,27 +6,34 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{../../Config/preamble-informes.tex}        % DO NOT TOUCH THIS LINE.
-\input{../../Config/myconfig.tex}                 % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
-\input{../../Config/postamble-informes.tex}   % DO NOT TOUCH THIS LINE.
-\input{../../Config/grades-calculation.tex}       % DO NOT TOUCH THIS LINE.
+\documentclass[11pt,a4paper,oneside]{article}
+
+% \input{../Config/preamble-informes.tex}        % DO NOT TOUCH THIS LINE.
+\input{../Config/preamble.tex}        % DO NOT TOUCH THIS LINE.
+\input{../Config/myconfig.tex}                 % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
+% \input{../Config/postamble-informes.tex}   % DO NOT TOUCH THIS LINE.
+\input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE.
+\input{../Config/grades-calculation.tex}       % DO NOT TOUCH THIS LINE.
 
 % Path to directories containing images
-\graphicspath{{../../Book/logos/}{../../Book/figures/}{../../Book/diagrams/}} % Edit this to your needs.
+\graphicspath{{../Book/logos/}{../Book/figures/}{../Book/diagrams/}} % Edit this to your needs.
+
 
 \title{Acta y rúbrica de defensa de TFG}  % Title of the report
 \date{\today}                                  % Date of the report
 \author{\myAcademicTutorFullName}                           % Advisor's name
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Let's start with the real stuff
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN within-document configuration, frontpage and cover pages generation
 %
-\input{../../Config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
+\input{../Config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
 %
 % END within-document configuration, frontpage and cover pages generation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -40,6 +47,10 @@
 \noindent \textbf{ACTA Y RÚBRICA DE DEFENSA DE TRABAJO DE FIN DE GRADO. CURSO \myThesisAcademicYear}
 
 %\vspace{0.5cm}
+\thispagestyle{plain}
+%\pagestyle{empty} % Remove headers and footers
+\fancyhf{} % Clear existing headers and footers
+\fancyfoot[C]{\thepage} % Print page number at the center bottom
 
 
 \section*{ESTUDIANTE}
@@ -110,7 +121,9 @@
 
 \newpage
 
-\thispagestyle{empty} % Remove headers/footers
+\thispagestyle{plain}
+
+%\thispagestyle{empty} % Remove headers/footers
 
 \begin{tikzpicture}[remember picture, overlay]
   % Draw a rectangle that perfectly aligns with text margins
@@ -127,7 +140,7 @@
 
 \newpage
 
-\input{../../Config/rubricaTFGTribunal.tex}
+\input{../Config/rubricaTFGTribunal.tex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
