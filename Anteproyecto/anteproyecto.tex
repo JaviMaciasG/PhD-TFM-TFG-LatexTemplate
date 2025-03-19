@@ -31,13 +31,15 @@
 % This is for rubber to clean additional files
 % rubber: clean anteproyecto.acn anteproyecto.acr anteproyecto.alg anteproyecto.cod anteproyecto.ist anteproyecto.out anteproyecto.sbl anteproyecto.slg anteproyecto.sym anteproyecto.lor
 
+\documentclass[11pt,a4paper,oneside]{article}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % BEGIN Preamble and configuration section
 % 
-\input{../Config/preamble-anteproyecto.tex}    % DO NOT TOUCH THIS LINE. You can edit
-% the file to modify some default settings
+\input{../Config/preamble.tex}    % DO NOT TOUCH THIS LINE. You can edit
+                                  % the file to modify some default settings
 
-\input{../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE 
+\input{../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
                                   % to set your specific settings (related
                                   % to the document language, your degree,
                                   % document details (such as title, author
@@ -47,8 +49,11 @@
                                   % define your commonly used commands
                                   % (some examples are provided).
 
-\input{../Config/postamble-anteproyecto.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
+\input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
                                   % "postamble" is not a valid word... :-)
+%
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % path to directories containing images
 \graphicspath{{../Book/logos/}{../Book/figures/}{../Book/diagrams/}} % Edit this to your
