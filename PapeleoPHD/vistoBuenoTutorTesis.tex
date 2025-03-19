@@ -31,27 +31,34 @@
 % This is for rubber to clean additional files
 % rubber: clean anteproyecto.acn anteproyecto.acr anteproyecto.alg anteproyecto.cod anteproyecto.ist anteproyecto.out anteproyecto.sbl anteproyecto.slg anteproyecto.sym anteproyecto.lor
 
+\documentclass[11pt,a4paper,oneside]{article}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN Preamble and configuration section
 %
-\input{../../Config/preamble-letter.tex}    % DO NOT TOUCH THIS LINE. You can edit
-                               % the file to modify some default settings
-                                   
-\input{../../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE 
-                               % to set your specific settings (related
-                               % to the document language, your degree,
-                               % document details (such as title, author
-                               % (you), your email, name of the tribunal
-                               % members, document year, keyword and
-                               % palabras clave) and link colors), and
-                               % define your commonly used commands
-                               % (some examples are provided).
+\input{../Config/preamble.tex}    % DO NOT TOUCH THIS LINE. You can edit
+                                  % the file to modify some default settings
 
-\input{../../Config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
-                               % "postamble" is not a valid word... :-)
+\input{../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
+                                  % to set your specific settings (related
+                                  % to the document language, your degree,
+                                  % document details (such as title, author
+                                  % (you), your email, name of the tribunal
+                                  % members, document year, keyword and
+                                  % palabras clave) and link colors), and
+                                  % define your commonly used commands
+                                  % (some examples are provided).
+
+\input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
+                                  % "postamble" is not a valid word... :-)
+
+\input{../Config/grades-calculation.tex}       % DO NOT TOUCH THIS LINE.
+%
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{fancyhdr}
-\fancyhead[LO,LE]{\hspace{-1.5cm}\includegraphics[width=.4\textwidth]{../../Book/logos/logoUAH.jpg}}
+\fancyhead[LO,LE]{\hspace{-1.5cm}\includegraphics[width=.4\textwidth]{../Book/logos/logoUAH.jpg}}
 \fancyhead[RO,RE]{\scriptsize\textcolor{blue}{DEPARTAMENTO DE ELECTRÓNICA}\\
 Edificio Politécnico\\
 Campus Universitario s/n\\
