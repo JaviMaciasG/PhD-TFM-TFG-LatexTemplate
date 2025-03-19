@@ -8,18 +8,32 @@
 
 \documentclass[11pt,a4paper,oneside]{article}
 
-% \input{../Config/preamble-informes.tex}    % DO NOT TOUCH THIS LINE. You
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Preamble and configuration section
+%
 \input{../Config/preamble.tex}    % DO NOT TOUCH THIS LINE. You can edit
-\input{../Config/myconfig.tex}                 % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
-% \input{../Config/postamble-anteproyecto.tex}   % DO NOT TOUCH THIS LINE.
-\input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE.
+                                  % the file to modify some default settings
 
-% Path to directories containing images
-\graphicspath{{../Book/logos/}{../Book/figures/}{../Book/diagrams/}} % Edit this to your needs.
+\input{../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
+                                  % to set your specific settings (related
+                                  % to the document language, your degree,
+                                  % document details (such as title, author
+                                  % (you), your email, name of the tribunal
+                                  % members, document year, keyword and
+                                  % palabras clave) and link colors), and
+                                  % define your commonly used commands
+                                  % (some examples are provided).
+
+\input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
+                                  % "postamble" is not a valid word... :-)
+%
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \title{Informe del Tutor Académico y Rúbrica}  % Title of the report
 \date{\today}                                  % Date of the report
-\author{\myAcademicTutorFullName}                           % Advisor's name
+\author{\myAcademicTutorFullName}              % Advisor's name
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Let's start with the real stuff
