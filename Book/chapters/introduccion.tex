@@ -317,23 +317,25 @@ La plantilla se encuentra en el directorio \texttt{Anteproyecto}, y en fichero \
 \subsection{Papeleo adicional}
 \label{sec:introapp1}
 
-Para el caso de los TFGs y TFMs se incluyen en el directorio \texttt{Papeleo} algunos de los documentos que hay que generar en el momento de la defensa. En concreto, para TFGs:
+Para el caso de los TFGs y TFMs se incluyen en los directorios \texttt{PapeleoTFG/} y \texttt{PapeleoTFM} algunos de los documentos que hay que generar en el momento de la defensa. En concreto, para TFGs:
 
 \begin{itemize}
-  \item La autorización del tutor para la publicación en abierto, en el fichero \texttt{Papeleo/TFG/TFG-AutorizacionTutorPubAbierto.tex} para TFGs.
-  \item La autorización del autor para la publicación en abierto, en el fichero \texttt{Papeleo/TFG/TFG-AutorizacionAutorPubAbierto.tex}
-  \item La autorización del tutor extranjero para la publicación en abierto, en el fichero \texttt{Papeleo/TFG/TFG-AutorizacionTutorExtranjeroPubAbierto.tex}
-  \item El informe y rúbrica del tutor para la defensa del TFG \texttt{Papeleo/TFG/TFG-InformeTutorYRubrica.tex}
-  \item El acta y rúbrica del tribunal para la defensa del TFG \texttt{Papeleo/TFG/TFG-ActaYRubricaDefensa.tex}
+  \item La autorización del tutor para la publicación en abierto, en el fichero \texttt{PapeleoTFG/TFG-AutorizacionTutorPubAbierto.tex} para TFGs.
+  \item La autorización del autor para la publicación en abierto, en el fichero \texttt{PapeleoTFG/TFG-AutorizacionAutorPubAbierto.tex}
+  \item La autorización del tutor extranjero para la publicación en abierto, en el fichero \texttt{PapeleoTFG/TFG-AutorizacionTutorExtranjeroPubAbierto.tex}
+  \item El informe y rúbrica del tutor para la defensa del TFG \texttt{PapeleoTFG/TFG-InformeTutorYRubrica.tex}
+  \item El acta y rúbrica del tribunal para la defensa del TFG \texttt{PapeleoTFG/TFG-ActaYRubricaDefensa.tex}
 \end{itemize}
 
 Y para TFMs:
 
 \begin{itemize}
-  \item La autorización del tutor y autor para la publicación en abierto, en el fichero \texttt{Papeleo/TFM/autorizacionPublicarAbierto.tex} para TFMs.
+  \item La autorización del tutor y autor para la publicación en abierto, en el fichero \texttt{PapeleoTFM/TFM-autorizacionPublicarAbierto.tex} para TFMs.
 \end{itemize}
 
 Para compilarlos, encontrarás un \texttt{Makefile} que genera los \texttt{pdfs} correspondientes a esos documentos. El sistema automáticamente adapta los términos masculinos/femeninos correspondientes y los singulares/plurales necesarios para el caso de que haya uno o varios directores/tutores.
+
+Para el caso de las tesis doctorales, no está todavía preparado.
 
 
 \subsection{Generación del documento con control de cambios (para revisión)}
