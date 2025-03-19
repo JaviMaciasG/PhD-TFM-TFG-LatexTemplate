@@ -37,12 +37,25 @@
   \input{cover/backpage-tfg-uah-2024.tex}
 }
 {
-\ifthenelse{\equal{\myWorkType}{TFM}}
-{
-  \input{cover/backpage-tfg-uah.tex}
-}
-{
-}
+  \ifthenelse{\equal{\myWorkType}{TFM}}
+  {
+
+      \ifthenelse{\equal{\myDegree}{MUC}}
+        {
+          \input{cover/backpage-tfm-normativa-uah.tex}
+        }
+        {
+          \ifthenelse{\equal{\myDegree}{MUCTE}}
+          {
+            \input{cover/backpage-tfm-normativa-uah.tex}
+          }
+          {
+            \input{cover/backpage-tfg-uah.tex}
+          }
+        }
+  }
+  {
+  }
 }
 
 %%% Local Variables:
