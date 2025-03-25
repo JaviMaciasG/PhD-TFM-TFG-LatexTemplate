@@ -42,45 +42,6 @@
 % To generate a proper PDF/A document
 %\usepackage[a-1b]{pdfx}
 
-% JMG 03/2025: This section tries to allow the use of a single preamble.tex, by
-% checking if chapter is defined. Chapter should be defined when compiling
-% book.tex, and not otherwise (for example in anteproyecto.tex).
-% So, the strategy is checking if chapter is defined:
-% - If it is, assume it is compiling book.tex and include all elements that generate
-%   errors in other tex files
-% - If if is not, assume we are compiling other than book.tex, and define anything
-%   required that can generates in the packages being used below
-\makeatletter
-\@ifundefined{chapter} % This happens if compiling anteproyecto.tex. Dirty but...
-{
-  % Define this to avoid complains in packages included later
-  \newcounter{chapter}
-  \newcommand{\chaptermark}[1]{\markboth{#1}{}}
-  % This should be relative to the anteproyecto path
-  \newcommand{\myreferencespath}{../Book/}
-
-}
-{
-  % JMG 03/2025 It is included here to avoid compilation errors in
-  % anteproyecto.tex. This is dirty, I know
-
-  % glossaries is better than the acronym package
-\usepackage[automake,acronym,shortcuts,nomain,hyperfirst=false]{glossaries}
-% If you want to PERMANENTLY DISABLE HYPERLINKS, uncomment the following
-% line
-% \glsdisablehyper
-% In future versiones (not as for ubuntu 12.04) You can also selectively
-% disable hyperlinks for given glossaries, using:
-% \usepackage[acronym,shortcuts,nomain,nohypertypes={acronyms,symbols}]{glossaries}
-% Or (for newwer versions also), you can even use
-% \GlsDeclareNoHyperList{acronyms,symbols}
-% You can also disable hyperlinks in the acronym use, like in \ac*{symbol}
-
-% This should be relative to the book.tex path, do not touch!!!!!!!!!!!
-\newcommand{\myreferencespath}{}
-
-}
-\makeatother
 
 
 %% This is used in anteproyecto
@@ -231,6 +192,47 @@ urlcolor=blue,                     %%% texto  con color (further
 pdfborder={0 0 112.0},              %%% border-width of frames 
 hyperfootnotes=false
 }                        %%% will be multiplied with 0.009 by ps2pdf
+
+
+% JMG 03/2025: This section tries to allow the use of a single preamble.tex, by
+% checking if chapter is defined. Chapter should be defined when compiling
+% book.tex, and not otherwise (for example in anteproyecto.tex).
+% So, the strategy is checking if chapter is defined:
+% - If it is, assume it is compiling book.tex and include all elements that generate
+%   errors in other tex files
+% - If if is not, assume we are compiling other than book.tex, and define anything
+%   required that can generates in the packages being used below
+\makeatletter
+\@ifundefined{chapter} % This happens if compiling anteproyecto.tex. Dirty but...
+{
+  % Define this to avoid complains in packages included later
+  \newcounter{chapter}
+  \newcommand{\chaptermark}[1]{\markboth{#1}{}}
+  % This should be relative to the anteproyecto path
+  \newcommand{\myreferencespath}{../Book/}
+
+}
+{
+  % JMG 03/2025 It is included here to avoid compilation errors in
+  % anteproyecto.tex. This is dirty, I know
+
+  % glossaries is better than the acronym package
+\usepackage[automake,acronym,shortcuts,nomain,hyperfirst=false]{glossaries}
+% If you want to PERMANENTLY DISABLE HYPERLINKS, uncomment the following
+% line
+% \glsdisablehyper
+% In future versiones (not as for ubuntu 12.04) You can also selectively
+% disable hyperlinks for given glossaries, using:
+% \usepackage[acronym,shortcuts,nomain,nohypertypes={acronyms,symbols}]{glossaries}
+% Or (for newwer versions also), you can even use
+% \GlsDeclareNoHyperList{acronyms,symbols}
+% You can also disable hyperlinks in the acronym use, like in \ac*{symbol}
+
+% This should be relative to the book.tex path, do not touch!!!!!!!!!!!
+\newcommand{\myreferencespath}{}
+
+}
+\makeatother
 
 
 % \usepackage[all]{hypcap}
