@@ -27,7 +27,7 @@ then
     make -C Book
 
     DIST_FILE="00-PhDTFMTFG-LaTeX-Template-UAH-$tagname"
-    DIRS="Anteproyecto Book Config Papeleo"
+    DIRS="Anteproyecto Book Config PapeleoTFG PapeleoTFM PapeleoPHD"
 
     echo "Tagging distribution with tag name [$tagname] and tag message [$tagmessage]..."
     echo "$tagname" > RELEASE.txt
