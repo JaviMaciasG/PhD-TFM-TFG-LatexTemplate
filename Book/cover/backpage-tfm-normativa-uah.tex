@@ -1,0 +1,90 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: portada-tfm-uah-pre2016.tex,v 1.1 2016/03/31 16:39:56 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% You can freely use this template and please contribute with
+% comments or suggestions!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\thispagestyle{empty}
+
+\cleartoleftpage
+\thispagestyle{empty}
+
+
+% To add background watermark
+%\BgThispage
+
+% Nice example of tikz
+% \begin{tikzpicture}[remember picture,overlay]
+%   \node [xshift=1cm,yshift=1cm] at (current page.south west)
+%   [text width=7cm,fill=red!20,rounded corners,above right]
+%   {
+%     This is an absolutely positioned text in the
+%     lower left corner. No shipout-hackery is used.
+%   };
+% \end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-4cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,4cm);
+      %\node [yshift=7cm, xshift=3cm, text centered, midway, rotate=+90] {\color{white}\fontsize{110}{132}\selectfont\myUniversityAcronym};
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+\null
+\vspace{11cm}
+\begin{center}
+  {\color{pantone293} \fontsize{40}{48} \selectfont {\myThesisDefenseYear}} % Customize font size
+\end{center}
+
+
+% lower rectangle
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-\paperheight] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2cm);
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+
+
+% \begin{bottomparagraph}
+%   \begin{center}
+%     \huge{\myThesisDefenseYear}
+%   \end{center}
+% \end{bottomparagraph}
+
+%\newpage
+%\clearemptydoublepage
+
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
