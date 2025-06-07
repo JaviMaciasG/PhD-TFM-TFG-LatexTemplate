@@ -550,3 +550,6 @@ pdf_svg_done
 *.tar.gz
 *.tgz
 
+
+00-README.pdf
+CHANGELOG.md
