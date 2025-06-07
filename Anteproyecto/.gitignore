@@ -16,3 +16,4 @@ pdf_svg_done
 *.bak
 auto
 *.synctex.gz
+*.pdf
