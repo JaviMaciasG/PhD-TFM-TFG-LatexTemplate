@@ -13,6 +13,7 @@ TAR_TOOL = tar
 GZIP_TOOL = gzip
 ZIP_TOOL = zip
 DIA_TOOL = dia
+GS_TOOL = gs
 INKSCAPE_TOOL = inkscape
 MAKEGLOSSARIES_TOOL = makeglossaries
 LATEXPAND_TOOL = latexpand
@@ -76,7 +77,12 @@ all: $(DUMMY_TARGETS)
 	$(MAKEGLOSSARIES_TOOL) $(ROOT_FILENAME)
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
 	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
+# Compress pdf file
+	$(GS_TOOL) -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen   -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$(ROOT_FILENAME)-screen.pdf     $(ROOT_FILENAME).pdf
+	$(GS_TOOL) -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$(ROOT_FILENAME)-compressed.pdf $(ROOT_FILENAME).pdf
 	cp $(ROOT_FILENAME).pdf $(ROOT_FINAL_BOOK_FILENAME).pdf
+	cp $(ROOT_FILENAME)-compressed.pdf $(ROOT_FINAL_BOOK_FILENAME)-compressed.pdf
+	cp $(ROOT_FILENAME)-screen.pdf $(ROOT_FINAL_BOOK_FILENAME)-screen.pdf
 	@echo "Generating release number"
 	-rm ../RELEASE.txt
 	echo "$(RELEASE)" > ../RELEASE.txt
