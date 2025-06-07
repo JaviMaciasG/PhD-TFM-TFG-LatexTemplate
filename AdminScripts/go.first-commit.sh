@@ -30,3 +30,4 @@ git add Papeleo/TFGAutorizacionPubAbierto/*tex Papeleo/TFGAutorizacionPubAbierto
 git add Papeleo/TFMAutorizacionPubAbierto/*tex Papeleo/TFMAutorizacionPubAbierto/Makefile
 git add Papeleo/TFGVistoBuenoTutor/*tex Papeleo/TFGVistoBuenoTutor/Makefile
 git add Papeleo/TFMVistoBuenoTutor/*tex Papeleo/TFMVistoBuenoTutor/Makefile
+git add Book/cover/imagen-portada-tfg2024.png
