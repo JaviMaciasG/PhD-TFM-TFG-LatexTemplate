@@ -6,7 +6,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[11pt,a4paper,oneside]{article}
+\documentclass[10pt,a4paper,oneside]{article}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN Preamble and configuration section
@@ -25,7 +25,21 @@
                                   % (some examples are provided).
 
 \input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
-                                  % "postamble" is not a valid word... :-)
+% "postamble" is not a valid word... :-)
+
+%\usepackage[table]{xcolor}   % for \columncolor
+%\usepackage{array}           % for m‐column spec
+\usepackage{booktabs}        % nicer rules (optional)
+
+\newcolumntype{M}[1]{%
+  >{\cellcolor[HTML]{CCCCCC}\raggedright\arraybackslash}%
+  m{#1}%
+}
+\setlength{\extrarowheight}{0pt}
+
+%\setlength{\extrarowheight}{0.8em}
+
+
 %
 % END Preamble and configuration section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,8 +67,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN Report content
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section*{DATOS DEL ESTUDIANTE}
+\noindent
+\begin{tabular}{|M{\textwidth}|}
+\hline
+\textbf{\small DATOS DEL ESTUDIANTE}\vspace*{-5pt}\\
+\hline
+\end{tabular}
 
 \begin{description}
   \item[Nombre y apellidos:] \myAuthorFullName
@@ -80,7 +98,14 @@
 
 \vspace{0.5cm}
 
-\section*{RESULTADOS DE LA APLICACIÓN DE LA HERRAMIENTA ANTIPLAGIO}
+%\section*{\normalsize RESULTADOS DE LA APLICACIÓN DE LA HERRAMIENTA ANTIPLAGIO}
+\noindent
+\begin{tabular}{|M{\textwidth}|}
+\hline
+\textbf{\small RESULTADOS DE LA APLICACIÓN DE LA HERRAMIENTA ANTIPLAGIO}\vspace*{-5pt}\\
+\hline
+\end{tabular}
+
 
 \begin{description}
   \item[Datos de coincidencias:] ~
@@ -95,11 +120,20 @@
 
 \thispagestyle{plain}
 
-\noindent \textbf{ACTA Y RÚBRICA DE DEFENSA DE TRABAJO DE FIN DE GRADO. CURSO \myThesisAcademicYear}
+\noindent \textbf{\small ACTA Y RÚBRICA DE DEFENSA DE TRABAJO DE FIN DE GRADO. CURSO \myThesisAcademicYear}
 
 \vspace{0.5cm}
 
-\section*{\MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}
+%\section*{\normalsize \MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}
+
+\noindent
+\begin{tabular}{|M{\textwidth}|}
+\hline
+\textbf{\small \MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}\vspace*{-5pt}\\
+\hline
+\end{tabular}
+
+
 
 \begin{description}
   \item[Nombre:] \myAcademicTutorFullName
@@ -113,7 +147,15 @@
 {
 }
 {
-\section*{\MakeUppercase{\wordCoTutorOrCoTutora}}
+%\section*{\normalsize \MakeUppercase{\wordCoTutorOrCoTutora}}
+
+\noindent
+\begin{tabular}{|M{\textwidth}|}
+\hline
+\textbf{\small \MakeUppercase{\wordCoTutorOrCoTutora}}\vspace*{-5.5pt}\\
+\hline
+\end{tabular}
+
 
 \begin{description}
   \item[Nombre:] \myCoTutorFullName
@@ -124,12 +166,23 @@
 
 \vspace{0.25cm}
 
-\section*{CALIFICACIÓN (hasta 7 puntos, según rúbrica de evaluación):  \myAcademicTutorGrade}
+%\section*{\normalsize CALIFICACIÓN (hasta 7 puntos, según rúbrica de evaluación):  \myAcademicTutorGrade}
+
+\noindent
+\begin{tabular}{|M{\textwidth}|}
+  \hline
+  \cellcolor[HTML]{FFFFFF}
+  \textbf{\small CALIFICACIÓN (hasta 7 puntos, según rúbrica de evaluación):  \myAcademicTutorGrade}\vspace*{-5.5pt}\\
+  \cellcolor[HTML]{FFFFFF}\\
+\hline
+\end{tabular}
+
 
 \begin{description}
   \item[Comentarios:] %\textit{(A rellenar por el/la tutor/a)}
 \end{description}
-\vspace{4cm}
+% \vspace{4cm}
+\vfill{}
 
 \noindent En Alcalá de Henares a \myThesisDefenseDate
 
