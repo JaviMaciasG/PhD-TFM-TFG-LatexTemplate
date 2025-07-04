@@ -33,6 +33,7 @@ DEGREES_OLD="IT IE ITTSE ITTST ITI GIEAI GITI GIST GITT GIT GIC GII GSI GISI MUS
 DEGREES_ENG_SPA="GIEC GIEAI GITI GIST GITT GIT GIC GII GISI MUIT MUII MUIE MUCTE PHDUAH"
 DEGREES_ENG_SPA="GITT GIEC GIT GIST GIC GII GMC GISI GIEAI GITI MUIT MUII MUIE MUCTE PHDUAH"
 DEGREES_ENG_SPA="GISI"
+DEGREES_ENG_SPA="GITT GIEC GIT GIST GIC GII GMC GIS GISI GIEAI GITI MUIT MUII MUIE MUCTE MUANBD MUC PHDUAH PHDUPM"
 
 MYCONFIG_VARS="../Config/myconfig.tex.vars"
 MYCONFIG="../Config/myconfig.tex"
@@ -44,16 +45,17 @@ cat $MYCONFIG |sed -E "s/newcommand[{][\\]myLanguage[}][{](.*)[}]/newcommand{\\\
 
 cp $MYCONFIG $MYCONFIG.before
 
-for lang in spanish english
+for lang in english spanish
 do
     for degree in $DEGREES_ENG_SPA
     do
 	TYPE=`cat ../Config/worktypes.txt | grep -w $degree | tr -s " " | cut -f 2 -d " "`
 	OUTPUT_NAME=$TYPE-$degree-$lang.pdf
+	LOG_NAME=$TYPE-$degree-$lang.log
 	echo -n "Making for degree $degree, generating $OUTPUT_NAME..."
 	cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
 	make clean >& /dev/null
-	make  >& /dev/null
+	make  >& $LOG_NAME
 	#echo "mv book.pdf $DST_DIR/$OUTPUT_NAME"
     mv book-screen.pdf $DST_DIR/$OUTPUT_NAME
 	echo " Done!"
@@ -76,13 +78,12 @@ done
 
 cp $MYCONFIG.before $MYCONFIG
 
-for f in `ls *.pdf`
-do
-    NEWNAME=`echo $f | cut -f 1,2,5 -d "-"`
-    echo "Trying to move $f to $NEWNAME"
-    mv $f $NEWNAME
-done
+# for f in `ls *.pdf`
+# do
+#     NEWNAME=`echo $f | cut -f 1,2,5 -d "-"`
+#     echo "Trying to move $f to $NEWNAME"
+#     mv $f $NEWNAME
+# done
 
 
-cp *.pdf ~/Dropbox/PhDTFMTFG-LaTeX-Template/
-
+# cp *.pdf ~/Dropbox/PhDTFMTFG-LaTeX-Template/
