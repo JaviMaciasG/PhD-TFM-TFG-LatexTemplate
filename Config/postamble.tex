@@ -110,10 +110,22 @@
 
 \ifthenelse{\equal{\myTribunalFirstSpokespersonGender}{male}}
 {
-  \newcommand{\wordVocalPrimeroOrPrimera}{Vocal 1º}
+  \newcommand{\wordVocalPrimeroOrPrimera}{Vocal}
+  \newcommand{\wordNumberVocalPrimeroOrPrimera}{1º}
 }
 {
-  \newcommand{\wordVocalPrimeroOrPrimera}{Vocal 1ª}
+  \newcommand{\wordVocalPrimeroOrPrimera}{Vocal}
+  \newcommand{\wordNumberVocalPrimeroOrPrimera}{1ª}
+}
+
+\ifthenelse{\equal{\myTribunalSecondSpokespersonGender}{male}}
+{
+  \newcommand{\wordVocalSegundoOrSegunda}{Vocal}
+  \newcommand{\wordNumberVocalSegundoOrSegunda}{2º}
+}
+{
+  \newcommand{\wordVocalSegundoOrSegunda}{Vocal}
+  \newcommand{\wordNumberVocalSegundoOrSegunda}{2ª}
 }
 
 \ifthenelse{\equal{\myAcademicTutorGender}{male}}
