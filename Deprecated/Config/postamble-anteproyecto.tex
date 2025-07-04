@@ -597,7 +597,22 @@
                                               }
                                             }
                                             {
-                                              \newcommand{\myWorkType}{TFG}
+                                              \ifthenelse{\equal{\myDegree}{MUANBD}}
+                                              {
+                                                \newcommand{\myDegreefull}{Máster Universitario en Analítica de Negocio y Big Data}
+                                                \newcommand{\myDegreefullwrapped}{Máster Universitario en Analítica de Negocio y Big Data}
+                                                \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en Analítica de Negocio y Big Data}}
+                                                \newcommand{\myWorkType}{TFM}
+                                                \ifthenelse{\equal{\myLanguage}{spanish}}
+                                                {
+                                                  \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
+                                                }
+                                                {
+                                                  \newcommand{\myWorkTypeFull}{Master's Thesis}
+                                                }
+                                              }
+                                              {
+                                                \newcommand{\myWorkType}{TFG}
                                               \newcommand{\myDegreefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}} 
                                               \newcommand{\myWorkTypeFull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
                                             }
@@ -754,5 +769,4 @@
 %%% Local Variables:
 %%% TeX-master: "../book"
 %%% End:
-
 

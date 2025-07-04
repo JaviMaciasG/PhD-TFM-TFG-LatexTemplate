@@ -30,7 +30,7 @@
 
 
 %% FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR \documentclass[RGB,rgb,svgnames,spanish,openright]{book}
-%\documentclass[spanish,openright]{book}
+% \documentclass[spanish,openright]{book}
 % \documentclass[english,openright]{book}
 % \documentclass[11pt,english,twoside,openright]{book}
 
@@ -40,7 +40,7 @@
 \synctex=1
 
 % To generate a proper PDF/A document
-%\usepackage[a-1b]{pdfx}
+% \usepackage[a-1b]{pdfx}
 
 
 
@@ -62,7 +62,7 @@
 % This should not be touched, as it should work as it is know.
 \newcommand{\colorspaceused}{rgb}
 
-%The next section seems to be useless, but it's still pending to try further
+% The next section seems to be useless, but it's still pending to try further
 \ifthenelse{\equal{\colorspaceused}{rgb}}
 {
   \PassOptionsToPackage{rgb}{xcolor}% NB: put this *before* \usepackage{pst-all}
@@ -72,15 +72,15 @@
 }
 
 \usepackage{iftex}
-%\usepackage[latin1]{inputenc} % Para poder escribir con acentos y ñ. en
-                              % latin1
+% \usepackage[latin1]{inputenc} % Para poder escribir con acentos y ñ. en
+% latin1
 \ifPDFTeX
   \usepackage[utf8]{inputenc} % Para poder escribir con acentos y ñ.
   \usepackage[T1,TS1]{fontenc}      % Para que haga bien la ``hyphenation''. No
 \fi                                % usar si no es necesario, porque ralentiza muchisimo la compilación.
 \usepackage{ae}               % Para que todas las fuentes sean Type1, y ninguna Type3.
 \usepackage{lmodern}          % This generates a pdf with searchable
-                              % accented characters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% accented characters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 \usepackage{textcomp}
 
 
@@ -106,7 +106,7 @@
 \usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{eurosym}
-%\usepackage{subfig} % subfigure is obsolete... 
+% \usepackage{subfig} % subfigure is obsolete...
 \usepackage{multirow}
 \usepackage{fancyhdr}
 \usepackage{makeidx}
@@ -131,11 +131,11 @@
 
 % \ifthenelse{\equal{\colorspaceused}{rgb}}
 % {
-%   \definecolor{headingPortadaTFM}{RGB}{152,118,52}
-%   \definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
+% \definecolor{headingPortadaTFM}{RGB}{152,118,52}
+% \definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
 % }
-% {
-%   % These definitions are for cmyk colorspace
+%   {
+%   %   These definitions are for cmyk colorspace
 %   \definecolor{headingPortadaTFM}{cmyk}{0.0254,0,0.559,0.537}
 %   \definecolor{textoHeadingPortadaTFM}{cmyk}{0,0.0144,0.51,0.184}
 % }
@@ -168,29 +168,29 @@
 \geometry{verbose,a4paper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
 % \geometry{paperwidth=210mm,paperheight=297mm}
 
-%\usepackage[hang, flushmargin]{footmisc}   
+% \usepackage[hang, flushmargin]{footmisc}
 
 \usepackage{hyperref}
 \usepackage{hyperxmp}
 \hypersetup{
-%% ps2pdf,                %%% hyper-references for ps2pdf
-bookmarks=true,%                   %%% generate bookmarks ...
-bookmarksnumbered=true,            %%% ... with numbers
-hypertexnames=false,               %%% needed for correct links to
-%%% figures!!!
-% hypertexnames=true,               %%% needed for correct links on pagebackrefs!!!
-breaklinks=true,                   %%% breaks lines, but links are very small
-% pagebackref=true,
-% linktocpage=true,                 %%% enlace en el numero de página.
-linktoc=all,
-colorlinks=true,
-linkcolor=blue,    
-citecolor=green,
-urlcolor=blue,                     %%% texto  con color (further
-%%% modified in myconfig.tex)
-% linkbordercolor={0 0 1},           %%% blue frames around links
-pdfborder={0 0 112.0},              %%% border-width of frames 
-hyperfootnotes=false
+  %% ps2pdf,                %%% hyper-references for ps2pdf
+  bookmarks=true,%                   %%% generate bookmarks ...
+  bookmarksnumbered=true,            %%% ... with numbers
+  hypertexnames=false,               %%% needed for correct links to
+  %%% figures!!!
+  % hypertexnames=true,               %%% needed for correct links on pagebackrefs!!!
+  breaklinks=true,                   %%% breaks lines, but links are very small
+  % pagebackref=true,
+  % linktocpage=true,                 %%% enlace en el numero de página.
+  linktoc=all,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=green,
+  urlcolor=blue,                     %%% texto  con color (further
+  %%% modified in myconfig.tex)
+  % linkbordercolor={0 0 1},           %%% blue frames around links
+  pdfborder={0 0 112.0},              %%% border-width of frames
+  hyperfootnotes=false
 }                        %%% will be multiplied with 0.009 by ps2pdf
 
 
@@ -199,9 +199,9 @@ hyperfootnotes=false
 % book.tex, and not otherwise (for example in anteproyecto.tex).
 % So, the strategy is checking if chapter is defined:
 % - If it is, assume it is compiling book.tex and include all elements that generate
-%   errors in other tex files
+% errors in other tex files
 % - If if is not, assume we are compiling other than book.tex, and define anything
-%   required that can generates in the packages being used below
+% required that can generates in the packages being used below
 \makeatletter
 \@ifundefined{chapter} % This happens if compiling anteproyecto.tex. Dirty but...
 {
@@ -217,19 +217,19 @@ hyperfootnotes=false
   % anteproyecto.tex. This is dirty, I know
 
   % glossaries is better than the acronym package
-\usepackage[automake,acronym,shortcuts,nomain,hyperfirst=false]{glossaries}
-% If you want to PERMANENTLY DISABLE HYPERLINKS, uncomment the following
-% line
-% \glsdisablehyper
-% In future versiones (not as for ubuntu 12.04) You can also selectively
-% disable hyperlinks for given glossaries, using:
-% \usepackage[acronym,shortcuts,nomain,nohypertypes={acronyms,symbols}]{glossaries}
-% Or (for newwer versions also), you can even use
-% \GlsDeclareNoHyperList{acronyms,symbols}
-% You can also disable hyperlinks in the acronym use, like in \ac*{symbol}
+  \usepackage[automake,acronym,shortcuts,nomain,hyperfirst=false]{glossaries}
+  % If you want to PERMANENTLY DISABLE HYPERLINKS, uncomment the following
+  % line
+  % \glsdisablehyper
+  % In future versiones (not as for ubuntu 12.04) You can also selectively
+  % disable hyperlinks for given glossaries, using:
+  % \usepackage[acronym,shortcuts,nomain,nohypertypes={acronyms,symbols}]{glossaries}
+  % Or (for newwer versions also), you can even use
+  % \GlsDeclareNoHyperList{acronyms,symbols}
+  % You can also disable hyperlinks in the acronym use, like in \ac*{symbol}
 
-% This should be relative to the book.tex path, do not touch!!!!!!!!!!!
-\newcommand{\myreferencespath}{}
+  % This should be relative to the book.tex path, do not touch!!!!!!!!!!!
+  \newcommand{\myreferencespath}{}
 
 }
 \makeatother
@@ -407,7 +407,7 @@ hyperfootnotes=false
 %   in TFMs front and back pages)
 %   If you want to set this background, use \BgThispage in the
 %   corresponding pages
-%\usepackage[pages=some]{sty/background}
+%   \usepackage[pages=some]{sty/background}
 \usepackage[pages=some]{background}
 
 % Note that we also set the opacity in the first page of the tfg due to a bug,
@@ -431,12 +431,12 @@ hyperfootnotes=false
 \newcommand*{\cleartoleftpage}{%
   \clearpage
   \if@twoside
-  \ifodd\c@page
-  \hbox{}\newpage
-  \if@twocolumn
-  \hbox{}\newpage
-  \fi
-  \fi
+    \ifodd\c@page
+      \hbox{}\newpage
+      \if@twocolumn
+        \hbox{}\newpage
+      \fi
+    \fi
   \fi
 }
 \makeatother
@@ -460,26 +460,26 @@ hyperfootnotes=false
 % reads each byte individually and expects it to be an individual character.
 % See https://tex.stackexchange.com/questions/24528/having-problems-with-listings-and-utf-8-can-it-be-fixed
 \lstset{
-    inputencoding = utf8,  % Input encoding
-    extendedchars = true,  % Extended ASCII
-    literate      =        % Support additional characters
-      {á}{{\'a}}1  {é}{{\'e}}1  {í}{{\'i}}1 {ó}{{\'o}}1  {ú}{{\'u}}1
-      {Á}{{\'A}}1  {É}{{\'E}}1  {Í}{{\'I}}1 {Ó}{{\'O}}1  {Ú}{{\'U}}1
-      {à}{{\`a}}1  {è}{{\`e}}1  {ì}{{\`i}}1 {ò}{{\`o}}1  {ù}{{\`u}}1
-      {À}{{\`A}}1  {È}{{\'E}}1  {Ì}{{\`I}}1 {Ò}{{\`O}}1  {Ù}{{\`U}}1
-      {ä}{{\"a}}1  {ë}{{\"e}}1  {ï}{{\"i}}1 {ö}{{\"o}}1  {ü}{{\"u}}1
-      {Ä}{{\"A}}1  {Ë}{{\"E}}1  {Ï}{{\"I}}1 {Ö}{{\"O}}1  {Ü}{{\"U}}1
-      {â}{{\^a}}1  {ê}{{\^e}}1  {î}{{\^i}}1 {ô}{{\^o}}1  {û}{{\^u}}1
-      {Â}{{\^A}}1  {Ê}{{\^E}}1  {Î}{{\^I}}1 {Ô}{{\^O}}1  {Û}{{\^U}}1
-      {œ}{{\oe}}1  {Œ}{{\OE}}1  {æ}{{\ae}}1 {Æ}{{\AE}}1  {ß}{{\ss}}1
-      {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1  {Ø}{{\O}}1   {å}{{\r a}}1
-      {Å}{{\r A}}1 {ã}{{\~a}}1  {õ}{{\~o}}1 {Ã}{{\~A}}1  {Õ}{{\~O}}1
-      {ñ}{{\~n}}1  {Ñ}{{\~N}}1  {¿}{{?`}}1  {¡}{{!`}}1
-      {°}{{\textdegree}}1 {º}{{\textordmasculine}}1 {ª}{{\textordfeminine}}1
-      % ¿ and ¡ are not correctly displayed if inconsolata font is used
-      % together with the lstlisting environment. Consider typing code in
-      % external files and using \lstinputlisting to display them instead.      
-  }
+  inputencoding = utf8,  % Input encoding
+  extendedchars = true,  % Extended ASCII
+  literate      =        % Support additional characters
+  {á}{{\'a}}1  {é}{{\'e}}1  {í}{{\'i}}1 {ó}{{\'o}}1  {ú}{{\'u}}1
+  {Á}{{\'A}}1  {É}{{\'E}}1  {Í}{{\'I}}1 {Ó}{{\'O}}1  {Ú}{{\'U}}1
+  {à}{{\`a}}1  {è}{{\`e}}1  {ì}{{\`i}}1 {ò}{{\`o}}1  {ù}{{\`u}}1
+  {À}{{\`A}}1  {È}{{\'E}}1  {Ì}{{\`I}}1 {Ò}{{\`O}}1  {Ù}{{\`U}}1
+  {ä}{{\"a}}1  {ë}{{\"e}}1  {ï}{{\"i}}1 {ö}{{\"o}}1  {ü}{{\"u}}1
+  {Ä}{{\"A}}1  {Ë}{{\"E}}1  {Ï}{{\"I}}1 {Ö}{{\"O}}1  {Ü}{{\"U}}1
+  {â}{{\^a}}1  {ê}{{\^e}}1  {î}{{\^i}}1 {ô}{{\^o}}1  {û}{{\^u}}1
+  {Â}{{\^A}}1  {Ê}{{\^E}}1  {Î}{{\^I}}1 {Ô}{{\^O}}1  {Û}{{\^U}}1
+  {œ}{{\oe}}1  {Œ}{{\OE}}1  {æ}{{\ae}}1 {Æ}{{\AE}}1  {ß}{{\ss}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1  {Ø}{{\O}}1   {å}{{\r a}}1
+  {Å}{{\r A}}1 {ã}{{\~a}}1  {õ}{{\~o}}1 {Ã}{{\~A}}1  {Õ}{{\~O}}1
+  {ñ}{{\~n}}1  {Ñ}{{\~N}}1  {¿}{{?`}}1  {¡}{{!`}}1
+  {°}{{\textdegree}}1 {º}{{\textordmasculine}}1 {ª}{{\textordfeminine}}1
+  % ¿ and ¡ are not correctly displayed if inconsolata font is used
+  % together with the lstlisting environment. Consider typing code in
+  % external files and using \lstinputlisting to display them instead.
+}
 
 \lstdefinestyle{console}
 {
@@ -643,8 +643,8 @@ hyperfootnotes=false
 % package). The reason for this restriction is detailed in §3 UTF-8.
 %
 % For already defined commands use:
-%\newcommand{\abc}{abc}
-%\expandafter\makefirstuc\expandafter{\abc}
+% \newcommand{\abc}{abc}
+% \expandafter\makefirstuc\expandafter{\abc}
 
 % This allow for easy break lines in table cells (see https://tex.stackexchange.com/questions/2441/how-to-add-a-forced-line-break-inside-a-table-cell)
 % Just use \thead{This is first line \\ and second line}
@@ -674,23 +674,23 @@ hyperfootnotes=false
 % WORKS FOR THE ACRONYM PACKAGE, NOT USED HERE ANYMORE
 % \makeatletter
 % \AtBeginDocument{%
-%   \renewcommand*\AC@hyperlink{%
-%     \ifAC@starred
-%       \expandafter\@secondoftwo
-%     \else
-%       \expandafter\hyperlink
-%     \fi
-%   }%
+% \renewcommand*\AC@hyperlink{%
+% \ifAC@starred
+%   \expandafter\@secondoftwo
+% \else
+%   \expandafter\hyperlink
+% \fi
+% }%
 % }
-% \makeatother
+%   \makeatother
 
 
-%\providecommand{\DIFadd}[1]{{\protect\color{blue}#1}} %DIF PREAMBLE
-%\providecommand{\DIFdel}[1]{{\protect\color{red}\protect\scriptsize{#1}}}
+%   \providecommand{\DIFadd}[1]{{\protect\color{blue}#1}} %DIF PREAMBLE
+%   \providecommand{\DIFdel}[1]{{\protect\color{red}\protect\scriptsize{#1}}}
 
-% As fancy underlining does not seem to compile with pdflatex, remove underline
-%\providecommand{\DIFadd}[1]{{\protect\color{blue}{\protect\uwave{#1}}}}
-%\providecommand{\DIFadd}[1]{{\protect\color{blue}\textbf{#1}}}
+%   As fancy underlining does not seem to compile with pdflatex, remove underline
+%   \providecommand{\DIFadd}[1]{{\protect\color{blue}{\protect\uwave{#1}}}}
+%   \providecommand{\DIFadd}[1]{{\protect\color{blue}\textbf{#1}}}
 \providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                     
 
 
@@ -734,7 +734,7 @@ hyperfootnotes=false
 
 \input{../Config/config-bibbackend.tex}
 
-%\input{../Config/json-lang-lstlisting.tex}
+% \input{../Config/json-lang-lstlisting.tex}
 
 % I discovered lot of people used \input{Book/chapters/whatever.tex}, but the Book/ part is
 % not needed and breaks compilation if you try to compile it under GNU/Linux. This solves it
@@ -765,22 +765,22 @@ hyperfootnotes=false
 \usepackage{eso-pic}
 
 \newcommand\PutFrontPageBackground{%
-    \AddToShipoutPicture*{%
-        \put(0,0){%
-            \parbox[b][\paperheight]{\paperwidth}{%
-                \includegraphics[width=\paperwidth,height=\paperheight]{cover/imagen-portada-tfg2024.png}%
-            }%
-        }%
+  \AddToShipoutPicture*{%
+    \put(0,0){%
+      \parbox[b][\paperheight]{\paperwidth}{%
+        \includegraphics[width=\paperwidth,height=\paperheight]{cover/imagen-portada-tfg2024.png}%
+      }%
     }%
+  }%
 }
 \newcommand\PutBackPageBackground{%
-    \AddToShipoutPicture*{%
-        \put(0,0){%
-            \parbox[b][\paperheight]{\paperwidth}{%
-              \includegraphics[width=\paperwidth,height=\paperheight]{cover/imagen-contraportada-tfg2024.png}%
-            }%
-        }%
+  \AddToShipoutPicture*{%
+    \put(0,0){%
+      \parbox[b][\paperheight]{\paperwidth}{%
+        \includegraphics[width=\paperwidth,height=\paperheight]{cover/imagen-contraportada-tfg2024.png}%
+      }%
     }%
+  }%
 }
 
 \definecolor{UAHcolorpantone293}{rgb}{0, 0.239, 0.647}
@@ -799,11 +799,11 @@ hyperfootnotes=false
 \pdfcompresslevel=9
 \pdfobjcompresslevel=3
 
-%\usepackage{textcomp}
+% \usepackage{textcomp}
 
 
-%\usepackage{tgheros}  % Load TeX Gyre Heros
-%\usepackage{helvet}   % Load Helvetica
+% \usepackage{tgheros}  % Load TeX Gyre Heros
+% \usepackage{helvet}   % Load Helvetica
 
 
 %%% Local Variables:

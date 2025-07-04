@@ -70,11 +70,21 @@
           \input{cover/cover-pfc-tfg-tfm-uah.tex}
           }
           {
-          %  Same than TFGs from 2016
-          \input{cover/portada-tfg-uah.tex}
-          \input{cover/cover-pfc-tfg-tfm-uah.tex}
-          %      \input{cover/portada-tfm-uah.tex}
-          %      \input{cover/cover-pfc-tfg-tfm-uah.tex}
+
+          \ifthenelse{\equal{\myDegree}{MUANBD}}
+            {
+            \input{cover/portada-tfm-normativa-uah.tex}
+      %      \input{cover/portada-tfm-uah-antigua.tex}
+            \input{cover/cover-pfc-tfg-tfm-uah.tex}
+            }
+            {
+
+            %  Same than TFGs from 2016
+            \input{cover/portada-tfg-uah.tex}
+            \input{cover/cover-pfc-tfg-tfm-uah.tex}
+            %      \input{cover/portada-tfm-uah.tex}
+            %      \input{cover/cover-pfc-tfg-tfm-uah.tex}
+            }
           }
       }
     
