@@ -55,7 +55,7 @@ do
 	make clean >& /dev/null
 	make  >& /dev/null
 	#echo "mv book.pdf $DST_DIR/$OUTPUT_NAME"
-    mv book.pdf $DST_DIR/$OUTPUT_NAME
+    mv book-screen.pdf $DST_DIR/$OUTPUT_NAME
 	echo " Done!"
 	#exit
     done

@@ -6,11 +6,11 @@
 % 
 % By:
 % + Javier Macías-Guarasa. 
-% Departamento de Electrónica
-% Universidad de Alcalá
+%   Departamento de Electrónica
+%   Universidad de Alcalá
 % + Roberto Barra-Chicote. 
-% Departamento de Ingeniería Electrónica
-% Universidad Politécnica de Madrid   
+%   Departamento de Ingeniería Electrónica
+%   Universidad Politécnica de Madrid
 % 
 % Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
 % Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
@@ -161,14 +161,10 @@
   \newcommand{\myAdvisorsConDrOrDra}{\wordDrOrDraTutor{} \myAcademicTutorFullName{}}
   \ifthenelse{\equal{\myAcademicTutorGender}{male}}     
   {                                                       
-%    \newcommand{\wordDirectorOrdirectora}{director}
     \newcommand{\wordTutorOrTutores}{tutor}
-%    \newcommand{\wordTutorOrTutora}{tutor}
   }
   {
-%    \newcommand{\wordDirectorOrdirectora}{directora}
     \newcommand{\wordTutorOrTutores}{tutora}
- %   \newcommand{\wordTutorOrTutora}{tutora}
   }
   \newcommand{\wordDirectorOrDirectores}{\wordDirectorOrdirectora}
   \newcommand{\wordAdvisorOrAdvisors}{advisor}
@@ -240,21 +236,16 @@
   \newcommand{\wordVicerrectorOrVicerrectora}{Vicerrectora}
 }
 
-
 % This is to write or not signed by cotutor/cotutora
 \ifthenelse{\equal{\myCoTutorFullName}{}}
 {
   \newcommand{\okCoTutorOrCotutora}{}
-\newcommand{\signedByCoTutorOrCoTutora}{}
+  \newcommand{\signedByCoTutorOrCoTutora}{}
 }
 {
   \newcommand{\okCoTutorOrCotutora}{y \wordCoTutorDelOrDeLa{} \wordCoTutorOrCoTutora{}}
   \newcommand{\signedByCoTutorOrCoTutora}{\MakeUppercase{\wordCoTutorOrCoTutora} (si procede): \mySecondAdvisorFullName}
 }
-
-
-
-
 
 % Set degree name and type of document, depending on the user defined degree
 \ifthenelse{\equal{\myDegree}{IT}}
@@ -457,7 +448,6 @@
                             \newcommand{\myDegreefull}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
                             \newcommand{\myDegreefullwrapped}{Máster Universitario en Sistemas Electrónicos Avanzados\\Sistemas Inteligentes}
                             \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en Sistemas Electrónicos Avanzados}\\\MakeUppercase{Sistemas Inteligentes}}
-%                            \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería de Telecomunicación}}
                             \newcommand{\myWorkType}{TFM}
                             \ifthenelse{\equal{\myLanguage}{spanish}}
                             {
@@ -558,7 +548,6 @@
                                         }
                                       }
                                       {
-
                                         \ifthenelse{\equal{\myDegree}{GISI}}
                                         {
                                           \newcommand{\myDegreefull}{Grado en Ingeniería en Sistemas de Información}
@@ -574,13 +563,8 @@
                                           }
                                         }
                                         {
-
-
                                           \ifthenelse{\equal{\myDegree}{MUIE}}
                                           {
-                                            
-                                            
-                                            
                                             \newcommand{\myDegreefull}{Máster Universitario en Ingeniería Electrónica}
                                             \newcommand{\myDegreefullwrapped}{Máster Universitario en Ingeniería Electrónica}
                                             \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería Electrónica}}
@@ -594,9 +578,6 @@
                                               % \newcommand{\myWorkTypeFull}{Master's Thesis}
                                               \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
                                             }
-
-
-
                                           }
                                           {
                                             \ifthenelse{\equal{\myDegree}{MUCTE}}
@@ -616,67 +597,61 @@
                                               }
                                             }
                                             {
-
-                                            \ifthenelse{\equal{\myDegree}{GMC}}
-                                            {
-                                              \newcommand{\myDegreefull}{Grado en Matemáticas y Computación}
-                                              \newcommand{\myDegreefullwrapped}{Grado en Matemáticas y Computación}
-                                              \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Grado en Matemáticas y Computación}}
-                                              \newcommand{\myWorkType}{TFG}
-                                              \ifthenelse{\equal{\myLanguage}{spanish}}
+                                              \ifthenelse{\equal{\myDegree}{GMC}}
                                               {
-                                                \newcommand{\myWorkTypeFull}{Trabajo de Fin de Carrera}
+                                                \newcommand{\myDegreefull}{Grado en Matemáticas y Computación}
+                                                \newcommand{\myDegreefullwrapped}{Grado en Matemáticas y Computación}
+                                                \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Grado en Matemáticas y Computación}}
+                                                \newcommand{\myWorkType}{TFG}
+                                                \ifthenelse{\equal{\myLanguage}{spanish}}
+                                                {
+                                                  \newcommand{\myWorkTypeFull}{Trabajo de Fin de Carrera}
+                                                }
+                                                {
+                                                  % This could be translated. I'm leaving this in Spanish...
+                                                  % \newcommand{\myWorkTypeFull}{Master's Thesis}
+                                                  \newcommand{\myWorkTypeFull}{Trabajo de Fin de Carrera}
+                                                }
                                               }
                                               {
+                                                \ifthenelse{\equal{\myDegree}{MUC}}
+                                                {
+                                                \newcommand{\myDegreefull}{Máster Universitario en Ciberseguridad}
+                                                \newcommand{\myDegreefullwrapped}{Máster Universitario en Ciberseguridad}
+                                                \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en Ciberseguridad}}
+                                                \newcommand{\myWorkType}{TFM}
+                                                \ifthenelse{\equal{\myLanguage}{spanish}}
+                                                {
+                                                \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
+                                                }
+                                                {
                                                 % This could be translated. I'm leaving this in Spanish...
                                                 % \newcommand{\myWorkTypeFull}{Master's Thesis}
-                                                \newcommand{\myWorkTypeFull}{Trabajo de Fin de Carrera}
-                                              }
-                                            }
-                                            {
-                                            \ifthenelse{\equal{\myDegree}{MUC}}
-                                            {
-                                            \newcommand{\myDegreefull}{Máster Universitario en Ciberseguridad}
-                                            \newcommand{\myDegreefullwrapped}{Máster Universitario en Ciberseguridad}
-                                            \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en Ciberseguridad}}
-                                            \newcommand{\myWorkType}{TFM}
-                                            \ifthenelse{\equal{\myLanguage}{spanish}}
-                                            {
-                                            \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
-                                            }
-                                            {
-                                            % This could be translated. I'm leaving this in Spanish...
-                                            % \newcommand{\myWorkTypeFull}{Master's Thesis}
-                                            \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
-                                            }
-                                            }
-                                            {
-
-                                            \ifthenelse{\equal{\myDegree}{MUANBD}}
-                                            {
-                                              \newcommand{\myDegreefull}{Máster Universitario en Analítica de Negocio y Big Data}
-                                              \newcommand{\myDegreefullwrapped}{Máster Universitario en Analítica de Negocio y Big Data}
-                                              \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en Analítica de Negocio y Big Data}}
-                                              \newcommand{\myWorkType}{TFM}
-                                              \ifthenelse{\equal{\myLanguage}{spanish}}
-                                              {
                                                 \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
+                                                }
+                                                }
+                                                {
+                                                  \ifthenelse{\equal{\myDegree}{MUANBD}}
+                                                  {
+                                                    \newcommand{\myDegreefull}{Máster Universitario en Analítica de Negocio y Big Data}
+                                                    \newcommand{\myDegreefullwrapped}{Máster Universitario en Analítica de Negocio y Big Data}
+                                                    \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en Analítica de Negocio y Big Data}}
+                                                    \newcommand{\myWorkType}{TFM}
+                                                    \ifthenelse{\equal{\myLanguage}{spanish}}
+                                                    {
+                                                      \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
+                                                    }
+                                                    {
+                                                      \newcommand{\myWorkTypeFull}{Master's Thesis}
+                                                    }
+                                                  }
+                                                  {
+                                                    \newcommand{\myWorkType}{TFG}
+                                                    \newcommand{\myDegreefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
+                                                    \newcommand{\myWorkTypeFull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
+                                                  }
+                                                }
                                               }
-                                              {
-                                                \newcommand{\myWorkTypeFull}{Master's Thesis}
-                                              }
-                                            }
-                                            {
-
-
-                                            \newcommand{\myWorkType}{TFG}
-                                            \newcommand{\myDegreefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
-                                            \newcommand{\myWorkTypeFull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
-
-}
-
-                                            }
-                                            }
                                             }
                                           }
                                         }
