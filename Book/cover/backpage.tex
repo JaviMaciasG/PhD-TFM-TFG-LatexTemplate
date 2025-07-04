@@ -50,7 +50,13 @@
             \input{cover/backpage-tfm-normativa-uah.tex}
           }
           {
-            \input{cover/backpage-tfg-uah.tex}
+            \ifthenelse{\equal{\myDegree}{MUANBD}}
+            {
+              \input{cover/backpage-tfm-normativa-uah.tex}
+            }
+            {
+              \input{cover/backpage-tfg-uah.tex}
+            }
           }
         }
   }

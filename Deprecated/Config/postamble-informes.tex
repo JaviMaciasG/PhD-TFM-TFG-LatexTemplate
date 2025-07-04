@@ -46,13 +46,13 @@
 
 \ifthenelse{\equal{\myLanguage}{spanish}}
 {
-  \usepackage[english, spanish]{babel}
+  \usepackage[spanish, english]{babel}
   \newcommand{\myFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity} 
   \newcommand{\myBookTitle}{\myBookTitleSpanish}
   \newcommand{\mypdflang}{es}
 } 
 {
-  \usepackage[spanish, english]{babel}
+  \usepackage[english, spanish]{babel}
   \newcommand{\myFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversity} 
   \newcommand{\myBookTitle}{\myBookTitleEnglish}
   \newcommand{\mypdflang}{en}
@@ -60,10 +60,15 @@
 
 \ifthenelse{\equal{\myLanguage}{spanish}}
 {
-  \newcommand{\andOrY}{y} 
+  \newcommand{\andOrYDon}{y}
+  % From https://tex.stackexchange.com/questions/132248/test-if-the-first-character-of-a-string-is-a
+  \StrLeft{\myCoTutorFullName{}}{1}[\firstchar]%
+  \IfStrEq{\firstchar}{I}{\newcommand{\andOrY}{e}}{\newcommand{\andOrY}{y}}%
+
 } 
 {
-  \newcommand{\andOrY}{and} 
+  \newcommand{\andOrYDon}{and}
+  \newcommand{\andOrY}{and}
 }
 
 % Gender issues
@@ -95,6 +100,21 @@
   \newcommand{\wordDonOrDonaAutor}{Dª.}
 }
 
+\ifthenelse{\equal{\myTribunalPresidentGender}{male}}
+{
+  \newcommand{\wordPresidenteOrPresidenta}{Presidente}
+}
+{
+  \newcommand{\wordPresidenteOrPresidenta}{Presidenta}
+}
+
+\ifthenelse{\equal{\myTribunalFirstSpokespersonGender}{male}}
+{
+  \newcommand{\wordVocalPrimeroOrPrimera}{Vocal 1º}
+}
+{
+  \newcommand{\wordVocalPrimeroOrPrimera}{Vocal 1ª}
+}
 
 \ifthenelse{\equal{\myAcademicTutorGender}{male}}     
 {                                                       
@@ -158,18 +178,12 @@
   \newcommand{\wordEmiteOrEmiten}{emite}
   \newcommand{\wordElOrLos}{El}
   \newcommand{\wordSuOrSus}{su}
-\ifthenelse{\equal{\myAcademicTutorGender}{male}}
-{
   \newcommand{\wordDelOrDeLos}{del}
-}
-{
-  \newcommand{\wordDelOrDeLos}{de la}
-}
-\newcommand{\wordHagoOrHacemos}{hago}
+  \newcommand{\wordHagoOrHacemos}{hago}
 }
 {
   \newcommand{\myAdvisors}{\myAcademicTutorFullName{} \andOrY{} \myCoTutorFullName{}}
-  \newcommand{\myAdvisorsWithDonOrDona}{\wordDonOrDonaTutor{} \myAcademicTutorFullName{} \andOrY{} \wordDonOrDonaCoTutor{} \myCoTutorFullName{}}
+  \newcommand{\myAdvisorsWithDonOrDona}{\wordDonOrDonaTutor{} \myAcademicTutorFullName{} \andOrYDon{} \wordDonOrDonaCoTutor{} \myCoTutorFullName{}}
   \newcommand{\myAdvisorsConDrOrDra}{\wordDrOrDraTutor{} \myAcademicTutorFullName{}\\\wordDrOrDraCoTutor{} \myCoTutorFullName{}}
 
   \newcommand{\wordDirectorOrDirectores}{directores}
@@ -439,7 +453,7 @@
                           {
                             \newcommand{\myDegreefull}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
                             \newcommand{\myDegreefullwrapped}{Máster Universitario en Sistemas Electrónicos Avanzados\\Sistemas Inteligentes}
-                            \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en Sistemas Electrónicos Avanzados}\\\MakeUppercase{Sistemas Inteligentes}}
+                            \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en Sistemas Electrónicos Avanzados}\\\MakeUppercase{Sistemas  Inteligentes}}
                             %\newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en}\\\MakeUppercase{Ingeniería de Telecomunicación}}
                             \newcommand{\myWorkType}{TFM}
                             \ifthenelse{\equal{\myLanguage}{spanish}}
@@ -599,7 +613,22 @@
                                               }
                                             }
                                             {
-                                              \newcommand{\myWorkType}{TFG}
+                                              \ifthenelse{\equal{\myDegree}{MUANBD}}
+                                              {
+                                                \newcommand{\myDegreefull}{Máster Universitario en Analítica de Negocio y Big Data}
+                                                \newcommand{\myDegreefullwrapped}{Máster Universitario en Analítica de Negocio y Big Data}
+                                                \newcommand{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster Universitario en Analítica de Negocio y Big Data}}
+                                                \newcommand{\myWorkType}{TFM}
+                                                \ifthenelse{\equal{\myLanguage}{spanish}}
+                                                {
+                                                  \newcommand{\myWorkTypeFull}{Trabajo Fin de Máster}
+                                                }
+                                                {
+                                                  \newcommand{\myWorkTypeFull}{Master's Thesis}
+                                                }
+                                              }
+                                              {
+                                                \newcommand{\myWorkType}{TFG}
                                               \newcommand{\myDegreefull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}} 
                                               \newcommand{\myWorkTypeFull}{ERROR: Defined degree (\myDegree) unknown, check \texttt{config/myconfig.tex}}
                                             }
@@ -701,18 +730,7 @@
 \newcommand{\underscoreSpacingFour}{\_\_\_\_}
 \newcommand{\spacingFour}{~~~~}
 
-% \makeatletter%
-%   \hypersetup{%
-%     pdfinfo={%
-%     Title={\@title},%
-%     Author={\@author},%
-%     Subject={subject},%
-%     Producer={pdfTeX},%
-%     Creator={\@author},%
-%     Keywords={Apunts},%
-%     },%
 
-% }
 \hypersetup
 {
   pdftitle={\myBookTitle},
@@ -730,35 +748,29 @@
   linkcolor=\mylinkcolor,
   citecolor=\mycitecolor,
   pdfstartview=Fit,
-  pdfpagemode=UseOutlines,
-  pdfinfo={
-    License={\myLicenseURL},
-    Language={\mypdflang},
-    Copyright={\myCopyrightStatement},
-  },
-  keeppdfinfo %keep info entries
+  pdfpagemode=UseOutlines
 }
 
-% Added conflicting options of tocloft with subfigure, fixing by adding subfigure option
-\usepackage[subfigure]{tocloft}
+% % Added conflicting options of tocloft with subfigure, fixing by adding subfigure option
+% %\usepackage[subfigure]{tocloft}
 
-%\usepackage{tocloft}
+% \usepackage{tocloft}
 
-\ifthenelse{\equal{\myLanguage}{english}}
-{
-  \newlistof{videos}{vdo}{List of videos}
-\newcommand{\videoLink}[2]{%
-  \refstepcounter{videos}%
-  \phantomsection%
-  \addcontentsline{vdo}{videos}{\protect\numberline{\thechapter.\thevideos\hspace{4em}}\hspace{4em}#1 (\href{#2}{link to video})}\href{#2}{#1}}
-}
-{
-  \newlistof{videos}{vdo}{Índice de vídeos}
-\newcommand{\videoLink}[2]{%
-  \refstepcounter{videos}%
-  \phantomsection%
-  \addcontentsline{vdo}{videos}{\protect\numberline{\thechapter.\thevideos\hspace{4em}}\hspace{4em}#1 (\href{#2}{enlace al vídeo})}\href{#2}{#1}}
-}
+% \ifthenelse{\equal{\myLanguage}{english}}
+% {
+%   \newlistof{videos}{vdo}{List of videos}
+% \newcommand{\videoLink}[2]{%
+%   \refstepcounter{videos}%
+%   \phantomsection%
+%   \addcontentsline{vdo}{videos}{\protect\numberline{\thechapter.\thevideos\hspace{4em}}\hspace{4em}#1 (\href{#2}{link to video})}\href{#2}{#1}}
+% }
+% {
+%   \newlistof{videos}{vdo}{Índice de vídeos}
+% \newcommand{\videoLink}[2]{%
+%   \refstepcounter{videos}%
+%   \phantomsection%
+%   \addcontentsline{vdo}{videos}{\protect\numberline{\thechapter.\thevideos\hspace{4em}}\hspace{4em}#1 (\href{#2}{enlace al vídeo})}\href{#2}{#1}}
+% }
 
 
 % \newcommand{\videoLink}[3]{%
@@ -773,5 +785,4 @@
 %%% Local Variables:
 %%% TeX-master: "../book"
 %%% End:
-
 
