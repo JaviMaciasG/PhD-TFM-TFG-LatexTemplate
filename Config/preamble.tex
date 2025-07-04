@@ -28,25 +28,11 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-
-%% FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR \documentclass[RGB,rgb,svgnames,spanish,openright]{book}
-% \documentclass[spanish,openright]{book}
-% \documentclass[english,openright]{book}
-% \documentclass[11pt,english,twoside,openright]{book}
-
-% \usepackage[a4,cam,center]{crop}
-% \crop[font=\upshape\mdseries\small\textsf]
-
+% Make sure synctex is active
 \synctex=1
-
-% To generate a proper PDF/A document
-% \usepackage[a-1b]{pdfx}
-
-
 
 %% This is used in anteproyecto
 \usepackage{pgfgantt}
-
 
 % To allow changing the default alignment of an image
 \usepackage[export]{adjustbox}
@@ -72,17 +58,14 @@
 }
 
 \usepackage{iftex}
-% \usepackage[latin1]{inputenc} % Para poder escribir con acentos y ñ. en
-% latin1
 \ifPDFTeX
-  \usepackage[utf8]{inputenc} % Para poder escribir con acentos y ñ.
-  \usepackage[T1,TS1]{fontenc}      % Para que haga bien la ``hyphenation''. No
-\fi                                % usar si no es necesario, porque ralentiza muchisimo la compilación.
-\usepackage{ae}               % Para que todas las fuentes sean Type1, y ninguna Type3.
-\usepackage{lmodern}          % This generates a pdf with searchable
-% accented characters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  \usepackage[utf8]{inputenc}   % To allow writing accented characters , ñ, etc.
+  \usepackage[T1,TS1]{fontenc}  % To properly handle ``hyphenation''. Do not use as it
+\fi                             %  significantly slows compilation down
+\usepackage{ae}                 % For all fonts to be Type1, and none Type3.
+\usepackage{lmodern}            % This generates a pdf with searchable
+                                %  accented characters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 \usepackage{textcomp}
-
 
 \usepackage{wrapfig}
 \usepackage{lipsum}
@@ -119,29 +102,7 @@
 
 %% FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR
 \usepackage{xcolor}
-% \usepackage[RGB,rgb]{xcolor}
-% \usepackage{color}
-% Pantone 160
-% \definecolor{headingPortadaTFM}{RGB}{158,84,10}
-% Pantone 160C (this is supposed to be the correct one, but it looks horrible in screen)
-% \definecolor{headingPortadaTFM}{RGB}{161,86,28}
-% Gold in RGB
-% \definecolor{textoHeadingPortadaTFM}{RGB}{215,215,0}
-% Captured colors in screen (this looks pst on screen)
-
-% \ifthenelse{\equal{\colorspaceused}{rgb}}
-% {
-% \definecolor{headingPortadaTFM}{RGB}{152,118,52}
-% \definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
-% }
-%   {
-%   %   These definitions are for cmyk colorspace
-%   \definecolor{headingPortadaTFM}{cmyk}{0.0254,0,0.559,0.537}
-%   \definecolor{textoHeadingPortadaTFM}{cmyk}{0,0.0144,0.51,0.184}
-% }
-
 \definecolor{pantone293}{RGB}{35,91,168}
-
 \definecolor{headingPortadaTFG}{RGB}{152,118,52}
 \definecolor{headingPortadaTFM}{RGB}{0,90,170}
 \definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
@@ -152,44 +113,31 @@
 \definecolor{gray45}{gray}{.45}
 
 
-
-
 % To draw rectagles in tfm cover
 \usepackage{tikz}
 
-
-% \usepackage[authoryear]{natbib}
-% \makeatletter
-% \let\NAT@parse\undefined
-% \makeatother
-% \usepackage{natbib}
-
 \usepackage{geometry}
 \geometry{verbose,a4paper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
-% \geometry{paperwidth=210mm,paperheight=297mm}
-
-% \usepackage[hang, flushmargin]{footmisc}
 
 \usepackage{hyperref}
 \usepackage{hyperxmp}
 \hypersetup{
-  %% ps2pdf,                %%% hyper-references for ps2pdf
+  %% ps2pdf,                         %%% hyper-references for ps2pdf
   bookmarks=true,%                   %%% generate bookmarks ...
   bookmarksnumbered=true,            %%% ... with numbers
-  hypertexnames=false,               %%% needed for correct links to
-  %%% figures!!!
-  % hypertexnames=true,               %%% needed for correct links on pagebackrefs!!!
+  hypertexnames=false,               %%% needed for correct links to figures!!!
+  % hypertexnames=true,              %%% needed for correct links on pagebackrefs!!!
   breaklinks=true,                   %%% breaks lines, but links are very small
   % pagebackref=true,
-  % linktocpage=true,                 %%% enlace en el numero de página.
+  % linktocpage=true,                %%% Link in the page number
   linktoc=all,
   colorlinks=true,
   linkcolor=blue,
   citecolor=green,
-  urlcolor=blue,                     %%% texto  con color (further
-  %%% modified in myconfig.tex)
-  % linkbordercolor={0 0 1},           %%% blue frames around links
-  pdfborder={0 0 112.0},              %%% border-width of frames
+  urlcolor=blue,                     %%% text with color (further
+                                     %%%  modified in myconfig.tex)
+  % linkbordercolor={0 0 1},         %%% blue frames around links
+  pdfborder={0 0 112.0},             %%% border-width of frames
   hyperfootnotes=false
 }                        %%% will be multiplied with 0.009 by ps2pdf
 
@@ -199,9 +147,9 @@
 % book.tex, and not otherwise (for example in anteproyecto.tex).
 % So, the strategy is checking if chapter is defined:
 % - If it is, assume it is compiling book.tex and include all elements that generate
-% errors in other tex files
+%   errors in other tex files
 % - If if is not, assume we are compiling other than book.tex, and define anything
-% required that can generates in the packages being used below
+%   required that can generates in the packages being used below
 \makeatletter
 \@ifundefined{chapter} % This happens if compiling anteproyecto.tex. Dirty but...
 {
@@ -249,14 +197,12 @@
 \setcounter{figure}{1}
 \setcounter{secnumdepth}{4}
 
-
 \setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
-
 
 \usepackage{multirow}
 
 \usepackage{setspace}
-% \renewcommand{\baselinestretch}{10}
+
 \newcommand{\mycaptiontable}[1]{
   \begin{spacing}{0.6}
     % \vspace{0.5cm}
@@ -293,14 +239,6 @@
 \usepackage{multirow}
 \usepackage{rotating}
 \usepackage{setspace, amssymb, amsmath, epsfig, multirow, colortbl, tabularx}%
-% For acronym package:
-% If footnote is specified, text will be included in a footnote
-% If printonlyused is specified, only used acronyms will be included
-% I use the acronym sty under the sty directory as I needed the newest version
-% \usepackage[footnote,printonlyused,withpage]{acronym} 
-% \usepackage[printonlyused]{sty/acronym}
-
-% JMG 03/2025 aquí estaba lo de glossaries
 
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
 
@@ -442,11 +380,6 @@
 \makeatother
 
 % Let's define some styles for source code listings:
-% 
-% minimizar fragmentado de listados (from
-% http://www.rafalinux.com/?p=599), pero no me funciona:
-% \lstnewenvironment{codelisting}[1][]
-% {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
 % 
 % This was using the float package
 \usepackage{float}
@@ -663,27 +596,10 @@
 \providecommand{\DontPrintSemicolon}{\dontprintsemicolon}
 \providecommand{\SetAlgoLined}{\SetLine}
 
-
-
 % Add support for fonts at arbitrary sizes september 2014, for TFG's cover
 \usepackage{fix-cm}
 
 \usepackage{graphicx}                                                                      
-
-% This is to avoid producing an hyperlink for starred documents. ONLY
-% WORKS FOR THE ACRONYM PACKAGE, NOT USED HERE ANYMORE
-% \makeatletter
-% \AtBeginDocument{%
-% \renewcommand*\AC@hyperlink{%
-% \ifAC@starred
-%   \expandafter\@secondoftwo
-% \else
-%   \expandafter\hyperlink
-% \fi
-% }%
-% }
-%   \makeatother
-
 
 %   \providecommand{\DIFadd}[1]{{\protect\color{blue}#1}} %DIF PREAMBLE
 %   \providecommand{\DIFdel}[1]{{\protect\color{red}\protect\scriptsize{#1}}}
@@ -798,13 +714,6 @@
 % Code to more agressively compress includegraphics images
 \pdfcompresslevel=9
 \pdfobjcompresslevel=3
-
-% \usepackage{textcomp}
-
-
-% \usepackage{tgheros}  % Load TeX Gyre Heros
-% \usepackage{helvet}   % Load Helvetica
-
 
 %%% Local Variables:
 %%% TeX-master: "../book"
