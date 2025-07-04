@@ -86,7 +86,7 @@ all: $(DUMMY_TARGETS)
 	@echo "Generating release number"
 	-rm ../RELEASE.txt
 	echo "$(RELEASE)" > ../RELEASE.txt
-	git add ../RELEASE.txt
+	(git add ../RELEASE.txt >& /dev/null) || echo "Could not add ../RELEASE.txt to git index. This is fine if you are not using git."
 
 
 bare: backup-chapters bare-chapters clean-orig-figures clean-orig-diagrams
