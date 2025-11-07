@@ -39,7 +39,7 @@ Regarding editors I would suggest you to use [TexStudio](https://www.texstudio.o
 This is my recommended route to have everything ready to go:
 
 
-1. Install the latest version of [MikTeX](https://www.miktex.org). Select install required packages on the fly (either "Yes" or "Ask me first")
+1. Install the latest version of [MikTeX](https://miktex.org). Select install required packages on the fly (either "Yes" or "Ask me first")
 
    1.1. Run `MiKTeX Console` and `Check for updates` (otherwise you'll probably get an error when compiling LaTeX sources)
 
