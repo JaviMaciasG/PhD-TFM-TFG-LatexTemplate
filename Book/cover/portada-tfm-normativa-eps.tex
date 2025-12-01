@@ -1,0 +1,111 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: portada-tfm-uah-pre2016.tex,v 1.1 2016/03/31 16:39:56 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa. 
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote. 
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% You can freely use this template and please contribute with
+% comments or suggestions!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+
+% To add background watermark
+%\BgThispage
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-3cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,3cm);
+      \node [yshift=1.5cm, xshift=10.5cm, text centered, midway, rotate=+0] {\includegraphics[height=2.5cm]{logoUAH-blanco.jpg}};
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+% title box
+%\vspace{2cm}
+%\centering
+%\color{pantone293}\fontsize{26}{31}\selectfont\textbf{\myBookTitle}\par
+
+% Middle rectangle
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-10cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=white,white] (0,0) rectangle (\paperwidth,5cm);
+      \node [yshift=2.5cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{pantone293}\fontsize{26}{31}\selectfont\textbf{\myBookTitle}\par};
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+
+
+% Middle rectangle
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-17cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=white,white] (0,0) rectangle (\paperwidth,2.8cm);
+      \node [yshift=1.5cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{pantone293}\fontsize{20}{15 }\selectfont\textbf{\myDegreefullwrapped}\par};
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+% Author information
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-19cm] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \node [yshift=0,    xshift=0.55\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{16}{16}\selectfont\textbf{\myPresentedBy{}:\\\myAuthorFullName}\par};
+      \node [yshift=-3cm, xshift=0.55\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{16}{16}\selectfont\textbf{\myAdvisedBy{}:\\\myAdvisors}\par};
+      \node [yshift=-7cm, xshift=0.55\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{pantone293}\fontsize{16}{16}\selectfont\textbf{Alcalá de Henares, \myDefenseDateFull}\par};
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+% lower rectangle
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-\paperheight] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,1cm);
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+
+
+% \begin{bottomparagraph}
+%   \begin{center}
+%     \huge{\myThesisDefenseYear}
+%   \end{center}
+% \end{bottomparagraph}
+
+%\newpage
+\clearemptydoublepage
+
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
