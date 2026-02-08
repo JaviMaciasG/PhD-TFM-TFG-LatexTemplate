@@ -1,0 +1,105 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Portada TFM – Formato nuevo UAH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+
+% -------------------------------------------------------------------------
+% BARRA SUPERIOR CON LOGO
+% -------------------------------------------------------------------------
+\begin{tikzpicture}[remember picture,overlay]
+  \node at (current page.north west) {
+    \begin{tikzpicture}[remember picture,overlay]
+      % Barra azul superior
+      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,-2.5cm);
+      % Logo de la UAH (ajusta el nombre del fichero/logo)
+      \node[anchor=west,
+            xshift=1.5cm,
+            yshift=-1.25cm]
+            {\includegraphics[height=1.6cm]{uah-logo}}; % <-- cambia 'uah-logo'
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+% -------------------------------------------------------------------------
+% TÍTULO DEL TRABAJO (centrado)
+% -------------------------------------------------------------------------
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-7cm] at (current page.north) {
+    \begin{minipage}[c][3cm][c]{0.8\paperwidth}
+      \centering
+      {\color{pantone293}\fontsize{20}{24}\selectfont\bfseries
+      \myBookTitle\par}
+    \end{minipage}
+  };
+\end{tikzpicture}
+
+% -------------------------------------------------------------------------
+% MÁSTER UNIVERSITARIO EN ...
+% -------------------------------------------------------------------------
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-13cm] at (current page.north) {
+    \begin{minipage}[c][3cm][c]{0.8\paperwidth}
+      \centering
+      {\color{pantone293}\fontsize{16}{20}\selectfont
+       \textbf{Máster Universitario en}\\[0.4cm]
+       \myDegreefullwrapped\par}
+    \end{minipage}
+  };
+\end{tikzpicture}
+
+% -------------------------------------------------------------------------
+% PRESENTADO POR / DIRIGIDO POR (parte inferior izquierda)
+% -------------------------------------------------------------------------
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=west,
+        xshift=3cm,
+        yshift=-18cm] at (current page.north west) {
+    \begin{minipage}[t]{0.7\paperwidth}
+      % --- Presentado por ---
+      {\color{pantone293}\fontsize{9}{11}\selectfont Presentado por:}\\[0.25cm]
+      {\color{black}\fontsize{12}{14}\selectfont
+        \textbf{D./D.\,a~\myAuthorFullName}\par}
+      \vspace{1.2cm}
+      % --- Dirigido por ---
+      {\color{pantone293}\fontsize{9}{11}\selectfont Dirigido por:}\\[0.25cm]
+      {\color{black}\fontsize{12}{14}\selectfont
+        \textbf{\myAdvisors}\par}
+      % Ejemplo de contenido posible en \myAdvisors:
+      % Dr./Dra. D./D.\,a NOMBRE Y APELLIDOS\\
+      % Dr./Dra. D./D.\,a NOMBRE Y APELLIDOS (si procede)
+    \end{minipage}
+  };
+\end{tikzpicture}
+
+% -------------------------------------------------------------------------
+% LÍNEA DE FECHA (ALCALÁ DE HENARES, a __ de ______ de ____)
+% -------------------------------------------------------------------------
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=west,
+        xshift=3cm,
+        yshift=3.5cm] at (current page.south west) {
+    {\color{pantone293}\fontsize{12}{14}\selectfont
+      Alcalá de Henares, a~\rule{1cm}{0.15mm}~
+      de~\rule{2cm}{0.15mm}~
+      de~\rule{1cm}{0.15mm}}
+  };
+\end{tikzpicture}
+
+% -------------------------------------------------------------------------
+% BARRA AZUL INFERIOR
+% -------------------------------------------------------------------------
+\begin{tikzpicture}[remember picture,overlay]
+  \node[yshift=-\paperheight] at (current page.north west) {
+    \begin{tikzpicture}[remember picture,overlay]
+      \draw[fill=headingPortadaTFM,headingPortadaTFM]
+        (0,0) rectangle (\paperwidth,2cm);
+    \end{tikzpicture}
+  };
+\end{tikzpicture}
+
+\clearemptydoublepage
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
