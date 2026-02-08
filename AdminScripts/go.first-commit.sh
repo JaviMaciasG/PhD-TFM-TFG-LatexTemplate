@@ -26,8 +26,7 @@ git add Book/additionalContributors.txt
 git add Book/symbols/*tex
 git add Book/appendix/*.tex
 git add Book/logos/uah/*pdf
-git add Papeleo/TFGAutorizacionPubAbierto/*tex Papeleo/TFGAutorizacionPubAbierto/Makefile
-git add Papeleo/TFMAutorizacionPubAbierto/*tex Papeleo/TFMAutorizacionPubAbierto/Makefile
-git add Papeleo/TFGVistoBuenoTutor/*tex Papeleo/TFGVistoBuenoTutor/Makefile
-git add Papeleo/TFMVistoBuenoTutor/*tex Papeleo/TFMVistoBuenoTutor/Makefile
+git add Papeleo*/*tex Papeleo*/Makefile
 git add Book/cover/imagen-portada-tfg2024.png
+
+git add `find . -name ".gitignore"`
