@@ -1,0 +1,99 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% Cover for the UAH Master in Cybersecurity, based on the 2026 institutional
+% cover design.
+%
+% By:
+%  + Javier Macías-Guarasa.
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote.
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid
+%
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% You can freely use this template and please contribute with
+% comments or suggestions!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=center,inner sep=0pt] at (current page.center)
+  {
+    \includegraphics[width=\paperwidth,height=\paperheight]{cover/imagen-portada-tfm-ciberseguridad-uah-2026.png}
+  };
+
+  % Title box. The institutional template is designed for up to four lines.
+  \node[
+    anchor=north west,
+    align=left,
+    text=black,
+    text width=10.9cm,
+    inner sep=0pt,
+    font=\sffamily\fontsize{20}{24}\selectfont
+  ] at ([xshift=8.30cm,yshift=-8.03cm]current page.north west)
+  {\hyphenchar\font=-1\hyphenpenalty=10000\exhyphenpenalty=10000\sloppy\raggedright\myBookTitle};
+
+  \node[
+    anchor=north,
+    align=center,
+    text=white,
+    text width=15.0cm,
+    inner sep=0pt,
+    font=\sffamily\fontsize{18}{22}\selectfont
+  ] at ([xshift=10.50cm,yshift=-19.22cm]current page.north west)
+  {Autor: \myAuthorFullName};
+
+  \ifthenelse{\equal{\myCoTutorFullName}{}}
+  {
+    \node[
+      anchor=north,
+      align=center,
+      text=white,
+      text width=15.0cm,
+      inner sep=0pt,
+      font=\sffamily\fontsize{18}{22}\selectfont
+    ] at ([xshift=10.50cm,yshift=-23.10cm]current page.north west)
+    {Director: \myAcademicTutorFullName};
+  }
+  {
+    \node[
+      anchor=north,
+      align=center,
+      text=white,
+      text width=15.0cm,
+      inner sep=0pt,
+      font=\sffamily\fontsize{18}{22}\selectfont
+    ] at ([xshift=10.50cm,yshift=-23.10cm]current page.north west)
+    {Director: \myAcademicTutorFullName\\[0.22cm]Codirector: \myCoTutorFullName};
+  }
+
+  \node[
+    anchor=center,
+    align=center,
+    text=UAHcolorpantone293,
+    inner sep=0pt,
+    font=\sffamily\fontsize{18}{22}\selectfont
+  ] at ([xshift=10.50cm,yshift=-28.62cm]current page.north west)
+  {\myThesisDefenseYear};
+\end{tikzpicture}
+
+\clearemptydoublepage
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
