@@ -149,17 +149,37 @@
   \newcommand{\wordAcademicoOrAcademica}{académica}
   \newcommand{\wordTutorDelOrDeLa}{de la}
 }
+\ifthenelse{\equal{\myLanguage}{spanish}}
+{
+\newcommand{\wordDirectorOrDirectoraTitle}{\expandafter\makefirstuc\expandafter{\wordDirectorOrdirectora}}
+\newcommand{\wordTutorOrTutoraTitle}{\expandafter\makefirstuc\expandafter{\wordTutorOrTutora}}
+}
+{
+\newcommand{\wordDirectorOrDirectoraTitle}{Advisor}
+\newcommand{\wordTutorOrTutoraTitle}{Advisor}
+}
 
 \ifthenelse{\equal{\myCoTutorGender}{male}}
 {                                                       
   \newcommand{\wordCoDirectorOrCoDirectora}{codirector}
-  \newcommand{\wordCoDirectorElOrLa}{el}  \newcommand{\wordCoTutorOrCoTutora}{cotutor}
+  \newcommand{\wordCoDirectorElOrLa}{el}
+  \newcommand{\wordCoTutorOrCoTutora}{cotutor}
   \newcommand{\wordCoTutorDelOrDeLa}{del}
 }
 {
   \newcommand{\wordCoDirectorOrCoDirectora}{codirectora}
-  \newcommand{\wordCoDirectorElOrLa}{la}  \newcommand{\wordCoTutorOrCoTutora}{cotutora}
+  \newcommand{\wordCoDirectorElOrLa}{la}
+  \newcommand{\wordCoTutorOrCoTutora}{cotutora}
   \newcommand{\wordCoTutorDelOrDeLa}{de la}
+}
+\ifthenelse{\equal{\myLanguage}{spanish}}
+{
+\newcommand{\wordCoDirectorOrCoDirectoraTitle}{\expandafter\makefirstuc\expandafter{\wordCoDirectorOrCoDirectora}}
+\newcommand{\wordCoTutorOrCoTutoraTitle}{\expandafter\makefirstuc\expandafter{\wordCoTutorOrCotutora}}
+}
+{
+\newcommand{\wordCoDirectorOrCoDirectoraTitle}{Coadvisor}
+\newcommand{\wordCoTutorOrCoTutoraTitle}{Coadvisor}
 }
 
 \ifthenelse{\equal{\myDepartmentSecretaryGender}{male}}     
@@ -221,9 +241,9 @@
 
 % Set Autor/Autora field
 \ifthenelse{\equal{\myAuthorGender}{male}}     
-{                                                       
-  \newcommand{\wordAutorOrAutora}{autor}                
-  \newcommand{\wordAutorElOrLa}{el}                
+{
+  \newcommand{\wordAutorOrAutora}{autor}
+  \newcommand{\wordAutorElOrLa}{el}
   \newcommand{\wordAutorAlOrALa}{al}                
   \newcommand{\wordAutorDelOrDeLa}{del}                
   \newcommand{\wordAutorDonOrDona}{D}                
@@ -234,7 +254,7 @@
   \newcommand{\wordAlumnoOrAlumnaUpcaseFirt}{Alumno}  
 }                                               
 {
-  \newcommand{\wordAutorOrAutora}{autora}                
+  \newcommand{\wordAutorOrAutora}{autora}
   \newcommand{\wordAutorElOrLa}{la}                
   \newcommand{\wordAutorAlOrALa}{a la}                
   \newcommand{\wordAutorDelOrDeLa}{de la}                
@@ -244,6 +264,13 @@
   \newcommand{\wordAlumnoOrAlumna}{alumna}
   % This is silly, but makefirstuc does not work properly...
   \newcommand{\wordAlumnoOrAlumnaUpcaseFirt}{Alumna}
+}
+\ifthenelse{\equal{\myLanguage}{spanish}}
+{
+\newcommand{\wordAutorOrAutoraTitle}{\expandafter\makefirstuc\expandafter{\wordAutorOrAutora}}
+}
+{
+\newcommand{\wordAutorOrAutoraTitle}{Author}
 }
 
 \ifthenelse{\equal{\myResearchVicerrectorGender}{male}}     
