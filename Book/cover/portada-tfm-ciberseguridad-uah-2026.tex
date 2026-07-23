@@ -37,16 +37,34 @@
     \includegraphics[width=\paperwidth,height=\paperheight]{cover/imagen-portada-tfm-ciberseguridad-uah-2026.png}
   };
 
-  % Title box. The institutional template is designed for up to four lines.
-  \node[
-    anchor=north west,
+  % % Title box. The institutional template is designed for up to four lines.
+  % \node[
+  %   anchor=north west,
+  %   align=left,
+  %   text=black,
+  %   text width=10.9cm,
+  %   inner sep=0pt,
+  %   font=\sffamily\fontsize{20}{24}\selectfont
+  % ] at ([xshift=8.30cm,yshift=-8.03cm]current page.north west)
+  % {\hyphenchar\font=-1\hyphenpenalty=10000\exhyphenpenalty=10000\sloppy\raggedright\myBookTitle};
+
+\node[
+    anchor=west,
     align=left,
     text=black,
     text width=10.9cm,
+    minimum height=3.4cm,
     inner sep=0pt,
     font=\sffamily\fontsize{20}{24}\selectfont
-  ] at ([xshift=8.30cm,yshift=-8.03cm]current page.north west)
-  {\hyphenchar\font=-1\hyphenpenalty=10000\exhyphenpenalty=10000\sloppy\raggedright\myBookTitle};
+  ] at ([xshift=8.30cm,yshift=-9.70cm]current page.north west)
+  {%
+    \hyphenchar\font=-1
+    \hyphenpenalty=10000
+    \exhyphenpenalty=10000
+    \sloppy\raggedright
+    \myBookTitle
+  };
+
 
   \node[
     anchor=north,
