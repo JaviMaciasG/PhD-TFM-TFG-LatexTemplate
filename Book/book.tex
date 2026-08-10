@@ -138,9 +138,8 @@
 \input{abstract/resumen.tex}                  % EDIT this file
 \input{abstract/abstract.tex}                 % EDIT this file
 
-% Just for TFGs/PFCs at UAH, I do nothing and leave to the author the
-% inclusion of the file
-%\input{abstract/resumen-extendido.tex}       % EDIT this file
+% Compulsory for TFGs/PFCs at UAH
+\input{abstract/resumen-extendido.tex}        % EDIT this file
 
 % Now include toc and list of figures+tables
 \input{cover/toc+lof+lot.tex}                 % DO NOT TOUCH THIS LINE!
@@ -201,11 +200,8 @@
 
 \input{chapters/conclusiones.tex}
 
-% Optional in PFCs
-%\input{pliego/pliego.tex}
-
-% Optional in PFCs, compulsory in TFGs
-%\input{presupuesto/presupuesto.tex}
+% Pliego de condiciones and Presupuesto are included as appendices
+% (appendix/pliego-condiciones.tex and appendix/presupuesto.tex) below.
 
 %
 % END Normal chapters. Edit/modify all within this section
@@ -235,9 +231,10 @@
 %\appendix                                         % DO NOT TOUCH THIS LINE!
 
 \begin{appendices}
-  \input{appendix/manual.tex}
-  \input{appendix/herramientas.tex}
-  \input{appendix/versiones.tex}
+  \input{appendix/planos-diagramas.tex}
+  \input{appendix/pliego-condiciones.tex}
+  \input{appendix/presupuesto.tex}
+  \input{appendix/manual-instalacion-usuario.tex}
 \end{appendices}
 %
 % END Appendices. Edit/modify all within this section

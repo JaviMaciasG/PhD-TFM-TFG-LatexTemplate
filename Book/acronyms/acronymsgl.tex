@@ -38,6 +38,12 @@
 % column for acronym is wider than 0.3\linewidth
 \setlength{\glsdescwidth}{0.7\linewidth}       % EDIT this if required
 
+% \printglossary only lists entries actually referenced (via \ac{...} and
+% friends) somewhere in the document. While the chapters are still empty,
+% force all defined acronyms to show up so the list is not empty; remove
+% this once you start using \ac{...} in your text.
+\glsaddall[types=\acronymtype]                 % REMOVE this once acronyms are used in the text
+
 % Set language specific definitions...
 \ifthenelse{\equal{\myLanguage}{english}}
 {
