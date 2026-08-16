@@ -80,6 +80,9 @@
 \usepackage{tocbibind}
 
 \usepackage{listings}
+% numberbychapter: ties \thelstlisting to the chapter/appendix counter, the
+% same way figure and table numbers already work in this template.
+\lstset{numberbychapter=true}
 \usepackage{longtable}
 \usepackage{afterpage}
 
@@ -500,6 +503,34 @@
   xleftmargin=0.05\linewidth
 }
 
+% ---------------------------------------------------------------------------
+% General-purpose code listing style, reused across the whole memoria (short
+% in-chapter snippets and the full listings in the "Código" appendix).
+% Supports at least Python and JavaScript (both natively known by listings)
+% and JSON (via the \lstdefinelanguage{json} loaded above from
+% json-lang-lstlisting.tex). Select the language per listing, e.g.:
+%   \begin{lstlisting}[style=TFGcode, language=Python, caption={...}, label={lst:...}]
+%   \begin{lstlisting}[style=TFGcode, language=json, caption={...}, label={lst:...}]
+% ---------------------------------------------------------------------------
+\lstdefinestyle{TFGcode}
+{
+  basicstyle=\small\ttfamily,
+  numbers=left,
+  numberstyle=\tiny\color{gray45},
+  numbersep=8pt,
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=flexible,
+  showstringspaces=false,
+  tabsize=2,
+  frame=single,
+  rulecolor=\color{gray75},
+  backgroundcolor=\color{gray97},
+  captionpos=b,
+  keywordstyle=\bfseries\color{blue!50!black},
+  commentstyle=\itshape\color{gray45},
+  stringstyle=\color{orange!70!black},
+}
 
 % To set side-captions in figures
 \usepackage{sidecap}
@@ -650,7 +681,7 @@
 
 \input{../Config/config-bibbackend.tex}
 
-% \input{../Config/json-lang-lstlisting.tex}
+\input{../Config/json-lang-lstlisting.tex}
 
 % I discovered lot of people used \input{Book/chapters/whatever.tex}, but the Book/ part is
 % not needed and breaks compilation if you try to compile it under GNU/Linux. This solves it

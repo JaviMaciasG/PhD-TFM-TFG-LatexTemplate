@@ -117,8 +117,9 @@
 % Dedication+ackowledgements (dedicatorias+agradecimientos)
 \input{dedication/dedicatoria.tex}            % EDIT this file or
                                               % comment it out
-\input{acknowledgements/agradecimientos.tex}  % EDIT this file or
+%\input{acknowledgements/agradecimientos.tex}  % EDIT this file or
                                               % comment it out
+                                              % (Página de agradecimientos oculta)
 
 % If this is the case, include definitions of acronyms (it's
 % included before resumen.tex and abstract.tex in case you want
@@ -139,7 +140,8 @@
 \input{abstract/abstract.tex}                 % EDIT this file
 
 % Compulsory for TFGs/PFCs at UAH
-\input{abstract/resumen-extendido.tex}        % EDIT this file
+%\input{abstract/resumen-extendido.tex}        % EDIT this file
+                                              % (Resumen extendido oculto)
 
 % Now include toc and list of figures+tables
 \input{cover/toc+lof+lot.tex}                 % DO NOT TOUCH THIS LINE!
@@ -230,12 +232,14 @@
 
 %\appendix                                         % DO NOT TOUCH THIS LINE!
 
-\begin{appendices}
-  \input{appendix/planos-diagramas.tex}
-  \input{appendix/pliego-condiciones.tex}
-  \input{appendix/presupuesto.tex}
-  \input{appendix/manual-instalacion-usuario.tex}
-\end{appendices}
+% Apéndices ocultos por ahora (descomentar para reactivarlos)
+%\begin{appendices}
+%  \input{appendix/planos-diagramas.tex}
+%  \input{appendix/pliego-condiciones.tex}
+%  \input{appendix/presupuesto.tex}
+%  \input{appendix/manual-instalacion-usuario.tex}
+%  \input{appendix/codigo.tex}
+%\end{appendices}
 %
 % END Appendices. Edit/modify all within this section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
