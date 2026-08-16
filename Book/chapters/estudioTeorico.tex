@@ -1,7 +1,281 @@
 \chapter{Base teórica}
 \label{cha:base-teorica}
 
-% TODO: base teórica.
+\section{Introducción}
+\label{sec:intro-base-teorica}
+
+A lo largo de este capítulo se exponen los fundamentos teóricos que sientan la base de
+la memoria. Se comienza situando el trabajo frente a las propuestas más recientes que
+integran los modelos de lenguaje en sistemas industriales, para posteriormente indagar
+en los cuatro pilares que forman la solución: la arquitectura de supervisión industrial,
+N3uron, los LLM y el protocolo de contexto que los conecta.
+
+\section{Estado del arte}
+\label{sec:estado-arte}
+
+La integración de modelos de lenguaje de gran tamaño en el ámbito de la automatización
+industrial es una línea de trabajo extremadamente novedosa, que lleva muy pocos años en
+desarrollo, y esto se refleja en los resultados: la mayoría de las propuestas hechas
+alrededor de este tema quedan en un simple prototipo, sin llegar a mayor desarrollo. Los
+resultados de una revisión sistemática publicada en mayo de 2026, con un corpus de 88
+publicaciones seleccionadas entre un bloque de más de 2300, confirman lo expuesto con
+cifras concretas: el 75~\% de los sistemas descritos se sitúa en un nivel de madurez
+tecnológica bajo (entre el prototipo y la validación temprana), y solo el 9,1~\%
+evidencia haber llegado a introducirse en producción \cite{henkel2026}. En cuanto a los
+usos para los que se han diseñado estos sistemas, los objetivos más habituales son la
+asistencia al usuario, la supervisión de procesos y la optimización, sin que predomine
+el control directo de la producción.
+
+Sobre este panorama, existen diversos trabajos que abordan un problema común: un LLM
+aislado es incapaz de conocer el estado del sistema, por lo que es necesario un
+mecanismo que le dote de contexto sobre la instalación. Xia et al. proponen un modelo de
+información basado en eventos, diseñado específicamente para alimentar al modelo con
+datos del sistema de automatización en distintos niveles \cite{xia2024}. Vyas y
+Mercangöz, por su parte, plantean una arquitectura de validación y reformulación apoyada
+en un gemelo digital: antes de ejecutar cualquier acción, el agente la valida sobre la
+simulación, y si se detecta un fallo, otro agente reformula la petición
+\cite{vyas-mercangoz}.
+
+Se aprecia, sin embargo, un rasgo común entre estas dos propuestas que resulta muy
+relevante para este TFG: la conexión entre el LLM y el sistema industrial se resuelve
+mediante un mecanismo construido a medida para cada proyecto. Ninguno de los dos emplea
+un protocolo estandarizado para la comunicación entre modelo y sistema. Es justamente el
+Model Context Protocol, presentado en el apartado~\ref{sec:model-context-protocol}, el
+encargado de resolver este problema, ofreciendo un mecanismo genérico y reutilizable
+para la conexión del LLM con cualquier fuente de datos o herramienta externa.
+
+Además, el enfoque entre los trabajos mencionados y el presente TFG es ligeramente
+distinto. Mientras que Xia et al. y Vyas y Mercangöz orientan sus sistemas al control del
+proceso en tiempo real, este trabajo se centra en el análisis de datos históricos —en
+este caso, de consumo eléctrico— con el fin de servir como herramienta de apoyo a la
+toma de decisiones, sin suponer una intervención directa sobre el proceso. Esta
+diferencia de enfoque se traduce en un agente con un perfil de riesgo mucho más
+contenido que el de uno que ejecuta acciones directamente sobre una planta activa,
+puesto que se limita a la lectura y análisis de datos históricos. Esto hace que el
+despliegue del agente sea razonable con las tecnologías LLM actuales. Además, ese
+carácter de solo lectura lo hace fácilmente escalable y transversal, pudiendo aplicarse
+a otros ámbitos más allá del consumo eléctrico.
+
+\section{Arquitectura de supervisión industrial}
+\label{sec:arquitectura-supervision-industrial}
+
+Para poder comenzar a implementar toda esta arquitectura industrial, es de vital
+importancia comprender la estructura que sigue el modelo de integración entre los
+sistemas de negocio y los sistemas de control de una planta. Esto se lleva a cabo
+mediante un sistema jerárquico, conocido como pirámide de automatización, basado en el
+modelo de referencia de Purdue. El estándar ISA-95 da forma a este modelo, definiendo
+cinco niveles diferenciados entre sí, desde el proceso físico como nivel más bajo hasta
+la planificación empresarial en el más alto \cite{craci-arxiv}. La
+Figura~\ref{fig:piramide-isa95} recoge esta jerarquía.
+
+\begin{figure}[tphb]
+  \centering
+  \includegraphics[width=0.85\textwidth]{fig4_piramide_isa95}
+  \caption{Jerarquía funcional de la automatización industrial según el modelo ISA-95.
+    Elaboración propia a partir de \cite{craci-arxiv}.}
+  \label{fig:piramide-isa95}
+\end{figure}
+
+En orden creciente, se encuentra en primer lugar el nivel 0, correspondiente al proceso
+físico en sí —sensores, actuadores— en general, los equipos encargados de medir y
+modificar las magnitudes reales de la planta. A continuación, se encuentra el nivel 1,
+donde están los elementos encargados de controlar la operación del proceso, con
+\gls{PLC} o \gls{RTU}.
+
+En el nivel 2, por su parte, se encuentran los sistemas SCADA, encargados de integrar
+los sistemas de adquisición y transmisión de datos con el software de interfaz de
+usuario. La finalidad de esta capa es obtener toda la información de campo, recogerla en
+una instalación centralizada y presentarla al encargado de supervisión para que pueda
+intervenir sobre el proceso en tiempo real \cite{nist-sp800-82}. Debido al peso de esta
+capa sobre este trabajo, conviene comentar sus componentes, puesto que la plataforma
+empleada los reproduce como módulos independientes.
+
+\begin{itemize}
+  \item El servidor de control, encargado de almacenar y procesar la información que
+    recibe de los PLC o RTU.
+  \item La interfaz \gls{HMI}, en la cual se dispone la información al operador, y que
+    permite interactuar sobre el proceso.
+  \item El historiador de datos, que actúa como base de datos en la que se almacena la
+    evolución temporal de las variables de proceso, sentando la base del análisis
+    posterior.
+  \item Estaciones de ingeniería, desde las cuales se configuran y mantienen el resto de
+    elementos.
+\end{itemize}
+
+Los cuatro componentes, habitualmente, se comunican entre sí dentro de una misma red
+local, mientras que la comunicación con la capa de dispositivos de campo emplea
+protocolos específicos según la dispersión geográfica o el volumen de dispositivos
+\cite{nist-sp800-82}.
+
+Por encima de este último, en el nivel 3, se encuentra la gestión de operaciones de
+fabricación con sistemas \gls{MES} que coordinan la producción y llevan cuenta de la
+trazabilidad o el mantenimiento. Por último, en el nivel 4 se encuentra la
+planificación empresarial con sistemas \gls{ERP}, que gestionan compras, ventas o
+finanzas.
+
+Este trabajo se sitúa fundamentalmente en el nivel 2 de este modelo. La base de datos
+histórica se corresponde con el historiador de datos descrito más arriba, alimentada a
+partir de las variables que el SCADA recoge del proceso; la interfaz de supervisión que
+se desarrolla —descrita en el apartado~\ref{sec:plataforma-n3uron}— cumple el papel de
+la HMI; y el propio backend de configuración cumple el del servidor de control. La
+conexión con capas superiores queda fuera del alcance del proyecto: no se integra con un
+MES ni con un ERP, aunque el diseño no impide una futura extensión en ese sentido.
+
+\section{La plataforma N3uron}
+\label{sec:plataforma-n3uron}
+
+Como se mencionó en el punto anterior, el nivel 2 de la pirámide de automatización es en
+torno al cual gira el presente TFG. Para ello, se optó por emplear la plataforma N3uron
+debido a varias características que la hacen óptima para cumplir los objetivos del
+trabajo. Esta plataforma, de tipo IIoT/DataOps, se organiza en torno a un modelo común
+de datos —los \emph{tags}— sobre el que operan los distintos módulos que ofrece
+\cite{n3uron-platform-intro}. Para la realización de este trabajo, se emplearán los
+siguientes de su catálogo.
+
+WebUI, el módulo principal, encargado de orquestar, controlar y supervisar el resto de
+módulos, tags o protocolos. En términos del modelo ISA-95, se corresponde con el papel
+del servidor de control, alojando la lógica de supervisión y centralizando la
+configuración del sistema.
+
+Historian, que tal y como indica su nombre es el encargado de la historización de
+variables, con soporte para varios motores según el volumen y el tipo de despliegue; en
+este caso, basado en MongoDB \cite{n3uron-historian-intro}. El resto de módulos de la
+plataforma tiene acceso a los datos que almacena, lo que lo consolida como la pieza
+central del trabajo, actuando como el historiador de datos descrito en el
+punto~\ref{sec:arquitectura-supervision-industrial}.
+
+WebVision, sobre el cual se despliega la capa de visualización, con elementos
+predeterminados como gráficas, o elementos interactivos y de control, que permiten
+desplegar el HMI descrito en el punto~\ref{sec:arquitectura-supervision-industrial}
+\cite{n3uron-webvision}.
+
+Scripting, a partir del cual se puede implementar lógica personalizada mediante código
+\cite{n3uron-scripting}. Se empleará para diversas tareas como la importación de los
+históricos al sistema o la creación de herramientas personalizadas para el MCP.
+
+MCP Server, que actúa como puente de información entre N3uron y los modelos de
+lenguaje. N3uron ha incorporado esta tecnología de forma nativa en su plataforma,
+poniendo a disposición del usuario documentación, herramientas y \emph{prompts}
+predeterminados \cite{n3uron-mcp-server}.
+
+\section{Modelos de lenguaje de gran tamaño}
+\label{sec:modelos-lenguaje}
+
+Los modelos de lenguaje de gran tamaño se basan en redes neuronales entrenadas sobre
+grandes volúmenes de texto, con la finalidad de, dada una entrada, devolver la
+continuación más probable. Esto, aplicado de forma iterativa, permite a los modelos
+mantener conversaciones o responder preguntas sin haber sido programados
+específicamente para esas tareas. La arquitectura adoptada por la gran mayoría de
+modelos es la denominada \emph{transformer}, cuya característica distintiva es el
+mecanismo de atención: la capacidad de ponderar, para cada palabra que genera, la
+relevancia del resto de palabras del contexto, sin importar la distancia entre ellas.
+
+Sin embargo, un LLM necesita algo más para ser útil en el ámbito industrial:
+concretamente, dos capacidades. En primer lugar, la ventana de contexto, entendida como
+la cantidad de texto que puede procesar en una única solicitud, medida en tokens
+—fragmentos de palabra que constituyen la unidad mínima de procesamiento—. Cuanto más
+amplia sea la ventana, más datos históricos pueden incluirse en la consulta sin
+necesidad de resumirlos previamente. En segundo lugar, la capacidad de llamada a
+herramientas (\emph{function calling}): la capacidad del modelo de solicitar la
+ejecución de una función externa e incorporar su resultado a la respuesta.
+
+El mercado actual está dominado por un pequeño número de proveedores en la nube, entre
+los que destacan Anthropic, OpenAI o Google, cuyos modelos incorporan todos ellos
+amplias ventanas de contexto y soporte nativo para llamadas a herramientas, aspecto de
+vital importancia para este trabajo. El acceso a estos modelos se realiza mediante API:
+la aplicación no aloja el modelo, sino que envía cada consulta al servidor del proveedor
+y recibe la respuesta a través de internet. Esto significa que, aunque el modelo en sí
+resida en la nube, el resto de la arquitectura —la plataforma N3uron, la base de datos
+histórica, la interfaz de supervisión— puede mantenerse íntegramente en la instalación
+local; lo único que sale de la red de la planta es el contenido concreto de cada
+consulta al LLM.
+
+Junto a estos proveedores en la nube existen también alternativas de despliegue local,
+con herramientas como Ollama, que permite ejecutar modelos de código abierto —Llama,
+Qwen, Mistral, entre otros— directamente sobre el propio hardware, sin tráfico de datos
+con proveedores externos \cite{ollama-official}. En un escenario donde la privacidad
+sea prioritaria, esta resulta la alternativa más llamativa para este trabajo, pues
+resuelve directamente una de las barreras identificadas en el
+capítulo~\ref{cha:introduccion}. Sin embargo, tiene un inconveniente frente a las
+opciones anteriores: al ejecutarse en un equipo local, su rendimiento queda limitado por
+la capacidad de ese equipo, y un hardware modesto puede traducirse en un desempeño
+insuficiente.
+
+En este TFG, la conexión entre el modelo y el servidor MCP se realiza mediante
+AnythingLLM \cite{anythingllm-docs}, que actúa como cliente MCP frente al MCP Server de
+N3uron, de manera que es AnythingLLM —y no el modelo— quien gestiona esa conexión, con
+independencia de si el modelo corre en la nube o en local. Esto tiene una consecuencia
+práctica importante: la elección entre un modelo en la nube y uno local no condiciona la
+viabilidad de la integración con N3uron, y además otorga libertad para elegir el
+proveedor LLM, ya que todos quedan recogidos en la infraestructura de AnythingLLM. La
+decisión entre unos y otros pasa entonces a depender de otros criterios —coste,
+rendimiento, y el grado de exposición de los datos que la organización esté dispuesta a
+asumir—.
+
+\section{Model Context Protocol}
+\label{sec:model-context-protocol}
+
+El Model Context Protocol es un estándar abierto, introducido por Anthropic en
+noviembre de 2024, que resuelve el problema planteado en el
+punto~\ref{sec:estado-arte}: cómo dar acceso estructurado a datos y herramientas a un
+LLM, sin necesidad de desarrollar para cada proyecto un mecanismo de integración
+distinto \cite{mcp-docs}.
+
+El protocolo define una arquitectura cliente-servidor con tres roles. En primer lugar,
+el host, que se corresponde con la aplicación de IA que interactúa con el usuario —para
+este TFG, AnythingLLM—. A continuación, el cliente, que se aloja dentro del host y
+mantiene la conexión con un servidor concreto. Y finalmente, el servidor, que es el
+programa externo que expone sus datos al cliente —en este trabajo, el módulo MCP de
+N3uron—. La comunicación entre cliente y servidor se realiza mediante JSON-RPC 2.0,
+sobre dos transportes posibles: \emph{stdio}, para servidores locales que se ejecutan
+como proceso del propio sistema, o HTTP con eventos enviados por el servidor
+(\emph{streamable HTTP}), para servidores remotos accesibles por red
+\cite{mcp-architecture}.
+
+Un servidor MCP expone sus capacidades mediante tres primitivas:
+
+\begin{itemize}
+  \item \emph{Tools}: funciones externas ejecutables que el modelo puede usar, cada una
+    definida por un nombre, una descripción y un esquema JSON de los parámetros de
+    entrada y salida que acepta.
+  \item \emph{Resources} (recursos): fuentes de datos de solo lectura, identificadas
+    mediante una URI, que el modelo puede consultar sin que ello implique efectos
+    secundarios sobre el sistema.
+  \item \emph{Prompts}: plantillas de instrucciones reutilizables gestionadas por el
+    servidor, que guían al modelo hacia el uso más adecuado de herramientas y recursos.
+\end{itemize}
+
+El flujo de una interacción sigue siempre el mismo patrón, recogido en la
+Figura~\ref{fig:flujo-mcp}: el cliente descubre las herramientas, recursos y
+\emph{prompts} disponibles en el servidor; cuando el modelo determina que necesita
+ejecutar una acción, el host dirige al cliente para que envíe la solicitud
+correspondiente al servidor; el servidor ejecuta la lógica asociada —en este trabajo,
+por ejemplo, una consulta al Historian de N3uron— y devuelve el resultado; y el cliente
+incorpora ese resultado al contexto del modelo, que genera su respuesta final ya
+informada por el dato real \cite{mcp-architecture}.
+
+\begin{figure}[tphb]
+  \centering
+  \includegraphics[width=0.85\textwidth]{fig5_flujo_mcp}
+  \caption{Flujo de una interacción vía Model Context Protocol, desde la consulta del
+    usuario hasta la respuesta informada por el dato histórico. Elaboración propia a
+    partir de \cite{mcp-architecture}.}
+  \label{fig:flujo-mcp}
+\end{figure}
+
+Esta arquitectura cierra el círculo trazado a lo largo del capítulo. El
+apartado~\ref{sec:arquitectura-supervision-industrial} describió la jerarquía de
+niveles de una planta industrial y situó el historiador de datos como la pieza que
+almacena la evolución temporal del proceso. El apartado~\ref{sec:plataforma-n3uron}
+mostró cómo N3uron materializa ese historiador y expone su modelo de datos
+contextualizado a través de un módulo MCP Server nativo. El
+apartado~\ref{sec:modelos-lenguaje} estableció que es AnythingLLM quien actúa como
+cliente MCP con independencia del proveedor o del modelo empleado, lo que garantiza que
+la elección de modelo no condiciona la viabilidad de la integración. El Model Context
+Protocol, descrito aquí, es el elemento que conecta ambos extremos: convierte el
+histórico de consumo eléctrico almacenado en Historian en un recurso consultable por el
+agente LLM, y las operaciones de análisis en herramientas que ese agente puede invocar
+de forma autónoma.
 
 %%% Local Variables:
 %%% TeX-master: "../book"
