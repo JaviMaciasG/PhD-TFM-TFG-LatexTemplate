@@ -1,7 +1,97 @@
 \chapter{Descripción del trabajo desarrollado}
 \label{cha:desarrollo}
 
-% TODO: descripción del trabajo desarrollado.
+\section{Creación del entorno de tags, plantillas e históricos}
+\label{sec:entorno-tags-templates-historicos}
+
+\subsection{Creación y configuración de los módulos Historian y Scripting}
+\label{subsec:modulos-historian-scripting}
+
+En la instalación inicial de N3uron se encuentran ya disponibles módulos básicos como el
+configurador de tags, que se empleará en pasos posteriores del desarrollo. Por ello
+resulta necesaria la creación de los módulos auxiliares que este trabajo requiere, tal y
+como se detalló en el apartado~\ref{sec:plataforma-n3uron}. En este primer paso se crea
+un módulo Historian, encargado de la historificación de las variables, y un módulo
+Scripting que, en esta fase del proyecto, tendrá la finalidad de importar los históricos
+a las variables creadas.
+
+El proceso a seguir para ambos módulos es idéntico: en el árbol Explorer, dentro de This
+node > Modules, se selecciona la opción New Module, lo que abre un panel Model donde se
+debe asignar un nombre y el tipo de módulo —Historian o Scripting, según el caso—,
+dejando el resto de parámetros con los valores que trae la plataforma por defecto. El
+proceso se recoge en la Figura~\ref{fig:historian-new-module}.
+
+\begin{figure}[tphb]
+  \centering
+  \includegraphics[width=0.8\textwidth]{captura_1}
+  \caption{Panel Model del Explorer en N3uron WebUI, con la opción New Module resaltada y
+    el panel de propiedades del módulo Historian recién creado mostrando sus valores por
+    defecto.}
+  \label{fig:historian-new-module}
+\end{figure}
+
+Para el módulo Historian, esos valores por defecto incluyen Pause links while unavailable
+en No, y las opciones de arranque y reinicio automático (Auto-start y Auto-restart)
+habilitadas, con un retardo de 500~ms para el primero y de 5000~ms para el segundo
+\cite{n3uron-historian-intro}. El módulo Scripting, en cambio, no exige ningún ajuste
+adicional una vez creado \cite{n3uron-scripting}.
+
+Donde sí fue necesario intervenir es en la retención de datos del Historian. El panel
+completo de configuración, ya con el bloque de retención ajustado, se recoge en la
+Figura~\ref{fig:historian-retention-config}.
+
+\begin{figure}[tphb]
+  \centering
+  \includegraphics[width=0.8\textwidth]{captura_2}
+  \caption{Panel de configuración del módulo Historian en N3uron WebUI, mostrando Store
+    and forward (modo Disk, búfer de memoria de 2~GB / 2~000~000 eventos), el bloque Data
+    retention con Enable auto-purge en Yes y Retention period en 1825 (5 años), y la
+    configuración de Database (tipo Embedded, interfaz de red 127.0.0.1, puerto TCP
+    27017).}
+  \label{fig:historian-retention-config}
+\end{figure}
+
+El periodo que trae configurado de fábrica
+% TODO REVISAR: valor por defecto del retention period no especificado en las notas originales
+resulta insuficiente para el volumen de históricos que se pretende importar, así que se
+activó la purga automática y se amplió la ventana de conservación a 5 años (1825 días).
+Los parámetros modificados respecto al valor de fábrica se resumen en la
+Tabla~\ref{tab:historian-retention-parametros}.
+
+\begin{table}[tphb]
+  \centering
+  \caption{Parámetros de retención de datos ajustados en el módulo Historian}
+  \label{tab:historian-retention-parametros}
+  \begin{tabularx}{\textwidth}{l X X X}
+    \hline
+    \textbf{Parámetro} & \textbf{Valor anterior} & \textbf{Valor nuevo} & \textbf{Justificación} \\
+    \hline
+    Enable auto-purge & No / false & Yes / true & Permite limitar el tamaño de la base de
+    datos histórica en lugar de que crezca indefinidamente \\
+    Retention period &
+    % TODO REVISAR: valor por defecto no indicado en las notas originales
+    No indicado en las notas & 5 años (1825 días) & El periodo por defecto resultaba
+    insuficiente para el histórico de datos a importar \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+El resto de la configuración se mantuvo tal como viene de serie: almacenamiento en disco
+(Store and forward > Mode: Disk), un búfer de memoria de 2~GB (\textasciitilde{}2~millones
+de eventos), y una base de datos embebida escuchando en la interfaz de red 127.0.0.1 y el
+puerto \gls{tcp} 27017.
+
+% Pendiente: contenido de 3.1.2
+% \subsection{Creación de templates}
+% \label{subsec:creacion-templates}
+
+% Pendiente: contenido de 3.1.3
+% \subsection{Creación de tags}
+% \label{subsec:creacion-tags}
+
+% Pendiente: contenido de 3.1.4
+% \subsection{Importación de históricos}
+% \label{subsec:importacion-historicos}
 
 %%% Local Variables:
 %%% TeX-master: "../book"
