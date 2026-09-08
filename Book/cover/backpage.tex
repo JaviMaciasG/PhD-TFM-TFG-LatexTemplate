@@ -55,8 +55,13 @@
               \input{cover/backpage-tfm-normativa-uah.tex}
             }
             {
-              %\input{cover/backpage-tfg-uah.tex}
-              \input{cover/backpage-tfm-normativa-uah.tex}
+              \ifthenelse{\equal{\myDegree}{MUIE}}
+              {
+                \input{cover/backpage-tfg-uah.tex}
+              }
+              {
+                \input{cover/backpage-tfm-normativa-uah.tex}
+              }
             }
           }
         }
