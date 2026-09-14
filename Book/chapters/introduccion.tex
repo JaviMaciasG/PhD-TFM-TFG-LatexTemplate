@@ -267,33 +267,73 @@ La plantilla crea internamente la orden \texttt{\textbackslash{}myBookTitle} a p
 
 Los datos postales y el teléfono no son necesarios para componer el libro, pero se comparten con los documentos administrativos que los solicitan. Si no se va a generar ninguno de esos formularios, pueden dejarse vacíos. Antes de distribuir públicamente los fuentes del trabajo se recomienda comprobar que \texttt{Config/myconfig.tex} no contiene datos personales que no deban publicarse.
 
-Sobre la filiación del autor y el trabajo:
+\subsubsection{Tutor académico y cotutor}
 
-\begin{itemize}
+\begin{description}
+  \item[\texttt{\textbackslash{}myAcademicTutorFullName}] Nombre completo del tutor académico o director principal del trabajo.
+  \item[\texttt{\textbackslash{}myAcademicTutorGender}] Género gramatical utilizado para adaptar los textos referidos al tutor. Admite los valores \texttt{male} y \texttt{female}.
+  \item[\texttt{\textbackslash{}myAcademicTutorDNI}] DNI, NIE u otro identificador del tutor requerido en determinados documentos administrativos y autorizaciones.
+  \item[\texttt{\textbackslash{}myAcademicTutorDepartmentOrInstitution}] Departamento, empresa o institución a la que pertenece el tutor.
+  \item[\texttt{\textbackslash{}myAcademicTutorPosition}] Cargo o puesto profesional del tutor.
+  \item[\texttt{\textbackslash{}myAcademicTutorEmail}] Dirección de correo electrónico del tutor.
+  \item[\texttt{\textbackslash{}myAcademicTutorForeignUniversity}] Universidad extranjera a la que pertenece el tutor cuando se utiliza la autorización específica para tutores extranjeros.
+  \item[\texttt{\textbackslash{}myAcademicTutorForeignCity}] Ciudad utilizada para fechar la autorización del tutor extranjero.
+\end{description}
 
-  \item Centro en el que se realiza el trabajo (variable \texttt{\textbackslash{}mySchool}, que debería ser la Escuela Politénica Superior, pero se incluye por generalidad).
-  \item Universidad en el que se realiza el trabajo (variable \texttt{\textbackslash{}myUniversity}, que debería ser la de Alcalá, pero se incluye por generalidad).
-  \item Acrónimo de la Universidad (variable \texttt{\textbackslash{}myUniversityAcronym}).
+La información del cotutor se define mediante las siguientes variables:
 
-  \item Departamento en el que se realiza el trabajo (variable \texttt{\textbackslash{}myDepartment}, en español, y \texttt{\textbackslash{}myDepartmentEnglish}, en inglés).
-  
-  \item Programa de Doctorado (en su caso) en el que se realiza el trabajo (variable \texttt{\textbackslash{}myPhDProgram}, en español, y \texttt{\textbackslash{}myPhDProgramEnglish}, en inglés).
-  \item Grupo de investigación en el que se realiza el trabajo (variable \texttt{\textbackslash{}myResearchGroup}.
+\begin{description}
+  \item[\texttt{\textbackslash{}myCoTutorFullName}] Nombre completo del cotutor o codirector. Debe dejarse vacío cuando el trabajo no tenga cotutor; distintas cubiertas y formularios utilizan este valor vacío para omitir automáticamente sus datos.
+  \item[\texttt{\textbackslash{}myCoTutorGender}] Género gramatical utilizado para adaptar los textos referidos al cotutor. Admite los valores \texttt{male} y \texttt{female}.
+  \item[\texttt{\textbackslash{}myCoTutorDNI}] DNI, NIE u otro identificador del cotutor requerido en determinados documentos administrativos y autorizaciones.
+  \item[\texttt{\textbackslash{}myCoTutorDepartmentOrInstitution}] Departamento, empresa o institución a la que pertenece el cotutor.
+  \item[\texttt{\textbackslash{}myCoTutorPosition}] Cargo o puesto profesional del cotutor.
+  \item[\texttt{\textbackslash{}myCoTutorEmail}] Dirección de correo electrónico del cotutor.
+\end{description}
 
-\end{itemize}
+Las variables antiguas \texttt{\textbackslash{}myFirstAdvisorFullName}, \texttt{\textbackslash{}mySecondAdvisorFullName}, \texttt{\textbackslash{}myFirstAdvisorDNI} y \texttt{\textbackslash{}mySecondAdvisorDNI} se conservan como alias por compatibilidad. No deben editarse: sus valores se obtienen respectivamente de las variables actuales del tutor académico y del cotutor.
 
-Sobre el tribunal:
+\subsubsection{Afiliación académica}
 
-\begin{itemize}
+\begin{description}
+  \item[\texttt{\textbackslash{}mySchool}] Escuela, facultad o centro académico responsable del trabajo.
+  \item[\texttt{\textbackslash{}myUniversity}] Nombre completo de la universidad.
+  \item[\texttt{\textbackslash{}myUniversityAcronym}] Acrónimo de la universidad utilizado en las cubiertas y otros elementos que requieren una forma abreviada.
+  \item[\texttt{\textbackslash{}myDepartment}] Nombre del departamento en español.
+  \item[\texttt{\textbackslash{}myDepartmentEnglish}] Nombre del departamento en inglés.
+  \item[\texttt{\textbackslash{}myPhDProgram}] Nombre del programa de doctorado en español. Solo resulta necesario para los documentos que muestran esta información.
+  \item[\texttt{\textbackslash{}myPhDProgramEnglish}] Nombre del programa de doctorado en inglés.
+  \item[\texttt{\textbackslash{}myResearchGroup}] Nombre o acrónimo del grupo de investigación. También se utiliza al generar informes de investigación mediante \texttt{GEINTRARR}.
+\end{description}
 
-  \item Nombre del presidente del tribunal (variable \texttt{\textbackslash{}myTribunalPresident}).
-  \item Nombre del primer vocal del tribunal (variable \texttt{\textbackslash{}myTribunalFirstSpokesperson}).
-  \item Nombre del segundo vocal del tribunal (variable \texttt{\textbackslash{}myTribunalSecondSpokesperson}).
-  \item Nombre del suplente del tribunal (variable \texttt{\textbackslash{}myTribunalAlternateMember}).
-  \item Nombre del secretario del tribunal, en su caso (variable \texttt{\textbackslash{}myTribunalSecretary}).
-  \item Nombre del Secretario del Departamento (que firmará parte del papeleo) (variable \texttt{\textbackslash{}myDepartmentSecretary}).
+\subsubsection{Tribunal y personal académico}
 
-\end{itemize}
+\begin{description}
+  \item[\texttt{\textbackslash{}myTribunalPresident}] Nombre completo de la persona que preside el tribunal.
+  \item[\texttt{\textbackslash{}myTribunalPresidentGender}] Género gramatical de la presidencia del tribunal. Admite los valores \texttt{male} y \texttt{female}.
+  \item[\texttt{\textbackslash{}myTribunalFirstSpokesperson}] Nombre completo del primer vocal del tribunal.
+  \item[\texttt{\textbackslash{}myTribunalFirstSpokespersonGender}] Género gramatical del primer vocal. Admite los valores \texttt{male} y \texttt{female}.
+  \item[\texttt{\textbackslash{}myTribunalSecondSpokesperson}] Nombre completo del segundo vocal cuando la composición del tribunal lo requiera.
+  \item[\texttt{\textbackslash{}myTribunalSecondSpokespersonGender}] Género gramatical del segundo vocal. Admite los valores \texttt{male} y \texttt{female}.
+  \item[\texttt{\textbackslash{}myTribunalAlternateMember}] Nombre completo del miembro suplente del tribunal.
+  \item[\texttt{\textbackslash{}myTribunalAlternateMemberGender}] Género gramatical del miembro suplente. Admite los valores \texttt{male} y \texttt{female}.
+  \item[\texttt{\textbackslash{}myTribunalSecretary}] Nombre de la persona que actúa como secretaria del tribunal cuando este puesto sea necesario.
+  \item[\texttt{\textbackslash{}myDepartmentSecretary}] Nombre de la persona responsable de la secretaría del departamento que debe aparecer o firmar en determinados formularios.
+  \item[\texttt{\textbackslash{}myDepartmentSecretaryGender}] Género gramatical de la persona responsable de la secretaría del departamento. Admite los valores \texttt{male} y \texttt{female}.
+  \item[\texttt{\textbackslash{}myTFMComisionPresident}] Nombre de la persona que preside la comisión de trabajos fin de máster. Se utiliza específicamente en la documentación del MUIE.
+\end{description}
+
+No todas las titulaciones utilizan la misma composición de tribunal ni los mismos cargos administrativos. Los campos que no aparezcan en los documentos correspondientes a la titulación seleccionada pueden dejarse con un valor vacío.
+
+\subsubsection{Calificaciones}
+
+\begin{description}
+  \item[\texttt{\textbackslash{}myAcademicTutorGrade}] Calificación asignada por el tutor académico. En la rúbrica de TFG incluida actualmente corresponde a un máximo de siete puntos.
+  \item[\texttt{\textbackslash{}myTribunalGrade}] Calificación asignada por el tribunal. En la rúbrica de TFG incluida actualmente corresponde a un máximo de tres puntos.
+  \item[\texttt{\textbackslash{}myTribunalMHProposal}] Indica si el tribunal propone la concesión de matrícula de honor. Admite los valores \texttt{YES} y \texttt{NO}, respetando las mayúsculas.
+\end{description}
+
+Las calificaciones del tutor y del tribunal se utilizan en los documentos de acta y rúbrica que las contemplan. La plantilla calcula automáticamente la calificación conjunta en esos formularios; no afectan al contenido ni a la compilación del libro principal.
 
 Sobre fechas varias:
 
