@@ -402,35 +402,70 @@ Una vez completadas las variables aplicables, la plantilla reutiliza sus valores
 \subsection{Plantilla de anteproyecto}
 \label{sec:plantilla-de-anteproyecto}
 
-Para el caso de los TFMs/TFGs/TFCs, se incluye una plantilla para realizar el anteproyecto.
+El directorio \texttt{Anteproyecto/} contiene una plantilla simplificada para preparar el anteproyecto o propuesta de un TFC, TFG o TFM. El fichero principal es \texttt{Anteproyecto/anteproyecto.tex} y reutiliza los datos definidos en \texttt{Config/myconfig.tex}, incluidos el tipo de trabajo, la titulación, el título, la autoría, los tutores, el departamento y la fecha de propuesta.
 
-La plantilla se encuentra en el directorio \texttt{Anteproyecto}, y en fichero \texttt{anteproyecto.tex} tenéis un ejemplo. El \texttt{Makefile} genera automáticamente el \texttt{anteproyecto.pdf}, haciendo un \texttt{make} en ese directorio, y tiene targets similares a los del \texttt{Makefile} del documento principal, incluyendo \texttt{flatten} y \texttt{latexdiff}, con lo que también puede generarse el fichero con control de cambios, tal y como se describe en la sección~\ref{sec:control-de-cambios} (cambiando las referencias a \texttt{book...} por \texttt{anteproyecto...}).
+El contenido de ejemplo está organizado en secciones de introducción, objetivos, metodología, plan de trabajo y bibliografía. Estas secciones deben adaptarse a los requisitos de la titulación y pueden ampliarse, eliminarse o reordenarse libremente.
 
+El anteproyecto puede compilarse con cualquier editor o herramienta habitual de \LaTeX{}. También se proporciona un \texttt{Makefile}, que puede ejecutarse mediante:
 
+\begin{verbatim}
+cd Anteproyecto
+make
+\end{verbatim}
 
-\subsection{Papeleo adicional}
+La compilación genera \texttt{anteproyecto.pdf}. Si el documento contiene referencias bibliográficas, debe ejecutarse Biber entre las pasadas de \texttt{pdflatex}; el \texttt{Makefile} incluido automatiza esta secuencia.
+
+El \texttt{Makefile} también proporciona los objetivos \texttt{anteproyecto\_latexmk}, \texttt{snapshot}, \texttt{flatten}, \texttt{latexdiff}, \texttt{clean} y \texttt{clean\_latexmk}. Los objetivos de revisión siguen el mismo principio que los equivalentes del libro principal, descritos en la sección~\ref{sec:control-de-cambios}.
+
+\subsection{Documentación administrativa}
 \label{sec:introapp1}
 
-Para el caso de los TFGs y TFMs se incluyen en los directorios \texttt{PapeleoTFG/} y \texttt{PapeleoTFM} algunos de los documentos que hay que generar en el momento de la defensa. En concreto, para TFGs:
+Los directorios \texttt{PapeleoTFG/}, \texttt{PapeleoTFM/} y \texttt{PapeleoPHD/} contienen documentos administrativos que reutilizan los datos definidos en \texttt{Config/myconfig.tex}. Antes de generarlos se deben completar especialmente los datos de autoría, tutores, tribunal, fechas, calificaciones y publicación en abierto que correspondan a cada formulario.
 
-\begin{itemize}
-  \item La autorización del tutor para la publicación en abierto, en el fichero \texttt{PapeleoTFG/TFG-AutorizacionTutorPubAbierto.tex} para TFGs.
-  \item La autorización del autor para la publicación en abierto, en el fichero \texttt{PapeleoTFG/TFG-AutorizacionAutorPubAbierto.tex}
-  \item La autorización del tutor extranjero para la publicación en abierto, en el fichero \texttt{PapeleoTFG/TFG-AutorizacionTutorExtranjeroPubAbierto.tex}
-  \item El informe y rúbrica del tutor para la defensa del TFG \texttt{PapeleoTFG/TFG-InformeTutorYRubrica.tex}
-  \item El acta y rúbrica del tribunal para la defensa del TFG \texttt{PapeleoTFG/TFG-ActaYRubricaDefensa.tex}
-\end{itemize}
+\subsubsection{Documentos para TFG}
 
-Y para TFMs:
+El directorio \texttt{PapeleoTFG/} contiene actualmente:
 
-\begin{itemize}
-  \item La autorización del tutor y autor para la publicación en abierto, en el fichero \texttt{PapeleoTFM/TFM-autorizacionPublicarAbierto.tex} para TFMs.
-\end{itemize}
+\begin{description}
+  \item[\texttt{TFG-AutorizacionTutorPubAbierto.tex}] Autorización del tutor para la publicación en abierto.
+  \item[\texttt{TFG-AutorizacionAutorPubAbierto.tex}] Declaración y autorización de la persona autora para la publicación en abierto.
+  \item[\texttt{TFG-AutorizacionTutorExtranjeroPubAbierto.tex}] Autorización en inglés para un tutor perteneciente a una universidad extranjera.
+  \item[\texttt{TFG-InformeTutorYRubrica.tex}] Informe y rúbrica del tutor o tutores.
+  \item[\texttt{TFG-ActaYRubricaDefensa.tex}] Acta y rúbrica del tribunal de defensa.
+\end{description}
 
-Para compilarlos, encontrarás un \texttt{Makefile} que genera los \texttt{pdfs} correspondientes a esos documentos. El sistema automáticamente adapta los términos masculinos/femeninos correspondientes y los singulares/plurales necesarios para el caso de que haya uno o varios directores/tutores.
+El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex} y genera un PDF por cada uno. También se puede abrir y compilar individualmente el documento requerido con el editor o la herramienta de \LaTeX{} preferidos.
 
-Para el caso de las tesis doctorales, no está todavía preparado.
+\subsubsection{Documentos para TFM}
 
+El directorio \texttt{PapeleoTFM/} contiene actualmente:
+
+\begin{description}
+  \item[\texttt{TFM-AutorizacionPublicarAbierto.tex}] Formulario de autorización para la publicación en abierto, con los datos de la persona autora, el tutor y, cuando exista, el cotutor.
+  \item[\texttt{TFM-VistoBuenoTutorTFM.tex}] Visto bueno del tutor o tutores para el depósito y la defensa del TFM. Para el MUIE también refleja si el trabajo está sujeto a confidencialidad.
+\end{description}
+
+El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex} y genera sus correspondientes PDF. También se puede compilar cada formulario por separado mediante un editor o una herramienta estándar de \LaTeX{}.
+
+\subsubsection{Documentos para tesis doctorales}
+
+El directorio \texttt{PapeleoPHD/} contiene \texttt{PHD-VistoBuenoTutorTesis.tex}, una plantilla de visto bueno de los directores para la defensa de una tesis doctoral. También conserva \texttt{vistoBuenoDirectoresTesis\_plantilla.doc} como documento institucional de referencia.
+
+El documento \texttt{PHD-VistoBuenoTutorTesis.tex} puede compilarse directamente con \texttt{pdflatex} o desde un editor de \LaTeX{}. El \texttt{Makefile} del directorio conserva actualmente un nombre de fichero con una combinación antigua de mayúsculas y minúsculas, por lo que puede requerir una corrección antes de utilizarlo en sistemas GNU/Linux.
+
+\subsubsection{Compilación y revisión de los formularios}
+
+Desde los directorios \texttt{PapeleoTFG/} y \texttt{PapeleoTFM/} se pueden generar todos los formularios mediante:
+
+\begin{verbatim}
+make
+\end{verbatim}
+
+El uso de \texttt{make} es opcional. Cada fichero puede compilarse individualmente con dos pasadas de \texttt{pdflatex} o mediante la función de construcción del editor de \LaTeX{} preferido. Estos formularios no utilizan la bibliografía ni los glosarios del libro principal.
+
+Las plantillas adaptan automáticamente determinados términos al género gramatical configurado y omiten los datos del cotutor cuando \texttt{\textbackslash{}myCoTutorFullName} está vacío. Esta automatización no evita que sea necesario revisar cuidadosamente el PDF resultante, las firmas requeridas y la coherencia de todos los datos.
+
+Los modelos administrativos y sus requisitos pueden cambiar. Antes de presentar cualquiera de estos documentos debe comprobarse que su contenido coincide con la normativa y los formularios oficiales vigentes de la titulación.
 
 \subsection{Generación del documento con control de cambios (para revisión)}
 \label{sec:control-de-cambios}
