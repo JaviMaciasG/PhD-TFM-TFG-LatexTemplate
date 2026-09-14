@@ -38,11 +38,31 @@
 \section{Presentación}
 \label{sec:presentacion}
 
-Esta plantilla\footnote{Asegúrate de compilar de nuevo el documento (como cuenta la sección~\ref{sec:compilacion}), para verificar que todo funciona y por si ha habido algún cambio en los fuentes que no está reflejado en los pdf de ejemplo precompilados.} pretende proporcionar un conjunto de estilos consistentes y unificados para cubrir las necesidades de generación de memorias \LaTeX{} para cada uno de los TFCs/TFMs/TFGs y tesis doctorales que se generen en la Escuela Politécnica Superior de la Universidad de Alcalá\footnote{También se incluye la definición para las tesis de la Escuela Técnica Superior de Ingenieros de Telecomunicación de la Universidad Politécnica de Madrid. La extensión a los TFGs de la misma es sencilla, aunque no se ha realizado por el momento.}.
+Esta plantilla proporciona una estructura común para redactar trabajos académicos con \LaTeX{}. Incluye soporte para trabajos fin de carrera de planes anteriores, trabajos fin de grado, trabajos fin de máster y tesis doctorales. La mayor parte de las portadas y documentos administrativos están adaptados a titulaciones de la Universidad de Alcalá, aunque también se conserva soporte para determinados programas de doctorado de la Universidad Politécnica de Madrid.
 
-Para utilizar la plantilla se han generado algunos capítulos genéricos en los que se han incluido secciones ``tutoriales'', en la que se explican algunas de sus características y se muestran ejemplos de elementos típicos que pueden ser de utilidad (pero sin el objetivo de que esto sea una guía de \LaTeX{}).
+El repositorio contiene, además del libro principal, plantillas para el anteproyecto y para distintos documentos administrativos asociados a la presentación, depósito, evaluación y publicación de los trabajos. La configuración compartida permite reutilizar los datos del trabajo, del autor y de los tutores sin tener que introducirlos de nuevo en cada documento.
 
-Igualmente se proporciona un modelo simplificado de un anteproyecto (para el caso de los TFCs/TFMs/TFGs), así como parte de la documentación que hay que presentar para la defensa de los TFGs/TFMs de la Universidad de Alcalá.
+La plantilla pretende facilitar tanto la composición del documento como el cumplimiento de los formatos institucionales. No obstante, estos formatos pueden cambiar con el tiempo, por lo que conviene comprobar siempre la normativa vigente de la titulación antes de entregar la documentación.
+
+\section{Organización del repositorio}
+\label{sec:organizacion-repositorio}
+
+Los principales directorios del repositorio son:
+
+\begin{description}
+  \item[\texttt{Book/}] Documento académico principal, incluidas las cubiertas, capítulos, anexos, bibliografía, resúmenes y demás elementos del libro.
+  \item[\texttt{Config/}] Configuración compartida, selección de la titulación y datos personales y académicos definidos en \texttt{myconfig.tex}.
+  \item[\texttt{Anteproyecto/}] Plantilla para preparar la propuesta o anteproyecto del trabajo.
+  \item[\texttt{PapeleoTFG/}] Formularios administrativos relacionados con los trabajos fin de grado.
+  \item[\texttt{PapeleoTFM/}] Formularios administrativos relacionados con los trabajos fin de máster.
+  \item[\texttt{PapeleoPHD/}] Formularios administrativos relacionados con las tesis doctorales.
+  \item[\texttt{normativas/}] Normativas y documentos institucionales de referencia.
+  \item[\texttt{UsefulDocs/}] Documentación auxiliar útil para preparar y revisar el trabajo.
+  \item[\texttt{AdminScripts/}] Herramientas de mantenimiento utilizadas para administrar la plantilla.
+  \item[\texttt{Deprecated/}] Material antiguo conservado únicamente como referencia o por compatibilidad.
+\end{description}
+
+La configuración general se realiza en \texttt{Config/myconfig.tex}. Los distintos documentos del repositorio leen este archivo para mantener coherentes los nombres, títulos, fechas y demás datos compartidos.
 
 
 
