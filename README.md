@@ -121,10 +121,23 @@ For a normal thesis or final-project document, start with `Config/myconfig.tex` 
 
 ## To fill in and generate the main book
 
-1. Go to the "Book" directory
-2. The main compilation file is `book.tex` that you can suit to your needs commenting out what you don't need. If you compile it "as provided" you will see a lot of examples that can be useful for your particular case.
-3. Edit the files you need (abstract files, chapter files, dedication files, appendix files, etc.) There is a specific directory for each of them
-4. Compile the `book.tex` file (there is a `Makefile` available, but you can use your standard LaTeX build tools).
+1. Configure the document metadata in `Config/myconfig.tex`.
+2. Review `Book/book.tex` and comment out any material you do not need. The example document enables a sample external letter, dedication, acknowledgements, acronym and symbol lists, example chapters, and appendices.
+3. Edit the content under `Book/abstract/`, `Book/chapters/`, `Book/appendix/`, and the other content directories as required.
+4. Build the document from the `Book/` directory:
+
+   ```bash
+   cd Book
+   make
+   ```
+
+The build runs the required LaTeX, bibliography, and glossary passes. It generates `book.pdf`, reduced-size `book-screen.pdf` and `book-compressed.pdf` variants, and copies them to filenames derived from the work type, degree, author, and language.
+
+To remove generated auxiliary files, run this from `Book/`:
+
+```bash
+make clean
+```
 
 ## To fill in and generate paperwork
 
