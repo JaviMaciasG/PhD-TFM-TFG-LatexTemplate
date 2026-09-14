@@ -139,6 +139,37 @@ To remove generated auxiliary files, run this from `Book/`:
 make clean
 ```
 
+## Customize the book contents
+
+### Chapters and appendices
+
+Create or edit `.tex` files under `Book/chapters/` and `Book/appendix/`, then add or remove the corresponding `\input{...}` lines in `Book/book.tex`. The same approach applies to the dedication, acknowledgements, abstracts, and optional lists.
+
+### Figures and diagrams
+
+Place document illustrations in `Book/figures/` or `Book/diagrams/`. Because `Book/book.tex` adds both directories to `\graphicspath`, they can normally be included by filename:
+
+```latex
+\includegraphics[width=0.8\textwidth]{my-figure.pdf}
+```
+
+The Makefile can convert supported Dia, SVG, and EPS sources when the corresponding external tools are installed. PDF, PNG, and JPEG files can be used directly by `pdflatex`. Keep institutional logos under `Book/logos/` separate from document-specific illustrations.
+
+### Acronyms and symbols
+
+Define acronyms in `Book/acronyms/defacronymsgl.tex` and symbols in `Book/symbols/defsymbolsgl.tex`. Their presentation is controlled by the corresponding `acronymsgl.tex` and `symbolsgl.tex` files and the shared glossary configuration.
+
+### External PDF pages
+
+Use `\includepdf` when an approval letter or another PDF must be inserted into the document:
+
+```latex
+\includepdf[pages=-]{letters/my-letter.pdf}
+\clearemptydoublepage
+```
+
+The `pages=-` option includes every page. Review the sample inclusion in `Book/book.tex` and comment it out when it is not required.
+
 ## To fill in and generate paperwork
 
 1. Go to `PapeleoTFG/`, `PapeleoTFM/`, or `PapeleoPHD/`, according to the type of document you need.
