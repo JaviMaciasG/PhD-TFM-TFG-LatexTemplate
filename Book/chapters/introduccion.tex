@@ -335,49 +335,69 @@ No todas las titulaciones utilizan la misma composición de tribunal ni los mism
 
 Las calificaciones del tutor y del tribunal se utilizan en los documentos de acta y rúbrica que las contemplan. La plantilla calcula automáticamente la calificación conjunta en esos formularios; no afectan al contenido ni a la compilación del libro principal.
 
-Sobre fechas varias:
+\subsubsection{Fechas}
 
-\begin{itemize}
-  
-  \item Fecha del anteproyecto, en su caso (variable \texttt{\textbackslash{}myThesisProposalDate}), en el caso de que se use la plantilla del anteproyecto
-  \item Fecha del anteproyecto en inglés, en su caso (variable \texttt{\textbackslash{}myThesisProposalDateEnglish}), en el caso de que se usen la plantilla del anteproyecto.
+Las fechas se introducen como texto ya formateado, no como valores que la plantilla convierta automáticamente. Esto permite utilizar el formato requerido por cada documento, incluidos los ordinales y nombres de meses en inglés.
 
-  \item Fecha del depósito del trabajo (variable \texttt{\textbackslash{}myThesisDepositDate})
-  \item Fecha del depósito del trabajo en inglés (variable \texttt{\textbackslash{}myThesisDepositDateEnglish})
+\begin{description}
+  \item[\texttt{\textbackslash{}myThesisProposalDate}] Fecha de presentación o firma del anteproyecto. Se utiliza en la plantilla del anteproyecto y en los formularios que hacen referencia a su solicitud.
+  \item[\texttt{\textbackslash{}myThesisDepositDate}] Fecha de depósito del trabajo en español.
+  \item[\texttt{\textbackslash{}myThesisDepositDateEnglish}] Fecha de depósito del trabajo en inglés.
+  \item[\texttt{\textbackslash{}myThesisAcademicYear}] Curso académico mostrado en las actas y rúbricas que lo requieren; por ejemplo, \texttt{2025/2026}.
+  \item[\texttt{\textbackslash{}myThesisDefenseYear}] Año de defensa utilizado en las cubiertas y contraportadas correspondientes.
+  \item[\texttt{\textbackslash{}myThesisDefenseDate}] Fecha completa de defensa en español. En los informes de investigación también se utiliza como fecha de la cubierta.
+  \item[\texttt{\textbackslash{}myThesisdefenseDateEnglish}] Fecha completa de defensa en inglés. Debe respetarse exactamente este nombre, incluida la letra minúscula de \texttt{defense}.
+  \item[\texttt{\textbackslash{}myPaperworkDate}] Fecha en español utilizada para firmar o fechar los documentos administrativos. Su definición puede reutilizar \texttt{\textbackslash{}myThesisDepositDate} cuando ambas fechas coincidan.
+  \item[\texttt{\textbackslash{}myPaperworkDateEnglish}] Fecha equivalente en inglés. Se utiliza, entre otros casos, en la autorización para tutores extranjeros y puede reutilizar \texttt{\textbackslash{}myThesisDepositDateEnglish}.
+\end{description}
 
-  \item Año del trabajo (variable \texttt{\textbackslash{}myThesisDefenseYear}).
-  \item Fecha de la defensa del trabajo, en su caso (variable \texttt{\textbackslash{}myThesisDefenseDate}, en español, o \texttt{\textbackslash{}myThesisdefenseDateEnglish} en inglés).
+No existe una variable \texttt{\textbackslash{}myThesisProposalDateEnglish} en la configuración actual. Si un documento nuevo necesitara esa fecha, habría que añadir explícitamente la variable y adaptar la plantilla que fuera a utilizarla.
 
-  \item Fecha que aparecerá en la firma del papeleo (variable \texttt{\textbackslash{}myPaperworkDate}).
-  
-  \item Nombre del vicerrector (variable \texttt{\textbackslash{}myResearchVicerrector}).
-  \item Género del vicerrector (variable \texttt{\textbackslash{}myResearchVicerrectorGender}).
-\end{itemize}
+\subsubsection{Publicación en abierto y licencia}
 
-Se ha comenzado a trabajar en la versión alfa del soporte para \textit{research reports}, y en ese caso se usa la variable \texttt{\textbackslash{}myResearchReportID}.
+\begin{description}
+  \item[\texttt{\textbackslash{}myAuthorizationOpenPublishing}] Indica si se autoriza la publicación en abierto en los documentos que contemplan esta decisión. Los valores previstos son \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
+  \item[\texttt{\textbackslash{}myAuthorizationOpenPublishingEmbargoMonths}] Duración del embargo antes de la publicación en abierto. Los valores contemplados por los textos automáticos son \texttt{0}, \texttt{6}, \texttt{12}, \texttt{18} y \texttt{24} meses.
+  \item[\texttt{\textbackslash{}myResearchVicerrector}] Nombre y tratamiento de la persona responsable del vicerrectorado que aparece en los formularios de publicación correspondientes.
+  \item[\texttt{\textbackslash{}myResearchVicerrectorGender}] Género gramatical utilizado para adaptar el cargo del vicerrectorado. Admite los valores \texttt{male} y \texttt{female}.
+  \item[\texttt{\textbackslash{}myCopyrightStatement}] Declaración de derechos incorporada a los metadatos del PDF.
+  \item[\texttt{\textbackslash{}myLicenseURL}] Dirección de la licencia incorporada a los metadatos del PDF.
+\end{description}
 
-Y también hay otras variables de menor interés o en desuso en las que no vamos a entrar.
+La autorización de publicación, el embargo y la licencia representan decisiones diferentes. La persona autora debe comprobar que sus valores sean coherentes entre sí y con las condiciones institucionales aplicables. También debe sustituir los nombres de cargos y las direcciones de licencia de ejemplo por información vigente antes de generar los documentos definitivos.
 
-Parte de esa información se utilizará para rellenar la metainformación incluida en el fichero \texttt{pdf} que se genera.
+\subsubsection{Informes de investigación y tesis de la UPM}
 
+\begin{description}
+  \item[\texttt{\textbackslash{}myResearchReportID}] Identificador mostrado en la cubierta de los informes de investigación generados con \texttt{\textbackslash{}myDegree} establecido a \texttt{GEINTRARR}.
+  \item[\texttt{\textbackslash{}myUPMdegree}] Denominación de la titulación mostrada en las cubiertas de tesis de la Universidad Politécnica de Madrid.
+\end{description}
 
-También se definen los colores que se usarán en los hiperenlaces del documento:
+El soporte para informes de investigación se considera experimental. La variable \texttt{\textbackslash{}myUPMdegree} solo resulta necesaria para las plantillas de la UPM que la utilizan.
 
-\begin{itemize}
-  \item Color de los enlaces en el índice de contenidos (variable \texttt{\textbackslash{}mytoclinkcolor}).
-  \item Color de los enlaces en el índice de figuras (variable \texttt{\textbackslash{}myloflinkcolor}).
-  \item Color de los enlaces en el índice de tablas (variable \texttt{\textbackslash{}mylotlinkcolor}).
-  \item Color de los enlaces en otros índices (variable \texttt{\textbackslash{}myothertoclinkcolor}), de los que ahora se incluye un ejemplo en el fichero \texttt{cover/extralistings.tex}.
-  \item Color de los enlaces (\texttt{\textbackslash{}ref}) en el documento (variable \texttt{\textbackslash{}mylinkcolor}).
-  \item Color de los enlaces a URLs (variable \texttt{\textbackslash{}myurlcolor}).
-  \item Color de los enlaces a referencias bibliográficas (variable \texttt{\textbackslash{}mycitecolor}).
-\end{itemize}
+\subsubsection{Colores de los enlaces}
 
-Basta con que definas las variables correspondientes y la plantilla generará automáticamente las portadas adecuadas a la normativa y usará las definiciones específicas que hayas seleccionado.
+Los valores de color deben corresponder a nombres o expresiones reconocidos por los paquetes de color utilizados por la plantilla, como \texttt{black}, \texttt{blue}, \texttt{red} o \texttt{green}.
 
-Por si os hace falta, en \texttt{Config/postamble.tex} se definen muchas variables relacionadas con el tipo de trabajo, la personalización y adaptación a género y número en distintos documentos, etc. Por ejemplo las variables \texttt{\textbackslash{}myDegreefull} (igual a ``\myDegreefull'' en esta compilación), \texttt{\textbackslash{}myWorkType} (igual a ``\myWorkType'' en esta compilación) y \texttt{\textbackslash{}myWorkTypeFull} (igual a ``\myWorkTypeFull'' en esta compilación). Otro ejemplo sería el autor de contacto: \contactauthor.
+\begin{description}
+  \item[\texttt{\textbackslash{}mytoclinkcolor}] Color de los enlaces del índice general.
+  \item[\texttt{\textbackslash{}myloflinkcolor}] Color de los enlaces del índice de figuras.
+  \item[\texttt{\textbackslash{}mylotlinkcolor}] Color de los enlaces del índice de tablas.
+  \item[\texttt{\textbackslash{}myothertoclinkcolor}] Color de los enlaces de los índices adicionales definidos en \texttt{cover/extralistings.tex}.
+  \item[\texttt{\textbackslash{}mylinkcolor}] Color de los enlaces internos, incluidas las referencias cruzadas.
+  \item[\texttt{\textbackslash{}myurlcolor}] Color de los enlaces a direcciones URL.
+  \item[\texttt{\textbackslash{}mycitecolor}] Color de los enlaces a referencias bibliográficas.
+\end{description}
 
-Importante para las tesis de UAH: si necesitáis incluir ficheros pdf (los de autorización e informes de los tutores, por ejemplo), esta plantilla lo permite: mirad los \texttt{\textbackslash{}includepdf} en el \texttt{book.tex}.
+Utilizar \texttt{black} para los índices permite que sus entradas mantengan el aspecto del texto normal, aunque sigan siendo enlaces activos. Antes de elegir otros colores conviene comprobar su legibilidad tanto en pantalla como en una copia impresa.
+
+\subsubsection{Variables derivadas y compatibilidad}
+
+El fichero \texttt{Config/postamble.tex} obtiene numerosas órdenes auxiliares a partir de la configuración. Entre ellas se encuentran \texttt{\textbackslash{}myDegreefull}, con el nombre completo de la titulación; \texttt{\textbackslash{}myWorkType}, con el tipo abreviado de trabajo; \texttt{\textbackslash{}myWorkTypeFull}, con su nombre completo; y \texttt{\textbackslash{}contactauthor}, con el nombre y correo de la persona autora. Estas órdenes pueden utilizarse en el contenido, pero no deben definirse de nuevo en \texttt{Config/myconfig.tex}.
+
+La variable \texttt{\textbackslash{}mybookFigure} se conserva únicamente por compatibilidad con formularios antiguos. Ya no es necesaria para las plantillas actuales y normalmente no debe modificarse.
+
+Una vez completadas las variables aplicables, la plantilla reutiliza sus valores en las cubiertas, los formularios, los textos adaptados al género gramatical y los metadatos del PDF. La configuración automática no sustituye la revisión de la normativa vigente ni la comprobación de los PDF generados.
 
 \subsection{Plantilla de anteproyecto}
 \label{sec:plantilla-de-anteproyecto}
