@@ -209,61 +209,63 @@ La estructura distribuida con la plantilla incluye los siguientes elementos:
 
 Además de editar los ficheros incluidos, se debe revisar \texttt{Book/book.tex} para comentar los elementos que no se necesiten y añadir los capítulos, apéndices o documentos externos propios. Cuando se incorpore un PDF mediante \texttt{\textbackslash{}includepdf}, conviene mantener la orden \texttt{\textbackslash{}clearemptydoublepage} posterior para que el siguiente elemento comience en la página adecuada.
 
-\subsection{Definiciones específicas del tipo de documento}
+\subsection{Configuración del documento}
 \label{sec:definicion-del-tipo}
 
-Para comenzar a usar la plantilla es fundamental revisar el fichero \texttt{book.tex} en el que se incluyen todos los detalles genéricos de la estructura usada en el documento, con comentarios que esperamos que os ayuden a entenderlo. Si sois de los impacientes, basta con que comencéis por la parte en la que se incluyen los distintos capítulos (buscad la parte de los \texttt{\textbackslash{}input\{chapters/*.tex\}}).
+La configuración compartida se encuentra en \texttt{Config/myconfig.tex}. Este fichero contiene los datos utilizados para generar el libro, el anteproyecto y los documentos administrativos, por lo que normalmente debe adaptarse antes de editar el contenido del trabajo. Las variables se definen mediante órdenes \texttt{\textbackslash{}newcommand}; se debe modificar el contenido situado entre las últimas llaves de cada definición, sin cambiar el nombre de la orden.
 
-El fichero de configuración más importantes es el \texttt{Config/myconfig.tex} en el que se incluyen elementos para determinar la configuración específica de tu documento y que es de donde se toman los datos para las muchas automatizaciones del proceso de generación. El primero de ellos (para facilitar la generación de documentos en español o inglés), es el que define el idioma que vas a utilizar. Para seleccionarlo, basta con asignar \texttt{spanish} o \texttt{english} a la variable \texttt{\textbackslash{}myLanguage}. A partir de ella, el sistema generará las cabeceras y títulos adecuados a cada una.
+Además de completar \texttt{Config/myconfig.tex}, conviene revisar \texttt{Book/book.tex}, que determina qué capítulos, resúmenes, listados, documentos externos y apéndices se incluyen en el libro. Las variables descritas a continuación configuran los datos compartidos, pero no añaden ni eliminan por sí solas los elementos incluidos mediante \texttt{\textbackslash{}input} o \texttt{\textbackslash{}includepdf}.
 
-Igualmente, tendréis que definir las siguientes variables sobre el tipo de trabajo y el autor\footnote{El fichero  \texttt{Config/myconfig.tex} ``sufre'' modificaciones frecuentes con la adición de nuevas variables para soportar un mayor número de automatismos (por ejemplo los que tienen que ver con los documento de papeleo necesarios), con lo que es seguro que encontrarás más variables en la versión actual del fichero que los que aquí hemos descrito. En cualquier caso, relax, porque los nombres son autoexplicativos.}:
+\subsubsection{Idioma, titulación y presentación de los tutores}
 
-\begin{itemize}
-  \item Acrónimo de la titulación correspondiente al trabajo (variable \texttt{\textbackslash{}myDegree}): Que se seleccionará entre los definidos (por ahora\footnote{Este apartado se generó en marzo de 2020.} son \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST}, \texttt{ITI}, \texttt{GIEC}, \texttt{GIST}, \texttt{GITT}, \texttt{GIT}, \texttt{GIEAI}, \texttt{GITI}, \texttt{GIC}, \texttt{GII}, \texttt{GSI}, \texttt{GISI}, \texttt{MUSEA}, \texttt{MUIT}, \texttt{MUII}, \texttt{PHDUAH} y \texttt{PHDUPM}) y que automáticamente configura portadas\footnote{Un comentario sobre el color de las bandas en la portada de los TFGs: de acuerdo con la normativa, dicho color debe ser PANTONE 160c. Yo he intentado utilizar dicho color, pero el aspecto con el que finalmente aparece no es ni de lejos similar al del modelo que proporciona la EPS, con lo que he optado por utilizar el que se ve realmente en dicho modelo. Si quieres cambiarlo, busca ``PANTONE'' en \texttt{Config/preamble.tex}.}, entre otras cosas.
+\begin{description}
+  \item[\texttt{\textbackslash{}myLanguage}] Idioma principal del documento. Admite los valores \texttt{spanish} y \texttt{english}. Esta selección determina, entre otros elementos, los textos automáticos, las cabeceras, el título utilizado y las palabras clave incorporadas a los metadatos del PDF.
+  \item[\texttt{\textbackslash{}myDegree}] Identificador de la titulación o del tipo concreto de documento. Su valor determina el tipo general de trabajo y selecciona automáticamente las portadas, contraportadas, nombres de titulación y otros textos aplicables.
+  \item[\texttt{\textbackslash{}myFlagSplittedAdvisors}] Controla cómo se presentan el tutor y el cotutor en las páginas que admiten ambas formas. El valor \texttt{true} utiliza líneas separadas para el tutor y el cotutor; el valor \texttt{false} utiliza una denominación conjunta.
+  \item[\texttt{\textbackslash{}mySpecialty}] Especialidad o itinerario asociado a la titulación. Puede dejarse vacío cuando no resulte aplicable.
+\end{description}
 
-  \item Flag de división de directores (variable \texttt{\textbackslash{}myFlagSplittedAdvisors}). Si puesta a \texttt{false} indicará ``Tutores/Advisors'' en las páginas de portada. En caso contrario lo separará en líneas para ``Tutor/Advisor'' y ``Cotutor/Co-Advisor''.
+Los identificadores admitidos actualmente por \texttt{\textbackslash{}myDegree}, agrupados por tipo de documento, son:
 
-  \item Especialidad (nuevo en TFGs desde el curso 2015) (variable \texttt{\textbackslash{}mySpecialty})
+\begin{description}
+  \item[Trabajos fin de carrera] \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST} e \texttt{ITI}. Corresponden a titulaciones anteriores al Espacio Europeo de Educación Superior y se conservan por compatibilidad.
+  \item[Trabajos fin de grado] \texttt{GITT}, \texttt{GIEC}, \texttt{GIT}, \texttt{GIST}, \texttt{GIC}, \texttt{GII}, \texttt{GMC}, \texttt{GIS}, \texttt{GISI}, \texttt{GIEAI} y \texttt{GITI}.
+  \item[Trabajos fin de máster] \texttt{MUSEA}, \texttt{MUIT}, \texttt{MUII}, \texttt{MUIE}, \texttt{MUCTE}, \texttt{MUANBD} y \texttt{MUC}.
+  \item[Tesis doctorales] \texttt{PHDUAH} y \texttt{PHDUPM}.
+  \item[Informes de investigación] \texttt{GEINTRARR}, cuyo soporte se considera todavía experimental.
+\end{description}
 
-\end{itemize}
+La correspondencia entre estos identificadores y los tipos generales de trabajo se mantiene en \texttt{Config/worktypes.txt}. Añadir una titulación nueva requiere ampliar esa correspondencia y proporcionar los textos y cubiertas institucionales necesarios; no basta con escribir un identificador nuevo en \texttt{\textbackslash{}myDegree}.
 
-Sobre el documento en general:
+\subsubsection{Título, palabras clave y confidencialidad}
 
-\begin{itemize}
-  \item Título del documento en español (variable \texttt{\textbackslash{}myBookTitleSpanish}).
-  \item Título del documento en inglés (variable \texttt{\textbackslash{}myBookTitleEnglish}).
-  \item Palabras clave en inglés (variable \texttt{\textbackslash{}myThesisKeywordsEnglish}).
-  \item Palabras clave en español (variable \texttt{\textbackslash{}myThesisKeywords}).
+\begin{description}
+  \item[\texttt{\textbackslash{}myBookTitleSpanish}] Título completo del trabajo en español.
+  \item[\texttt{\textbackslash{}myBookTitleEnglish}] Título completo del trabajo en inglés.
+  \item[\texttt{\textbackslash{}myThesisKeywords}] Palabras clave en español. Se utilizan en el resumen y en los metadatos del PDF cuando el idioma principal es español.
+  \item[\texttt{\textbackslash{}myThesisKeywordsEnglish}] Palabras clave en inglés. Se utilizan en el resumen en inglés y en los metadatos del PDF cuando el idioma principal es inglés.
+  \item[\texttt{\textbackslash{}myConfidentialContent}] Indica si el trabajo contiene material confidencial en los documentos administrativos que contemplan esta posibilidad. Admite los valores \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
+\end{description}
 
+La plantilla crea internamente la orden \texttt{\textbackslash{}myBookTitle} a partir del idioma seleccionado: utiliza \texttt{\textbackslash{}myBookTitleSpanish} cuando \texttt{\textbackslash{}myLanguage} vale \texttt{spanish} y \texttt{\textbackslash{}myBookTitleEnglish} cuando vale \texttt{english}. Por tanto, normalmente no se debe definir ni modificar directamente \texttt{\textbackslash{}myBookTitle}.
 
-\end{itemize}
+\subsubsection{Datos de autoría}
 
-Sobre el autor y el tutor y cotutor:
+\begin{description}
+  \item[\texttt{\textbackslash{}myAuthorName}] Nombre o nombres de la persona autora.
+  \item[\texttt{\textbackslash{}myAuthorSurname}] Apellidos de la persona autora.
+  \item[\texttt{\textbackslash{}myAuthorFullName}] Nombre completo utilizado en cubiertas, metadatos y documentos administrativos. La definición proporcionada concatena automáticamente \texttt{\textbackslash{}myAuthorName} y \texttt{\textbackslash{}myAuthorSurname}, por lo que normalmente no debe modificarse.
+  \item[\texttt{\textbackslash{}myAuthorGender}] Género gramatical empleado para seleccionar las formas masculinas o femeninas de los textos automáticos. Admite los valores \texttt{male} y \texttt{female}.
+  \item[\texttt{\textbackslash{}myAuthorEmail}] Dirección de correo electrónico de la persona autora. Se utiliza en algunos formularios y en los metadatos de contacto del PDF.
+  \item[\texttt{\textbackslash{}myAuthorDNI}] DNI, NIE u otro identificador requerido en los documentos administrativos aplicables.
+  \item[\texttt{\textbackslash{}myAuthorStreet}] Calle y número del domicilio utilizados en los formularios que solicitan la dirección postal.
+  \item[\texttt{\textbackslash{}myAuthorCity}] Localidad del domicilio.
+  \item[\texttt{\textbackslash{}myAuthorPostalCode}] Código postal del domicilio.
+  \item[\texttt{\textbackslash{}myAuthorProvince}] Provincia del domicilio.
+  \item[\texttt{\textbackslash{}myAuthorTelephone}] Número de teléfono de contacto.
+\end{description}
 
-\begin{itemize}
-  
-  \item Nombre del autor del trabajo (variable \texttt{\textbackslash{}myAuthorName}).
-  \item Apellidos del autor del trabajo (variable \texttt{\textbackslash{}myAuthorSurname}). La unión de esta definición con la del nombre formará automáticamente la variable \texttt{\textbackslash{}myAuthorFullName}
-  \item Género del autor (variable \texttt{\textbackslash{}myAuthorGender}), ``male'' or ``female''.
-  \item Email del autor (variable \texttt{\textbackslash{}myAuthorEmail}).
-  \item DNI del autor del trabajo, usado en el papeleo de los TFGs (variable \texttt{\textbackslash{}mybookDNI}).
-
-  \item También se ha iniciado soporte básico para generar la hoja de control de anteproyecto que se usa en la solicitud, con lo que hay variables relacionadas con los datos personales del alumno:
-
-        \begin{itemize}
-          \item Dirección: calle (variable \texttt{\textbackslash{}myAuthorStreet}), ciudad (variable \texttt{\textbackslash{}myAuthorCity}), código postal (variable \texttt{\textbackslash{}myAuthorPostalCode}), provincia (variable \texttt{\textbackslash{}myAuthorProvince}) y teléfono (variable \texttt{\textbackslash{}myAuthorTelephone}).
-        \end{itemize}
-
-  \item Nombre del primer (o único, en su caso) director/tutor del trabajo (variable \texttt{\textbackslash{}myAcademicTutorFullName}).
-  \item Género del primer director/tutor (variable \texttt{\textbackslash{}myAcademicTutorGender}), ``male'' or ``female''.
-  \item DNI del primer direector, para los permisos de publicación en abierto (variable \texttt{\textbackslash{}myFirstAdvisorDNI}
-
-  
-  \item Nombre del segundo (en su caso) director/tutor del trabajo (variable \texttt{\textbackslash{}myCoTutorFullName}).
-  \item Género del segundo director/tutor (variable \texttt{\textbackslash{}myCoTutorGender}), ``male'' or ``female''.
-  \item DNI del segundo director, para los permisos de publicación en abierto (variable \texttt{\textbackslash{}mySecondAdvisorDNI}), en su caso
-
-\end{itemize}
+Los datos postales y el teléfono no son necesarios para componer el libro, pero se comparten con los documentos administrativos que los solicitan. Si no se va a generar ninguno de esos formularios, pueden dejarse vacíos. Antes de distribuir públicamente los fuentes del trabajo se recomienda comprobar que \texttt{Config/myconfig.tex} no contiene datos personales que no deban publicarse.
 
 Sobre la filiación del autor y el trabajo:
 
