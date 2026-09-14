@@ -188,22 +188,16 @@ The default bibliography processing backend is now `biber` (from September 2022
 onwards). This implies that you have to tell your IDE that you are using `biber`
 instead of `bibtex`. This applies to TeXStudio for example.
 
-## More details
+## Bibliography files
 
-As of September 2022, nice work from Gonzalo Corral abandoned the `bibtex`
-processing tool in favor of `biber`.
+The current `biblatex` and `biber` setup was adopted in September 2022 thanks
+to a contribution from Gonzalo Corral. It supports UTF-8 bibliography
+databases and registers bibliography resources from
+`Book/biblio/bibliofiles.tex`, so users do not need to edit the preamble.
 
-There a number of advantages and disadvantages on using `biber` (see for example
-[here](https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib)
-and [here](https://tex.stackexchange.com/questions/53247/why-is-biber-so-slow))
-but the fact that it can use UTF-8 as the encoding for the bib files was the
-number one reason for accepting this change.
-
-The change in the backend processor caused a major headache as `biblatex`
-requires specifying the bib files in the preamble, and we did not want to make
-users deal with it. The solution we found was quick and dirty but it seems to
-work: now the users just have to edit the `Book/biblio/bibliofiles.tex` file to include the
-required biblio files.
+Add each required `.bib` file under `Book/biblio/` and define its path in
+`Book/biblio/bibliofiles.tex` using the provided `\mybibfileOne`,
+`\mybibfileTwo`, and subsequent examples.
 
 ## Collaboration with your advisor or colleagues
 
