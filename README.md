@@ -91,6 +91,24 @@ The template is accessible in two ways:
 [my GitHub account project page](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate), so that you can clone it from [the clone URL](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git). Beware that it has a lot of extra files that should not be useful for the general user
 2. In my dropbox, in zip and tgz formats, accessible at [this Dropbox download folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0).  At this location you will also be able to access the sample book files for all the different flavors (degrees, masters, PhD programs) and in Spanish and English versions. Note that the introduction chapter will provide you with general instructions and details on the use of the template. **Please do read it**. The rests of the chapters provide you with sample code to do a variety of (IMHO) nice things you might find useful.
 
+## Repository structure
+
+The directories most users need are:
+
+- `Config/`: Shared configuration and document-generation logic. `Config/myconfig.tex` is the main file for personal, degree, language, and document settings.
+- `Book/`: Main TFG, TFM, or PhD document. Its entry point is `Book/book.tex`; its subdirectories contain abstracts, chapters, appendices, bibliography files, figures, diagrams, acronyms, and symbols.
+- `Anteproyecto/`: Anteproyecto or proposal document. Its entry point is `Anteproyecto/anteproyecto.tex`.
+- `PapeleoTFG/`, `PapeleoTFM/`, and `PapeleoPHD/`: Administrative documents associated with each type of work.
+- `normativas/`: Official regulations and source annexes used as references when maintaining the templates.
+- `UsefulDocs/`: LaTeX reference documents and cheat sheets.
+
+The following directories are primarily intended for template maintainers:
+
+- `AdminScripts/`: Distribution, validation, and maintenance scripts.
+- `Deprecated/`: Legacy implementations retained for reference; new documents should not depend on them.
+
+For a normal thesis or final-project document, start with `Config/myconfig.tex` and `Book/book.tex`. You should not normally need to modify `Config/preamble.tex`, `Config/postamble.tex`, or files under `Book/cover/` unless you are changing the template infrastructure or implementing a new institutional format.
+
 ## Configure your data
 
    All the information you can customize is in the `Config/myconfig.tex` file. The variable names are all defined in `\newcommand{}{}` statements and all of then start with the `\my` prefix. Most of the variable names should be self-explanatory, and you can find additional information in the introduction chapter (check any pdf file in [the distribution Dropbox folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)). **Critical**: Do not remove nor comment out any of the lines with a variable definition. If a variable is not relevant to your case (for example the "cotutor" information), just leave it empty (by emptying the definition).
