@@ -467,61 +467,85 @@ Las plantillas adaptan automáticamente determinados términos al género gramat
 
 Los modelos administrativos y sus requisitos pueden cambiar. Antes de presentar cualquiera de estos documentos debe comprobarse que su contenido coincide con la normativa y los formularios oficiales vigentes de la titulación.
 
-\subsection{Generación del documento con control de cambios (para revisión)}
+\subsection{Generación del documento con control de cambios}
 \label{sec:control-de-cambios}
 
-Uno de los problemas de \LaTeX{} frente a otros sistemas de edición de textos viene en el momento de la revisión de cambios realizados a un documento. En el caso que nos ocupa serían los que nos sugiere nuestro tutor de TFC/TFG/TFG o director de tesis doctoral y que luego querrá verificar cómo se han aplicado. En un procesador al estilo de libreoffice (vaaaaaaaaale, o Microsoft Word también), tenemos la opción de comparar documentos o llevar el control de cambios y que el sistema automáticamente nos marque los añadidos o borrados.
+La herramienta \texttt{latexdiff} compara dos versiones de un documento \LaTeX{} y genera un nuevo fichero en el que se marcan visualmente las inserciones y eliminaciones. El resultado puede compilarse como un PDF independiente para facilitar la revisión de los cambios realizados a partir de las observaciones del tutor, cotutor o tribunal.
 
-En \LaTeX{} también es posible si usamos un sistema de control de versiones (y si no lo estáis usando, deberíais plantearos seriamente el hacerlo), con la ayuda de herramientas adicionales.
+Como el libro se divide mediante múltiples órdenes \texttt{\textbackslash{}input}, antes de realizar la comparación se utiliza \texttt{latexpand} para generar una versión unificada. El \texttt{Makefile} de \texttt{Book/} automatiza este procedimiento mediante los objetivos \texttt{snapshot}, \texttt{flatten} y \texttt{latexdiff}.
 
-Hay varias soluciones disponibles, la mayoría basada en el uso de la \texttt{latexdiff}~\cite{latexdiff} (o derivados). Lo recomendable sería el uso de un sistema automatizado como el disponible en \texttt{git-latexdiff} \cite{git-latexdiff}, pero necesita el soporte de \texttt{git}, y dados los orígenes en los que mantenía esto en \texttt{cvs} (flames to \texttt{/dev/null}, please), o pensando en los que no usaréis ningún sistema de control de versiones (si es así, mal hecho, por cierto, deberías usar alguno) el mecanismo que uso es un poco más rupestre (si quieres ayudarme a generalizar esto, sería perfecto).
+\subsubsection{Creación de la versión de referencia}
 
-\texttt{latexdiff} permite comparar dos versiones de un documento y generar un nuevo fichero fuente en \LaTeX{} que, al compilarlo, muestra un pdf ``bonito'', con las marcas de las diferencias (resaltando lo añadido y lo quitado). El resultado es perfecto para hacer una buena revisión de los cambios, y por supuesto no tiene punto de comparación con ver un \texttt{diff} a palo seco de las dos versiones del documento.
+Cuando se disponga de una versión que vaya a utilizarse como base de la revisión, se debe ejecutar desde el directorio \texttt{Book/}:
 
-Lo que finalmente he implementado es muy ad-hoc, pero funciona\footnote{por algún motivo, a fecha de julio de 2021, \texttt{latexdiff} genera código erróneo, y he tenido que hacer una super ñapa en el \texttt{Makefile} para solucionarlo, así que en el futuro seguro que da problemas. Be warned!}.
+\begin{verbatim}
+make snapshot
+\end{verbatim}
 
-El procedimiento para generar un documento que muestre las diferencias es el siguiente (asumo disponible un intérprete de comandos y la utilidad \texttt{make}):
+Este objetivo genera \texttt{book-flatten-snapshot.tex}, que contiene en un solo fichero el estado expandido del documento. La instantánea debe crearse antes de comenzar las modificaciones que se quieran mostrar y conservarse sin cambios durante el proceso de revisión.
 
-\begin{itemize}
-  \item Primero hay que preparar la versión base sobre la que luego se harán los cambios. Esa preparación se hace normalmente cuando se tiene una versión razonablemente estable, y con la que luego se quiere comparar (por ejemplo cuando le entregas a tu tutor tu primer borrador del documento completo). La preparación es sencilla: basta hacer un \texttt{make snapshot}. Eso generará un fichero \texttt{book-flatten-snapshot.tex} que contiene el estado actual del documento, expandido. Lo suyo sería luego registrarlo en el repositorio con un \texttt{cvs commit -m ``New flattened version'' book-flatten-snapshot.tex} o \texttt{git add book-flatten-snapshoot.tex; git commit -m ``New flattened version''} en git.
-  \item A partir de ahí ya se puede trabajar en los cambios al documento, los que sean necesarios.
-  \item Cuando se quiera obtener el fichero pdf con el control de cambios, bastará hacer un \texttt{make latexdiff}, que acabará generando \texttt{book-flatten-diff.pdf}, que será lo que estábamos buscando.
-  
-  \item Cuando queráis ``resetear'' el documento con el que se comparará, basta hacer un nuevo \texttt{make snapshot}.
-\end{itemize}
+Si el proyecto utiliza Git, resulta conveniente registrar la instantánea junto con la versión del documento a la que corresponde:
 
-Cristina Losada ha conseguido ejecutar el latexdiff en un windows sin necesidad de disponer de \texttt{make}, para lo cual es necesario:
+\begin{verbatim}
+git add book-flatten-snapshot.tex
+git commit -m "chore: update the review snapshot"
+\end{verbatim}
 
-\begin{itemize}
-  \item Instalar un intérprete de comandos (ella usó \url{http://strawberryperl.com/releases.html}).
-  
-  \item MikTeX ya tiene un ejecutable de \texttt{latexdiff}.
-  
-  \item Guardar ``a mano'' una versión del documento correspondiente con la que compararemos los cambios futuros. Si estamos con el documento de la memoria \texttt{book.tex}, bastaría copiarlo a, por ejemplo, \texttt{book-snapshot.tex}.
-  
-  \item Hacer las modificaciones que procedan en el \texttt{book.tex}.
-  
-  \item Ejecutar en línea de comandos \texttt{latexdiff --flatten book-snapshot.tex book.tex > book-flatten-diff.tex}
-  
-  \item Compilar ese \texttt{book-flatten-diff.tex} que generará el pdf.
-  
-\end{itemize}
+El objetivo \texttt{snapshot} sobrescribe la instantánea existente. Por tanto, no debe ejecutarse de nuevo hasta que se quiera establecer una nueva versión de referencia.
 
-\subsection{Problemas conocidos}
+\subsubsection{Generación del documento de diferencias}
+
+Después de modificar el documento, se puede generar la comparación mediante:
+
+\begin{verbatim}
+make latexdiff
+\end{verbatim}
+
+El objetivo \texttt{latexdiff} genera primero \texttt{book-flatten.tex} con el estado actual, lo compara con \texttt{book-flatten-snapshot.tex} y crea \texttt{book-flatten-diff.tex}. A continuación procesa su bibliografía y sus glosarios y genera \texttt{book-flatten-diff.pdf}, que contiene las diferencias resaltadas.
+
+La comparación depende de que exista previamente \texttt{book-flatten-snapshot.tex}. Si se desea iniciar un nuevo ciclo de revisión, se debe comprobar primero que los cambios anteriores estén guardados y ejecutar de nuevo \texttt{make snapshot} para reemplazar la versión de referencia.
+
+El \texttt{Makefile} aplica además una corrección específica al resultado de \texttt{latexdiff} para tratar determinados entornos de TikZ utilizados por la plantilla. Esta corrección ayuda con los ejemplos actuales, pero un documento que contenga construcciones complejas puede requerir ajustes manuales en \texttt{book-flatten-diff.tex}.
+
+\subsubsection{Uso sin \texttt{make}}
+
+El flujo de revisión no requiere obligatoriamente la utilidad \texttt{make}. Cristina Losada aportó un procedimiento para utilizar \texttt{latexdiff} directamente en Windows, que también puede adaptarse a otros sistemas operativos:
+
+\begin{enumerate}
+  \item Instalar \texttt{latexdiff} y un intérprete de Perl. MiKTeX incluye \texttt{latexdiff}, y Strawberry Perl es una de las alternativas disponibles para Windows.
+  \item Guardar una copia del documento que se utilizará como referencia; por ejemplo, \texttt{book-snapshot.tex}.
+  \item Realizar las modificaciones necesarias en el documento.
+  \item Ejecutar desde el directorio \texttt{Book/}:
+\end{enumerate}
+
+\begin{verbatim}
+latexdiff --flatten book-snapshot.tex book.tex > book-flatten-diff.tex
+\end{verbatim}
+
+Después se debe compilar \texttt{book-flatten-diff.tex}. Si la versión comparada contiene bibliografía, acrónimos o símbolos, también deben ejecutarse Biber y \texttt{makeglossaries} con el nombre base \texttt{book-flatten-diff}, seguidos de las pasadas adicionales de \texttt{pdflatex}.
+
+Este procedimiento manual compara directamente el documento guardado con la versión actual. Para que \texttt{--flatten} pueda expandir correctamente ambos documentos, deben conservarse también los ficheros incluidos por cada versión o utilizar copias ya unificadas mediante \texttt{latexpand}.
+
+También existen otras alternativas integradas con Git, como \texttt{git-latexdiff}~\cite{git-latexdiff}. El procedimiento incluido en este repositorio no depende de una herramienta concreta de control de versiones, aunque se recomienda utilizar Git u otro sistema equivalente para conservar el historial del trabajo.
+
+\subsection{Resolución de problemas}
 \label{sec:problemas-conocidos}
 
-Resumimos a continuación los problemas con los que nos hemos ido encontrando tras el uso más generalizado de esta plantilla, y, en su caso, la solución propuesta/adoptada:
+Los problemas observados antiguamente con Ubuntu 12.04, el paquete \texttt{xcolor}, Evince y Xpdf ya no describen entornos actuales y se han retirado de esta guía. Si una compilación falla, conviene localizar el primer error del registro, ya que muchos de los mensajes posteriores suelen ser consecuencias de ese fallo inicial.
+
+Las comprobaciones más habituales son:
 
 \begin{itemize}
-
-  \item Al menos en la versión 12.04 de ubuntu, se producía un fallo de compilación por un problema del \textit{option clash} del paquete \texttt{xcolor}. La solución fue incluir las opciones \texttt{[RGB,rgb]} de dicho paquete en el \texttt{documentclass}, y eliminar la inclusión de \texttt{xcolor} (que ya lo incluye, al menos, \texttt{listings}). No es muy bonito como solución, pero funcionaba. Eso dio lugar a otro problema, que hacía que todas las página aparecieran como en color cuando se llevaba a la imprenta (con el consiguiente incremento de precio). Para intentar solucionarlo, he vuelto a eliminar las opciones \texttt{[RGB,rgb]} del \texttt{documentclass}, y se las paso con un \texttt{PassOptionsToPackage}, pero está pendiente de verificación. Please, confirmadme que funciona (tanto lo del color como la compilación en un ubuntu 12.04 (o posterior).
-
-  \item También hemos observado en la versión 12.04 de ubuntu que \texttt{evince} no es capaz de visualizar la primera página de los TFGs (generada con \texttt{tikz}), y que \texttt{xpdf} genera un core cuando intenta abrir el fichero compilado. La solución es usar \texttt{qpdfview} o \texttt{acroread}.
-
+  \item Si falta un fichero \texttt{.sty}, se debe instalar el paquete correspondiente desde la distribución de \LaTeX{} utilizada.
+  \item Si no aparece la bibliografía o las citas quedan sin resolver, se debe comprobar que se ha ejecutado Biber y realizar después las pasadas adicionales de \texttt{pdflatex}.
+  \item Si no aparecen los listados de acrónimos o símbolos, se debe ejecutar \texttt{makeglossaries} antes de las pasadas finales de \texttt{pdflatex}.
+  \item Si falla la conversión de un fichero \texttt{dia}, \texttt{svg} o \texttt{eps}, se debe instalar la herramienta opcional correspondiente o proporcionar directamente una versión compatible en \texttt{pdf}, \texttt{png} o \texttt{jpg}.
+  \item Si las referencias cruzadas o los índices no están actualizados, se deben repetir las pasadas de \texttt{pdflatex}; antes de recompilar también puede utilizarse \texttt{make clean} para eliminar los auxiliares anteriores.
+  \item Si \texttt{latexdiff} genera un fichero que no compila, se debe revisar el primer error de \texttt{book-flatten-diff.tex}. Las tablas, fórmulas, entornos TikZ y órdenes personalizadas pueden necesitar correcciones manuales en el documento de diferencias.
+  \item Si una cubierta o un formulario no coincide con el modelo institucional esperado, se debe comprobar \texttt{\textbackslash{}myDegree}, el idioma, los datos compartidos y la normativa vigente antes de modificar directamente la plantilla.
 \end{itemize}
 
-Si das con más problemas, escribe por favor a \contactauthor{} contándonoslos y trataremos de solucionarlo (y si tenéis la solución, contádnosla también).
-
+Si se comunica un problema, resulta útil indicar el sistema operativo, la distribución y versión de \LaTeX{}, la titulación seleccionada, el comando de compilación y el primer error relevante del fichero de registro. También se pueden proponer correcciones mediante el repositorio del proyecto.
 
 \section{Ejemplos de elementos de utilidad}
 \label{sec:ejempl-de-elem}
