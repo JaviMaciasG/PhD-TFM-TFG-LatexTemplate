@@ -205,14 +205,6 @@ users deal with it. The solution we found was quick and dirty but it seems to
 work: now the users just have to edit the `Book/biblio/bibliofiles.tex` file to include the
 required biblio files.
 
-## If you still prefer (for whatever reason) `bibtex` as your backend
-
-Gonzalo still kept some support for `bibtex` in the `Makefile` and `Book/book.tex` files. If you want to use the `bibtex` you have to:
-
-- Define the `\bibliosystem` variable in `Config/preamble.tex` to be equal to `bibtex`
-- Convert the `biblio/biblio.bib` file to ISO-8859-1 encoding
-
-
 ## Collaboration with your advisor or colleagues
 
 ### Using GitHub for Version Control
