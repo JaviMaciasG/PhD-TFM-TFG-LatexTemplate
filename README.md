@@ -117,7 +117,7 @@ For a normal thesis or final-project document, start with `Config/myconfig.tex` 
 
 1. Go to the `Anteproyecto` directory, where you will find the `anteproyecto.tex` file. This is the one you should work in. An example is provided in the repo file.
 2. Edit the file to suit your needs
-3. Compile it (there is a `Makefile` available, but you can use your standard LaTeX build tool).
+3. Compile it (there is a `Makefile` available, but you can use your standard LaTeX build tool or command within your preferred \LaTeX{} editor).
 
 ## To fill in and generate the main book
 
@@ -131,7 +131,17 @@ For a normal thesis or final-project document, start with `Config/myconfig.tex` 
    make
    ```
 
-The build runs the required LaTeX, bibliography, and glossary passes. It generates `book.pdf`, reduced-size `book-screen.pdf` and `book-compressed.pdf` variants, and copies them to filenames derived from the work type, degree, author, and language.
+Using `make` is recommended but not required. You can instead compile
+`Book/book.tex` with a standard LaTeX build tool or from your preferred
+LaTeX editor. Configure the tool or editor to use `pdflatex`, `biber`, and
+`makeglossaries`, with the additional LaTeX passes required to resolve
+references, the bibliography, and the glossaries.
+
+The provided Makefile runs those steps automatically. It generates
+`book.pdf` and a reduced-size `book-compressed.pdf` variant, and copies them
+to filenames derived from the work type, degree, author, and language. Other
+build tools may generate only `book.pdf` unless configured to reproduce these
+additional steps.
 
 To remove generated auxiliary files, run this from `Book/`:
 
