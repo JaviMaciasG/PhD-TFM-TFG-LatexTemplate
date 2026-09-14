@@ -550,75 +550,104 @@ Si se comunica un problema, resulta útil indicar el sistema operativo, la distr
 \section{Ejemplos de elementos de utilidad}
 \label{sec:ejempl-de-elem}
 
-\subsection{Uso de comandos definidos}
+\subsection{Comandos personalizados}
 \label{sec:uso-de-comandos}
 
-A modo de ejemplo, hemos definido el comando \texttt{\textbackslash{}texten\{\}} en \texttt{Config/myconfig.tex} para usarlo, por ejemplo, para marcar palabras escritas en inglés (aka \texten{English}). Sigue el ejemplo para definir aquellos que utilices con frecuencia.
+Después de las variables de configuración, \texttt{Config/myconfig.tex} contiene una zona destinada a definir comandos personalizados. Las definiciones distribuidas con la plantilla son ejemplos que pueden conservarse, adaptarse o eliminarse cuando dejen de utilizarse.
 
-Si quieres escribir el símbolo \texttt{backslash} puedes usar el comando \texttt{\textbackslash{}backlash\{\}}:~\textbackslash{}.
+Los comandos de ejemplo incluidos actualmente son:
 
-Lo mismo aplica para el símbolo \texttt{tilde}, para lo que puedes usar el comando \texttt{\textbackslash{}textasciitilde\{\}}:~\textasciitilde{}.
+\begin{description}
+  \item[\texttt{\textbackslash{}texten\{texto\}}] Presenta en cursiva una palabra o expresión en inglés dentro de un documento en español; por ejemplo, \texttt{\textbackslash{}texten\{English\}} produce \texten{English}.
+  \item[\texttt{\textbackslash{}ci}] Genera el símbolo matemático de independencia condicional utilizado por algunos ejemplos.
+  \item[\texttt{\textbackslash{}circulo}] Genera un círculo utilizado como marcador gráfico.
+  \item[\texttt{\textbackslash{}asterisco}] Genera un asterisco matemático.
+  \item[\texttt{\textbackslash{}cuadrado}] Genera un cuadrado utilizado como marcador gráfico.
+  \item[\texttt{\textbackslash{}triangulo}] Genera un triángulo orientado hacia arriba.
+  \item[\texttt{\textbackslash{}triangv}] Genera un triángulo orientado hacia abajo.
+  \item[\texttt{\textbackslash{}diamante}] Genera un rombo utilizado como marcador gráfico.
+  \item[\texttt{\textbackslash{}new\{texto\}}] Resalta texto en magenta. Puede resultar útil durante la revisión, pero conviene comprobar que no queden marcas de este tipo en la versión definitiva.
+  \item[\texttt{\textbackslash{}argmax\{índice\}}] Compone el operador matemático \texttt{argmax} colocando debajo el índice indicado.
+  \item[\texttt{\textbackslash{}verticalSpacingSRPMaps}] Almacena una separación vertical utilizada por uno de los ejemplos gráficos de los capítulos.
+  \item[\texttt{\textbackslash{}todojmg}, \texttt{\textbackslash{}todorbc} y \texttt{\textbackslash{}todomig}] Crean notas de revisión en línea con autores y colores diferenciados mediante el paquete \texttt{todonotes}. Sus nombres, iniciales y colores deben adaptarse a las personas que participen en la revisión.
+\end{description}
 
+Los símbolos de barra inversa y virgulilla no necesitan definiciones adicionales. Pueden escribirse mediante \texttt{\textbackslash{}textbackslash\{\}}, que produce \textbackslash{}, y \texttt{\textbackslash{}textasciitilde\{\}}, que produce \textasciitilde{}.
 
-\subsection{Uso de ``frases célebres''}
+Antes de eliminar o cambiar un comando de ejemplo conviene buscar sus usos en los capítulos, apéndices, acrónimos y símbolos. Si se elimina una definición que todavía se utiliza, la compilación fallará con un error de secuencia de control desconocida.
+
+\subsection{Frases célebres}
 \label{sec:uso-de-frases}
 
-Respecto a la frase célebre del inicio de los capítulos: todas las que hemos usado y las definiciones que las generen están sacadas del excelente trabajo de Marco Antonio Gomez-Martín y Pedro Pablo Gomez-Martín en el proyecto \texis, una plantilla para la creación de tesis y otros documentos y disponible en \cite{texis}.
+La plantilla permite incorporar al comienzo de los capítulos una cita mediante los entornos \texttt{FraseCelebre}, \texttt{Frase} y \texttt{Fuente}. Las frases utilizadas como ejemplo y las definiciones que permiten generarlas proceden del excelente trabajo de Marco Antonio Gomez-Martín y Pedro Pablo Gomez-Martín en el proyecto \texis{}, una plantilla para la creación de tesis y otros documentos disponible en \cite{texis}.
 
+Cada capítulo puede editar o eliminar su bloque de cita sin afectar al resto de su contenido. Cuando se utilice una cita ajena, debe identificarse adecuadamente su fuente y comprobarse que su reproducción sea compatible con los derechos aplicables.
 
-\subsection{Inclusión de diagramas}
+\subsection{Inclusión de figuras y diagramas}
 \label{sec:diagrama}
 
-Para incluir gráficos, la compilación que utilizamos permite usar ficheros \texttt{png}, \texttt{jpg} y \texttt{pdf}, en el comando \texttt{\textbackslash{}includegraphics}. Si queréis ahorraros incluir el path a cada fichero, podéis definir todos aquellos en los que haya ficheros gráficos en el \texttt{\textbackslash{}graphicspath} del \texttt{book.tex}.
+Los ficheros \texttt{pdf}, \texttt{png} y \texttt{jpg} pueden incluirse directamente mediante \texttt{\textbackslash{}includegraphics}. \texttt{Book/book.tex} configura inicialmente los directorios \texttt{logos/}, \texttt{figures/} y \texttt{diagrams/} mediante \texttt{\textbackslash{}graphicspath}, por lo que normalmente basta con indicar el nombre del fichero sin escribir su ruta completa.
 
-En la figura \ref{fig:fig_clobj} se muestra un ejemplo de gráfico generado automáticamente a partir de un fichero \texttt{.dia}\footnote{Tomadas de los proyectos fin de carrera de David Casillas y Manuel Villaverde.}: \texttt{diagrams/Esquema\_objetos.dia} (podéis generalizar su generación en el \texttt{Makefile}).
+El \texttt{Makefile} puede convertir automáticamente fuentes \texttt{dia}, \texttt{svg} y \texttt{eps} a PDF cuando están instaladas las herramientas opcionales correspondientes. Los PDF generados pueden incluirse después como cualquier otra figura.
+
+La figura~\ref{fig:fig_clobj} utiliza \texttt{diagrams/Esquema\_objetos.pdf}, que también puede generarse a partir de \texttt{diagrams/Esquema\_objetos.dia}. El ejemplo procede de los trabajos fin de carrera de David Casillas y Manuel Villaverde.
 
 \begin{figure}[tphb]
-  \centering \includegraphics{Esquema_objetos}
-  \caption{Clasificación de los objetos para la gramática (aquí también se pueden poner acrónimos como \acs{ETTS} y símbolos como \ac{xidet})}
+  \centering
+  \includegraphics{Esquema_objetos}
+  \caption{Clasificación de los objetos para la gramática; los pies de figura también pueden contener acrónimos como \acs{ETTS} y símbolos como \ac{xidet}.}
   \label{fig:fig_clobj}
 \end{figure}
 
+Todas las figuras deben incluir un pie descriptivo y una etiqueta única mediante \texttt{\textbackslash{}label}. Para citarlas desde el texto se debe utilizar \texttt{\textbackslash{}ref}, preferiblemente acompañado del tipo de elemento, como en \texttt{figura\textasciitilde{}\textbackslash{}ref\{fig:fig\_clobj\}}.
 
-\subsection{Definición y uso de acrónimos (aquí también se pueden poner acrónimos como \acs{ETTS})}
+\subsection{Definición y uso de acrónimos}
 \label{sec:uso-de-acronimos}
 
-El uso del paquete \texttt{glossaries} permite definir los acrónimos y el sistema automáticamente gestiona su inclusión completa la primera vez que se usa. Los acrónimos de ejemplo están en el fichero \texttt{acronyms/defacronymsgl.tex} (con opciones adicionales de configuración en \texttt{acronyms/acronymsgl.tex}).
+La plantilla gestiona los acrónimos mediante el paquete \texttt{glossaries}. Sus definiciones se encuentran en \texttt{acronyms/defacronymsgl.tex}, mientras que \texttt{acronyms/acronymsgl.tex} configura y genera el listado correspondiente.
 
-Así, si nos referimos a \ac{ETTS} o bien a \ac{EMODB}, veremos como aparecen expandidas la primera vez. A partir de ahí, sólo se usará el acrónimo como puede verse al volver a hablar de \ac{ETTS} y \ac{EMODB}.
+Un acrónimo puede definirse mediante una orden como:
 
-Tiene también soporte para resetear todos los acrónimos como si no estuvieran usados. Vuelvo a incluir el párrafo anterior tras un reset (que se hace con un \texttt{\textbackslash{}glsresetall[acronym]}):
+\begin{verbatim}
+\newacronym{ETTS}{ETTS}{Emotional Text To Speech}
+\end{verbatim}
 
-\glsresetall[acronym]
+La orden \texttt{\textbackslash{}ac\{ETTS\}} produce \ac{ETTS} y gestiona automáticamente la forma mostrada en usos posteriores. Las principales órdenes disponibles en los ejemplos son:
 
-El uso del paquete acronym permite definir los acrónimos y el sistema automáticamente gestiona su inclusión completa la primera vez que se usa. Así, si nos referimos a \ac{ETTS} o bien a \ac{EMODB}, veremos como aparecen expandidas de nuevo (como si fuera la primera vez que se usan). A partir de ahí, sólo se usará el acrónimo como puede verse al volver a hablar de \ac{ETTS} y \ac{EMODB}.
+\begin{description}
+  \item[\texttt{\textbackslash{}ac\{clave\}}] Utiliza la forma completa la primera vez y la abreviada en los usos posteriores.
+  \item[\texttt{\textbackslash{}acs\{clave\}}] Fuerza la forma abreviada.
+  \item[\texttt{\textbackslash{}acl\{clave\}}] Fuerza la forma desarrollada.
+  \item[\texttt{\textbackslash{}acf\{clave\}}] Fuerza la forma completa, con la abreviatura incluida.
+  \item[\texttt{\textbackslash{}acp\{clave\}}] Utiliza la forma plural configurada para el acrónimo.
+  \item[\texttt{\textbackslash{}glsresetall[acronym]}] Reinicia el estado de uso de todos los acrónimos para que vuelvan a tratarse como no utilizados.
+\end{description}
 
-Y permite también forzar que se vuelva a citar completo aunque ya se haya utilizado (con el acrónimo entre paréntesis), como puede verse en \acl{ETTS} (equivalente a \glsdesc{ETTS} que vale para cualquier glosario), y también a usar forzosamente el acrónimo. Primero reseteamos de nuevo.
+Las entradas que necesitan plurales personalizados u otros atributos pueden definirse mediante \texttt{\textbackslash{}newglossaryentry}, como muestra el acrónimo \texttt{SOC} incluido en el fichero de ejemplo. Para generar el listado debe ejecutarse \texttt{makeglossaries}, tal como se explica en la sección~\ref{sec:compilacion}.
 
-\glsresetall[acronym]
-
-Y ahora forzamos el acrónimo: \acs{EMODB} (equivalente a \glsname{EMODB} que vale para cualquier glosario). También podemos forzar a que lo ponga todo, con \acf{EMODB}.
-
-
-Podemos seguir definiendo entradas de acrónimos, referirnos a \ac{DBN} por primera vez, y las siguientes aparecerá como \ac{DBN}. Pongo ahora el resto de acrónimos \ac{SQ}, \ac{EIR}, \ac{SIR} y \ac{ES}. Finalmente los repito para que se vea el efecto: \ac{SQ}, \ac{EIR}, \ac{SIR} y \ac{ES}.
-
-Y gestiona bien los plurales, ponemos el plural como \acp{SOC} la primera vez, y luego la segunda como \acp{SOC}. Y podemos volver al singular con \ac{SOC}.
-
-
-\subsection{Definición y uso de símbolos (aquí también se pueden símbolos como \ac{xidet})}
+\subsection{Definición y uso de símbolos}
 \label{sec:simbolos}
 
-Los símbolos definidos están incluidos en el fichero \texttt{symbols/defsymbolsgl.tex} (con configuración adicional en \texttt{symbols/symbolsgl.tex}) y en esta sección mostramos algunos ejemplos.
+Los símbolos se gestionan también mediante \texttt{glossaries}. Se definen en \texttt{symbols/defsymbolsgl.tex} como entradas del glosario de tipo \texttt{symbols}, y su listado se configura en \texttt{symbols/symbolsgl.tex}.
 
-El \ac{angstrom} se usa en biología estructural, mientras que el \ac{ohm} se usa en electrónica. También podemos poner~\ac{xdet}. Y
+Los ejemplos incluidos representan el ángstrom, \ac{angstrom}; el ohmio, \ac{ohm}; una señal de audio, \ac{xdet}; una señal capturada por el micrófono \(i\), \ac{xidet}; y la independencia condicional, \ac{condindep}. La orden \texttt{\textbackslash{}ac\{clave\}} puede utilizarse tanto con acrónimos como con estas entradas de símbolos.
 
+Si no se necesitan acrónimos o símbolos, pueden comentarse en \texttt{Book/book.tex} las órdenes que incluyen sus definiciones y listados. En ese caso tampoco es necesario ejecutar \texttt{makeglossaries}.
 
-\section{Ejemplos de inclusión de enlaces a vídeos y listado}
+\subsection{Enlaces a vídeos y listados adicionales}
 \label{sec:videolink}
 
-En marzo de 2023 recibimos una pregunta sobre la posibilidad de incluir enlaces a vídeos en el documento, y que se generara automáticamente un listado similar al de tablas, figuras o algoritmos. El código para implementarlo está también en el fichero \texttt{cover/extralistings.tex} y puedes editarlo como te interese. Para usarlo, basta con que incluyas elementos similares a \videoLink{Introducción al Laboratorio de Circuitos Electrónicos (I)}{https://www.youtube.com/watch?v=U1P2ZP0f8KM} o \videoLink{Introducción al Laboratorio de Circuitos Electrónicos (V)}{https://www.youtube.com/watch?v=nPsxMqKRGx0}.
+En 2023 se añadió, a partir de una consulta recibida, un ejemplo que permite incluir enlaces a vídeos y generar automáticamente un listado similar a los índices de tablas, figuras o algoritmos. Su configuración se encuentra en \texttt{cover/extralistings.tex}.
 
-Lo importante no es tanto que sea un listado de vídeos, sino que muestra cómo se pueden integrar listados de elementos adicionales que sean a su vez enlaces y configurar la generación del índice para generar enlaces visitables desde el mismo índice (además de su indexación convencional).
+Un enlace puede añadirse mediante una orden como:
+
+\begin{verbatim}
+\videoLink{Título descriptivo del vídeo}{https://example.org/video}
+\end{verbatim}
+
+La orden incorpora el enlace al texto y registra la entrada en el listado de vídeos. Para mostrar ese listado debe mantenerse la inclusión de \texttt{cover/extralistings.tex} en \texttt{Book/book.tex}.
+
+Este ejemplo también muestra cómo crear otros tipos de elementos flotantes, asociarles un listado propio e incorporar ese listado al índice general del documento.
 
 %%% Local Variables:
 %%% TeX-master: "../book"
