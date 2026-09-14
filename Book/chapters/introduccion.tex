@@ -177,41 +177,37 @@ Estas herramientas solo deben instalarse cuando se vaya a utilizar la prestació
 \subsection{Estructura del documento generado por la plantilla}
 \label{sec:estr-del-docum}
 
-La plantilla definida presenta la siguiente estructura:
+La estructura del documento principal se define en \texttt{Book/book.tex}. En este fichero se pueden añadir, eliminar, comentar o reordenar los distintos elementos mediante sus correspondientes órdenes \texttt{\textbackslash{}input} o \texttt{\textbackslash{}includepdf}. Los ejemplos incluidos no constituyen una estructura obligatoria y deben adaptarse a la normativa y a las necesidades de cada trabajo.
+
+El documento se divide en tres partes gestionadas por las órdenes \texttt{\textbackslash{}frontmatter}, \texttt{\textbackslash{}mainmatter} y \texttt{\textbackslash{}backmatter}:
+
+\begin{description}
+  \item[\texttt{\textbackslash{}frontmatter}] Contiene las cubiertas, los documentos preliminares, la dedicatoria, los agradecimientos, los resúmenes y los distintos índices y listados.
+  \item[\texttt{\textbackslash{}mainmatter}] Contiene los capítulos principales, los apartados técnicos opcionales, la bibliografía y los apéndices.
+  \item[\texttt{\textbackslash{}backmatter}] Contiene la contraportada cuando corresponde al tipo de trabajo seleccionado.
+\end{description}
+
+La estructura distribuida con la plantilla incluye los siguientes elementos:
 
 \begin{itemize}
-
-  \item Portada y página de información sobre el trabajo, que será dependiente del tipo de trabajo y la titulación. Se genera automáticamente a partir de la información definida en la sección~\ref{sec:definicion-del-tipo}
-
-  \item Ficheros pdf insertados, que aplican en algunos de los tipos de documentos (por ejemplo en las tesis doctorales).
-
-  \item Dedicatoria, con un ejemplo incluido en el fichero \texttt{dedication/dedicatoria.tex}.
-  \item Agradecimientos, con un ejemplo incluido en el fichero \texttt{dedication/agradecimientos.tex}.
-
-
-  \item Resumen en español, con un ejemplo incluido en el fichero \texttt{abstract/resumen.tex}.
-  \item Resumen en inglés, con un ejemplo incluido en el fichero \texttt{abstract/abstract.tex}.
-  \item Resumen extendido en español (opcional en algunos tipos de documento), con un ejemplo incluido en el fichero \texttt{abstract/resumen-extendido.tex}.
-
-  \item Índice de contenidos, índice de figuras e índice de tablas.
-  \item Índices adicionales, de los que se incluye un ejemplo de listado específico en el fichero \texttt{cover/extralistings.tex}, que incluye el listado de fragmentos de código fuente definidos en el \texttt{appendix/manual.tex}, así como un nuevo listado de vídeos que incluimos en 2023 tras una petición recibida al respecto.
-
-  \item Listado de acrónimos utilizados, que se definen en el fichero \texttt{acronyms/defacronymsgl.tex} (con opciones adicionales de configuración en \texttt{acronyms/acronymsgl.tex}), y del que incluimos más información en la sección~\ref{sec:uso-de-acronimos}.
-  \item Listado de símbolos utilizados, que se definen en el fichero \texttt{symbols/defsymbolsgl.tex} (con opciones adicionales de configuración en \texttt{symbols/symbolsgl.tex}), y del que incluimos más información en la sección~\ref{sec:simbolos}.
-
-
-  \item Capítulos del documento, del que hay varios ejemplos que siguen la estructura típica (introducción, estudio teórico, desarrollo, resultados y conclusiones.
-
-  \item Pliego de condiciones y presupuesto, opcionales en función del tipo de documento que se genere (se incluyen un par de ejemplos del trabajo fin de carrera de Jesús Martínez en los ficheros \texttt{pliego/pliego-ejemplo.tex} y \texttt{presupuesto/presupuesto-ejemplo.tex}. Es un trabajo antiguo y es necesario que busquéis esquemas y contenidos actualizados para estos capítulos.
-
-  \item Bibliografía, de la que se puede cambiar el estilo utilizado y los ficheros \texttt{.bib} en el fichero \texttt{biblio/bibliography.tex} (en el que hay que definir la lista de ficheros de bibliografía que se usarán (variables \texttt{\textbackslash{}mybibfileOne}, \texttt{\textbackslash{}mybibfileTwo}, ...).
-
-  \item Apéndices, de los que ahora se incluyen dos ejemplos en los ficheros \texttt{appendix/manual.tex} (que sirve de pretexto para mostrar cómo se insertan fragmentos de código fuente), y \texttt{appendix/herramientas.tex}.
-  \item Contraportada.
+  \item Portada y páginas iniciales, seleccionadas automáticamente por \texttt{cover/cover.tex} a partir de la titulación configurada mediante \texttt{\textbackslash{}myDegree}. Las distintas plantillas institucionales se encuentran en el directorio \texttt{cover/}.
+  \item Documentos PDF preliminares, que pueden insertarse con \texttt{\textbackslash{}includepdf}. El fichero \texttt{letters/sampleLetter.pdf} muestra cómo incorporar todas las páginas de un documento, y \texttt{letters/sampleLetter-pages.pdf} permite probar la selección de páginas concretas. Estos documentos pueden ser necesarios, por ejemplo, en determinadas tesis doctorales o trabajos fin de máster.
+  \item Dedicatoria, incluida desde \texttt{dedication/dedicatoria.tex}. Puede editarse o comentarse su orden \texttt{\textbackslash{}input} si no se desea utilizar.
+  \item Agradecimientos, incluidos desde \texttt{acknowledgements/agradecimientos.tex}. También pueden editarse u omitirse.
+  \item Definiciones de acrónimos, incluidas desde \texttt{acronyms/defacronymsgl.tex}, y listado correspondiente, configurado en \texttt{acronyms/acronymsgl.tex}. Ambos elementos pueden comentarse cuando no se utilicen acrónimos.
+  \item Definiciones de símbolos, incluidas desde \texttt{symbols/defsymbolsgl.tex}, y listado correspondiente, configurado en \texttt{symbols/symbolsgl.tex}. Ambos elementos pueden comentarse cuando no se utilicen símbolos.
+  \item Resumen en español, incluido desde \texttt{abstract/resumen.tex}, y resumen en inglés, incluido desde \texttt{abstract/abstract.tex}.
+  \item Resumen extendido en español, disponible en \texttt{abstract/resumen-extendido.tex}. Su inclusión está comentada de forma predeterminada y puede activarse cuando lo requiera el tipo de trabajo.
+  \item Índice general, índice de figuras e índice de tablas, generados desde \texttt{cover/toc+lof+lot.tex}.
+  \item Listados adicionales, configurados en \texttt{cover/extralistings.tex}. El ejemplo incluye listados para fragmentos de código, algoritmos y vídeos, y puede editarse o comentarse si no se necesita.
+  \item Capítulos principales, incluidos desde el directorio \texttt{chapters/}. El ejemplo proporciona una estructura formada por introducción, estudio teórico, desarrollo, resultados y conclusiones, que debe adaptarse libremente al contenido real del trabajo.
+  \item Pliego de condiciones, disponible en \texttt{pliego/pliego.tex}, y presupuesto, disponible en \texttt{presupuesto/presupuesto.tex}. Sus órdenes de inclusión están comentadas de forma predeterminada y deben activarse únicamente cuando sean necesarios. Los ejemplos proceden de un trabajo fin de carrera de Jesús Martínez y se conservan como material de referencia; debido a su antigüedad, deben contrastarse con la normativa y los formatos actuales.
+  \item Bibliografía, impresa mediante \texttt{biblio/bibliography.tex}. Los ficheros \texttt{.bib} que se procesarán se declaran en \texttt{biblio/bibliofiles.tex} mediante las variables \texttt{\textbackslash{}mybibfileOne}, \texttt{\textbackslash{}mybibfileTwo} y las sucesivas variables disponibles.
+  \item Apéndices, agrupados mediante el entorno \texttt{appendices}. El libro de ejemplo incluye \texttt{appendix/manual.tex}, \texttt{appendix/herramientas.tex} y \texttt{appendix/versiones.tex}.
+  \item Contraportada, seleccionada automáticamente mediante \texttt{cover/backpage.tex} cuando existe una plantilla aplicable al tipo de trabajo y a la titulación configurados.
 \end{itemize}
 
-Por supuesto, modificad la estructura para que encaje en las directrices que tengáis al respecto de cómo documentar vuestro trabajo.
-
+Además de editar los ficheros incluidos, se debe revisar \texttt{Book/book.tex} para comentar los elementos que no se necesiten y añadir los capítulos, apéndices o documentos externos propios. Cuando se incorpore un PDF mediante \texttt{\textbackslash{}includepdf}, conviene mantener la orden \texttt{\textbackslash{}clearemptydoublepage} posterior para que el siguiente elemento comience en la página adecuada.
 
 \subsection{Definiciones específicas del tipo de documento}
 \label{sec:definicion-del-tipo}
