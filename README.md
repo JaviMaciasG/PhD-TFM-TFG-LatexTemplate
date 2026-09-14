@@ -4,7 +4,7 @@ This repo contains a generic template for PhD, Msc (TFM) and BsC (TFG) thesis do
 
 The template uses configuration variables (defined in the `Config/myconfig.tex` file) to customize all the document generation process, so that you don't need to devote any effort to comply with formatting requirements (cover and back pages for example), document layout, etc.
 
-Support to generate the "anteproyecto" is also provided (in the `Anteproyecto` folder), along with some of the paperwork required by the current regulations. As of February 2025 I have reworked all the paperwork required for the UAH TFGs (in the `Papeleo/TFG` folder) to comply with recently approved regulations. This support will be useful for you and your advisor/s (advisor report and rubric, defense rubric, and authorization for open publishing (for advisor/author/foreign advisor)). Paperwork support for TFM and PhD is pending to be fully re-checked against new regulations, but you can fully use the template to write the document itself.
+Support to generate the "anteproyecto" is also provided (in the `Anteproyecto` folder), along with some of the paperwork required by the current regulations. As of February 2025 I have reworked all the paperwork required for the UAH TFGs (in the `PapeleoTFG/` folder) to comply with recently approved regulations. This support will be useful for you and your advisor/s (advisor report and rubric, defense rubric, and authorization for open publishing (for advisor/author/foreign advisor)). Paperwork support for TFM and PhD is pending to be fully re-checked against new regulations, but you can fully use the template to write the document itself.
 
 Please carefully read chapter 1 of any of the precompiled examples in the dropbox distribution (for example that for the [GIEC TFG at UAH](https://www.dropbox.com/s/69ppvvp9i03sp4m/TFG-GIEC-spanish.pdf?dl=0)).
      
@@ -74,10 +74,10 @@ Remember that you will have to select the "main document" (access it through the
 
 But you should also have a look to the paperwork related ones:
 
-+ `Papeleo/SolicitudTFGTFM/solicitud.tex`
-+ `Papeleo/TFGAutorizacionPubAbierto/autorizacionAutorPublicarRepositorio.tex`
-+ `Papeleo/TFGAutorizacionPubAbierto/autorizacionTutorPublicarRepositorio.tex`
-+ `Papeleo/TFMAutorizacionPubAbierto//autorizacionPublicarAbierto.tex`
++ `PapeleoTFM/solicitud.tex`
++ `PapeleoTFG/TFG-AutorizacionAutorPubAbierto.tex`
++ `PapeleoTFG/TFG-AutorizacionTutorPubAbierto.tex`
++ `PapeleoTFM/TFM-AutorizacionPublicarAbierto.tex`
 + etc.
 
 We have had a number of issues with [Overleaf](https://www.overleaf.com/) in the past (mainly regarding glossaries), and they should be fully working. If new issues arise in the future, [this repo](https://github.com/gkilleen33/overleaf-offline/tree/master) has nice configurations for `latexmkrc` that should provide hints on how to solve them).
@@ -110,7 +110,7 @@ The template is accessible in two ways:
 
 ## To fill in and generate paperwork
 
-1. Go to the `PapeleoTFG/TFM/PHD` directory where you will find general files required for the corresponding document types.
+1. Go to `PapeleoTFG/`, `PapeleoTFM/`, or `PapeleoPHD/`, according to the type of document you need.
 2. Edit the files you need and compile them by using the corresponding `Makefile`s or your standard LaTeX build tool. If you use [Overleaf](https://www.overleaf.com/), change the `main document` to be the one you want to compile.
 
 
