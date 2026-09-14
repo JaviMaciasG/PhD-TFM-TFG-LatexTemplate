@@ -25,12 +25,12 @@ Top-level directories and their primary role:
 - `UsefulDocs/`: Reference docs (cheatsheets and symbols).
 - `Deprecated/`: Legacy material kept for reference.
 
-Repository volume snapshot (current checkout):
+Repository volume snapshot (tracked files):
 
-- Total files: 719
-- TeX files: 229
-- PDF files: 131
-- Word documents (`.doc/.docx`): 24
+- Total files: 711
+- TeX files: 230
+- PDF files: 129
+- Word documents (`.doc/.docx`): 25
 
 ## Main user workflow
 
@@ -115,7 +115,7 @@ This central switchboard is where most format branching is coordinated for TFG/T
 - The project contains long-lived legacy material and historical comments (`$Id` tags, old workflows).
 - `Deprecated/` keeps earlier assets/tools, indicating strong backward compatibility concerns.
 - `TODO` still tracks pending improvements (e.g., acronym issues, Windows usage guidance).
-- Documentation is broad (`README.md`, `HOWTO.md`) but there is natural overlap and some outdated notes.
+- User documentation is centralized in `README.md`, with additional examples embedded in the template chapters.
 
 ## Strengths
 
