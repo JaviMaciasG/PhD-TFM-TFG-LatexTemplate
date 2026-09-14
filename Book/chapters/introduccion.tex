@@ -73,90 +73,106 @@ La configuración general se realiza en \texttt{Config/myconfig.tex}. Los distin
 \subsection{Prerrequisitos}
 \label{sec:prerrequisitos}
 
-Para usar la plantilla tal y como está definida, hace falta disponer de una serie de paquetes de estilos \LaTeX{} (ficheros \texttt{.sty}), todos ellos definidos en el fichero \texttt{Config/preamble.tex}.
+Para compilar la plantilla se necesita una distribución de \LaTeX{} suficientemente completa y actualizada. TeX Live es una opción habitual en GNU/Linux, MiKTeX y TeX Live están disponibles para Windows, y MacTeX proporciona una distribución adaptada a macOS. La distribución elegida debe proporcionar \texttt{pdflatex} y Biber, además de los paquetes cargados desde \texttt{Config/preamble.tex}.
 
-No vamos a hacer un listado de todos lo necesarios (sería demasiado largo\footnote{Los que suelen no estar instalados en un ubuntu estándar son \texttt{texlive-publishers}, \texttt{texlive-science}}), pero en la mayoría de distribuciones GNU/Linux serán fáciles de conseguir en caso de que la compilación genere un error de fichero no encontrado. Si os sucede, buscadlos en alguno de los paquetes \texttt{texlive-*}. En caso de no encontrarlos, una búsqueda en google (que con casi total seguridad referenciará a alguna página en CTAN) os dará el enlace a la descarga correspondiente. A partir de ahí, su inclusión en directorios locales será suficiente.
-% (como por ejemplo hemos tenido que hacer con el paquete \texttt{background}, incluido en la distribución en el directorio \texttt{sty/background}). Lo más cómodo es hacer una instalación del \texttt{texlive-full}.
+Biber es necesario cuando el documento incluye bibliografía. Si se utilizan acrónimos o símbolos, también se necesita \texttt{makeglossaries}; el libro de ejemplo distribuido con la plantilla contiene ambos elementos y, por tanto, requiere esta herramienta para generar todos sus listados.
 
-Igualmente será necesario tener instaladas una serie de utilidades y aplicaciones:
+Si durante la compilación se informa de que falta un fichero \texttt{.sty}, se debe instalar el paquete de la distribución de \LaTeX{} que lo contiene. En MiKTeX puede activarse la instalación automática de paquetes; TeX Live y MacTeX proporcionan sus propias herramientas para administrar los paquetes instalados.
 
-\begin{itemize}
-  \item En Linux
-
-        \begin{itemize}
-          \item \texttt{make}, si se quiere utilizar la facilidad del \texttt{Makefile} suministrado. Está disponible en todas las distribuciones GNU/Linux.
-          \item \texttt{rubber}, si se quiere utilizar la prestación de compilación de código \LaTeX{} incluida en el \texttt{Makefile}. Debería estar disponible en cualquier distribución GNU/Linux, pero si no es así, puedes optar por descargarla, o bien usar la alternativa de \texttt{latexmk} (para el que también se incluyen targets específicos en el \texttt{Makefile} suministrado).
-          \item \texttt{dia}, si se quiere utilizar el ejemplo proporcionado de generación de esquemas con dicha herramienta.
-          \item \texttt{epspdf}, si se quiere utilizar la facilidad de la conversión automática de ficheros \texttt{eps} a \texttt{pdf} (también se usa en la conversión de ficheros \texttt{.dia}).
-          \item \texttt{makeglossaries}, si se quiere utilizar la prestación de manejo de listas de acrónimos y variables. Suele estar en el paquete \texttt{texlive-latex-extra} en distribuciones basadas en Debian (como ubuntu y derivados).
-          % \item \texttt{latexdiff} y \texttt{latexpand}, si se quiere utilizar la prestación de generación de ficheros pdf con control de cambios. El primero suele ser un paquete independiente, y el segundo suele estar en el paquete \texttt{texlive-extra-utils}.
-        \end{itemize}
-
-  \item En Windows (os cuento la configuración que he probado en algún momento):
-
-        \begin{itemize}
-          \item \texttt{miktex} como sistema de compilación \LaTeX{}, diciéndole que instale todo lo que necesite.
-          \item \texttt{TeXstudio} o \texttt{TeXMaker} como editor.
-          \item Para usar glossaries, echadle un ojo a \url{https://tex.stackexchange.com/questions/156270/has-anyone-managed-to-use-glossaries-with-texstudio-on-windows}. Os copio aquí info que nos han pasado al respecto (gracias Cristina Losada): En Texmaker se puede configurar la “Compilacion rápida” con los comandos que queramos. Eso está en el menú Opciones a Configurar Texmaker, y a la izquierda de la ventana que sale hay que elegir “Compilación rápida”. Hay las opciones típicas, y además permite usar los comandos elegidos por el usuario. Ahí yo tengo esta configuración (compila con pdflatex, llama además a bibtex y makeglossaries y al final muestra el pdf): \texttt{pdflatex -synctex=1 -interaction=nonstopmode \%.tex|bibtex \%|makeglossaries \%|pdflatex -synctex=1 -interaction=nonstopmode \%.tex|pdflatex -synctex=1 -interaction=nonstopmode \%.tex|}''\texttt{C:/Program Files (x86)/Adobe/Acrobat Reader DC/Reader/AcroRd32.exe}''\texttt{ \%.pdf}
-    \item \texttt{make}, si se quiere utilizar la facilidad del \texttt{Makefile} suministrado. Hay varias opciones y que necesita un intérprete de comandos (es posible que con el nuevo WSL sea más fácil todavía).
-  \end{itemize}
-\end{itemize}
+La plantilla no requiere el uso de \texttt{make}. Puede compilarse desde la terminal o con cualquier editor o herramienta de construcción de \LaTeX{} que permita ejecutar la secuencia descrita en la sección~\ref{sec:compilacion}. El \texttt{Makefile} incluido es únicamente una forma opcional de automatizar el proceso y resulta especialmente cómodo en sistemas GNU/Linux.
 
 \subsection{Compilación}
 \label{sec:compilacion}
 
-Para facilitar la generación del documento se incluye un \texttt{Makefile} relativamente sencillo. No somos expertos ni en \texttt{make} ni en \LaTeX, con lo que seguro que no es el mejor de los \texttt{Makefiles} del mundo, pero creemos que hace su función.
+Antes de compilar el documento debe completarse la configuración compartida en \texttt{Config/myconfig.tex}. La secuencia completa utilizada por el libro de ejemplo es:
 
-El \texttt{Makefile} tiene las siguientes características y prestaciones:
+\begin{verbatim}
+pdflatex book.tex
+biber book
+makeglossaries book
+pdflatex book.tex
+pdflatex book.tex
+\end{verbatim}
 
-\begin{itemize}
+Biber genera la bibliografía y \texttt{makeglossaries} genera los listados de acrónimos y símbolos. Si un documento personalizado no contiene bibliografía, acrónimos ni símbolos, se pueden omitir las herramientas correspondientes. Las pasadas adicionales de \texttt{pdflatex} permiten actualizar correctamente las referencias cruzadas, los índices, la bibliografía y, cuando existan, los glosarios.
 
-  \item Hace uso de la herramienta \texttt{rubber}. En caso de no disponer de ella, puede usarse \texttt{latexmk} (hay targets específicos de ejemplo para ese caso), pero esta última herramienta no ha sido probada intensivamente. Si no se dispone de ninguna de ellas, habría que generar la estructura típica de compilación: (al estilo \texttt{pdflatex + bibtex + pdflatex + pdflatex}).
-  \item Soporta la generación automática de ficheros \texttt{pdf} a partir de los \texttt{dia} y \texttt{svg} (se han elegido estos a modo de ejemplo, pero se puede adaptar fácilmente a otras necesidades).
-  \item Genera la información de listas de acrónimos y símbolos con la herramienta \texttt{makeglossaries}. Es imprescindible tenerla instalada si se desea usar esa capacidad.
-  \item Soporta los targets:
-        \begin{itemize}
-          \item \texttt{all} (que es la opción predeterminada si se ejecuta \texttt{make} sin más argumentos), que genera el fichero \texttt{book.pdf} correspondiente, usando \texttt{rubber} y \texttt{makeglossaries}. No nos hemos planteado la generación de ficheros en otros formatos.
-          \item \texttt{all\_latexmk}, que genera el fichero \texttt{book.pdf} correspondiente, usando \texttt{latexmk} y \texttt{makeglossaries}. Si ésta es tu opción, sustituye el target \texttt{all} por éste, para facilitarte la compilación.
+\subsubsection{Compilación desde un editor de \LaTeX{}}
 
-          \item \texttt{tar}, que genera un fichero \texttt{tgz} que contiene todo lo necesario para la distribución de la plantilla.
-          \item \texttt{clean}, que borra todos los ficheros temporales usando \texttt{rubber} (para simplificar los targets, la limpieza se hace tanto para los temporales de generación del \texttt{book.pdf} como los del \texttt{anteproyecto.pdf}).
-          \item \texttt{clean\_latexmk}, que borra todos los ficheros temporales usando \texttt{latexmk}. Si ésta es tu opción, sustituye el target \texttt{clean} por éste, para facilitarte la compilación (para simplificar los targets, la limpieza se hace tanto para los temporales de generación del \texttt{book.pdf} como los del \texttt{anteproyecto.pdf}).
+Se puede utilizar TeXstudio, TeXShop u otro editor de \LaTeX{} en cualquiera de los sistemas operativos compatibles. El editor debe configurarse para utilizar \texttt{pdflatex} como compilador, Biber como procesador de la bibliografía y, únicamente si se utilizan acrónimos o símbolos, \texttt{makeglossaries} para generar sus listados. Después deben realizarse las dos pasadas finales de \texttt{pdflatex}.
 
-          \item \texttt{bare}, que deja razonablemente limpios los ficheros de los capítulos y apéndices, además de borrar los gráficos del directorio \texttt{figures} y \texttt{diagrams}, para que sea más fácil comenzar a editar. \textbf{OJO: HAY CONSECUENCIAS NEGATIVAS NO DESPRECIABLES PORQUE SE BORRARÁ TODO LO QUE TENGAS EN ESOS DIRECTORIOS Y SÓLO DEBERÍA HACERSE CUANDO VAYAMOS A EMPEZAR A ESCRIBIR NUESTRA MEMORIA DEL TRABAJO REALIZADO}.
+Algunos editores permiten definir una orden o cadena de construcción personalizada que ejecuta automáticamente todo el proceso. Otros proporcionan órdenes separadas para \LaTeX{}, la bibliografía y los glosarios; en ese caso deben ejecutarse respetando el orden indicado anteriormente. El fichero principal que debe abrirse y compilarse es \texttt{Book/book.tex}.
 
-          \item \texttt{backup-chapters}, que hace un backup de los ficheros que hay en los directorios \texttt{chapters} y \texttt{appendix}, creando directorios cuyo nombre es la fecha y hora actuales y que se crean bajo los anteriores. No debería hacer falta si usas un buen sistema de control de versiones.
-        \end{itemize}
+\subsubsection{GNU/Linux}
 
-\end{itemize}
+En GNU/Linux se puede compilar el documento con el editor de \LaTeX{} preferido o ejecutar directamente desde una terminal la secuencia indicada anteriormente. Los comandos deben ejecutarse desde el directorio \texttt{Book/}.
 
+Si se dispone de la utilidad \texttt{make}, puede automatizarse todo el proceso mediante:
 
-\subsection{Detalles específicos para sistemas basados en MacOS}
-\label{sec:detall-espec-para}
+\begin{verbatim}
+cd Book
+make
+\end{verbatim}
 
-Esta información es cortesía de Carlos Cruz, que se encontró con un problema en la generación de la lista de acrónimos. Copio a continuación los detalles al respecto, aunque estará desactualizado en cuanto a los números de versiones según pasen los años.
+El uso de \texttt{make} es opcional y no modifica los requisitos propios de \LaTeX{}: se limita a ejecutar automáticamente las herramientas necesarias y a generar las copias finales.
 
-Hemos encontrado que la lista de acrónimos y/o símbolos no se genera en el entorno macOS. Recomendamos seguir las siguientes instrucciones para solucionar este problema:
+\subsubsection{Windows}
 
-\begin{itemize}
-  \item Tener el SO actualizado a la última versión. Actualmente (marzo de 2020) MacOS Catalina versión 10.15.2
-  \item Instalar la última versión de MacTeX-2019. Esta distribución requiere Mac OS 10.12, Sierra, o superior y funciona con procesadores Intel (disponible en \href{http://tug.org/mactex/mactex-download.html}{http://tug.org/mactex/mactex-download.html}).
-  \item Trabajar en el entorno Texshop version 4.44: \href{https://pages.uoregon.edu/koch/texshop/}{https://pages.uoregon.edu/koch/texshop/}.
-\end{itemize}
+En Windows se puede utilizar MiKTeX o TeX Live junto con TeXstudio u otro editor de \LaTeX{}. En la configuración del editor se debe seleccionar Biber como procesador de la bibliografía y, si se utilizan acrónimos o símbolos, añadir \texttt{makeglossaries} a la cadena de construcción. La ejecución de \texttt{makeglossaries} también requiere disponer de un intérprete de Perl; Strawberry Perl es una de las alternativas disponibles para Windows.
 
-Si compilamos la plantilla en el entorno Texshop, comprobamos que los listados de glosario y/o símbolos no se compilan con ninguno de los Typeset: Latex, Lualatex, Xelatex o pdflatexmk.
+No es necesario instalar \texttt{make} para trabajar con la plantilla en Windows. Si se desea utilizar el \texttt{Makefile}, puede hacerse desde un entorno compatible que proporcione las herramientas requeridas, como WSL, pero normalmente resulta más sencillo configurar la cadena de compilación en el propio editor.
 
-Recomendamos inicialmente compilar por Terminal:
+Parte de las instrucciones originales para configurar TeXmaker en Windows fueron aportadas por Cristina Losada.
 
-\begin{itemize}
-  \item pdflatex “nombre del fichero.tex” (compilar dos veces)
-  \item makeglossaries “nombre del fichero”
-  \item pdflatex “nombre del fichero” (compilar dos veces)
-\end{itemize}
+\subsubsection{macOS}
 
-De esta forma, se crea correctamente la lista de acrónimos y símbolos. A continuación, se puede trabajar con futuros cambios en el proyecto mediante Texshop compilando Latex. Si quiere actualizar o modificar la lista de acrónimos y/o símbolos nuevamente, recomendamos borrar todos los ficheros salvo el fichero book.tex y compilar de nuevo por consola para crear la lista correctamente.
+En macOS se puede utilizar MacTeX junto con TeXShop, TeXstudio u otro editor compatible. La cadena de construcción debe incluir \texttt{pdflatex}, Biber y, si se utilizan acrónimos o símbolos, \texttt{makeglossaries} en el orden indicado anteriormente.
 
+Si el editor no actualiza correctamente los acrónimos o símbolos, se puede ejecutar manualmente \texttt{makeglossaries book} desde el directorio \texttt{Book/} y realizar después dos nuevas pasadas de \texttt{pdflatex}. No es necesario borrar el resto de los ficheros del proyecto para regenerar los glosarios.
 
+Las primeras comprobaciones de la generación de glosarios en macOS fueron aportadas por Carlos Cruz.
+
+\subsubsection{Compilación mediante el \texttt{Makefile}}
+
+El objetivo predeterminado \texttt{all}, ejecutado al invocar \texttt{make} sin argumentos, convierte primero los diagramas y figuras que lo necesiten. A continuación ejecuta \texttt{pdflatex}, Biber, \texttt{makeglossaries} y las dos pasadas finales de \texttt{pdflatex}. Dado que el libro de ejemplo utiliza acrónimos y símbolos, el \texttt{Makefile} ejecuta siempre \texttt{makeglossaries}.
+
+La compilación genera \texttt{book.pdf} y \texttt{book-compressed.pdf}. También crea copias cuyos nombres identifican el tipo de trabajo, la titulación, el autor y el idioma configurados. La versión comprimida utiliza la configuración \texttt{/prepress} de Ghostscript; la antigua versión de calidad \texttt{/screen} está desactivada porque degradaba excesivamente las imágenes.
+
+El objetivo \texttt{all} también actualiza el fichero \texttt{RELEASE.txt} con la etiqueta más reciente del repositorio e intenta añadirlo al índice de Git. Por tanto, después de compilar conviene revisar el estado del repositorio antes de preparar un commit.
+
+Los principales objetivos disponibles en el \texttt{Makefile} son:
+
+\begin{description}
+  \item[\texttt{all}] Compila el documento completo y genera las copias finales; es el objetivo ejecutado de forma predeterminada por \texttt{make}.
+  \item[\texttt{clean}] Elimina los ficheros auxiliares y los PDF de trabajo generados durante la compilación.
+  \item[\texttt{all\_latexmk}] Ofrece un procedimiento alternativo y experimental de compilación basado en \texttt{latexmk}.
+  \item[\texttt{clean\_latexmk}] Elimina los ficheros auxiliares mediante \texttt{latexmk} y completa después la limpieza de otros ficheros generados.
+  \item[\texttt{snapshot}] Genera mediante \texttt{latexpand} una copia unificada del documento que puede utilizarse como referencia para una revisión posterior.
+  \item[\texttt{flatten}] Genera una copia unificada del estado actual del documento.
+  \item[\texttt{latexdiff}] Compara la instantánea con el estado actual y genera un PDF que muestra las diferencias.
+  \item[\texttt{backup-chapters}] Crea copias fechadas de los capítulos y apéndices.
+  \item[\texttt{orig-chapters}] Sustituye los capítulos y apéndices de trabajo por las versiones completas de ejemplo, después de crear una copia de seguridad.
+  \item[\texttt{bare-chapters}] Sustituye los capítulos y apéndices de trabajo por versiones mínimas, después de crear una copia de seguridad.
+  \item[\texttt{bare}] Prepara una estructura mínima mediante \texttt{bare-chapters} y ofrece eliminar los gráficos y diagramas existentes.
+  \item[\texttt{tar}] Genera archivos comprimidos con los fuentes y recursos de la plantilla.
+\end{description}
+
+Los objetivos \texttt{bare}, \texttt{bare-chapters} y \texttt{orig-chapters} modifican el contenido de los directorios de capítulos o apéndices. Además, \texttt{bare} puede eliminar los ficheros de \texttt{figures/} y \texttt{diagrams/} si se confirma expresamente durante su ejecución. Deben utilizarse únicamente al preparar una copia nueva del proyecto y después de comprobar que los cambios importantes están guardados en el sistema de control de versiones.
+
+\subsubsection{Herramientas y prestaciones opcionales}
+
+Además de la compilación básica, el repositorio permite utilizar varias herramientas opcionales:
+
+\begin{description}
+  \item[Ghostscript] Genera la copia comprimida del documento cuando se utiliza el objetivo \texttt{all} del \texttt{Makefile}.
+  \item[Inkscape] Convierte automáticamente los diagramas en formato \texttt{svg} a \texttt{pdf}.
+  \item[Dia y \texttt{epspdf}] Convierten automáticamente los diagramas en formato \texttt{dia} a \texttt{pdf}.
+  \item[\texttt{epspdf}] Convierte automáticamente las figuras en formato \texttt{eps} a \texttt{pdf}.
+  \item[\texttt{latexmk}] Proporciona el procedimiento alternativo utilizado por los objetivos \texttt{all\_latexmk} y \texttt{clean\_latexmk}.
+  \item[\texttt{latexpand} y \texttt{latexdiff}] Permiten unificar los fuentes y generar documentos que muestran las diferencias entre dos versiones.
+  \item[Perl] Es necesario para ejecutar \texttt{makeglossaries} en los sistemas que no incluyan ya un intérprete compatible.
+\end{description}
+
+Estas herramientas solo deben instalarse cuando se vaya a utilizar la prestación correspondiente. No son requisitos para redactar ni compilar un documento básico que no dependa de ellas.
 
 \subsection{Estructura del documento generado por la plantilla}
 \label{sec:estr-del-docum}
