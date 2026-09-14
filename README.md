@@ -64,7 +64,7 @@ Anyway, if you want to work with the template in [Overleaf](https://www.overleaf
 1. Log in to [Overleaf](https://www.overleaf.com/)
 2. In the main page, select the `New Project` button
 3. Select `Upload project`
-4. Select the corresponding zip among the ones you may find in the [template dropbox folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0e)
+4. Select the corresponding zip among the ones you may find in the [template dropbox folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)
 5. [Overleaf](https://www.overleaf.com/) will do its magic and in a few seconds you'll have the template installed
 
 Remember that you will have to select the "main document" (access it through the options you will find clicking the overleaf logo in the top left corner of the project main page). See below in the "To fill in and generate..." to see which are the main files you have available. The most relevant files to select as "main document" are: 
