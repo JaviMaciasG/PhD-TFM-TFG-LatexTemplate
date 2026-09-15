@@ -472,7 +472,9 @@ Los modelos administrativos y sus requisitos pueden cambiar. Antes de presentar 
 \subsection{Generación del documento con control de cambios}
 \label{sec:control-de-cambios}
 
-La herramienta \texttt{latexdiff} compara dos versiones de un documento \LaTeX{} y genera un nuevo fichero en el que se marcan visualmente las inserciones y eliminaciones. El resultado puede compilarse como un PDF independiente para facilitar la revisión de los cambios realizados a partir de las observaciones del tutor, cotutor o tribunal.
+Uno de los problemas que encontramos al trabajar con \LaTeX{} aparece durante la revisión: después de entregar un borrador, el tutor o director puede querer comprobar cómo se han incorporado sus sugerencias. En un procesador de textos como LibreOffice (vaaaaaaaaale, o Microsoft Word también) resulta habitual activar el control de cambios o comparar dos documentos; con \LaTeX{} también podemos obtener un resultado equivalente mediante algunas herramientas adicionales.
+
+Para ello utilizamos \texttt{latexdiff}, que compara dos versiones de un documento \LaTeX{} y genera un nuevo fichero en el que se marcan visualmente las inserciones y eliminaciones. Al compilarlo obtenemos un PDF independiente mucho más cómodo para revisar que un \texttt{diff} a palo seco de los ficheros fuente.
 
 Como el libro se divide mediante múltiples órdenes \texttt{\textbackslash{}input}, antes de realizar la comparación se utiliza \texttt{latexpand} para generar una versión unificada. El \texttt{Makefile} de \texttt{Book/} automatiza este procedimiento mediante los objetivos \texttt{snapshot}, \texttt{flatten} y \texttt{latexdiff}.
 
