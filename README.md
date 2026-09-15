@@ -95,7 +95,7 @@ The template is accessible in two ways:
 
 The directories most users need are:
 
-- `Config/`: Shared configuration and document-generation logic. `Config/myconfig.tex` is the main file for personal, degree, language, and document settings.
+- `Config/`: Shared configuration and document-generation logic. For most of the cases, you will just have to edit `Config/myconfig.tex`, that is the main file for personal, degree, language, and document settings.
 - `Book/`: Main TFG, TFM, or PhD document. Its entry point is `Book/book.tex`; its subdirectories contain abstracts, chapters, appendices, bibliography files, figures, diagrams, acronyms, and symbols.
 - `Anteproyecto/`: Anteproyecto or proposal document. Its entry point is `Anteproyecto/anteproyecto.tex`.
 - `PapeleoTFG/`, `PapeleoTFM/`, and `PapeleoPHD/`: Administrative documents associated with each type of work.
@@ -115,35 +115,21 @@ For a normal thesis or final-project document, start with `Config/myconfig.tex` 
 
 ## To fill in and generate the "anteproyecto"
 
-1. Go to the `Anteproyecto` directory, where you will find the `anteproyecto.tex` file. This is the one you should work in. An example is provided in the repo file.
-2. Edit the file to suit your needs
-3. Compile it (there is a `Makefile` available, but you can use your standard LaTeX build tool or command within your preferred \LaTeX{} editor).
+1. Configure the document metadata in `Config/myconfig.tex`.
+2. Go to the `Anteproyecto` directory, where you will find the `anteproyecto.tex` file. This is the one you should work in and the entry point for compilation. An example is provided in the repo file.
+3. Edit the file to suit your needs
+4. Compile it (there is a `Makefile` available, but you can use your standard LaTeX build tool or command within your preferred \LaTeX{} editor).
 
 ## To fill in and generate the main book
 
-1. Configure the document metadata in `Config/myconfig.tex`.
+1. Configure the document metadata in `Config/myconfig.tex`, if you haven't already done it.
 2. Review `Book/book.tex` and comment out any material you do not need. The example document enables a sample external letter, dedication, acknowledgements, acronym and symbol lists, example chapters, and appendices.
 3. Edit the content under `Book/abstract/`, `Book/chapters/`, `Book/appendix/`, and the other content directories as required.
-4. Build the document from the `Book/` directory:
+4. Build the document from the `Book/book.tex` entry file, or from the `Book/` directory by using `make` (recommended but not required). You can compile `Book/book.tex` with a standard LaTeX build tool or from your preferred LaTeX editor. Configure the tool or editor to use `pdflatex`, `biber`, and `makeglossaries`, with the additional LaTeX passes required to resolve references, the bibliography, and the glossaries.
 
-   ```bash
-   cd Book
-   make
-   ```
+The provided Makefile runs those steps automatically. It generates `book.pdf` and a reduced-size `book-compressed.pdf` variant, and copies them to filenames derived from the work type, degree, author, and language. Other build tools may generate only `book.pdf` unless configured to reproduce these additional steps.
 
-Using `make` is recommended but not required. You can instead compile
-`Book/book.tex` with a standard LaTeX build tool or from your preferred
-LaTeX editor. Configure the tool or editor to use `pdflatex`, `biber`, and
-`makeglossaries`, with the additional LaTeX passes required to resolve
-references, the bibliography, and the glossaries.
-
-The provided Makefile runs those steps automatically. It generates
-`book.pdf` and a reduced-size `book-compressed.pdf` variant, and copies them
-to filenames derived from the work type, degree, author, and language. Other
-build tools may generate only `book.pdf` unless configured to reproduce these
-additional steps.
-
-To remove generated auxiliary files, run this from `Book/`:
+If you follow the `make` compilation alternative, to remove generated auxiliary files, run this from `Book/`:
 
 ```bash
 make clean
@@ -163,7 +149,7 @@ Place document illustrations in `Book/figures/` or `Book/diagrams/`. Because `Bo
 \includegraphics[width=0.8\textwidth]{my-figure.pdf}
 ```
 
-The Makefile can convert supported Dia, SVG, and EPS sources when the corresponding external tools are installed. PDF, PNG, and JPEG files can be used directly by `pdflatex`. Keep institutional logos under `Book/logos/` separate from document-specific illustrations.
+If you follow the `make` compilation alternative, the Makefile can convert supported Dia, SVG, and EPS sources when the corresponding external tools are installed. PDF, PNG, and JPEG files can be used directly by `pdflatex`. Keep institutional logos under `Book/logos/` separate from document-specific illustrations.
 
 ### Acronyms and symbols
 
