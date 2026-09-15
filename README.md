@@ -139,7 +139,7 @@ make clean
 
 ### Chapters and appendices
 
-Create or edit `.tex` files under `Book/chapters/` and `Book/appendix/`, then add or remove the corresponding `\input{...}` lines in `Book/book.tex`. The same approach applies to the dedication, acknowledgements, abstracts, and optional lists.
+Create or edit `.tex` files under `Book/chapters/` and `Book/appendix/`, then add or remove the corresponding `\input{...}` lines in `Book/chapters/contents.tex` or `Book/appendix/contents.tex`. The same approach applies to the dedication, acknowledgements, abstracts, and optional lists.
 
 ### Figures and diagrams
 

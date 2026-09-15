@@ -22,84 +22,22 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Resultados}
-\label{cha:resultados}
+\chapter{Ejemplos avanzados de composición}
+\label{cha:ejemplos-avanzados}
 
 
-\begin{FraseCelebre}
-  \begin{Frase}
-    % Si quieres ser leído más de una vez, no vaciles en borrar a menudo.
-    Rem tene, verba sequentur (Si dominas el tema, las palabras vendrán solas)\footnote{Tomado de ejemplos del proyecto \texis{}.}.
-  \end{Frase}
-  \begin{Fuente}
-    % Horacio
-    Catón el Viejo
-  \end{Fuente}
-\end{FraseCelebre}
+\section{Importación de tablas desde LibreOffice}
+\label{sec:calc2latex}
 
-\section{Introducción}
-\label{sec:introduccion-resultados}
-
-En este capítulo se introducirán los resultados más relevantes del trabajo.
-
-La estructura del capítulo es\ldots
-
-
-\section{Entorno experimental}
-\label{sec:entorno-experimental}
-
-Blah, blah, blah.
-
-
-\subsection{Bases de datos utilizadas}
-\label{sec:bases-de-datos-1}
-
-Blah, blah, blah.
-
-
-\subsection{Métricas de calidad}
-\label{sec:metricas-de-calidad}
-
-Blah, blah, blah.
-
-En la tabla\ref{pruebaCalc2LaTeX} pongo un ejemplo del uso del conversor de libreoffice a \LaTeX{} (cortesía de Roberto Chamorro). Para usarlo tienes que importar la macro que encontrarás en el directorio \texttt{Tools/calc2latex//calc2latex\_024\_eur\_latex}\footnote{Para ello sigue el proceso de importación que se describe en \url{http://ask.libreoffice.org/en/question/35598/where-are-lo-basic-macros-stored/}, importando Cals y cuando ejecutes la macro hazlo por el punto de entrada \texttt{Main}, después de seleccionar el rango de celdas de la tabla.}
+Calc2LaTeX permite convertir un rango de celdas de LibreOffice en código \LaTeX{}. La tabla~\ref{pruebaCalc2LaTeX} muestra un ejemplo del conversor, aportado por Roberto Chamorro. Para utilizarlo, importa la macro disponible en \texttt{Tools/calc2latex/calc2latex\_024\_eur\_latex}\footnote{Sigue el proceso de importación descrito en \url{http://ask.libreoffice.org/en/question/35598/where-are-lo-basic-macros-stored/}. Importa \texttt{Cals}, selecciona el rango de celdas y ejecuta la macro desde el punto de entrada \texttt{Main}.}.
 
 \input{Tools/calc2latex/sample.tex}
 
 
-\subsection{Estrategia y metodología de experimentación}
-\label{sec:estr-y-metod}
+\section{Tablas multipágina}
+\label{sec:tablas-multipagina}
 
-Blah, blah, blah.
-
-
-\section{Resultados experimentales}
-\label{sec:result-experim}
-
-A continuación, se muestra un ejemplo de tabla simple (ver tabla \ref{tab:table1}).
-
-\begin{table}
-  % increase table row spacing, adjust to taste
-  \renewcommand{\arraystretch}{1.3}
-  \caption{Comparativa.}
-  \label{tab:table1}
-  \begin{center}
-    % Some packages, such as MDW tools, offer better commands for making tables than the plain LaTeX2e tabular which is used here.
-    \begin{tabular}{|c|c|c|}
-      \hline
-      Method & Training Time & Man-Work (\%)\\
-      \hline
-      Propagation model & $<$ 30 sec & 5\\
-      \hline
-      Manual & 9 h 30 min & 24\\
-      \hline
-      Automatic & 2 h & 10 8\\
-      \hline
-    \end{tabular}
-  \end{center}
-\end{table}
-
-Cuando las tablas ocupan más de un página se debe utilizar un tipo especial de tablas denominado \texttt{longtable}. A continuación, se muestra un ejemplo del mismo (ver tabla \ref{table2}).
+Cuando las tablas ocupan más de una página se debe utilizar un tipo especial de tablas denominado \texttt{longtable}. A continuación, se muestra un ejemplo del mismo (ver tabla \ref{table2}).
 
 \begin{center}
 	\begin{longtable}{|c|c|c|c|}
@@ -178,37 +116,10 @@ Cuando las tablas ocupan más de un página se debe utilizar un tipo especial de
 	\end{longtable}
 \end{center}
 
-En algunas ocasiones, también resulta útil emplear el entorno
-\texttt{subfigure} para añadir múltiples imágenes dentro de la misma
-figura. A continuación, se muestra un ejemplo del uso en la figura
-\ref{fig:fig3}. También se pueden referenciar las sub-figuras de forma
-individual, por ejemplo la sub-figura \ref{fig:fig3b} (usando un método
-de cita), o bien la sub-figura \ref{fig:fig3}.\subref{fig:fig3b} (usando
-otro alternativo).
+\section{Composiciones con subfiguras}
+\label{sec:composiciones-subfiguras}
 
-% For this to work you need to (in preamble.tex):
-% - remove \usepackage{subfig}
-% - add \usepackage{caption}
-% - add \usepackage{subcaption}
-\begin{figure}
-  \centering
-  \begin{subfigure}[b]{0.3\textwidth}
-    \includegraphics[width=\textwidth]{Figure2}
-    \caption{Mean Entropy.}
-    \label{fig:fig3a}
-  \end{subfigure}%
-  ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
-  % (or a blank line to force the subfigure onto a new line)
-  \begin{subfigure}[b]{0.3\textwidth}
-    \includegraphics[width=\textwidth]{Figure3}
-    \caption{Error Percentage.}
-    \label{fig:fig3b}
-  \end{subfigure}
-  \caption{Optimal trames number in the training data set.}
-  \label{fig:fig3}
-\end{figure}
-
-La figura~\ref{fig:LIdiapRoom} muestra otro ejemplo con referencias a las subfigures en el caption principal.
+La figura~\ref{fig:LIdiapRoom} muestra otro ejemplo con referencias a las subfiguras desde el pie principal.
 
 \begin{figure}
   \centering
@@ -229,7 +140,7 @@ La figura~\ref{fig:LIdiapRoom} muestra otro ejemplo con referencias a las subfig
   \label{fig:LIdiapRoom}
 \end{figure}
 
-Os incluimos a continuación un párrafo de un artículo en el que hacemos referencia a varias figuras y subfiguras:
+A continuación incluimos un párrafo de un artículo en el que hacemos referencia a varias figuras y subfiguras:
 
 \emph{The IDIAP Meeting Room (shown in figure~\ref{fig:LIdiapRoom}) is a $8.2m \times 3.6m \times 2.4m$ rectangular space containing a centrally located $4.8m \times 1.2m$ rectangular table, on top of which two circular microphone arrays of $10 cm$ radius are located, each of them composed by 8 microphones. The centers of the two arrays are separated by $80 cm$ and the origin of coordinates is located in the middle point between the two arrays. The arrays can be also seen in figures~\ref{fig:simureal_positions}.\subref{fig:Simulated_positions}, ~\ref{fig:simureal_positions}.\subref{fig:real_positions_short}, and ~\ref{fig:simureal_positions}.\subref{fig:real_positions_long}, in which only the relevant section of the room is displayed, each one showing different scenarios that were used in the experiments. A detailed description of the meeting room can be found in~\cite{moore2002}.}
 
@@ -306,7 +217,10 @@ figuras organizadas de forma un poco más complejo.
   \label{fig:Sim_angles}
 \end{figure}
 
-También es posible incluir el código de una figura en un fichero \texttt{.tex} independiente (para hacer más legible el código del documento principal). Un ejemplo lo tenéis a continuación, incluyendo el texto en inglés del documento original:
+\section{Figuras definidas en ficheros independientes}
+\label{sec:figuras-ficheros-independientes}
+
+También es posible incluir el código de una figura en un fichero \texttt{.tex} independiente (para hacer más legible el código del documento principal). El siguiente ejemplo lo muestra, incluyendo el texto en inglés del documento original:
 
 \emph{Figure~\ref{fig:SRPvsPatternSelected} includes the results of the comparison, for several speaker positions (1, 2, 4, 6, 8 and 16, emphasized in figure~\ref{fig:simureal_positions}.\subref{fig:real_positions_short}), and selected to provide different acoustic situations, both in terms of distance and angular position with respect to the arrays. All the graphics show the acoustic power map (predicted or calculated) for a regular two-dimensional grid of $10~cm$. The plot is provided from a top view of the room, spanning the full plan at a height of $61~cm$ above the microphone arrays (this height was the ground truth one for sequence 01). For each speaker position shown, three graphics are plotted:}
 
@@ -322,6 +236,9 @@ También es posible incluir el código de una figura en un fichero \texttt{.tex}
 
 \input{chapters/figure-ComparisonMap} 
 
+\section{Figuras rodeadas por texto}
+\label{sec:figuras-rodeadas-texto}
+
 \begin{wrapfigure}{r}{0.5\textwidth} 
 \vspace{-20pt}
   \begin{center}
@@ -333,7 +250,7 @@ También es posible incluir el código de una figura en un fichero \texttt{.tex}
   \vspace{1pt}
 \end{wrapfigure} 
 
-Otra posibilidad es utilizar el entorno \texttt{wrapfig} para hacer que el texto bordee a las figuras, como en la figura~\ref{fig:wrapfigure1}. Añado ahora unas líneas de loren ipsum para que lo veáis bien. \lipsum[1-1]
+Otra posibilidad es utilizar el entorno \texttt{wrapfig} para hacer que el texto bordee a las figuras, como en la figura~\ref{fig:wrapfigure1}. Añadimos unas líneas de Lorem ipsum para que puedas ver el resultado. \lipsum[1-1]
 
 % \lipsum[1-4]
 % \begin{wrapfigure}{R}{5cm}
@@ -341,6 +258,9 @@ Otra posibilidad es utilizar el entorno \texttt{wrapfig} para hacer que el texto
 % \rule{3cm}{7cm}
 % \end{wrapfigure}
 % \lipsum[1-6]
+
+\section{Tablas apaisadas}
+\label{sec:tablas-apaisadas}
 
 Incluso podemos poner una tabla ``apaisada'', como en la \ref{tab:tablas2006}, donde se muestra un resumen de los resultados obtenidos en una serie de experimentos de localización de locutores.
 
@@ -376,10 +296,6 @@ Incluso podemos poner una tabla ``apaisada'', como en la \ref{tab:tablas2006}, d
 % \end{table}
 
 
-\section{Conclusiones}
-\label{sec:conclusiones-resultados}
-
-Blah, blah, blah.
 
 
 %%% Local Variables:

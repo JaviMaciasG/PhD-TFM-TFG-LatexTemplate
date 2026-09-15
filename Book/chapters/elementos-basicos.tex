@@ -1,0 +1,89 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: estudioTeorico.tex,v 1.5 2015/06/05 00:05:19 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa.
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote.
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid
+%
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo, Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to all of them, and to the many anonymous contributors found (thanks to google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples, improvements, please contact us at (macias@depeca.uah.es)
+%
+% You can freely use this template and please contribute with comments or suggestions!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Elementos básicos de \LaTeX{}}
+\label{cha:elementos-basicos}
+
+\begin{FraseCelebre}
+  \begin{Frase}
+    Y así, del mucho leer y del poco dormir, se le secó el cerebro de manera que vino a perder el juicio\footnote{Tomado de ejemplos del proyecto \texis{}.}.
+  \end{Frase}
+  \begin{Fuente}
+    Miguel de Cervantes Saavedra
+  \end{Fuente}
+\end{FraseCelebre}
+
+
+\section{Estructura, listas y citas}
+\label{sec:estructura-listas-citas}
+
+Este capítulo reúne ejemplos breves de elementos habituales de \LaTeX{}. Puedes consultar directamente sus fuentes y adaptar únicamente los fragmentos que necesites.
+
+Una lista sin numerar puede construirse mediante el entorno \texttt{itemize}:
+
+\begin{itemize}
+  \item Primer elemento de ejemplo.
+  \item Segundo elemento de ejemplo.
+\end{itemize}
+
+Las fuentes bibliográficas se citan con \texttt{\textbackslash{}cite}; por ejemplo, esta plantilla describe el proyecto \texis{} en \cite{texis}. También puedes añadir una aclaración mediante una nota al pie\footnote{Este es un ejemplo de nota al pie.}.
+
+\section{Matemáticas y referencias cruzadas}
+\label{sec:matematicas-referencias}
+
+Puedes incluir expresiones matemáticas en línea, como $\sigma=0.75$, o utilizar un entorno independiente para una ecuación numerada:
+
+\begin{equation}
+  \label{eq:ejemplo-basico}
+  p[q_t=\sigma_t\mid q_{t-1}=\sigma_{t-1}]
+\end{equation}
+
+La ecuación~\ref{eq:ejemplo-basico} muestra cómo asociar una etiqueta mediante \texttt{\textbackslash{}label} y recuperarla con \texttt{\textbackslash{}ref}. El mismo mecanismo se utiliza para capítulos, secciones, figuras, tablas, algoritmos y fragmentos de código.
+
+\section{Niveles de organización}
+\label{sec:niveles-organizacion}
+
+A continuación se muestran los niveles de división disponibles por debajo de un capítulo. Su aparición en el índice depende del valor configurado para \texttt{tocdepth}.
+
+
+\subsection{Ejemplo de subsección}
+\label{sec:subseccion}
+
+
+\subsubsection{Ejemplo de subsubsección}
+\label{sec:subsubseccion}
+
+\paragraph{Ejemplo de párrafo}
+\label{sec:paragraph-1}
+
+
+\subparagraph{Ejemplo de subpárrafo}
+\label{sec:subparagraph}
+
+
+
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:

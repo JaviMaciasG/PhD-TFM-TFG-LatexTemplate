@@ -1,0 +1,101 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: resultados.tex,v 1.7 2016/03/31 10:44:23 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa.
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote.
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid
+%
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo, Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to all of them, and to the many anonymous contributors found (thanks to google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples, improvements, please contact us at (macias@depeca.uah.es)
+%
+% You can freely use this template and please contribute with comments or suggestions!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Figuras y tablas}
+\label{cha:figuras-tablas}
+
+
+\section{Figuras de uso habitual}
+\label{sec:figuras-habituales}
+
+Este capítulo presenta ejemplos de figuras y tablas que pueden adaptarse a la mayoría de los documentos. Los casos que requieren una composición más elaborada se reúnen en el apéndice~\ref{cha:ejemplos-avanzados}.
+
+La figura~\ref{fig:figura-convencional} muestra la inclusión habitual de una imagen con \texttt{figure}, \texttt{\textbackslash{}includegraphics}, un pie descriptivo y una etiqueta para citarla desde el texto.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.55\textwidth]{Figure1}
+  \caption{Ejemplo de figura convencional.}
+  \label{fig:figura-convencional}
+\end{figure}
+
+\section{Tabla convencional}
+\label{sec:tabla-convencional}
+
+La tabla~\ref{tab:table1} muestra una estructura convencional con título, etiqueta y referencia cruzada.
+
+\begin{table}
+  % increase table row spacing, adjust to taste
+  \renewcommand{\arraystretch}{1.3}
+  \caption{Comparativa.}
+  \label{tab:table1}
+  \begin{center}
+    % Some packages, such as MDW tools, offer better commands for making tables than the plain LaTeX2e tabular which is used here.
+    \begin{tabular}{|c|c|c|}
+      \hline
+      Method & Training Time & Man-Work (\%)\\
+      \hline
+      Propagation model & $<$ 30 sec & 5\\
+      \hline
+      Manual & 9 h 30 min & 24\\
+      \hline
+      Automatic & 2 h & 10 8\\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\section{Subfiguras}
+\label{sec:subfiguras}
+
+El entorno \texttt{subfigure} permite reunir varias imágenes dentro de una misma figura. La figura~\ref{fig:fig3} contiene dos subfiguras, que también pueden citarse individualmente; por ejemplo, \ref{fig:fig3}.\subref{fig:fig3b}.
+
+% For this to work you need to (in preamble.tex):
+% - remove \usepackage{subfig}
+% - add \usepackage{caption}
+% - add \usepackage{subcaption}
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{Figure2}
+    \caption{Mean Entropy.}
+    \label{fig:fig3a}
+  \end{subfigure}%
+  ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+  % (or a blank line to force the subfigure onto a new line)
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{Figure3}
+    \caption{Error Percentage.}
+    \label{fig:fig3b}
+  \end{subfigure}
+  \caption{Optimal trames number in the training data set.}
+  \label{fig:fig3}
+\end{figure}
+
+Los ejemplos avanzados de figuras y tablas, incluidas las tablas multipágina y apaisadas, las figuras rodeadas por texto y las composiciones con numerosas subfiguras, se encuentran en el apéndice~\ref{cha:ejemplos-avanzados}.
+
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
