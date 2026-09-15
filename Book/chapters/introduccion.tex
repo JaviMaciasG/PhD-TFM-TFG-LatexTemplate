@@ -631,6 +631,12 @@ La orden \texttt{\textbackslash{}ac\{ETTS\}} produce \ac{ETTS} y gestiona autom�
   \item[\texttt{\textbackslash{}glsresetall[acronym]}] Reinicia el estado de uso de todos los acrónimos para que vuelvan a tratarse como no utilizados.
 \end{description}
 
+Para que puedas ver el mecanismo en funcionamiento, reiniciamos primero el estado de los acrónimos:
+
+\glsresetall[acronym]
+
+Si ahora nos referimos a \ac{ETTS}, aparecerá su forma desarrollada por tratarse del primer uso; al volver a escribir \ac{ETTS}, se mostrará únicamente el acrónimo. También puedes forzar la forma abreviada con \acs{EMODB}, la forma desarrollada con \acl{EMODB} o la forma completa con \acf{EMODB}.
+
 Las entradas que necesitan plurales personalizados u otros atributos pueden definirse mediante \texttt{\textbackslash{}newglossaryentry}, como muestra el acrónimo \texttt{SOC} incluido en el fichero de ejemplo. Para generar el listado debe ejecutarse \texttt{makeglossaries}, tal como se explica en la sección~\ref{sec:compilacion}.
 
 \subsection{Definición y uso de símbolos}
