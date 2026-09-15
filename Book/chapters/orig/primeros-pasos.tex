@@ -1,0 +1,74 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% By:
+%  + Javier Macías-Guarasa.
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote.
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid
+%
+% By: + Javier Macías-Guarasa. Departamento de Electrónica Universidad de Alcalá + Roberto Barra-Chicote. Departamento de Ingeniería Electrónica Universidad Politécnica de Madrid
+%
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo, Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to all of them, and to the many anonymous contributors found (thanks to google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples, improvements, please contact us at (macias@depeca.uah.es)
+%
+% You can freely use this template and please contribute with comments or suggestions!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Primeros pasos}
+\label{cha:primeros-pasos}
+
+En este capítulo te acompañamos desde la preparación del entorno hasta la generación del primer PDF. Para empezar no necesitas conocer el \texttt{Makefile} ni utilizar una terminal: puedes trabajar con tu editor habitual de \LaTeX{}.
+
+\section{Prerrequisitos}
+\label{sec:prerrequisitos}
+
+Para compilar la plantilla necesitas una distribución de \LaTeX{} suficientemente completa y actualizada. TeX Live es una opción habitual en GNU/Linux, MiKTeX y TeX Live están disponibles para Windows, y MacTeX proporciona una distribución adaptada a macOS. Asegúrate de que la distribución que elijas proporcione \texttt{pdflatex} y Biber, además de los paquetes cargados desde \texttt{Config/preamble.tex}.
+
+Biber es necesario cuando el documento incluye bibliografía. Si utilizas acrónimos o símbolos, también necesitarás \texttt{makeglossaries}; el libro de ejemplo distribuido con la plantilla contiene ambos elementos y, por tanto, requiere esta herramienta para generar todos sus listados.
+
+Si durante la compilación recibes un aviso de que falta un fichero \texttt{.sty}, instala el paquete de tu distribución de \LaTeX{} que lo contiene. En MiKTeX puedes activar la instalación automática de paquetes; TeX Live y MacTeX proporcionan sus propias herramientas para administrar los paquetes instalados.
+
+No necesitas utilizar \texttt{make} para trabajar con la plantilla. Puedes compilarla con cualquier editor o herramienta de construcción de \LaTeX{} que permita configurar las herramientas descritas en la sección~\ref{sec:compilacion}; si lo prefieres, también puedes hacerlo desde una terminal. El \texttt{Makefile} incluido es únicamente una forma opcional de automatizar el proceso y resulta especialmente cómodo en sistemas GNU/Linux.
+
+
+\section{Compilación}
+\label{sec:compilacion}
+
+Antes de compilar el documento, completa la configuración compartida en \texttt{Config/myconfig.tex} siguiendo las indicaciones de la sección~\ref{sec:definicion-del-tipo}. Después, abre \texttt{Book/book.tex} como documento principal en tu editor de \LaTeX{} y utiliza su función habitual de compilación o construcción.
+
+Para generar correctamente todos los elementos del libro, configura el editor para utilizar \texttt{pdflatex} como compilador y Biber como procesador de la bibliografía. Si utilizas acrónimos o símbolos, añade también \texttt{makeglossaries} a la cadena de construcción. Finalmente, realiza las pasadas adicionales de \texttt{pdflatex} necesarias para actualizar las referencias cruzadas, los índices, la bibliografía y los glosarios.
+
+\subsection{GNU/Linux}
+
+En GNU/Linux puedes utilizar tu editor de \LaTeX{} preferido. Asegúrate de abrir \texttt{Book/book.tex} como documento principal y de configurar la cadena de construcción como se explica en la sección~\ref{sec:compilacion}.
+
+Si prefieres automatizar el proceso mediante \texttt{make}, consulta \textit{Compilación mediante el \texttt{Makefile}} (apartado~\ref{sec:compilacion-makefile}), donde se describen el procedimiento y los objetivos disponibles.
+
+\subsection{Windows}
+
+En Windows puedes utilizar MiKTeX o TeX Live junto con TeXstudio u otro editor de \LaTeX{}. En la configuración del editor, selecciona Biber como procesador de la bibliografía y, si utilizas acrónimos o símbolos, añade \texttt{makeglossaries} a la cadena de construcción. Para ejecutar \texttt{makeglossaries} también necesitas un intérprete de Perl; Strawberry Perl es una de las alternativas disponibles para Windows.
+
+No necesitas instalar \texttt{make} para trabajar con la plantilla en Windows. Si quieres utilizar el \texttt{Makefile} descrito en el apartado~\ref{sec:compilacion-makefile}, puedes hacerlo desde un entorno compatible que proporcione las herramientas requeridas, como WSL, aunque normalmente te resultará más sencillo configurar la cadena de compilación en el propio editor.
+
+Parte de estas instrucciones se basa en la información que nos proporcionó Cristina Losada sobre la configuración de TeXmaker en Windows. Muchas gracias por su ayuda.
+
+\subsection{macOS}
+
+En macOS puedes utilizar MacTeX junto con TeXShop, TeXstudio u otro editor compatible. Configura la cadena de construcción para incluir \texttt{pdflatex}, Biber y, si utilizas acrónimos o símbolos, \texttt{makeglossaries} en el orden explicado en la sección~\ref{sec:compilacion}.
+
+Si tu editor no actualiza correctamente los acrónimos o símbolos, utiliza desde el propio editor la opción para ejecutar \texttt{makeglossaries} y realiza después dos nuevas pasadas de \texttt{pdflatex}. No necesitas borrar el resto de los ficheros del proyecto para regenerar los glosarios.
+
+Las primeras comprobaciones de la generación de glosarios en macOS fueron realizadas y compartidas con nosotros por Carlos Cruz. Muchas gracias por su ayuda.
+
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:

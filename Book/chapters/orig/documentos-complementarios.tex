@@ -1,0 +1,101 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% By:
+%  + Javier Macías-Guarasa.
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote.
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid
+%
+% By: + Javier Macías-Guarasa. Departamento de Electrónica Universidad de Alcalá + Roberto Barra-Chicote. Departamento de Ingeniería Electrónica Universidad Politécnica de Madrid
+%
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo, Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to all of them, and to the many anonymous contributors found (thanks to google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples, improvements, please contact us at (macias@depeca.uah.es)
+%
+% You can freely use this template and please contribute with comments or suggestions!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Documentos complementarios}
+\label{cha:documentos-complementarios}
+
+Además del libro principal, hemos incluido una plantilla de anteproyecto y varios documentos administrativos que reutilizan la configuración común. En este capítulo te explicamos qué contiene cada directorio y cómo puedes generar únicamente los documentos que necesites.
+
+\section{Plantilla de anteproyecto}
+\label{sec:plantilla-de-anteproyecto}
+
+Para ayudarte a preparar la propuesta inicial de un TFC, TFG o TFM, hemos incluido una plantilla simplificada en el directorio \texttt{Anteproyecto/}. Su fichero principal es \texttt{Anteproyecto/anteproyecto.tex} y reutiliza los datos que hayas definido en \texttt{Config/myconfig.tex}, incluidos el tipo de trabajo, la titulación, el título, la autoría, los tutores, el departamento y la fecha de propuesta.
+
+El contenido de ejemplo está organizado en secciones de introducción, objetivos, metodología, plan de trabajo y bibliografía. Adapta estas secciones a los requisitos de tu titulación; puedes ampliarlas, eliminarlas o reordenarlas libremente.
+
+Puedes compilar el anteproyecto con cualquier editor o herramienta habitual de \LaTeX{}. También hemos incluido un \texttt{Makefile}, que puedes ejecutar mediante:
+
+\begin{verbatim}
+cd Anteproyecto
+make
+\end{verbatim}
+
+La compilación genera \texttt{anteproyecto.pdf}. Si el documento contiene referencias bibliográficas, ejecuta Biber entre las pasadas de \texttt{pdflatex}; el \texttt{Makefile} incluido automatiza esta secuencia.
+
+El \texttt{Makefile} también proporciona los objetivos \texttt{anteproyecto\_latexmk}, \texttt{snapshot}, \texttt{flatten}, \texttt{latexdiff}, \texttt{clean} y \texttt{clean\_latexmk}. Los objetivos de revisión siguen el mismo principio que los equivalentes del libro principal, descritos en la sección~\ref{sec:control-de-cambios}.
+
+\section{Documentación administrativa}
+\label{sec:introapp1}
+
+Para evitar que tengas que introducir varias veces los mismos datos, hemos preparado en los directorios \texttt{PapeleoTFG/}, \texttt{PapeleoTFM/} y \texttt{PapeleoPHD/} distintos documentos administrativos que reutilizan la información definida en \texttt{Config/myconfig.tex}. Antes de generarlos, asegúrate de completar especialmente los datos de autoría, tutores, tribunal, fechas, calificaciones y publicación en abierto que correspondan a cada formulario.
+
+\subsection{Documentos para TFG}
+
+El directorio \texttt{PapeleoTFG/} contiene actualmente:
+
+\begin{itemize}
+  \item \texttt{TFG-AutorizacionTutorPubAbierto.tex}: autorización del tutor para la publicación en abierto.
+  \item \texttt{TFG-AutorizacionAutorPubAbierto.tex}: declaración y autorización de la persona autora para la publicación en abierto.
+  \item \texttt{TFG-AutorizacionTutorExtranjeroPubAbierto.tex}: autorización en inglés para un tutor perteneciente a una universidad extranjera.
+  \item \texttt{TFG-InformeTutorYRubrica.tex}: informe y rúbrica del tutor o tutores.
+  \item \texttt{TFG-ActaYRubricaDefensa.tex}: acta y rúbrica del tribunal de defensa.
+\end{itemize}
+
+El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex} y genera un PDF por cada uno. También puedes abrir y compilar individualmente el documento que necesites con tu editor o herramienta de \LaTeX{} preferidos.
+
+\subsection{Documentos para TFM}
+
+El directorio \texttt{PapeleoTFM/} contiene actualmente:
+
+\begin{itemize}
+  \item \texttt{TFM-AutorizacionPublicarAbierto.tex}: formulario de autorización para la publicación en abierto, con los datos de la persona autora, el tutor y, cuando exista, el cotutor.
+  \item \texttt{TFM-VistoBuenoTutorTFM.tex}: visto bueno del tutor o tutores para el depósito y la defensa del TFM. Para el MUIE también refleja si el trabajo está sujeto a confidencialidad.
+\end{itemize}
+
+El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex} y genera sus correspondientes PDF. También puedes compilar cada formulario por separado mediante tu editor o una herramienta estándar de \LaTeX{}.
+
+\subsection{Documentos para tesis doctorales}
+
+El directorio \texttt{PapeleoPHD/} contiene \texttt{PHD-VistoBuenoTutorTesis.tex}, una plantilla de visto bueno de los directores para la defensa de una tesis doctoral. También conserva \texttt{vistoBuenoDirectoresTesis\_plantilla.doc} como documento institucional de referencia.
+
+Puedes compilar el documento \texttt{PHD-VistoBuenoTutorTesis.tex} directamente con \texttt{pdflatex} o desde un editor de \LaTeX{}. El \texttt{Makefile} del directorio conserva actualmente un nombre de fichero con una combinación antigua de mayúsculas y minúsculas, por lo que quizá tengas que corregirlo antes de utilizarlo en GNU/Linux.
+
+\subsection{Compilación y revisión de los formularios}
+
+Desde los directorios \texttt{PapeleoTFG/} y \texttt{PapeleoTFM/} puedes generar todos los formularios mediante:
+
+\begin{verbatim}
+make
+\end{verbatim}
+
+El uso de \texttt{make} es opcional. Puedes compilar cada fichero individualmente con dos pasadas de \texttt{pdflatex} o mediante la función de construcción de tu editor de \LaTeX{} preferido. Estos formularios no utilizan la bibliografía ni los glosarios del libro principal.
+
+Las plantillas adaptan automáticamente determinados términos al género gramatical configurado y omiten los datos del cotutor cuando \texttt{\textbackslash{}myCoTutorFullName} está vacío. Aun así, revisa cuidadosamente el PDF resultante, las firmas requeridas y la coherencia de todos los datos.
+
+Los modelos administrativos y sus requisitos pueden cambiar. Antes de presentar cualquiera de estos documentos, comprueba que su contenido coincida con la normativa y los formularios oficiales vigentes de tu titulación.
+
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:

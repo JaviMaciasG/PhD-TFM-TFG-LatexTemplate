@@ -1,0 +1,241 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% By:
+%  + Javier Macías-Guarasa.
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote.
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid
+%
+% By: + Javier Macías-Guarasa. Departamento de Electrónica Universidad de Alcalá + Roberto Barra-Chicote. Departamento de Ingeniería Electrónica Universidad Politécnica de Madrid
+%
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo, Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to all of them, and to the many anonymous contributors found (thanks to google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples, improvements, please contact us at (macias@depeca.uah.es)
+%
+% You can freely use this template and please contribute with comments or suggestions!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Configuración de la plantilla}
+\label{cha:configuracion}
+
+La mayor parte de la adaptación de la plantilla se realiza en \texttt{Config/myconfig.tex}. En este capítulo describimos todas las variables disponibles para que puedas utilizarlo como referencia, aunque normalmente solo tendrás que completar las que correspondan a tu tipo de trabajo y a los documentos que vayas a generar.
+
+\section{Configuración del documento}
+\label{sec:definicion-del-tipo}
+
+La configuración compartida se encuentra en \texttt{Config/myconfig.tex}. Este fichero contiene los datos utilizados para generar el libro, el anteproyecto y los documentos administrativos, por lo que normalmente tendrás que adaptarlo antes de editar el contenido de tu trabajo. Las variables se definen mediante órdenes \texttt{\textbackslash{}newcommand}; para cambiar una variable, modifica únicamente el contenido situado entre las últimas llaves de su definición, sin alterar el nombre de la orden.
+
+Además de completar \texttt{Config/myconfig.tex}, revisa \texttt{Book/book.tex}, que determina qué capítulos, resúmenes, listados, documentos externos y apéndices se incluyen en el libro. Las variables descritas a continuación configuran los datos compartidos, pero no añaden ni eliminan por sí solas los elementos incluidos mediante \texttt{\textbackslash{}input} o \texttt{\textbackslash{}includepdf}.
+
+\section{Idioma, titulación y presentación de los tutores}
+
+Las siguientes variables controlan el idioma, la titulación y la presentación conjunta o separada de los tutores:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myLanguage}: idioma principal del documento. Admite los valores \texttt{spanish} y \texttt{english}. Esta selección determina, entre otros elementos, los textos automáticos, las cabeceras, el título utilizado y las palabras clave incorporadas a los metadatos del PDF.
+  \item \texttt{\textbackslash{}myDegree}: identificador de la titulación o del tipo concreto de documento. Su valor determina el tipo general de trabajo y selecciona automáticamente las portadas, contraportadas, nombres de titulación y otros textos aplicables.
+  \item \texttt{\textbackslash{}myFlagSplittedAdvisors}: controla cómo se presentan el tutor y el cotutor en las páginas que admiten ambas formas. El valor \texttt{true} utiliza líneas separadas para el tutor y el cotutor; el valor \texttt{false} utiliza una denominación conjunta.
+  \item \texttt{\textbackslash{}mySpecialty}: especialidad o itinerario asociado a la titulación. Puede dejarse vacío cuando no resulte aplicable.
+\end{itemize}
+
+Los identificadores admitidos actualmente por \texttt{\textbackslash{}myDegree}, agrupados por tipo de documento, son:
+
+\begin{itemize}
+  \item \textbf{Trabajos fin de carrera}: \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST} e \texttt{ITI}. Corresponden a titulaciones anteriores al Espacio Europeo de Educación Superior y se conservan por compatibilidad.
+  \item \textbf{Trabajos fin de grado}: \texttt{GITT}, \texttt{GIEC}, \texttt{GIT}, \texttt{GIST}, \texttt{GIC}, \texttt{GII}, \texttt{GMC}, \texttt{GIS}, \texttt{GISI}, \texttt{GIEAI} y \texttt{GITI}.
+  \item \textbf{Trabajos fin de máster}: \texttt{MUSEA}, \texttt{MUIT}, \texttt{MUII}, \texttt{MUIE}, \texttt{MUCTE}, \texttt{MUANBD} y \texttt{MUC}.
+  \item \textbf{Tesis doctorales}: \texttt{PHDUAH} y \texttt{PHDUPM}.
+  \item \textbf{Informes de investigación}: \texttt{GEINTRARR}, cuyo soporte se considera todavía experimental.
+\end{itemize}
+
+La correspondencia entre estos identificadores y los tipos generales de trabajo se mantiene en \texttt{Config/worktypes.txt}. Si quieres añadir una titulación nueva, tendrás que ampliar esa correspondencia y proporcionar los textos y cubiertas institucionales necesarios; no basta con escribir un identificador nuevo en \texttt{\textbackslash{}myDegree}.
+
+\section{Título, palabras clave y confidencialidad}
+
+Utiliza las siguientes variables para definir los títulos, las palabras clave y el carácter confidencial del trabajo:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myBookTitleSpanish}: título completo del trabajo en español.
+  \item \texttt{\textbackslash{}myBookTitleEnglish}: título completo del trabajo en inglés.
+  \item \texttt{\textbackslash{}myThesisKeywords}: palabras clave en español. Se utilizan en el resumen y en los metadatos del PDF cuando el idioma principal es español.
+  \item \texttt{\textbackslash{}myThesisKeywordsEnglish}: palabras clave en inglés. Se utilizan en el resumen en inglés y en los metadatos del PDF cuando el idioma principal es inglés.
+  \item \texttt{\textbackslash{}myConfidentialContent}: indica si el trabajo contiene material confidencial en los documentos administrativos que contemplan esta posibilidad. Admite los valores \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
+\end{itemize}
+
+La plantilla crea internamente la orden \texttt{\textbackslash{}myBookTitle} a partir del idioma seleccionado: utiliza \texttt{\textbackslash{}myBookTitleSpanish} cuando \texttt{\textbackslash{}myLanguage} vale \texttt{spanish} y \texttt{\textbackslash{}myBookTitleEnglish} cuando vale \texttt{english}. Por tanto, no definas ni modifiques directamente \texttt{\textbackslash{}myBookTitle}.
+
+\section{Datos de autoría}
+
+Los datos personales y de contacto de la persona autora se configuran mediante las siguientes variables:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myAuthorName}: nombre o nombres de la persona autora.
+  \item \texttt{\textbackslash{}myAuthorSurname}: apellidos de la persona autora.
+  \item \texttt{\textbackslash{}myAuthorFullName}: nombre completo utilizado en cubiertas, metadatos y documentos administrativos. La definición proporcionada concatena automáticamente \texttt{\textbackslash{}myAuthorName} y \texttt{\textbackslash{}myAuthorSurname}, por lo que normalmente no tendrás que modificarla.
+  \item \texttt{\textbackslash{}myAuthorGender}: género gramatical empleado para seleccionar las formas masculinas o femeninas de los textos automáticos. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myAuthorEmail}: dirección de correo electrónico de la persona autora. Se utiliza en algunos formularios y en los metadatos de contacto del PDF.
+  \item \texttt{\textbackslash{}myAuthorDNI}: DNI, NIE u otro identificador requerido en los documentos administrativos aplicables.
+  \item \texttt{\textbackslash{}myAuthorStreet}: calle y número del domicilio utilizados en los formularios que solicitan la dirección postal.
+  \item \texttt{\textbackslash{}myAuthorCity}: localidad del domicilio.
+  \item \texttt{\textbackslash{}myAuthorPostalCode}: código postal del domicilio.
+  \item \texttt{\textbackslash{}myAuthorProvince}: provincia del domicilio.
+  \item \texttt{\textbackslash{}myAuthorTelephone}: número de teléfono de contacto.
+\end{itemize}
+
+Los datos postales y el teléfono no son necesarios para componer el libro, pero se comparten con los documentos administrativos que los solicitan. Si no vas a generar ninguno de esos formularios, puedes dejarlos vacíos. Antes de distribuir públicamente los fuentes de tu trabajo, comprueba que \texttt{Config/myconfig.tex} no contiene datos personales que no deban publicarse.
+
+\section{Tutor académico y cotutor}
+
+Define los datos del tutor académico mediante las siguientes variables:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myAcademicTutorFullName}: nombre completo del tutor académico o director principal del trabajo.
+  \item \texttt{\textbackslash{}myAcademicTutorGender}: género gramatical utilizado para adaptar los textos referidos al tutor. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myAcademicTutorDNI}: DNI, NIE u otro identificador del tutor requerido en determinados documentos administrativos y autorizaciones.
+  \item \texttt{\textbackslash{}myAcademicTutorDepartmentOrInstitution}: departamento, empresa o institución a la que pertenece el tutor.
+  \item \texttt{\textbackslash{}myAcademicTutorPosition}: cargo o puesto profesional del tutor.
+  \item \texttt{\textbackslash{}myAcademicTutorEmail}: dirección de correo electrónico del tutor.
+  \item \texttt{\textbackslash{}myAcademicTutorForeignUniversity}: universidad extranjera a la que pertenece el tutor cuando se utiliza la autorización específica para tutores extranjeros.
+  \item \texttt{\textbackslash{}myAcademicTutorForeignCity}: ciudad utilizada para fechar la autorización del tutor extranjero.
+\end{itemize}
+
+La información del cotutor se define mediante las siguientes variables:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myCoTutorFullName}: nombre completo del cotutor o codirector. Si tu trabajo no tiene cotutor, deja esta variable vacía; distintas cubiertas y formularios utilizan este valor vacío para omitir automáticamente sus datos.
+  \item \texttt{\textbackslash{}myCoTutorGender}: género gramatical utilizado para adaptar los textos referidos al cotutor. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myCoTutorDNI}: DNI, NIE u otro identificador del cotutor requerido en determinados documentos administrativos y autorizaciones.
+  \item \texttt{\textbackslash{}myCoTutorDepartmentOrInstitution}: departamento, empresa o institución a la que pertenece el cotutor.
+  \item \texttt{\textbackslash{}myCoTutorPosition}: cargo o puesto profesional del cotutor.
+  \item \texttt{\textbackslash{}myCoTutorEmail}: dirección de correo electrónico del cotutor.
+\end{itemize}
+
+Las variables antiguas \texttt{\textbackslash{}myFirstAdvisorFullName}, \texttt{\textbackslash{}mySecondAdvisorFullName}, \texttt{\textbackslash{}myFirstAdvisorDNI} y \texttt{\textbackslash{}mySecondAdvisorDNI} se conservan como alias por compatibilidad. No las edites: sus valores se obtienen respectivamente de las variables actuales del tutor académico y del cotutor.
+
+\section{Afiliación académica}
+
+Las siguientes variables describen la universidad, el centro, el departamento, el programa de doctorado y el grupo de investigación:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}mySchool}: escuela, facultad o centro académico responsable del trabajo.
+  \item \texttt{\textbackslash{}myUniversity}: nombre completo de la universidad.
+  \item \texttt{\textbackslash{}myUniversityAcronym}: acrónimo de la universidad utilizado en las cubiertas y otros elementos que requieren una forma abreviada.
+  \item \texttt{\textbackslash{}myDepartment}: nombre del departamento en español.
+  \item \texttt{\textbackslash{}myDepartmentEnglish}: nombre del departamento en inglés.
+  \item \texttt{\textbackslash{}myPhDProgram}: nombre del programa de doctorado en español. Solo necesitarás esta variable para los documentos que muestren esta información.
+  \item \texttt{\textbackslash{}myPhDProgramEnglish}: nombre del programa de doctorado en inglés.
+  \item \texttt{\textbackslash{}myResearchGroup}: nombre o acrónimo del grupo de investigación. También se utiliza al generar informes de investigación mediante \texttt{GEINTRARR}.
+\end{itemize}
+
+\section{Tribunal y personal académico}
+
+Configura la composición del tribunal y los cargos académicos mediante las siguientes variables:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myTribunalPresident}: nombre completo de la persona que preside el tribunal.
+  \item \texttt{\textbackslash{}myTribunalPresidentGender}: género gramatical de la presidencia del tribunal. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myTribunalFirstSpokesperson}: nombre completo del primer vocal del tribunal.
+  \item \texttt{\textbackslash{}myTribunalFirstSpokespersonGender}: género gramatical del primer vocal. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myTribunalSecondSpokesperson}: nombre completo del segundo vocal cuando la composición del tribunal lo requiera.
+  \item \texttt{\textbackslash{}myTribunalSecondSpokespersonGender}: género gramatical del segundo vocal. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myTribunalAlternateMember}: nombre completo del miembro suplente del tribunal.
+  \item \texttt{\textbackslash{}myTribunalAlternateMemberGender}: género gramatical del miembro suplente. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myTribunalSecretary}: nombre de la persona que actúa como secretaria del tribunal cuando este puesto sea necesario.
+  \item \texttt{\textbackslash{}myDepartmentSecretary}: nombre de la persona responsable de la secretaría del departamento que debe aparecer o firmar en determinados formularios.
+  \item \texttt{\textbackslash{}myDepartmentSecretaryGender}: género gramatical de la persona responsable de la secretaría del departamento. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myTFMComisionPresident}: nombre de la persona que preside la comisión de trabajos fin de máster. Se utiliza específicamente en la documentación del MUIE.
+\end{itemize}
+
+No todas las titulaciones utilizan la misma composición de tribunal ni los mismos cargos administrativos. Puedes dejar vacíos los campos que no aparezcan en los documentos correspondientes a la titulación que hayas seleccionado.
+
+\section{Calificaciones}
+
+Las siguientes variables recogen las calificaciones y la posible propuesta de matrícula de honor:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myAcademicTutorGrade}: calificación asignada por el tutor académico. En la rúbrica de TFG incluida actualmente corresponde a un máximo de siete puntos.
+  \item \texttt{\textbackslash{}myTribunalGrade}: calificación asignada por el tribunal. En la rúbrica de TFG incluida actualmente corresponde a un máximo de tres puntos.
+  \item \texttt{\textbackslash{}myTribunalMHProposal}: indica si el tribunal propone la concesión de matrícula de honor. Admite los valores \texttt{YES} y \texttt{NO}, respetando las mayúsculas.
+\end{itemize}
+
+Las calificaciones del tutor y del tribunal se utilizan en los documentos de acta y rúbrica que las contemplan. La plantilla calcula automáticamente la calificación conjunta en esos formularios; no afectan al contenido ni a la compilación del libro principal.
+
+\section{Fechas}
+
+Introduce las fechas como texto ya formateado, no como valores que la plantilla convierta automáticamente. Así podrás utilizar el formato requerido por cada documento, incluidos los ordinales y nombres de meses en inglés.
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myThesisProposalDate}: fecha de presentación o firma del anteproyecto. Se utiliza en la plantilla del anteproyecto y en los formularios que hacen referencia a su solicitud.
+  \item \texttt{\textbackslash{}myThesisDepositDate}: fecha de depósito del trabajo en español.
+  \item \texttt{\textbackslash{}myThesisDepositDateEnglish}: fecha de depósito del trabajo en inglés.
+  \item \texttt{\textbackslash{}myThesisAcademicYear}: curso académico mostrado en las actas y rúbricas que lo requieren; por ejemplo, \texttt{2025/2026}.
+  \item \texttt{\textbackslash{}myThesisDefenseYear}: año de defensa utilizado en las cubiertas y contraportadas correspondientes.
+  \item \texttt{\textbackslash{}myThesisDefenseDate}: fecha completa de defensa en español. En los informes de investigación también se utiliza como fecha de la cubierta.
+  \item \texttt{\textbackslash{}myThesisdefenseDateEnglish}: fecha completa de defensa en inglés. Respeta exactamente este nombre, incluida la letra minúscula de \texttt{defense}.
+  \item \texttt{\textbackslash{}myPaperworkDate}: fecha en español utilizada para firmar o fechar los documentos administrativos. Su definición puede reutilizar \texttt{\textbackslash{}myThesisDepositDate} cuando ambas fechas coincidan.
+  \item \texttt{\textbackslash{}myPaperworkDateEnglish}: fecha equivalente en inglés. Se utiliza, entre otros casos, en la autorización para tutores extranjeros y puede reutilizar \texttt{\textbackslash{}myThesisDepositDateEnglish}.
+\end{itemize}
+
+No existe una variable \texttt{\textbackslash{}myThesisProposalDateEnglish} en la configuración actual. Si necesitas esa fecha en un documento nuevo, tendrás que añadir explícitamente la variable y adaptar la plantilla que vaya a utilizarla.
+
+\section{Publicación en abierto y licencia}
+
+Utiliza las siguientes variables para configurar la publicación en abierto, el embargo, los cargos responsables y la licencia del documento:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myAuthorizationOpenPublishing}: indica si se autoriza la publicación en abierto en los documentos que contemplan esta decisión. Los valores previstos son \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
+  \item \texttt{\textbackslash{}myAuthorizationOpenPublishingEmbargoMonths}: duración del embargo antes de la publicación en abierto. Los valores contemplados por los textos automáticos son \texttt{0}, \texttt{6}, \texttt{12}, \texttt{18} y \texttt{24} meses.
+  \item \texttt{\textbackslash{}myResearchVicerrector}: nombre y tratamiento de la persona responsable del vicerrectorado que aparece en los formularios de publicación correspondientes.
+  \item \texttt{\textbackslash{}myResearchVicerrectorGender}: género gramatical utilizado para adaptar el cargo del vicerrectorado. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myCopyrightStatement}: declaración de derechos incorporada a los metadatos del PDF.
+  \item \texttt{\textbackslash{}myLicenseURL}: dirección de la licencia incorporada a los metadatos del PDF.
+\end{itemize}
+
+La autorización de publicación, el embargo y la licencia representan decisiones diferentes. Comprueba que sus valores sean coherentes entre sí y con las condiciones institucionales aplicables. Sustituye también los nombres de cargos y las direcciones de licencia de ejemplo por información vigente antes de generar los documentos definitivos.
+
+\section{Informes de investigación y tesis de la UPM}
+
+Estas variables proporcionan los datos específicos de los informes de investigación y de las tesis de la UPM:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myResearchReportID}: identificador mostrado en la cubierta de los informes de investigación generados con \texttt{\textbackslash{}myDegree} establecido a \texttt{GEINTRARR}.
+  \item \texttt{\textbackslash{}myUPMdegree}: denominación de la titulación mostrada en las cubiertas de tesis de la Universidad Politécnica de Madrid.
+\end{itemize}
+
+El soporte para informes de investigación se considera experimental. Solo necesitarás la variable \texttt{\textbackslash{}myUPMdegree} si utilizas una plantilla de la UPM que dependa de ella.
+
+\section{Colores de los enlaces}
+
+Utiliza como valores de color nombres o expresiones reconocidos por los paquetes de color de la plantilla, como \texttt{black}, \texttt{blue}, \texttt{red} o \texttt{green}.
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}mytoclinkcolor}: color de los enlaces del índice general.
+  \item \texttt{\textbackslash{}myloflinkcolor}: color de los enlaces del índice de figuras.
+  \item \texttt{\textbackslash{}mylotlinkcolor}: color de los enlaces del índice de tablas.
+  \item \texttt{\textbackslash{}myothertoclinkcolor}: color de los enlaces de los índices adicionales definidos en \texttt{cover/extralistings.tex}.
+  \item \texttt{\textbackslash{}mylinkcolor}: color de los enlaces internos, incluidas las referencias cruzadas.
+  \item \texttt{\textbackslash{}myurlcolor}: color de los enlaces a direcciones URL.
+  \item \texttt{\textbackslash{}mycitecolor}: color de los enlaces a referencias bibliográficas.
+\end{itemize}
+
+Utilizar \texttt{black} para los índices permite que sus entradas mantengan el aspecto del texto normal, aunque sigan siendo enlaces activos. Antes de elegir otros colores, comprueba su legibilidad tanto en pantalla como en una copia impresa.
+
+\section{Variables derivadas y compatibilidad}
+
+El fichero \texttt{Config/postamble.tex} obtiene numerosas órdenes auxiliares a partir de la configuración. Entre ellas se encuentran \texttt{\textbackslash{}myDegreefull}, con el nombre completo de la titulación; \texttt{\textbackslash{}myWorkType}, con el tipo abreviado de trabajo; \texttt{\textbackslash{}myWorkTypeFull}, con su nombre completo; y \texttt{\textbackslash{}contactauthor}, con el nombre y correo de la persona autora. Puedes utilizar estas órdenes en el contenido, pero no vuelvas a definirlas en \texttt{Config/myconfig.tex}.
+
+La variable \texttt{\textbackslash{}mybookFigure} se conserva únicamente por compatibilidad con formularios antiguos. Ya no es necesaria para las plantillas actuales, así que normalmente no debes modificarla.
+
+Una vez que hayas completado las variables aplicables, la plantilla reutilizará sus valores en las cubiertas, los formularios, los textos adaptados al género gramatical y los metadatos del PDF. Esta configuración automática no sustituye la revisión de la normativa vigente ni la comprobación de los PDF generados.
+
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:

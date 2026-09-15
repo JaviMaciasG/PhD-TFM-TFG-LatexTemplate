@@ -1,0 +1,113 @@
+\section{Ejemplos de elementos de utilidad}
+\label{sec:ejempl-de-elem}
+
+\subsection{Comandos personalizados}
+\label{sec:uso-de-comandos}
+
+Después de las variables de configuración descritas en la sección~\ref{sec:definicion-del-tipo} hemos dejado en \texttt{Config/myconfig.tex} una zona destinada a definir comandos personalizados. Incluimos algunas definiciones a modo de ejemplo para mostrarte cómo puedes crear las tuyas; puedes conservarlas, adaptarlas o eliminarlas cuando dejen de resultarte útiles.
+
+Los comandos de ejemplo incluidos actualmente son:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}texten\{texto\}}: presenta en cursiva una palabra o expresión en inglés dentro de un documento en español; por ejemplo, \texttt{\textbackslash{}texten\{English\}} produce \texten{English}.
+  \item \texttt{\textbackslash{}ci}: genera el símbolo matemático de independencia condicional utilizado por algunos ejemplos.
+  \item \texttt{\textbackslash{}circulo}: genera un círculo utilizado como marcador gráfico.
+  \item \texttt{\textbackslash{}asterisco}: genera un asterisco matemático.
+  \item \texttt{\textbackslash{}cuadrado}: genera un cuadrado utilizado como marcador gráfico.
+  \item \texttt{\textbackslash{}triangulo}: genera un triángulo orientado hacia arriba.
+  \item \texttt{\textbackslash{}triangv}: genera un triángulo orientado hacia abajo.
+  \item \texttt{\textbackslash{}diamante}: genera un rombo utilizado como marcador gráfico.
+  \item \texttt{\textbackslash{}new\{texto\}}: resalta texto en magenta. Puede resultarte útil durante la revisión, pero comprueba que no queden marcas de este tipo en la versión definitiva.
+  \item \texttt{\textbackslash{}argmax\{índice\}}: compone el operador matemático \texttt{argmax} colocando debajo el índice indicado.
+  \item \texttt{\textbackslash{}verticalSpacingSRPMaps}: almacena una separación vertical utilizada por uno de los ejemplos gráficos de los capítulos.
+  \item \texttt{\textbackslash{}todojmg}, \texttt{\textbackslash{}todorbc} y \texttt{\textbackslash{}todomig}: crean notas de revisión en línea con autores y colores diferenciados mediante el paquete \texttt{todonotes}. Adapta sus nombres, iniciales y colores a las personas que participen en la revisión.
+\end{itemize}
+
+Los símbolos de barra inversa y virgulilla no necesitan definiciones adicionales. Puedes escribirlos mediante \texttt{\textbackslash{}textbackslash\{\}}, que produce \textbackslash{}, y \texttt{\textbackslash{}textasciitilde\{\}}, que produce \textasciitilde{}.
+
+Antes de eliminar o cambiar un comando de ejemplo, busca sus usos en los capítulos, apéndices, acrónimos y símbolos. Si eliminas una definición que todavía utilizas, la compilación fallará con un error de secuencia de control desconocida.
+
+\subsection{Frases célebres}
+\label{sec:uso-de-frases}
+
+La plantilla permite incorporar al comienzo de los capítulos una cita mediante los entornos \texttt{FraseCelebre}, \texttt{Frase} y \texttt{Fuente}. Las frases utilizadas como ejemplo y las definiciones que permiten generarlas proceden del excelente trabajo de Marco Antonio Gomez-Martín y Pedro Pablo Gomez-Martín en el proyecto \texis{}, una plantilla para la creación de tesis y otros documentos disponible en \cite{texis}.
+
+Puedes editar o eliminar el bloque de cita de cada capítulo sin afectar al resto de su contenido. Cuando utilices una cita ajena, identifica adecuadamente su fuente y comprueba que su reproducción sea compatible con los derechos aplicables.
+
+\subsection{Inclusión de figuras y diagramas}
+\label{sec:diagrama}
+
+Puedes incluir directamente ficheros \texttt{pdf}, \texttt{png} y \texttt{jpg} mediante \texttt{\textbackslash{}includegraphics}. Para evitar que tengas que escribir la ruta completa de cada figura, ya hemos configurado en \texttt{Book/book.tex} los directorios \texttt{logos/}, \texttt{figures/} y \texttt{diagrams/} mediante \texttt{\textbackslash{}graphicspath}; normalmente bastará con que indiques el nombre del fichero.
+
+El \texttt{Makefile} descrito en el apartado~\ref{sec:compilacion-makefile} puede convertir automáticamente fuentes \texttt{dia}, \texttt{svg} y \texttt{eps} a PDF cuando están instaladas las herramientas opcionales necesarias, enumeradas en ese mismo apartado. Los PDF generados pueden incluirse después como cualquier otra figura.
+
+La figura~\ref{fig:fig_clobj} utiliza \texttt{diagrams/Esquema\_objetos.pdf}, que también puede generarse a partir de \texttt{diagrams/Esquema\_objetos.dia}\footnote{El ejemplo procede de los trabajos fin de carrera de David Casillas y Manuel Villaverde.}.
+
+\begin{figure}[tphb]
+  \centering
+  \includegraphics{Esquema_objetos}
+  \caption{Clasificación de los objetos para la gramática; los pies de figura también pueden contener acrónimos como \acs{ETTS} y símbolos como \ac{xidet}.}
+  \label{fig:fig_clobj}
+\end{figure}
+
+Incluye en todas las figuras un pie descriptivo y una etiqueta única mediante \texttt{\textbackslash{}label}. Para citarlas desde el texto, utiliza \texttt{\textbackslash{}ref}, preferiblemente acompañado del tipo de elemento, como en \texttt{figura\textasciitilde{}\textbackslash{}ref\{fig:fig\_clobj\}}.
+
+\subsection{Definición y uso de acrónimos}
+\label{sec:uso-de-acronimos}
+
+La plantilla gestiona los acrónimos mediante el paquete \texttt{glossaries}. Sus definiciones se encuentran en \texttt{acronyms/defacronymsgl.tex}, mientras que \texttt{acronyms/acronymsgl.tex} configura y genera el listado correspondiente.
+
+Puedes definir un acrónimo mediante una orden como:
+
+\begin{verbatim}
+\newacronym{ETTS}{ETTS}{Emotional Text To Speech}
+\end{verbatim}
+
+La orden \texttt{\textbackslash{}ac\{ETTS\}} produce \ac{ETTS} y gestiona automáticamente la forma mostrada en usos posteriores. Las principales órdenes disponibles en los ejemplos son:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}ac\{clave\}}: utiliza la forma completa la primera vez y la abreviada en los usos posteriores.
+  \item \texttt{\textbackslash{}acs\{clave\}}: fuerza la forma abreviada.
+  \item \texttt{\textbackslash{}acl\{clave\}}: fuerza la forma desarrollada.
+  \item \texttt{\textbackslash{}acf\{clave\}}: fuerza la forma completa, con la abreviatura incluida.
+  \item \texttt{\textbackslash{}acp\{clave\}}: utiliza la forma plural configurada para el acrónimo.
+  \item \texttt{\textbackslash{}glsresetall[acronym]}: reinicia el estado de uso de todos los acrónimos para que vuelvan a tratarse como no utilizados.
+\end{itemize}
+
+Para que puedas ver el mecanismo en funcionamiento, reiniciamos primero el estado de los acrónimos:
+
+\glsresetall[acronym]
+
+Si ahora nos referimos a \ac{ETTS}, aparecerá su forma desarrollada por tratarse del primer uso; al volver a escribir \ac{ETTS}, se mostrará únicamente el acrónimo. También puedes forzar la forma abreviada con \acs{EMODB}, la forma desarrollada con \acl{EMODB} o la forma completa con \acf{EMODB}.
+
+Puedes definir mediante \texttt{\textbackslash{}newglossaryentry} las entradas que necesiten plurales personalizados u otros atributos, como muestra el acrónimo \texttt{SOC} incluido en el fichero de ejemplo. Para generar el listado, ejecuta \texttt{makeglossaries}, tal como se explica en la sección~\ref{sec:compilacion}.
+
+También puedes comprobar cómo se gestionan los plurales: la primera aparición de \acp{SOC} utiliza la forma desarrollada configurada y, al repetir \acp{SOC}, se muestra su forma abreviada plural. Después podemos volver al singular mediante \ac{SOC}.
+
+\subsection{Definición y uso de símbolos}
+\label{sec:simbolos}
+
+Los símbolos se gestionan también mediante \texttt{glossaries}. Se definen en \texttt{symbols/defsymbolsgl.tex} como entradas del glosario de tipo \texttt{symbols}, y su listado se configura en \texttt{symbols/symbolsgl.tex}.
+
+Los ejemplos incluidos representan el ángstrom, \ac{angstrom}; el ohmio, \ac{ohm}; una señal de audio, \ac{xdet}; una señal capturada por el micrófono \(i\), \ac{xidet}; y la independencia condicional, \ac{condindep}. Puedes utilizar la orden \texttt{\textbackslash{}ac\{clave\}} tanto con acrónimos como con estas entradas de símbolos.
+
+Si no necesitas acrónimos o símbolos, comenta en \texttt{Book/book.tex} las órdenes que incluyen sus definiciones y listados. En ese caso tampoco necesitarás ejecutar \texttt{makeglossaries}; la sección~\ref{sec:compilacion} explica cuándo debes incorporar esta herramienta al proceso de compilación.
+
+\subsection{Ejemplos de inclusión de enlaces a vídeos y listado}
+\label{sec:intro-videolink}
+
+En marzo de 2023 recibimos una pregunta sobre la posibilidad de incluir enlaces a vídeos en el documento y generar automáticamente un listado similar al de tablas, figuras o algoritmos. El código para implementarlo está en el fichero \texttt{cover/extralistings.tex}, que puedes editar y adaptar a tus necesidades.
+
+Puedes añadir un enlace mediante una orden como:
+
+\begin{verbatim}
+\videoLink{Título descriptivo del vídeo}{https://example.org/video}
+\end{verbatim}
+
+Para usarlo, basta con que incluyas elementos similares a \videoLink{Introducción al Laboratorio de Circuitos Electrónicos (I)}{https://www.youtube.com/watch?v=U1P2ZP0f8KM} o \videoLink{Introducción al Laboratorio de Circuitos Electrónicos (V)}{https://www.youtube.com/watch?v=nPsxMqKRGx0}. La orden incorpora el enlace al texto y registra la entrada en el listado de vídeos. Para mostrar ese listado, mantén la inclusión de \texttt{cover/extralistings.tex} en \texttt{Book/book.tex}.
+
+Lo importante no es tanto que sea un listado de vídeos, sino que este ejemplo muestra cómo se pueden integrar listados de elementos adicionales que sean a su vez enlaces y configurar la generación del índice para crear enlaces visitables desde el propio índice, además de su indexación convencional.
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:
