@@ -232,7 +232,7 @@ Los identificadores admitidos actualmente por \texttt{\textbackslash{}myDegree},
   \item \textbf{Informes de investigación}: \texttt{GEINTRARR}, cuyo soporte se considera todavía experimental.
 \end{itemize}
 
-La correspondencia entre estos identificadores y los tipos generales de trabajo se mantiene en \texttt{Config/worktypes.txt}. Añadir una titulación nueva requiere ampliar esa correspondencia y proporcionar los textos y cubiertas institucionales necesarios; no basta con escribir un identificador nuevo en \texttt{\textbackslash{}myDegree}.
+La correspondencia entre estos identificadores y los tipos generales de trabajo se mantiene en \texttt{Config/worktypes.txt}. Si quieres añadir una titulación nueva, tendrás que ampliar esa correspondencia y proporcionar los textos y cubiertas institucionales necesarios; no basta con escribir un identificador nuevo en \texttt{\textbackslash{}myDegree}.
 
 \subsubsection{Título, palabras clave y confidencialidad}
 
@@ -244,14 +244,14 @@ La correspondencia entre estos identificadores y los tipos generales de trabajo 
   \item \texttt{\textbackslash{}myConfidentialContent}: indica si el trabajo contiene material confidencial en los documentos administrativos que contemplan esta posibilidad. Admite los valores \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
 \end{itemize}
 
-La plantilla crea internamente la orden \texttt{\textbackslash{}myBookTitle} a partir del idioma seleccionado: utiliza \texttt{\textbackslash{}myBookTitleSpanish} cuando \texttt{\textbackslash{}myLanguage} vale \texttt{spanish} y \texttt{\textbackslash{}myBookTitleEnglish} cuando vale \texttt{english}. Por tanto, normalmente no se debe definir ni modificar directamente \texttt{\textbackslash{}myBookTitle}.
+La plantilla crea internamente la orden \texttt{\textbackslash{}myBookTitle} a partir del idioma seleccionado: utiliza \texttt{\textbackslash{}myBookTitleSpanish} cuando \texttt{\textbackslash{}myLanguage} vale \texttt{spanish} y \texttt{\textbackslash{}myBookTitleEnglish} cuando vale \texttt{english}. Por tanto, no definas ni modifiques directamente \texttt{\textbackslash{}myBookTitle}.
 
 \subsubsection{Datos de autoría}
 
 \begin{itemize}
   \item \texttt{\textbackslash{}myAuthorName}: nombre o nombres de la persona autora.
   \item \texttt{\textbackslash{}myAuthorSurname}: apellidos de la persona autora.
-  \item \texttt{\textbackslash{}myAuthorFullName}: nombre completo utilizado en cubiertas, metadatos y documentos administrativos. La definición proporcionada concatena automáticamente \texttt{\textbackslash{}myAuthorName} y \texttt{\textbackslash{}myAuthorSurname}, por lo que normalmente no debe modificarse.
+  \item \texttt{\textbackslash{}myAuthorFullName}: nombre completo utilizado en cubiertas, metadatos y documentos administrativos. La definición proporcionada concatena automáticamente \texttt{\textbackslash{}myAuthorName} y \texttt{\textbackslash{}myAuthorSurname}, por lo que normalmente no tendrás que modificarla.
   \item \texttt{\textbackslash{}myAuthorGender}: género gramatical empleado para seleccionar las formas masculinas o femeninas de los textos automáticos. Admite los valores \texttt{male} y \texttt{female}.
   \item \texttt{\textbackslash{}myAuthorEmail}: dirección de correo electrónico de la persona autora. Se utiliza en algunos formularios y en los metadatos de contacto del PDF.
   \item \texttt{\textbackslash{}myAuthorDNI}: DNI, NIE u otro identificador requerido en los documentos administrativos aplicables.
@@ -262,7 +262,7 @@ La plantilla crea internamente la orden \texttt{\textbackslash{}myBookTitle} a p
   \item \texttt{\textbackslash{}myAuthorTelephone}: número de teléfono de contacto.
 \end{itemize}
 
-Los datos postales y el teléfono no son necesarios para componer el libro, pero se comparten con los documentos administrativos que los solicitan. Si no se va a generar ninguno de esos formularios, pueden dejarse vacíos. Antes de distribuir públicamente los fuentes del trabajo se recomienda comprobar que \texttt{Config/myconfig.tex} no contiene datos personales que no deban publicarse.
+Los datos postales y el teléfono no son necesarios para componer el libro, pero se comparten con los documentos administrativos que los solicitan. Si no vas a generar ninguno de esos formularios, puedes dejarlos vacíos. Antes de distribuir públicamente los fuentes de tu trabajo, comprueba que \texttt{Config/myconfig.tex} no contiene datos personales que no deban publicarse.
 
 \subsubsection{Tutor académico y cotutor}
 
@@ -280,7 +280,7 @@ Los datos postales y el teléfono no son necesarios para componer el libro, pero
 La información del cotutor se define mediante las siguientes variables:
 
 \begin{itemize}
-  \item \texttt{\textbackslash{}myCoTutorFullName}: nombre completo del cotutor o codirector. Debe dejarse vacío cuando el trabajo no tenga cotutor; distintas cubiertas y formularios utilizan este valor vacío para omitir automáticamente sus datos.
+  \item \texttt{\textbackslash{}myCoTutorFullName}: nombre completo del cotutor o codirector. Si tu trabajo no tiene cotutor, deja esta variable vacía; distintas cubiertas y formularios utilizan este valor vacío para omitir automáticamente sus datos.
   \item \texttt{\textbackslash{}myCoTutorGender}: género gramatical utilizado para adaptar los textos referidos al cotutor. Admite los valores \texttt{male} y \texttt{female}.
   \item \texttt{\textbackslash{}myCoTutorDNI}: DNI, NIE u otro identificador del cotutor requerido en determinados documentos administrativos y autorizaciones.
   \item \texttt{\textbackslash{}myCoTutorDepartmentOrInstitution}: departamento, empresa o institución a la que pertenece el cotutor.
@@ -288,7 +288,7 @@ La información del cotutor se define mediante las siguientes variables:
   \item \texttt{\textbackslash{}myCoTutorEmail}: dirección de correo electrónico del cotutor.
 \end{itemize}
 
-Las variables antiguas \texttt{\textbackslash{}myFirstAdvisorFullName}, \texttt{\textbackslash{}mySecondAdvisorFullName}, \texttt{\textbackslash{}myFirstAdvisorDNI} y \texttt{\textbackslash{}mySecondAdvisorDNI} se conservan como alias por compatibilidad. No deben editarse: sus valores se obtienen respectivamente de las variables actuales del tutor académico y del cotutor.
+Las variables antiguas \texttt{\textbackslash{}myFirstAdvisorFullName}, \texttt{\textbackslash{}mySecondAdvisorFullName}, \texttt{\textbackslash{}myFirstAdvisorDNI} y \texttt{\textbackslash{}mySecondAdvisorDNI} se conservan como alias por compatibilidad. No las edites: sus valores se obtienen respectivamente de las variables actuales del tutor académico y del cotutor.
 
 \subsubsection{Afiliación académica}
 
@@ -298,7 +298,7 @@ Las variables antiguas \texttt{\textbackslash{}myFirstAdvisorFullName}, \texttt{
   \item \texttt{\textbackslash{}myUniversityAcronym}: acrónimo de la universidad utilizado en las cubiertas y otros elementos que requieren una forma abreviada.
   \item \texttt{\textbackslash{}myDepartment}: nombre del departamento en español.
   \item \texttt{\textbackslash{}myDepartmentEnglish}: nombre del departamento en inglés.
-  \item \texttt{\textbackslash{}myPhDProgram}: nombre del programa de doctorado en español. Solo resulta necesario para los documentos que muestran esta información.
+  \item \texttt{\textbackslash{}myPhDProgram}: nombre del programa de doctorado en español. Solo necesitarás esta variable para los documentos que muestren esta información.
   \item \texttt{\textbackslash{}myPhDProgramEnglish}: nombre del programa de doctorado en inglés.
   \item \texttt{\textbackslash{}myResearchGroup}: nombre o acrónimo del grupo de investigación. También se utiliza al generar informes de investigación mediante \texttt{GEINTRARR}.
 \end{itemize}
@@ -320,7 +320,7 @@ Las variables antiguas \texttt{\textbackslash{}myFirstAdvisorFullName}, \texttt{
   \item \texttt{\textbackslash{}myTFMComisionPresident}: nombre de la persona que preside la comisión de trabajos fin de máster. Se utiliza específicamente en la documentación del MUIE.
 \end{itemize}
 
-No todas las titulaciones utilizan la misma composición de tribunal ni los mismos cargos administrativos. Los campos que no aparezcan en los documentos correspondientes a la titulación seleccionada pueden dejarse con un valor vacío.
+No todas las titulaciones utilizan la misma composición de tribunal ni los mismos cargos administrativos. Puedes dejar vacíos los campos que no aparezcan en los documentos correspondientes a la titulación que hayas seleccionado.
 
 \subsubsection{Calificaciones}
 
@@ -334,7 +334,7 @@ Las calificaciones del tutor y del tribunal se utilizan en los documentos de act
 
 \subsubsection{Fechas}
 
-Las fechas se introducen como texto ya formateado, no como valores que la plantilla convierta automáticamente. Esto permite utilizar el formato requerido por cada documento, incluidos los ordinales y nombres de meses en inglés.
+Introduce las fechas como texto ya formateado, no como valores que la plantilla convierta automáticamente. Así podrás utilizar el formato requerido por cada documento, incluidos los ordinales y nombres de meses en inglés.
 
 \begin{itemize}
   \item \texttt{\textbackslash{}myThesisProposalDate}: fecha de presentación o firma del anteproyecto. Se utiliza en la plantilla del anteproyecto y en los formularios que hacen referencia a su solicitud.
@@ -343,12 +343,12 @@ Las fechas se introducen como texto ya formateado, no como valores que la planti
   \item \texttt{\textbackslash{}myThesisAcademicYear}: curso académico mostrado en las actas y rúbricas que lo requieren; por ejemplo, \texttt{2025/2026}.
   \item \texttt{\textbackslash{}myThesisDefenseYear}: año de defensa utilizado en las cubiertas y contraportadas correspondientes.
   \item \texttt{\textbackslash{}myThesisDefenseDate}: fecha completa de defensa en español. En los informes de investigación también se utiliza como fecha de la cubierta.
-  \item \texttt{\textbackslash{}myThesisdefenseDateEnglish}: fecha completa de defensa en inglés. Debe respetarse exactamente este nombre, incluida la letra minúscula de \texttt{defense}.
+  \item \texttt{\textbackslash{}myThesisdefenseDateEnglish}: fecha completa de defensa en inglés. Respeta exactamente este nombre, incluida la letra minúscula de \texttt{defense}.
   \item \texttt{\textbackslash{}myPaperworkDate}: fecha en español utilizada para firmar o fechar los documentos administrativos. Su definición puede reutilizar \texttt{\textbackslash{}myThesisDepositDate} cuando ambas fechas coincidan.
   \item \texttt{\textbackslash{}myPaperworkDateEnglish}: fecha equivalente en inglés. Se utiliza, entre otros casos, en la autorización para tutores extranjeros y puede reutilizar \texttt{\textbackslash{}myThesisDepositDateEnglish}.
 \end{itemize}
 
-No existe una variable \texttt{\textbackslash{}myThesisProposalDateEnglish} en la configuración actual. Si un documento nuevo necesitara esa fecha, habría que añadir explícitamente la variable y adaptar la plantilla que fuera a utilizarla.
+No existe una variable \texttt{\textbackslash{}myThesisProposalDateEnglish} en la configuración actual. Si necesitas esa fecha en un documento nuevo, tendrás que añadir explícitamente la variable y adaptar la plantilla que vaya a utilizarla.
 
 \subsubsection{Publicación en abierto y licencia}
 
@@ -361,7 +361,7 @@ No existe una variable \texttt{\textbackslash{}myThesisProposalDateEnglish} en l
   \item \texttt{\textbackslash{}myLicenseURL}: dirección de la licencia incorporada a los metadatos del PDF.
 \end{itemize}
 
-La autorización de publicación, el embargo y la licencia representan decisiones diferentes. La persona autora debe comprobar que sus valores sean coherentes entre sí y con las condiciones institucionales aplicables. También debe sustituir los nombres de cargos y las direcciones de licencia de ejemplo por información vigente antes de generar los documentos definitivos.
+La autorización de publicación, el embargo y la licencia representan decisiones diferentes. Comprueba que sus valores sean coherentes entre sí y con las condiciones institucionales aplicables. Sustituye también los nombres de cargos y las direcciones de licencia de ejemplo por información vigente antes de generar los documentos definitivos.
 
 \subsubsection{Informes de investigación y tesis de la UPM}
 
@@ -370,11 +370,11 @@ La autorización de publicación, el embargo y la licencia representan decisione
   \item \texttt{\textbackslash{}myUPMdegree}: denominación de la titulación mostrada en las cubiertas de tesis de la Universidad Politécnica de Madrid.
 \end{itemize}
 
-El soporte para informes de investigación se considera experimental. La variable \texttt{\textbackslash{}myUPMdegree} solo resulta necesaria para las plantillas de la UPM que la utilizan.
+El soporte para informes de investigación se considera experimental. Solo necesitarás la variable \texttt{\textbackslash{}myUPMdegree} si utilizas una plantilla de la UPM que dependa de ella.
 
 \subsubsection{Colores de los enlaces}
 
-Los valores de color deben corresponder a nombres o expresiones reconocidos por los paquetes de color utilizados por la plantilla, como \texttt{black}, \texttt{blue}, \texttt{red} o \texttt{green}.
+Utiliza como valores de color nombres o expresiones reconocidos por los paquetes de color de la plantilla, como \texttt{black}, \texttt{blue}, \texttt{red} o \texttt{green}.
 
 \begin{itemize}
   \item \texttt{\textbackslash{}mytoclinkcolor}: color de los enlaces del índice general.
@@ -386,15 +386,15 @@ Los valores de color deben corresponder a nombres o expresiones reconocidos por 
   \item \texttt{\textbackslash{}mycitecolor}: color de los enlaces a referencias bibliográficas.
 \end{itemize}
 
-Utilizar \texttt{black} para los índices permite que sus entradas mantengan el aspecto del texto normal, aunque sigan siendo enlaces activos. Antes de elegir otros colores conviene comprobar su legibilidad tanto en pantalla como en una copia impresa.
+Utilizar \texttt{black} para los índices permite que sus entradas mantengan el aspecto del texto normal, aunque sigan siendo enlaces activos. Antes de elegir otros colores, comprueba su legibilidad tanto en pantalla como en una copia impresa.
 
 \subsubsection{Variables derivadas y compatibilidad}
 
-El fichero \texttt{Config/postamble.tex} obtiene numerosas órdenes auxiliares a partir de la configuración. Entre ellas se encuentran \texttt{\textbackslash{}myDegreefull}, con el nombre completo de la titulación; \texttt{\textbackslash{}myWorkType}, con el tipo abreviado de trabajo; \texttt{\textbackslash{}myWorkTypeFull}, con su nombre completo; y \texttt{\textbackslash{}contactauthor}, con el nombre y correo de la persona autora. Estas órdenes pueden utilizarse en el contenido, pero no deben definirse de nuevo en \texttt{Config/myconfig.tex}.
+El fichero \texttt{Config/postamble.tex} obtiene numerosas órdenes auxiliares a partir de la configuración. Entre ellas se encuentran \texttt{\textbackslash{}myDegreefull}, con el nombre completo de la titulación; \texttt{\textbackslash{}myWorkType}, con el tipo abreviado de trabajo; \texttt{\textbackslash{}myWorkTypeFull}, con su nombre completo; y \texttt{\textbackslash{}contactauthor}, con el nombre y correo de la persona autora. Puedes utilizar estas órdenes en el contenido, pero no vuelvas a definirlas en \texttt{Config/myconfig.tex}.
 
-La variable \texttt{\textbackslash{}mybookFigure} se conserva únicamente por compatibilidad con formularios antiguos. Ya no es necesaria para las plantillas actuales y normalmente no debe modificarse.
+La variable \texttt{\textbackslash{}mybookFigure} se conserva únicamente por compatibilidad con formularios antiguos. Ya no es necesaria para las plantillas actuales, así que normalmente no debes modificarla.
 
-Una vez completadas las variables aplicables, la plantilla reutiliza sus valores en las cubiertas, los formularios, los textos adaptados al género gramatical y los metadatos del PDF. La configuración automática no sustituye la revisión de la normativa vigente ni la comprobación de los PDF generados.
+Una vez que hayas completado las variables aplicables, la plantilla reutilizará sus valores en las cubiertas, los formularios, los textos adaptados al género gramatical y los metadatos del PDF. Esta configuración automática no sustituye la revisión de la normativa vigente ni la comprobación de los PDF generados.
 
 \subsection{Plantilla de anteproyecto}
 \label{sec:plantilla-de-anteproyecto}
