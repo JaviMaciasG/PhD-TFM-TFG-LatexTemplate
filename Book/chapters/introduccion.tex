@@ -594,7 +594,7 @@ Cada capítulo puede editar o eliminar su bloque de cita sin afectar al resto de
 \subsection{Inclusión de figuras y diagramas}
 \label{sec:diagrama}
 
-Los ficheros \texttt{pdf}, \texttt{png} y \texttt{jpg} pueden incluirse directamente mediante \texttt{\textbackslash{}includegraphics}. \texttt{Book/book.tex} configura inicialmente los directorios \texttt{logos/}, \texttt{figures/} y \texttt{diagrams/} mediante \texttt{\textbackslash{}graphicspath}, por lo que normalmente basta con indicar el nombre del fichero sin escribir su ruta completa.
+Puedes incluir directamente ficheros \texttt{pdf}, \texttt{png} y \texttt{jpg} mediante \texttt{\textbackslash{}includegraphics}. Para evitar que tengas que escribir la ruta completa de cada figura, ya hemos configurado en \texttt{Book/book.tex} los directorios \texttt{logos/}, \texttt{figures/} y \texttt{diagrams/} mediante \texttt{\textbackslash{}graphicspath}; normalmente bastará con que indiques el nombre del fichero.
 
 El \texttt{Makefile} puede convertir automáticamente fuentes \texttt{dia}, \texttt{svg} y \texttt{eps} a PDF cuando están instaladas las herramientas opcionales correspondientes. Los PDF generados pueden incluirse después como cualquier otra figura.
 
