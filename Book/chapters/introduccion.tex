@@ -51,18 +51,18 @@ Nuestro objetivo es facilitar tanto la composición del documento como el cumpli
 
 Los principales directorios del repositorio son:
 
-\begin{description}
-  \item[\texttt{Book/}] Documento académico principal, incluidas las cubiertas, capítulos, anexos, bibliografía, resúmenes y demás elementos del libro.
-  \item[\texttt{Config/}] Configuración compartida, selección de la titulación y datos personales y académicos definidos en \texttt{myconfig.tex}.
-  \item[\texttt{Anteproyecto/}] Plantilla para preparar la propuesta o anteproyecto del trabajo.
-  \item[\texttt{PapeleoTFG/}] Formularios administrativos relacionados con los trabajos fin de grado.
-  \item[\texttt{PapeleoTFM/}] Formularios administrativos relacionados con los trabajos fin de máster.
-  \item[\texttt{PapeleoPHD/}] Formularios administrativos relacionados con las tesis doctorales.
-  \item[\texttt{normativas/}] Normativas y documentos institucionales de referencia.
-  \item[\texttt{UsefulDocs/}] Documentación auxiliar útil para preparar y revisar el trabajo.
-  \item[\texttt{AdminScripts/}] Herramientas de mantenimiento utilizadas para administrar la plantilla.
-  \item[\texttt{Deprecated/}] Material antiguo conservado únicamente como referencia o por compatibilidad.
-\end{description}
+\begin{itemize}
+  \item \texttt{Book/}: documento académico principal, incluidas las cubiertas, capítulos, anexos, bibliografía, resúmenes y demás elementos del libro.
+  \item \texttt{Config/}: configuración compartida, selección de la titulación y datos personales y académicos definidos en \texttt{myconfig.tex}.
+  \item \texttt{Anteproyecto/}: plantilla para preparar la propuesta o anteproyecto del trabajo.
+  \item \texttt{PapeleoTFG/}: formularios administrativos relacionados con los trabajos fin de grado.
+  \item \texttt{PapeleoTFM/}: formularios administrativos relacionados con los trabajos fin de máster.
+  \item \texttt{PapeleoPHD/}: formularios administrativos relacionados con las tesis doctorales.
+  \item \texttt{normativas/}: normativas y documentos institucionales de referencia.
+  \item \texttt{UsefulDocs/}: documentación auxiliar útil para preparar y revisar el trabajo.
+  \item \texttt{AdminScripts/}: herramientas de mantenimiento utilizadas para administrar la plantilla.
+  \item \texttt{Deprecated/}: material antiguo conservado únicamente como referencia o por compatibilidad.
+\end{itemize}
 
 La configuración general se realiza en \texttt{Config/myconfig.tex}. Los distintos documentos del repositorio leen este archivo para mantener coherentes los nombres, títulos, fechas y demás datos compartidos.
 
@@ -138,20 +138,20 @@ El objetivo \texttt{all} también actualiza el fichero \texttt{RELEASE.txt} con 
 
 Los principales objetivos disponibles en el \texttt{Makefile} son:
 
-\begin{description}
-  \item[\texttt{all}] Compila el documento completo y genera las copias finales; es el objetivo ejecutado de forma predeterminada por \texttt{make}.
-  \item[\texttt{clean}] Elimina los ficheros auxiliares y los PDF de trabajo generados durante la compilación.
-  \item[\texttt{all\_latexmk}] Ofrece un procedimiento alternativo y experimental de compilación basado en \texttt{latexmk}.
-  \item[\texttt{clean\_latexmk}] Elimina los ficheros auxiliares mediante \texttt{latexmk} y completa después la limpieza de otros ficheros generados.
-  \item[\texttt{snapshot}] Genera mediante \texttt{latexpand} una copia unificada del documento que puede utilizarse como referencia para una revisión posterior.
-  \item[\texttt{flatten}] Genera una copia unificada del estado actual del documento.
-  \item[\texttt{latexdiff}] Compara la instantánea con el estado actual y genera un PDF que muestra las diferencias.
-  \item[\texttt{backup-chapters}] Crea copias fechadas de los capítulos y apéndices.
-  \item[\texttt{orig-chapters}] Sustituye los capítulos y apéndices de trabajo por las versiones completas de ejemplo, después de crear una copia de seguridad.
-  \item[\texttt{bare-chapters}] Sustituye los capítulos y apéndices de trabajo por versiones mínimas, después de crear una copia de seguridad.
-  \item[\texttt{bare}] Prepara una estructura mínima mediante \texttt{bare-chapters} y ofrece eliminar los gráficos y diagramas existentes.
-  \item[\texttt{tar}] Genera archivos comprimidos con los fuentes y recursos de la plantilla.
-\end{description}
+\begin{itemize}
+  \item \texttt{all}: compila el documento completo y genera las copias finales; es el objetivo ejecutado de forma predeterminada por \texttt{make}.
+  \item \texttt{clean}: elimina los ficheros auxiliares y los PDF de trabajo generados durante la compilación.
+  \item \texttt{all\_latexmk}: ofrece un procedimiento alternativo y experimental de compilación basado en \texttt{latexmk}.
+  \item \texttt{clean\_latexmk}: elimina los ficheros auxiliares mediante \texttt{latexmk} y completa después la limpieza de otros ficheros generados.
+  \item \texttt{snapshot}: genera mediante \texttt{latexpand} una copia unificada del documento que puede utilizarse como referencia para una revisión posterior.
+  \item \texttt{flatten}: genera una copia unificada del estado actual del documento.
+  \item \texttt{latexdiff}: compara la instantánea con el estado actual y genera un PDF que muestra las diferencias.
+  \item \texttt{backup-chapters}: crea copias fechadas de los capítulos y apéndices.
+  \item \texttt{orig-chapters}: sustituye los capítulos y apéndices de trabajo por las versiones completas de ejemplo, después de crear una copia de seguridad.
+  \item \texttt{bare-chapters}: sustituye los capítulos y apéndices de trabajo por versiones mínimas, después de crear una copia de seguridad.
+  \item \texttt{bare}: prepara una estructura mínima mediante \texttt{bare-chapters} y ofrece eliminar los gráficos y diagramas existentes.
+  \item \texttt{tar}: genera archivos comprimidos con los fuentes y recursos de la plantilla.
+\end{itemize}
 
 Los objetivos \texttt{bare}, \texttt{bare-chapters} y \texttt{orig-chapters} modifican el contenido de los directorios de capítulos o apéndices. Además, \texttt{bare} puede eliminar los ficheros de \texttt{figures/} y \texttt{diagrams/} si se confirma expresamente durante su ejecución. Deben utilizarse únicamente al preparar una copia nueva del proyecto y después de comprobar que los cambios importantes están guardados en el sistema de control de versiones.
 
@@ -159,15 +159,15 @@ Los objetivos \texttt{bare}, \texttt{bare-chapters} y \texttt{orig-chapters} mod
 
 Además de la compilación básica, el repositorio permite utilizar varias herramientas opcionales:
 
-\begin{description}
-  \item[Ghostscript] Genera la copia comprimida del documento cuando se utiliza el objetivo \texttt{all} del \texttt{Makefile}.
-  \item[Inkscape] Convierte automáticamente los diagramas en formato \texttt{svg} a \texttt{pdf}.
-  \item[Dia y \texttt{epspdf}] Convierten automáticamente los diagramas en formato \texttt{dia} a \texttt{pdf}.
-  \item[\texttt{epspdf}] Convierte automáticamente las figuras en formato \texttt{eps} a \texttt{pdf}.
-  \item[\texttt{latexmk}] Proporciona el procedimiento alternativo utilizado por los objetivos \texttt{all\_latexmk} y \texttt{clean\_latexmk}.
-  \item[\texttt{latexpand} y \texttt{latexdiff}] Permiten unificar los fuentes y generar documentos que muestran las diferencias entre dos versiones.
-  \item[Perl] Es necesario para ejecutar \texttt{makeglossaries} en los sistemas que no incluyan ya un intérprete compatible.
-\end{description}
+\begin{itemize}
+  \item \textbf{Ghostscript}: genera la copia comprimida del documento cuando se utiliza el objetivo \texttt{all} del \texttt{Makefile}.
+  \item \textbf{Inkscape}: convierte automáticamente los diagramas en formato \texttt{svg} a \texttt{pdf}.
+  \item \textbf{Dia y \texttt{epspdf}}: convierten automáticamente los diagramas en formato \texttt{dia} a \texttt{pdf}.
+  \item \texttt{epspdf}: convierte automáticamente las figuras en formato \texttt{eps} a \texttt{pdf}.
+  \item \texttt{latexmk}: proporciona el procedimiento alternativo utilizado por los objetivos \texttt{all\_latexmk} y \texttt{clean\_latexmk}.
+  \item \texttt{latexpand} y \texttt{latexdiff}: permiten unificar los fuentes y generar documentos que muestran las diferencias entre dos versiones.
+  \item \textbf{Perl}: es necesario para ejecutar \texttt{makeglossaries} en los sistemas que no incluyan ya un intérprete compatible.
+\end{itemize}
 
 Estas herramientas solo deben instalarse cuando se vaya a utilizar la prestación correspondiente. No son requisitos para redactar ni compilar un documento básico que no dependa de ellas.
 
@@ -178,11 +178,11 @@ La estructura del documento principal se define en \texttt{Book/book.tex}. En es
 
 El documento se divide en tres partes gestionadas por las órdenes \texttt{\textbackslash{}frontmatter}, \texttt{\textbackslash{}mainmatter} y \texttt{\textbackslash{}backmatter}:
 
-\begin{description}
-  \item[\texttt{\textbackslash{}frontmatter}] Contiene las cubiertas, los documentos preliminares, la dedicatoria, los agradecimientos, los resúmenes y los distintos índices y listados.
-  \item[\texttt{\textbackslash{}mainmatter}] Contiene los capítulos principales, los apartados técnicos opcionales, la bibliografía y los apéndices.
-  \item[\texttt{\textbackslash{}backmatter}] Contiene la contraportada cuando corresponde al tipo de trabajo seleccionado.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}frontmatter}: contiene las cubiertas, los documentos preliminares, la dedicatoria, los agradecimientos, los resúmenes y los distintos índices y listados.
+  \item \texttt{\textbackslash{}mainmatter}: contiene los capítulos principales, los apartados técnicos opcionales, la bibliografía y los apéndices.
+  \item \texttt{\textbackslash{}backmatter}: contiene la contraportada cuando corresponde al tipo de trabajo seleccionado.
+\end{itemize}
 
 La estructura distribuida con la plantilla incluye los siguientes elementos:
 
@@ -215,120 +215,120 @@ Además de completar \texttt{Config/myconfig.tex}, conviene revisar \texttt{Book
 
 \subsubsection{Idioma, titulación y presentación de los tutores}
 
-\begin{description}
-  \item[\texttt{\textbackslash{}myLanguage}] Idioma principal del documento. Admite los valores \texttt{spanish} y \texttt{english}. Esta selección determina, entre otros elementos, los textos automáticos, las cabeceras, el título utilizado y las palabras clave incorporadas a los metadatos del PDF.
-  \item[\texttt{\textbackslash{}myDegree}] Identificador de la titulación o del tipo concreto de documento. Su valor determina el tipo general de trabajo y selecciona automáticamente las portadas, contraportadas, nombres de titulación y otros textos aplicables.
-  \item[\texttt{\textbackslash{}myFlagSplittedAdvisors}] Controla cómo se presentan el tutor y el cotutor en las páginas que admiten ambas formas. El valor \texttt{true} utiliza líneas separadas para el tutor y el cotutor; el valor \texttt{false} utiliza una denominación conjunta.
-  \item[\texttt{\textbackslash{}mySpecialty}] Especialidad o itinerario asociado a la titulación. Puede dejarse vacío cuando no resulte aplicable.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}myLanguage}: idioma principal del documento. Admite los valores \texttt{spanish} y \texttt{english}. Esta selección determina, entre otros elementos, los textos automáticos, las cabeceras, el título utilizado y las palabras clave incorporadas a los metadatos del PDF.
+  \item \texttt{\textbackslash{}myDegree}: identificador de la titulación o del tipo concreto de documento. Su valor determina el tipo general de trabajo y selecciona automáticamente las portadas, contraportadas, nombres de titulación y otros textos aplicables.
+  \item \texttt{\textbackslash{}myFlagSplittedAdvisors}: controla cómo se presentan el tutor y el cotutor en las páginas que admiten ambas formas. El valor \texttt{true} utiliza líneas separadas para el tutor y el cotutor; el valor \texttt{false} utiliza una denominación conjunta.
+  \item \texttt{\textbackslash{}mySpecialty}: especialidad o itinerario asociado a la titulación. Puede dejarse vacío cuando no resulte aplicable.
+\end{itemize}
 
 Los identificadores admitidos actualmente por \texttt{\textbackslash{}myDegree}, agrupados por tipo de documento, son:
 
-\begin{description}
-  \item[Trabajos fin de carrera] \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST} e \texttt{ITI}. Corresponden a titulaciones anteriores al Espacio Europeo de Educación Superior y se conservan por compatibilidad.
-  \item[Trabajos fin de grado] \texttt{GITT}, \texttt{GIEC}, \texttt{GIT}, \texttt{GIST}, \texttt{GIC}, \texttt{GII}, \texttt{GMC}, \texttt{GIS}, \texttt{GISI}, \texttt{GIEAI} y \texttt{GITI}.
-  \item[Trabajos fin de máster] \texttt{MUSEA}, \texttt{MUIT}, \texttt{MUII}, \texttt{MUIE}, \texttt{MUCTE}, \texttt{MUANBD} y \texttt{MUC}.
-  \item[Tesis doctorales] \texttt{PHDUAH} y \texttt{PHDUPM}.
-  \item[Informes de investigación] \texttt{GEINTRARR}, cuyo soporte se considera todavía experimental.
-\end{description}
+\begin{itemize}
+  \item \textbf{Trabajos fin de carrera}: \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST} e \texttt{ITI}. Corresponden a titulaciones anteriores al Espacio Europeo de Educación Superior y se conservan por compatibilidad.
+  \item \textbf{Trabajos fin de grado}: \texttt{GITT}, \texttt{GIEC}, \texttt{GIT}, \texttt{GIST}, \texttt{GIC}, \texttt{GII}, \texttt{GMC}, \texttt{GIS}, \texttt{GISI}, \texttt{GIEAI} y \texttt{GITI}.
+  \item \textbf{Trabajos fin de máster}: \texttt{MUSEA}, \texttt{MUIT}, \texttt{MUII}, \texttt{MUIE}, \texttt{MUCTE}, \texttt{MUANBD} y \texttt{MUC}.
+  \item \textbf{Tesis doctorales}: \texttt{PHDUAH} y \texttt{PHDUPM}.
+  \item \textbf{Informes de investigación}: \texttt{GEINTRARR}, cuyo soporte se considera todavía experimental.
+\end{itemize}
 
 La correspondencia entre estos identificadores y los tipos generales de trabajo se mantiene en \texttt{Config/worktypes.txt}. Añadir una titulación nueva requiere ampliar esa correspondencia y proporcionar los textos y cubiertas institucionales necesarios; no basta con escribir un identificador nuevo en \texttt{\textbackslash{}myDegree}.
 
 \subsubsection{Título, palabras clave y confidencialidad}
 
-\begin{description}
-  \item[\texttt{\textbackslash{}myBookTitleSpanish}] Título completo del trabajo en español.
-  \item[\texttt{\textbackslash{}myBookTitleEnglish}] Título completo del trabajo en inglés.
-  \item[\texttt{\textbackslash{}myThesisKeywords}] Palabras clave en español. Se utilizan en el resumen y en los metadatos del PDF cuando el idioma principal es español.
-  \item[\texttt{\textbackslash{}myThesisKeywordsEnglish}] Palabras clave en inglés. Se utilizan en el resumen en inglés y en los metadatos del PDF cuando el idioma principal es inglés.
-  \item[\texttt{\textbackslash{}myConfidentialContent}] Indica si el trabajo contiene material confidencial en los documentos administrativos que contemplan esta posibilidad. Admite los valores \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}myBookTitleSpanish}: título completo del trabajo en español.
+  \item \texttt{\textbackslash{}myBookTitleEnglish}: título completo del trabajo en inglés.
+  \item \texttt{\textbackslash{}myThesisKeywords}: palabras clave en español. Se utilizan en el resumen y en los metadatos del PDF cuando el idioma principal es español.
+  \item \texttt{\textbackslash{}myThesisKeywordsEnglish}: palabras clave en inglés. Se utilizan en el resumen en inglés y en los metadatos del PDF cuando el idioma principal es inglés.
+  \item \texttt{\textbackslash{}myConfidentialContent}: indica si el trabajo contiene material confidencial en los documentos administrativos que contemplan esta posibilidad. Admite los valores \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
+\end{itemize}
 
 La plantilla crea internamente la orden \texttt{\textbackslash{}myBookTitle} a partir del idioma seleccionado: utiliza \texttt{\textbackslash{}myBookTitleSpanish} cuando \texttt{\textbackslash{}myLanguage} vale \texttt{spanish} y \texttt{\textbackslash{}myBookTitleEnglish} cuando vale \texttt{english}. Por tanto, normalmente no se debe definir ni modificar directamente \texttt{\textbackslash{}myBookTitle}.
 
 \subsubsection{Datos de autoría}
 
-\begin{description}
-  \item[\texttt{\textbackslash{}myAuthorName}] Nombre o nombres de la persona autora.
-  \item[\texttt{\textbackslash{}myAuthorSurname}] Apellidos de la persona autora.
-  \item[\texttt{\textbackslash{}myAuthorFullName}] Nombre completo utilizado en cubiertas, metadatos y documentos administrativos. La definición proporcionada concatena automáticamente \texttt{\textbackslash{}myAuthorName} y \texttt{\textbackslash{}myAuthorSurname}, por lo que normalmente no debe modificarse.
-  \item[\texttt{\textbackslash{}myAuthorGender}] Género gramatical empleado para seleccionar las formas masculinas o femeninas de los textos automáticos. Admite los valores \texttt{male} y \texttt{female}.
-  \item[\texttt{\textbackslash{}myAuthorEmail}] Dirección de correo electrónico de la persona autora. Se utiliza en algunos formularios y en los metadatos de contacto del PDF.
-  \item[\texttt{\textbackslash{}myAuthorDNI}] DNI, NIE u otro identificador requerido en los documentos administrativos aplicables.
-  \item[\texttt{\textbackslash{}myAuthorStreet}] Calle y número del domicilio utilizados en los formularios que solicitan la dirección postal.
-  \item[\texttt{\textbackslash{}myAuthorCity}] Localidad del domicilio.
-  \item[\texttt{\textbackslash{}myAuthorPostalCode}] Código postal del domicilio.
-  \item[\texttt{\textbackslash{}myAuthorProvince}] Provincia del domicilio.
-  \item[\texttt{\textbackslash{}myAuthorTelephone}] Número de teléfono de contacto.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}myAuthorName}: nombre o nombres de la persona autora.
+  \item \texttt{\textbackslash{}myAuthorSurname}: apellidos de la persona autora.
+  \item \texttt{\textbackslash{}myAuthorFullName}: nombre completo utilizado en cubiertas, metadatos y documentos administrativos. La definición proporcionada concatena automáticamente \texttt{\textbackslash{}myAuthorName} y \texttt{\textbackslash{}myAuthorSurname}, por lo que normalmente no debe modificarse.
+  \item \texttt{\textbackslash{}myAuthorGender}: género gramatical empleado para seleccionar las formas masculinas o femeninas de los textos automáticos. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myAuthorEmail}: dirección de correo electrónico de la persona autora. Se utiliza en algunos formularios y en los metadatos de contacto del PDF.
+  \item \texttt{\textbackslash{}myAuthorDNI}: DNI, NIE u otro identificador requerido en los documentos administrativos aplicables.
+  \item \texttt{\textbackslash{}myAuthorStreet}: calle y número del domicilio utilizados en los formularios que solicitan la dirección postal.
+  \item \texttt{\textbackslash{}myAuthorCity}: localidad del domicilio.
+  \item \texttt{\textbackslash{}myAuthorPostalCode}: código postal del domicilio.
+  \item \texttt{\textbackslash{}myAuthorProvince}: provincia del domicilio.
+  \item \texttt{\textbackslash{}myAuthorTelephone}: número de teléfono de contacto.
+\end{itemize}
 
 Los datos postales y el teléfono no son necesarios para componer el libro, pero se comparten con los documentos administrativos que los solicitan. Si no se va a generar ninguno de esos formularios, pueden dejarse vacíos. Antes de distribuir públicamente los fuentes del trabajo se recomienda comprobar que \texttt{Config/myconfig.tex} no contiene datos personales que no deban publicarse.
 
 \subsubsection{Tutor académico y cotutor}
 
-\begin{description}
-  \item[\texttt{\textbackslash{}myAcademicTutorFullName}] Nombre completo del tutor académico o director principal del trabajo.
-  \item[\texttt{\textbackslash{}myAcademicTutorGender}] Género gramatical utilizado para adaptar los textos referidos al tutor. Admite los valores \texttt{male} y \texttt{female}.
-  \item[\texttt{\textbackslash{}myAcademicTutorDNI}] DNI, NIE u otro identificador del tutor requerido en determinados documentos administrativos y autorizaciones.
-  \item[\texttt{\textbackslash{}myAcademicTutorDepartmentOrInstitution}] Departamento, empresa o institución a la que pertenece el tutor.
-  \item[\texttt{\textbackslash{}myAcademicTutorPosition}] Cargo o puesto profesional del tutor.
-  \item[\texttt{\textbackslash{}myAcademicTutorEmail}] Dirección de correo electrónico del tutor.
-  \item[\texttt{\textbackslash{}myAcademicTutorForeignUniversity}] Universidad extranjera a la que pertenece el tutor cuando se utiliza la autorización específica para tutores extranjeros.
-  \item[\texttt{\textbackslash{}myAcademicTutorForeignCity}] Ciudad utilizada para fechar la autorización del tutor extranjero.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}myAcademicTutorFullName}: nombre completo del tutor académico o director principal del trabajo.
+  \item \texttt{\textbackslash{}myAcademicTutorGender}: género gramatical utilizado para adaptar los textos referidos al tutor. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myAcademicTutorDNI}: DNI, NIE u otro identificador del tutor requerido en determinados documentos administrativos y autorizaciones.
+  \item \texttt{\textbackslash{}myAcademicTutorDepartmentOrInstitution}: departamento, empresa o institución a la que pertenece el tutor.
+  \item \texttt{\textbackslash{}myAcademicTutorPosition}: cargo o puesto profesional del tutor.
+  \item \texttt{\textbackslash{}myAcademicTutorEmail}: dirección de correo electrónico del tutor.
+  \item \texttt{\textbackslash{}myAcademicTutorForeignUniversity}: universidad extranjera a la que pertenece el tutor cuando se utiliza la autorización específica para tutores extranjeros.
+  \item \texttt{\textbackslash{}myAcademicTutorForeignCity}: ciudad utilizada para fechar la autorización del tutor extranjero.
+\end{itemize}
 
 La información del cotutor se define mediante las siguientes variables:
 
-\begin{description}
-  \item[\texttt{\textbackslash{}myCoTutorFullName}] Nombre completo del cotutor o codirector. Debe dejarse vacío cuando el trabajo no tenga cotutor; distintas cubiertas y formularios utilizan este valor vacío para omitir automáticamente sus datos.
-  \item[\texttt{\textbackslash{}myCoTutorGender}] Género gramatical utilizado para adaptar los textos referidos al cotutor. Admite los valores \texttt{male} y \texttt{female}.
-  \item[\texttt{\textbackslash{}myCoTutorDNI}] DNI, NIE u otro identificador del cotutor requerido en determinados documentos administrativos y autorizaciones.
-  \item[\texttt{\textbackslash{}myCoTutorDepartmentOrInstitution}] Departamento, empresa o institución a la que pertenece el cotutor.
-  \item[\texttt{\textbackslash{}myCoTutorPosition}] Cargo o puesto profesional del cotutor.
-  \item[\texttt{\textbackslash{}myCoTutorEmail}] Dirección de correo electrónico del cotutor.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}myCoTutorFullName}: nombre completo del cotutor o codirector. Debe dejarse vacío cuando el trabajo no tenga cotutor; distintas cubiertas y formularios utilizan este valor vacío para omitir automáticamente sus datos.
+  \item \texttt{\textbackslash{}myCoTutorGender}: género gramatical utilizado para adaptar los textos referidos al cotutor. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myCoTutorDNI}: DNI, NIE u otro identificador del cotutor requerido en determinados documentos administrativos y autorizaciones.
+  \item \texttt{\textbackslash{}myCoTutorDepartmentOrInstitution}: departamento, empresa o institución a la que pertenece el cotutor.
+  \item \texttt{\textbackslash{}myCoTutorPosition}: cargo o puesto profesional del cotutor.
+  \item \texttt{\textbackslash{}myCoTutorEmail}: dirección de correo electrónico del cotutor.
+\end{itemize}
 
 Las variables antiguas \texttt{\textbackslash{}myFirstAdvisorFullName}, \texttt{\textbackslash{}mySecondAdvisorFullName}, \texttt{\textbackslash{}myFirstAdvisorDNI} y \texttt{\textbackslash{}mySecondAdvisorDNI} se conservan como alias por compatibilidad. No deben editarse: sus valores se obtienen respectivamente de las variables actuales del tutor académico y del cotutor.
 
 \subsubsection{Afiliación académica}
 
-\begin{description}
-  \item[\texttt{\textbackslash{}mySchool}] Escuela, facultad o centro académico responsable del trabajo.
-  \item[\texttt{\textbackslash{}myUniversity}] Nombre completo de la universidad.
-  \item[\texttt{\textbackslash{}myUniversityAcronym}] Acrónimo de la universidad utilizado en las cubiertas y otros elementos que requieren una forma abreviada.
-  \item[\texttt{\textbackslash{}myDepartment}] Nombre del departamento en español.
-  \item[\texttt{\textbackslash{}myDepartmentEnglish}] Nombre del departamento en inglés.
-  \item[\texttt{\textbackslash{}myPhDProgram}] Nombre del programa de doctorado en español. Solo resulta necesario para los documentos que muestran esta información.
-  \item[\texttt{\textbackslash{}myPhDProgramEnglish}] Nombre del programa de doctorado en inglés.
-  \item[\texttt{\textbackslash{}myResearchGroup}] Nombre o acrónimo del grupo de investigación. También se utiliza al generar informes de investigación mediante \texttt{GEINTRARR}.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}mySchool}: escuela, facultad o centro académico responsable del trabajo.
+  \item \texttt{\textbackslash{}myUniversity}: nombre completo de la universidad.
+  \item \texttt{\textbackslash{}myUniversityAcronym}: acrónimo de la universidad utilizado en las cubiertas y otros elementos que requieren una forma abreviada.
+  \item \texttt{\textbackslash{}myDepartment}: nombre del departamento en español.
+  \item \texttt{\textbackslash{}myDepartmentEnglish}: nombre del departamento en inglés.
+  \item \texttt{\textbackslash{}myPhDProgram}: nombre del programa de doctorado en español. Solo resulta necesario para los documentos que muestran esta información.
+  \item \texttt{\textbackslash{}myPhDProgramEnglish}: nombre del programa de doctorado en inglés.
+  \item \texttt{\textbackslash{}myResearchGroup}: nombre o acrónimo del grupo de investigación. También se utiliza al generar informes de investigación mediante \texttt{GEINTRARR}.
+\end{itemize}
 
 \subsubsection{Tribunal y personal académico}
 
-\begin{description}
-  \item[\texttt{\textbackslash{}myTribunalPresident}] Nombre completo de la persona que preside el tribunal.
-  \item[\texttt{\textbackslash{}myTribunalPresidentGender}] Género gramatical de la presidencia del tribunal. Admite los valores \texttt{male} y \texttt{female}.
-  \item[\texttt{\textbackslash{}myTribunalFirstSpokesperson}] Nombre completo del primer vocal del tribunal.
-  \item[\texttt{\textbackslash{}myTribunalFirstSpokespersonGender}] Género gramatical del primer vocal. Admite los valores \texttt{male} y \texttt{female}.
-  \item[\texttt{\textbackslash{}myTribunalSecondSpokesperson}] Nombre completo del segundo vocal cuando la composición del tribunal lo requiera.
-  \item[\texttt{\textbackslash{}myTribunalSecondSpokespersonGender}] Género gramatical del segundo vocal. Admite los valores \texttt{male} y \texttt{female}.
-  \item[\texttt{\textbackslash{}myTribunalAlternateMember}] Nombre completo del miembro suplente del tribunal.
-  \item[\texttt{\textbackslash{}myTribunalAlternateMemberGender}] Género gramatical del miembro suplente. Admite los valores \texttt{male} y \texttt{female}.
-  \item[\texttt{\textbackslash{}myTribunalSecretary}] Nombre de la persona que actúa como secretaria del tribunal cuando este puesto sea necesario.
-  \item[\texttt{\textbackslash{}myDepartmentSecretary}] Nombre de la persona responsable de la secretaría del departamento que debe aparecer o firmar en determinados formularios.
-  \item[\texttt{\textbackslash{}myDepartmentSecretaryGender}] Género gramatical de la persona responsable de la secretaría del departamento. Admite los valores \texttt{male} y \texttt{female}.
-  \item[\texttt{\textbackslash{}myTFMComisionPresident}] Nombre de la persona que preside la comisión de trabajos fin de máster. Se utiliza específicamente en la documentación del MUIE.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}myTribunalPresident}: nombre completo de la persona que preside el tribunal.
+  \item \texttt{\textbackslash{}myTribunalPresidentGender}: género gramatical de la presidencia del tribunal. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myTribunalFirstSpokesperson}: nombre completo del primer vocal del tribunal.
+  \item \texttt{\textbackslash{}myTribunalFirstSpokespersonGender}: género gramatical del primer vocal. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myTribunalSecondSpokesperson}: nombre completo del segundo vocal cuando la composición del tribunal lo requiera.
+  \item \texttt{\textbackslash{}myTribunalSecondSpokespersonGender}: género gramatical del segundo vocal. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myTribunalAlternateMember}: nombre completo del miembro suplente del tribunal.
+  \item \texttt{\textbackslash{}myTribunalAlternateMemberGender}: género gramatical del miembro suplente. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myTribunalSecretary}: nombre de la persona que actúa como secretaria del tribunal cuando este puesto sea necesario.
+  \item \texttt{\textbackslash{}myDepartmentSecretary}: nombre de la persona responsable de la secretaría del departamento que debe aparecer o firmar en determinados formularios.
+  \item \texttt{\textbackslash{}myDepartmentSecretaryGender}: género gramatical de la persona responsable de la secretaría del departamento. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myTFMComisionPresident}: nombre de la persona que preside la comisión de trabajos fin de máster. Se utiliza específicamente en la documentación del MUIE.
+\end{itemize}
 
 No todas las titulaciones utilizan la misma composición de tribunal ni los mismos cargos administrativos. Los campos que no aparezcan en los documentos correspondientes a la titulación seleccionada pueden dejarse con un valor vacío.
 
 \subsubsection{Calificaciones}
 
-\begin{description}
-  \item[\texttt{\textbackslash{}myAcademicTutorGrade}] Calificación asignada por el tutor académico. En la rúbrica de TFG incluida actualmente corresponde a un máximo de siete puntos.
-  \item[\texttt{\textbackslash{}myTribunalGrade}] Calificación asignada por el tribunal. En la rúbrica de TFG incluida actualmente corresponde a un máximo de tres puntos.
-  \item[\texttt{\textbackslash{}myTribunalMHProposal}] Indica si el tribunal propone la concesión de matrícula de honor. Admite los valores \texttt{YES} y \texttt{NO}, respetando las mayúsculas.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}myAcademicTutorGrade}: calificación asignada por el tutor académico. En la rúbrica de TFG incluida actualmente corresponde a un máximo de siete puntos.
+  \item \texttt{\textbackslash{}myTribunalGrade}: calificación asignada por el tribunal. En la rúbrica de TFG incluida actualmente corresponde a un máximo de tres puntos.
+  \item \texttt{\textbackslash{}myTribunalMHProposal}: indica si el tribunal propone la concesión de matrícula de honor. Admite los valores \texttt{YES} y \texttt{NO}, respetando las mayúsculas.
+\end{itemize}
 
 Las calificaciones del tutor y del tribunal se utilizan en los documentos de acta y rúbrica que las contemplan. La plantilla calcula automáticamente la calificación conjunta en esos formularios; no afectan al contenido ni a la compilación del libro principal.
 
@@ -336,39 +336,39 @@ Las calificaciones del tutor y del tribunal se utilizan en los documentos de act
 
 Las fechas se introducen como texto ya formateado, no como valores que la plantilla convierta automáticamente. Esto permite utilizar el formato requerido por cada documento, incluidos los ordinales y nombres de meses en inglés.
 
-\begin{description}
-  \item[\texttt{\textbackslash{}myThesisProposalDate}] Fecha de presentación o firma del anteproyecto. Se utiliza en la plantilla del anteproyecto y en los formularios que hacen referencia a su solicitud.
-  \item[\texttt{\textbackslash{}myThesisDepositDate}] Fecha de depósito del trabajo en español.
-  \item[\texttt{\textbackslash{}myThesisDepositDateEnglish}] Fecha de depósito del trabajo en inglés.
-  \item[\texttt{\textbackslash{}myThesisAcademicYear}] Curso académico mostrado en las actas y rúbricas que lo requieren; por ejemplo, \texttt{2025/2026}.
-  \item[\texttt{\textbackslash{}myThesisDefenseYear}] Año de defensa utilizado en las cubiertas y contraportadas correspondientes.
-  \item[\texttt{\textbackslash{}myThesisDefenseDate}] Fecha completa de defensa en español. En los informes de investigación también se utiliza como fecha de la cubierta.
-  \item[\texttt{\textbackslash{}myThesisdefenseDateEnglish}] Fecha completa de defensa en inglés. Debe respetarse exactamente este nombre, incluida la letra minúscula de \texttt{defense}.
-  \item[\texttt{\textbackslash{}myPaperworkDate}] Fecha en español utilizada para firmar o fechar los documentos administrativos. Su definición puede reutilizar \texttt{\textbackslash{}myThesisDepositDate} cuando ambas fechas coincidan.
-  \item[\texttt{\textbackslash{}myPaperworkDateEnglish}] Fecha equivalente en inglés. Se utiliza, entre otros casos, en la autorización para tutores extranjeros y puede reutilizar \texttt{\textbackslash{}myThesisDepositDateEnglish}.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}myThesisProposalDate}: fecha de presentación o firma del anteproyecto. Se utiliza en la plantilla del anteproyecto y en los formularios que hacen referencia a su solicitud.
+  \item \texttt{\textbackslash{}myThesisDepositDate}: fecha de depósito del trabajo en español.
+  \item \texttt{\textbackslash{}myThesisDepositDateEnglish}: fecha de depósito del trabajo en inglés.
+  \item \texttt{\textbackslash{}myThesisAcademicYear}: curso académico mostrado en las actas y rúbricas que lo requieren; por ejemplo, \texttt{2025/2026}.
+  \item \texttt{\textbackslash{}myThesisDefenseYear}: año de defensa utilizado en las cubiertas y contraportadas correspondientes.
+  \item \texttt{\textbackslash{}myThesisDefenseDate}: fecha completa de defensa en español. En los informes de investigación también se utiliza como fecha de la cubierta.
+  \item \texttt{\textbackslash{}myThesisdefenseDateEnglish}: fecha completa de defensa en inglés. Debe respetarse exactamente este nombre, incluida la letra minúscula de \texttt{defense}.
+  \item \texttt{\textbackslash{}myPaperworkDate}: fecha en español utilizada para firmar o fechar los documentos administrativos. Su definición puede reutilizar \texttt{\textbackslash{}myThesisDepositDate} cuando ambas fechas coincidan.
+  \item \texttt{\textbackslash{}myPaperworkDateEnglish}: fecha equivalente en inglés. Se utiliza, entre otros casos, en la autorización para tutores extranjeros y puede reutilizar \texttt{\textbackslash{}myThesisDepositDateEnglish}.
+\end{itemize}
 
 No existe una variable \texttt{\textbackslash{}myThesisProposalDateEnglish} en la configuración actual. Si un documento nuevo necesitara esa fecha, habría que añadir explícitamente la variable y adaptar la plantilla que fuera a utilizarla.
 
 \subsubsection{Publicación en abierto y licencia}
 
-\begin{description}
-  \item[\texttt{\textbackslash{}myAuthorizationOpenPublishing}] Indica si se autoriza la publicación en abierto en los documentos que contemplan esta decisión. Los valores previstos son \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
-  \item[\texttt{\textbackslash{}myAuthorizationOpenPublishingEmbargoMonths}] Duración del embargo antes de la publicación en abierto. Los valores contemplados por los textos automáticos son \texttt{0}, \texttt{6}, \texttt{12}, \texttt{18} y \texttt{24} meses.
-  \item[\texttt{\textbackslash{}myResearchVicerrector}] Nombre y tratamiento de la persona responsable del vicerrectorado que aparece en los formularios de publicación correspondientes.
-  \item[\texttt{\textbackslash{}myResearchVicerrectorGender}] Género gramatical utilizado para adaptar el cargo del vicerrectorado. Admite los valores \texttt{male} y \texttt{female}.
-  \item[\texttt{\textbackslash{}myCopyrightStatement}] Declaración de derechos incorporada a los metadatos del PDF.
-  \item[\texttt{\textbackslash{}myLicenseURL}] Dirección de la licencia incorporada a los metadatos del PDF.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}myAuthorizationOpenPublishing}: indica si se autoriza la publicación en abierto en los documentos que contemplan esta decisión. Los valores previstos son \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
+  \item \texttt{\textbackslash{}myAuthorizationOpenPublishingEmbargoMonths}: duración del embargo antes de la publicación en abierto. Los valores contemplados por los textos automáticos son \texttt{0}, \texttt{6}, \texttt{12}, \texttt{18} y \texttt{24} meses.
+  \item \texttt{\textbackslash{}myResearchVicerrector}: nombre y tratamiento de la persona responsable del vicerrectorado que aparece en los formularios de publicación correspondientes.
+  \item \texttt{\textbackslash{}myResearchVicerrectorGender}: género gramatical utilizado para adaptar el cargo del vicerrectorado. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myCopyrightStatement}: declaración de derechos incorporada a los metadatos del PDF.
+  \item \texttt{\textbackslash{}myLicenseURL}: dirección de la licencia incorporada a los metadatos del PDF.
+\end{itemize}
 
 La autorización de publicación, el embargo y la licencia representan decisiones diferentes. La persona autora debe comprobar que sus valores sean coherentes entre sí y con las condiciones institucionales aplicables. También debe sustituir los nombres de cargos y las direcciones de licencia de ejemplo por información vigente antes de generar los documentos definitivos.
 
 \subsubsection{Informes de investigación y tesis de la UPM}
 
-\begin{description}
-  \item[\texttt{\textbackslash{}myResearchReportID}] Identificador mostrado en la cubierta de los informes de investigación generados con \texttt{\textbackslash{}myDegree} establecido a \texttt{GEINTRARR}.
-  \item[\texttt{\textbackslash{}myUPMdegree}] Denominación de la titulación mostrada en las cubiertas de tesis de la Universidad Politécnica de Madrid.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}myResearchReportID}: identificador mostrado en la cubierta de los informes de investigación generados con \texttt{\textbackslash{}myDegree} establecido a \texttt{GEINTRARR}.
+  \item \texttt{\textbackslash{}myUPMdegree}: denominación de la titulación mostrada en las cubiertas de tesis de la Universidad Politécnica de Madrid.
+\end{itemize}
 
 El soporte para informes de investigación se considera experimental. La variable \texttt{\textbackslash{}myUPMdegree} solo resulta necesaria para las plantillas de la UPM que la utilizan.
 
@@ -376,15 +376,15 @@ El soporte para informes de investigación se considera experimental. La variabl
 
 Los valores de color deben corresponder a nombres o expresiones reconocidos por los paquetes de color utilizados por la plantilla, como \texttt{black}, \texttt{blue}, \texttt{red} o \texttt{green}.
 
-\begin{description}
-  \item[\texttt{\textbackslash{}mytoclinkcolor}] Color de los enlaces del índice general.
-  \item[\texttt{\textbackslash{}myloflinkcolor}] Color de los enlaces del índice de figuras.
-  \item[\texttt{\textbackslash{}mylotlinkcolor}] Color de los enlaces del índice de tablas.
-  \item[\texttt{\textbackslash{}myothertoclinkcolor}] Color de los enlaces de los índices adicionales definidos en \texttt{cover/extralistings.tex}.
-  \item[\texttt{\textbackslash{}mylinkcolor}] Color de los enlaces internos, incluidas las referencias cruzadas.
-  \item[\texttt{\textbackslash{}myurlcolor}] Color de los enlaces a direcciones URL.
-  \item[\texttt{\textbackslash{}mycitecolor}] Color de los enlaces a referencias bibliográficas.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}mytoclinkcolor}: color de los enlaces del índice general.
+  \item \texttt{\textbackslash{}myloflinkcolor}: color de los enlaces del índice de figuras.
+  \item \texttt{\textbackslash{}mylotlinkcolor}: color de los enlaces del índice de tablas.
+  \item \texttt{\textbackslash{}myothertoclinkcolor}: color de los enlaces de los índices adicionales definidos en \texttt{cover/extralistings.tex}.
+  \item \texttt{\textbackslash{}mylinkcolor}: color de los enlaces internos, incluidas las referencias cruzadas.
+  \item \texttt{\textbackslash{}myurlcolor}: color de los enlaces a direcciones URL.
+  \item \texttt{\textbackslash{}mycitecolor}: color de los enlaces a referencias bibliográficas.
+\end{itemize}
 
 Utilizar \texttt{black} para los índices permite que sus entradas mantengan el aspecto del texto normal, aunque sigan siendo enlaces activos. Antes de elegir otros colores conviene comprobar su legibilidad tanto en pantalla como en una copia impresa.
 
@@ -423,13 +423,13 @@ Para evitar que tengas que introducir varias veces los mismos datos, hemos prepa
 
 El directorio \texttt{PapeleoTFG/} contiene actualmente:
 
-\begin{description}
-  \item[\texttt{TFG-AutorizacionTutorPubAbierto.tex}] Autorización del tutor para la publicación en abierto.
-  \item[\texttt{TFG-AutorizacionAutorPubAbierto.tex}] Declaración y autorización de la persona autora para la publicación en abierto.
-  \item[\texttt{TFG-AutorizacionTutorExtranjeroPubAbierto.tex}] Autorización en inglés para un tutor perteneciente a una universidad extranjera.
-  \item[\texttt{TFG-InformeTutorYRubrica.tex}] Informe y rúbrica del tutor o tutores.
-  \item[\texttt{TFG-ActaYRubricaDefensa.tex}] Acta y rúbrica del tribunal de defensa.
-\end{description}
+\begin{itemize}
+  \item \texttt{TFG-AutorizacionTutorPubAbierto.tex}: autorización del tutor para la publicación en abierto.
+  \item \texttt{TFG-AutorizacionAutorPubAbierto.tex}: declaración y autorización de la persona autora para la publicación en abierto.
+  \item \texttt{TFG-AutorizacionTutorExtranjeroPubAbierto.tex}: autorización en inglés para un tutor perteneciente a una universidad extranjera.
+  \item \texttt{TFG-InformeTutorYRubrica.tex}: informe y rúbrica del tutor o tutores.
+  \item \texttt{TFG-ActaYRubricaDefensa.tex}: acta y rúbrica del tribunal de defensa.
+\end{itemize}
 
 El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex} y genera un PDF por cada uno. También se puede abrir y compilar individualmente el documento requerido con el editor o la herramienta de \LaTeX{} preferidos.
 
@@ -437,10 +437,10 @@ El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex}
 
 El directorio \texttt{PapeleoTFM/} contiene actualmente:
 
-\begin{description}
-  \item[\texttt{TFM-AutorizacionPublicarAbierto.tex}] Formulario de autorización para la publicación en abierto, con los datos de la persona autora, el tutor y, cuando exista, el cotutor.
-  \item[\texttt{TFM-VistoBuenoTutorTFM.tex}] Visto bueno del tutor o tutores para el depósito y la defensa del TFM. Para el MUIE también refleja si el trabajo está sujeto a confidencialidad.
-\end{description}
+\begin{itemize}
+  \item \texttt{TFM-AutorizacionPublicarAbierto.tex}: formulario de autorización para la publicación en abierto, con los datos de la persona autora, el tutor y, cuando exista, el cotutor.
+  \item \texttt{TFM-VistoBuenoTutorTFM.tex}: visto bueno del tutor o tutores para el depósito y la defensa del TFM. Para el MUIE también refleja si el trabajo está sujeto a confidencialidad.
+\end{itemize}
 
 El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex} y genera sus correspondientes PDF. También se puede compilar cada formulario por separado mediante un editor o una herramienta estándar de \LaTeX{}.
 
@@ -558,20 +558,20 @@ Después de las variables de configuración hemos dejado en \texttt{Config/mycon
 
 Los comandos de ejemplo incluidos actualmente son:
 
-\begin{description}
-  \item[\texttt{\textbackslash{}texten\{texto\}}] Presenta en cursiva una palabra o expresión en inglés dentro de un documento en español; por ejemplo, \texttt{\textbackslash{}texten\{English\}} produce \texten{English}.
-  \item[\texttt{\textbackslash{}ci}] Genera el símbolo matemático de independencia condicional utilizado por algunos ejemplos.
-  \item[\texttt{\textbackslash{}circulo}] Genera un círculo utilizado como marcador gráfico.
-  \item[\texttt{\textbackslash{}asterisco}] Genera un asterisco matemático.
-  \item[\texttt{\textbackslash{}cuadrado}] Genera un cuadrado utilizado como marcador gráfico.
-  \item[\texttt{\textbackslash{}triangulo}] Genera un triángulo orientado hacia arriba.
-  \item[\texttt{\textbackslash{}triangv}] Genera un triángulo orientado hacia abajo.
-  \item[\texttt{\textbackslash{}diamante}] Genera un rombo utilizado como marcador gráfico.
-  \item[\texttt{\textbackslash{}new\{texto\}}] Resalta texto en magenta. Puede resultar útil durante la revisión, pero conviene comprobar que no queden marcas de este tipo en la versión definitiva.
-  \item[\texttt{\textbackslash{}argmax\{índice\}}] Compone el operador matemático \texttt{argmax} colocando debajo el índice indicado.
-  \item[\texttt{\textbackslash{}verticalSpacingSRPMaps}] Almacena una separación vertical utilizada por uno de los ejemplos gráficos de los capítulos.
-  \item[\texttt{\textbackslash{}todojmg}, \texttt{\textbackslash{}todorbc} y \texttt{\textbackslash{}todomig}] Crean notas de revisión en línea con autores y colores diferenciados mediante el paquete \texttt{todonotes}. Sus nombres, iniciales y colores deben adaptarse a las personas que participen en la revisión.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}texten\{texto\}}: presenta en cursiva una palabra o expresión en inglés dentro de un documento en español; por ejemplo, \texttt{\textbackslash{}texten\{English\}} produce \texten{English}.
+  \item \texttt{\textbackslash{}ci}: genera el símbolo matemático de independencia condicional utilizado por algunos ejemplos.
+  \item \texttt{\textbackslash{}circulo}: genera un círculo utilizado como marcador gráfico.
+  \item \texttt{\textbackslash{}asterisco}: genera un asterisco matemático.
+  \item \texttt{\textbackslash{}cuadrado}: genera un cuadrado utilizado como marcador gráfico.
+  \item \texttt{\textbackslash{}triangulo}: genera un triángulo orientado hacia arriba.
+  \item \texttt{\textbackslash{}triangv}: genera un triángulo orientado hacia abajo.
+  \item \texttt{\textbackslash{}diamante}: genera un rombo utilizado como marcador gráfico.
+  \item \texttt{\textbackslash{}new\{texto\}}: resalta texto en magenta. Puede resultar útil durante la revisión, pero conviene comprobar que no queden marcas de este tipo en la versión definitiva.
+  \item \texttt{\textbackslash{}argmax\{índice\}}: compone el operador matemático \texttt{argmax} colocando debajo el índice indicado.
+  \item \texttt{\textbackslash{}verticalSpacingSRPMaps}: almacena una separación vertical utilizada por uno de los ejemplos gráficos de los capítulos.
+  \item \texttt{\textbackslash{}todojmg}, \texttt{\textbackslash{}todorbc} y \texttt{\textbackslash{}todomig}: crean notas de revisión en línea con autores y colores diferenciados mediante el paquete \texttt{todonotes}. Sus nombres, iniciales y colores deben adaptarse a las personas que participen en la revisión.
+\end{itemize}
 
 Los símbolos de barra inversa y virgulilla no necesitan definiciones adicionales. Pueden escribirse mediante \texttt{\textbackslash{}textbackslash\{\}}, que produce \textbackslash{}, y \texttt{\textbackslash{}textasciitilde\{\}}, que produce \textasciitilde{}.
 
@@ -615,14 +615,14 @@ Un acrónimo puede definirse mediante una orden como:
 
 La orden \texttt{\textbackslash{}ac\{ETTS\}} produce \ac{ETTS} y gestiona automáticamente la forma mostrada en usos posteriores. Las principales órdenes disponibles en los ejemplos son:
 
-\begin{description}
-  \item[\texttt{\textbackslash{}ac\{clave\}}] Utiliza la forma completa la primera vez y la abreviada en los usos posteriores.
-  \item[\texttt{\textbackslash{}acs\{clave\}}] Fuerza la forma abreviada.
-  \item[\texttt{\textbackslash{}acl\{clave\}}] Fuerza la forma desarrollada.
-  \item[\texttt{\textbackslash{}acf\{clave\}}] Fuerza la forma completa, con la abreviatura incluida.
-  \item[\texttt{\textbackslash{}acp\{clave\}}] Utiliza la forma plural configurada para el acrónimo.
-  \item[\texttt{\textbackslash{}glsresetall[acronym]}] Reinicia el estado de uso de todos los acrónimos para que vuelvan a tratarse como no utilizados.
-\end{description}
+\begin{itemize}
+  \item \texttt{\textbackslash{}ac\{clave\}}: utiliza la forma completa la primera vez y la abreviada en los usos posteriores.
+  \item \texttt{\textbackslash{}acs\{clave\}}: fuerza la forma abreviada.
+  \item \texttt{\textbackslash{}acl\{clave\}}: fuerza la forma desarrollada.
+  \item \texttt{\textbackslash{}acf\{clave\}}: fuerza la forma completa, con la abreviatura incluida.
+  \item \texttt{\textbackslash{}acp\{clave\}}: utiliza la forma plural configurada para el acrónimo.
+  \item \texttt{\textbackslash{}glsresetall[acronym]}: reinicia el estado de uso de todos los acrónimos para que vuelvan a tratarse como no utilizados.
+\end{itemize}
 
 Para que puedas ver el mecanismo en funcionamiento, reiniciamos primero el estado de los acrónimos:
 
