@@ -144,19 +144,15 @@ Los objetivos relacionados con la comparación de versiones se explican con más
 
 Los objetivos \texttt{bare}, \texttt{bare-chapters} y \texttt{orig-chapters} modifican el contenido de los directorios de capítulos o apéndices. Además, \texttt{bare} puede eliminar los ficheros de \texttt{figures/} y \texttt{diagrams/} si se confirma expresamente durante su ejecución. Utilízalos únicamente al preparar una copia nueva del proyecto y después de comprobar que los cambios importantes están guardados en el sistema de control de versiones.
 
-\subsubsection{Herramientas y prestaciones opcionales}
-\label{sec:herramientas-opcionales}
-
-Además de la compilación básica, el repositorio permite utilizar varias herramientas opcionales:
+Algunos objetivos del \texttt{Makefile} utilizan herramientas adicionales. Solo necesitas instalar las que correspondan a los objetivos que vayas a utilizar:
 
 \begin{itemize}
-  \item \textbf{Ghostscript}: genera la copia comprimida del documento cuando se utiliza el objetivo \texttt{all} del \texttt{Makefile}.
-  \item \textbf{Inkscape}: convierte automáticamente los diagramas en formato \texttt{svg} a \texttt{pdf}.
-  \item \textbf{Dia y \texttt{epspdf}}: convierten automáticamente los diagramas en formato \texttt{dia} a \texttt{pdf}.
-  \item \texttt{epspdf}: convierte automáticamente las figuras en formato \texttt{eps} a \texttt{pdf}.
+  \item \texttt{Ghostscript}: genera la copia comprimida del documento cuando se utiliza el objetivo \texttt{all} del \texttt{Makefile}.
+  \item \texttt{Inkscape}: convierte automáticamente los diagramas en formato \texttt{svg} a \texttt{pdf}.
+  \item \texttt{Dia} y \texttt{epspdf}: convierten automáticamente los diagramas en formato \texttt{dia} a \texttt{pdf}; \texttt{epspdf} también convierte las figuras en formato \texttt{eps} a \texttt{pdf}.
   \item \texttt{latexmk}: proporciona el procedimiento alternativo utilizado por los objetivos \texttt{all\_latexmk} y \texttt{clean\_latexmk}.
   \item \texttt{latexpand} y \texttt{latexdiff}: permiten unificar los fuentes y generar documentos que muestran las diferencias entre dos versiones.
-  \item \textbf{Perl}: es necesario para ejecutar \texttt{makeglossaries} en los sistemas que no incluyan ya un intérprete compatible.
+  \item \texttt{Perl}: es necesario para ejecutar \texttt{makeglossaries} en los sistemas que no incluyan ya un intérprete compatible.
 \end{itemize}
 
 Instala estas herramientas solo cuando vayas a utilizar la prestación correspondiente. No son requisitos para redactar ni compilar un documento básico que no dependa de ellas.
@@ -597,7 +593,7 @@ Puedes editar o eliminar el bloque de cita de cada capítulo sin afectar al rest
 
 Puedes incluir directamente ficheros \texttt{pdf}, \texttt{png} y \texttt{jpg} mediante \texttt{\textbackslash{}includegraphics}. Para evitar que tengas que escribir la ruta completa de cada figura, ya hemos configurado en \texttt{Book/book.tex} los directorios \texttt{logos/}, \texttt{figures/} y \texttt{diagrams/} mediante \texttt{\textbackslash{}graphicspath}; normalmente bastará con que indiques el nombre del fichero.
 
-El \texttt{Makefile} descrito en el apartado~\ref{sec:compilacion-makefile} puede convertir automáticamente fuentes \texttt{dia}, \texttt{svg} y \texttt{eps} a PDF cuando están instaladas las herramientas opcionales descritas en el apartado~\ref{sec:herramientas-opcionales}. Los PDF generados pueden incluirse después como cualquier otra figura.
+El \texttt{Makefile} descrito en el apartado~\ref{sec:compilacion-makefile} puede convertir automáticamente fuentes \texttt{dia}, \texttt{svg} y \texttt{eps} a PDF cuando están instaladas las herramientas opcionales necesarias, enumeradas en ese mismo apartado. Los PDF generados pueden incluirse después como cualquier otra figura.
 
 La figura~\ref{fig:fig_clobj} utiliza \texttt{diagrams/Esquema\_objetos.pdf}, que también puede generarse a partir de \texttt{diagrams/Esquema\_objetos.dia}\footnote{El ejemplo procede de los trabajos fin de carrera de David Casillas y Manuel Villaverde.}.
 
