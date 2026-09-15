@@ -81,32 +81,18 @@ Biber es necesario cuando el documento incluye bibliografía. Si utilizas acrón
 
 Si durante la compilación recibes un aviso de que falta un fichero \texttt{.sty}, instala el paquete de tu distribución de \LaTeX{} que lo contiene. En MiKTeX puedes activar la instalación automática de paquetes; TeX Live y MacTeX proporcionan sus propias herramientas para administrar los paquetes instalados.
 
-No necesitas utilizar \texttt{make} para trabajar con la plantilla. Puedes compilarla desde la terminal o con cualquier editor o herramienta de construcción de \LaTeX{} que permita ejecutar la secuencia descrita en la sección~\ref{sec:compilacion}. El \texttt{Makefile} incluido es únicamente una forma opcional de automatizar el proceso y resulta especialmente cómodo en sistemas GNU/Linux.
+No necesitas utilizar \texttt{make} para trabajar con la plantilla. Puedes compilarla con cualquier editor o herramienta de construcción de \LaTeX{} que permita configurar las herramientas descritas en la sección~\ref{sec:compilacion}; si lo prefieres, también puedes hacerlo desde una terminal. El \texttt{Makefile} incluido es únicamente una forma opcional de automatizar el proceso y resulta especialmente cómodo en sistemas GNU/Linux.
 
 \subsection{Compilación}
 \label{sec:compilacion}
 
-Antes de compilar el documento, completa la configuración compartida en \texttt{Config/myconfig.tex}. La secuencia completa utilizada por el libro de ejemplo es:
+Antes de compilar el documento, completa la configuración compartida en \texttt{Config/myconfig.tex}. Después, abre \texttt{Book/book.tex} como documento principal en tu editor de \LaTeX{} y utiliza su función habitual de compilación o construcción.
 
-\begin{verbatim}
-pdflatex book.tex
-biber book
-makeglossaries book
-pdflatex book.tex
-pdflatex book.tex
-\end{verbatim}
-
-Biber genera la bibliografía y \texttt{makeglossaries} genera los listados de acrónimos y símbolos. Si tu documento no contiene bibliografía, acrónimos ni símbolos, puedes omitir las herramientas correspondientes. Las pasadas adicionales de \texttt{pdflatex} permiten actualizar correctamente las referencias cruzadas, los índices, la bibliografía y, cuando existan, los glosarios.
-
-\subsubsection{Compilación desde un editor de \LaTeX{}}
-
-Puedes utilizar TeXstudio, TeXShop u otro editor de \LaTeX{} en cualquiera de los sistemas operativos compatibles. Configura el editor para utilizar \texttt{pdflatex} como compilador, Biber como procesador de la bibliografía y, únicamente si utilizas acrónimos o símbolos, \texttt{makeglossaries} para generar sus listados. Después, realiza las dos pasadas finales de \texttt{pdflatex}.
-
-Algunos editores permiten definir una orden o cadena de construcción personalizada que ejecuta automáticamente todo el proceso. Otros proporcionan órdenes separadas para \LaTeX{}, la bibliografía y los glosarios; en ese caso, ejecútalas respetando el orden indicado anteriormente. El fichero principal que debes abrir y compilar es \texttt{Book/book.tex}.
+Para generar correctamente todos los elementos del libro, configura el editor para utilizar \texttt{pdflatex} como compilador y Biber como procesador de la bibliografía. Si utilizas acrónimos o símbolos, añade también \texttt{makeglossaries} a la cadena de construcción. Finalmente, realiza las pasadas adicionales de \texttt{pdflatex} necesarias para actualizar las referencias cruzadas, los índices, la bibliografía y los glosarios.
 
 \subsubsection{GNU/Linux}
 
-En GNU/Linux puedes compilar el documento con tu editor de \LaTeX{} preferido o ejecutar directamente desde una terminal la secuencia indicada anteriormente. Ejecuta los comandos desde el directorio \texttt{Book/}.
+En GNU/Linux puedes utilizar tu editor de \LaTeX{} preferido. Asegúrate de abrir \texttt{Book/book.tex} como documento principal y de configurar la cadena de construcción como se ha indicado anteriormente.
 
 Si prefieres automatizar el proceso mediante \texttt{make}, consulta el apartado «Compilación mediante el \texttt{Makefile}», donde se describen el procedimiento y los objetivos disponibles.
 
@@ -122,7 +108,7 @@ Parte de estas instrucciones se basa en la información que nos proporcionó Cri
 
 En macOS puedes utilizar MacTeX junto con TeXShop, TeXstudio u otro editor compatible. Configura la cadena de construcción para incluir \texttt{pdflatex}, Biber y, si utilizas acrónimos o símbolos, \texttt{makeglossaries} en el orden indicado anteriormente.
 
-Si tu editor no actualiza correctamente los acrónimos o símbolos, ejecuta manualmente \texttt{makeglossaries book} desde el directorio \texttt{Book/} y realiza después dos nuevas pasadas de \texttt{pdflatex}. No necesitas borrar el resto de los ficheros del proyecto para regenerar los glosarios.
+Si tu editor no actualiza correctamente los acrónimos o símbolos, utiliza desde el propio editor la opción para ejecutar \texttt{makeglossaries} y realiza después dos nuevas pasadas de \texttt{pdflatex}. No necesitas borrar el resto de los ficheros del proyecto para regenerar los glosarios.
 
 Las primeras comprobaciones de la generación de glosarios en macOS fueron realizadas y compartidas con nosotros por Carlos Cruz. Muchas gracias por su ayuda.
 
