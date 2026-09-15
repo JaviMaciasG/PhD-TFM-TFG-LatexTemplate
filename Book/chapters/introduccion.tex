@@ -40,7 +40,7 @@
 
 Esta plantilla\footnote{Asegúrate de compilar de nuevo el documento, como se explica en la sección~\ref{sec:compilacion}, para verificar que todo funciona y por si se ha producido algún cambio en los fuentes que todavía no esté reflejado en los PDF de ejemplo precompilados.} proporciona una estructura común para redactar trabajos académicos con \LaTeX{}. Incluye soporte para trabajos fin de carrera de planes anteriores, trabajos fin de grado, trabajos fin de máster y tesis doctorales. La mayor parte de las portadas y documentos administrativos están adaptados a titulaciones de la Universidad de Alcalá, aunque también conservamos soporte para determinados programas de doctorado de la Universidad Politécnica de Madrid\footnote{En la UPM se incluye actualmente soporte para tesis de la Escuela Técnica Superior de Ingenieros de Telecomunicación. La extensión a otros tipos de trabajo sería posible, pero todavía no está incorporada a la plantilla.}.
 
-Además del libro principal, hemos incluido plantillas para preparar el anteproyecto y distintos documentos administrativos relacionados con la presentación, el depósito, la evaluación y la publicación de los trabajos. Todos ellos comparten la configuración del trabajo, del autor y de los tutores, para que no tengas que introducir los mismos datos una y otra vez.
+Además del libro principal, hemos incluido una plantilla para preparar el anteproyecto, descrita en la sección~\ref{sec:plantilla-de-anteproyecto}, y distintos documentos administrativos relacionados con la presentación, el depósito, la evaluación y la publicación de los trabajos, que se detallan en la sección~\ref{sec:introapp1}. Todos ellos comparten la configuración del trabajo, del autor y de los tutores, para que no tengas que introducir los mismos datos una y otra vez.
 
 También hemos preparado capítulos y apéndices de ejemplo con secciones de carácter tutorial. En ellas intentamos explicar algunas de las posibilidades de la plantilla y mostrar elementos habituales que pueden resultar útiles, aunque no pretendemos que este documento sustituya a una guía completa de \LaTeX{}.
 
@@ -64,7 +64,7 @@ Los principales directorios del repositorio son:
   \item \texttt{Deprecated/}: material antiguo conservado únicamente como referencia o por compatibilidad.
 \end{itemize}
 
-La configuración general se realiza en \texttt{Config/myconfig.tex}. Los distintos documentos del repositorio leen este archivo para mantener coherentes los nombres, títulos, fechas y demás datos compartidos.
+La configuración general se realiza en \texttt{Config/myconfig.tex}, como se explica en la sección~\ref{sec:definicion-del-tipo}. Los distintos documentos del repositorio leen este archivo para mantener coherentes los nombres, títulos, fechas y demás datos compartidos.
 
 
 
@@ -86,33 +86,34 @@ No necesitas utilizar \texttt{make} para trabajar con la plantilla. Puedes compi
 \subsection{Compilación}
 \label{sec:compilacion}
 
-Antes de compilar el documento, completa la configuración compartida en \texttt{Config/myconfig.tex}. Después, abre \texttt{Book/book.tex} como documento principal en tu editor de \LaTeX{} y utiliza su función habitual de compilación o construcción.
+Antes de compilar el documento, completa la configuración compartida en \texttt{Config/myconfig.tex} siguiendo las indicaciones de la sección~\ref{sec:definicion-del-tipo}. Después, abre \texttt{Book/book.tex} como documento principal en tu editor de \LaTeX{} y utiliza su función habitual de compilación o construcción.
 
 Para generar correctamente todos los elementos del libro, configura el editor para utilizar \texttt{pdflatex} como compilador y Biber como procesador de la bibliografía. Si utilizas acrónimos o símbolos, añade también \texttt{makeglossaries} a la cadena de construcción. Finalmente, realiza las pasadas adicionales de \texttt{pdflatex} necesarias para actualizar las referencias cruzadas, los índices, la bibliografía y los glosarios.
 
 \subsubsection{GNU/Linux}
 
-En GNU/Linux puedes utilizar tu editor de \LaTeX{} preferido. Asegúrate de abrir \texttt{Book/book.tex} como documento principal y de configurar la cadena de construcción como se ha indicado anteriormente.
+En GNU/Linux puedes utilizar tu editor de \LaTeX{} preferido. Asegúrate de abrir \texttt{Book/book.tex} como documento principal y de configurar la cadena de construcción como se explica en la sección~\ref{sec:compilacion}.
 
-Si prefieres automatizar el proceso mediante \texttt{make}, consulta el apartado «Compilación mediante el \texttt{Makefile}», donde se describen el procedimiento y los objetivos disponibles.
+Si prefieres automatizar el proceso mediante \texttt{make}, consulta \textit{Compilación mediante el \texttt{Makefile}} (apartado~\ref{sec:compilacion-makefile}), donde se describen el procedimiento y los objetivos disponibles.
 
 \subsubsection{Windows}
 
 En Windows puedes utilizar MiKTeX o TeX Live junto con TeXstudio u otro editor de \LaTeX{}. En la configuración del editor, selecciona Biber como procesador de la bibliografía y, si utilizas acrónimos o símbolos, añade \texttt{makeglossaries} a la cadena de construcción. Para ejecutar \texttt{makeglossaries} también necesitas un intérprete de Perl; Strawberry Perl es una de las alternativas disponibles para Windows.
 
-No necesitas instalar \texttt{make} para trabajar con la plantilla en Windows. Si quieres utilizar el \texttt{Makefile}, puedes hacerlo desde un entorno compatible que proporcione las herramientas requeridas, como WSL, aunque normalmente te resultará más sencillo configurar la cadena de compilación en el propio editor.
+No necesitas instalar \texttt{make} para trabajar con la plantilla en Windows. Si quieres utilizar el \texttt{Makefile} descrito en el apartado~\ref{sec:compilacion-makefile}, puedes hacerlo desde un entorno compatible que proporcione las herramientas requeridas, como WSL, aunque normalmente te resultará más sencillo configurar la cadena de compilación en el propio editor.
 
 Parte de estas instrucciones se basa en la información que nos proporcionó Cristina Losada sobre la configuración de TeXmaker en Windows. Muchas gracias por su ayuda.
 
 \subsubsection{macOS}
 
-En macOS puedes utilizar MacTeX junto con TeXShop, TeXstudio u otro editor compatible. Configura la cadena de construcción para incluir \texttt{pdflatex}, Biber y, si utilizas acrónimos o símbolos, \texttt{makeglossaries} en el orden indicado anteriormente.
+En macOS puedes utilizar MacTeX junto con TeXShop, TeXstudio u otro editor compatible. Configura la cadena de construcción para incluir \texttt{pdflatex}, Biber y, si utilizas acrónimos o símbolos, \texttt{makeglossaries} en el orden explicado en la sección~\ref{sec:compilacion}.
 
 Si tu editor no actualiza correctamente los acrónimos o símbolos, utiliza desde el propio editor la opción para ejecutar \texttt{makeglossaries} y realiza después dos nuevas pasadas de \texttt{pdflatex}. No necesitas borrar el resto de los ficheros del proyecto para regenerar los glosarios.
 
 Las primeras comprobaciones de la generación de glosarios en macOS fueron realizadas y compartidas con nosotros por Carlos Cruz. Muchas gracias por su ayuda.
 
 \subsubsection{Compilación mediante el \texttt{Makefile}}
+\label{sec:compilacion-makefile}
 
 Para facilitar la generación del documento incluimos un \texttt{Makefile}. No somos expertos ni en \texttt{make} ni en \LaTeX{}, así que seguramente no sea el mejor \texttt{Makefile} del mundo, pero creemos que cumple su función y puede servir también como ejemplo para adaptar el proceso de compilación a tus necesidades.
 
@@ -139,9 +140,12 @@ Los principales objetivos disponibles en el \texttt{Makefile} son:
   \item \texttt{tar}: genera archivos comprimidos con los fuentes y recursos de la plantilla.
 \end{itemize}
 
+Los objetivos relacionados con la comparación de versiones se explican con más detalle en la sección~\ref{sec:control-de-cambios}.
+
 Los objetivos \texttt{bare}, \texttt{bare-chapters} y \texttt{orig-chapters} modifican el contenido de los directorios de capítulos o apéndices. Además, \texttt{bare} puede eliminar los ficheros de \texttt{figures/} y \texttt{diagrams/} si se confirma expresamente durante su ejecución. Utilízalos únicamente al preparar una copia nueva del proyecto y después de comprobar que los cambios importantes están guardados en el sistema de control de versiones.
 
 \subsubsection{Herramientas y prestaciones opcionales}
+\label{sec:herramientas-opcionales}
 
 Además de la compilación básica, el repositorio permite utilizar varias herramientas opcionales:
 
@@ -177,12 +181,12 @@ La estructura distribuida con la plantilla incluye los siguientes elementos:
   \item Documentos PDF preliminares. Puedes insertarlos con \texttt{\textbackslash{}includepdf}. El fichero \texttt{letters/sampleLetter.pdf} muestra cómo incorporar todas las páginas de un documento, y \texttt{letters/sampleLetter-pages.pdf} permite probar la selección de páginas concretas. Estos documentos pueden ser necesarios, por ejemplo, en determinadas tesis doctorales o trabajos fin de máster.
   \item Dedicatoria, incluida desde \texttt{dedication/dedicatoria.tex}. Puedes editarla o comentar su orden \texttt{\textbackslash{}input} si no quieres utilizarla.
   \item Agradecimientos, incluidos desde \texttt{acknowledgements/agradecimientos.tex}. También puedes editarlos u omitirlos.
-  \item Definiciones de acrónimos, incluidas desde \texttt{acronyms/defacronymsgl.tex}, y listado correspondiente, configurado en \texttt{acronyms/acronymsgl.tex}. Puedes comentar ambos elementos cuando no utilices acrónimos.
-  \item Definiciones de símbolos, incluidas desde \texttt{symbols/defsymbolsgl.tex}, y listado correspondiente, configurado en \texttt{symbols/symbolsgl.tex}. Puedes comentar ambos elementos cuando no utilices símbolos.
+  \item Definiciones de acrónimos, incluidas desde \texttt{acronyms/defacronymsgl.tex}, y listado correspondiente, configurado en \texttt{acronyms/acronymsgl.tex}. Puedes comentar ambos elementos cuando no utilices acrónimos; la sección~\ref{sec:uso-de-acronimos} explica su definición y uso.
+  \item Definiciones de símbolos, incluidas desde \texttt{symbols/defsymbolsgl.tex}, y listado correspondiente, configurado en \texttt{symbols/symbolsgl.tex}. Puedes comentar ambos elementos cuando no utilices símbolos; la sección~\ref{sec:simbolos} explica su definición y uso.
   \item Resumen en español, incluido desde \texttt{abstract/resumen.tex}, y resumen en inglés, incluido desde \texttt{abstract/abstract.tex}.
   \item Resumen extendido en español, disponible en \texttt{abstract/resumen-extendido.tex}. Su inclusión está comentada de forma predeterminada; puedes activarla cuando lo requiera tu tipo de trabajo.
   \item Índice general, índice de figuras e índice de tablas, generados desde \texttt{cover/toc+lof+lot.tex}.
-  \item Listados adicionales, configurados en \texttt{cover/extralistings.tex}. El ejemplo incluye listados para fragmentos de código, algoritmos y vídeos. Puedes editar o comentar esta configuración si no la necesitas.
+  \item Listados adicionales, configurados en \texttt{cover/extralistings.tex}. El ejemplo incluye listados para fragmentos de código, algoritmos y vídeos; la sección~\ref{sec:intro-videolink} explica el ejemplo dedicado a estos últimos. Puedes editar o comentar esta configuración si no la necesitas.
   \item Capítulos principales, incluidos desde el directorio \texttt{chapters/}. El ejemplo proporciona una estructura formada por introducción, estudio teórico, desarrollo, resultados y conclusiones. Adáptala libremente al contenido real de tu trabajo.
   \item Pliego de condiciones, disponible en \texttt{pliego/pliego.tex}, y presupuesto, disponible en \texttt{presupuesto/presupuesto.tex}. Sus órdenes de inclusión están comentadas de forma predeterminada; actívalas únicamente cuando necesites estos documentos. Los ejemplos proceden de un trabajo fin de carrera de Jesús Martínez y se conservan como material de referencia; debido a su antigüedad, contrástalos con la normativa y los formatos actuales.
   \item Bibliografía, impresa mediante \texttt{biblio/bibliography.tex}. Los ficheros \texttt{.bib} que se procesarán se declaran en \texttt{biblio/bibliofiles.tex} mediante las variables \texttt{\textbackslash{}mybibfileOne}, \texttt{\textbackslash{}mybibfileTwo} y las sucesivas variables disponibles.
@@ -558,7 +562,7 @@ Si encuentras algún otro problema, escribe a \contactauthor{} para contárnoslo
 \subsection{Comandos personalizados}
 \label{sec:uso-de-comandos}
 
-Después de las variables de configuración hemos dejado en \texttt{Config/myconfig.tex} una zona destinada a definir comandos personalizados. Incluimos algunas definiciones a modo de ejemplo para mostrarte cómo puedes crear las tuyas; puedes conservarlas, adaptarlas o eliminarlas cuando dejen de resultarte útiles.
+Después de las variables de configuración descritas en la sección~\ref{sec:definicion-del-tipo} hemos dejado en \texttt{Config/myconfig.tex} una zona destinada a definir comandos personalizados. Incluimos algunas definiciones a modo de ejemplo para mostrarte cómo puedes crear las tuyas; puedes conservarlas, adaptarlas o eliminarlas cuando dejen de resultarte útiles.
 
 Los comandos de ejemplo incluidos actualmente son:
 
@@ -593,7 +597,7 @@ Puedes editar o eliminar el bloque de cita de cada capítulo sin afectar al rest
 
 Puedes incluir directamente ficheros \texttt{pdf}, \texttt{png} y \texttt{jpg} mediante \texttt{\textbackslash{}includegraphics}. Para evitar que tengas que escribir la ruta completa de cada figura, ya hemos configurado en \texttt{Book/book.tex} los directorios \texttt{logos/}, \texttt{figures/} y \texttt{diagrams/} mediante \texttt{\textbackslash{}graphicspath}; normalmente bastará con que indiques el nombre del fichero.
 
-El \texttt{Makefile} puede convertir automáticamente fuentes \texttt{dia}, \texttt{svg} y \texttt{eps} a PDF cuando están instaladas las herramientas opcionales correspondientes. Los PDF generados pueden incluirse después como cualquier otra figura.
+El \texttt{Makefile} descrito en el apartado~\ref{sec:compilacion-makefile} puede convertir automáticamente fuentes \texttt{dia}, \texttt{svg} y \texttt{eps} a PDF cuando están instaladas las herramientas opcionales descritas en el apartado~\ref{sec:herramientas-opcionales}. Los PDF generados pueden incluirse después como cualquier otra figura.
 
 La figura~\ref{fig:fig_clobj} utiliza \texttt{diagrams/Esquema\_objetos.pdf}, que también puede generarse a partir de \texttt{diagrams/Esquema\_objetos.dia}\footnote{El ejemplo procede de los trabajos fin de carrera de David Casillas y Manuel Villaverde.}.
 
@@ -645,7 +649,7 @@ Los símbolos se gestionan también mediante \texttt{glossaries}. Se definen en 
 
 Los ejemplos incluidos representan el ángstrom, \ac{angstrom}; el ohmio, \ac{ohm}; una señal de audio, \ac{xdet}; una señal capturada por el micrófono \(i\), \ac{xidet}; y la independencia condicional, \ac{condindep}. Puedes utilizar la orden \texttt{\textbackslash{}ac\{clave\}} tanto con acrónimos como con estas entradas de símbolos.
 
-Si no necesitas acrónimos o símbolos, comenta en \texttt{Book/book.tex} las órdenes que incluyen sus definiciones y listados. En ese caso tampoco necesitarás ejecutar \texttt{makeglossaries}.
+Si no necesitas acrónimos o símbolos, comenta en \texttt{Book/book.tex} las órdenes que incluyen sus definiciones y listados. En ese caso tampoco necesitarás ejecutar \texttt{makeglossaries}; la sección~\ref{sec:compilacion} explica cuándo debes incorporar esta herramienta al proceso de compilación.
 
 \subsection{Ejemplos de inclusión de enlaces a vídeos y listado}
 \label{sec:intro-videolink}
