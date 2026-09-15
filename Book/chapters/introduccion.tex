@@ -215,6 +215,8 @@ Además de completar \texttt{Config/myconfig.tex}, revisa \texttt{Book/book.tex}
 
 \subsubsection{Idioma, titulación y presentación de los tutores}
 
+Las siguientes variables controlan el idioma, la titulación y la presentación conjunta o separada de los tutores:
+
 \begin{itemize}
   \item \texttt{\textbackslash{}myLanguage}: idioma principal del documento. Admite los valores \texttt{spanish} y \texttt{english}. Esta selección determina, entre otros elementos, los textos automáticos, las cabeceras, el título utilizado y las palabras clave incorporadas a los metadatos del PDF.
   \item \texttt{\textbackslash{}myDegree}: identificador de la titulación o del tipo concreto de documento. Su valor determina el tipo general de trabajo y selecciona automáticamente las portadas, contraportadas, nombres de titulación y otros textos aplicables.
@@ -236,6 +238,8 @@ La correspondencia entre estos identificadores y los tipos generales de trabajo 
 
 \subsubsection{Título, palabras clave y confidencialidad}
 
+Utiliza las siguientes variables para definir los títulos, las palabras clave y el carácter confidencial del trabajo:
+
 \begin{itemize}
   \item \texttt{\textbackslash{}myBookTitleSpanish}: título completo del trabajo en español.
   \item \texttt{\textbackslash{}myBookTitleEnglish}: título completo del trabajo en inglés.
@@ -247,6 +251,8 @@ La correspondencia entre estos identificadores y los tipos generales de trabajo 
 La plantilla crea internamente la orden \texttt{\textbackslash{}myBookTitle} a partir del idioma seleccionado: utiliza \texttt{\textbackslash{}myBookTitleSpanish} cuando \texttt{\textbackslash{}myLanguage} vale \texttt{spanish} y \texttt{\textbackslash{}myBookTitleEnglish} cuando vale \texttt{english}. Por tanto, no definas ni modifiques directamente \texttt{\textbackslash{}myBookTitle}.
 
 \subsubsection{Datos de autoría}
+
+Los datos personales y de contacto de la persona autora se configuran mediante las siguientes variables:
 
 \begin{itemize}
   \item \texttt{\textbackslash{}myAuthorName}: nombre o nombres de la persona autora.
@@ -265,6 +271,8 @@ La plantilla crea internamente la orden \texttt{\textbackslash{}myBookTitle} a p
 Los datos postales y el teléfono no son necesarios para componer el libro, pero se comparten con los documentos administrativos que los solicitan. Si no vas a generar ninguno de esos formularios, puedes dejarlos vacíos. Antes de distribuir públicamente los fuentes de tu trabajo, comprueba que \texttt{Config/myconfig.tex} no contiene datos personales que no deban publicarse.
 
 \subsubsection{Tutor académico y cotutor}
+
+Define los datos del tutor académico mediante las siguientes variables:
 
 \begin{itemize}
   \item \texttt{\textbackslash{}myAcademicTutorFullName}: nombre completo del tutor académico o director principal del trabajo.
@@ -292,6 +300,8 @@ Las variables antiguas \texttt{\textbackslash{}myFirstAdvisorFullName}, \texttt{
 
 \subsubsection{Afiliación académica}
 
+Las siguientes variables describen la universidad, el centro, el departamento, el programa de doctorado y el grupo de investigación:
+
 \begin{itemize}
   \item \texttt{\textbackslash{}mySchool}: escuela, facultad o centro académico responsable del trabajo.
   \item \texttt{\textbackslash{}myUniversity}: nombre completo de la universidad.
@@ -304,6 +314,8 @@ Las variables antiguas \texttt{\textbackslash{}myFirstAdvisorFullName}, \texttt{
 \end{itemize}
 
 \subsubsection{Tribunal y personal académico}
+
+Configura la composición del tribunal y los cargos académicos mediante las siguientes variables:
 
 \begin{itemize}
   \item \texttt{\textbackslash{}myTribunalPresident}: nombre completo de la persona que preside el tribunal.
@@ -323,6 +335,8 @@ Las variables antiguas \texttt{\textbackslash{}myFirstAdvisorFullName}, \texttt{
 No todas las titulaciones utilizan la misma composición de tribunal ni los mismos cargos administrativos. Puedes dejar vacíos los campos que no aparezcan en los documentos correspondientes a la titulación que hayas seleccionado.
 
 \subsubsection{Calificaciones}
+
+Las siguientes variables recogen las calificaciones y la posible propuesta de matrícula de honor:
 
 \begin{itemize}
   \item \texttt{\textbackslash{}myAcademicTutorGrade}: calificación asignada por el tutor académico. En la rúbrica de TFG incluida actualmente corresponde a un máximo de siete puntos.
@@ -352,6 +366,8 @@ No existe una variable \texttt{\textbackslash{}myThesisProposalDateEnglish} en l
 
 \subsubsection{Publicación en abierto y licencia}
 
+Utiliza las siguientes variables para configurar la publicación en abierto, el embargo, los cargos responsables y la licencia del documento:
+
 \begin{itemize}
   \item \texttt{\textbackslash{}myAuthorizationOpenPublishing}: indica si se autoriza la publicación en abierto en los documentos que contemplan esta decisión. Los valores previstos son \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
   \item \texttt{\textbackslash{}myAuthorizationOpenPublishingEmbargoMonths}: duración del embargo antes de la publicación en abierto. Los valores contemplados por los textos automáticos son \texttt{0}, \texttt{6}, \texttt{12}, \texttt{18} y \texttt{24} meses.
@@ -364,6 +380,8 @@ No existe una variable \texttt{\textbackslash{}myThesisProposalDateEnglish} en l
 La autorización de publicación, el embargo y la licencia representan decisiones diferentes. Comprueba que sus valores sean coherentes entre sí y con las condiciones institucionales aplicables. Sustituye también los nombres de cargos y las direcciones de licencia de ejemplo por información vigente antes de generar los documentos definitivos.
 
 \subsubsection{Informes de investigación y tesis de la UPM}
+
+Estas variables proporcionan los datos específicos de los informes de investigación y de las tesis de la UPM:
 
 \begin{itemize}
   \item \texttt{\textbackslash{}myResearchReportID}: identificador mostrado en la cubierta de los informes de investigación generados con \texttt{\textbackslash{}myDegree} establecido a \texttt{GEINTRARR}.
