@@ -123,11 +123,16 @@ La compilación genera \texttt{book.pdf} y \texttt{book-compressed.pdf}. Tambié
 
 El objetivo \texttt{all} también actualiza el fichero \texttt{RELEASE.txt} con la etiqueta más reciente del repositorio e intenta añadirlo al índice de Git. Por tanto, después de compilar, revisa el estado del repositorio antes de preparar un commit.
 
-Los principales objetivos disponibles en el \texttt{Makefile} son:
+Para el uso habitual de la plantilla solo necesitarás los siguientes objetivos:
 
 \begin{itemize}
   \item \texttt{all}: compila el documento completo y genera las copias finales; es el objetivo ejecutado de forma predeterminada por \texttt{make}.
   \item \texttt{clean}: elimina los ficheros auxiliares y los PDF de trabajo generados durante la compilación.
+\end{itemize}
+
+Los siguientes objetivos proporcionan operaciones avanzadas para la revisión, la preparación o la distribución del proyecto:
+
+\begin{itemize}
   \item \texttt{all\_latexmk}: ofrece un procedimiento alternativo y experimental de compilación basado en \texttt{latexmk}.
   \item \texttt{clean\_latexmk}: elimina los ficheros auxiliares mediante \texttt{latexmk} y completa después la limpieza de otros ficheros generados.
   \item \texttt{snapshot}: genera mediante \texttt{latexpand} una copia unificada del documento que puede utilizarse como referencia para una revisión posterior.
@@ -142,6 +147,8 @@ Los principales objetivos disponibles en el \texttt{Makefile} son:
 
 Los objetivos relacionados con la comparación de versiones se explican con más detalle en la sección~\ref{sec:control-de-cambios}.
 
+El \texttt{Makefile} contiene además objetivos auxiliares utilizados internamente para convertir recursos y preparar la versión mínima. No necesitas ejecutarlos directamente.
+
 Los objetivos \texttt{bare}, \texttt{bare-chapters} y \texttt{orig-chapters} modifican el contenido de los directorios de capítulos o apéndices. Además, \texttt{bare} puede eliminar los ficheros de \texttt{figures/} y \texttt{diagrams/} si se confirma expresamente durante su ejecución. Utilízalos únicamente al preparar una copia nueva del proyecto y después de comprobar que los cambios importantes están guardados en el sistema de control de versiones.
 
 Algunos objetivos del \texttt{Makefile} utilizan herramientas adicionales. Solo necesitas instalar las que correspondan a los objetivos que vayas a utilizar:
@@ -152,6 +159,7 @@ Algunos objetivos del \texttt{Makefile} utilizan herramientas adicionales. Solo 
   \item \texttt{Dia} y \texttt{epspdf}: convierten automáticamente los diagramas en formato \texttt{dia} a \texttt{pdf}; \texttt{epspdf} también convierte las figuras en formato \texttt{eps} a \texttt{pdf}.
   \item \texttt{latexmk}: proporciona el procedimiento alternativo utilizado por los objetivos \texttt{all\_latexmk} y \texttt{clean\_latexmk}.
   \item \texttt{latexpand} y \texttt{latexdiff}: permiten unificar los fuentes y generar documentos que muestran las diferencias entre dos versiones.
+  \item \texttt{tar}, \texttt{gzip} y \texttt{zip}: generan los archivos comprimidos creados por el objetivo \texttt{tar}.
   \item \texttt{Perl}: es necesario para ejecutar \texttt{makeglossaries} en los sistemas que no incluyan ya un intérprete compatible.
 \end{itemize}
 
