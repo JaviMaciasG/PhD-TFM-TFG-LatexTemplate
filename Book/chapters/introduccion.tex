@@ -75,18 +75,18 @@ La configuración general se realiza en \texttt{Config/myconfig.tex}. Los distin
 \subsection{Prerrequisitos}
 \label{sec:prerrequisitos}
 
-Para compilar la plantilla se necesita una distribución de \LaTeX{} suficientemente completa y actualizada. TeX Live es una opción habitual en GNU/Linux, MiKTeX y TeX Live están disponibles para Windows, y MacTeX proporciona una distribución adaptada a macOS. La distribución elegida debe proporcionar \texttt{pdflatex} y Biber, además de los paquetes cargados desde \texttt{Config/preamble.tex}.
+Para compilar la plantilla necesitas una distribución de \LaTeX{} suficientemente completa y actualizada. TeX Live es una opción habitual en GNU/Linux, MiKTeX y TeX Live están disponibles para Windows, y MacTeX proporciona una distribución adaptada a macOS. La distribución que elijas debe proporcionar \texttt{pdflatex} y Biber, además de los paquetes cargados desde \texttt{Config/preamble.tex}.
 
-Biber es necesario cuando el documento incluye bibliografía. Si se utilizan acrónimos o símbolos, también se necesita \texttt{makeglossaries}; el libro de ejemplo distribuido con la plantilla contiene ambos elementos y, por tanto, requiere esta herramienta para generar todos sus listados.
+Biber es necesario cuando el documento incluye bibliografía. Si utilizas acrónimos o símbolos, también necesitarás \texttt{makeglossaries}; el libro de ejemplo distribuido con la plantilla contiene ambos elementos y, por tanto, requiere esta herramienta para generar todos sus listados.
 
-Si durante la compilación se informa de que falta un fichero \texttt{.sty}, se debe instalar el paquete de la distribución de \LaTeX{} que lo contiene. En MiKTeX puede activarse la instalación automática de paquetes; TeX Live y MacTeX proporcionan sus propias herramientas para administrar los paquetes instalados.
+Si durante la compilación recibes un aviso de que falta un fichero \texttt{.sty}, instala el paquete de tu distribución de \LaTeX{} que lo contiene. En MiKTeX puedes activar la instalación automática de paquetes; TeX Live y MacTeX proporcionan sus propias herramientas para administrar los paquetes instalados.
 
-La plantilla no requiere el uso de \texttt{make}. Puede compilarse desde la terminal o con cualquier editor o herramienta de construcción de \LaTeX{} que permita ejecutar la secuencia descrita en la sección~\ref{sec:compilacion}. El \texttt{Makefile} incluido es únicamente una forma opcional de automatizar el proceso y resulta especialmente cómodo en sistemas GNU/Linux.
+No necesitas utilizar \texttt{make} para trabajar con la plantilla. Puedes compilarla desde la terminal o con cualquier editor o herramienta de construcción de \LaTeX{} que permita ejecutar la secuencia descrita en la sección~\ref{sec:compilacion}. El \texttt{Makefile} incluido es únicamente una forma opcional de automatizar el proceso y resulta especialmente cómodo en sistemas GNU/Linux.
 
 \subsection{Compilación}
 \label{sec:compilacion}
 
-Antes de compilar el documento debe completarse la configuración compartida en \texttt{Config/myconfig.tex}. La secuencia completa utilizada por el libro de ejemplo es:
+Antes de compilar el documento, completa la configuración compartida en \texttt{Config/myconfig.tex}. La secuencia completa utilizada por el libro de ejemplo es:
 
 \begin{verbatim}
 pdflatex book.tex
@@ -96,13 +96,13 @@ pdflatex book.tex
 pdflatex book.tex
 \end{verbatim}
 
-Biber genera la bibliografía y \texttt{makeglossaries} genera los listados de acrónimos y símbolos. Si un documento personalizado no contiene bibliografía, acrónimos ni símbolos, se pueden omitir las herramientas correspondientes. Las pasadas adicionales de \texttt{pdflatex} permiten actualizar correctamente las referencias cruzadas, los índices, la bibliografía y, cuando existan, los glosarios.
+Biber genera la bibliografía y \texttt{makeglossaries} genera los listados de acrónimos y símbolos. Si tu documento no contiene bibliografía, acrónimos ni símbolos, puedes omitir las herramientas correspondientes. Las pasadas adicionales de \texttt{pdflatex} permiten actualizar correctamente las referencias cruzadas, los índices, la bibliografía y, cuando existan, los glosarios.
 
 \subsubsection{Compilación desde un editor de \LaTeX{}}
 
-Se puede utilizar TeXstudio, TeXShop u otro editor de \LaTeX{} en cualquiera de los sistemas operativos compatibles. El editor debe configurarse para utilizar \texttt{pdflatex} como compilador, Biber como procesador de la bibliografía y, únicamente si se utilizan acrónimos o símbolos, \texttt{makeglossaries} para generar sus listados. Después deben realizarse las dos pasadas finales de \texttt{pdflatex}.
+Puedes utilizar TeXstudio, TeXShop u otro editor de \LaTeX{} en cualquiera de los sistemas operativos compatibles. Configura el editor para utilizar \texttt{pdflatex} como compilador, Biber como procesador de la bibliografía y, únicamente si utilizas acrónimos o símbolos, \texttt{makeglossaries} para generar sus listados. Después, realiza las dos pasadas finales de \texttt{pdflatex}.
 
-Algunos editores permiten definir una orden o cadena de construcción personalizada que ejecuta automáticamente todo el proceso. Otros proporcionan órdenes separadas para \LaTeX{}, la bibliografía y los glosarios; en ese caso deben ejecutarse respetando el orden indicado anteriormente. El fichero principal que debe abrirse y compilarse es \texttt{Book/book.tex}.
+Algunos editores permiten definir una orden o cadena de construcción personalizada que ejecuta automáticamente todo el proceso. Otros proporcionan órdenes separadas para \LaTeX{}, la bibliografía y los glosarios; en ese caso, ejecútalas respetando el orden indicado anteriormente. El fichero principal que debes abrir y compilar es \texttt{Book/book.tex}.
 
 \subsubsection{GNU/Linux}
 
@@ -112,17 +112,17 @@ Si prefieres automatizar el proceso mediante \texttt{make}, consulta el apartado
 
 \subsubsection{Windows}
 
-En Windows se puede utilizar MiKTeX o TeX Live junto con TeXstudio u otro editor de \LaTeX{}. En la configuración del editor se debe seleccionar Biber como procesador de la bibliografía y, si se utilizan acrónimos o símbolos, añadir \texttt{makeglossaries} a la cadena de construcción. La ejecución de \texttt{makeglossaries} también requiere disponer de un intérprete de Perl; Strawberry Perl es una de las alternativas disponibles para Windows.
+En Windows puedes utilizar MiKTeX o TeX Live junto con TeXstudio u otro editor de \LaTeX{}. En la configuración del editor, selecciona Biber como procesador de la bibliografía y, si utilizas acrónimos o símbolos, añade \texttt{makeglossaries} a la cadena de construcción. Para ejecutar \texttt{makeglossaries} también necesitas un intérprete de Perl; Strawberry Perl es una de las alternativas disponibles para Windows.
 
-No es necesario instalar \texttt{make} para trabajar con la plantilla en Windows. Si se desea utilizar el \texttt{Makefile}, puede hacerse desde un entorno compatible que proporcione las herramientas requeridas, como WSL, pero normalmente resulta más sencillo configurar la cadena de compilación en el propio editor.
+No necesitas instalar \texttt{make} para trabajar con la plantilla en Windows. Si quieres utilizar el \texttt{Makefile}, puedes hacerlo desde un entorno compatible que proporcione las herramientas requeridas, como WSL, aunque normalmente te resultará más sencillo configurar la cadena de compilación en el propio editor.
 
 Parte de estas instrucciones se basa en la información que nos proporcionó Cristina Losada sobre la configuración de TeXmaker en Windows. Muchas gracias por su ayuda.
 
 \subsubsection{macOS}
 
-En macOS se puede utilizar MacTeX junto con TeXShop, TeXstudio u otro editor compatible. La cadena de construcción debe incluir \texttt{pdflatex}, Biber y, si se utilizan acrónimos o símbolos, \texttt{makeglossaries} en el orden indicado anteriormente.
+En macOS puedes utilizar MacTeX junto con TeXShop, TeXstudio u otro editor compatible. Configura la cadena de construcción para incluir \texttt{pdflatex}, Biber y, si utilizas acrónimos o símbolos, \texttt{makeglossaries} en el orden indicado anteriormente.
 
-Si el editor no actualiza correctamente los acrónimos o símbolos, se puede ejecutar manualmente \texttt{makeglossaries book} desde el directorio \texttt{Book/} y realizar después dos nuevas pasadas de \texttt{pdflatex}. No es necesario borrar el resto de los ficheros del proyecto para regenerar los glosarios.
+Si tu editor no actualiza correctamente los acrónimos o símbolos, ejecuta manualmente \texttt{makeglossaries book} desde el directorio \texttt{Book/} y realiza después dos nuevas pasadas de \texttt{pdflatex}. No necesitas borrar el resto de los ficheros del proyecto para regenerar los glosarios.
 
 Las primeras comprobaciones de la generación de glosarios en macOS fueron realizadas y compartidas con nosotros por Carlos Cruz. Muchas gracias por su ayuda.
 
@@ -134,7 +134,7 @@ El objetivo predeterminado \texttt{all}, ejecutado al invocar \texttt{make} sin 
 
 La compilación genera \texttt{book.pdf} y \texttt{book-compressed.pdf}. También crea copias cuyos nombres identifican el tipo de trabajo, la titulación, el autor y el idioma configurados. La versión comprimida utiliza la configuración \texttt{/prepress} de Ghostscript; la antigua versión de calidad \texttt{/screen} está desactivada porque degradaba excesivamente las imágenes.
 
-El objetivo \texttt{all} también actualiza el fichero \texttt{RELEASE.txt} con la etiqueta más reciente del repositorio e intenta añadirlo al índice de Git. Por tanto, después de compilar conviene revisar el estado del repositorio antes de preparar un commit.
+El objetivo \texttt{all} también actualiza el fichero \texttt{RELEASE.txt} con la etiqueta más reciente del repositorio e intenta añadirlo al índice de Git. Por tanto, después de compilar, revisa el estado del repositorio antes de preparar un commit.
 
 Los principales objetivos disponibles en el \texttt{Makefile} son:
 
@@ -153,7 +153,7 @@ Los principales objetivos disponibles en el \texttt{Makefile} son:
   \item \texttt{tar}: genera archivos comprimidos con los fuentes y recursos de la plantilla.
 \end{itemize}
 
-Los objetivos \texttt{bare}, \texttt{bare-chapters} y \texttt{orig-chapters} modifican el contenido de los directorios de capítulos o apéndices. Además, \texttt{bare} puede eliminar los ficheros de \texttt{figures/} y \texttt{diagrams/} si se confirma expresamente durante su ejecución. Deben utilizarse únicamente al preparar una copia nueva del proyecto y después de comprobar que los cambios importantes están guardados en el sistema de control de versiones.
+Los objetivos \texttt{bare}, \texttt{bare-chapters} y \texttt{orig-chapters} modifican el contenido de los directorios de capítulos o apéndices. Además, \texttt{bare} puede eliminar los ficheros de \texttt{figures/} y \texttt{diagrams/} si se confirma expresamente durante su ejecución. Utilízalos únicamente al preparar una copia nueva del proyecto y después de comprobar que los cambios importantes están guardados en el sistema de control de versiones.
 
 \subsubsection{Herramientas y prestaciones opcionales}
 
@@ -169,7 +169,7 @@ Además de la compilación básica, el repositorio permite utilizar varias herra
   \item \textbf{Perl}: es necesario para ejecutar \texttt{makeglossaries} en los sistemas que no incluyan ya un intérprete compatible.
 \end{itemize}
 
-Estas herramientas solo deben instalarse cuando se vaya a utilizar la prestación correspondiente. No son requisitos para redactar ni compilar un documento básico que no dependa de ellas.
+Instala estas herramientas solo cuando vayas a utilizar la prestación correspondiente. No son requisitos para redactar ni compilar un documento básico que no dependa de ellas.
 
 \subsection{Estructura del documento generado por la plantilla}
 \label{sec:estr-del-docum}
