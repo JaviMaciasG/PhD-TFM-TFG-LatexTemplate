@@ -636,10 +636,10 @@ Los ejemplos incluidos representan el ángstrom, \ac{angstrom}; el ohmio, \ac{oh
 
 Si no se necesitan acrónimos o símbolos, pueden comentarse en \texttt{Book/book.tex} las órdenes que incluyen sus definiciones y listados. En ese caso tampoco es necesario ejecutar \texttt{makeglossaries}.
 
-\subsection{Enlaces a vídeos y listados adicionales}
+\subsection{Ejemplos de inclusión de enlaces a vídeos y listado}
 \label{sec:intro-videolink}
 
-En 2023 se añadió, a partir de una consulta recibida, un ejemplo que permite incluir enlaces a vídeos y generar automáticamente un listado similar a los índices de tablas, figuras o algoritmos. Su configuración se encuentra en \texttt{cover/extralistings.tex}.
+En marzo de 2023 recibimos una pregunta sobre la posibilidad de incluir enlaces a vídeos en el documento y generar automáticamente un listado similar al de tablas, figuras o algoritmos. El código para implementarlo está en el fichero \texttt{cover/extralistings.tex}, que puedes editar y adaptar a tus necesidades.
 
 Un enlace puede añadirse mediante una orden como:
 
@@ -647,9 +647,9 @@ Un enlace puede añadirse mediante una orden como:
 \videoLink{Título descriptivo del vídeo}{https://example.org/video}
 \end{verbatim}
 
-La orden incorpora el enlace al texto y registra la entrada en el listado de vídeos. Para mostrar ese listado debe mantenerse la inclusión de \texttt{cover/extralistings.tex} en \texttt{Book/book.tex}.
+Para usarlo, basta con que incluyas elementos similares a \videoLink{Introducción al Laboratorio de Circuitos Electrónicos (I)}{https://www.youtube.com/watch?v=U1P2ZP0f8KM} o \videoLink{Introducción al Laboratorio de Circuitos Electrónicos (V)}{https://www.youtube.com/watch?v=nPsxMqKRGx0}. La orden incorpora el enlace al texto y registra la entrada en el listado de vídeos. Para mostrar ese listado debe mantenerse la inclusión de \texttt{cover/extralistings.tex} en \texttt{Book/book.tex}.
 
-Este ejemplo también muestra cómo crear otros tipos de elementos flotantes, asociarles un listado propio e incorporar ese listado al índice general del documento.
+Lo importante no es tanto que sea un listado de vídeos, sino que este ejemplo muestra cómo se pueden integrar listados de elementos adicionales que sean a su vez enlaces y configurar la generación del índice para crear enlaces visitables desde el propio índice, además de su indexación convencional.
 
 %%% Local Variables:
 %%% TeX-master: "../book"
