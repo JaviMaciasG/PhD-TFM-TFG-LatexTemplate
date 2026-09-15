@@ -135,6 +135,8 @@ Las primeras comprobaciones de la generación de glosarios en macOS fueron aport
 
 \subsubsection{Compilación mediante el \texttt{Makefile}}
 
+Para facilitar la generación del documento incluimos un \texttt{Makefile}. No somos expertos ni en \texttt{make} ni en \LaTeX{}, así que seguramente no sea el mejor \texttt{Makefile} del mundo, pero creemos que cumple su función y puede servir también como ejemplo para adaptar el proceso de compilación a tus necesidades.
+
 El objetivo predeterminado \texttt{all}, ejecutado al invocar \texttt{make} sin argumentos, convierte primero los diagramas y figuras que lo necesiten. A continuación ejecuta \texttt{pdflatex}, Biber, \texttt{makeglossaries} y las dos pasadas finales de \texttt{pdflatex}. Dado que el libro de ejemplo utiliza acrónimos y símbolos, el \texttt{Makefile} ejecuta siempre \texttt{makeglossaries}.
 
 La compilación genera \texttt{book.pdf} y \texttt{book-compressed.pdf}. También crea copias cuyos nombres identifican el tipo de trabajo, la titulación, el autor y el idioma configurados. La versión comprimida utiliza la configuración \texttt{/prepress} de Ghostscript; la antigua versión de calidad \texttt{/screen} está desactivada porque degradaba excesivamente las imágenes.
