@@ -475,26 +475,26 @@ Como el libro se divide mediante múltiples órdenes \texttt{\textbackslash{}inp
 
 \subsubsection{Creación de la versión de referencia}
 
-Cuando se disponga de una versión que vaya a utilizarse como base de la revisión, se debe ejecutar desde el directorio \texttt{Book/}:
+Cuando tengas una versión que quieras utilizar como base de la revisión, ejecuta desde el directorio \texttt{Book/}:
 
 \begin{verbatim}
 make snapshot
 \end{verbatim}
 
-Este objetivo genera \texttt{book-flatten-snapshot.tex}, que contiene en un solo fichero el estado expandido del documento. La instantánea debe crearse antes de comenzar las modificaciones que se quieran mostrar y conservarse sin cambios durante el proceso de revisión.
+Este objetivo genera \texttt{book-flatten-snapshot.tex}, que contiene en un solo fichero el estado expandido del documento. Crea la instantánea antes de comenzar las modificaciones que quieras mostrar y consérvala sin cambios durante el proceso de revisión.
 
-Si el proyecto utiliza Git, resulta conveniente registrar la instantánea junto con la versión del documento a la que corresponde:
+Si utilizas Git, te recomendamos registrar la instantánea junto con la versión del documento a la que corresponde:
 
 \begin{verbatim}
 git add book-flatten-snapshot.tex
 git commit -m "chore: update the review snapshot"
 \end{verbatim}
 
-El objetivo \texttt{snapshot} sobrescribe la instantánea existente. Por tanto, no debe ejecutarse de nuevo hasta que se quiera establecer una nueva versión de referencia.
+El objetivo \texttt{snapshot} sobrescribe la instantánea existente. Por tanto, no vuelvas a ejecutarlo hasta que quieras establecer una nueva versión de referencia.
 
 \subsubsection{Generación del documento de diferencias}
 
-Después de modificar el documento, se puede generar la comparación mediante:
+Después de modificar el documento, puedes generar la comparación mediante:
 
 \begin{verbatim}
 make latexdiff
@@ -502,7 +502,7 @@ make latexdiff
 
 El objetivo \texttt{latexdiff} genera primero \texttt{book-flatten.tex} con el estado actual, lo compara con \texttt{book-flatten-snapshot.tex} y crea \texttt{book-flatten-diff.tex}. A continuación procesa su bibliografía y sus glosarios y genera \texttt{book-flatten-diff.pdf}, que contiene las diferencias resaltadas.
 
-La comparación depende de que exista previamente \texttt{book-flatten-snapshot.tex}. Si se desea iniciar un nuevo ciclo de revisión, se debe comprobar primero que los cambios anteriores estén guardados y ejecutar de nuevo \texttt{make snapshot} para reemplazar la versión de referencia.
+La comparación depende de que exista previamente \texttt{book-flatten-snapshot.tex}. Si quieres iniciar un nuevo ciclo de revisión, comprueba primero que hayas guardado los cambios anteriores y ejecuta de nuevo \texttt{make snapshot} para reemplazar la versión de referencia.
 
 El \texttt{Makefile} aplica además una corrección específica al resultado de \texttt{latexdiff} para tratar determinados entornos de TikZ utilizados por la plantilla. Esta corrección ayuda con los ejemplos actuales, pero un documento que contenga construcciones complejas puede requerir ajustes manuales en \texttt{book-flatten-diff.tex}.
 
@@ -511,40 +511,40 @@ El \texttt{Makefile} aplica además una corrección específica al resultado de 
 El flujo de revisión no requiere obligatoriamente la utilidad \texttt{make}. Cristina Losada aportó un procedimiento para utilizar \texttt{latexdiff} directamente en Windows, que también puede adaptarse a otros sistemas operativos:
 
 \begin{enumerate}
-  \item Instalar \texttt{latexdiff} y un intérprete de Perl. MiKTeX incluye \texttt{latexdiff}, y Strawberry Perl es una de las alternativas disponibles para Windows.
-  \item Guardar una copia del documento que se utilizará como referencia; por ejemplo, \texttt{book-snapshot.tex}.
-  \item Realizar las modificaciones necesarias en el documento.
-  \item Ejecutar desde el directorio \texttt{Book/}:
+  \item Instala \texttt{latexdiff} y un intérprete de Perl. MiKTeX incluye \texttt{latexdiff}, y Strawberry Perl es una de las alternativas disponibles para Windows.
+  \item Guarda una copia del documento que utilizarás como referencia; por ejemplo, \texttt{book-snapshot.tex}.
+  \item Realiza las modificaciones necesarias en el documento.
+  \item Ejecuta desde el directorio \texttt{Book/}:
 \end{enumerate}
 
 \begin{verbatim}
 latexdiff --flatten book-snapshot.tex book.tex > book-flatten-diff.tex
 \end{verbatim}
 
-Después se debe compilar \texttt{book-flatten-diff.tex}. Si la versión comparada contiene bibliografía, acrónimos o símbolos, también deben ejecutarse Biber y \texttt{makeglossaries} con el nombre base \texttt{book-flatten-diff}, seguidos de las pasadas adicionales de \texttt{pdflatex}.
+Después, compila \texttt{book-flatten-diff.tex}. Si la versión comparada contiene bibliografía, acrónimos o símbolos, ejecuta también Biber y \texttt{makeglossaries} con el nombre base \texttt{book-flatten-diff}, seguidos de las pasadas adicionales de \texttt{pdflatex}.
 
-Este procedimiento manual compara directamente el documento guardado con la versión actual. Para que \texttt{--flatten} pueda expandir correctamente ambos documentos, deben conservarse también los ficheros incluidos por cada versión o utilizar copias ya unificadas mediante \texttt{latexpand}.
+Este procedimiento manual compara directamente el documento guardado con la versión actual. Para que \texttt{--flatten} pueda expandir correctamente ambos documentos, conserva también los ficheros incluidos por cada versión o utiliza copias ya unificadas mediante \texttt{latexpand}.
 
-También existen otras alternativas integradas con Git, como \texttt{git-latexdiff}~\cite{git-latexdiff}. El procedimiento incluido en este repositorio no depende de una herramienta concreta de control de versiones, aunque se recomienda utilizar Git u otro sistema equivalente para conservar el historial del trabajo.
+También existen otras alternativas integradas con Git, como \texttt{git-latexdiff}~\cite{git-latexdiff}. El procedimiento incluido en este repositorio no depende de una herramienta concreta de control de versiones, aunque te recomendamos utilizar Git u otro sistema equivalente para conservar el historial de tu trabajo.
 
 \subsection{Resolución de problemas}
 \label{sec:problemas-conocidos}
 
-Los problemas observados antiguamente con Ubuntu 12.04, el paquete \texttt{xcolor}, Evince y Xpdf ya no describen entornos actuales y se han retirado de esta guía. Si una compilación falla, conviene localizar el primer error del registro, ya que muchos de los mensajes posteriores suelen ser consecuencias de ese fallo inicial.
+Los problemas observados antiguamente con Ubuntu 12.04, el paquete \texttt{xcolor}, Evince y Xpdf ya no describen entornos actuales y se han retirado de esta guía. Si una compilación falla, localiza el primer error del registro, ya que muchos de los mensajes posteriores suelen ser consecuencias de ese fallo inicial.
 
 Las comprobaciones más habituales son:
 
 \begin{itemize}
-  \item Si falta un fichero \texttt{.sty}, se debe instalar el paquete correspondiente desde la distribución de \LaTeX{} utilizada.
-  \item Si no aparece la bibliografía o las citas quedan sin resolver, se debe comprobar que se ha ejecutado Biber y realizar después las pasadas adicionales de \texttt{pdflatex}.
-  \item Si no aparecen los listados de acrónimos o símbolos, se debe ejecutar \texttt{makeglossaries} antes de las pasadas finales de \texttt{pdflatex}.
-  \item Si falla la conversión de un fichero \texttt{dia}, \texttt{svg} o \texttt{eps}, se debe instalar la herramienta opcional correspondiente o proporcionar directamente una versión compatible en \texttt{pdf}, \texttt{png} o \texttt{jpg}.
-  \item Si las referencias cruzadas o los índices no están actualizados, se deben repetir las pasadas de \texttt{pdflatex}; antes de recompilar también puede utilizarse \texttt{make clean} para eliminar los auxiliares anteriores.
-  \item Si \texttt{latexdiff} genera un fichero que no compila, se debe revisar el primer error de \texttt{book-flatten-diff.tex}. Las tablas, fórmulas, entornos TikZ y órdenes personalizadas pueden necesitar correcciones manuales en el documento de diferencias.
-  \item Si una cubierta o un formulario no coincide con el modelo institucional esperado, se debe comprobar \texttt{\textbackslash{}myDegree}, el idioma, los datos compartidos y la normativa vigente antes de modificar directamente la plantilla.
+  \item Si falta un fichero \texttt{.sty}, instala el paquete correspondiente desde la distribución de \LaTeX{} que utilices.
+  \item Si no aparece la bibliografía o las citas quedan sin resolver, comprueba que hayas ejecutado Biber y realiza después las pasadas adicionales de \texttt{pdflatex}.
+  \item Si no aparecen los listados de acrónimos o símbolos, ejecuta \texttt{makeglossaries} antes de las pasadas finales de \texttt{pdflatex}.
+  \item Si falla la conversión de un fichero \texttt{dia}, \texttt{svg} o \texttt{eps}, instala la herramienta opcional correspondiente o proporciona directamente una versión compatible en \texttt{pdf}, \texttt{png} o \texttt{jpg}.
+  \item Si las referencias cruzadas o los índices no están actualizados, repite las pasadas de \texttt{pdflatex}; antes de recompilar también puedes utilizar \texttt{make clean} para eliminar los auxiliares anteriores.
+  \item Si \texttt{latexdiff} genera un fichero que no compila, revisa el primer error de \texttt{book-flatten-diff.tex}. Las tablas, fórmulas, entornos TikZ y órdenes personalizadas pueden necesitar correcciones manuales en el documento de diferencias.
+  \item Si una cubierta o un formulario no coincide con el modelo institucional esperado, comprueba \texttt{\textbackslash{}myDegree}, el idioma, los datos compartidos y la normativa vigente antes de modificar directamente la plantilla.
 \end{itemize}
 
-Si se comunica un problema, resulta útil indicar el sistema operativo, la distribución y versión de \LaTeX{}, la titulación seleccionada, el comando de compilación y el primer error relevante del fichero de registro. También se pueden proponer correcciones mediante el repositorio del proyecto.
+Cuando nos comuniques un problema, incluye el sistema operativo, la distribución y versión de \LaTeX{}, la titulación seleccionada, el comando de compilación y el primer error relevante del fichero de registro. También puedes proponer correcciones mediante el repositorio del proyecto.
 
 Si encuentras algún otro problema, escribe a \contactauthor{} para contárnoslo y trataremos de solucionarlo. Y si ya has encontrado una solución, no dudes en compartirla: tu contribución puede ser útil para quienes utilicen la plantilla después.
 
