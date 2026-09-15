@@ -160,7 +160,7 @@ Instala estas herramientas solo cuando vayas a utilizar la prestación correspon
 \subsection{Estructura del documento generado por la plantilla}
 \label{sec:estr-del-docum}
 
-La estructura del documento principal se define en \texttt{Book/book.tex}. En este fichero puedes añadir, eliminar, comentar o reordenar los distintos elementos mediante sus correspondientes órdenes \texttt{\textbackslash{}input} o \texttt{\textbackslash{}includepdf}. Los ejemplos incluidos no constituyen una estructura obligatoria: adáptalos a la normativa y a las necesidades de tu trabajo.
+La estructura del documento principal se define en \texttt{Book/book.tex}. En este apartado describimos todos sus elementos para que puedas utilizarlo como referencia cuando necesites localizar una parte concreta del documento. No tendrás que editar ni configurar todos ellos: algunos se generan automáticamente y sus órdenes de inclusión deben mantenerse sin cambios.
 
 El documento se divide en tres partes gestionadas por las órdenes \texttt{\textbackslash{}frontmatter}, \texttt{\textbackslash{}mainmatter} y \texttt{\textbackslash{}backmatter}:
 
@@ -170,27 +170,29 @@ El documento se divide en tres partes gestionadas por las órdenes \texttt{\text
   \item \texttt{\textbackslash{}backmatter}: contiene la contraportada cuando corresponde al tipo de trabajo seleccionado.
 \end{itemize}
 
+Estas órdenes controlan la numeración y la organización interna del libro. No necesitas modificarlas ni cambiar su posición.
+
 La estructura distribuida con la plantilla incluye los siguientes elementos:
 
 \begin{itemize}
-  \item Portada y páginas iniciales, seleccionadas automáticamente por \texttt{cover/cover.tex} a partir de la titulación configurada mediante \texttt{\textbackslash{}myDegree}. Las distintas plantillas institucionales se encuentran en el directorio \texttt{cover/}.
-  \item Documentos PDF preliminares. Puedes insertarlos con \texttt{\textbackslash{}includepdf}. El fichero \texttt{letters/sampleLetter.pdf} muestra cómo incorporar todas las páginas de un documento, y \texttt{letters/sampleLetter-pages.pdf} permite probar la selección de páginas concretas. Estos documentos pueden ser necesarios, por ejemplo, en determinadas tesis doctorales o trabajos fin de máster.
+  \item Portada y páginas iniciales, seleccionadas automáticamente por \texttt{cover/cover.tex} a partir de la titulación configurada mediante \texttt{\textbackslash{}myDegree}. Normalmente solo tendrás que configurar los datos de \texttt{Config/myconfig.tex}, sin modificar \texttt{cover/cover.tex} ni las plantillas institucionales del directorio \texttt{cover/}.
+  \item Documentos PDF preliminares. Inclúyelos únicamente cuando los exija la normativa de tu trabajo mediante \texttt{\textbackslash{}includepdf}. El fichero \texttt{letters/sampleLetter.pdf} muestra cómo incorporar todas las páginas de un documento, y \texttt{letters/sampleLetter-pages.pdf} permite probar la selección de páginas concretas.
   \item Dedicatoria, incluida desde \texttt{dedication/dedicatoria.tex}. Puedes editarla o comentar su orden \texttt{\textbackslash{}input} si no quieres utilizarla.
   \item Agradecimientos, incluidos desde \texttt{acknowledgements/agradecimientos.tex}. También puedes editarlos u omitirlos.
   \item Definiciones de acrónimos, incluidas desde \texttt{acronyms/defacronymsgl.tex}, y listado correspondiente, configurado en \texttt{acronyms/acronymsgl.tex}. Puedes comentar ambos elementos cuando no utilices acrónimos; la sección~\ref{sec:uso-de-acronimos} explica su definición y uso.
   \item Definiciones de símbolos, incluidas desde \texttt{symbols/defsymbolsgl.tex}, y listado correspondiente, configurado en \texttt{symbols/symbolsgl.tex}. Puedes comentar ambos elementos cuando no utilices símbolos; la sección~\ref{sec:simbolos} explica su definición y uso.
-  \item Resumen en español, incluido desde \texttt{abstract/resumen.tex}, y resumen en inglés, incluido desde \texttt{abstract/abstract.tex}.
-  \item Resumen extendido en español, disponible en \texttt{abstract/resumen-extendido.tex}. Su inclusión está comentada de forma predeterminada; puedes activarla cuando lo requiera tu tipo de trabajo.
-  \item Índice general, índice de figuras e índice de tablas, generados desde \texttt{cover/toc+lof+lot.tex}.
+  \item Resumen en español, incluido desde \texttt{abstract/resumen.tex}, y resumen en inglés, incluido desde \texttt{abstract/abstract.tex}. Normalmente tendrás que editar ambos ficheros con el contenido de tu trabajo.
+  \item Resumen extendido en español, disponible en \texttt{abstract/resumen-extendido.tex}. Su inclusión está comentada de forma predeterminada; actívala únicamente cuando lo requiera tu tipo de trabajo.
+  \item Índice general, índice de figuras e índice de tablas, generados automáticamente desde \texttt{cover/toc+lof+lot.tex}. No necesitas editar este fichero ni los ficheros auxiliares que genera \LaTeX{} para construir los índices.
   \item Listados adicionales, configurados en \texttt{cover/extralistings.tex}. El ejemplo incluye listados para fragmentos de código, algoritmos y vídeos; la sección~\ref{sec:intro-videolink} explica el ejemplo dedicado a estos últimos. Puedes editar o comentar esta configuración si no la necesitas.
-  \item Capítulos principales, incluidos desde el directorio \texttt{chapters/}. El ejemplo proporciona una estructura formada por introducción, estudio teórico, desarrollo, resultados y conclusiones. Adáptala libremente al contenido real de tu trabajo.
+  \item Capítulos principales, incluidos desde el directorio \texttt{chapters/}. Esta será tu principal zona de trabajo. El ejemplo proporciona una estructura formada por introducción, estudio teórico, desarrollo, resultados y conclusiones; adáptala libremente al contenido real de tu trabajo.
   \item Pliego de condiciones, disponible en \texttt{pliego/pliego.tex}, y presupuesto, disponible en \texttt{presupuesto/presupuesto.tex}. Sus órdenes de inclusión están comentadas de forma predeterminada; actívalas únicamente cuando necesites estos documentos. Los ejemplos proceden de un trabajo fin de carrera de Jesús Martínez y se conservan como material de referencia; debido a su antigüedad, contrástalos con la normativa y los formatos actuales.
-  \item Bibliografía, impresa mediante \texttt{biblio/bibliography.tex}. Los ficheros \texttt{.bib} que se procesarán se declaran en \texttt{biblio/bibliofiles.tex} mediante las variables \texttt{\textbackslash{}mybibfileOne}, \texttt{\textbackslash{}mybibfileTwo} y las sucesivas variables disponibles.
-  \item Apéndices, agrupados mediante el entorno \texttt{appendices}. El libro de ejemplo incluye \texttt{appendix/manual.tex}, \texttt{appendix/herramientas.tex} y \texttt{appendix/versiones.tex}.
-  \item Contraportada, seleccionada automáticamente mediante \texttt{cover/backpage.tex} cuando existe una plantilla aplicable al tipo de trabajo y a la titulación configurados.
+  \item Bibliografía, impresa mediante \texttt{biblio/bibliography.tex}. Añade tus referencias a los ficheros \texttt{.bib} declarados en \texttt{biblio/bibliofiles.tex} mediante las variables \texttt{\textbackslash{}mybibfileOne}, \texttt{\textbackslash{}mybibfileTwo} y las sucesivas variables disponibles; normalmente no necesitarás modificar \texttt{biblio/bibliography.tex}.
+  \item Apéndices, agrupados mediante el entorno \texttt{appendices}. El libro de ejemplo incluye \texttt{appendix/manual.tex}, \texttt{appendix/herramientas.tex} y \texttt{appendix/versiones.tex}; edítalos, añade otros nuevos u omítelos según las necesidades de tu trabajo.
+  \item Contraportada, seleccionada automáticamente mediante \texttt{cover/backpage.tex} cuando existe una plantilla aplicable al tipo de trabajo y a la titulación configurados. Normalmente no necesitarás modificar este fichero ni la plantilla institucional seleccionada.
 \end{itemize}
 
-Además de editar los ficheros incluidos, revisa \texttt{Book/book.tex} para comentar los elementos que no necesites y añadir tus propios capítulos, apéndices o documentos externos. Cuando incorpores un PDF mediante \texttt{\textbackslash{}includepdf}, mantén la orden \texttt{\textbackslash{}clearemptydoublepage} posterior para que el siguiente elemento comience en la página adecuada.
+En la práctica, normalmente trabajarás en los capítulos, los resúmenes, la bibliografía y, si los utilizas, los acrónimos, los símbolos y los apéndices. Modifica las órdenes de inclusión de \texttt{Book/book.tex} solo cuando necesites añadir u omitir alguno de estos contenidos; conserva sin cambios las órdenes estructurales y los elementos seleccionados automáticamente. Cuando incorpores un PDF mediante \texttt{\textbackslash{}includepdf}, mantén la orden \texttt{\textbackslash{}clearemptydoublepage} posterior para que el siguiente elemento comience en la página adecuada.
 
 \subsection{Configuración del documento}
 \label{sec:definicion-del-tipo}
