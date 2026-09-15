@@ -174,7 +174,7 @@ Instala estas herramientas solo cuando vayas a utilizar la prestación correspon
 \subsection{Estructura del documento generado por la plantilla}
 \label{sec:estr-del-docum}
 
-La estructura del documento principal se define en \texttt{Book/book.tex}. En este fichero se pueden añadir, eliminar, comentar o reordenar los distintos elementos mediante sus correspondientes órdenes \texttt{\textbackslash{}input} o \texttt{\textbackslash{}includepdf}. Los ejemplos incluidos no constituyen una estructura obligatoria y deben adaptarse a la normativa y a las necesidades de cada trabajo.
+La estructura del documento principal se define en \texttt{Book/book.tex}. En este fichero puedes añadir, eliminar, comentar o reordenar los distintos elementos mediante sus correspondientes órdenes \texttt{\textbackslash{}input} o \texttt{\textbackslash{}includepdf}. Los ejemplos incluidos no constituyen una estructura obligatoria: adáptalos a la normativa y a las necesidades de tu trabajo.
 
 El documento se divide en tres partes gestionadas por las órdenes \texttt{\textbackslash{}frontmatter}, \texttt{\textbackslash{}mainmatter} y \texttt{\textbackslash{}backmatter}:
 
@@ -204,14 +204,14 @@ La estructura distribuida con la plantilla incluye los siguientes elementos:
   \item Contraportada, seleccionada automáticamente mediante \texttt{cover/backpage.tex} cuando existe una plantilla aplicable al tipo de trabajo y a la titulación configurados.
 \end{itemize}
 
-Además de editar los ficheros incluidos, se debe revisar \texttt{Book/book.tex} para comentar los elementos que no se necesiten y añadir los capítulos, apéndices o documentos externos propios. Cuando se incorpore un PDF mediante \texttt{\textbackslash{}includepdf}, conviene mantener la orden \texttt{\textbackslash{}clearemptydoublepage} posterior para que el siguiente elemento comience en la página adecuada.
+Además de editar los ficheros incluidos, revisa \texttt{Book/book.tex} para comentar los elementos que no necesites y añadir tus propios capítulos, apéndices o documentos externos. Cuando incorpores un PDF mediante \texttt{\textbackslash{}includepdf}, mantén la orden \texttt{\textbackslash{}clearemptydoublepage} posterior para que el siguiente elemento comience en la página adecuada.
 
 \subsection{Configuración del documento}
 \label{sec:definicion-del-tipo}
 
-La configuración compartida se encuentra en \texttt{Config/myconfig.tex}. Este fichero contiene los datos utilizados para generar el libro, el anteproyecto y los documentos administrativos, por lo que normalmente debe adaptarse antes de editar el contenido del trabajo. Las variables se definen mediante órdenes \texttt{\textbackslash{}newcommand}; se debe modificar el contenido situado entre las últimas llaves de cada definición, sin cambiar el nombre de la orden.
+La configuración compartida se encuentra en \texttt{Config/myconfig.tex}. Este fichero contiene los datos utilizados para generar el libro, el anteproyecto y los documentos administrativos, por lo que normalmente tendrás que adaptarlo antes de editar el contenido de tu trabajo. Las variables se definen mediante órdenes \texttt{\textbackslash{}newcommand}; para cambiar una variable, modifica únicamente el contenido situado entre las últimas llaves de su definición, sin alterar el nombre de la orden.
 
-Además de completar \texttt{Config/myconfig.tex}, conviene revisar \texttt{Book/book.tex}, que determina qué capítulos, resúmenes, listados, documentos externos y apéndices se incluyen en el libro. Las variables descritas a continuación configuran los datos compartidos, pero no añaden ni eliminan por sí solas los elementos incluidos mediante \texttt{\textbackslash{}input} o \texttt{\textbackslash{}includepdf}.
+Además de completar \texttt{Config/myconfig.tex}, revisa \texttt{Book/book.tex}, que determina qué capítulos, resúmenes, listados, documentos externos y apéndices se incluyen en el libro. Las variables descritas a continuación configuran los datos compartidos, pero no añaden ni eliminan por sí solas los elementos incluidos mediante \texttt{\textbackslash{}input} o \texttt{\textbackslash{}includepdf}.
 
 \subsubsection{Idioma, titulación y presentación de los tutores}
 
