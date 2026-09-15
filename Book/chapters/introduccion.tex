@@ -401,16 +401,16 @@ Una vez que hayas completado las variables aplicables, la plantilla reutilizará
 
 Para ayudarte a preparar la propuesta inicial de un TFC, TFG o TFM, hemos incluido una plantilla simplificada en el directorio \texttt{Anteproyecto/}. Su fichero principal es \texttt{Anteproyecto/anteproyecto.tex} y reutiliza los datos que hayas definido en \texttt{Config/myconfig.tex}, incluidos el tipo de trabajo, la titulación, el título, la autoría, los tutores, el departamento y la fecha de propuesta.
 
-El contenido de ejemplo está organizado en secciones de introducción, objetivos, metodología, plan de trabajo y bibliografía. Estas secciones deben adaptarse a los requisitos de la titulación y pueden ampliarse, eliminarse o reordenarse libremente.
+El contenido de ejemplo está organizado en secciones de introducción, objetivos, metodología, plan de trabajo y bibliografía. Adapta estas secciones a los requisitos de tu titulación; puedes ampliarlas, eliminarlas o reordenarlas libremente.
 
-El anteproyecto puede compilarse con cualquier editor o herramienta habitual de \LaTeX{}. También se proporciona un \texttt{Makefile}, que puede ejecutarse mediante:
+Puedes compilar el anteproyecto con cualquier editor o herramienta habitual de \LaTeX{}. También hemos incluido un \texttt{Makefile}, que puedes ejecutar mediante:
 
 \begin{verbatim}
 cd Anteproyecto
 make
 \end{verbatim}
 
-La compilación genera \texttt{anteproyecto.pdf}. Si el documento contiene referencias bibliográficas, debe ejecutarse Biber entre las pasadas de \texttt{pdflatex}; el \texttt{Makefile} incluido automatiza esta secuencia.
+La compilación genera \texttt{anteproyecto.pdf}. Si el documento contiene referencias bibliográficas, ejecuta Biber entre las pasadas de \texttt{pdflatex}; el \texttt{Makefile} incluido automatiza esta secuencia.
 
 El \texttt{Makefile} también proporciona los objetivos \texttt{anteproyecto\_latexmk}, \texttt{snapshot}, \texttt{flatten}, \texttt{latexdiff}, \texttt{clean} y \texttt{clean\_latexmk}. Los objetivos de revisión siguen el mismo principio que los equivalentes del libro principal, descritos en la sección~\ref{sec:control-de-cambios}.
 
@@ -431,7 +431,7 @@ El directorio \texttt{PapeleoTFG/} contiene actualmente:
   \item \texttt{TFG-ActaYRubricaDefensa.tex}: acta y rúbrica del tribunal de defensa.
 \end{itemize}
 
-El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex} y genera un PDF por cada uno. También se puede abrir y compilar individualmente el documento requerido con el editor o la herramienta de \LaTeX{} preferidos.
+El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex} y genera un PDF por cada uno. También puedes abrir y compilar individualmente el documento que necesites con tu editor o herramienta de \LaTeX{} preferidos.
 
 \subsubsection{Documentos para TFM}
 
@@ -442,27 +442,27 @@ El directorio \texttt{PapeleoTFM/} contiene actualmente:
   \item \texttt{TFM-VistoBuenoTutorTFM.tex}: visto bueno del tutor o tutores para el depósito y la defensa del TFM. Para el MUIE también refleja si el trabajo está sujeto a confidencialidad.
 \end{itemize}
 
-El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex} y genera sus correspondientes PDF. También se puede compilar cada formulario por separado mediante un editor o una herramienta estándar de \LaTeX{}.
+El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex} y genera sus correspondientes PDF. También puedes compilar cada formulario por separado mediante tu editor o una herramienta estándar de \LaTeX{}.
 
 \subsubsection{Documentos para tesis doctorales}
 
 El directorio \texttt{PapeleoPHD/} contiene \texttt{PHD-VistoBuenoTutorTesis.tex}, una plantilla de visto bueno de los directores para la defensa de una tesis doctoral. También conserva \texttt{vistoBuenoDirectoresTesis\_plantilla.doc} como documento institucional de referencia.
 
-El documento \texttt{PHD-VistoBuenoTutorTesis.tex} puede compilarse directamente con \texttt{pdflatex} o desde un editor de \LaTeX{}. El \texttt{Makefile} del directorio conserva actualmente un nombre de fichero con una combinación antigua de mayúsculas y minúsculas, por lo que puede requerir una corrección antes de utilizarlo en sistemas GNU/Linux.
+Puedes compilar el documento \texttt{PHD-VistoBuenoTutorTesis.tex} directamente con \texttt{pdflatex} o desde un editor de \LaTeX{}. El \texttt{Makefile} del directorio conserva actualmente un nombre de fichero con una combinación antigua de mayúsculas y minúsculas, por lo que quizá tengas que corregirlo antes de utilizarlo en GNU/Linux.
 
 \subsubsection{Compilación y revisión de los formularios}
 
-Desde los directorios \texttt{PapeleoTFG/} y \texttt{PapeleoTFM/} se pueden generar todos los formularios mediante:
+Desde los directorios \texttt{PapeleoTFG/} y \texttt{PapeleoTFM/} puedes generar todos los formularios mediante:
 
 \begin{verbatim}
 make
 \end{verbatim}
 
-El uso de \texttt{make} es opcional. Cada fichero puede compilarse individualmente con dos pasadas de \texttt{pdflatex} o mediante la función de construcción del editor de \LaTeX{} preferido. Estos formularios no utilizan la bibliografía ni los glosarios del libro principal.
+El uso de \texttt{make} es opcional. Puedes compilar cada fichero individualmente con dos pasadas de \texttt{pdflatex} o mediante la función de construcción de tu editor de \LaTeX{} preferido. Estos formularios no utilizan la bibliografía ni los glosarios del libro principal.
 
-Las plantillas adaptan automáticamente determinados términos al género gramatical configurado y omiten los datos del cotutor cuando \texttt{\textbackslash{}myCoTutorFullName} está vacío. Esta automatización no evita que sea necesario revisar cuidadosamente el PDF resultante, las firmas requeridas y la coherencia de todos los datos.
+Las plantillas adaptan automáticamente determinados términos al género gramatical configurado y omiten los datos del cotutor cuando \texttt{\textbackslash{}myCoTutorFullName} está vacío. Aun así, revisa cuidadosamente el PDF resultante, las firmas requeridas y la coherencia de todos los datos.
 
-Los modelos administrativos y sus requisitos pueden cambiar. Antes de presentar cualquiera de estos documentos debe comprobarse que su contenido coincide con la normativa y los formularios oficiales vigentes de la titulación.
+Los modelos administrativos y sus requisitos pueden cambiar. Antes de presentar cualquiera de estos documentos, comprueba que su contenido coincida con la normativa y los formularios oficiales vigentes de tu titulación.
 
 \subsection{Generación del documento con control de cambios}
 \label{sec:control-de-cambios}
