@@ -49,6 +49,18 @@ Una lista sin numerar puede construirse mediante el entorno \texttt{itemize}:
 
 Las fuentes bibliográficas se citan con \texttt{\textbackslash{}cite}; por ejemplo, esta plantilla describe el proyecto \texis{} en \cite{texis}. También puedes añadir una aclaración mediante una nota al pie\footnote{Este es un ejemplo de nota al pie.}.
 
+En algunas ocasiones puedes querer mostrar una referencia bibliográfica completa en el propio texto sin repetirla después en la bibliografía final. Por ejemplo, la orden \texttt{\textbackslash{}fullcite} nos permite incorporar directamente la siguiente referencia:
+
+\fullcite{monasterio2022}
+
+Para conseguirlo, hemos guardado esta entrada en \texttt{biblio/nobiblio.bib}, fichero declarado mediante \texttt{\textbackslash{}mybibfileTwo} en \texttt{biblio/bibliofiles.tex}, y hemos añadido dentro de la entrada la opción:
+
+\begin{verbatim}
+options = {skipbib=true}
+\end{verbatim}
+
+La opción \texttt{skipbib} permite utilizar la entrada con las órdenes de cita de \texttt{biblatex}, pero evita que aparezca cuando se imprime la bibliografía. Puedes utilizar este mecanismo para referencias que quieras presentar únicamente en el punto concreto del documento en el que se mencionan.
+
 \section{Matemáticas y referencias cruzadas}
 \label{sec:matematicas-referencias}
 
@@ -60,6 +72,15 @@ Puedes incluir expresiones matemáticas en línea, como $\sigma=0.75$, o utiliza
 \end{equation}
 
 La ecuación~\ref{eq:ejemplo-basico} muestra cómo asociar una etiqueta mediante \texttt{\textbackslash{}label} y recuperarla con \texttt{\textbackslash{}ref}. El mismo mecanismo se utiliza para capítulos, secciones, figuras, tablas, algoritmos y fragmentos de código.
+
+Un asunto importante de formato, cuando definas entornos \texttt{equation} y vayas a definir las variables utilizadas, fíjate en no dejar una línea en blanco entre la ecuación y el texto explicativo, para que no indente ese texto explicativo. Te pongo un ejemplo tomado de~\cite{ramirez2026jstars}:
+
+\textit{On the other hand, for vessel localization, the regression model is evaluated using the {Mean Absolute Error (MAE)}. This measures the average absolute deviation between predictions and actual values (the lower, the better):}
+\begin{equation}
+  MAE = \frac{1}{\NumDataFrames{}} \sum_{i=1}^{\NumDataFrames{}} |y_i - \hat{y}_i|,
+\end{equation}
+\textit{where $\NumDataFrames$ is the number of data frames for which we generate a distance estimation value $\hat{y}_{i}$, and $y_{i}$ is the real distance.}
+
 
 \section{Niveles de organización}
 \label{sec:niveles-organizacion}
