@@ -25,7 +25,7 @@
 \chapter{Estructura del documento}
 \label{cha:estructura-documento}
 
-En este capítulo recorremos las partes que forman el documento principal para que sepas dónde escribir cada contenido. Las describimos todas para que tengas una referencia completa, pero no tendrás que modificar muchas de ellas porque la plantilla las genera o selecciona automáticamente.
+En este capítulo recorremos las partes que forman el documento principal para que sepas dónde escribir cada contenido. Comenzaremos por su organización general, seguiremos el orden de las páginas iniciales, el cuerpo y el cierre, y terminaremos distinguiendo qué partes tendrás que modificar. Las describimos todas para que tengas una referencia completa, pero no tendrás que modificar muchas de ellas porque la plantilla las genera o selecciona automáticamente.
 
 \section{Organización general del documento}
 \label{sec:estr-del-docum}
@@ -90,6 +90,11 @@ Aunque hemos descrito todos los componentes para que puedas utilizar este capít
 
 Modifica las órdenes de inclusión de \texttt{Book/book.tex} solo cuando necesites añadir u omitir alguno de estos contenidos. Cuando incorpores un PDF mediante \texttt{\textbackslash{}includepdf}, mantén la orden \texttt{\textbackslash{}clearemptydoublepage} posterior para que el siguiente elemento comience en la página adecuada.
 
+
+\section{Resumen del capítulo}
+\label{sec:resumen-estructura-documento}
+
+El documento se organiza mediante \texttt{\textbackslash{}frontmatter}, \texttt{\textbackslash{}mainmatter} y \texttt{\textbackslash{}backmatter}. En la práctica trabajarás principalmente con los capítulos, los resúmenes y la bibliografía, activarás otros contenidos solo cuando los necesites y dejarás intactos los mecanismos automáticos de índices y cubiertas.
 
 %%% Local Variables:
 %%% TeX-master: "../book"

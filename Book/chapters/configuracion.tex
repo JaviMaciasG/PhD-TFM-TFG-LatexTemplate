@@ -25,7 +25,7 @@
 \chapter{Configuración de la plantilla}
 \label{cha:configuracion}
 
-La mayor parte de la adaptación de la plantilla se realiza en \texttt{Config/myconfig.tex}. En este capítulo describimos todas las variables disponibles para que puedas utilizarlo como referencia, aunque normalmente solo tendrás que completar las que correspondan a tu tipo de trabajo y a los documentos que vayas a generar.
+La mayor parte de la adaptación de la plantilla se realiza en \texttt{Config/myconfig.tex}. En este capítulo describimos todas las variables disponibles para que puedas utilizarlo como referencia: comenzaremos por la configuración general y recorreremos después los datos académicos, las fechas, la publicación, los enlaces y las variables derivadas. Normalmente solo tendrás que completar las que correspondan a tu tipo de trabajo y a los documentos que vayas a generar.
 
 \section{Configuración del documento}
 \label{sec:definicion-del-tipo}
@@ -235,6 +235,11 @@ La variable \texttt{\textbackslash{}mybookFigure} se conserva únicamente por co
 
 Una vez que hayas completado las variables aplicables, la plantilla reutilizará sus valores en las cubiertas, los formularios, los textos adaptados al género gramatical y los metadatos del PDF. Esta configuración automática no sustituye la revisión de la normativa vigente ni la comprobación de los PDF generados.
 
+
+\section{Resumen del capítulo}
+\label{sec:resumen-configuracion}
+
+La configuración centralizada en \texttt{Config/myconfig.tex} permite reutilizar los datos del trabajo en las cubiertas, el libro y los documentos complementarios. Completa únicamente las variables aplicables, conserva las definiciones derivadas de \texttt{Config/postamble.tex} y revisa siempre el resultado conforme a la normativa vigente; el capítulo~\ref{cha:estructura-documento} te ayudará a localizar el contenido que debes editar.
 
 %%% Local Variables:
 %%% TeX-master: "../book"
