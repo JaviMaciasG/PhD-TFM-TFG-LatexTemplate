@@ -34,7 +34,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % BEGIN Preamble and configuration section
 % 
-\input{../Config/preamble-solicitud.tex}    % DO NOT TOUCH THIS LINE. You can edit
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}    % DO NOT TOUCH THIS LINE. You can edit
 % the file to modify some default settings
 
 \input{../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
@@ -49,6 +51,14 @@
 
 \input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
 % "postamble" is not a valid word... :-)
+
+% Long underline spanning the remaining width of the current line.
+\usepackage{calc}
+\newlength{\remaining}
+\newcommand{\longunderline}[2]{%
+  \setlength{\remaining}{\linewidth-\widthof{{#2}{#1}}-\tabcolsep}%
+  \noindent\underline{\smash{{#1}\hspace*{\remaining}}}%
+}
 
 % path to directories containing images
 \graphicspath{{../logos/}{../figures/}{../diagrams/}} % Edit this to your
@@ -216,4 +226,3 @@
 
 
 \end{document}
-

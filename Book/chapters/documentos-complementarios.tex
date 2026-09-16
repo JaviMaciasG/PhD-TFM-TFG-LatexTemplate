@@ -73,6 +73,7 @@ El directorio \texttt{PapeleoTFM/} contiene actualmente:
 \begin{itemize}
   \item \texttt{TFM-AutorizacionPublicarAbierto.tex}: formulario de autorización para la publicación en abierto, con los datos de la persona autora, el tutor y, cuando exista, el cotutor.
   \item \texttt{TFM-VistoBuenoTutorTFM.tex}: visto bueno del tutor o tutores para el depósito y la defensa del TFM. Para el MUIE también refleja si el trabajo está sujeto a confidencialidad.
+  \item \texttt{solicitud.tex}: solicitud de anteproyecto con los datos personales, la información de la propuesta y el acuerdo del departamento.
 \end{itemize}
 
 El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex} y genera sus correspondientes PDF. También puedes compilar cada formulario por separado mediante tu editor o una herramienta estándar de \LaTeX{}.
@@ -81,17 +82,21 @@ El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex}
 
 El directorio \texttt{PapeleoPHD/} contiene \texttt{PHD-VistoBuenoTutorTesis.tex}, una plantilla de visto bueno de los directores para la defensa de una tesis doctoral. También conserva \texttt{vistoBuenoDirectoresTesis\_plantilla.doc} como documento institucional de referencia.
 
-Puedes compilar el documento \texttt{PHD-VistoBuenoTutorTesis.tex} directamente con \texttt{pdflatex} o desde un editor de \LaTeX{}. El \texttt{Makefile} del directorio conserva actualmente un nombre de fichero con una combinación antigua de mayúsculas y minúsculas, por lo que quizá tengas que corregirlo antes de utilizarlo en GNU/Linux.
+Puedes compilar el documento \texttt{PHD-VistoBuenoTutorTesis.tex} directamente con \texttt{pdflatex}, desde un editor de \LaTeX{} o mediante el \texttt{Makefile} incluido en el directorio.
 
 \subsection{Compilación y revisión de los formularios}
 
-Desde los directorios \texttt{PapeleoTFG/} y \texttt{PapeleoTFM/} puedes generar todos los formularios mediante:
+Desde cualquiera de los directorios \texttt{PapeleoTFG/}, \texttt{PapeleoTFM/} y \texttt{PapeleoPHD/} puedes generar todos los formularios disponibles mediante:
 
 \begin{verbatim}
 make
 \end{verbatim}
 
 El uso de \texttt{make} es opcional. Puedes compilar cada fichero individualmente con dos pasadas de \texttt{pdflatex} o mediante la función de construcción de tu editor de \LaTeX{} preferido. Estos formularios no utilizan la bibliografía ni los glosarios del libro principal.
+
+Si solo necesitas un formulario, puedes indicar directamente el nombre del PDF, por ejemplo \texttt{make TFG-InformeTutorYRubrica.pdf}. En \texttt{PapeleoTFG/}, los objetivos \texttt{autorizaciones} y \texttt{evaluacion} generan respectivamente las autorizaciones de publicación y los documentos de evaluación. En \texttt{PapeleoTFM/}, puedes utilizar los objetivos \texttt{autorizacion}, \texttt{visto-bueno} y \texttt{solicitud}. El objetivo \texttt{help} de cada directorio muestra las opciones disponibles.
+
+El objetivo \texttt{clean} elimina únicamente los ficheros auxiliares de la compilación y conserva los PDF generados; utiliza \texttt{cleanall} cuando también quieras eliminar esos PDF.
 
 En Overleaf puedes generar cada formulario seleccionando su fichero \texttt{.tex} como documento principal, de acuerdo con las indicaciones de la sección~\ref{sec:compilacion-overleaf}.
 

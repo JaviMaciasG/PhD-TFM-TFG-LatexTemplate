@@ -1,43 +1,34 @@
-###########################################################################
-# 
-# Makefile to compile proyecto.tex 
-#
-###########################################################################
+PDFLATEX ?= pdflatex
+LATEXFLAGS ?= -interaction=nonstopmode -halt-on-error -file-line-error
 
-ROOT_CARTA3 = PHD-VistoBuenoTutorTesis
-TEX_CARTA3 = $(ROOT_CARTA3).tex
-RUBBER_TOOL=rubber
-LATEXMK_TOOL=latexmk
-EPSPDF_TOOL=epspdf
-PDFLATEX=pdflatex
-RM=rm -f
+DOCUMENT := PHD-VistoBuenoTutorTesis
+PDF := $(DOCUMENT).pdf
+COMMON_DEPS := \
+	../Book/logos/logoUAH.jpg \
+	../Config/myconfig.tex \
+	../Config/postamble.tex \
+	../Config/preamble.tex
 
-###########################################################################
+.DEFAULT_GOAL := all
 
-all: $(DUMMY_TARGETS)
-	$(PDFLATEX) $(TEX_CARTA3)
-#	$(RUBBER_TOOL) -f -d $(TEX_CARTA3)
+.PHONY: all clean cleanall help
 
+all: $(PDF)
 
-all_rubber: $(DUMMY_TARGETS)
-	$(RUBBER_TOOL) -d $(TEX_CARTA3)
-#	$(RUBBER_TOOL) -f -d $(TEX_CARTA3)
+$(PDF): $(COMMON_DEPS)
 
-all_latexmk: $(DUMMY_TARGETS)
-	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_CARTA3)
-#	$(LATEXMK_TOOL) -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $(TEX_CARTA3)
-
-tar:
-	tar czvf $(ROOT_FILENAME).tgz Makefile README `find . -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS"` 
-	zip $(ROOT_FILENAME).zip Makefile README `find . -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS"` 
+%.pdf: %.tex
+	$(PDFLATEX) $(LATEXFLAGS) $<
+	$(PDFLATEX) $(LATEXFLAGS) $<
 
 clean:
-	$(RUBBER_TOOL) --clean -d $(TEX_CARTA3)
+	$(RM) *.aux *.bbl *.bcf *.blg *.fdb_latexmk *.fls *.lof *.log *.lot *.out *.run.xml *.synctex.gz *.toc
 
-#	$(RM) $(PDFS_FROM_DIA)
-#	$(RM) $(PDFS_FROM_SVG)
-	$(RM) $(DUMMY_TARGETS)
+cleanall: clean
+	$(RM) $(PDF)
 
-.PHONY:	all pdf clean tar
-
-
+help:
+	@printf '%s\n' \
+		'make          Generate the PhD advisor-approval form' \
+		'make clean    Remove auxiliary files' \
+		'make cleanall Remove auxiliary files and the generated PDF'

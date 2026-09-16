@@ -1,18 +1,49 @@
-TEXFILES := $(wildcard *.tex)
-PDFFILES := $(TEXFILES:.tex=.pdf)
+PDFLATEX ?= pdflatex
+LATEXFLAGS ?= -interaction=nonstopmode -halt-on-error -file-line-error
 
-# Default target: generate all PDFs
+AUTHORIZATION_DOCUMENT := TFM-AutorizacionPublicarAbierto
+APPROVAL_DOCUMENT := TFM-VistoBuenoTutorTFM
+PROPOSAL_DOCUMENT := solicitud
+DOCUMENTS := $(AUTHORIZATION_DOCUMENT) $(APPROVAL_DOCUMENT) $(PROPOSAL_DOCUMENT)
+PDFFILES := $(addsuffix .pdf,$(DOCUMENTS))
+
+COMMON_DEPS := \
+	../Config/myconfig.tex \
+	../Config/postamble.tex \
+	../Config/preamble.tex
+
+.DEFAULT_GOAL := all
+
+.PHONY: all autorizacion visto-bueno solicitud clean cleanall help
+
 all: $(PDFFILES)
 
-# Implicit rule to convert .tex to .pdf
+autorizacion: $(AUTHORIZATION_DOCUMENT).pdf
+
+visto-bueno: $(APPROVAL_DOCUMENT).pdf
+
+solicitud: $(PROPOSAL_DOCUMENT).pdf
+
+$(PDFFILES): $(COMMON_DEPS)
+TFM-AutorizacionPublicarAbierto.pdf: ../Config/setlanguagedependentissues.tex
+solicitud.pdf: ../Config/setlanguagedependentissues.tex
+
 %.pdf: %.tex
-	pdflatex -interaction=nonstopmode -halt-on-error $<
-	pdflatex -interaction=nonstopmode -halt-on-error $<
+	$(PDFLATEX) $(LATEXFLAGS) $<
+	$(PDFLATEX) $(LATEXFLAGS) $<
 
-# Clean auxiliary files
 clean:
-	rm -f $(PDFFILES) *.aux *.log *.out *.toc *.lof *.lot *.bbl *.blg *.synctex.gz *.fls *.fdb_latexmk
+	$(RM) *.aux *.bbl *.bcf *.blg *.fdb_latexmk *.fls *.lof *.log *.lot *.out *.run.xml *.synctex.gz *.toc
 
-# Remove PDFs as well
 cleanall: clean
-	rm -f $(PDFFILES)
+	$(RM) $(PDFFILES)
+
+help:
+	@printf '%s\n' \
+		'make               Generate all TFM paperwork' \
+		'make autorizacion  Generate the open-publication authorization' \
+		'make visto-bueno   Generate the approval for deposit and defense' \
+		'make solicitud     Generate the project-proposal request' \
+		'make FILE.pdf      Generate one specific form' \
+		'make clean         Remove auxiliary files' \
+		'make cleanall      Remove auxiliary files and generated PDFs'

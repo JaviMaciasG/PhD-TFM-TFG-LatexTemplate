@@ -172,7 +172,7 @@ The `pages=-` option includes every page. Review the sample inclusion in `Book/b
 ## To work with the paperwork
 
 1. Go to `PapeleoTFG/`, `PapeleoTFM/`, or `PapeleoPHD/`, according to the type of document you need.
-2. Edit the files you need and compile them by using the corresponding `Makefile`s or your standard LaTeX build tool. If you use [Overleaf](https://www.overleaf.com/), change the `main document` to be the one you want to compile.
+2. Edit the files you need and compile them by using the corresponding `Makefile`s or your standard LaTeX build tool. Running `make` generates every form in the directory; use `make help` to see the available groups and individual targets. If you use [Overleaf](https://www.overleaf.com/), change the `main document` to be the one you want to compile.
 
 
 # Bibliography handling

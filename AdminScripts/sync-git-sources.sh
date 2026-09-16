@@ -105,12 +105,12 @@ for explicit_file in \
   Makefile \
   AdminScripts/sync-git-sources.sh \
   AdminScripts/sync-git-sources.py \
-  Config/Makefile Config/.gitignore \
-  Book/Makefile Book/.gitignore \
-  Anteproyecto/Makefile Anteproyecto/.gitignore \
-  PapeleoTFG/Makefile PapeleoTFG/.gitignore \
-  PapeleoTFM/Makefile PapeleoTFM/.gitignore \
-  PapeleoPHD/Makefile PapeleoPHD/.gitignore; do
+  Config/Makefile \
+  Book/Makefile \
+  Anteproyecto/Makefile \
+  PapeleoTFG/Makefile \
+  PapeleoTFM/Makefile \
+  PapeleoPHD/Makefile; do
   [[ -f "$repository_root/$explicit_file" ]] && printf '%s\n' "$explicit_file" >>"$required_unsorted"
 done
 

@@ -1,18 +1,50 @@
-TEXFILES := $(wildcard *.tex)
-PDFFILES := $(TEXFILES:.tex=.pdf)
+PDFLATEX ?= pdflatex
+LATEXFLAGS ?= -interaction=nonstopmode -halt-on-error -file-line-error
 
-# Default target: generate all PDFs
+AUTHORIZATION_DOCUMENTS := \
+	TFG-AutorizacionAutorPubAbierto \
+	TFG-AutorizacionTutorPubAbierto \
+	TFG-AutorizacionTutorExtranjeroPubAbierto
+EVALUATION_DOCUMENTS := \
+	TFG-InformeTutorYRubrica \
+	TFG-ActaYRubricaDefensa
+DOCUMENTS := $(AUTHORIZATION_DOCUMENTS) $(EVALUATION_DOCUMENTS)
+PDFFILES := $(addsuffix .pdf,$(DOCUMENTS))
+
+COMMON_DEPS := \
+	../Config/myconfig.tex \
+	../Config/postamble.tex \
+	../Config/preamble.tex
+
+.DEFAULT_GOAL := all
+
+.PHONY: all autorizaciones evaluacion clean cleanall help
+
 all: $(PDFFILES)
 
-# Implicit rule to convert .tex to .pdf
+autorizaciones: $(addsuffix .pdf,$(AUTHORIZATION_DOCUMENTS))
+
+evaluacion: $(addsuffix .pdf,$(EVALUATION_DOCUMENTS))
+
+$(PDFFILES): $(COMMON_DEPS)
+TFG-InformeTutorYRubrica.pdf: ../Config/setlanguagedependentissues.tex ../Config/rubricaTFGTutor.tex
+TFG-ActaYRubricaDefensa.pdf: ../Config/grades-calculation.tex ../Config/setlanguagedependentissues.tex ../Config/rubricaTFGTribunal.tex
+
 %.pdf: %.tex
-	pdflatex -interaction=nonstopmode -halt-on-error $<
-	pdflatex -interaction=nonstopmode -halt-on-error $<
+	$(PDFLATEX) $(LATEXFLAGS) $<
+	$(PDFLATEX) $(LATEXFLAGS) $<
 
-# Clean auxiliary files
 clean:
-	rm -f $(PDFFILES) *.aux *.log *.out *.toc *.lof *.lot *.bbl *.blg *.synctex.gz *.fls *.fdb_latexmk *.bcf *.run.xml
+	$(RM) *.aux *.bbl *.bcf *.blg *.fdb_latexmk *.fls *.lof *.log *.lot *.out *.run.xml *.synctex.gz *.toc
 
-# Remove PDFs as well
 cleanall: clean
-	rm -f $(PDFFILES)
+	$(RM) $(PDFFILES)
+
+help:
+	@printf '%s\n' \
+		'make                 Generate all TFG paperwork' \
+		'make autorizaciones  Generate the three open-publication authorizations' \
+		'make evaluacion      Generate the tutor report and defense record' \
+		'make FILE.pdf        Generate one specific form' \
+		'make clean           Remove auxiliary files' \
+		'make cleanall        Remove auxiliary files and generated PDFs'
