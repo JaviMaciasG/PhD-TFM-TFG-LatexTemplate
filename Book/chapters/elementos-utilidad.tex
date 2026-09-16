@@ -9,18 +9,39 @@ Después de las variables de configuración descritas en la sección~\ref{sec:de
 Los comandos de ejemplo incluidos actualmente son:
 
 \begin{itemize}
-  \item \texttt{\textbackslash{}texten\{texto\}}: presenta en cursiva una palabra o expresión en inglés dentro de un documento en español; por ejemplo, \texttt{\textbackslash{}texten\{English\}} produce \texten{English}.
-  \item \texttt{\textbackslash{}ci}: genera el símbolo matemático de independencia condicional utilizado por algunos ejemplos.
-  \item \texttt{\textbackslash{}circulo}: genera un círculo utilizado como marcador gráfico.
-  \item \texttt{\textbackslash{}asterisco}: genera un asterisco matemático.
-  \item \texttt{\textbackslash{}cuadrado}: genera un cuadrado utilizado como marcador gráfico.
-  \item \texttt{\textbackslash{}triangulo}: genera un triángulo orientado hacia arriba.
-  \item \texttt{\textbackslash{}triangv}: genera un triángulo orientado hacia abajo.
-  \item \texttt{\textbackslash{}diamante}: genera un rombo utilizado como marcador gráfico.
-  \item \texttt{\textbackslash{}new\{texto\}}: resalta texto en magenta. Puede resultarte útil durante la revisión, pero comprueba que no queden marcas de este tipo en la versión definitiva.
-  \item \texttt{\textbackslash{}argmax\{índice\}}: compone el operador matemático \texttt{argmax} colocando debajo el índice indicado.
-  \item \texttt{\textbackslash{}verticalSpacingSRPMaps}: almacena una separación vertical utilizada por uno de los ejemplos gráficos de los capítulos.
-  \item \texttt{\textbackslash{}todojmg}, \texttt{\textbackslash{}todorbc} y \texttt{\textbackslash{}todomig}: crean notas de revisión en línea con autores y colores diferenciados mediante el paquete \texttt{todonotes}. Adapta sus nombres, iniciales y colores a las personas que participen en la revisión.
+  \item Comandos de formateo y revisión:
+  \begin{itemize}
+    \item \texttt{\textbackslash{}texten\{texto\}}: presenta en cursiva una palabra o expresión en inglés dentro de un documento en español. Uso y resultado: \texttt{\textbackslash{}texten\{English\}} produce \texten{English}.
+    \item \texttt{\textbackslash{}new\{texto\}}: resalta texto en magenta. Puede resultarte útil durante la revisión, pero comprueba que no queden marcas de este tipo en la versión definitiva. Uso y resultado: \texttt{\textbackslash{}new\{texto revisado\}} produce \new{texto revisado}.
+    \item \texttt{\textbackslash{}todojmg}: crea una nota de revisión en línea identificada como JMG mediante el paquete \texttt{todonotes}. Uso: \texttt{\textbackslash{}todojmg\{Revisar este párrafo\}}.
+    \item \texttt{\textbackslash{}todorbc}: crea una nota de revisión en línea identificada como RBC mediante el paquete \texttt{todonotes}. Uso: \texttt{\textbackslash{}todorbc\{Comprobar este dato\}}.
+    \item \texttt{\textbackslash{}todomig}: crea una nota de revisión en línea identificada como MIG mediante el paquete \texttt{todonotes}. Uso: \texttt{\textbackslash{}todomig\{Completar esta sección\}}.
+  \end{itemize}
+  \item Símbolos y operadores matemáticos sencillos:
+  \begin{itemize}
+    \item \texttt{\textbackslash{}ci}: genera el símbolo matemático de independencia condicional utilizado por algunos ejemplos. Resultado: \(\ci\).
+    \item \texttt{\textbackslash{}circulo}: genera un círculo utilizado como marcador gráfico. Resultado: {\circulo}.
+    \item \texttt{\textbackslash{}asterisco}: genera un asterisco matemático. Resultado: {\asterisco}.
+    \item \texttt{\textbackslash{}cuadrado}: genera un cuadrado utilizado como marcador gráfico. Resultado: {\cuadrado}.
+    \item \texttt{\textbackslash{}triangulo}: genera un triángulo orientado hacia arriba. Resultado: {\triangulo}.
+    \item \texttt{\textbackslash{}triangv}: genera un triángulo orientado hacia abajo. Resultado: {\triangv}.
+    \item \texttt{\textbackslash{}diamante}: genera un rombo utilizado como marcador gráfico. Resultado: {\diamante}.
+    \item \texttt{\textbackslash{}argmax\{índice\}}: compone el operador matemático \texttt{argmax} colocando debajo el índice indicado. Uso y resultado: \texttt{\textbackslash{}argmax\{i\}} produce \(\argmax{i}\).
+  \end{itemize}
+  \item Comandos utilizados en los ejemplos del documento:
+  \begin{itemize}
+    \item \texttt{\textbackslash{}verticalSpacingSRPMaps}: almacena una separación vertical utilizada por uno de los ejemplos gráficos de los capítulos. Uso: \texttt{\textbackslash{}vspace\{\textbackslash{}verticalSpacingSRPMaps\}}.
+    \item \texttt{\textbackslash{}CAVDB}: mantiene una representación uniforme del nombre del conjunto de datos utilizado en los ejemplos avanzados. Resultado: \CAVDB{}.
+    \item \texttt{\textbackslash{}AVThreeTVLoc}: mantiene una representación uniforme del nombre del método \AVThreeTVLoc{}. Resultado: \AVThreeTVLoc{}.
+    \item \texttt{\textbackslash{}LandPoseVLoc}: mantiene una representación uniforme del nombre del método \LandPoseVLoc{}. Resultado: \LandPoseVLoc{}.
+    \item \texttt{\textbackslash{}DeltaPoseAVT}: combina los nombres de los dos métodos en una expresión matemática que representa su diferencia. Resultado: \DeltaPoseAVT{}.
+    \item \texttt{\textbackslash{}mae}: representa mediante \(\epsilon\) el error absoluto medio empleado en los ejemplos. Resultado: \(\mae\).
+    \item \texttt{\textbackslash{}maeThreeD}: añade el subíndice tridimensional al símbolo del error. Resultado: \(\maeThreeD\).
+    \item \texttt{\textbackslash{}maeThreeDfine}: identifica con una prima la variante refinada del error tridimensional. Resultado: \(\maeThreeDfine\).
+    \item \texttt{\textbackslash{}maeTwoD}: añade el subíndice bidimensional al símbolo del error. Resultado: \(\maeTwoD\).
+    \item \texttt{\textbackslash{}maeTwoDfine}: identifica con una prima la variante refinada del error bidimensional. Resultado: \(\maeTwoDfine\).
+    \item \texttt{\textbackslash{}NumDataFrames}: representa de forma uniforme el número de tramas de datos utilizado en las ecuaciones de ejemplo. Resultado: \(\NumDataFrames\).
+  \end{itemize}
 \end{itemize}
 
 Los símbolos de barra inversa y virgulilla no necesitan definiciones adicionales. Puedes escribirlos mediante \texttt{\textbackslash{}textbackslash\{\}}, que produce \textbackslash{}, y \texttt{\textbackslash{}textasciitilde\{\}}, que produce \textasciitilde{}.
