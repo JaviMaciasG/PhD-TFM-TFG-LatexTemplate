@@ -53,9 +53,9 @@ Los siguientes objetivos proporcionan operaciones avanzadas para la revisión, l
   \item \texttt{snapshot}: genera mediante \texttt{latexpand} una copia unificada del documento que puede utilizarse como referencia para una revisión posterior.
   \item \texttt{flatten}: genera una copia unificada del estado actual del documento.
   \item \texttt{latexdiff}: compara la instantánea con el estado actual y genera un PDF que muestra las diferencias.
-  \item \texttt{backup-chapters}: crea copias fechadas de los capítulos y apéndices.
-  \item \texttt{orig-chapters}: sustituye los capítulos y apéndices de trabajo por las versiones completas de ejemplo, después de crear una copia de seguridad.
-  \item \texttt{bare-chapters}: sustituye los capítulos y apéndices de trabajo por versiones mínimas, después de crear una copia de seguridad.
+  \item \texttt{backup-chapters}: crea copias fechadas de los capítulos, los apéndices y \texttt{book.tex}.
+  \item \texttt{orig-chapters}: sustituye los capítulos y apéndices de trabajo por las versiones completas de ejemplo y restaura sus órdenes de inclusión en \texttt{book.tex}, después de crear una copia de seguridad.
+  \item \texttt{bare-chapters}: sustituye los capítulos y apéndices de trabajo por versiones mínimas y actualiza sus órdenes de inclusión en \texttt{book.tex}, después de crear una copia de seguridad.
   \item \texttt{bare}: prepara una estructura mínima mediante \texttt{bare-chapters} y ofrece eliminar los gráficos y diagramas existentes.
   \item \texttt{tar}: genera archivos comprimidos con los fuentes y recursos de la plantilla.
 \end{itemize}
@@ -64,7 +64,7 @@ Los objetivos relacionados con la comparación de versiones se explican con más
 
 El \texttt{Makefile} contiene además objetivos auxiliares utilizados internamente para convertir recursos y preparar la versión mínima. No necesitas ejecutarlos directamente.
 
-Los objetivos \texttt{bare}, \texttt{bare-chapters} y \texttt{orig-chapters} modifican el contenido de los directorios de capítulos o apéndices. Además, \texttt{bare} puede eliminar los ficheros de \texttt{figures/} y \texttt{diagrams/} si se confirma expresamente durante su ejecución. Utilízalos únicamente al preparar una copia nueva del proyecto y después de comprobar que los cambios importantes están guardados en el sistema de control de versiones.
+Los objetivos \texttt{bare}, \texttt{bare-chapters} y \texttt{orig-chapters} modifican el contenido de los directorios de capítulos o apéndices y las órdenes de inclusión delimitadas en \texttt{book.tex}. Además, \texttt{bare} puede eliminar los ficheros de \texttt{figures/} y \texttt{diagrams/} si se confirma expresamente durante su ejecución. Utilízalos únicamente al preparar una copia nueva del proyecto y después de comprobar que los cambios importantes están guardados en el sistema de control de versiones.
 
 Algunos objetivos del \texttt{Makefile} utilizan herramientas adicionales. Solo necesitas instalar las que correspondan a los objetivos que vayas a utilizar:
 

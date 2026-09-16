@@ -27,8 +27,8 @@ Top-level directories and their primary role:
 
 Repository volume snapshot (tracked files):
 
-- Total files: 711
-- TeX files: 230
+- Total files: 719
+- TeX files: 238
 - PDF files: 129
 - Word documents (`.doc/.docx`): 25
 
@@ -36,7 +36,7 @@ Repository volume snapshot (tracked files):
 
 1. Configure personal/degree metadata in `Config/myconfig.tex`.
 2. Edit content files in `Book/` (chapters, abstract, appendices, bibliography).
-3. Compile from `Book/` using `make` (or your IDE toolchain configured for `biber`).
+3. Compile `Book/book.tex` with your usual LaTeX editor or build tool configured for `biber`; optionally use `make` from `Book/` to automate the complete sequence.
 4. Optionally compile `Anteproyecto/` and the corresponding paperwork templates in `Papeleo*` directories.
 
 The root `Makefile` can also produce a PDF version of the README and delegate build to `Book/`.
@@ -54,16 +54,16 @@ The root `Makefile` can also produce a PDF version of the README and delegate bu
 `Book/Makefile` drives a full build including:
 
 - Multi-pass `pdflatex`
-- Bibliography tool selection (`biber` by default, fallback logic for `bibtex`)
+- Bibliography processing with `biber`
 - `makeglossaries`
 - Figure/diagram conversion support (`dia`, `inkscape`, `epspdf`)
-- Ghostscript compression output variants (`-screen`, `-compressed`)
+- Ghostscript compressed output (`-compressed`); the former low-quality `-screen` output is disabled
 - Flatten/snapshot/diff workflows (`latexpand`, `latexdiff`)
 
 ### Other components
 
 - `Anteproyecto/Makefile` includes similar multi-pass compilation with bibliography support.
-- `PapeleoTFG/Makefile` compiles each `*.tex` into `*.pdf` with two LaTeX passes.
+- The Makefiles under `PapeleoTFG/`, `PapeleoTFM/`, and `PapeleoPHD/` compile the administrative documents provided by each directory.
 
 ## Configuration architecture
 
@@ -127,7 +127,7 @@ This central switchboard is where most format branching is coordinated for TFG/T
 
 ## Risks / complexity hotspots
 
-- Build dependencies are extensive (`pandoc`, `biber`, `makeglossaries`, `dia`, `inkscape`, `gs`, etc.).
+- A basic editor-based build needs `pdflatex` and, when applicable, `biber` or `makeglossaries`; optional Makefile workflows add dependencies such as `pandoc`, Dia, Inkscape, Ghostscript, `latexpand`, and `latexdiff`.
 - Some Makefile logic is shell-heavy and brittle to environment differences.
 - Mixed-era structure and duplicated assets can make onboarding harder.
 - Legacy/Deprecated content increases navigation noise for first-time users.
@@ -139,6 +139,6 @@ For a new user, the safest path is:
 1. Read `README.md` once end-to-end.
 2. Edit only `Config/myconfig.tex` first.
 3. Start from `Book/book.tex` with existing example chapters.
-4. Use `make` in `Book/` and verify bibliography backend is set to `biber` in editor.
+4. Build `Book/book.tex` with your editor and verify that its bibliography backend is set to `biber`; use `make` only if you prefer the provided automation.
 5. Only after successful first compile, touch covers/paperwork files.
 
