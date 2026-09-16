@@ -43,6 +43,8 @@ make
 
 La compilación genera \texttt{anteproyecto.pdf}. Si el documento contiene referencias bibliográficas, ejecuta Biber entre las pasadas de \texttt{pdflatex}; el \texttt{Makefile} incluido automatiza esta secuencia.
 
+Si trabajas en Overleaf, sigue el procedimiento de la sección~\ref{sec:compilacion-overleaf} y selecciona \texttt{Anteproyecto/anteproyecto.tex} como documento principal.
+
 El \texttt{Makefile} también proporciona los objetivos \texttt{anteproyecto\_latexmk}, \texttt{snapshot}, \texttt{flatten}, \texttt{latexdiff}, \texttt{clean} y \texttt{clean\_latexmk}. Los objetivos de revisión siguen el mismo principio que los equivalentes del libro principal, descritos en la sección~\ref{sec:control-de-cambios}.
 
 \section{Documentación administrativa}
@@ -91,6 +93,8 @@ make
 
 El uso de \texttt{make} es opcional. Puedes compilar cada fichero individualmente con dos pasadas de \texttt{pdflatex} o mediante la función de construcción de tu editor de \LaTeX{} preferido. Estos formularios no utilizan la bibliografía ni los glosarios del libro principal.
 
+En Overleaf puedes generar cada formulario seleccionando su fichero \texttt{.tex} como documento principal, de acuerdo con las indicaciones de la sección~\ref{sec:compilacion-overleaf}.
+
 Las plantillas adaptan automáticamente determinados términos al género gramatical configurado y omiten los datos del cotutor cuando \texttt{\textbackslash{}myCoTutorFullName} está vacío. Aun así, revisa cuidadosamente el PDF resultante, las firmas requeridas y la coherencia de todos los datos.
 
 Los modelos administrativos y sus requisitos pueden cambiar. Antes de presentar cualquiera de estos documentos, comprueba que su contenido coincida con la normativa y los formularios oficiales vigentes de tu titulación.
@@ -99,7 +103,7 @@ Los modelos administrativos y sus requisitos pueden cambiar. Antes de presentar 
 \section{Resumen del capítulo}
 \label{sec:resumen-documentos-complementarios}
 
-El anteproyecto y los formularios administrativos reutilizan la configuración común para evitar que introduzcas varias veces los mismos datos. Puedes compilarlos independientemente del libro, pero debes revisar cada PDF y contrastar siempre las plantillas con los modelos oficiales vigentes antes de presentarlas.
+El anteproyecto y los formularios administrativos reutilizan la configuración común para evitar que introduzcas varias veces los mismos datos. Puedes compilarlos independientemente del libro, también mediante Overleaf si seleccionas el documento principal adecuado, pero debes revisar cada PDF y contrastar siempre las plantillas con los modelos oficiales vigentes antes de presentarlas.
 
 %%% Local Variables:
 %%% TeX-master: "../book"

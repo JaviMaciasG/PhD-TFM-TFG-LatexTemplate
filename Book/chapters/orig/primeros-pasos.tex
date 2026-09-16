@@ -25,12 +25,14 @@
 \chapter{Primeros pasos}
 \label{cha:primeros-pasos}
 
-En este capítulo te acompañamos desde la preparación del entorno hasta la generación del primer PDF. Primero revisaremos los requisitos necesarios y después explicaremos cómo configurar la compilación en GNU/Linux, Windows y macOS. Para empezar no necesitas conocer el \texttt{Makefile} ni utilizar una terminal: puedes trabajar con tu editor habitual de \LaTeX{}.
+En este capítulo te acompañamos desde la preparación del entorno hasta la generación del primer PDF. Primero revisaremos los requisitos necesarios y después explicaremos cómo configurar la compilación en GNU/Linux, Windows, macOS y Overleaf. Para empezar no necesitas conocer el \texttt{Makefile} ni utilizar una terminal: puedes trabajar con tu editor habitual de \LaTeX{}.
 
 \section{Prerrequisitos}
 \label{sec:prerrequisitos}
 
-Para compilar la plantilla necesitas una distribución de \LaTeX{} suficientemente completa y actualizada. TeX Live es una opción habitual en GNU/Linux, MiKTeX y TeX Live están disponibles para Windows, y MacTeX proporciona una distribución adaptada a macOS. Asegúrate de que la distribución que elijas proporcione \texttt{pdflatex} y Biber, además de los paquetes cargados desde \texttt{Config/preamble.tex}.
+Si trabajas localmente, para compilar la plantilla necesitas una distribución de \LaTeX{} suficientemente completa y actualizada. TeX Live es una opción habitual en GNU/Linux, MiKTeX y TeX Live están disponibles para Windows, y MacTeX proporciona una distribución adaptada a macOS. Asegúrate de que la distribución que elijas proporcione \texttt{pdflatex} y Biber, además de los paquetes cargados desde \texttt{Config/preamble.tex}.
+
+Si prefieres trabajar en línea con Overleaf, no necesitas instalar una distribución ni un editor en tu equipo. La plataforma proporciona el entorno de compilación; en la sección~\ref{sec:compilacion-overleaf} te explicamos cómo importar la plantilla y seleccionar el documento principal.
 
 Biber es necesario cuando el documento incluye bibliografía. Si utilizas acrónimos o símbolos, también necesitarás \texttt{makeglossaries}; el libro de ejemplo distribuido con la plantilla contiene ambos elementos y, por tanto, requiere esta herramienta para generar todos sus listados.
 
@@ -68,11 +70,27 @@ Si tu editor no actualiza correctamente los acrónimos o símbolos, utiliza desd
 
 Las primeras comprobaciones de la generación de glosarios en macOS fueron realizadas y compartidas con nosotros por Carlos Cruz. Muchas gracias por su ayuda.
 
+\subsection{Overleaf}
+\label{sec:compilacion-overleaf}
+
+Si no quieres instalar y mantener un entorno local, puedes trabajar en línea mediante \href{https://www.overleaf.com/}{Overleaf}. Para importar la plantilla sigue estos pasos:
+
+\begin{itemize}
+  \item Inicia sesión en Overleaf y selecciona \textit{New Project} y, a continuación, \textit{Upload Project}.
+  \item Sube sin descomprimir el fichero ZIP correspondiente a tu titulación, disponible en la \href{https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0}{carpeta de descargas de la plantilla}.
+  \item Abre las opciones del proyecto y selecciona \texttt{Book/book.tex} como \textit{Main document}.
+  \item Comprueba que el compilador seleccionado sea pdfLaTeX y compila el proyecto.
+\end{itemize}
+
+Overleaf gestiona la cadena de construcción con sus propias herramientas, por lo que no necesitas ejecutar el \texttt{Makefile}. El libro utiliza Biber para la bibliografía y \texttt{makeglossaries} para los acrónimos y símbolos; después de importar el proyecto, comprueba que se generen correctamente la bibliografía y ambos listados. Si alguno no se actualiza, revisa primero el documento principal seleccionado y utiliza la opción de recompilar el proyecto desde cero.
+
+El libro de ejemplo es relativamente complejo y su compilación puede superar el tiempo disponible en algunos planes de Overleaf. Si la compilación se interrumpe por este motivo, comprueba los límites vigentes de tu cuenta y elimina temporalmente los ejemplos o elementos opcionales que no necesites. Para generar el anteproyecto o un formulario administrativo tendrás que cambiar el documento principal, como se explica en el capítulo~\ref{cha:documentos-complementarios}.
+
 
 \section{Resumen del capítulo}
 \label{sec:resumen-primeros-pasos}
 
-Ya sabes qué herramientas necesita la plantilla y cómo generar el documento desde tu editor habitual en GNU/Linux, Windows o macOS. Recuerda que Biber es necesario para la bibliografía y que solo tendrás que ejecutar \texttt{makeglossaries} cuando utilices acrónimos o símbolos; el siguiente paso es adaptar las variables descritas en el capítulo~\ref{cha:configuracion}.
+Ya sabes qué herramientas necesita la plantilla y cómo generar el documento desde tu editor habitual en GNU/Linux, Windows o macOS, o mediante Overleaf. Recuerda que Biber es necesario para la bibliografía y que solo tendrás que ejecutar \texttt{makeglossaries} cuando utilices acrónimos o símbolos; el siguiente paso es adaptar las variables descritas en el capítulo~\ref{cha:configuracion}.
 
 %%% Local Variables:
 %%% TeX-master: "../book"

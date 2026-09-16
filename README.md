@@ -194,9 +194,9 @@ Add each required `.bib` file under `Book/biblio/` and define its path in
 `Book/biblio/bibliofiles.tex` using the provided `\mybibfileOne`,
 `\mybibfileTwo`, and subsequent examples.
 
-## Collaboration with your advisor or colleagues
+# Collaboration with your advisor or colleagues
 
-### Using GitHub for Version Control
+## Using GitHub for Version Control
 
 I strongly recommend using [GitHub](https://www.github.com) to keep track of your LaTeX source code. Version control allows you to:
 
@@ -206,9 +206,9 @@ I strongly recommend using [GitHub](https://www.github.com) to keep track of you
 
 You will find lot of useful information on [GitHub](https://www.github.com) out there, so that I will not bore you here with the details
 
-### Managing the revision of the document
+## Managing the revision of the document
 
-In order to manage the revision of the document (by your advisor for example), you can make use of the [GitHub](https://www.github.com) repository tools. I also found useful the revision process by using the `todonotes` package. It is installed by default and we defined some useful macros at the end of the `Config/myconfig.tex` file. Check them if you are interested.
+In order to manage the revision of the document (by your advisor for example), you can make use of the [GitHub](https://www.github.com) repository tools. I also found useful the revision process by using the `todonotes` package. It is installed by default and we defined some useful macros at the end of the `Config/myconfig.tex` file. Check them if you are interested. The template document has also a section devoted to generating a \textit{change control} document.
 
 # Disclaimer & request for help & offer to help
 
