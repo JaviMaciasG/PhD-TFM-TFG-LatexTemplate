@@ -11,27 +11,36 @@ Please read the guide at the beginning of any of the precompiled examples in the
 
 # Quick start
 
-## Prerequisites
+## Download the template
 
-You have two main options to work with the template: Do your work locally in any PC (my preferred configuration is using [TexStudio](https://www.texstudio.org/)), or do it online using [Overleaf](https://www.overleaf.com/). Both options are described below.
+The template is accessible in two ways:
+
+1. In GitHub, in case you want to clone or fork my working version. It is available at
+[my GitHub account project page](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate), so that you can clone it from [the clone URL](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git). Beware that it has a lot of extra files that should not be useful for the general user
+2. In my dropbox, in zip and tgz formats, accessible at [this Dropbox download folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0).  At this location you will also be able to access the sample book files for all the different flavors (degrees, masters, PhD programs) and in Spanish and English versions. The first chapters form a practical guide to installing, configuring and using the template. **Please do read the introductory itinerary** and then consult the chapters that apply to your work. The final tutorial chapters provide sample code for a variety of (IMHO) nice things you might find useful.
+
+
+## Choose where you want to work
+
+You have two main options to work with the template: Do your work locally in any PC (my preferred configuration is using [TeXstudio](https://www.texstudio.org/)), or do it online using [Overleaf](https://www.overleaf.com/). Both options are described below.
 
 
 ### Working on a local machine
 
-You will need a good \LaTeX{} distribution (TexLive, MikTex, MacTeX, etc., depending on your working environment). For a list of all required packages, you can have a look at the `\usepackage{...}` statements in the file `Config/preamble.tex`, but this should not be a problem as most distributions would have everything you need. If you run into errors due to packages not being available, install them (this should be easy enough).
+You will need a good LaTeX distribution (Tex Live, MiKTeX, MacTeX, etc., depending on your working environment). For a list of all required packages, you can have a look at the `\usepackage{...}` statements in the file `Config/preamble.tex`, but this should not be a problem as most distributions would have everything you need. If you run into errors due to packages not being available, install them (this should be easy enough).
 
-Beware that the main compilation is done using `pdflatex+biber`. You can compile the document with [TeXStudio](https://www.texstudio.org/) or any good LaTeX editor after configuring the required tools. The provided `make` workflow automates the complete process and is convenient if it is available in your environment, but you do not need it to use the template.
+Beware that the main compilation is done using `pdflatex+biber`. You can compile the document with [TeXstudio](https://www.texstudio.org/) or any good LaTeX editor after configuring the required tools. The provided `make` workflow automates the complete process and is convenient if it is available in your environment, but you do not need it to use the template.
 
 
 #### Notes on GNU/Linux installation
 
 I'm talking here about debian-like distributions (mainly Ubuntu), but package instructions and package names should be similar across other ones.
 
-I would recommend you to install the TexLive distribution (`sudo apt-get install texlive` will do in an Ubuntu box, for example). Most of the required packages will be installed by default being typical exceptions `texlive-publishers`, `texlive-lang-spanish` and `texlive-lang-english`. Do install them.
+I would recommend you to install the Tex Live distribution (`sudo apt-get install texlive` will do in an Ubuntu box, for example). Most of the required packages will be installed by default being typical exceptions `texlive-publishers`, `texlive-lang-spanish` and `texlive-lang-english`. Do install them.
 
 You can also use `sudo apt-get install texlive-full` for an overloaded full texlive distribution, but this will take a lot of disk space.
 
-Regarding editors I would suggest you to use [TexStudio](https://www.texstudio.org/) or [emacs](https://www.gnu.org/software/emacs/). I personally use the latter, with the [Doom emacs configuration](https://github.com/doomemacs/doomemacs), but the learning curve can be really steep, so that [TexStudio](https://www.texstudio.org/) is, IMHO, a safer bet.
+Regarding editors I would suggest you to use [TeXstudio](https://www.texstudio.org/) or [emacs](https://www.gnu.org/software/emacs/). I personally use the latter, with the [Doom emacs configuration](https://github.com/doomemacs/doomemacs), but the learning curve can be really steep, so that [TeXstudio](https://www.texstudio.org/) is, IMHO, a safer bet.
 
 
 #### Notes on Windows installation
@@ -45,7 +54,7 @@ This is my recommended route to have everything ready to go:
 
    1.2. In `MiKTeX Console`, run `Updates|Update` now
 
-2. Install the latest version of [TexStudio](https://www.texstudio.org/)
+2. Install the latest version of [TeXstudio](https://www.texstudio.org/)
 
 3. Install a perl interpreter (if you plan to use acronyms, handled by `makeglossaries` in the template, which I fully recommend). I used Strawberry perl from https://strawberryperl.com/, but you can go to the perl site (https://www.perl.org/get.html) and check other alternatives.
 
@@ -67,28 +76,15 @@ Anyway, if you want to work with the template in [Overleaf](https://www.overleaf
 4. Select the corresponding zip among the ones you may find in the [template dropbox folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)
 5. [Overleaf](https://www.overleaf.com/) will do its magic and in a few seconds you'll have the template installed
 
-Remember that you will have to select the "main document" (access it through the options you will find clicking the overleaf logo in the top left corner of the project main page). See below in the "To fill in and generate..." to see which are the main files you have available. The most relevant files to select as "main document" are:
+Remember that you will have to select the "main document" (access it through the options you will find clicking the overleaf logo in the top left corner of the project main page). See below in the "To work in the..." to see which are the main files you have available. The most relevant files to select as "main document" are:
 
 + `Anteproyecto/anteproyecto.tex`
 + `Book/book.tex`
 
-But you should also have a look to the paperwork related ones:
-
-+ `PapeleoTFG/TFG-AutorizacionAutorPubAbierto.tex`
-+ `PapeleoTFG/TFG-AutorizacionTutorPubAbierto.tex`
-+ `PapeleoTFM/TFM-AutorizacionPublicarAbierto.tex`
-+ etc.
+You might also need some of the paperwork files described in the Repository structure (#repository-structure) section.
 
 We have had a number of issues with [Overleaf](https://www.overleaf.com/) in the past (mainly regarding glossaries), and they should be fully working. If new issues arise in the future, [this repo](https://github.com/gkilleen33/overleaf-offline/tree/master) has nice configurations for `latexmkrc` that should provide hints on how to solve them).
 
-
-## Download the template
-
-The template is accessible in two ways:
-
-1. In GitHub, in case you want to clone or fork my working version. It is available at
-[my GitHub account project page](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate), so that you can clone it from [the clone URL](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git). Beware that it has a lot of extra files that should not be useful for the general user
-2. In my dropbox, in zip and tgz formats, accessible at [this Dropbox download folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0).  At this location you will also be able to access the sample book files for all the different flavors (degrees, masters, PhD programs) and in Spanish and English versions. The first chapters form a practical guide to installing, configuring and using the template. **Please do read the introductory itinerary** and then consult the chapters that apply to your work. The final tutorial chapters provide sample code for a variety of (IMHO) nice things you might find useful.
 
 ## Repository structure
 
@@ -97,7 +93,10 @@ The directories most users need are:
 - `Config/`: Shared configuration and document-generation logic. For most of the cases, you will just have to edit `Config/myconfig.tex`, that is the main file for personal, degree, language, and document settings.
 - `Book/`: Main TFG, TFM, or PhD document. Its entry point is `Book/book.tex`; its subdirectories contain abstracts, chapters, appendices, bibliography files, figures, diagrams, acronyms, and symbols.
 - `Anteproyecto/`: Anteproyecto or proposal document. Its entry point is `Anteproyecto/anteproyecto.tex`.
-- `PapeleoTFG/`, `PapeleoTFM/`, and `PapeleoPHD/`: Administrative documents associated with each type of work.
+
+In some cases you might also need the resources found at:
+
+- `PapeleoTFG/`, `PapeleoTFM/`, and `PapeleoPHD/`: Administrative documents (paperwork) associated with each type of work.
 - `normativas/`: Official regulations and source annexes used as references when maintaining the templates.
 - `UsefulDocs/`: LaTeX reference documents and cheat sheets.
 
@@ -110,16 +109,16 @@ For a normal thesis or final-project document, start with `Config/myconfig.tex` 
 
 ## Configure your data
 
-   All the information you can customize is in the `Config/myconfig.tex` file. The variable names are all defined in `\newcommand{}{}` statements and all of then start with the `\my` prefix. Most of the variable names should be self-explanatory, and you can find the complete variable reference in the configuration chapter (check any pdf file in [the distribution Dropbox folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)). **Critical**: Do not remove nor comment out any of the lines with a variable definition. If a variable is not relevant to your case (for example the "cotutor" information), just leave it empty (by emptying the definition).
+   All the information you can customize is in the `Config/myconfig.tex` file. The variable names are all defined in `\newcommand{}{}` statements and all of them start with the `\my` prefix. Most of the variable names should be self-explanatory, and you can find the complete variable reference in the configuration chapter (check any pdf file in [the distribution Dropbox folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)). **Critical**: Do not remove nor comment out any of the lines with a variable definition. If a variable is not relevant to your case (for example the "cotutor" information), just leave it empty (by emptying the definition).
 
-## To fill in and generate the "anteproyecto"
+## To work in the "anteproyecto"
 
 1. Configure the document metadata in `Config/myconfig.tex`.
 2. Go to the `Anteproyecto` directory, where you will find the `anteproyecto.tex` file. This is the one you should work in and the entry point for compilation. An example is provided in the repo file.
 3. Edit the file to suit your needs
-4. Compile it (there is a `Makefile` available, but you can use your standard LaTeX build tool or command within your preferred \LaTeX{} editor).
+4. Compile it (there is a `Makefile` available, but you can use your standard LaTeX build tool or command within your preferred LaTeX editor).
 
-## To fill in and generate the main book
+## To work in the main book
 
 1. Configure the document metadata in `Config/myconfig.tex`, if you haven't already done it.
 2. Review `Book/book.tex` and comment out any material you do not need. The example document enables a sample external letter, dedication, acknowledgements, acronym and symbol lists, example chapters, and appendices.
@@ -165,34 +164,19 @@ Use `\includepdf` when an approval letter or another PDF must be inserted into t
 
 The `pages=-` option includes every page. Review the sample inclusion in `Book/book.tex` and comment it out when it is not required.
 
-## To fill in and generate paperwork
+## To work with the paperwork
 
 1. Go to `PapeleoTFG/`, `PapeleoTFM/`, or `PapeleoPHD/`, according to the type of document you need.
 2. Edit the files you need and compile them by using the corresponding `Makefile`s or your standard LaTeX build tool. If you use [Overleaf](https://www.overleaf.com/), change the `main document` to be the one you want to compile.
 
 
-# Important note about bibliography handling
+# Bibliography handling
 
-## For the impatient
+Regarding bibliography files, for normal use, you just have to edit `Book/biblio/biblio.bib` to include your desired BibTeX entries.
 
-Regarding bibliography files, you just have to edit the `Book/biblio/bibliofiles.tex`
-file, stating (uncommenting) which files you need for the bibliography. No
-changes are needed elsewhere.
+If you have a number of different `.bib` files, add each of them under `Book/biblio/` and define its path in `Book/biblio/bibliofiles.tex` using the provided `\mybibfileOne`, `\mybibfileTwo`, and subsequent examples. No changes are needed elsewhere.
 
-The default bibliography processing backend is now `biber` (from September 2022
-onwards). This implies that you have to tell your IDE that you are using `biber`
-instead of `bibtex`. This applies to TeXStudio for example.
-
-## Bibliography files
-
-The current `biblatex` and `biber` setup was adopted in September 2022 thanks
-to a contribution from Gonzalo Corral. It supports UTF-8 bibliography
-databases and registers bibliography resources from
-`Book/biblio/bibliofiles.tex`, so users do not need to edit the preamble.
-
-Add each required `.bib` file under `Book/biblio/` and define its path in
-`Book/biblio/bibliofiles.tex` using the provided `\mybibfileOne`,
-`\mybibfileTwo`, and subsequent examples.
+Remember that the default bibliography processing backend is now `biber` (from September 2022 onwards). This implies that you have to tell your IDE that you are using `biber` instead of `bibtex`. This applies to TeXStudio for example.
 
 # Collaboration with your advisor or colleagues
 
@@ -208,7 +192,7 @@ You will find lot of useful information on [GitHub](https://www.github.com) out 
 
 ## Managing the revision of the document
 
-In order to manage the revision of the document (by your advisor for example), you can make use of the [GitHub](https://www.github.com) repository tools. I also found useful the revision process by using the `todonotes` package. It is installed by default and we defined some useful macros at the end of the `Config/myconfig.tex` file. Check them if you are interested. The template document has also a section devoted to generating a \textit{change control} document.
+In order to manage the revision of the document (by your advisor for example), you can make use of the [GitHub](https://www.github.com) repository tools. I also found useful the revision process by using the `todonotes` package. It is installed by default and we defined some useful macros at the end of the `Config/myconfig.tex` file. Check them if you are interested. The template document has also a section devoted to generating a *change control* document.
 
 # Disclaimer & request for help & offer to help
 
