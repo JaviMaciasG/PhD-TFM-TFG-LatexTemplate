@@ -4,7 +4,7 @@
 #
 ###########################################################################
 
-ROOT_CARTA3 = PHD-vistoBuenoTutorTesis
+ROOT_CARTA3 = PHD-VistoBuenoTutorTesis
 TEX_CARTA3 = $(ROOT_CARTA3).tex
 RUBBER_TOOL=rubber
 LATEXMK_TOOL=latexmk

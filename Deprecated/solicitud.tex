@@ -1,0 +1,219 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% 
+% Generic template for TFC/TFM/TFGs requests
+% 
+% $Id: solicitud.tex,v 1.8 2016/07/14 23:50:00 macias Exp $
+% 
+% By:
+% + Javier Macías-Guarasa. 
+% Departamento de Electrónica
+% Universidad de Alcalá
+% + Roberto Barra-Chicote. 
+% Departamento de Ingeniería Electrónica
+% Universidad Politécnica de Madrid   
+% 
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+% 
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+% 
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+% 
+% You can freely use this template and please contribute with
+% comments or suggestions!!!
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+% This is for rubber to clean additional files
+% rubber: clean anteproyecto.acn anteproyecto.acr anteproyecto.alg anteproyecto.cod anteproyecto.ist anteproyecto.out anteproyecto.sbl anteproyecto.slg anteproyecto.sym anteproyecto.lor
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% BEGIN Preamble and configuration section
+% 
+\input{../config/preamble-solicitud.tex}    % DO NOT TOUCH THIS LINE. You can edit
+% the file to modify some default settings
+
+\input{../config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE 
+% to set your specific settings (related
+% to the document language, your degree,
+% document details (such as title, author
+% (you), your email, name of the tribunal
+% members, document year, keyword and
+% palabras clave) and link colors), and
+% define your commonly used commands
+% (some examples are provided).
+
+\input{../config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
+% "postamble" is not a valid word... :-)
+
+% path to directories containing images
+\graphicspath{{../logos/}{../figures/}{../diagrams/}} % Edit this to your
+% needs. Only logos is really required
+% when you generate your own content.
+% 
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\title{Solicitud de anteproyecto de \myWorkTypeFull}        % DO NOT TOUCH THIS LINE
+\date{\myThesisProposalDate}                         % DO NOT TOUCH THIS LINE
+\author{\myAuthorFullName}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Let's start with the real stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{document}                                   % DO NOT TOUCH THIS LINE
+
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% BEGIN within-document configuration, frontpage and cover pages generation
+% 
+
+% Set Language dependent issues that must be set after \begin{document}
+\input{../config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
+% NOR THE FILE
+
+% 
+% END within-document configuration, frontpage and cover pages generation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{spacing}{1.0}
+\begin{center}
+
+  \Large\textbf{SOLICITUD DE ANTEPROYECTO \MakeUppercase{\myWorkTypeFull}}
+
+  \myDepartment
+
+\end{center}
+\end{spacing}
+\vspace{0.5cm}
+
+\underline{\textbf{Datos personales \wordAutorDelOrDeLa{} \wordAlumnoOrAlumna}}
+\small
+\begin{spacing}{1.0}
+  \begin{tabularx}{\textwidth}{lXr}
+    % & & \\
+%    \MakeUppercase{\wordAlumnoOrAlumna}: \myAuthorFullName & & DNI: \myAuthorDNI \\
+    \MakeUppercase{NOMBRE Y APELLIDOS}: \myAuthorFullName & & DNI: \myAuthorDNI \\
+    \multicolumn{2}{l}{DIRECCIÓN: \myAuthorStreet}  & CÓDIGO POSTAL: \myAuthorPostalCode\\ 
+    POBLACIÓN: \myAuthorCity         & PROVINCIA: \myAuthorProvince     & TELÉFONO: \myAuthorTelephone \\
+    EMAIL: \myAuthorEmail & & \\
+    \multicolumn{2}{l}{ESTUDIOS: \myDegreefull} & ESPECIALIDAD: \mySpecialty\\
+    & & \\
+    \multicolumn{3}{l}{IDIOMA ESCOGIDO PARA DESARROLLAR EL TRABAJO: [\xUseSpanish] ESPAÑOL ~~ [\xUseEnglish] INGLÉS}\\
+    & &
+  \end{tabularx}
+\end{spacing}
+
+\normalsize
+\underline{\textbf{Datos de la propuesta de anteproyecto}}
+\small
+
+\begin{tabularx}{\textwidth}{|X|}
+  \hline
+  TÍTULO DEL \myWorkType: \myBookTitleSpanish \\
+  \ifthenelse{\equal{\myLanguage}{english}}   
+  {                                               
+  TÍTULO EN INGLÉS: \myBookTitleEnglish \\
+  }                                               
+  {                                               
+  }                                               
+  \\
+  \hline
+\end{tabularx}
+
+\begin{spacing}{1.0}
+  \begin{tabularx}{\textwidth}{X}
+%    \MakeUppercase{\wordDirectorOrDirectores}: \myAdvisors \\
+    TUTOR ACADÉMICO: \myFirstAdvisorFullName\\
+    COTUTOR (si procede): \mySecondAdvisorFullName\\
+    \begin{center}
+      Alcalá de Henares, \myThesisProposalDate
+    \end{center}
+ \end{tabularx}
+  \begin{tabularx}{\textwidth}{X X}
+%    El tutor & Vº Bº \wordDelOrDeLos~\wordDirectorOrDirectores{} (si procede) \\
+    Visto bueno del tutor y cotutor & Alumno \\
+    \\ % \includegraphics[width=0.2\textwidth]{firma_tutor_si_procede.png}
+%    \\ Firma \wordAutorDelOrDeLa{} \wordAlumnoOrAlumna{} & ~ % \includegraphics[width=0.25\textwidth]{firma_de_directores_procede.png}
+    \\ ~ % \includegraphics[width=0.2\textwidth]{firma_alumno_si_procede.png}
+    \\ ~
+ \end{tabularx}
+\end{spacing}
+
+\normalsize
+\begin{spacing}{1.1}
+  \begin{tabularx}{\textwidth}{| X |}
+    \hline
+%\scriptsize{Nota: zona sombreada a cumplimentar por la administración.}\\
+    \cellcolor{gray!10} ~\\
+    \cellcolor{gray!10} \underline{\textbf{Acuerdo del Departamento (a
+        rellenar por el Departamento)}} \\
+    \cellcolor{gray!10} ~\\
+    \cellcolor{gray!10} Aceptado: $\Box$ Sí $\Box$ No\spacingFour{}Fecha: \underscoreSpacingFour{}/\underscoreSpacingFour{}/\underscoreSpacingFour{}\underscoreSpacingFour{}\spacingFour{}Periodo de validez: \hrulefill\\
+    \cellcolor{gray!10} Causa del rechazo: \hrulefill\\
+    \cellcolor{gray!10} \hrulefill\\
+    \cellcolor{gray!10} \hrulefill\\
+    \cellcolor{gray!10} ~\\
+
+    \ifthenelse{\equal{\myWorkType}{TFM}}   
+    {                                               
+      \cellcolor{gray!10}\underline{TRIBUNAL CALIFICADOR (nombrado por
+        la Comisión Académica del Máster):}\\
+    }                                               
+    {                                               
+      \cellcolor{gray!10}\underline{TRIBUNAL CALIFICADOR:}\\
+    }                                               
+    \cellcolor{gray!10}\spacingFour{}Presidente: D/Dª. \longunderline{\myTribunalPresident}{\spacingFour{}Presidente: D/Dª. } \\
+    \cellcolor{gray!10}\spacingFour{}Vocal 1º: D/Dª. \longunderline{}{\spacingFour{}Vocal 1º: D/Dª. } \\
+    \cellcolor{gray!10}\spacingFour{}Vocal 2º: D/Dª. \longunderline{\myFirstAdvisorFullName{}}{\spacingFour{}Vocal 2º: D/Dª. }\\
+    \cellcolor{gray!10}\spacingFour{}Suplente: D/Dª. \longunderline{}{\spacingFour{}Suplente: D/Dª. } \\
+    \cellcolor{gray!10} ~\\
+%    \cellcolor{gray!10} En caso de que el director del Trabajo no sea profesor de la escuela,
+%    el departamento nombra al vocal 2º como tutor/codirector del trabajo.
+%    \cellcolor{gray!10} ~\\
+%    \cellcolor{gray!10} Observaciones: \hrulefill\\
+%    \cellcolor{gray!10} \hrulefill\\
+%    \cellcolor{gray!10} \hrulefill\\
+    \cellcolor{gray!10} ~\\
+    \cellcolor{gray!10}  \begin{center}Alcalá de Henares, a \underscoreSpacingFour{}\underscoreSpacingFour{} de \underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{}\underscoreSpacingFour{} de 20\underscoreSpacingFour{}\end{center}\\
+    \cellcolor{gray!10} ~\\
+    \cellcolor{gray!10} \spacingFour{}\spacingFour{}\spacingFour{}Sello del Departamento\spacingFour{}\spacingFour{}\spacingFour{}\spacingFour{}\spacingFour{}Fdo: Secretario del Departamento
+    \cellcolor{gray!10} ~\\
+    \cellcolor{gray!10} ~\\
+    \cellcolor{gray!10} ~\\
+    \cellcolor{gray!10} ~\\
+    \hline
+ \end{tabularx}
+\end{spacing}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% BEGIN Normal sections. Edit/modify all within this section
+
+
+
+% 
+% END Normal sections. Edit/modify all within this section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+\end{document}
+
