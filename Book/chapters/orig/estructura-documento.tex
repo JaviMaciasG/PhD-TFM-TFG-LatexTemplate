@@ -27,10 +27,10 @@
 
 En este capítulo recorremos las partes que forman el documento principal para que sepas dónde escribir cada contenido. Las describimos todas para que tengas una referencia completa, pero no tendrás que modificar muchas de ellas porque la plantilla las genera o selecciona automáticamente.
 
-\section{Estructura del documento generado por la plantilla}
+\section{Organización general del documento}
 \label{sec:estr-del-docum}
 
-La estructura del documento principal se define en \texttt{Book/book.tex}. En este apartado describimos todos sus elementos para que puedas utilizarlo como referencia cuando necesites localizar una parte concreta del documento. No tendrás que editar ni configurar todos ellos: algunos se generan automáticamente y sus órdenes de inclusión deben mantenerse sin cambios.
+La estructura del documento principal se define en \texttt{Book/book.tex}. En este apartado describimos su organización general para que puedas localizar cada bloque y entender la función de las órdenes que lo delimitan.
 
 El documento se divide en tres partes gestionadas por las órdenes \texttt{\textbackslash{}frontmatter}, \texttt{\textbackslash{}mainmatter} y \texttt{\textbackslash{}backmatter}:
 
@@ -42,7 +42,10 @@ El documento se divide en tres partes gestionadas por las órdenes \texttt{\text
 
 Estas órdenes controlan la numeración y la organización interna del libro. No necesitas modificarlas ni cambiar su posición.
 
-La estructura distribuida con la plantilla incluye los siguientes elementos:
+\section{Páginas iniciales}
+\label{sec:paginas-iniciales}
+
+La parte inicial del documento, delimitada mediante \texttt{\textbackslash{}frontmatter}, reúne las cubiertas, el contenido preliminar y los índices. La plantilla distribuida incluye los siguientes elementos:
 
 \begin{itemize}
   \item Portada y páginas iniciales, seleccionadas automáticamente por \texttt{cover/cover.tex} a partir de la titulación configurada mediante \texttt{\textbackslash{}myDegree}. Normalmente solo tendrás que configurar los datos de \texttt{Config/myconfig.tex}, sin modificar \texttt{cover/cover.tex} ni las plantillas institucionales del directorio \texttt{cover/}.
@@ -55,14 +58,37 @@ La estructura distribuida con la plantilla incluye los siguientes elementos:
   \item Resumen extendido en español, disponible en \texttt{abstract/resumen-extendido.tex}. Su inclusión está comentada de forma predeterminada; actívala únicamente cuando lo requiera tu tipo de trabajo.
   \item Índice general, índice de figuras e índice de tablas, generados automáticamente desde \texttt{cover/toc+lof+lot.tex}. No necesitas editar este fichero ni los ficheros auxiliares que genera \LaTeX{} para construir los índices.
   \item Listados adicionales, configurados en \texttt{cover/extralistings.tex}. El ejemplo incluye listados para fragmentos de código, algoritmos y vídeos; la sección~\ref{sec:intro-videolink} explica el ejemplo dedicado a estos últimos. Puedes editar o comentar esta configuración si no la necesitas.
+\end{itemize}
+
+\section{Cuerpo principal}
+\label{sec:cuerpo-principal}
+
+La orden \texttt{\textbackslash{}mainmatter} da paso al contenido principal y activa la numeración ordinaria de los capítulos. En la plantilla encontrarás estos bloques:
+
+\begin{itemize}
   \item Capítulos principales, incluidos explícitamente desde el directorio \texttt{chapters/} mediante las órdenes \texttt{\textbackslash{}input} de \texttt{Book/book.tex}. El documento distribuido contiene esta guía, un capítulo de elementos básicos que incluye ejemplos de figuras y tablas, y otro de composición avanzada. Cuando prepares tu trabajo, sustituye esta selección por tus propios capítulos o utiliza el esqueleto académico disponible en \texttt{chapters/bare/}.
   \item Pliego de condiciones, disponible en \texttt{pliego/pliego.tex}, y presupuesto, disponible en \texttt{presupuesto/presupuesto.tex}. Sus órdenes de inclusión están comentadas de forma predeterminada; actívalas únicamente cuando necesites estos documentos. Los ejemplos proceden de un trabajo fin de carrera de Jesús Martínez y se conservan como material de referencia; debido a su antigüedad, contrástalos con la normativa y los formatos actuales.
   \item Bibliografía, impresa mediante \texttt{biblio/bibliography.tex}. Añade tus referencias a los ficheros \texttt{.bib} declarados en \texttt{biblio/bibliofiles.tex} mediante las variables \texttt{\textbackslash{}mybibfileOne}, \texttt{\textbackslash{}mybibfileTwo} y las sucesivas variables disponibles; normalmente no necesitarás modificar \texttt{biblio/bibliography.tex}.
   \item Apéndices, agrupados mediante el entorno \texttt{appendices} e incluidos explícitamente mediante las órdenes \texttt{\textbackslash{}input} de \texttt{Book/book.tex}. El documento distribuido dedica un apéndice al código fuente, los algoritmos y los listados adicionales. Puedes reemplazarlos, añadir otros nuevos u omitirlos según las necesidades de tu trabajo.
-  \item Contraportada, seleccionada automáticamente mediante \texttt{cover/backpage.tex} cuando existe una plantilla aplicable al tipo de trabajo y a la titulación configurados. Normalmente no necesitarás modificar este fichero ni la plantilla institucional seleccionada.
 \end{itemize}
 
-En la práctica, normalmente trabajarás en los capítulos, los resúmenes, la bibliografía y, si los utilizas, los acrónimos, los símbolos y los apéndices. Modifica las órdenes de inclusión de \texttt{Book/book.tex} solo cuando necesites añadir u omitir alguno de estos contenidos; conserva sin cambios las órdenes estructurales y los elementos seleccionados automáticamente. Cuando incorpores un PDF mediante \texttt{\textbackslash{}includepdf}, mantén la orden \texttt{\textbackslash{}clearemptydoublepage} posterior para que el siguiente elemento comience en la página adecuada.
+\section{Cierre del documento}
+\label{sec:cierre-documento}
+
+La orden \texttt{\textbackslash{}backmatter} delimita el cierre del documento. En la estructura actual da paso a la contraportada, que se selecciona automáticamente mediante \texttt{cover/backpage.tex} cuando existe una plantilla aplicable al tipo de trabajo y a la titulación configurados. Normalmente no necesitarás modificar este fichero ni la plantilla institucional seleccionada.
+
+\section{Qué partes tendrás que modificar}
+\label{sec:partes-modificar}
+
+Aunque hemos descrito todos los componentes para que puedas utilizar este capítulo como referencia, en la práctica solo tendrás que intervenir en una parte de ellos. Puedes distinguirlos de la siguiente manera:
+
+\begin{itemize}
+  \item Contenido que normalmente debes editar: los capítulos, los resúmenes y la bibliografía.
+  \item Contenido que debes editar o activar únicamente si lo utilizas: la dedicatoria, los agradecimientos, los PDF preliminares, el resumen extendido, los acrónimos, los símbolos, los listados adicionales, el pliego de condiciones, el presupuesto y los apéndices.
+  \item Elementos que normalmente no debes modificar: las órdenes estructurales, la generación de los índices y la selección automática de las cubiertas y contraportadas.
+\end{itemize}
+
+Modifica las órdenes de inclusión de \texttt{Book/book.tex} solo cuando necesites añadir u omitir alguno de estos contenidos. Cuando incorpores un PDF mediante \texttt{\textbackslash{}includepdf}, mantén la orden \texttt{\textbackslash{}clearemptydoublepage} posterior para que el siguiente elemento comience en la página adecuada.
 
 
 %%% Local Variables:
