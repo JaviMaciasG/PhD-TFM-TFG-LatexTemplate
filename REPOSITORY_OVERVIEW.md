@@ -98,7 +98,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate bu
 - Loads preamble/config/glossary/postamble layers.
 - Sets graphics search paths (`logos`, `figures`, `diagrams`).
 - Builds front matter (covers, letters, dedication, acknowledgements, lists, acronyms/symbols).
-- Includes the tutorial chapters (`introduccion`, `primeros-pasos`, `configuracion`, `estructura-documento`, `documentos-complementarios`, `compilacion-avanzada`, `elementos-basicos`, `ejemplos-avanzados`, and `conclusiones`) selected through `chapters/contents.tex`.
+- Loads the tutorial chapters (`introduccion`, `primeros-pasos`, `configuracion`, `estructura-documento`, `documentos-complementarios`, `compilacion-avanzada`, `elementos-basicos`, `ejemplos-avanzados`, and `conclusiones`) directly from `Book/book.tex`.
 - Injects bibliography and appendices.
 - Adds back page logic.
 

@@ -191,7 +191,17 @@
 %\part*{Memoria}
 %\label{part:memoria}
 
-\input{chapters/contents.tex}
+% BEGIN chapter inputs: the Makefile uses these markers for bare/orig-chapters
+\input{chapters/introduccion.tex}
+\input{chapters/primeros-pasos.tex}
+\input{chapters/configuracion.tex}
+\input{chapters/estructura-documento.tex}
+\input{chapters/documentos-complementarios.tex}
+\input{chapters/compilacion-avanzada.tex}
+\input{chapters/elementos-basicos.tex}
+\input{chapters/ejemplos-avanzados.tex}
+\input{chapters/conclusiones.tex}
+% END chapter inputs
 
 % Optional in PFCs
 %\input{pliego/pliego.tex}
@@ -227,7 +237,9 @@
 %\appendix                                         % DO NOT TOUCH THIS LINE!
 
 \begin{appendices}
-  \input{appendix/contents.tex}
+  % BEGIN appendix inputs: the Makefile uses these markers for bare/orig-chapters
+  \input{appendix/codigo-algoritmos-listados.tex}
+  % END appendix inputs
 \end{appendices}
 %
 % END Appendices. Edit/modify all within this section
