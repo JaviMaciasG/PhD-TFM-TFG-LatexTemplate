@@ -25,7 +25,7 @@
 \chapter{Primeros pasos}
 \label{cha:primeros-pasos}
 
-En este capítulo te acompañamos desde la preparación del entorno hasta la generación del primer PDF. Primero revisaremos los requisitos necesarios, después explicaremos cómo configurar la compilación en GNU/Linux, Windows, macOS y Overleaf, a continuación presentaremos brevemente la plantilla de anteproyecto y terminaremos explicándote cómo preparar una estructura mínima para comenzar a escribir tu trabajo. Para empezar no necesitas conocer el \texttt{Makefile} ni utilizar una terminal: puedes trabajar con tu editor habitual de \LaTeX{}.
+En este capítulo te acompañamos desde la preparación del entorno hasta la generación del primer PDF. Primero revisaremos los requisitos necesarios, después explicaremos cómo configurar la compilación en GNU/Linux, Windows, macOS y Overleaf, a continuación presentaremos brevemente la plantilla de anteproyecto y, por último, explicaremos cómo preparar una estructura mínima para comenzar a escribir tu trabajo y cómo registrar correctamente sus fuentes en Git. Para empezar no necesitas conocer el \texttt{Makefile} ni utilizar una terminal: puedes trabajar con tu editor habitual de \LaTeX{}.
 
 \section{Prerrequisitos}
 \label{sec:prerrequisitos}
@@ -109,10 +109,43 @@ Para preparar esa versión mínima manualmente, sigue estos pasos:
 
 Con ello tendrás un documento principal que incluye únicamente los capítulos y apéndices mínimos. Si utilizas \texttt{make}, puedes automatizar este proceso mediante el objetivo \texttt{bare-chapters}, descrito en la sección~\ref{sec:compilacion-makefile}.
 
+\section{Preparación del repositorio Git}
+\label{sec:preparacion-repositorio-git}
+
+Después de comprobar la compilación y preparar la estructura mínima, te recomendamos crear un repositorio Git para tu trabajo y realizar un primer commit con los ficheros necesarios para reconstruir los documentos. No utilices \texttt{git add .} sin revisar antes su contenido: LaTeX genera numerosos ficheros auxiliares que no forman parte de tu trabajo y que solo añadirían ruido al historial.
+
+\subsection{Preparación manual}
+
+En el primer commit debes incluir los siguientes tipos de ficheros:
+
+\begin{itemize}
+  \item Los ficheros de configuración compartida de \texttt{Config/}, en particular \texttt{myconfig.tex}, y los ficheros estructurales que cargan tus documentos.
+  \item \texttt{Book/book.tex}, los capítulos, apéndices, resúmenes, bibliografía y demás fuentes \texttt{.tex} o \texttt{.bib} que utilice realmente el libro.
+  \item \texttt{Anteproyecto/anteproyecto.tex} y los formularios de \texttt{PapeleoTFG/}, \texttt{PapeleoTFM/} o \texttt{PapeleoPHD/} que quieras poder generar.
+  \item Las figuras, diagramas, logotipos, cartas y otros recursos que los documentos lean durante la compilación. Esto incluye los PDF que sean recursos de entrada, por ejemplo una carta incorporada mediante \texttt{\textbackslash{}includepdf}.
+  \item Los \texttt{Makefile}, los ficheros \texttt{.gitignore}, el fichero \texttt{README.md}, la licencia y cualquier script propio que necesites para reconstruir los documentos.
+\end{itemize}
+
+A medida que avances, añade los nuevos capítulos, referencias bibliográficas, figuras, datos o scripts que incorpores al trabajo y registra también la eliminación de los que dejes de utilizar. Antes de cada commit, consulta \texttt{git status} y añade rutas concretas mediante \texttt{git add}; si un fichero ya versionado deja de ser necesario pero quieres conservarlo en tu equipo, puedes retirarlo únicamente del índice mediante \texttt{git rm --cached}.
+
+No debes subir nunca los auxiliares creados durante la compilación, como los ficheros \texttt{.aux}, \texttt{.log}, \texttt{.fls}, \texttt{.fdb\_latexmk}, \texttt{.synctex.gz}, \texttt{.bcf}, \texttt{.blg}, \texttt{.bbl}, \texttt{.run.xml}, \texttt{.toc}, \texttt{.lof} o \texttt{.lot}; tampoco los archivos temporales del editor, los paquetes de distribución ni los PDF generados del libro, el anteproyecto o el papeleo. Como excepción, puedes conservar la versión final definitiva del documento si existe una razón clara para versionarla, pero no acumules en Git los PDF de cada compilación.
+
+\subsection{Sincronización mediante el \texttt{Makefile}}
+
+Si dispones de \texttt{make} y Bash, ejecuta desde el directorio raíz del proyecto:
+
+\begin{verbatim}
+make sync-git-sources
+\end{verbatim}
+
+Este objetivo genera de nuevo las dependencias de LaTeX del libro, el anteproyecto y todos los formularios, identifica los ficheros locales imprescindibles para compilarlos y los compara con el contenido versionado. Antes de actuar muestra los ficheros que añadirá o actualizará y aquellos que dejarán de estar versionados, y te pide confirmación. Si aceptas, actualiza únicamente el índice de Git: los ficheros descartados permanecen en el disco y no se ejecutan ni \texttt{git commit} ni \texttt{git push}. Al terminar, revisa \texttt{git status} y crea tú mismo el commit adecuado.
+
+Puedes volver a ejecutar el objetivo cada vez que cambien las dependencias. Si no puede generarse información de dependencias, el proceso se detiene antes de modificar el índice; si una fuente produce dependencias pero no completa la compilación, muestra una advertencia para que revises el error. Como medida de seguridad, el objetivo está desactivado cuando detecta la marca local que identifica el repositorio oficial de mantenimiento de la plantilla.
+
 \section{Resumen del capítulo}
 \label{sec:resumen-primeros-pasos}
 
-Ya sabes qué herramientas necesita la plantilla, cómo generar el documento desde tu editor habitual en GNU/Linux, Windows o macOS, o mediante Overleaf, cómo trabajar con el anteproyecto y cómo preparar la estructura mínima con la que puedes comenzar a escribir tu trabajo. Recuerda que Biber es necesario para la bibliografía y que solo tendrás que ejecutar \texttt{makeglossaries} cuando utilices acrónimos o símbolos; el siguiente paso es adaptar las variables descritas en el capítulo~\ref{cha:configuracion}.
+Ya sabes qué herramientas necesita la plantilla, cómo generar el documento desde tu editor habitual en GNU/Linux, Windows o macOS, o mediante Overleaf, cómo trabajar con el anteproyecto, cómo preparar la estructura mínima con la que puedes comenzar a escribir tu trabajo y cómo registrar correctamente sus fuentes en Git. Recuerda que Biber es necesario para la bibliografía y que solo tendrás que ejecutar \texttt{makeglossaries} cuando utilices acrónimos o símbolos; el siguiente paso es adaptar las variables descritas en el capítulo~\ref{cha:configuracion}.
 
 %%% Local Variables:
 %%% TeX-master: "../book"

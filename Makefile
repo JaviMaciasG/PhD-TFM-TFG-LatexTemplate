@@ -10,4 +10,7 @@ clean:
 	rm 00-README.pdf
 	$(MAKE) -C Book clean
 
-.PHONY: all book
+sync-git-sources:
+	@bash AdminScripts/sync-git-sources.sh
+
+.PHONY: all book sync-git-sources
