@@ -25,7 +25,7 @@
 \chapter{Primeros pasos}
 \label{cha:primeros-pasos}
 
-En este capítulo te acompañamos desde la preparación del entorno hasta la generación del primer PDF. Primero revisaremos los requisitos necesarios y después explicaremos cómo configurar la compilación en GNU/Linux, Windows, macOS y Overleaf. Para empezar no necesitas conocer el \texttt{Makefile} ni utilizar una terminal: puedes trabajar con tu editor habitual de \LaTeX{}.
+En este capítulo te acompañamos desde la preparación del entorno hasta la generación del primer PDF. Primero revisaremos los requisitos necesarios, después explicaremos cómo configurar la compilación en GNU/Linux, Windows, macOS y Overleaf, y terminaremos explicándote cómo preparar una estructura mínima para comenzar a escribir tu trabajo. Para empezar no necesitas conocer el \texttt{Makefile} ni utilizar una terminal: puedes trabajar con tu editor habitual de \LaTeX{}.
 
 \section{Prerrequisitos}
 \label{sec:prerrequisitos}
@@ -87,10 +87,27 @@ Overleaf gestiona la cadena de construcción con sus propias herramientas, por l
 El libro de ejemplo es relativamente complejo y su compilación puede superar el tiempo disponible en algunos planes de Overleaf. Si la compilación se interrumpe por este motivo, comprueba los límites vigentes de tu cuenta y elimina temporalmente los ejemplos o elementos opcionales que no necesites. Para generar el anteproyecto o un formulario administrativo tendrás que cambiar el documento principal, como se explica en el capítulo~\ref{cha:documentos-complementarios}.
 
 
+\section{Preparación de una estructura mínima}
+\label{sec:estructura-minima}
+
+Después de descargar la plantilla, compila directamente el fichero \texttt{Book/book.tex} antes de comenzar a modificarla. El resultado será este manual completo, que también contiene ejemplos de los elementos que puedes utilizar en tu trabajo. Esta primera compilación te permitirá comprobar que tu entorno funciona correctamente y consultar el manual mientras conoces la plantilla.
+
+Una vez que hayas comprobado que todo funciona, puedes comenzar a escribir tu memoria a partir de una estructura mínima y casi vacía que hemos preparado para ti. Para prepararla sin utilizar \texttt{make}, encontrarás el fichero \texttt{book-bare.tex} en el directorio \texttt{Book/} y versiones mínimas de los capítulos y apéndices en \texttt{chapters/bare/} y \texttt{appendix/bare/}. Antes de sustituir ningún fichero, conserva una copia de tu trabajo si ya has comenzado a modificar la plantilla.
+
+Para preparar esa versión mínima manualmente, sigue estos pasos:
+
+\begin{itemize}
+  \item En el directorio \texttt{Book/}, sustituye el fichero \texttt{book.tex} por \texttt{book-bare.tex} y cambia el nombre de este último a \texttt{book.tex}.
+  \item Elimina los ficheros \texttt{.tex} situados directamente en \texttt{chapters/} y \texttt{appendix/}; no elimines los subdirectorios \texttt{bare/} ni su contenido.
+  \item Copia los ficheros de \texttt{chapters/bare/} a \texttt{chapters/} y los de \texttt{appendix/bare/} a \texttt{appendix/}.
+\end{itemize}
+
+Con ello tendrás un documento principal que incluye únicamente los capítulos y apéndices mínimos. Si utilizas \texttt{make}, puedes automatizar este proceso mediante el objetivo \texttt{bare-chapters}, descrito en la sección~\ref{sec:compilacion-makefile}.
+
 \section{Resumen del capítulo}
 \label{sec:resumen-primeros-pasos}
 
-Ya sabes qué herramientas necesita la plantilla y cómo generar el documento desde tu editor habitual en GNU/Linux, Windows o macOS, o mediante Overleaf. Recuerda que Biber es necesario para la bibliografía y que solo tendrás que ejecutar \texttt{makeglossaries} cuando utilices acrónimos o símbolos; el siguiente paso es adaptar las variables descritas en el capítulo~\ref{cha:configuracion}.
+Ya sabes qué herramientas necesita la plantilla, cómo generar el documento desde tu editor habitual en GNU/Linux, Windows o macOS, o mediante Overleaf, y cómo preparar la estructura mínima con la que puedes comenzar a escribir tu trabajo. Recuerda que Biber es necesario para la bibliografía y que solo tendrás que ejecutar \texttt{makeglossaries} cuando utilices acrónimos o símbolos; el siguiente paso es adaptar las variables descritas en el capítulo~\ref{cha:configuracion}.
 
 %%% Local Variables:
 %%% TeX-master: "../book"

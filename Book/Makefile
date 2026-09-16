@@ -107,12 +107,14 @@ orig-chapters: backup-chapters
 	@echo "Setting orig chapters..."
 	for f in $(CHAPTER_ORIG_SOURCES);  do cp $$f chapters; done
 	for f in $(APPENDIX_ORIG_SOURCES); do cp $$f appendix; done
-	perl -0pi -e 's!% BEGIN chapter inputs:.*?% END chapter inputs!% BEGIN chapter inputs: the Makefile uses these markers for bare/orig-chapters\n\\input{chapters/introduccion.tex}\n\\input{chapters/primeros-pasos.tex}\n\\input{chapters/configuracion.tex}\n\\input{chapters/estructura-documento.tex}\n\\input{chapters/documentos-complementarios.tex}\n\\input{chapters/compilacion-avanzada.tex}\n\\input{chapters/elementos-basicos.tex}\n\\input{chapters/ejemplos-avanzados.tex}\n\\input{chapters/conclusiones.tex}\n% END chapter inputs!s' $(TEX_FILE)
+	perl -0pi -e 's!% BEGIN chapter inputs:.*?% END chapter inputs!% BEGIN chapter inputs: the Makefile uses these markers for bare/orig-chapters\n\\input{chapters/introduccion.tex}\n\\input{chapters/primeros-pasos.tex}\n\\input{chapters/configuracion.tex}\n\\input{chapters/estructura-documento.tex}\n\\input{chapters/elementos-utilidad.tex}\n\\input{chapters/documentos-complementarios.tex}\n\\input{chapters/compilacion-avanzada.tex}\n\\input{chapters/elementos-basicos.tex}\n\\input{chapters/ejemplos-avanzados.tex}\n\\input{chapters/conclusiones.tex}\n% END chapter inputs!s' $(TEX_FILE)
 	perl -0pi -e 's!% BEGIN appendix inputs:.*?% END appendix inputs!% BEGIN appendix inputs: the Makefile uses these markers for bare/orig-chapters\n  \\input{appendix/codigo-algoritmos-listados.tex}\n  % END appendix inputs!s' $(TEX_FILE)
 	@echo " Done!"
 
 bare-chapters: backup-chapters
-	@echo "Setting orig chapters..."
+	@echo "Setting bare chapters..."
+	rm -f chapters/*.tex
+	rm -f appendix/*.tex
 	for f in $(CHAPTER_BARE_SOURCES);  do cp $$f chapters; done
 	for f in $(APPENDIX_BARE_SOURCES); do cp $$f appendix; done
 	perl -0pi -e 's!% BEGIN chapter inputs:.*?% END chapter inputs!% BEGIN chapter inputs: the Makefile uses these markers for bare/orig-chapters\n\\input{chapters/introduccion.tex}\n\\input{chapters/estudioTeorico.tex}\n\\input{chapters/desarrollo.tex}\n\\input{chapters/resultados.tex}\n\\input{chapters/conclusiones.tex}\n% END chapter inputs!s' $(TEX_FILE)
