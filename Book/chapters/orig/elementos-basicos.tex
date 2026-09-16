@@ -47,9 +47,9 @@ Una lista sin numerar puede construirse mediante el entorno \texttt{itemize}:
   \item Segundo elemento de ejemplo.
 \end{itemize}
 
-Las fuentes bibliográficas se citan con \texttt{\textbackslash{}cite}; por ejemplo, esta plantilla describe el proyecto \texis{} en \cite{texis}. También puedes añadir una aclaración mediante una nota al pie\footnote{Este es un ejemplo de nota al pie.}.
+Las fuentes bibliográficas se citan con \texttt{\textbackslash{}cite\{\}} (no olvides usar un espacio inseparable ``\~'' entre el texto previo y el comando \texttt{\textbackslash{}cite\{\}}). Por ejemplo, esta plantilla describe el proyecto \texis{} en~\cite{texis}. También puedes añadir una aclaración mediante una nota al pie\footnote{Este es un ejemplo de nota al pie.}.
 
-En algunas ocasiones puedes querer mostrar una referencia bibliográfica completa en el propio texto sin repetirla después en la bibliografía final. Por ejemplo, la orden \texttt{\textbackslash{}fullcite} nos permite incorporar directamente la siguiente referencia:
+En algunas ocasiones puedes querer mostrar una referencia bibliográfica completa en el propio texto sin repetirla después en la bibliografía final. Por ejemplo, la orden \texttt{\textbackslash{}fullcite} nos permite incorporar directamente la siguiente referencia en el texto (por ejemplo cuando estás listando las publicaciones resultado de tu tesis doctoral):
 
 \fullcite{monasterio2022}
 
@@ -73,7 +73,7 @@ Puedes incluir expresiones matemáticas en línea, como $\sigma=0.75$, o utiliza
 
 La ecuación~\ref{eq:ejemplo-basico} muestra cómo asociar una etiqueta mediante \texttt{\textbackslash{}label} y recuperarla con \texttt{\textbackslash{}ref}. El mismo mecanismo se utiliza para capítulos, secciones, figuras, tablas, algoritmos y fragmentos de código.
 
-Un asunto importante de formato, cuando definas entornos \texttt{equation} y vayas a definir las variables utilizadas, fíjate en no dejar una línea en blanco entre la ecuación y el texto explicativo, para que no indente ese texto explicativo. Te pongo un ejemplo tomado de~\cite{ramirez2026jstars}:
+Un asunto importante de formato, cuando utilices entornos \texttt{equation} y vayas a definir las variables utilizadas, fíjate en no dejar una línea en blanco entre la ecuación y el texto explicativo, para que no indente ese texto explicativo. Te pongo un ejemplo tomado de~\cite{ramirez2026jstars}:
 
 \textit{On the other hand, for vessel localization, the regression model is evaluated using the {Mean Absolute Error (MAE)}. This measures the average absolute deviation between predictions and actual values (the lower, the better):}
 \begin{equation}
@@ -105,7 +105,6 @@ A continuación se muestran los niveles de división disponibles por debajo de u
 
 
 
-\input{chapters/elementos-utilidad.tex}
 
 \input{chapters/figuras-y-tablas.tex}
 

@@ -1,7 +1,7 @@
-\section{Ejemplos de elementos de utilidad}
-\label{sec:ejempl-de-elem}
+\chapter{Elementos de utilidad de la plantilla}
+\label{cha:elementos-utilidad}
 
-\subsection{Comandos personalizados}
+\section{Comandos personalizados}
 \label{sec:uso-de-comandos}
 
 Después de las variables de configuración descritas en la sección~\ref{sec:definicion-del-tipo} hemos dejado en \texttt{Config/myconfig.tex} una zona destinada a definir comandos personalizados. Incluimos algunas definiciones a modo de ejemplo para mostrarte cómo puedes crear las tuyas; puedes conservarlas, adaptarlas o eliminarlas cuando dejen de resultarte útiles.
@@ -27,14 +27,14 @@ Los símbolos de barra inversa y virgulilla no necesitan definiciones adicionale
 
 Antes de eliminar o cambiar un comando de ejemplo, busca sus usos en los capítulos, apéndices, acrónimos y símbolos. Si eliminas una definición que todavía utilizas, la compilación fallará con un error de secuencia de control desconocida.
 
-\subsection{Frases célebres}
+\section{Frases célebres}
 \label{sec:uso-de-frases}
 
 La plantilla permite incorporar al comienzo de los capítulos una cita mediante los entornos \texttt{FraseCelebre}, \texttt{Frase} y \texttt{Fuente}. Las frases utilizadas como ejemplo y las definiciones que permiten generarlas proceden del excelente trabajo de Marco Antonio Gomez-Martín y Pedro Pablo Gomez-Martín en el proyecto \texis{}, una plantilla para la creación de tesis y otros documentos disponible en \cite{texis}.
 
 Puedes editar o eliminar el bloque de cita de cada capítulo sin afectar al resto de su contenido. Cuando utilices una cita ajena, identifica adecuadamente su fuente y comprueba que su reproducción sea compatible con los derechos aplicables.
 
-\subsection{Inclusión de figuras y diagramas}
+\section{Gestión de figuras y diagramas en la plantilla}
 \label{sec:diagrama}
 
 Puedes incluir directamente ficheros \texttt{pdf}, \texttt{png} y \texttt{jpg} mediante \texttt{\textbackslash{}includegraphics}. Para evitar que tengas que escribir la ruta completa de cada figura, ya hemos configurado en \texttt{Book/book.tex} los directorios \texttt{logos/}, \texttt{figures/} y \texttt{diagrams/} mediante \texttt{\textbackslash{}graphicspath}; normalmente bastará con que indiques el nombre del fichero.
@@ -52,7 +52,7 @@ La figura~\ref{fig:fig_clobj} utiliza \texttt{diagrams/Esquema\_objetos.pdf}, qu
 
 Incluye en todas las figuras un pie descriptivo y una etiqueta única mediante \texttt{\textbackslash{}label}. Para citarlas desde el texto, utiliza \texttt{\textbackslash{}ref}, preferiblemente acompañado del tipo de elemento, como en \texttt{figura\textasciitilde{}\textbackslash{}ref\{fig:fig\_clobj\}}.
 
-\subsection{Definición y uso de acrónimos}
+\section{Definición y uso de acrónimos}
 \label{sec:uso-de-acronimos}
 
 La plantilla gestiona los acrónimos mediante el paquete \texttt{glossaries}. Sus definiciones se encuentran en \texttt{acronyms/defacronymsgl.tex}, mientras que \texttt{acronyms/acronymsgl.tex} configura y genera el listado correspondiente.
@@ -84,7 +84,7 @@ Puedes definir mediante \texttt{\textbackslash{}newglossaryentry} las entradas q
 
 También puedes comprobar cómo se gestionan los plurales: la primera aparición de \acp{SOC} utiliza la forma desarrollada configurada y, al repetir \acp{SOC}, se muestra su forma abreviada plural. Después podemos volver al singular mediante \ac{SOC}.
 
-\subsection{Definición y uso de símbolos}
+\section{Definición y uso de símbolos}
 \label{sec:simbolos}
 
 Los símbolos se gestionan también mediante \texttt{glossaries}. Se definen en \texttt{symbols/defsymbolsgl.tex} como entradas del glosario de tipo \texttt{symbols}, y su listado se configura en \texttt{symbols/symbolsgl.tex}.
@@ -93,7 +93,7 @@ Los ejemplos incluidos representan el ángstrom, \ac{angstrom}; el ohmio, \ac{oh
 
 Si no necesitas acrónimos o símbolos, comenta en \texttt{Book/book.tex} las órdenes que incluyen sus definiciones y listados. En ese caso tampoco necesitarás ejecutar \texttt{makeglossaries}; la sección~\ref{sec:compilacion} explica cuándo debes incorporar esta herramienta al proceso de compilación.
 
-\subsection{Ejemplos de inclusión de enlaces a vídeos y listado}
+\section{Enlaces a vídeos y listados adicionales}
 \label{sec:intro-videolink}
 
 En marzo de 2023 recibimos una pregunta sobre la posibilidad de incluir enlaces a vídeos en el documento y generar automáticamente un listado similar al de tablas, figuras o algoritmos. El código para implementarlo está en el fichero \texttt{cover/extralistings.tex}, que puedes editar y adaptar a tus necesidades.
