@@ -43,6 +43,7 @@
 ## Build tool directories for auxiliary files
 # latexrun
 latex.out/
+auto/
 
 ## Auxiliary and intermediate files from other packages:
 # algorithms
@@ -59,6 +60,7 @@ acs-*.bib
 *.nav
 *.pre
 *.snm
+*.tcp
 *.vrb
 
 # changes
@@ -111,12 +113,16 @@ acs-*.bib
 *.glsdefs
 *.lzo
 *.lzs
+*.slo
+*.sls
 
 # uncomment this for glossaries-extra (will ignore makeindex's style files!)
 # *.ist
 
 # gnuplottex
 *-gnuplottex-*
+*.gnuplot
+*.table
 
 # gregoriotex
 *.gaux
@@ -173,6 +179,7 @@ _minted*
 
 # pax
 *.pax
+*.newpax
 
 # pdfpcnotes
 *.pdfpc
@@ -225,6 +232,14 @@ pythontex-files-*/
 # xmpincl
 *.xmpi
 
+# svg
+svg-inkscape/
+
+# Additional package-generated files
+*.glog
+*.ptc
+*.xwm
+
 # xindy
 *.xdy
 
@@ -262,8 +277,6 @@ TSWLatexianTemp*
 # TeXnicCenter
 *.tps
 
-# auto folder when using emacs and auctex
-./auto/*
 *.el
 
 # expex forward references with \gathertags
@@ -298,7 +311,6 @@ tags
 
 
 # -*- mode: gitignore; -*-
-*~
 \#*\#
 /.emacs.desktop
 /.emacs.desktop.lock
@@ -323,9 +335,6 @@ tramp
 
 # reftex files
 *.rel
-
-# AUCTeX auto folder
-/auto/
 
 # cask packages
 .cask/
@@ -359,14 +368,9 @@ flycheck_*.el
 # Built Visual Studio Code Extensions
 *.vsix
 
-# Ignore LyX backup and autosave files
+# Ignore LyX autosave files
 # http://www.lyx.org/
-*.lyx~
 *.lyx#
-
-
-  
-*~
 
 # temporary files which can be created if a process still has a handle open of a deleted file
 .fuse_hidden*
@@ -380,12 +384,18 @@ flycheck_*.el
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
-# Backup files 
-*.bak
+# Backup files
 *.gho
 *.ori
 *.orig
 *.tmp
+
+# Microsoft Office and LibreOffice lock files
+~$*
+
+# Python bytecode and caches used by administration scripts
+__pycache__/
+*.py[cod]
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
@@ -550,6 +560,32 @@ pdf_svg_done
 *.tar.gz
 *.tgz
 
-
 00-README.pdf
+
+## Generated documents and repository-specific temporary files
+/Anteproyecto/*.pdf
+/Book/PhD-*.pdf
+/Book/TFG-*.pdf
+/Book/TFM-*.pdf
+/Book/book.pdf
+/Book/book-flatten-diff.pdf
+/Book/*MaciasGuarasa-Javier*.pdf
+/Book/book-latex.zip
+/Deprecated/Papeleo/*.pdf
+/PapeleoPHD/*.pdf
+/PapeleoTFG/*.pdf
+/PapeleoTFM/*.pdf
+
+/Book/Tools/flatten.zip
+/Book/appendix/manual.iso.tex
+/Book/appendix/manual2.tex
+/Book/cover/works1
+/Book/cover/works2
+/Book/slides/documentation/Beamer.zip
+/Book/slides/documentation/latex-templates-beamer-tutorial.zip
+/Config/myconfig.tex.before
+/Config/myconfig.tex.vars
+/Deprecated/cdromCover/simplecd/simplecd.zip
+
+# Local release notes not included in the distributed template
 CHANGELOG.md
