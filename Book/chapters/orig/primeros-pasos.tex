@@ -25,7 +25,7 @@
 \chapter{Primeros pasos}
 \label{cha:primeros-pasos}
 
-En este capítulo te acompañamos desde la preparación del entorno hasta la generación del primer PDF. Primero revisaremos los requisitos necesarios, después explicaremos cómo configurar la compilación en GNU/Linux, Windows, macOS y Overleaf, y terminaremos explicándote cómo preparar una estructura mínima para comenzar a escribir tu trabajo. Para empezar no necesitas conocer el \texttt{Makefile} ni utilizar una terminal: puedes trabajar con tu editor habitual de \LaTeX{}.
+En este capítulo te acompañamos desde la preparación del entorno hasta la generación del primer PDF. Primero revisaremos los requisitos necesarios, después explicaremos cómo configurar la compilación en GNU/Linux, Windows, macOS y Overleaf, a continuación presentaremos brevemente la plantilla de anteproyecto y terminaremos explicándote cómo preparar una estructura mínima para comenzar a escribir tu trabajo. Para empezar no necesitas conocer el \texttt{Makefile} ni utilizar una terminal: puedes trabajar con tu editor habitual de \LaTeX{}.
 
 \section{Prerrequisitos}
 \label{sec:prerrequisitos}
@@ -41,7 +41,7 @@ Si durante la compilación recibes un aviso de que falta un fichero \texttt{.sty
 No necesitas utilizar \texttt{make} para trabajar con la plantilla. Puedes compilarla con cualquier editor o herramienta de construcción de \LaTeX{} que permita configurar las herramientas descritas en la sección~\ref{sec:compilacion}; si lo prefieres, también puedes hacerlo desde una terminal. El \texttt{Makefile} incluido es únicamente una forma opcional de automatizar el proceso y resulta especialmente cómodo en sistemas GNU/Linux.
 
 
-\section{Compilación}
+\section{Compilación del documento principal}
 \label{sec:compilacion}
 
 Antes de compilar el documento, completa la configuración compartida en \texttt{Config/myconfig.tex} siguiendo las indicaciones de la sección~\ref{sec:definicion-del-tipo}. Después, abre \texttt{Book/book.tex} como documento principal en tu editor de \LaTeX{} y utiliza su función habitual de compilación o construcción.
@@ -87,6 +87,11 @@ Overleaf gestiona la cadena de construcción con sus propias herramientas, por l
 El libro de ejemplo es relativamente complejo y su compilación puede superar el tiempo disponible en algunos planes de Overleaf. Si la compilación se interrumpe por este motivo, comprueba los límites vigentes de tu cuenta y elimina temporalmente los ejemplos o elementos opcionales que no necesites. Para generar el anteproyecto o un formulario administrativo tendrás que cambiar el documento principal, como se explica en el capítulo~\ref{cha:documentos-complementarios}.
 
 
+\section{Trabajo con el anteproyecto}
+\label{sec:primeros-pasos-anteproyecto}
+
+Si antes de comenzar la memoria necesitas preparar un anteproyecto, utiliza \texttt{Anteproyecto/anteproyecto.tex} como documento principal. Esta plantilla reutiliza los datos definidos en \texttt{Config/myconfig.tex} y puedes compilarla con tu editor habitual, mediante su \texttt{Makefile} opcional o, en Overleaf, seleccionándola como \textit{Main document}. Encontrarás una descripción más completa de su contenido y compilación en la sección~\ref{sec:plantilla-de-anteproyecto}.
+
 \section{Preparación de una estructura mínima}
 \label{sec:estructura-minima}
 
@@ -107,7 +112,7 @@ Con ello tendrás un documento principal que incluye únicamente los capítulos 
 \section{Resumen del capítulo}
 \label{sec:resumen-primeros-pasos}
 
-Ya sabes qué herramientas necesita la plantilla, cómo generar el documento desde tu editor habitual en GNU/Linux, Windows o macOS, o mediante Overleaf, y cómo preparar la estructura mínima con la que puedes comenzar a escribir tu trabajo. Recuerda que Biber es necesario para la bibliografía y que solo tendrás que ejecutar \texttt{makeglossaries} cuando utilices acrónimos o símbolos; el siguiente paso es adaptar las variables descritas en el capítulo~\ref{cha:configuracion}.
+Ya sabes qué herramientas necesita la plantilla, cómo generar el documento desde tu editor habitual en GNU/Linux, Windows o macOS, o mediante Overleaf, cómo trabajar con el anteproyecto y cómo preparar la estructura mínima con la que puedes comenzar a escribir tu trabajo. Recuerda que Biber es necesario para la bibliografía y que solo tendrás que ejecutar \texttt{makeglossaries} cuando utilices acrónimos o símbolos; el siguiente paso es adaptar las variables descritas en el capítulo~\ref{cha:configuracion}.
 
 %%% Local Variables:
 %%% TeX-master: "../book"
