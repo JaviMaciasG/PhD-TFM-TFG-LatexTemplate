@@ -120,6 +120,8 @@ For a normal thesis or final-project document, start with `Config/myconfig.tex` 
 
 ## To work in the main book
 
+After downloading the template, first compile `Book/book.tex` without modifying it. The resulting PDF is the complete manual, including examples of the available features; use this first build to check that everything works and review the guide before starting your document.
+
 1. Configure the document metadata in `Config/myconfig.tex`, if you haven't already done it.
 2. Review `Book/book.tex` and comment out any material you do not need. The example document enables a sample external letter, dedication, acknowledgements, acronym and symbol lists, example chapters, and appendices.
 3. Edit the content under `Book/abstract/`, `Book/chapters/`, `Book/appendix/`, and the other content directories as required.
@@ -132,6 +134,9 @@ If you follow the `make` compilation alternative, to remove generated auxiliary 
 ```bash
 make clean
 ```
+
+When you are ready to write your own document, you can start from the minimal, almost empty structure we prepared for you. If you are not using `make`, replace `Book/book.tex` with `Book/book-bare.tex`, remove the `.tex` files located directly under `Book/chapters/` and `Book/appendix/`, and copy into those directories the files from `Book/chapters/bare/` and `Book/appendix/bare/`, respectively. If you use `make`, running `make bare-chapters` from `Book/` performs this preparation automatically after creating a backup.
+
 
 ## Customize the book contents
 
