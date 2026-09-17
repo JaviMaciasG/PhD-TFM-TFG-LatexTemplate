@@ -78,9 +78,9 @@ The root `Makefile` can also produce a PDF version of the README and delegate bu
 - Dates, legal/publishing options, and grades
 - Link colors and optional helper macros
 
-### Degree/work-type mapping
+### Degree registry and layouts
 
-`Config/worktypes.txt` maps degree codes to work categories (`TFG`, `TFM`, `PhD`, etc.), used by build/cover logic.
+`Config/degrees.tex` is the authoritative registry of degree identifiers, work categories (`TFG`, `TFM`, `PhD`, etc.) and display names. `Config/layout-profiles.tex` maps those entries to their cover and back-page files. The build tools query the same registry through `Config/query-degree-registry.sh`.
 
 ### Dynamic post-configuration
 
@@ -141,4 +141,3 @@ For a new user, the safest path is:
 3. Start from `Book/book.tex` with existing example chapters.
 4. Build `Book/book.tex` with your editor and verify that its bibliography backend is set to `biber`; use `make` only if you prefer the provided automation.
 5. Only after successful first compile, touch covers/paperwork files.
-

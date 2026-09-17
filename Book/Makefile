@@ -4,7 +4,8 @@
 SHELL = /bin/bash
 CONFIG_FILE = ../Config/myconfig.tex
 PRELUDE_FILE = ../Config/preamble.tex
-WORKTYPES_FILE = ../Config/worktypes.txt
+DEGREES_FILE = ../Config/degrees.tex
+DEGREE_REGISTRY_TOOL = ../Config/query-degree-registry.sh
 
 # Tools
 LATEXMK_TOOL = latexmk
@@ -31,7 +32,7 @@ DEGREE_NAME = $(shell grep -v "%" $(CONFIG_FILE) | grep "myDegree" | cut -f 3 -d
 AUTHOR_NAME = $(shell grep -v "%" $(CONFIG_FILE) | grep "myAuthorName" | grep -v "myAuthorFullName" | cut -f 3 -d "{" | cut -f 1 -d "}" | tr -d " " | iconv -f utf8 -t ascii//TRANSLIT)
 AUTHOR_SURNAME = $(shell grep -v "%" $(CONFIG_FILE) | grep "myAuthorSurname" | grep -v "myAuthorFullName" | cut -f 3 -d "{" | cut -f 1 -d "}" | tr -d " " | iconv -f utf8 -t ascii//TRANSLIT)
 BOOK_LANGUAGE = $(shell grep -v "%" $(CONFIG_FILE) | grep "myLanguage" | cut -f 3 -d "{" | cut -f 1 -d "}")
-BOOK_TYPE = $(shell grep -w $(DEGREE_NAME) $(WORKTYPES_FILE) | tr -s " " | cut -f 2 -d " " | tr -d " ")
+BOOK_TYPE = $(shell sh $(DEGREE_REGISTRY_TOOL) work-type "$(DEGREE_NAME)" "$(DEGREES_FILE)")
 RELEASE = $(shell git describe --tags --abbrev=0)
 
 # Filenames

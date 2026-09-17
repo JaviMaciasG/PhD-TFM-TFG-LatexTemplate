@@ -49,13 +49,13 @@ Los identificadores admitidos actualmente por \texttt{\textbackslash{}myDegree},
 
 \begin{itemize}
   \item \textbf{Trabajos fin de carrera}: \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST} e \texttt{ITI}. Corresponden a titulaciones anteriores al Espacio Europeo de Educación Superior y se conservan por compatibilidad.
-  \item \textbf{Trabajos fin de grado}: \texttt{GITT}, \texttt{GIEC}, \texttt{GIT}, \texttt{GIST}, \texttt{GIC}, \texttt{GII}, \texttt{GMC}, \texttt{GIS}, \texttt{GISI}, \texttt{GIEAI} y \texttt{GITI}.
+  \item \textbf{Trabajos fin de grado}: \texttt{GITT}, \texttt{GIEC}, \texttt{GIT}, \texttt{GIST}, \texttt{GIC}, \texttt{GII}, \texttt{GMC}, \texttt{GIS}, \texttt{GSI}, \texttt{GISI}, \texttt{GIEAI} y \texttt{GITI}. \texttt{GSI} se conserva como identificador histórico del grado al que sucedió \texttt{GISI}.
   \item \textbf{Trabajos fin de máster}: \texttt{MUSEA}, \texttt{MUIT}, \texttt{MUII}, \texttt{MUIE}, \texttt{MUCTE}, \texttt{MUANBD} y \texttt{MUC}.
   \item \textbf{Tesis doctorales}: \texttt{PHDUAH} y \texttt{PHDUPM}.
   \item \textbf{Informes de investigación}: \texttt{GEINTRARR}, cuyo soporte se considera todavía experimental.
 \end{itemize}
 
-La correspondencia entre estos identificadores y los tipos generales de trabajo se mantiene en \texttt{Config/worktypes.txt}. Si quieres añadir una titulación nueva, tendrás que ampliar esa correspondencia y proporcionar los textos y cubiertas institucionales necesarios; no basta con escribir un identificador nuevo en \texttt{\textbackslash{}myDegree}.
+La definición completa de cada identificador se mantiene en \texttt{Config/degrees.tex}, mientras que \texttt{Config/layout-profiles.tex} reúne las portadas y contraportadas asociadas. Si quieres añadir una titulación nueva, tendrás que declararla en el registro y proporcionar un perfil con los textos y cubiertas institucionales necesarios; no basta con escribir un identificador nuevo en \texttt{\textbackslash{}myDegree}.
 
 \section{Título, palabras clave y confidencialidad}
 

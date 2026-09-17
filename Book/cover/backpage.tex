@@ -29,49 +29,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Right now (november 2013), it's only defined for TFGs at UAH
+% Includes the optional back page selected by the active layout profile.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ifthenelse{\equal{\myWorkType}{TFG}}
-{
-  \input{cover/backpage-tfg-uah-2024.tex}
-}
-{
-  \ifthenelse{\equal{\myWorkType}{TFM}}
-  {
-
-      \ifthenelse{\equal{\myDegree}{MUC}}
-        {
-          \input{cover/backpage-tfm-normativa-uah.tex}
-        }
-        {
-          \ifthenelse{\equal{\myDegree}{MUCTE}}
-          {
-            \input{cover/backpage-tfm-normativa-uah.tex}
-          }
-          {
-            \ifthenelse{\equal{\myDegree}{MUANBD}}
-            {
-              \input{cover/backpage-tfm-normativa-uah.tex}
-            }
-            {
-              \ifthenelse{\equal{\myDegree}{MUIE}}
-              {
-                \input{cover/backpage-tfg-uah.tex}
-              }
-              {
-                \input{cover/backpage-tfm-normativa-uah.tex}
-              }
-            }
-          }
-        }
-  }
-  {
-  }
-}
+% Profiles without a back page deliberately produce no output here.
+\DegreeRegistryInputBackPage
 
 %%% Local Variables:
 %%% TeX-master: "../book"
 %%% End:
-
 

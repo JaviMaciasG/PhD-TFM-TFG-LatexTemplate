@@ -54,7 +54,7 @@ then
     FILES_ALL="$FILES_ALL $FILES"
     FILES=`find Book/logos -name "*.pdf"`
     FILES_ALL="$FILES_ALL $FILES"
-    FILES="Config/worktypes.txt"
+    FILES="Config/query-degree-registry.sh"
     FILES_ALL="$FILES_ALL $FILES"
     FILES="00-README.pdf RELEASE.txt"
     FILES_ALL="$FILES_ALL $FILES"

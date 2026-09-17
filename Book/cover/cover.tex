@@ -29,8 +29,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% Defines the cover to be used depending on the type of work (that is
-% turn depends on the \myDegree variable
+% Includes the cover sequence selected by the layout profile associated
+% with the \myDegree variable.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \ifthenelse{\equal{\myLanguage}{spanish}}
@@ -41,91 +41,8 @@
 %   \addcontentsline{toc}{chapter}{Cover page}
 % }
 
-\ifthenelse{\equal{\myWorkType}{TFG}}
-{
-  \input{cover/portada-tfg-uah-2024.tex}
-  \input{cover/cover-pfc-tfg-tfm-uah.tex}
-}
-{
-  \ifthenelse{\equal{\myWorkType}{TFC}}
-  {
-    \input{cover/portada-pfc-uah.tex}
-    \input{cover/cover-pfc-tfg-tfm-uah.tex}
-  }
-  {
-  \ifthenelse{\equal{\myWorkType}{TFM}}
-  {
-  % Exception for MUCTE
-    \ifthenelse{\equal{\myDegree}{MUCTE}}
-      { 
-      \input{cover/cover-tfm-mucte.tex}
-%      \input{cover/portada-tfm-uah-antigua.tex}
-      \input{cover/cover-pfc-tfg-tfm-uah.tex}
-      }
-      {
-        \ifthenelse{\equal{\myDegree}{MUC}}
-          {
-          \input{cover/portada-tfm-ciberseguridad-uah-2026.tex}
-    %      \input{cover/portada-tfm-uah-antigua.tex}
-          \input{cover/cover-pfc-tfg-tfm-uah.tex}
-          }
-          {
-
-          \ifthenelse{\equal{\myDegree}{MUANBD}}
-            {
-            \input{cover/portada-tfm-normativa-uah.tex}
-      %      \input{cover/portada-tfm-uah-antigua.tex}
-            \input{cover/cover-pfc-tfg-tfm-uah.tex}
-            }
-            {
-
-              \ifthenelse{\equal{\myDegree}{MUIE}}
-              {
-                \input{cover/portada-tfg-uah.tex}
-                \input{cover/cover-pfc-tfg-tfm-uah.tex}
-              }
-              {
-                %  Same than TFGs from 2016
-                \input{cover/portada-tfm-normativa-eps.tex}
-                \input{cover/cover-pfc-tfg-tfm-uah.tex}
-                %      \input{cover/portada-tfm-uah.tex}
-                %      \input{cover/cover-pfc-tfg-tfm-uah.tex}
-              }
-            }
-          }
-      }
-    
-    }
-    {
-      \ifthenelse{\equal{\myWorkType}{PHDUAH}}
-      {
-%        \input{cover/portada-phd-uah.tex}
-        \input{cover/cover-phd-uah.tex}
-      }
-      {
-        \ifthenelse{\equal{\myWorkType}{PHDUPM}}
-        {
-          \input{cover/portada-phd-upm.tex}
-          \input{cover/cover-phd-upm.tex}
-        }
-        {
-          \ifthenelse{\equal{\myWorkType}{GEINTRARR}}
-          {
-            \input{cover/portada-geintra-rr.tex}
-%            \input{cover/cover-geintra-rr.tex}
-          }
-          {
-            ERROR: in \texttt{cover/cover.tex} Defined book type (\myWorkType) unknown so that work type is
-            undefined or wrong (\myWorkType), check also \texttt{config/myconfig.tex}
-          }
-        }
-      }
-      
-    }
-
-  }
-
-}
+% The selected layout profile contains the complete ordered cover sequence.
+\DegreeRegistryInputCover
 
 %%% Local Variables:
 %%% TeX-master: "../book"
