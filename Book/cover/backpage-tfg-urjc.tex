@@ -1,0 +1,77 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: backpage-tfg-uah.tex,v 1.10 2015/06/05 00:10:33 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa.
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote.
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid
+%  + Rubén Nieto Capuchino.
+%    Original adaptation for the ITI degree at ESCET-URJC.
+%
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% You can freely use this template and please contribute with
+% comments or suggestions!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This is a trick to avoid the header to be shown. There must be a
+% better way...
+\chapter*{ }
+\thispagestyle{empty}
+
+\cleartoleftpage
+\thispagestyle{empty}
+
+% To add background watermark, defined in config/preamble.tex
+\BgThispage
+
+% Nice example of tikz
+% \begin{tikzpicture}[remember picture,overlay]
+%   \node [xshift=1cm,yshift=1cm] at (current page.south west)
+%   [text width=7cm,fill=red,red!20,rounded corners,above right]
+%   {
+%   This is an absolutely positioned text in the
+%   lower left corner. No shipout-hackery is used.
+% };
+% \end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]
+	\node[yshift=-\paperheight] at (current page.north west)
+	{
+		\begin{tikzpicture}[remember picture, overlay]
+			\draw[fill=headingPortadaTFGURJC,headingPortadaTFGURJC] (0,0) rectangle (\paperwidth,\paperheight);
+			% \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFGURJC}\textbf{\myUniversity}};
+			% \node [yshift=\paperheight-9.5cm, xshift=0.5\paperwidth, font=\Large, text centered, midway] {\color{textoHeadingPortadaTFGURJC}\textbf{\mySchool}};
+			% \node [yshift=\paperheight-12.5cm, xshift=0.5\paperwidth, font=\Large, text centered, midway] {\color{textoHeadingPortadaTFGURJC}\textbf{\myDegreefull}};
+		\end{tikzpicture}
+	};
+\end{tikzpicture}
+
+\large
+\vspace{20cm}
+
+\begin{center}
+  \centerline{\includegraphics[height=2.8cm]{urjc/URJC-logo-Monocromo-Blanco.png}}
+\end{center}
+
+
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:

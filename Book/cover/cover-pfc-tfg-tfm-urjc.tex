@@ -1,0 +1,165 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generic template for TFC/TFM/TFG/Tesis
+%
+% $Id: cover-pfc-tfg-tfm-uah.tex,v 1.13 2018/12/12 15:29:21 macias Exp $
+%
+% By:
+%  + Javier Macías-Guarasa.
+%    Departamento de Electrónica
+%    Universidad de Alcalá
+%  + Roberto Barra-Chicote.
+%    Departamento de Ingeniería Electrónica
+%    Universidad Politécnica de Madrid
+%  + Rubén Nieto Capuchino.
+%    Original adaptation for the ITI degree at ESCET-URJC.
+%
+% Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
+% Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
+% all of them, and to the many anonymous contributors found (thanks to
+% google) that provided help in setting all this up.
+%
+% See also the additionalContributors.txt file to check the name of
+% additional contributors to this work.
+%
+% If you think you can add pieces of relevant/useful examples,
+% improvements, please contact us at (macias@depeca.uah.es)
+%
+% You can freely use this template and please contribute with
+% comments or suggestions!!!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+\large
+\begin{center}
+
+	 \vspace{8cm}
+
+	 \centerline{\includegraphics[height=2.8cm]{urjc/URJ_logo_Color_POS.png}}
+
+	\vspace{1.5cm}
+
+  \LARGE{\textbf{\myDegreefull}}
+
+  \vspace{7mm}
+
+
+  \LARGE\textbf{\myWorkTypeFull}
+
+  \vspace{1cm}
+	\Large
+
+	\justify
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+    This work, entitled \textbf{\MakeUppercase{\myBookTitle}}, is the Bachelor's Thesis submitted by \textbf{\myAuthorFullName} in partial fulfilment of the requirements for the degree of {\myDegreefull}. It was carried out at the \textbf{\mySchool} of the \textbf{\myUniversity}, in the \textbf{\myDepartmentEnglish}, under the supervision of \textbf{\myAcademicTutorFullName}\ifthenelse{\equal{\myCoTutorFullName}{}}{}{ and \textbf{\myCoTutorFullName}}.
+  }
+  {
+    El presente trabajo, titulado \textbf{\MakeUppercase{\myBookTitle}}, constituye la memoria correspondiente a la asignatura Trabajo Fin de Grado que presenta \textbf{\myAuthorFullName} como parte de su formación para aspirar al título de {\myDegreefull}. Este trabajo ha sido realizado en la \textbf{\mySchool} de la \textbf{\myUniversity}, en el \textbf{\myDepartment}, bajo la dirección de \textbf{\myAcademicTutorFullName}\ifthenelse{\equal{\myCoTutorFullName}{}}{}{ y \textbf{\myCoTutorFullName}}.
+  }
+
+  \vspace{2cm}
+  \flushright
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {Móstoles, \myThesisDepositDateEnglish{}}
+  {Móstoles, a \myThesisDepositDate{}}
+
+%  \ifthenelse{\equal{\myLanguage}{english}}
+%  {
+%    Author: \myAuthorFullName
+%  }
+%  {
+%    \expandafter\makefirstuc\expandafter{\wordAutorOrAutora}: \myAuthorFullName
+%  }
+%
+%
+%  \vspace{1mm}
+%
+%  \ifthenelse{\equal{\myFlagSplittedAdvisors}{true}}
+%{
+%  \ifthenelse{\equal{\myLanguage}{english}}
+%  {
+%%    \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
+%    \expandafter\makefirstuc\expandafter{\wordAdvisor}: \myAcademicTutorFullName{}
+%
+%    \ifthenelse{\equal{\myCoTutorFullName}{}}
+%    {
+%    }
+%    {
+%    \expandafter\makefirstuc\expandafter{\wordCoAdvisor}: \myCoTutorFullName{}
+%    }
+%
+%  }
+%  {%
+%%    \expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}: \myAdvisors
+%%    \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}: \myAdvisors
+%    \expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:    \myAcademicTutorFullName{}
+%
+%    \ifthenelse{\equal{\myCoTutorFullName}{}}
+%    {
+%    }
+%    {
+%    \expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}: \myCoTutorFullName{}
+%    }
+%  }
+%}
+%{
+%  \ifthenelse{\equal{\myLanguage}{english}}
+%  {
+%    \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
+%  }
+%  {
+%    \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}: \myAdvisors
+%  }
+%}
+%
+%  \vspace{1cm}
+%
+%  \begin{tabular}{rll}
+%    \textbf{Tribunal:} & &\\
+%    &&\\
+%  \ifthenelse{\equal{\myLanguage}{english}}
+%  {
+%    & \textbf{President:} & \myTribunalPresident\\ \\ \\
+%  }
+%  {
+%    & \textbf{Presidente:} & \myTribunalPresident\\ \\ \\
+%  }
+%  \ifthenelse{\equal{\myLanguage}{english}}
+%  {
+%    & \textbf{1\textsuperscript{st} Vocal:}   & \myTribunalFirstSpokesperson\\ \\ \\
+%    & \textbf{2\textsuperscript{nd} Vocal:}   & \myTribunalSecondSpokesperson\\ \\
+%  }
+%  {
+%    & \textbf{Vocal 1º:}   & \myTribunalFirstSpokesperson\\ \\ \\
+%    & \textbf{Vocal 2º:}   & \myTribunalSecondSpokesperson\\ \\
+%  }
+%\end{tabular}
+%\end{center}
+%
+%
+%\begin{bottomparagraph}
+%  \begin{center}
+%    \begin{tabular}{p{0cm}c}
+%  \ifthenelse{\equal{\myLanguage}{english}}
+%  {
+%%    &Calification: ..........................................................................\\ \\
+%    &Deposit date: \myThesisDepositDateEnglish
+%  }
+%  {
+%%    &Calificación: ..........................................................................\\ \\
+%    &Fecha de depósito: \myThesisDepositDate{}
+%  }
+%    \end{tabular}
+  \end{center}
+%\end{bottomparagraph}
+
+
+\normalsize
+
+\clearemptydoublepage
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:

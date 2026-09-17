@@ -46,6 +46,7 @@ The `Work type` column contains the canonical value that will be used by TeX and
 | `GISI` | Active | Grado en Ingeniería en Sistemas de Información | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GIEAI` | Active | Grado en Ingeniería en Electrónica y Automática Industrial | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GITI` | Active | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
+| `ITIURJC` | Active | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo Fin de Grado / Bachelor's Thesis | `urjc-iti-tfg` |
 | `MUSEA` | Active | Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
 | `MUIT` | Active | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
 | `MUII` | Active | Máster Universitario en Ingeniería Industrial | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
@@ -65,6 +66,7 @@ These profile names describe the active input sequences selected by the registry
 |---|---|---|
 | `uah-tfc` | `cover/portada-pfc-uah.tex`, then `cover/cover-pfc-tfg-tfm-uah.tex` | None |
 | `uah-tfg-2024` | `cover/portada-tfg-uah-2024.tex`, then `cover/cover-pfc-tfg-tfm-uah.tex` | `cover/backpage-tfg-uah-2024.tex` |
+| `urjc-iti-tfg` | `cover/portada-tfg-urjc.tex`, then `cover/cover-pfc-tfg-tfm-urjc.tex` | `cover/backpage-tfg-urjc.tex` |
 | `uah-tfm-eps` | `cover/portada-tfm-normativa-eps.tex`, then `cover/cover-pfc-tfg-tfm-uah.tex` | `cover/backpage-tfm-normativa-uah.tex` |
 | `uah-muie` | `cover/portada-tfg-uah.tex`, then `cover/cover-pfc-tfg-tfm-uah.tex` | `cover/backpage-tfg-uah.tex` |
 | `uah-mucte` | `cover/cover-tfm-mucte.tex`, then `cover/cover-pfc-tfg-tfm-uah.tex` | `cover/backpage-tfm-normativa-uah.tex` |
@@ -87,8 +89,8 @@ The registry must preserve the specialised wrapped values currently used by `MUS
 
 The inactive registry was checked against the legacy conditionals in `Config/postamble.tex`, the routing in `Book/cover/cover.tex` and `Book/cover/backpage.tex`, and the filename mappings in `Config/worktypes.txt`.
 
-- All 26 identifiers implemented by the legacy TeX conditionals are represented in the registry.
-- `GSI` is the only additional registry identifier and is an intentional compatibility restoration.
+- All 26 identifiers implemented by the legacy UAH/UPM/GEINTRA TeX conditionals are represented in the registry.
+- `GSI` is an intentional compatibility restoration, and `ITIURJC` is an imported URJC integration.
 - Degree names and language-dependent full work-type names match the legacy definitions except for the approved `GMC` correction.
 - Canonical work types match `Config/worktypes.txt`; the three intentional changes from the legacy TeX values are `PHDUAH` and `PHDUPM` to `PhD`, and `GEINTRARR` to `RR`.
 - The eight specialised wrapped names match the legacy definitions, while the remaining degrees receive the approved fallback values.
