@@ -48,7 +48,7 @@ Estas órdenes controlan la numeración y la organización interna del libro. No
 La parte inicial del documento, delimitada mediante \texttt{\textbackslash{}frontmatter}, reúne las cubiertas, el contenido preliminar y los índices. La plantilla distribuida incluye los siguientes elementos:
 
 \begin{itemize}
-  \item Portada y páginas iniciales, seleccionadas automáticamente por \texttt{cover/cover.tex} a partir de la titulación configurada mediante \texttt{\textbackslash{}myDegree}. Normalmente solo tendrás que configurar los datos de \texttt{Config/myconfig.tex}, sin modificar \texttt{cover/cover.tex} ni las plantillas institucionales del directorio \texttt{cover/}.
+  \item Portada y páginas iniciales, seleccionadas automáticamente por \texttt{cover/cover.tex} a partir de la titulación configurada mediante \texttt{\textbackslash{}myDegree}. Normalmente solo tendrás que configurar los datos de \texttt{Config/myconfig.tex}, sin modificar \texttt{cover/cover.tex} ni las plantillas institucionales, organizadas por universidad en \texttt{cover/uah/}, \texttt{cover/upm/} y \texttt{cover/urjc/}.
   \item Documentos PDF preliminares. Inclúyelos únicamente cuando los exija la normativa de tu trabajo mediante \texttt{\textbackslash{}includepdf}. El fichero \texttt{letters/sampleLetter.pdf} muestra cómo incorporar todas las páginas de un documento, y \texttt{letters/sampleLetter-pages.pdf} permite probar la selección de páginas concretas.
   \item Dedicatoria, incluida desde \texttt{dedication/dedicatoria.tex}. Puedes editarla o comentar su orden \texttt{\textbackslash{}input} si no quieres utilizarla.
   \item Agradecimientos, incluidos desde \texttt{acknowledgements/agradecimientos.tex}. También puedes editarlos u omitirlos.

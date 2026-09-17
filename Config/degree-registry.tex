@@ -27,6 +27,7 @@
 \tl_new:N \l_uah_institution_university_name_tl
 \tl_new:N \l_uah_institution_university_name_english_tl
 \tl_new:N \l_uah_institution_university_acronym_tl
+\tl_new:N \l_uah_institution_style_file_tl
 
 \msg_new:nnn { uah-degree-registry } { duplicate-degree }
   { Degree~identifier~'#1'~has~already~been~declared. }
@@ -64,6 +65,7 @@
     university-name          .tl_set:N = \l_uah_institution_university_name_tl,
     university-name-english  .tl_set:N = \l_uah_institution_university_name_english_tl,
     university-acronym       .tl_set:N = \l_uah_institution_university_acronym_tl,
+    style-file                .tl_set:N = \l_uah_institution_style_file_tl,
   }
 
 \keys_define:nn { uah/layout-profile }
@@ -140,12 +142,15 @@
         \tl_clear:N \l_uah_institution_university_name_tl
         \tl_clear:N \l_uah_institution_university_name_english_tl
         \tl_clear:N \l_uah_institution_university_acronym_tl
+        \tl_clear:N \l_uah_institution_style_file_tl
         \keys_set:nn { uah/institution } {#2}
         \uah_degree_require:nnN {#1} {university-name} \l_uah_institution_university_name_tl
         \uah_degree_require:nnN {#1} {university-acronym} \l_uah_institution_university_acronym_tl
+        \uah_degree_require:nnN {#1} {style-file} \l_uah_institution_style_file_tl
         \prop_gput:NnV \g_uah_institution_registry_prop {#1/university-name} \l_uah_institution_university_name_tl
         \prop_gput:NnV \g_uah_institution_registry_prop {#1/university-name-english} \l_uah_institution_university_name_english_tl
         \prop_gput:NnV \g_uah_institution_registry_prop {#1/university-acronym} \l_uah_institution_university_acronym_tl
+        \prop_gput:NnV \g_uah_institution_registry_prop {#1/style-file} \l_uah_institution_style_file_tl
       }
   }
 
@@ -206,6 +211,15 @@
     \cs_set:Npx #1 { \exp_not:V \l_tmpb_tl }
   }
 
+\cs_new_protected:Npn \uah_institution_load_selected_style:
+  {
+    \prop_get:NxN \g_uah_degree_registry_prop
+      { \g_uah_selected_degree_tl/institution } \l_tmpa_tl
+    \prop_get:NxN \g_uah_institution_registry_prop
+      { \l_tmpa_tl/style-file } \l_tmpb_tl
+    \exp_args:NV \file_input:n \l_tmpb_tl
+  }
+
 \cs_new_protected:Npn \uah_degree_select:n #1
   {
     \prop_if_in:NnTF \g_uah_degree_registry_prop {#1/work-type}
@@ -262,6 +276,8 @@
   { \uah_layout_profile_declare:nn {#1} {#2} }
 \NewDocumentCommand \DegreeRegistrySelect { m }
   { \exp_args:Ne \uah_degree_select:n {#1} }
+\NewDocumentCommand \InstitutionRegistryLoadStyle { }
+  { \uah_institution_load_selected_style: }
 \NewExpandableDocumentCommand \DegreeRegistryValue { m }
   { \uah_degree_selected_item:n {#1} }
 \NewExpandableDocumentCommand \DegreeRegistryLayoutValue { m }

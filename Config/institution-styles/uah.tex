@@ -1,0 +1,41 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% UAH-specific colors, backgrounds and cover helpers.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{pantone293}{RGB}{35,91,168}
+\definecolor{headingPortadaTFG}{RGB}{152,118,52}
+\definecolor{headingPortadaTFM}{RGB}{0,90,170}
+\definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
+\definecolor{textoHeadingPortadaTFG}{RGB}{208,205,102}
+\definecolor{UAHcolorpantone293}{rgb}{0,0.239,0.647}
+\newcommand{\colorUAH}{\color{UAHcolorpantone293}}
+
+\ifthenelse{\equal{\colorspaceused}{rgb}}
+{
+  \backgroundsetup{scale=1,angle=0,opacity=.1,color=pink,contents={\includegraphics[width=.7\paperwidth]{logos/uah/logoEPS-UAH.jpg}},vshift=-50pt,hshift=0pt}
+}
+{
+  \backgroundsetup{scale=1,angle=0,opacity=.1,color=pink,contents={\includegraphics[width=.7\paperwidth]{logos/uah/logoEPS-UAH-cmyk.jpg}},vshift=-50pt,hshift=0pt}
+}
+
+\usepackage{eso-pic}
+
+\newcommand\PutFrontPageBackground{%
+  \AddToShipoutPicture*{%
+    \put(0,0){%
+      \parbox[b][\paperheight]{\paperwidth}{%
+        \includegraphics[width=\paperwidth,height=\paperheight]{cover/uah/imagen-portada-tfg2026.png}%
+      }%
+    }%
+  }%
+}
+
+\newcommand\PutBackPageBackground{%
+  \AddToShipoutPicture*{%
+    \put(0,0){%
+      \parbox[b][\paperheight]{\paperwidth}{%
+        \includegraphics[width=\paperwidth,height=\paperheight]{cover/uah/imagen-contraportada-tfg2026.png}%
+      }%
+    }%
+  }%
+}

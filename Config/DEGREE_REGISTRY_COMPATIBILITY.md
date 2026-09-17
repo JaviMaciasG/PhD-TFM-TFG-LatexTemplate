@@ -64,17 +64,17 @@ These profile names describe the active input sequences selected by the registry
 
 | Profile | Cover input sequence | Back-page input |
 |---|---|---|
-| `uah-tfc` | `cover/portada-pfc-uah.tex`, then `cover/cover-pfc-tfg-tfm-uah.tex` | None |
-| `uah-tfg-2024` | `cover/portada-tfg-uah-2024.tex`, then `cover/cover-pfc-tfg-tfm-uah.tex` | `cover/backpage-tfg-uah-2024.tex` |
-| `urjc-iti-tfg` | `cover/portada-tfg-urjc.tex`, then `cover/cover-pfc-tfg-tfm-urjc.tex` | `cover/backpage-tfg-urjc.tex` |
-| `uah-tfm-eps` | `cover/portada-tfm-normativa-eps.tex`, then `cover/cover-pfc-tfg-tfm-uah.tex` | `cover/backpage-tfm-normativa-uah.tex` |
-| `uah-muie` | `cover/portada-tfg-uah.tex`, then `cover/cover-pfc-tfg-tfm-uah.tex` | `cover/backpage-tfg-uah.tex` |
-| `uah-mucte` | `cover/cover-tfm-mucte.tex`, then `cover/cover-pfc-tfg-tfm-uah.tex` | `cover/backpage-tfm-normativa-uah.tex` |
-| `uah-muanbd` | `cover/portada-tfm-normativa-uah.tex`, then `cover/cover-pfc-tfg-tfm-uah.tex` | `cover/backpage-tfm-normativa-uah.tex` |
-| `uah-muc-2026` | `cover/portada-tfm-ciberseguridad-uah-2026.tex`, then `cover/cover-pfc-tfg-tfm-uah.tex` | `cover/backpage-tfm-normativa-uah.tex` |
-| `uah-phd` | `cover/cover-phd-uah.tex` | None |
-| `upm-phd` | `cover/portada-phd-upm.tex`, then `cover/cover-phd-upm.tex` | None |
-| `geintra-report` | `cover/portada-geintra-rr.tex` | None |
+| `uah-tfc` | `cover/uah/portada-pfc-uah.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | None |
+| `uah-tfg-2024` | `cover/uah/portada-tfg-uah-2024.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfg-uah-2024.tex` |
+| `urjc-iti-tfg` | `cover/urjc/portada-tfg-urjc.tex`, then `cover/urjc/cover-pfc-tfg-tfm-urjc.tex` | `cover/urjc/backpage-tfg-urjc.tex` |
+| `uah-tfm-eps` | `cover/uah/portada-tfm-normativa-eps.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
+| `uah-muie` | `cover/uah/portada-tfg-uah.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfg-uah.tex` |
+| `uah-mucte` | `cover/uah/cover-tfm-mucte.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
+| `uah-muanbd` | `cover/uah/portada-tfm-normativa-uah.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
+| `uah-muc-2026` | `cover/uah/portada-tfm-ciberseguridad-uah-2026.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
+| `uah-phd` | `cover/uah/cover-phd-uah.tex` | None |
+| `upm-phd` | `cover/upm/portada-phd-upm.tex`, then `cover/upm/cover-phd-upm.tex` | None |
+| `geintra-report` | `cover/uah/portada-geintra-rr.tex` | None |
 
 ## Wrapped-name compatibility
 

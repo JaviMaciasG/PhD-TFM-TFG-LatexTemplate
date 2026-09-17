@@ -80,7 +80,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate bu
 
 ### Degree registry and layouts
 
-`Config/degrees.tex` is the authoritative registry of degree identifiers, work categories (`TFG`, `TFM`, `PhD`, etc.), display names, institutions, and schools. `Config/institutions.tex` defines university names and acronyms once for all degrees belonging to each institution. `Config/layout-profiles.tex` maps degree entries to their cover and back-page files. The build tools query the same registry through `Config/query-degree-registry.sh`.
+`Config/degrees.tex` is the authoritative registry of degree identifiers, work categories (`TFG`, `TFM`, `PhD`, etc.), display names, institutions, and schools. `Config/institutions.tex` defines university names, acronyms, and the institution style loaded for each university. Shared colors live in `Config/colors.tex`, while branded colors and cover helpers live under `Config/institution-styles/`. `Config/layout-profiles.tex` maps degree entries to their cover and back-page files. The build tools query the same registry through `Config/query-degree-registry.sh`.
 
 ### Dynamic post-configuration
 
@@ -106,9 +106,9 @@ The template intentionally uses modular `\input{...}` structure so users can com
 
 ## Cover and degree-specific behavior
 
-`Book/cover/cover.tex` performs conditional inclusion of distinct cover implementations based on `\myWorkType` and specific degree exceptions (`MUCTE`, `MUC`, `MUANBD`, etc.).
+`Book/cover/cover.tex` and `Book/cover/backpage.tex` delegate cover selection to the degree registry. `Config/layout-profiles.tex` maps each degree profile to its required files.
 
-This central switchboard is where most format branching is coordinated for TFG/TFM/PhD and special report types.
+Institution-specific implementations are grouped under `Book/cover/uah/`, `Book/cover/upm/`, and `Book/cover/urjc/`. Shared orchestration and front-matter files remain directly under `Book/cover/`. Logos follow the same division under `Book/logos/`; cross-institution and project artwork is kept in `Book/logos/shared/`.
 
 ## Repository maturity and maintenance signals
 

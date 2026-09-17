@@ -102,17 +102,8 @@
 
 %% FIXING PROBLEM WITH ALL PAGES PRINTED IN COLOR
 \usepackage{xcolor}
-\definecolor{pantone293}{RGB}{35,91,168}
-\definecolor{headingPortadaTFG}{RGB}{152,118,52}
-\definecolor{headingPortadaTFGURJC}{RGB}{4,35,99}
-\definecolor{headingPortadaTFM}{RGB}{0,90,170}
-\definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
-\definecolor{textoHeadingPortadaTFG}{RGB}{208,205,102}
-\definecolor{textoHeadingPortadaTFGURJC}{RGB}{255,255,255}
-
-\definecolor{gray97}{gray}{.97}
-\definecolor{gray75}{gray}{.75}
-\definecolor{gray45}{gray}{.45}
+\providecommand{\myConfigDirectory}{../Config}
+\input{\myConfigDirectory/colors.tex}
 
 
 % To draw rectagles in tfm cover
@@ -349,21 +340,6 @@
 %   corresponding pages
 %   \usepackage[pages=some]{sty/background}
 \usepackage[pages=some]{background}
-
-% Note that we also set the opacity in the first page of the tfg due to a bug,
-% so it you modify it here remember to modify the value in Book/cover/portada-tfm-uah.tex
-% https://tex.stackexchange.com/questions/649514/how-to-produce-a-transparent-image-with-xelatex/649518#649518
-% https://tex.stackexchange.com/questions/640574/using-a-tikzpicture-disables-opacity-for-first-bgthispage-how-can-i-fix-this
-\ifthenelse{\equal{\colorspaceused}{rgb}}
-{
-  \backgroundsetup{ scale=1, angle=0, opacity=.1, color=pink,
-    contents={\includegraphics[width=.7\paperwidth]{logos/logoEPS-UAH.jpg}}, vshift=-50pt,  hshift=0pt }
-}
-{
-  \backgroundsetup{ scale=1, angle=0, opacity=.1, color=pink,
-    contents={\includegraphics[width=.7\paperwidth]{logos/logoEPS-UAH-cmyk.jpg}}, vshift=-50pt,  hshift=0pt }
-}
-
 
 % This is to allow do a clearpage and let the next one to be placed in
 % even pages (to set a backpage for example)
@@ -679,30 +655,6 @@
 % opinion the LaTeX standard fornt is better, but if you want to do so, use Helvetica instead (Arial is not free) adding the following commands here:
 % \usepackage{helvet}
 % \renewcommand{\familydefault}{\sfdefault}
-
-\usepackage{eso-pic}
-
-\newcommand\PutFrontPageBackground{%
-  \AddToShipoutPicture*{%
-    \put(0,0){%
-      \parbox[b][\paperheight]{\paperwidth}{%
-        \includegraphics[width=\paperwidth,height=\paperheight]{cover/imagen-portada-tfg2026.png}%
-      }%
-    }%
-  }%
-}
-\newcommand\PutBackPageBackground{%
-  \AddToShipoutPicture*{%
-    \put(0,0){%
-      \parbox[b][\paperheight]{\paperwidth}{%
-        \includegraphics[width=\paperwidth,height=\paperheight]{cover/imagen-contraportada-tfg2026.png}%
-      }%
-    }%
-  }%
-}
-
-\definecolor{UAHcolorpantone293}{rgb}{0, 0.239, 0.647}
-\newcommand{\colorUAH}{\color{UAHcolorpantone293}}
 
 \usepackage[none]{hyphenat}
 

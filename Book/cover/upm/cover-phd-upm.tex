@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: portada-phd-uah.tex,v 1.9 2015/06/05 00:10:34 macias Exp $
+% $Id: cover-phd-upm.tex,v 1.4 2015/06/05 00:10:34 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -30,67 +30,66 @@
 
 \thispagestyle{empty}
 \large
-\vspace{3cm}
 \begin{center}
 
-\color{pantone293}
+  \Huge\textbf{UNIVERSIDAD POLITÉCNICA DE MADRID}
 
-  %\centerline{\includegraphics[height=3cm]{uah/01_logo-vA_pant293.pdf}}
-  \centerline{\includegraphics[height=2.5cm]{uah-2026/vA_azul_LogoPrincipal.png}}
+  \vspace{7mm}
 
-  \ifthenelse{\equal{\myLanguage}{english}}
-  {
-    \huge{{\myPhDProgramEnglish}}
-  }
-  {
-    \huge{{\myPhDProgram}}
-  }
-  % \Huge{\textbf{\MakeUppercase{\myUniversity}}}
+  \huge{Escuela Técnica Superior\\de Ingenieros de Telecomunicación}
 
-%  \vspace{5mm}
-
-%  \Large{\MakeUppercase{\mySchool}}
+  \vspace{1cm}
   
-%  \vspace{5mm}
+  \centerline{\includegraphics[width=80mm]{logos/upm/logoetsit_tamano.jpg}}
 
-%  \Large\textbf{\MakeUppercase{\myDepartment}}
+%  \vspace{1cm}   
 
-%  \vspace{15mm}
+  \Large\textbf{\myBookTitle}
 
-  \vspace{2cm}   
-  
-  \Huge\textbf{\myBookTitle}
-
-  \vspace{15mm}
+%  \vspace{2cm}
   
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-    \huge{{PhD. Thesis Presented by}}
+    \textbf {Author}
   }
   {
-    \huge{{Tesis Doctoral presentada por}}
+    \textbf {\expandafter\makefirstuc\expandafter{\wordAutorOrAutora}}
   }
-
-%  \vspace{15mm}
-
-  \huge{\textbf{\myAuthorFullName}}
-
-%  \LARGE\textbf{\myWorkTypeFull}
-
   
-
+%  \vspace{5mm}
+  
+  \myAuthorFullName
+  
+  \vspace{1cm}
+  
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+    \textbf {\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}}
+  }
+  {
+    \textbf {\expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}}
+  }  
+%  \vspace{5mm}
+  
+  \myAdvisors
+  
 \end{center}
 
 \begin{bottomparagraph}
   \begin{center}
-    \huge{\myThesisDefenseYear}
+    \textbf{\myThesisDefenseYear}\\
+    \vspace{5mm}
+    \textbf{\myWorkTypeFull}
   \end{center}
 \end{bottomparagraph}
 
-\color{black}
+
+\normalsize
 
 \clearemptydoublepage
 
 %%% Local Variables:
 %%% TeX-master: "../book"
 %%% End:
+
+

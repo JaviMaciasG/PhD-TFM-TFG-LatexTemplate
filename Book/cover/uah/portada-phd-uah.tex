@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: cover-tesis-upm.tex,v 1.8 2015/06/05 00:10:34 macias Exp $
+% $Id: portada-phd-uah.tex,v 1.9 2015/06/05 00:10:34 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -29,36 +29,68 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \thispagestyle{empty}
-%\pagecolor{azulE}
-\pagecolor{white}
- \fontfamily{verdana}
-
+\large
+\vspace{3cm}
 \begin{center}
-  \large{\textbf{{UNIVERSIDAD POLITÉCNICA DE MADRID}}} \\[1ex]
-  \vspace{\stretch{1}}
-  \large{Escuela Técnica Superior\\ de Ingenieros de Telecomunicación} \\[1ex]
-  \vspace{\stretch{2}}
-%  \includegraphics[width=30mm]{./cover/images/logoupm.jpg}
-  \includegraphics[width=80mm]{./cover/images/logoetsit_tamano.jpg}
-  \vspace{\stretch{1}} \\
-%  {\color{black}\rule{\textwidth}{2pt}} \\
-  \Huge{\textbf{ {\color{black} \myBookTitle}}}
-  \\
-%  {\color{black}\rule{\textwidth}{2pt}} \\
-%   \normalsize{\textbf{Presentada por}} \\
-  \vspace{\stretch{3}}
-  \LARGE{\textbf{\myAuthorFullName} \\
-  \vspace{\stretch{0.8}}
-  \large{\textbf{\myUPMdegree}} \\
-  \vspace{\stretch{2}} \large{\textbf{\myThesisDefenseYear}}
+
+\color{pantone293}
+
+  %\centerline{\includegraphics[height=3cm]{uah/01_logo-vA_pant293.pdf}}
+  \centerline{\includegraphics[height=2.5cm]{uah/2026/vA_azul_LogoPrincipal.png}}
+
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+    \huge{{\myPhDProgramEnglish}}
+  }
+  {
+    \huge{{\myPhDProgram}}
+  }
+  % \Huge{\textbf{\MakeUppercase{\myUniversity}}}
+
+%  \vspace{5mm}
+
+%  \Large{\MakeUppercase{\mySchool}}
+  
+%  \vspace{5mm}
+
+%  \Large\textbf{\MakeUppercase{\myDepartment}}
+
+%  \vspace{15mm}
+
+  \vspace{2cm}   
+  
+  \Huge\textbf{\myBookTitle}
+
+  \vspace{15mm}
+  
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+    \huge{{PhD. Thesis Presented by}}
+  }
+  {
+    \huge{{Tesis Doctoral presentada por}}
+  }
+
+%  \vspace{15mm}
+
+  \huge{\textbf{\myAuthorFullName}}
+
+%  \LARGE\textbf{\myWorkTypeFull}
+
+  
+
 \end{center}
 
-%\newpage
-%\thispagestyle{empty}
+\begin{bottomparagraph}
+  \begin{center}
+    \huge{\myThesisDefenseYear}
+  \end{center}
+\end{bottomparagraph}
 
+\color{black}
+
+\clearemptydoublepage
 
 %%% Local Variables:
 %%% TeX-master: "../book"
 %%% End:
-
-

@@ -2,7 +2,7 @@
 %
 % Generic template for TFC/TFM/TFG/Tesis
 %
-% $Id: cover-phd-upm.tex,v 1.4 2015/06/05 00:10:34 macias Exp $
+% $Id: cover-tesis-upm.tex,v 1.8 2015/06/05 00:10:34 macias Exp $
 %
 % By:
 %  + Javier Macías-Guarasa. 
@@ -29,64 +29,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \thispagestyle{empty}
-\large
+%\pagecolor{azulE}
+\pagecolor{white}
+ \fontfamily{verdana}
+
 \begin{center}
-
-  \Huge\textbf{UNIVERSIDAD POLITÉCNICA DE MADRID}
-
-  \vspace{7mm}
-
-  \huge{Escuela Técnica Superior\\de Ingenieros de Telecomunicación}
-
-  \vspace{1cm}
-  
-  \centerline{\includegraphics[width=80mm]{logos/logoetsit_tamano.jpg}}
-
-%  \vspace{1cm}   
-
-  \Large\textbf{\myBookTitle}
-
-%  \vspace{2cm}
-  
-  \ifthenelse{\equal{\myLanguage}{english}}
-  {
-    \textbf {Author}
-  }
-  {
-    \textbf {\expandafter\makefirstuc\expandafter{\wordAutorOrAutora}}
-  }
-  
-%  \vspace{5mm}
-  
-  \myAuthorFullName
-  
-  \vspace{1cm}
-  
-  \ifthenelse{\equal{\myLanguage}{english}}
-  {
-    \textbf {\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}}
-  }
-  {
-    \textbf {\expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}}
-  }  
-%  \vspace{5mm}
-  
-  \myAdvisors
-  
+  \large{\textbf{{UNIVERSIDAD POLITÉCNICA DE MADRID}}} \\[1ex]
+  \vspace{\stretch{1}}
+  \large{Escuela Técnica Superior\\ de Ingenieros de Telecomunicación} \\[1ex]
+  \vspace{\stretch{2}}
+%  \includegraphics[width=30mm]{logos/upm/logoupm.jpg}
+  \includegraphics[width=80mm]{logos/upm/logoetsit_tamano.jpg}
+  \vspace{\stretch{1}} \\
+%  {\color{black}\rule{\textwidth}{2pt}} \\
+  \Huge{\textbf{ {\color{black} \myBookTitle}}}
+  \\
+%  {\color{black}\rule{\textwidth}{2pt}} \\
+%   \normalsize{\textbf{Presentada por}} \\
+  \vspace{\stretch{3}}
+  \LARGE{\textbf{\myAuthorFullName} \\
+  \vspace{\stretch{0.8}}
+  \large{\textbf{\myUPMdegree}} \\
+  \vspace{\stretch{2}} \large{\textbf{\myThesisDefenseYear}}
 \end{center}
 
-\begin{bottomparagraph}
-  \begin{center}
-    \textbf{\myThesisDefenseYear}\\
-    \vspace{5mm}
-    \textbf{\myWorkTypeFull}
-  \end{center}
-\end{bottomparagraph}
+%\newpage
+%\thispagestyle{empty}
 
-
-\normalsize
-
-\clearemptydoublepage
 
 %%% Local Variables:
 %%% TeX-master: "../book"
