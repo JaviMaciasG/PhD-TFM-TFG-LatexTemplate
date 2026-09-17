@@ -41,6 +41,14 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
+% Select the degree before defining text that depends on its institution.
+\providecommand{\myConfigDirectory}{../Config}
+\input{\myConfigDirectory/degree-registry.tex}
+\input{\myConfigDirectory/institutions.tex}
+\input{\myConfigDirectory/layout-profiles.tex}
+\input{\myConfigDirectory/degrees.tex}
+\DegreeRegistrySelect{\myDegree}
+
 \ifthenelse{\equal{\myLanguage}{spanish}}
 {
   \usepackage[english, spanish]{babel}
@@ -53,7 +61,7 @@
 } 
 {
   \usepackage[spanish, english]{babel}
-  \newcommand{\myFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversity} 
+  \newcommand{\myFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversityEnglish}
   \newcommand{\myBookTitle}{\myBookTitleEnglish}
   \newcommand{\mypdflang}{en}
   \newcommand{\myPresentedBy}{Presented by}
@@ -288,13 +296,6 @@
   \newcommand{\okCoTutorOrCotutora}{y \wordCoTutorDelOrDeLa{} \wordCoTutorOrCoTutora{}}
   \newcommand{\signedByCoTutorOrCoTutora}{\MakeUppercase{\wordCoTutorOrCoTutora} (si procede): \mySecondAdvisorFullName}
 }
-
-% Load the authoritative degree registry and select the configured degree.
-\providecommand{\myConfigDirectory}{../Config}
-\input{\myConfigDirectory/degree-registry.tex}
-\input{\myConfigDirectory/layout-profiles.tex}
-\input{\myConfigDirectory/degrees.tex}
-\DegreeRegistrySelect{\myDegree}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Now open publishing options

@@ -55,9 +55,7 @@ Los identificadores admitidos actualmente por \texttt{\textbackslash{}myDegree},
   \item \textbf{Informes de investigación}: \texttt{GEINTRARR}, cuyo soporte se considera todavía experimental.
 \end{itemize}
 
-La definición completa de cada identificador se mantiene en \texttt{Config/degrees.tex}, mientras que \texttt{Config/layout-profiles.tex} reúne las portadas y contraportadas asociadas. Si quieres añadir una titulación nueva, tendrás que declararla en el registro y proporcionar un perfil con los textos y cubiertas institucionales necesarios; no basta con escribir un identificador nuevo en \texttt{\textbackslash{}myDegree}.
-
-Las variables \texttt{\textbackslash{}myUniversity}, \texttt{\textbackslash{}myUniversityAcronym}, \texttt{\textbackslash{}mySchool}, \texttt{\textbackslash{}myDepartment} y \texttt{\textbackslash{}myDepartmentEnglish} describen la institución de forma genérica. Por tanto, también sirven para incorporar otras escuelas o departamentos de una misma universidad sin crear variables específicas. Para \texttt{ITIURJC}, utiliza \texttt{Universidad Rey Juan Carlos}, \texttt{URJC}, \texttt{Escuela Superior de Ciencias Experimentales y Tecnología} y el nombre del departamento correspondiente.
+La definición completa de cada identificador se mantiene en \texttt{Config/degrees.tex}, donde también se asocia la titulación con su institución y su centro. Los nombres y acrónimos de las universidades se definen una sola vez en \texttt{Config/institutions.tex}, mientras que \texttt{Config/layout-profiles.tex} reúne las portadas y contraportadas asociadas. Al seleccionar \texttt{\textbackslash{}myDegree}, la plantilla obtiene automáticamente \texttt{\textbackslash{}myUniversity}, \texttt{\textbackslash{}myUniversityAcronym} y \texttt{\textbackslash{}mySchool}; no tienes que definirlos en \texttt{myconfig.tex}. Si quieres añadir una titulación nueva, tendrás que declararla en el registro, asociarla con una institución y proporcionar un perfil con los textos y cubiertas institucionales necesarios; no basta con escribir un identificador nuevo en \texttt{\textbackslash{}myDegree}.
 
 \section{Título, palabras clave y confidencialidad}
 
@@ -123,12 +121,9 @@ Las variables antiguas \texttt{\textbackslash{}myFirstAdvisorFullName}, \texttt{
 
 \section{Afiliación académica}
 
-Las siguientes variables describen la universidad, el centro, el departamento, el programa de doctorado y el grupo de investigación:
+La universidad y el centro se obtienen automáticamente de la titulación seleccionada. En \texttt{myconfig.tex} solo tienes que completar los datos de afiliación que pueden variar entre trabajos de una misma titulación:
 
 \begin{itemize}
-  \item \texttt{\textbackslash{}mySchool}: escuela, facultad o centro académico responsable del trabajo.
-  \item \texttt{\textbackslash{}myUniversity}: nombre completo de la universidad.
-  \item \texttt{\textbackslash{}myUniversityAcronym}: acrónimo de la universidad utilizado en las cubiertas y otros elementos que requieren una forma abreviada.
   \item \texttt{\textbackslash{}myDepartment}: nombre del departamento en español.
   \item \texttt{\textbackslash{}myDepartmentEnglish}: nombre del departamento en inglés.
   \item \texttt{\textbackslash{}myPhDProgram}: nombre del programa de doctorado en español. Solo necesitarás esta variable para los documentos que muestren esta información.

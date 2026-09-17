@@ -5,12 +5,15 @@
 \ExplSyntaxOn
 
 \prop_new:N \g_uah_degree_registry_prop
+\prop_new:N \g_uah_institution_registry_prop
 \prop_new:N \g_uah_layout_profile_prop
 \seq_new:N  \g_uah_degree_registry_ids_seq
 \tl_new:N   \g_uah_selected_degree_tl
 
 \tl_new:N \l_uah_degree_status_tl
 \tl_new:N \l_uah_degree_institution_tl
+\tl_new:N \l_uah_degree_school_tl
+\tl_new:N \l_uah_degree_school_english_tl
 \tl_new:N \l_uah_degree_name_tl
 \tl_new:N \l_uah_degree_name_english_tl
 \tl_new:N \l_uah_degree_name_wrapped_tl
@@ -21,11 +24,18 @@
 \tl_new:N \l_uah_degree_layout_profile_tl
 \tl_new:N \l_uah_layout_cover_files_tl
 \tl_new:N \l_uah_layout_backpage_file_tl
+\tl_new:N \l_uah_institution_university_name_tl
+\tl_new:N \l_uah_institution_university_name_english_tl
+\tl_new:N \l_uah_institution_university_acronym_tl
 
 \msg_new:nnn { uah-degree-registry } { duplicate-degree }
   { Degree~identifier~'#1'~has~already~been~declared. }
 \msg_new:nnn { uah-degree-registry } { unknown-degree }
   { Unsupported~degree~identifier~'#1'. }
+\msg_new:nnn { uah-degree-registry } { duplicate-institution }
+  { Institution~identifier~'#1'~has~already~been~declared. }
+\msg_new:nnn { uah-degree-registry } { unknown-institution }
+  { Degree~'#1'~references~the~unknown~institution~'#2'. }
 \msg_new:nnn { uah-degree-registry } { missing-degree-field }
   { Degree~'#1'~does~not~define~the~required~field~'#2'. }
 \msg_new:nnn { uah-degree-registry } { duplicate-layout-profile }
@@ -37,6 +47,8 @@
   {
     status                         .tl_set:N = \l_uah_degree_status_tl,
     institution                    .tl_set:N = \l_uah_degree_institution_tl,
+    school                         .tl_set:N = \l_uah_degree_school_tl,
+    school-english                 .tl_set:N = \l_uah_degree_school_english_tl,
     degree-name                    .tl_set:N = \l_uah_degree_name_tl,
     degree-name-english            .tl_set:N = \l_uah_degree_name_english_tl,
     degree-name-wrapped            .tl_set:N = \l_uah_degree_name_wrapped_tl,
@@ -45,6 +57,13 @@
     work-type-full-spanish         .tl_set:N = \l_uah_degree_work_type_full_spanish_tl,
     work-type-full-english         .tl_set:N = \l_uah_degree_work_type_full_english_tl,
     layout-profile                 .tl_set:N = \l_uah_degree_layout_profile_tl,
+  }
+
+\keys_define:nn { uah/institution }
+  {
+    university-name          .tl_set:N = \l_uah_institution_university_name_tl,
+    university-name-english  .tl_set:N = \l_uah_institution_university_name_english_tl,
+    university-acronym       .tl_set:N = \l_uah_institution_university_acronym_tl,
   }
 
 \keys_define:nn { uah/layout-profile }
@@ -60,6 +79,8 @@
   {
     \tl_clear:N \l_uah_degree_status_tl
     \tl_clear:N \l_uah_degree_institution_tl
+    \tl_clear:N \l_uah_degree_school_tl
+    \tl_clear:N \l_uah_degree_school_english_tl
     \tl_clear:N \l_uah_degree_name_tl
     \tl_clear:N \l_uah_degree_name_english_tl
     \tl_clear:N \l_uah_degree_name_wrapped_tl
@@ -89,6 +110,7 @@
         \keys_set:nn { uah/degree } {#2}
         \uah_degree_require:nnN {#1} {status} \l_uah_degree_status_tl
         \uah_degree_require:nnN {#1} {institution} \l_uah_degree_institution_tl
+        \uah_degree_require:nnN {#1} {school} \l_uah_degree_school_tl
         \uah_degree_require:nnN {#1} {degree-name} \l_uah_degree_name_tl
         \uah_degree_require:nnN {#1} {work-type} \l_uah_degree_work_type_tl
         \uah_degree_require:nnN {#1} {work-type-full-spanish} \l_uah_degree_work_type_full_spanish_tl
@@ -97,6 +119,8 @@
         \seq_gput_right:Nn \g_uah_degree_registry_ids_seq {#1}
         \uah_degree_store:nnV {#1} {status} \l_uah_degree_status_tl
         \uah_degree_store:nnV {#1} {institution} \l_uah_degree_institution_tl
+        \uah_degree_store:nnV {#1} {school} \l_uah_degree_school_tl
+        \uah_degree_store:nnV {#1} {school-english} \l_uah_degree_school_english_tl
         \uah_degree_store:nnV {#1} {degree-name} \l_uah_degree_name_tl
         \uah_degree_store:nnV {#1} {degree-name-english} \l_uah_degree_name_english_tl
         \uah_degree_store:nnV {#1} {degree-name-wrapped} \l_uah_degree_name_wrapped_tl
@@ -105,6 +129,23 @@
         \uah_degree_store:nnV {#1} {work-type-full-spanish} \l_uah_degree_work_type_full_spanish_tl
         \uah_degree_store:nnV {#1} {work-type-full-english} \l_uah_degree_work_type_full_english_tl
         \uah_degree_store:nnV {#1} {layout-profile} \l_uah_degree_layout_profile_tl
+      }
+  }
+
+\cs_new_protected:Npn \uah_institution_declare:nn #1#2
+  {
+    \prop_if_in:NnTF \g_uah_institution_registry_prop {#1/university-name}
+      { \msg_error:nnn { uah-degree-registry } { duplicate-institution } {#1} }
+      {
+        \tl_clear:N \l_uah_institution_university_name_tl
+        \tl_clear:N \l_uah_institution_university_name_english_tl
+        \tl_clear:N \l_uah_institution_university_acronym_tl
+        \keys_set:nn { uah/institution } {#2}
+        \uah_degree_require:nnN {#1} {university-name} \l_uah_institution_university_name_tl
+        \uah_degree_require:nnN {#1} {university-acronym} \l_uah_institution_university_acronym_tl
+        \prop_gput:NnV \g_uah_institution_registry_prop {#1/university-name} \l_uah_institution_university_name_tl
+        \prop_gput:NnV \g_uah_institution_registry_prop {#1/university-name-english} \l_uah_institution_university_name_english_tl
+        \prop_gput:NnV \g_uah_institution_registry_prop {#1/university-acronym} \l_uah_institution_university_acronym_tl
       }
   }
 
@@ -148,15 +189,41 @@
       { \msg_error:nnnn { uah-degree-registry } { unknown-layout-profile } {#1} {\l_tmpa_tl} }
   }
 
+\cs_new_protected:Npn \uah_degree_validate_institution:n #1
+  {
+    \prop_get:NnN \g_uah_degree_registry_prop {#1/institution} \l_tmpa_tl
+    \prop_if_in:NxTF \g_uah_institution_registry_prop { \l_tmpa_tl/university-name }
+      { }
+      { \msg_error:nnnn { uah-degree-registry } { unknown-institution } {#1} {\l_tmpa_tl} }
+  }
+
+\cs_new_protected:Npn \uah_define_from_selected_institution:Nn #1#2
+  {
+    \prop_get:NxN \g_uah_degree_registry_prop
+      { \g_uah_selected_degree_tl/institution } \l_tmpa_tl
+    \prop_get:NxN \g_uah_institution_registry_prop
+      { \l_tmpa_tl/#2 } \l_tmpb_tl
+    \cs_set:Npx #1 { \exp_not:V \l_tmpb_tl }
+  }
+
 \cs_new_protected:Npn \uah_degree_select:n #1
   {
     \prop_if_in:NnTF \g_uah_degree_registry_prop {#1/work-type}
       {
         \uah_degree_validate_profile:n {#1}
+        \uah_degree_validate_institution:n {#1}
         \tl_gset:Nn \g_uah_selected_degree_tl {#1}
         \uah_define_from_selected_property:Nn \myDegreefull {degree-name}
         \uah_define_from_selected_property:Nn \myWorkType {work-type}
         \uah_define_from_selected_property:Nn \myLayoutProfile {layout-profile}
+        \uah_define_from_selected_institution:Nn \myUniversity {university-name}
+        \uah_define_from_selected_institution:Nn \myUniversityEnglish {university-name-english}
+        \uah_define_from_selected_institution:Nn \myUniversityAcronym {university-acronym}
+        \uah_define_from_selected_property:Nn \mySchool {school}
+        \prop_get:NnN \g_uah_degree_registry_prop {#1/school-english} \l_tmpa_tl
+        \tl_if_blank:VTF \l_tmpa_tl
+          { \cs_set:Npn \mySchoolEnglish {\mySchool} }
+          { \cs_set:Npx \mySchoolEnglish { \exp_not:V \l_tmpa_tl } }
         \tl_set:Nx \l_tmpa_tl {\myLanguage}
         \str_if_eq:VnTF \l_tmpa_tl {spanish}
           { \uah_define_from_selected_property:Nn \myWorkTypeFull {work-type-full-spanish} }
@@ -189,6 +256,8 @@
 
 \NewDocumentCommand \DeclareDegree { m m }
   { \uah_degree_declare:nn {#1} {#2} }
+\NewDocumentCommand \DeclareInstitution { m m }
+  { \uah_institution_declare:nn {#1} {#2} }
 \NewDocumentCommand \DeclareLayoutProfile { m m }
   { \uah_layout_profile_declare:nn {#1} {#2} }
 \NewDocumentCommand \DegreeRegistrySelect { m }

@@ -74,13 +74,13 @@ The root `Makefile` can also produce a PDF version of the README and delegate bu
 - Language (`spanish` / `english`)
 - Degree code (e.g., `GIEC`, `MUIT`, `PHDUAH`)
 - Author and advisor identity data
-- Institution/department metadata
+- Department and project-specific affiliation metadata
 - Dates, legal/publishing options, and grades
 - Link colors and optional helper macros
 
 ### Degree registry and layouts
 
-`Config/degrees.tex` is the authoritative registry of degree identifiers, work categories (`TFG`, `TFM`, `PhD`, etc.) and display names. `Config/layout-profiles.tex` maps those entries to their cover and back-page files. The build tools query the same registry through `Config/query-degree-registry.sh`.
+`Config/degrees.tex` is the authoritative registry of degree identifiers, work categories (`TFG`, `TFM`, `PhD`, etc.), display names, institutions, and schools. `Config/institutions.tex` defines university names and acronyms once for all degrees belonging to each institution. `Config/layout-profiles.tex` maps degree entries to their cover and back-page files. The build tools query the same registry through `Config/query-degree-registry.sh`.
 
 ### Dynamic post-configuration
 
