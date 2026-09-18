@@ -112,7 +112,7 @@ If no existing profile is suitable, add one to `Config/layout-profiles.tex`:
 }
 ```
 
-`cover-files` is a comma-separated ordered list. Every listed file is included, in order. `backpage-file` is optional; omit it when the degree has no back page.
+`cover-files` is a comma-separated ordered list of arbitrary length. A profile may contain one file, two files, or more than two files; every listed file is included exactly once and in the declared order. The registry does not insert page breaks between them, so each file must provide its own `titlepage`, `\newpage`, `\clearpage`, or equivalent page-boundary handling. A missing file produces the normal LaTeX file-not-found error, while repeating a filename includes it repeatedly. An empty or omitted `cover-files` value currently produces no cover and is not rejected by the registry, so every normal document profile should declare at least one cover file. `backpage-file` is optional; omit it when the degree has no back page.
 
 Paths are resolved while compiling from `Book/`, so institutional paths normally start with `cover/<institution>/`. Use forward slashes and preserve filename case.
 
