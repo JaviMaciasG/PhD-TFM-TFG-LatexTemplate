@@ -45,7 +45,7 @@ Para el uso habitual de la plantilla solo necesitarás los siguientes objetivos:
   \item \texttt{clean}: elimina los ficheros auxiliares y los PDF de trabajo generados durante la compilación.
 \end{itemize}
 
-Los siguientes objetivos proporcionan operaciones avanzadas para la revisión, la preparación o la distribución del proyecto:
+Los siguientes objetivos proporcionan operaciones avanzadas para la revisión y la preparación del proyecto:
 
 \begin{itemize}
   \item \texttt{all\_latexmk}: ofrece un procedimiento alternativo y experimental de compilación basado en \texttt{latexmk}.
@@ -57,7 +57,6 @@ Los siguientes objetivos proporcionan operaciones avanzadas para la revisión, l
   \item \texttt{orig-chapters}: sustituye los capítulos y apéndices de trabajo por las versiones completas de ejemplo y restaura sus órdenes de inclusión en \texttt{book.tex}, después de crear una copia de seguridad.
   \item \texttt{bare-chapters}: sustituye los capítulos y apéndices de trabajo por versiones mínimas y actualiza sus órdenes de inclusión en \texttt{book.tex}, después de crear una copia de seguridad.
   \item \texttt{bare}: prepara una estructura mínima mediante \texttt{bare-chapters} y ofrece eliminar los gráficos y diagramas existentes.
-  \item \texttt{tar}: genera archivos comprimidos con los fuentes y recursos de la plantilla.
 \end{itemize}
 
 Los objetivos relacionados con la comparación de versiones se explican con más detalle en la sección~\ref{sec:control-de-cambios}.
@@ -74,7 +73,6 @@ Algunos objetivos del \texttt{Makefile} utilizan herramientas adicionales. Solo 
   \item \texttt{Dia} y \texttt{epspdf}: convierten automáticamente los diagramas en formato \texttt{dia} a \texttt{pdf}; \texttt{epspdf} también convierte las figuras en formato \texttt{eps} a \texttt{pdf}.
   \item \texttt{latexmk}: proporciona el procedimiento alternativo utilizado por los objetivos \texttt{all\_latexmk} y \texttt{clean\_latexmk}.
   \item \texttt{latexpand} y \texttt{latexdiff}: permiten unificar los fuentes y generar documentos que muestran las diferencias entre dos versiones.
-  \item \texttt{tar}, \texttt{gzip} y \texttt{zip}: generan los archivos comprimidos creados por el objetivo \texttt{tar}.
   \item \texttt{Perl}: es necesario para ejecutar \texttt{makeglossaries} en los sistemas que no incluyan ya un intérprete compatible.
 \end{itemize}
 

@@ -39,7 +39,7 @@ Repository volume snapshot (tracked files):
 3. Compile `Book/book.tex` with your usual LaTeX editor or build tool configured for `biber`; optionally use `make` from `Book/` to automate the complete sequence.
 4. Optionally compile `Anteproyecto/` and the corresponding paperwork templates in `Papeleo*` directories.
 
-The root `Makefile` can also produce a PDF version of the README and delegate build to `Book/`.
+The root `Makefile` can also produce a PDF version of the README, delegate the build to `Book/`, and generate maintainer release archives through `make distrib`.
 
 ## Build and tooling model
 
@@ -48,6 +48,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate bu
 - `Makefile` target `all` builds:
   - `00-README.pdf` via `pandoc`
   - Main `book` by delegating to `Book/Makefile`
+- `Makefile` target `distrib` reads `RELEASE.txt` and delegates to `AdminScripts/go.build-distribution.sh` to create matching `.tgz` and `.zip` release archives.
 
 ### Book build pipeline
 
@@ -115,7 +116,7 @@ Institution-specific implementations are grouped under `Book/cover/uah/`, `Book/
 - The project contains long-lived legacy material and historical comments (`$Id` tags, old workflows).
 - `Deprecated/` keeps earlier assets/tools, indicating strong backward compatibility concerns.
 - `TODO` still tracks pending improvements (e.g., acronym issues, Windows usage guidance).
-- User documentation is centralized in `README.md`, with additional examples embedded in the template chapters.
+- User documentation is centralized in `README.md`, with additional examples embedded in the template chapters. Maintainer procedures for release packaging and adding degrees or universities are centralized in `MAINTAINERS.md`.
 
 ## Strengths
 
