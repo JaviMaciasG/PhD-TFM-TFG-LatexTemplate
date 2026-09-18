@@ -13,4 +13,7 @@ clean:
 sync-git-sources:
 	@bash AdminScripts/sync-git-sources.sh
 
-.PHONY: all book sync-git-sources
+.PHONY: all book sync-git-sources distrib
+
+distrib: 00-README.pdf
+	@bash AdminScripts/go.build-distribution.sh

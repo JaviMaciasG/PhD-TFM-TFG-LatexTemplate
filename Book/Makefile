@@ -9,9 +9,6 @@ WORKTYPES_FILE = ../Config/worktypes.txt
 # Tools
 LATEXMK_TOOL = latexmk
 EPSPDF_TOOL = epspdf
-TAR_TOOL = tar
-GZIP_TOOL = gzip
-ZIP_TOOL = zip
 DIA_TOOL = dia
 GS_TOOL = gs
 INKSCAPE_TOOL = inkscape
@@ -61,7 +58,7 @@ PDFS_FROM_SVG = $(patsubst %.svg, %.pdf, $(SVG_SOURCES))
 PDFS_FROM_EPS = $(patsubst %.eps, %.pdf, $(EPS_SOURCES))
 
 # Dummy targets
-DUMMY_MAIN_TARGETS = all bare backup-chapters orig-chapters bare-chapters clean-orig-figures clean-orig-diagrams all_latexmk tar clean clean_latexmk
+DUMMY_MAIN_TARGETS = all bare backup-chapters orig-chapters bare-chapters clean-orig-figures clean-orig-diagrams all_latexmk clean clean_latexmk
 DUMMY_DIFF_TARGETS = snapshot flatten latexdiff
 DUMMY_TARGETS = pdf_dia_done pdf_svg_done pdf_eps_done
 
@@ -185,10 +182,6 @@ pdf_eps_done: $(PDFS_FROM_EPS)
 	@echo "Converting $^ to $@..."
 	$(EPSPDF_TOOL) $^ $@
 
-tar:
-	$(TAR_TOOL) -uvf $(ROOT_FILENAME)-latex.tar `find . -name Makefile -o -name README -o -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.jpg" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS" `
-	$(GZIP_TOOL) $(ROOT_FILENAME)-latex.tar
-	$(ZIP_TOOL) -u $(ROOT_FILENAME)-latex.zip `find . -name Makefile -o -name README -o -name "*.txt" -o -name "*.ppt*" -o -name "*.c" -o -name "*.sty" -o -name "*.tex" -o -name "*.bib" -o -name "*.pdf" -o -name "*.png" -o -name "*.jpg" -o -name "*.dia" -o -name "*.eps" -o -name "*.EPS" `
 
 clean:
 	$(RM) $(DUMMY_TARGETS)
