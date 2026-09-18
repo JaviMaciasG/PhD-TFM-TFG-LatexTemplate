@@ -35,6 +35,7 @@ DEGREES_ENG_SPA=`sh "$DEGREE_REGISTRY_TOOL" identifiers "$DEGREE_REGISTRY"`
 MYCONFIG_VARS="../Config/myconfig.tex.vars"
 MYCONFIG="../Config/myconfig.tex"
 BOOK="book"
+ERROR_COUNT=0
 
 cat $MYCONFIG |sed -E "s/newcommand[{][\\]myLanguage[}][{](.*)[}]/newcommand{\\\myLanguage}{__LANG__}/g" |sed -E "s/newcommand[{][\\]myDegree[}][{](.*)[}]/newcommand{\\\myDegree}{__DEGREE__}/g" > $MYCONFIG_VARS
 
@@ -51,17 +52,37 @@ do
 	LOG_NAME=$TYPE-$degree-$lang.log
 	echo -n "Making for degree $degree, generating $OUTPUT_NAME..."
 	cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
-	make clean >& /dev/null
-	make  >& $LOG_NAME
-	#echo "mv book.pdf $DST_DIR/$OUTPUT_NAME"
-    echo mv book-compressed.pdf $DST_DIR/$OUTPUT_NAME
-    mv book-compressed.pdf $OUTPUT_NAME
-	echo " Done!"
+	make clean > /dev/null 2>&1
+	rm -f "$BOOK-compressed.pdf"
+	if make > "$LOG_NAME" 2>&1
+	then
+	    if [ ! -f "$BOOK-compressed.pdf" ]
+	    then
+		echo " ERROR: the build finished without producing $BOOK-compressed.pdf; see $LOG_NAME" >&2
+		ERROR_COUNT=$((ERROR_COUNT + 1))
+	    elif mv "$BOOK-compressed.pdf" "$OUTPUT_NAME"
+	    then
+		echo " Done!"
+	    else
+		echo " ERROR: could not save the generated PDF as $OUTPUT_NAME; see $LOG_NAME" >&2
+		ERROR_COUNT=$((ERROR_COUNT + 1))
+	    fi
+	else
+	    BUILD_STATUS=$?
+	    echo " ERROR: generation failed with status $BUILD_STATUS; see $LOG_NAME" >&2
+	    ERROR_COUNT=$((ERROR_COUNT + 1))
+	fi
 	#exit
     done
 done
 
 cp $MYCONFIG.before $MYCONFIG
+
+if [ "$ERROR_COUNT" -ne 0 ]
+then
+    echo "ERROR: $ERROR_COUNT PDF generation(s) failed. Review the corresponding log files." >&2
+    exit 1
+fi
 
 # for f in `ls *.pdf`
 # do
