@@ -45,14 +45,23 @@ Las siguientes variables controlan el idioma, la titulación y la presentación 
   \item \texttt{\textbackslash{}mySpecialty}: especialidad o itinerario asociado a la titulación. Puede dejarse vacío cuando no resulte aplicable.
 \end{itemize}
 
-Los identificadores admitidos actualmente por \texttt{\textbackslash{}myDegree}, agrupados por tipo de documento, son:
+Los identificadores admitidos actualmente por \texttt{\textbackslash{}myDegree}, organizados por universidad y centro, son:
 
 \begin{itemize}
-  \item \textbf{Trabajos fin de carrera}: \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST} e \texttt{ITI}. Corresponden a titulaciones anteriores al Espacio Europeo de Educación Superior y se conservan por compatibilidad.
-  \item \textbf{Trabajos fin de grado}: \texttt{GITT}, \texttt{GIEC}, \texttt{GIT}, \texttt{GIST}, \texttt{GIC}, \texttt{GII}, \texttt{GMC}, \texttt{GIS}, \texttt{GSI}, \texttt{GISI}, \texttt{GIEAI}, \texttt{GITI} e \texttt{ITIURJC}.
-  \item \textbf{Trabajos fin de máster}: \texttt{MUSEA}, \texttt{MUIT}, \texttt{MUII}, \texttt{MUIE}, \texttt{MUCTE}, \texttt{MUANBD} y \texttt{MUC}.
-  \item \textbf{Tesis doctorales}: \texttt{PHDUAH} y \texttt{PHDUPM}.
-  \item \textbf{Informes de investigación}: \texttt{GEINTRARR}, cuyo soporte se considera todavía experimental.
+  \item \textbf{Universidad de Alcalá}:
+  \begin{itemize}
+    \item \textbf{Escuela Politécnica Superior}: trabajos fin de carrera \texttt{IT}, \texttt{IE}, \texttt{ITTSE}, \texttt{ITTST} e \texttt{ITI}; trabajos fin de grado \texttt{GITT}, \texttt{GIEC}, \texttt{GIT}, \texttt{GIST}, \texttt{GIC}, \texttt{GII}, \texttt{GMC}, \texttt{GIS}, \texttt{GSI}, \texttt{GISI}, \texttt{GIEAI} y \texttt{GITI}; trabajos fin de máster \texttt{MUSEA}, \texttt{MUIT}, \texttt{MUII}, \texttt{MUIE}, \texttt{MUCTE}, \texttt{MUANBD} y \texttt{MUC}; y tesis doctoral \texttt{PHDUAH}. Los identificadores de trabajos fin de carrera corresponden a titulaciones anteriores al Espacio Europeo de Educación Superior y se conservan por compatibilidad.
+    \item \textbf{Facultad de Ciencias}: trabajos fin de grado \texttt{GFIE}, \texttt{GBS}, \texttt{GB}, \texttt{GQ}, \texttt{GCA} y \texttt{GCCTF}.
+  \end{itemize}
+  \item \textbf{Universidad Rey Juan Carlos}:
+  \begin{itemize}
+    \item \textbf{Escuela Superior de Ciencias Experimentales y Tecnología}: trabajo fin de grado \texttt{ITIURJC}.
+  \end{itemize}
+  \item \textbf{Universidad Politécnica de Madrid}:
+  \begin{itemize}
+    \item \textbf{Escuela Técnica Superior de Ingenieros de Telecomunicación}: tesis doctoral \texttt{PHDUPM}.
+  \end{itemize}
+  \item \textbf{Grupo de investigación GEINTRA}: informe de investigación \texttt{GEINTRARR}, cuyo soporte se considera todavía experimental.
 \end{itemize}
 
 Consulta siempre la lista actualizada de identificadores admitidos en los comentarios que aparecen inmediatamente antes de la definición de \texttt{\textbackslash{}myDegree} en \texttt{Config/myconfig.tex}. Solo tienes que elegir allí el identificador correspondiente; la plantilla seleccionará automáticamente los datos y las páginas institucionales aplicables.
