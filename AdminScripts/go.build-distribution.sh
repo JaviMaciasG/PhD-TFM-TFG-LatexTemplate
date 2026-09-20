@@ -19,7 +19,7 @@ mkdir -p "$stage"
 
 git ls-files | while IFS= read -r file; do
   case "$file" in
-    TODO|*/TODO|SUGGESTED_IMPROVEMENTS.md|Deprecated/*|Book/slides/*) continue ;;
+    TODO|*/TODO|SUGGESTED_IMPROVEMENTS.md|Deprecated/*|normativas/*|Book/slides/*) continue ;;
     *.pdf)
       case "$file" in
         Book/additional/*.pdf|Book/cover/*.pdf|Book/cover/*/*.pdf|Book/diagrams/*.pdf|Book/figures/*.pdf|Book/letters/*.pdf|Book/logos/*.pdf|Book/logos/*/*.pdf|Book/logos/*/*/*.pdf|Book/portadaTFGs/*.pdf) ;;
