@@ -137,6 +137,8 @@ make clean
 
 When you are ready to write your own document, you can start from the minimal, almost empty structure we prepared for you. If you are not using `make`, replace `Book/book.tex` with `Book/book-bare.tex`, remove the `.tex` files located directly under `Book/chapters/` and `Book/appendix/`, and copy into those directories the files from `Book/chapters/bare/` and `Book/appendix/bare/`, respectively. If you use `make`, running `make bare-chapters` from `Book/` performs this preparation automatically after creating a backup.
 
+Once the minimal structure is ready, create your Git repository and make a first commit of its source files. If you prefer a graphical Git client, keep the supplied `.gitignore`, ask the client to include all unignored changes in the commit, review the proposed file list, and then create the commit; the client may call this operation *Stage all*, *Stage all changes*, *Select all*, or simply present checkboxes for the files to commit. The complete beginner-friendly procedure, the files that must never be committed, and the dependency-aware `make sync-git-sources` alternative are explained in the manual section *Preparación del repositorio Git*.
+
 
 ## Customize the book contents
 
