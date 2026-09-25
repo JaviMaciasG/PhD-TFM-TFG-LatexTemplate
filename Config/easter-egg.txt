@@ -1,4 +1,22 @@
 ---------------------------------------------------------------------------
+People
+---------------------------------------------------------------------------
+Las personas que aparecen nominalmente en la configuración predeterminada de la plantilla son guiños a mi vida académica, personal y a la UAH:
+
++ Roberto Barra Chicote, mi primer doctorando (y a pesar de eso amigo), actualmente Principal Scientist en Amazon Research (Cambridge, UK).
+
++ Francisca de Nebrija, primera docente femenina de las aulas universitarias de Alcalá. Portal de Comunicación UAH.
+
++ Francisco Vallés de Covarrubias, médico y profesor de la Universidad de Alcalá, uno de sus grandes científicos históricos.
+
++ María Castellano Arroyo, profesora de Medicina de la UAH y primera mujer catedrática de Medicina de España.
+
++ Elio Antonio de Nebrija, catedrático de Retórica y una de las figuras más emblemáticas de la Universidad histórica.
+
++ Sira Elena Palazuelos Cagigas, profesora Titular de Ingeniería Electrónica en la UAH, mi vida y mi equipo.
+
+
+---------------------------------------------------------------------------
 Meaninful DNIs... :-)
 ---------------------------------------------------------------------------
 
