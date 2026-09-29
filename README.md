@@ -129,7 +129,7 @@ After downloading the template, first compile `Book/book.tex` without modifying 
 
 These quick-start steps deliberately describe the standard workflow used by almost everyone. A PhD student using the compendium modality keeps the same `Book/book.tex` entry point and compilation process, but selects `compendium` and organizes the body through `Book/content-compendium.tex` as explained in the specialized section below.
 
-The provided Makefile runs those steps automatically. It generates `book.pdf` and a reduced-size `book-compressed.pdf` variant, and copies them to filenames derived from the work type, degree, author, and language. Other build tools may generate only `book.pdf` unless configured to reproduce these additional steps.
+The provided Makefile runs those steps automatically. It generates `book.pdf` and a reduced-size `book-compressed.pdf` variant, and copies them to filenames derived from the work type, degree, author, and language. For PhD theses, those final filenames also contain `-standard` or `-compendium` to identify the selected document structure. Other build tools may generate only `book.pdf` unless configured to reproduce these additional steps.
 
 If you follow the `make` compilation alternative, to remove generated auxiliary files, run this from `Book/`:
 
