@@ -1,0 +1,25 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% List of algorithms.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{linkcolor=\myothertoclinkcolor}
+\ifthenelse{\equal{\myLanguage}{english}}
+{
+  \renewcommand*{\algorithmcfname}{Algorithm}
+  \renewcommand{\listofalgorithms}{\begingroup
+    \tocfile{List of Algorithms}{loa}
+    \endgroup}
+}
+{
+  \renewcommand*{\algorithmcfname}{Algoritmo}
+  \renewcommand{\listofalgorithms}{\begingroup
+    \tocfile{Índice de algoritmos}{loa}
+    \endgroup}
+}
+\listofalgorithms
+\clearemptydoublepage
+\hypersetup{linkcolor=\mylinkcolor}
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:

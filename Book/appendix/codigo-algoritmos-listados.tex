@@ -158,11 +158,7 @@ done
 \section{Ejemplos de inclusión de algoritmos}
 \label{sec:algoritmos}
 
-Desde la versión de abril de 2014, empezamos a usar el paquete
-\texttt{algorithm2e} para incluir algoritmos, y hay ajustes específicos
-y dependientes de este paquete tanto en \texttt{Config/preamble.tex}
-como en \texttt{cover/extralistings.tex} (editadlos según vuestras
-necesidades). 
+Desde la versión de abril de 2014, empezamos a usar el paquete \texttt{algorithm2e} para incluir algoritmos. Los ajustes generales dependientes del paquete se encuentran en \texttt{Config/preamble.tex}, mientras que \texttt{cover/list-of-algorithms.tex} genera su índice.
 
 Hay otras opciones disponibles (por ejemplo las descritas en
 \url{http://en.wikibooks.org/wiki/LaTeX/Algorithm}), y podemos
@@ -236,11 +232,10 @@ algoritmo~\ref{alg:restriction}.
 \section{Ejemplos de inclusión de enlaces a vídeos y listado}
 \label{sec:videolink}
 
-En marzo de 2023 recibimos una pregunta sobre la posibilidad de incluir enlaces a vídeos en el documento, y que se generara automáticamente un listado similar al de tablas, figuras o algoritmos. El código para implementarlo está también en el fichero \texttt{cover/extralistings.tex} y puedes editarlo como te interese. Para usarlo, basta con que incluyas elementos similares a \videoLink{Amplificadores realimentados: motivación}{https://youtu.be/9xXuasS8B3M} o \videoLink{Amplificadores realimentados: teoría ideal}{https://youtu.be/ZGMwGX7VCbg}.
+En marzo de 2023 recibimos una pregunta sobre la posibilidad de incluir enlaces a vídeos en el documento y generar automáticamente un listado similar al de tablas, figuras o algoritmos. La orden se define en \texttt{Config/postamble.tex}, mientras que el listado se genera desde \texttt{cover/list-of-videos.tex}. Para usarla, basta con que incluyas elementos similares a \videoLink{Amplificadores realimentados: motivación}{https://youtu.be/9xXuasS8B3M} o \videoLink{Amplificadores realimentados: teoría ideal}{https://youtu.be/ZGMwGX7VCbg}.
 
 
 %%% Local Variables:
 %%% TeX-master: "../book"
 %%% End:
-
 

@@ -145,15 +145,29 @@
 % inclusion of the file
 %\input{abstract/resumen-extendido.tex}       % EDIT this file
 
-% Now include toc and list of figures+tables
-\input{cover/toc+lof+lot.tex}                 % DO NOT TOUCH THIS LINE!
+% The table of contents is always included. The remaining generated lists
+% are selected independently in Config/myconfig.tex.
+\input{cover/table-of-contents.tex}
 
-% If you want to include additional listings, you can use the float
-% package. As an example, I include here the listing of source code
-% snippets and algorithms (you have some examples in
-% appendix/codigo-algoritmos-listados.tex)
-\input{cover/extralistings.tex}               % Lists are selected with the
-                                              % \myInclude... configuration
+\ifthenelse{\equal{\myIncludeListOfFigures}{true}}
+  {\input{cover/list-of-figures.tex}}
+  {}
+
+\ifthenelse{\equal{\myIncludeListOfTables}{true}}
+  {\input{cover/list-of-tables.tex}}
+  {}
+
+\ifthenelse{\equal{\myIncludeListOfCode}{true}}
+  {\input{cover/list-of-code.tex}}
+  {}
+
+\ifthenelse{\equal{\myIncludeListOfAlgorithms}{true}}
+  {\input{cover/list-of-algorithms.tex}}
+  {}
+
+\ifthenelse{\equal{\myIncludeListOfVideos}{true}}
+  {\input{cover/list-of-videos.tex}}
+  {}
 
 % Now include list of acronyms and options (if this is the case)
 \ifthenelse{\equal{\myIncludeListOfAcronyms}{true}}
