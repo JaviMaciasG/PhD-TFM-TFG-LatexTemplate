@@ -67,6 +67,20 @@
 \input{\myConfigDirectory/layout-profiles.tex}
 \input{\myConfigDirectory/degrees.tex}
 \DegreeRegistrySelect{\myDegree}
+
+% A thesis by compendium is only valid for a doctoral programme.
+\ifthenelse{\equal{\myDocumentStructure}{compendium}}
+{
+  \ifthenelse{\equal{\myWorkType}{PhD}}
+  {}
+  {
+    \PackageError{UAH-template}
+      {The compendium structure requires a PhD programme}
+      {Set \string\myDegree\space to a doctoral programme, or select the standard document structure.}
+  }
+}
+{}
+
 \InstitutionRegistryLoadStyle
 
 \ifthenelse{\equal{\myLanguage}{spanish}}
@@ -434,6 +448,10 @@
 %\usepackage[subfigure]{tocloft}
 
 \usepackage{tocloft}
+\renewcommand{\cftpartfont}{\large\bfseries\scshape}
+\renewcommand{\cftpartpresnum}{\partname\space}
+\renewcommand{\cftpartaftersnum}{\quad}
+\setlength{\cftpartnumwidth}{7em}
 \setlength{\cftbeforefigskip}{6pt} % Default is around 4pt
 
 
