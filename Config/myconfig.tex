@@ -106,9 +106,26 @@
 \newcommand{\myDegree}{PHDUAH}
 
 % Select the document structure:
-%  standard   - conventional monograph
-%  compendium - PhD thesis by compendium of publications
-\newcommand{\myDocumentStructure}{compendium}
+%  standard   - normal structure for TFGs, TFMs, conventional PhD theses and
+%               the other documents supported by the template. Its contents
+%               are organized in Book/content-standard.tex.
+%  compendium - specialized structure used only for a PhD thesis presented as
+%               a compendium of publications. Its contents are organized in
+%               Book/content-compendium.tex.
+\newcommand{\myDocumentStructure}{standard}
+
+% Optional document elements. Every value must be exactly true or false.
+% Disabling a generated list does not disable the corresponding LaTeX feature.
+\newcommand{\myIncludeSampleLetter}{true}
+\newcommand{\myIncludeDedication}{true}
+\newcommand{\myIncludeAcknowledgements}{true}
+\newcommand{\myIncludeListOfFigures}{true}
+\newcommand{\myIncludeListOfTables}{true}
+\newcommand{\myIncludeListOfAcronyms}{true}
+\newcommand{\myIncludeListOfSymbols}{true}
+\newcommand{\myIncludeListOfCode}{true}
+\newcommand{\myIncludeListOfAlgorithms}{true}
+\newcommand{\myIncludeListOfVideos}{true}
 
 \newcommand{\myFlagSplittedAdvisors}{true} % if false it will set
                                            % "Tutores/Advisors" in the cover

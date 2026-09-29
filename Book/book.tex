@@ -39,8 +39,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN Preamble and configuration section
 %
-\input{../Config/preamble.tex}    % DO NOT TOUCH THIS LINE. You can edit
-                               % the file to modify some default settings
+\input{../Config/preamble.tex}    % DO NOT TOUCH THIS LINE. Most users do
+                               % not need to edit this infrastructure file
 
 \input{../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
                                % to set your specific settings (related
@@ -105,34 +105,37 @@
 %                                                       % 3-4 of pdf file
 %\clearemptydoublepage % You need to include this after including each pdf
 
-\includepdf[pages=-]{letters/sampleLetter.pdf}   % include all pages of
-                                                 % pdf file
+\ifthenelse{\equal{\myIncludeSampleLetter}{true}}
+{
+  \includepdf[pages=-]{letters/sampleLetter.pdf}
+  \clearemptydoublepage
+}
+{}
 %\includepdf[pages=-]{letters/sampleLetter-pages.pdf}   % include all pages of
 %                                                 % pdf file
-\clearemptydoublepage % You need to add this after including each pdf
 
 %\includepdf[pages=-]{papeleo/vistoBuenoTutorTFM-MUSEA.pdf}   % for TFMs
 %\clearemptydoublepage % You need to add this after including each pdf
 
-% Dedication+ackowledgements (dedicatorias+agradecimientos)
-\input{dedication/dedicatoria.tex}            % EDIT this file or
-                                              % comment it out
-\input{acknowledgements/agradecimientos.tex}  % EDIT this file or
-                                              % comment it out
+% Dedication+acknowledgements (dedicatorias+agradecimientos)
+\ifthenelse{\equal{\myIncludeDedication}{true}}
+  {\input{dedication/dedicatoria.tex}}
+  {}
+\ifthenelse{\equal{\myIncludeAcknowledgements}{true}}
+  {\input{acknowledgements/agradecimientos.tex}}
+  {}
 
 % If this is the case, include definitions of acronyms (it's
 % included before resumen.tex and abstract.tex in case you want
 % to use them here
-\input{acronyms/defacronymsgl.tex}            % EDIT this file or
-                                              % comment it out if you do
-                                              % not use acronyms
+\input{acronyms/defacronymsgl.tex}            % EDIT this file to define
+                                              % the acronyms you use
 
 % If this is the case, include definitions of acronyms (it's
 % included before resumen.tex and abstract.tex in case you want
 % to use them there
-\input{symbols/defsymbolsgl.tex}              % EDIT this file or
-                                              % comment it out if you do
-                                              % not use acronyms
+\input{symbols/defsymbolsgl.tex}              % EDIT this file to define
+                                              % the symbols you use
 
 % Now include resumen and abstract
 \input{abstract/resumen.tex}                  % EDIT this file
@@ -149,18 +152,18 @@
 % package. As an example, I include here the listing of source code
 % snippets and algorithms (you have some examples in
 % appendix/codigo-algoritmos-listados.tex)
-\input{cover/extralistings.tex}               % Edit this file or
-                                              % comment it out
+\input{cover/extralistings.tex}               % Lists are selected with the
+                                              % \myInclude... configuration
 
 % Now include list of acronyms and options (if this is the case)
-\input{acronyms/acronymsgl.tex}               % EDIT this file or
-                                              % comment it out if you do
-                                              % not use acronyms
+\ifthenelse{\equal{\myIncludeListOfAcronyms}{true}}
+  {\input{acronyms/acronymsgl.tex}}
+  {}
 
 % Now include symbols of symbols and options (if this is the case)
-\input{symbols/symbolsgl.tex}                 % EDIT this file or
-                                              % comment it out if you do
-                                              % not use acronyms
+\ifthenelse{\equal{\myIncludeListOfSymbols}{true}}
+  {\input{symbols/symbolsgl.tex}}
+  {}
 
 %
 % END within-document configuration, frontpage and cover pages generation
@@ -186,91 +189,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Select the body configured in Config/myconfig.tex.
 \ifstandarddocument
-
-  % This is the section MOST of you will be using (except for PhD Thesis as compilation of articles)
-
-  % BEGIN standard chapter inputs
-  \input{chapters/introduccion.tex}
-  \input{chapters/primeros-pasos.tex}
-  \input{chapters/configuracion.tex}
-  \input{chapters/estructura-documento.tex}
-  \input{chapters/elementos-utilidad.tex}
-  \input{chapters/documentos-complementarios.tex}
-  \input{chapters/compilacion-avanzada.tex}
-  \input{chapters/elementos-basicos.tex}
-  \input{chapters/ejemplos-avanzados.tex}
-  \input{chapters/conclusiones.tex}
-  % END standard chapter inputs
-
-  % Optional in PFCs
-  %\input{pliego/pliego.tex}
-
-  % Optional in PFCs, compulsory in TFGs
-  %\input{presupuesto/presupuesto.tex}
-
-  \input{biblio/bibliography.tex}
-
-  \begin{appendices}
-    % BEGIN standard appendix inputs
-    \input{appendix/codigo-algoritmos-listados.tex}
-    % END standard appendix inputs
-  \end{appendices}
-
+  % This is the structure used by almost every document.
+  \input{content-standard.tex}
 \else
-
-  % FORGET about this part if you are nod doing a PhD Thesis as compilation of articles)
-  % FORGET about this part if you are nod doing a PhD Thesis as compilation of articles)
-  % FORGET about this part if you are nod doing a PhD Thesis as compilation of articles)
-  % FORGET about this part if you are nod doing a PhD Thesis as compilation of articles)
-
-  \ifthenelse{\equal{\myLanguage}{english}}
-    {\part{Extended Summary of the Thesis}}
-    {\part{Resumen extendido de la tesis}}
-  \label{part:compendium-summary}
-
-  % BEGIN compendium chapter inputs
-  \input{chapters/compendium/introduction.tex}
-  \input{chapters/compendium/objectives.tex}
-  \input{chapters/compendium/previous-work.tex}
-  \input{chapters/compendium/methodology.tex}
-  \input{chapters/compendium/thesis-contributions.tex}
-  \input{chapters/compendium/conclusions.tex}
-  % END compendium chapter inputs
-
-  % The bibliography belongs between the extended summary and the papers.
-  \input{biblio/bibliography.tex}
-
-  \ifthenelse{\equal{\myLanguage}{english}}
-    {\part{Publications Included in the Compendium}}
-    {\part{Publicaciones incluidas en el compendio}}
-  \label{part:compendium-publications}
-
-  % BEGIN compendium publication inputs
-  \includecompendiumpublication[
-    \ifthenelse{\equal{\myLanguage}{english}}
-      {Fictional demonstration paper. Replace this text with its publication status, the doctoral candidate's contribution and any relevant reuse permission.}
-      {Artículo ficticio de demostración. Sustituye este texto por su estado de publicación, la contribución del doctorando y cualquier permiso de reutilización relevante.}
-  ]{paper-1}
-   {Coffee Cups as Fiducial Markers}
-   {On the Unexpected Reliability of Coffee Cups as Fiducial Markers in Indoor Video Sequences}
-   {garcia2026paper1}
-   {publications/paper1.pdf}
-
-  \includecompendiumpublication
-   {paper-2}
-   {Temporal Consistency in Human--Object Interaction}
-   {Temporal Consistency in Human--Object Interaction: Why the Spoon Usually Moves Before the Mug}
-   {garcia2026paper2}
-   {publications/paper2.pdf}
-
-  \includecompendiumpublication
-   {paper-3}
-   {Reproducible Desk-Based Vision Experiments}
-   {Toward Reproducible Desk-Based Vision Experiments: A Multi-Camera Study of Papers, Pens, and Other Obstacles}
-   {garcia2026paper3}
-   {publications/paper3.pdf}
-  % END compendium publication inputs
-
+  % Specialized structure for a PhD thesis by compendium of publications.
+  \input{content-compendium.tex}
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

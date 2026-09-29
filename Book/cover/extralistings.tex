@@ -30,57 +30,55 @@
 
 % Include the list of source code listings (if this is the case)
 \hypersetup{linkcolor=\myothertoclinkcolor}
-\ifthenelse{\equal{\myLanguage}{english}}
+\ifthenelse{\equal{\myIncludeListOfCode}{true}}
 {
-  \listof{codefloat}{List of source code listings}
-  \addcontentsline{toc}{chapter}{List of source code listings}
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+    \listof{codefloat}{List of source code listings}
+    \addcontentsline{toc}{chapter}{List of source code listings}
+  }
+  {
+    \listof{codefloat}{Índice de listados de código fuente}
+    \addcontentsline{toc}{chapter}{Índice de listados de código fuente}
+  }
 }
+{}
+
+\ifthenelse{\equal{\myIncludeListOfAlgorithms}{true}}
 {
-  \listof{codefloat}{Índice de listados de código fuente}    
-  \addcontentsline{toc}{chapter}{Índice de listados de código fuente}
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+    \renewcommand*{\algorithmcfname}{Algorithm}
+    \renewcommand{\listofalgorithms}{\begingroup
+      \tocfile{List of Algorithms}{loa}
+      \endgroup}
+  }
+  {
+    \renewcommand*{\algorithmcfname}{Algoritmo}
+    \renewcommand{\listofalgorithms}{\begingroup
+      \tocfile{Índice de algoritmos}{loa}
+      \endgroup}
+  }
+  \listofalgorithms
+  \clearemptydoublepage
 }
-
-
-\ifthenelse{\equal{\myLanguage}{english}}
-{
-\renewcommand*{\algorithmcfname}{Algorithm}
-\renewcommand{\listofalgorithms}{\begingroup
-  \tocfile{List of Algorithms}{loa}
-  \endgroup}
-% \makeatletter
-% \let\l@algorithm\l@figure
-% \makeatother
-
-}
-{
-%\SetAlgorithmName{Algoritmo}{algoritmo}{Índice de algoritmos}
-\renewcommand*{\algorithmcfname}{Algoritmo}
-
-\renewcommand{\listofalgorithms}{\begingroup
-   \tocfile{Índice de algoritmos}{loa}
-   \endgroup}
- % \makeatletter
- % \let\l@algorithm\l@figure
- % \makeatother
-
-
-}
-
-\listofalgorithms
-\clearemptydoublepage
+{}
 
 \hypersetup{linkcolor=\myothertoclinkcolor}
-%\cleardoublepage
 % This is code to add a list of videos if used
-\ifthenelse{\equal{\myLanguage}{english}}
+\ifthenelse{\equal{\myIncludeListOfVideos}{true}}
 {
-  \listofvideos
-  \addcontentsline{toc}{chapter}{List of videos}
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+    \listofvideos
+    \addcontentsline{toc}{chapter}{List of videos}
+  }
+  {
+    \listofvideos
+    \addcontentsline{toc}{chapter}{Índice de vídeos}
+  }
 }
-{
-  \listofvideos
-  \addcontentsline{toc}{chapter}{Índice de vídeos}
-}
+{}
 
 \hypersetup{linkcolor=\mylinkcolor}
 

@@ -54,6 +54,11 @@ CHAPTER_ORIG_SOURCES = $(wildcard chapters/orig/*.tex)
 CHAPTER_BARE_SOURCES = $(wildcard chapters/bare/*.tex)
 COMPENDIUM_CHAPTER_SOURCES = $(wildcard chapters/compendium/*.tex)
 COMPENDIUM_CHAPTER_BARE_SOURCES = $(wildcard chapters/compendium/bare/*.tex)
+STANDARD_CONTENT_FILE = content-standard.tex
+STANDARD_CONTENT_ORIG_FILE = content/orig/content-standard.tex
+STANDARD_CONTENT_BARE_FILE = content/bare/content-standard.tex
+COMPENDIUM_CONTENT_FILE = content-compendium.tex
+COMPENDIUM_CONTENT_BARE_FILE = content/bare/content-compendium.tex
 APPENDIX_SOURCES = $(wildcard appendix/*.tex)
 APPENDIX_ORIG_SOURCES = $(wildcard appendix/orig/*.tex)
 APPENDIX_BARE_SOURCES = $(wildcard appendix/bare/*.tex)
@@ -106,7 +111,7 @@ bare:
 backup-chapters:
 	@echo "Backup up chapter sources to chapters/$(DATE)..."
 	mkdir -p chapters/$(DATE)
-	cp $(TEX_FILE) chapters/$(DATE)/book.tex
+	cp $(STANDARD_CONTENT_FILE) chapters/$(DATE)/content-standard.tex
 	cp $(CONFIG_FILE) chapters/$(DATE)/myconfig.tex
 	cp $(CHAPTER_SOURCES) chapters/$(DATE)
 	@echo " Done!"
@@ -118,7 +123,7 @@ backup-chapters:
 backup-compendium:
 	@echo "Backing up compendium sources to chapters/compendium/$(DATE)..."
 	mkdir -p chapters/compendium/$(DATE)
-	cp $(TEX_FILE) chapters/compendium/$(DATE)/book.tex
+	cp $(COMPENDIUM_CONTENT_FILE) chapters/compendium/$(DATE)/content-compendium.tex
 	cp $(CONFIG_FILE) chapters/compendium/$(DATE)/myconfig.tex
 	cp $(COMPENDIUM_CHAPTER_SOURCES) chapters/compendium/$(DATE)
 	@echo " Done!"
@@ -126,21 +131,21 @@ backup-compendium:
 orig-chapters: backup-chapters
 	@echo "Setting orig chapters..."
 	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
+	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1true$$2!g' $(CONFIG_FILE)
 	for f in $(CHAPTER_ORIG_SOURCES);  do cp $$f chapters; done
 	for f in $(APPENDIX_ORIG_SOURCES); do cp $$f appendix; done
-	perl -0pi -e 's!% BEGIN standard chapter inputs.*?% END standard chapter inputs!% BEGIN standard chapter inputs\n  \\input{chapters/introduccion.tex}\n  \\input{chapters/primeros-pasos.tex}\n  \\input{chapters/configuracion.tex}\n  \\input{chapters/estructura-documento.tex}\n  \\input{chapters/elementos-utilidad.tex}\n  \\input{chapters/documentos-complementarios.tex}\n  \\input{chapters/compilacion-avanzada.tex}\n  \\input{chapters/elementos-basicos.tex}\n  \\input{chapters/ejemplos-avanzados.tex}\n  \\input{chapters/conclusiones.tex}\n  % END standard chapter inputs!s' $(TEX_FILE)
-	perl -0pi -e 's!% BEGIN standard appendix inputs.*?% END standard appendix inputs!% BEGIN standard appendix inputs\n    \\input{appendix/codigo-algoritmos-listados.tex}\n    % END standard appendix inputs!s' $(TEX_FILE)
+	cp $(STANDARD_CONTENT_ORIG_FILE) $(STANDARD_CONTENT_FILE)
 	@echo " Done!"
 
 bare-standard: backup-chapters
 	@echo "Setting bare chapters..."
 	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
+	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1false$$2!g' $(CONFIG_FILE)
 	rm -f chapters/*.tex
 	rm -f appendix/*.tex
 	for f in $(CHAPTER_BARE_SOURCES);  do cp $$f chapters; done
 	for f in $(APPENDIX_BARE_SOURCES); do cp $$f appendix; done
-	perl -0pi -e 's!% BEGIN standard chapter inputs.*?% END standard chapter inputs!% BEGIN standard chapter inputs\n  \\input{chapters/introduccion.tex}\n  \\input{chapters/estudioTeorico.tex}\n  \\input{chapters/desarrollo.tex}\n  \\input{chapters/resultados.tex}\n  \\input{chapters/conclusiones.tex}\n  % END standard chapter inputs!s' $(TEX_FILE)
-	perl -0pi -e 's!% BEGIN standard appendix inputs.*?% END standard appendix inputs!% BEGIN standard appendix inputs\n    \\input{appendix/manual.tex}\n    \\input{appendix/herramientas.tex}\n    % END standard appendix inputs!s' $(TEX_FILE)
+	cp $(STANDARD_CONTENT_BARE_FILE) $(STANDARD_CONTENT_FILE)
 	@echo " Done!"
 
 bare-chapters: bare-standard
@@ -148,9 +153,10 @@ bare-chapters: bare-standard
 bare-compendium: backup-compendium
 	@echo "Setting bare compendium chapters and publications..."
 	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{compendium}!' $(CONFIG_FILE)
+	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1false$$2!g' $(CONFIG_FILE)
 	rm -f chapters/compendium/*.tex
 	for f in $(COMPENDIUM_CHAPTER_BARE_SOURCES); do cp $$f chapters/compendium; done
-	perl -0pi -e 's!% BEGIN compendium publication inputs.*?% END compendium publication inputs!% BEGIN compendium publication inputs\n  % Add one \\includecompendiumpublication declaration per publication here.\n  % END compendium publication inputs!s' $(TEX_FILE)
+	cp $(COMPENDIUM_CONTENT_BARE_FILE) $(COMPENDIUM_CONTENT_FILE)
 	@echo " Done!"
 
 clean-orig-figures:

@@ -32,13 +32,21 @@
 \hypersetup{linkcolor=\mytoclinkcolor}
 \tableofcontents
 
-\clearemptydoublepage
-\hypersetup{linkcolor=\myloflinkcolor}
-\listoffigures
-                          
-\clearemptydoublepage
-\hypersetup{linkcolor=\mylotlinkcolor}
-\listoftables
+\ifthenelse{\equal{\myIncludeListOfFigures}{true}}
+{
+  \clearemptydoublepage
+  \hypersetup{linkcolor=\myloflinkcolor}
+  \listoffigures
+}
+{}
+
+\ifthenelse{\equal{\myIncludeListOfTables}{true}}
+{
+  \clearemptydoublepage
+  \hypersetup{linkcolor=\mylotlinkcolor}
+  \listoftables
+}
+{}
 
 \hypersetup{linkcolor=\mylinkcolor}
 

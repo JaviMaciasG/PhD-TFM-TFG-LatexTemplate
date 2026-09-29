@@ -16,7 +16,7 @@ The template is multilingual (Spanish/English), degree-aware, and driven by user
 
 Top-level directories and their primary role:
 
-- `Book/`: Main long-form thesis/book document template (`book.tex`) with modular content folders.
+- `Book/`: Main long-form thesis/book document template, with the stable `book.tex` entry point, the normal `content-standard.tex` organization file, and the specialized `content-compendium.tex` alternative.
 - `Anteproyecto/`: Proposal document template and build workflow.
 - `Config/`: Core global configuration and compilation logic (`preamble`, `postamble`, language/worktype handling).
 - `PapeleoTFG/`, `PapeleoTFM/`, `PapeleoPHD/`: Administrative paperwork templates by document type.
@@ -35,7 +35,7 @@ Repository volume snapshot (tracked files):
 ## Main user workflow
 
 1. Configure personal/degree metadata in `Config/myconfig.tex`.
-2. Edit content files in `Book/` (chapters, abstract, appendices, bibliography).
+2. Keep the normal `standard` structure, edit `Book/content-standard.tex`, and write the relevant chapters, abstracts, appendices, and bibliography. Only PhD students using the compendium modality select the specialized `content-compendium.tex` structure.
 3. Compile `Book/book.tex` with your usual LaTeX editor or build tool configured for `biber`; optionally use `make` from `Book/` to automate the complete sequence.
 4. Optionally compile `Anteproyecto/` and the corresponding paperwork templates in `Papeleo*` directories.
 
@@ -73,6 +73,8 @@ The root `Makefile` can also produce a PDF version of the README, delegate the b
 `Config/myconfig.tex` is the central customization file. It exposes structured macros for:
 
 - Language (`spanish` / `english`)
+- Document structure (`standard` for normal use and `compendium` for the specialized PhD modality)
+- Optional preliminary elements and generated lists through the validated `\myInclude...` switches
 - Degree code (e.g., `GIEC`, `MUIT`, `PHDUAH`)
 - Author and advisor identity data
 - Department and project-specific affiliation metadata
@@ -94,16 +96,16 @@ The root `Makefile` can also produce a PDF version of the README, delegate the b
 
 ## Document composition model
 
-`Book/book.tex` is the orchestrator. It:
+`Book/book.tex` is the stable orchestrator. It:
 
 - Loads preamble/config/glossary/postamble layers.
 - Sets graphics search paths (`logos`, `figures`, `diagrams`).
-- Builds front matter (covers, letters, dedication, acknowledgements, lists, acronyms/symbols).
-- Loads the tutorial chapters (`introduccion`, `primeros-pasos`, `configuracion`, `estructura-documento`, `documentos-complementarios`, `compilacion-avanzada`, `elementos-basicos`, `ejemplos-avanzados`, and `conclusiones`) directly from `Book/book.tex`.
-- Injects bibliography and appendices.
+- Builds front matter (covers, letters, dedication, acknowledgements, lists, acronyms/symbols) according to the `\myInclude...` switches.
+- Loads `Book/content-standard.tex` for almost every document. That user-facing file selects the chapters, bibliography, and appendices.
+- Loads `Book/content-compendium.tex` only when a PhD student explicitly selects the specialized compendium structure; that file defines the extended summary, intervening bibliography, and publication PDFs.
 - Adds back page logic.
 
-The template intentionally uses modular `\input{...}` structure so users can comment/uncomment sections as needed.
+The template intentionally keeps `book.tex` stable. Users select optional front matter in `Config/myconfig.tex` and change the body through the applicable `content-*.tex` file rather than commenting infrastructure lines in `book.tex`.
 
 ## Cover and degree-specific behavior
 
@@ -139,6 +141,6 @@ For a new user, the safest path is:
 
 1. Read `README.md` once end-to-end.
 2. Edit only `Config/myconfig.tex` first.
-3. Start from `Book/book.tex` with existing example chapters.
+3. Keep `\myDocumentStructure` set to `standard` and start from `Book/content-standard.tex` with the existing example chapters or its prepared minimal version.
 4. Build `Book/book.tex` with your editor and verify that its bibliography backend is set to `biber`; use `make` only if you prefer the provided automation.
 5. Only after successful first compile, touch covers/paperwork files.

@@ -91,7 +91,7 @@ We have had a number of issues with [Overleaf](https://www.overleaf.com/) in the
 The directories most users need are:
 
 - `Config/`: Shared configuration and document-generation logic. For most of the cases, you will just have to edit `Config/myconfig.tex`, that is the main file for personal, degree, language, and document settings.
-- `Book/`: Main TFG, TFM, or PhD document. Its entry point is `Book/book.tex`; its subdirectories contain abstracts, chapters, appendices, bibliography files, figures, diagrams, acronyms, and symbols.
+- `Book/`: Main TFG, TFM, or PhD document. Its stable entry point is `Book/book.tex`; most users organize their document in `Book/content-standard.tex`, while the specialized PhD compendium structure uses `Book/content-compendium.tex`. Its subdirectories contain abstracts, chapters, appendices, bibliography files, figures, diagrams, acronyms, and symbols.
 - `Anteproyecto/`: Anteproyecto or proposal document. Its entry point is `Anteproyecto/anteproyecto.tex`.
 
 In some cases you might also need the resources found at:
@@ -105,7 +105,7 @@ The following directories are primarily intended for template maintainers:
 - `AdminScripts/`: Distribution, validation, and maintenance scripts.
 - `Deprecated/`: Legacy implementations retained for reference; new documents should not depend on them.
 
-For a normal thesis or final-project document, start with `Config/myconfig.tex` and `Book/book.tex`. You should not normally need to modify `Config/preamble.tex`, `Config/postamble.tex`, or files under `Book/cover/` unless you are changing the template infrastructure or implementing a new institutional format.
+For a normal thesis or final-project document, configure `Config/myconfig.tex`, organize the body in `Book/content-standard.tex`, and compile `Book/book.tex`. You should not normally need to modify `Book/book.tex`, `Config/preamble.tex`, `Config/postamble.tex`, or files under `Book/cover/` unless you are changing the template infrastructure or implementing a new institutional format.
 
 ## Configure your data
 
@@ -123,8 +123,8 @@ For a normal thesis or final-project document, start with `Config/myconfig.tex` 
 After downloading the template, first compile `Book/book.tex` without modifying it. The resulting PDF is the complete manual, including examples of the available features; use this first build to check that everything works and review the guide before starting your document.
 
 1. Configure the document metadata in `Config/myconfig.tex`, if you haven't already done it.
-2. Review `Book/book.tex` and comment out any material you do not need. The example document enables a sample external letter, dedication, acknowledgements, acronym and symbol lists, example chapters, and appendices.
-3. Edit the content under `Book/abstract/`, `Book/chapters/`, `Book/appendix/`, and the other content directories as required.
+2. Keep `\myDocumentStructure` set to `standard`, as supplied, and use the `\myInclude...` variables to select the optional preliminary material and generated lists you need.
+3. Edit `Book/content-standard.tex` to add, remove or reorder chapters and appendices, and write the content under `Book/abstract/`, `Book/chapters/`, `Book/appendix/`, and the other content directories as required. You should not normally need to modify `Book/book.tex`.
 4. Build the document from the `Book/book.tex` entry file, or from the `Book/` directory by using `make` (optional). You can compile `Book/book.tex` with a standard LaTeX build tool or from your preferred LaTeX editor. Configure the tool or editor to use `pdflatex` and `biber`; add `makeglossaries` only if you use acronyms or symbols. Run the additional LaTeX passes required to resolve references, the bibliography, and any glossaries.
 
 The provided Makefile runs those steps automatically. It generates `book.pdf` and a reduced-size `book-compressed.pdf` variant, and copies them to filenames derived from the work type, degree, author, and language. Other build tools may generate only `book.pdf` unless configured to reproduce these additional steps.
@@ -135,28 +135,24 @@ If you follow the `make` compilation alternative, to remove generated auxiliary 
 make clean
 ```
 
-When you are ready to write your own document:
+When you are ready to write your own document, start from the standard minimal structure: copy the files under `Book/chapters/bare/` and `Book/appendix/bare/` to `Book/chapters/` and `Book/appendix/`, respectively, and replace `Book/content-standard.tex` with `Book/content/bare/content-standard.tex`. The manual gives the complete beginner-friendly procedure. If you use the provided Makefile, keep `\myDocumentStructure` set to `standard` and run `make bare` from `Book/`; it creates a backup, installs the minimal sources and disables the optional example material.
 
-+ For most cases (all except if you write a PhD. Thesis at UAH based on a compilation of articles), you can start from the corresponding minimal structure, copying the files under `Book/chapters/bare/` and `Book/appendix/bare/` to `Book/chapters/` and `Book/appendix/` respectively (or check the `make` functionality described below).
-
-+ If you are in the single case of writing your PhD. Thesis at UAH based on a compilation of articles, select `compendium` with `\myDocumentStructure` in `Config/myconfig.tex`, and copy the files in `Book/chapters/compendium/bare/` to `Book/chapters/compendium/` to start from the minimal structure. 
-
-The manual explains the few clearly marked input blocks that must also be updated. If you plan to use the provided `make` functionality, running `make bare` from `Book/` creates a backup and prepares the minimal structure selected in `myconfig.tex` automatically.
+The template also supports the specialized case of a PhD thesis presented as a compendium of publications. Only doctoral candidates using that modality need the separate instructions below.
 
 Once the minimal structure is ready, create your Git repository and make a first commit of its source files. If you prefer a graphical Git client, keep the supplied `.gitignore`, ask the client to include all unignored changes in the commit, review the proposed file list, and then create the commit; the client may call this operation *Stage all*, *Stage all changes*, *Select all*, or simply present checkboxes for the files to commit. The complete beginner-friendly procedure, the files that must never be committed, and the dependency-aware `make sync-git-sources` alternative are explained in the manual section *Preparación del repositorio Git*.
 
-## To prepare a PhD thesis by compendium of publications
+### Specialized case: PhD thesis by compendium of publications
 
-PhD students presenting their thesis as a compendium use the same `Book/book.tex` entry point as every other document. Set `\myDocumentStructure` to `compendium` and, for a UAH thesis, set `\myDegree` to `PHDUAH` in `Config/myconfig.tex`. Edit the six example chapters under `Book/chapters/compendium/`, place the final publication PDFs under `Book/publications/`, and replace the example `\includecompendiumpublication` declarations in the clearly marked publication block of `book.tex` with one declaration per publication.
+PhD students presenting their thesis as a compendium use the same `Book/book.tex` entry point as every other document. Set `\myDocumentStructure` to `compendium` and select a supported PhD programme with `\myDegree` in `Config/myconfig.tex`. Edit the six example chapters under `Book/chapters/compendium/`, place the final publication PDFs under `Book/publications/`, and replace the example `\includecompendiumpublication` declarations in `Book/content-compendium.tex` with one declaration per publication.
 
-Always select `Book/book.tex` as the main document in your LaTeX editor or Overleaf, and use the normal compilation command or `make` target. Biber processing is retained, and the bibliography is printed at the end of the extended-summary part, before the part containing the publication PDFs. Check the current doctoral-program rules and the reuse permissions for every included publication before submitting the thesis.
+Always select `Book/book.tex` as the main document in your LaTeX editor or Overleaf, and use the normal compilation command or `make` target. To prepare its minimal structure manually, copy the six files from `Book/chapters/compendium/bare/` and replace `Book/content-compendium.tex` with `Book/content/bare/content-compendium.tex`; alternatively, select `compendium` and run `make bare`. Biber processing is retained, and the bibliography is printed at the end of the extended-summary part, before the part containing the publication PDFs. Check the current doctoral-program rules and the reuse permissions for every included publication before submitting the thesis.
 
 
 ## Customize the book contents
 
 ### Chapters and appendices
 
-Create or edit `.tex` files under `Book/chapters/` and `Book/appendix/`, then add or remove the corresponding `\input{...}` lines directly in `Book/book.tex`. The same approach applies to the dedication, acknowledgements, abstracts, and optional lists.
+Create or edit `.tex` files under `Book/chapters/` and `Book/appendix/`, then add or remove the corresponding `\input{...}` lines in `Book/content-standard.tex`. Select the dedication, acknowledgements and optional lists with the `\myInclude...` variables in `Config/myconfig.tex`; `Book/book.tex` should normally remain unchanged.
 
 ### Figures and diagrams
 
@@ -181,7 +177,7 @@ Use `\includepdf` when an approval letter or another PDF must be inserted into t
 \clearemptydoublepage
 ```
 
-The `pages=-` option includes every page. Review the sample inclusion in `Book/book.tex` and comment it out when it is not required.
+The `pages=-` option includes every page. The distributed example is controlled by `\myIncludeSampleLetter` in `Config/myconfig.tex`; set it to `false` when it is not required.
 
 ## To work with the paperwork
 

@@ -60,6 +60,27 @@
   }
 }
 
+% Fail early when a boolean user option contains an unsupported value.
+\newcommand{\ValidateBooleanOption}[2]{%
+  \ifthenelse{\equal{#1}{true}}%
+    {}%
+    {\ifthenelse{\equal{#1}{false}}%
+      {}%
+      {\PackageError{UAH-template}
+        {Invalid value '#1' for #2}
+        {Use exactly 'true' or 'false' in Config/myconfig.tex.}}}%
+}
+\ValidateBooleanOption{\myIncludeSampleLetter}{\string\myIncludeSampleLetter}
+\ValidateBooleanOption{\myIncludeDedication}{\string\myIncludeDedication}
+\ValidateBooleanOption{\myIncludeAcknowledgements}{\string\myIncludeAcknowledgements}
+\ValidateBooleanOption{\myIncludeListOfFigures}{\string\myIncludeListOfFigures}
+\ValidateBooleanOption{\myIncludeListOfTables}{\string\myIncludeListOfTables}
+\ValidateBooleanOption{\myIncludeListOfAcronyms}{\string\myIncludeListOfAcronyms}
+\ValidateBooleanOption{\myIncludeListOfSymbols}{\string\myIncludeListOfSymbols}
+\ValidateBooleanOption{\myIncludeListOfCode}{\string\myIncludeListOfCode}
+\ValidateBooleanOption{\myIncludeListOfAlgorithms}{\string\myIncludeListOfAlgorithms}
+\ValidateBooleanOption{\myIncludeListOfVideos}{\string\myIncludeListOfVideos}
+
 % Select the degree before defining text that depends on its institution.
 \providecommand{\myConfigDirectory}{../Config}
 \input{\myConfigDirectory/degree-registry.tex}

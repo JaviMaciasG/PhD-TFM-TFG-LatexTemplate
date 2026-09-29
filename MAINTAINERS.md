@@ -2,6 +2,16 @@
 
 This document covers release packaging and extension of the institutional degree registry. It is intended for template maintainers; ordinary users should start with `README.md` and the manual compiled from `Book/book.tex`.
 
+## Maintaining the document structures and optional-content switches
+
+`Book/book.tex` is deliberately a stable entry point. The normal document body lives in `Book/content-standard.tex`; only the specialized PhD compendium modality uses `Book/content-compendium.tex`. Keep common front matter and selection logic in `book.tex`, normal user-owned chapter and appendix ordering in `content-standard.tex`, and compendium parts and publication declarations in `content-compendium.tex`.
+
+Prepared minimal organization files live under `Book/content/bare/`. The complete standard manual organization restored by `make orig-chapters` lives under `Book/content/orig/`. Whenever the distributed standard organization changes, update both `Book/content-standard.tex` and `Book/content/orig/content-standard.tex`. The Makefile must copy these prepared files; it must not return to rewriting marked regions inside `book.tex`.
+
+The user-facing Boolean options in `Config/myconfig.tex` share the `\myInclude...` prefix and accept exactly `true` or `false`. `Config/postamble.tex` validates every option. When adding a switch, update its validation, the relevant conditional inclusion, the configuration chapter and its maintained `orig` copy. Switches controlling generated lists should not disable the underlying LaTeX feature.
+
+The standard workflow must remain dominant in `README.md` and the manual. Mention the compendium alternative briefly in the normal quick start and direct the small set of affected PhD users to the authoritative specialized section rather than presenting both structures as equivalent choices throughout the documentation.
+
 ## Generating a release distribution
 
 Set `RELEASE.txt` to the existing release/tag identifier and run:

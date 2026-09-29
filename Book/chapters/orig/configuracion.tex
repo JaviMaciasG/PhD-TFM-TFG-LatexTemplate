@@ -32,14 +32,14 @@ La mayor parte de la adaptación de la plantilla se realiza en \texttt{Config/my
 
 La configuración compartida se encuentra en \texttt{Config/myconfig.tex}. Este fichero contiene los datos utilizados para generar el libro, el anteproyecto y los documentos administrativos, por lo que normalmente tendrás que adaptarlo antes de editar el contenido de tu trabajo. Las variables se definen mediante órdenes \texttt{\textbackslash{}newcommand}; para cambiar una variable, modifica únicamente el contenido situado entre las últimas llaves de su definición, sin alterar el nombre de la orden.
 
-Además de completar \texttt{Config/myconfig.tex}, revisa \texttt{Book/book.tex}, que determina qué capítulos, resúmenes, listados, documentos externos y apéndices se incluyen en el libro. Las variables descritas a continuación configuran los datos compartidos, pero no añaden ni eliminan por sí solas los elementos incluidos mediante \texttt{\textbackslash{}input} o \texttt{\textbackslash{}includepdf}.
+Además de completar \texttt{Config/myconfig.tex}, revisa \texttt{Book/content-standard.tex}, que determina los capítulos, la bibliografía y los apéndices de la estructura utilizada por la inmensa mayoría de los documentos. \texttt{Book/book.tex} es el punto de entrada estable para la compilación y normalmente no tendrás que modificarlo. Solo si preparas una tesis doctoral por compendio trabajarás con el fichero especializado \texttt{Book/content-compendium.tex}, descrito en la sección~\ref{sec:tesis-compendio}.
 
 \section{Estructura, idioma, titulación y presentación de los tutores}
 
 Las siguientes variables controlan la estructura, el idioma, la titulación y la presentación conjunta o separada de los tutores:
 
 \begin{itemize}
-  \item \texttt{\textbackslash{}myDocumentStructure}: estructura del documento principal. El valor \texttt{standard} genera una memoria convencional y el valor \texttt{compendium} genera una tesis doctoral cuyo cuerpo contiene un resumen extendido seguido de las publicaciones. En ambos casos debes compilar \texttt{Book/book.tex}.
+  \item \texttt{\textbackslash{}myDocumentStructure}: estructura del documento principal. Mantén el valor \texttt{standard} para los TFG, TFM, tesis doctorales convencionales y el resto de documentos habituales; esta opción utiliza \texttt{Book/content-standard.tex}. El valor \texttt{compendium} queda reservado para tesis doctorales presentadas por compendio de publicaciones y utiliza \texttt{Book/content-compendium.tex}. En ambos casos debes compilar \texttt{Book/book.tex}.
   \item \texttt{\textbackslash{}myLanguage}: idioma principal del documento. Admite los valores \texttt{spanish} y \texttt{english}. Esta selección determina, entre otros elementos, los textos automáticos, las cabeceras, el título utilizado y las palabras clave incorporadas a los metadatos del PDF.
   \item \texttt{\textbackslash{}myDegree}: identificador de la titulación o del tipo concreto de documento. Su valor determina el tipo general de trabajo y selecciona automáticamente las portadas, contraportadas, nombres de titulación y otros textos aplicables.
   \item \texttt{\textbackslash{}myFlagSplittedAdvisors}: controla cómo se presentan el tutor y el cotutor en las páginas que admiten ambas formas. El valor \texttt{true} utiliza líneas separadas para el tutor y el cotutor; el valor \texttt{false} utiliza una denominación conjunta.
@@ -66,6 +66,33 @@ Los identificadores admitidos actualmente por \texttt{\textbackslash{}myDegree},
 \end{itemize}
 
 Consulta siempre la lista actualizada de identificadores admitidos en los comentarios que aparecen inmediatamente antes de la definición de \texttt{\textbackslash{}myDegree} en \texttt{Config/myconfig.tex}. Solo tienes que elegir allí el identificador correspondiente; la plantilla seleccionará automáticamente los datos y las páginas institucionales aplicables.
+
+\section{Elementos opcionales del documento}
+\label{sec:elementos-opcionales-configuracion}
+
+Las variables cuyo nombre comienza por \texttt{\textbackslash{}myInclude} te permiten mostrar u ocultar contenido opcional sin comentar órdenes en \texttt{book.tex}. Todas admiten exclusivamente los valores \texttt{true} y \texttt{false}; la plantilla genera un error explícito si escribes otro valor.
+
+Las siguientes variables controlan el contenido preliminar de ejemplo:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myIncludeSampleLetter}: incluye el PDF de ejemplo \texttt{letters/sampleLetter.pdf}. Desactívalo en tu documento salvo que lo hayas sustituido por un documento preliminar que realmente necesites.
+  \item \texttt{\textbackslash{}myIncludeDedication}: incluye la dedicatoria definida en \texttt{dedication/dedicatoria.tex}.
+  \item \texttt{\textbackslash{}myIncludeAcknowledgements}: incluye los agradecimientos definidos en \texttt{acknowledgements/agradecimientos.tex}.
+\end{itemize}
+
+Las siguientes variables controlan los índices y listados generados automáticamente:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myIncludeListOfFigures}: incluye el índice de figuras.
+  \item \texttt{\textbackslash{}myIncludeListOfTables}: incluye el índice de tablas.
+  \item \texttt{\textbackslash{}myIncludeListOfAcronyms}: incluye la lista de acrónimos.
+  \item \texttt{\textbackslash{}myIncludeListOfSymbols}: incluye la lista de símbolos.
+  \item \texttt{\textbackslash{}myIncludeListOfCode}: incluye el índice de listados de código fuente.
+  \item \texttt{\textbackslash{}myIncludeListOfAlgorithms}: incluye el índice de algoritmos.
+  \item \texttt{\textbackslash{}myIncludeListOfVideos}: incluye el índice de vídeos.
+\end{itemize}
+
+Desactivar uno de estos listados no desactiva la prestación correspondiente: puedes seguir utilizando figuras, tablas, acrónimos, símbolos, código, algoritmos o enlaces a vídeos en el cuerpo del documento. Solo se omite su índice independiente. Si no utilizas acrónimos ni símbolos tampoco tendrás que ejecutar \texttt{makeglossaries}, como se explica en la sección~\ref{sec:compilacion}.
 
 \section{Título, palabras clave y confidencialidad}
 

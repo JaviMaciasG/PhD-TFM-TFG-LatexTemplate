@@ -97,19 +97,22 @@ Si antes de comenzar la memoria necesitas preparar un anteproyecto, utiliza \tex
 
 Después de descargar la plantilla, compila directamente el fichero \texttt{Book/book.tex} antes de comenzar a modificarla. El resultado será este manual completo, que también contiene ejemplos de los elementos que puedes utilizar en tu trabajo. Esta primera compilación te permitirá comprobar que tu entorno funciona correctamente y consultar el manual mientras conoces la plantilla.
 
-Una vez que hayas comprobado que todo funciona, puedes comenzar a escribir tu memoria a partir de una estructura mínima y casi vacía. Primero selecciona \texttt{standard} o \texttt{compendium} mediante \texttt{\textbackslash{}myDocumentStructure} en \texttt{Config/myconfig.tex}; en ambos casos seguirás compilando el único documento principal, \texttt{Book/book.tex}. Antes de sustituir ningún fichero, conserva una copia de tu trabajo si ya has comenzado a modificar la plantilla.
+Una vez que hayas comprobado que todo funciona, puedes comenzar a escribir tu memoria a partir de la estructura mínima y casi vacía que hemos preparado. Mantén \texttt{standard} como valor de \texttt{\textbackslash{}myDocumentStructure}, utiliza \texttt{Book/content-standard.tex} para organizar tus capítulos, bibliografía y apéndices, y sigue compilando el único punto de entrada \texttt{Book/book.tex}. Antes de sustituir ningún fichero, conserva una copia de tu trabajo si ya has comenzado a modificar la plantilla.
 
 Para preparar manualmente una memoria convencional con \texttt{standard}, sigue estos pasos:
 
 \begin{itemize}
   \item Elimina los ficheros \texttt{.tex} situados directamente en \texttt{chapters/} y \texttt{appendix/}; no elimines sus subdirectorios ni su contenido.
   \item Copia los ficheros de \texttt{chapters/bare/} a \texttt{chapters/} y los de \texttt{appendix/bare/} a \texttt{appendix/}.
-  \item En \texttt{book.tex}, sustituye únicamente las órdenes situadas entre \texttt{BEGIN standard chapter inputs} y \texttt{END standard chapter inputs} por las entradas correspondientes a \texttt{introduccion.tex}, \texttt{estudioTeorico.tex}, \texttt{desarrollo.tex}, \texttt{resultados.tex} y \texttt{conclusiones.tex}; sustituye del mismo modo el bloque \texttt{standard appendix inputs} por las entradas de \texttt{manual.tex} y \texttt{herramientas.tex}.
+  \item Sustituye \texttt{Book/content-standard.tex} por \texttt{Book/content/bare/content-standard.tex}; este fichero ya incluye los capítulos y apéndices mínimos que acabas de copiar.
+  \item Revisa en \texttt{Config/myconfig.tex} las variables \texttt{\textbackslash{}myInclude...} descritas en la sección~\ref{sec:elementos-opcionales-configuracion} y deja en \texttt{false} los elementos preliminares y listados que todavía no necesites.
 \end{itemize}
 
-Para preparar manualmente una tesis por compendio con \texttt{compendium}, elimina los seis ficheros \texttt{.tex} situados directamente en \texttt{chapters/compendium/}, conserva el subdirectorio \texttt{bare/} y copia desde él las versiones mínimas. Después elimina las tres publicaciones ficticias situadas entre los marcadores \texttt{BEGIN compendium publication inputs} y \texttt{END compendium publication inputs} de \texttt{book.tex}; puedes dejar dentro del bloque una llamada comentada como referencia para añadir posteriormente tus publicaciones reales.
+Si utilizas \texttt{make}, ejecuta \texttt{make bare} desde \texttt{Book/}. Como \texttt{standard} es el valor predeterminado, el objetivo crea una copia de seguridad, instala los capítulos, apéndices y el fichero \texttt{content-standard.tex} mínimos, y desactiva el material opcional de ejemplo. También puedes solicitar explícitamente esta preparación mediante \texttt{make bare-standard}; \texttt{bare-chapters} se conserva como alias compatible. Estos objetivos se describen con más detalle en la sección~\ref{sec:compilacion-makefile}.
 
-Si utilizas \texttt{make}, ejecuta \texttt{make bare} desde \texttt{Book/}. El objetivo consulta \texttt{\textbackslash{}myDocumentStructure}, crea una copia de seguridad y prepara automáticamente la versión mínima convencional o por compendio. También puedes solicitar una variante concreta con \texttt{make bare-standard} o \texttt{make bare-compendium}; \texttt{bare-chapters} se conserva como alias compatible de \texttt{bare-standard}. Estos objetivos se describen con más detalle en la sección~\ref{sec:compilacion-makefile}.
+\subsection{Caso particular: tesis por compendio de publicaciones}
+
+Solo si vas a preparar una tesis doctoral por compendio debes seleccionar \texttt{compendium}. En ese caso utiliza \texttt{Book/content-compendium.tex}, copia las versiones mínimas de \texttt{Book/chapters/compendium/bare/} y sustituye el fichero de contenido por \texttt{Book/content/bare/content-compendium.tex}; el objetivo \texttt{make bare} realiza esas operaciones automáticamente cuando detecta esa estructura. Consulta la sección~\ref{sec:tesis-compendio} para conocer la organización de las dos partes y la forma de incorporar las publicaciones.
 
 \section{Preparación del repositorio Git}
 \label{sec:preparacion-repositorio-git}
@@ -122,7 +125,7 @@ En el primer commit debes incluir los siguientes tipos de ficheros:
 
 \begin{itemize}
   \item Los ficheros de configuración compartida de \texttt{Config/}, en particular \texttt{myconfig.tex}, y los ficheros estructurales que cargan tus documentos.
-  \item \texttt{Book/book.tex}, los capítulos, apéndices, resúmenes, bibliografía y demás fuentes \texttt{.tex} o \texttt{.bib} que utilice realmente el libro.
+  \item \texttt{Book/book.tex}, \texttt{Book/content-standard.tex} o, en el caso especializado, \texttt{Book/content-compendium.tex}, además de los capítulos, apéndices, resúmenes, bibliografía y demás fuentes \texttt{.tex} o \texttt{.bib} que utilice realmente el libro.
   \item \texttt{Anteproyecto/anteproyecto.tex} y los formularios de \texttt{PapeleoTFG/}, \texttt{PapeleoTFM/} o \texttt{PapeleoPHD/} que quieras poder generar.
   \item Las figuras, diagramas, logotipos, cartas y otros recursos que los documentos lean durante la compilación. Esto incluye los PDF que sean recursos de entrada, por ejemplo una carta incorporada mediante \texttt{\textbackslash{}includepdf}.
   \item Los \texttt{Makefile}, los ficheros \texttt{.gitignore}, el fichero \texttt{README.md}, la licencia y cualquier script propio que necesites para reconstruir los documentos.
