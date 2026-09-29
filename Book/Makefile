@@ -39,7 +39,8 @@ BOOK_TYPE = $(shell sh $(DEGREE_REGISTRY_TOOL) work-type "$(DEGREE_NAME)" "$(DEG
 
 # Filenames
 ROOT_FILENAME = book
-ROOT_FINAL_BOOK_FILENAME = $(BOOK_TYPE)-$(DEGREE_NAME)-$(AUTHOR_SURNAME)-$(AUTHOR_NAME)-$(BOOK_LANGUAGE)
+OUTPUT_SUFFIX =
+ROOT_FINAL_BOOK_FILENAME = $(BOOK_TYPE)-$(DEGREE_NAME)-$(AUTHOR_SURNAME)-$(AUTHOR_NAME)-$(BOOK_LANGUAGE)$(OUTPUT_SUFFIX)
 TEX_FILE = $(ROOT_FILENAME).tex
 FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten.tex
 SNAPSHOT_FLATTEN_TEX_FILE = $(ROOT_FILENAME)-flatten-snapshot.tex
@@ -64,7 +65,7 @@ PDFS_FROM_SVG = $(patsubst %.svg, %.pdf, $(SVG_SOURCES))
 PDFS_FROM_EPS = $(patsubst %.eps, %.pdf, $(EPS_SOURCES))
 
 # Dummy targets
-DUMMY_MAIN_TARGETS = all bare backup-chapters orig-chapters bare-chapters clean-orig-figures clean-orig-diagrams all_latexmk clean clean_latexmk
+DUMMY_MAIN_TARGETS = all compendium compendium_latexmk clean-compendium bare backup-chapters orig-chapters bare-chapters clean-orig-figures clean-orig-diagrams all_latexmk clean clean_latexmk
 DUMMY_DIFF_TARGETS = snapshot flatten latexdiff
 DUMMY_TARGETS = pdf_dia_done pdf_svg_done pdf_eps_done
 
@@ -87,6 +88,15 @@ all: $(DUMMY_TARGETS)
 	cp $(ROOT_FILENAME).pdf $(ROOT_FINAL_BOOK_FILENAME).pdf
 	cp $(ROOT_FILENAME)-compressed.pdf $(ROOT_FINAL_BOOK_FILENAME)-compressed.pdf
 #	cp $(ROOT_FILENAME)-screen.pdf $(ROOT_FINAL_BOOK_FILENAME)-screen.pdf
+
+compendium:
+	$(MAKE) all ROOT_FILENAME=book-compendium OUTPUT_SUFFIX=-compendium
+
+compendium_latexmk:
+	$(MAKE) all_latexmk ROOT_FILENAME=book-compendium OUTPUT_SUFFIX=-compendium
+
+clean-compendium:
+	$(MAKE) clean ROOT_FILENAME=book-compendium OUTPUT_SUFFIX=-compendium
 
 
 bare: backup-chapters bare-chapters clean-orig-figures clean-orig-diagrams

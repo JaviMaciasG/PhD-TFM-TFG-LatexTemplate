@@ -139,6 +139,12 @@ When you are ready to write your own document, you can start from the minimal, a
 
 Once the minimal structure is ready, create your Git repository and make a first commit of its source files. If you prefer a graphical Git client, keep the supplied `.gitignore`, ask the client to include all unignored changes in the commit, review the proposed file list, and then create the commit; the client may call this operation *Stage all*, *Stage all changes*, *Select all*, or simply present checkboxes for the files to commit. The complete beginner-friendly procedure, the files that must never be committed, and the dependency-aware `make sync-git-sources` alternative are explained in the manual section *Preparación del repositorio Git*.
 
+## To prepare a PhD thesis by compendium of publications
+
+PhD students presenting their thesis as a compendium can use `Book/book-compendium.tex`. It reuses the same `Config/myconfig.tex`, institutional covers, abstracts, acknowledgements, acronyms, symbols and Biber bibliography as the main book, but organizes the main matter into an extended summary followed by the included publications. Set `\myDegree` to `PHDUAH` for a UAH thesis, edit the six example chapters under `Book/chapters/compendium/`, place the final publication PDFs under `Book/publications/`, and replace the example `\includecompendiumpublication` declaration in `book-compendium.tex` with one declaration per publication.
+
+You can select `Book/book-compendium.tex` as the main document in your LaTeX editor or Overleaf. If you use the provided Makefile, run `make compendium` from `Book/`; the normal Biber processing is retained. The bibliography is printed at the end of the extended-summary part, before the part containing the publication PDFs. Check the current doctoral-program rules and the reuse permissions for every included publication before submitting the thesis.
+
 
 ## Customize the book contents
 

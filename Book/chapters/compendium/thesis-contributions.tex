@@ -1,0 +1,106 @@
+\ifthenelse{\equal{\myLanguage}{english}}
+{
+  \chapter{Thesis Contributions}
+}
+{
+  \chapter{Contribuciones de la tesis}
+}
+\label{cha:compendium-contributions}
+
+\ifthenelse{\equal{\myLanguage}{english}}
+{
+  \section{Overview of the Contributions}
+
+  Present and discuss the original contributions of the thesis. Explain how the publications relate to one another, which objective each publication addresses and how their combined results constitute a unified doctoral contribution. The three fictional papers distributed with this example illustrate how to cite each included publication while discussing its contribution~\cite{garcia2026paper1,garcia2026paper2,garcia2026paper3}.
+
+  \subsection{Relationship between the publications}
+
+  Explain the role of each publication and the progression from the initial research question to the combined results of the thesis.
+
+  \section{Supporting Research Material}
+  \subsection{Videos and demonstrations}
+
+  Remember that you can very easily include links to videos in the document, and that a list similar to the lists of tables, figures, or algorithms will be generated automatically. The code implementing this functionality is also included in the file \texttt{cover/extralistings.tex}, and you can edit it as needed. To use it, simply include elements such as \videoLink{Feedback amplifiers: motivation}{https://youtu.be/9xXuasS8B3M} or \videoLink{Feedback amplifiers: ideal theory}{https://youtu.be/ZGMwGX7VCbg}.
+
+  \subsection{Algorithms and source code}
+
+  You can also include algorithms such as~\ref{alg:restriction}, and symbols such as~\ac{xidet}.
+
+  In addition, you can include source code listings such as the one shown in~\ref{cod:sample2}.
+}
+{
+  \section{Resumen de las contribuciones}
+
+  Presenta y discute las contribuciones originales de la tesis. Explica cómo se relacionan las publicaciones entre sí, qué objetivo aborda cada una y cómo sus resultados combinados constituyen una contribución doctoral unificada. Los tres artículos ficticios distribuidos con este ejemplo muestran cómo citar cada publicación incluida al discutir su contribución~\cite{garcia2026paper1,garcia2026paper2,garcia2026paper3}.
+
+  \subsection{Relación entre las publicaciones}
+
+  Explica el papel de cada publicación y la progresión desde la pregunta inicial de investigación hasta los resultados conjuntos de la tesis.
+
+  \section{Material de apoyo a la investigación}
+  \subsection{Vídeos y demostraciones}
+
+  Recuerda que puedes incluir muy fácilmente enlaces a vídeos en el documento, y que se generara automáticamente un listado similar al de tablas, figuras o algoritmos. El código para implementarlo está también en el fichero \texttt{cover/extralistings.tex} y puedes editarlo como te interese. Para usarlo, basta con que incluyas elementos similares a \videoLink{Amplificadores realimentados: motivación}{https://youtu.be/9xXuasS8B3M} o \videoLink{Amplificadores realimentados: teoría ideal}{https://youtu.be/ZGMwGX7VCbg}.
+
+  \subsection{Algoritmos y código fuente}
+
+  Y también puedes incluir algoritmos como~\ref{alg:restriction}, y símbolos como~\ac{xidet}.
+
+  Además de listados de código fuente como en~\ref{cod:sample2}.
+
+}
+
+\begin{algorithm}
+  \caption{IntervalRestriction\label{IR}}
+  \label{alg:restriction}
+  \DontPrintSemicolon
+  % \dontprintsemicolon
+  \KwData{$G=(X,U)$ such that $G^{tc}$ is an order.}
+  \KwResult{$G'=(X,V)$ with $V\subseteq U$ such that $G'^{tc}$ is an
+    interval order.}
+  \Begin{
+    $V \longleftarrow U$\;
+    $S \longleftarrow \emptyset$\;
+    \For{$x\in X$}{
+      $NbSuccInS(x) \longleftarrow 0$\;
+      $NbPredInMin(x) \longleftarrow 0$\;
+      $NbPredNotInMin(x) \longleftarrow |ImPred(x)|$\;
+    }
+    \For{$x \in X$}{
+      \If{$NbPredInMin(x) = 0$ {\bf and} $NbPredNotInMin(x) = 0$}{
+        $AppendToMin(x)$}
+    }
+    \nl\While{$S \neq \emptyset$}{\label{InRes1}
+      \nlset{REM} remove $x$ from the list of $T$ of maximal index\;\label{InResR}
+      \lnl{InRes2}\While{$|S \cap ImSucc(x)| \neq |S|$}{
+        \For{$ y \in S-ImSucc(x)$}{
+          \{ remove from $V$ all the arcs $zy$ : \}\;
+          \For{$z \in ImPred(y) \cap Min$}{
+            remove the arc $zy$ from $V$\;
+            $NbSuccInS(z) \longleftarrow NbSuccInS(z) - 1$\;
+            move $z$ in $T$ to the list preceding its present list\;
+            \{i.e. If $z \in T[k]$, move $z$ from $T[k]$ to
+            $T[k-1]$\}\;
+          }
+          $NbPredInMin(y) \longleftarrow 0$\;
+          $NbPredNotInMin(y) \longleftarrow 0$\;
+          $S \longleftarrow S - \{y\}$\;
+          $AppendToMin(y)$\;
+        }
+      }
+      $RemoveFromMin(x)$\;
+    }
+  }
+\end{algorithm}
+
+
+\begin{codefloat}
+\lstinputlisting[style=Cnice]{appendix/hello.c}
+\caption{Ejemplo de código fuente con estilo \texttt{Cnice}, de nuevo
+  con un \texttt{lstinputlisting} dentro de un \texttt{codefloat}}
+\label{cod:sample2}
+\end{codefloat}
+
+%%% Local Variables:
+%%% TeX-master: "../../book"
+%%% End:

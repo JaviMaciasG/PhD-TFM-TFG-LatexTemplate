@@ -664,6 +664,35 @@
 
 \usepackage{pgf} % Required for math operations
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Include one publication in a thesis by compendium. Arguments:
+%  1. Optional additional information, with normal LaTeX markup.
+%  2. Label stem.
+%  3. Abbreviated title for the table of contents and running header.
+%  4. Full publication title.
+%  5. Bibliography key.
+%  6. PDF filename.
+\newcommand{\includecompendiumpublication}[6][]{%
+  \chapter[#3]{#4}%
+  \label{cha:compendium-#2}%
+  \ifthenelse{\equal{\myLanguage}{english}}%
+    {\noindent\textbf{Publication reference}\par}%
+    {\noindent\textbf{Referencia de la publicación}\par}%
+  \fullcite{#5}\par
+  \if\relax\detokenize{#1}\relax
+  \else
+    \medskip
+    \ifthenelse{\equal{\myLanguage}{english}}%
+      {\noindent\textbf{Additional information}\par}%
+      {\noindent\textbf{Información adicional}\par}%
+    #1\par
+  \fi
+  \clearpage
+  \markboth{#3}{#3}%
+  \includepdf[pages=-,scale=0.9,pagecommand={\thispagestyle{headings}}]{#6}%
+  \clearemptydoublepage
+}
+
 
 % Code to more agressively compress includegraphics images
 \pdfcompresslevel=9
@@ -672,4 +701,3 @@
 %%% Local Variables:
 %%% TeX-master: "../book"
 %%% End:
-

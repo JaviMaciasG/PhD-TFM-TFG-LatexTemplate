@@ -47,6 +47,29 @@ Si trabajas en Overleaf, sigue el procedimiento de la sección~\ref{sec:compilac
 
 El \texttt{Makefile} también proporciona los objetivos \texttt{anteproyecto\_latexmk}, \texttt{snapshot}, \texttt{flatten}, \texttt{latexdiff}, \texttt{clean} y \texttt{clean\_latexmk}. Los objetivos de revisión siguen el mismo principio que los equivalentes del libro principal, descritos en la sección~\ref{sec:control-de-cambios}.
 
+\section{Tesis por compendio de publicaciones}
+\label{sec:tesis-compendio}
+
+Si vas a presentar una tesis doctoral por compendio de publicaciones, puedes utilizar \texttt{Book/book-compendium.tex} como documento principal. Esta variante conserva la configuración común de \texttt{Config/myconfig.tex}, las cubiertas seleccionadas mediante \texttt{\textbackslash{}myDegree}, los resúmenes, los agradecimientos, los acrónimos, los símbolos y el procesamiento de la bibliografía mediante Biber. Para una tesis de la UAH selecciona \texttt{PHDUAH} como valor de \texttt{\textbackslash{}myDegree} y comprueba siempre los requisitos vigentes de tu programa de doctorado.
+
+El cuerpo del documento está dividido en dos partes. La primera contiene el resumen extendido de la tesis y utiliza los ficheros \texttt{introduction.tex}, \texttt{objectives.tex}, \texttt{previous-work.tex}, \texttt{methodology.tex}, \texttt{thesis-contributions.tex} y \texttt{conclusions.tex} del directorio \texttt{Book/chapters/compendium/}. Puedes ampliar, combinar o reordenar esta propuesta según las necesidades de la tesis. La bibliografía se imprime al final de esta primera parte, antes de comenzar la relación de publicaciones.
+
+La segunda parte incorpora las publicaciones en su formato original. Guarda sus PDF definitivos en \texttt{Book/publications/} y añade una llamada por publicación en \texttt{book-compendium.tex}. La orden proporcionada tiene la forma siguiente:
+
+\begin{verbatim}
+\includecompendiumpublication[
+  Información adicional con formato LaTeX.
+]{etiqueta}
+ {Título breve para el índice}
+ {Título completo de la publicación}
+ {clave-bibliográfica}
+ {publications/publication-file.pdf}
+\end{verbatim}
+
+La orden crea un capítulo numerado y su entrada en el índice, imprime mediante BibLaTeX la referencia correspondiente, muestra la información adicional cuando se proporciona e incluye todas las páginas del PDF al 90\,\% de su tamaño. En esas páginas mantiene la numeración de la tesis y utiliza como cabecera el título abreviado indicado en el segundo argumento obligatorio. El argumento opcional admite órdenes habituales de \LaTeX{}, párrafos, enlaces, referencias y listas; puedes omitirlo por completo cuando no tengas que indicar el estado de publicación, la contribución del doctorando, los permisos de reutilización u otra información específica. Los autores, la revista o congreso, la fecha y el DOI deben mantenerse en la entrada de \texttt{biblio/biblio.bib} para no duplicarlos en la llamada.
+
+Selecciona \texttt{Book/book-compendium.tex} como documento principal si trabajas desde tu editor o desde Overleaf. Si utilizas \texttt{make}, ejecuta \texttt{make compendium} desde \texttt{Book/}; este objetivo reutiliza la misma secuencia de PDFLaTeX, Biber y glosarios que el libro ordinario y genera \texttt{book-compendium.pdf}. Antes de depositar la tesis, comprueba tanto la normativa doctoral aplicable como los derechos de reutilización de cada publicación.
+
 \section{Documentación administrativa}
 \label{sec:introapp1}
 
@@ -103,7 +126,7 @@ Los modelos administrativos y sus requisitos pueden cambiar. Antes de presentar 
 \section{Resumen del capítulo}
 \label{sec:resumen-documentos-complementarios}
 
-El anteproyecto y los formularios administrativos reutilizan la configuración común para evitar que introduzcas varias veces los mismos datos. Puedes compilarlos independientemente del libro, también mediante Overleaf si seleccionas el documento principal adecuado, pero debes revisar cada PDF y contrastar siempre las plantillas con los modelos oficiales vigentes antes de presentarlas.
+El anteproyecto, la tesis por compendio y los formularios administrativos reutilizan la configuración común para evitar que introduzcas varias veces los mismos datos. Puedes compilarlos independientemente del libro ordinario, también mediante Overleaf si seleccionas el documento principal adecuado, pero debes revisar cada PDF y contrastar siempre las plantillas con los requisitos y modelos oficiales vigentes antes de presentarlos.
 
 %%% Local Variables:
 %%% TeX-master: "../book"
