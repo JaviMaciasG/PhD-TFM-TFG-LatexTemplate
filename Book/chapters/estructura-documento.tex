@@ -90,13 +90,13 @@ Aunque hemos descrito todos los componentes para que puedas utilizar este capít
   \item Elementos que normalmente no debes modificar: las órdenes estructurales, la generación de los índices y la selección automática de las cubiertas y contraportadas.
 \end{itemize}
 
-Modifica las órdenes de inclusión de \texttt{Book/content-standard.tex} cuando necesites añadir, omitir o reordenar capítulos y apéndices, y utiliza las variables \texttt{\textbackslash{}myInclude...} descritas en la sección~\ref{sec:elementos-opcionales-configuracion} para el contenido preliminar y los listados. Normalmente no debes modificar \texttt{Book/book.tex}.
+Modifica las órdenes de inclusión de \texttt{Book/content-standard.tex} cuando necesites añadir, omitir o reordenar capítulos y apéndices, y utiliza las variables \texttt{\textbackslash{}myInclude...} descritas en la sección~\ref{sec:elementos-opcionales-configuracion} para el contenido preliminar y los listados. Normalmente no debes modificar \texttt{Book/book.tex}. Si preparas la modalidad doctoral especializada, realiza en cambio la organización del cuerpo y de las publicaciones en \texttt{Book/content-compendium.tex}, siguiendo la sección~\ref{sec:tesis-compendio}.
 
 
 \section{Resumen del capítulo}
 \label{sec:resumen-estructura-documento}
 
-El documento se organiza mediante \texttt{\textbackslash{}frontmatter}, \texttt{\textbackslash{}mainmatter} y \texttt{\textbackslash{}backmatter}. En la práctica trabajarás principalmente con \texttt{Config/myconfig.tex}, \texttt{Book/content-standard.tex}, los capítulos, los resúmenes y la bibliografía; activarás otros contenidos mediante las variables \texttt{\textbackslash{}myInclude...} y dejarás intactos \texttt{Book/book.tex} y los mecanismos automáticos de cubiertas.
+El documento se organiza mediante \texttt{\textbackslash{}frontmatter}, \texttt{\textbackslash{}mainmatter} y \texttt{\textbackslash{}backmatter}. En la práctica trabajarás principalmente con \texttt{Config/myconfig.tex}, \texttt{Book/content-standard.tex}, los capítulos, los resúmenes y la bibliografía; activarás otros contenidos mediante las variables \texttt{\textbackslash{}myInclude...} y dejarás intactos \texttt{Book/book.tex} y los mecanismos automáticos de cubiertas. La excepción es la tesis doctoral por compendio, cuyo cuerpo se organiza mediante \texttt{Book/content-compendium.tex}.
 
 %%% Local Variables:
 %%% TeX-master: "../book"

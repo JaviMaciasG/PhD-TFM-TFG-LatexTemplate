@@ -143,6 +143,6 @@ For a new user, the safest path is:
 
 1. Read `README.md` once end-to-end.
 2. Edit only `Config/myconfig.tex` first.
-3. Keep `\myDocumentStructure` set to `standard` and start from `Book/content-standard.tex` with the existing example chapters or its prepared minimal version.
+3. Keep `\myDocumentStructure` set to `standard` and start from `Book/content-standard.tex` with the existing example chapters or its prepared minimal version. Only PhD students using the compendium modality should instead select `compendium` and work through `Book/content-compendium.tex` and its specialized prepared structure.
 4. Build `Book/book.tex` with your editor and verify that its bibliography backend is set to `biber`; use `make` only if you prefer the provided automation.
 5. Only after successful first compile, touch covers/paperwork files.

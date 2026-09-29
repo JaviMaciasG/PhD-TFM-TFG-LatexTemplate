@@ -105,7 +105,7 @@ The following directories are primarily intended for template maintainers:
 - `AdminScripts/`: Distribution, validation, and maintenance scripts.
 - `Deprecated/`: Legacy implementations retained for reference; new documents should not depend on them.
 
-For a normal thesis or final-project document, configure `Config/myconfig.tex`, organize the body in `Book/content-standard.tex`, and compile `Book/book.tex`. You should not normally need to modify `Book/book.tex`, `Config/preamble.tex`, `Config/postamble.tex`, or files under `Book/cover/` unless you are changing the template infrastructure or implementing a new institutional format.
+For a normal thesis or final-project document, configure `Config/myconfig.tex`, organize the body in `Book/content-standard.tex`, and compile `Book/book.tex`. You should not normally need to modify `Book/book.tex`, `Config/preamble.tex`, `Config/postamble.tex`, or files under `Book/cover/` unless you are changing the template infrastructure or implementing a new institutional format. If you are preparing the specialized PhD thesis by compendium, keep the same entry point but organize its body in `Book/content-compendium.tex` and follow the dedicated instructions below.
 
 ## Configure your data
 
@@ -126,6 +126,8 @@ After downloading the template, first compile `Book/book.tex` without modifying 
 2. Keep `\myDocumentStructure` set to `standard`, as supplied, and use the `\myInclude...` variables to select the optional preliminary material and generated lists you need.
 3. Edit `Book/content-standard.tex` to add, remove or reorder chapters and appendices, and write the content under `Book/abstract/`, `Book/chapters/`, `Book/appendix/`, and the other content directories as required. You should not normally need to modify `Book/book.tex`.
 4. Build the document from the `Book/book.tex` entry file, or from the `Book/` directory by using `make` (optional). You can compile `Book/book.tex` with a standard LaTeX build tool or from your preferred LaTeX editor. Configure the tool or editor to use `pdflatex` and `biber`; add `makeglossaries` only if you use acronyms or symbols. Run the additional LaTeX passes required to resolve references, the bibliography, and any glossaries.
+
+These quick-start steps deliberately describe the standard workflow used by almost everyone. A PhD student using the compendium modality keeps the same `Book/book.tex` entry point and compilation process, but selects `compendium` and organizes the body through `Book/content-compendium.tex` as explained in the specialized section below.
 
 The provided Makefile runs those steps automatically. It generates `book.pdf` and a reduced-size `book-compressed.pdf` variant, and copies them to filenames derived from the work type, degree, author, and language. Other build tools may generate only `book.pdf` unless configured to reproduce these additional steps.
 
@@ -152,7 +154,7 @@ Always select `Book/book.tex` as the main document in your LaTeX editor or Overl
 
 ### Chapters and appendices
 
-Create or edit `.tex` files under `Book/chapters/` and `Book/appendix/`, then add or remove the corresponding `\input{...}` lines in `Book/content-standard.tex`. Select the dedication, acknowledgements and optional lists with the `\myInclude...` variables in `Config/myconfig.tex`; `Book/book.tex` should normally remain unchanged.
+Create or edit `.tex` files under `Book/chapters/` and `Book/appendix/`, then add or remove the corresponding `\input{...}` lines in `Book/content-standard.tex`. Select the dedication, acknowledgements and optional lists with the `\myInclude...` variables in `Config/myconfig.tex`; `Book/book.tex` should normally remain unchanged. Only PhD students using the compendium modality should instead organize the specialized chapters and publication declarations through `Book/content-compendium.tex`, as described above.
 
 ### Figures and diagrams
 
