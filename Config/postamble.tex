@@ -43,15 +43,15 @@
 
 % Validate the user-facing document structure and expose a simple conditional
 % for Book/book.tex.
-\newif\ifcompendium
-\ifthenelse{\equal{\myDocumentStructure}{compendium}}
+\newif\ifstandarddocument
+\ifthenelse{\equal{\myDocumentStructure}{standard}}
 {
-  \compendiumtrue
+  \standarddocumenttrue
 }
 {
-  \ifthenelse{\equal{\myDocumentStructure}{standard}}
+  \ifthenelse{\equal{\myDocumentStructure}{compendium}}
   {
-    \compendiumfalse
+    \standarddocumentfalse
   }
   {
     \PackageError{UAH-template}

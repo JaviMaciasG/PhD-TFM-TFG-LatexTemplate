@@ -185,7 +185,36 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Select the body configured in Config/myconfig.tex.
-\ifcompendium
+\ifstandarddocument
+
+  % BEGIN standard chapter inputs
+  \input{chapters/introduccion.tex}
+  \input{chapters/primeros-pasos.tex}
+  \input{chapters/configuracion.tex}
+  \input{chapters/estructura-documento.tex}
+  \input{chapters/elementos-utilidad.tex}
+  \input{chapters/documentos-complementarios.tex}
+  \input{chapters/compilacion-avanzada.tex}
+  \input{chapters/elementos-basicos.tex}
+  \input{chapters/ejemplos-avanzados.tex}
+  \input{chapters/conclusiones.tex}
+  % END standard chapter inputs
+
+  % Optional in PFCs
+  %\input{pliego/pliego.tex}
+
+  % Optional in PFCs, compulsory in TFGs
+  %\input{presupuesto/presupuesto.tex}
+
+  \input{biblio/bibliography.tex}
+
+  \begin{appendices}
+    % BEGIN standard appendix inputs
+    \input{appendix/codigo-algoritmos-listados.tex}
+    % END standard appendix inputs
+  \end{appendices}
+
+\else
 
   \ifthenelse{\equal{\myLanguage}{english}}
     {\part{Extended Summary of the Thesis}}
@@ -234,35 +263,6 @@
    {garcia2026paper3}
    {publications/paper3.pdf}
   % END compendium publication inputs
-
-\else
-
-  % BEGIN standard chapter inputs
-  \input{chapters/introduccion.tex}
-  \input{chapters/primeros-pasos.tex}
-  \input{chapters/configuracion.tex}
-  \input{chapters/estructura-documento.tex}
-  \input{chapters/elementos-utilidad.tex}
-  \input{chapters/documentos-complementarios.tex}
-  \input{chapters/compilacion-avanzada.tex}
-  \input{chapters/elementos-basicos.tex}
-  \input{chapters/ejemplos-avanzados.tex}
-  \input{chapters/conclusiones.tex}
-  % END standard chapter inputs
-
-  % Optional in PFCs
-  %\input{pliego/pliego.tex}
-
-  % Optional in PFCs, compulsory in TFGs
-  %\input{presupuesto/presupuesto.tex}
-
-  \input{biblio/bibliography.tex}
-
-  \begin{appendices}
-    % BEGIN standard appendix inputs
-    \input{appendix/codigo-algoritmos-listados.tex}
-    % END standard appendix inputs
-  \end{appendices}
 
 \fi
 
