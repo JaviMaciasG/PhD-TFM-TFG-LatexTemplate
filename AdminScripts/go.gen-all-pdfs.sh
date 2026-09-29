@@ -37,7 +37,7 @@ MYCONFIG="../Config/myconfig.tex"
 BOOK="book"
 ERROR_COUNT=0
 
-cat $MYCONFIG |sed -E "s/newcommand[{][\\]myLanguage[}][{](.*)[}]/newcommand{\\\myLanguage}{__LANG__}/g" |sed -E "s/newcommand[{][\\]myDegree[}][{](.*)[}]/newcommand{\\\myDegree}{__DEGREE__}/g" > $MYCONFIG_VARS
+cat $MYCONFIG |sed -E "s/newcommand[{][\\]myLanguage[}][{](.*)[}]/newcommand{\\\myLanguage}{__LANG__}/g" |sed -E "s/newcommand[{][\\]myDegree[}][{](.*)[}]/newcommand{\\\myDegree}{__DEGREE__}/g" |sed -E "s/newcommand[{][\\]myDocumentStructure[}][{](.*)[}]/newcommand{\\\myDocumentStructure}{__STRUCTURE__}/g" > $MYCONFIG_VARS
 
 #exit
 
@@ -48,31 +48,46 @@ do
     for degree in $DEGREES_ENG_SPA
     do
 	TYPE=`sh "$DEGREE_REGISTRY_TOOL" work-type "$degree" "$DEGREE_REGISTRY"`
-	OUTPUT_NAME=$TYPE-$degree-$lang.pdf
-	LOG_NAME=$TYPE-$degree-$lang.log
-	echo -n "Making for degree $degree, generating $OUTPUT_NAME..."
-	cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
-	make clean > /dev/null 2>&1
-	rm -f "$BOOK-compressed.pdf"
-	if make > "$LOG_NAME" 2>&1
+	if [ "$TYPE" = "PhD" ]
 	then
-	    if [ ! -f "$BOOK-compressed.pdf" ]
+	    STRUCTURES="standard compendium"
+	else
+	    STRUCTURES="standard"
+	fi
+	for structure in $STRUCTURES
+	do
+	    if [ "$TYPE" = "PhD" ]
 	    then
-		echo " ERROR: the build finished without producing $BOOK-compressed.pdf; see $LOG_NAME" >&2
-		ERROR_COUNT=$((ERROR_COUNT + 1))
-	    elif mv "$BOOK-compressed.pdf" "$OUTPUT_NAME"
-	    then
-		echo " Done!"
+		OUTPUT_NAME=$TYPE-$degree-$lang-$structure.pdf
+		LOG_NAME=$TYPE-$degree-$lang-$structure.log
 	    else
-		echo " ERROR: could not save the generated PDF as $OUTPUT_NAME; see $LOG_NAME" >&2
+		OUTPUT_NAME=$TYPE-$degree-$lang.pdf
+		LOG_NAME=$TYPE-$degree-$lang.log
+	    fi
+	    echo -n "Making for degree $degree with $structure structure, generating $OUTPUT_NAME..."
+	    cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g" | sed "s/__LANG__/$lang/g" | sed "s/__STRUCTURE__/$structure/g" > $MYCONFIG
+	    make clean > /dev/null 2>&1
+	    rm -f "$BOOK-compressed.pdf"
+	    if make > "$LOG_NAME" 2>&1
+	    then
+		if [ ! -f "$BOOK-compressed.pdf" ]
+		then
+		    echo " ERROR: the build finished without producing $BOOK-compressed.pdf; see $LOG_NAME" >&2
+		    ERROR_COUNT=$((ERROR_COUNT + 1))
+		elif mv "$BOOK-compressed.pdf" "$OUTPUT_NAME"
+		then
+		    echo " Done!"
+		else
+		    echo " ERROR: could not save the generated PDF as $OUTPUT_NAME; see $LOG_NAME" >&2
+		    ERROR_COUNT=$((ERROR_COUNT + 1))
+		fi
+	    else
+		BUILD_STATUS=$?
+		echo " ERROR: generation failed with status $BUILD_STATUS; see $LOG_NAME" >&2
 		ERROR_COUNT=$((ERROR_COUNT + 1))
 	    fi
-	else
-	    BUILD_STATUS=$?
-	    echo " ERROR: generation failed with status $BUILD_STATUS; see $LOG_NAME" >&2
-	    ERROR_COUNT=$((ERROR_COUNT + 1))
-	fi
-	#exit
+	    #exit
+	done
     done
 done
 
