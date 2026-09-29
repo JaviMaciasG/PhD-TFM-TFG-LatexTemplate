@@ -49,16 +49,18 @@ DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff
 DIFF_FLATTEN_TEX_FILE = $(DIFF_FLATTEN_ROOT_FILENAME).tex
 
 # Source files
-CHAPTER_SOURCES = $(wildcard chapters/*.tex)
-CHAPTER_ORIG_SOURCES = $(wildcard chapters/orig/*.tex)
-CHAPTER_BARE_SOURCES = $(wildcard chapters/bare/*.tex)
-COMPENDIUM_CHAPTER_SOURCES = $(wildcard chapters/compendium/*.tex)
-COMPENDIUM_CHAPTER_BARE_SOURCES = $(wildcard chapters/compendium/bare/*.tex)
 STANDARD_CONTENT_FILE = content-standard.tex
-STANDARD_CONTENT_ORIG_FILE = content/orig/content-standard.tex
-STANDARD_CONTENT_BARE_FILE = content/bare/content-standard.tex
+STANDARD_CONTENT_ORIG_FILE = chapters/orig/content-standard.tex
+STANDARD_CONTENT_BARE_FILE = chapters/bare/content-standard.tex
 COMPENDIUM_CONTENT_FILE = content-compendium.tex
-COMPENDIUM_CONTENT_BARE_FILE = content/bare/content-compendium.tex
+COMPENDIUM_CONTENT_ORIG_FILE = chapters/compendium/orig/content-compendium.tex
+COMPENDIUM_CONTENT_BARE_FILE = chapters/compendium/bare/content-compendium.tex
+CHAPTER_SOURCES = $(wildcard chapters/*.tex)
+CHAPTER_ORIG_SOURCES = $(filter-out $(STANDARD_CONTENT_ORIG_FILE),$(wildcard chapters/orig/*.tex))
+CHAPTER_BARE_SOURCES = $(filter-out $(STANDARD_CONTENT_BARE_FILE),$(wildcard chapters/bare/*.tex))
+COMPENDIUM_CHAPTER_SOURCES = $(wildcard chapters/compendium/*.tex)
+COMPENDIUM_CHAPTER_ORIG_SOURCES = $(filter-out $(COMPENDIUM_CONTENT_ORIG_FILE),$(wildcard chapters/compendium/orig/*.tex))
+COMPENDIUM_CHAPTER_BARE_SOURCES = $(filter-out $(COMPENDIUM_CONTENT_BARE_FILE),$(wildcard chapters/compendium/bare/*.tex))
 APPENDIX_SOURCES = $(wildcard appendix/*.tex)
 APPENDIX_ORIG_SOURCES = $(wildcard appendix/orig/*.tex)
 APPENDIX_BARE_SOURCES = $(wildcard appendix/bare/*.tex)
@@ -73,12 +75,13 @@ PDFS_FROM_SVG = $(patsubst %.svg, %.pdf, $(SVG_SOURCES))
 PDFS_FROM_EPS = $(patsubst %.eps, %.pdf, $(EPS_SOURCES))
 
 # Dummy targets
-DUMMY_MAIN_TARGETS = all bare bare-standard bare-compendium backup-chapters backup-compendium orig-chapters bare-chapters clean-orig-figures clean-orig-diagrams all_latexmk clean clean_latexmk
+DUMMY_MAIN_TARGETS = all bare bare-standard bare-compendium backup-chapters backup-compendium orig orig-standard orig-compendium orig-chapters bare-chapters clean-orig-figures clean-orig-diagrams all_latexmk clean clean_latexmk
 DUMMY_DIFF_TARGETS = snapshot flatten latexdiff
 DUMMY_TARGETS = pdf_dia_done pdf_svg_done pdf_eps_done
 
-# Date
-DATE = $(shell date "+%C%y%m%d-%H%M%S")
+# Unique timestamp used by backup directories. The process suffix prevents two
+# consecutive Make invocations within the same second from sharing a directory.
+DATE := $(shell date "+%C%y%m%d-%H%M%S")-$(shell echo $$$$)
 
 # Main targets
 all: $(DUMMY_TARGETS)
@@ -128,13 +131,36 @@ backup-compendium:
 	cp $(COMPENDIUM_CHAPTER_SOURCES) chapters/compendium/$(DATE)
 	@echo " Done!"
 
-orig-chapters: backup-chapters
+orig:
+	@if [[ "$(DOCUMENT_STRUCTURE)" == "standard" ]]; then \
+		$(MAKE) orig-standard; \
+	elif [[ "$(DOCUMENT_STRUCTURE)" == "compendium" ]]; then \
+		$(MAKE) orig-compendium; \
+	else \
+		echo "ERROR: unknown myDocumentStructure '$(DOCUMENT_STRUCTURE)'. Use standard or compendium." >&2; \
+		exit 1; \
+	fi
+
+orig-standard: backup-chapters
 	@echo "Setting orig chapters..."
 	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
 	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1true$$2!g' $(CONFIG_FILE)
+	rm -f chapters/*.tex
+	rm -f appendix/*.tex
 	for f in $(CHAPTER_ORIG_SOURCES);  do cp $$f chapters; done
 	for f in $(APPENDIX_ORIG_SOURCES); do cp $$f appendix; done
 	cp $(STANDARD_CONTENT_ORIG_FILE) $(STANDARD_CONTENT_FILE)
+	@echo " Done!"
+
+orig-chapters: orig-standard
+
+orig-compendium: backup-compendium
+	@echo "Setting original compendium chapters and publications..."
+	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{compendium}!' $(CONFIG_FILE)
+	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1true$$2!g' $(CONFIG_FILE)
+	rm -f chapters/compendium/*.tex
+	for f in $(COMPENDIUM_CHAPTER_ORIG_SOURCES); do cp $$f chapters/compendium; done
+	cp $(COMPENDIUM_CONTENT_ORIG_FILE) $(COMPENDIUM_CONTENT_FILE)
 	@echo " Done!"
 
 bare-standard: backup-chapters

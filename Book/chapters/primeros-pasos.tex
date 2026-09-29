@@ -103,8 +103,8 @@ Para preparar manualmente una memoria convencional con \texttt{standard}, sigue 
 
 \begin{itemize}
   \item Elimina los ficheros \texttt{.tex} situados directamente en \texttt{chapters/} y \texttt{appendix/}; no elimines sus subdirectorios ni su contenido.
-  \item Copia los ficheros de \texttt{chapters/bare/} a \texttt{chapters/} y los de \texttt{appendix/bare/} a \texttt{appendix/}.
-  \item Sustituye \texttt{Book/content-standard.tex} por \texttt{Book/content/bare/content-standard.tex}; este fichero ya incluye los capítulos y apéndices mínimos que acabas de copiar.
+  \item Copia a \texttt{chapters/} los ficheros de capítulo de \texttt{chapters/bare/}, sin copiar allí el fichero \texttt{content-standard.tex}, y copia los ficheros de \texttt{appendix/bare/} a \texttt{appendix/}.
+  \item Sustituye \texttt{Book/content-standard.tex} por \texttt{Book/chapters/bare/content-standard.tex}; este fichero ya incluye los capítulos y apéndices mínimos que acabas de copiar.
   \item Revisa en \texttt{Config/myconfig.tex} las variables \texttt{\textbackslash{}myInclude...} descritas en la sección~\ref{sec:elementos-opcionales-configuracion} y deja en \texttt{false} los elementos preliminares y listados que todavía no necesites.
 \end{itemize}
 
@@ -112,7 +112,7 @@ Si utilizas \texttt{make}, ejecuta \texttt{make bare} desde \texttt{Book/}. Como
 
 \subsection{Caso particular: tesis por compendio de publicaciones}
 
-Solo si vas a preparar una tesis doctoral por compendio debes seleccionar \texttt{compendium}. En ese caso utiliza \texttt{Book/content-compendium.tex}, copia las versiones mínimas de \texttt{Book/chapters/compendium/bare/} y sustituye el fichero de contenido por \texttt{Book/content/bare/content-compendium.tex}; el objetivo \texttt{make bare} realiza esas operaciones automáticamente cuando detecta esa estructura. Consulta la sección~\ref{sec:tesis-compendio} para conocer la organización de las dos partes y la forma de incorporar las publicaciones.
+Solo si vas a preparar una tesis doctoral por compendio debes seleccionar \texttt{compendium}. En ese caso elimina los ficheros \texttt{.tex} situados directamente en \texttt{Book/chapters/compendium/}, copia allí los seis capítulos de \texttt{Book/chapters/compendium/bare/}, sin copiar el fichero \texttt{content-compendium.tex}, y utiliza este último para sustituir \texttt{Book/content-compendium.tex}. El objetivo \texttt{make bare} realiza esas operaciones automáticamente cuando detecta esa estructura. La versión completa distribuida se conserva en \texttt{Book/chapters/compendium/orig/} y puedes restaurarla mediante \texttt{make orig-compendium}. Consulta la sección~\ref{sec:tesis-compendio} para conocer la organización de las dos partes y la forma de incorporar las publicaciones.
 
 \section{Preparación del repositorio Git}
 \label{sec:preparacion-repositorio-git}

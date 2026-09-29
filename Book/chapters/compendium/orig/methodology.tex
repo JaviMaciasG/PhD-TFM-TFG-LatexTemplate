@@ -1,0 +1,91 @@
+\ifthenelse{\equal{\myLanguage}{english}}
+{
+  \chapter{Methodology}
+}
+{
+  \chapter{Metodología}
+}
+\label{cha:compendium-methodology}
+
+\ifthenelse{\equal{\myLanguage}{english}}
+{
+  \section{Research Design}
+  \subsection{General approach}
+}
+{
+  \section{Diseño de la investigación}
+  \subsection{Enfoque general}
+}
+
+\ifthenelse{\equal{\myLanguage}{english}}
+{
+  Describe the common methodology connecting the publications, including the experimental design, data, analytical procedures and validation criteria. Refer to the included publications for details while keeping this chapter understandable as a coherent account of the thesis methodology.
+}
+{
+  Describe la metodología común que conecta las publicaciones, incluidos el diseño experimental, los datos, los procedimientos de análisis y los criterios de validación. Remite a las publicaciones incluidas para los detalles, manteniendo este capítulo como una explicación coherente de la metodología de la tesis.
+}
+
+\ifthenelse{\equal{\myLanguage}{english}}
+{
+  \subsection{Data and experimental protocol}
+
+  Explain how the data are obtained, prepared and divided, and identify the variables and controls used throughout the publications.
+
+  \section{Evaluation Methodology}
+}
+{
+  \subsection{Datos y protocolo experimental}
+
+  Explica cómo se obtienen, preparan y dividen los datos, e identifica las variables y los controles utilizados en el conjunto de las publicaciones.
+
+  \section{Metodología de evaluación}
+}
+
+\ifthenelse{\equal{\myLanguage}{english}}
+{
+  Figure~\ref{fig:compendium-example} and Table~\ref{tab:compendium-example} are simple examples that you can replace with material from your thesis.
+}
+{
+  La figura~\ref{fig:compendium-example} y la tabla~\ref{tab:compendium-example} son ejemplos sencillos que puedes sustituir por material de tu tesis.
+}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.55\textwidth]{Figure1}
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+    \caption{Example figure in the extended summary.}
+  }
+  {
+    \caption{Ejemplo de figura en el resumen extendido.}
+  }
+  \label{fig:compendium-example}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \renewcommand{\arraystretch}{1.2}
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+    \caption{Example comparison of experimental results.}
+  }
+  {
+    \caption{Ejemplo de comparación de resultados experimentales.}
+  }
+  \label{tab:compendium-example}
+  \begin{tabular}{|l|c|c|}
+    \hline
+    \ifthenelse{\equal{\myLanguage}{english}}{Method}{Método} &
+    \ifthenelse{\equal{\myLanguage}{english}}{Metric A}{Métrica A} &
+    \ifthenelse{\equal{\myLanguage}{english}}{Metric B}{Métrica B} \\
+    \hline
+    \ifthenelse{\equal{\myLanguage}{english}}{Baseline}{Referencia} & 0.72 & 0.68 \\
+    \hline
+    \ifthenelse{\equal{\myLanguage}{english}}{Proposed method}{Método propuesto} & 0.84 & 0.79 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+%%% Local Variables:
+%%% TeX-master: "../../book"
+%%% End:

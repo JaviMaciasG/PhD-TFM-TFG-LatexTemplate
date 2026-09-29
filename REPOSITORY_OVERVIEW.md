@@ -107,6 +107,8 @@ The root `Makefile` can also produce a PDF version of the README, delegate the b
 
 The template intentionally keeps `book.tex` stable. Users select optional front matter in `Config/myconfig.tex` and change the body through the applicable `content-*.tex` file rather than commenting infrastructure lines in `book.tex`.
 
+Prepared minimal and original structures are colocated with their chapters: `Book/chapters/{bare,orig}/` for standard documents and `Book/chapters/compendium/{bare,orig}/` for the specialized modality. Each directory also contains the `content-*.tex` organization file that the Makefile copies separately to the `Book/` root.
+
 ## Cover and degree-specific behavior
 
 `Book/cover/cover.tex` and `Book/cover/backpage.tex` delegate cover selection to the degree registry. `Config/layout-profiles.tex` maps each degree profile to its required files.
