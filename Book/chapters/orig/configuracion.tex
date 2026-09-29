@@ -34,11 +34,12 @@ La configuración compartida se encuentra en \texttt{Config/myconfig.tex}. Este 
 
 Además de completar \texttt{Config/myconfig.tex}, revisa \texttt{Book/book.tex}, que determina qué capítulos, resúmenes, listados, documentos externos y apéndices se incluyen en el libro. Las variables descritas a continuación configuran los datos compartidos, pero no añaden ni eliminan por sí solas los elementos incluidos mediante \texttt{\textbackslash{}input} o \texttt{\textbackslash{}includepdf}.
 
-\section{Idioma, titulación y presentación de los tutores}
+\section{Estructura, idioma, titulación y presentación de los tutores}
 
-Las siguientes variables controlan el idioma, la titulación y la presentación conjunta o separada de los tutores:
+Las siguientes variables controlan la estructura, el idioma, la titulación y la presentación conjunta o separada de los tutores:
 
 \begin{itemize}
+  \item \texttt{\textbackslash{}myDocumentStructure}: estructura del documento principal. El valor \texttt{standard} genera una memoria convencional y el valor \texttt{compendium} genera una tesis doctoral cuyo cuerpo contiene un resumen extendido seguido de las publicaciones. En ambos casos debes compilar \texttt{Book/book.tex}.
   \item \texttt{\textbackslash{}myLanguage}: idioma principal del documento. Admite los valores \texttt{spanish} y \texttt{english}. Esta selección determina, entre otros elementos, los textos automáticos, las cabeceras, el título utilizado y las palabras clave incorporadas a los metadatos del PDF.
   \item \texttt{\textbackslash{}myDegree}: identificador de la titulación o del tipo concreto de documento. Su valor determina el tipo general de trabajo y selecciona automáticamente las portadas, contraportadas, nombres de titulación y otros textos aplicables.
   \item \texttt{\textbackslash{}myFlagSplittedAdvisors}: controla cómo se presentan el tutor y el cotutor en las páginas que admiten ambas formas. El valor \texttt{true} utiliza líneas separadas para el tutor y el cotutor; el valor \texttt{false} utiliza una denominación conjunta.

@@ -41,6 +41,25 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
+% Validate the user-facing document structure and expose a simple conditional
+% for Book/book.tex.
+\newif\ifcompendium
+\ifthenelse{\equal{\myDocumentStructure}{compendium}}
+{
+  \compendiumtrue
+}
+{
+  \ifthenelse{\equal{\myDocumentStructure}{standard}}
+  {
+    \compendiumfalse
+  }
+  {
+    \PackageError{UAH-template}
+      {Unknown document structure '\myDocumentStructure'}
+      {Use 'standard' or 'compendium' in Config/myconfig.tex.}
+  }
+}
+
 % Select the degree before defining text that depends on its institution.
 \providecommand{\myConfigDirectory}{../Config}
 \input{\myConfigDirectory/degree-registry.tex}

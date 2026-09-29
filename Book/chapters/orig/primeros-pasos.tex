@@ -97,17 +97,19 @@ Si antes de comenzar la memoria necesitas preparar un anteproyecto, utiliza \tex
 
 Después de descargar la plantilla, compila directamente el fichero \texttt{Book/book.tex} antes de comenzar a modificarla. El resultado será este manual completo, que también contiene ejemplos de los elementos que puedes utilizar en tu trabajo. Esta primera compilación te permitirá comprobar que tu entorno funciona correctamente y consultar el manual mientras conoces la plantilla.
 
-Una vez que hayas comprobado que todo funciona, puedes comenzar a escribir tu memoria a partir de una estructura mínima y casi vacía que hemos preparado para ti. Para prepararla sin utilizar \texttt{make}, encontrarás el fichero \texttt{book-bare.tex} en el directorio \texttt{Book/} y versiones mínimas de los capítulos y apéndices en \texttt{chapters/bare/} y \texttt{appendix/bare/}. Antes de sustituir ningún fichero, conserva una copia de tu trabajo si ya has comenzado a modificar la plantilla.
+Una vez que hayas comprobado que todo funciona, puedes comenzar a escribir tu memoria a partir de una estructura mínima y casi vacía. Primero selecciona \texttt{standard} o \texttt{compendium} mediante \texttt{\textbackslash{}myDocumentStructure} en \texttt{Config/myconfig.tex}; en ambos casos seguirás compilando el único documento principal, \texttt{Book/book.tex}. Antes de sustituir ningún fichero, conserva una copia de tu trabajo si ya has comenzado a modificar la plantilla.
 
-Para preparar esa versión mínima manualmente, sigue estos pasos:
+Para preparar manualmente una memoria convencional con \texttt{standard}, sigue estos pasos:
 
 \begin{itemize}
-  \item En el directorio \texttt{Book/}, sustituye el fichero \texttt{book.tex} por \texttt{book-bare.tex} y cambia el nombre de este último a \texttt{book.tex}.
-  \item Elimina los ficheros \texttt{.tex} situados directamente en \texttt{chapters/} y \texttt{appendix/}; no elimines los subdirectorios \texttt{bare/} ni su contenido.
+  \item Elimina los ficheros \texttt{.tex} situados directamente en \texttt{chapters/} y \texttt{appendix/}; no elimines sus subdirectorios ni su contenido.
   \item Copia los ficheros de \texttt{chapters/bare/} a \texttt{chapters/} y los de \texttt{appendix/bare/} a \texttt{appendix/}.
+  \item En \texttt{book.tex}, sustituye únicamente las órdenes situadas entre \texttt{BEGIN standard chapter inputs} y \texttt{END standard chapter inputs} por las entradas correspondientes a \texttt{introduccion.tex}, \texttt{estudioTeorico.tex}, \texttt{desarrollo.tex}, \texttt{resultados.tex} y \texttt{conclusiones.tex}; sustituye del mismo modo el bloque \texttt{standard appendix inputs} por las entradas de \texttt{manual.tex} y \texttt{herramientas.tex}.
 \end{itemize}
 
-Con ello tendrás un documento principal que incluye únicamente los capítulos y apéndices mínimos. Si utilizas \texttt{make}, puedes automatizar este proceso mediante el objetivo \texttt{bare-chapters}, descrito en la sección~\ref{sec:compilacion-makefile}.
+Para preparar manualmente una tesis por compendio con \texttt{compendium}, elimina los seis ficheros \texttt{.tex} situados directamente en \texttt{chapters/compendium/}, conserva el subdirectorio \texttt{bare/} y copia desde él las versiones mínimas. Después elimina las tres publicaciones ficticias situadas entre los marcadores \texttt{BEGIN compendium publication inputs} y \texttt{END compendium publication inputs} de \texttt{book.tex}; puedes dejar dentro del bloque una llamada comentada como referencia para añadir posteriormente tus publicaciones reales.
+
+Si utilizas \texttt{make}, ejecuta \texttt{make bare} desde \texttt{Book/}. El objetivo consulta \texttt{\textbackslash{}myDocumentStructure}, crea una copia de seguridad y prepara automáticamente la versión mínima convencional o por compendio. También puedes solicitar una variante concreta con \texttt{make bare-standard} o \texttt{make bare-compendium}; \texttt{bare-chapters} se conserva como alias compatible de \texttt{bare-standard}. Estos objetivos se describen con más detalle en la sección~\ref{sec:compilacion-makefile}.
 
 \section{Preparación del repositorio Git}
 \label{sec:preparacion-repositorio-git}

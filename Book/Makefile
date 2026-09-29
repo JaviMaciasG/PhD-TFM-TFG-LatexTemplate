@@ -35,6 +35,7 @@ DEGREE_NAME = $(shell grep -v "%" $(CONFIG_FILE) | grep "myDegree" | cut -f 3 -d
 AUTHOR_NAME = $(shell grep -v "%" $(CONFIG_FILE) | grep "myAuthorName" | grep -v "myAuthorFullName" | cut -f 3 -d "{" | cut -f 1 -d "}" | tr -d " " | iconv -f utf8 -t ascii//TRANSLIT)
 AUTHOR_SURNAME = $(shell grep -v "%" $(CONFIG_FILE) | grep "myAuthorSurname" | grep -v "myAuthorFullName" | cut -f 3 -d "{" | cut -f 1 -d "}" | tr -d " " | iconv -f utf8 -t ascii//TRANSLIT)
 BOOK_LANGUAGE = $(shell grep -v "%" $(CONFIG_FILE) | grep "myLanguage" | cut -f 3 -d "{" | cut -f 1 -d "}")
+DOCUMENT_STRUCTURE = $(shell grep -v "%" $(CONFIG_FILE) | grep "myDocumentStructure" | cut -f 3 -d "{" | cut -f 1 -d "}")
 BOOK_TYPE = $(shell sh $(DEGREE_REGISTRY_TOOL) work-type "$(DEGREE_NAME)" "$(DEGREES_FILE)")
 
 # Filenames
@@ -51,6 +52,8 @@ DIFF_FLATTEN_TEX_FILE = $(DIFF_FLATTEN_ROOT_FILENAME).tex
 CHAPTER_SOURCES = $(wildcard chapters/*.tex)
 CHAPTER_ORIG_SOURCES = $(wildcard chapters/orig/*.tex)
 CHAPTER_BARE_SOURCES = $(wildcard chapters/bare/*.tex)
+COMPENDIUM_CHAPTER_SOURCES = $(wildcard chapters/compendium/*.tex)
+COMPENDIUM_CHAPTER_BARE_SOURCES = $(wildcard chapters/compendium/bare/*.tex)
 APPENDIX_SOURCES = $(wildcard appendix/*.tex)
 APPENDIX_ORIG_SOURCES = $(wildcard appendix/orig/*.tex)
 APPENDIX_BARE_SOURCES = $(wildcard appendix/bare/*.tex)
@@ -65,7 +68,7 @@ PDFS_FROM_SVG = $(patsubst %.svg, %.pdf, $(SVG_SOURCES))
 PDFS_FROM_EPS = $(patsubst %.eps, %.pdf, $(EPS_SOURCES))
 
 # Dummy targets
-DUMMY_MAIN_TARGETS = all compendium compendium_latexmk clean-compendium bare backup-chapters orig-chapters bare-chapters clean-orig-figures clean-orig-diagrams all_latexmk clean clean_latexmk
+DUMMY_MAIN_TARGETS = all bare bare-standard bare-compendium backup-chapters backup-compendium orig-chapters bare-chapters clean-orig-figures clean-orig-diagrams all_latexmk clean clean_latexmk
 DUMMY_DIFF_TARGETS = snapshot flatten latexdiff
 DUMMY_TARGETS = pdf_dia_done pdf_svg_done pdf_eps_done
 
@@ -89,22 +92,22 @@ all: $(DUMMY_TARGETS)
 	cp $(ROOT_FILENAME)-compressed.pdf $(ROOT_FINAL_BOOK_FILENAME)-compressed.pdf
 #	cp $(ROOT_FILENAME)-screen.pdf $(ROOT_FINAL_BOOK_FILENAME)-screen.pdf
 
-compendium:
-	$(MAKE) all ROOT_FILENAME=book-compendium OUTPUT_SUFFIX=-compendium
-
-compendium_latexmk:
-	$(MAKE) all_latexmk ROOT_FILENAME=book-compendium OUTPUT_SUFFIX=-compendium
-
-clean-compendium:
-	$(MAKE) clean ROOT_FILENAME=book-compendium OUTPUT_SUFFIX=-compendium
-
-
-bare: backup-chapters bare-chapters clean-orig-figures clean-orig-diagrams
+bare:
+	@if [[ "$(DOCUMENT_STRUCTURE)" == "standard" ]]; then \
+		$(MAKE) bare-standard; \
+	elif [[ "$(DOCUMENT_STRUCTURE)" == "compendium" ]]; then \
+		$(MAKE) bare-compendium; \
+	else \
+		echo "ERROR: unknown myDocumentStructure '$(DOCUMENT_STRUCTURE)'. Use standard or compendium." >&2; \
+		exit 1; \
+	fi
+	$(MAKE) clean-orig-figures clean-orig-diagrams
 
 backup-chapters:
 	@echo "Backup up chapter sources to chapters/$(DATE)..."
 	mkdir -p chapters/$(DATE)
 	cp $(TEX_FILE) chapters/$(DATE)/book.tex
+	cp $(CONFIG_FILE) chapters/$(DATE)/myconfig.tex
 	cp $(CHAPTER_SOURCES) chapters/$(DATE)
 	@echo " Done!"
 	@echo "Backup up appendix sources to appendix/$(DATE)..."
@@ -112,22 +115,42 @@ backup-chapters:
 	cp $(APPENDIX_SOURCES) appendix/$(DATE)
 	@echo " Done!"
 
-orig-chapters: backup-chapters
-	@echo "Setting orig chapters..."
-	for f in $(CHAPTER_ORIG_SOURCES);  do cp $$f chapters; done
-	for f in $(APPENDIX_ORIG_SOURCES); do cp $$f appendix; done
-	perl -0pi -e 's!% BEGIN chapter inputs:.*?% END chapter inputs!% BEGIN chapter inputs: the Makefile uses these markers for bare/orig-chapters\n\\input{chapters/introduccion.tex}\n\\input{chapters/primeros-pasos.tex}\n\\input{chapters/configuracion.tex}\n\\input{chapters/estructura-documento.tex}\n\\input{chapters/elementos-utilidad.tex}\n\\input{chapters/documentos-complementarios.tex}\n\\input{chapters/compilacion-avanzada.tex}\n\\input{chapters/elementos-basicos.tex}\n\\input{chapters/ejemplos-avanzados.tex}\n\\input{chapters/conclusiones.tex}\n% END chapter inputs!s' $(TEX_FILE)
-	perl -0pi -e 's!% BEGIN appendix inputs:.*?% END appendix inputs!% BEGIN appendix inputs: the Makefile uses these markers for bare/orig-chapters\n  \\input{appendix/codigo-algoritmos-listados.tex}\n  % END appendix inputs!s' $(TEX_FILE)
+backup-compendium:
+	@echo "Backing up compendium sources to chapters/compendium/$(DATE)..."
+	mkdir -p chapters/compendium/$(DATE)
+	cp $(TEX_FILE) chapters/compendium/$(DATE)/book.tex
+	cp $(CONFIG_FILE) chapters/compendium/$(DATE)/myconfig.tex
+	cp $(COMPENDIUM_CHAPTER_SOURCES) chapters/compendium/$(DATE)
 	@echo " Done!"
 
-bare-chapters: backup-chapters
+orig-chapters: backup-chapters
+	@echo "Setting orig chapters..."
+	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
+	for f in $(CHAPTER_ORIG_SOURCES);  do cp $$f chapters; done
+	for f in $(APPENDIX_ORIG_SOURCES); do cp $$f appendix; done
+	perl -0pi -e 's!% BEGIN standard chapter inputs.*?% END standard chapter inputs!% BEGIN standard chapter inputs\n  \\input{chapters/introduccion.tex}\n  \\input{chapters/primeros-pasos.tex}\n  \\input{chapters/configuracion.tex}\n  \\input{chapters/estructura-documento.tex}\n  \\input{chapters/elementos-utilidad.tex}\n  \\input{chapters/documentos-complementarios.tex}\n  \\input{chapters/compilacion-avanzada.tex}\n  \\input{chapters/elementos-basicos.tex}\n  \\input{chapters/ejemplos-avanzados.tex}\n  \\input{chapters/conclusiones.tex}\n  % END standard chapter inputs!s' $(TEX_FILE)
+	perl -0pi -e 's!% BEGIN standard appendix inputs.*?% END standard appendix inputs!% BEGIN standard appendix inputs\n    \\input{appendix/codigo-algoritmos-listados.tex}\n    % END standard appendix inputs!s' $(TEX_FILE)
+	@echo " Done!"
+
+bare-standard: backup-chapters
 	@echo "Setting bare chapters..."
+	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
 	rm -f chapters/*.tex
 	rm -f appendix/*.tex
 	for f in $(CHAPTER_BARE_SOURCES);  do cp $$f chapters; done
 	for f in $(APPENDIX_BARE_SOURCES); do cp $$f appendix; done
-	perl -0pi -e 's!% BEGIN chapter inputs:.*?% END chapter inputs!% BEGIN chapter inputs: the Makefile uses these markers for bare/orig-chapters\n\\input{chapters/introduccion.tex}\n\\input{chapters/estudioTeorico.tex}\n\\input{chapters/desarrollo.tex}\n\\input{chapters/resultados.tex}\n\\input{chapters/conclusiones.tex}\n% END chapter inputs!s' $(TEX_FILE)
-	perl -0pi -e 's!% BEGIN appendix inputs:.*?% END appendix inputs!% BEGIN appendix inputs: the Makefile uses these markers for bare/orig-chapters\n  \\input{appendix/manual.tex}\n  \\input{appendix/herramientas.tex}\n  % END appendix inputs!s' $(TEX_FILE)
+	perl -0pi -e 's!% BEGIN standard chapter inputs.*?% END standard chapter inputs!% BEGIN standard chapter inputs\n  \\input{chapters/introduccion.tex}\n  \\input{chapters/estudioTeorico.tex}\n  \\input{chapters/desarrollo.tex}\n  \\input{chapters/resultados.tex}\n  \\input{chapters/conclusiones.tex}\n  % END standard chapter inputs!s' $(TEX_FILE)
+	perl -0pi -e 's!% BEGIN standard appendix inputs.*?% END standard appendix inputs!% BEGIN standard appendix inputs\n    \\input{appendix/manual.tex}\n    \\input{appendix/herramientas.tex}\n    % END standard appendix inputs!s' $(TEX_FILE)
+	@echo " Done!"
+
+bare-chapters: bare-standard
+
+bare-compendium: backup-compendium
+	@echo "Setting bare compendium chapters and publications..."
+	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{compendium}!' $(CONFIG_FILE)
+	rm -f chapters/compendium/*.tex
+	for f in $(COMPENDIUM_CHAPTER_BARE_SOURCES); do cp $$f chapters/compendium; done
+	perl -0pi -e 's!% BEGIN compendium publication inputs.*?% END compendium publication inputs!% BEGIN compendium publication inputs\n  % Add one \\includecompendiumpublication declaration per publication here.\n  % END compendium publication inputs!s' $(TEX_FILE)
 	@echo " Done!"
 
 clean-orig-figures:

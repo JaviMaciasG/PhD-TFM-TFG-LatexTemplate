@@ -115,7 +115,6 @@ for explicit_file in \
 done
 
 compile_and_collect Book/book.tex
-compile_and_collect Book/book-compendium.tex
 compile_and_collect Anteproyecto/anteproyecto.tex
 for paperwork_directory in PapeleoTFG PapeleoTFM PapeleoPHD; do
   while IFS= read -r -d '' paperwork_file; do
