@@ -135,7 +135,13 @@ If you follow the `make` compilation alternative, to remove generated auxiliary 
 make clean
 ```
 
-When you are ready to write your own document, select `standard` or `compendium` with `\myDocumentStructure` in `Config/myconfig.tex` and start from the corresponding minimal structure. Without `make`, conventional documents use the files under `Book/chapters/bare/` and `Book/appendix/bare/`, while compendium theses use `Book/chapters/compendium/bare/`; the manual explains the few clearly marked input blocks that must also be updated. With `make`, running `make bare` from `Book/` creates a backup and prepares the minimal structure selected in `myconfig.tex` automatically.
+When you are ready to write your own document:
+
++ For most cases (all except if you write a PhD. Thesis at UAH based on a compilation of articles), you can start from the corresponding minimal structure, copying the files under `Book/chapters/bare/` and `Book/appendix/bare/` to `Book/chapters/` and `Book/appendix/` respectively (or check the `make` functionality described below).
+
++ If you are in the single case of writing your PhD. Thesis at UAH based on a compilation of articles, select `compendium` with `\myDocumentStructure` in `Config/myconfig.tex`, and copy the files in `Book/chapters/compendium/bare/` to `Book/chapters/compendium/` to start from the minimal structure. 
+
+The manual explains the few clearly marked input blocks that must also be updated. If you plan to use the provided `make` functionality, running `make bare` from `Book/` creates a backup and prepares the minimal structure selected in `myconfig.tex` automatically.
 
 Once the minimal structure is ready, create your Git repository and make a first commit of its source files. If you prefer a graphical Git client, keep the supplied `.gitignore`, ask the client to include all unignored changes in the commit, review the proposed file list, and then create the commit; the client may call this operation *Stage all*, *Stage all changes*, *Select all*, or simply present checkboxes for the files to commit. The complete beginner-friendly procedure, the files that must never be committed, and the dependency-aware `make sync-git-sources` alternative are explained in the manual section *Preparación del repositorio Git*.
 
