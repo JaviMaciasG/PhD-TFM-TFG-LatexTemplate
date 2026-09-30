@@ -27,6 +27,7 @@
 #
 
 DST_DIR="/home/macias/Dropbox/PhDTFMTFG-LaTeX-Template"
+DST_DIR="/tmp"
 
 DEGREE_REGISTRY="../Config/degrees.tex"
 DEGREE_REGISTRY_TOOL="../Config/query-degree-registry.sh"
