@@ -32,11 +32,11 @@ No necesitas las herramientas de este capítulo para comenzar a escribir o para 
 
 Para facilitar la generación del documento incluimos un \texttt{Makefile}. No somos expertos ni en \texttt{make} ni en \LaTeX{}, así que seguramente no sea el mejor \texttt{Makefile} del mundo, pero creemos que cumple su función y puede servir también como ejemplo para adaptar el proceso de compilación a tus necesidades.
 
-El objetivo predeterminado \texttt{all}, ejecutado al invocar \texttt{make} sin argumentos, convierte primero los diagramas y figuras que lo necesiten. A continuación ejecuta \texttt{pdflatex}, Biber, \texttt{makeglossaries} y las dos pasadas finales de \texttt{pdflatex}. Dado que el libro de ejemplo utiliza acrónimos y símbolos, el \texttt{Makefile} ejecuta siempre \texttt{makeglossaries}.
+El objetivo predeterminado \texttt{all}, ejecutado al invocar \texttt{make} sin argumentos, convierte primero los diagramas y figuras que lo necesiten y utiliza \texttt{latexmk} para controlar la compilación. Esta herramienta ejecuta \texttt{pdflatex}, Biber y las pasadas adicionales que sean necesarias; la configuración incluida integra también \texttt{makeglossaries} cuando cambian los acrónimos, los símbolos o un glosario.
 
 La compilación genera \texttt{book.pdf} y \texttt{book-compressed.pdf}. También crea copias cuyos nombres identifican el tipo de trabajo, la titulación, el autor y el idioma configurados; en las tesis doctorales añade además \texttt{-standard} o \texttt{-compendium} para distinguir la estructura seleccionada. La versión comprimida utiliza la configuración \texttt{/prepress} de Ghostscript; la antigua versión de calidad \texttt{/screen} está desactivada porque degradaba excesivamente las imágenes.
 
-El objetivo \texttt{all} también actualiza el fichero \texttt{RELEASE.txt} con la etiqueta más reciente del repositorio e intenta añadirlo al índice de Git. Por tanto, después de compilar, revisa el estado del repositorio antes de preparar un commit.
+En las ejecuciones posteriores, \texttt{latexmk} comprueba las dependencias registradas y evita recompilar el documento cuando ninguna fuente ha cambiado. En ese caso tampoco se repiten la compresión ni las copias finales, por lo que sus fechas de modificación permanecen intactas.
 
 Para el uso habitual de la plantilla solo necesitarás los siguientes objetivos:
 
@@ -48,7 +48,7 @@ Para el uso habitual de la plantilla solo necesitarás los siguientes objetivos:
 Los siguientes objetivos proporcionan operaciones avanzadas para la revisión y la preparación del proyecto:
 
 \begin{itemize}
-  \item \texttt{all\_latexmk}: ofrece un procedimiento alternativo y experimental de compilación basado en \texttt{latexmk}.
+  \item \texttt{all\_latexmk}: se conserva como alias compatible del objetivo predeterminado \texttt{all}, que ya utiliza \texttt{latexmk}.
   \item \texttt{clean\_latexmk}: elimina los ficheros auxiliares mediante \texttt{latexmk} y completa después la limpieza de otros ficheros generados.
   \item \texttt{snapshot}: genera mediante \texttt{latexpand} una copia unificada del documento que puede utilizarse como referencia para una revisión posterior.
   \item \texttt{flatten}: genera una copia unificada del estado actual del documento.
@@ -75,12 +75,12 @@ Algunos objetivos del \texttt{Makefile} utilizan herramientas adicionales. Solo 
   \item \texttt{Ghostscript}: genera la copia comprimida del documento cuando se utiliza el objetivo \texttt{all} del \texttt{Makefile}.
   \item \texttt{Inkscape}: convierte automáticamente los diagramas en formato \texttt{svg} a \texttt{pdf}.
   \item \texttt{Dia} y \texttt{epspdf}: convierten automáticamente los diagramas en formato \texttt{dia} a \texttt{pdf}; \texttt{epspdf} también convierte las figuras en formato \texttt{eps} a \texttt{pdf}.
-  \item \texttt{latexmk}: proporciona el procedimiento alternativo utilizado por los objetivos \texttt{all\_latexmk} y \texttt{clean\_latexmk}.
+  \item \texttt{latexmk}: controla las dependencias y las pasadas de compilación del objetivo predeterminado \texttt{all}; también lo utilizan los objetivos \texttt{all\_latexmk} y \texttt{clean\_latexmk}.
   \item \texttt{latexpand} y \texttt{latexdiff}: permiten unificar los fuentes y generar documentos que muestran las diferencias entre dos versiones.
   \item \texttt{Perl}: es necesario para ejecutar \texttt{makeglossaries} en los sistemas que no incluyan ya un intérprete compatible.
 \end{itemize}
 
-Instala estas herramientas solo cuando vayas a utilizar la prestación correspondiente. No son requisitos para redactar ni compilar un documento básico que no dependa de ellas.
+Si eliges la compilación mediante el \texttt{Makefile}, necesitas \texttt{latexmk} y las herramientas que requiera el contenido de tu documento. El resto solo hace falta cuando utilices la prestación correspondiente y no es necesario para compilar desde un editor que gestione por sí mismo la cadena de construcción.
 
 
 \section{Generación del documento con control de cambios}

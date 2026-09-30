@@ -106,6 +106,8 @@ for explicit_file in \
   AdminScripts/sync-git-sources.sh \
   AdminScripts/sync-git-sources.py \
   Config/Makefile \
+  Config/latex-common.mk \
+  Config/latexmkrc \
   Book/Makefile \
   Anteproyecto/Makefile \
   PapeleoTFG/Makefile \

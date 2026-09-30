@@ -41,11 +41,11 @@ cd Anteproyecto
 make
 \end{verbatim}
 
-La compilación genera \texttt{anteproyecto.pdf}. Si el documento contiene referencias bibliográficas, ejecuta Biber entre las pasadas de \texttt{pdflatex}; el \texttt{Makefile} incluido automatiza esta secuencia.
+La compilación genera \texttt{anteproyecto.pdf}. El \texttt{Makefile} utiliza \texttt{latexmk} para controlar las dependencias, ejecutar Biber y las pasadas de \texttt{pdflatex} que sean necesarias, y evitar la recompilación cuando ninguna fuente ha cambiado.
 
 Si trabajas en Overleaf, sigue el procedimiento de la sección~\ref{sec:compilacion-overleaf} y selecciona \texttt{Anteproyecto/anteproyecto.tex} como documento principal.
 
-El \texttt{Makefile} también proporciona los objetivos \texttt{anteproyecto\_latexmk}, \texttt{snapshot}, \texttt{flatten}, \texttt{latexdiff}, \texttt{clean} y \texttt{clean\_latexmk}. Los objetivos de revisión siguen el mismo principio que los equivalentes del libro principal, descritos en la sección~\ref{sec:control-de-cambios}.
+El \texttt{Makefile} también proporciona los objetivos \texttt{snapshot}, \texttt{flatten}, \texttt{latexdiff}, \texttt{clean}, \texttt{cleanall} y \texttt{help}. Los nombres \texttt{anteproyecto\_latexmk} y \texttt{clean\_latexmk} se conservan como alias compatibles de \texttt{anteproyecto} y \texttt{cleanall}, respectivamente. Los objetivos de revisión siguen el mismo principio que los equivalentes del libro principal, descritos en la sección~\ref{sec:control-de-cambios}.
 
 \section{Caso especializado: tesis por compendio de publicaciones}
 \label{sec:tesis-compendio}
@@ -115,11 +115,13 @@ Desde cualquiera de los directorios \texttt{PapeleoTFG/}, \texttt{PapeleoTFM/} y
 make
 \end{verbatim}
 
-El uso de \texttt{make} es opcional. Puedes compilar cada fichero individualmente con dos pasadas de \texttt{pdflatex} o mediante la función de construcción de tu editor de \LaTeX{} preferido. Estos formularios no utilizan la bibliografía ni los glosarios del libro principal.
+El uso de \texttt{make} es opcional y requiere \texttt{latexmk}. Cada invocación comprueba las dependencias registradas y solo repite las pasadas de \texttt{pdflatex} cuando ha cambiado alguna fuente directa o alguno de los ficheros compartidos de \texttt{Config/}. También puedes compilar cada fichero individualmente con dos pasadas de \texttt{pdflatex} o mediante la función de construcción de tu editor de \LaTeX{} preferido. Estos formularios no utilizan la bibliografía ni los glosarios del libro principal.
 
 Si solo necesitas un formulario, puedes indicar directamente el nombre del PDF, por ejemplo \texttt{make TFG-InformeTutorYRubrica.pdf}. En \texttt{PapeleoTFG/}, los objetivos \texttt{autorizaciones} y \texttt{evaluacion} generan respectivamente las autorizaciones de publicación y los documentos de evaluación. En \texttt{PapeleoTFM/}, puedes utilizar los objetivos \texttt{autorizacion}, \texttt{visto-bueno} y \texttt{solicitud}. El objetivo \texttt{help} de cada directorio muestra las opciones disponibles.
 
 El objetivo \texttt{clean} elimina únicamente los ficheros auxiliares de la compilación y conserva los PDF generados; utiliza \texttt{cleanall} cuando también quieras eliminar esos PDF.
+
+Desde la raíz del repositorio puedes ejecutar \texttt{make paperwork} para generar únicamente el conjunto de formularios que corresponde a la titulación seleccionada en \texttt{myconfig.tex}. El objetivo \texttt{make all-documents} añade además el README, el libro principal y el anteproyecto; el objetivo predeterminado de la raíz no cambia y continúa generando únicamente el README y el libro.
 
 En Overleaf puedes generar cada formulario seleccionando su fichero \texttt{.tex} como documento principal, de acuerdo con las indicaciones de la sección~\ref{sec:compilacion-overleaf}.
 

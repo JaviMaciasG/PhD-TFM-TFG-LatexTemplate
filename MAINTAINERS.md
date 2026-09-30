@@ -14,6 +14,12 @@ The user-facing Boolean options in `Config/myconfig.tex` share the `\myInclude..
 
 The standard workflow must remain dominant in `README.md` and the manual. Mention the compendium alternative briefly in the normal quick start and direct the small set of affected PhD users to the authoritative specialized section rather than presenting both structures as equivalent choices throughout the documentation.
 
+## Maintaining the Makefile build layer
+
+The active document Makefiles include `Config/latex-common.mk`, which defines the supported LaTeX engines and the common `latexmk` build and cleanup commands. Glossary dependencies are registered centrally in `Config/latexmkrc`. Keep document lists, user-facing group targets, conversion rules and final-output processing in the Makefile belonging to each directory; do not duplicate engine flags or unconditional sequences of LaTeX and Biber passes there.
+
+Every active document target deliberately invokes a lightweight `latexmk` dependency check. An unchanged document must not rerun LaTeX, Biber, `makeglossaries`, conversion, compression or copy commands. When adding a new paperwork document, add its base name to the appropriate directory list and let `latexmk` discover its direct and shared inputs. Preserve the compatibility aliases documented in the user manual, and update the root paperwork dispatcher only when introducing a new maintained work type.
+
 ## Generating a release distribution
 
 Set `RELEASE.txt` to the existing release/tag identifier and run:
@@ -344,7 +350,7 @@ make clean
 make
 ```
 
-The `make` target runs pdfLaTeX, Biber, `makeglossaries`, additional pdfLaTeX passes, compression, and output-file generation. It also refreshes and stages `RELEASE.txt`; review the worktree afterward.
+The `make` target uses `latexmk` to run pdfLaTeX, Biber, `makeglossaries`, and additional pdfLaTeX passes only when their inputs require them. Compression and descriptive output copies are also regenerated only when their source PDF changes.
 
 Test both:
 

@@ -52,19 +52,21 @@ The root `Makefile` can also produce a PDF version of the README, delegate the b
 
 ### Book build pipeline
 
-`Book/Makefile` drives a full build including:
+`Book/Makefile` uses `latexmk` to track dependencies and drive an incremental build including:
 
-- Multi-pass `pdflatex`
-- Bibliography processing with `biber`
-- `makeglossaries`
+- Multi-pass `pdflatex` when required
+- Bibliography processing with `biber` when required
+- Conditional `makeglossaries` processing for glossaries, acronyms, and symbols
 - Figure/diagram conversion support (`dia`, `inkscape`, `epspdf`)
 - Ghostscript compressed output (`-compressed`); the former low-quality `-screen` output is disabled
 - Flatten/snapshot/diff workflows (`latexpand`, `latexdiff`)
 
 ### Other components
 
-- `Anteproyecto/Makefile` includes similar multi-pass compilation with bibliography support.
-- The Makefiles under `PapeleoTFG/`, `PapeleoTFM/`, and `PapeleoPHD/` compile the administrative documents provided by each directory.
+- `Anteproyecto/Makefile` uses the same incremental `latexmk` layer with automatic bibliography support.
+- The Makefiles under `PapeleoTFG/`, `PapeleoTFM/`, and `PapeleoPHD/` use `latexmk` to track direct and shared configuration dependencies for every administrative document.
+- The root targets `anteproyecto`, `paperwork`, and `all-documents` optionally orchestrate these components; `paperwork` selects the directory matching the configured degree type.
+- Shared engine options and glossary integration live in `Config/latex-common.mk` and `Config/latexmkrc`.
 
 ## Configuration architecture
 
@@ -132,8 +134,8 @@ Institution-specific implementations are grouped under `Book/cover/uah/`, `Book/
 
 ## Risks / complexity hotspots
 
-- A basic editor-based build needs `pdflatex` and, when applicable, `biber` or `makeglossaries`; optional Makefile workflows add dependencies such as `pandoc`, Dia, Inkscape, Ghostscript, `latexpand`, and `latexdiff`.
-- Some Makefile logic is shell-heavy and brittle to environment differences.
+- A basic editor-based build needs `pdflatex` and, when applicable, `biber` or `makeglossaries`; Makefile workflows additionally require `latexmk`, while particular targets may use `pandoc`, Dia, Inkscape, Ghostscript, `latexpand`, or `latexdiff`.
+- The active document Makefiles share their engine and dependency configuration, but release and registry automation still relies on shell tooling.
 - Mixed-era structure and duplicated assets can make onboarding harder.
 - Legacy/Deprecated content increases navigation noise for first-time users.
 

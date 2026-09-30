@@ -1,0 +1,13 @@
+# Let latexmk invoke makeglossaries only when a generated glossary input has
+# changed. The extensions match the acronym and symbol glossaries declared by
+# the template; the main glossary pair is retained for compatible extensions.
+add_cus_dep('acn', 'acr', 0, 'run_makeglossaries');
+add_cus_dep('sbl', 'sym', 0, 'run_makeglossaries');
+add_cus_dep('glo', 'gls', 0, 'run_makeglossaries');
+
+$clean_ext .= ' acn acr alg sbl sym slg glo gls glg';
+
+sub run_makeglossaries {
+    my ($base_name, $path) = fileparse($_[0]);
+    return system 'makeglossaries', '-d', $path, $base_name;
+}

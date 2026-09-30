@@ -116,7 +116,7 @@ For a normal thesis or final-project document, configure `Config/myconfig.tex`, 
 1. Configure the document metadata in `Config/myconfig.tex`.
 2. Go to the `Anteproyecto` directory, where you will find the `anteproyecto.tex` file. This is the one you should work in and the entry point for compilation. An example is provided in the repo file.
 3. Edit the file to suit your needs
-4. Compile it (there is a `Makefile` available, but you can use your standard LaTeX build tool or command within your preferred LaTeX editor).
+4. Compile it (there is an incremental `latexmk`-based `Makefile` available, but you can use your standard LaTeX build tool or command within your preferred LaTeX editor).
 
 ## To work in the main book
 
@@ -129,7 +129,9 @@ After downloading the template, first compile `Book/book.tex` without modifying 
 
 These quick-start steps deliberately describe the standard workflow used by almost everyone. A PhD student using the compendium modality keeps the same `Book/book.tex` entry point and compilation process, but selects `compendium` and organizes the body through `Book/content-compendium.tex` as explained in the specialized section below.
 
-The provided Makefile runs those steps automatically. It generates `book.pdf` and a reduced-size `book-compressed.pdf` variant, and copies them to filenames derived from the work type, degree, author, and language. For PhD theses, those final filenames also contain `-standard` or `-compendium` to identify the selected document structure. Other build tools may generate only `book.pdf` unless configured to reproduce these additional steps.
+The provided Makefile uses, and therefore requires, `latexmk` to run those steps automatically and only repeats the required stages when a source changes. It generates `book.pdf` and a reduced-size `book-compressed.pdf` variant, and copies them to filenames derived from the work type, degree, author, and language. For PhD theses, those final filenames also contain `-standard` or `-compendium` to identify the selected document structure. Other build tools may generate only `book.pdf` unless configured to reproduce these additional steps.
+
+From the repository root, `make anteproyecto` builds the project proposal and `make paperwork` builds the maintained paperwork corresponding to the degree selected in `Config/myconfig.tex`. The optional `make all-documents` target builds the README, main book, project proposal, and matching paperwork; the default root `make` remains limited to the README and main book.
 
 If you follow the `make` compilation alternative, to remove generated auxiliary files, run this from `Book/`:
 
@@ -184,7 +186,7 @@ The `pages=-` option includes every page. The distributed example is controlled 
 ## To work with the paperwork
 
 1. Go to `PapeleoTFG/`, `PapeleoTFM/`, or `PapeleoPHD/`, according to the type of document you need.
-2. Edit the files you need and compile them by using the corresponding `Makefile`s or your standard LaTeX build tool. Running `make` generates every form in the directory; use `make help` to see the available groups and individual targets. If you use [Overleaf](https://www.overleaf.com/), change the `main document` to be the one you want to compile.
+2. Edit the files you need and compile them by using the corresponding `Makefile`s or your standard LaTeX build tool. Running `make` uses `latexmk` to generate every form in the directory and avoids recompiling unchanged documents; use `make help` to see the available groups and individual targets. If you use [Overleaf](https://www.overleaf.com/), change the `main document` to be the one you want to compile.
 
 
 # Bibliography handling

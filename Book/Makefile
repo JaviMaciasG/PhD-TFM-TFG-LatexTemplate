@@ -8,27 +8,16 @@ DEGREES_FILE = ../Config/degrees.tex
 DEGREE_REGISTRY_TOOL = ../Config/query-degree-registry.sh
 
 # Tools
-LATEXMK_TOOL = latexmk
 EPSPDF_TOOL = epspdf
 DIA_TOOL = dia
 GS_TOOL = gs
 INKSCAPE_TOOL = inkscape
-MAKEGLOSSARIES_TOOL = makeglossaries
 LATEXPAND_TOOL = latexpand
 RM = rm -f
-ifeq ($(shell grep -e bibliosystem $(PRELUDE_FILE) | grep -v ifthenelse | grep newcommand | grep -v "^\%" | cut -d'{' -f3 | cut -d'}' -f1 | tr -d " "), bibtex)
-	BIBLIO_TOOL := bibtex
-else
-	BIBLIO_TOOL := biber
-endif
-PDF_TOOL = pdflatex
-FLAGS_SYNCTEX_PDFLATEX = -synctex=1
-
-ifeq ($(PDF_TOOL),pdflatex)
-	PDF_PREFIX := $(shell echo $(PDF_TOOL) | sed -e "s/latex//")
-else
-	PDF_PREFIX := pdf$(shell echo $(PDF_TOOL) | sed -e "s/latex//")
-endif
+PDF_TOOL ?= pdflatex
+LATEX_ENGINE ?= $(PDF_TOOL)
+LATEX_CONFIG_DIR := ../Config
+include $(LATEX_CONFIG_DIR)/latex-common.mk
 
 # Read configuration variables
 DEGREE_NAME = $(shell grep -v "%" $(CONFIG_FILE) | grep "myDegree" | cut -f 3 -d "{" | cut -f 1 -d "}")
@@ -80,7 +69,7 @@ PDFS_FROM_SVG = $(patsubst %.svg, %.pdf, $(SVG_SOURCES))
 PDFS_FROM_EPS = $(patsubst %.eps, %.pdf, $(EPS_SOURCES))
 
 # Dummy targets
-DUMMY_MAIN_TARGETS = all bare bare-standard bare-compendium backup-chapters backup-compendium orig orig-standard orig-compendium orig-chapters bare-chapters clean-orig-figures clean-orig-diagrams all_latexmk clean clean_latexmk
+DUMMY_MAIN_TARGETS = all final-pdfs bare bare-standard bare-compendium backup-chapters backup-compendium orig orig-standard orig-compendium orig-chapters bare-chapters clean-orig-figures clean-orig-diagrams all_latexmk clean clean_latexmk
 DUMMY_DIFF_TARGETS = snapshot flatten latexdiff
 DUMMY_TARGETS = pdf_dia_done pdf_svg_done pdf_eps_done
 
@@ -90,20 +79,20 @@ DATE := $(shell date "+%C%y%m%d-%H%M%S")-$(shell echo $$$$)
 
 # Main targets
 all: $(DUMMY_TARGETS)
-	@echo "Processing LaTeX code with $(PDF_TOOL)"
-	@echo "Processing bibliography with $(BIBLIO_TOOL)"
-	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
-	$(BIBLIO_TOOL) $(ROOT_FILENAME)
-	$(MAKEGLOSSARIES_TOOL) $(ROOT_FILENAME)
-	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
-	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(TEX_FILE)
-# Compress pdf file
-# Screen-quality output is disabled because its image quality is too low.
-#	$(GS_TOOL) -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen   -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$(ROOT_FILENAME)-screen.pdf     $(ROOT_FILENAME).pdf
+	@echo "Checking LaTeX dependencies with $(LATEXMK)"
+	$(call latexmk_build,$(TEX_FILE))
+	$(MAKE) final-pdfs
+
+final-pdfs: $(ROOT_FILENAME)-compressed.pdf $(ROOT_FINAL_BOOK_FILENAME).pdf $(ROOT_FINAL_BOOK_FILENAME)-compressed.pdf
+
+$(ROOT_FILENAME)-compressed.pdf: $(ROOT_FILENAME).pdf
 	$(GS_TOOL) -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$(ROOT_FILENAME)-compressed.pdf $(ROOT_FILENAME).pdf
+
+$(ROOT_FINAL_BOOK_FILENAME).pdf: $(ROOT_FILENAME).pdf
 	cp $(ROOT_FILENAME).pdf $(ROOT_FINAL_BOOK_FILENAME).pdf
+
+$(ROOT_FINAL_BOOK_FILENAME)-compressed.pdf: $(ROOT_FILENAME)-compressed.pdf
 	cp $(ROOT_FILENAME)-compressed.pdf $(ROOT_FINAL_BOOK_FILENAME)-compressed.pdf
-#	cp $(ROOT_FILENAME)-screen.pdf $(ROOT_FINAL_BOOK_FILENAME)-screen.pdf
 
 bare:
 	@if [[ "$(DOCUMENT_STRUCTURE)" == "standard" ]]; then \
@@ -210,10 +199,7 @@ clean-orig-diagrams:
 	rm -f diagrams/*.eps diagrams/*.pdf diagrams/*.dia; \
 	fi
 
-all_latexmk: $(DUMMY_TARGETS)
-	$(LATEXMK_TOOL) -$(PDF_PREFIX) -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -xelatex="xelatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -lualatex="lualatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
-	$(MAKEGLOSSARIES_TOOL) $(ROOT_FILENAME)
-	$(LATEXMK_TOOL) -$(PDF_PREFIX) -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -xelatex="xelatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -lualatex="lualatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
+all_latexmk: all
 
 snapshot:
 	$(LATEXPAND_TOOL) $(TEX_FILE) > $(SNAPSHOT_FLATTEN_TEX_FILE)
@@ -223,10 +209,7 @@ flatten:
 
 latexdiff: flatten
 	latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $(SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE) | sed -e 's/^[ ]*//g' | sed -e 's/[ ]*$$//g' | perl -0777 -pe 's/[}]\n\\end[{]tikzpicture[}];\n\\end[{]tikzpicture[}]/\\end{tikzpicture}\n};\n\\end{tikzpicture}/g' > $(DIFF_FLATTEN_TEX_FILE)
-	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
-	$(BIBLIO_TOOL) $(DIFF_FLATTEN_ROOT_FILENAME)
-	$(MAKEGLOSSARIES_TOOL) $(DIFF_FLATTEN_ROOT_FILENAME)
-	$(PDF_TOOL) $(FLAGS_SYNCTEX_PDFLATEX) $(DIFF_FLATTEN_TEX_FILE)
+	$(call latexmk_build,$(DIFF_FLATTEN_TEX_FILE))
 
 pdf_dia_done: $(PDFS_FROM_DIA)
 	@echo "Generating pdfs from DIA..."
@@ -260,7 +243,7 @@ clean:
 	$(RM) $(ROOT_FILENAME).pdf $(ROOT_FILENAME).acn $(ROOT_FILENAME).sbl $(ROOT_FILENAME).out $(ROOT_FILENAME).log $(ROOT_FILENAME).bcf $(ROOT_FILENAME).aux $(ROOT_FILENAME).bbl  $(ROOT_FILENAME).blg  $(ROOT_FILENAME).ist $(ROOT_FILENAME).glsdefs $(ROOT_FILENAME).toc $(ROOT_FILENAME).run.xml $(ROOT_FILENAME).lot $(ROOT_FILENAME).lof $(ROOT_FILENAME).loa $(ROOT_FILENAME).cod $(ROOT_FILENAME).alg $(ROOT_FILENAME).acr $(ROOT_FILENAME).sym $(ROOT_FILENAME).slg
 
 clean_latexmk:
-	$(LATEXMK_TOOL) -C $(TEX_FILE)
+	$(call latexmk_cleanall,$(TEX_FILE))
 	$(RM) $(ROOT_FILENAME).bbl
 	$(RM) $(ROOT_FILENAME).sbl
 	$(RM) $(ROOT_FILENAME).ist
@@ -271,4 +254,4 @@ clean_latexmk:
 	$(RM) $(ROOT_FILENAME).sym
 	$(RM) $(ROOT_FILENAME).slg
 
-.PHONY: $(DUMMY_MAIN_TARGETS) $(DUMMY_DIFF_TARGETS) $(DUMMY_TARGETS)
+.PHONY: $(DUMMY_MAIN_TARGETS) $(DUMMY_DIFF_TARGETS)

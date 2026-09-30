@@ -1,34 +1,32 @@
 PDFLATEX ?= pdflatex
 LATEXFLAGS ?= -interaction=nonstopmode -halt-on-error -file-line-error
+LATEX_ENGINE ?= $(PDFLATEX)
+LATEX_CONFIG_DIR := ../Config
+include $(LATEX_CONFIG_DIR)/latex-common.mk
 
 DOCUMENT := PHD-VistoBuenoTutorTesis
 PDF := $(DOCUMENT).pdf
-COMMON_DEPS := \
-	../Book/logos/logoUAH.jpg \
-	../Config/myconfig.tex \
-	../Config/postamble.tex \
-	../Config/preamble.tex
+TEX_FILE := $(DOCUMENT).tex
 
 .DEFAULT_GOAL := all
 
-.PHONY: all clean cleanall help
+.PHONY: all FORCE clean cleanall help
 
 all: $(PDF)
 
-$(PDF): $(COMMON_DEPS)
+FORCE:
 
-%.pdf: %.tex
-	$(PDFLATEX) $(LATEXFLAGS) $<
-	$(PDFLATEX) $(LATEXFLAGS) $<
+$(PDF): $(TEX_FILE) FORCE
+	$(call latexmk_build,$(TEX_FILE))
 
 clean:
-	$(RM) *.aux *.bbl *.bcf *.blg *.fdb_latexmk *.fls *.lof *.log *.lot *.out *.run.xml *.synctex.gz *.toc
+	$(call latexmk_clean,$(TEX_FILE))
 
-cleanall: clean
-	$(RM) $(PDF)
+cleanall:
+	$(call latexmk_cleanall,$(TEX_FILE))
 
 help:
 	@printf '%s\n' \
-		'make          Generate the PhD advisor-approval form' \
+		'make          Generate the PhD advisor-approval form incrementally' \
 		'make clean    Remove auxiliary files' \
 		'make cleanall Remove auxiliary files and the generated PDF'
