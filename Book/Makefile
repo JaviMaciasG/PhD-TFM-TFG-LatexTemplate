@@ -137,8 +137,10 @@ orig:
 
 orig-standard: backup-chapters
 	@echo "Setting orig chapters..."
-	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
-	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1true$$2!g' $(CONFIG_FILE)
+#	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
+	sed -Ei 's!\\newcommand\{\\myDocumentStructure\}\{[^}]*\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
+#	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1true$$2!g' $(CONFIG_FILE)
+	sed -Ei 's!(\\newcommand\{\\myInclude(SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{)[^}]*\}!\1true}!g' $(CONFIG_FILE)
 	rm -f chapters/*.tex
 	rm -f appendix/*.tex
 	for f in $(CHAPTER_ORIG_SOURCES);  do cp $$f chapters; done
@@ -150,8 +152,10 @@ orig-chapters: orig-standard
 
 orig-compendium: backup-compendium
 	@echo "Setting original compendium chapters and publications..."
-	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{compendium}!' $(CONFIG_FILE)
-	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1true$$2!g' $(CONFIG_FILE)
+#	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{compendium}!' $(CONFIG_FILE)
+	sed -Ei 's!\\newcommand\{\\myDocumentStructure\}\{[^}]*\}!\\newcommand{\\myDocumentStructure}{compendium}!' $(CONFIG_FILE)
+#	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1true$$2!g' $(CONFIG_FILE)
+	sed -Ei 's!(\\newcommand\{\\myInclude(SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{)[^}]*\}!\1true}!g' $(CONFIG_FILE)
 	rm -f chapters/compendium/*.tex
 	for f in $(COMPENDIUM_CHAPTER_ORIG_SOURCES); do cp $$f chapters/compendium; done
 	cp $(COMPENDIUM_CONTENT_ORIG_FILE) $(COMPENDIUM_CONTENT_FILE)
@@ -159,9 +163,10 @@ orig-compendium: backup-compendium
 
 bare-standard: backup-chapters
 	@echo "Setting bare chapters..."
-	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
-#   perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1false$$2!g' $(CONFIG_FILE)
-	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|ListOfAcronyms)\}\{).*?(\})!$$1false$$2!g' $(CONFIG_FILE)
+#	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
+	sed -Ei 's!\\newcommand\{\\myDocumentStructure\}\{[^}]*\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
+#	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1false$$2!g' $(CONFIG_FILE)
+sed -Ei 's!(\\newcommand\{\\myInclude(SampleLetter|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{)[^}]*\}!\1false}!g' $(CONFIG_FILE)
 	rm -f chapters/*.tex
 	rm -f appendix/*.tex
 	for f in $(CHAPTER_BARE_SOURCES);  do cp $$f chapters; done
@@ -173,8 +178,10 @@ bare-chapters: bare-standard
 
 bare-compendium: backup-compendium
 	@echo "Setting bare compendium chapters and publications..."
-	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{compendium}!' $(CONFIG_FILE)
-	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1false$$2!g' $(CONFIG_FILE)
+#	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{compendium}!' $(CONFIG_FILE)
+	sed -Ei 's!\\newcommand\{\\myDocumentStructure\}\{[^}]*\}!\\newcommand{\\myDocumentStructure}{compendium}!' $(CONFIG_FILE)
+#	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1false$$2!g' $(CONFIG_FILE)
+	sed -Ei 's!(\\newcommand\{\\myInclude(SampleLetter|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{)[^}]*\}!\1false}!g' $(CONFIG_FILE)
 	rm -f chapters/compendium/*.tex
 	for f in $(COMPENDIUM_CHAPTER_BARE_SOURCES); do cp $$f chapters/compendium; done
 	cp $(COMPENDIUM_CONTENT_BARE_FILE) $(COMPENDIUM_CONTENT_FILE)
@@ -209,7 +216,13 @@ flatten:
 	$(LATEXPAND_TOOL) $(TEX_FILE) > $(FLATTEN_TEX_FILE)
 
 latexdiff: flatten
-	latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $(SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE) | sed -e 's/^[ ]*//g' | sed -e 's/[ ]*$$//g' | perl -0777 -pe 's/[}]\n\\end[{]tikzpicture[}];\n\\end[{]tikzpicture[}]/\\end{tikzpicture}\n};\n\\end{tikzpicture}/g' > $(DIFF_FLATTEN_TEX_FILE)
+#	latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $(SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE) | sed -e 's/^[ ]*//g' | sed -e 's/[ ]*$$//g' | perl -0777 -pe 's/[}]\n\\end[{]tikzpicture[}];\n\\end[{]tikzpicture[}]/\\end{tikzpicture}\n};\n\\end{tikzpicture}/g' > $(DIFF_FLATTEN_TEX_FILE)
+	latexdiff --encoding=utf8 \
+	--config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" \
+	$(SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE) \
+	| sed -e 's/^[ ]*//' -e 's/[ ]*$$//' \
+	| sed -z 's/}\n\\end{tikzpicture};\n\\end{tikzpicture}/\\end{tikzpicture}\n};\n\\end{tikzpicture}/g' \
+	> $(DIFF_FLATTEN_TEX_FILE)
 	$(call latexmk_build,$(DIFF_FLATTEN_TEX_FILE))
 
 pdf_dia_done: $(PDFS_FROM_DIA)
