@@ -166,7 +166,7 @@ bare-standard: backup-chapters
 #	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
 	sed -Ei 's!\\newcommand\{\\myDocumentStructure\}\{[^}]*\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
 #	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1false$$2!g' $(CONFIG_FILE)
-sed -Ei 's!(\\newcommand\{\\myInclude(SampleLetter|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{)[^}]*\}!\1false}!g' $(CONFIG_FILE)
+	sed -Ei 's!(\\newcommand\{\\myInclude(SampleLetter|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{)[^}]*\}!\1false}!g' $(CONFIG_FILE)
 	rm -f chapters/*.tex
 	rm -f appendix/*.tex
 	for f in $(CHAPTER_BARE_SOURCES);  do cp $$f chapters; done
@@ -194,7 +194,7 @@ clean-orig-figures:
 	@read -p "I will ask you once... Are you sure to delete all files there? " dodelete; \
 	if [ "$$dodelete" == "Y" ]; \
 	then \
-	find figures -type f \( -iname '*.png' -o -iname '*.eps' -o -iname '*.pdf' -o -iname '*.jpg' \) ! -name 'Figure1.png' -delete \
+	find figures -type f \( -iname '*.png' -o -iname '*.eps' -o -iname '*.pdf' -o -iname '*.jpg' \) ! -name 'Figure1.png' -delete; \
 	fi
 
 clean-orig-diagrams:
