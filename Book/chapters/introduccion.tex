@@ -58,11 +58,11 @@ Los principales directorios del repositorio son:
   \item \texttt{PapeleoTFG/}: formularios administrativos relacionados con los trabajos fin de grado.
   \item \texttt{PapeleoTFM/}: formularios administrativos relacionados con los trabajos fin de máster.
   \item \texttt{PapeleoPHD/}: formularios administrativos relacionados con las tesis doctorales.
-  \item \texttt{normativas/}: normativas y documentos institucionales de referencia.
-  \item \texttt{UsefulDocs/}: documentación auxiliar útil para preparar y revisar el trabajo.
-  \item \texttt{AdminScripts/}: herramientas de mantenimiento utilizadas para administrar la plantilla.
-  \item \texttt{Deprecated/}: material antiguo conservado únicamente como referencia o por compatibilidad.
 \end{itemize}
+
+El repositorio Git completo contiene además \texttt{AdminScripts/}, \texttt{Deprecated/}, \texttt{normativas/}, \texttt{UsefulDocs/} y documentos Markdown destinados al mantenimiento, la consulta histórica y la preparación de versiones. Estos elementos no se incluyen en la distribución ZIP/TGZ ordinaria porque no son necesarios para utilizar la plantilla.
+
+El fichero \texttt{sync-git-sources.sh} situado en la raíz implementa la sincronización opcional y basada en dependencias que puedes solicitar mediante \texttt{make sync-git-sources}. Normalmente utilizarás el objetivo del \texttt{Makefile} y no ejecutarás directamente este script.
 
 La configuración general se realiza en \texttt{Config/myconfig.tex}, como se explica en la sección~\ref{sec:definicion-del-tipo}. Los distintos documentos del repositorio leen este archivo para mantener coherentes los nombres, títulos, fechas y demás datos compartidos.
 
@@ -80,5 +80,3 @@ No esperamos que leas toda la guía antes de empezar ni que utilices todas las p
 %%% Local Variables:
 %%% TeX-master: "../book"
 %%% End:
-
-

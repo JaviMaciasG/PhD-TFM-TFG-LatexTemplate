@@ -6,7 +6,9 @@ DEGREE_REGISTRY_TOOL := Config/query-degree-registry.sh
 DEGREE_NAME = $(shell grep -v '%' $(CONFIG_FILE) | grep 'myDegree' | cut -f 3 -d '{' | cut -f 1 -d '}')
 WORK_TYPE = $(shell sh $(DEGREE_REGISTRY_TOOL) work-type "$(DEGREE_NAME)" "$(DEGREES_FILE)")
 
-.PHONY: all book anteproyecto paperwork all-documents clean clean-paperwork clean-all-documents sync-git-sources distrib help
+-include AdminScripts/maintainer.mk
+
+.PHONY: all book anteproyecto paperwork all-documents clean clean-paperwork clean-all-documents sync-git-sources help
 
 all: 00-README.pdf book
 
@@ -46,10 +48,7 @@ clean-all-documents: clean
 	$(MAKE) clean-paperwork
 
 sync-git-sources:
-	@bash AdminScripts/sync-git-sources.sh
-
-distrib: 00-README.pdf
-	@bash AdminScripts/go.build-distribution.sh
+	@bash sync-git-sources.sh
 
 help:
 	@printf '%s\n' \
@@ -60,5 +59,4 @@ help:
 		'make all-documents       Generate the README, book, proposal, and matching paperwork' \
 		'make clean               Clean the default README and book outputs' \
 		'make clean-all-documents Clean all outputs covered by all-documents' \
-		'make distrib             Generate the release archives' \
 		'make sync-git-sources    Stage the sources required to reproduce user documents'

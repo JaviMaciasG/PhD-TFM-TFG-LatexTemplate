@@ -21,9 +21,11 @@ Top-level directories and their primary role:
 - `Config/`: Core global configuration and compilation logic (`preamble`, `postamble`, language/worktype handling).
 - `PapeleoTFG/`, `PapeleoTFM/`, `PapeleoPHD/`: Administrative paperwork templates by document type.
 - `normativas/`: Official regulations and annexes in PDF/DOCX format.
-- `AdminScripts/`: Utility scripts for maintenance/distribution automation.
+- `AdminScripts/`: Maintainer-only release and regression automation.
 - `UsefulDocs/`: Reference docs (cheatsheets and symbols).
 - `Deprecated/`: Legacy material kept for reference.
+
+The root-level `sync-git-sources.sh` is the user-facing implementation behind `make sync-git-sources`; it is kept outside `AdminScripts/` because it is distributed with the template and is not a maintainer utility.
 
 Repository volume snapshot (tracked files):
 
@@ -39,7 +41,7 @@ Repository volume snapshot (tracked files):
 3. Compile `Book/book.tex` with your usual LaTeX editor or build tool configured for `biber`; optionally use `make` from `Book/` to automate the complete sequence.
 4. Optionally compile `Anteproyecto/` and the corresponding paperwork templates in `Papeleo*` directories.
 
-The root `Makefile` can also produce a PDF version of the README, delegate the build to `Book/`, and generate maintainer release archives through `make distrib`.
+The root `Makefile` can also produce a PDF version of the README and delegate the build to `Book/`. In repository checkouts it optionally loads `AdminScripts/maintainer.mk`, which adds the maintainer-only `make distrib` target; that fragment is absent from user releases.
 
 ## Build and tooling model
 
@@ -48,7 +50,7 @@ The root `Makefile` can also produce a PDF version of the README, delegate the b
 - `Makefile` target `all` builds:
   - `00-README.pdf` via `pandoc`
   - Main `book` by delegating to `Book/Makefile`
-- `Makefile` target `distrib` reads `RELEASE.txt` and delegates to `AdminScripts/go.build-distribution.sh` to create matching `.tgz` and `.zip` release archives.
+- The optional maintainer target `distrib` reads `RELEASE.txt` and delegates to `AdminScripts/go.build-distribution.sh` to create matching `.tgz` and `.zip` user archives from a structural allowlist.
 
 ### Book build pipeline
 
@@ -66,6 +68,7 @@ The root `Makefile` can also produce a PDF version of the README, delegate the b
 - `Anteproyecto/Makefile` uses the same incremental `latexmk` layer with automatic bibliography support.
 - The Makefiles under `PapeleoTFG/`, `PapeleoTFM/`, and `PapeleoPHD/` use `latexmk` to track direct and shared configuration dependencies for every administrative document.
 - The root targets `anteproyecto`, `paperwork`, and `all-documents` optionally orchestrate these components; `paperwork` selects the directory matching the configured degree type.
+- The root target `sync-git-sources` invokes `sync-git-sources.sh` to update a user's Git index from the dependencies of the book, proposal, and paperwork; the script refuses to run in the marked official template repository.
 - Shared engine options and glossary integration live in `Config/latex-common.mk` and `Config/latexmkrc`.
 
 ## Configuration architecture

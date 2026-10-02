@@ -103,8 +103,7 @@ for explicit_file in \
   LICENSE \
   README.md \
   Makefile \
-  AdminScripts/sync-git-sources.sh \
-  AdminScripts/sync-git-sources.py \
+  sync-git-sources.sh \
   Config/Makefile \
   Config/latex-common.mk \
   Config/latexmkrc \

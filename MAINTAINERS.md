@@ -2,6 +2,10 @@
 
 This document covers release packaging and extension of the institutional degree registry. It is intended for template maintainers; ordinary users should start with `README.md` and the manual compiled from `Book/book.tex`.
 
+## Protecting the official maintenance checkout
+
+Mark every authoritative maintenance checkout once with `git config template.officialRepository true`. This local setting is not committed or inherited by users; it prevents the user-oriented `make sync-git-sources` target from changing the Git index of the template repository.
+
 ## Maintaining the document structures and optional-content switches
 
 `Book/book.tex` is deliberately a stable entry point. The normal document body lives in `Book/content-standard.tex`; only the specialized PhD compendium modality uses `Book/content-compendium.tex`. Keep common front matter and selection logic in `book.tex`, normal user-owned chapter and appendix ordering in `content-standard.tex`, and compendium parts and publication declarations in `content-compendium.tex`.
@@ -28,9 +32,9 @@ Set `RELEASE.txt` to the existing release/tag identifier and run:
 make distrib
 ```
 
-The root target first generates `00-README.pdf`, then calls `AdminScripts/go.build-distribution.sh`. It creates `00-PhDTFMTFG-LaTeX-Template-UAH-<release>.tgz` and `.zip` with identical contents whose root directly contains the template files and directories.
+The optional `AdminScripts/maintainer.mk` fragment supplies this target only in repository checkouts. The target first generates `00-README.pdf`, then calls `AdminScripts/go.build-distribution.sh`. It creates `00-PhDTFMTFG-LaTeX-Template-UAH-<release>.tgz` and `.zip` with identical contents whose root directly contains the template files and directories. Because the fragment and `AdminScripts/` are absent from the archives, ordinary users do not see the maintainer-only target.
 
-The distribution is assembled from tracked template sources so it contains all registered degree and institutional variants, the book, anteproyecto, paperwork, build files, README documentation, and required input assets. It excludes `TODO`, `SUGGESTED_IMPROVEMENTS.md`, `Deprecated/`, `normativas/`, slide material, and generated PDFs other than `00-README.pdf`. The command does not commit, tag, push, or modify `RELEASE.txt`.
+The distribution is assembled from an explicit structural allowlist of tracked user sources. It contains `RELEASE.txt`, all registered degree and institutional variants, the book, anteproyecto, paperwork, user build files, README documentation, the Git synchronization helper, and required input assets. It excludes maintainer Markdown files, `AdminScripts/`, `Deprecated/`, `normativas/`, `UsefulDocs/`, slide material, the registry compatibility audit, and generated PDFs other than `00-README.pdf`. The command validates mandatory and forbidden paths and compiles the default book, anteproyecto, and all three paperwork groups from an isolated staged copy before creating the archives. It does not commit, tag, push, or modify `RELEASE.txt`.
 
 Before publishing, start from a clean worktree, confirm that `RELEASE.txt` matches the intended Git tag, run the complete PDF regression generation, run `make distrib`, inspect both archives, and verify that they unpack and compile in a clean directory.
 

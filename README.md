@@ -97,13 +97,10 @@ The directories most users need are:
 In some cases you might also need the resources found at:
 
 - `PapeleoTFG/`, `PapeleoTFM/`, and `PapeleoPHD/`: Administrative documents (paperwork) associated with each type of work.
-- `normativas/`: Official regulations and source annexes used as references when maintaining the templates.
-- `UsefulDocs/`: LaTeX reference documents and cheat sheets.
 
-The following directories are primarily intended for template maintainers:
+The complete Git repository also contains `AdminScripts/`, `Deprecated/`, `normativas/`, `UsefulDocs/`, and maintainer-oriented Markdown files. They support development, historical reference, and release preparation and are intentionally omitted from the ordinary ZIP/TGZ distribution.
 
-- `AdminScripts/`: Distribution, validation, and maintenance scripts.
-- `Deprecated/`: Legacy implementations retained for reference; new documents should not depend on them.
+The root-level `sync-git-sources.sh` helper implements the optional dependency-aware `make sync-git-sources` workflow described below. You normally invoke it through the Makefile rather than running the script directly.
 
 For a normal thesis or final-project document, configure `Config/myconfig.tex`, organize the body in `Book/content-standard.tex`, and compile `Book/book.tex`. You should not normally need to modify `Book/book.tex`, `Config/preamble.tex`, `Config/postamble.tex`, or files under `Book/cover/` unless you are changing the template infrastructure or implementing a new institutional format. If you are preparing the specialized PhD thesis by compendium, keep the same entry point but organize its body in `Book/content-compendium.tex` and follow the dedicated instructions below.
 
