@@ -16,7 +16,7 @@ The template is multilingual (Spanish/English), degree-aware, and driven by user
 
 Top-level directories and their primary role:
 
-- `Book/`: Main long-form thesis/book document template (`book.tex`) with modular content folders.
+- `Book/`: Main long-form thesis/book document template, with the stable `book.tex` entry point, the normal `content-standard.tex` organization file, and the specialized `content-compendium.tex` alternative.
 - `Anteproyecto/`: Proposal document template and build workflow.
 - `Config/`: Core global configuration and compilation logic (`preamble`, `postamble`, language/worktype handling).
 - `PapeleoTFG/`, `PapeleoTFM/`, `PapeleoPHD/`: Administrative paperwork templates by document type.
@@ -35,7 +35,7 @@ Repository volume snapshot (tracked files):
 ## Main user workflow
 
 1. Configure personal/degree metadata in `Config/myconfig.tex`.
-2. Edit content files in `Book/` (chapters, abstract, appendices, bibliography).
+2. Keep the normal `standard` structure, edit `Book/content-standard.tex`, and write the relevant chapters, abstracts, appendices, and bibliography. Only PhD students using the compendium modality select the specialized `content-compendium.tex` structure.
 3. Compile `Book/book.tex` with your usual LaTeX editor or build tool configured for `biber`; optionally use `make` from `Book/` to automate the complete sequence.
 4. Optionally compile `Anteproyecto/` and the corresponding paperwork templates in `Papeleo*` directories.
 
@@ -52,19 +52,21 @@ The root `Makefile` can also produce a PDF version of the README, delegate the b
 
 ### Book build pipeline
 
-`Book/Makefile` drives a full build including:
+`Book/Makefile` uses `latexmk` to track dependencies and drive an incremental build including:
 
-- Multi-pass `pdflatex`
-- Bibliography processing with `biber`
-- `makeglossaries`
+- Multi-pass `pdflatex` when required
+- Bibliography processing with `biber` when required
+- Conditional `makeglossaries` processing for glossaries, acronyms, and symbols
 - Figure/diagram conversion support (`dia`, `inkscape`, `epspdf`)
 - Ghostscript compressed output (`-compressed`); the former low-quality `-screen` output is disabled
 - Flatten/snapshot/diff workflows (`latexpand`, `latexdiff`)
 
 ### Other components
 
-- `Anteproyecto/Makefile` includes similar multi-pass compilation with bibliography support.
-- The Makefiles under `PapeleoTFG/`, `PapeleoTFM/`, and `PapeleoPHD/` compile the administrative documents provided by each directory.
+- `Anteproyecto/Makefile` uses the same incremental `latexmk` layer with automatic bibliography support.
+- The Makefiles under `PapeleoTFG/`, `PapeleoTFM/`, and `PapeleoPHD/` use `latexmk` to track direct and shared configuration dependencies for every administrative document.
+- The root targets `anteproyecto`, `paperwork`, and `all-documents` optionally orchestrate these components; `paperwork` selects the directory matching the configured degree type.
+- Shared engine options and glossary integration live in `Config/latex-common.mk` and `Config/latexmkrc`.
 
 ## Configuration architecture
 
@@ -73,15 +75,17 @@ The root `Makefile` can also produce a PDF version of the README, delegate the b
 `Config/myconfig.tex` is the central customization file. It exposes structured macros for:
 
 - Language (`spanish` / `english`)
+- Document structure (`standard` for normal use and `compendium` for the specialized PhD modality)
+- Optional preliminary elements and generated lists through the validated `\myInclude...` switches
 - Degree code (e.g., `GIEC`, `MUIT`, `PHDUAH`)
 - Author and advisor identity data
-- Institution/department metadata
+- Department and project-specific affiliation metadata
 - Dates, legal/publishing options, and grades
 - Link colors and optional helper macros
 
-### Degree/work-type mapping
+### Degree registry and layouts
 
-`Config/worktypes.txt` maps degree codes to work categories (`TFG`, `TFM`, `PhD`, etc.), used by build/cover logic.
+`Config/degrees.tex` is the authoritative registry of degree identifiers, work categories (`TFG`, `TFM`, `PhD`, etc.), display names, institutions, and schools. `Config/institutions.tex` defines university names, acronyms, and the institution style loaded for each university. Shared colors live in `Config/colors.tex`, while branded colors and cover helpers live under `Config/institution-styles/`. `Config/layout-profiles.tex` maps degree entries to their cover and back-page files. The build tools query the same registry through `Config/query-degree-registry.sh`.
 
 ### Dynamic post-configuration
 
@@ -94,29 +98,31 @@ The root `Makefile` can also produce a PDF version of the README, delegate the b
 
 ## Document composition model
 
-`Book/book.tex` is the orchestrator. It:
+`Book/book.tex` is the stable orchestrator. It:
 
 - Loads preamble/config/glossary/postamble layers.
 - Sets graphics search paths (`logos`, `figures`, `diagrams`).
-- Builds front matter (covers, letters, dedication, acknowledgements, lists, acronyms/symbols).
-- Loads the tutorial chapters (`introduccion`, `primeros-pasos`, `configuracion`, `estructura-documento`, `documentos-complementarios`, `compilacion-avanzada`, `elementos-basicos`, `ejemplos-avanzados`, and `conclusiones`) directly from `Book/book.tex`.
-- Injects bibliography and appendices.
+- Builds front matter (covers, letters, dedication, acknowledgements, lists, acronyms/symbols) according to the `\myInclude...` switches.
+- Loads `Book/content-standard.tex` for almost every document. That user-facing file selects the chapters, bibliography, and appendices.
+- Loads `Book/content-compendium.tex` only when a PhD student explicitly selects the specialized compendium structure; that file defines the extended summary, intervening bibliography, and publication PDFs.
 - Adds back page logic.
 
-The template intentionally uses modular `\input{...}` structure so users can comment/uncomment sections as needed.
+The template intentionally keeps `book.tex` stable. Users select optional front matter in `Config/myconfig.tex` and change the body through the applicable `content-*.tex` file rather than commenting infrastructure lines in `book.tex`.
+
+Prepared minimal and original structures are colocated with their chapters: `Book/chapters/{bare,orig}/` for standard documents and `Book/chapters/compendium/{bare,orig}/` for the specialized modality. Each directory also contains the `content-*.tex` organization file that the Makefile copies separately to the `Book/` root.
 
 ## Cover and degree-specific behavior
 
-`Book/cover/cover.tex` performs conditional inclusion of distinct cover implementations based on `\myWorkType` and specific degree exceptions (`MUCTE`, `MUC`, `MUANBD`, etc.).
+`Book/cover/cover.tex` and `Book/cover/backpage.tex` delegate cover selection to the degree registry. `Config/layout-profiles.tex` maps each degree profile to its required files.
 
-This central switchboard is where most format branching is coordinated for TFG/TFM/PhD and special report types.
+Institution-specific implementations are grouped under `Book/cover/uah/`, `Book/cover/upm/`, and `Book/cover/urjc/`. Shared orchestration and front-matter files remain directly under `Book/cover/`. Logos follow the same division under `Book/logos/`; cross-institution and project artwork is kept in `Book/logos/shared/`.
 
 ## Repository maturity and maintenance signals
 
 - The project contains long-lived legacy material and historical comments (`$Id` tags, old workflows).
 - `Deprecated/` keeps earlier assets/tools, indicating strong backward compatibility concerns.
 - `TODO` still tracks pending improvements (e.g., acronym issues, Windows usage guidance).
-- User documentation is centralized in `README.md`, with additional examples embedded in the template chapters. Maintainer procedures for release packaging are centralized in `MAINTAINERS.md`.
+- User documentation is centralized in `README.md`, with additional examples embedded in the template chapters. Maintainer procedures for release packaging and adding degrees or universities are centralized in `MAINTAINERS.md`.
 
 ## Strengths
 
@@ -128,8 +134,8 @@ This central switchboard is where most format branching is coordinated for TFG/T
 
 ## Risks / complexity hotspots
 
-- A basic editor-based build needs `pdflatex` and, when applicable, `biber` or `makeglossaries`; optional Makefile workflows add dependencies such as `pandoc`, Dia, Inkscape, Ghostscript, `latexpand`, and `latexdiff`.
-- Some Makefile logic is shell-heavy and brittle to environment differences.
+- A basic editor-based build needs `pdflatex` and, when applicable, `biber` or `makeglossaries`; Makefile workflows additionally require `latexmk`, while particular targets may use `pandoc`, Dia, Inkscape, Ghostscript, `latexpand`, or `latexdiff`.
+- The active document Makefiles share their engine and dependency configuration, but release and registry automation still relies on shell tooling.
 - Mixed-era structure and duplicated assets can make onboarding harder.
 - Legacy/Deprecated content increases navigation noise for first-time users.
 
@@ -139,7 +145,6 @@ For a new user, the safest path is:
 
 1. Read `README.md` once end-to-end.
 2. Edit only `Config/myconfig.tex` first.
-3. Start from `Book/book.tex` with existing example chapters.
+3. Keep `\myDocumentStructure` set to `standard` and start from `Book/content-standard.tex` with the existing example chapters or its prepared minimal version. Only PhD students using the compendium modality should instead select `compendium` and work through `Book/content-compendium.tex` and its specialized prepared structure.
 4. Build `Book/book.tex` with your editor and verify that its bibliography backend is set to `biber`; use `make` only if you prefer the provided automation.
 5. Only after successful first compile, touch covers/paperwork files.
-

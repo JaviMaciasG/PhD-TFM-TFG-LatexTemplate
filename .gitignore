@@ -566,8 +566,11 @@ pdf_svg_done
 /Anteproyecto/*.pdf
 /Book/PhD-*.pdf
 /Book/TFG-*.pdf
+/Book/TFC-*.pdf
 /Book/TFM-*.pdf
+/Book/RR-*.pdf
 /Book/book.pdf
+/Book/book-compressed.pdf
 /Book/book-flatten-diff.pdf
 /Book/*MaciasGuarasa-Javier*.pdf
 /Book/book-latex.zip
@@ -586,6 +589,10 @@ pdf_svg_done
 /Config/myconfig.tex.before
 /Config/myconfig.tex.vars
 /Deprecated/cdromCover/simplecd/simplecd.zip
+/go.resume-codex.sh
 
 # Local release notes not included in the distributed template
 CHANGELOG.md
+
+OldDocs
+

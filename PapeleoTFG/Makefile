@@ -1,5 +1,8 @@
 PDFLATEX ?= pdflatex
 LATEXFLAGS ?= -interaction=nonstopmode -halt-on-error -file-line-error
+LATEX_ENGINE ?= $(PDFLATEX)
+LATEX_CONFIG_DIR := ../Config
+include $(LATEX_CONFIG_DIR)/latex-common.mk
 
 AUTHORIZATION_DOCUMENTS := \
 	TFG-AutorizacionAutorPubAbierto \
@@ -10,15 +13,11 @@ EVALUATION_DOCUMENTS := \
 	TFG-ActaYRubricaDefensa
 DOCUMENTS := $(AUTHORIZATION_DOCUMENTS) $(EVALUATION_DOCUMENTS)
 PDFFILES := $(addsuffix .pdf,$(DOCUMENTS))
-
-COMMON_DEPS := \
-	../Config/myconfig.tex \
-	../Config/postamble.tex \
-	../Config/preamble.tex
+TEXFILES := $(addsuffix .tex,$(DOCUMENTS))
 
 .DEFAULT_GOAL := all
 
-.PHONY: all autorizaciones evaluacion clean cleanall help
+.PHONY: all autorizaciones evaluacion FORCE clean cleanall help
 
 all: $(PDFFILES)
 
@@ -26,23 +25,20 @@ autorizaciones: $(addsuffix .pdf,$(AUTHORIZATION_DOCUMENTS))
 
 evaluacion: $(addsuffix .pdf,$(EVALUATION_DOCUMENTS))
 
-$(PDFFILES): $(COMMON_DEPS)
-TFG-InformeTutorYRubrica.pdf: ../Config/setlanguagedependentissues.tex ../Config/rubricaTFGTutor.tex
-TFG-ActaYRubricaDefensa.pdf: ../Config/grades-calculation.tex ../Config/setlanguagedependentissues.tex ../Config/rubricaTFGTribunal.tex
+FORCE:
 
-%.pdf: %.tex
-	$(PDFLATEX) $(LATEXFLAGS) $<
-	$(PDFLATEX) $(LATEXFLAGS) $<
+$(PDFFILES): %.pdf: %.tex FORCE
+	$(call latexmk_build,$<)
 
 clean:
-	$(RM) *.aux *.bbl *.bcf *.blg *.fdb_latexmk *.fls *.lof *.log *.lot *.out *.run.xml *.synctex.gz *.toc
+	$(call latexmk_clean,$(TEXFILES))
 
-cleanall: clean
-	$(RM) $(PDFFILES)
+cleanall:
+	$(call latexmk_cleanall,$(TEXFILES))
 
 help:
 	@printf '%s\n' \
-		'make                 Generate all TFG paperwork' \
+		'make                 Generate all TFG paperwork incrementally' \
 		'make autorizaciones  Generate the three open-publication authorizations' \
 		'make evaluacion      Generate the tutor report and defense record' \
 		'make FILE.pdf        Generate one specific form' \

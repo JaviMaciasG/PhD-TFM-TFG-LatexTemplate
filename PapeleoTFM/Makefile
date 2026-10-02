@@ -1,20 +1,19 @@
 PDFLATEX ?= pdflatex
 LATEXFLAGS ?= -interaction=nonstopmode -halt-on-error -file-line-error
+LATEX_ENGINE ?= $(PDFLATEX)
+LATEX_CONFIG_DIR := ../Config
+include $(LATEX_CONFIG_DIR)/latex-common.mk
 
 AUTHORIZATION_DOCUMENT := TFM-AutorizacionPublicarAbierto
 APPROVAL_DOCUMENT := TFM-VistoBuenoTutorTFM
 PROPOSAL_DOCUMENT := solicitud
 DOCUMENTS := $(AUTHORIZATION_DOCUMENT) $(APPROVAL_DOCUMENT) $(PROPOSAL_DOCUMENT)
 PDFFILES := $(addsuffix .pdf,$(DOCUMENTS))
-
-COMMON_DEPS := \
-	../Config/myconfig.tex \
-	../Config/postamble.tex \
-	../Config/preamble.tex
+TEXFILES := $(addsuffix .tex,$(DOCUMENTS))
 
 .DEFAULT_GOAL := all
 
-.PHONY: all autorizacion visto-bueno solicitud clean cleanall help
+.PHONY: all autorizacion visto-bueno solicitud FORCE clean cleanall help
 
 all: $(PDFFILES)
 
@@ -24,23 +23,20 @@ visto-bueno: $(APPROVAL_DOCUMENT).pdf
 
 solicitud: $(PROPOSAL_DOCUMENT).pdf
 
-$(PDFFILES): $(COMMON_DEPS)
-TFM-AutorizacionPublicarAbierto.pdf: ../Config/setlanguagedependentissues.tex
-solicitud.pdf: ../Config/setlanguagedependentissues.tex
+FORCE:
 
-%.pdf: %.tex
-	$(PDFLATEX) $(LATEXFLAGS) $<
-	$(PDFLATEX) $(LATEXFLAGS) $<
+$(PDFFILES): %.pdf: %.tex FORCE
+	$(call latexmk_build,$<)
 
 clean:
-	$(RM) *.aux *.bbl *.bcf *.blg *.fdb_latexmk *.fls *.lof *.log *.lot *.out *.run.xml *.synctex.gz *.toc
+	$(call latexmk_clean,$(TEXFILES))
 
-cleanall: clean
-	$(RM) $(PDFFILES)
+cleanall:
+	$(call latexmk_cleanall,$(TEXFILES))
 
 help:
 	@printf '%s\n' \
-		'make               Generate all TFM paperwork' \
+		'make               Generate all TFM paperwork incrementally' \
 		'make autorizacion  Generate the open-publication authorization' \
 		'make visto-bueno   Generate the approval for deposit and defense' \
 		'make solicitud     Generate the project-proposal request' \

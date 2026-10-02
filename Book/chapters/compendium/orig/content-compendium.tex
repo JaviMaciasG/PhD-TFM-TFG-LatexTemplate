@@ -1,0 +1,52 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Specialized content organization for PhD theses presented as a
+% compendium of publications. Most users do not need to edit this file.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifthenelse{\equal{\myLanguage}{english}}
+  {\part{Extended Summary of the Thesis}}
+  {\part{Resumen extendido de la tesis}}
+\label{part:compendium-summary}
+
+\input{chapters/compendium/introduction.tex}
+\input{chapters/compendium/objectives.tex}
+\input{chapters/compendium/previous-work.tex}
+\input{chapters/compendium/methodology.tex}
+\input{chapters/compendium/thesis-contributions.tex}
+\input{chapters/compendium/conclusions.tex}
+
+% The bibliography belongs between the extended summary and the papers.
+\input{biblio/bibliography.tex}
+
+\ifthenelse{\equal{\myLanguage}{english}}
+  {\part{Publications Included in the Compendium}}
+  {\part{Publicaciones incluidas en el compendio}}
+\label{part:compendium-publications}
+
+\includecompendiumpublication[
+  \ifthenelse{\equal{\myLanguage}{english}}
+    {Fictional demonstration paper. Replace this text with its publication status, the doctoral candidate's contribution and any relevant reuse permission.}
+    {Artículo ficticio de demostración. Sustituye este texto por su estado de publicación, la contribución del doctorando y cualquier permiso de reutilización relevante.}
+]{paper-1}
+ {Coffee Cups as Fiducial Markers}
+ {On the Unexpected Reliability of Coffee Cups as Fiducial Markers in Indoor Video Sequences}
+ {garcia2026paper1}
+ {publications/paper1.pdf}
+
+\includecompendiumpublication
+ {paper-2}
+ {Temporal Consistency in Human--Object Interaction}
+ {Temporal Consistency in Human--Object Interaction: Why the Spoon Usually Moves Before the Mug}
+ {garcia2026paper2}
+ {publications/paper2.pdf}
+
+\includecompendiumpublication
+ {paper-3}
+ {Reproducible Desk-Based Vision Experiments}
+ {Toward Reproducible Desk-Based Vision Experiments: A Multi-Camera Study of Papers, Pens, and Other Obstacles}
+ {garcia2026paper3}
+ {publications/paper3.pdf}
+
+%%% Local Variables:
+%%% TeX-master: "book"
+%%% End:

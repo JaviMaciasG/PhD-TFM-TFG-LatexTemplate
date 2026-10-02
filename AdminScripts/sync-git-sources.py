@@ -175,6 +175,8 @@ def explicit_files(root: Path) -> set[str]:
         "Makefile",
         "AdminScripts/sync-git-sources.py",
         "AdminScripts/sync-git-sources.sh",
+        "Config/latex-common.mk",
+        "Config/latexmkrc",
     }
     for directory in (
         Path("Config"),

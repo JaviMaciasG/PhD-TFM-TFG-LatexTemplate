@@ -27,21 +27,18 @@
 #
 
 DST_DIR="/home/macias/Dropbox/PhDTFMTFG-LaTeX-Template"
+DST_DIR="/tmp"
 
-#DEGREES="IT IE ITTSE ITTST ITI GIEAI GIST GITT GIT GIC GII GSI MUSEA PHDUAH PHDUPM GIEC"
-DEGREES_OLD="IT IE ITTSE ITTST ITI GIEAI GITI GIST GITT GIT GIC GII GSI GISI MUSEA MUIT MUII MUCTE GIEC"
-DEGREES_ENG_SPA="GIEC GIEAI GITI GIST GITT GIT GIC GII GISI MUIT MUII MUIE MUCTE PHDUAH"
-DEGREES_ENG_SPA="GITT GIEC GIT GIST GIC GII GMC GISI GIEAI GITI MUIT MUII MUIE MUCTE PHDUAH"
-DEGREES_ENG_SPA="GISI"
-DEGREES_ENG_SPA="GITT GIEC GIT GIST GIC GII GMC GIS GISI GIEAI GITI MUIT MUII MUIE MUCTE MUANBD MUC PHDUAH PHDUPM"
-
-DEGREES_ENG_SPA="GITT GIEC GIT GIST GIC GII GMC GIS GISI GIEAI GITI MUSEA MUIT MUII MUIE MUCTE MUANBD MUC PHDUAH PHDUPM GEINTRARR"
+DEGREE_REGISTRY="../Config/degrees.tex"
+DEGREE_REGISTRY_TOOL="../Config/query-degree-registry.sh"
+DEGREES_ENG_SPA=`sh "$DEGREE_REGISTRY_TOOL" identifiers "$DEGREE_REGISTRY"`
 
 MYCONFIG_VARS="../Config/myconfig.tex.vars"
 MYCONFIG="../Config/myconfig.tex"
 BOOK="book"
+ERROR_COUNT=0
 
-cat $MYCONFIG |sed -E "s/newcommand[{][\\]myLanguage[}][{](.*)[}]/newcommand{\\\myLanguage}{__LANG__}/g" |sed -E "s/newcommand[{][\\]myDegree[}][{](.*)[}]/newcommand{\\\myDegree}{__DEGREE__}/g" > $MYCONFIG_VARS
+cat $MYCONFIG |sed -E "s/newcommand[{][\\]myLanguage[}][{](.*)[}]/newcommand{\\\myLanguage}{__LANG__}/g" |sed -E "s/newcommand[{][\\]myDegree[}][{](.*)[}]/newcommand{\\\myDegree}{__DEGREE__}/g" |sed -E "s/newcommand[{][\\]myDocumentStructure[}][{](.*)[}]/newcommand{\\\myDocumentStructure}{__STRUCTURE__}/g" > $MYCONFIG_VARS
 
 #exit
 
@@ -51,34 +48,57 @@ for lang in english spanish
 do
     for degree in $DEGREES_ENG_SPA
     do
-	TYPE=`cat ../Config/worktypes.txt | grep -w $degree | tr -s " " | cut -f 2 -d " "`
-	OUTPUT_NAME=$TYPE-$degree-$lang.pdf
-	LOG_NAME=$TYPE-$degree-$lang.log
-	echo -n "Making for degree $degree, generating $OUTPUT_NAME..."
-	cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
-	make clean >& /dev/null
-	make  >& $LOG_NAME
-	#echo "mv book.pdf $DST_DIR/$OUTPUT_NAME"
-    mv book-compressed.pdf $DST_DIR/$OUTPUT_NAME
-	echo " Done!"
-	#exit
+	TYPE=`sh "$DEGREE_REGISTRY_TOOL" work-type "$degree" "$DEGREE_REGISTRY"`
+	if [ "$TYPE" = "PhD" ]
+	then
+	    STRUCTURES="standard compendium"
+	else
+	    STRUCTURES="standard"
+	fi
+	for structure in $STRUCTURES
+	do
+	    if [ "$TYPE" = "PhD" ]
+	    then
+		OUTPUT_NAME=$TYPE-$degree-$lang-$structure.pdf
+		LOG_NAME=$TYPE-$degree-$lang-$structure.log
+	    else
+		OUTPUT_NAME=$TYPE-$degree-$lang.pdf
+		LOG_NAME=$TYPE-$degree-$lang.log
+	    fi
+	    echo -n "Making for degree $degree with $structure structure, generating $OUTPUT_NAME..."
+	    cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g" | sed "s/__LANG__/$lang/g" | sed "s/__STRUCTURE__/$structure/g" > $MYCONFIG
+	    make clean > /dev/null 2>&1
+	    rm -f "$BOOK-compressed.pdf"
+	    if make > "$LOG_NAME" 2>&1
+	    then
+		if [ ! -f "$BOOK-compressed.pdf" ]
+		then
+		    echo " ERROR: the build finished without producing $BOOK-compressed.pdf; see $LOG_NAME" >&2
+		    ERROR_COUNT=$((ERROR_COUNT + 1))
+		elif mv "$BOOK-compressed.pdf" "$OUTPUT_NAME"
+		then
+		    echo " Done!"
+		else
+		    echo " ERROR: could not save the generated PDF as $OUTPUT_NAME; see $LOG_NAME" >&2
+		    ERROR_COUNT=$((ERROR_COUNT + 1))
+		fi
+	    else
+		BUILD_STATUS=$?
+		echo " ERROR: generation failed with status $BUILD_STATUS; see $LOG_NAME" >&2
+		ERROR_COUNT=$((ERROR_COUNT + 1))
+	    fi
+	    #exit
+	done
     done
 done
 
-# lang="spanish"
-# for degree in $DEGREES_SPA
-# do
-#     TYPE=`cat ../Config/worktypes.txt | grep -w $degree | tr -s " " | cut -f 2 -d " "`
-#     OUTPUT_NAME=$TYPE-$degree-$lang.pdf
-#     echo -n "Making for degree $degree, generating $OUTPUT_NAME..."
-#     cat $MYCONFIG_VARS | sed "s/__DEGREE__/$degree/g"  | sed "s/__LANG__/$lang/g" > $MYCONFIG
-#     make clean >& /dev/null
-#     make >& /dev/null
-# #    mv $BOOK*.pdf $OUTPUT_NAME
-#     echo " Done!"
-# done
-
 cp $MYCONFIG.before $MYCONFIG
+
+if [ "$ERROR_COUNT" -ne 0 ]
+then
+    echo "ERROR: $ERROR_COUNT PDF generation(s) failed. Review the corresponding log files." >&2
+    exit 1
+fi
 
 # for f in `ls *.pdf`
 # do

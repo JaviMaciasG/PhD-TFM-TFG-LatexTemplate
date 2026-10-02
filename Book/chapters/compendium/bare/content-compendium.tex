@@ -1,0 +1,28 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Minimal content organization for a PhD thesis by compendium.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifthenelse{\equal{\myLanguage}{english}}
+  {\part{Extended Summary of the Thesis}}
+  {\part{Resumen extendido de la tesis}}
+\label{part:compendium-summary}
+
+\input{chapters/compendium/introduction.tex}
+\input{chapters/compendium/objectives.tex}
+\input{chapters/compendium/previous-work.tex}
+\input{chapters/compendium/methodology.tex}
+\input{chapters/compendium/thesis-contributions.tex}
+\input{chapters/compendium/conclusions.tex}
+
+\input{biblio/bibliography.tex}
+
+\ifthenelse{\equal{\myLanguage}{english}}
+  {\part{Publications Included in the Compendium}}
+  {\part{Publicaciones incluidas en el compendio}}
+\label{part:compendium-publications}
+
+% Add one \includecompendiumpublication declaration per publication here.
+
+%%% Local Variables:
+%%% TeX-master: "book"
+%%% End:
