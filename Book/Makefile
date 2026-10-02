@@ -160,7 +160,8 @@ orig-compendium: backup-compendium
 bare-standard: backup-chapters
 	@echo "Setting bare chapters..."
 	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
-	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1false$$2!g' $(CONFIG_FILE)
+#   perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1false$$2!g' $(CONFIG_FILE)
+	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|ListOfAcronyms)\}\{).*?(\})!$$1false$$2!g' $(CONFIG_FILE)
 	rm -f chapters/*.tex
 	rm -f appendix/*.tex
 	for f in $(CHAPTER_BARE_SOURCES);  do cp $$f chapters; done
@@ -180,13 +181,13 @@ bare-compendium: backup-compendium
 	@echo " Done!"
 
 clean-orig-figures:
-	@echo "About to delete the files in the 'figures' directory..."
+	@echo "About to delete the files in the 'figures' directory (except sample figures/Figure1.png)..."
 	@echo "This cannot be undone..."
 	@echo "Got it?..."
 	@read -p "I will ask you once... Are you sure to delete all files there? " dodelete; \
 	if [ "$$dodelete" == "Y" ]; \
 	then \
-	rm -f figures/*.eps figures/*.pdf figures/*.png figures/*.jpg; \
+	find figures -type f \( -iname '*.png' -o -iname '*.eps' -o -iname '*.pdf' -o -iname '*.jpg' \) ! -name 'Figure1.png' -delete \
 	fi
 
 clean-orig-diagrams:
