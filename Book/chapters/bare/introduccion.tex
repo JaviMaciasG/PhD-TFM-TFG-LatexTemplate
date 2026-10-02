@@ -5,13 +5,13 @@
 % $Id: introduccion.tex,v 1.1 2015/06/05 00:16:17 macias Exp $
 %
 % By:
-%  + Javier Macías-Guarasa. 
+%  + Javier Macías-Guarasa.
 %    Departamento de Electrónica
 %    Universidad de Alcalá
-%  + Roberto Barra-Chicote. 
+%  + Roberto Barra-Chicote.
 %    Departamento de Ingeniería Electrónica
-%    Universidad Politécnica de Madrid   
-% 
+%    Universidad Politécnica de Madrid
+%
 % Based on original sources by Roberto Barra, Manuel Ocaña, Jesús Nuevo,
 % Pedro Revenga, Fernando Herránz and Noelia Hernández. Thanks a lot to
 % all of them, and to the many anonymous contributors found (thanks to
@@ -46,7 +46,49 @@
 \section{Presentación}
 \label{sec:intro-presentacion}
 
-Blah, blah, blah.
+Este capítulo contiene algunos ejemplos básicos de los elementos que pueden
+utilizarse en la elaboración de la memoria.
+
+La figura~\ref{fig:intro-figura} muestra un ejemplo de inclusión de una figura.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.55\textwidth]{Figure1}
+  \caption{Ejemplo de figura convencional.}
+  \label{fig:intro-figura}
+\end{figure}
+
+La tabla~\ref{tab:intro-tabla} muestra un ejemplo de una tabla convencional.
+
+\begin{table}
+  \renewcommand{\arraystretch}{1.3}
+  \caption{Comparativa.}
+  \label{tab:intro-tabla}
+  \begin{center}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      Method & Training Time & Man-Work (\%)\\
+      \hline
+      Propagation model & $<$ 30 sec & 5\\
+      \hline
+      Manual & 9 h 30 min & 24\\
+      \hline
+      Automatic & 2 h & 10\\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+También pueden incluirse expresiones matemáticas numeradas, como la
+ecuación~\ref{eq:intro-ejemplo}:
+
+\begin{equation}
+  \label{eq:intro-ejemplo}
+  p[q_t=\sigma_t\mid q_{t-1}=\sigma_{t-1}]
+\end{equation}
+
+Finalmente, la plantilla permite gestionar automáticamente acrónimos. Por
+ejemplo, \ac{ETTS} está definido en el fichero de acrónimos de la plantilla y aparece la primera vez en su versión expandida seguida del acrónimo entre paréntesis, y cuando lo utilizas una segunda vez (como aquí \ac{ETTS}), sólo verás el acrónimo.
 
 
 \section{Organización de la memoria}
