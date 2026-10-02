@@ -104,7 +104,8 @@ for explicit_file in \
   README.md \
   Makefile \
   sync-git-sources.sh \
-  Config/Makefile \
+  Config/easter-egg.txt \
+  Config/query-degree-registry.sh \
   Config/latex-common.mk \
   Config/latexmkrc \
   Book/Makefile \
