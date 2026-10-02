@@ -6,7 +6,8 @@ The template uses configuration variables (defined in the `Config/myconfig.tex` 
 
 Support to generate the "anteproyecto" is also provided (in the `Anteproyecto` folder), along with some of the paperwork required by the current regulations. As of February 2025 I have reworked all the paperwork required for the UAH TFGs (in the `PapeleoTFG/` folder) to comply with recently approved regulations. This support will be useful for you and your advisor/s (advisor report and rubric, defense rubric, and authorization for open publishing (for advisor/author/foreign advisor)). Paperwork support for TFM and PhD is pending to be fully re-checked against new regulations, but you can fully use the template to write the document itself.
 
-Please read the guide at the beginning of any of the precompiled examples in the Dropbox distribution (for example, the [GIEC TFG at UAH](https://www.dropbox.com/s/69ppvvp9i03sp4m/TFG-GIEC-spanish.pdf?dl=0)). Chapter 1 presents the template and points you to the following chapters according to what you need.
+Please read the guide at the beginning of any of the precompiled examples in the Dropbox distribution (for example, the [GIEC TFG at UAH](https://www.dropbox.com/scl/fi/ahrunlu2g5a9q1f78s857/TFG-GIEC-english.pdf?rlkey=f3nopxdsnbjq32nmdifpvsavd&st=oenif816&dl=0)). Chapter 1 presents the template and points you to the following chapters according to what you need.
+
 
 
 # Quick start

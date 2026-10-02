@@ -49,6 +49,12 @@ do
     for degree in $DEGREES_ENG_SPA
     do
 	TYPE=`sh "$DEGREE_REGISTRY_TOOL" work-type "$degree" "$DEGREE_REGISTRY"`
+	# TFC entries correspond to the legacy pre-Bologna degrees. Keep them
+	# supported by the template, but omit them from the generated PDF set.
+	if [ "$TYPE" = "TFC" ]
+	then
+	    continue
+	fi
 	if [ "$TYPE" = "PhD" ]
 	then
 	    STRUCTURES="standard compendium"
