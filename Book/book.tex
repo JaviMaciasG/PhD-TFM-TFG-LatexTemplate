@@ -52,10 +52,13 @@
                                % define your commonly used commands
                                % (some examples are provided).
 
-\input{../Config/glossaries.tex}  % EDIT THIS FILE to include your glossaries
+\input{../Config/glossaries.tex} % EDIT THIS FILE to include your glossaries
 
-\input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
-                               % "postamble" is not a valid word... :-)
+\input{../Config/postamble.tex}  % DO NOT TOUCH THIS LINE. Yes, I know,
+                                 % "postamble" is not a valid word... :-)
+
+% Book-only visual layer (standard preserves the original appearance).
+\input{../Config/typesetting/typesetting.tex} % DO NOT TOUCH THIS LINE.
 
 % path to directories containing images
 \graphicspath{{./logos/}{./figures/}{./diagrams/}} % Edit this to your
@@ -87,7 +90,7 @@
 % This will include front page (if needed), and cover pages. Selection
 % of the adequate one is done automagically depending on values set by
 % the user in config/myconfig.tex
-\input{cover/cover.tex}                       % DO NOT TOUCH THIS
+\ThesisInstitutionalPage{cover/cover.tex}     % DO NOT TOUCH THIS
                                               % LINE/FILE. You can edit
                                               % the file in case you
                                               % need it (there may be
@@ -220,7 +223,7 @@
 % Just for TFGs at UAH right now, but kept here JIC anybody else wants
 % to use it
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{cover/backpage.tex}                    % EDIT this file if
+\ThesisInstitutionalPage{cover/backpage.tex}  % EDIT this file if
                                               % required, or comment it out
 
 \end{document}

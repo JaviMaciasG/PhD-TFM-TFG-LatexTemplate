@@ -18,7 +18,7 @@ Top-level directories and their primary role:
 
 - `Book/`: Main long-form thesis/book document template, with the stable `book.tex` entry point, the normal `content-standard.tex` organization file, and the specialized `content-compendium.tex` alternative.
 - `Anteproyecto/`: Proposal document template and build workflow.
-- `Config/`: Core global configuration and compilation logic (`preamble`, `postamble`, language/worktype handling).
+- `Config/`: Core global configuration and compilation logic (`preamble`, `postamble`, language/worktype handling, and the Book-only typesetting profiles under `Config/typesetting/`).
 - `PapeleoTFG/`, `PapeleoTFM/`, `PapeleoPHD/`: Administrative paperwork templates by document type.
 - `normativas/`: Official regulations and annexes in PDF/DOCX format.
 - `AdminScripts/`: Maintainer-only release and regression automation.
@@ -70,6 +70,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 - The root targets `anteproyecto`, `paperwork`, and `all-documents` optionally orchestrate these components; `paperwork` selects the directory matching the configured degree type.
 - The root target `sync-git-sources` invokes `sync-git-sources.sh` to update a user's Git index from the dependencies of the book, proposal, and paperwork; the script refuses to run in the marked official template repository.
 - Shared engine options and glossary integration live in `Config/latex-common.mk` and `Config/latexmkrc`.
+- `AdminScripts/build-book-typesetting-prototypes.sh` builds isolated full-book samples for the registered visual profiles. `AdminScripts/build-book-style-comparisons.sh` uses Python and PyMuPDF only for extracting, labelling, and composing comparison pages.
 
 ## Configuration architecture
 
@@ -79,6 +80,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 
 - Language (`spanish` / `english`)
 - Document structure (`standard` for normal use and `compendium` for the specialized PhD modality)
+- Book typesetting style and institutional-page font policy (`\myTypesettingStyle` and `\myInstitutionalPageFontMode`)
 - Optional preliminary elements and generated lists through the validated `\myInclude...` switches
 - Degree code (e.g., `GIEC`, `MUIT`, `PHDUAH`)
 - Author and advisor identity data
@@ -104,6 +106,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 `Book/book.tex` is the stable orchestrator. It:
 
 - Loads preamble/config/glossary/postamble layers.
+- Loads the Book-only typesetting dispatcher, which validates the two visual selectors and applies the selected profile before the document begins.
 - Sets graphics search paths (`logos`, `figures`, `diagrams`).
 - Builds front matter (covers, letters, dedication, acknowledgements, lists, acronyms/symbols) according to the `\myInclude...` switches.
 - Loads `Book/content-standard.tex` for almost every document. That user-facing file selects the chapters, bibliography, and appendices.
@@ -125,7 +128,7 @@ Institution-specific implementations are grouped under `Book/cover/uah/`, `Book/
 - The project contains long-lived legacy material and historical comments (`$Id` tags, old workflows).
 - `Deprecated/` keeps earlier assets/tools, indicating strong backward compatibility concerns.
 - `TODO` still tracks pending improvements (e.g., acronym issues, Windows usage guidance).
-- User documentation is centralized in `README.md`, with additional examples embedded in the template chapters. Maintainer procedures for release packaging and adding degrees or universities are centralized in `MAINTAINERS.md`.
+- User documentation is centralized in `README.md`, with additional examples embedded in the template chapters. `TYPESETTING-STYLES-GUIDE.md` is the authoritative usage, implementation, extension, validation, and attribution reference for the preliminary visual-style layer. Maintainer procedures for release packaging and adding degrees or universities are centralized in `MAINTAINERS.md`.
 
 ## Strengths
 

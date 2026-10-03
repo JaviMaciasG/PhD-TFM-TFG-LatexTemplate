@@ -1,0 +1,40 @@
+% This layer formats the main TOC. LOF/LOT/custom lists retain their existing adapters.
+\renewcommand{\cfttoctitlefont}{\thesis@chapterfont}
+\setlength{\cftbeforetoctitleskip}{\thesis@chapterbefore}
+\setlength{\cftaftertoctitleskip}{\thesis@chapterafter}
+\setlength{\cftbeforechapskip}{\thesis@tocchaptergap}
+\setlength{\cftbeforesecskip}{\thesis@tocentrygap}
+\setlength{\cftbeforesubsecskip}{\thesis@tocentrygap}
+\setlength{\cftbeforesubsubsecskip}{\thesis@tocentrygap}
+\renewcommand{\cftchapfont}{\thesis@tocchapterfont}
+\renewcommand{\cftchappagefont}{\thesis@tocchapterpagefont}
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsubsecfont}{\normalfont}
+\renewcommand{\cftchapdotsep}{\thesis@tocchapterdotsep}
+\setlength{\cftchapnumwidth}{\thesis@tocchapnumwidth}
+\setlength{\cftsecindent}{\thesis@tocsecindent}
+\setlength{\cftsecnumwidth}{\thesis@tocsecnumwidth}
+\setlength{\cftsubsecindent}{\thesis@tocsubsecindent}
+\setlength{\cftsubsecnumwidth}{\thesis@tocsubsecnumwidth}
+\setlength{\cftsubsubsecindent}{\thesis@tocsubsubsecindent}
+\setlength{\cftsubsubsecnumwidth}{\thesis@tocsubsubsecnumwidth}
+\ifthenelse{\equal{\thesis@toclayout}{modern}}{%
+  \renewcommand{\cftchapleader}{\hfill}%
+  \let\thesis@originalnumberline\numberline
+  \newcommand{\thesis@tocnumberline}[1]{%
+    \thesis@originalnumberline{\textcolor{ThesisAccent}{\thesis@displaynumber{#1}}}}%
+  \renewcommand{\cftchapfont}{\sffamily\bfseries\let\numberline\thesis@tocnumberline}%
+}{}
+\ifthenelse{\equal{\thesis@toclayout}{framed}}{%
+  \renewcommand{\cftchapleader}{\hfill}%
+  \renewcommand{\cftsecleader}{\hfill}%
+  \renewcommand{\cftsubsecleader}{\hfill}%
+  \renewcommand{\cftsubsubsecleader}{\hfill}%
+}{}
+
+\ifthenelse{\equal{\thesis@toclayout}{mimosis}}{%
+  \renewcommand{\cftchapfont}{\normalfont\rmfamily\bfseries}%
+  \renewcommand{\cftchappagefont}{\normalfont\rmfamily\bfseries}%
+  \renewcommand{\cftchapleader}{\hfill}%
+}{}

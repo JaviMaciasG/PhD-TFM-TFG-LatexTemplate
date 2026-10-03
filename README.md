@@ -109,6 +109,8 @@ For a normal thesis or final-project document, configure `Config/myconfig.tex`, 
 
    All the information you can customize is in the `Config/myconfig.tex` file. The variable names are all defined in `\newcommand{}{}` statements and all of them start with the `\my` prefix. Most of the variable names should be self-explanatory, and you can find the complete variable reference in the configuration chapter (check any pdf file in [the distribution Dropbox folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)). **Critical**: Do not remove nor comment out any of the lines with a variable definition. If a variable is not relevant to your case (for example the "cotutor" information), just leave it empty (by emptying the definition).
 
+The main book also includes a preliminary choice of typesetting styles. Most users should keep `\myTypesettingStyle` set to `standard`; you can select another documented style in `Config/myconfig.tex` if you want to test a different appearance. `\myInstitutionalPageFontMode` controls whether institutional pages retain their original fonts (`institutional`) or inherit the document fonts (`document`). This optional feature affects only `Book/book.tex`, not the anteproyecto or paperwork. See [TYPESETTING-STYLES-GUIDE.md](TYPESETTING-STYLES-GUIDE.md) for the available styles, requirements, examples, and maintainer reference.
+
 ## To work in the "anteproyecto"
 
 1. Configure the document metadata in `Config/myconfig.tex`.

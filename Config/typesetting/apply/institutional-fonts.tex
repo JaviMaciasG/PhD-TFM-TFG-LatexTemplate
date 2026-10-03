@@ -1,0 +1,38 @@
+% Leave standard genuinely untouched, including grouping and shipout timing.
+\newcommand{\ThesisInstitutionalPage}[1]{%
+  \ifthenelse{\equal{\myTypesettingStyle}{standard}}{\input{#1}}{%
+    \clearpage
+    \begingroup
+      % Some legacy covers call chapter*. Never apply book heading designs here.
+      \let\chapter\thesis@originalchapter
+      \let\@makechapterhead\thesis@originalmakechapter
+      \let\@makeschapterhead\thesis@originalmakeschapter
+      \let\chaptermark\thesis@originalchaptermark
+      \let\ps@plain\thesis@originalplain
+      \ifthenelse{\equal{\myInstitutionalPageFontMode}{institutional}}{%
+        \let\rmdefault\thesis@originalrm
+        \let\sfdefault\thesis@originalsf
+        \let\ttdefault\thesis@originaltt
+        \let\familydefault\thesis@originalfamily
+        \let\encodingdefault\thesis@originalencoding
+        % New font packages can change b/bx defaults, even for legacy families.
+        \let\bfdefault\thesis@originalbf
+        \let\mddefault\thesis@originalmd
+        \let\seriesdefault\thesis@originalseries
+        \let\shapedefault\thesis@originalshape
+        \let\bfseries@rm\thesis@originalbfrm
+        \let\bfseries@sf\thesis@originalbfsf
+        \let\bfseries@tt\thesis@originalbftt
+        \let\mdseries@rm\thesis@originalmdrm
+        \let\mdseries@sf\thesis@originalmdsf
+        \let\mdseries@tt\thesis@originalmdtt
+        \let\bfdefault@previous\thesis@originalbfprevious
+        \let\mddefault@previous\thesis@originalmdprevious
+        \normalfont
+      }{}%
+      \input{#1}%
+      % Ship out deferred TikZ/background material before restoring the scope.
+      \clearpage
+    \endgroup
+  }%
+}

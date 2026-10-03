@@ -1,0 +1,60 @@
+\ifthenelse{\equal{\thesis@headerlayout}{original}}{%
+  \renewcommand{\chaptermark}[1]{\markboth{\@chapapp \ \thechapter . \ #1}{}}
+  \renewcommand{\sectionmark}[1]{\markright{\thesection \ \ #1}}
+  \fancyhf{}
+  \fancyhead[LE,RO]{\thesis@headerfont\thepage}
+  \fancyhead[LO]{\thesis@headerfont\rightmark}
+  \fancyhead[RE]{\thesis@headerfont\leftmark}
+  \renewcommand{\headrulewidth}{\thesis@headerrule}
+  \renewcommand{\footrulewidth}{0pt}
+  \fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}}
+  \pagestyle{fancy}
+}{%
+% Select the prefix before constructing moving marks; ifthen is not expandable.
+\newcommand{\thesis@headernumber}{\thechapter.\space}
+\ifthenelse{\equal{\thesis@headerlayout}{modern}}{%
+  \renewcommand{\thesis@headernumber}{\thesis@displaynumber{\thechapter}%
+    \enspace\textperiodcentered\enspace}%
+}{}
+\ifthenelse{\equal{\thesis@headerlayout}{mimosis}}{%
+  \renewcommand{\thesis@headernumber}{\thechapter\space}%
+}{}
+\renewcommand{\chaptermark}[1]{%
+  \markboth{\ifnum\c@secnumdepth>\m@ne\if@mainmatter
+    \thesis@headernumber%
+  \fi\fi#1}{}%
+}
+\renewcommand{\sectionmark}[1]{%
+  \markright{\ifnum\c@secnumdepth>\z@\thesection\space\fi#1}%
+}
+\fancyhf{}
+\fancyhead[LE,RO]{\thesis@headerfont\thepage}
+\ifthenelse{\equal{\thesis@headerlayout}{quiet}}{}{%
+  \ifthenelse{\equal{\thesis@headerlayout}{modern}}{%
+    \fancyhead[RE,LO]{\thesis@headerfont\nouppercase{\leftmark}}%
+  }{%
+    \fancyhead[RE]{\thesis@headerfont\nouppercase{\leftmark}}%
+    \fancyhead[LO]{\thesis@headerfont\nouppercase{\rightmark}}%
+  }%
+}
+\renewcommand{\headrulewidth}{\thesis@headerrule}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[LE,RO]{\thesis@headerfont\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+\pagestyle{fancy}
+
+\ifthenelse{\equal{\thesis@headerlayout}{mimosis}}{%
+  \fancyhead[LE,RO]{}%
+  \fancyfoot[LE,RO]{\normalfont\rmfamily\thepage}%
+  \fancypagestyle{plain}{%
+    \fancyhf{}%
+    \fancyfoot[LE,RO]{\normalfont\rmfamily\thepage}%
+    \renewcommand{\headrulewidth}{0pt}%
+    \renewcommand{\footrulewidth}{0pt}%
+  }%
+}{}
+}% end original / alternative header layouts

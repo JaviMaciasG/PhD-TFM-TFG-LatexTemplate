@@ -1,0 +1,6 @@
+% Pad decimal chapter labels only. Appendix letters remain letters.
+\DeclareRobustCommand{\thesis@displaynumber}[1]{%
+  \ifnum\pdfmatch{^[0-9]+$}{#1}>0\relax
+    \ifnum#1<10 0\fi#1%
+  \else#1\fi
+}

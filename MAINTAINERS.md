@@ -18,6 +18,10 @@ The user-facing Boolean options in `Config/myconfig.tex` share the `\myInclude..
 
 The standard workflow must remain dominant in `README.md` and the manual. Mention the compendium alternative briefly in the normal quick start and direct the small set of affected PhD users to the authoritative specialized section rather than presenting both structures as equivalent choices throughout the documentation.
 
+## Maintaining the Book typesetting styles
+
+The preliminary Book-only visual layer lives under `Config/typesetting/` and is selected through `\myTypesettingStyle` and `\myInstitutionalPageFontMode` in `Config/myconfig.tex`. Keep the latter values named `institutional` and `document`; `standard` is a typesetting profile, not an institutional-page font policy. `TYPESETTING-STYLES-GUIDE.md` is the authoritative usage and implementation reference, including the single style registry, renderer architecture, validation procedure, Bash prototype builder, optional PyMuPDF comparison composer, and Mimosis licence notice. Update that guide, the concise README reference, both copies of the manual configuration chapter, and the selector comments whenever the public choices change.
+
 ## Maintaining the Makefile build layer
 
 The active document Makefiles include `Config/latex-common.mk`, which defines the supported LaTeX engines and the common `latexmk` build and cleanup commands. Glossary dependencies are registered centrally in `Config/latexmkrc`. Keep document lists, user-facing group targets, conversion rules and final-output processing in the Makefile belonging to each directory; do not duplicate engine flags or unconditional sequences of LaTeX and Biber passes there.
@@ -34,7 +38,7 @@ make distrib
 
 The optional `AdminScripts/maintainer.mk` fragment supplies this target only in repository checkouts. The target first generates `00-README.pdf`, then calls `AdminScripts/go.build-distribution.sh`. It creates `00-PhDTFMTFG-LaTeX-Template-UAH-<release>.tgz` and `.zip` with identical contents whose root directly contains the template files and directories. Because the fragment and `AdminScripts/` are absent from the archives, ordinary users do not see the maintainer-only target.
 
-The distribution is assembled from an explicit structural allowlist of tracked user sources. It contains `RELEASE.txt`, all registered degree and institutional variants, the book, anteproyecto, paperwork, user build files, README documentation, the Git synchronization helper, and required input assets. It excludes maintainer Markdown files, `AdminScripts/`, `Deprecated/`, `normativas/`, `UsefulDocs/`, slide material, the registry compatibility audit, and generated PDFs other than `00-README.pdf`. The command validates mandatory and forbidden paths and compiles the default book, anteproyecto, and all three paperwork groups from an isolated staged copy before creating the archives. It does not commit, tag, push, or modify `RELEASE.txt`.
+The distribution is assembled from an explicit structural allowlist of tracked user sources. It contains `RELEASE.txt`, all registered degree and institutional variants, the book, anteproyecto, paperwork, user build files, the user-facing typesetting guide, the Git synchronization helper, and required input assets. It excludes maintainer Markdown files, `AdminScripts/`, `Deprecated/`, `normativas/`, `UsefulDocs/`, slide material, the registry compatibility audit, and generated PDFs other than `00-README.pdf`. The command validates mandatory and forbidden paths and compiles the default book, anteproyecto, and all three paperwork groups from an isolated staged copy before creating the archives. It does not commit, tag, push, or modify `RELEASE.txt`.
 
 Before publishing, start from a clean worktree, confirm that `RELEASE.txt` matches the intended Git tag, run the complete PDF regression generation, run `make distrib`, inspect both archives, and verify that they unpack and compile in a clean directory.
 

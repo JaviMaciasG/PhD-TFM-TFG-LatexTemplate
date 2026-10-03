@@ -67,6 +67,20 @@ Los identificadores admitidos actualmente por \texttt{\textbackslash{}myDegree},
 
 Consulta siempre la lista actualizada de identificadores admitidos en los comentarios que aparecen inmediatamente antes de la definición de \texttt{\textbackslash{}myDegree} en \texttt{Config/myconfig.tex}. Solo tienes que elegir allí el identificador correspondiente; la plantilla seleccionará automáticamente los datos y las páginas institucionales aplicables.
 
+\section{Estilos tipográficos del documento (implementación preliminar)}
+\label{sec:estilos-tipograficos}
+
+El libro principal permite probar distintos estilos tipográficos sin cambiar su contenido ni editar \texttt{Book/book.tex}. Se trata todavía de una implementación preliminar, por lo que, si no quieres valorar alternativas de diseño, puedes conservar sin más los valores proporcionados en \texttt{Config/myconfig.tex}. Esta funcionalidad solo afecta al libro principal: el anteproyecto y los documentos administrativos mantienen su formato específico.
+
+Utiliza las siguientes variables para seleccionar el aspecto del documento y el tratamiento de las páginas institucionales:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myTypesettingStyle}: selecciona el estilo tipográfico. El valor \texttt{standard}, utilizado de forma predeterminada, conserva el aspecto tradicional de la plantilla. Los valores admitidos y una breve descripción de cada uno aparecen en los comentarios situados antes de esta variable en \texttt{Config/myconfig.tex}.
+  \item \texttt{\textbackslash{}myInstitutionalPageFontMode}: controla las fuentes de las páginas institucionales, como la portada y la contraportada. El valor \texttt{institutional} conserva sus fuentes originales, incluso cuando eliges otro estilo para el cuerpo del documento; el valor \texttt{document} hace que esas páginas hereden las fuentes del estilo seleccionado. Con el estilo \texttt{standard} ambas opciones producen normalmente el mismo resultado visible.
+\end{itemize}
+
+Los estilos alternativos requieren \texttt{pdfLaTeX} y los paquetes de fuentes indicados para cada caso; si alguno no está instalado, puedes instalarlo mediante tu distribución de \LaTeX{} o volver al estilo \texttt{standard}. Encontrarás la relación completa de estilos, ejemplos de configuración, dependencias y detalles técnicos en \texttt{TYPESETTING-STYLES-GUIDE.md}, situado en la raíz de la plantilla.
+
 \section{Elementos opcionales del documento}
 \label{sec:elementos-opcionales-configuracion}
 

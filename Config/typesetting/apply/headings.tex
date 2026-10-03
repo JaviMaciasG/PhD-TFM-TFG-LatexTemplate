@@ -1,0 +1,101 @@
+% Native book rendering uses the baseline values without loading titlesec.
+% These definitions follow book.cls's numbered/unnumbered chapter machinery.
+\ifthenelse{\equal{\thesis@chapterlayout}{original}}{%
+  \newcommand{\thesis@chapterfont}{\normalfont\thesis@headingfamily
+    \@setfontsize\Huge{\thesis@chaptertitlesize}{\thesis@chaptertitleleading}%
+    \thesis@headingweight}
+  \def\@makechapterhead#1{%
+    \vspace*{\thesis@chapterbefore}%
+    {\parindent\z@\raggedright\normalfont
+      \ifnum\c@secnumdepth>\m@ne
+        \if@mainmatter
+          \@setfontsize\huge{\thesis@chapternumbersize}{\thesis@chapternumberleading}%
+          \thesis@headingfamily\thesis@headingweight\@chapapp\space\thechapter
+          \par\nobreak\vskip\thesis@chaptergap
+        \fi
+      \fi
+      \interlinepenalty\@M
+      \thesis@chapterfont #1\par\nobreak\vskip\thesis@chapterafter}}
+  \def\@makeschapterhead#1{%
+    \vspace*{\thesis@chapterbefore}%
+    {\parindent\z@\raggedright\normalfont\interlinepenalty\@M
+      \thesis@chapterfont #1\par\nobreak\vskip\thesis@chapterafter}}
+  \renewcommand\section{\@startsection{section}{1}{\z@}%
+    {\thesis@sectionbefore}{\thesis@sectionafter}%
+    {\normalfont\thesis@headingfamily
+      \@setfontsize\Large{\thesis@sectionsize}{\thesis@sectionleading}\thesis@headingweight}}
+  \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+    {\thesis@subsectionbefore}{\thesis@subsectionafter}%
+    {\normalfont\thesis@headingfamily
+      \@setfontsize\large{\thesis@subsectionsize}{\thesis@subsectionleading}\thesis@headingweight}}
+  \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+    {\thesis@subsectionbefore}{\thesis@subsectionafter}%
+    {\normalfont\normalsize\thesis@headingfamily
+      \@setfontsize\normalsize{\thesis@subsubsectionsize}{\thesis@subsubsectionleading}\thesis@headingweight}}
+}{%
+\RequirePackage{titlesec}
+\makeatletter
+\newcommand{\thesis@chapterfont}{\normalfont\thesis@headingfamily
+  \thesis@headingweight\raggedright\color{ThesisText}%
+  \fontsize{\thesis@chaptertitlesize}{\thesis@chaptertitleleading}\selectfont}
+% Chapter designs from fncychap use the native book chapter entry points.
+% No titlesec chapter format is registered for this branch; section formats below
+% remain the same as for every other alternative profile.
+\ifthenelse{\equal{\thesis@chapterlayout}{fncychap}}{%
+  \let\thesis@savedappendix\appendix
+  \let\thesis@savedschapter\@schapter
+  \expandafter\RequirePackage\expandafter[\thesis@fncychapstyle]{fncychap}
+  \makeatletter
+  % Only the package's chapter-heading renderers are required here.
+  % Preserve original appendix/hyperref hooks and the book unnumbered entry point.
+  \let\appendix\thesis@savedappendix
+  \let\@schapter\thesis@savedschapter
+}{%
+\ifthenelse{\equal{\thesis@chapterlayout}{traditional}}{%
+  \titleformat{\chapter}[display]{\thesis@chapterfont}%
+    {\normalfont\rmfamily\scshape\fontsize{\thesis@chapternumbersize}{\thesis@chapternumberleading}\selectfont
+      \MakeLowercase{\@chapapp}\space\thechapter}%
+    {\thesis@chaptergap}{}%
+}{}
+% Hanging chapter heading: number | title. No chapter-name prefix.
+% The shared chapter font includes raggedright, including wrapped title lines.
+\ifthenelse{\equal{\thesis@chapterlayout}{separator}}{%
+  \titleformat{\chapter}[hang]{\thesis@chapterfont}%
+    {\normalfont\thesis@headingfamily\thesis@headingweight
+      \fontsize{\thesis@chapternumbersize}{\thesis@chapternumberleading}\selectfont
+      \thechapter\hspace{\thesis@chapterseparatorgap}%
+      \textcolor{ThesisChapterSeparator}{|}}{\thesis@chaptergap}{}%
+}{}
+\ifthenelse{\equal{\thesis@chapterlayout}{display}}{%
+  \titleformat{\chapter}[display]{\thesis@chapterfont}%
+    {\sffamily\bfseries\color{ThesisAccent}%
+      \fontsize{\thesis@chapternumbersize}{\thesis@chapternumberleading}\selectfont
+      \thesis@displaynumber{\thechapter}}{\thesis@chaptergap}{}%
+    [\vspace{8pt}{\color{ThesisAccent}\rule{3cm}{.6pt}}]%
+}{}
+\ifthenelse{\equal{\thesis@chapterlayout}{mimosis}}{%
+  \titleformat{\chapter}[hang]{\thesis@chapterfont}%
+    {\normalfont\rmfamily\mdseries
+      \fontsize{\thesis@chapternumbersize}{\thesis@chapternumberleading}\selectfont
+      \thechapter}{\thesis@chaptergap}{}%
+}{}
+\titlespacing*{\chapter}{0pt}{\thesis@chapterbefore}{\thesis@chapterafter}
+% Unnumbered headings share title typography, never invent chapter numbers.
+\titleformat{name=\chapter,numberless}[block]{\thesis@chapterfont}{}{0pt}{}
+}% end fncychap / titlesec chapter renderers
+\newcommand{\thesis@sectionfont}[2]{\normalfont\thesis@headingfamily
+  \thesis@headingweight\raggedright\color{ThesisText}\fontsize{#1}{#2}\selectfont}
+\newcommand{\thesis@sectionnumber}[1]{%
+  {\color{ThesisAccent}#1}%
+}
+\titleformat{\section}{\thesis@sectionfont{\thesis@sectionsize}{\thesis@sectionleading}}%
+  {\thesis@sectionnumber{\thesection}}{.7em}{}
+\titleformat{\subsection}{\thesis@sectionfont{\thesis@subsectionsize}{\thesis@subsectionleading}}%
+  {\thesis@sectionnumber{\thesubsection}}{.7em}{}
+\titleformat{\subsubsection}{\thesis@sectionfont{\thesis@subsubsectionsize}{\thesis@subsubsectionleading}}%
+  {\thesis@sectionnumber{\thesubsubsection}}{.7em}{}
+% Like the book class, suppress indentation immediately after these headings.
+\titlespacing*{\section}{0pt}{\thesis@sectionbefore}{\thesis@sectionafter}
+\titlespacing*{\subsection}{0pt}{\thesis@subsectionbefore}{\thesis@subsectionafter}
+\titlespacing*{\subsubsection}{0pt}{\thesis@subsectionbefore}{\thesis@subsectionafter}
+}% end native / titlesec heading renderers

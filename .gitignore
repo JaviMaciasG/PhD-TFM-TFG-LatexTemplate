@@ -574,6 +574,11 @@ pdf_svg_done
 /Book/book-flatten-diff.pdf
 /Book/*MaciasGuarasa-Javier*.pdf
 /Book/book-latex.zip
+/Book/SampleTypesettings/
+/Book/typesetting-prototypes/
+/Book/book-style-comparisons.pdf
+/Book/template-typesetting-prototype*.zip
+/Book/*-SAVE-ERROR
 /Deprecated/Papeleo/*.pdf
 /PapeleoPHD/*.pdf
 /PapeleoTFG/*.pdf
@@ -595,4 +600,3 @@ pdf_svg_done
 CHANGELOG.md
 
 OldDocs
-

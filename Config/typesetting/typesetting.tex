@@ -1,0 +1,51 @@
+% Book-only style dispatcher. Read after postamble.tex, before begin{document}.
+\providecommand{\myTypesettingStyle}{standard}
+\providecommand{\myInstitutionalPageFontMode}{institutional}
+\makeatletter
+\def\thesis@registeredstyles{standard,editorial,modern,framed,shaded,mimosis}
+\newif\ifthesis@validstyle
+\@for\thesis@candidate:=\thesis@registeredstyles\do{%
+  \ifthenelse{\equal{\myTypesettingStyle}{\thesis@candidate}}{\thesis@validstyletrue}{}%
+}
+\ifthesis@validstyle\else
+  \PackageError{thesis-typesetting}{Unknown style '\myTypesettingStyle'}%
+    {Use one of: \thesis@registeredstyles.}%
+\fi
+\ifthenelse{\equal{\myInstitutionalPageFontMode}{institutional}\OR
+            \equal{\myInstitutionalPageFontMode}{document}}{}{%
+  \PackageError{thesis-typesetting}{Unknown institutional font mode '\myInstitutionalPageFontMode'}%
+    {Use institutional or document.}%
+}
+% Save legacy families AND the chapter machinery used by institutional pages.
+\let\thesis@originalrm\rmdefault
+\let\thesis@originalsf\sfdefault
+\let\thesis@originaltt\ttdefault
+\let\thesis@originalfamily\familydefault
+\let\thesis@originalencoding\encodingdefault
+\let\thesis@originalbf\bfdefault
+\let\thesis@originalmd\mddefault
+\let\thesis@originalseries\seriesdefault
+\let\thesis@originalshape\shapedefault
+\let\thesis@originalbfrm\bfseries@rm
+\let\thesis@originalbfsf\bfseries@sf
+\let\thesis@originalbftt\bfseries@tt
+\let\thesis@originalmdrm\mdseries@rm
+\let\thesis@originalmdsf\mdseries@sf
+\let\thesis@originalmdtt\mdseries@tt
+\let\thesis@originalbfprevious\bfdefault@previous
+\let\thesis@originalmdprevious\mddefault@previous
+\let\thesis@originalchapter\chapter
+\let\thesis@originalmakechapter\@makechapterhead
+\let\thesis@originalmakeschapter\@makeschapterhead
+\let\thesis@originalchaptermark\chaptermark
+\let\thesis@originalplain\ps@plain
+\input{../Config/typesetting/apply/institutional-fonts.tex}
+% All styles use the same baseline -> overrides -> application sequence.
+\input{../Config/typesetting/default-settings.tex}
+\input{../Config/typesetting/styles/\myTypesettingStyle.tex}
+\input{../Config/typesetting/apply/display-number.tex}
+\input{../Config/typesetting/apply/typography.tex}
+\input{../Config/typesetting/apply/headings.tex}
+\input{../Config/typesetting/apply/contents.tex}
+\input{../Config/typesetting/apply/pagestyle.tex}
+\makeatother

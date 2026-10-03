@@ -1,0 +1,50 @@
+% Original-template baseline (the supplied 10pt book class).
+% Loaded after preamble.tex and postamble.tex. Neither file is modified.
+% Every style inherits this profile and overrides only its differences.
+% 'original' selects the native book renderer / existing font packages.
+\def\thesis@fontsystem{original}
+\def\thesis@headingfamily{\rmfamily}
+\def\thesis@headingweight{\bfseries}
+\def\thesis@chapterlayout{original}
+\def\thesis@fncychapstyle{}
+\def\thesis@chaptertitlesize{24.88}
+\def\thesis@chaptertitleleading{30}
+\def\thesis@chapternumbersize{20.74}
+\def\thesis@chapternumberleading{25}
+\def\thesis@chapterbefore{50pt}
+\def\thesis@chaptergap{20pt}
+% Used by hanging separator layouts; harmless for the native/other layouts.
+\def\thesis@chapterseparatorgap{20pt}
+\def\thesis@chapterafter{40pt}
+\def\thesis@sectionsize{14.4}
+\def\thesis@sectionleading{18}
+\def\thesis@subsectionsize{12}
+\def\thesis@subsectionleading{14}
+\def\thesis@subsubsectionsize{10}
+\def\thesis@subsubsectionleading{12}
+% Negative native before-skips suppress indentation after headings, as in book.cls.
+% The titlesec layouts instead use positive before-skips and starred titlespacing.
+\def\thesis@sectionbefore{-3.5ex plus -1ex minus -.2ex}
+\def\thesis@sectionafter{2.3ex plus .2ex}
+\def\thesis@subsectionbefore{-3.25ex plus -1ex minus -.2ex}
+\def\thesis@subsectionafter{1.5ex plus .2ex}
+\def\thesis@toclayout{original}
+\def\thesis@tocchaptergap{1em plus 1pt}
+\def\thesis@tocentrygap{0pt plus .2pt}
+\def\thesis@tocchapterfont{\bfseries}
+\def\thesis@tocchapterpagefont{\bfseries}
+\def\thesis@tocchapterdotsep{\cftnodots}
+\def\thesis@tocchapnumwidth{1.5em}
+\def\thesis@tocsecindent{1.5em}
+\def\thesis@tocsecnumwidth{2.3em}
+\def\thesis@tocsubsecindent{3.8em}
+\def\thesis@tocsubsecnumwidth{3.2em}
+\def\thesis@tocsubsubsecindent{7em}
+\def\thesis@tocsubsubsecnumwidth{4.1em}
+\def\thesis@headerlayout{original}
+\def\thesis@headerfont{\bfseries}
+\def\thesis@headerrule{0.5pt}
+\definecolor{ThesisText}{gray}{0}
+\definecolor{ThesisAccent}{gray}{0}
+\definecolor{ThesisSecondary}{gray}{.35}
+\definecolor{ThesisChapterSeparator}{gray}{.75}

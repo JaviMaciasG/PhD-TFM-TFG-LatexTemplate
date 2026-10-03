@@ -1,0 +1,54 @@
+% 'original' retains the font setup already loaded by the shared preamble.
+\ifthenelse{\equal{\thesis@fontsystem}{original}}{}{%
+\ifPDFTeX\else
+  \PackageError{thesis-typesetting}{Alternative typesetting styles require pdfLaTeX}%
+    {Compile using the existing pdfLaTeX/latexmk chain.}%
+\fi
+\newcommand{\thesis@requirefont}[1]{%
+  \IfFileExists{#1.sty}{\RequirePackage{#1}}{%
+    \ifthenelse{\equal{\thesis@fontsystem}{mimosis}}{%
+      \PackageError{thesis-typesetting}{Style 'mimosis' requires #1.sty}%
+        {Install ebgaramond and sourcecodepro (TeX Live: texlive-fonts-extra).}%
+    }{%
+      \PackageError{thesis-typesetting}{Style '\myTypesettingStyle' requires #1.sty}%
+        {Install NewPX/NewTX and TeX Gyre packages (TeX Live: texlive-fonts-extra).}%
+    }%
+  }%
+}
+% Font packages must not silently change the inherited paragraph rhythm.
+\edef\thesis@savedparskip{\the\parskip}
+\edef\thesis@savedparindent{\the\parindent}
+\let\thesis@savedstretch\baselinestretch
+\ifthenelse{\equal{\thesis@fontsystem}{mimosis}}{%
+  % These are the pdfLaTeX font choices from upstream Thesis.tex.
+  % Keep the template's current math fonts and body-spacing settings.
+  \PassOptionsToPackage{lf}{ebgaramond}
+  \PassOptionsToPackage{oldstyle,scale=0.7}{sourcecodepro}
+  \thesis@requirefont{ebgaramond}
+  \thesis@requirefont{sourcecodepro}
+  % Inline code in small-cap headings uses upright mono (no fake small caps).
+  \begingroup
+    \normalfont\fontencoding{T1}\ttfamily\selectfont
+    \edef\thesis@monoshape{%
+      \noexpand\DeclareFontShape{T1}{\ttdefault}{m}{sc}%
+        {<->ssub*\ttdefault/m/n}{}%
+    }%
+    \thesis@monoshape
+  \endgroup
+}{%
+\ifthenelse{\equal{\thesis@fontsystem}{px}}{%
+  \thesis@requirefont{newpxtext}
+  \thesis@requirefont{newpxmath}
+}{%
+  % Heros must come first: NewTX also defines qhv's scale in some releases.
+  \thesis@requirefont{tgheros}
+  \thesis@requirefont{newtxtext}
+  \thesis@requirefont{newtxmath}
+}
+}% end mimosis / existing font systems
+\makeatletter
+\parskip=\thesis@savedparskip\relax
+\parindent=\thesis@savedparindent\relax
+\let\baselinestretch\thesis@savedstretch
+\normalfont
+}% end original / alternative font systems

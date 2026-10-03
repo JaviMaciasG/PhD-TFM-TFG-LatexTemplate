@@ -24,6 +24,7 @@ mkdir -p "$stage"
     LICENSE \
     Makefile \
     RELEASE.txt \
+    TYPESETTING-STYLES-GUIDE.md \
     sync-git-sources.sh
   git ls-files -- Anteproyecto Book Config PapeleoTFG PapeleoTFM PapeleoPHD
 } | while IFS= read -r file; do
@@ -47,7 +48,7 @@ while IFS= read -r file; do
   cp -p -- "$file" "$stage/$file"
 done < "$manifest"
 
-for required_file in RELEASE.txt Makefile sync-git-sources.sh Book/book.tex Config/myconfig.tex; do
+for required_file in RELEASE.txt Makefile TYPESETTING-STYLES-GUIDE.md sync-git-sources.sh Book/book.tex Config/myconfig.tex; do
   [[ -f $stage/$required_file ]] || { echo "ERROR: required distribution file is missing: $required_file" >&2; exit 1; }
 done
 
