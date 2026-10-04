@@ -39,6 +39,7 @@
 \setlength{\glsdescwidth}{0.7\linewidth}       % EDIT this if required
 
 % Set language specific definitions...
+\begin{thesislisttitlestyle}
 \ifthenelse{\equal{\myLanguage}{english}}
 {
 \printglossary[type=\acronymtype,style=long,nonumberlist=true,title=List of Acronyms,toctitle=List of Acronyms]
@@ -48,10 +49,10 @@
 \printglossary[type=\acronymtype,style=long,nonumberlist=true,title=Lista de acrónimos,toctitle=Lista de acrónimos]
 \addcontentsline{toc}{chapter}{Lista de acrónimos}
 }
+\end{thesislisttitlestyle}
 
 
 %%% Local Variables:
 %%% TeX-master: "../book"
 %%% End:
-
 

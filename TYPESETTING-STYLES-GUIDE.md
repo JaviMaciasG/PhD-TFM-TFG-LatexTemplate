@@ -5,6 +5,13 @@ use, implementation, validation, maintainer tools and third-party attribution.
 All repository paths are relative to the template root. Shell examples state
 their working directory.
 
+Selecting one of the supplied styles is a normal user-level operation and only
+requires changing the documented configuration variables. Modifying a style or
+creating a new one is advanced work: typography, headings, generated lists,
+running headers and institutional pages interact across several files. Approach
+those changes carefully, read the relevant sections of this technical guide and
+validate the complete document after every modification.
+
 ## Contents
 
 1. [What the feature does](#1-what-the-feature-does)
@@ -42,15 +49,16 @@ The retired profile names are not aliases for the current selectors.
 ### Scope and preservation
 
 The layer explicitly controls body-font packages; chapters, sections,
-subsections and subsubsections; the main contents list; and page-style settings.
+subsections and subsubsections; the main contents list; the shared title style
+used by every generated list; and page-style settings.
 It retains the existing geometry, base class size, paragraph settings,
 line-spacing multiplier, float parameters, language, numbering depths,
 bibliography configuration and content structure. Different fonts and chapter
 dimensions can nevertheless change line wrapping and pagination.
 
-Dedicated caption and figure/table/custom-list adapters are outside this
-feature's current scope. They can inherit new fonts or chapter-title behaviour;
-their appearance is not guaranteed to be pixel-identical between styles.
+Dedicated caption and figure/table/custom-list entry adapters are outside this
+feature's current scope. Their entries can inherit new fonts, but their title
+typography and spacing are deliberately consistent within each selected style.
 
 The shared `Config/preamble.tex` and `Config/postamble.tex` remain unchanged.
 Administrative forms and Anteproyecto do not load this Book-only dispatcher.
@@ -149,16 +157,18 @@ bash AdminScripts/build-book-style-comparisons.sh --list-styles
 bash AdminScripts/build-book-style-comparisons.sh
 ```
 
-The second command builds every registered style in isolated copies, selects
-four sample pages per style and concatenates them. The default output is
+The second command builds every registered style in isolated copies, creates a
+neutral bilingual cover and introduction, selects four sample pages per style
+and concatenates them. The default output is
 `Book/book-style-comparisons.pdf`. This is a PDF composition operation, not a
 separate comparison `.tex` file.
 
 The samples are the contents, first chapter opening, example equation page and
 long chapter title. The script uses bookmarks and page text from the supplied
 guide to locate them. It keeps per-style/sample bookmarks and adds the style
-name in 8-point grey text at the upper-right corner of every copied page.
-Original style PDFs are not stamped or overwritten.
+name in 8-point grey text at the upper-right corner of every copied page. The
+cover and introduction remain unlabelled because they do not represent a
+specific style. Original style PDFs are not stamped or overwritten.
 
 To reuse existing PDFs, from the template root:
 
@@ -220,20 +230,28 @@ does not override the changed setting, including `standard`.
 
 ### 3.2 File responsibilities
 
-| File | Responsibility |
-| --- | --- |
-| `Config/myconfig.tex` | Public selectors and existing document configuration |
-| `Config/typesetting/typesetting.tex` | Accepted style registry, validation, saved original state and load order |
-| `Config/typesetting/default-settings.tex` | Explicit 10pt original-template baseline: 39 macros and four colours |
-| `Config/typesetting/styles/*.tex` | Per-profile overrides only |
-| `Config/typesetting/apply/typography.tex` | Font packages; preserves paragraph settings and spacing multiplier around font loading |
-| `Config/typesetting/apply/headings.tex` | Native, `titlesec` and `fncychap` heading application |
-| `Config/typesetting/apply/contents.tex` | Main TOC typography, skips, leaders and number-column dimensions |
-| `Config/typesetting/apply/pagestyle.tex` | `fancyhdr` placement, chapter/section marks, header rules and plain pages |
-| `Config/typesetting/apply/institutional-fonts.tex` | Scoped restoration for institutional pages, including original chapter renderers |
-| `Config/typesetting/apply/display-number.tex` | Display-only leading zero for decimal chapter numbers below 10 |
-| `AdminScripts/build-book-typesetting-prototypes.sh` | Discovers the dispatcher registry and performs isolated full-book builds |
-| `AdminScripts/build-book-style-comparisons.sh` | Builds or reuses PDFs and creates labelled comparison excerpts |
+- `Config/myconfig.tex`: public selectors and existing document configuration.
+- `Config/typesetting/typesetting.tex`: accepted style registry, validation,
+  saved original state and load order.
+- `Config/typesetting/default-settings.tex`: explicit 10pt original-template
+  baseline: 39 macros and four colours.
+- `Config/typesetting/styles/*.tex`: per-profile overrides only.
+- `Config/typesetting/apply/typography.tex`: font packages; preserves paragraph
+  settings and the spacing multiplier around font loading.
+- `Config/typesetting/apply/headings.tex`: native, `titlesec` and `fncychap`
+  heading application.
+- `Config/typesetting/apply/contents.tex`: shared list-title rendering plus main
+  TOC typography, skips, leaders and number-column dimensions.
+- `Config/typesetting/apply/pagestyle.tex`: `fancyhdr` placement,
+  chapter/section marks, header rules and plain pages.
+- `Config/typesetting/apply/institutional-fonts.tex`: scoped restoration for
+  institutional pages, including original chapter renderers.
+- `Config/typesetting/apply/display-number.tex`: display-only leading zero for
+  decimal chapter numbers below 10.
+- `AdminScripts/build-book-typesetting-prototypes.sh`: discovers the dispatcher
+  registry and performs isolated full-book builds.
+- `AdminScripts/build-book-style-comparisons.sh`: builds or reuses PDFs and
+  creates labelled comparison excerpts.
 
 ### 3.3 Setting names are not renderer definitions
 
@@ -310,25 +328,25 @@ which the renderer evaluates them.
 | `\thesis@headingfamily` | `\rmfamily` | Family declaration for shared heading fonts, e.g. `\rmfamily` or `\sffamily` |
 | `\thesis@headingweight` | `\bfseries` | Heading declarations; may combine weight/shape, e.g. `\mdseries\scshape` |
 
-These declarations also reach the TOC title. `fncychap` owns the actual chapter
-font declarations; some other layouts also hard-code parts of their label font.
+These declarations also reach every generated list title. `fncychap` owns the
+actual chapter font declarations; some other layouts also hard-code parts of their label font.
 Changing the common heading family therefore does not necessarily change every
 chapter-number glyph or label.
 
-### 4.2 Chapters and contents-title coupling
+### 4.2 Chapters and list-title coupling
 
 | Macro | Baseline | Effect |
 | --- | --- | --- |
 | `\thesis@chapterlayout` | `original` | Selects an implemented chapter renderer; choices below |
 | `\thesis@fncychapstyle` | empty | Case-sensitive package option when layout is `fncychap`, e.g. `Lenny` or `Bjornstrup` |
-| `\thesis@chaptertitlesize` | `24.88` | Shared title/TOC-title size |
-| `\thesis@chaptertitleleading` | `30` | Shared title/TOC-title nominal leading |
+| `\thesis@chaptertitlesize` | `24.88` | Shared chapter/list-title size |
+| `\thesis@chaptertitleleading` | `30` | Shared chapter/list-title nominal leading |
 | `\thesis@chapternumbersize` | `20.74` | Number or chapter-label size in layouts that explicitly read it |
 | `\thesis@chapternumberleading` | `25` | Nominal leading for that number/label |
-| `\thesis@chapterbefore` | `50pt` | Space before the chapter heading; also before the TOC title |
+| `\thesis@chapterbefore` | `50pt` | Space before the chapter heading and every generated list title |
 | `\thesis@chaptergap` | `20pt` | Renderer-specific number/label-to-title gap |
 | `\thesis@chapterseparatorgap` | `20pt` | Horizontal gap before the vertical separator in `separator` |
-| `\thesis@chapterafter` | `40pt` | Space after the chapter heading; also after the TOC title |
+| `\thesis@chapterafter` | `40pt` | Space after the chapter heading and every generated list title |
 
 | Chapter layout | Numbered design and setting consumers |
 | --- | --- |
@@ -346,12 +364,12 @@ restores the original appendix command and unnumbered chapter entry point
 after loading the package; it preserves the existing book/hyperref hooks.
 
 **Important for `framed` and `shaded`:** changing `chaptertitlesize`,
-`chaptertitleleading`, `chapterbefore` or `chapterafter` changes their TOC-title
+`chaptertitleleading`, `chapterbefore` or `chapterafter` changes their list-title
 formatting, not the package's actual chapter heading. `chapternumbersize`,
 `chapternumberleading`, `chaptergap` and `chapterseparatorgap` are not consumed
 by their actual fncychap headings. Their existing overrides include legacy
 number/gap values; those values are not fncychap controls. There is no separate
-TOC-title setting group yet. Section headings still use the common settings.
+list-title setting group yet. Section headings still use the common settings.
 
 ### 4.3 Sections, subsections and subsubsections
 
@@ -449,7 +467,7 @@ those need independent control.
 
 | Colour name | Baseline definition | Current consumers |
 | --- | --- | --- |
-| `ThesisText` | `gray`, `0` | Shared alternative title/section fonts, including TOC title; not native original headings or package-owned fncychap chapter fonts |
+| `ThesisText` | `gray`, `0` | Shared alternative title/section fonts, including generated list titles; not native original headings or package-owned fncychap chapter fonts |
 | `ThesisAccent` | `gray`, `0` | Alternative section numbers; modern displayed chapter number/rule and TOC numbers |
 | `ThesisSecondary` | `gray`, `.35` | Declared baseline colour, currently unused by the active application renderers |
 | `ThesisChapterSeparator` | `gray`, `.75` | Vertical separator in the `separator` chapter layout |
@@ -731,7 +749,7 @@ Record the environment, fonts, document configuration and any test limitations.
 | Style file found but heading fails | Check that its layout token has an implemented branch; a new name is not a renderer |
 | Package missing | Install the required `.sty` package in the active TeX distribution; do not ship test-only stubs |
 | Heading skip behaves unexpectedly | Check native negative skips versus alternative positive skips, and whether the value is vertical or horizontal in this layout |
-| Chapter changes also alter the contents title | Shared chapter title/font/before/after settings currently supply the TOC title |
+| Chapter changes also alter generated list titles | Shared chapter title/font/before/after settings deliberately supply every list title |
 | Changing chapter size does nothing in framed/shaded | fncychap owns actual chapter typography; inspect its option/customisation interface |
 | TOC font override appears ineffective | `modern` and `mimosis` apply additional overrides after the common values |
 | Chapter dots remain absent | The selected TOC branch removes leaders; dot spacing alone cannot restore them |

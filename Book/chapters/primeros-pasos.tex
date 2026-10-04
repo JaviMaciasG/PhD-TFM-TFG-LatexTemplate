@@ -25,7 +25,14 @@
 \chapter{Primeros pasos}
 \label{cha:primeros-pasos}
 
-En este capítulo te acompañamos desde la preparación del entorno hasta la generación del primer PDF. Primero revisaremos los requisitos necesarios, después explicaremos cómo configurar la compilación en GNU/Linux, Windows, macOS y Overleaf, a continuación presentaremos brevemente la plantilla de anteproyecto y, por último, explicaremos cómo preparar una estructura mínima para comenzar a escribir tu trabajo y cómo registrar correctamente sus fuentes en Git. Para empezar no necesitas conocer el \texttt{Makefile} ni utilizar una terminal: puedes trabajar con tu editor habitual de \LaTeX{}.
+En este capítulo te acompañamos desde la descarga de la plantilla hasta la generación del primer PDF. Primero presentaremos los archivos publicados y los documentos de ejemplo, después revisaremos los requisitos y explicaremos cómo configurar la compilación en GNU/Linux, Windows, macOS y Overleaf, a continuación presentaremos brevemente la plantilla de anteproyecto y, por último, explicaremos cómo preparar una estructura mínima para comenzar a escribir tu trabajo y cómo registrar correctamente sus fuentes en Git. Para empezar no necesitas conocer el \texttt{Makefile} ni utilizar una terminal: puedes trabajar con tu editor habitual de \LaTeX{}.
+
+\section{Descarga y documentos de ejemplo}
+\label{sec:descarga-ejemplos}
+
+La \href{https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0}{carpeta de descargas de la plantilla} contiene los archivos ZIP y TGZ de la versión publicada y una selección reducida de documentos completos. Te recomendamos comenzar por \texttt{TFG-GIEC-spanish.pdf}, que utiliza la estructura y el estilo predeterminados. El fichero \texttt{01-DOWNLOAD-GUIDE.pdf}, situado al principio de la carpeta, enumera todos los ejemplos disponibles y explica qué idioma, estructura, estilo tipográfico, política de fuentes institucionales y cubierta muestra cada uno.
+
+Los PDF precompilados son ejemplos representativos y no una copia para cada titulación admitida. Si no encuentras un documento dedicado a tu grado o máster, no significa que no esté soportado: consulta los identificadores disponibles en \texttt{Config/myconfig.tex} y la lista descrita en el capítulo~\ref{cha:configuracion}. El fichero \texttt{RELEASE.txt} de la carpeta te permite comprobar a qué versión corresponden los archivos publicados.
 
 \section{Prerrequisitos}
 \label{sec:prerrequisitos}
@@ -105,7 +112,7 @@ Para preparar manualmente una memoria convencional con \texttt{standard}, sigue 
   \item Elimina los ficheros \texttt{.tex} situados directamente en \texttt{chapters/} y \texttt{appendix/}; no elimines sus subdirectorios ni su contenido.
   \item Copia a \texttt{chapters/} los ficheros de capítulo de \texttt{chapters/bare/}, sin copiar allí el fichero \texttt{content-standard.tex}, y copia los ficheros de \texttt{appendix/bare/} a \texttt{appendix/}.
   \item Sustituye \texttt{Book/content-standard.tex} por \texttt{Book/chapters/bare/content-standard.tex}; este fichero ya incluye los capítulos y apéndices mínimos que acabas de copiar.
-  \item Revisa en \texttt{Config/myconfig.tex} las variables \texttt{\textbackslash{}myInclude...} descritas en la sección~\ref{sec:elementos-opcionales-configuracion} y deja en \texttt{false} los elementos preliminares y listados que todavía no necesites.
+  \item Revisa en \texttt{Config/myconfig.tex} las variables \texttt{\textbackslash{}myInclude...} descritas en la sección~\ref{sec:elementos-opcionales-configuracion}. Estas variables controlan la carta PDF de ejemplo, la dedicatoria, los agradecimientos y los índices independientes de figuras, tablas, acrónimos, símbolos, código, algoritmos y vídeos; deja en \texttt{false} los elementos que todavía no necesites.
 \end{itemize}
 
 Si utilizas \texttt{make}, ejecuta \texttt{make bare} desde \texttt{Book/}. Como \texttt{standard} es el valor predeterminado, el objetivo crea una copia de seguridad, instala los capítulos, apéndices y el fichero \texttt{content-standard.tex} mínimos, y desactiva el material opcional de ejemplo. También puedes solicitar explícitamente esta preparación mediante \texttt{make bare-standard}; \texttt{bare-chapters} se conserva como alias compatible. Estos objetivos se describen con más detalle en la sección~\ref{sec:compilacion-makefile}.
@@ -167,7 +174,7 @@ Puedes volver a ejecutar el objetivo cada vez que cambien las dependencias. Si n
 \section{Resumen del capítulo}
 \label{sec:resumen-primeros-pasos}
 
-Ya sabes qué herramientas necesita la plantilla, cómo generar el documento desde tu editor habitual en GNU/Linux, Windows o macOS, o mediante Overleaf, cómo trabajar con el anteproyecto, cómo preparar la estructura mínima con la que puedes comenzar a escribir tu trabajo y cómo registrar correctamente sus fuentes en Git. Recuerda que Biber es necesario para la bibliografía y que solo tendrás que ejecutar \texttt{makeglossaries} cuando utilices acrónimos o símbolos; el siguiente paso es adaptar las variables descritas en el capítulo~\ref{cha:configuracion}.
+Ya sabes qué archivos encontrarás en la carpeta de descargas, qué herramientas necesita la plantilla, cómo generar el documento desde tu editor habitual en GNU/Linux, Windows o macOS, o mediante Overleaf, cómo trabajar con el anteproyecto, cómo preparar la estructura mínima con la que puedes comenzar a escribir tu trabajo y cómo registrar correctamente sus fuentes en Git. Recuerda que Biber es necesario para la bibliografía y que solo tendrás que ejecutar \texttt{makeglossaries} cuando utilices acrónimos o símbolos; el siguiente paso es adaptar las variables descritas en el capítulo~\ref{cha:configuracion}.
 
 %%% Local Variables:
 %%% TeX-master: "../book"

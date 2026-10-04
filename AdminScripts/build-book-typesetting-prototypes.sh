@@ -8,6 +8,8 @@ script_directory=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 repository_root=$(cd -- "$script_directory/.." && pwd)
 font_mode=institutional
 language=spanish
+degree=
+document_structure=
 output_directory=
 list_styles=false
 declare -a requested_styles=()
@@ -20,6 +22,8 @@ Options:
   --styles STYLE [STYLE ...]       Build only the selected registered styles.
   --font-mode MODE                institutional (default) or document.
   --language LANGUAGE             spanish (default) or english.
+  --degree IDENTIFIER             Override myDegree for every build.
+  --structure STRUCTURE           standard or compendium; defaults to myconfig.
   --output-dir DIRECTORY          Default: Book/typesetting-prototypes.
   --root DIRECTORY                Template repository root.
   --list-styles                   Print registered styles and exit.
@@ -45,6 +49,16 @@ while (($#)); do
     --language)
       (($# >= 2)) || { echo "ERROR: --language requires a value." >&2; exit 2; }
       language=$2
+      shift 2
+      ;;
+    --degree)
+      (($# >= 2)) || { echo "ERROR: --degree requires an identifier." >&2; exit 2; }
+      degree=$2
+      shift 2
+      ;;
+    --structure)
+      (($# >= 2)) || { echo "ERROR: --structure requires a value." >&2; exit 2; }
+      document_structure=$2
       shift 2
       ;;
     --output-dir)
@@ -92,6 +106,24 @@ case $language in
   spanish|english) ;;
   *) echo "ERROR: --language must be spanish or english." >&2; exit 2 ;;
 esac
+if [[ -n $document_structure ]]; then
+  case $document_structure in
+    standard|compendium) ;;
+    *) echo "ERROR: --structure must be standard or compendium." >&2; exit 2 ;;
+  esac
+fi
+if [[ -n $degree ]]; then
+  degree_registry_tool="$repository_root/Config/query-degree-registry.sh"
+  degree_registry="$repository_root/Config/degrees.tex"
+  [[ -f $degree_registry_tool && -f $degree_registry ]] || {
+    echo "ERROR: the degree registry tools are not available." >&2
+    exit 1
+  }
+  sh "$degree_registry_tool" work-type "$degree" "$degree_registry" >/dev/null 2>&1 || {
+    echo "ERROR: unknown degree identifier: $degree" >&2
+    exit 2
+  }
+fi
 
 is_registered_style() {
   local candidate=$1 registered
@@ -188,6 +220,8 @@ for style in "${requested_styles[@]}"; do
   replace_config_value myTypesettingStyle "$style" "$config" || exit 1
   replace_config_value myInstitutionalPageFontMode "$font_mode" "$config" || exit 1
   replace_config_value myLanguage "$language" "$config" || exit 1
+  [[ -z $degree ]] || replace_config_value myDegree "$degree" "$config" || exit 1
+  [[ -z $document_structure ]] || replace_config_value myDocumentStructure "$document_structure" "$config" || exit 1
 
   name="book-${style}${language_suffix}${font_suffix}"
   build_log="$output_directory/${name}-build.log"

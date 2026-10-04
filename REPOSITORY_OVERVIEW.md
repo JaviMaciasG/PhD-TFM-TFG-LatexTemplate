@@ -50,7 +50,8 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 - `Makefile` target `all` builds:
   - `00-README.pdf` via `pandoc`
   - Main `book` by delegating to `Book/Makefile`
-- The optional maintainer target `distrib` reads `RELEASE.txt` and delegates to `AdminScripts/go.build-distribution.sh` to create matching `.tgz` and `.zip` user archives from a structural allowlist.
+- The optional maintainer fragment provides the root-level PDF targets for `01-DOWNLOAD-GUIDE.pdf` and `TYPESETTING-STYLES-GUIDE.pdf`. These generated PDFs are preserved in the repository root rather than removed by `make clean`.
+- The optional maintainer target `distrib` reads `RELEASE.txt`, generates the rendered typesetting guide, and delegates to `AdminScripts/go.build-distribution.sh` to create matching `.tgz` and `.zip` user archives from a structural allowlist. The archives include `TYPESETTING-STYLES-GUIDE.pdf`, but exclude its Markdown source and `DOWNLOAD-GUIDE.md`.
 
 ### Book build pipeline
 
@@ -70,7 +71,8 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 - The root targets `anteproyecto`, `paperwork`, and `all-documents` optionally orchestrate these components; `paperwork` selects the directory matching the configured degree type.
 - The root target `sync-git-sources` invokes `sync-git-sources.sh` to update a user's Git index from the dependencies of the book, proposal, and paperwork; the script refuses to run in the marked official template repository.
 - Shared engine options and glossary integration live in `Config/latex-common.mk` and `Config/latexmkrc`.
-- `AdminScripts/build-book-typesetting-prototypes.sh` builds isolated full-book samples for the registered visual profiles. `AdminScripts/build-book-style-comparisons.sh` uses Python and PyMuPDF only for extracting, labelling, and composing comparison pages.
+- `AdminScripts/build-book-typesetting-prototypes.sh` builds isolated full-book samples for the registered visual profiles. `AdminScripts/build-book-style-comparisons.sh` uses Python and PyMuPDF to add neutral bilingual front matter and extract, label, and compose the comparison pages.
+- `AdminScripts/go.gen-public-sample-pdfs.sh` generates the reduced public Dropbox matrix and optionally publishes its PDFs plus `RELEASE.txt` after interactive confirmation. The maintainer-only `publish-dropbox` target also builds and publishes both validated release archives in the same confirmed operation. The older `go.gen-all-pdfs.sh` remains the exhaustive regression generator.
 
 ## Configuration architecture
 
@@ -128,7 +130,7 @@ Institution-specific implementations are grouped under `Book/cover/uah/`, `Book/
 - The project contains long-lived legacy material and historical comments (`$Id` tags, old workflows).
 - `Deprecated/` keeps earlier assets/tools, indicating strong backward compatibility concerns.
 - `TODO` still tracks pending improvements (e.g., acronym issues, Windows usage guidance).
-- User documentation is centralized in `README.md`, with additional examples embedded in the template chapters. `TYPESETTING-STYLES-GUIDE.md` is the authoritative usage, implementation, extension, validation, and attribution reference for the preliminary visual-style layer. Maintainer procedures for release packaging and adding degrees or universities are centralized in `MAINTAINERS.md`.
+- User documentation is centralized in `README.md`, with additional examples embedded in the template chapters. `TYPESETTING-STYLES-GUIDE.md` is the authoritative source for the preliminary visual-style layer, while user distributions contain its rendered `TYPESETTING-STYLES-GUIDE.pdf`. Maintainer procedures for release packaging and adding degrees or universities are centralized in `MAINTAINERS.md`.
 
 ## Strengths
 

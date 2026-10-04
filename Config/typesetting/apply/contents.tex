@@ -1,7 +1,20 @@
-% This layer formats the main TOC. LOF/LOT/custom lists retain their existing adapters.
-\renewcommand{\cfttoctitlefont}{\thesis@chapterfont}
-\setlength{\cftbeforetoctitleskip}{\thesis@chapterbefore}
-\setlength{\cftaftertoctitleskip}{\thesis@chapterafter}
+% Every generated list uses the same unnumbered title typography and spacing.
+% Entry formatting remains specific to the corresponding package/list.
+\newcommand{\thesis@makelisttitle}[1]{%
+  \vspace*{\thesis@chapterbefore}%
+  {\parindent\z@\raggedright\normalfont\interlinepenalty\@M
+    \thesis@chapterfont #1\par\nobreak\vskip\thesis@chapterafter}}
+\newenvironment{thesislisttitlestyle}
+  {\begingroup\let\@makeschapterhead\thesis@makelisttitle}
+  {\endgroup}
+\newcommand{\thesis@configuretoclofttitle}[1]{%
+  \@namedef{cft#1titlefont}{\thesis@chapterfont}%
+  \setlength{\@nameuse{cftbefore#1titleskip}}{\thesis@chapterbefore}%
+  \setlength{\@nameuse{cftafter#1titleskip}}{\thesis@chapterafter}}
+\thesis@configuretoclofttitle{toc}
+\thesis@configuretoclofttitle{lof}
+\thesis@configuretoclofttitle{lot}
+\thesis@configuretoclofttitle{vdo}
 \setlength{\cftbeforechapskip}{\thesis@tocchaptergap}
 \setlength{\cftbeforesecskip}{\thesis@tocentrygap}
 \setlength{\cftbeforesubsecskip}{\thesis@tocentrygap}

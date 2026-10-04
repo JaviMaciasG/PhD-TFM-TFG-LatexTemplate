@@ -30,6 +30,7 @@
 
 
 % Set language specific definitions...
+\begin{thesislisttitlestyle}
 \ifthenelse{\equal{\myLanguage}{english}}
 {
   \printglossary[type=symbols,style=long,nonumberlist=true,title=List of Symbols,toctitle=List of Symbols]
@@ -39,6 +40,7 @@
   \printglossary[type=symbols,style=long,nonumberlist=true,title=Lista de símbolos,title=Lista de símbolos,toctitle=Lista de símbolos]
   \addcontentsline{toc}{chapter}{Lista de símbolos}
 }
+\end{thesislisttitlestyle}
 
 
 %%% Local Variables:

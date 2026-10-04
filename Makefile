@@ -32,7 +32,6 @@ paperwork:
 all-documents: 00-README.pdf book anteproyecto paperwork
 
 clean:
-	$(RM) 00-README.pdf
 	$(MAKE) -C Book clean
 
 clean-paperwork:
@@ -52,7 +51,7 @@ sync-git-sources:
 
 help:
 	@printf '%s\n' \
-		'make                     Generate 00-README.pdf and the main book' \
+		'make                     Generate the README PDF and the main book' \
 		'make book                Generate the main book' \
 		'make anteproyecto        Generate the project proposal' \
 		'make paperwork           Generate paperwork matching myDegree' \

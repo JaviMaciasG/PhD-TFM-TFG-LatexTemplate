@@ -36,11 +36,35 @@ Set `RELEASE.txt` to the existing release/tag identifier and run:
 make distrib
 ```
 
-The optional `AdminScripts/maintainer.mk` fragment supplies this target only in repository checkouts. The target first generates `00-README.pdf`, then calls `AdminScripts/go.build-distribution.sh`. It creates `00-PhDTFMTFG-LaTeX-Template-UAH-<release>.tgz` and `.zip` with identical contents whose root directly contains the template files and directories. Because the fragment and `AdminScripts/` are absent from the archives, ordinary users do not see the maintainer-only target.
+The optional `AdminScripts/maintainer.mk` fragment supplies this target only in repository checkouts. The target first generates `00-README.pdf` and `TYPESETTING-STYLES-GUIDE.pdf`, then calls `AdminScripts/go.build-distribution.sh`. It creates `03-PhDTFMTFG-LaTeX-Template-UAH-<release>.tgz` and `.zip` with identical contents whose root directly contains the template files and directories. Because the fragment and `AdminScripts/` are absent from the archives, ordinary users do not see the maintainer-only target.
 
-The distribution is assembled from an explicit structural allowlist of tracked user sources. It contains `RELEASE.txt`, all registered degree and institutional variants, the book, anteproyecto, paperwork, user build files, the user-facing typesetting guide, the Git synchronization helper, and required input assets. It excludes maintainer Markdown files, `AdminScripts/`, `Deprecated/`, `normativas/`, `UsefulDocs/`, slide material, the registry compatibility audit, and generated PDFs other than `00-README.pdf`. The command validates mandatory and forbidden paths and compiles the default book, anteproyecto, and all three paperwork groups from an isolated staged copy before creating the archives. It does not commit, tag, push, or modify `RELEASE.txt`.
+The distribution is assembled from an explicit structural allowlist of tracked user sources. It contains `RELEASE.txt`, all registered degree and institutional variants, the book, anteproyecto, paperwork, user build files, `00-README.pdf`, the rendered user-facing `TYPESETTING-STYLES-GUIDE.pdf`, the Git synchronization helper, and required input assets. It excludes `DOWNLOAD-GUIDE.md`, the source `TYPESETTING-STYLES-GUIDE.md`, maintainer Markdown files, `AdminScripts/`, `Deprecated/`, `normativas/`, `UsefulDocs/`, slide material, the registry compatibility audit, and other generated PDFs. The command validates mandatory and forbidden paths and compiles the default book, anteproyecto, and all three paperwork groups from an isolated staged copy before creating the archives. It does not commit, tag, push, modify `RELEASE.txt`, or remove the generated root-level documentation PDFs.
 
 Before publishing, start from a clean worktree, confirm that `RELEASE.txt` matches the intended Git tag, run the complete PDF regression generation, run `make distrib`, inspect both archives, and verify that they unpack and compile in a clean directory.
+
+## Generating the public Dropbox examples
+
+Run `make public-samples`, or invoke `AdminScripts/go.gen-public-sample-pdfs.sh` directly from any directory, to generate the deliberately reduced set of complete public examples documented in `DOWNLOAD-GUIDE.md`. The script uses isolated builds and does not rewrite the working `Config/myconfig.tex`. It also generates `00-README.pdf`, `01-DOWNLOAD-GUIDE.pdf` and the bilingual `02-TYPESETTING-STYLES.pdf`, continues after an individual sample failure, and refuses to offer publication unless every expected PDF exists. The comparison is built deterministically from Spanish GIEC sources for every registered style; it does not reuse possibly stale prototype PDFs.
+
+At the end, the script asks whether the generated PDFs and `RELEASE.txt` should be copied to `$HOME/Dropbox/PhDTFMTFG-LaTeX-Template`. If copying is requested and the destination already contains top-level PDF files, it lists them and asks separately whether they should be removed. Review that list carefully: accepting the second prompt deletes those existing PDFs, while declining it preserves unrelated or older PDF files and overwrites only matching generated filenames. Use `--destination PATH` when invoking the script directly to select another directory.
+
+To perform the complete publication in one operation, run:
+
+```bash
+make publish-dropbox
+```
+
+This maintainer-only target first runs the validated `distrib` target and then generates the public examples. It lists and asks for confirmation before publishing the ten PDFs, both release archives and `RELEASE.txt`. It separately offers to remove the existing top-level PDFs and matching template ZIP/TGZ archives before installing the new set. Declining that cleanup preserves older files while still overwriting files with identical names.
+
+The destination defaults to `$HOME/Dropbox/PhDTFMTFG-LaTeX-Template`. Override it without editing tracked files when necessary:
+
+```bash
+make publish-dropbox DROPBOX_DISTRIBUTION_DIR=/path/to/distribution-folder
+```
+
+The target and its local destination are defined in `AdminScripts/maintainer.mk`, which is deliberately omitted from user ZIP/TGZ distributions.
+
+Keep `AdminScripts/go.gen-all-pdfs.sh` as the exhaustive degree/language/PhD-structure regression generator; it is no longer the publication set. Update `DOWNLOAD-GUIDE.md` and the sample matrix in `go.gen-public-sample-pdfs.sh` together whenever a published example changes.
 
 ## How to add degrees and universities
 

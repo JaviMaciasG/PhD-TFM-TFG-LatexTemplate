@@ -9,8 +9,9 @@ if [[ -z $release || $release == */* || $release == *' '* ]]; then
   exit 1
 fi
 [[ -f 00-README.pdf ]] || { echo "ERROR: 00-README.pdf is missing; run make 00-README.pdf first." >&2; exit 1; }
+[[ -f TYPESETTING-STYLES-GUIDE.pdf ]] || { echo "ERROR: TYPESETTING-STYLES-GUIDE.pdf is missing; run make TYPESETTING-STYLES-GUIDE.pdf first." >&2; exit 1; }
 
-base="00-PhDTFMTFG-LaTeX-Template-UAH-$release"
+base="03-PhDTFMTFG-LaTeX-Template-UAH-$release"
 temporary_directory=$(mktemp -d)
 trap 'rm -rf "$temporary_directory"' EXIT
 stage="$temporary_directory/stage"
@@ -24,7 +25,6 @@ mkdir -p "$stage"
     LICENSE \
     Makefile \
     RELEASE.txt \
-    TYPESETTING-STYLES-GUIDE.md \
     sync-git-sources.sh
   git ls-files -- Anteproyecto Book Config PapeleoTFG PapeleoTFM PapeleoPHD
 } | while IFS= read -r file; do
@@ -39,7 +39,7 @@ mkdir -p "$stage"
   esac
   printf '%s\n' "$file"
 done > "$manifest"
-printf '%s\n' 00-README.pdf >> "$manifest"
+printf '%s\n' 00-README.pdf TYPESETTING-STYLES-GUIDE.pdf >> "$manifest"
 LC_ALL=C sort -u -o "$manifest" "$manifest"
 
 while IFS= read -r file; do
@@ -48,7 +48,7 @@ while IFS= read -r file; do
   cp -p -- "$file" "$stage/$file"
 done < "$manifest"
 
-for required_file in RELEASE.txt Makefile TYPESETTING-STYLES-GUIDE.md sync-git-sources.sh Book/book.tex Config/myconfig.tex; do
+for required_file in 00-README.pdf RELEASE.txt Makefile TYPESETTING-STYLES-GUIDE.pdf sync-git-sources.sh Book/book.tex Config/myconfig.tex; do
   [[ -f $stage/$required_file ]] || { echo "ERROR: required distribution file is missing: $required_file" >&2; exit 1; }
 done
 

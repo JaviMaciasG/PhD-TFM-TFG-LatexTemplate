@@ -544,6 +544,7 @@ xcuserdata/
 
 # Zipped files with the template distribution
 00*zip
+03*zip
 00*tgz
 
 # UAH template specifics
@@ -561,6 +562,9 @@ pdf_svg_done
 *.tgz
 
 00-README.pdf
+00-DOWNLOAD-GUIDE.pdf
+01-DOWNLOAD-GUIDE.pdf
+TYPESETTING-STYLES-GUIDE.pdf
 
 ## Generated documents and repository-specific temporary files
 /Anteproyecto/*.pdf
@@ -574,6 +578,7 @@ pdf_svg_done
 /Book/book-flatten-diff.pdf
 /Book/*MaciasGuarasa-Javier*.pdf
 /Book/book-latex.zip
+/Book/public-samples/
 /Book/SampleTypesettings/
 /Book/typesetting-prototypes/
 /Book/book-style-comparisons.pdf
