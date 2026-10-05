@@ -1,0 +1,77 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Annex IV to the EPS-UAH TFM regulations:
+% Request for an extension of the TFM assignment.
+%
+% The layout follows the official "Anexo IV - Solicitud de prórroga de TFM"
+% form and reuses the corresponding values defined in Config/myconfig.tex.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\input{../Config/postamble.tex}
+
+% Annex IV is an administrative form with its own fixed page layout.
+\geometry{a4paper,left=2.75cm,right=2.75cm,top=3.10cm,bottom=2.8cm}
+
+% The official form uses a sans-serif appearance.
+\renewcommand{\familydefault}{\sfdefault}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\thispagestyle{empty}
+
+% Set language-dependent degree/work-type variables after \begin{document},
+% consistently with the rest of the template.
+\input{../Config/setlanguagedependentissues.tex}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\fontsize{11}{16}\selectfont
+
+\textbf{Anexo IV -- Solicitud de prórroga de TFM.}
+
+\vspace{1.45cm}
+
+\wordDonOrDonaAutor{} \myAuthorFullName{}, solicita la prórroga para realizar el
+Trabajo Fin de Máster Universitario:
+
+\vspace{0.55cm}
+
+``\myBookTitleSpanish''
+
+\vspace{0.55cm}
+
+durante el curso académico \myThesisAcademicYear{} con la autorización de
+\wordDonOrDonaTutor{} \myAcademicTutorFullName{}, \wordDirectorOrdirectora{} del TFM%
+\ifthenelse{\equal{\myCoTutorFullName}{}}%
+  {.}%
+  {, y de \wordDonOrDonaCoTutor{} \myCoTutorFullName{},
+   \wordCoDirectorOrCoDirectora{} del TFM (si procede).}
+
+\vspace{3.0cm}
+
+Firmado:
+
+\vspace{1.45cm}
+
+\begin{minipage}[t]{0.58\textwidth}
+\centering
+\expandafter\makefirstuc\expandafter{\wordDirectorOrdirectora}%
+\ifthenelse{\equal{\myCoTutorFullName}{}}{}{ y \wordCoDirectorOrCoDirectora}
+\end{minipage}%
+\begin{minipage}[t]{0.42\textwidth}
+\centering
+Estudiante
+\end{minipage}
+
+\end{document}
