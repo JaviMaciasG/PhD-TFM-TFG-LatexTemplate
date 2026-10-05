@@ -9,8 +9,9 @@ AUTHORIZATION_DOCUMENTS := \
 	TFG-AutorizacionTutorPubAbierto \
 	TFG-AutorizacionTutorExtranjeroPubAbierto
 EVALUATION_DOCUMENTS := \
-	TFG-InformeTutorYRubrica \
-	TFG-ActaYRubricaDefensa
+	TFG-InformeTutorYRubrica-EPS-UAH \
+	TFG-ActaYRubricaDefensa-EPS-UAH \
+	TFG-InformeTutorPlagio-UAH
 DOCUMENTS := $(AUTHORIZATION_DOCUMENTS) $(EVALUATION_DOCUMENTS)
 PDFFILES := $(addsuffix .pdf,$(DOCUMENTS))
 TEXFILES := $(addsuffix .tex,$(DOCUMENTS))

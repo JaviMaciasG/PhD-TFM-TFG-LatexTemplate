@@ -1,0 +1,129 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Report for the Final Degree Project (TFG) Advisor
+%
+% Based on the structure of anteproyecto.tex
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,a4paper,oneside]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Preamble and configuration section
+%
+\input{../Config/preamble.tex}    % DO NOT TOUCH THIS LINE. You can edit
+                                  % the file to modify some default settings
+
+\input{../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
+                                  % to set your specific settings (related
+                                  % to the document language, your degree,
+                                  % document details (such as title, author
+                                  % (you), your email, name of the tribunal
+                                  % members, document year, keyword and
+                                  % palabras clave) and link colors), and
+                                  % define your commonly used commands
+                                  % (some examples are provided).
+
+\input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
+% "postamble" is not a valid word... :-)
+
+%\usepackage[table]{xcolor}   % for \columncolor
+%\usepackage{array}           % for m‐column spec
+\usepackage{booktabs}        % nicer rules (optional)
+
+\newcolumntype{M}[1]{%
+  >{\cellcolor[HTML]{CCCCCC}\raggedright\arraybackslash}%
+  m{#1}%
+}
+\setlength{\extrarowheight}{0pt}
+
+%\setlength{\extrarowheight}{0.8em}
+
+
+%
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\title{Informe del Tutor Académico y Rúbrica}  % Title of the report
+\date{\today}                                  % Date of the report
+\author{\myAcademicTutorFullName}              % Advisor's name
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Let's start with the real stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN within-document configuration, frontpage and cover pages generation
+%
+\input{../Config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
+%
+% END within-document configuration, frontpage and cover pages generation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Report content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{TFG-SeccionInformePlagio-UAH.tex}
+
+\newpage
+
+\thispagestyle{plain}
+
+%\section*{\normalsize \MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}
+
+\noindent
+\begin{tabular}{|M{\textwidth}|}
+\hline
+\textbf{\small \MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}\vspace*{-5pt}\\
+\hline
+\end{tabular}
+
+
+
+\begin{description}
+  \item[Nombre:] \myAcademicTutorFullName
+  \item[Cargo:] \myAcademicTutorPosition
+  \item[Correo electrónico:] \myAcademicTutorEmail
+  \item[FIRMA:]
+
+\end{description}
+
+\vspace{2.25cm}
+
+\ifthenelse{\equal{\myCoTutorFullName}{}}
+{
+}
+{
+%\section*{\normalsize \MakeUppercase{\wordCoTutorOrCoTutora}}
+
+\noindent
+\begin{tabular}{|M{\textwidth}|}
+\hline
+\textbf{\small \MakeUppercase{\wordCoTutorOrCoTutora}}\vspace*{-5.5pt}\\
+\hline
+\end{tabular}
+
+
+\begin{description}
+  \item[Nombre:] \myCoTutorFullName
+  \item[Cargo:] \myCoTutorPosition
+  \item[Correo electrónico:] \myCoTutorEmail
+  \item[FIRMA:]
+\end{description}
+}
+
+\vspace{2.25cm}
+
+
+\noindent En Alcalá de Henares a la fecha de la firma digital % \myThesisDefenseDate
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END Report content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
