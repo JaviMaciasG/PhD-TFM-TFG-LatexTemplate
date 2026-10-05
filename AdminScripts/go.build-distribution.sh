@@ -29,7 +29,7 @@ mkdir -p "$stage"
   git ls-files -- Anteproyecto Book Config PapeleoTFG PapeleoTFM PapeleoPHD
 } | while IFS= read -r file; do
   case "$file" in
-    TODO|*/TODO|Book/slides/*|Config/DEGREE_REGISTRY_COMPATIBILITY.md|Config/preamble-slides.tex) continue ;;
+    TODO|*/TODO|Book/slides/*|Config/DEGREE_REGISTRY_COMPATIBILITY.md|Config/myconfig-phd.tex|Config/preamble-slides.tex) continue ;;
     *.pdf)
       case "$file" in
         Book/additional/*.pdf|Book/cover/*.pdf|Book/cover/*/*.pdf|Book/diagrams/*.pdf|Book/figures/*.pdf|Book/letters/*.pdf|Book/logos/*.pdf|Book/logos/*/*.pdf|Book/logos/*/*/*.pdf|Book/portadaTFGs/*.pdf|Book/publications/*.pdf) ;;

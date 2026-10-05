@@ -1,0 +1,62 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Informe previo de valoración por miembro del tribunal
+% Universidad de Alcalá - Escuela de Doctorado
+%
+% Generated from the public EDUAH form / guidance current in October 2026.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\InputIfFileExists{../Config/myconfig-phd.tex}{}{}
+\input{../Config/postamble.tex}
+
+% Local helpers. They intentionally live in this document, not in Config/.
+\newcommand{\PhDFormSection}[1]{%
+  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
+\newcommand{\PhDFormField}[2]{%
+  \noindent\textbf{#1}: #2\par}
+\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
+\newcommand{\PhDNA}{N/A}
+
+\providecommand{\myTribunalReportMemberFullName}{\PhDNA}
+\providecommand{\myTribunalReportMemberRole}{\PhDNA}
+\providecommand{\myTribunalReportAssessment}{\PhDNA}
+\providecommand{\myTribunalReportDecision}{FAVORABLE} % FAVORABLE or DESFAVORABLE
+
+
+\title{INFORME PREVIO DE VALORACIÓN POR MIEMBRO DEL TRIBUNAL}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\PhDFormSection{Datos de la tesis}
+\PhDFormField{Doctorando/a}{\myAuthorFullName}
+\PhDFormField{Título de la tesis}{\myBookTitle}
+\PhDFormField{Programa de Doctorado}{\myPhDProgram}
+\PhDFormField{Miembro del tribunal}{\myTribunalReportMemberFullName}
+\PhDFormField{Figura en el tribunal}{\myTribunalReportMemberRole}
+
+\PhDFormSection{Informe individual y razonado}
+A partir del nombramiento del tribunal, cada miembro debe emitir un informe individual y razonado en el que valore la tesis doctoral y apruebe o desapruebe la misma.
+
+\vspace{0.4cm}
+\noindent\textbf{Valoración:}\par
+\myTribunalReportAssessment
+\vspace{5cm}
+
+\noindent\textbf{Resultado del informe:} \myTribunalReportDecision
+
+\vfill
+\begin{flushright}
+\myPaperworkDate\\[1.5cm]
+Fdo.: \myTribunalReportMemberFullName
+\end{flushright}
+
+
+\end{document}

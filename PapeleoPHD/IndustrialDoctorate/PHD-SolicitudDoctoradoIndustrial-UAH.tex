@@ -1,0 +1,105 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Solicitud de Mención de Doctorado Industrial
+% Universidad de Alcalá - Escuela de Doctorado
+%
+% Generated from the public EDUAH form / guidance current in October 2026.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\InputIfFileExists{../Config/myconfig-phd.tex}{}{}
+\input{../Config/postamble.tex}
+
+% Local helpers. They intentionally live in this document, not in Config/.
+\newcommand{\PhDFormSection}[1]{%
+  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
+\newcommand{\PhDFormField}[2]{%
+  \noindent\textbf{#1}: #2\par}
+\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
+\newcommand{\PhDNA}{N/A}
+
+\providecommand{\myPhDTutorFullName}{\myAcademicTutorFullName}
+\providecommand{\myPhDTutorGender}{\myAcademicTutorGender}
+\providecommand{\myPhDTutorDNI}{\myAcademicTutorDNI}
+\providecommand{\myPhDTutorEmail}{\myAcademicTutorEmail}
+\providecommand{\myPhDTutorDepartmentOrInstitution}{\myAcademicTutorDepartmentOrInstitution}
+\ifthenelse{\equal{\myPhDTutorGender}{male}}{%
+  \newcommand{\wordPhDTutor}{tutor}%
+  \newcommand{\wordPhDTutorTitle}{Tutor}%
+  \newcommand{\wordDonOrDonaPhDTutor}{D.}%
+}{%
+  \newcommand{\wordPhDTutor}{tutora}%
+  \newcommand{\wordPhDTutorTitle}{Tutora}%
+  \newcommand{\wordDonOrDonaPhDTutor}{Dª.}%
+}
+\providecommand{\myIndustrialEntityName}{\PhDNA}
+\providecommand{\myIndustrialEntityResponsibleFullName}{\PhDNA}
+\providecommand{\myIndustrialEntityResponsiblePosition}{\PhDNA}
+\providecommand{\myIndustrialEntityResponsibleEmail}{\PhDNA}
+\providecommand{\myIndustrialProjectTitle}{\PhDNA}
+\providecommand{\myIndustrialProjectDescription}{\PhDNA}
+\providecommand{\myIndustrialProjectThesisConnection}{\PhDNA}
+\providecommand{\myIndustrialProjectObjectives}{\PhDNA}
+\providecommand{\myIndustrialProjectWorkPlan}{\PhDNA}
+\providecommand{\myIndustrialProjectExpectedResults}{\PhDNA}
+\providecommand{\myIndustrialEntityInterest}{\PhDNA}
+
+
+\title{SOLICITUD DE AUTORIZACIÓN PARA LA OBTENCIÓN DE LA MENCIÓN DE DOCTORADO INDUSTRIAL}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\PhDFormSection{Datos personales del doctorando/a}
+\PhDFormField{Apellidos y nombre}{\myAuthorFullName}
+\PhDFormField{DNI/Pasaporte}{\myAuthorDNI}
+\PhDFormField{Teléfono/s}{\myAuthorTelephone}
+\PhDFormField{E-mail}{\myAuthorEmail}
+\PhDFormField{Programa de Doctorado}{\myPhDProgram}
+
+\PhDFormSection{Solicitud}
+SOLICITA a la Comisión Académica del programa autorización para optar a la Mención Industrial en el título de Doctor o Doctora, para lo cual presenta la documentación correspondiente:\par
+\begin{itemize}[leftmargin=0.8cm]
+\item Copia del contrato.
+\item Memoria científico-técnica del proyecto de investigación industrial o experimental y su conexión con la tesis doctoral.
+\item Acuerdo de confidencialidad con la empresa, si existiese.
+\item Convenio entre la entidad, empresa o administración pública y la Universidad.
+\end{itemize}
+
+\PhDFormField{Empresa / Administración Pública}{\myIndustrialEntityName}
+\PhDFormField{Persona responsable en la Empresa/Administración Pública}{\myIndustrialEntityResponsibleFullName}
+\PhDFormField{Director/a de tesis en la UAH}{\myAcademicTutorFullName}
+\PhDFormField{Título de la tesis}{\myBookTitle}
+
+\vspace{0.5cm}
+\begin{tabularx}{\textwidth}{X X}
+\centering Director/a de la tesis en la UAH & \centering\arraybackslash Responsable de la Empresa / Administración Pública\\[1.8cm]
+Fdo.: \myAcademicTutorFullName & Fdo.: \myIndustrialEntityResponsibleFullName\\[0.8cm]
+\centering Tutor/a en la UAH & \centering\arraybackslash Doctorando/a\\[1.8cm]
+Fdo.: \myPhDTutorFullName & Fdo.: \myAuthorFullName
+\end{tabularx}
+
+\newpage
+\PhDFormSection{Informe de la Comisión Académica}
+La Comisión Académica del programa, reunida en sesión de fecha \PhDNA{}, acuerda informar:\par
+$\Box$ FAVORABLE \qquad $\Box$ DESFAVORABLE\par
+\textbf{Motivos:}\par\vspace{3cm}
+\begin{flushright}El/La Coordinador/a del Programa de Doctorado\\[1.2cm]Fdo.: \PhDNA\end{flushright}
+
+\PhDFormSection{Informe de la Escuela de Doctorado}
+$\Box$ FAVORABLE \qquad $\Box$ DESFAVORABLE\par
+\textbf{Motivos:}\par\vspace{3cm}
+\begin{flushright}El Director de la Escuela de Doctorado\\[1.2cm]Fdo.: \PhDNA\end{flushright}
+\vfill
+{\scriptsize
+\noindent\textbf{Protección de datos.} Los datos personales recogidos serán tratados por la Universidad de Alcalá para gestionar la solicitud o trámite correspondiente, así como con fines estadísticos, de acuerdo con la normativa aplicable. El órgano responsable del tratamiento es la Secretaría General de la Universidad. Los derechos correspondientes pueden ejercerse ante la Delegada de Protección de Datos de la Universidad de Alcalá. Para información detallada debe consultarse la Política de Privacidad de la Universidad.
+}
+
+
+\end{document}

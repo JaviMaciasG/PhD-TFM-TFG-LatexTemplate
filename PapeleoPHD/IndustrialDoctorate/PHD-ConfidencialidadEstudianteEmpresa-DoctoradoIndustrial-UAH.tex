@@ -1,0 +1,91 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Acuerdo de confidencialidad estudiante-entidad para Doctorado Industrial
+% Universidad de Alcalá - Escuela de Doctorado
+%
+% Generated from the public EDUAH form / guidance current in October 2026.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\InputIfFileExists{../Config/myconfig-phd.tex}{}{}
+\input{../Config/postamble.tex}
+
+% Local helpers. They intentionally live in this document, not in Config/.
+\newcommand{\PhDFormSection}[1]{%
+  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
+\newcommand{\PhDFormField}[2]{%
+  \noindent\textbf{#1}: #2\par}
+\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
+\newcommand{\PhDNA}{N/A}
+
+\providecommand{\myPhDTutorFullName}{\myAcademicTutorFullName}
+\providecommand{\myPhDTutorGender}{\myAcademicTutorGender}
+\providecommand{\myPhDTutorDNI}{\myAcademicTutorDNI}
+\providecommand{\myPhDTutorEmail}{\myAcademicTutorEmail}
+\providecommand{\myPhDTutorDepartmentOrInstitution}{\myAcademicTutorDepartmentOrInstitution}
+\ifthenelse{\equal{\myPhDTutorGender}{male}}{%
+  \newcommand{\wordPhDTutor}{tutor}%
+  \newcommand{\wordPhDTutorTitle}{Tutor}%
+  \newcommand{\wordDonOrDonaPhDTutor}{D.}%
+}{%
+  \newcommand{\wordPhDTutor}{tutora}%
+  \newcommand{\wordPhDTutorTitle}{Tutora}%
+  \newcommand{\wordDonOrDonaPhDTutor}{Dª.}%
+}
+\providecommand{\myIndustrialEntityName}{\PhDNA}
+\providecommand{\myIndustrialEntityResponsibleFullName}{\PhDNA}
+\providecommand{\myIndustrialEntityResponsiblePosition}{\PhDNA}
+\providecommand{\myIndustrialEntityResponsibleEmail}{\PhDNA}
+\providecommand{\myIndustrialProjectTitle}{\PhDNA}
+\providecommand{\myIndustrialProjectDescription}{\PhDNA}
+\providecommand{\myIndustrialProjectThesisConnection}{\PhDNA}
+\providecommand{\myIndustrialProjectObjectives}{\PhDNA}
+\providecommand{\myIndustrialProjectWorkPlan}{\PhDNA}
+\providecommand{\myIndustrialProjectExpectedResults}{\PhDNA}
+\providecommand{\myIndustrialEntityInterest}{\PhDNA}
+\providecommand{\myIndustrialConfidentialInformationDescription}{\PhDNA}
+\providecommand{\myIndustrialConfidentialityPeriod}{\PhDNA}
+
+
+\title{ACUERDO DE CONFIDENCIALIDAD ENTRE DOCTORANDO/A Y ENTIDAD PARA DOCTORADO INDUSTRIAL}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\PhDFormSection{Partes}
+\PhDFormField{Doctorando/a}{\myAuthorFullName}
+\PhDFormField{DNI/Pasaporte}{\myAuthorDNI}
+\PhDFormField{Entidad / Empresa / Administración Pública}{\myIndustrialEntityName}
+\PhDFormField{Representante / responsable}{\myIndustrialEntityResponsibleFullName}
+\PhDFormField{Proyecto / tesis}{\myBookTitle}
+
+\PhDFormSection{Objeto del acuerdo}
+Las partes acuerdan regular el uso de la información confidencial a la que el/la doctorando/a tenga acceso durante el desarrollo del proyecto de investigación industrial o experimental y de la tesis doctoral, así como la difusión de los resultados de la investigación.
+
+\PhDFormField{Información sujeta a confidencialidad}{\myIndustrialConfidentialInformationDescription}
+\PhDFormField{Período de confidencialidad}{\myIndustrialConfidentialityPeriod}
+
+\PhDFormSection{Compromisos}
+\begin{enumerate}[leftmargin=0.8cm]
+\item Utilizar la información confidencial exclusivamente para las finalidades vinculadas al proyecto y a la tesis doctoral.
+\item No comunicar ni poner a disposición de terceros la información confidencial sin autorización previa de la parte que corresponda.
+\item Adoptar medidas razonables para evitar accesos, copias o divulgaciones no autorizadas.
+\item Someter la difusión de resultados, publicaciones, comunicaciones o cualquier otra forma de explotación a las condiciones acordadas por las partes y a los derechos de propiedad industrial e intelectual aplicables.
+\item Comunicar cualquier incidencia que pueda comprometer la confidencialidad de la información.
+\end{enumerate}
+
+\vfill
+\begin{tabularx}{\textwidth}{X X}
+\centering El/La doctorando/a & \centering\arraybackslash Por la entidad / empresa\\[2cm]
+Fdo.: \myAuthorFullName & Fdo.: \myIndustrialEntityResponsibleFullName
+\end{tabularx}
+\begin{center}\myPaperworkDate\end{center}
+
+
+\end{document}

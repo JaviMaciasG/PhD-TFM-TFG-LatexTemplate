@@ -1,0 +1,88 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Certificado de estancia de investigación
+% Universidad de Alcalá - Escuela de Doctorado
+%
+% Generated from the public EDUAH form / guidance current in October 2026.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\InputIfFileExists{../Config/myconfig-phd.tex}{}{}
+\input{../Config/postamble.tex}
+
+% Local helpers. They intentionally live in this document, not in Config/.
+\newcommand{\PhDFormSection}[1]{%
+  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
+\newcommand{\PhDFormField}[2]{%
+  \noindent\textbf{#1}: #2\par}
+\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
+\newcommand{\PhDNA}{N/A}
+
+\providecommand{\myResearchStayInstitution}{\PhDNA}
+\providecommand{\myResearchStayDepartment}{\PhDNA}
+\providecommand{\myResearchStayResearchCenter}{\PhDNA}
+\providecommand{\myResearchStayCity}{\PhDNA}
+\providecommand{\myResearchStayCountry}{\PhDNA}
+\providecommand{\myResearchStaySupervisorFullName}{\PhDNA}
+\providecommand{\myResearchStaySupervisorPosition}{\PhDNA}
+\providecommand{\myResearchStaySupervisorEmail}{\PhDNA}
+\providecommand{\myResearchStayStartDate}{\PhDNA}
+\providecommand{\myResearchStayEndDate}{\PhDNA}
+\providecommand{\myResearchStayResearchTitle}{\PhDNA}
+\providecommand{\myResearchStayActivityDescription}{\PhDNA}
+\providecommand{\myResearchStayPhDYear}{\PhDNA}
+\providecommand{\myResearchStayCotutelle}{No}
+\providecommand{\myResearchStayInternationalMention}{No}
+\providecommand{\myResearchStayProjectAttached}{Sí}
+\providecommand{\myResearchStayAgreementAttached}{No}
+\providecommand{\myResearchStayWorkPlan}{\PhDNA}
+\providecommand{\myResearchStayDoctoralEvaluation}{\PhDNA}
+\providecommand{\myResearchStayDirectorEvaluation}{\PhDNA}
+
+
+\title{CERTIFICADO DE ESTANCIA DE INVESTIGACIÓN / CERTIFICATE OF RESEARCH STAY}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{center}
+\textbf{Certificado de estancia en el centro de investigación}\\
+\textit{Certificate of stay in a research institution}
+\end{center}
+
+\PhDFormField{Año / Year}{\myThesisDefenseYear}
+\PhDFormSection{Persona solicitante / Applicant}
+\PhDFormField{Nombre / Name}{\myAuthorFullName}
+\PhDFormField{NIF / National Identity Card}{\myAuthorDNI}
+
+\PhDFormSection{Centro en el que se realiza la estancia / Host institution}
+\PhDFormField{Nombre / Name}{\myResearchStayInstitution}
+\PhDFormField{Dirección / Address}{\myResearchStayDepartment}
+\PhDFormField{Localidad / Country}{\myResearchStayCity, \myResearchStayCountry}
+
+\PhDFormSection{Investigador/a responsable / Person in charge}
+\PhDFormField{Nombre / Name}{\myResearchStaySupervisorFullName}
+\PhDFormField{Categoría / Post}{\myResearchStaySupervisorPosition}
+
+\vspace{0.7cm}
+\textbf{CERTIFICO QUE EL/LA INVESTIGADOR/A ARRIBA MENCIONADO/A HA REALIZADO UNA ESTANCIA EN ESTE CENTRO EN LAS SIGUIENTES FECHAS:}\par
+\textit{THIS IS TO CERTIFY THAT THE ABOVE MENTIONED RESEARCHER HAS PERFORMED A STAY IN THIS INSTITUTION BETWEEN THE FOLLOWING DATES:}
+
+\vspace{0.5cm}
+\PhDFormField{Desde / From}{\myResearchStayStartDate}
+\PhDFormField{Hasta / To}{\myResearchStayEndDate}
+
+\vfill
+\begin{flushright}
+\textbf{FIRMA / SIGNATURE}\\[2cm]
+\myResearchStaySupervisorFullName
+\end{flushright}
+
+
+\end{document}

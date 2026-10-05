@@ -1,0 +1,106 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Memoria científico-técnica para Mención de Doctorado Industrial
+% Universidad de Alcalá - Escuela de Doctorado
+%
+% Generated from the public EDUAH form / guidance current in October 2026.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\InputIfFileExists{../Config/myconfig-phd.tex}{}{}
+\input{../Config/postamble.tex}
+
+% Local helpers. They intentionally live in this document, not in Config/.
+\newcommand{\PhDFormSection}[1]{%
+  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
+\newcommand{\PhDFormField}[2]{%
+  \noindent\textbf{#1}: #2\par}
+\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
+\newcommand{\PhDNA}{N/A}
+
+\providecommand{\myPhDTutorFullName}{\myAcademicTutorFullName}
+\providecommand{\myPhDTutorGender}{\myAcademicTutorGender}
+\providecommand{\myPhDTutorDNI}{\myAcademicTutorDNI}
+\providecommand{\myPhDTutorEmail}{\myAcademicTutorEmail}
+\providecommand{\myPhDTutorDepartmentOrInstitution}{\myAcademicTutorDepartmentOrInstitution}
+\ifthenelse{\equal{\myPhDTutorGender}{male}}{%
+  \newcommand{\wordPhDTutor}{tutor}%
+  \newcommand{\wordPhDTutorTitle}{Tutor}%
+  \newcommand{\wordDonOrDonaPhDTutor}{D.}%
+}{%
+  \newcommand{\wordPhDTutor}{tutora}%
+  \newcommand{\wordPhDTutorTitle}{Tutora}%
+  \newcommand{\wordDonOrDonaPhDTutor}{Dª.}%
+}
+\providecommand{\myIndustrialEntityName}{\PhDNA}
+\providecommand{\myIndustrialEntityResponsibleFullName}{\PhDNA}
+\providecommand{\myIndustrialEntityResponsiblePosition}{\PhDNA}
+\providecommand{\myIndustrialEntityResponsibleEmail}{\PhDNA}
+\providecommand{\myIndustrialProjectTitle}{\PhDNA}
+\providecommand{\myIndustrialProjectDescription}{\PhDNA}
+\providecommand{\myIndustrialProjectThesisConnection}{\PhDNA}
+\providecommand{\myIndustrialProjectObjectives}{\PhDNA}
+\providecommand{\myIndustrialProjectWorkPlan}{\PhDNA}
+\providecommand{\myIndustrialProjectExpectedResults}{\PhDNA}
+\providecommand{\myIndustrialEntityInterest}{\PhDNA}
+
+
+\title{MEMORIA CIENTÍFICO-TÉCNICA PARA LA SOLICITUD DE LA MENCIÓN DE DOCTORADO INDUSTRIAL}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\PhDFormSection{Datos del proyecto y de la tesis}
+\PhDFormField{Doctorando/a}{\myAuthorFullName}
+\PhDFormField{Programa de Doctorado}{\myPhDProgram}
+\PhDFormField{Título de la tesis}{\myBookTitle}
+\PhDFormField{Entidad / Empresa / Administración Pública}{\myIndustrialEntityName}
+\PhDFormField{Persona responsable en la entidad}{\myIndustrialEntityResponsibleFullName}
+\PhDFormField{Director/a de tesis}{\myAcademicTutorFullName}
+\PhDFormField{Tutor/a UAH}{\myPhDTutorFullName}
+\PhDFormField{Título del proyecto de investigación industrial o experimental}{\myIndustrialProjectTitle}
+
+\PhDFormSection{1. Descripción científico-técnica del proyecto}
+\myIndustrialProjectDescription
+\vspace{4cm}
+
+\PhDFormSection{2. Relación directa entre el proyecto y la tesis doctoral}
+\myIndustrialProjectThesisConnection
+\vspace{4cm}
+
+\PhDFormSection{3. Objetivos científico-técnicos}
+\myIndustrialProjectObjectives
+\vspace{3cm}
+
+\PhDFormSection{4. Metodología y plan de trabajo}
+\myIndustrialProjectWorkPlan
+\vspace{4cm}
+
+\PhDFormSection{5. Resultados esperados}
+\myIndustrialProjectExpectedResults
+\vspace{3cm}
+
+\PhDFormSection{6. Interés de la entidad en el desarrollo del proyecto}
+\myIndustrialEntityInterest
+\vspace{3cm}
+
+\newpage
+\PhDFormSection{Validación y vistos buenos}
+La presente memoria científico-técnica pone de manifiesto la relación directa entre la tesis doctoral y la labor desarrollada por el/la doctorando/a en la entidad, empresa o administración pública, y recoge el interés de dicha entidad en el desarrollo del proyecto.
+
+\vspace{1cm}
+\begin{tabularx}{\textwidth}{X X}
+\centering Responsable de la entidad & \centering\arraybackslash Director/a de tesis\\[2cm]
+Fdo.: \myIndustrialEntityResponsibleFullName & Fdo.: \myAcademicTutorFullName\\[1cm]
+\centering Tutor/a UAH & \centering\arraybackslash Doctorando/a\\[2cm]
+Fdo.: \myPhDTutorFullName & Fdo.: \myAuthorFullName
+\end{tabularx}
+
+
+\end{document}

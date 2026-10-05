@@ -1,0 +1,107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Cambio o inclusión de dirección o tutoría
+% Universidad de Alcalá - Escuela de Doctorado
+%
+% Generated from the public EDUAH form / guidance current in October 2026.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\InputIfFileExists{../Config/myconfig-phd.tex}{}{}
+\input{../Config/postamble.tex}
+
+% Local helpers. They intentionally live in this document, not in Config/.
+\newcommand{\PhDFormSection}[1]{%
+  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
+\newcommand{\PhDFormField}[2]{%
+  \noindent\textbf{#1}: #2\par}
+\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
+\newcommand{\PhDNA}{N/A}
+
+\providecommand{\myPhDTutorFullName}{\myAcademicTutorFullName}
+\providecommand{\myPhDTutorGender}{\myAcademicTutorGender}
+\providecommand{\myPhDTutorDNI}{\myAcademicTutorDNI}
+\providecommand{\myPhDTutorEmail}{\myAcademicTutorEmail}
+\providecommand{\myPhDTutorDepartmentOrInstitution}{\myAcademicTutorDepartmentOrInstitution}
+\ifthenelse{\equal{\myPhDTutorGender}{male}}{%
+  \newcommand{\wordPhDTutor}{tutor}%
+  \newcommand{\wordPhDTutorTitle}{Tutor}%
+  \newcommand{\wordDonOrDonaPhDTutor}{D.}%
+}{%
+  \newcommand{\wordPhDTutor}{tutora}%
+  \newcommand{\wordPhDTutorTitle}{Tutora}%
+  \newcommand{\wordDonOrDonaPhDTutor}{Dª.}%
+}
+\providecommand{\myPhDChangeRole}{Director/a} % Director/a or Tutor/a
+\providecommand{\myPhDIncomingPersonFullName}{\PhDNA}
+\providecommand{\myPhDIncomingPersonDNI}{\PhDNA}
+\providecommand{\myPhDIncomingPersonEmail}{\PhDNA}
+\providecommand{\myPhDIncomingPersonDoctorate}{\PhDNA}
+\providecommand{\myPhDIncomingPersonDepartment}{\PhDNA}
+\providecommand{\myPhDIncomingPersonInstitution}{\PhDNA}
+\providecommand{\myPhDOutgoingPersonFullName}{\PhDNA}
+\providecommand{\myPhDChangeJustification}{\PhDNA}
+\providecommand{\myPhDIncomingBelongsToProgram}{No}
+\providecommand{\myPhDIncomingHasSexenio}{No}
+\providecommand{\myPhDIncomingEquivalentMerits}{No}
+
+
+\title{CAMBIO O INCLUSIÓN DE DIRECCIÓN O TUTORÍA DE TESIS}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\PhDFormSection{Doctorando/a}
+\begin{tabularx}{\textwidth}{|p{0.18\textwidth}|X|p{0.18\textwidth}|X|}\hline
+Apellidos y nombre & \myAuthorFullName & DNI/Pasaporte & \myAuthorDNI \\\hline
+Teléfono/s & \myAuthorTelephone & Correo electrónico & \myAuthorEmail \\\hline
+Programa & \multicolumn{3}{l|}{\myPhDProgram} \\\hline
+\end{tabularx}
+
+\PhDFormSection{Solicita}
+\PhDFormField{Cambio de}{\myPhDChangeRole}
+\PhDFormField{En su caso, sustituye a}{\myPhDOutgoingPersonFullName}
+\PhDFormField{Justificación}{\myPhDChangeJustification}
+
+\PhDFormSection{Datos de la persona entrante}
+\begin{tabularx}{\textwidth}{|p{0.30\textwidth}|X|}\hline
+Apellidos y nombre & \myPhDIncomingPersonFullName \\\hline
+DNI/Pasaporte & \myPhDIncomingPersonDNI \\\hline
+Correo electrónico & \myPhDIncomingPersonEmail \\\hline
+Doctor/a en & \myPhDIncomingPersonDoctorate \\\hline
+Departamento & \myPhDIncomingPersonDepartment \\\hline
+Universidad/Organismo/Institución & \myPhDIncomingPersonInstitution \\\hline
+Pertenece al plantel de profesores del programa & \myPhDIncomingBelongsToProgram \\\hline
+Perfil investigador afín y al menos un sexenio & \myPhDIncomingHasSexenio \\\hline
+Méritos equiparables & \myPhDIncomingEquivalentMerits \\\hline
+\end{tabularx}
+
+\PhDFormSection{Términos del compromiso documental y de buenas prácticas}
+Con carácter general, los firmantes declaran que conocen la normativa vigente reguladora de los estudios de doctorado y la normativa específica de la Universidad de Alcalá, así como las recomendaciones del Código de Buenas Prácticas de la EDUAH, y aceptan sus disposiciones.
+\begin{itemize}[leftmargin=0.8cm,itemsep=0.15cm]
+\item \textbf{Doctorando/a:} cumplir la normativa referente a propiedad intelectual e industrial, desarrollar el documento de actividades y el plan de investigación aprobados, seguir las indicaciones de tutoría y dirección y el procedimiento establecido en caso de conflicto.
+\item \textbf{Tutor/a:} diseñar y seguir las actividades del doctorando/a, orientarle en su formación, elaborar el informe anual correspondiente y comparecer ante la Comisión Académica si fuera requerido/a. Declara igualmente que no concurre en las situaciones de abstención por parentesco previstas en la normativa aplicable.
+\item \textbf{Director/a:} respetar la normativa de propiedad intelectual e industrial, supervisar el plan de investigación y la elaboración de la tesis, emitir el informe anual y comparecer ante la Comisión Académica si fuera requerido/a. Declara igualmente que no concurre en las situaciones de abstención por parentesco previstas en la normativa aplicable.
+\item \textbf{Universidad:} proporcionar los recursos que consten en el plan de investigación para la elaboración de la tesis doctoral.
+\end{itemize}
+
+\vspace{0.5cm}
+\begin{tabularx}{\textwidth}{X X X}
+\centering Doctor/a entrante & \centering Doctor/a saliente & \centering\arraybackslash Solicitante\\[2cm]
+Fdo.: \myPhDIncomingPersonFullName & Fdo.: \myPhDOutgoingPersonFullName & Fdo.: \myAuthorFullName
+\end{tabularx}
+
+\vspace{0.5cm}\noindent\textbf{COMISIÓN ACADÉMICA DEL PROGRAMA DE DOCTORADO EN \myPhDProgram}
+\vfill
+{\scriptsize
+\noindent\textbf{Protección de datos.} Los datos personales recogidos serán tratados por la Universidad de Alcalá para gestionar la solicitud o trámite correspondiente, así como con fines estadísticos, de acuerdo con la normativa aplicable. El órgano responsable del tratamiento es la Secretaría General de la Universidad. Los derechos correspondientes pueden ejercerse ante la Delegada de Protección de Datos de la Universidad de Alcalá. Para información detallada debe consultarse la Política de Privacidad de la Universidad.
+}
+
+
+\end{document}

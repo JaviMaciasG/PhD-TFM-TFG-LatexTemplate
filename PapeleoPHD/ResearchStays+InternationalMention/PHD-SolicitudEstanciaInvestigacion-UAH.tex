@@ -1,0 +1,87 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Solicitud de autorización de estancia de investigación
+% Universidad de Alcalá - Escuela de Doctorado
+%
+% Generated from the public EDUAH form / guidance current in October 2026.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\InputIfFileExists{../Config/myconfig-phd.tex}{}{}
+\input{../Config/postamble.tex}
+
+% Local helpers. They intentionally live in this document, not in Config/.
+\newcommand{\PhDFormSection}[1]{%
+  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
+\newcommand{\PhDFormField}[2]{%
+  \noindent\textbf{#1}: #2\par}
+\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
+\newcommand{\PhDNA}{N/A}
+
+\providecommand{\myResearchStayInstitution}{\PhDNA}
+\providecommand{\myResearchStayDepartment}{\PhDNA}
+\providecommand{\myResearchStayResearchCenter}{\PhDNA}
+\providecommand{\myResearchStayCity}{\PhDNA}
+\providecommand{\myResearchStayCountry}{\PhDNA}
+\providecommand{\myResearchStaySupervisorFullName}{\PhDNA}
+\providecommand{\myResearchStaySupervisorPosition}{\PhDNA}
+\providecommand{\myResearchStaySupervisorEmail}{\PhDNA}
+\providecommand{\myResearchStayStartDate}{\PhDNA}
+\providecommand{\myResearchStayEndDate}{\PhDNA}
+\providecommand{\myResearchStayResearchTitle}{\PhDNA}
+\providecommand{\myResearchStayActivityDescription}{\PhDNA}
+\providecommand{\myResearchStayPhDYear}{\PhDNA}
+\providecommand{\myResearchStayCotutelle}{No}
+\providecommand{\myResearchStayInternationalMention}{No}
+\providecommand{\myResearchStayProjectAttached}{Sí}
+\providecommand{\myResearchStayAgreementAttached}{No}
+\providecommand{\myResearchStayWorkPlan}{\PhDNA}
+\providecommand{\myResearchStayDoctoralEvaluation}{\PhDNA}
+\providecommand{\myResearchStayDirectorEvaluation}{\PhDNA}
+
+
+\title{SOLICITUD DE AUTORIZACIÓN DE ESTANCIA DE INVESTIGACIÓN}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\PhDFormSection{Datos del doctorando/a}
+\PhDFormField{Nombre y apellidos}{\myAuthorFullName}
+\PhDFormField{Programa de Doctorado}{\myPhDProgram}
+\PhDFormField{Título de la tesis}{\myBookTitle}
+
+\PhDFormSection{Datos de la estancia}
+\begin{tabularx}{\textwidth}{|p{0.32\textwidth}|X|}\hline
+Institución de destino & \myResearchStayInstitution \\\hline
+Departamento / laboratorio & \myResearchStayDepartment \\\hline
+Centro de investigación & \myResearchStayResearchCenter \\\hline
+País & \myResearchStayCountry \\\hline
+Investigador/a o profesor/a de contacto & \myResearchStaySupervisorFullName \\\hline
+Cargo & \myResearchStaySupervisorPosition \\\hline
+Correo electrónico & \myResearchStaySupervisorEmail \\\hline
+Fecha de inicio & \myResearchStayStartDate \\\hline
+Fecha de finalización & \myResearchStayEndDate \\\hline
+Título del trabajo de investigación a realizar & \myResearchStayResearchTitle \\\hline
+\end{tabularx}
+
+\PhDFormSection{Documentación que se adjunta}
+Proyecto formativo: \myResearchStayProjectAttached \qquad Convenio (si es preciso): \myResearchStayAgreementAttached
+
+\vspace{0.6cm}
+La Comisión Académica del Programa de Doctorado en \myPhDProgram{} autoriza la estancia de investigación y las actividades propuestas por el/la doctorando/a.
+
+\vfill
+\begin{flushright}
+Alcalá de Henares, \myPaperworkDate.\\[1.5cm]
+El/La Coordinador/a de la Comisión Académica\\
+Fdo.: \PhDNA
+\end{flushright}
+
+
+\end{document}

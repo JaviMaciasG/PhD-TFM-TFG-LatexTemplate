@@ -1,0 +1,89 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Plan de Investigación y Plan de Formación Personal
+% Universidad de Alcalá - Escuela de Doctorado
+%
+% Generated from the public EDUAH form / guidance current in October 2026.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\InputIfFileExists{../Config/myconfig-phd.tex}{}{}
+\input{../Config/postamble.tex}
+
+% Local helpers. They intentionally live in this document, not in Config/.
+\newcommand{\PhDFormSection}[1]{%
+  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
+\newcommand{\PhDFormField}[2]{%
+  \noindent\textbf{#1}: #2\par}
+\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
+\newcommand{\PhDNA}{N/A}
+
+\providecommand{\myPhDTutorFullName}{\myAcademicTutorFullName}
+\providecommand{\myPhDTutorGender}{\myAcademicTutorGender}
+\providecommand{\myPhDTutorDNI}{\myAcademicTutorDNI}
+\providecommand{\myPhDTutorEmail}{\myAcademicTutorEmail}
+\providecommand{\myPhDTutorDepartmentOrInstitution}{\myAcademicTutorDepartmentOrInstitution}
+\ifthenelse{\equal{\myPhDTutorGender}{male}}{%
+  \newcommand{\wordPhDTutor}{tutor}%
+  \newcommand{\wordPhDTutorTitle}{Tutor}%
+  \newcommand{\wordDonOrDonaPhDTutor}{D.}%
+}{%
+  \newcommand{\wordPhDTutor}{tutora}%
+  \newcommand{\wordPhDTutorTitle}{Tutora}%
+  \newcommand{\wordDonOrDonaPhDTutor}{Dª.}%
+}
+
+
+\title{PLAN DE INVESTIGACIÓN Y PLAN DE FORMACIÓN PERSONAL}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\PhDFormSection{Datos de la tesis}
+\PhDFormField{Doctorando/a}{\myAuthorFullName}
+\PhDFormField{Programa de Doctorado}{\myPhDProgram}
+\PhDFormField{Título de la investigación propuesta}{\myBookTitle}
+\PhDFormField{Tutor/a}{\myPhDTutorFullName}
+\PhDFormField{Director/a de tesis}{\myAcademicTutorFullName}
+\ifthenelse{\equal{\myCoTutorFullName}{}}{}{\PhDFormField{Codirector/a de tesis}{\myCoTutorFullName}}
+
+\PhDFormSection{A. Plan de Investigación}
+\textbf{A.1. Presentación del tema sobre el que se va a investigar}\par
+\vspace{2.2cm}
+\textbf{A.2. Revisión de los conocimientos / estado de la cuestión}\par
+\vspace{2.2cm}
+\textbf{A.3. Hipótesis de trabajo / preguntas de investigación}\par
+\vspace{1.8cm}
+\textbf{A.4. Objetivos que se desean alcanzar}\par
+\vspace{1.8cm}
+\textbf{A.5. Metodología que se va a utilizar}\par
+\vspace{2.2cm}
+\textbf{A.6. Medios y recursos materiales disponibles}\par
+\vspace{1.8cm}
+\textbf{A.7. Planificación temporal}\par
+\vspace{2.2cm}
+\textbf{A.8. Referencias bibliográficas}\par
+\vspace{2.2cm}
+\textbf{A.9. ¿La metodología propuesta requiere aprobación de un Comité de Ética de Investigación?}\par
+$\Box$ Sí \qquad $\Box$ No\par
+
+\newpage
+\PhDFormSection{B. Plan de Formación Personal}
+\textbf{B.1. Planificación general temporal}\par
+\smallskip
+Indique, de forma general y no exhaustiva, las actividades formativas previstas durante los estudios de doctorado (seminarios, jornadas, congresos, publicaciones, estancias de investigación, etc.) y su temporalización.\par
+\vspace{5cm}
+
+\textbf{B.2. Plan personalizado de formación}\par
+\smallskip
+Describa brevemente las actividades previstas e indique su relevancia para adquirir la formación necesaria para llevar a cabo la investigación propuesta.\par
+\vspace{6cm}
+
+
+\end{document}

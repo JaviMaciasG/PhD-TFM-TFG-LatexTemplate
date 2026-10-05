@@ -1,0 +1,81 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Solicitud de cotutela de tesis doctoral
+% Universidad de Alcalá - Escuela de Doctorado
+%
+% Generated from the public EDUAH form / guidance current in October 2026.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\InputIfFileExists{../Config/myconfig-phd.tex}{}{}
+\input{../Config/postamble.tex}
+
+% Local helpers. They intentionally live in this document, not in Config/.
+\newcommand{\PhDFormSection}[1]{%
+  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
+\newcommand{\PhDFormField}[2]{%
+  \noindent\textbf{#1}: #2\par}
+\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
+\newcommand{\PhDNA}{N/A}
+
+\providecommand{\myCotutelleUniversity}{\PhDNA}
+\providecommand{\myCotutelleCountry}{\PhDNA}
+\providecommand{\myCotutelleLateRequestJustification}{\PhDNA}
+
+
+\title{SOLICITUD DE COTUTELA DE TESIS DOCTORAL}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\PhDFormSection{Datos personales}
+\PhDFormField{Apellidos y nombre}{\myAuthorFullName}
+\PhDFormField{D.N.I./Pasaporte}{\myAuthorDNI}
+\PhDFormField{Teléfono}{\myAuthorTelephone}
+\PhDFormField{E-mail}{\myAuthorEmail}
+\PhDFormField{País}{\myCotutelleCountry}
+\PhDFormField{Programa en el que se matricula}{\myPhDProgram}
+
+\vspace{0.6cm}
+\noindent\textbf{SOLICITA} la realización de su Tesis Doctoral en régimen de \textbf{COTUTELA} con la Universidad de \myCotutelleUniversity{}, que se desarrollará en el marco de un Convenio específico de acuerdo con la normativa aprobada por la Universidad de Alcalá.
+
+\vspace{0.5cm}
+\noindent En el caso de que la solicitud de cotutela se haga con posterioridad a la finalización del primer curso académico, se justifica la causa del siguiente modo:\par
+\myCotutelleLateRequestJustification
+\vspace{2cm}
+
+\begin{tabularx}{\textwidth}{X X}
+\centering Firma del Director/a, Directores/as de la tesis & \centering\arraybackslash Firma del doctorando/a\\[2cm]
+Fdo.: \myAdvisors & Fdo.: \myAuthorFullName
+\end{tabularx}
+
+\PhDFormSection{Autorización de la Comisión Académica del Programa de Doctorado}
+Reunida en sesión de fecha \PhDNA{}, emite informe:\par
+$\Box$ FAVORABLE \qquad $\Box$ DESFAVORABLE\par
+\smallskip\textbf{Motivos:}\par\vspace{2cm}
+\begin{flushright}El/La Coordinador/a\\[1.2cm]Fdo.: \PhDNA\end{flushright}
+
+\newpage
+\PhDFormSection{Informe del Vicerrectorado de Investigación y Transferencia}
+A la vista del informe de la Comisión Académica, se emite informe:\par
+$\Box$ FAVORABLE \qquad $\Box$ DESFAVORABLE\par
+\smallskip\textbf{Motivos:}\par\vspace{2cm}
+respecto de la solicitud de cotutela de tesis doctoral presentada por \myAuthorFullName{}, procediendo, en su caso, a tramitar el correspondiente convenio específico de cotutela.
+
+\vfill\begin{flushright}En Alcalá de Henares, \myPaperworkDate.\\[1.5cm]
+El Vicerrector de Investigación y Transferencia\\
+\myResearchVicerrector
+\end{flushright}
+\vfill
+{\scriptsize
+\noindent\textbf{Protección de datos.} Los datos personales recogidos serán tratados por la Universidad de Alcalá para gestionar la solicitud o trámite correspondiente, así como con fines estadísticos, de acuerdo con la normativa aplicable. El órgano responsable del tratamiento es la Secretaría General de la Universidad. Los derechos correspondientes pueden ejercerse ante la Delegada de Protección de Datos de la Universidad de Alcalá. Para información detallada debe consultarse la Política de Privacidad de la Universidad.
+}
+
+
+\end{document}

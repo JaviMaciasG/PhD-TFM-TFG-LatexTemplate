@@ -1,0 +1,107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Informe final de estancia de investigación
+% Universidad de Alcalá - Escuela de Doctorado
+%
+% Generated from the public EDUAH form / guidance current in October 2026.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\InputIfFileExists{../Config/myconfig-phd.tex}{}{}
+\input{../Config/postamble.tex}
+
+% Local helpers. They intentionally live in this document, not in Config/.
+\newcommand{\PhDFormSection}[1]{%
+  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
+\newcommand{\PhDFormField}[2]{%
+  \noindent\textbf{#1}: #2\par}
+\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
+\newcommand{\PhDNA}{N/A}
+
+\providecommand{\myResearchStayInstitution}{\PhDNA}
+\providecommand{\myResearchStayDepartment}{\PhDNA}
+\providecommand{\myResearchStayResearchCenter}{\PhDNA}
+\providecommand{\myResearchStayCity}{\PhDNA}
+\providecommand{\myResearchStayCountry}{\PhDNA}
+\providecommand{\myResearchStaySupervisorFullName}{\PhDNA}
+\providecommand{\myResearchStaySupervisorPosition}{\PhDNA}
+\providecommand{\myResearchStaySupervisorEmail}{\PhDNA}
+\providecommand{\myResearchStayStartDate}{\PhDNA}
+\providecommand{\myResearchStayEndDate}{\PhDNA}
+\providecommand{\myResearchStayResearchTitle}{\PhDNA}
+\providecommand{\myResearchStayActivityDescription}{\PhDNA}
+\providecommand{\myResearchStayPhDYear}{\PhDNA}
+\providecommand{\myResearchStayCotutelle}{No}
+\providecommand{\myResearchStayInternationalMention}{No}
+\providecommand{\myResearchStayProjectAttached}{Sí}
+\providecommand{\myResearchStayAgreementAttached}{No}
+\providecommand{\myResearchStayWorkPlan}{\PhDNA}
+\providecommand{\myResearchStayDoctoralEvaluation}{\PhDNA}
+\providecommand{\myResearchStayDirectorEvaluation}{\PhDNA}
+
+
+\title{INFORME FINAL DE LA ESTANCIA DE INVESTIGACIÓN}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\PhDFormSection{Datos personales}
+\PhDFormField{Apellidos y nombre}{\myAuthorFullName}
+\PhDFormField{N.I.F.}{\myAuthorDNI}
+\PhDFormField{E-mail}{\myAuthorEmail}
+\PhDFormField{Programa de Doctorado}{\myPhDProgram}
+
+\PhDFormSection{Datos del destino}
+\PhDFormField{Investigador/a responsable}{\myResearchStaySupervisorFullName}
+\PhDFormField{Cargo/Categoría}{\myResearchStaySupervisorPosition}
+\PhDFormField{E-mail}{\myResearchStaySupervisorEmail}
+\PhDFormField{Centro de destino}{\myResearchStayInstitution}
+\PhDFormField{Ciudad}{\myResearchStayCity}
+\PhDFormField{País}{\myResearchStayCountry}
+\PhDFormField{Fecha inicio}{\myResearchStayStartDate}
+\PhDFormField{Fecha fin}{\myResearchStayEndDate}
+
+\PhDFormSection{Memoria}
+\smallskip
+Describa y valore las actividades llevadas a cabo durante la estancia, el grado de consecución de los objetivos marcados y las aportaciones de la estancia al desarrollo de la tesis doctoral. Extensión máxima: 600 palabras.
+\par\medskip
+\myResearchStayWorkPlan
+\vspace{5cm}
+
+\PhDFormSection{Evaluación de la estancia por el/la doctorando/a}
+Valoración global de la estancia y grado de satisfacción (máximo 200 palabras).\par
+\myResearchStayDoctoralEvaluation
+\vspace{3cm}
+
+\PhDFormSection{Valoración de la estancia por el/la director/a de tesis}
+Valoración global de la estancia (máximo 200 palabras).\par
+\myResearchStayDirectorEvaluation
+\vspace{3cm}
+
+\begin{tabularx}{\textwidth}{X X}
+\centering Firma del/de la doctorando/a & \centering\arraybackslash Firma del/de la Director/a de Tesis\\[2cm]
+Fdo.: \myAuthorFullName & Fdo.: \myAcademicTutorFullName
+\end{tabularx}
+\begin{center}En Alcalá de Henares, \myPaperworkDate.\end{center}
+
+\newpage
+\PhDFormSection{Resolución de la Comisión Académica}
+La Comisión Académica del programa, a la vista de la memoria final y, en su caso, de la documentación presentada, acuerda:\par
+\smallskip
+$\Box$ Informar favorablemente, dado que considera que la realización de la estancia ha sido adecuada.\\[0.3cm]
+$\Box$ Resolver desfavorablemente.\\[0.5cm]
+\textbf{Motivos:}\par\vspace{4cm}
+\begin{flushright}
+Alcalá de Henares, \myPaperworkDate.\\[1.5cm]
+El/La Coordinador/a del Programa\\
+Fdo.: \PhDNA
+\end{flushright}
+
+
+\end{document}

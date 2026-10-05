@@ -1,0 +1,66 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Aceptación y requisitos de la Presidencia del tribunal
+% Universidad de Alcalá - Escuela de Doctorado
+%
+% Generated from the public EDUAH form / guidance current in October 2026.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\InputIfFileExists{../Config/myconfig-phd.tex}{}{}
+\input{../Config/postamble.tex}
+
+% Local helpers. They intentionally live in this document, not in Config/.
+\newcommand{\PhDFormSection}[1]{%
+  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
+\newcommand{\PhDFormField}[2]{%
+  \noindent\textbf{#1}: #2\par}
+\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
+\newcommand{\PhDNA}{N/A}
+
+\providecommand{\myTribunalPresidentDNI}{\PhDNA}
+\providecommand{\myTribunalPresidentEmail}{\PhDNA}
+\providecommand{\myTribunalPresidentInstitution}{\PhDNA}
+\providecommand{\myTribunalPresidentSexenioDates}{\PhDNA}
+\providecommand{\myTribunalPresidentEquivalentExperience}{No}
+
+
+\title{ACEPTACIÓN Y CUMPLIMIENTO DE REQUISITOS PARA LA PRESIDENCIA DEL TRIBUNAL}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\PhDFormSection{Tesis doctoral}
+\PhDFormField{Doctorando/a}{\myAuthorFullName}
+\PhDFormField{Programa de Doctorado}{\myPhDProgram}
+\PhDFormField{Título de la tesis}{\myBookTitle}
+
+\PhDFormSection{Persona propuesta para la Presidencia del tribunal}
+\PhDFormField{Nombre y apellidos}{\myTribunalPresident}
+\PhDFormField{DNI/Pasaporte}{\myTribunalPresidentDNI}
+\PhDFormField{Correo electrónico}{\myTribunalPresidentEmail}
+\PhDFormField{Universidad/Organismo/Institución}{\myTribunalPresidentInstitution}
+
+\PhDFormSection{Aceptación y cumplimiento de requisitos}
+Declaro que acepto formar parte del tribunal propuesto para juzgar la tesis doctoral indicada y que cumplo los requisitos establecidos por la Universidad de Alcalá para ejercer la Presidencia.
+
+\begin{itemize}[leftmargin=0.8cm]
+\item $\Box$ Dispongo de dos sexenios en los últimos 16 años. Fechas de concesión: \myTribunalPresidentSexenioDates.
+\item $\Box$ Acredito experiencia investigadora equivalente a la necesaria para la obtención de dos sexenios: \myTribunalPresidentEquivalentExperience.
+\item $\Box$ No dirijo ni tutorizo la tesis doctoral objeto de evaluación.
+\end{itemize}
+
+\vfill
+\begin{flushright}
+\myPaperworkDate\\[1.5cm]
+Fdo.: \myTribunalPresident
+\end{flushright}
+
+
+\end{document}

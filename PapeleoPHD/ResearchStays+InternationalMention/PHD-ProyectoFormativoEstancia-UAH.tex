@@ -1,0 +1,93 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Proyecto formativo de estancia de investigación
+% Universidad de Alcalá - Escuela de Doctorado
+%
+% Generated from the public EDUAH form / guidance current in October 2026.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\InputIfFileExists{../Config/myconfig-phd.tex}{}{}
+\input{../Config/postamble.tex}
+
+% Local helpers. They intentionally live in this document, not in Config/.
+\newcommand{\PhDFormSection}[1]{%
+  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
+\newcommand{\PhDFormField}[2]{%
+  \noindent\textbf{#1}: #2\par}
+\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
+\newcommand{\PhDNA}{N/A}
+
+\providecommand{\myResearchStayInstitution}{\PhDNA}
+\providecommand{\myResearchStayDepartment}{\PhDNA}
+\providecommand{\myResearchStayResearchCenter}{\PhDNA}
+\providecommand{\myResearchStayCity}{\PhDNA}
+\providecommand{\myResearchStayCountry}{\PhDNA}
+\providecommand{\myResearchStaySupervisorFullName}{\PhDNA}
+\providecommand{\myResearchStaySupervisorPosition}{\PhDNA}
+\providecommand{\myResearchStaySupervisorEmail}{\PhDNA}
+\providecommand{\myResearchStayStartDate}{\PhDNA}
+\providecommand{\myResearchStayEndDate}{\PhDNA}
+\providecommand{\myResearchStayResearchTitle}{\PhDNA}
+\providecommand{\myResearchStayActivityDescription}{\PhDNA}
+\providecommand{\myResearchStayPhDYear}{\PhDNA}
+\providecommand{\myResearchStayCotutelle}{No}
+\providecommand{\myResearchStayInternationalMention}{No}
+\providecommand{\myResearchStayProjectAttached}{Sí}
+\providecommand{\myResearchStayAgreementAttached}{No}
+\providecommand{\myResearchStayWorkPlan}{\PhDNA}
+\providecommand{\myResearchStayDoctoralEvaluation}{\PhDNA}
+\providecommand{\myResearchStayDirectorEvaluation}{\PhDNA}
+
+
+\title{PROYECTO FORMATIVO: PROGRAMA DE TRABAJO DURANTE LA ESTANCIA DE INVESTIGACIÓN}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\PhDFormSection{Memoria del trabajo a desarrollar}
+\PhDFormField{Doctorando/a}{\myAuthorFullName}
+\PhDFormField{NIF/Pasaporte}{\myAuthorDNI}
+\PhDFormField{E-mail}{\myAuthorEmail}
+\PhDFormField{Año de doctorado}{\myResearchStayPhDYear}
+\PhDFormField{Cotutela}{\myResearchStayCotutelle}
+\PhDFormField{Mención Internacional}{\myResearchStayInternationalMention}
+
+\PhDFormSection{Datos del destino}
+\PhDFormField{Investigador/a responsable}{\myResearchStaySupervisorFullName}
+\PhDFormField{Cargo/Categoría}{\myResearchStaySupervisorPosition}
+\PhDFormField{E-mail}{\myResearchStaySupervisorEmail}
+\PhDFormField{Centro de destino}{\myResearchStayInstitution}
+\PhDFormField{Ciudad}{\myResearchStayCity}
+\PhDFormField{País}{\myResearchStayCountry}
+\PhDFormField{Fecha inicio}{\myResearchStayStartDate}
+\PhDFormField{Fecha fin}{\myResearchStayEndDate}
+\PhDFormField{Título del trabajo de investigación a realizar}{\myResearchStayResearchTitle}
+
+\newpage
+\PhDFormSection{Memoria del trabajo de investigación a desarrollar}
+La memoria no debe superar las 1.000 palabras y debe estructurarse en los siguientes apartados:
+\begin{enumerate}[leftmargin=0.8cm]
+\item \textbf{Relación de la estancia con el contenido y grado de desarrollo de la tesis:} objetivos y actividades; relación con el contenido y objetivos de la tesis; plan de trabajo propuesto en relación con el estado actual de la tesis.
+\item \textbf{Idoneidad y calidad del centro de destino:} relación de la actividad investigadora del grupo de destino con el contenido de la tesis y con el proyecto a realizar.
+\item \textbf{Duración de la estancia solicitada:} adecuación de la duración al proyecto y contribución a la formación predoctoral.
+\end{enumerate}
+
+\vspace{0.3cm}\noindent\textbf{Memoria:}\par
+\myResearchStayWorkPlan
+\vspace{6cm}
+
+\begin{tabularx}{\textwidth}{X X}
+\centering Firma del/de la doctorando/a & \centering\arraybackslash Vº Bº Director/a de la tesis\\[2cm]
+Fdo.: \myAuthorFullName & Fdo.: \myAcademicTutorFullName
+\end{tabularx}
+\begin{center}Alcalá de Henares, \myPaperworkDate.\end{center}
+
+
+\end{document}

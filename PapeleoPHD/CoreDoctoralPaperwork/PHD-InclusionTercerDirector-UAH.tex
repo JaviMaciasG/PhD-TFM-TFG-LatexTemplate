@@ -1,0 +1,80 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Inclusión de tercer/a director/a de tesis
+% Universidad de Alcalá - Escuela de Doctorado
+%
+% Generated from the public EDUAH form / guidance current in October 2026.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\InputIfFileExists{../Config/myconfig-phd.tex}{}{}
+\input{../Config/postamble.tex}
+
+% Local helpers. They intentionally live in this document, not in Config/.
+\newcommand{\PhDFormSection}[1]{%
+  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
+\newcommand{\PhDFormField}[2]{%
+  \noindent\textbf{#1}: #2\par}
+\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
+\newcommand{\PhDNA}{N/A}
+
+\providecommand{\myThirdThesisDirectorFullName}{\PhDNA}
+\providecommand{\myThirdThesisDirectorDNI}{\PhDNA}
+\providecommand{\myThirdThesisDirectorEmail}{\PhDNA}
+\providecommand{\myThirdThesisDirectorDoctorate}{\PhDNA}
+\providecommand{\myThirdThesisDirectorInstitution}{\PhDNA}
+\providecommand{\myThirdThesisDirectorHasSexenio}{No}
+\providecommand{\myThirdThesisDirectorEquivalentMerits}{No}
+
+
+\title{INCLUSIÓN DE TERCER/A DIRECTOR/A DE TESIS}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\PhDFormSection{Doctorando/a}
+\begin{tabularx}{\textwidth}{|p{0.18\textwidth}|X|p{0.18\textwidth}|X|}\hline
+Apellidos y nombre & \myAuthorFullName & DNI/Pasaporte & \myAuthorDNI \\\hline
+Teléfono/s & \myAuthorTelephone & Correo electrónico & \myAuthorEmail \\\hline
+Programa & \multicolumn{3}{l|}{\myPhDProgram} \\\hline
+\end{tabularx}
+
+\PhDFormSection{Solicita la inclusión de un/a tercer/a director/a de tesis}
+\begin{tabularx}{\textwidth}{|p{0.35\textwidth}|X|}\hline
+Apellidos y nombre & \myThirdThesisDirectorFullName \\\hline
+DNI/Pasaporte & \myThirdThesisDirectorDNI \\\hline
+Correo electrónico & \myThirdThesisDirectorEmail \\\hline
+Doctor/a en & \myThirdThesisDirectorDoctorate \\\hline
+Universidad/Organismo/Institución & \myThirdThesisDirectorInstitution \\\hline
+Perfil investigador afín y al menos un sexenio & \myThirdThesisDirectorHasSexenio \\\hline
+Méritos equiparables & \myThirdThesisDirectorEquivalentMerits \\\hline
+\end{tabularx}
+
+\PhDFormSection{Términos del compromiso documental y de buenas prácticas}
+Con carácter general, los firmantes declaran conocer la normativa vigente reguladora de los estudios de doctorado y la específica de la Universidad de Alcalá, así como el Código de Buenas Prácticas de la EDUAH. Para el doctorando/a, tutor/a, directores/as y Universidad resultan aplicables los compromisos relativos al cumplimiento de la normativa, seguimiento de actividades y plan de investigación, supervisión periódica de la tesis y provisión de los recursos previstos.
+
+\vspace{0.6cm}
+\begin{tabularx}{\textwidth}{X X}
+\centering Firma del nuevo Director/a & \centering\arraybackslash Firma del doctorando/a\\[2cm]
+Fdo.: \myThirdThesisDirectorFullName & Fdo.: \myAuthorFullName
+\end{tabularx}
+
+\vspace{0.5cm}
+\noindent\textbf{Vº Bº de los otros dos Directores/as de la Tesis}\par
+\vspace{1.5cm}
+Fdo.: \myAcademicTutorFullName \hfill Fdo.: \myCoTutorFullName
+
+\vspace{0.5cm}\noindent\textbf{COMISIÓN ACADÉMICA DEL PROGRAMA DE DOCTORADO EN \myPhDProgram}
+\vfill
+{\scriptsize
+\noindent\textbf{Protección de datos.} Los datos personales recogidos serán tratados por la Universidad de Alcalá para gestionar la solicitud o trámite correspondiente, así como con fines estadísticos, de acuerdo con la normativa aplicable. El órgano responsable del tratamiento es la Secretaría General de la Universidad. Los derechos correspondientes pueden ejercerse ante la Delegada de Protección de Datos de la Universidad de Alcalá. Para información detallada debe consultarse la Política de Privacidad de la Universidad.
+}
+
+
+\end{document}
