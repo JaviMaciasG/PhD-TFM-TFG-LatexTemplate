@@ -5,13 +5,17 @@ LATEX_CONFIG_DIR := ../Config
 include $(LATEX_CONFIG_DIR)/latex-common.mk
 
 AUTHORIZATION_DOCUMENTS := \
-	TFG-AutorizacionAutorPubAbierto \
-	TFG-AutorizacionTutorPubAbierto \
-	TFG-AutorizacionTutorExtranjeroPubAbierto
+	TFG-AutorizacionAutorPubAbierto-EPS-UAH \
+	TFG-AutorizacionTutorExtranjeroPubAbierto-EPS-UAH \
+	TFG-CompromisoConfidencialidad-EPS-UAH \
+	TFG-ConvenioCooperacion-EPS-UAH \
+	TFG-AutorizacionALLPubAbierto-EPS-UAH
+
 EVALUATION_DOCUMENTS := \
 	TFG-InformeTutorYRubrica-EPS-UAH \
 	TFG-ActaYRubricaDefensa-EPS-UAH \
 	TFG-InformeTutorPlagio-UAH
+
 DOCUMENTS := $(AUTHORIZATION_DOCUMENTS) $(EVALUATION_DOCUMENTS)
 PDFFILES := $(addsuffix .pdf,$(DOCUMENTS))
 TEXFILES := $(addsuffix .tex,$(DOCUMENTS))
