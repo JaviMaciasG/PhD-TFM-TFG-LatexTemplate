@@ -392,6 +392,7 @@ flycheck_*.el
 
 # Microsoft Office and LibreOffice lock files
 ~$*
+.~lock*
 
 # Python bytecode and caches used by administration scripts
 __pycache__/
