@@ -425,7 +425,7 @@ here. Changing either requires an explicit renderer extension.
 | --- | --- |
 | `original`, `traditional`, `shaded` | Common TOC application only; no extra branch for these tokens |
 | `modern` | Removes chapter leaders and overrides chapter-entry font to sans-serif bold; chapter numbers are accent-coloured and display-padded |
-| `framed` | Removes leaders at chapter, section, subsection and subsubsection levels |
+| `framed` | Removes leaders at chapter, section, subsection, subsubsection, paragraph and subparagraph levels |
 | `mimosis` | Removes chapter leaders; overrides chapter text/page fonts to normal roman bold |
 
 Subordinate entry fonts are explicitly `\normalfont`; there are no separate
