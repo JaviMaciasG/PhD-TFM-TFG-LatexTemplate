@@ -8,25 +8,32 @@ AUTHORIZATION_DOCUMENTS := \
 	TFG-AutorizacionAutorPubAbierto-EPS-UAH \
 	TFG-AutorizacionTutorExtranjeroPubAbierto-EPS-UAH \
 	TFG-CompromisoConfidencialidad-EPS-UAH \
-	TFG-ConvenioCooperacion-EPS-UAH \
 	TFG-AutorizacionALLPubAbierto-EPS-UAH
+
+AGREEMENT_DOCUMENTS := \
+	TFG-ConvenioCooperacion-EPS-UAH
 
 EVALUATION_DOCUMENTS := \
 	TFG-InformeTutorYRubrica-EPS-UAH \
 	TFG-ActaYRubricaDefensa-EPS-UAH \
 	TFG-InformeTutorPlagio-UAH
 
-DOCUMENTS := $(AUTHORIZATION_DOCUMENTS) $(EVALUATION_DOCUMENTS)
+DOCUMENTS := \
+	$(AUTHORIZATION_DOCUMENTS) \
+	$(AGREEMENT_DOCUMENTS) \
+	$(EVALUATION_DOCUMENTS)
 PDFFILES := $(addsuffix .pdf,$(DOCUMENTS))
 TEXFILES := $(addsuffix .tex,$(DOCUMENTS))
 
 .DEFAULT_GOAL := all
 
-.PHONY: all autorizaciones evaluacion FORCE clean cleanall help
+.PHONY: all autorizaciones convenios evaluacion FORCE clean cleanall help
 
 all: $(PDFFILES)
 
 autorizaciones: $(addsuffix .pdf,$(AUTHORIZATION_DOCUMENTS))
+
+convenios: $(addsuffix .pdf,$(AGREEMENT_DOCUMENTS))
 
 evaluacion: $(addsuffix .pdf,$(EVALUATION_DOCUMENTS))
 
@@ -44,8 +51,9 @@ cleanall:
 help:
 	@printf '%s\n' \
 		'make                 Generate all TFG paperwork incrementally' \
-		'make autorizaciones  Generate the three open-publication authorizations' \
-		'make evaluacion      Generate the tutor report and defense record' \
+		'make autorizaciones  Generate publication and confidentiality forms' \
+		'make convenios       Generate the cooperation-agreement form' \
+		'make evaluacion      Generate advisor reports and defense records' \
 		'make FILE.pdf        Generate one specific form' \
 		'make clean           Remove auxiliary files' \
 		'make cleanall        Remove auxiliary files and generated PDFs'

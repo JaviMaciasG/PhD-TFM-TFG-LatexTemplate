@@ -80,14 +80,17 @@ Para evitar que tengas que introducir varias veces los mismos datos, hemos prepa
 El directorio \texttt{PapeleoTFG/} contiene actualmente:
 
 \begin{itemize}
-  \item \texttt{TFG-AutorizacionTutorPubAbierto.tex}: autorización del tutor para la publicación en abierto.
-  \item \texttt{TFG-AutorizacionAutorPubAbierto.tex}: declaración y autorización de la persona autora para la publicación en abierto.
-  \item \texttt{TFG-AutorizacionTutorExtranjeroPubAbierto.tex}: autorización en inglés para un tutor perteneciente a una universidad extranjera.
-  \item \texttt{TFG-InformeTutorYRubrica.tex}: informe y rúbrica del tutor o tutores.
-  \item \texttt{TFG-ActaYRubricaDefensa.tex}: acta y rúbrica del tribunal de defensa.
+  \item \texttt{TFG-AutorizacionALLPubAbierto-EPS-UAH.tex}: autorización conjunta del estudiante, el tutor y, cuando exista, el cotutor para publicar el TFG en abierto.
+  \item \texttt{TFG-AutorizacionAutorPubAbierto-EPS-UAH.tex}: declaración y autorización de la persona autora para la publicación en abierto.
+  \item \texttt{TFG-AutorizacionTutorExtranjeroPubAbierto-EPS-UAH.tex}: autorización en inglés para un tutor perteneciente a una universidad extranjera.
+  \item \texttt{TFG-CompromisoConfidencialidad-EPS-UAH.tex}: compromisos individuales de confidencialidad del tutor, el cotutor y los miembros configurados del tribunal.
+  \item \texttt{TFG-ConvenioCooperacion-EPS-UAH.tex}: anexo para realizar el TFG mediante un convenio de cooperación educativa.
+  \item \texttt{TFG-InformeTutorYRubrica-EPS-UAH.tex}: informe y rúbrica del tutor o tutores.
+  \item \texttt{TFG-InformeTutorPlagio-UAH.tex}: informe del tutor sobre la revisión de plagio.
+  \item \texttt{TFG-ActaYRubricaDefensa-EPS-UAH.tex}: acta y rúbrica del tribunal de defensa.
 \end{itemize}
 
-El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex} y genera un PDF por cada uno. También puedes abrir y compilar individualmente el documento que necesites con tu editor o herramienta de \LaTeX{} preferidos.
+El \texttt{Makefile} de este directorio compila todos los formularios independientes y genera un PDF por cada uno; los restantes ficheros \texttt{.tex} son fragmentos auxiliares incluidos por esos formularios y no deben compilarse por separado. También puedes abrir y compilar individualmente el documento que necesites con tu editor o herramienta de \LaTeX{} preferidos.
 
 \subsection{Documentos para TFM}
 
@@ -95,8 +98,11 @@ El directorio \texttt{PapeleoTFM/} contiene actualmente:
 
 \begin{itemize}
   \item \texttt{TFM-AutorizacionPublicarAbierto.tex}: formulario de autorización para la publicación en abierto, con los datos de la persona autora, el tutor y, cuando exista, el cotutor.
-  \item \texttt{TFM-VistoBuenoTutorTFM.tex}: visto bueno del tutor o tutores para el depósito y la defensa del TFM. Para el MUIE también refleja si el trabajo está sujeto a confidencialidad.
-  \item \texttt{solicitud.tex}: solicitud de anteproyecto con los datos personales, la información de la propuesta y el acuerdo del departamento.
+  \item \texttt{TFM-VistoBuenoTutor.tex}: visto bueno del tutor o tutores para el depósito y la defensa del TFM. Para el MUIE también refleja si el trabajo está sujeto a confidencialidad.
+  \item \texttt{TFM-AnexoI-ConvenioCooperacion-EPS-UAH.tex}: anexo para realizar el TFM mediante un convenio de cooperación educativa.
+  \item \texttt{TFM-ActaYRubricaDefensa-EPS-UAH.tex}: acta y rúbrica del tribunal de defensa.
+  \item \texttt{TFM-AnexoIV-SolicitudProrroga-EPS-UAH.tex}: solicitud de prórroga del plazo de entrega del TFM.
+  \item \texttt{TFM-AnexoV-SolicitudCambioTFM-EPS-UAH.tex}: solicitud de cambio del TFM asignado.
 \end{itemize}
 
 El \texttt{Makefile} de este directorio compila todos los ficheros \texttt{.tex} y genera sus correspondientes PDF. También puedes compilar cada formulario por separado mediante tu editor o una herramienta estándar de \LaTeX{}.
@@ -117,7 +123,7 @@ make
 
 El uso de \texttt{make} es opcional y requiere \texttt{latexmk}. Cada invocación comprueba las dependencias registradas y solo repite las pasadas de \texttt{pdflatex} cuando ha cambiado alguna fuente directa o alguno de los ficheros compartidos de \texttt{Config/}. También puedes compilar cada fichero individualmente con dos pasadas de \texttt{pdflatex} o mediante la función de construcción de tu editor de \LaTeX{} preferido. Estos formularios no utilizan la bibliografía ni los glosarios del libro principal.
 
-Si solo necesitas un formulario, puedes indicar directamente el nombre del PDF, por ejemplo \texttt{make TFG-InformeTutorYRubrica.pdf}. En \texttt{PapeleoTFG/}, los objetivos \texttt{autorizaciones} y \texttt{evaluacion} generan respectivamente las autorizaciones de publicación y los documentos de evaluación. En \texttt{PapeleoTFM/}, puedes utilizar los objetivos \texttt{autorizacion}, \texttt{visto-bueno} y \texttt{solicitud}. El objetivo \texttt{help} de cada directorio muestra las opciones disponibles.
+Si solo necesitas un formulario, puedes indicar directamente el nombre del PDF, por ejemplo \texttt{make TFG-InformeTutorYRubrica-EPS-UAH.pdf}. Los dos directorios utilizan la misma organización de objetivos: \texttt{autorizaciones} genera las autorizaciones y documentos afines, \texttt{convenios} genera los formularios de cooperación educativa y \texttt{evaluacion} genera los informes, actas y rúbricas. En \texttt{PapeleoTFM/} también puedes utilizar \texttt{solicitudes} para generar las solicitudes de prórroga y cambio de TFM. El objetivo \texttt{help} de cada directorio muestra las opciones disponibles.
 
 El objetivo \texttt{clean} elimina únicamente los ficheros auxiliares de la compilación y conserva los PDF generados; utiliza \texttt{cleanall} cuando también quieras eliminar esos PDF.
 

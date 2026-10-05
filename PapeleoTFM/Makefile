@@ -4,24 +4,41 @@ LATEX_ENGINE ?= $(PDFLATEX)
 LATEX_CONFIG_DIR := ../Config
 include $(LATEX_CONFIG_DIR)/latex-common.mk
 
-AUTHORIZATION_DOCUMENT := TFM-AutorizacionPublicarAbierto
-APPROVAL_DOCUMENT := TFM-VistoBuenoTutorTFM
-PROPOSAL_DOCUMENT := solicitud
-DOCUMENTS := $(AUTHORIZATION_DOCUMENT) $(APPROVAL_DOCUMENT) $(PROPOSAL_DOCUMENT)
+AUTHORIZATION_DOCUMENTS := \
+	TFM-AutorizacionPublicarAbierto \
+	TFM-VistoBuenoTutor
+
+AGREEMENT_DOCUMENTS := \
+	TFM-AnexoI-ConvenioCooperacion-EPS-UAH
+
+EVALUATION_DOCUMENTS := \
+	TFM-ActaYRubricaDefensa-EPS-UAH
+
+REQUEST_DOCUMENTS := \
+	TFM-AnexoIV-SolicitudProrroga-EPS-UAH \
+	TFM-AnexoV-SolicitudCambioTFM-EPS-UAH
+
+DOCUMENTS := \
+	$(AUTHORIZATION_DOCUMENTS) \
+	$(AGREEMENT_DOCUMENTS) \
+	$(EVALUATION_DOCUMENTS) \
+	$(REQUEST_DOCUMENTS)
 PDFFILES := $(addsuffix .pdf,$(DOCUMENTS))
 TEXFILES := $(addsuffix .tex,$(DOCUMENTS))
 
 .DEFAULT_GOAL := all
 
-.PHONY: all autorizacion visto-bueno solicitud FORCE clean cleanall help
+.PHONY: all autorizaciones convenios evaluacion solicitudes FORCE clean cleanall help
 
 all: $(PDFFILES)
 
-autorizacion: $(AUTHORIZATION_DOCUMENT).pdf
+autorizaciones: $(addsuffix .pdf,$(AUTHORIZATION_DOCUMENTS))
 
-visto-bueno: $(APPROVAL_DOCUMENT).pdf
+convenios: $(addsuffix .pdf,$(AGREEMENT_DOCUMENTS))
 
-solicitud: $(PROPOSAL_DOCUMENT).pdf
+evaluacion: $(addsuffix .pdf,$(EVALUATION_DOCUMENTS))
+
+solicitudes: $(addsuffix .pdf,$(REQUEST_DOCUMENTS))
 
 FORCE:
 
@@ -36,10 +53,11 @@ cleanall:
 
 help:
 	@printf '%s\n' \
-		'make               Generate all TFM paperwork incrementally' \
-		'make autorizacion  Generate the open-publication authorization' \
-		'make visto-bueno   Generate the approval for deposit and defense' \
-		'make solicitud     Generate the project-proposal request' \
-		'make FILE.pdf      Generate one specific form' \
-		'make clean         Remove auxiliary files' \
-		'make cleanall      Remove auxiliary files and generated PDFs'
+		'make                 Generate all TFM paperwork incrementally' \
+		'make autorizaciones  Generate publication and defense authorizations' \
+		'make convenios       Generate the cooperation-agreement form' \
+		'make evaluacion      Generate the defense record and rubric' \
+		'make solicitudes     Generate extension and assignment-change requests' \
+		'make FILE.pdf        Generate one specific form' \
+		'make clean           Remove auxiliary files' \
+		'make cleanall        Remove auxiliary files and generated PDFs'

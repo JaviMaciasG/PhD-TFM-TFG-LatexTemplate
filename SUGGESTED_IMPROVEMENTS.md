@@ -16,9 +16,7 @@
 
 7. **Offer a lightweight first-compilation mode — New; complexity: medium; priority: medium.** Provide a target or entry document that verifies the installation without compiling the complete example manual, bibliography and optional lists. Evidence: the documented first step compiles the full manual, and the documentation warns that this example may exceed Overleaf compilation limits.
 
-8. **Clean up ambiguous user-facing filenames — Improvement; complexity: low; priority: medium.** Rename files such as `PapeleoTFM/solicitud.tex` to describe the document explicitly and remove obsolete companions such as `PapeleoTFM/Makefile-solicitud`. Evidence: the current generic name does not identify the type of request, and the old alternative Makefile remains alongside the maintained one.
-
-9. **Provide a separately downloadable minimal distribution — New; complexity: medium; priority: low.** Package the unified `book.tex` entry point, the bare chapters, configuration and required assets as a ready-to-use archive, while retaining the complete manual distribution. Evidence: the minimal structures exist, but users still have to transform the complete distribution manually or through Make.
+8. **Provide a separately downloadable minimal distribution — New; complexity: medium; priority: low.** Package the unified `book.tex` entry point, the bare chapters, configuration and required assets as a ready-to-use archive, while retaining the complete manual distribution. Evidence: the minimal structures exist, but users still have to transform the complete distribution manually or through Make.
 
 ## Reducing complexity for maintainers
 
