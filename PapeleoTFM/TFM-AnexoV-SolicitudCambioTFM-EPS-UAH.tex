@@ -1,0 +1,116 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Annex V to the EPS-UAH TFM regulations:
+% Request for a change to the assigned TFM.
+%
+% This document follows the visual style used by
+% PapeleoTFM/TFM-VistoBuenoTutorTFM.tex and reuses the corresponding
+% values defined in Config/myconfig.tex.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Preamble and configuration section
+%
+\input{../Config/preamble.tex}    % DO NOT TOUCH THIS LINE. You can edit
+                                     % the file to modify some default settings
+
+\input{../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
+                                     % to set your specific settings.
+
+\input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE.
+%
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Placeholder used for fields for which there is no corresponding value in
+% Config/myconfig.tex.
+\newcommand{\AnnexNA}{N/A}
+
+\title{ANEXO V -- SOLICITUD DE CAMBIO EN EL TFM ASIGNADO}
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Let's start with the real stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+{\Large
+\maketitle
+
+\thispagestyle{empty}
+
+\noindent\textbf{\underline{Datos del Director/a académico/a}} (si procede)
+
+\vspace{0.25cm}
+
+\hspace*{1.5cm}NOMBRE: \myAcademicTutorFullName
+
+\vspace{0.25cm}
+
+\hspace*{1.5cm}AFILIACIÓN: \myAcademicTutorDepartmentOrInstitution
+
+\vspace{0.4cm}
+
+\noindent\textbf{\underline{Datos del Codirector/a}} (si procede)
+
+\vspace{0.25cm}
+
+\hspace*{1.5cm}NOMBRE:
+\ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorFullName}
+
+\vspace{0.25cm}
+
+\hspace*{1.5cm}AFILIACIÓN:
+\ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorDepartmentOrInstitution}
+
+\vspace{0.4cm}
+
+\noindent\textbf{\underline{Datos del Estudiante}} (si procede)
+
+\vspace{0.25cm}
+
+\hspace*{1.5cm}NOMBRE: \myAuthorFullName
+
+\vspace{0.25cm}
+
+\hspace*{1.5cm}DNI: \myAuthorDNI
+
+\vspace{0.25cm}
+
+\hspace*{1.5cm}EMAIL: \myAuthorEmail
+
+\vspace{0.4cm}
+
+\noindent\textbf{\underline{Datos de la solicitud}}
+
+\vspace{0.25cm}
+
+\noindent\hspace*{1.5cm}\begin{minipage}[t]{\dimexpr\textwidth-1.5cm\relax}
+\raggedright TÍTULO TFM: \myBookTitle
+\end{minipage}
+
+\vspace{0.25cm}
+
+\hspace*{1.5cm}EXPONE RAZONADAMENTE:
+
+\vspace{0.15cm}
+
+\hspace*{1.5cm}\AnnexNA
+
+\vspace{0.75cm}
+
+\hspace*{1.5cm}SOLICITA: \AnnexNA
+
+\newpage
+
+\vspace*{1cm}
+
+\begin{center}
+Fdo.: \AnnexNA
+\end{center}
+
+}
+\end{document}
