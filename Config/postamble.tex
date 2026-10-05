@@ -141,21 +141,50 @@
 \ifthenelse{\equal{\myAcademicTutorGender}{male}}     
 {                                                       
   \newcommand{\wordDonOrDonaTutor}{D.}
+
+  \ifthenelse{\equal{\myAcademicTutorIsPhD}{true}}
+  {
   \newcommand{\wordDrOrDraTutor}{Dr.}
+  }
+  {
+  \newcommand{\wordDrOrDraTutor}{}
+  }
 }
 {
   \newcommand{\wordDonOrDonaTutor}{Dª.}
+
+  \ifthenelse{\equal{\myAcademicTutorIsPhD}{true}}
+  {
   \newcommand{\wordDrOrDraTutor}{Dra.}
+  }
+  {
+  \newcommand{\wordDrOrDraTutor}{}
+  }
 }
 
 \ifthenelse{\equal{\myCoTutorGender}{male}}     
 {                                                       
   \newcommand{\wordDonOrDonaCoTutor}{D.}
+
+  \ifthenelse{\equal{\myCoTutorIsPhD}{true}}
+  {
   \newcommand{\wordDrOrDraCoTutor}{Dr.}
+  }
+  {
+  \newcommand{\wordDrOrDraCoTutor}{}
+  }
+
 }
 {
   \newcommand{\wordDonOrDonaCoTutor}{Dª.}
+
+  \ifthenelse{\equal{\myCoTutorIsPhD}{true}}
+  {
   \newcommand{\wordDrOrDraCoTutor}{Dra.}
+  }
+  {
+  \newcommand{\wordDrOrDraCoTutor}{}
+  }
 }
 
 \ifthenelse{\equal{\myAuthorGender}{male}}     
