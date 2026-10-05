@@ -1,0 +1,221 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Annex I to the EPS-UAH TFM regulations:
+% Annex to the educational cooperation agreement for TFM supervision.
+%
+% The layout intentionally follows Annex I of the EPS-UAH TFM regulations
+% approved on 31 October 2025 as closely as practical in LaTeX.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,a4paper,oneside]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\input{../Config/postamble.tex}
+
+\usepackage{soul}
+
+% Annex I is an administrative form with its own fixed page layout.
+\geometry{a4paper,left=1.8cm,right=1.8cm,top=2.55cm,bottom=1.55cm,
+          headheight=1.55cm,headsep=0.20cm,footskip=0.85cm}
+
+\graphicspath{{../Book/logos/uah/2026/}}
+
+\definecolor{annexSectionBlue}{RGB}{222,231,243}
+\definecolor{annexContactShade}{RGB}{235,233,224}
+\definecolor{annexFooterGray}{RGB}{165,165,165}
+
+% The original form uses a sans-serif institutional appearance.
+\renewcommand{\familydefault}{\sfdefault}
+
+% Placeholder used for fields for which there is currently no corresponding
+% variable in Config/myconfig.tex.
+\newcommand{\AnnexNA}{\hl{N/A}}
+
+% The external/entity tutor is represented by the co-tutor when one is
+% configured. If no co-tutor is configured, the form deliberately shows N/A.
+\ifthenelse{\equal{\myCoTutorFullName}{}}{%
+  \newcommand{\AnnexEntityName}{\AnnexNA}%
+}{%
+  \newcommand{\AnnexEntityName}{\myCoTutorDepartmentOrInstitution}%
+}
+\newcommand{\AnnexEntityTutorName}{%
+  \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorFullName}}
+\newcommand{\AnnexEntityTutorPosition}{%
+  \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorPosition}}
+\newcommand{\AnnexEntityTutorDNI}{%
+  \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorDNI}}
+\newcommand{\AnnexEntityTutorEmail}{%
+  \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorEmail}}
+
+% Reusable section-heading row matching the blue/grey bands in the source.
+\newcommand{\AnnexSection}[1]{%
+  \rowcolor{annexSectionBlue}\multicolumn{4}{|l|}{\bfseries\itshape #1}\\\hline}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% Header/footer reproduced from the annex sheet.
+\fancypagestyle{tfmannexi}{%
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+  % \fancyhead[L]{\includegraphics[width=6.15cm]{logo-eps-azul.png}}
+  % \fancyfoot[L]{%
+  %   \color{annexFooterGray}\fontsize{6.4}{7.2}\selectfont
+  %   \begin{tabular}[b]{@{}l@{}}
+  %     Campus Universitario. Edificio Politécnico\\
+  %     Ctra. Madrid-Barcelona, Km. 33,600.\\
+  %     28805 Alcalá de Henares (Madrid)
+  %   \end{tabular}}
+  % \fancyfoot[R]{%
+  %   \color{annexFooterGray}\fontsize{6.4}{7.2}\selectfont
+  %   \begin{tabular}[b]{@{}r@{}}
+  %     direccion.eps@uah.es\\
+  %     91 885 6971\\
+  %     www.uah.es
+  %   \end{tabular}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\pagestyle{tfmannexi}
+\thispagestyle{tfmannexi}
+
+% Set language-dependent degree/work-type variables after \begin{document},
+% consistently with the rest of the template.
+\input{../Config/setlanguagedependentissues.tex}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.00}
+\fontsize{8.2}{9.0}\selectfont
+
+
+\vspace{0.18cm}
+
+\begin{center}
+{  \bfseries
+ANEXO AL CONVENIO DE COOPERACIÓN EDUCATIVA ENTRE LA UNIVERSIDAD DE ALCALÁ Y
+\MakeUppercase{\AnnexEntityName} PARA LA TUTORIZACIÓN DEL TRABAJO FIN DE MÁSTER (TFM) DEL
+\MakeUppercase{\myDegreefull} DURANTE EL CURSO ACADÉMICO \myThesisAcademicYear}
+\end{center}
+%\vspace{0.08cm}
+%{\itshape Incluir un Anexo por estudiante}
+
+\vspace{0.5cm}
+
+% -------------------------------------------------------------------------
+% Student data
+% -------------------------------------------------------------------------
+\begin{tabularx}{\textwidth}{|L{3.75cm}|Y|L{3.55cm}|Y|}
+\hline
+\AnnexSection{Datos \wordAutorDelOrDeLa{} estudiante}
+Nombre y Apellidos & \multicolumn{3}{l|}{\myAuthorFullName}\\\hline
+DNI & \multicolumn{3}{l|}{\myAuthorDNI}\\\hline
+Teléfono & \myAuthorTelephone & e-mail & \myAuthorEmail\\\hline
+\end{tabularx}
+
+\vspace{0.11cm}
+
+% -------------------------------------------------------------------------
+% Entity/company/institution data
+% -------------------------------------------------------------------------
+\begin{tabularx}{\textwidth}{|L{4.55cm}|Y|L{3.15cm}|Y|}
+\hline
+\AnnexSection{Empresa, Institución o Profesional en la que realiza TFM}
+Nombre del Centro & \multicolumn{3}{l|}{\AnnexEntityName}\\\hline
+\multicolumn{2}{|l|}{Domicilio a efectos de notificación} & Municipio & Provincia\\\hline
+\multicolumn{2}{|l|}{\AnnexNA} & \AnnexNA & \AnnexNA\\\hline
+\end{tabularx}
+
+\vspace{0.11cm}
+
+% -------------------------------------------------------------------------
+% Contact/entity tutor data
+% -------------------------------------------------------------------------
+\begin{tabularx}{\textwidth}{|L{4.55cm}|Y|L{3.15cm}|Y|}
+\hline
+\rowcolor{annexContactShade}\multicolumn{4}{|l|}{\bfseries\itshape Datos de la persona de contacto (Tutor)}\\\hline
+Nombre y apellidos & \multicolumn{3}{l|}{\AnnexEntityTutorName}\\\hline
+Cargo & \AnnexEntityTutorPosition & NIF & \AnnexEntityTutorDNI\\\hline
+& \multicolumn{1}{l|}{} & Teléfono & \AnnexNA\\\hline
+e-mail & \multicolumn{3}{l|}{\AnnexEntityTutorEmail}\\\hline
+\end{tabularx}
+
+\vspace{0.11cm}
+
+% -------------------------------------------------------------------------
+% UAH tutor data
+% -------------------------------------------------------------------------
+\begin{tabularx}{\textwidth}{|L{4.55cm}|Y|L{3.15cm}|Y|}
+\hline
+\AnnexSection{Datos \wordTutorDelOrDeLa{} \wordTutorOrTutora{} en la Universidad de Alcalá}
+Nombre y apellidos & \multicolumn{3}{l|}{\myAcademicTutorFullName}\\\hline
+Departamento & \myAcademicTutorDepartmentOrInstitution & NIF & \myAcademicTutorDNI\\\hline
+& \multicolumn{1}{l|}{} & Teléfono & \AnnexNA\\\hline
+e-mail & \multicolumn{3}{l|}{\myAcademicTutorEmail}\\\hline
+\end{tabularx}
+
+\vspace{0.11cm}
+
+% -------------------------------------------------------------------------
+% TFM data
+% -------------------------------------------------------------------------
+\begin{tabularx}{\textwidth}{|L{3.75cm}|Y|L{3.55cm}|Y|}
+\hline
+\AnnexSection{Datos de TFM}
+Fecha Inicio & \AnnexNA & Fecha Fin & \AnnexNA\\\hline
+Días semanales & \AnnexNA & Horario & \AnnexNA\\\hline
+Título TFG & \multicolumn{3}{l|}{\myBookTitleSpanish}\\\hline
+\end{tabularx}
+
+\vspace{0.11cm}
+
+% -------------------------------------------------------------------------
+% Collaboration terms and short summary
+% -------------------------------------------------------------------------
+\begin{tabularx}{\textwidth}{|Y|}
+\hline
+\rowcolor{annexSectionBlue}\bfseries\itshape TÉRMINOS DEL ACUERDO DE COLABORACIÓN\\\hline
+\begin{minipage}[t]{0.965\textwidth}
+\vspace{0.05cm}
+\setlength{\parindent}{0pt}
+\hspace*{0.10cm}$\bullet$\hspace{0.48cm}El tutor de la entidad realizará las labores propias durante el periodo acordado.\\
+\hspace*{0.10cm}$\bullet$\hspace{0.48cm}El tutor/a de la entidad recibirá un certificado de la Universidad que haga constar su labor de tutorización del TFM.
+\vspace{0.3cm}
+\end{minipage}\\\hline
+\rowcolor{annexSectionBlue}\bfseries\itshape BREVE RESUMEN DEL TFM\\\hline
+\rule{0pt}{0.26cm}\AnnexNA\\[1.48cm]\hline
+\end{tabularx}
+
+\vspace{0.22cm}
+
+En Alcalá de Henares, a \today % \myPaperworkDate
+
+\vspace{0.10cm}
+
+% -------------------------------------------------------------------------
+% Signature block
+% -------------------------------------------------------------------------
+\begin{tabularx}{\textwidth}{|Y|Y|Y|}
+\hline
+\centering Por la Universidad de Alcalá &
+\centering Por la empresa &
+\centering\arraybackslash \expandafter\makefirstuc\expandafter{\wordAutorElOrLa{}} estudiante\\\hline
+\vspace{1.3cm}\rule{0pt}{0.43cm}Coordinador TFG &
+\rule{0pt}{0.43cm}\wordDonOrDonaCoTutor{} \AnnexEntityTutorName &
+\rule{0pt}{0.43cm}\wordDonOrDonaAutor \myAuthorFullName\\
+\mySchool &  \expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora{}} de \myWorkType{} en la entidad & \\\hline
+\end{tabularx}
+
+\end{document}

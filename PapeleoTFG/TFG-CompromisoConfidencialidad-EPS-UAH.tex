@@ -1,0 +1,110 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Confidentiality commitment for Final Degree Projects (TFG) at EPS-UAH
+%
+% Based on Annex VI of the EPS-UAH TFG regulations.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Preamble and configuration section
+%
+\input{../Config/preamble.tex}    % DO NOT TOUCH THIS LINE. You can edit
+                                  % the file to modify some default settings
+
+\input{../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
+                                  % to set your specific settings
+
+\input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE
+%
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% -------------------------------------------------------------------------
+% Professor signing the confidentiality commitment.
+%
+% By default, the academic tutor is used, because Annex VI applies to the
+% professor who tutors and/or evaluates the TFG. These commands can be
+% redefined in Config/myconfig.tex when the document is to be signed by a
+% different evaluator (for example, a member of the tribunal).
+% -------------------------------------------------------------------------
+\providecommand{\myConfidentialityProfessorFullName}{\myAcademicTutorFullName}
+\providecommand{\myConfidentialityProfessorDNI}{\myAcademicTutorDNI}
+\providecommand{\myConfidentialityProfessorGender}{\myAcademicTutorGender}
+
+% Gender-dependent wording for the professor signing this document.
+\ifthenelse{\equal{\myConfidentialityProfessorGender}{male}}{%
+  \newcommand{\wordDonOrDonaConfidentialityProfessor}{D.}%
+  \newcommand{\wordProfesorOrProfesoraConfidentiality}{profesor}%
+  \newcommand{\wordProfesorOrProfesoraConfidentialityTitle}{Profesor}%
+  \newcommand{\wordProfesorElOrLaConfidentiality}{El}%
+}{%
+  \newcommand{\wordDonOrDonaConfidentialityProfessor}{Dª.}%
+  \newcommand{\wordProfesorOrProfesoraConfidentiality}{profesora}%
+  \newcommand{\wordProfesorOrProfesoraConfidentialityTitle}{Profesora}%
+  \newcommand{\wordProfesorElOrLaConfidentiality}{La}%
+}
+
+\title{COMPROMISO DE CONFIDENCIALIDAD EN TRABAJOS DE FIN DE GRADO (TFG)}
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Let's start with the real stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\wordDonOrDonaConfidentialityProfessor{} \myConfidentialityProfessorFullName{},
+con NIF \myConfidentialityProfessorDNI{},
+\wordProfesorOrProfesoraConfidentiality{} de la Universidad de Alcalá, que tutoriza
+y/o evaluará el trabajo de fin de grado ``\myBookTitle'', presentado por
+\wordDonOrDonaAutor{} \myAuthorFullName{}, con NIF \myAuthorDNI{},
+
+\vspace{0.4cm}
+
+\noindent\textbf{SE COMPROMETE:}
+
+\begin{enumerate}[label=\Roman*.,leftmargin=1.1cm,itemsep=0.25cm,topsep=0.25cm]
+  \item A no difundir ni por escrito ni oralmente el contenido del trabajo sin el
+        consentimiento previo y por escrito del estudiante.
+
+  \item A aplicar cuantas precauciones sean razonables para evitar la revelación a
+        terceras personas.
+
+  \item A no hacer servir el trabajo para ninguna otra finalidad que no sea la de
+        su evaluación académica.
+
+  \item A custodiar el trabajo durante el plazo exigido por la legislación vigente
+        y, una vez transcurrido este plazo, proceder a su destrucción de acuerdo con
+        el procedimiento establecido por la Universidad a estos efectos.
+
+  \item A comunicar al estudiante cualquier hecho que pueda afectar a los
+        compromisos de este documento.
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\noindent\textbf{Conformes:}
+
+\vspace{0.5cm}
+
+\begin{tabularx}{\textwidth}{X X}
+  \centering\textbf{\wordProfesorElOrLaConfidentiality{} \wordProfesorOrProfesoraConfidentialityTitle} &
+  \centering\arraybackslash\textbf{\expandafter\makefirstuc\expandafter{\wordAutorElOrLa} \wordAlumnoOrAlumnaUpcaseFirt} \\
+  \\[2.2cm]
+  \centering Fdo.: \myConfidentialityProfessorFullName &
+  \centering\arraybackslash Fdo.: \myAuthorFullName
+\end{tabularx}
+
+\vspace{0.6cm}
+
+\begin{center}
+Alcalá de Henares, a \myPaperworkDate{}.
+\end{center}
+
+\end{document}
