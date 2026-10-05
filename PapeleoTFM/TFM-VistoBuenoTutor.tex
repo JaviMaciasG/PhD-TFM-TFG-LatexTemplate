@@ -51,6 +51,7 @@
 
 \input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
                                   % "postamble" is not a valid word... :-)
+\usepackage{soul}
 %
 % END Preamble and configuration section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -77,46 +78,60 @@
 presente \wordDaOrDan{} su conformidad para que el citado trabajo sea
 presentado para su defensa.
 
-\vspace{1cm}
-
+\vspace{0.5cm}
 $\XBox$ Sí
 
 \ifthenelse{\equal{\myDegree}{MUIE}}
 {
-  \vspace{0.5cm}
   \ifthenelse{\equal{\myConfidentialContent}{No}}
   {
     ~~~~$\XBox$ NO sujeto a confidencialidad
-    
-    \vspace{0.5cm}
-    
+
+%    \vspace{0.5cm}
+
     ~~~~$\Box$ SÍ sujeto a confidencialidad
-    
+
   }
   {
     ~~~~$\Box$ NO sujeto a confidencialidad
-    
+
     \vspace{0.5cm}
-    
+
     ~~~~$\XBox$ SÍ sujeto a confidencialidad
-    
+
   }
 }
 {
 }
-
-\vspace{0.5cm}
+% \vspace{0.5cm}
 
 $\Box$ No
 
+%\vspace{0.5cm}
+
+
+
+\ifthenelse{
+  \equal{\myDegree}{MUIT}
+  \OR
+  \equal{\\myDegree}{MUII}
+}{
+  \vspace{0.5cm}
+  El trabajo autorizado ha sido analizado por la plataforma TURNITIN, arrojando un porcentaje de plagio del \hl{...}\%.
+
+  Justificación de la autorización (obligatorio en caso de que el porcentaje supere el 24\%):
+
+  \vspace{2cm}
+}
+{
+}
+
+
+\vspace{1cm}
+
+\flushright{Alcalá de Henares, \myPaperworkDate}
 \vspace{2cm}
-
-\flushright{Alcalá de Henares, \myPaperworkDate.}
-
-\vspace{4cm}
-
 \flushright{Fdo.: \myAdvisors}
-
 }
 \end{document}
 
