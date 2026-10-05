@@ -80,6 +80,8 @@
 \ValidateBooleanOption{\myIncludeListOfCode}{\string\myIncludeListOfCode}
 \ValidateBooleanOption{\myIncludeListOfAlgorithms}{\string\myIncludeListOfAlgorithms}
 \ValidateBooleanOption{\myIncludeListOfVideos}{\string\myIncludeListOfVideos}
+\ValidateBooleanOption{\myAcademicTutorIsPhD}{\string\myAcademicTutorIsPhD}
+\ValidateBooleanOption{\myCoTutorIsPhD}{\string\myCoTutorIsPhD}
 
 % Select the degree before defining text that depends on its institution.
 \providecommand{\myConfigDirectory}{../Config}
@@ -264,7 +266,7 @@
 \ifthenelse{\equal{\myLanguage}{spanish}}
 {
 \newcommand{\wordCoDirectorOrCoDirectoraTitle}{\expandafter\makefirstuc\expandafter{\wordCoDirectorOrCoDirectora}}
-\newcommand{\wordCoTutorOrCoTutoraTitle}{\expandafter\makefirstuc\expandafter{\wordCoTutorOrCotutora}}
+\newcommand{\wordCoTutorOrCoTutoraTitle}{\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}}
 }
 {
 \newcommand{\wordCoDirectorOrCoDirectoraTitle}{Coadvisor}
