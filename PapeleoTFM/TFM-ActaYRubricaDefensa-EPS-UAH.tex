@@ -65,15 +65,23 @@
 \vspace{0.7cm}
 
 \begin{description}
-  \item[Título del TFM:] \myBookTitle
-  \item[Autor/a:] \myAuthorFullName
+  \item[Título del TFM:] \myBookTitleSpanish
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+  \item[Título en inglés:] \myBookTitleEnglish
+  }
+  {
+  }
+  \item[\expandafter\makefirstuc\expandafter{\wordAutorOrAutora}:] \myAuthorFullName
   \item[DNI:] \myAuthorDNI
   \item[Estudios:] \myDegreefull
-  \item[Director/a:] \myAcademicTutorFullName
-  \item[Codirector/a (si procede):]
-        \ifthenelse{\equal{\myCoTutorFullName}{}}
-        {N/A}
-        {\myCoTutorFullName}
+  \item[\expandafter\makefirstuc\expandafter{\wordDirectorOrdirectora}:] \myAcademicTutorFullName
+  \ifthenelse{\equal{\myCoTutorFullName}{}}
+  {
+  }
+  {
+  \item[\expandafter\makefirstuc\expandafter{\wordCoDirectorOrCoDirectora}:] \myCoTutorFullName
+  }
   \item[Departamento:] \myDepartment
 \end{description}
 
@@ -107,21 +115,21 @@
   \begin{tabular}{|p{0.30\textwidth}|p{0.30\textwidth}|p{0.30\textwidth}|}
     \hline
     \begin{minipage}[t][3.3cm][t]{\linewidth}
-      \textbf{Presidente}
+      \textbf{\wordPresidenteOrPresidenta}
 
       \vfill
       {\small Fdo.: \myTribunalPresident}
     \end{minipage}
     &
     \begin{minipage}[t][3.3cm][t]{\linewidth}
-      \textbf{Vocal 1º}
+      \textbf{\wordVocalPrimeroOrPrimera{} \wordNumberVocalPrimeroOrPrimera}
 
       \vfill
       {\small Fdo.: \myTribunalFirstSpokesperson}
     \end{minipage}
     &
     \begin{minipage}[t][3.3cm][t]{\linewidth}
-      \textbf{Vocal 2º}
+      \textbf{\wordVocalSegundoOrSegunda{} \wordNumberVocalSegundoOrSegunda}
 
       \vfill
       {\small Fdo.: \myTribunalSecondSpokesperson}
