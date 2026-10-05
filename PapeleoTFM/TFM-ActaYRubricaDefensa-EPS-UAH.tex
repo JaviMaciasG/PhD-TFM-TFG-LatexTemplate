@@ -1,0 +1,160 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Minutes and evaluation rubric for the Final Master's Thesis (TFM)
+% EPS-UAH
+%
+% Structure and formatting based on PapeleoTFG/TFG-ActaYRubricaDefensa.tex
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Preamble and configuration section
+%
+\input{../Config/preamble.tex}    % DO NOT TOUCH THIS LINE. You can edit
+                                  % the file to modify some default settings
+
+\input{../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
+                                  % to set your specific settings
+
+\input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE.
+
+\input{../Config/grades-calculation.tex}       % DO NOT TOUCH THIS LINE.
+%
+% END Preamble and configuration section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\title{Acta de defensa de TFM y rúbrica}
+\date{\today}
+\author{\myAcademicTutorFullName}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Let's start with the real stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN within-document configuration
+%
+\input{../Config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
+%
+% END within-document configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN Report content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent \textbf{Anexo XI -- Acta de defensa de TFM y rúbrica}
+
+\vspace{0.5cm}
+
+\noindent \textbf{ACTA DE DEFENSA DE TRABAJO DE FIN DE MÁSTER. CURSO \myThesisAcademicYear}
+
+\thispagestyle{plain}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+
+\vspace{0.7cm}
+
+\begin{description}
+  \item[Título del TFM:] \myBookTitle
+  \item[Autor/a:] \myAuthorFullName
+  \item[DNI:] \myAuthorDNI
+  \item[Estudios:] \myDegreefull
+  \item[Director/a:] \myAcademicTutorFullName
+  \item[Codirector/a (si procede):]
+        \ifthenelse{\equal{\myCoTutorFullName}{}}
+        {N/A}
+        {\myCoTutorFullName}
+  \item[Departamento:] \myDepartment
+\end{description}
+
+\vspace{0.4cm}
+
+\noindent\textbf{El Tribunal ha resuelto otorgar la calificación de:}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}X|}
+    \hline
+    \vspace{0.45cm}
+    \myTribunalGrade
+    \vspace{0.45cm} \\ \hline
+  \end{tabularx}
+\end{table}
+
+\vspace{0.25cm}
+
+\noindent\textbf{Propuesto para Matrícula de Honor * (marcar con una X)}
+\hfill \MHProposalBoxes{}
+
+\vspace{0.45cm}
+
+\noindent$^{*}$ El Tribunal podrá proponer para Matrícula de Honor un TFM con calificación de Sobresaliente. El estudiante que acepta la propuesta de Matrícula de Honor, renuncia voluntariamente a la petición de expedición del Título de Graduado hasta la finalización del curso académico, momento en el cual se resuelve la concesión de las Matrículas de Honor
+
+\vfill
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{|p{0.30\textwidth}|p{0.30\textwidth}|p{0.30\textwidth}|}
+    \hline
+    \begin{minipage}[t][3.3cm][t]{\linewidth}
+      \textbf{Presidente}
+
+      \vfill
+      {\small Fdo.: \myTribunalPresident}
+    \end{minipage}
+    &
+    \begin{minipage}[t][3.3cm][t]{\linewidth}
+      \textbf{Vocal 1º}
+
+      \vfill
+      {\small Fdo.: \myTribunalFirstSpokesperson}
+    \end{minipage}
+    &
+    \begin{minipage}[t][3.3cm][t]{\linewidth}
+      \textbf{Vocal 2º}
+
+      \vfill
+      {\small Fdo.: \myTribunalSecondSpokesperson}
+    \end{minipage}
+    \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\newpage
+
+\thispagestyle{plain}
+
+\begin{tikzpicture}[remember picture, overlay]
+  % Draw a rectangle that perfectly aligns with text margins
+  \draw [thick]
+    ($(current page.north west) + (\dimexpr\oddsidemargin+0.9in, -\dimexpr\topmargin+1in)$)
+    rectangle
+    ($(current page.south east) + (-\dimexpr\evensidemargin+1in, \dimexpr-\textheight-1in+\paperheight)$);
+\end{tikzpicture}
+
+% Content inside the rectangle
+\vspace*{-.8in}
+
+\noindent\textbf{Observaciones del tribunal (incluir en este punto las motivaciones para proponer al TFM para la mención de Matrícula de Honor, si procede)}
+
+\newpage
+
+\input{../Config/rubricaTFM-Tribunal-EPS-UAH.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END Report content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
