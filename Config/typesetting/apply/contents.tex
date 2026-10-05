@@ -1,5 +1,6 @@
 % Every generated list uses the same unnumbered title typography and spacing.
-% Entry formatting remains specific to the corresponding package/list.
+% Auxiliary-list entries reuse the TOC section-entry renderer so their fonts,
+% spacing, number columns, page numbers and leaders follow the selected style.
 \newcommand{\thesis@makelisttitle}[1]{%
   \vspace*{\thesis@chapterbefore}%
   {\parindent\z@\raggedright\normalfont\interlinepenalty\@M
@@ -51,3 +52,25 @@
   \renewcommand{\cftchappagefont}{\normalfont\rmfamily\bfseries}%
   \renewcommand{\cftchapleader}{\hfill}%
 }{}
+
+% Preserve the fully configured section renderer before assigning the shared
+% auxiliary-list entry. Force a visible entry locally even if a user chooses a
+% TOC depth that hides sections; that choice must not empty the other lists.
+\let\thesis@tocsectionentry\l@section
+\newcommand{\thesis@auxlistentry}[2]{%
+  \begingroup
+  \c@tocdepth=\@ne
+  \thesis@tocsectionentry{#1}{#2}%
+  \endgroup}
+\let\l@figure\thesis@auxlistentry
+\let\l@table\thesis@auxlistentry
+\let\l@videos\thesis@auxlistentry
+\let\l@algocf\thesis@auxlistentry
+
+% float.sty recreates the entry command whenever \listof is invoked. Replace
+% that package-local dotted renderer with the same shared renderer used above.
+\patchcmd{\listof}
+  {\@namedef{l@#1}{\@dottedtocline{1}{1.5em}{2.3em}}}
+  {\expandafter\let\csname l@#1\endcsname\thesis@auxlistentry}
+  {}%
+  {\PackageWarning{thesis-typesetting}{Could not apply the shared entry style to float lists}}

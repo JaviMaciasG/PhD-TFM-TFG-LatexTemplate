@@ -49,19 +49,23 @@ The retired profile names are not aliases for the current selectors.
 ### Scope and preservation
 
 The layer explicitly controls body-font packages; chapters, sections,
-subsections and subsubsections; the main contents list; the shared title style
-used by every generated list; and page-style settings.
+subsections and subsubsections; the main contents list; the shared title and
+entry styles used by the generated figure, table, source-code, algorithm and
+video lists; and page-style settings.
 It retains the existing geometry, base class size, paragraph settings,
 line-spacing multiplier, float parameters, language, numbering depths,
 bibliography configuration and content structure. Different fonts and chapter
 dimensions can nevertheless change line wrapping and pagination.
 
-Dedicated caption and figure/table/custom-list entry adapters are outside this
-feature's current scope. Their entries can inherit new fonts, but their title
-typography and spacing are deliberately consistent within each selected style.
+Figure, table, source-code, algorithm and video entries reuse the configured TOC
+section-entry renderer. Consequently, they share its font, spacing, indentation,
+number-column width, page-number treatment and leader policy. Captions in the
+document body and the acronym and symbol glossaries remain package-owned.
 
-The shared `Config/preamble.tex` and `Config/postamble.tex` remain unchanged.
-Administrative forms and Anteproyecto do not load this Book-only dispatcher.
+The shared `Config/preamble.tex` remains unchanged. The video helper in
+`Config/postamble.tex` records only its semantic number and text; it delegates
+indentation and leader formatting to the shared list renderer. Administrative
+forms and Anteproyecto do not load this Book-only dispatcher.
 
 ## 2. Selecting and comparing styles
 
@@ -399,7 +403,7 @@ Subsection and subsubsection skips cannot currently be changed independently
 through this baseline. Paragraph/subparagraph formats have no dedicated settings
 here. Changing either requires an explicit renderer extension.
 
-### 4.4 Main contents list
+### 4.4 Contents and auxiliary lists
 
 | Macro | Baseline | Effect |
 | --- | --- | --- |
@@ -429,6 +433,14 @@ section/subsection entry-font or dot-spacing settings in this interface.
 Chapter page-number font in `modern` still comes from its configured macro;
 the special branch overrides chapter text font only. Setting chapter dot spacing
 does not reinstate leaders removed by a layout branch.
+
+Entries in the lists of figures, tables, source-code listings, algorithms and
+videos use the section-entry renderer after these settings and layout-specific
+overrides have been applied. They therefore follow `\cftsecfont`,
+`\cftsecpagefont`, `\cftsecleader`, `\cftbeforesecskip`, `\cftsecindent` and
+`\cftsecnumwidth`. Their package-specific labels, counters and file formats are
+unchanged. Acronym and symbol lists are glossaries rather than TOC-style lists
+and retain their own entry rendering.
 
 Keep each level's text start beyond the number column of its parent. A useful
 starting arrangement is section indent = chapter number width, subsection
