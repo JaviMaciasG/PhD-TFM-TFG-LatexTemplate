@@ -1,0 +1,81 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Shared visual components for UAH Escuela de Doctorado forms.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\geometry{a4paper,top=1.25cm,bottom=1.25cm,left=1.55cm,right=1.55cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{empty}
+\definecolor{PhDFormGray}{gray}{0.84}
+\definecolor{PhDFormBlue}{RGB}{31,103,177}
+\renewcommand{\arraystretch}{1.16}
+
+\newcommand{\PhDValueOrBlank}[1]{#1}
+\newcommand{\PhDUnderline}[2]{\underline{\makebox[#1][l]{\strut #2}}}
+\newcommand{\PhDBox}[2][1.2em]{\fbox{\parbox[t][#2][t]{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\vspace{0pt}}}}
+\newcommand{\PhDResponseBox}[2]{%
+  \noindent\begin{tabularx}{\linewidth}{|X|}
+    \hline
+    \rule{0pt}{#1}#2\tabularnewline
+    \hline
+  \end{tabularx}}
+\newcommand{\PhDCheckedBox}{\ensuremath{\boxtimes}}
+\newcommand{\PhDEmptyBox}{\ensuremath{\square}}
+\newcommand{\PhDChoice}[3]{%
+  \ifthenelse{\equal{#1}{#2}}{\PhDCheckedBox}{\PhDEmptyBox}\,#3}
+
+\newcommand{\PhDSectionBar}[1]{%
+  \vspace{0.22cm}%
+  \noindent\colorbox{PhDFormGray}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\strut\footnotesize #1}}\par
+  \vspace{0.10cm}}
+
+\newcommand{\PhDLegacyHeader}[1]{%
+  \noindent\begin{tabularx}{\linewidth}{@{}p{5.1cm}X@{}}
+    \begin{minipage}[t]{5.1cm}
+      \includegraphics[width=4.25cm]{assets/uah/escuela-doctorado-legacy.png}\\[-0.05cm]
+      {\scriptsize\bfseries ESCUELA DE DOCTORADO}
+    \end{minipage}
+    & \begin{minipage}[t]{\linewidth}\centering\vspace{0.35cm}\bfseries\footnotesize #1\end{minipage}
+  \end{tabularx}\par
+  \vspace{0.55cm}}
+
+\newcommand{\PhDModernHeader}[1]{%
+  \noindent\begin{tabularx}{\linewidth}{@{}p{5.2cm}X@{}}
+    \includegraphics[width=4.65cm]{assets/uah/escuela-doctorado-modern.jpg} &
+    \begin{minipage}[t]{\linewidth}\raggedleft\scriptsize
+      ESCUELA DE DOCTORADO\\[-0.05cm]
+      Servicio de Estudios Oficiales de Posgrado\\[-0.05cm]
+      C/Libreros 21 -- 28801 Alcalá de Henares (Madrid)\\[-0.05cm]
+      escuela.doctorado@uah.es
+    \end{minipage}
+  \end{tabularx}\par
+  \vspace{0.32cm}
+  \begin{center}\bfseries\small #1\end{center}
+  \vspace{0.12cm}}
+
+\newcommand{\PhDNewHeader}[1]{%
+  \includegraphics[width=\linewidth]{assets/uah/escuela-doctorado-2026.jpg}\par
+  \vspace{0.45cm}
+  \begin{center}\bfseries\large #1\end{center}
+  \vspace{0.25cm}}
+
+\newcommand{\PhDDocumentFooter}[2]{%
+  \vfill
+  {\scriptsize #1\hfill #2}\par}
+
+\newcommand{\PhDPrivacyText}{%
+  Los datos personales recogidos serán tratados por la Universidad de Alcalá con la finalidad de gestionar la solicitud presentada, así como con fines estadísticos. La base legítima de dicho tratamiento es la ejecución de su solicitud, las obligaciones legales en materia educativa, así como su consentimiento expreso. Los datos serán cedidos a los órganos y personal públicos competentes. Más allá de estos supuestos, los datos no serán cedidos salvo los casos previstos legalmente y se conservarán durante el tiempo legalmente establecido y el necesario para cumplir con la finalidad descrita. El órgano responsable del tratamiento es la Secretaría General de la Universidad, ante quien se podrán ejercer los correspondientes derechos mediante escrito dirigido a la Delegada de Protección de Datos o por correo electrónico a protecciondedatos@uah.es, adjuntando copia del DNI o equivalente. En caso de conflicto se podrá plantear recurso ante la Agencia Española de Protección de Datos.}
+
+\newcommand{\PhDPrivacyFooter}[2]{%
+  \vfill
+  {\fontsize{6.2}{7.1}\selectfont \PhDPrivacyText}\par
+  \vspace{0.12cm}
+  {\scriptsize\hfill #1\\[-0.05cm]\hfill #2}}
+
+\newcommand{\PhDSignatureLine}[1]{%
+  \begin{minipage}[t]{0.30\linewidth}\centering
+    #1\\[1.15cm]
+    Fdo.: \PhDUnderline{0.85\linewidth}{}
+  \end{minipage}}
+
+\newcommand{\PhDYesNo}[1]{\PhDChoice{#1}{Sí}{Sí}\quad\PhDChoice{#1}{No}{No}}
