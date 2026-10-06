@@ -1,67 +1,64 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Declaración de uso de inteligencia artificial generativa
-% Universidad de Alcalá - Escuela de Doctorado
-%
-% Generated from the public EDUAH form / guidance current in October 2026.
-%
+% EDUAH/86 - Declaración sobre el uso de inteligencia artificial
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\documentclass[11pt,a4paper,oneside]{article}
-
+\documentclass[10pt,a4paper,oneside]{article}
 \input{../Config/preamble.tex}
 \input{../Config/myconfig.tex}
 \InputIfFileExists{../Config/myconfig-phd.tex}{}{}
 \input{../Config/postamble.tex}
+\input{phd-form-layout.tex}
 
-% Local helpers. They intentionally live in this document, not in Config/.
-\newcommand{\PhDFormSection}[1]{%
-  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
-\newcommand{\PhDFormField}[2]{%
-  \noindent\textbf{#1}: #2\par}
-\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
-\newcommand{\PhDNA}{N/A}
-
-\providecommand{\myAIUsed}{Sí} % Sí o No
-\providecommand{\myAIToolName}{\PhDNA}
-\providecommand{\myAIPurpose}{\PhDNA}
-\providecommand{\myAIThesisSections}{\PhDNA}
-\providecommand{\myAIAdditionalDetails}{\PhDNA}
-
-
-\title{DECLARACIÓN SOBRE EL USO DE INTELIGENCIA ARTIFICIAL EN LA TESIS DOCTORAL}
-\date{}
+\providecommand{\myAIUsed}{Sí}
+\providecommand{\myAIToolName}{}
+\providecommand{\myAIPurpose}{}
+\providecommand{\myAIThesisSections}{}
+\providecommand{\myAIUsageRows}{\myAIToolName & \myAIPurpose & \myAIThesisSections\\\hline}
 
 \begin{document}
-\maketitle
-\thispagestyle{empty}
+\fontsize{10}{12}\selectfont
+\PhDNewHeader{DECLARACIÓN SOBRE EL USO DE INTELIGENCIA ARTIFICIAL (IA) EN LA ELABORACIÓN DE LA TESIS DOCTORAL\textsuperscript{1}}
 
-\PhDFormSection{Datos de la tesis}
-\PhDFormField{Doctorando/a}{\myAuthorFullName}
-\PhDFormField{Programa de Doctorado}{\myPhDProgram}
-\PhDFormField{Título de la tesis}{\myBookTitle}
+\textbf{I. Datos de la tesis}
 
-\PhDFormSection{Declaración sobre el uso de inteligencia artificial generativa}
-\ifthenelse{\equal{\myAIUsed}{Sí}}{%
-Declaro que en la elaboración de esta tesis doctoral se han utilizado herramientas de inteligencia artificial generativa como apoyo técnico. Su uso no ha sustituido la autoría intelectual, el análisis crítico ni la responsabilidad académica del trabajo, que corresponden íntegramente al/a la doctorando/a. Todo contenido generado o asistido mediante dichas herramientas ha sido revisado y verificado por el/la doctorando/a para garantizar su exactitud y coherencia con los principios de integridad académica.
+\vspace{0.20cm}
+\textbf{Doctorando/a:} \PhDUnderline{14.0cm}{\myAuthorFullName}\\[0.28cm]
+\textbf{Título de la tesis:} \PhDUnderline{13.2cm}{\myBookTitle}\\[0.28cm]
+\textbf{Programa de Doctorado:} \PhDUnderline{11.6cm}{\myPhDProgram}\\[0.28cm]
+\textbf{Director/es de la tesis:} \PhDUnderline{12.0cm}{\myAcademicTutorFullName\ifthenelse{\equal{\myCoTutorFullName}{}}{}{, \myCoTutorFullName}}
 
-\vspace{0.6cm}
-\begin{tabularx}{\textwidth}{|p{0.23\textwidth}|X|}
-\hline
-\textbf{Herramienta/s utilizada/s} & \myAIToolName \\\hline
-\textbf{Finalidad del uso} & \myAIPurpose \\\hline
-\textbf{Sección/es de la tesis} & \myAIThesisSections \\\hline
-\textbf{Información adicional} & \myAIAdditionalDetails \\\hline
+\vspace{0.45cm}
+\textbf{II. Uso de herramientas de inteligencia artificial (IA):}
+
+\vspace{0.20cm}
+DECLARO que en la realización y redacción de la tesis doctoral depositada:
+
+\vspace{0.28cm}
+\begin{tabularx}{\linewidth}{@{}p{0.65cm}X@{}}
+\PhDChoice{\myAIUsed}{No}{} &
+No se ha hecho uso de herramientas de inteligencia artificial para la elaboración y redacción de la tesis doctoral.\\[0.30cm]
+\PhDChoice{\myAIUsed}{Sí}{} &
+Se ha hecho uso de la/s siguiente/s herramienta/s de inteligencia artificial en los contenidos señalados a continuación, siendo consciente de que ésta puede proporcionar resultados erróneos o sesgados. He comprobado, revisado y editado cuidadosamente el resultado del uso de la IA y soy responsable en última instancia del contenido del manuscrito presentado.
 \end{tabularx}
-}{%
-Declaro que en la elaboración de esta tesis doctoral no se han utilizado herramientas de inteligencia artificial generativa.
-}
+
+\vspace{0.35cm}
+\begin{tabularx}{\linewidth}{|p{3.7cm}|X|p{4.0cm}|}
+\hline
+\cellcolor{PhDFormGray}\textbf{Herramienta} &
+\cellcolor{PhDFormGray}\textbf{Finalidad / Descripción breve del uso realizado} &
+\cellcolor{PhDFormGray}\textbf{Capítulo/Sección\textsuperscript{2}}\\\hline
+\myAIUsageRows
+\multicolumn{3}{|c|}{\rule{0pt}{0.85cm}}\\\hline
+\end{tabularx}
+\textit{(Añádase cuantas filas sean necesarias)}
 
 \vfill
-\begin{flushright}
-Alcalá de Henares, \myPaperworkDate.\\[1.5cm]
-Fdo.: \myAuthorFullName
-\end{flushright}
+Alcalá de Henares, \PhDUnderline{6.0cm}{\myPaperworkDate}\\[1.15cm]
+\begin{center}(Firma del doctorando o la doctoranda)\\[0.2cm]\myAuthorFullName\end{center}
 
-
+\vfill
+\hrule\vspace{0.12cm}
+{\fontsize{7.2}{8.4}\selectfont
+\textsuperscript{1} Para garantizar la transparencia e integridad académica, los doctorandos y las doctorandas deben declarar el uso de herramientas de IA o tecnologías asistidas por IA en sus tesis doctorales. El uso no declarado o no ético de dichas tecnologías se considerará fraude académico.\\[0.08cm]
+\textsuperscript{2} Lugar de la tesis (capítulo/sección, tabla, figura, etc.) que recoge el resultado del uso de dicha herramienta.}
+\PhDDocumentFooter{EDUAH/86}{14/07/2026}
 \end{document}

@@ -1,62 +1,56 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Informe previo de valoración por miembro del tribunal
-% Universidad de Alcalá - Escuela de Doctorado
-%
-% Generated from the public EDUAH form / guidance current in October 2026.
-%
+% Informe de valoración previo a la defensa de la tesis doctoral
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\documentclass[11pt,a4paper,oneside]{article}
-
+\documentclass[10pt,a4paper,oneside]{article}
 \input{../Config/preamble.tex}
 \input{../Config/myconfig.tex}
 \InputIfFileExists{../Config/myconfig-phd.tex}{}{}
 \input{../Config/postamble.tex}
+\input{phd-form-layout.tex}
 
-% Local helpers. They intentionally live in this document, not in Config/.
-\newcommand{\PhDFormSection}[1]{%
-  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
-\newcommand{\PhDFormField}[2]{%
-  \noindent\textbf{#1}: #2\par}
-\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
-\newcommand{\PhDNA}{N/A}
+\providecommand{\myTribunalReportMemberFullName}{}
+\providecommand{\myTribunalReportOriginality}{}
+\providecommand{\myTribunalReportObjectives}{}
+\providecommand{\myTribunalReportMethodology}{}
+\providecommand{\myTribunalReportStructure}{}
+\providecommand{\myTribunalReportResults}{}
+\providecommand{\myTribunalReportActivities}{}
+\providecommand{\myTribunalReportDecision}{}
+\providecommand{\myTribunalReportAssessment}{}
 
-\providecommand{\myTribunalReportMemberFullName}{\PhDNA}
-\providecommand{\myTribunalReportMemberRole}{\PhDNA}
-\providecommand{\myTribunalReportAssessment}{\PhDNA}
-\providecommand{\myTribunalReportDecision}{FAVORABLE} % FAVORABLE or DESFAVORABLE
-
-
-\title{INFORME PREVIO DE VALORACIÓN POR MIEMBRO DEL TRIBUNAL}
-\date{}
+\newcommand{\RatingRow}[2]{#1 & \PhDChoice{#2}{Excelente}{} & \PhDChoice{#2}{Muy buena}{} & \PhDChoice{#2}{Suficiente}{} & \PhDChoice{#2}{Deficiente}{}\\\hline}
 
 \begin{document}
-\maketitle
-\thispagestyle{empty}
+\fontsize{9}{10.8}\selectfont
+\PhDLegacyHeader{INFORME DE VALORACIÓN\\PREVIO A LA DEFENSA DE LA TESIS DOCTORAL}
+\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule}
+\textbf{Autor de la tesis doctoral:} \PhDUnderline{12.3cm}{\myAuthorFullName}\\[0.24cm]
+\textbf{Título de la tesis:} \PhDUnderline{13.5cm}{\myBookTitle}\\[0.24cm]
+\textbf{Miembro que emite el informe:} \PhDUnderline{11.7cm}{\myTribunalReportMemberFullName}
+\end{minipage}}
 
-\PhDFormSection{Datos de la tesis}
-\PhDFormField{Doctorando/a}{\myAuthorFullName}
-\PhDFormField{Título de la tesis}{\myBookTitle}
-\PhDFormField{Programa de Doctorado}{\myPhDProgram}
-\PhDFormField{Miembro del tribunal}{\myTribunalReportMemberFullName}
-\PhDFormField{Figura en el tribunal}{\myTribunalReportMemberRole}
+\PhDSectionBar{VALORACIÓN DE LA TESIS}
+\begin{tabularx}{\linewidth}{|>{\bfseries\columncolor{PhDFormGray}}X|*{4}{>{\centering\arraybackslash}p{2.25cm}|}}
+\hline & \cellcolor{PhDFormGray}\textbf{Excelente} & \cellcolor{PhDFormGray}\textbf{Muy buena} & \cellcolor{PhDFormGray}\textbf{Suficiente} & \cellcolor{PhDFormGray}\textbf{Deficiente}\\\hline
+\RatingRow{Originalidad}{\myTribunalReportOriginality}
+\RatingRow{Objetivos}{\myTribunalReportObjectives}
+\RatingRow{Metodología}{\myTribunalReportMethodology}
+\RatingRow{Estructura}{\myTribunalReportStructure}
+\RatingRow{Resultados}{\myTribunalReportResults}
+\RatingRow{Valoración del Documento de actividades}{\myTribunalReportActivities}
+\end{tabularx}
+\begin{center}\scriptsize\textit{(Ponga una cruz en la casilla correspondiente)}\end{center}
 
-\PhDFormSection{Informe individual y razonado}
-A partir del nombramiento del tribunal, cada miembro debe emitir un informe individual y razonado en el que valore la tesis doctoral y apruebe o desapruebe la misma.
+\PhDSectionBar{DECISIÓN GLOBAL}
+\begin{center}\PhDChoice{\myTribunalReportDecision}{Apruebo}{\textbf{Apruebo la tesis}}\hspace{2.5cm}\PhDChoice{\myTribunalReportDecision}{Desapruebo}{\textbf{Desapruebo la tesis}}\end{center}
+\textit{Si no se aprueba, en el informe siguiente debe justificarse e indicarse qué modificaciones deberían introducirse en la Tesis.}
 
-\vspace{0.4cm}
-\noindent\textbf{Valoración:}\par
-\myTribunalReportAssessment
-\vspace{5cm}
-
-\noindent\textbf{Resultado del informe:} \myTribunalReportDecision
+\PhDSectionBar{INFORME RAZONADO}
+\textit{(Puede utilizar hojas adicionales, si así lo desea)}\\[0.08cm]
+\PhDResponseBox{4.2cm}{\myTribunalReportAssessment}
 
 \vfill
-\begin{flushright}
-\myPaperworkDate\\[1.5cm]
-Fdo.: \myTribunalReportMemberFullName
-\end{flushright}
-
-
+\begin{center}En \PhDUnderline{3.0cm}{Alcalá de Henares}, a \PhDUnderline{6.2cm}{\myPaperworkDate}\\[1.0cm]
+Fdo.: \PhDUnderline{7.0cm}{\myTribunalReportMemberFullName}\end{center}
+\PhDDocumentFooter{}{Pág 1 de 1}
 \end{document}

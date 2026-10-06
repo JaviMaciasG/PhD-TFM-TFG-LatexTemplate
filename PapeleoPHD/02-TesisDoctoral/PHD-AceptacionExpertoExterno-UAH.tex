@@ -1,63 +1,66 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Aceptación de persona experta externa
-% Universidad de Alcalá - Escuela de Doctorado
-%
-% Generated from the public EDUAH form / guidance current in October 2026.
-%
+% EDUAH/68 - Aceptación de persona evaluadora externa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\documentclass[11pt,a4paper,oneside]{article}
-
+\documentclass[10pt,a4paper,oneside]{article}
 \input{../Config/preamble.tex}
 \input{../Config/myconfig.tex}
 \InputIfFileExists{../Config/myconfig-phd.tex}{}{}
 \input{../Config/postamble.tex}
+\input{phd-form-layout.tex}
 
-% Local helpers. They intentionally live in this document, not in Config/.
-\newcommand{\PhDFormSection}[1]{%
-  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
-\newcommand{\PhDFormField}[2]{%
-  \noindent\textbf{#1}: #2\par}
-\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
-\newcommand{\PhDNA}{N/A}
-
-\providecommand{\myExternalExpertFullName}{\PhDNA}
-\providecommand{\myExternalExpertDNI}{\PhDNA}
-\providecommand{\myExternalExpertEmail}{\PhDNA}
-\providecommand{\myExternalExpertInstitution}{\PhDNA}
-\providecommand{\myExternalExpertCountry}{\PhDNA}
-\providecommand{\myExternalExpertPosition}{\PhDNA}
-
-
-\title{ACEPTACIÓN COMO PERSONA EXPERTA EXTERNA PARA LA EVALUACIÓN DE TESIS DOCTORAL}
-\date{}
+\providecommand{\myExternalExpertFullName}{}
+\providecommand{\myExternalExpertName}{}
+\providecommand{\myExternalExpertSurname}{}
+\providecommand{\myExternalExpertDNI}{}
+\providecommand{\myExternalExpertTreatment}{}
+\providecommand{\myExternalExpertEmail}{}
+\providecommand{\myExternalExpertInstitution}{}
+\providecommand{\myExternalExpertDepartment}{}
+\providecommand{\myExternalExpertCountry}{}
+\providecommand{\myExternalExpertPosition}{}
+\providecommand{\myExternalExpertAcceptance}{Aceptación}
 
 \begin{document}
-\maketitle
-\thispagestyle{empty}
+\fontsize{8.4}{10.2}\selectfont
+\PhDLegacyHeader{DECLARACIÓN DE CUMPLIMIENTO DE REQUISITOS Y\\COMPROMISOS / ACEPTACIÓN DE EVALUACIÓN\\(Persona Evaluadora Externa)}
 
-\PhDFormSection{Datos de la tesis}
-\PhDFormField{Doctorando/a}{\myAuthorFullName}
-\PhDFormField{Programa de Doctorado}{\myPhDProgram}
-\PhDFormField{Título de la tesis}{\myBookTitle}
+\PhDSectionBar{DATOS PERSONALES DE LA PERSONA EVALUADORA DE LA TESIS DOCTORAL}
+\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule}
+\textbf{DNI/Pasaporte:} \PhDUnderline{6.0cm}{\myExternalExpertDNI}\hfill
+\textbf{Tratamiento:} \PhDChoice{\myExternalExpertTreatment}{Sr.}{Sr.}\quad\PhDChoice{\myExternalExpertTreatment}{Sra.}{Sra.}\\[0.17cm]
+\textbf{Apellidos:} \PhDUnderline{7.3cm}{\myExternalExpertSurname}\hfill
+\textbf{Nombre:} \PhDUnderline{4.6cm}{\myExternalExpertName}\\[0.17cm]
+\textbf{Universidad o Institución:} \PhDUnderline{12.7cm}{\myExternalExpertInstitution}\\[0.17cm]
+\textbf{Departamento:} \PhDUnderline{14.0cm}{\myExternalExpertDepartment}\\[0.17cm]
+\textbf{Área / Puesto:} \PhDUnderline{14.2cm}{\myExternalExpertPosition}\\[0.17cm]
+\textbf{País:} \PhDUnderline{5.0cm}{\myExternalExpertCountry}\hfill
+\textbf{Correo electrónico:} \PhDUnderline{6.4cm}{\myExternalExpertEmail}
+\end{minipage}}
 
-\PhDFormSection{Persona experta externa}
-\PhDFormField{Nombre y apellidos}{\myExternalExpertFullName}
-\PhDFormField{DNI/Pasaporte}{\myExternalExpertDNI}
-\PhDFormField{Correo electrónico}{\myExternalExpertEmail}
-\PhDFormField{Cargo/Categoría}{\myExternalExpertPosition}
-\PhDFormField{Institución}{\myExternalExpertInstitution}
-\PhDFormField{País}{\myExternalExpertCountry}
+\PhDSectionBar{REQUISITOS Y COMPROMISOS}
+\begin{itemize}[leftmargin=0.55cm,itemsep=0pt,topsep=0pt,parsep=0pt]
+\item Tener título de doctor y acreditar un sexenio\textsuperscript{1} o una experiencia investigadora equivalente (al menos 5 publicaciones de calidad), en los últimos 10 años.
+\item Que no existe conflicto de intereses\textsuperscript{2} y se considera competente para su evaluación.
+\item Mantener el secreto y la confidencialidad de la documentación facilitada para el proceso de evaluación todo el tiempo de duración del trabajo consiguiente y aún después de dicho plazo, sin límite de tiempo, y usar esta información sólo para las actuaciones que se me confían como persona evaluadora de la tesis.
+\item No utilizar la información de la tesis para otros usos que no sean los permitidos, ni obtener beneficio directo de ella.
+\item Ser imparcial en el momento de realizar cualquier juicio de valor necesario para la evaluación.
+\end{itemize}
 
-\PhDFormSection{Aceptación}
-Declaro que acepto actuar como persona doctora experta externa para emitir informe sobre la tesis doctoral indicada. Declaro asimismo que soy una persona externa a la Universidad de Alcalá y que no concurre ninguna circunstancia que comprometa la independencia de la evaluación. En el caso de una tesis que opte a Mención Internacional, declaro que pertenezco a una institución de educación superior o centro de investigación no español y que no soy la persona responsable de la estancia de investigación utilizada para dicha mención.
+\PhDSectionBar{DATOS DE LA TESIS}
+\textbf{Título:} \PhDUnderline{15.6cm}{\myBookTitle}\\[0.16cm]
+\textbf{Autor/a:} \PhDUnderline{15.2cm}{\myAuthorFullName}\\[0.16cm]
+\textbf{Director/a:} \PhDUnderline{14.7cm}{\myAcademicTutorFullName}
+
+\PhDSectionBar{ACEPTACIÓN DE LA EVALUACIÓN}
+MANIFIESTA que cumple con los requisitos establecidos y acepta los compromisos anteriormente señalados.\\[0.22cm]
+EXPRESA SU:\hspace{0.45cm}\PhDChoice{\myExternalExpertAcceptance}{Aceptación}{\textbf{Aceptación}}\hspace{0.45cm}\PhDChoice{\myExternalExpertAcceptance}{No aceptación}{\textbf{No aceptación}}\hspace{0.35cm}para realizar el informe de evaluación.\\[0.35cm]
+\begin{center}En \PhDUnderline{3.0cm}{Alcalá de Henares}, a \PhDUnderline{6.2cm}{\myPaperworkDate}\\[0.80cm]
+Fdo.: \PhDUnderline{7.0cm}{\myExternalExpertFullName}\end{center}
 
 \vfill
-\begin{flushright}
-\myPaperworkDate\\[1.5cm]
-Fdo.: \myExternalExpertFullName
-\end{flushright}
-
-
+\hrule\vspace{0.08cm}
+{\fontsize{6.1}{7.0}\selectfont
+\textsuperscript{1} \textbf{Sexenio} es el reconocimiento de un tramo de investigación de 6 años evaluado por la Comisión Nacional Evaluadora de la Actividad Investigadora (CNEAI) de España. Esta modalidad no procede para investigadores que trabajan fuera de España.\\
+\textsuperscript{2} Se considera conflicto de intereses encontrarse en alguna de las siguientes situaciones: tener vínculo matrimonial o situación de hecho asimilable y el parentesco de consanguinidad dentro del cuarto grado o de afinidad dentro del segundo con el doctorando o la doctoranda o las personas que han dirigido la tesis (Artículo 23 de la Ley 40/2015); colaborar en publicaciones o patentes derivadas de la tesis y/o en proyectos o contratos de los que derive la tesis.}
+\PhDDocumentFooter{EDUAH/68}{17/12/2024}
 \end{document}

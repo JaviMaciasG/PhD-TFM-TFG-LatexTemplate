@@ -1,66 +1,63 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Aceptación y requisitos de la Presidencia del tribunal
-% Universidad de Alcalá - Escuela de Doctorado
-%
-% Generated from the public EDUAH form / guidance current in October 2026.
-%
+% EDUAH/46 - Aceptación de presidente/a del tribunal
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\documentclass[11pt,a4paper,oneside]{article}
-
+\documentclass[10pt,a4paper,oneside]{article}
 \input{../Config/preamble.tex}
 \input{../Config/myconfig.tex}
 \InputIfFileExists{../Config/myconfig-phd.tex}{}{}
 \input{../Config/postamble.tex}
+\input{phd-form-layout.tex}
 
-% Local helpers. They intentionally live in this document, not in Config/.
-\newcommand{\PhDFormSection}[1]{%
-  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
-\newcommand{\PhDFormField}[2]{%
-  \noindent\textbf{#1}: #2\par}
-\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
-\newcommand{\PhDNA}{N/A}
-
-\providecommand{\myTribunalPresidentDNI}{\PhDNA}
-\providecommand{\myTribunalPresidentEmail}{\PhDNA}
-\providecommand{\myTribunalPresidentInstitution}{\PhDNA}
-\providecommand{\myTribunalPresidentSexenioDates}{\PhDNA}
-\providecommand{\myTribunalPresidentEquivalentExperience}{No}
-
-
-\title{ACEPTACIÓN Y CUMPLIMIENTO DE REQUISITOS PARA LA PRESIDENCIA DEL TRIBUNAL}
-\date{}
+\providecommand{\myTribunalPresidentName}{}
+\providecommand{\myTribunalPresidentSurname}{}
+\providecommand{\myTribunalPresidentTreatment}{}
+\providecommand{\myTribunalPresidentEmail}{}
+\providecommand{\myTribunalPresidentInstitution}{}
+\providecommand{\myTribunalPresidentDepartment}{}
+\providecommand{\myTribunalPresidentPosition}{}
+\providecommand{\myTribunalPresidentCountry}{}
+\providecommand{\myTribunalPresidentMeritType}{Sexenios}
+\providecommand{\myTribunalPresidentPenultimateSexenio}{}
+\providecommand{\myTribunalPresidentLatestSexenio}{}
+\providecommand{\myTribunalPresidentAcceptance}{Aceptación}
 
 \begin{document}
-\maketitle
-\thispagestyle{empty}
+\fontsize{8.2}{9.8}\selectfont
+\PhDLegacyHeader{ACEPTACIÓN Y DECLARACIÓN\\DE CUMPLIMIENTO DE REQUISITOS\\(Presidente/a de Tribunal de la Tesis Doctoral)}
+\PhDSectionBar{DATOS PERSONALES DEL PRESIDENTE/A DEL TRIBUNAL DE TESIS DOCTORAL}
+\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule}
+\textbf{DNI/Pasaporte:} \PhDUnderline{6.0cm}{\myTribunalPresidentDNI}\hfill
+\textbf{Tratamiento:} \PhDChoice{\myTribunalPresidentTreatment}{Sr.}{Sr.}\quad\PhDChoice{\myTribunalPresidentTreatment}{Sra.}{Sra.}\\[0.16cm]
+\textbf{Apellidos:} \PhDUnderline{7.3cm}{\myTribunalPresidentSurname}\hfill
+\textbf{Nombre:} \PhDUnderline{4.6cm}{\myTribunalPresidentName}\\[0.16cm]
+\textbf{Universidad o Institución:} \PhDUnderline{12.7cm}{\myTribunalPresidentInstitution}\\[0.16cm]
+\textbf{Departamento:} \PhDUnderline{14.0cm}{\myTribunalPresidentDepartment}\\[0.16cm]
+\textbf{Cuerpo y Área / Puesto:} \PhDUnderline{12.7cm}{\myTribunalPresidentPosition}\\[0.16cm]
+\textbf{País:} \PhDUnderline{5.0cm}{\myTribunalPresidentCountry}\hfill
+\textbf{Correo electrónico:} \PhDUnderline{6.4cm}{\myTribunalPresidentEmail}
+\end{minipage}}
 
-\PhDFormSection{Tesis doctoral}
-\PhDFormField{Doctorando/a}{\myAuthorFullName}
-\PhDFormField{Programa de Doctorado}{\myPhDProgram}
-\PhDFormField{Título de la tesis}{\myBookTitle}
+\PhDSectionBar{CUMPLIMIENTO DE REQUISITOS. \textit{Artículo 9.1. Tribunal de evaluación de la Tesis Doctoral del Reglamento de Elaboración, Autorización y Defensa de la Tesis Doctoral de la Universidad de Alcalá.}}
+Según este artículo el Presidente/a del tribunal (titular y suplente) deberá \textbf{acreditar dos sexenios} o una experiencia investigadora equivalente (al menos 10 publicaciones de calidad), en los últimos 16 años.
 
-\PhDFormSection{Persona propuesta para la Presidencia del tribunal}
-\PhDFormField{Nombre y apellidos}{\myTribunalPresident}
-\PhDFormField{DNI/Pasaporte}{\myTribunalPresidentDNI}
-\PhDFormField{Correo electrónico}{\myTribunalPresidentEmail}
-\PhDFormField{Universidad/Organismo/Institución}{\myTribunalPresidentInstitution}
-
-\PhDFormSection{Aceptación y cumplimiento de requisitos}
-Declaro que acepto formar parte del tribunal propuesto para juzgar la tesis doctoral indicada y que cumplo los requisitos establecidos por la Universidad de Alcalá para ejercer la Presidencia.
-
-\begin{itemize}[leftmargin=0.8cm]
-\item $\Box$ Dispongo de dos sexenios en los últimos 16 años. Fechas de concesión: \myTribunalPresidentSexenioDates.
-\item $\Box$ Acredito experiencia investigadora equivalente a la necesaria para la obtención de dos sexenios: \myTribunalPresidentEquivalentExperience.
-\item $\Box$ No dirijo ni tutorizo la tesis doctoral objeto de evaluación.
+\vspace{0.22cm}\textbf{MANIFIESTA}
+\begin{itemize}[leftmargin=0.55cm,itemsep=0.05cm,topsep=0.08cm]
+\item Que no existe conflicto de intereses\textsuperscript{1} y se considera competente para su evaluación, y
+\item Que cumple con los requisitos establecidos en la normativa vigente para formar parte en tribunales de tesis de la Universidad de Alcalá en calidad de Presidente/a conforme a la siguiente acreditación de méritos (elíjase la que proceda):
 \end{itemize}
+\hspace{0.6cm}\PhDChoice{\myTribunalPresidentMeritType}{Sexenios}{Dos sexenios\textsuperscript{2} de investigación. Indicar los dos últimos:}\\[0.18cm]
+\hspace{1.1cm}Fechas de obtención: Penúltimo: \PhDUnderline{3.4cm}{\myTribunalPresidentPenultimateSexenio}\hfill Último: \PhDUnderline{3.4cm}{\myTribunalPresidentLatestSexenio}\\[0.22cm]
+\hspace{0.6cm}\PhDChoice{\myTribunalPresidentMeritType}{Experiencia}{Experiencia investigadora (si no tiene sexenios, se adjuntará el currículum vitae en PDF como anexo a esta propuesta).}
 
-\vfill
-\begin{flushright}
-\myPaperworkDate\\[1.5cm]
-Fdo.: \myTribunalPresident
-\end{flushright}
+\PhDSectionBar{ACEPTACIÓN}
+En relación con la propuesta para formar parte del tribunal de tesis del doctorando D./Dª. \PhDUnderline{8.8cm}{\myAuthorFullName}\\[0.25cm]
+EXPRESA SU:\hspace{0.45cm}\PhDChoice{\myTribunalPresidentAcceptance}{Aceptación}{\textbf{Aceptación}}\hspace{0.45cm}\PhDChoice{\myTribunalPresidentAcceptance}{No aceptación}{\textbf{No aceptación}}\hspace{0.35cm}para formar parte de dicho tribunal.\\[0.40cm]
+\begin{center}En \PhDUnderline{3.0cm}{Alcalá de Henares}, a \PhDUnderline{6.2cm}{\myPaperworkDate}\\[0.90cm]
+Fdo.: \PhDUnderline{7.0cm}{\myTribunalPresident}\end{center}
 
-
+\vfill\hrule\vspace{0.08cm}
+{\fontsize{6.0}{6.9}\selectfont
+\textsuperscript{1} Se considera conflicto de intereses encontrarse en alguna de las siguientes situaciones: tener vínculo matrimonial o situación de hecho asimilable y el parentesco de consanguinidad dentro del cuarto grado o de afinidad dentro del segundo con el doctorando o la doctoranda o las personas que han dirigido la tesis (Artículo 23 de la Ley 40/2015); colaborar en publicaciones o patentes derivadas de la tesis y/o en proyectos o contratos de los que derive la tesis.\\
+\textsuperscript{2} \textbf{Sexenio} es el reconocimiento de un tramo de investigación de 6 años evaluado por la Comisión Nacional Evaluadora de la Actividad Investigadora (CNEAI) de España. Esta modalidad no procede para investigadores que trabajan fuera de España.}
+\PhDDocumentFooter{EDUAH/46}{10/07/2025}
 \end{document}

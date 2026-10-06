@@ -1,68 +1,85 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Informe de persona experta externa
-% Universidad de Alcalá - Escuela de Doctorado
-%
-% Generated from the public EDUAH form / guidance current in October 2026.
-%
+% EDUAH/65 - Informe de persona experta externa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\documentclass[11pt,a4paper,oneside]{article}
-
+\documentclass[10pt,a4paper,oneside]{article}
 \input{../Config/preamble.tex}
 \input{../Config/myconfig.tex}
 \InputIfFileExists{../Config/myconfig-phd.tex}{}{}
 \input{../Config/postamble.tex}
+\input{phd-form-layout.tex}
 
-% Local helpers. They intentionally live in this document, not in Config/.
-\newcommand{\PhDFormSection}[1]{%
-  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
-\newcommand{\PhDFormField}[2]{%
-  \noindent\textbf{#1}: #2\par}
-\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
-\newcommand{\PhDNA}{N/A}
+\providecommand{\myExternalExpertFullName}{}
+\providecommand{\myExternalExpertEmail}{}
+\providecommand{\myExternalExpertInstitution}{}
+\providecommand{\myExternalExpertCountry}{}
+\providecommand{\myExternalExpertPosition}{}
+\providecommand{\myExternalExpertOriginality}{}
+\providecommand{\myExternalExpertObjectives}{}
+\providecommand{\myExternalExpertMethodology}{}
+\providecommand{\myExternalExpertResults}{}
+\providecommand{\myExternalExpertDiscussion}{}
+\providecommand{\myExternalExpertBibliography}{}
+\providecommand{\myExternalExpertStructure}{}
+\providecommand{\myExternalExpertAssessment}{}
+\providecommand{\myExternalExpertImprovements}{}
+\providecommand{\myExternalExpertRejectionReasons}{}
+\providecommand{\myExternalExpertDecision}{}
 
-\providecommand{\myExternalExpertFullName}{\PhDNA}
-\providecommand{\myExternalExpertDNI}{\PhDNA}
-\providecommand{\myExternalExpertEmail}{\PhDNA}
-\providecommand{\myExternalExpertInstitution}{\PhDNA}
-\providecommand{\myExternalExpertCountry}{\PhDNA}
-\providecommand{\myExternalExpertPosition}{\PhDNA}
-\providecommand{\myExternalExpertAssessment}{\PhDNA}
-\providecommand{\myExternalExpertImprovements}{\PhDNA}
-\providecommand{\myExternalExpertDecision}{FAVORABLE} % FAVORABLE or DESFAVORABLE
-
-
-\title{INFORME DE PERSONA EXPERTA EXTERNA SOBRE TESIS DOCTORAL}
-\date{}
+\newcommand{\ExpertRatingRow}[2]{#1 & \PhDChoice{#2}{Muy bueno}{} & \PhDChoice{#2}{Bueno}{} & \PhDChoice{#2}{Aceptable}{} & \PhDChoice{#2}{Negativo}{}\\\hline}
 
 \begin{document}
-\maketitle
-\thispagestyle{empty}
+\fontsize{8.7}{10.4}\selectfont
+\PhDLegacyHeader{INFORME DE PERSONA EXPERTA EXTERNA\\SOBRE TESIS DOCTORAL}
+Agradecemos su colaboración en este proceso de evaluación. Le recordamos que este proceso se basa en los principios de equidad e imparcialidad. La evaluación debe realizarse en un período máximo de un mes.
 
-\PhDFormSection{Datos de la tesis}
-\PhDFormField{Doctorando/a}{\myAuthorFullName}
-\PhDFormField{Programa de Doctorado}{\myPhDProgram}
-\PhDFormField{Título de la tesis}{\myBookTitle}
-\PhDFormField{Persona experta}{\myExternalExpertFullName}
-\PhDFormField{Institución}{\myExternalExpertInstitution}
+\vspace{0.22cm}
+\textbf{Autor/a de la tesis doctoral:} \PhDUnderline{11.9cm}{\myAuthorFullName}\\[0.22cm]
+\textbf{Título de la tesis:} \PhDUnderline{13.4cm}{\myBookTitle}
 
-\PhDFormSection{Informe de evaluación externa}
-\noindent\textbf{Valoración global de la tesis doctoral:}\par
-\myExternalExpertAssessment
-\vspace{5cm}
+\PhDSectionBar{DATOS DE LA PERSONA EXPERTA}
+\begin{tabularx}{\linewidth}{|>{\bfseries}p{5.1cm}|X|}
+\hline Nombre y apellidos: & \myExternalExpertFullName\\\hline
+Categoría académica / Cargo: & \myExternalExpertPosition\\\hline
+Universidad / Centro de investigación: & \myExternalExpertInstitution\\\hline
+Correo electrónico: & \myExternalExpertEmail\\\hline
+País: & \myExternalExpertCountry\\\hline
+\end{tabularx}
 
-\noindent\textbf{Aspectos de mejora, aclaraciones o modificaciones propuestas:}\par
-\myExternalExpertImprovements
-\vspace{4cm}
-
-\noindent\textbf{Informe respecto a la continuación del procedimiento de depósito/defensa:} \myExternalExpertDecision
+\PhDSectionBar{RESULTADOS DEL INFORME}
+\begin{tabularx}{\linewidth}{|X|*{4}{>{\centering\arraybackslash}p{2.1cm}|}}
+\hline & \cellcolor{PhDFormGray}\textbf{Muy bueno} & \cellcolor{PhDFormGray}\textbf{Bueno} & \cellcolor{PhDFormGray}\textbf{Aceptable} & \cellcolor{PhDFormGray}\textbf{Negativo}\\\hline
+\ExpertRatingRow{Originalidad (contribución significativa al conocimiento en el campo de estudio)}{\myExternalExpertOriginality}
+\ExpertRatingRow{Objetivos y/o Hipótesis}{\myExternalExpertObjectives}
+\ExpertRatingRow{Rigor y adecuación de la metodología}{\myExternalExpertMethodology}
+\ExpertRatingRow{Resultados relevantes/significativos y coherencia con los objetivos y/o hipótesis}{\myExternalExpertResults}
+\ExpertRatingRow{Discusión y conclusiones (capacidad crítica de la doctoranda o doctorando)}{\myExternalExpertDiscussion}
+\ExpertRatingRow{Bibliografía}{\myExternalExpertBibliography}
+\ExpertRatingRow{Estructura formal (organización, corrección ortográfica y calidad del lenguaje utilizado)}{\myExternalExpertStructure}
+\end{tabularx}
+\begin{center}\scriptsize\textit{(Ponga una cruz en la casilla correspondiente)}\end{center}
 
 \vfill
-\begin{flushright}
-\myPaperworkDate\\[1.5cm]
-Fdo.: \myExternalExpertFullName
-\end{flushright}
+\PhDDocumentFooter{EDUAH/65}{Pág. 1 de 2}
 
+\newpage
+\fontsize{8.7}{10.4}\selectfont
+\PhDLegacyHeader{INFORME DE PERSONA EXPERTA EXTERNA\\SOBRE TESIS DOCTORAL}
+\PhDSectionBar{DETALLES DEL INFORME}
+\textit{(Comente las valoraciones de los elementos del apartado anterior. Puede utilizar hojas adicionales, si así lo desea.)}\\[0.10cm]
+\PhDResponseBox{7.0cm}{\myExternalExpertAssessment}
 
+\PhDSectionBar{¿CONSIDERA QUE LA TESIS DOCTORAL REÚNE LOS REQUISITOS NECESARIOS PARA SU DEFENSA?}
+\textit{(Puede utilizar hojas adicionales, si así lo desea.)}\\[0.12cm]
+\PhDChoice{\myExternalExpertDecision}{Sin modificaciones}{Sí, sin modificaciones}\\[0.24cm]
+\PhDChoice{\myExternalExpertDecision}{Con modificaciones}{Sí, si se realizan los cambios o correcciones que se indican a continuación}\\[0.12cm]
+\PhDResponseBox{3.0cm}{\myExternalExpertImprovements}\\[0.24cm]
+\PhDChoice{\myExternalExpertDecision}{No}{No, por los motivos especificados a continuación}\\[0.12cm]
+\PhDResponseBox{2.4cm}{\myExternalExpertRejectionReasons}
+
+\vfill
+\begin{tabularx}{\linewidth}{|X|X|}
+\hline \textbf{Fecha} & \textbf{Firma}\\\hline
+\rule{0pt}{1.55cm}\myPaperworkDate & \myExternalExpertFullName\\\hline
+\end{tabularx}
+\PhDDocumentFooter{EDUAH/65}{Pág. 2 de 2}
 \end{document}

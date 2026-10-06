@@ -1,107 +1,99 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Cambio o inclusión de dirección o tutoría
-% Universidad de Alcalá - Escuela de Doctorado
-%
-% Generated from the public EDUAH form / guidance current in October 2026.
-%
+% EDUAH/11 - Cambio de director/a o tutor/a de tesis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\documentclass[11pt,a4paper,oneside]{article}
-
+\documentclass[10pt,a4paper,oneside]{article}
 \input{../Config/preamble.tex}
 \input{../Config/myconfig.tex}
 \InputIfFileExists{../Config/myconfig-phd.tex}{}{}
 \input{../Config/postamble.tex}
+\input{phd-form-layout.tex}
 
-% Local helpers. They intentionally live in this document, not in Config/.
-\newcommand{\PhDFormSection}[1]{%
-  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
-\newcommand{\PhDFormField}[2]{%
-  \noindent\textbf{#1}: #2\par}
-\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
-\newcommand{\PhDNA}{N/A}
-
-\providecommand{\myPhDTutorFullName}{\myAcademicTutorFullName}
-\providecommand{\myPhDTutorGender}{\myAcademicTutorGender}
-\providecommand{\myPhDTutorDNI}{\myAcademicTutorDNI}
-\providecommand{\myPhDTutorEmail}{\myAcademicTutorEmail}
-\providecommand{\myPhDTutorDepartmentOrInstitution}{\myAcademicTutorDepartmentOrInstitution}
-\ifthenelse{\equal{\myPhDTutorGender}{male}}{%
-  \newcommand{\wordPhDTutor}{tutor}%
-  \newcommand{\wordPhDTutorTitle}{Tutor}%
-  \newcommand{\wordDonOrDonaPhDTutor}{D.}%
-}{%
-  \newcommand{\wordPhDTutor}{tutora}%
-  \newcommand{\wordPhDTutorTitle}{Tutora}%
-  \newcommand{\wordDonOrDonaPhDTutor}{Dª.}%
-}
-\providecommand{\myPhDChangeRole}{Director/a} % Director/a or Tutor/a
-\providecommand{\myPhDIncomingPersonFullName}{\PhDNA}
-\providecommand{\myPhDIncomingPersonDNI}{\PhDNA}
-\providecommand{\myPhDIncomingPersonEmail}{\PhDNA}
-\providecommand{\myPhDIncomingPersonDoctorate}{\PhDNA}
-\providecommand{\myPhDIncomingPersonDepartment}{\PhDNA}
-\providecommand{\myPhDIncomingPersonInstitution}{\PhDNA}
-\providecommand{\myPhDOutgoingPersonFullName}{\PhDNA}
-\providecommand{\myPhDChangeJustification}{\PhDNA}
-\providecommand{\myPhDIncomingBelongsToProgram}{No}
-\providecommand{\myPhDIncomingHasSexenio}{No}
-\providecommand{\myPhDIncomingEquivalentMerits}{No}
-
-
-\title{CAMBIO O INCLUSIÓN DE DIRECCIÓN O TUTORÍA DE TESIS}
-\date{}
+\providecommand{\myPhDChangeRole}{Director/a}
+\providecommand{\myPhDIncomingPersonFullName}{}
+\providecommand{\myPhDIncomingPersonDNI}{}
+\providecommand{\myPhDIncomingPersonEmail}{}
+\providecommand{\myPhDIncomingPersonDoctorate}{}
+\providecommand{\myPhDIncomingPersonDepartment}{}
+\providecommand{\myPhDIncomingPersonInstitution}{}
+\providecommand{\myPhDOutgoingPersonFullName}{}
+\providecommand{\myPhDIncomingBelongsToProgram}{}
+\providecommand{\myPhDIncomingHasSexenio}{}
+\providecommand{\myPhDChangeJustification}{}
+\providecommand{\myAcademicCommissionDecision}{}
+\providecommand{\myAcademicCommissionReasons}{}
+\providecommand{\myAcademicCommissionCoordinator}{}
+\newcommand{\RoleValue}[2]{\ifthenelse{\equal{\myPhDChangeRole}{#1}}{#2}{}}
+\newcommand{\RoleYesNo}[2]{\ifthenelse{\equal{\myPhDChangeRole}{#1}}{\PhDYesNo{#2}}{\PhDYesNo{}}}
 
 \begin{document}
-\maketitle
-\thispagestyle{empty}
+\fontsize{7.4}{8.9}\selectfont
+\PhDModernHeader{CAMBIO DE DIRECTOR/A O TUTOR/A DE TESIS. RD 99/2011}
 
-\PhDFormSection{Doctorando/a}
-\begin{tabularx}{\textwidth}{|p{0.18\textwidth}|X|p{0.18\textwidth}|X|}\hline
-Apellidos y nombre & \myAuthorFullName & DNI/Pasaporte & \myAuthorDNI \\\hline
-Teléfono/s & \myAuthorTelephone & Correo electrónico & \myAuthorEmail \\\hline
-Programa & \multicolumn{3}{l|}{\myPhDProgram} \\\hline
+\PhDSectionBar{\textbf{DOCTORANDO/A}}
+\begin{tabularx}{\linewidth}{|p{3.0cm}|X|p{2.7cm}|X|p{2.5cm}|p{3.1cm}|}
+\hline \textbf{Apellidos:} & \myAuthorSurname & \textbf{Nombre:} & \myAuthorName & \textbf{DNI/pasaporte:} & \myAuthorDNI\\\hline
+\multicolumn{2}{|l|}{\textbf{Teléfono/s:} \myAuthorTelephone} & \multicolumn{4}{l|}{\textbf{Correo electrónico:} \myAuthorEmail}\\\hline
+\multicolumn{6}{|l|}{\textbf{Programa:} \myPhDProgram}\\\hline
 \end{tabularx}
 
-\PhDFormSection{Solicita}
-\PhDFormField{Cambio de}{\myPhDChangeRole}
-\PhDFormField{En su caso, sustituye a}{\myPhDOutgoingPersonFullName}
-\PhDFormField{Justificación}{\myPhDChangeJustification}
-
-\PhDFormSection{Datos de la persona entrante}
-\begin{tabularx}{\textwidth}{|p{0.30\textwidth}|X|}\hline
-Apellidos y nombre & \myPhDIncomingPersonFullName \\\hline
-DNI/Pasaporte & \myPhDIncomingPersonDNI \\\hline
-Correo electrónico & \myPhDIncomingPersonEmail \\\hline
-Doctor/a en & \myPhDIncomingPersonDoctorate \\\hline
-Departamento & \myPhDIncomingPersonDepartment \\\hline
-Universidad/Organismo/Institución & \myPhDIncomingPersonInstitution \\\hline
-Pertenece al plantel de profesores del programa & \myPhDIncomingBelongsToProgram \\\hline
-Perfil investigador afín y al menos un sexenio & \myPhDIncomingHasSexenio \\\hline
-Méritos equiparables & \myPhDIncomingEquivalentMerits \\\hline
+\PhDSectionBar{\textbf{SOLICITA:}}
+\begin{tabularx}{\linewidth}{|p{4.2cm}|X|}
+\hline
+\textbf{EN REFERENCIA A TUTOR/A}\\
+\PhDChoice{\myPhDChangeRole}{Tutor/a}{Cambio/inclusión} &
+\textbf{En su caso, sustituye a:} \RoleValue{Tutor/a}{\myPhDOutgoingPersonFullName}\\\hline
+\multicolumn{2}{|l|}{\textbf{Apellidos y nombre:} \RoleValue{Tutor/a}{\myPhDIncomingPersonFullName}\hfill \textbf{DNI/Pasaporte:} \RoleValue{Tutor/a}{\myPhDIncomingPersonDNI}}\\
+\multicolumn{2}{|l|}{\textbf{Correo electrónico:} \RoleValue{Tutor/a}{\myPhDIncomingPersonEmail}\hfill \textbf{Doctor/a en:} \RoleValue{Tutor/a}{\myPhDIncomingPersonDoctorate}}\\
+\multicolumn{2}{|l|}{\textbf{Departamento:} \RoleValue{Tutor/a}{\myPhDIncomingPersonDepartment}}\\\hline
+\textbf{EN REFERENCIA A DIRECTOR/A O CO-DIRECTOR/A}\\
+\PhDChoice{\myPhDChangeRole}{Director/a}{Cambio/inclusión} &
+\textbf{En su caso, sustituye a:} \RoleValue{Director/a}{\myPhDOutgoingPersonFullName}\\\hline
+\multicolumn{2}{|l|}{\textbf{Apellidos y nombre:} \RoleValue{Director/a}{\myPhDIncomingPersonFullName}\hfill \textbf{DNI/Pasaporte:} \RoleValue{Director/a}{\myPhDIncomingPersonDNI}}\\
+\multicolumn{2}{|l|}{\textbf{Correo electrónico:} \RoleValue{Director/a}{\myPhDIncomingPersonEmail}\hfill \textbf{Doctor/a en:} \RoleValue{Director/a}{\myPhDIncomingPersonDoctorate}}\\
+\multicolumn{2}{|l|}{\textbf{Departamento:} \RoleValue{Director/a}{\myPhDIncomingPersonDepartment}}\\
+\multicolumn{2}{|l|}{\textbf{Universidad/Organismo/Institución:} \RoleValue{Director/a}{\myPhDIncomingPersonInstitution}}\\
+\multicolumn{2}{|l|}{\textbf{Pertenece al plantel de profesores del programa:} \RoleYesNo{Director/a}{\myPhDIncomingBelongsToProgram}}\\
+\multicolumn{2}{|l|}{\textbf{Perfil investigador afín y al menos un sexenio:} \RoleYesNo{Director/a}{\myPhDIncomingHasSexenio}}\\\hline
 \end{tabularx}
 
-\PhDFormSection{Términos del compromiso documental y de buenas prácticas}
-Con carácter general, los firmantes declaran que conocen la normativa vigente reguladora de los estudios de doctorado y la normativa específica de la Universidad de Alcalá, así como las recomendaciones del Código de Buenas Prácticas de la EDUAH, y aceptan sus disposiciones.
-\begin{itemize}[leftmargin=0.8cm,itemsep=0.15cm]
-\item \textbf{Doctorando/a:} cumplir la normativa referente a propiedad intelectual e industrial, desarrollar el documento de actividades y el plan de investigación aprobados, seguir las indicaciones de tutoría y dirección y el procedimiento establecido en caso de conflicto.
-\item \textbf{Tutor/a:} diseñar y seguir las actividades del doctorando/a, orientarle en su formación, elaborar el informe anual correspondiente y comparecer ante la Comisión Académica si fuera requerido/a. Declara igualmente que no concurre en las situaciones de abstención por parentesco previstas en la normativa aplicable.
-\item \textbf{Director/a:} respetar la normativa de propiedad intelectual e industrial, supervisar el plan de investigación y la elaboración de la tesis, emitir el informe anual y comparecer ante la Comisión Académica si fuera requerido/a. Declara igualmente que no concurre en las situaciones de abstención por parentesco previstas en la normativa aplicable.
-\item \textbf{Universidad:} proporcionar los recursos que consten en el plan de investigación para la elaboración de la tesis doctoral.
+\PhDSectionBar{\textbf{JUSTIFICACIÓN DEL CAMBIO O INCLUSIÓN}}
+\PhDResponseBox{1.25cm}{\myPhDChangeJustification}
+
+\PhDSectionBar{\textbf{Términos del compromiso documental y de buenas prácticas}}
+Con carácter general, los firmantes declaran que conocen la normativa vigente reguladora de los estudios de doctorado, la específica de la Universidad de Alcalá y el Código de Buenas Prácticas de la EDUAH. Suscriben, en particular, los siguientes compromisos:
+\begin{itemize}[leftmargin=0.45cm,itemsep=0pt,topsep=0.03cm,parsep=0pt]
+\item \textbf{Doctorando/a:} cumplir la normativa de propiedad intelectual e industrial, llevar a cabo el documento de actividades y el plan de investigación, seguir las indicaciones del Tutor y del Director y el procedimiento previsto en caso de conflicto.
+\item \textbf{Tutor/a:} diseñar y seguir las actividades, orientar la formación, elaborar el informe anual y comparecer ante la Comisión Académica si fuera requerido. Declara que no concurre una situación de abstención por parentesco de las recogidas en el artículo 23 de la Ley 40/2015.
+\item \textbf{Director/a:} respetar la normativa de propiedad intelectual e industrial, supervisar el plan de investigación y la tesis mediante reuniones periódicas, elaborar el informe anual y comparecer ante la Comisión Académica si fuera requerido. Declara que no concurre una situación de abstención por parentesco de las recogidas en el artículo 23 de la Ley 40/2015.
+\item \textbf{Universidad:} proporcionar los recursos que consten en el plan de investigación para realizar la tesis doctoral.
 \end{itemize}
 
-\vspace{0.5cm}
-\begin{tabularx}{\textwidth}{X X X}
-\centering Doctor/a entrante & \centering Doctor/a saliente & \centering\arraybackslash Solicitante\\[2cm]
-Fdo.: \myPhDIncomingPersonFullName & Fdo.: \myPhDOutgoingPersonFullName & Fdo.: \myAuthorFullName
-\end{tabularx}
+\vspace{0.08cm}
+\begin{center}Alcalá de Henares, \PhDUnderline{5.0cm}{\myPaperworkDate}\end{center}
+\begin{center}
+\PhDSignatureLine{Nueva persona designada}\hfill
+\PhDSignatureLine{Persona sustituida}\hfill
+\PhDSignatureLine{Doctorando/a}
+\end{center}
+\enlargethispage{1.8cm}
+\PhDPrivacyFooter{14/05/2025}{EDUAH/11}
 
-\vspace{0.5cm}\noindent\textbf{COMISIÓN ACADÉMICA DEL PROGRAMA DE DOCTORADO EN \myPhDProgram}
+\newpage
+\fontsize{9}{10.8}\selectfont
+\PhDModernHeader{}
+\PhDSectionBar{\textbf{INFORME DE LA COMISIÓN ACADÉMICA}}
+La Comisión Académica del Programa en\\[0.08cm]
+\PhDUnderline{\linewidth}{\myPhDProgram}\\[0.50cm]
+A la vista de la solicitud y de la documentación presentada, acuerda:\\[0.40cm]
+\PhDChoice{\myAcademicCommissionDecision}{Favorable}{Informar favorablemente, dado que considera la solicitud debidamente justificada.}\\[0.50cm]
+\PhDChoice{\myAcademicCommissionDecision}{Desfavorable}{Informar desfavorablemente. Motivos:}\\[0.15cm]
+\PhDResponseBox{7.0cm}{\myAcademicCommissionReasons}
+
 \vfill
-{\scriptsize
-\noindent\textbf{Protección de datos.} Los datos personales recogidos serán tratados por la Universidad de Alcalá para gestionar la solicitud o trámite correspondiente, así como con fines estadísticos, de acuerdo con la normativa aplicable. El órgano responsable del tratamiento es la Secretaría General de la Universidad. Los derechos correspondientes pueden ejercerse ante la Delegada de Protección de Datos de la Universidad de Alcalá. Para información detallada debe consultarse la Política de Privacidad de la Universidad.
-}
-
-
+\begin{flushright}
+Alcalá de Henares, \PhDUnderline{5.5cm}{\myPaperworkDate}\\[0.40cm]
+La Coordinación del Programa\\[1.40cm]
+Fdo.: \PhDUnderline{6.5cm}{\myAcademicCommissionCoordinator}
+\end{flushright}
+\PhDPrivacyFooter{14/05/2025}{EDUAH/11}
 \end{document}

@@ -1,89 +1,201 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plan de investigación y plan de formación personal
 %
-% Plan de Investigación y Plan de Formación Personal
-% Universidad de Alcalá - Escuela de Doctorado
-%
-% Generated from the public EDUAH form / guidance current in October 2026.
-%
+% Write the long answers directly in the commands below. General identity
+% data continue to come from Config/myconfig.tex and optional myconfig-phd.tex.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\documentclass[11pt,a4paper,oneside]{article}
-
+\documentclass[10pt,a4paper,oneside]{article}
 \input{../Config/preamble.tex}
 \input{../Config/myconfig.tex}
 \InputIfFileExists{../Config/myconfig-phd.tex}{}{}
 \input{../Config/postamble.tex}
-
-% Local helpers. They intentionally live in this document, not in Config/.
-\newcommand{\PhDFormSection}[1]{%
-  \vspace{0.45cm}\noindent\textbf{\large #1}\par\smallskip}
-\newcommand{\PhDFormField}[2]{%
-  \noindent\textbf{#1}: #2\par}
-\newcommand{\PhDFormBlank}[1]{\rule{#1}{0.4pt}}
-\newcommand{\PhDNA}{N/A}
+\input{phd-form-layout.tex}
 
 \providecommand{\myPhDTutorFullName}{\myAcademicTutorFullName}
-\providecommand{\myPhDTutorGender}{\myAcademicTutorGender}
-\providecommand{\myPhDTutorDNI}{\myAcademicTutorDNI}
-\providecommand{\myPhDTutorEmail}{\myAcademicTutorEmail}
-\providecommand{\myPhDTutorDepartmentOrInstitution}{\myAcademicTutorDepartmentOrInstitution}
-\ifthenelse{\equal{\myPhDTutorGender}{male}}{%
-  \newcommand{\wordPhDTutor}{tutor}%
-  \newcommand{\wordPhDTutorTitle}{Tutor}%
-  \newcommand{\wordDonOrDonaPhDTutor}{D.}%
-}{%
-  \newcommand{\wordPhDTutor}{tutora}%
-  \newcommand{\wordPhDTutorTitle}{Tutora}%
-  \newcommand{\wordDonOrDonaPhDTutor}{Dª.}%
-}
+\providecommand{\myPhDResearchLine}{}
+\newcommand{\myResearchPlanAOne}{}
+\newcommand{\myResearchPlanATwo}{}
+\newcommand{\myResearchPlanAThree}{}
+\newcommand{\myResearchPlanAFour}{}
+\newcommand{\myResearchPlanAFive}{}
+\newcommand{\myResearchPlanASix}{}
+\newcommand{\myResearchPlanASeven}{}
+\newcommand{\myResearchPlanAEight}{}
+\newcommand{\myResearchPlanBTwo}{}
 
-
-\title{PLAN DE INVESTIGACIÓN Y PLAN DE FORMACIÓN PERSONAL}
-\date{}
+\newcommand{\ResearchPlanHeader}{\PhDLegacyHeader{MEMORIA DEL PLAN DE INVESTIGACIÓN PARA LA TESIS DOCTORAL\\Y PLAN DE FORMACIÓN PERSONAL DEL DOCTORANDO/A}}
+\newcommand{\ResearchArea}[3]{%
+  \PhDSectionBar{\textbf{#1}}\PhDResponseBox{#2}{#3}}
+\newcommand{\TrainingInstructions}{%
+  {\fontsize{7}{8.2}\selectfont\textit{(Elabore este apartado en colaboración con su tutor/a y director/a. Marque con una x el tipo de actividades y la anualidad en la que se llevarán a cabo para alcanzar los objetivos del plan de formación, observando las recomendaciones del Programa de Doctorado. Esta previsión no tiene que ser exhaustiva, y sólo requerirá volver a presentarse si los cambios son muy significativos. Deje en blanco las actividades que no tiene previsto realizar.)}}}
+\newcommand{\ActivityNames}{%
+  Seminarios y/o cursos organizados por la Escuela de Doctorado &
+  Jornadas de Jóvenes Investigadores &
+  Congresos nacionales e internacionales &
+  Publicaciones y patentes &
+  Seminarios, cursos, talleres, visitas y conferencias organizadas por el programa de doctorado &
+  Jornadas del programa de Doctorado para la presentación de los trabajos de investigación de los doctorandos &
+  Visitas a instituciones, empresas, centros de investigación y de documentación organizadas por el programa de doctorado &
+  Otras actividades específicas del Programa de Doctorado y actividades de rama &
+  Estancias de investigación &
+  Otras actividades formativas}
 
 \begin{document}
-\maketitle
-\thispagestyle{empty}
+\fontsize{8.2}{9.8}\selectfont
+\ResearchPlanHeader
+\colorbox{PhDFormGray}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+\textbf{Doctorando/a:} \PhDUnderline{13.5cm}{\myAuthorFullName}\\[0.18cm]
+\textbf{Programa de Doctorado:} \PhDUnderline{11.6cm}{\myPhDProgram}\\[0.18cm]
+\textbf{Línea de investigación:} \PhDUnderline{12.0cm}{\myPhDResearchLine}\\[0.18cm]
+\textbf{Tutor/a:} \PhDUnderline{14.6cm}{\myPhDTutorFullName}\\[0.18cm]
+\textbf{Director/a/es:} \PhDUnderline{13.7cm}{\myAcademicTutorFullName\ifthenelse{\equal{\myCoTutorFullName}{}}{}{, \myCoTutorFullName}}
+\end{minipage}}
 
-\PhDFormSection{Datos de la tesis}
-\PhDFormField{Doctorando/a}{\myAuthorFullName}
-\PhDFormField{Programa de Doctorado}{\myPhDProgram}
-\PhDFormField{Título de la investigación propuesta}{\myBookTitle}
-\PhDFormField{Tutor/a}{\myPhDTutorFullName}
-\PhDFormField{Director/a de tesis}{\myAcademicTutorFullName}
-\ifthenelse{\equal{\myCoTutorFullName}{}}{}{\PhDFormField{Codirector/a de tesis}{\myCoTutorFullName}}
+\vspace{0.55cm}
+\colorbox{PhDFormGray}{\begin{minipage}[c][1.45cm][c]{\dimexpr\linewidth-2\fboxsep}\centering
+\textbf{TÍTULO PROPUESTO PARA LA TESIS DOCTORAL}\\[0.20cm]\PhDUnderline{15.8cm}{\myBookTitle}
+\end{minipage}}
 
-\PhDFormSection{A. Plan de Investigación}
-\textbf{A.1. Presentación del tema sobre el que se va a investigar}\par
-\vspace{2.2cm}
-\textbf{A.2. Revisión de los conocimientos / estado de la cuestión}\par
-\vspace{2.2cm}
-\textbf{A.3. Hipótesis de trabajo / preguntas de investigación}\par
-\vspace{1.8cm}
-\textbf{A.4. Objetivos que se desean alcanzar}\par
-\vspace{1.8cm}
-\textbf{A.5. Metodología que se va a utilizar}\par
-\vspace{2.2cm}
-\textbf{A.6. Medios y recursos materiales disponibles}\par
-\vspace{1.8cm}
-\textbf{A.7. Planificación temporal}\par
-\vspace{2.2cm}
-\textbf{A.8. Referencias bibliográficas}\par
-\vspace{2.2cm}
-\textbf{A.9. ¿La metodología propuesta requiere aprobación de un Comité de Ética de Investigación?}\par
-$\Box$ Sí \qquad $\Box$ No\par
+\vspace{0.40cm}
+\PhDSectionBar{\textcolor{PhDFormBlue}{\textbf{A. PLAN DE INVESTIGACIÓN}}}
+A.1. Presentación sobre el tema que se va a investigar \dotfill 2\\
+A.2. Revisión de los conocimientos \dotfill 2\\
+A.3. Hipótesis de trabajo \dotfill 3\\
+A.4. Objetivos que se desea alcanzar \dotfill 3\\
+A.5. Metodología que se va a utilizar \dotfill 4\\
+A.6. Medios y recursos materiales disponibles \dotfill 4\\
+A.7. Planificación temporal \dotfill 5\\
+A.8. Referencias bibliográficas \dotfill 5
+
+\PhDSectionBar{\textcolor{PhDFormBlue}{\textbf{B. PLAN DE FORMACIÓN PERSONAL}}}
+B.1. Planificación temporal general (doctorado a tiempo completo) \dotfill 6\\
+B.1. Planificación temporal general (doctorado a tiempo parcial) \dotfill 7\\
+B.1. Planificación temporal general (doctorado a tiempo completo con discapacidad $\geq 33\%$) \dotfill 8\\
+B.1. Planificación temporal general (doctorado a tiempo parcial con discapacidad $\geq 33\%$) \dotfill 9\\
+B.2. Plan personalizado de formación \dotfill 10
+\PhDDocumentFooter{}{Pág 1 de 10}
 
 \newpage
-\PhDFormSection{B. Plan de Formación Personal}
-\textbf{B.1. Planificación general temporal}\par
-\smallskip
-Indique, de forma general y no exhaustiva, las actividades formativas previstas durante los estudios de doctorado (seminarios, jornadas, congresos, publicaciones, estancias de investigación, etc.) y su temporalización.\par
-\vspace{5cm}
+\ResearchPlanHeader
+\ResearchArea{A.1. PRESENTACIÓN SOBRE EL TEMA QUE SE VA A INVESTIGAR}{8.2cm}{\myResearchPlanAOne}
+\vspace{0.35cm}
+\ResearchArea{A.2. REVISIÓN DE LOS CONOCIMIENTOS}{8.2cm}{\myResearchPlanATwo}
+\PhDDocumentFooter{}{Pág 2 de 10}
 
-\textbf{B.2. Plan personalizado de formación}\par
-\smallskip
-Describa brevemente las actividades previstas e indique su relevancia para adquirir la formación necesaria para llevar a cabo la investigación propuesta.\par
-\vspace{6cm}
+\newpage
+\ResearchPlanHeader
+\ResearchArea{A.3. HIPÓTESIS DE TRABAJO}{8.2cm}{\myResearchPlanAThree}
+\vspace{0.35cm}
+\ResearchArea{A.4. OBJETIVOS QUE SE DESEA ALCANZAR}{8.2cm}{\myResearchPlanAFour}
+\PhDDocumentFooter{}{Pág 3 de 10}
 
+\newpage
+\ResearchPlanHeader
+\ResearchArea{A.5. METODOLOGÍA QUE SE VA A UTILIZAR}{8.2cm}{\myResearchPlanAFive}
+\vspace{0.35cm}
+\ResearchArea{A.6. MEDIOS Y RECURSOS MATERIALES DISPONIBLES}{8.2cm}{\myResearchPlanASix}
+\PhDDocumentFooter{}{Pág 4 de 10}
 
+\newpage
+\ResearchPlanHeader
+\ResearchArea{A.7. PLANIFICACIÓN TEMPORAL}{8.2cm}{\myResearchPlanASeven}
+\vspace{0.35cm}
+\ResearchArea{A.8. REFERENCIAS BIBLIOGRÁFICAS}{8.2cm}{\myResearchPlanAEight}
+\PhDDocumentFooter{}{Pág 5 de 10}
+
+\newpage
+\ResearchPlanHeader
+\PhDSectionBar{\textbf{B.1. PLANIFICACIÓN TEMPORAL GENERAL (DOCTORADO A TIEMPO COMPLETO)}}
+\TrainingInstructions
+\vspace{0.30cm}
+\fontsize{7}{8.2}\selectfont
+\begin{tabularx}{\linewidth}{|X|*{4}{>{\centering\arraybackslash}p{1.45cm}|}}\hline
+\cellcolor{PhDFormGray}\textbf{Actividad} & \cellcolor{PhDFormGray}\textbf{1.er año} & \cellcolor{PhDFormGray}\textbf{2.º año} & \cellcolor{PhDFormGray}\textbf{3.er año} & \cellcolor{PhDFormGray}\textbf{4.º año}\\\hline
+Seminarios y/o cursos organizados por la Escuela de Doctorado&&&&\\\hline
+Jornadas de Jóvenes Investigadores&&&&\\\hline
+Congresos nacionales e internacionales&&&&\\\hline
+Publicaciones y patentes&&&&\\\hline
+Seminarios, cursos, talleres, visitas y conferencias organizadas por el programa de doctorado&&&&\\\hline
+Jornadas del programa de Doctorado para la presentación de los trabajos de investigación de los doctorandos&&&&\\\hline
+Visitas a instituciones, empresas, centros de investigación y documentación&&&&\\\hline
+Otras actividades específicas del Programa de Doctorado y actividades de rama&&&&\\\hline
+Estancias de investigación&&&&\\\hline
+Otras actividades formativas&&&&\\\hline
+\end{tabularx}
+\PhDDocumentFooter{}{Pág 6 de 10}
+
+\newpage
+\ResearchPlanHeader
+\PhDSectionBar{\textbf{B.1. PLANIFICACIÓN TEMPORAL GENERAL (DOCTORADO A TIEMPO PARCIAL)}}
+\TrainingInstructions
+\vspace{0.30cm}
+\fontsize{6.7}{7.9}\selectfont
+\begin{tabularx}{\linewidth}{|X|*{7}{>{\centering\arraybackslash}p{0.85cm}|}}\hline
+\cellcolor{PhDFormGray}\textbf{Actividad} & \cellcolor{PhDFormGray}1.º & \cellcolor{PhDFormGray}2.º & \cellcolor{PhDFormGray}3.º & \cellcolor{PhDFormGray}4.º & \cellcolor{PhDFormGray}5.º & \cellcolor{PhDFormGray}6.º & \cellcolor{PhDFormGray}7.º\\\hline
+Seminarios y/o cursos organizados por la Escuela de Doctorado&&&&&&&\\\hline
+Jornadas de Jóvenes Investigadores&&&&&&&\\\hline
+Congresos nacionales e internacionales&&&&&&&\\\hline
+Publicaciones y patentes&&&&&&&\\\hline
+Seminarios, cursos, talleres, visitas y conferencias organizadas por el programa de doctorado&&&&&&&\\\hline
+Jornadas del programa de Doctorado para presentar los trabajos de investigación&&&&&&&\\\hline
+Visitas a instituciones, empresas, centros de investigación y documentación&&&&&&&\\\hline
+Otras actividades específicas del Programa de Doctorado y actividades de rama&&&&&&&\\\hline
+Estancias de investigación&&&&&&&\\\hline
+Otras actividades formativas&&&&&&&\\\hline
+\end{tabularx}
+\PhDDocumentFooter{}{Pág 7 de 10}
+
+\newpage
+\ResearchPlanHeader
+\PhDSectionBar{\textbf{B.1. PLANIFICACIÓN TEMPORAL GENERAL (TIEMPO COMPLETO CON DISCAPACIDAD $\geq 33\%$)}}
+\TrainingInstructions
+\vspace{0.30cm}
+\fontsize{6.8}{8.0}\selectfont
+\begin{tabularx}{\linewidth}{|X|*{6}{>{\centering\arraybackslash}p{0.98cm}|}}\hline
+\cellcolor{PhDFormGray}\textbf{Actividad} & \cellcolor{PhDFormGray}1.º & \cellcolor{PhDFormGray}2.º & \cellcolor{PhDFormGray}3.º & \cellcolor{PhDFormGray}4.º & \cellcolor{PhDFormGray}5.º & \cellcolor{PhDFormGray}6.º\\\hline
+Seminarios y/o cursos organizados por la Escuela de Doctorado&&&&&&\\\hline
+Jornadas de Jóvenes Investigadores&&&&&&\\\hline
+Congresos nacionales e internacionales&&&&&&\\\hline
+Publicaciones y patentes&&&&&&\\\hline
+Seminarios, cursos, talleres, visitas y conferencias organizadas por el programa&&&&&&\\\hline
+Jornadas del programa de Doctorado para presentar los trabajos de investigación&&&&&&\\\hline
+Visitas a instituciones, empresas, centros de investigación y documentación&&&&&&\\\hline
+Otras actividades específicas del Programa de Doctorado y actividades de rama&&&&&&\\\hline
+Estancias de investigación&&&&&&\\\hline
+Otras actividades formativas&&&&&&\\\hline
+\end{tabularx}
+\PhDDocumentFooter{}{Pág 8 de 10}
+
+\newpage
+\ResearchPlanHeader
+\PhDSectionBar{\textbf{B.1. PLANIFICACIÓN TEMPORAL GENERAL (TIEMPO PARCIAL CON DISCAPACIDAD $\geq 33\%$)}}
+\TrainingInstructions
+\vspace{0.30cm}
+\fontsize{6.4}{7.6}\selectfont
+\begin{tabularx}{\linewidth}{|X|*{9}{>{\centering\arraybackslash}p{0.65cm}|}}\hline
+\cellcolor{PhDFormGray}\textbf{Actividad} & \cellcolor{PhDFormGray}1.º & \cellcolor{PhDFormGray}2.º & \cellcolor{PhDFormGray}3.º & \cellcolor{PhDFormGray}4.º & \cellcolor{PhDFormGray}5.º & \cellcolor{PhDFormGray}6.º & \cellcolor{PhDFormGray}7.º & \cellcolor{PhDFormGray}8.º & \cellcolor{PhDFormGray}9.º\\\hline
+Seminarios y/o cursos organizados por la Escuela de Doctorado&&&&&&&&&\\\hline
+Jornadas de Jóvenes Investigadores&&&&&&&&&\\\hline
+Congresos nacionales e internacionales&&&&&&&&&\\\hline
+Publicaciones y patentes&&&&&&&&&\\\hline
+Seminarios, cursos, talleres, visitas y conferencias organizadas por el programa&&&&&&&&&\\\hline
+Jornadas del programa de Doctorado para presentar los trabajos de investigación&&&&&&&&&\\\hline
+Visitas a instituciones, empresas, centros de investigación y documentación&&&&&&&&&\\\hline
+Otras actividades específicas del Programa de Doctorado y actividades de rama&&&&&&&&&\\\hline
+Estancias de investigación&&&&&&&&&\\\hline
+Otras actividades formativas&&&&&&&&&\\\hline
+\end{tabularx}
+\PhDDocumentFooter{}{Pág 9 de 10}
+
+\newpage
+\fontsize{8.2}{9.8}\selectfont
+\ResearchPlanHeader
+\PhDSectionBar{\textbf{B.2. PLAN PERSONALIZADO DE FORMACIÓN}}
+\textit{(Elabore este apartado en colaboración con su tutor/a y director/a. Detalle brevemente las actividades que ha marcado en el apartado B.1., indicando su relevancia para adquirir la formación necesaria con el fin de llevar a cabo la investigación propuesta en este documento.)}\\[0.15cm]
+\PhDResponseBox{14.0cm}{\myResearchPlanBTwo}
+
+\vfill
+En \PhDUnderline{3.0cm}{Alcalá de Henares}, a \PhDUnderline{6.0cm}{\myPaperworkDate}\\[1.2cm]
+\begin{flushright}Fdo.: \PhDUnderline{7.0cm}{\myAuthorFullName}\end{flushright}
+\PhDDocumentFooter{}{Pág 10 de 10}
 \end{document}
