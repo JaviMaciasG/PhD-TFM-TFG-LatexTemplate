@@ -26,7 +26,7 @@ mkdir -p "$stage"
     Makefile \
     RELEASE.txt \
     sync-git-sources.sh
-  git ls-files -- Anteproyecto Book Config PapeleoTFG PapeleoTFM PapeleoPHD
+  git ls-files -- Anteproyecto Book Config PapeleoTFG PapeleoTFM
 } | while IFS= read -r file; do
   case "$file" in
     TODO|*/TODO|Book/slides/*|Config/DEGREE_REGISTRY_COMPATIBILITY.md|Config/myconfig-phd.tex|Config/preamble-slides.tex) continue ;;
@@ -52,7 +52,7 @@ for required_file in 00-README.pdf RELEASE.txt Makefile TYPESETTING-STYLES-GUIDE
   [[ -f $stage/$required_file ]] || { echo "ERROR: required distribution file is missing: $required_file" >&2; exit 1; }
 done
 
-for forbidden_path in AdminScripts Deprecated normativas UsefulDocs MAINTAINERS.md HOWTO_ADD_DEGREES_AND_UNIVERSITIES.md REPOSITORY_OVERVIEW.md SUGGESTED_IMPROVEMENTS.md TODO; do
+for forbidden_path in AdminScripts Deprecated normativas PapeleoPHD UsefulDocs MAINTAINERS.md HOWTO_ADD_DEGREES_AND_UNIVERSITIES.md REPOSITORY_OVERVIEW.md SUGGESTED_IMPROVEMENTS.md TODO; do
   [[ ! -e $stage/$forbidden_path ]] || { echo "ERROR: maintainer-only path entered the distribution: $forbidden_path" >&2; exit 1; }
 done
 forbidden_todo=$(find "$stage" -type f -name TODO -print -quit)
@@ -84,7 +84,6 @@ validate_component "Book" Book all_latexmk
 validate_component "Anteproyecto" Anteproyecto anteproyecto_latexmk
 validate_component "TFG paperwork" PapeleoTFG
 validate_component "TFM paperwork" PapeleoTFM
-validate_component "PhD paperwork" PapeleoPHD
 
 rm -f -- "$base.tgz" "$base.zip"
 tar -C "$stage" -czf "$repository_root/$base.tgz" .
