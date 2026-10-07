@@ -13,7 +13,7 @@ WORK_TYPE = $(shell sh $(DEGREE_REGISTRY_TOOL) work-type "$(DEGREE_NAME)" "$(DEG
 all: 00-README.pdf book
 
 00-README.pdf: README-es.md README.yaml
-	pandoc README.yaml README-es.md -t pdf -o 00-README.pdf --metadata title="Miniintroducción a la plantilla LaTeX PhD-TFM-TFG" --metadata lang=es --variable urlcolor=blue --number-sections --table-of-contents --highlight-style kate -V colorlinks -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"  --toc-depth=4
+	pandoc README.yaml README-es.md -t pdf -o 00-README.pdf --metadata title="Mini-introducción a la plantilla LaTeX PhD-TFM-TFG" --metadata lang=es --variable urlcolor=blue --number-sections --table-of-contents --highlight-style kate -V colorlinks -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"  --toc-depth=4
 
 book:
 	$(MAKE) -C Book
