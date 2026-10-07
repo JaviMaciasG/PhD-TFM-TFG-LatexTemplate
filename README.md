@@ -117,6 +117,8 @@ The main book also includes a preliminary choice of typesetting styles. Most use
 
 ## To work in the main book
 
+### General case
+
 After downloading the template, first compile `Book/book.tex` without modifying it. The resulting PDF is the complete manual, including examples of the available features; use this first build to check that everything works and review the guide before starting your document.
 
 1. Configure the document metadata in `Config/myconfig.tex`, if you haven't already done it.

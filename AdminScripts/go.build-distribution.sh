@@ -3,6 +3,10 @@ set -euo pipefail
 
 repository_root=$(git rev-parse --show-toplevel)
 cd "$repository_root"
+command -v pymupdf >/dev/null 2>&1 || {
+  echo "ERROR: pymupdf is required to generate the distribution; install or enable it in PATH first." >&2
+  exit 1
+}
 release=$(tr -d '\r\n' < RELEASE.txt)
 if [[ -z $release || $release == */* || $release == *' '* ]]; then
   echo "ERROR: RELEASE.txt must contain one non-empty, filename-safe release identifier." >&2
