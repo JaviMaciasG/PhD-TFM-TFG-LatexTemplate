@@ -4,7 +4,7 @@ Este repositorio contiene una plantilla genérica para documentos de tesis docto
 
 La plantilla utiliza variables de configuración (definidas en el archivo `Config/myconfig.tex`) para personalizar todo el proceso de generación del documento, de modo que no tengas que dedicar esfuerzo a cumplir los requisitos de formato (por ejemplo, portada y contraportada), la maquetación del documento, etc.
 
-También se ofrece soporte para generar el «anteproyecto» (en la carpeta `Anteproyecto`), junto con parte de la documentación administrativa exigida por la normativa vigente. Desde octubre de 2026 he estado trabajando en actualizar toda la documentación requerida para los TFG y TFM de la UAH (en las carpetas `PapeleoTFG/` y `PapeleoTFM/`) para adaptarla a la normativa aprobada recientemente. Este soporte te resultará útil tanto a ti como a tu tutor o tutores (informe y rúbrica del tutor, rúbrica de defensa y autorización para publicación en abierto —para tutor/autor/tutor extranjero—). El soporte de documentación administrativa para doctorado está pendiente de revisarse por completo conforme a la nueva normativa.
+También se ofrece soporte para generar el "anteproyecto" (en la carpeta `Anteproyecto`), junto con parte de la documentación administrativa exigida por la normativa vigente. Desde octubre de 2026 he estado trabajando en actualizar toda la documentación requerida para los TFG y TFM de la UAH (en las carpetas `PapeleoTFG/` y `PapeleoTFM/`) para adaptarla a la normativa aprobada recientemente. Este soporte te resultará útil tanto a ti como a tu tutor o tutores (informe y rúbrica del tutor, rúbrica de defensa y autorización para publicación en abierto (para tutor/autor/tutor extranjero)). El soporte de documentación administrativa para doctorado está pendiente de revisarse por completo conforme a la nueva normativa.
 
 Lee la guía que aparece al principio de cualquiera de los ejemplos precompilados de la distribución de Dropbox (por ejemplo, el [TFG del GIEC en la UAH](https://www.dropbox.com/scl/fi/tjxvfxrcvnzqjz41ucdpw/TFG-GIEC-spanish.pdf?rlkey=qjovi1smyjoccdaddihozm5t7&dl=0)). El capítulo 1 presenta la plantilla y te dirige a los capítulos siguientes según lo que necesites.
 
@@ -76,7 +76,7 @@ En cualquier caso, si quieres trabajar con la plantilla en [Overleaf](https://ww
 4. Selecciona el zip correspondiente entre los que encontrarás en la [carpeta de Dropbox de la plantilla](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)
 5. [Overleaf](https://www.overleaf.com/) hará su magia y, en unos segundos, tendrás instalada la plantilla
 
-Recuerda que tendrás que seleccionar el «documento principal» (puedes acceder a esta opción mediante las opciones que aparecen al hacer clic en el logotipo de Overleaf, en la esquina superior izquierda de la página principal del proyecto). Consulta más abajo las secciones «Para trabajar en...» para ver cuáles son los archivos principales disponibles. Los más relevantes para seleccionar como «documento principal» son:
+Recuerda que tendrás que seleccionar el "documento principal" (puedes acceder a esta opción mediante las opciones que aparecen al hacer clic en el logotipo de Overleaf, en la esquina superior izquierda de la página principal del proyecto). Consulta más abajo las secciones "Para trabajar en..." para ver cuáles son los archivos principales disponibles. Los más relevantes para seleccionar como "documento principal" son:
 
 + `Anteproyecto/anteproyecto.tex`
 + `Book/book.tex`
@@ -104,11 +104,11 @@ Para una tesis o trabajo fin de estudios normal, configura `Config/myconfig.tex`
 
 ## Configurar tus datos
 
-Toda la información que puedes personalizar se encuentra en el archivo `Config/myconfig.tex`. Los nombres de las variables se definen mediante instrucciones `\newcommand{}{}` y todos empiezan con el prefijo `\my`. La mayoría de los nombres deberían explicarse por sí solos, y puedes encontrar la referencia completa de variables en el capítulo de configuración (consulta, por ejemplo, el archivo PDF del [TFG del GIEC en la UAH](https://www.dropbox.com/scl/fi/tjxvfxrcvnzqjz41ucdpw/TFG-GIEC-spanish.pdf?rlkey=qjovi1smyjoccdaddihozm5t7&dl=0)). **Crítico**: no elimines ni comentes ninguna de las líneas que contienen una definición de variable. Si una variable no es relevante para tu caso (por ejemplo, la información del «cotutor»), déjala simplemente vacía (vaciando la definición).
+Toda la información que puedes personalizar se encuentra en el archivo `Config/myconfig.tex`. Los nombres de las variables se definen mediante instrucciones `\newcommand{}{}` y todos empiezan con el prefijo `\my`. La mayoría de los nombres deberían explicarse por sí solos, y puedes encontrar la referencia completa de variables en el capítulo de configuración (consulta, por ejemplo, el archivo PDF del [TFG del GIEC en la UAH](https://www.dropbox.com/scl/fi/tjxvfxrcvnzqjz41ucdpw/TFG-GIEC-spanish.pdf?rlkey=qjovi1smyjoccdaddihozm5t7&dl=0)). **Crítico**: no elimines ni comentes ninguna de las líneas que contienen una definición de variable. Si una variable no es relevante para tu caso (por ejemplo, la información del "cotutor"), déjala simplemente vacía (vaciando la definición).
 
 El documento principal también incluye una selección preliminar de estilos tipográficos. La mayoría de los usuarios deberían mantener `\myTypesettingStyle` con el valor `standard`; puedes seleccionar otro estilo documentado en `Config/myconfig.tex` si quieres probar un aspecto distinto. `\myInstitutionalPageFontMode` controla si las páginas institucionales (portada y contraportada) conservan sus fuentes originales (`institutional`) o heredan las fuentes del documento (`document`). Esta funcionalidad opcional solo afecta a `Book/book.tex`, no al anteproyecto ni a la documentación administrativa.
 
-## Para trabajar en el «anteproyecto»
+## Para trabajar en el "anteproyecto"
 
 1. Configura los metadatos del documento en `Config/myconfig.tex`.
 2. Ve al directorio `Anteproyecto`, donde encontrarás el archivo `anteproyecto.tex`. Este es el archivo en el que debes trabajar y el punto de entrada para la compilación. En el repositorio se proporciona un ejemplo.
