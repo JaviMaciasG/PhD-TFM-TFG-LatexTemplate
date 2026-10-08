@@ -20,7 +20,7 @@ The template is accessible in two ways:
 
 1. In GitHub, in case you want to clone or fork my working version. It is available at
 [my GitHub account project page](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate), so that you can clone it from [the clone URL](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git). Beware that it has a lot of extra files that should not be useful for the general user
-2. In my dropbox, in zip and tgz formats, accessible at [this Dropbox download folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0). The folder also contains a deliberately reduced set of complete example documents covering the two languages, the normal and PhD-compendium structures, the available typesetting styles, both institutional-page font policies, URJC support, and the distinct MUIE, MUCTE, and MUC covers. Open [`01-DOWNLOAD-GUIDE.pdf`](https://www.dropbox.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk&dl=0) in that folder, for the exact list and an explanation of each file. The number of supported degrees and optional typesetting variants made it impossible to have all the documents generated. The examples are representative to show the versatility of the template: the absence of a PDF for a particular degree does not mean it is not supported.
+2. In my Dropbox, in zip and tgz formats, accessible at [this Dropbox download folder](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0). The folder also contains a selection of complete example documents. Open [`01-DOWNLOAD-GUIDE.pdf`](https://www.dropbox.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk&dl=0) for the list and an explanation of what each file demonstrates. The absence of a PDF for a particular degree does not mean it is not supported.
 
 
 ## Choose where you want to work
@@ -108,7 +108,7 @@ For a normal thesis or final-project document, configure `Config/myconfig.tex`, 
 
 All the information you can customize is in the `Config/myconfig.tex` file. The variable names are all defined in `\newcommand{}{}` statements and all of them start with the `\my` prefix. Most of the variable names should be self-explanatory, and you can find the complete variable reference in the configuration chapter (check for example the pdf file at [GIEC TFG at UAH](https://www.dropbox.com/scl/fi/tjxvfxrcvnzqjz41ucdpw/TFG-GIEC-spanish.pdf?rlkey=qjovi1smyjoccdaddihozm5t7&dl=0)). **Critical**: Do not remove nor comment out any of the lines with a variable definition. If a variable is not relevant to your case (for example the "cotutor" information), just leave it empty (by emptying the definition).
 
-The main book also includes a preliminary choice of typesetting styles. Most users should keep `\myTypesettingStyle` set to `standard`; you can select another documented style in `Config/myconfig.tex` if you want to test a different appearance. `\myInstitutionalPageFontMode` controls whether institutional pages (cover and back pages) retain their original fonts (`institutional`) or inherit the document fonts (`document`). This optional feature affects only `Book/book.tex`, not the anteproyecto or paperwork.
+You can also try other typesetting styles for the main document; this preliminary option is explained in the manual, and you do not need to change it to get started.
 
 ## To work in the "anteproyecto"
 

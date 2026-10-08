@@ -2,7 +2,7 @@
 
 Este repositorio contiene una plantilla genérica para documentos de tesis doctoral (PhD), trabajos fin de máster (MSc/TFM) y trabajos fin de grado (BSc/TFG), diseñada principalmente para utilizarse en la Universidad de Alcalá (UAH). Por ello está escrita en español, aunque la plantilla también puede generar los documentos en inglés (basta con establecer una variable en el archivo de configuración).
 
-La versión en inglés de esta introducción está disponible en [README-en.md](README-en.md). Las guías adicionales se encuentran en la carpeta [Documentation/](Documentation/), incluida la [guía de descarga](Documentation/es/DOWNLOAD-GUIDE.md) y la [guía de estilos tipográficos](Documentation/es/TYPESETTING-STYLES-GUIDE.md).
+La versión en inglés de esta introducción está disponible en [README-en.md](README-en.md). Las guías adicionales se encuentran en la carpeta [Documentation/](Documentation/), incluida la [guía de descarga](Documentation/es/DOWNLOAD-GUIDE.md).
 
 La plantilla utiliza variables de configuración (definidas en el archivo `Config/myconfig.tex`) para personalizar todo el proceso de generación del documento, de modo que no tengas que dedicar esfuerzo a cumplir los requisitos de formato (por ejemplo, portada y contraportada), la maquetación del documento, etc.
 
@@ -20,7 +20,7 @@ Se puede acceder a la plantilla de dos formas:
 
 1. En GitHub, si quieres clonar o hacer un *fork* de mi versión de trabajo. Está disponible en
 [la página del proyecto de mi cuenta de GitHub](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate), de modo que puedes clonarla desde [la URL de clonación](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git). Ten en cuenta que contiene muchos archivos adicionales que no deberían resultar útiles para el usuario general
-2. En mi Dropbox, en formatos zip y tgz, accesible desde [esta carpeta de descargas de Dropbox](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0). La carpeta también contiene un conjunto deliberadamente reducido de documentos de ejemplo completos que cubren los dos idiomas, las estructuras normal y de compendio de doctorado, los estilos tipográficos disponibles, las dos políticas de fuentes para las páginas institucionales, la compatibilidad con la URJC y las distintas portadas de MUIE, MUCTE y MUC. Abre [`01-DOWNLOAD-GUIDE.pdf`](https://www.dropbox.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk&dl=0) en esa carpeta para ver la lista exacta y una explicación de cada archivo. El número de titulaciones compatibles y de variantes tipográficas opcionales hizo imposible generar todos los documentos. Los ejemplos son representativos para mostrar la versatilidad de la plantilla: que no exista un PDF para una titulación concreta no significa que no sea compatible.
+2. En mi Dropbox, en formatos zip y tgz, accesible desde [esta carpeta de descargas de Dropbox](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0). La carpeta también contiene una selección de documentos de ejemplo completos. Abre [`01-DOWNLOAD-GUIDE.pdf`](https://www.dropbox.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk&dl=0) para ver la lista y qué muestra cada archivo. Que no exista un PDF para una titulación concreta no significa que no sea compatible.
 
 
 ## Elegir dónde quieres trabajar
@@ -108,7 +108,7 @@ Para una tesis o trabajo fin de estudios normal, configura `Config/myconfig.tex`
 
 Toda la información que puedes personalizar se encuentra en el archivo `Config/myconfig.tex`. Los nombres de las variables se definen mediante instrucciones `\newcommand{}{}` y todos empiezan con el prefijo `\my`. La mayoría de los nombres deberían explicarse por sí solos, y puedes encontrar la referencia completa de variables en el capítulo de configuración (consulta, por ejemplo, el archivo PDF del [TFG del GIEC en la UAH](https://www.dropbox.com/scl/fi/tjxvfxrcvnzqjz41ucdpw/TFG-GIEC-spanish.pdf?rlkey=qjovi1smyjoccdaddihozm5t7&dl=0)). **Crítico**: no elimines ni comentes ninguna de las líneas que contienen una definición de variable. Si una variable no es relevante para tu caso (por ejemplo, la información del "cotutor"), déjala simplemente vacía (vaciando la definición).
 
-El documento principal también incluye una selección preliminar de estilos tipográficos. La mayoría de los usuarios deberían mantener `\myTypesettingStyle` con el valor `standard`; puedes seleccionar otro estilo documentado en `Config/myconfig.tex` si quieres probar un aspecto distinto. `\myInstitutionalPageFontMode` controla si las páginas institucionales (portada y contraportada) conservan sus fuentes originales (`institutional`) o heredan las fuentes del documento (`document`). Esta funcionalidad opcional solo afecta a `Book/book.tex`, no al anteproyecto ni a la documentación administrativa.
+También puedes probar otros estilos tipográficos para el documento principal; es una opción preliminar que se explica en el manual y no necesitas modificarla para empezar.
 
 ## Para trabajar en el "anteproyecto"
 
