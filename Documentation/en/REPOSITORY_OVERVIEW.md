@@ -51,8 +51,8 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 - `Makefile` target `all` builds:
   - `README.pdf` via `pandoc`
   - Main `book` by delegating to `Book/Makefile`
-- `make -C Documentation` generates only the Spanish `README.pdf` and `TYPESETTING-STYLES.pdf` in the repository root. Other guides remain Markdown sources in the language-specific directories; the Dropbox download guide is rendered into its publication destination, and the full typesetting guide is rendered into distribution staging. The ZIP/TGZ archives rename the first two as `00-README.pdf` and `02-TYPESETTING-STYLES.pdf`.
-- The optional maintainer target `distrib` reads `RELEASE.txt`, generates the rendered typesetting guide, and delegates to `AdminScripts/go.build-distribution.sh` to create matching `.tgz` and `.zip` user archives from a structural allowlist. The archives include `TYPESETTING-STYLES-GUIDE.pdf`, but exclude the `Documentation/` source folder.
+- `make -C Documentation` generates only the Spanish `README.pdf` and `TYPESETTING-STYLES-COMPARISON.pdf` in the repository root. Other guides remain Markdown sources in the language-specific directories; the Dropbox download guide is rendered into its publication destination, and the full typesetting guide is rendered into distribution staging. The ZIP/TGZ archives rename the first two as `00-README.pdf` and `02-TYPESETTING-STYLES-COMPARISON.pdf`.
+- The optional maintainer target `distrib` reads `RELEASE.txt`, generates the rendered typesetting guide, and delegates to `AdminScripts/go.build-distribution.sh` to create matching `.tgz` and `.zip` user archives from a structural allowlist. The archives include `04-TYPESETTING-STYLES-GUIDE.pdf`, but exclude the `Documentation/` source folder.
 
 ### Book build pipeline
 
@@ -131,7 +131,7 @@ Institution-specific implementations are grouped under `Book/cover/uah/`, `Book/
 - The project contains long-lived legacy material and historical comments (`$Id` tags, old workflows).
 - `Deprecated/` keeps earlier assets/tools, indicating strong backward compatibility concerns.
 - `TODO` still tracks pending improvements (e.g., acronym issues, Windows usage guidance).
-- User documentation starts at the Spanish `README.md` (the English overview is `README-en.md`), with additional examples embedded in the template chapters. `Documentation/en/TYPESETTING-STYLES-GUIDE.md` is the authoritative source for the preliminary visual-style layer, while user distributions contain its rendered `TYPESETTING-STYLES-GUIDE.pdf`. Maintainer procedures for release packaging and adding degrees or universities are centralized in `Documentation/en/MAINTAINERS.md`.
+- User documentation starts at the Spanish `README.md` (the English overview is `README-en.md`), with additional examples embedded in the template chapters. `Documentation/en/TYPESETTING-STYLES-GUIDE.md` is the authoritative source for the preliminary visual-style layer, while user distributions contain its rendered `04-TYPESETTING-STYLES-GUIDE.pdf`. Maintainer procedures for release packaging and adding degrees or universities are centralized in `Documentation/en/MAINTAINERS.md`.
 
 ## Strengths
 

@@ -9,10 +9,10 @@ pdfs: ../README.pdf style-comparison
 	$(MAKE) -C .. README.pdf
 
 style-comparison:
-	@if [ -f ../Book/public-samples/02-TYPESETTING-STYLES.pdf ]; then \
-		cp -p ../Book/public-samples/02-TYPESETTING-STYLES.pdf ../TYPESETTING-STYLES.pdf; \
+	@if [ -f ../Book/public-samples/02-TYPESETTING-STYLES-COMPARISON.pdf ]; then \
+		cp -p ../Book/public-samples/02-TYPESETTING-STYLES-COMPARISON.pdf ../TYPESETTING-STYLES-COMPARISON.pdf; \
 	else \
-		bash ../AdminScripts/build-book-style-comparisons.sh --output ../TYPESETTING-STYLES.pdf --language spanish; \
+		bash ../AdminScripts/build-book-style-comparisons.sh --output ../TYPESETTING-STYLES-COMPARISON.pdf --language spanish; \
 	fi
 
 changelog:

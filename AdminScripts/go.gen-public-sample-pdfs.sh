@@ -97,7 +97,7 @@ generated_files=(
 error_count=0
 
 comparison_inputs="$temporary_directory/typesetting-comparison"
-comparison_output="$repository_root/TYPESETTING-STYLES.pdf"
+comparison_output="$repository_root/TYPESETTING-STYLES-COMPARISON.pdf"
 echo "[INF] Generating $comparison_output from Spanish GIEC samples..."
 if "$builder" \
     --degree GIEC \
@@ -110,8 +110,8 @@ if "$builder" \
     --font-mode institutional \
     --language spanish \
     --output "$comparison_output"; then
-  cp -p -- "$comparison_output" "$output_directory/02-TYPESETTING-STYLES.pdf"
-  generated_files+=("$output_directory/02-TYPESETTING-STYLES.pdf")
+  cp -p -- "$comparison_output" "$output_directory/02-TYPESETTING-STYLES-COMPARISON.pdf"
+  generated_files+=("$output_directory/02-TYPESETTING-STYLES-COMPARISON.pdf")
 else
   echo "[ERR] the public typesetting comparison could not be generated." >&2
   error_count=$((error_count + 1))

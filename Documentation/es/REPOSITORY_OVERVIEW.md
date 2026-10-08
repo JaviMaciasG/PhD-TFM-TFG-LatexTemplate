@@ -51,8 +51,8 @@ El `Makefile` de la raíz también puede generar una versión PDF del README y d
 - El objetivo `all` del `Makefile` genera:
   - `README.pdf` mediante `pandoc`
   - El `book` principal delegando en `Book/Makefile`
-- `make -C Documentation` genera únicamente `README.pdf` y `TYPESETTING-STYLES.pdf` en español en la raíz del repositorio. Las demás guías siguen como fuentes Markdown en los directorios por idioma; la guía de descarga de Dropbox se renderiza en su destino de publicación y la guía completa de estilos se renderiza en el área temporal de preparación de la distribución. Los archivos ZIP/TGZ renombran los dos primeros como `00-README.pdf` y `02-TYPESETTING-STYLES.pdf`.
-- El objetivo opcional `distrib`, exclusivo para mantenedores, lee `RELEASE.txt`, genera la guía de estilos de maquetación renderizada y delega en `AdminScripts/go.build-distribution.sh` para crear archivos de usuario `.tgz` y `.zip` equivalentes a partir de una lista estructural de elementos permitidos. Los archivos incluyen `TYPESETTING-STYLES-GUIDE.pdf`, pero excluyen la carpeta fuente `Documentation/`.
+- `make -C Documentation` genera únicamente `README.pdf` y `TYPESETTING-STYLES-COMPARISON.pdf` en español en la raíz del repositorio. Las demás guías siguen como fuentes Markdown en los directorios por idioma; la guía de descarga de Dropbox se renderiza en su destino de publicación y la guía completa de estilos se renderiza en el área temporal de preparación de la distribución. Los archivos ZIP/TGZ renombran los dos primeros como `00-README.pdf` y `02-TYPESETTING-STYLES-COMPARISON.pdf`.
+- El objetivo opcional `distrib`, exclusivo para mantenedores, lee `RELEASE.txt`, genera la guía de estilos de maquetación renderizada y delega en `AdminScripts/go.build-distribution.sh` para crear archivos de usuario `.tgz` y `.zip` equivalentes a partir de una lista estructural de elementos permitidos. Los archivos incluyen `04-TYPESETTING-STYLES-GUIDE.pdf`, pero excluyen la carpeta fuente `Documentation/`.
 
 ### Flujo de compilación de Book
 
@@ -131,7 +131,7 @@ Las implementaciones específicas de institución se agrupan en `Book/cover/uah/
 - El proyecto contiene material heredado de larga duración y comentarios históricos (etiquetas `$Id`, flujos de trabajo antiguos).
 - `Deprecated/` conserva recursos/herramientas anteriores, lo que indica una fuerte preocupación por la compatibilidad hacia atrás.
 - `TODO` sigue recogiendo mejoras pendientes (por ejemplo, problemas con acrónimos y orientación de uso en Windows).
-- La documentación de usuario comienza en el `README.md` en español (la descripción general en inglés es `README-en.md`), con ejemplos adicionales integrados en los capítulos de la plantilla. `Documentation/es/TYPESETTING-STYLES-GUIDE.md` es la fuente de referencia de la capa preliminar de estilos visuales, mientras que las distribuciones para usuarios contienen su versión renderizada `TYPESETTING-STYLES-GUIDE.pdf`. Los procedimientos para mantenedores relacionados con la generación de versiones y la incorporación de titulaciones o universidades están centralizados en `Documentation/es/MAINTAINERS.md`.
+- La documentación de usuario comienza en el `README.md` en español (la descripción general en inglés es `README-en.md`), con ejemplos adicionales integrados en los capítulos de la plantilla. `Documentation/es/TYPESETTING-STYLES-GUIDE.md` es la fuente de referencia de la capa preliminar de estilos visuales, mientras que las distribuciones para usuarios contienen su versión renderizada `04-TYPESETTING-STYLES-GUIDE.pdf`. Los procedimientos para mantenedores relacionados con la generación de versiones y la incorporación de titulaciones o universidades están centralizados en `Documentation/es/MAINTAINERS.md`.
 
 ## Puntos fuertes
 

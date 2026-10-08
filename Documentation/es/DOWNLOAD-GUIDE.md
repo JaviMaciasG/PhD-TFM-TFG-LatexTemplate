@@ -18,9 +18,9 @@ Los PDF restantes son ejemplos seleccionados deliberadamente, en lugar de un doc
 - `RELEASE.txt`: identificador exacto de la versión utilizado para crear los archivos y los ejemplos.
 - `00-README.pdf`: introducción al proyecto e información de inicio rápido en formato PDF.
 - `01-DOWNLOAD-GUIDE.pdf`: esta guía, proporcionada en un formato que puede abrirse directamente desde Dropbox.
-- `02-TYPESETTING-STYLES.pdf`: comparación visual bilingüe de todos los estilos tipográficos disponibles, utilizando las mismas páginas representativas para cada uno.
+- `02-TYPESETTING-STYLES-COMPARISON.pdf`: comparación visual bilingüe de todos los estilos tipográficos disponibles, utilizando las mismas páginas representativas para cada uno.
 
-Cada archivo ZIP o TGZ también contiene `TYPESETTING-STYLES-GUIDE.pdf` en su directorio raíz. Ese documento es la guía completa de uso y referencia para configurar los estilos tipográficos preliminares; es distinto del archivo de comparación visual `02-TYPESETTING-STYLES.pdf` que se proporciona junto a los archivos comprimidos.
+Cada archivo ZIP o TGZ también contiene `04-TYPESETTING-STYLES-GUIDE.pdf` en su directorio raíz. Ese documento es la guía completa de uso y referencia para configurar los estilos tipográficos preliminares; es distinto del archivo de comparación visual `02-TYPESETTING-STYLES-COMPARISON.pdf` que se proporciona junto a los archivos comprimidos.
 
 Después de descargar un archivo, extráelo o súbelo, compila `Book/book.tex` una vez sin modificarlo y utiliza el manual resultante para comprobar tu instalación y aprender el flujo de trabajo habitual.
 
@@ -42,7 +42,7 @@ La estructura de contenido `standard` es adecuada para TFG, TFM y tesis doctoral
 
 El estilo tipográfico controla las fuentes del documento, los encabezados de capítulos y secciones, el índice y las cabeceras de página. La política de fuentes `institutional` conserva las fuentes originales en las páginas institucionales, como la portada y la contraportada, mientras que `document` permite que esas páginas hereden las fuentes seleccionadas para el documento. Ninguna de las dos opciones modifica los logotipos institucionales, los textos ni la maquetación de las páginas.
 
-Abre `02-TYPESETTING-STYLES.pdf` para comparar directamente los estilos sin tener que ir cambiando entre los documentos de ejemplo completos. Para cada estilo registrado repite el mismo índice, inicio de capítulo, página ordinaria con ecuaciones y título de capítulo largo. El nombre del estilo activo aparece en la esquina superior derecha de cada página de muestra.
+Abre `02-TYPESETTING-STYLES-COMPARISON.pdf` para comparar directamente los estilos sin tener que ir cambiando entre los documentos de ejemplo completos. Para cada estilo registrado repite el mismo índice, inicio de capítulo, página ordinaria con ecuaciones y título de capítulo largo. El nombre del estilo activo aparece en la esquina superior derecha de cada página de muestra.
 
 Cada ejemplo es un documento completo, por lo que puedes examinar las portadas, las páginas preliminares, los capítulos del manual, la bibliografía, los apéndices y la contraportada. Estos PDF son demostraciones, no normativas específicas de cada titulación; comprueba siempre los requisitos vigentes de tu institución antes de entregar tu trabajo.
 

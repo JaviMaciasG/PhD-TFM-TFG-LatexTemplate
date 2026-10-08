@@ -14,7 +14,7 @@ if [[ -z $release || $release == */* || $release == *' '* ]]; then
 fi
 command -v pandoc >/dev/null 2>&1 || { echo "ERROR: pandoc is required to render the typesetting guide for the distribution." >&2; exit 1; }
 [[ -f README.pdf ]] || { echo "ERROR: README.pdf is missing; run make README.pdf first." >&2; exit 1; }
-[[ -f TYPESETTING-STYLES.pdf ]] || { echo "ERROR: TYPESETTING-STYLES.pdf is missing; run make -C Documentation first." >&2; exit 1; }
+[[ -f TYPESETTING-STYLES-COMPARISON.pdf ]] || { echo "ERROR: TYPESETTING-STYLES-COMPARISON.pdf is missing; run make -C Documentation first." >&2; exit 1; }
 
 base="03-PhDTFMTFG-LaTeX-Template-UAH-$release"
 temporary_directory=$(mktemp -d)
@@ -23,7 +23,7 @@ stage="$temporary_directory/stage"
 manifest="$temporary_directory/manifest"
 mkdir -p "$stage"
 pandoc Documentation/es/TYPESETTING-STYLES-GUIDE.md -t pdf \
-  -o "$stage/TYPESETTING-STYLES-GUIDE.pdf" --metadata lang=es \
+  -o "$stage/04-TYPESETTING-STYLES-GUIDE.pdf" --metadata lang=es \
   --variable urlcolor=blue --highlight-style kate -V colorlinks -V papersize:a4 \
   -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"
 
@@ -48,7 +48,7 @@ pandoc Documentation/es/TYPESETTING-STYLES-GUIDE.md -t pdf \
   esac
   printf '%s\n' "$file"
 done > "$manifest"
-printf '%s\n' README.pdf TYPESETTING-STYLES.pdf >> "$manifest"
+printf '%s\n' README.pdf TYPESETTING-STYLES-COMPARISON.pdf >> "$manifest"
 LC_ALL=C sort -u -o "$manifest" "$manifest"
 
 while IFS= read -r file; do
@@ -58,9 +58,9 @@ while IFS= read -r file; do
 done < "$manifest"
 
 mv "$stage/README.pdf" "$stage/00-README.pdf"
-mv "$stage/TYPESETTING-STYLES.pdf" "$stage/02-TYPESETTING-STYLES.pdf"
+mv "$stage/TYPESETTING-STYLES-COMPARISON.pdf" "$stage/02-TYPESETTING-STYLES-COMPARISON.pdf"
 
-for required_file in 00-README.pdf 02-TYPESETTING-STYLES.pdf RELEASE.txt Makefile TYPESETTING-STYLES-GUIDE.pdf sync-git-sources.sh Book/book.tex Config/myconfig.tex; do
+for required_file in 00-README.pdf 02-TYPESETTING-STYLES-COMPARISON.pdf RELEASE.txt Makefile 04-TYPESETTING-STYLES-GUIDE.pdf sync-git-sources.sh Book/book.tex Config/myconfig.tex; do
   [[ -f $stage/$required_file ]] || { echo "ERROR: required distribution file is missing: $required_file" >&2; exit 1; }
 done
 
