@@ -10,7 +10,9 @@ distrib:
 public-samples:
 	@bash AdminScripts/go.gen-public-sample-pdfs.sh
 
-publish-dropbox: distrib
+publish-dropbox:
+	@test -d "$(DROPBOX_DISTRIBUTION_DIR)" || { echo "ERROR: Dropbox destination directory does not exist: $(DROPBOX_DISTRIBUTION_DIR)" >&2; exit 1; }
+	$(MAKE) distrib
 	@bash AdminScripts/go.gen-public-sample-pdfs.sh \
 		--destination "$(DROPBOX_DISTRIBUTION_DIR)" \
 		--include-distribution
