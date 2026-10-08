@@ -131,7 +131,7 @@ Institution-specific implementations are grouped under `Book/cover/uah/`, `Book/
 - The project contains long-lived legacy material and historical comments (`$Id` tags, old workflows).
 - `Deprecated/` keeps earlier assets/tools, indicating strong backward compatibility concerns.
 - `TODO` still tracks pending improvements (e.g., acronym issues, Windows usage guidance).
-- User documentation starts at the Spanish `README.md` (the English overview is `README-en.md`), with additional examples embedded in the template chapters. `Documentation/TYPESETTING-STYLES-GUIDE.md` is the authoritative source for the preliminary visual-style layer, while user distributions contain its rendered `TYPESETTING-STYLES-GUIDE.pdf`. Maintainer procedures for release packaging and adding degrees or universities are centralized in `Documentation/MAINTAINERS.md`.
+- User documentation starts at the Spanish `README.md` (the English overview is `README-en.md`), with additional examples embedded in the template chapters. `Documentation/en/TYPESETTING-STYLES-GUIDE.md` is the authoritative source for the preliminary visual-style layer, while user distributions contain its rendered `TYPESETTING-STYLES-GUIDE.pdf`. Maintainer procedures for release packaging and adding degrees or universities are centralized in `Documentation/en/MAINTAINERS.md`.
 
 ## Strengths
 

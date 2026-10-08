@@ -602,7 +602,7 @@ TYPESETTING-STYLES-GUIDE.pdf
 /Deprecated/cdromCover/simplecd/simplecd.zip
 /go.resume-codex.sh
 
-# Local release notes not included in the distributed template
-CHANGELOG.md
+# Legacy root-level local release notes; Documentation/CHANGELOG.md is tracked.
+/CHANGELOG.md
 
 OldDocs

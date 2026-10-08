@@ -2,7 +2,7 @@
 
 Este repositorio contiene una plantilla genérica para documentos de tesis doctoral (PhD), trabajos fin de máster (MSc/TFM) y trabajos fin de grado (BSc/TFG), diseñada principalmente para utilizarse en la Universidad de Alcalá (UAH). Por ello está escrita en español, aunque la plantilla también puede generar los documentos en inglés (basta con establecer una variable en el archivo de configuración).
 
-La versión en inglés de esta introducción está disponible en [README-en.md](README-en.md). Las guías adicionales se encuentran en la carpeta [Documentation/](Documentation/), incluida la [guía de descarga](Documentation/DOWNLOAD-GUIDE-es.md) y la [guía de estilos tipográficos](Documentation/TYPESETTING-STYLES-GUIDE-es.md).
+La versión en inglés de esta introducción está disponible en [README-en.md](README-en.md). Las guías adicionales se encuentran en la carpeta [Documentation/](Documentation/), incluida la [guía de descarga](Documentation/es/DOWNLOAD-GUIDE.md) y la [guía de estilos tipográficos](Documentation/es/TYPESETTING-STYLES-GUIDE.md).
 
 La plantilla utiliza variables de configuración (definidas en el archivo `Config/myconfig.tex`) para personalizar todo el proceso de generación del documento, de modo que no tengas que dedicar esfuerzo a cumplir los requisitos de formato (por ejemplo, portada y contraportada), la maquetación del documento, etc.
 

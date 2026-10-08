@@ -2,7 +2,7 @@
 
 This repo contains a generic template for PhD, Msc (TFM) and BsC (TFG) thesis documents mainly designed to be used at the University of Alcala (UAH), so that it is written in Spanish, although the template can generate the documents in English (just setting a variable in the configuration file).
 
-The Spanish version of this introduction is [README.md](README.md). Additional guides are stored in [Documentation/](Documentation/).
+The Spanish version of this introduction is [README.md](README.md). Additional guides are stored in [Documentation/en/](Documentation/en/) and [Documentation/es/](Documentation/es/).
 
 The template uses configuration variables (defined in the `Config/myconfig.tex` file) to customize all the document generation process, so that you don't need to devote any effort to comply with formatting requirements (cover and back pages for example), document layout, etc.
 

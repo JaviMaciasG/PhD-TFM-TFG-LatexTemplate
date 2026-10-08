@@ -1,8 +1,84 @@
-# How to add degrees and universities
+# Maintainer manual
+
+This document covers release packaging and extension of the institutional degree registry. It is intended for template maintainers; ordinary users should start with `README.md` or `README-en.md` and the manual compiled from `Book/book.tex`.
+
+## Protecting the official maintenance checkout
+
+Mark every authoritative maintenance checkout once with `git config template.officialRepository true`. This local setting is not committed or inherited by users; it prevents the user-oriented `make sync-git-sources` target from changing the Git index of the template repository.
+
+## Generating the changelog
+
+`Documentation/CHANGELOG.md` is generated in English from Git tags. Install `git-cliff` on the maintainer system and run `make -C Documentation changelog`; this regenerates the complete tagged history up to the version in `RELEASE.txt`. The tracked `Documentation/cliff.toml` maps the repository's commit prefixes and keeps unmatched legacy messages under “Other Changes”. Tags that point to the same commit are grouped together in one section. The output is generated, so adjust the configuration rather than editing the changelog by hand. The normal PDF target does not require `git-cliff`.
+
+## Maintaining the document structures and optional-content switches
+
+`Book/book.tex` is deliberately a stable entry point. The normal document body lives in `Book/content-standard.tex`; only the specialized PhD compendium modality uses `Book/content-compendium.tex`. Keep common front matter and selection logic in `book.tex`, normal user-owned chapter and appendix ordering in `content-standard.tex`, and compendium parts and publication declarations in `content-compendium.tex`.
+
+Each prepared structure is kept beside the chapters it organizes. The standard templates live under `Book/chapters/bare/` and `Book/chapters/orig/`; the specialized templates live under `Book/chapters/compendium/bare/` and `Book/chapters/compendium/orig/`. Each directory contains its corresponding `content-*.tex` file, which the Makefile explicitly excludes from the chapter-copy list and copies to the `Book/` root separately. Whenever a distributed organization changes, update both its active files and canonical `orig` copies. The Makefile must copy these prepared files; it must not return to rewriting marked regions inside `book.tex`.
+
+The `bare` and `orig` targets dispatch according to `\myDocumentStructure`; the explicit `bare-standard`, `bare-compendium`, `orig-standard`, and `orig-compendium` targets are also available. Keep `bare-chapters` and `orig-chapters` as backward-compatible aliases for the standard structure.
+
+The user-facing Boolean options in `Config/myconfig.tex` share the `\myInclude...` prefix and accept exactly `true` or `false`. `Config/postamble.tex` validates every option. When adding a switch, update its validation, the relevant conditional inclusion, the configuration chapter and its maintained `orig` copy. Switches controlling generated lists should not disable the underlying LaTeX feature.
+
+The standard workflow must remain dominant in `README.md` and the manual. Mention the compendium alternative briefly in the normal quick start and direct the small set of affected PhD users to the authoritative specialized section rather than presenting both structures as equivalent choices throughout the documentation.
+
+## Maintaining the Book typesetting styles
+
+The preliminary Book-only visual layer lives under `Config/typesetting/` and is selected through `\myTypesettingStyle` and `\myInstitutionalPageFontMode` in `Config/myconfig.tex`. Keep the latter values named `institutional` and `document`; `standard` is a typesetting profile, not an institutional-page font policy. `Documentation/en/TYPESETTING-STYLES-GUIDE.md` is the authoritative usage and implementation reference, including the single style registry, renderer architecture, validation procedure, Bash prototype builder, optional PyMuPDF comparison composer, and Mimosis licence notice. Update that guide, the concise README reference, both copies of the manual configuration chapter, and the selector comments whenever the public choices change.
+
+## Maintaining the Makefile build layer
+
+The active document Makefiles include `Config/latex-common.mk`, which defines the supported LaTeX engines and the common `latexmk` build and cleanup commands. Glossary dependencies are registered centrally in `Config/latexmkrc`. Keep document lists, user-facing group targets, conversion rules and final-output processing in the Makefile belonging to each directory; do not duplicate engine flags or unconditional sequences of LaTeX and Biber passes there.
+
+Every active document target deliberately invokes a lightweight `latexmk` dependency check. An unchanged document must not rerun LaTeX, Biber, `makeglossaries`, conversion, compression or copy commands. When adding a new paperwork document, add its base name to the appropriate directory list and let `latexmk` discover its direct and shared inputs. Preserve the compatibility aliases documented in the user manual, and update the root paperwork dispatcher only when introducing a new maintained work type.
+
+## Building the documentation PDFs
+
+Run `make -C Documentation` to build the English and Spanish guides as language-suffixed PDFs in the repository root. This requires Pandoc and a PDF-capable LaTeX engine. The generated changelog is not part of this guide-PDF target; its raw historical commit messages can contain LaTeX commands and are not intended as a rendered user guide.
+
+## Generating a release distribution
+
+Set `RELEASE.txt` to the existing release/tag identifier and run:
+
+```console
+make distrib
+```
+
+The optional `AdminScripts/maintainer.mk` fragment supplies this target only in repository checkouts. The target first generates `00-README.pdf` and `TYPESETTING-STYLES-GUIDE.pdf`, then calls `AdminScripts/go.build-distribution.sh`. It creates `03-PhDTFMTFG-LaTeX-Template-UAH-<release>.tgz` and `.zip` with identical contents whose root directly contains the template files and directories. Because the fragment and `AdminScripts/` are absent from the archives, ordinary users do not see the maintainer-only target.
+
+The distribution is assembled from an explicit structural allowlist of tracked user sources. It contains `RELEASE.txt`, all registered degree and institutional variants, the book, anteproyecto, paperwork, user build files, `00-README.pdf`, the rendered user-facing `TYPESETTING-STYLES-GUIDE.pdf`, the Git synchronization helper, and required input assets. It excludes `Documentation/`, `AdminScripts/`, `Deprecated/`, `normativas/`, `UsefulDocs/`, slide material, and other generated PDFs. The command validates mandatory and forbidden paths and compiles the default book, anteproyecto, and all three paperwork groups from an isolated staged copy before creating the archives. It does not commit, tag, push, modify `RELEASE.txt`, or remove the generated root-level documentation PDFs.
+
+Before publishing, start from a clean worktree, confirm that `RELEASE.txt` matches the intended Git tag, run the complete PDF regression generation, run `make distrib`, inspect both archives, and verify that they unpack and compile in a clean directory.
+
+## Generating the public Dropbox examples
+
+Run `make public-samples`, or invoke `AdminScripts/go.gen-public-sample-pdfs.sh` directly from any directory, to generate the deliberately reduced set of complete public examples documented in `Documentation/en/DOWNLOAD-GUIDE.md`. The script uses isolated builds and does not rewrite the working `Config/myconfig.tex`. It also generates `00-README.pdf`, `01-DOWNLOAD-GUIDE.pdf` and the bilingual `02-TYPESETTING-STYLES.pdf`, continues after an individual sample failure, and refuses to offer publication unless every expected PDF exists. The comparison is built deterministically from Spanish GIEC sources for every registered style; it does not reuse possibly stale prototype PDFs.
+
+At the end, the script asks whether the generated PDFs and `RELEASE.txt` should be copied to `$HOME/Dropbox/PhDTFMTFG-LaTeX-Template`. If copying is requested and the destination already contains top-level PDF files, it lists them and asks separately whether they should be removed. Review that list carefully: accepting the second prompt deletes those existing PDFs, while declining it preserves unrelated or older PDF files and overwrites only matching generated filenames. Use `--destination PATH` when invoking the script directly to select another directory.
+
+To perform the complete publication in one operation, run:
+
+```bash
+make publish-dropbox
+```
+
+This maintainer-only target first runs the validated `distrib` target and then generates the public examples. It lists and asks for confirmation before publishing the ten PDFs, both release archives and `RELEASE.txt`. It separately offers to remove the existing top-level PDFs and matching template ZIP/TGZ archives before installing the new set. Declining that cleanup preserves older files while still overwriting files with identical names.
+
+The destination defaults to `$HOME/Dropbox/PhDTFMTFG-LaTeX-Template`. Override it without editing tracked files when necessary:
+
+```bash
+make publish-dropbox DROPBOX_DISTRIBUTION_DIR=/path/to/distribution-folder
+```
+
+The target and its local destination are defined in `AdminScripts/maintainer.mk`, which is deliberately omitted from user ZIP/TGZ distributions.
+
+Keep `AdminScripts/go.gen-all-pdfs.sh` as the exhaustive degree/language/PhD-structure regression generator; it is no longer the publication set. Update `Documentation/en/DOWNLOAD-GUIDE.md` and the sample matrix in `go.gen-public-sample-pdfs.sh` together whenever a published example changes.
+
+## How to add degrees and universities
 
 This guide is intended for template maintainers. It explains how to add a degree to an institution that is already supported and how to add a completely new university. Ordinary template users only need to select an existing identifier with `\myDegree` in `Config/myconfig.tex`; they should not need to edit the registries or institutional files described here.
 
-## 1. How the configuration is connected
+## How the configuration is connected
 
 Degree-dependent behaviour is split across a small set of authoritative files:
 
@@ -26,7 +102,7 @@ The selection can be summarized as:
        -> degree fields -> degree name, school and work type
 ```
 
-## 2. Choose stable identifiers first
+## Choose stable identifiers first
 
 Before editing files, choose two identifiers when applicable:
 
@@ -37,7 +113,7 @@ Use short ASCII identifiers without spaces. Uppercase degree and institution ide
 
 Do not encode a separate work type into the degree identifier merely to solve a filename problem. The canonical work type is stored independently in the `work-type` field.
 
-## 3. Adding a degree to an existing university
+## Adding a degree to an existing university
 
 ### Step 1: determine whether an existing layout can be reused
 
@@ -144,9 +220,9 @@ Keep images under `Book/logos/<institution>/` when they are reusable logos, or b
 
 Add the new identifier and its description to the supported-degree comments in `Config/myconfig.tex`. Also update the degree list in `Book/chapters/configuracion.tex` and its maintained original copy under `Book/chapters/orig/`.
 
-If the compatibility audit is being maintained for the release, update `Documentation/DEGREE_REGISTRY_COMPATIBILITY.md` with the new degree and layout profile.
+If the compatibility audit is being maintained for the release, update `Documentation/en/DEGREE_REGISTRY_COMPATIBILITY.md` with the new degree and layout profile.
 
-## 4. Adding a completely new university
+## Adding a completely new university
 
 A new university requires an institution declaration, a style, organized assets, at least one layout profile, and at least one degree declaration.
 
@@ -265,15 +341,15 @@ Update at least:
 
 - The supported-degree comments in `Config/myconfig.tex`.
 - The supported-degree list in `Book/chapters/configuracion.tex` and `Book/chapters/orig/configuracion.tex`.
-- `Documentation/DEGREE_REGISTRY_COMPATIBILITY.md` when the compatibility audit is part of the release process.
-- `Documentation/REPOSITORY_OVERVIEW.md` if the addition introduces new structural conventions.
+- `Documentation/en/DEGREE_REGISTRY_COMPATIBILITY.md` when the compatibility audit is part of the release process.
+- `Documentation/en/REPOSITORY_OVERVIEW.md` if the addition introduces new structural conventions.
 - Contributor credits when the integration is based on another person's work.
 
-## 5. Validation procedure
+## Validation procedure
 
 Perform validation in increasing order of cost.
 
-### 5.1 Query-tool checks
+### Query-tool checks
 
 From the repository root, confirm that the identifier is discoverable and that its work type is correct:
 
@@ -284,7 +360,7 @@ sh Config/query-degree-registry.sh work-type NEWDEGREE
 
 The second command should print only the canonical value, for example `TFG`.
 
-### 5.2 Static path checks
+### Static path checks
 
 Confirm that every file named by the new layout exists below `Book/`. Check both cover files and the optional back page. Search for obsolete asset paths after moving or renaming files:
 
@@ -298,7 +374,7 @@ Run Git's whitespace check:
 git diff --check
 ```
 
-### 5.3 Compile one language at a time
+### Compile one language at a time
 
 Save the current configuration before testing:
 
@@ -314,7 +390,7 @@ make clean
 make
 ```
 
-The `make` target runs pdfLaTeX, Biber, `makeglossaries`, additional pdfLaTeX passes, compression, and output-file generation. It also refreshes and stages `RELEASE.txt`; review the worktree afterward.
+The `make` target uses `latexmk` to run pdfLaTeX, Biber, `makeglossaries`, and additional pdfLaTeX passes only when their inputs require them. Compression and descriptive output copies are also regenerated only when their source PDF changes.
 
 Test both:
 
@@ -347,7 +423,7 @@ Verify at least:
 - Logos, colors, background images, margins, and print quality.
 - Generated filename and canonical work type.
 
-### 5.4 Run the complete degree matrix last
+### Run the complete degree matrix last
 
 `AdminScripts/go.gen-all-pdfs.sh` obtains every identifier and work type from `Config/degrees.tex`, so a correctly formatted new declaration is discovered automatically. Run it from `Book/` only after the individual degree works:
 
@@ -360,7 +436,7 @@ This is an expensive regression test: it builds every degree in Spanish and Engl
 
 Review the per-degree log as well as the PDF. A successful command does not guarantee that the institutional page is visually or legally correct.
 
-## 6. Common mistakes
+## Common mistakes
 
 - Adding an identifier only to the comments in `myconfig.tex`. Comments do not register a degree.
 - Declaring a degree but forgetting its institution or layout profile. The registry rejects these cases.
@@ -375,7 +451,7 @@ Review the per-degree log as well as the PDF. A successful command does not guar
 - Forgetting to test English, no-cotutor configurations, and long titles.
 - Changing `Config/degree-registry.tex` merely to add data. That file implements the mechanism; normal extensions belong in the declarative registry files.
 
-## 7. Files normally changed
+## Files normally changed
 
 For a degree that reuses an existing university and layout, the minimal change is usually:
 

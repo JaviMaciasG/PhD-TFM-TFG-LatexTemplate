@@ -1,0 +1,45 @@
+[changelog]
+header = """
+# Changelog
+
+This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
+
+"""
+body = """
+{% if version %}\
+## [{{ version }}]{% if timestamp %} - {{ timestamp | date(format="%Y-%m-%d") }}{% endif %}
+{% else %}\
+## [Unreleased]
+{% endif %}\
+{% for entry in commits | commit_groups(groups=commit_parsers_groups) %}
+### {{ entry.group | striptags | trim | upper_first }}
+{% for commit in entry.commits %}
+- {% if commit.scope %}*({{ commit.scope }})* {% endif %}{{ commit.message | upper_first }}
+{% endfor %}
+{% endfor %}
+"""
+trim = true
+render_always = true
+
+[git]
+conventional_commits = false
+filter_unconventional = false
+tag_pattern = "v[0-9].*"
+topo_order = true
+limit_tags = 0
+sort_commits = "oldest"
+commit_preprocessors = [
+    { pattern = "\\n[\\s\\S]*", replace = "" },
+    { pattern = "(?i)^(chore\\+fea|feat|fea|fix|docs?|refactor|chore)(\\([^)]*\\))?:\\s*", replace = "" },
+]
+processing_order = ["commit_parsers", "commit_preprocessors", "link_parsers"]
+commit_parsers = [
+    { message = "(?i)^chore\\+fea:", group = "Features" },
+    { message = "(?i)^(feat|fea)(\\([^)]*\\))?:", group = "Features" },
+    { message = "(?i)^fix(\\([^)]*\\))?:", group = "Bug Fixes" },
+    { message = "(?i)^docs?(\\([^)]*\\))?:", group = "Documentation" },
+    { message = "(?i)^refactor(\\([^)]*\\))?:", group = "Refactoring" },
+    { message = "(?i)^chore(\\([^)]*\\))?:", group = "Maintenance" },
+    { message = "(?i)^(Merge|merge)", skip = true },
+    { message = ".*", group = "Other Changes" },
+]

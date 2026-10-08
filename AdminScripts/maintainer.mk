@@ -2,11 +2,11 @@ DROPBOX_DISTRIBUTION_DIR ?= $(HOME)/Dropbox/PhDTFMTFG-LaTeX-Template
 
 .PHONY: distrib public-samples publish-dropbox
 
-01-DOWNLOAD-GUIDE.pdf: Documentation/DOWNLOAD-GUIDE-es.md
-	pandoc Documentation/DOWNLOAD-GUIDE-es.md -t pdf -o 01-DOWNLOAD-GUIDE.pdf --variable urlcolor=blue --number-sections --highlight-style kate -V colorlinks -V papersize:a4 -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"
+01-DOWNLOAD-GUIDE.pdf: Documentation/es/DOWNLOAD-GUIDE.md
+	pandoc Documentation/es/DOWNLOAD-GUIDE.md -t pdf -o 01-DOWNLOAD-GUIDE.pdf --variable urlcolor=blue --number-sections --highlight-style kate -V colorlinks -V papersize:a4 -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"
 
-TYPESETTING-STYLES-GUIDE.pdf: Documentation/TYPESETTING-STYLES-GUIDE-es.md
-	pandoc Documentation/TYPESETTING-STYLES-GUIDE-es.md -t pdf -o TYPESETTING-STYLES-GUIDE.pdf --variable urlcolor=blue --highlight-style kate -V colorlinks -V papersize:a4 -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"
+TYPESETTING-STYLES-GUIDE.pdf: Documentation/es/TYPESETTING-STYLES-GUIDE.md
+	pandoc Documentation/es/TYPESETTING-STYLES-GUIDE.md -t pdf -o TYPESETTING-STYLES-GUIDE.pdf --variable urlcolor=blue --highlight-style kate -V colorlinks -V papersize:a4 -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"
 
 distrib:
 	@command -v pymupdf >/dev/null 2>&1 || { echo "ERROR: pymupdf is required to generate the distribution; install or enable it in PATH first." >&2; exit 1; }
