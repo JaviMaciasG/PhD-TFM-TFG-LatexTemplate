@@ -2,6 +2,12 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v7.2.3] - 2026-10-09
+
+### Documentation
+
+- README.md content simplified (English version too)
+
 ## [v7.2.2] - 2026-10-08
 
 ### Bug Fixes
