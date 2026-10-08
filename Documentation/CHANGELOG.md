@@ -2,6 +2,31 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v7.2.0] - 2026-10-08
+
+### Features
+
+- Updating to release v7.2.0
+
+
+### Bug Fixes
+
+- Keep documentation PDF names unnumbered in the repository
+
+
+### Documentation
+
+- Reorganize guides and make Spanish README the landing page
+
+- Organize bilingual guides and generate changelog
+
+
+### Maintenance
+
+- Doc language is no longer loaded in documentclass definition (it is done in postamble.tex
+
+- Renamed English md files to -en (preparing translation)
+
 ## [v7.1.0] - 2026-10-07
 
 ### Maintenance
