@@ -2,6 +2,19 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v7.2.1] - 2026-10-08
+
+### Bug Fixes
+
+- Stabilize indexing of Spanish Roman page numbers
+
+
+### Maintenance
+
+- Updated changeglo
+
+- Prepare v7.2.1
+
 ## [v7.2.0] - 2026-10-08
 
 ### Features
