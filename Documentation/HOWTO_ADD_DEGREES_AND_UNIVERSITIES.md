@@ -144,7 +144,7 @@ Keep images under `Book/logos/<institution>/` when they are reusable logos, or b
 
 Add the new identifier and its description to the supported-degree comments in `Config/myconfig.tex`. Also update the degree list in `Book/chapters/configuracion.tex` and its maintained original copy under `Book/chapters/orig/`.
 
-If the compatibility audit is being maintained for the release, update `Config/DEGREE_REGISTRY_COMPATIBILITY.md` with the new degree and layout profile.
+If the compatibility audit is being maintained for the release, update `Documentation/DEGREE_REGISTRY_COMPATIBILITY.md` with the new degree and layout profile.
 
 ## 4. Adding a completely new university
 
@@ -265,8 +265,8 @@ Update at least:
 
 - The supported-degree comments in `Config/myconfig.tex`.
 - The supported-degree list in `Book/chapters/configuracion.tex` and `Book/chapters/orig/configuracion.tex`.
-- `Config/DEGREE_REGISTRY_COMPATIBILITY.md` when the compatibility audit is part of the release process.
-- `REPOSITORY_OVERVIEW.md` if the addition introduces new structural conventions.
+- `Documentation/DEGREE_REGISTRY_COMPATIBILITY.md` when the compatibility audit is part of the release process.
+- `Documentation/REPOSITORY_OVERVIEW.md` if the addition introduces new structural conventions.
 - Contributor credits when the integration is based on another person's work.
 
 ## 5. Validation procedure

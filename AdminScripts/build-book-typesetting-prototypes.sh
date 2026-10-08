@@ -178,7 +178,7 @@ git -C "$repository_root" ls-files -- Book Config | while IFS= read -r file; do
     Book/.auctex-auto/*|Book/OldDocs/*|Book/SampleTypesettings/*|Book/Tools/*|Book/tools/*|Book/slides/*|\
     Book/appendix/bare/*|Book/appendix/orig/*|Book/chapters/bare/*|Book/chapters/orig/*|\
     Book/book-flatten-snapshot.tex|Book/readme-latexdiff-windows.txt|\
-    Config/.auctex-auto/*|Config/DEGREE_REGISTRY_COMPATIBILITY.md|Config/preamble-slides.tex)
+    Config/.auctex-auto/*|Documentation/DEGREE_REGISTRY_COMPATIBILITY.md|Config/preamble-slides.tex)
       continue
       ;;
     *.aux|*.bbl|*.bcf|*.blg|*.fdb_latexmk|*.fls|*.glg|*.glo|*.gls|*.glsdefs|*.log|*.out|*.run.xml|*.synctex.gz)

@@ -22,6 +22,7 @@ Top-level directories and their primary role:
 - `PapeleoTFG/`, `PapeleoTFM/`, `PapeleoPHD/`: Administrative paperwork templates by document type.
 - `normativas/`: Official regulations and annexes in PDF/DOCX format.
 - `AdminScripts/`: Maintainer-only release and regression automation.
+- `Documentation/`: User guides, maintainer documentation, and repository notes. The README files remain at the root.
 - `UsefulDocs/`: Reference docs (cheatsheets and symbols).
 - `Deprecated/`: Legacy material kept for reference.
 
@@ -51,7 +52,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
   - `00-README.pdf` via `pandoc`
   - Main `book` by delegating to `Book/Makefile`
 - The optional maintainer fragment provides the root-level PDF targets for `01-DOWNLOAD-GUIDE.pdf` and `TYPESETTING-STYLES-GUIDE.pdf`. These generated PDFs are preserved in the repository root rather than removed by `make clean`.
-- The optional maintainer target `distrib` reads `RELEASE.txt`, generates the rendered typesetting guide, and delegates to `AdminScripts/go.build-distribution.sh` to create matching `.tgz` and `.zip` user archives from a structural allowlist. The archives include `TYPESETTING-STYLES-GUIDE.pdf`, but exclude its Markdown source and `DOWNLOAD-GUIDE.md`.
+- The optional maintainer target `distrib` reads `RELEASE.txt`, generates the rendered typesetting guide, and delegates to `AdminScripts/go.build-distribution.sh` to create matching `.tgz` and `.zip` user archives from a structural allowlist. The archives include `TYPESETTING-STYLES-GUIDE.pdf`, but exclude the `Documentation/` source folder.
 
 ### Book build pipeline
 
@@ -130,7 +131,7 @@ Institution-specific implementations are grouped under `Book/cover/uah/`, `Book/
 - The project contains long-lived legacy material and historical comments (`$Id` tags, old workflows).
 - `Deprecated/` keeps earlier assets/tools, indicating strong backward compatibility concerns.
 - `TODO` still tracks pending improvements (e.g., acronym issues, Windows usage guidance).
-- User documentation is centralized in `README.md`, with additional examples embedded in the template chapters. `TYPESETTING-STYLES-GUIDE.md` is the authoritative source for the preliminary visual-style layer, while user distributions contain its rendered `TYPESETTING-STYLES-GUIDE.pdf`. Maintainer procedures for release packaging and adding degrees or universities are centralized in `MAINTAINERS.md`.
+- User documentation starts at the Spanish `README.md` (the English overview is `README-en.md`), with additional examples embedded in the template chapters. `Documentation/TYPESETTING-STYLES-GUIDE.md` is the authoritative source for the preliminary visual-style layer, while user distributions contain its rendered `TYPESETTING-STYLES-GUIDE.pdf`. Maintainer procedures for release packaging and adding degrees or universities are centralized in `Documentation/MAINTAINERS.md`.
 
 ## Strengths
 

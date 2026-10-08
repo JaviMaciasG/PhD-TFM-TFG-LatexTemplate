@@ -33,7 +33,7 @@ mkdir -p "$stage"
   git ls-files -- Anteproyecto Book Config PapeleoTFG PapeleoTFM
 } | while IFS= read -r file; do
   case "$file" in
-    TODO|*/TODO|Book/slides/*|Config/DEGREE_REGISTRY_COMPATIBILITY.md|Config/myconfig-phd.tex|Config/preamble-slides.tex) continue ;;
+    TODO|*/TODO|Book/slides/*|Documentation/*|Config/myconfig-phd.tex|Config/preamble-slides.tex) continue ;;
     *.pdf)
       case "$file" in
         Book/additional/*.pdf|Book/cover/*.pdf|Book/cover/*/*.pdf|Book/diagrams/*.pdf|Book/figures/*.pdf|Book/letters/*.pdf|Book/logos/*.pdf|Book/logos/*/*.pdf|Book/logos/*/*/*.pdf|Book/portadaTFGs/*.pdf|Book/publications/*.pdf) ;;
@@ -56,7 +56,7 @@ for required_file in 00-README.pdf RELEASE.txt Makefile TYPESETTING-STYLES-GUIDE
   [[ -f $stage/$required_file ]] || { echo "ERROR: required distribution file is missing: $required_file" >&2; exit 1; }
 done
 
-for forbidden_path in AdminScripts Deprecated normativas PapeleoPHD UsefulDocs MAINTAINERS.md HOWTO_ADD_DEGREES_AND_UNIVERSITIES.md REPOSITORY_OVERVIEW.md SUGGESTED_IMPROVEMENTS.md TODO; do
+for forbidden_path in AdminScripts Deprecated Documentation normativas PapeleoPHD UsefulDocs TODO; do
   [[ ! -e $stage/$forbidden_path ]] || { echo "ERROR: maintainer-only path entered the distribution: $forbidden_path" >&2; exit 1; }
 done
 forbidden_todo=$(find "$stage" -type f -name TODO -print -quit)
