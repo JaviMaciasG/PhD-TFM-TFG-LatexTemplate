@@ -34,7 +34,9 @@
 % rubber: watch book.glo book.acr book.sym book.slg book.alg
 
 
-\documentclass[spanish,openright]{book}
+% The document language is selected from myconfig.tex and loaded through
+% Babel in Config/postamble.tex. Do not hard-code a language at class level.
+\documentclass[openright]{book}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN Preamble and configuration section
