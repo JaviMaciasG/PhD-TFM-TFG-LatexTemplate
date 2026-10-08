@@ -11,7 +11,6 @@ También se ofrece soporte para generar el "anteproyecto" (en la carpeta `Antepr
 Lee la guía que aparece al principio de cualquiera de los ejemplos precompilados de la distribución de Dropbox (por ejemplo, el [TFG del GIEC en la UAH](https://www.dropbox.com/scl/fi/tjxvfxrcvnzqjz41ucdpw/TFG-GIEC-spanish.pdf?rlkey=qjovi1smyjoccdaddihozm5t7&dl=0)). El capítulo 1 presenta la plantilla y te dirige a los capítulos siguientes según lo que necesites.
 
 
-
 # Inicio rápido
 
 ## Descargar la plantilla
@@ -92,8 +91,8 @@ En el pasado hemos tenido varios problemas con [Overleaf](https://www.overleaf.c
 
 Los directorios que necesitan la mayoría de los usuarios son:
 
-- `Config/`: configuración compartida y lógica de generación de documentos. En la mayoría de los casos solo tendrás que editar `Config/myconfig.tex`, que es el archivo principal para la configuración personal, de titulación, idioma y documento.
-- `Book/`: documento principal de TFG, TFM o doctorado. Su punto de entrada estable es `Book/book.tex`, pero la mayoría de los usuarios solo editarán `Book/content-standard.tex` para organizar el documento (salvo que seas estudiante de doctorado y tu tesis doctoral vaya a presentarse por compendio de publicaciones; en ese caso, utiliza `Book/content-compendium.tex`). Sus subdirectorios contienen resúmenes, capítulos, apéndices, archivos de bibliografía, figuras, diagramas, acrónimos y símbolos.
+- `Config/`: configuración compartida del documento.
+- `Book/`: documento principal de TFG, TFM o doctorado, con sus capítulos, apéndices, resúmenes, bibliografía e ilustraciones.
 - `Anteproyecto/`: documento de anteproyecto o propuesta. Su punto de entrada es `Anteproyecto/anteproyecto.tex`.
 
 En algunos casos también puedes necesitar los recursos que se encuentran en:
@@ -102,11 +101,10 @@ En algunos casos también puedes necesitar los recursos que se encuentran en:
 
 El repositorio Git completo también contiene `AdminScripts/`, `Deprecated/`, `normativas/`, `UsefulDocs/` y archivos Markdown orientados a los mantenedores. Sirven para el desarrollo, la referencia histórica y la preparación de versiones, y se omiten deliberadamente de la distribución ZIP/TGZ ordinaria.
 
-Para una tesis o trabajo fin de estudios normal, configura `Config/myconfig.tex`, organiza el cuerpo en `Book/content-standard.tex` y compila `Book/book.tex`. Normalmente no deberías necesitar modificar `Book/book.tex` ni los demás archivos de `Config` y `Book/cover/`, salvo que estés modificando la infraestructura de la plantilla o implementando un nuevo formato institucional. Si estás preparando el caso especializado de una tesis doctoral por compendio, conserva el mismo punto de entrada, pero organiza su cuerpo en `Book/content-compendium.tex` y sigue las instrucciones específicas que aparecen más adelante.
 
 ## Configurar tus datos
 
-Toda la información que puedes personalizar se encuentra en el archivo `Config/myconfig.tex`. Los nombres de las variables se definen mediante instrucciones `\newcommand{}{}` y todos empiezan con el prefijo `\my`. La mayoría de los nombres deberían explicarse por sí solos, y puedes encontrar la referencia completa de variables en el capítulo de configuración (consulta, por ejemplo, el archivo PDF del [TFG del GIEC en la UAH](https://www.dropbox.com/scl/fi/tjxvfxrcvnzqjz41ucdpw/TFG-GIEC-spanish.pdf?rlkey=qjovi1smyjoccdaddihozm5t7&dl=0)). **Crítico**: no elimines ni comentes ninguna de las líneas que contienen una definición de variable. Si una variable no es relevante para tu caso (por ejemplo, la información del "cotutor"), déjala simplemente vacía (vaciando la definición).
+Personaliza tus datos, titulación e idioma en `Config/myconfig.tex`. Los comentarios del archivo te orientan y el capítulo de configuración del manual contiene la referencia completa. **Importante**: no elimines ni comentes las definiciones de variables; si un dato no corresponde a tu caso, como el cotutor, deja su valor vacío.
 
 También puedes probar otros estilos tipográficos para el documento principal; es una opción preliminar que se explica en el manual y no necesitas modificarla para empezar.
 
@@ -123,38 +121,25 @@ También puedes probar otros estilos tipográficos para el documento principal; 
 
 Después de descargar la plantilla, compila primero `Book/book.tex` sin modificarlo. El PDF resultante es el manual completo, incluidos ejemplos de las funcionalidades disponibles; utiliza esta primera compilación para comprobar que todo funciona y revisar la guía antes de empezar tu documento.
 
-1. Configura los metadatos del documento en `Config/myconfig.tex`, si no lo has hecho ya.
+1. Revisa tus datos en el archivo de configuración, como se indica arriba.
 2. Mantén `\myDocumentStructure` con el valor `standard`, tal como se suministra, y utiliza las variables `\myInclude...` para seleccionar si quieres incluir en el documento los elementos opcionales: la carta PDF de ejemplo, dedicatoria, agradecimientos, lista de figuras, lista de tablas, listas de acrónimos y símbolos, y listas de código, algoritmos y vídeos.
-3. Edita `Book/content-standard.tex` para añadir, eliminar o reordenar capítulos y apéndices, y escribe el contenido en los archivos de `Book/abstract/`, `Book/chapters/`, `Book/appendix/` y los demás directorios de contenido según sea necesario. Normalmente no deberías tener que modificar `Book/book.tex`.
-4. Genera el documento a partir del archivo de entrada `Book/book.tex`, o desde el directorio `Book/` utilizando `make` (opcional). Puedes compilar `Book/book.tex` con una herramienta de compilación LaTeX estándar o desde tu editor LaTeX preferido. Recuerda configurar la herramienta o el editor para utilizar `pdflatex` y `biber`; añade `makeglossaries` únicamente si utilizas acrónimos o símbolos. Ejecuta las pasadas adicionales de LaTeX necesarias para resolver las referencias, la bibliografía y los glosarios que pueda haber.
+3. Añade, elimina o reordena las líneas `\input{...}` de `Book/content-standard.tex` para organizar capítulos y apéndices, y escribe el contenido en los archivos de `Book/abstract/`, `Book/chapters/`, `Book/appendix/` y los demás directorios de contenido según sea necesario. Normalmente no deberías tener que modificar `Book/book.tex`.
+4. Compila `Book/book.tex` con una herramienta de compilación LaTeX estándar o desde tu editor LaTeX preferido. Recuerda configurar la herramienta o el editor para utilizar `pdflatex` y `biber`; añade `makeglossaries` únicamente si utilizas acrónimos o símbolos. Ejecuta las pasadas adicionales de LaTeX necesarias para resolver las referencias, la bibliografía y los glosarios que pueda haber.
 
-Estos pasos de inicio rápido describen deliberadamente el flujo de trabajo estándar que utiliza casi todo el mundo. Un estudiante de doctorado que utilice la modalidad de compendio mantendrá el mismo punto de entrada `Book/book.tex` y el mismo proceso de compilación, pero asignará `compendium` a la variable `\myDocumentStructure` y organizará el cuerpo mediante `Book/content-compendium.tex`, como se explica en la sección especializada que aparece más abajo.
+Si vas a preparar una tesis por compendio, consulta el caso especializado más abajo.
 
-En caso de que tengas acceso a la utilidad de línea de comandos `make` en tu entorno de trabajo:
-
-+ El `Makefile` proporcionado utiliza `latexmk` y, por tanto, lo requiere para ejecutar esos pasos automáticamente y repetir únicamente las etapas necesarias cuando cambia un archivo fuente. Genera `book.pdf` y una variante de tamaño reducido, `book-compressed.pdf`, y los copia a nombres de archivo derivados del tipo de trabajo, la titulación, el autor y el idioma. En las tesis doctorales, esos nombres de archivo finales también contienen `-standard` o `-compendium` para identificar la estructura de documento seleccionada. Otras herramientas de compilación pueden generar únicamente `book.pdf` salvo que estén configuradas para reproducir estos pasos adicionales.
-+ Desde la raíz del repositorio, `make anteproyecto` genera el anteproyecto y `make paperwork` genera la documentación administrativa mantenida correspondiente a la titulación seleccionada en `Config/myconfig.tex`.
-+ El objetivo opcional `make all-documents` genera el README, el documento principal, el anteproyecto y la documentación administrativa correspondiente; el `make` predeterminado de la raíz sigue limitado al README y al documento principal.
-+ Para eliminar los archivos auxiliares generados, ejecuta `make clean` desde la carpeta `Book/`:
+Si prefieres automatizar la compilación, ejecuta `make` desde `Book/`; esta alternativa requiere `latexmk`, pero no necesitas Make para utilizar la plantilla. Encontrarás los requisitos y los objetivos disponibles en el apartado del manual *Compilación mediante el Makefile*.
 
 Cuando estés preparado para escribir tu propio documento, parte de la estructura mínima estándar: copia los archivos de capítulo de `Book/chapters/bare/` a `Book/chapters`, excepto su archivo de organización `content-standard.tex`, y los archivos de `Book/appendix/bare/` a `Book/appendix`; después utiliza `Book/chapters/bare/content-standard.tex` para sustituir `Book/content-standard.tex`. El manual ofrece el procedimiento completo orientado a principiantes. Si utilizas el Makefile suministrado, mantén `\myDocumentStructure` con el valor `standard` y ejecuta `make bare` desde `Book/`; crea una copia de seguridad, instala los archivos fuente mínimos y desactiva el material de ejemplo opcional.
 
-La plantilla también admite el caso especializado de una tesis doctoral presentada como compendio de publicaciones. Solo los doctorandos que utilicen esta modalidad necesitan las instrucciones separadas que aparecen a continuación.
 
 Una vez que la estructura mínima esté preparada, crea tu repositorio Git y realiza un primer *commit* de sus archivos fuente. Si prefieres un cliente Git gráfico, conserva el `.gitignore` proporcionado, pide al cliente que incluya en el *commit* todos los cambios no ignorados, revisa la lista de archivos propuesta y crea después el *commit*; el cliente puede denominar esta operación *Stage all*, *Stage all changes*, *Select all* o simplemente mostrar casillas para seleccionar los archivos que se incluirán. El procedimiento completo para principiantes, los archivos que nunca deben incluirse en un *commit* y la alternativa `make sync-git-sources`, que tiene en cuenta las dependencias, se explican en la sección del manual *Preparación del repositorio Git*.
 
 ### Caso especializado: tesis doctoral por compendio de publicaciones
 
-Los estudiantes de doctorado que presentan su tesis como compendio utilizan el mismo punto de entrada `Book/book.tex` que cualquier otro documento. Establece `\myDocumentStructure` como `compendium` y selecciona un programa de doctorado compatible mediante `\myDegree` en `Config/myconfig.tex`. Edita los seis capítulos de ejemplo de `Book/chapters/compendium/`, coloca los PDF finales de las publicaciones en `Book/publications/` y sustituye las declaraciones de ejemplo `\includecompendiumpublication` de `Book/content-compendium.tex` por una declaración por publicación.
-
-Selecciona siempre `Book/book.tex` como documento principal en tu editor LaTeX o en Overleaf y utiliza el comando de compilación normal o el objetivo `make`. Para preparar manualmente su estructura mínima, copia los seis archivos de capítulo de `Book/chapters/compendium/bare/` y utiliza su archivo `content-compendium.tex` para sustituir `Book/content-compendium.tex`; como alternativa, selecciona `compendium` y ejecuta `make bare`. El ejemplo distribuido completo se conserva en `Book/chapters/compendium/orig/` y puede restaurarse con `make orig-compendium`. Se mantiene el procesamiento con Biber y la bibliografía se imprime al final de la parte de resumen extendido, antes de la parte que contiene los PDF de las publicaciones. Comprueba la normativa vigente del programa de doctorado y los permisos de reutilización de cada publicación incluida antes de presentar la tesis.
-
+Si tu tesis doctoral se presenta por compendio de publicaciones, establece `\myDocumentStructure` como `compendium` y selecciona tu programa de doctorado mediante `\myDegree` en `Config/myconfig.tex`. Organiza el contenido en `Book/content-compendium.tex` y compila el mismo `Book/book.tex`. El manual explica la estructura mínima y la incorporación de publicaciones en los apartados *Caso particular: tesis por compendio de publicaciones* y *Caso especializado: tesis por compendio de publicaciones*; comprueba también la normativa de tu programa y los permisos de reutilización de los artículos.
 
 ## Personalizar el contenido del documento principal
-
-### Capítulos y apéndices
-
-Crea o edita archivos `.tex` en `Book/chapters/` y `Book/appendix/`, y después añade o elimina las líneas `\input{...}` correspondientes en `Book/content-standard.tex`. Selecciona la dedicatoria, los agradecimientos y las listas opcionales mediante las variables `\myInclude...` de `Config/myconfig.tex`; normalmente `Book/book.tex` debería permanecer sin cambios. Solo los estudiantes de doctorado que utilicen la modalidad de compendio deberían organizar en su lugar los capítulos especializados y las declaraciones de publicaciones mediante `Book/content-compendium.tex`, como se ha descrito anteriormente.
 
 ### Figuras y diagramas
 
