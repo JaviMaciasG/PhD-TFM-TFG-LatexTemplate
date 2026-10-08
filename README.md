@@ -8,7 +8,7 @@ La plantilla utiliza variables de configuración (definidas en el archivo `Confi
 
 También se ofrece soporte para generar el "anteproyecto" (en la carpeta `Anteproyecto`), junto con parte de la documentación administrativa exigida por la normativa vigente. Desde octubre de 2026 he estado trabajando en actualizar toda la documentación requerida para los TFG y TFM de la UAH (en las carpetas `PapeleoTFG/` y `PapeleoTFM/`) para adaptarla a la normativa aprobada recientemente. Este soporte te resultará útil tanto a ti como a tu tutor o tutores (informe y rúbrica del tutor, rúbrica de defensa y autorización para publicación en abierto (para tutor/autor/tutor extranjero)). El soporte de documentación administrativa para doctorado está pendiente de revisarse por completo conforme a la nueva normativa.
 
-Lee la guía que aparece al principio de cualquiera de los ejemplos precompilados de la distribución de Dropbox (por ejemplo, el [TFG del GIEC en la UAH](https://www.dropbox.com/scl/fi/tjxvfxrcvnzqjz41ucdpw/TFG-GIEC-spanish.pdf?rlkey=qjovi1smyjoccdaddihozm5t7&dl=0)). El capítulo 1 presenta la plantilla y te dirige a los capítulos siguientes según lo que necesites.
+Lee la guía que aparece al principio de cualquiera de los ejemplos precompilados de la distribución de Dropbox (por ejemplo, el [TFG del GIEC en la UAH](https://www.dropbox.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv&dl=0)). El capítulo 1 presenta la plantilla y te dirige a los capítulos siguientes según lo que necesites.
 
 
 # Inicio rápido
