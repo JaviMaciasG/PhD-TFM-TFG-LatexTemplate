@@ -10,10 +10,10 @@ WORK_TYPE = $(shell sh $(DEGREE_REGISTRY_TOOL) work-type "$(DEGREE_NAME)" "$(DEG
 
 .PHONY: all book anteproyecto paperwork all-documents clean clean-paperwork clean-all-documents sync-git-sources help
 
-all: 00-README.pdf book
+all: README.pdf book
 
-00-README.pdf: README.md README.yaml
-	pandoc README.yaml README.md -t pdf -o 00-README.pdf --metadata title="Mini-introducción a la plantilla LaTeX PhD-TFM-TFG" --metadata lang=es --variable urlcolor=blue --number-sections --table-of-contents --highlight-style kate -V colorlinks -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"  --toc-depth=4
+README.pdf: README.md README.yaml
+	pandoc README.yaml README.md -t pdf -o README.pdf --metadata title="Mini-introducción a la plantilla LaTeX PhD-TFM-TFG" --metadata lang=es --variable urlcolor=blue --number-sections --table-of-contents --highlight-style kate -V colorlinks -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"  --toc-depth=4
 
 book:
 	$(MAKE) -C Book
@@ -29,7 +29,7 @@ paperwork:
 		*) echo "ERROR: no maintained paperwork is available for work type '$(WORK_TYPE)' (degree $(DEGREE_NAME))." >&2; exit 1 ;; \
 	esac
 
-all-documents: 00-README.pdf book anteproyecto paperwork
+all-documents: README.pdf book anteproyecto paperwork
 
 clean:
 	$(MAKE) -C Book clean
@@ -51,11 +51,11 @@ sync-git-sources:
 
 help:
 	@printf '%s\n' \
-		'make                     Generate the README PDF and the main book' \
+		'make                     Generate README.pdf and the main book' \
 		'make book                Generate the main book' \
 		'make anteproyecto        Generate the project proposal' \
 		'make paperwork           Generate paperwork matching myDegree' \
-		'make all-documents       Generate the README, book, proposal, and matching paperwork' \
+		'make all-documents       Generate README.pdf, book, proposal, and matching paperwork' \
 		'make clean               Clean the default README and book outputs' \
 		'make clean-all-documents Clean all outputs covered by all-documents' \
 		'make sync-git-sources    Stage the sources required to reproduce user documents'

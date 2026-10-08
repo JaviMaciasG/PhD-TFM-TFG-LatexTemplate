@@ -64,12 +64,20 @@ rm -f -- \
   "$output_directory/01-TYPESETTING-STYLES.pdf"
 
 echo "[INF] Generating the Dropbox documentation PDFs..."
-if ! make -C "$repository_root" 00-README.pdf 01-DOWNLOAD-GUIDE.pdf; then
-  echo "ERROR: could not generate the Dropbox documentation PDFs." >&2
+if ! make -C "$repository_root" README.pdf; then
+  echo "ERROR: could not generate README.pdf." >&2
   exit 1
 fi
-cp -p -- "$repository_root/00-README.pdf" "$output_directory/00-README.pdf"
-cp -p -- "$repository_root/01-DOWNLOAD-GUIDE.pdf" "$output_directory/01-DOWNLOAD-GUIDE.pdf"
+if ! pandoc "$repository_root/Documentation/es/DOWNLOAD-GUIDE.md" \
+    -t pdf -o "$temporary_directory/01-DOWNLOAD-GUIDE.pdf" \
+    --metadata lang=es --variable urlcolor=blue --number-sections \
+    --highlight-style kate -V colorlinks -V papersize:a4 \
+    -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"; then
+  echo "ERROR: could not generate the Spanish Dropbox download guide." >&2
+  exit 1
+fi
+cp -p -- "$repository_root/README.pdf" "$output_directory/00-README.pdf"
+cp -p -- "$temporary_directory/01-DOWNLOAD-GUIDE.pdf" "$output_directory/01-DOWNLOAD-GUIDE.pdf"
 
 # degree|language|structure|style|font policy|published filename
 samples=(
@@ -89,7 +97,7 @@ generated_files=(
 error_count=0
 
 comparison_inputs="$temporary_directory/typesetting-comparison"
-comparison_output="$output_directory/02-TYPESETTING-STYLES.pdf"
+comparison_output="$repository_root/TYPESETTING-STYLES.pdf"
 echo "[INF] Generating $comparison_output from Spanish GIEC samples..."
 if "$builder" \
     --degree GIEC \
@@ -102,7 +110,8 @@ if "$builder" \
     --font-mode institutional \
     --language spanish \
     --output "$comparison_output"; then
-  generated_files+=("$comparison_output")
+  cp -p -- "$comparison_output" "$output_directory/02-TYPESETTING-STYLES.pdf"
+  generated_files+=("$output_directory/02-TYPESETTING-STYLES.pdf")
 else
   echo "[ERR] the public typesetting comparison could not be generated." >&2
   error_count=$((error_count + 1))

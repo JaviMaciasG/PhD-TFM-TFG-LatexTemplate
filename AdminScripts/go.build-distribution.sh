@@ -12,8 +12,9 @@ if [[ -z $release || $release == */* || $release == *' '* ]]; then
   echo "ERROR: RELEASE.txt must contain one non-empty, filename-safe release identifier." >&2
   exit 1
 fi
-[[ -f 00-README.pdf ]] || { echo "ERROR: 00-README.pdf is missing; run make 00-README.pdf first." >&2; exit 1; }
-[[ -f TYPESETTING-STYLES-GUIDE.pdf ]] || { echo "ERROR: TYPESETTING-STYLES-GUIDE.pdf is missing; run make TYPESETTING-STYLES-GUIDE.pdf first." >&2; exit 1; }
+command -v pandoc >/dev/null 2>&1 || { echo "ERROR: pandoc is required to render the typesetting guide for the distribution." >&2; exit 1; }
+[[ -f README.pdf ]] || { echo "ERROR: README.pdf is missing; run make README.pdf first." >&2; exit 1; }
+[[ -f TYPESETTING-STYLES.pdf ]] || { echo "ERROR: TYPESETTING-STYLES.pdf is missing; run make -C Documentation first." >&2; exit 1; }
 
 base="03-PhDTFMTFG-LaTeX-Template-UAH-$release"
 temporary_directory=$(mktemp -d)
@@ -21,6 +22,10 @@ trap 'rm -rf "$temporary_directory"' EXIT
 stage="$temporary_directory/stage"
 manifest="$temporary_directory/manifest"
 mkdir -p "$stage"
+pandoc Documentation/es/TYPESETTING-STYLES-GUIDE.md -t pdf \
+  -o "$stage/TYPESETTING-STYLES-GUIDE.pdf" --metadata lang=es \
+  --variable urlcolor=blue --highlight-style kate -V colorlinks -V papersize:a4 \
+  -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"
 
 {
   printf '%s\n' \
@@ -43,7 +48,7 @@ mkdir -p "$stage"
   esac
   printf '%s\n' "$file"
 done > "$manifest"
-printf '%s\n' 00-README.pdf TYPESETTING-STYLES-GUIDE.pdf >> "$manifest"
+printf '%s\n' README.pdf TYPESETTING-STYLES.pdf >> "$manifest"
 LC_ALL=C sort -u -o "$manifest" "$manifest"
 
 while IFS= read -r file; do
@@ -52,7 +57,10 @@ while IFS= read -r file; do
   cp -p -- "$file" "$stage/$file"
 done < "$manifest"
 
-for required_file in 00-README.pdf RELEASE.txt Makefile TYPESETTING-STYLES-GUIDE.pdf sync-git-sources.sh Book/book.tex Config/myconfig.tex; do
+mv "$stage/README.pdf" "$stage/00-README.pdf"
+mv "$stage/TYPESETTING-STYLES.pdf" "$stage/02-TYPESETTING-STYLES.pdf"
+
+for required_file in 00-README.pdf 02-TYPESETTING-STYLES.pdf RELEASE.txt Makefile TYPESETTING-STYLES-GUIDE.pdf sync-git-sources.sh Book/book.tex Config/myconfig.tex; do
   [[ -f $stage/$required_file ]] || { echo "ERROR: required distribution file is missing: $required_file" >&2; exit 1; }
 done
 

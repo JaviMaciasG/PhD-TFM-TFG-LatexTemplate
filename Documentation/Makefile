@@ -1,21 +1,19 @@
-PANDOC_OPTIONS = --variable urlcolor=blue --number-sections --highlight-style kate -V colorlinks -V papersize:a4 -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"
-
-EN_SOURCES := $(wildcard en/*.md)
-ES_SOURCES := $(wildcard es/*.md)
-EN_PDFS := $(patsubst en/%.md,../%-en.pdf,$(EN_SOURCES))
-ES_PDFS := $(patsubst es/%.md,../%-es.pdf,$(ES_SOURCES))
 .DEFAULT_GOAL := pdfs
-.PHONY: all pdfs changelog
+.PHONY: all pdfs changelog style-comparison
 
 all: pdfs
 
-pdfs: $(EN_PDFS) $(ES_PDFS)
+pdfs: ../README.pdf style-comparison
 
-../%-en.pdf: en/%.md
-	pandoc $< -t pdf -o $@ --metadata lang=en $(PANDOC_OPTIONS)
+../README.pdf:
+	$(MAKE) -C .. README.pdf
 
-../%-es.pdf: es/%.md
-	pandoc $< -t pdf -o $@ --metadata lang=es $(PANDOC_OPTIONS)
+style-comparison:
+	@if [ -f ../Book/public-samples/02-TYPESETTING-STYLES.pdf ]; then \
+		cp -p ../Book/public-samples/02-TYPESETTING-STYLES.pdf ../TYPESETTING-STYLES.pdf; \
+	else \
+		bash ../AdminScripts/build-book-style-comparisons.sh --output ../TYPESETTING-STYLES.pdf --language spanish; \
+	fi
 
 changelog:
 	bash ./generate-changelog.sh

@@ -49,9 +49,9 @@ El `Makefile` de la raíz también puede generar una versión PDF del README y d
 ### Compilación desde la raíz
 
 - El objetivo `all` del `Makefile` genera:
-  - `00-README.pdf` mediante `pandoc`
+  - `README.pdf` mediante `pandoc`
   - El `book` principal delegando en `Book/Makefile`
-- El fragmento opcional para mantenedores proporciona los objetivos PDF de nivel raíz para `01-DOWNLOAD-GUIDE.pdf` y `TYPESETTING-STYLES-GUIDE.pdf`. Estos PDF generados se conservan en la raíz del repositorio en lugar de eliminarse con `make clean`.
+- `make -C Documentation` genera únicamente `README.pdf` y `TYPESETTING-STYLES.pdf` en español en la raíz del repositorio. Las demás guías siguen como fuentes Markdown en los directorios por idioma; la guía de descarga de Dropbox se renderiza en su destino de publicación y la guía completa de estilos se renderiza en el área temporal de preparación de la distribución. Los archivos ZIP/TGZ renombran los dos primeros como `00-README.pdf` y `02-TYPESETTING-STYLES.pdf`.
 - El objetivo opcional `distrib`, exclusivo para mantenedores, lee `RELEASE.txt`, genera la guía de estilos de maquetación renderizada y delega en `AdminScripts/go.build-distribution.sh` para crear archivos de usuario `.tgz` y `.zip` equivalentes a partir de una lista estructural de elementos permitidos. Los archivos incluyen `TYPESETTING-STYLES-GUIDE.pdf`, pero excluyen la carpeta fuente `Documentation/`.
 
 ### Flujo de compilación de Book

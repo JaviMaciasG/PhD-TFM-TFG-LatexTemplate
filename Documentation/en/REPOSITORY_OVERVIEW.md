@@ -49,9 +49,9 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 ### Root build
 
 - `Makefile` target `all` builds:
-  - `00-README.pdf` via `pandoc`
+  - `README.pdf` via `pandoc`
   - Main `book` by delegating to `Book/Makefile`
-- The optional maintainer fragment provides the root-level PDF targets for `01-DOWNLOAD-GUIDE.pdf` and `TYPESETTING-STYLES-GUIDE.pdf`. These generated PDFs are preserved in the repository root rather than removed by `make clean`.
+- `make -C Documentation` generates only the Spanish `README.pdf` and `TYPESETTING-STYLES.pdf` in the repository root. Other guides remain Markdown sources in the language-specific directories; the Dropbox download guide is rendered into its publication destination, and the full typesetting guide is rendered into distribution staging. The ZIP/TGZ archives rename the first two as `00-README.pdf` and `02-TYPESETTING-STYLES.pdf`.
 - The optional maintainer target `distrib` reads `RELEASE.txt`, generates the rendered typesetting guide, and delegates to `AdminScripts/go.build-distribution.sh` to create matching `.tgz` and `.zip` user archives from a structural allowlist. The archives include `TYPESETTING-STYLES-GUIDE.pdf`, but exclude the `Documentation/` source folder.
 
 ### Book build pipeline

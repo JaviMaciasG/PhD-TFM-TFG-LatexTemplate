@@ -565,7 +565,10 @@ pdf_svg_done
 00-README.pdf
 00-DOWNLOAD-GUIDE.pdf
 01-DOWNLOAD-GUIDE.pdf
+02-TYPESETTING-STYLES.pdf
 TYPESETTING-STYLES-GUIDE.pdf
+README.pdf
+TYPESETTING-STYLES.pdf
 
 ## Generated documents and repository-specific temporary files
 /Anteproyecto/*.pdf
