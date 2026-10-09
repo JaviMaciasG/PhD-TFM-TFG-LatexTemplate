@@ -73,7 +73,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 - The root target `sync-git-sources` invokes `sync-git-sources.sh` to update a user's Git index from the dependencies of the book, proposal, and paperwork; the script refuses to run in the marked official template repository.
 - Shared engine options and glossary integration live in `Config/latex-common.mk` and `Config/latexmkrc`.
 - `AdminScripts/build-book-typesetting-prototypes.sh` builds isolated full-book samples for the registered visual profiles. `AdminScripts/build-book-style-comparisons.sh` uses Python and PyMuPDF to add neutral bilingual front matter and extract, label, and compose the comparison pages.
-- `AdminScripts/go.gen-public-sample-pdfs.sh` generates the reduced public Dropbox matrix and optionally publishes its PDFs plus `RELEASE.txt` after interactive confirmation. The maintainer-only `publish-dropbox` target also builds and publishes both validated release archives in the same confirmed operation. The older `go.gen-all-pdfs.sh` remains the exhaustive regression generator.
+- `AdminScripts/go.gen-public-sample-pdfs.sh` generates the reduced public Dropbox matrix and optionally publishes its PDFs plus `RELEASE.txt` after interactive confirmation. The maintainer-only `publish-dropbox` target also builds and publishes both validated release archives in the same confirmed operation. `go.gen-all-pdfs.sh` previews a selectable regression matrix and asks for confirmation; its default is representative, while `--all` enables exhaustive coverage. Builds use isolated copies and save PDFs and logs under `Book/all-pdfs/`.
 
 ## Configuration architecture
 

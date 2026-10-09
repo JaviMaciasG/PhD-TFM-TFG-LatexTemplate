@@ -349,14 +349,22 @@ Compruebe al menos:
 
 ### 5.4 Ejecute al final la matriz completa de titulaciones
 
-`AdminScripts/go.gen-all-pdfs.sh` obtiene todos los identificadores y tipos de trabajo de `Config/degrees.tex`, por lo que una nueva declaración correctamente formateada se detecta automáticamente. Ejecútelo desde `Book/` únicamente después de comprobar que la titulación individual funciona:
+`AdminScripts/go.gen-all-pdfs.sh` obtiene titulaciones, instituciones, perfiles de portada/contraportada y estilos de los registros de la plantilla. Sin opciones genera una muestra por combinación de institución, tipo y perfil: solo TFG, TFM y doctorado, en español, con estructura y estilo `standard` y fuentes institucionales. Puede ejecutarlo desde cualquier directorio. Desde la raíz, revise y genere la matriz exhaustiva con:
 
 ```sh
-cd Book
-../AdminScripts/go.gen-all-pdfs.sh
+AdminScripts/go.gen-all-pdfs.sh --all --dry-run
+AdminScripts/go.gen-all-pdfs.sh --all
 ```
 
-Esta es una prueba de regresión costosa: compila todas las titulaciones en español e inglés. El script reescribe temporalmente `Config/myconfig.tex` y normalmente lo restaura después, pero una interrupción puede dejar la configuración generada en su lugar. Parta de un árbol de trabajo limpio, conserve una copia de seguridad independiente y compruebe `git status` cuando finalice.
+Antes de comenzar, muestra los documentos previstos, su número total, el destino y los PDF existentes que sustituirá si la compilación tiene éxito, y pide confirmación (`[y/N]`). `--dry-run` solo muestra esa información, sin escribir ni compilar; `--yes` omite la pregunta, pero no la validación ni la vista previa, y es obligatorio para la generación no interactiva. Las compilaciones usan copias temporales aisladas: no se reescribe `Config/myconfig.tex` ni se limpian los archivos de compilación de trabajo.
+
+`--all` genera todas las combinaciones compatibles: todas las titulaciones excepto TFC, incluidos informes de investigación, ambos idiomas, ambas estructuras para doctorado, todos los estilos y ambas políticas de fuentes. Puede suponer cientos de compilaciones. `--all-degrees` expande solo las titulaciones; `--all-tfgs`, `--all-tfms` y `--all-phds` seleccionan todas las de esos tipos y pueden combinarse. `--all-universities` explicita la cobertura de todas las instituciones, ya predeterminada; `--all-styles` y `--all-fonts` expanden solo su dimensión.
+
+Acote la selección con listas separadas por comas: `--universities UAH,URJC`, `--degrees GIEC,MUC`, `--degree-types TFG,TFM,PhD,RR`, `--layout-profiles uah-muie,uah-muc-2026`, `--styles standard,framed`, `--font-modes institutional,document`, `--languages spanish,english` y `--structures standard,compendium`. Los filtros se intersectan y pueden acotar `--all`. Una lista explícita de titulaciones conserva todas las indicadas, sin reducirlas a representantes. Cada titulación mantiene su perfil de portada/contraportada; no se combinan libremente.
+
+No combine `--all-universities` con `--universities`, `--all-styles` con `--styles` ni `--all-fonts` con `--font-modes`. Se rechazan esas contradicciones, los valores desconocidos, las listas vacías y las selecciones sin documentos. `compendium` solo se aplica a doctorado; TFC se excluye siempre. Consulte `--list-options` y `--help` para ver valores y ejemplos.
+
+Los PDF comprimidos y sus registros se guardan en `Book/all-pdfs/` o en el destino elegido con `--output-dir`; los nombres incluyen tipo, titulación, idioma, estructura, estilo y política de fuentes. Las compilaciones fallidas conservan su registro y no impiden continuar con las demás; cualquier fallo produce un estado de error al final.
 
 Revise tanto el registro de cada titulación como el PDF. Que un comando finalice correctamente no garantiza que la página institucional sea correcta visual o legalmente.
 

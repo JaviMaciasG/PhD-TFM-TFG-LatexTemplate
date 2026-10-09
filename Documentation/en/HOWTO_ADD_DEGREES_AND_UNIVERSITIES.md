@@ -349,14 +349,22 @@ Verify at least:
 
 ### 5.4 Run the complete degree matrix last
 
-`AdminScripts/go.gen-all-pdfs.sh` obtains every identifier and work type from `Config/degrees.tex`, so a correctly formatted new declaration is discovered automatically. Run it from `Book/` only after the individual degree works:
+`AdminScripts/go.gen-all-pdfs.sh` reads degrees, institutions, cover/back-page profiles and styles from the template registries. With no options it generates one representative per institution/type/layout combination: TFG, TFM and PhD only, in Spanish, with standard structure/style and institutional fonts. Run it from any directory. From the repository root, preview and generate the exhaustive matrix with:
 
 ```sh
-cd Book
-../AdminScripts/go.gen-all-pdfs.sh
+AdminScripts/go.gen-all-pdfs.sh --all --dry-run
+AdminScripts/go.gen-all-pdfs.sh --all
 ```
 
-This is an expensive regression test: it builds every degree in Spanish and English. The script temporarily rewrites `Config/myconfig.tex` and normally restores it afterward, but an interruption can leave the generated configuration in place. Start from a clean worktree, keep a separate backup, and check `git status` when it finishes.
+Before starting, the script shows every planned document, total count, destination and existing PDFs that successful builds will replace, then asks for confirmation (`[y/N]`). `--dry-run` only displays this information, without writing or compiling; `--yes` skips the question, not validation or the preview, and is required for noninteractive generation. Builds use isolated temporary source copies: working `Config/myconfig.tex` and build artifacts are not rewritten or cleaned.
+
+`--all` generates every supported combination: all non-TFC degrees, including research reports, both languages, both PhD structures, all styles and both font policies. This can mean hundreds of builds. `--all-degrees` expands degrees only; `--all-tfgs`, `--all-tfms` and `--all-phds` select every degree of those types and can be combined. `--all-universities` explicitly includes every institution, already the default; `--all-styles` and `--all-fonts` expand only their respective dimensions.
+
+Narrow selections with comma-separated lists: `--universities UAH,URJC`, `--degrees GIEC,MUC`, `--degree-types TFG,TFM,PhD,RR`, `--layout-profiles uah-muie,uah-muc-2026`, `--styles standard,framed`, `--font-modes institutional,document`, `--languages spanish,english` and `--structures standard,compendium`. Filters intersect and can narrow `--all`. Explicit degree lists retain every listed degree rather than selecting representatives. Each degree keeps its registered cover/back-page profile; layouts are not freely interchangeable.
+
+Do not combine `--all-universities` with `--universities`, `--all-styles` with `--styles`, or `--all-fonts` with `--font-modes`. These contradictions, unknown values, empty lists and empty selections are rejected. Compendium is PhD-only; TFC is always excluded. Use `--list-options` and `--help` for available values and examples.
+
+Compressed PDFs and logs are saved under `Book/all-pdfs/` or the destination chosen with `--output-dir`; names include work type, degree, language, structure, style and font policy. Failed builds retain their logs and do not stop later builds; any failure produces a nonzero final exit status.
 
 Review the per-degree log as well as the PDF. A successful command does not guarantee that the institutional page is visually or legally correct.
 

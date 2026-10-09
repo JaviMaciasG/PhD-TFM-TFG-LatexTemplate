@@ -15,19 +15,19 @@ case ${1:-} in
       }
     ' "${2:-"$(dirname "$0")/degrees.tex"}"
     ;;
-  work-type)
+  work-type|institution|layout-profile)
     if [ "$#" -lt 2 ]; then
-      echo "Usage: $0 work-type DEGREE [REGISTRY_FILE]" >&2
+      echo "Usage: $0 $1 DEGREE [REGISTRY_FILE]" >&2
       exit 2
     fi
-    awk -v degree="$2" '
+    awk -v degree="$2" -v field="$1" '
       $0 == "\\DeclareDegree{" degree "}{" {
         selected = 1
         next
       }
-      selected && /^[[:space:]]*work-type[[:space:]]*=/ {
+      selected && $0 ~ "^[[:space:]]*" field "[[:space:]]*=" {
         value = $0
-        sub(/^[[:space:]]*work-type[[:space:]]*=[[:space:]]*/, "", value)
+        sub("^[[:space:]]*" field "[[:space:]]*=[[:space:]]*", "", value)
         sub(/[[:space:]]*,[[:space:]]*$/, "", value)
         print value
         found = 1
@@ -46,6 +46,8 @@ case ${1:-} in
   *)
     echo "Usage: $0 identifiers [REGISTRY_FILE]" >&2
     echo "       $0 work-type DEGREE [REGISTRY_FILE]" >&2
+    echo "       $0 institution DEGREE [REGISTRY_FILE]" >&2
+    echo "       $0 layout-profile DEGREE [REGISTRY_FILE]" >&2
     exit 2
     ;;
 esac
