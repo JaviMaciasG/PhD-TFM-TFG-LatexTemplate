@@ -7,6 +7,7 @@ script_directory=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 repository_root=$(cd -- "$script_directory/.." && pwd)
 builder="$script_directory/build-book-typesetting-prototypes.sh"
 comparison_builder="$script_directory/build-book-style-comparisons.sh"
+publication_sync="$script_directory/sync-publication-files.sh"
 output_directory="$repository_root/Book/public-samples"
 dropbox_directory="${HOME}/Dropbox/PhDTFMTFG-LaTeX-Template"
 include_distribution=false
@@ -47,6 +48,12 @@ while (($#)); do
   esac
 done
 
+command -v rsync >/dev/null || { echo 'ERROR: rsync is required for publication.' >&2; exit 1; }
+[[ -d $dropbox_directory && -w $dropbox_directory ]] || {
+  echo "ERROR: publication destination must exist and be writable: $dropbox_directory" >&2
+  exit 1
+}
+[[ -f $publication_sync ]] || { echo "ERROR: publication helper is unavailable: $publication_sync" >&2; exit 1; }
 [[ -x $builder ]] || { echo "ERROR: sample builder is unavailable: $builder" >&2; exit 1; }
 [[ -x $comparison_builder ]] || { echo "ERROR: comparison builder is unavailable: $comparison_builder" >&2; exit 1; }
 [[ -f $repository_root/RELEASE.txt ]] || { echo "ERROR: RELEASE.txt is missing." >&2; exit 1; }
@@ -192,50 +199,19 @@ confirm() {
 
 echo "The following files are ready to be published to $dropbox_directory:"
 printf '  %s\n' "${publication_files[@]##*/}"
-if ! confirm "Publish these files?"; then
-  echo "[INF] Dropbox was not modified."
-  exit 0
-fi
-
-[[ -d $dropbox_directory ]] || {
-  echo "ERROR: Dropbox destination does not exist: $dropbox_directory" >&2
-  exit 1
-}
-[[ -w $dropbox_directory ]] || {
-  echo "ERROR: Dropbox destination is not writable: $dropbox_directory" >&2
-  exit 1
-}
-
-shopt -s nullglob
-existing_managed_files=("$dropbox_directory"/*.pdf)
-if $include_distribution; then
-  existing_managed_files+=(
-    "$dropbox_directory"/00-PhDTFMTFG-LaTeX-Template-UAH-*.zip
-    "$dropbox_directory"/00-PhDTFMTFG-LaTeX-Template-UAH-*.tgz
-    "$dropbox_directory"/03-PhDTFMTFG-LaTeX-Template-UAH-*.zip
-    "$dropbox_directory"/03-PhDTFMTFG-LaTeX-Template-UAH-*.tgz
-  )
-fi
-remove_existing=false
-if ((${#existing_managed_files[@]})); then
-  echo "The following existing managed files can be removed before publishing the new ones:"
-  printf '  %s\n' "${existing_managed_files[@]##*/}"
-  confirm "Remove these existing managed files?" && remove_existing=true
-else
-  echo "[INF] No existing managed files were found in the Dropbox destination."
-fi
-
-dropbox_staging="$dropbox_directory/.public-sample-update-$$"
+dropbox_staging="$temporary_directory/publication"
 mkdir "$dropbox_staging" || exit 1
 for file in "${publication_files[@]}"; do
-  cp -p -- "$file" "$dropbox_staging/" || { rm -rf "$dropbox_staging"; exit 1; }
+  [[ -s $file ]] || { echo "ERROR: publication file is missing or empty: $file" >&2; exit 1; }
+  cp -p -- "$file" "$dropbox_staging/" || exit 1
 done
-
-if $remove_existing; then
-  rm -f -- "${existing_managed_files[@]}"
+sync_options=()
+$include_distribution && sync_options+=(--include-distribution)
+echo '[INF] Synchronization preview (obsolete managed publications will be deleted; unrelated files are preserved):'
+bash "$publication_sync" --dry-run "${sync_options[@]}" "$dropbox_staging" "$dropbox_directory" || exit 1
+if ! confirm "Synchronize these files in place, including deletion of obsolete managed publications?"; then
+  echo '[INF] Dropbox was not modified.'
+  exit 0
 fi
-for file in "$dropbox_staging"/*; do
-  mv -f -- "$file" "$dropbox_directory/"
-done
-rmdir "$dropbox_staging"
+bash "$publication_sync" "${sync_options[@]}" "$dropbox_staging" "$dropbox_directory" || exit 1
 echo "[INF] Published ${#publication_files[@]} files to $dropbox_directory."
