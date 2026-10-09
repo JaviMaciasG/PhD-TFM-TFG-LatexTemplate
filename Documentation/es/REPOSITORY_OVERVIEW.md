@@ -83,7 +83,7 @@ El `Makefile` de la raíz también puede generar una versión PDF del README y d
 
 - Idioma (`spanish` / `english`)
 - Estructura del documento (`standard` para el uso normal y `compendium` para la modalidad especializada de doctorado)
-- Estilo de maquetación de Book y política de fuentes de las páginas institucionales (`\myTypesettingStyle` y `\myInstitutionalPageFontMode`)
+- Estilo de maquetación de Book (`\myTypesettingStyle`); las páginas institucionales conservan sus fuentes originales de forma predeterminada.
 - Elementos preliminares opcionales y listas generadas mediante los conmutadores validados `\myInclude...`
 - Código de titulación (por ejemplo, `GIEC`, `MUIT`, `PHDUAH`)
 - Datos de identidad del autor y del tutor

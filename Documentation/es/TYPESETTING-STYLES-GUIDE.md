@@ -2,7 +2,7 @@
 
 Esta guía describe la capa preliminar de composición tipográfica exclusiva de Book, incluido su uso, implementación, validación, herramientas para mantenedores y atribución a terceros. Todas las rutas del repositorio son relativas a la raíz de la plantilla. Los ejemplos de *shell* indican su directorio de trabajo.
 
-Seleccionar uno de los estilos suministrados es una operación normal de usuario y solo requiere cambiar las variables de configuración documentadas. Modificar un estilo o crear uno nuevo es una tarea avanzada: la tipografía, los encabezados, las listas generadas, las cabeceras de página y las páginas institucionales interactúan entre varios archivos. Aborda esos cambios con cuidado, lee las secciones relevantes de esta guía técnica y valida el documento completo después de cada modificación.
+Seleccionar uno de los estilos suministrados es una operación normal de usuario y solo requiere cambiar el selector de estilo documentado. Modificar un estilo o crear uno nuevo es una tarea avanzada: la tipografía, los encabezados, las listas generadas, las cabeceras de página y las páginas institucionales interactúan entre varios archivos. Aborda esos cambios con cuidado, lee las secciones relevantes de esta guía técnica y valida el documento completo después de cada modificación.
 
 ## Contenido
 
@@ -45,18 +45,27 @@ El `Config/preamble.tex` compartido permanece sin cambios. El auxiliar de vídeo
 
 ### 2.1 Seleccionar el perfil
 
-Edita las definiciones existentes en `Config/myconfig.tex`:
+Edita la definición existente del estilo en `Config/myconfig.tex`:
 
 ```latex
 \newcommand{\myTypesettingStyle}{framed}
-\newcommand{\myInstitutionalPageFontMode}{institutional}
 ```
 
-Sustituye el valor de cada comando existente; no añadas un segundo `\newcommand` con el mismo nombre. Los nombres distinguen entre mayúsculas y minúsculas. Los valores predeterminados son `standard` e `institutional`. El despachador también proporciona estos valores predeterminados cuando los comandos no existen, aunque los auxiliares de compilación esperan una definición existente de cada uno.
+Sustituye su valor; no añadas un segundo `\newcommand` con el mismo nombre. Los nombres distinguen entre mayúsculas y minúsculas. El estilo predeterminado es `standard`. Las páginas institucionales conservan sus fuentes originales automáticamente, sin que tengas que configurar otra variable. El despachador también proporciona el estilo predeterminado cuando el comando no existe, aunque los auxiliares de compilación esperan una definición existente del estilo.
 
 `\myDocumentStructure` es un ajuste independiente: selecciona la organización estándar o por compendio del contenido, no un perfil tipográfico.
 
-### 2.2 Elegir la política de fuentes institucionales
+### 2.2 Configuración avanzada: política de fuentes institucionales
+
+El despachador exclusivo de Book, `Config/typesetting/typesetting.tex`, utiliza `institutional` como valor predeterminado de `\myInstitutionalPageFontMode`. Este ajuste avanzado no aparece deliberadamente en el `Config/myconfig.tex` distribuido. La mayoría de los usuarios deberían conservar las fuentes de las páginas institucionales.
+
+Si necesitas explícitamente que esas páginas hereden las fuentes del documento, añade esta definición opcional a `Config/myconfig.tex`:
+
+```latex
+\newcommand{\myInstitutionalPageFontMode}{document}
+```
+
+Si una configuración antigua ya define el comando, cambia su valor en lugar de añadir un duplicado. Elimina la definición opcional para recuperar el valor interno predeterminado. No necesitas editar `postamble.tex` ni `book.tex`. La interfaz de compilación `--font-mode institutional|document` sigue disponible: actualiza una definición antigua o añade el ajuste solo a la copia aislada de configuración, nunca al archivo de trabajo.
 
 | Valor | Comportamiento de portada/contraportada |
 | --- | --- |

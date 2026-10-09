@@ -199,9 +199,15 @@ config_base="$temporary_directory/myconfig.tex"
 cp -p -- "$config" "$config_base"
 
 replace_config_value() {
-  local command_name=$1 value=$2 file=$3 temporary
+  local command_name=$1 value=$2 file=$3 optional=${4:-false} temporary count
   temporary="$temporary_directory/myconfig.updated"
-  if [[ $(grep -Ec "^[[:space:]]*\\\\newcommand\{\\\\${command_name}\}\{[^}]*\}" "$file") -ne 1 ]]; then
+  count=$(grep -Ec "^[[:space:]]*\\\\newcommand\{\\\\${command_name}\}\{[^}]*\}" "$file" || true)
+  if [[ $count == 0 && $optional == true ]]; then
+    # Only the isolated configuration copy receives the advanced override.
+    printf '\n\\newcommand{\\%s}{%s}\n' "$command_name" "$value" >>"$file"
+    return 0
+  fi
+  if [[ $count != 1 ]]; then
     echo "ERROR: expected exactly one active \\$command_name definition in $file" >&2
     return 1
   fi
@@ -218,7 +224,7 @@ error_count=0
 for style in "${requested_styles[@]}"; do
   cp -p -- "$config_base" "$config"
   replace_config_value myTypesettingStyle "$style" "$config" || exit 1
-  replace_config_value myInstitutionalPageFontMode "$font_mode" "$config" || exit 1
+  replace_config_value myInstitutionalPageFontMode "$font_mode" "$config" true || exit 1
   replace_config_value myLanguage "$language" "$config" || exit 1
   [[ -z $degree ]] || replace_config_value myDegree "$degree" "$config" || exit 1
   [[ -z $document_structure ]] || replace_config_value myDocumentStructure "$document_structure" "$config" || exit 1

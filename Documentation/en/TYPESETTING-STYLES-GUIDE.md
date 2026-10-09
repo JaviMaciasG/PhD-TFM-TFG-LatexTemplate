@@ -6,7 +6,7 @@ All repository paths are relative to the template root. Shell examples state
 their working directory.
 
 Selecting one of the supplied styles is a normal user-level operation and only
-requires changing the documented configuration variables. Modifying a style or
+requires changing the documented style selector. Modifying a style or
 creating a new one is advanced work: typography, headings, generated lists,
 running headers and institutional pages interact across several files. Approach
 those changes carefully, read the relevant sections of this technical guide and
@@ -71,22 +71,28 @@ forms and Anteproyecto do not load this Book-only dispatcher.
 
 ### 2.1 Select the profile
 
-Edit the existing definitions in `Config/myconfig.tex`:
+Edit the existing style definition in `Config/myconfig.tex`:
 
 ```latex
 \newcommand{\myTypesettingStyle}{framed}
-\newcommand{\myInstitutionalPageFontMode}{institutional}
 ```
 
-Replace the value of each existing command; do not add a second `\newcommand`
-with the same name. Names are case-sensitive. The defaults are `standard` and
-`institutional`. The dispatcher also provides these defaults when the commands
-are absent, although the build helpers expect one existing definition of each.
+Replace its value; do not add a second `\newcommand` with the same name. Names are case-sensitive. The default style is `standard`. Institutional pages retain their original fonts automatically; no additional user setting is needed. The dispatcher also supplies the default style when its command is absent, although the build helpers expect one existing style definition.
 
 `\myDocumentStructure` is a separate setting: it selects the standard or
 compendium organisation of the content, not a typesetting profile.
 
-### 2.2 Choose the institutional font policy
+### 2.2 Advanced configuration: institutional font policy
+
+The Book-only dispatcher in `Config/typesetting/typesetting.tex` defaults `\myInstitutionalPageFontMode` to `institutional`. This advanced setting is intentionally absent from the supplied `Config/myconfig.tex`. Most users should leave institutional-page fonts unchanged.
+
+If you explicitly want those pages to inherit the document fonts, add this optional definition to `Config/myconfig.tex`:
+
+```latex
+\newcommand{\myInstitutionalPageFontMode}{document}
+```
+
+If an older configuration already defines the command, change its value instead of adding a duplicate. Remove the optional definition to return to the internal default. Do not edit `postamble.tex` or `book.tex` for this purpose. The existing `--font-mode institutional|document` build-helper interface remains available: it updates a legacy definition or adds an override only to the isolated configuration copy, never to the working file.
 
 | Value | Cover/back-page behaviour |
 | --- | --- |

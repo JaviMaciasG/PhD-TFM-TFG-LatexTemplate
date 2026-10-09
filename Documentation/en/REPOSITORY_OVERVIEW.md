@@ -83,7 +83,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 
 - Language (`spanish` / `english`)
 - Document structure (`standard` for normal use and `compendium` for the specialized PhD modality)
-- Book typesetting style and institutional-page font policy (`\myTypesettingStyle` and `\myInstitutionalPageFontMode`)
+- Book typesetting style (`\myTypesettingStyle`); institutional pages retain their original fonts by default.
 - Optional preliminary elements and generated lists through the validated `\myInclude...` switches
 - Degree code (e.g., `GIEC`, `MUIT`, `PHDUAH`)
 - Author and advisor identity data
