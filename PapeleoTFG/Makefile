@@ -24,10 +24,13 @@ DOCUMENTS := \
 	$(EVALUATION_DOCUMENTS)
 PDFFILES := $(addsuffix .pdf,$(DOCUMENTS))
 TEXFILES := $(addsuffix .tex,$(DOCUMENTS))
+GUIDE_DOCUMENT := guia-papeleo-tfg-eps-uah
+GUIDE_TEX := $(GUIDE_DOCUMENT).tex
+GUIDE_PDF := $(GUIDE_DOCUMENT).pdf
 
 .DEFAULT_GOAL := all
 
-.PHONY: all autorizaciones convenios evaluacion FORCE clean cleanall help
+.PHONY: all autorizaciones convenios evaluacion guia FORCE clean cleanall help
 
 all: $(PDFFILES)
 
@@ -37,16 +40,21 @@ convenios: $(addsuffix .pdf,$(AGREEMENT_DOCUMENTS))
 
 evaluacion: $(addsuffix .pdf,$(EVALUATION_DOCUMENTS))
 
+guia: $(GUIDE_PDF)
+
 FORCE:
 
 $(PDFFILES): %.pdf: %.tex FORCE
 	$(call latexmk_build,$<)
 
+$(GUIDE_PDF): $(GUIDE_TEX) FORCE
+	$(call latexmk_build,$<)
+
 clean:
-	$(call latexmk_clean,$(TEXFILES))
+	$(call latexmk_clean,$(TEXFILES) $(GUIDE_TEX))
 
 cleanall:
-	$(call latexmk_cleanall,$(TEXFILES))
+	$(call latexmk_cleanall,$(TEXFILES) $(GUIDE_TEX))
 
 help:
 	@printf '%s\n' \
@@ -55,5 +63,6 @@ help:
 		'make convenios       Generate the cooperation-agreement form' \
 		'make evaluacion      Generate advisor reports and defense records' \
 		'make FILE.pdf        Generate one specific form' \
+		'make guia            Generate the EPS-UAH TFG paperwork guide' \
 		'make clean           Remove auxiliary files' \
 		'make cleanall        Remove auxiliary files and generated PDFs'

@@ -16,6 +16,15 @@ command -v pandoc >/dev/null 2>&1 || { echo "ERROR: pandoc is required to render
 [[ -f README.pdf ]] || { echo "ERROR: README.pdf is missing; run make README.pdf first." >&2; exit 1; }
 [[ -f TYPESETTING-STYLES-COMPARISON.pdf ]] || { echo "ERROR: TYPESETTING-STYLES-COMPARISON.pdf is missing; run make -C Documentation first." >&2; exit 1; }
 
+guide_sources=(
+  PapeleoTFG/guia-papeleo-tfg-eps-uah.tex
+  PapeleoTFM/guia-papeleo-tfm-eps-uah.tex
+)
+guide_pdfs=("${guide_sources[@]/%.tex/.pdf}")
+# Build these generic guides even when this script is invoked without make distrib.
+make -C PapeleoTFG guia
+make -C PapeleoTFM guia
+
 base="03-PhDTFMTFG-LaTeX-Template-UAH-$release"
 temporary_directory=$(mktemp -d)
 trap 'rm -rf "$temporary_directory"' EXIT
@@ -41,6 +50,7 @@ pandoc Documentation/es/TYPESETTING-STYLES-GUIDE.md -t pdf \
     TODO|*/TODO|Book/slides/*|Documentation/*|Config/myconfig-phd.tex|Config/preamble-slides.tex) continue ;;
     *.pdf)
       case "$file" in
+        PapeleoTFG/guia-papeleo-tfg-eps-uah.pdf|PapeleoTFM/guia-papeleo-tfm-eps-uah.pdf) ;;
         Book/additional/*.pdf|Book/cover/*.pdf|Book/cover/*/*.pdf|Book/diagrams/*.pdf|Book/figures/*.pdf|Book/letters/*.pdf|Book/logos/*.pdf|Book/logos/*/*.pdf|Book/logos/*/*/*.pdf|Book/portadaTFGs/*.pdf|Book/publications/*.pdf) ;;
         *) continue ;;
       esac
@@ -49,6 +59,8 @@ pandoc Documentation/es/TYPESETTING-STYLES-GUIDE.md -t pdf \
   printf '%s\n' "$file"
 done > "$manifest"
 printf '%s\n' README.pdf TYPESETTING-STYLES-COMPARISON.pdf >> "$manifest"
+# Generated PDFs are intentionally ignored by Git; list the guides explicitly.
+printf '%s\n' "${guide_sources[@]}" "${guide_pdfs[@]}" >> "$manifest"
 LC_ALL=C sort -u -o "$manifest" "$manifest"
 
 while IFS= read -r file; do
@@ -60,7 +72,7 @@ done < "$manifest"
 mv "$stage/README.pdf" "$stage/00-README.pdf"
 mv "$stage/TYPESETTING-STYLES-COMPARISON.pdf" "$stage/02-TYPESETTING-STYLES-COMPARISON.pdf"
 
-for required_file in 00-README.pdf 02-TYPESETTING-STYLES-COMPARISON.pdf RELEASE.txt Makefile 04-TYPESETTING-STYLES-GUIDE.pdf sync-git-sources.sh Book/book.tex Config/myconfig.tex; do
+for required_file in 00-README.pdf 02-TYPESETTING-STYLES-COMPARISON.pdf RELEASE.txt Makefile 04-TYPESETTING-STYLES-GUIDE.pdf sync-git-sources.sh Book/book.tex Config/myconfig.tex "${guide_sources[@]}" "${guide_pdfs[@]}"; do
   [[ -f $stage/$required_file ]] || { echo "ERROR: required distribution file is missing: $required_file" >&2; exit 1; }
 done
 

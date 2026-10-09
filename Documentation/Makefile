@@ -1,9 +1,13 @@
 .DEFAULT_GOAL := pdfs
-.PHONY: all pdfs changelog style-comparison
+.PHONY: all pdfs changelog style-comparison paperwork-guides
 
 all: pdfs
 
-pdfs: ../README.pdf style-comparison
+pdfs: ../README.pdf style-comparison paperwork-guides
+
+paperwork-guides:
+	$(MAKE) -C ../PapeleoTFG guia
+	$(MAKE) -C ../PapeleoTFM guia
 
 ../README.pdf:
 	$(MAKE) -C .. README.pdf
