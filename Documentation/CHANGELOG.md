@@ -2,6 +2,45 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v7.3.0] - 2026-10-09
+
+### Features
+
+- Provide EPS-UAH form guides in user distributions
+
+
+### Bug Fixes
+
+- Fixed wrong GIEC URL
+
+- Enable the TURNITIN section for MUII
+
+- Highlight unavailable fields with Spanish placeholders
+
+- Provide paperwork guides as PDF-only documentation
+
+- Simplify manual defaults and expose only editable settings
+
+
+### Documentation
+
+- Standardize headers across distributed template sources
+
+
+### Refactoring
+
+- Hide the advanced institutional font policy
+
+
+### Maintenance
+
+- Prepare v7.3.0
+
+
+### Other Changes
+
+- Feat(pdf-generation)!: add selectable isolated PDF generation
+
 ## [v7.2.3] - 2026-10-08
 
 ### Bug Fixes
@@ -14,6 +53,8 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 - Focus getting started on the basic workflow
 
 - README.md content simplified (English version too)
+
+- Regenerate v7.2.3 release notes
 
 
 ### Maintenance
