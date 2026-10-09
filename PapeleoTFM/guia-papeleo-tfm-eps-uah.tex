@@ -13,24 +13,33 @@
 \usepackage[margin=2cm]{geometry}
 \usepackage{enumitem,tabularx,booktabs}
 \usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{xurl}
 \usepackage{microtype}
+\usepackage{xcolor,soul}
+\sethlcolor{yellow}
+\setcounter{tocdepth}{1}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{4pt}
-\raggedright
 \setlength{\emergencystretch}{2em}
 \setlist[itemize]{leftmargin=*,nosep,topsep=3pt}
-\newcommand{\variable}[1]{\texttt{\textbackslash{}#1}}
+\newcommand{\variable}[1]{\texttt{\textbackslash{}}\nolinkurl{#1}}
 \newcommand{\fichero}[1]{\path{#1}}
-\title{Guía del papeleo de TFM\\\large Escuela Politécnica Superior --- Universidad de Alcalá}
+\title{Guía del papeleo disponible para los TFMs en la EPS-UAH\\\large Escuela Politécnica Superior --- Universidad de Alcalá}
 \author{}
 \date{}
 
 \begin{document}
 \begin{center}
-{\LARGE Guía del papeleo de TFM\par}
+{\LARGE Guía del papeleo disponible para los TFMs en la EPS-UAH\par}
 \medskip
 {\large Escuela Politécnica Superior --- Universidad de Alcalá\par}
 \end{center}
+
+{\small
+\setlength{\parskip}{0pt}
+\tableofcontents
+}
+\medskip
 
 \section{Qué encontrarás aquí}
 
@@ -39,9 +48,11 @@ Hemos preparado seis formularios que reutilizan los datos de tu trabajo. Esta gu
 Los convenios, solicitudes y actas se identifican con la normativa de TFM EPS-UAH aprobada en Junta de Centro el 31/10/2025 y por la Comisión de Máster Universitario el 30/01/2026. En los dos formularios compartidos indicamos también las correspondencias con el reglamento UAH modificado el 14/05/2026 y la normativa MUIE-UAH aprobada el 15/06/2026. La correspondencia entre anexos no garantiza que todos los formatos sean intercambiables ni sustituye la comprobación de las versiones oficiales vigentes.
 
 Puedes localizar los formularios mediante este resumen:
+
+\medskip
 \begin{tabularx}{\textwidth}{@{}Xl@{}}
 \toprule
-Documento & Anexo EPS-UAH \\
+Documento & Anexo normativa EPS-UAH \\
 \midrule
 \hyperref[form:publicacion]{Autorización para publicación en abierto} & XII \\
 \hyperref[form:visto-bueno]{Visto bueno de la dirección} & X \\
@@ -54,15 +65,17 @@ Documento & Anexo EPS-UAH \\
 
 \section{Antes de generar los documentos}
 
-Abre \fichero{Config/myconfig.tex} y sustituye los datos de ejemplo por los tuyos. Selecciona tu máster de la EPS-UAH mediante \variable{myDegree}, el idioma mediante \variable{myLanguage} y los títulos mediante \variable{myBookTitleSpanish} y \variable{myBookTitleEnglish}. La selección de titulación proporciona las variables derivadas de universidad, centro y tipo de trabajo; no debes rellenarlas directamente para cada formulario.
+La marca \hl{N/D} significa \emph{no disponible} y aparece resaltada en amarillo en los campos sin información. Revisa cuáles debes completar antes de presentar los formularios.
 
-El nombre \variable{myAuthorFullName} se obtiene normalmente de \variable{myAuthorName} y \variable{myAuthorSurname}; revisa ambas cuando una ficha te pida el nombre completo. \variable{myBookTitle} utiliza el título del idioma elegido. \variable{myPaperworkDate} toma por defecto la fecha \variable{myThesisDepositDate}, aunque puedes cambiarla. No todos los formularios imprimen esa fecha: las fichas te indican cuáles la usan y cuáles dejan la fecha para su firma o utilizan la fecha del equipo.
+Abre \fichero{Config/myconfig.tex} y sustituye los datos de ejemplo por los tuyos. Selecciona tu máster de la EPS-UAH mediante \variable{myDegree}, el idioma mediante \variable{myLanguage} y los títulos mediante \variable{myBookTitleSpanish} y \variable{myBookTitleEnglish}. La titulación seleccionada determina automáticamente la universidad, el centro y el tipo de trabajo de cada formulario.
+
+El nombre \variable{myAuthorFullName} se obtiene normalmente de \variable{myAuthorName} y \variable{myAuthorSurname}; revisa ambas cuando una ficha te pida el nombre completo. La plantilla utiliza \variable{myBookTitleSpanish} o \variable{myBookTitleEnglish} según \variable{myLanguage}. \variable{myPaperworkDate} toma por defecto la fecha \variable{myThesisDepositDate}, aunque puedes cambiarla. No todos los formularios imprimen esa fecha: las fichas te indican cuáles la usan y cuáles dejan la fecha para su firma o utilizan la fecha del equipo.
 
 \subsection{Género gramatical y singular o plural}
 
 Configura correctamente \variable{myAuthorGender}, \variable{myAcademicTutorGender} y \variable{myCoTutorGender}, con los valores exactos \texttt{male} o \texttt{female}. La plantilla no deduce el género a partir del nombre ni valida otros valores. En el acta también importan \variable{myTribunalPresidentGender}, \variable{myTribunalFirstSpokespersonGender} y \variable{myTribunalSecondSpokespersonGender}. Cada ficha indica las variables que afectan realmente a su texto.
 
-La plantilla adapta, por ejemplo, \emph{autor/autora}, \emph{director/directora}, \emph{el/la}, \emph{D./Dª.}, \emph{Presidente/Presidenta} y \emph{1º/1ª}. Si no tienes cotutor, deja \variable{myCoTutorFullName} vacío: \verb|\newcommand{\myCoTutorFullName}{}|. No escribas \texttt{N/A} como nombre para indicar su ausencia: el nombre vacío controla la omisión de datos y firmas y la selección del singular o plural.
+La plantilla adapta, por ejemplo, \emph{autor/autora}, \emph{director/directora}, \emph{el/la}, \emph{D./Dª.}, \emph{Presidente/Presidenta} y \emph{1º/1ª}. Si no tienes cotutor, deja \variable{myCoTutorFullName} vacío: \verb|\newcommand{\myCoTutorFullName}{}|. No escribas \hl{N/D} como nombre para indicar su ausencia: el nombre vacío controla la omisión de datos y firmas y la selección del singular o plural.
 
 En el visto bueno, un tutor puede aparecer como \emph{tutor} y \emph{da su conformidad}; una tutora, como \emph{tutora} y \emph{da su conformidad}. Si hay cotutor, la plantilla utiliza \emph{tutores} y \emph{dan su conformidad}. Los plurales comunes son actualmente masculinos también si ambas personas son mujeres. Algunos rótulos institucionales permanecen fijos, como \emph{Director/a}; no todos los formularios utilizan todas las variables de género.
 
@@ -96,7 +109,7 @@ Las casillas dependen de \variable{myAuthorizationOpenPublishing}: \texttt{Yes} 
 
 \fichero{TFM-VistoBuenoTutor.tex}. Recoge la conformidad de los directores para depositar y defender el TFM. Corresponde al anexo X de la normativa EPS-UAH (31/10/2025 y 30/01/2026) y al anexo VI de la normativa MUIE-UAH (15/06/2026).
 
-Utiliza \variable{myAcademicTutorFullName}, \variable{myCoTutorFullName}, \variable{myAuthorFullName}, \variable{myBookTitle}, \variable{myPaperworkDate} y \variable{myDegree}. Los tratamientos y el singular o plural dependen de \variable{myAcademicTutorGender}, \variable{myCoTutorGender} y \variable{myAuthorGender}. Las firmas utilizan los nombres de los tutores, no los del tribunal.
+Utiliza \variable{myAcademicTutorFullName}, \variable{myCoTutorFullName}, \variable{myAuthorFullName}, \variable{myBookTitleSpanish} o \variable{myBookTitleEnglish}, \variable{myPaperworkDate} y \variable{myDegree}. Los tratamientos y el singular o plural dependen de \variable{myAcademicTutorGender}, \variable{myCoTutorGender} y \variable{myAuthorGender}. Las firmas utilizan los nombres de los tutores, no los del tribunal.
 
 Las casillas de conformidad para la defensa son fijas: \emph{Sí} está marcada y \emph{No} está vacía. No existe una variable de configuración para esta decisión; tampoco depende de \variable{myAuthorizationOpenPublishing}. Si la dirección no da su conformidad, debes editar este fichero e intercambiar \verb|$\XBox$| y \verb|$\Box$| en estas dos opciones, no en las de confidencialidad. Ajusta también la frase que afirma que la dirección da su conformidad para que no contradiga la respuesta negativa.
 
@@ -112,11 +125,11 @@ Revisa estas variables:
 \begin{itemize}
   \item Estudiante: \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorTelephone} y \variable{myAuthorEmail}.
   \item Director académico: \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDNI}, \variable{myAcademicTutorDepartmentOrInstitution} y \variable{myAcademicTutorEmail}.
-  \item Entidad y tutor externo: \variable{myCoTutorFullName}, \variable{myCoTutorDepartmentOrInstitution}, \variable{myCoTutorPosition}, \variable{myCoTutorDNI} y \variable{myCoTutorEmail}. Si no hay cotutor, los campos derivados de él muestran \texttt{N/A}.
+  \item Entidad y tutor externo: \variable{myCoTutorFullName}, \variable{myCoTutorDepartmentOrInstitution}, \variable{myCoTutorPosition}, \variable{myCoTutorDNI} y \variable{myCoTutorEmail}. Si no hay cotutor, los campos derivados de él muestran \hl{N/D}.
   \item Trabajo: \variable{myDegree}, \variable{myBookTitleSpanish} y \variable{myThesisAcademicYear}; la titulación proporciona el centro y el tipo de trabajo.
   \item Género: \variable{myAuthorGender} y \variable{myCoTutorGender}, para los tratamientos del estudiante y del tutor externo. Algunos rótulos son fijos.
 \end{itemize}
-Los restantes campos \texttt{N/A} deben completarse: datos de identificación y dirección de la entidad, teléfonos, calendario, horario y resumen del trabajo. No tienen variables propias en \fichero{myconfig.tex}. La fecha impresa utiliza \variable{today}, la fecha del equipo al compilar, y no \variable{myPaperworkDate}. Recoge las firmas de coordinación, tutor de la entidad y estudiante y comprueba si tu máster exige un modelo distinto.
+Los restantes campos \hl{N/D} deben completarse: datos de identificación y dirección de la entidad, teléfonos, calendario, horario y resumen del trabajo. No tienen variables propias en \fichero{myconfig.tex}. La fecha impresa corresponde a la fecha del equipo al compilar, y no \variable{myPaperworkDate}. Recoge las firmas de coordinación, tutor de la entidad y estudiante y comprueba si tu máster exige un modelo distinto.
 
 \section{Evaluación y solicitudes}
 
@@ -134,19 +147,24 @@ Las casillas de propuesta para Matrícula de Honor dependen de \variable{myTribu
 
 \fichero{TFM-AnexoIV-SolicitudProrroga-EPS-UAH.tex}. Anexo IV de la normativa EPS-UAH aprobada el 31/10/2025 y el 30/01/2026. Identifica el trabajo, el estudiante y la dirección que autoriza la solicitud.
 
-Utiliza \variable{myAuthorFullName}, \variable{myBookTitle}, \variable{myThesisAcademicYear}, \variable{myAcademicTutorFullName} y \variable{myCoTutorFullName}. Los tratamientos y rótulos dependen de \variable{myAuthorGender}, \variable{myAcademicTutorGender} y \variable{myCoTutorGender}; el codirector se omite si no está configurado. Recoge las firmas de la dirección y del estudiante. El modelo implementado no incorpora campos específicos de motivos o fecha, ni imprime \variable{myPaperworkDate}; comprueba si necesitas completar esa información según el procedimiento aplicable.
+Utiliza \variable{myAuthorFullName}, \variable{myBookTitleSpanish} o \variable{myBookTitleEnglish}, \variable{myThesisAcademicYear}, \variable{myAcademicTutorFullName} y \variable{myCoTutorFullName}. Los tratamientos y rótulos dependen de \variable{myAuthorGender}, \variable{myAcademicTutorGender} y \variable{myCoTutorGender}; el codirector se omite si no está configurado. Recoge las firmas de la dirección y del estudiante. El modelo implementado no incorpora campos específicos de motivos o fecha, ni imprime \variable{myPaperworkDate}; comprueba si necesitas completar esa información según el procedimiento aplicable.
 
 \subsection{Solicitud de cambio del TFM}\label{form:cambio}
 
 \fichero{TFM-AnexoV-SolicitudCambioTFM-EPS-UAH.tex}. Anexo V de la normativa EPS-UAH aprobada el 31/10/2025 y el 30/01/2026. Recoge los datos de la dirección, del estudiante y del trabajo cuyo cambio solicitas.
 
-Utiliza \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDepartmentOrInstitution}, \variable{myCoTutorFullName}, \variable{myCoTutorDepartmentOrInstitution}, \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorEmail} y \variable{myBookTitle}. Un cotutor vacío produce \texttt{N/A} en sus datos. No usa variables de género para sus rótulos: mantiene \emph{Director/a} y \emph{Codirector/a}. Debes completar la exposición razonada, lo que solicitas y el espacio de firma, marcados como \texttt{N/A}; no hay variables de configuración específicas para esos campos.
+Utiliza \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDepartmentOrInstitution}, \variable{myCoTutorFullName}, \variable{myCoTutorDepartmentOrInstitution}, \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorEmail} y \variable{myBookTitleSpanish} o \variable{myBookTitleEnglish}. Un cotutor vacío produce \hl{N/D} en sus datos. No usa variables de género para sus rótulos: mantiene \emph{Director/a} y \emph{Codirector/a}. Debes completar la exposición razonada, lo que solicitas y el espacio de firma, marcados como \hl{N/D}; no hay variables de configuración específicas para esos campos.
 
+\medskip
+\begin{minipage}{\linewidth}
+\setlength{\parskip}{4pt}
 \section{Cómo generar los documentos}
 
 No necesitas Make. Abre el formulario que necesites en tu editor de LaTeX y compílalo con PDFLaTeX desde \fichero{PapeleoTFM/}, conservando el resto de la estructura. Si tu editor lo requiere, establece esa carpeta como directorio de trabajo. En Overleaf, selecciona ese fichero como documento principal. Estos formularios no necesitan Biber ni \texttt{makeglossaries}; la rúbrica compartida no se compila por separado.
 
 Si utilizas Make, ejecuta las siguientes órdenes desde \fichero{PapeleoTFM/}; necesitas \texttt{latexmk} además de la distribución de LaTeX:
+
+\medskip
 \begin{minipage}{\linewidth}
 \begin{verbatim}
 make                         # Todos los formularios
@@ -155,11 +173,10 @@ make convenios               # Convenio de cooperación
 make evaluacion              # Acta y rúbrica
 make solicitudes             # Prórroga y cambio de TFM
 make TFM-VistoBuenoTutor.pdf
-make guia                    # Esta guía, sin generar formularios
 make help                    # Opciones disponibles
 \end{verbatim}
 \end{minipage}
-Cada formulario independiente genera un PDF con su mismo nombre. \texttt{make clean} elimina auxiliares y conserva los PDF; \texttt{make cleanall} elimina también los PDF de formularios y de esta guía. También puedes compilar esta guía directamente: no lee tu configuración ni incluye datos personales.
+Cada formulario independiente genera un PDF con su mismo nombre. \texttt{make clean} elimina auxiliares y conserva los PDF; \texttt{make cleanall} elimina también los PDF de formularios. La distribución ZIP/TGZ incluye esta guía solo en PDF y la conserva al limpiar. Puedes consultarla directamente, sin compilar nada.
 
 \section{Antes de presentar los documentos}
 
@@ -167,7 +184,8 @@ Aunque la compilación termine sin errores, revisa el resultado:
 \begin{itemize}
   \item Comprueba el modelo y la versión que corresponden a tu máster. Esta colección no implementa todos los anexos de las normativas EPS-UAH, UAH o MUIE-UAH.
   \item Verifica nombres, DNI, afiliaciones, títulos, géneros, cotutor, tribunal, curso académico y fechas. Sustituye los datos de ejemplo.
-  \item Revisa publicación, embargo y confidencialidad; completa los campos vacíos, \texttt{N/A}, notas, rúbricas y justificaciones. Los nombres y cargos escritos con tratamientos no se corrigen automáticamente.
+  \item Revisa publicación, embargo y confidencialidad; completa los campos vacíos, \hl{N/D}, notas, rúbricas y justificaciones. Los nombres y cargos escritos con tratamientos no se corrigen automáticamente.
   \item Obtén las firmas necesarias y utiliza el procedimiento de entrega que te indiquen. La plantilla no firma, presenta ni tramita los documentos por ti.
 \end{itemize}
+\end{minipage}
 \end{document}

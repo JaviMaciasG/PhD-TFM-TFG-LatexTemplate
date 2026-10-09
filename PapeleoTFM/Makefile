@@ -28,6 +28,7 @@ TEXFILES := $(addsuffix .tex,$(DOCUMENTS))
 GUIDE_DOCUMENT := guia-papeleo-tfm-eps-uah
 GUIDE_TEX := $(GUIDE_DOCUMENT).tex
 GUIDE_PDF := $(GUIDE_DOCUMENT).pdf
+GUIDE_BUILD_TEX := $(wildcard $(GUIDE_TEX))
 
 .DEFAULT_GOAL := all
 
@@ -50,14 +51,16 @@ FORCE:
 $(PDFFILES): %.pdf: %.tex FORCE
 	$(call latexmk_build,$<)
 
-$(GUIDE_PDF): $(GUIDE_TEX) FORCE
+ifneq ($(GUIDE_BUILD_TEX),)
+$(GUIDE_PDF): $(GUIDE_BUILD_TEX) FORCE
 	$(call latexmk_build,$<)
+endif
 
 clean:
-	$(call latexmk_clean,$(TEXFILES) $(GUIDE_TEX))
+	$(call latexmk_clean,$(TEXFILES) $(GUIDE_BUILD_TEX))
 
 cleanall:
-	$(call latexmk_cleanall,$(TEXFILES) $(GUIDE_TEX))
+	$(call latexmk_cleanall,$(TEXFILES) $(GUIDE_BUILD_TEX))
 
 help:
 	@printf '%s\n' \
@@ -67,6 +70,5 @@ help:
 		'make evaluacion      Generate the defense record and rubric' \
 		'make solicitudes     Generate extension and assignment-change requests' \
 		'make FILE.pdf        Generate one specific form' \
-		'make guia            Generate the EPS-UAH TFM paperwork guide' \
 		'make clean           Remove auxiliary files' \
 		'make cleanall        Remove auxiliary files and generated PDFs'

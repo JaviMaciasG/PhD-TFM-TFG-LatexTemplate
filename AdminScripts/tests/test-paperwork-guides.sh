@@ -5,6 +5,8 @@ set -euo pipefail
 repository_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
 cd "$repository_root"
 checks=0
+temporary_directory=$(mktemp -d)
+trap 'rm -rf "$temporary_directory"' EXIT
 
 check_contains() {
   local needle=$1 file=$2
@@ -40,12 +42,26 @@ for kind in tfg tfm; do
   for variable in myAuthorGender myAcademicTutorGender myCoTutorGender; do
     check_contains "\\variable{$variable}" "$source"
   done
-  check_contains "make guia" "$source"
+  if grep -Fq 'make guia' "$source"; then
+    echo "FAIL: user guides must not advertise maintainer compilation targets" >&2
+    exit 1
+  fi
+  checks=$((checks + 1))
   check_contains '\subsection{Casillas configurables y casillas fijas}' "$source"
   check_contains '\variable{myAuthorizationOpenPublishing}' "$source"
   check_contains '\variable{myTribunalMHProposal}' "$source"
   check_contains '\texttt{YES}' "$source"
   check_contains '\texttt{NO}' "$source"
+  check_contains "Guía del papeleo disponible para los ${kind^^}s en la EPS-UAH" "$source"
+  check_contains '\tableofcontents' "$source"
+  check_contains '\setcounter{tocdepth}{1}' "$source"
+  check_contains '\sethlcolor{yellow}' "$source"
+  check_contains '\hl{N/D}' "$source"
+  if grep -Fq 'N/A' "$source"; then
+    echo "FAIL: Spanish guides must use N/D instead of N/A" >&2
+    exit 1
+  fi
+  checks=$((checks + 1))
   check_contains '\verb|$\XBox$|' "$source"
   check_contains '\verb|$\Box$|' "$source"
   check_contains 'debes editar este fichero e intercambiar' "$source"
@@ -60,6 +76,28 @@ for kind in tfg tfm; do
   guide_build=$(make --no-print-directory -n -C "$component" guia)
   [[ $guide_build == *"$guide.tex"* ]] || { echo "FAIL: missing guide build rule" >&2; exit 1; }
   checks=$((checks + 2))
+
+  # Simulate the PDF-only guide shipped in user distributions.
+  mkdir -p "$temporary_directory/$component"
+  cp "$component/Makefile" "$temporary_directory/$component/Makefile"
+  touch "$temporary_directory/$component/$guide.pdf"
+  make --no-print-directory -s -C "$temporary_directory/$component" \
+    LATEX_CONFIG_DIR="$repository_root/Config" guia
+  for target in clean cleanall; do
+    cleanup=$(make --no-print-directory -n -C "$temporary_directory/$component" \
+      LATEX_CONFIG_DIR="$repository_root/Config" "$target")
+    [[ $cleanup != *"$guide"* ]] || { echo "FAIL: $target touches the PDF-only guide" >&2; exit 1; }
+  done
+  checks=$((checks + 3))
+done
+
+check_contains 'printf '\''%s\n'\'' "${guide_pdfs[@]}" >> "$manifest"' AdminScripts/go.build-distribution.sh
+check_contains 'TODO "${guide_sources[@]}"; do' AdminScripts/go.build-distribution.sh
+for form in PapeleoTFG/TFG-ConvenioCooperacion-EPS-UAH.tex \
+  PapeleoTFM/TFM-AnexoI-ConvenioCooperacion-EPS-UAH.tex \
+  PapeleoTFM/TFM-AnexoV-SolicitudCambioTFM-EPS-UAH.tex; do
+  check_contains '\newcommand{\AnnexNA}{\hl{N/D}}' "$form"
+  check_contains '\sethlcolor{yellow}' "$form"
 done
 
 check_contains '\variable{myResearchVicerrectorGender}' PapeleoTFG/guia-papeleo-tfg-eps-uah.tex

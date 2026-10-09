@@ -47,7 +47,7 @@ pandoc Documentation/es/TYPESETTING-STYLES-GUIDE.md -t pdf \
   git ls-files -- Anteproyecto Book Config PapeleoTFG PapeleoTFM
 } | while IFS= read -r file; do
   case "$file" in
-    TODO|*/TODO|Book/slides/*|Documentation/*|Config/myconfig-phd.tex|Config/preamble-slides.tex) continue ;;
+    TODO|*/TODO|Book/slides/*|Documentation/*|Config/myconfig-phd.tex|Config/preamble-slides.tex|PapeleoTFG/guia-papeleo-tfg-eps-uah.tex|PapeleoTFM/guia-papeleo-tfm-eps-uah.tex) continue ;;
     *.pdf)
       case "$file" in
         PapeleoTFG/guia-papeleo-tfg-eps-uah.pdf|PapeleoTFM/guia-papeleo-tfm-eps-uah.pdf) ;;
@@ -60,7 +60,7 @@ pandoc Documentation/es/TYPESETTING-STYLES-GUIDE.md -t pdf \
 done > "$manifest"
 printf '%s\n' README.pdf TYPESETTING-STYLES-COMPARISON.pdf >> "$manifest"
 # Generated PDFs are intentionally ignored by Git; list the guides explicitly.
-printf '%s\n' "${guide_sources[@]}" "${guide_pdfs[@]}" >> "$manifest"
+printf '%s\n' "${guide_pdfs[@]}" >> "$manifest"
 LC_ALL=C sort -u -o "$manifest" "$manifest"
 
 while IFS= read -r file; do
@@ -72,11 +72,11 @@ done < "$manifest"
 mv "$stage/README.pdf" "$stage/00-README.pdf"
 mv "$stage/TYPESETTING-STYLES-COMPARISON.pdf" "$stage/02-TYPESETTING-STYLES-COMPARISON.pdf"
 
-for required_file in 00-README.pdf 02-TYPESETTING-STYLES-COMPARISON.pdf RELEASE.txt Makefile 04-TYPESETTING-STYLES-GUIDE.pdf sync-git-sources.sh Book/book.tex Config/myconfig.tex "${guide_sources[@]}" "${guide_pdfs[@]}"; do
+for required_file in 00-README.pdf 02-TYPESETTING-STYLES-COMPARISON.pdf RELEASE.txt Makefile 04-TYPESETTING-STYLES-GUIDE.pdf sync-git-sources.sh Book/book.tex Config/myconfig.tex "${guide_pdfs[@]}"; do
   [[ -f $stage/$required_file ]] || { echo "ERROR: required distribution file is missing: $required_file" >&2; exit 1; }
 done
 
-for forbidden_path in AdminScripts Deprecated Documentation normativas PapeleoPHD UsefulDocs TODO; do
+for forbidden_path in AdminScripts Deprecated Documentation normativas PapeleoPHD UsefulDocs TODO "${guide_sources[@]}"; do
   [[ ! -e $stage/$forbidden_path ]] || { echo "ERROR: maintainer-only path entered the distribution: $forbidden_path" >&2; exit 1; }
 done
 forbidden_todo=$(find "$stage" -type f -name TODO -print -quit)

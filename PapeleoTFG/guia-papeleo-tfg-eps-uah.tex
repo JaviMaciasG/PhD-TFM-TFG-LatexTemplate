@@ -13,24 +13,33 @@
 \usepackage[margin=2cm]{geometry}
 \usepackage{enumitem,tabularx,booktabs}
 \usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{xurl}
 \usepackage{microtype}
+\usepackage{xcolor,soul}
+\sethlcolor{yellow}
+\setcounter{tocdepth}{1}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{4pt}
-\raggedright
 \setlength{\emergencystretch}{2em}
 \setlist[itemize]{leftmargin=*,nosep,topsep=3pt}
-\newcommand{\variable}[1]{\texttt{\textbackslash{}#1}}
+\newcommand{\variable}[1]{\texttt{\textbackslash{}}\nolinkurl{#1}}
 \newcommand{\fichero}[1]{\path{#1}}
-\title{Guía del papeleo de TFG\\\large Escuela Politécnica Superior --- Universidad de Alcalá}
+\title{Guía del papeleo disponible para los TFGs en la EPS-UAH\\\large Escuela Politécnica Superior --- Universidad de Alcalá}
 \author{}
 \date{}
 
 \begin{document}
 \begin{center}
-{\LARGE Guía del papeleo de TFG\par}
+{\LARGE Guía del papeleo disponible para los TFGs en la EPS-UAH\par}
 \medskip
 {\large Escuela Politécnica Superior --- Universidad de Alcalá\par}
 \end{center}
+
+{\small
+\setlength{\parskip}{0pt}
+\tableofcontents
+}
+\medskip
 
 \section{Qué encontrarás aquí}
 
@@ -38,9 +47,10 @@ Hemos preparado ocho formularios que reutilizan los datos de tu trabajo para que
 
 Puedes localizar los documentos mediante este resumen. Cada nombre enlaza con su explicación dentro de la guía.
 
+\medskip
 \begin{tabularx}{\textwidth}{@{}Xl@{}}
 \toprule
-Documento & Anexo EPS-UAH \\
+Documento & Anexo normativa EPS-UAH \\
 \midrule
 \hyperref[form:conjunta]{Autorización conjunta de publicación} & VIII \\
 \hyperref[form:autor]{Autorización de la persona autora} & VII \\
@@ -55,9 +65,11 @@ Documento & Anexo EPS-UAH \\
 
 \section{Antes de generar los documentos}
 
-Abre \fichero{Config/myconfig.tex} y sustituye los datos de ejemplo por los tuyos. Selecciona una titulación de grado de la EPS-UAH mediante \variable{myDegree} y el idioma mediante \variable{myLanguage}. El identificador del grado determina la universidad, el centro y el tipo de trabajo; no debes editar las variables derivadas \variable{myDegreefull}, \variable{mySchool}, \variable{myUniversity} o \variable{myWorkTypeFull} para rellenar un formulario.
+La marca \hl{N/D} significa \emph{no disponible} y aparece resaltada en amarillo en los campos sin información. Revisa cuáles debes completar antes de presentar los formularios.
 
-Tu nombre completo, \variable{myAuthorFullName}, se obtiene normalmente de \variable{myAuthorName} y \variable{myAuthorSurname}. Cuando una ficha mencione el nombre completo, revisa estas dos variables. Define \variable{myBookTitleSpanish} y, cuando proceda, \variable{myBookTitleEnglish}: \variable{myBookTitle} selecciona el título según el idioma. Las fichas siguientes indican los datos particulares de cada formulario, incluidos los utilizados por sus fragmentos auxiliares.
+Abre \fichero{Config/myconfig.tex} y sustituye los datos de ejemplo por los tuyos. Selecciona una titulación de grado de la EPS-UAH mediante \variable{myDegree} y el idioma mediante \variable{myLanguage}. El identificador del grado determina la universidad, el centro y el tipo de trabajo. La plantilla completa automáticamente esos datos para cada formulario.
+
+Tu nombre completo, \variable{myAuthorFullName}, se obtiene normalmente de \variable{myAuthorName} y \variable{myAuthorSurname}. Cuando una ficha mencione el nombre completo, revisa estas dos variables. Define \variable{myBookTitleSpanish} y, cuando proceda, \variable{myBookTitleEnglish}: la plantilla selecciona el título según \variable{myLanguage}. Las fichas siguientes indican los datos particulares de cada formulario, incluidos los utilizados por sus fragmentos auxiliares.
 
 La fecha \variable{myPaperworkDate} toma por defecto el valor de \variable{myThesisDepositDate}; la versión inglesa hace lo mismo con \variable{myThesisDepositDateEnglish}. Puedes modificar esas fechas sin cambiar los comandos del formulario. No confundas estas variables con la fecha de firma digital o con la fecha del equipo, utilizadas en algunos documentos.
 
@@ -65,7 +77,7 @@ La fecha \variable{myPaperworkDate} toma por defecto el valor de \variable{myThe
 
 La plantilla adapta expresiones como \emph{autor/autora}, \emph{tutor/tutora}, \emph{el/la} o \emph{D./Dª.} mediante las variables de género. Debes escribir exactamente \texttt{male} o \texttt{female}; el nombre de la persona no se utiliza para deducirlo y la implementación no valida otros valores. Comprueba especialmente \variable{myAuthorGender}, \variable{myAcademicTutorGender} y \variable{myCoTutorGender}. Las fichas te indican cuáles afectan realmente a cada documento.
 
-Si no tienes cotutor, deja \variable{myCoTutorFullName} vacío: \verb|\newcommand{\myCoTutorFullName}{}|. Su presencia controla las secciones y firmas opcionales y, donde se usan los comandos correspondientes, el singular o plural. No escribas \texttt{N/A} como nombre para indicar su ausencia, porque entonces la plantilla lo tratará como una persona configurada.
+Si no tienes cotutor, deja \variable{myCoTutorFullName} vacío: \verb|\newcommand{\myCoTutorFullName}{}|. Su presencia controla las secciones y firmas opcionales y, donde se usan los comandos correspondientes, el singular o plural. No escribas \hl{N/D} como nombre para indicar su ausencia, porque entonces la plantilla lo tratará como una persona configurada.
 
 Por ejemplo, la autorización conjunta puede mostrar \emph{la autora} y \emph{la tutora} si ambas variables de género son \texttt{female}. En los compromisos individuales se obtiene \emph{El Profesor} o \emph{La Profesora}; el tutor \emph{tutoriza}, el cotutor \emph{cotutoriza} y un miembro del tribunal \emph{evaluará}. No todos los textos se adaptan: algunos rótulos institucionales son fijos. Los comandos comunes de plural para dos supervisores utilizan actualmente \emph{tutores/directores}, también si ambas personas son mujeres.
 
@@ -95,7 +107,7 @@ Las casillas dependen de \variable{myAuthorizationOpenPublishing}: \texttt{Yes} 
 
 \fichero{TFG-AutorizacionAutorPubAbierto-EPS-UAH.tex}. Anexo VII de la normativa EPS-UAH, revisada el 05/06/2026. Contiene la declaración y autorización individual de quien ha realizado el trabajo y el espacio de firma por la Universidad; no utiliza los datos del tutor ni del tribunal.
 
-Los datos utilizados son \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myBookTitle} (según \variable{myLanguage}), \variable{myPaperworkDate}, \variable{myResearchVicerrector} y la universidad derivada de \variable{myDegree}. Revisa \variable{myAuthorGender} y \variable{myResearchVicerrectorGender}: aparecen expresiones como \emph{autor/autora}, \emph{notificado/notificada} y \emph{Vicerrector/Vicerrectora}. La declaración no utiliza las casillas de \variable{myAuthorizationOpenPublishing}: revisa el texto y las firmas antes de utilizarla.
+Los datos utilizados son \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myBookTitleSpanish} o \variable{myBookTitleEnglish} (según \variable{myLanguage}), \variable{myPaperworkDate}, \variable{myResearchVicerrector} y la universidad derivada de \variable{myDegree}. Revisa \variable{myAuthorGender} y \variable{myResearchVicerrectorGender}: aparecen expresiones como \emph{autor/autora}, \emph{notificado/notificada} y \emph{Vicerrector/Vicerrectora}. La declaración no utiliza las casillas de \variable{myAuthorizationOpenPublishing}: revisa el texto y las firmas antes de utilizarla.
 
 \subsection{Autorización del tutor extranjero}\label{form:extranjero}
 
@@ -109,7 +121,7 @@ Configura \variable{myAcademicTutorFullName}, \variable{myAcademicTutorForeignUn
 
 Revisa estas variables:
 \begin{itemize}
-  \item Estudiante y trabajo: \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorGender}, \variable{myBookTitle} y \variable{myPaperworkDate}.
+  \item Estudiante y trabajo: \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorGender}, \variable{myBookTitleSpanish} o \variable{myBookTitleEnglish} y \variable{myPaperworkDate}.
   \item Tutor: \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDNI} y \variable{myAcademicTutorGender}.
   \item Cotutor: \variable{myCoTutorFullName}, \variable{myCoTutorDNI} y \variable{myCoTutorGender}.
   \item Presidente: \variable{myTribunalPresident}, \variable{myTribunalPresidentDNI} y \variable{myTribunalPresidentGender}.
@@ -117,7 +129,7 @@ Revisa estas variables:
   \item Vocal segundo: \variable{myTribunalSecondSpokesperson}, \variable{myTribunalSecondSpokespersonDNI} y \variable{myTribunalSecondSpokespersonGender}.
   \item Suplente: \variable{myTribunalAlternateMember}, \variable{myTribunalAlternateMemberDNI} y \variable{myTribunalAlternateMemberGender}.
 \end{itemize}
-Un nombre opcional vacío omite esa persona y un DNI de profesor vacío deja una línea para completarlo. La fecha y el título siguen los valores de \variable{myPaperworkDate} y \variable{myBookTitle}; este último depende del idioma. El formulario no se activa mediante \variable{myConfidentialContent}: genéralo únicamente si lo necesitas.
+Un nombre opcional vacío omite esa persona y un DNI de profesor vacío deja una línea para completarlo. La fecha procede de \variable{myPaperworkDate}; el título procede de \variable{myBookTitleSpanish} o \variable{myBookTitleEnglish}, según \variable{myLanguage}. El formulario no se activa mediante \variable{myConfidentialContent}: genéralo únicamente si lo necesitas.
 
 \section{Cooperación educativa}
 
@@ -129,11 +141,11 @@ Utiliza los siguientes datos:
 \begin{itemize}
   \item Estudiante: \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorTelephone} y \variable{myAuthorEmail}.
   \item Tutor académico: \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDNI}, \variable{myAcademicTutorDepartmentOrInstitution} y \variable{myAcademicTutorEmail}.
-  \item Entidad y tutor externo: \variable{myCoTutorFullName}, \variable{myCoTutorDepartmentOrInstitution}, \variable{myCoTutorPosition}, \variable{myCoTutorDNI} y \variable{myCoTutorEmail}. Sin cotutor, los campos derivados de él muestran \texttt{N/A}.
+  \item Entidad y tutor externo: \variable{myCoTutorFullName}, \variable{myCoTutorDepartmentOrInstitution}, \variable{myCoTutorPosition}, \variable{myCoTutorDNI} y \variable{myCoTutorEmail}. Sin cotutor, los campos derivados de él muestran \hl{N/D}.
   \item Trabajo: \variable{myDegree}, \variable{myBookTitleSpanish} y \variable{myThesisAcademicYear}. La titulación seleccionada proporciona el centro y el tipo de trabajo.
   \item Género: \variable{myAuthorGender} y \variable{myCoTutorGender}, para el tratamiento del estudiante y el rótulo del tutor externo. Algunos rótulos como \emph{tutor/a} permanecen fijos.
 \end{itemize}
-Completa los campos todavía marcados como \texttt{N/A}: identificación y dirección de la entidad, teléfonos, fechas de inicio y fin, horario y resumen del trabajo. No tienen variables propias en \fichero{myconfig.tex}; puedes completar el formulario o adaptar sus campos en el fuente. La fecha impresa utiliza \variable{today}, es decir, la fecha del equipo durante la compilación, no \variable{myPaperworkDate}. Revisa también las tres firmas: coordinación del trabajo, tutor de la entidad y estudiante.
+Completa los campos todavía marcados como \hl{N/D}: identificación y dirección de la entidad, teléfonos, fechas de inicio y fin, horario y resumen del trabajo. No tienen variables propias en \fichero{myconfig.tex}; puedes completar el formulario o adaptar sus campos en el fuente. La fecha impresa corresponde a la fecha del equipo durante la compilación, no \variable{myPaperworkDate}. Revisa también las tres firmas: coordinación del trabajo, tutor de la entidad y estudiante.
 
 \section{Informes y evaluación}
 
@@ -163,11 +175,16 @@ Los rótulos de los tutores se adaptan mediante \variable{myAcademicTutorGender}
 
 Las casillas de propuesta para Matrícula de Honor dependen de \variable{myTribunalMHProposal}: \texttt{YES} marca \emph{Sí} y deja vacía \emph{No}; \texttt{NO} hace lo contrario. La propuesta no se deduce de las notas ni de su suma: debes configurar la decisión del tribunal y comprobar que cumple los requisitos aplicables.
 
+\medskip
+\begin{minipage}{\linewidth}
+\setlength{\parskip}{4pt}
 \section{Cómo generar los documentos}
 
 No necesitas Make. Abre el formulario que necesites en tu editor de LaTeX, mantén la estructura de directorios y compílalo con PDFLaTeX desde \fichero{PapeleoTFG/}. Si tu editor lo requiere, establece esa carpeta como directorio de trabajo. En Overleaf, selecciona el fichero del formulario como documento principal. Estas plantillas no necesitan Biber ni \texttt{makeglossaries}; los fragmentos de rúbrica y secciones compartidas no se compilan por separado.
 
 Si utilizas Make, ejecuta estas órdenes desde \fichero{PapeleoTFG/}; necesitas \texttt{latexmk} además de la distribución de LaTeX:
+
+\medskip
 \begin{minipage}{\linewidth}
 \begin{verbatim}
 make                         # Todos los formularios
@@ -175,11 +192,10 @@ make autorizaciones          # Publicación y confidencialidad
 make convenios               # Convenio de cooperación
 make evaluacion              # Informes, acta y rúbricas
 make TFG-InformeTutorPlagio-UAH.pdf
-make guia                    # Esta guía, sin generar formularios
 make help                    # Opciones disponibles
 \end{verbatim}
 \end{minipage}
-Cada fichero independiente genera un PDF con su mismo nombre. \texttt{make clean} elimina auxiliares y conserva los PDF; \texttt{make cleanall} elimina también los PDF de formularios y de esta guía. También puedes compilar la guía por separado: no lee tu configuración ni incorpora datos personales.
+Cada fichero independiente genera un PDF con su mismo nombre. \texttt{make clean} elimina auxiliares y conserva los PDF; \texttt{make cleanall} elimina también los PDF de formularios. La distribución ZIP/TGZ incluye esta guía solo en PDF y la conserva al limpiar. Puedes consultarla directamente, sin compilar nada.
 
 \section{Antes de presentar los documentos}
 
@@ -187,7 +203,8 @@ Dedica unos minutos a revisar el resultado, aunque se haya generado sin errores:
 \begin{itemize}
   \item Comprueba que el formulario y su versión corresponden a tu titulación y al procedimiento que te hayan indicado. No todos los documentos se utilizan en todos los trabajos.
   \item Revisa nombres, DNI, afiliaciones, títulos, fechas, géneros, cotutor y miembros del tribunal. No dejes los datos de ejemplo de la plantilla.
-  \item Completa campos vacíos y \texttt{N/A}, análisis de plagio, notas, observaciones y decisiones de publicación. Revisa el género también en los tratamientos escritos dentro de nombres o cargos, que no se reescriben automáticamente.
+  \item Completa campos vacíos y \hl{N/D}, análisis de plagio, notas, observaciones y decisiones de publicación. Revisa el género también en los tratamientos escritos dentro de nombres o cargos, que no se reescriben automáticamente.
   \item Obtén las firmas que correspondan y sigue el procedimiento de entrega que te indique la EPS-UAH. La plantilla genera documentos, no los firma ni los presenta por ti.
 \end{itemize}
+\end{minipage}
 \end{document}
