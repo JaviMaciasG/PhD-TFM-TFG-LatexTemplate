@@ -7,7 +7,7 @@
 \chapter{Configuración de la plantilla}
 \label{cha:configuracion}
 
-La mayor parte de la adaptación de la plantilla se realiza en \texttt{Config/myconfig.tex}. En este capítulo describimos todas las variables disponibles para que puedas utilizarlo como referencia: comenzaremos por la configuración general y recorreremos después los datos académicos, las fechas, la publicación, los enlaces y las variables derivadas. Normalmente solo tendrás que completar las que correspondan a tu tipo de trabajo y a los documentos que vayas a generar.
+La mayor parte de la adaptación de la plantilla se realiza en \texttt{Config/myconfig.tex}. En este capítulo describimos todas las variables disponibles para que puedas utilizarlo como referencia: comenzaremos por la configuración general y recorreremos después los datos académicos, las fechas, la publicación, los enlaces y los ajustes de compatibilidad. Normalmente solo tendrás que completar las que correspondan a tu tipo de trabajo y a los documentos que vayas a generar.
 
 A partir de los datos que indiques, la plantilla adapta automáticamente parte de los textos generados. Entre otros aspectos, selecciona las formas correspondientes al género gramatical de la persona autora, los tutores y otros cargos, y ajusta el singular o el plural según exista únicamente un tutor o también un cotutor. De este modo, puede generar automáticamente expresiones como \emph{tutor/tutora}, \emph{director/directora}, \emph{tutor/tutores} o \emph{emite/emiten}. Esta adaptación se aplica principalmente a las cubiertas y a los documentos administrativos; revisa siempre el PDF resultante para comprobar que la redacción es adecuada para tu caso.
 
@@ -72,7 +72,7 @@ Las variables cuyo nombre comienza por \texttt{\textbackslash{}myInclude} te per
 Las siguientes variables controlan el contenido preliminar de ejemplo:
 
 \begin{itemize}
-  \item \texttt{\textbackslash{}myIncludeSampleLetter}: incluye el PDF de ejemplo \texttt{letters/sampleLetter.pdf}. Desactívalo en tu documento salvo que lo hayas sustituido por un documento preliminar que realmente necesites.
+  \item \texttt{\textbackslash{}myIncludeSampleLetter}: permite insertar un PDF preliminar, como una carta de autorización. Su valor predeterminado es \texttt{false}, por lo que el manual no incluye el PDF de ejemplo. Si lo necesitas, selecciona \texttt{true} y sustituye la ruta del PDF en el bloque correspondiente de \texttt{Book/book.tex}, que utiliza \texttt{\textbackslash{}includepdf}.
   \item \texttt{\textbackslash{}myIncludeDedication}: incluye la dedicatoria definida en \texttt{dedication/dedicatoria.tex}.
   \item \texttt{\textbackslash{}myIncludeAcknowledgements}: incluye los agradecimientos definidos en \texttt{acknowledgements/agradecimientos.tex}.
 \end{itemize}
@@ -103,7 +103,7 @@ Utiliza las siguientes variables para definir los títulos, las palabras clave y
   \item \texttt{\textbackslash{}myConfidentialContent}: indica si el trabajo contiene material confidencial en los documentos administrativos que contemplan esta posibilidad. Admite los valores \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
 \end{itemize}
 
-La plantilla crea internamente la orden \texttt{\textbackslash{}myBookTitle} a partir del idioma seleccionado: utiliza \texttt{\textbackslash{}myBookTitleSpanish} cuando \texttt{\textbackslash{}myLanguage} vale \texttt{spanish} y \texttt{\textbackslash{}myBookTitleEnglish} cuando vale \texttt{english}. Por tanto, no definas ni modifiques directamente \texttt{\textbackslash{}myBookTitle}.
+La plantilla selecciona automáticamente el título según \texttt{\textbackslash{}myLanguage}: utiliza \texttt{\textbackslash{}myBookTitleSpanish} cuando su valor es \texttt{spanish} y \texttt{\textbackslash{}myBookTitleEnglish} cuando es \texttt{english}. Solo tienes que completar esos títulos en la configuración.
 
 \section{Datos de autoría}
 
@@ -218,7 +218,7 @@ Introduce las fechas como texto ya formateado, no como valores que la plantilla 
   \item \texttt{\textbackslash{}myPaperworkDateEnglish}: fecha equivalente en inglés. Se utiliza, entre otros casos, en la autorización para tutores extranjeros y puede reutilizar \texttt{\textbackslash{}myThesisDepositDateEnglish}.
 \end{itemize}
 
-No existe una variable \texttt{\textbackslash{}myThesisProposalDateEnglish} en la configuración actual. Si necesitas esa fecha en un documento nuevo, tendrás que añadir explícitamente la variable y adaptar la plantilla que vaya a utilizarla.
+Si preparas un anteproyecto en inglés, escribe la fecha de propuesta en ese idioma en \texttt{\textbackslash{}myThesisProposalDate}; la configuración actual utiliza un único campo para esa fecha.
 
 \section{Publicación en abierto y licencia}
 
@@ -262,9 +262,9 @@ Utiliza como valores de color nombres o expresiones reconocidos por los paquetes
 
 Utilizar \texttt{black} para los índices permite que sus entradas mantengan el aspecto del texto normal, aunque sigan siendo enlaces activos. Antes de elegir otros colores, comprueba su legibilidad tanto en pantalla como en una copia impresa.
 
-\section{Variables derivadas y compatibilidad}
+\section{Configuración automática y compatibilidad}
 
-El fichero \texttt{Config/postamble.tex} obtiene numerosas órdenes auxiliares a partir de la configuración. Entre ellas se encuentran \texttt{\textbackslash{}myDegreefull}, con el nombre completo de la titulación; \texttt{\textbackslash{}myWorkType}, con el tipo abreviado de trabajo; \texttt{\textbackslash{}myWorkTypeFull}, con su nombre completo; y \texttt{\textbackslash{}contactauthor}, con el nombre y correo de la persona autora. Puedes utilizar estas órdenes en el contenido, pero no vuelvas a definirlas en \texttt{Config/myconfig.tex}.
+La plantilla obtiene automáticamente el nombre de la titulación, el tipo de trabajo y los datos institucionales a partir de \texttt{\textbackslash{}myDegree}, y reutiliza el nombre y correo que hayas configurado para la persona autora. Solo tienes que completar los campos correspondientes de \texttt{Config/myconfig.tex}; no necesitas configurar por separado esa información para cada documento.
 
 La variable \texttt{\textbackslash{}mybookFigure} se conserva únicamente por compatibilidad con formularios antiguos. Ya no es necesaria para las plantillas actuales, así que normalmente no debes modificarla.
 

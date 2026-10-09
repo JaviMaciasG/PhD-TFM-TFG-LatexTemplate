@@ -164,7 +164,7 @@ Use `\includepdf` when an approval letter or another PDF must be inserted into t
 \clearemptydoublepage
 ```
 
-The `pages=-` option includes every page. The distributed example is controlled by `\myIncludeSampleLetter` in `Config/myconfig.tex`; set it to `false` when it is not required.
+The `pages=-` option includes every page. This feature is disabled by default: the manual does not include the sample PDF letter. If you need it, enable `\myIncludeSampleLetter` in `Config/myconfig.tex` and replace the PDF path in the corresponding block of `Book/book.tex`.
 
 ## To work with the paperwork
 
@@ -176,7 +176,7 @@ The `pages=-` option includes every page. The distributed example is controlled 
 
 Regarding bibliography files, for normal use, you just have to edit `Book/biblio/biblio.bib` to include your desired BibTeX entries.
 
-If you have a number of different `.bib` files, add each of them under `Book/biblio/` and define its path in `Book/biblio/bibliofiles.tex` using the provided `\mybibfileOne`, `\mybibfileTwo`, and subsequent examples. No changes are needed elsewhere.
+If you have a number of different `.bib` files, add each of them under `Book/biblio/` and define its path in `Book/biblio/bibliofiles.tex` following the examples in that file. No changes are needed elsewhere.
 
 Remember that the default bibliography processing backend is now `biber` (from September 2022). This implies that you have to tell your editor or \LaTeX{} compilation environment that you are using `biber` instead of `bibtex`. This applies to TeXStudio for example, as described above.
 

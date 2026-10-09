@@ -55,26 +55,11 @@ Sustituye su valor; no añadas un segundo `\newcommand` con el mismo nombre. Los
 
 `\myDocumentStructure` es un ajuste independiente: selecciona la organización estándar o por compendio del contenido, no un perfil tipográfico.
 
-### 2.2 Configuración avanzada: política de fuentes institucionales
+### 2.2 Fuentes de las páginas institucionales
 
-El despachador exclusivo de Book, `Config/typesetting/typesetting.tex`, utiliza `institutional` como valor predeterminado de `\myInstitutionalPageFontMode`. Este ajuste avanzado no aparece deliberadamente en el `Config/myconfig.tex` distribuido. La mayoría de los usuarios deberían conservar las fuentes de las páginas institucionales.
+Las portadas y contraportadas conservan automáticamente sus fuentes institucionales, aunque selecciones otro estilo para el cuerpo del documento. No necesitas configurar ningún campo adicional en `Config/myconfig.tex`.
 
-Si necesitas explícitamente que esas páginas hereden las fuentes del documento, añade esta definición opcional a `Config/myconfig.tex`:
-
-```latex
-\newcommand{\myInstitutionalPageFontMode}{document}
-```
-
-Si una configuración antigua ya define el comando, cambia su valor en lugar de añadir un duplicado. Elimina la definición opcional para recuperar el valor interno predeterminado. No necesitas editar `postamble.tex` ni `book.tex`. La interfaz de compilación `--font-mode institutional|document` sigue disponible: actualiza una definición antigua o añade el ajuste solo a la copia aislada de configuración, nunca al archivo de trabajo.
-
-| Valor | Comportamiento de portada/contraportada |
-| --- | --- |
-| `institutional` | Restaura localmente las familias romana, sans serif y monoespaciada originales, la codificación y los mapeos heredados de peso |
-| `document` | Utiliza las familias seleccionadas para el documento dentro de la maquetación institucional existente |
-
-Ambas políticas conservan los archivos fuente institucionales, los logotipos, los tamaños explícitos y la alineación. Las selecciones explícitas de familia en una portada siguen teniendo prioridad. Con `document`, las nuevas métricas de fuente pueden cambiar los saltos de línea automáticos. Con el perfil tipográfico `standard`, el envoltorio incluye directamente el archivo institucional con ambas políticas porque el documento ya utiliza las fuentes originales.
-
-La política se aplica a los dos puntos de llamada `\ThesisInstitutionalPage{...}` de `Book/book.tex`, no a todas las páginas preliminares ni a cualquier archivo incluido arbitrariamente.
+La comparación de estilos también puede mostrar páginas institucionales con las fuentes del documento. Es una variante avanzada para pruebas: los logotipos, los tamaños explícitos y la maquetación se mantienen, pero las nuevas métricas pueden cambiar los saltos de línea. Si necesitas modificar ese comportamiento, consulta la documentación para mantenedores; para un uso normal, conserva las fuentes institucionales originales.
 
 ### 2.3 Compilar el documento seleccionado
 

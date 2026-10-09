@@ -164,7 +164,7 @@ Utiliza `\includepdf` cuando haya que insertar en el documento una carta de apro
 \clearemptydoublepage
 ```
 
-La opción `pages=-` incluye todas las páginas. El ejemplo distribuido se controla mediante `\myIncludeSampleLetter` en `Config/myconfig.tex`; establécelo como `false` cuando no sea necesario.
+La opción `pages=-` incluye todas las páginas. Esta función está desactivada de forma predeterminada: el manual no incluye la carta PDF de ejemplo. Si la necesitas, activa `\myIncludeSampleLetter` en `Config/myconfig.tex` y sustituye la ruta del PDF en el bloque correspondiente de `Book/book.tex`.
 
 ## Para trabajar con la documentación administrativa
 
@@ -176,7 +176,7 @@ La opción `pages=-` incluye todas las páginas. El ejemplo distribuido se contr
 
 En cuanto a los archivos de bibliografía, para un uso normal solo tienes que editar `Book/biblio/biblio.bib` para incluir las entradas BibTeX que quieras.
 
-Si tienes varios archivos `.bib`, añade cada uno de ellos en `Book/biblio/` y define su ruta en `Book/biblio/bibliofiles.tex` mediante los ejemplos proporcionados `\mybibfileOne`, `\mybibfileTwo` y siguientes. No es necesario realizar cambios en ningún otro lugar.
+Si tienes varios archivos `.bib`, añade cada uno de ellos en `Book/biblio/` y define su ruta en `Book/biblio/bibliofiles.tex` siguiendo los ejemplos que contiene ese archivo. No es necesario realizar cambios en ningún otro lugar.
 
 Recuerda que el *backend* predeterminado para el procesamiento de la bibliografía es ahora `biber` (desde septiembre de 2022). Esto implica que debes indicar a tu editor o entorno de compilación \LaTeX{} que estás utilizando `biber` en lugar de `bibtex`. Esto se aplica, por ejemplo, a TeXStudio, como se ha descrito anteriormente.
 

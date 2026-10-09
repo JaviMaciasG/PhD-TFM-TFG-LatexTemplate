@@ -82,31 +82,11 @@ Replace its value; do not add a second `\newcommand` with the same name. Names a
 `\myDocumentStructure` is a separate setting: it selects the standard or
 compendium organisation of the content, not a typesetting profile.
 
-### 2.2 Advanced configuration: institutional font policy
+### 2.2 Fonts on institutional pages
 
-The Book-only dispatcher in `Config/typesetting/typesetting.tex` defaults `\myInstitutionalPageFontMode` to `institutional`. This advanced setting is intentionally absent from the supplied `Config/myconfig.tex`. Most users should leave institutional-page fonts unchanged.
+Covers and back pages automatically retain their institutional fonts, even when you select a different typesetting style for the document body. You do not need to configure any additional field in `Config/myconfig.tex`.
 
-If you explicitly want those pages to inherit the document fonts, add this optional definition to `Config/myconfig.tex`:
-
-```latex
-\newcommand{\myInstitutionalPageFontMode}{document}
-```
-
-If an older configuration already defines the command, change its value instead of adding a duplicate. Remove the optional definition to return to the internal default. Do not edit `postamble.tex` or `book.tex` for this purpose. The existing `--font-mode institutional|document` build-helper interface remains available: it updates a legacy definition or adds an override only to the isolated configuration copy, never to the working file.
-
-| Value | Cover/back-page behaviour |
-| --- | --- |
-| `institutional` | Restore the original roman, sans-serif and monospace families, encoding and legacy weight mappings locally |
-| `document` | Use the selected document families within the existing institutional layout |
-
-Both policies retain the institutional source files, logos, explicit sizes and
-alignment. Explicit family choices in a cover still take precedence. With
-`document`, new font metrics can change automatic wrapping. With the
-`standard` typesetting profile, the wrapper directly inputs the institutional file in both
-policies because the document already uses the original fonts.
-
-The policy applies to the two `\ThesisInstitutionalPage{...}` call sites in
-`Book/book.tex`, not to every front-matter page or every arbitrary included file.
+The style comparison may also show institutional pages using the document fonts. This is an advanced testing variant: logos, explicit sizes and layout remain unchanged, but new font metrics can change line breaks. If you need to change this behaviour, consult the maintainer documentation; for normal use, retain the original institutional fonts.
 
 ### 2.3 Build the selected document
 
