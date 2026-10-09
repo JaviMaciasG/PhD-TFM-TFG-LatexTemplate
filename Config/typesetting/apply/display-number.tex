@@ -1,3 +1,9 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: formato de la numeración de los capítulos.
+%
+% Uso: mantenimiento de la plantilla; normalmente no debes modificarlo.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Pad decimal chapter labels only. Appendix letters remain letters.
 \DeclareRobustCommand{\thesis@displaynumber}[1]{%
   \ifnum\pdfmatch{^[0-9]+$}{#1}>0\relax
