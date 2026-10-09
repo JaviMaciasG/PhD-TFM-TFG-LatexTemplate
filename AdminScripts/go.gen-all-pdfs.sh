@@ -241,7 +241,7 @@ if ! $yes; then
     *) echo '[INF] Cancelled; no files were changed.'; exit 0 ;;
   esac
 fi
-for tool in git latexmk gs; do command -v "$tool" >/dev/null || die "$tool is required for generation."; done
+for tool in latexmk gs; do command -v "$tool" >/dev/null || die "$tool is required for generation."; done
 [[ -x $builder ]] || die "isolated builder is unavailable: $builder"
 mkdir -p -- "$output_directory"
 temporary_directory=$(mktemp -d)

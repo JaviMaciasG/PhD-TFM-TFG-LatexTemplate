@@ -427,6 +427,8 @@ Compruebe al menos:
 
 `AdminScripts/go.gen-all-pdfs.sh` obtiene titulaciones, instituciones, perfiles de portada/contraportada y estilos de los registros de la plantilla. Sin opciones genera una muestra por combinación de institución, tipo y perfil: solo TFG, TFM y doctorado, en español, con estructura y estilo `standard` y fuentes institucionales. Puede ejecutarlo desde cualquier directorio. Desde la raíz, revise y genere la matriz exhaustiva con:
 
+La selección de fuentes utiliza preferentemente `git ls-files`. Si Git no está disponible, la consulta falla o la lista está vacía, el generador aislado selecciona los ficheros de `Book/` y `Config/`, excluyendo resultados de compilación y copias de seguridad, pero conservando los recursos PDF de los subdirectorios. Así también puede trabajar con una distribución descomprimida tras copiar `AdminScripts/` junto a `Book/` y `Config/`, sin inicializar un repositorio Git. Guarde los recursos PDF de entrada en subdirectorios, ya que este método alternativo considera los ficheros `Book/*.pdf` del primer nivel como documentos generados.
+
 ```sh
 AdminScripts/go.gen-all-pdfs.sh --all --dry-run
 AdminScripts/go.gen-all-pdfs.sh --all

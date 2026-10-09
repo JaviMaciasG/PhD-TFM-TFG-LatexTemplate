@@ -427,6 +427,8 @@ Verify at least:
 
 `AdminScripts/go.gen-all-pdfs.sh` reads degrees, institutions, cover/back-page profiles and styles from the template registries. With no options it generates one representative per institution/type/layout combination: TFG, TFM and PhD only, in Spanish, with standard structure/style and institutional fonts. Run it from any directory. From the repository root, preview and generate the exhaustive matrix with:
 
+Source selection prefers `git ls-files`. If Git is unavailable or the listing fails or is empty, the isolated builder selects files from `Book/` and `Config/` instead, excluding generated outputs and backups while retaining nested PDF assets. This also supports an extracted distribution after copying `AdminScripts/` beside `Book/` and `Config/`; Git initialization is not required. Keep input PDF assets in subdirectories, since root-level `Book/*.pdf` files are treated as generated documents by the fallback.
+
 ```sh
 AdminScripts/go.gen-all-pdfs.sh --all --dry-run
 AdminScripts/go.gen-all-pdfs.sh --all

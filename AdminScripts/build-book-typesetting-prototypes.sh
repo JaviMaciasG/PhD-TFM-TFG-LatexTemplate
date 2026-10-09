@@ -144,12 +144,10 @@ for style in "${requested_styles[@]}"; do
   }
 done
 
-command -v git >/dev/null || { echo "ERROR: git is required to prepare the isolated source tree." >&2; exit 1; }
 command -v latexmk >/dev/null || { echo "ERROR: latexmk is required to build prototypes." >&2; exit 1; }
-git -C "$repository_root" rev-parse --show-toplevel >/dev/null 2>&1 || {
-  echo "ERROR: the template must be inside a Git working tree." >&2
-  exit 1
-}
+for required in Book/book.tex Config/myconfig.tex; do
+  [[ -f $repository_root/$required ]] || { echo "ERROR: required source is missing: $required" >&2; exit 1; }
+done
 
 if [[ -z $output_directory ]]; then
   output_directory="$repository_root/Book/typesetting-prototypes"
@@ -169,9 +167,33 @@ source_tree="$temporary_directory/source"
 manifest="$temporary_directory/manifest"
 mkdir -p "$source_tree"
 
-# Copy one source-scoped working tree per invocation. Only tracked Book/Config
-# inputs are eligible; known backup, documentation and generated areas are not.
-git -C "$repository_root" ls-files -- Book Config | while IFS= read -r file; do
+# Prefer tracked sources, but also support distributions without Git metadata.
+source_list="$temporary_directory/source-list"
+fallback=false
+if command -v git >/dev/null && git -C "$repository_root" ls-files -- Book Config >"$source_list" 2>"$temporary_directory/git-error" && [[ -s $source_list ]]; then
+  echo '[INF] Selecting tracked sources with Git.'
+else
+  fallback=true
+  echo '[INF] Git source listing unavailable; selecting distribution sources from Book and Config.'
+  (cd "$repository_root" && find Book Config -type f -print) >"$source_list" || {
+    echo 'ERROR: cannot list distribution sources.' >&2
+    exit 1
+  }
+fi
+# Apply the same exclusions to both lists. In the fallback, additionally omit
+# generated root PDFs, output directories and editor/compilation leftovers.
+while IFS= read -r file; do
+  [[ $repository_root/$file != "$output_directory/"* ]] || continue
+  if $fallback; then
+    case $file in
+      Book/*.pdf) [[ ${file#Book/} == */* ]] || continue ;;
+    esac
+    case $file in
+      */.git/*|*/.auctex-auto/*|*/.auctex-style/*|*/all-pdfs/*|*/typesetting-prototypes/*|*/orig/*|*/bare/*|\
+      *.acn|*.acr|*.alg|*.glsdefs|*.ist|*.lof|*.lot|*.lol|*.loa|*.lov|*.toc|*.sym|*.syg|*.syi|*.nav|*.snm|*.vrb|\
+      *.bak|*.tmp|*.swp|*.swo|*~|*/\#*\#|*/.\#*) continue ;;
+    esac
+  fi
   case $file in
     Book/Tools/calc2latex/sample.tex)
       ;;
@@ -186,10 +208,10 @@ git -C "$repository_root" ls-files -- Book Config | while IFS= read -r file; do
       ;;
   esac
   printf '%s\n' "$file"
-done >"$manifest"
+done <"$source_list" >"$manifest"
 
 while IFS= read -r file; do
-  [[ -f $repository_root/$file ]] || { echo "ERROR: tracked source is missing: $file" >&2; exit 1; }
+  [[ -f $repository_root/$file ]] || { echo "ERROR: selected source is missing: $file" >&2; exit 1; }
   mkdir -p "$source_tree/$(dirname -- "$file")"
   cp -p -- "$repository_root/$file" "$source_tree/$file"
 done <"$manifest"

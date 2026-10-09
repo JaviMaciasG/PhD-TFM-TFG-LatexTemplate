@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Exercise the real isolated helper with a fixture-only latexmk substitute.
 set -euo pipefail
+if [[ ${0##*/} == git ]]; then exit 1; fi
 if [[ ${0##*/} == latexmk ]]; then
   for argument in "$@"; do [[ $argument != -C ]] || exit 0; done
   config=../Config/myconfig.tex
@@ -8,6 +9,14 @@ if [[ ${0##*/} == latexmk ]]; then
   [[ $count == 1 ]] || exit 1
   mode=$(sed -n 's/^\\newcommand{\\myInstitutionalPageFontMode}{\([^}]*\)}$/\1/p' "$config")
   [[ $mode == "$EXPECTED_FONT_MODE" ]] || exit 1
+  if [[ ${CHECK_SOURCE_SELECTION:-false} == true ]]; then
+    for asset in publications/paper1.pdf cover/artwork.pdf chapters/example.tex appendix/example.c; do
+      [[ -f $asset ]] || { echo "FAIL: missing asset $asset" >&2; exit 1; }
+    done
+    for excluded in book-compressed.pdf book.toc book.acr chapters/example.tex~ all-pdfs/generated.pdf chapters/orig/backup.tex; do
+      [[ ! -e $excluded ]] || { echo "FAIL: copied generated/backup file $excluded" >&2; exit 1; }
+    done
+  fi
   printf 'Fixture PDF with font mode %s\n' "$mode" > book.pdf
   printf 'Fixture compilation with font mode %s\n' "$mode" > book.log
   exit 0
@@ -61,5 +70,29 @@ if EXPECTED_FONT_MODE=document bash "$helper" --root "$fixture/source" --styles 
 fi
 grep -q 'expected exactly one active' "$fixture/duplicate.log"
 [[ $before == "$(sha256sum "$fixture/source/Config/myconfig.tex")" ]] || exit 1
+checks=$((checks + 1))
+# An extracted distribution has no Git metadata and may contain old outputs.
+cp "$base" "$fixture/source/Config/myconfig.tex"
+mv "$fixture/source/.git" "$fixture/git-metadata"
+mkdir -p "$fixture/source/Book/"{publications,cover,chapters/orig,appendix,all-pdfs}
+for file in publications/paper1.pdf cover/artwork.pdf chapters/example.tex appendix/example.c \
+    book-compressed.pdf book.toc book.acr chapters/example.tex~ all-pdfs/generated.pdf chapters/orig/backup.tex; do
+  printf 'Fixture source or excluded output\n' >"$fixture/source/Book/$file"
+done
+before=$(sha256sum "$fixture/source/Config/myconfig.tex")
+CHECK_SOURCE_SELECTION=true EXPECTED_FONT_MODE=document bash "$helper" --root "$fixture/source" \
+  --styles framed --font-mode document --output-dir "$fixture/distribution" >"$fixture/distribution.log" 2>&1
+grep -q 'selecting distribution sources' "$fixture/distribution.log"
+[[ -f $fixture/distribution/book-framed-document-fonts.pdf ]]
+[[ $before == "$(sha256sum "$fixture/source/Config/myconfig.tex")" ]]
+checks=$((checks + 1))
+# A failing Git command must also fall back, even if metadata exists.
+mv "$fixture/git-metadata" "$fixture/source/.git"
+cp "$0" "$fixture/bin/git"
+chmod +x "$fixture/bin/git"
+CHECK_SOURCE_SELECTION=true EXPECTED_FONT_MODE=institutional bash "$helper" --root "$fixture/source" \
+  --styles framed --font-mode institutional --output-dir "$fixture/git-failure" >"$fixture/git-failure.log" 2>&1
+grep -q 'selecting distribution sources' "$fixture/git-failure.log"
+[[ -f $fixture/git-failure/book-framed.pdf ]]
 checks=$((checks + 1))
 printf 'PASS: %s optional/legacy font-policy cases; working configuration and Book unchanged.\n' "$checks"
