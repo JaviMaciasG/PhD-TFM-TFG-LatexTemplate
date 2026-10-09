@@ -35,10 +35,11 @@
 
 % Placeholder used for fields for which there is currently no corresponding
 % variable in Config/myconfig.tex.
-\newcommand{\AnnexNA}{\hl{N/A}}
+\sethlcolor{yellow}
+\newcommand{\AnnexNA}{\hl{N/D}}
 
 % The external/entity tutor is represented by the co-tutor when one is
-% configured. If no co-tutor is configured, the form deliberately shows N/A.
+% configured. If no co-tutor is configured, the form deliberately shows N/D.
 \ifthenelse{\equal{\myCoTutorFullName}{}}{%
   \newcommand{\AnnexEntityName}{\AnnexNA}%
 }{%
