@@ -2,6 +2,24 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.1.0] - 2026-10-12
+
+### Features
+
+- Reorganized papework folders
+
+- Localize master degree names and thesis labels in English
+
+
+### Bug Fixes
+
+- Remove orange highlighting from ETSIT-UPM assessment headings
+
+
+### Maintenance
+
+- Prepare v8.1.0
+
 ## [v8.0.0] - 2026-10-12
 
 ### Breaking Changes
