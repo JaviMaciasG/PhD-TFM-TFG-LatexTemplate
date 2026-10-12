@@ -16,9 +16,9 @@
 % Traducciones locales: no añaden variables de configuración para el usuario.
 \newcommand{\MUNEText}[2]{\ifthenelse{\equal{\myLanguage}{spanish}}{#1}{#2}}
 
-\colorbox{UPMetsitHeadingOrange}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\fontsize{16}{19}\selectfont\UPMETsitCoverDegree}}
+\parbox{\linewidth}{\fontsize{16}{19}\selectfont\UPMETsitCoverDegree}
 
-\colorbox{UPMetsitHeadingOrange}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\fontsize{16}{19}\selectfont\UPMETsitCoverWorkType}}
+\parbox{\linewidth}{\fontsize{16}{19}\selectfont\UPMETsitCoverWorkType}
 
 \begin{tabularx}{\linewidth}{@{}p{4.8cm}X@{}}
   \MUNEText{Título}{Title}: & \myBookTitle \\[0.25cm]
@@ -29,7 +29,7 @@
 \end{tabularx}
 
 \vspace{0.4cm}
-\colorbox{UPMetsitHeadingOrange}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\fontsize{16}{19}\selectfont\MUNEText{MIEMBROS DEL TRIBUNAL}{MEMBERS OF THE EXAMINATION COMMITTEE}}}
+\parbox{\linewidth}{\fontsize{16}{19}\selectfont\MUNEText{MIEMBROS DEL TRIBUNAL}{MEMBERS OF THE EXAMINATION COMMITTEE}}
 
 \begin{tabularx}{\linewidth}{@{}p{2.9cm}X@{}}
   \MUNEText{\wordPresidenteOrPresidenta}{President}: & \myTribunalPresident \\[0.7cm]
