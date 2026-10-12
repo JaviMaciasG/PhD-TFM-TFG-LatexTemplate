@@ -89,6 +89,9 @@ before=$(snapshot)
 PATH="$fixture/bin:$PATH" bash "$generator" --destination "$destination" </dev/null >"$fixture/cancel.log" 2>&1
 grep -q 'Synchronization preview' "$fixture/cancel.log"
 grep -q 'Dropbox was not modified' "$fixture/cancel.log"
+grep -q 'Generating TFG-GISTS-UPM-spanish.pdf (GISTS-UPM, spanish, standard, standard, institutional)' "$fixture/cancel.log"
+grep -q 'Generated 11 PDF files' "$fixture/cancel.log"
+[[ -s $fixture/repository/Book/public-samples/TFG-GISTS-UPM-spanish.pdf ]]
 [[ $before == "$(snapshot)" ]]
 if FAIL_FIXTURE_BUILD=true PATH="$fixture/bin:$PATH" bash "$generator" --destination "$destination" </dev/null >"$fixture/failure.log" 2>&1; then exit 1; fi
 grep -q 'Dropbox was not modified' "$fixture/failure.log"
