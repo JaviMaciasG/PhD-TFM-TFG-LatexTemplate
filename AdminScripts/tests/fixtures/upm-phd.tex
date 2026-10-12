@@ -1,0 +1,63 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: prueba de las páginas y numeración de tesis UPM.
+%
+% Uso: prueba automatizada; no debes modificarlo para preparar tu documento.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[openright]{book}
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\renewcommand{\myDegree}{\PhDTestDegree}
+\renewcommand{\myLanguage}{\PhDTestLanguage}
+\renewcommand{\myTypesettingStyle}{\PhDTestStyle}
+\newcommand{\myInstitutionalPageFontMode}{document}
+\renewcommand{\myAuthorFullName}{Autora de ejemplo}
+\renewcommand{\myAuthorGender}{female}
+\renewcommand{\myBookTitleSpanish}{Diseño y validación de sistemas de comunicación avanzados}
+\renewcommand{\myBookTitleEnglish}{Design and validation of advanced communication systems}
+\renewcommand{\myPhDProgram}{Doctorado en Ingeniería de Sistemas Electrónicos}
+\renewcommand{\myPhDProgramEnglish}{Doctoral Degree in Electronic Systems Engineering}
+\renewcommand{\myAcademicTutorFullName}{Directora de ejemplo}
+\renewcommand{\myAcademicTutorGender}{female}
+\renewcommand{\myAcademicTutorPosition}{Profesora Titular}
+\renewcommand{\myAcademicTutorPositionEnglish}{Associate Professor}
+\renewcommand{\myAcademicTutorInstitution}{Universidad Politécnica de Madrid}
+\renewcommand{\myAcademicTutorInstitutionEnglish}{Universidad Politécnica de Madrid}
+\renewcommand{\myCoTutorFullName}{\PhDTestCoTutor}
+\renewcommand{\myThesisDepositYear}{2026}
+\renewcommand{\myThesisDefenseYear}{2027}
+\renewcommand{\myThesisFundingStatement}{\PhDTestFunding}
+\renewcommand{\myThesisFundingStatementEnglish}{\PhDTestFunding}
+\renewcommand{\myTribunalThirdSpokesperson}{Tercera vocal de ejemplo}
+\renewcommand{\myTribunalSecondAlternateMember}{Segundo suplente de ejemplo}
+\renewcommand{\myFirstExternalReviewerFullName}{Primera revisora de ejemplo}
+\renewcommand{\myFirstExternalReviewerInstitution}{Institucion primera revisora}
+\renewcommand{\myFirstExternalReviewerInstitutionEnglish}{First reviewer institution}
+\renewcommand{\mySecondExternalReviewerFullName}{Segundo revisor de ejemplo}
+\renewcommand{\mySecondExternalReviewerInstitution}{}
+\renewcommand{\mySecondExternalReviewerInstitutionEnglish}{}
+\input{../Config/glossaries.tex}
+\input{../Config/postamble.tex}
+\input{../Config/typesetting/typesetting.tex}
+\begin{document}
+\frontmatter
+\input{../Config/setlanguagedependentissues.tex}
+\ThesisInstitutionalPage{cover/cover.tex}
+\clearemptydoublepage
+\thispagestyle{empty}
+Dedicatoria de prueba.
+\chapter*{Preliminares}
+Texto preliminar de prueba.
+\newpage
+Segunda página preliminar de prueba.
+\mainmatter
+\chapter{Capítulo de prueba}
+Primera página del cuerpo.
+\newpage
+Segunda página del cuerpo.
+\newpage
+\markboth{Publicación de prueba}{Publicación de prueba}
+\thispagestyle{headings}
+Página de publicación de prueba.
+\ThesisInstitutionalPage{cover/backpage.tex}
+\end{document}

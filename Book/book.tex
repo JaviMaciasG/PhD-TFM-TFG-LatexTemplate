@@ -108,8 +108,10 @@
 %\clearemptydoublepage % You need to add this after including each pdf
 
 % Dedication+acknowledgements (dedicatorias+agradecimientos)
+% The dedication has no chapter heading, so start it explicitly on a recto page.
+% Other preliminary sections use openright chapter headings or their own breaks.
 \ifthenelse{\equal{\myIncludeDedication}{true}}
-  {\input{dedication/dedicatoria.tex}}
+  {\clearemptydoublepage\input{dedication/dedicatoria.tex}}
   {}
 \ifthenelse{\equal{\myIncludeAcknowledgements}{true}}
   {\input{acknowledgements/agradecimientos.tex}}
