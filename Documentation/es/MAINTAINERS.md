@@ -113,6 +113,37 @@ Use identificadores ASCII cortos y sin espacios. Los identificadores de titulaci
 
 No codifique un tipo de trabajo independiente dentro del identificador de la titulación únicamente para resolver un problema con el nombre de fichero. El tipo de trabajo canónico se almacena de forma independiente en el campo `work-type`.
 
+## Mantenimiento del soporte ETSIT-UPM
+
+Mantén estas asignaciones actuales de titulaciones y perfiles coherentes con Config/degrees.tex y Config/layout-profiles.tex:
+
+| Perfil de maquetación | Titulaciones | Páginas iniciales y contraportada |
+|---|---|---|
+| `upm-etsit-tft` | `GISTS-UPM`, `GIB-UPM`, `MUIT-UPM`, `MUCS-UPM`, `MUESFV-UPM`, `MUIB-UPM`, `MUIRST-UPM`, `MUISE-UPM`, `MUTSC-UPM` | Cubierta exterior naranja, hoja de tribunal y portada interior compartidas, y contraportada naranja. |
+| `upm-etsit-gisd-tfg` | `GISD-UPM` | Cubiertas compartidas con una hoja específica de supervisión técnica y académica. |
+| `upm-etsit-mune-tfm` | `MUNE-UPM` | Fichero envoltorio que selecciona textos españoles o ingleses, hoja específica de tribunal y cubiertas compartidas. |
+| `upm-phd` | `PHD-ETSIT-UPM` | Cubierta doctoral, portada interior y créditos; sin contraportada independiente. |
+
+Conserva los rótulos del tipo de trabajo de las cubiertas compartidas de TFG/TFM derivados del registro. El modelo GISTS/GIB y sus másteres utiliza el departamento del ponente cuando tiene nombre y, en otro caso, el del tutor; un ponente sin nombre deja el campo vacío. El GISD asigna la supervisión técnica al tutor y la académica al cotutor, con el departamento del cotutor. El MUNE utiliza el campo separado de supervisión técnica y el tutor para la supervisión académica. Los rótulos del tribunal reutilizan los géneros gramaticales configurados.
+
+Los campos de departamento e institución del tutor y cotutor son independientes, con variantes españolas e inglesas. Mantén la composición de afiliaciones y la selección del departamento del tutor, con el del cotutor como alternativa, centralizadas en Config/postamble.tex, sin duplicarlas en cubiertas o formularios. Los campos que soliciten solo una institución no deben recibir la afiliación combinada.
+
+Las páginas doctorales comparten Book/cover/upm/phd-layout.tex. La portada interior utiliza los escudos de la ETSIT y la UPM con los nombres institucionales centrados verticalmente. Los créditos agrupan los datos de tesis y directores, los revisores externos y el tribunal; conserva las columnas de nombres alineadas con sangría y la fecha de defensa al pie. Las personas opcionales sin nombre se omiten. Los créditos cumplimentados corresponden a la presentación de la memoria final, no a los campos vacíos de revisores, tribunal y fecha del modelo oficial de depósito; conserva esta distinción en el manual de usuario. Mantén la atribución del escudo UPM reutilizado en Book/logos/upm/UPM-DOCTORADO-LICENSE.txt.
+
+Book/content-standard.tex incluye appendix/aspectos-eticos.tex solo para titulaciones UPM cuyo centro sea la ETSIT; la misma condición y el mismo fuente deben mantenerse en las copias orig. Es material de ejemplo de la plantilla ETSIT, no un requisito automático para todas las tesis ni un componente de la estructura mínima preparada. No lo añadas implícitamente a otras universidades ni al cuerpo de la modalidad por compendio.
+
+Ejecuta estas comprobaciones específicas tras modificar las maquetaciones o su configuración:
+
+```bash
+bash AdminScripts/tests/test-etsit-upm-tfg.sh --compile
+bash AdminScripts/tests/test-upm-phd.sh
+bash AdminScripts/tests/test-adviser-affiliations.sh
+bash AdminScripts/tests/test-degree-identifiers.sh
+bash AdminScripts/tests/test-user-documentation-variables.sh
+```
+
+Las pruebas de compilación utilizan copias aisladas de los fuentes y dejan intacta la configuración de trabajo. Actualiza las tablas actuales de Documentation/en/DEGREE_REGISTRY_COMPATIBILITY.md y Documentation/es/DEGREE_REGISTRY_COMPATIBILITY.md cuando cambien las entradas de los registros; conserva sus apartados de auditoría expresamente históricos.
+
 ## Añadir una titulación a una universidad existente
 
 ### Paso 1: determine si puede reutilizarse una maquetación existente

@@ -113,6 +113,37 @@ Use short ASCII identifiers without spaces. Uppercase degree and institution ide
 
 Do not encode a separate work type into the degree identifier merely to solve a filename problem. The canonical work type is stored independently in the `work-type` field.
 
+## Maintaining ETSIT-UPM support
+
+Keep these current degree/profile assignments aligned with Config/degrees.tex and Config/layout-profiles.tex:
+
+| Layout profile | Degrees | Opening pages and back cover |
+|---|---|---|
+| `upm-etsit-tft` | `GISTS-UPM`, `GIB-UPM`, `MUIT-UPM`, `MUCS-UPM`, `MUESFV-UPM`, `MUIB-UPM`, `MUIRST-UPM`, `MUISE-UPM`, `MUTSC-UPM` | Shared orange outer cover, committee sheet, inner title page and orange back cover. |
+| `upm-etsit-gisd-tfg` | `GISD-UPM` | Shared covers with a specific technical/academic supervision committee sheet. |
+| `upm-etsit-mune-tfm` | `MUNE-UPM` | Wrapper selecting Spanish or English texts, a specific committee sheet and the shared covers. |
+| `upm-phd` | `PHD-ETSIT-UPM` | Doctoral outer cover, inner title page and credits; no independent back cover. |
+
+Keep the work-type labels in shared undergraduate/master covers derived from the degree registry. GISTS/GIB and masters using their model take the department from the ponente when one is named, otherwise from the tutor; an unnamed ponente leaves the field empty. GISD maps the tutor to technical supervision and the cotutor to academic supervision, with the cotutor department. MUNE uses the separate technical-supervisor field and the tutor for academic supervision. Committee labels reuse the configured grammatical genders.
+
+Tutor and cotutor department/institution fields are separate, with Spanish and English variants. Keep affiliation composition and tutor-first document-department fallback centralized in Config/postamble.tex rather than duplicating them in covers or forms. Fields requesting an institution only must not receive the combined affiliation.
+
+The doctoral pages share Book/cover/upm/phd-layout.tex. The inner title page uses the ETSIT and UPM crests with vertically aligned institution names. The credits group thesis details and advisors, external reviewers, and committee members; keep their indented name columns aligned and the defence date at the bottom. Empty optional people are omitted. The populated credits represent the final thesis presentation, not the blank reviewer/committee/date fields of the official deposit model; retain that distinction in the user manual. Keep the reused UPM crest attribution in Book/logos/upm/UPM-DOCTORADO-LICENSE.txt.
+
+Book/content-standard.tex includes appendix/aspectos-eticos.tex only for UPM degrees whose school is ETSIT; the same condition and source belong in the maintained orig copies. This is sample material from the ETSIT template, not an automatic requirement for every PhD or a component of the prepared minimal structure. Do not add it to unrelated universities or to the compendium body implicitly.
+
+Run the focused checks after modifying these layouts or their configuration:
+
+```bash
+bash AdminScripts/tests/test-etsit-upm-tfg.sh --compile
+bash AdminScripts/tests/test-upm-phd.sh
+bash AdminScripts/tests/test-adviser-affiliations.sh
+bash AdminScripts/tests/test-degree-identifiers.sh
+bash AdminScripts/tests/test-user-documentation-variables.sh
+```
+
+The compilation tests use isolated source copies and leave the working configuration unchanged. Refresh the current tables in Documentation/en/DEGREE_REGISTRY_COMPATIBILITY.md and Documentation/es/DEGREE_REGISTRY_COMPATIBILITY.md when registry entries change; preserve their explicitly historical audit sections.
+
 ## Adding a degree to an existing university
 
 ### Step 1: determine whether an existing layout can be reused

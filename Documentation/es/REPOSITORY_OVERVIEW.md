@@ -2,7 +2,7 @@
 
 ## Qué es este repositorio
 
-Este repositorio es un ecosistema completo de plantillas LaTeX para documentos académicos finales de la Universidad de Alcalá (UAH), que incluye:
+Este repositorio es un ecosistema completo de plantillas LaTeX centrado en los documentos académicos finales de la Universidad de Alcalá (UAH), con soporte adicional para la ESCET-URJC y la ETSIT-UPM, que incluye:
 
 - Trabajos Fin de Grado (TFG)
 - Trabajos Fin de Máster (TFM)
@@ -27,13 +27,6 @@ Directorios de nivel superior y su función principal:
 - `Deprecated/`: material heredado conservado como referencia.
 
 El fichero `sync-git-sources.sh` de la raíz es la implementación orientada al usuario que hay detrás de `make sync-git-sources`; se mantiene fuera de `AdminScripts/` porque se distribuye con la plantilla y no es una utilidad para mantenedores.
-
-Instantánea del volumen del repositorio (ficheros bajo control de versiones):
-
-- Ficheros totales: 719
-- Ficheros TeX: 238
-- Ficheros PDF: 129
-- Documentos Word (`.doc/.docx`): 25
 
 ## Flujo de trabajo principal del usuario
 
@@ -85,9 +78,10 @@ El `Makefile` de la raíz también puede generar una versión PDF del README y d
 - Estructura del documento (`standard` para el uso normal y `compendium` para la modalidad especializada de doctorado)
 - Estilo de maquetación de Book (`\myTypesettingStyle`); las páginas institucionales conservan sus fuentes originales de forma predeterminada.
 - Elementos preliminares opcionales y listas generadas mediante los conmutadores validados `\myInclude...`
-- Código de titulación (por ejemplo, `GIEC`, `MUIT`, `PHDUAH`)
+- Código de titulación (por ejemplo, `GIEC`, `MUIT`, `PHDUAH`, `ITI-URJC`, `GIB-UPM`, `MUNE-UPM`, `PHD-ETSIT-UPM`)
 - Datos de identidad del autor y del tutor
-- Metadatos de afiliación del departamento y específicos del proyecto
+- Campos separados de departamento e institución del tutor y cotutor, con variantes inglesas
+- Tribunal doctoral ampliado, revisores externos y metadatos específicos del proyecto
 - Fechas, opciones legales/de publicación y calificaciones
 - Colores de enlaces y macros auxiliares opcionales
 
@@ -102,6 +96,7 @@ El `Makefile` de la raíz también puede generar una versión PDF del README y d
 - Etiquetas y textos dependientes del idioma
 - Variantes gramaticales dependientes del género
 - Redacción singular/plural para tutores
+- Afiliaciones combinadas de los tutores y selección del departamento del tutor, con el del cotutor como alternativa
 - Tipo de trabajo y metadatos del documento utilizados en portadas y documentación administrativa
 
 ## Modelo de composición del documento
@@ -125,6 +120,10 @@ Las estructuras mínimas y originales preparadas se encuentran junto a los capí
 `Book/cover/cover.tex` y `Book/cover/backpage.tex` delegan la selección de portadas en el registro de titulaciones. `Config/layout-profiles.tex` relaciona cada perfil de titulación con los ficheros necesarios.
 
 Las implementaciones específicas de institución se agrupan en `Book/cover/uah/`, `Book/cover/upm/` y `Book/cover/urjc/`. La orquestación compartida y los ficheros de preliminares permanecen directamente en `Book/cover/`. Los logotipos siguen la misma división en `Book/logos/`; los elementos gráficos compartidos entre instituciones y los de proyectos se mantienen en `Book/logos/shared/`.
+
+Las variantes TFG/TFM de la ETSIT-UPM comparten cubiertas naranjas y una contraportada naranja, mientras que el GISD y el MUNE tienen hojas específicas de supervisión y tribunal. Los textos iniciales del MUNE siguen el idioma español o inglés configurado. PHD-ETSIT-UPM utiliza una cubierta doctoral independiente, una portada interior con ambos escudos y una página de créditos con directores, revisores externos, tribunal y fecha de defensa; no tiene contraportada independiente. Las tablas actuales de titulaciones y perfiles y las órdenes de regresión específicas se documentan en MAINTAINERS.md y DEGREE_REGISTRY_COMPATIBILITY.md de este directorio. Estas variantes se han probado menos exhaustivamente que los casos UAH.
+
+El manual estándar incluye Book/appendix/aspectos-eticos.tex solo para titulaciones de la ETSIT-UPM. Su inclusión condicional y su fuente se mantienen también en las copias orig; los cuerpos mínimos preparados y por compendio no lo incluyen automáticamente.
 
 ## Madurez del repositorio e indicadores de mantenimiento
 

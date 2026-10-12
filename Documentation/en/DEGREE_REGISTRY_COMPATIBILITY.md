@@ -1,10 +1,10 @@
 # Degree registry compatibility baseline
 
-This document records the legacy degree-dependent behaviour and the approved behaviour of the authoritative degree registry. Its purpose is to distinguish deliberate corrections from accidental changes and to preserve the migration audit.
+This document combines the current degree and layout-profile tables from Config/degrees.tex and Config/layout-profiles.tex with the historical audit of the initial migration. Update the current tables whenever the registries change; historical sections retain the behaviour compared during that migration.
 
 ## Non-UAH identifier convention
 
-Non-UAH degree identifiers now use `<degree>-<university>`, for example `ITI-URJC`, `GIB-UPM`, `MUIT-UPM` and `PHD-ETSIT-UPM`. Existing configurations must replace the former concatenated identifiers (such as `ITIURJC` or `PHDUPM`); the old identifiers are not aliases. UAH identifiers and `GEINTRARR` are unchanged. Generated filenames use the new identifiers. The historical audit below retains the identifiers used at the time.
+Non-UAH degree identifiers use `<degree>-<university>`, for example `ITI-URJC`, `GIB-UPM` and `MUIT-UPM`. School-specific identifiers can add the school acronym, as in `PHD-ETSIT-UPM`. Generated PDF filenames use these same identifiers.
 
 ## Migration rules
 
@@ -15,9 +15,9 @@ Non-UAH degree identifiers now use `<degree>-<university>`, for example `ITI-URJ
 - Define `\myDegreefullwrapped` and `\myDegreefullwrappedUpcase` for every degree. When no specialised wrapped form exists, derive them from `\myDegreefull`.
 - Treat `GSI` and the pre-Bologna degrees as supported legacy identifiers.
 
-## Approved differences from current behaviour
+## Approved differences during the initial migration (historical)
 
-| Subject | Current behaviour | Approved registry behaviour |
+| Subject | Pre-migration behaviour | Approved registry behaviour |
 |---|---|---|
 | `GSI` | Mentioned as an available value in `myconfig.tex`, but absent from the active TeX conditionals, `worktypes.txt` and the effective PDF-generation list. | Supported legacy TFG with the Spanish name `Grado en Sistemas de Información`, the English name `Degree in Information Systems`, and the same work-type and layout definitions as `GISI`. |
 | `PHDUAH` work type | TeX uses `PHDUAH`; distribution filenames use `PhD`. | Both use the canonical work type `PhD`; the `uah-phd` profile selects its cover. |
@@ -27,9 +27,9 @@ Non-UAH degree identifiers now use `<degree>-<university>`, for example `ITI-URJ
 | Wrapped degree names | Defined only for `MUSEA`, `MUIT`, `MUII`, `MUIE`, `MUCTE`, `GMC`, `MUC` and `MUANBD`. | Defined for every degree, falling back to the ordinary name and its uppercase form when no special wrapping is required. |
 | English work-type text | Most TFC, TFG and TFM entries retain Spanish text; only PhD, RR and `MUANBD` currently provide English text. | Preserve this behaviour during migration. Complete English translations are explicitly deferred. |
 
-## Target degree matrix
+## Current degree matrix
 
-The `Work type` column contains the canonical value that will be used by TeX and distribution filenames. Degree names remain language-independent during this migration, except that the registry records the requested English name for `GSI` for future use.
+The table follows the order of Config/degrees.tex. Work type is the canonical value used by TeX and filenames. The degree-name column shows the base Spanish name; English variants and wrapped forms are declared separately where provided.
 
 | Identifier | Status | Degree name (`\myDegreefull`) | Work type | `\myWorkTypeFull` Spanish / English | Layout profile |
 |---|---|---|---|---|---|
@@ -50,7 +50,16 @@ The `Work type` column contains the canonical value that will be used by TeX and
 | `GISI` | Active | Grado en Ingeniería en Sistemas de Información | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GIEAI` | Active | Grado en Ingeniería en Electrónica y Automática Industrial | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GITI` | Active | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
+| `GFIE` | Active | Grado en Física e Instrumentación Espacial | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
+| `GBS` | Active | Grado en Biología Sanitaria | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
+| `GB` | Active | Grado en Biología | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
+| `GQ` | Active | Grado en Química | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
+| `GCA` | Active | Grado en Ciencias Ambientales | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
+| `GCCTF` | Active | Grado en Criminalística: Ciencias y Tecnologías Forenses | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `ITI-URJC` | Active | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo Fin de Grado / Bachelor's Thesis | `urjc-iti-tfg` |
+| `GISTS-UPM` | Active | Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
+| `GIB-UPM` | Active | Grado en Ingeniería Biomédica | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
+| `GISD-UPM` | Active | Grado en Ingeniería y Sistemas de Datos | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-gisd-tfg` |
 | `MUSEA` | Active | Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
 | `MUIT` | Active | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
 | `MUII` | Active | Máster Universitario en Ingeniería Industrial | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
@@ -58,13 +67,21 @@ The `Work type` column contains the canonical value that will be used by TeX and
 | `MUCTE` | Active | Máster Universitario en Ciencia y Tecnología desde el Espacio | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-mucte` |
 | `MUANBD` | Active | Máster Universitario en Analítica de Negocio y Big Data | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muanbd` |
 | `MUC` | Active | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-muc-2026` |
+| `MUIT-UPM` | Active | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUCS-UPM` | Active | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUESFV-UPM` | Active | Máster Universitario en Energía Solar Fotovoltaica | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUIB-UPM` | Active | Máster Universitario en Ingeniería Biomédica | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUIRST-UPM` | Active | Máster Universitario en Ingeniería de Redes y Servicios Telemáticos | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUISE-UPM` | Active | Máster Universitario en Ingeniería de Sistemas Electrónicos | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUTSC-UPM` | Active | Máster Universitario en Teoría de la Señal y Comunicaciones | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUNE-UPM` | Active | Máster Universitario en Neurotecnología | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-mune-tfm` |
 | `PHDUAH` | Active | Estudios de Doctorado | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
 | `PHD-ETSIT-UPM` | Active | Doctor Ingeniero de Telecomunicación | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
-| `GEINTRARR` | Experimental | GEINTRA Research Report | `RR` | Informe técnico del Grupo de investigación `\myResearchGroup` / `\myResearchGroup` Research Report | `geintra-report` |
+| `GEINTRARR` | Experimental | GEINTRA Research Report | `RR` | Informe técnico del Grupo de investigación \myResearchGroup{} / \myResearchGroup{} Research Report | `geintra-report` |
 
-## Layout profile definitions
+## Current layout profile definitions
 
-These profile names describe the active input sequences selected by the registry.
+The table reproduces the entries in Config/layout-profiles.tex. Files are included once in the declared order; each file handles its own page boundaries.
 
 | Profile | Cover input sequence | Back-page input |
 |---|---|---|
@@ -77,19 +94,24 @@ These profile names describe the active input sequences selected by the registry
 | `uah-muanbd` | `cover/uah/portada-tfm-normativa-uah.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
 | `uah-muc-2026` | `cover/uah/portada-tfm-ciberseguridad-uah-2026.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
 | `uah-phd` | `cover/uah/cover-phd-uah.tex` | None |
+| `upm-etsit-tft` | `cover/upm/portada-tfg-etsit-upm.tex`, then `cover/upm/tribunal-tfg-etsit-upm.tex`, then `cover/upm/cover-tfg-etsit-upm.tex` | `cover/upm/backpage-etsit-upm.tex` |
+| `upm-etsit-gisd-tfg` | `cover/upm/portada-tfg-etsit-upm.tex`, then `cover/upm/tribunal-tfg-gisd-upm.tex`, then `cover/upm/cover-tfg-etsit-upm.tex` | `cover/upm/backpage-etsit-upm.tex` |
+| `upm-etsit-mune-tfm` | `cover/upm/cover-tfm-mune-etsit-upm.tex` | `cover/upm/backpage-etsit-upm.tex` |
 | `upm-phd` | `cover/upm/portada-phd-upm.tex`, then `cover/upm/cover-phd-upm.tex`, then `cover/upm/credits-phd-upm.tex` | None |
 | `geintra-report` | `cover/uah/portada-geintra-rr.tex` | None |
 
+The `upm-etsit-mune-tfm` profile includes a wrapper: cover-tfm-mune-etsit-upm.tex selects language-dependent text and includes the outer cover, its specific committee sheet and the shared inner title page. The `upm-phd` profile uses phd-layout.tex helpers for the outer cover, inner title page and credits, without a back cover.
+
 ## Wrapped-name compatibility
 
-The registry must preserve the specialised wrapped values currently used by `MUSEA`, `MUIT`, `MUII`, `MUIE`, `MUCTE`, `GMC`, `MUC` and `MUANBD`. For every other degree it must expose the following effective values:
+The registry preserves specialised wrapped values for `MUSEA`, `MUIT`, `MUII`, `MUIE`, `MUCTE`, `GMC`, `MUC`, `MUANBD` and `GISTS-UPM`. For every other degree it must expose the following effective values:
 
 ```latex
 \myDegreefullwrapped = \myDegreefull
 \myDegreefullwrappedUpcase = \MakeUppercase{\myDegreefull}
 ```
 
-## Compatibility audit
+## Initial migration audit (historical)
 
 The inactive registry was checked against the legacy conditionals in `Config/postamble.tex`, the routing in `Book/cover/cover.tex` and `Book/cover/backpage.tex`, and the filename mappings in `Config/worktypes.txt`.
 

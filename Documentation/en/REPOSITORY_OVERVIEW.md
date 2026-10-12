@@ -2,7 +2,7 @@
 
 ## What this repository is
 
-This repository is a comprehensive LaTeX template ecosystem for final academic documents at Universidad de Alcalá (UAH), including:
+This repository is a comprehensive LaTeX template ecosystem focused on final academic documents at Universidad de Alcalá (UAH), with additional support for ESCET-URJC and ETSIT-UPM, including:
 
 - Bachelor final projects (TFG)
 - Master final projects (TFM)
@@ -27,13 +27,6 @@ Top-level directories and their primary role:
 - `Deprecated/`: Legacy material kept for reference.
 
 The root-level `sync-git-sources.sh` is the user-facing implementation behind `make sync-git-sources`; it is kept outside `AdminScripts/` because it is distributed with the template and is not a maintainer utility.
-
-Repository volume snapshot (tracked files):
-
-- Total files: 719
-- TeX files: 238
-- PDF files: 129
-- Word documents (`.doc/.docx`): 25
 
 ## Main user workflow
 
@@ -85,9 +78,10 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 - Document structure (`standard` for normal use and `compendium` for the specialized PhD modality)
 - Book typesetting style (`\myTypesettingStyle`); institutional pages retain their original fonts by default.
 - Optional preliminary elements and generated lists through the validated `\myInclude...` switches
-- Degree code (e.g., `GIEC`, `MUIT`, `PHDUAH`)
+- Degree code (e.g., `GIEC`, `MUIT`, `PHDUAH`, `ITI-URJC`, `GIB-UPM`, `MUNE-UPM`, `PHD-ETSIT-UPM`)
 - Author and advisor identity data
-- Department and project-specific affiliation metadata
+- Separate tutor/cotutor department and institution fields, with English variants
+- Expanded doctoral committee, external-reviewer and project-specific metadata
 - Dates, legal/publishing options, and grades
 - Link colors and optional helper macros
 
@@ -102,6 +96,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 - Language-dependent labels and wording
 - Gender-dependent grammatical variants
 - Advisor singular/plural wording
+- Combined adviser affiliations and tutor-first document-department selection, with cotutor fallback
 - Work-type and document metadata used throughout covers and paperwork
 
 ## Document composition model
@@ -125,6 +120,10 @@ Prepared minimal and original structures are colocated with their chapters: `Boo
 `Book/cover/cover.tex` and `Book/cover/backpage.tex` delegate cover selection to the degree registry. `Config/layout-profiles.tex` maps each degree profile to its required files.
 
 Institution-specific implementations are grouped under `Book/cover/uah/`, `Book/cover/upm/`, and `Book/cover/urjc/`. Shared orchestration and front-matter files remain directly under `Book/cover/`. Logos follow the same division under `Book/logos/`; cross-institution and project artwork is kept in `Book/logos/shared/`.
+
+The ETSIT-UPM undergraduate/master variants share orange covers and an orange back cover, while GISD and MUNE have specific supervision/committee sheets. MUNE opening-page texts follow the configured Spanish/English language. PHD-ETSIT-UPM uses a separate doctoral cover, inner title page with both crests, and a credits page with advisors, external reviewers, committee members and defence date; it has no independent back cover. The current degree/profile tables and the focused regression commands are documented in MAINTAINERS.md and DEGREE_REGISTRY_COMPATIBILITY.md in this directory. These variants have received less extensive testing than the UAH cases.
+
+The standard manual includes Book/appendix/aspectos-eticos.tex only for ETSIT-UPM degrees. Its conditional inclusion and source are also maintained in the orig copies; the prepared minimal and compendium bodies do not include it automatically.
 
 ## Repository maturity and maintenance signals
 

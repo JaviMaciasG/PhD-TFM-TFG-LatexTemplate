@@ -1,10 +1,10 @@
 # Base de compatibilidad del registro de titulaciones
 
-Este documento recoge el comportamiento heredado dependiente de la titulación y el comportamiento aprobado del registro de titulaciones de referencia. Su finalidad es distinguir las correcciones deliberadas de los cambios accidentales y conservar la auditoría de la migración.
+Este documento reúne las tablas actuales de titulaciones y perfiles de maquetación de Config/degrees.tex y Config/layout-profiles.tex, junto con la auditoría histórica de la migración inicial. Las tablas actuales deben actualizarse cuando cambien los registros; los apartados históricos conservan el comportamiento que se comparó en aquella migración.
 
 ## Convención de identificadores fuera de la UAH
 
-Los identificadores de titulaciones fuera de la UAH usan ahora `<titulación>-<universidad>`, por ejemplo `ITI-URJC`, `GIB-UPM`, `MUIT-UPM` y `PHD-ETSIT-UPM`. Las configuraciones existentes deben sustituir los identificadores concatenados anteriores (como `ITIURJC` o `PHDUPM`); los identificadores antiguos no son alias. Los identificadores de la UAH y `GEINTRARR` no cambian. Los nombres de los ficheros generados usan los nuevos identificadores. La auditoría histórica que sigue conserva los identificadores usados en aquel momento.
+Los identificadores de titulaciones fuera de la UAH usan `<titulación>-<universidad>`, por ejemplo `ITI-URJC`, `GIB-UPM` y `MUIT-UPM`. Los identificadores específicos de un centro pueden añadir sus siglas, como `PHD-ETSIT-UPM`. Los nombres de los PDF generados utilizan estos mismos identificadores.
 
 ## Reglas de migración
 
@@ -15,9 +15,9 @@ Los identificadores de titulaciones fuera de la UAH usan ahora `<titulación>-<u
 - Definir `\myDegreefullwrapped` y `\myDegreefullwrappedUpcase` para todas las titulaciones. Cuando no exista una forma especializada con saltos de línea, derivarlas de `\myDegreefull`.
 - Tratar `GSI` y las titulaciones pre-Bolonia como identificadores heredados compatibles.
 
-## Diferencias aprobadas respecto al comportamiento actual
+## Diferencias aprobadas durante la migración inicial (histórico)
 
-| Elemento | Comportamiento actual | Comportamiento aprobado del registro |
+| Elemento | Comportamiento anterior a la migración | Comportamiento aprobado del registro |
 |---|---|---|
 | `GSI` | Se menciona como valor disponible en `myconfig.tex`, pero no aparece en los condicionales TeX activos, en `worktypes.txt` ni en la lista efectiva de generación de PDF. | TFG heredado compatible con el nombre en español `Grado en Sistemas de Información`, el nombre en inglés `Degree in Information Systems` y las mismas definiciones de tipo de trabajo y maquetación que `GISI`. |
 | Tipo de trabajo de `PHDUAH` | TeX usa `PHDUAH`; los nombres de fichero de distribución usan `PhD`. | Ambos usan el tipo de trabajo canónico `PhD`; el perfil `uah-phd` selecciona su portada. |
@@ -27,9 +27,9 @@ Los identificadores de titulaciones fuera de la UAH usan ahora `<titulación>-<u
 | Nombres de titulación con saltos de línea | Definidos únicamente para `MUSEA`, `MUIT`, `MUII`, `MUIE`, `MUCTE`, `GMC`, `MUC` y `MUANBD`. | Definidos para todas las titulaciones, recurriendo al nombre ordinario y a su forma en mayúsculas cuando no se requiere un formato especial con saltos de línea. |
 | Texto del tipo de trabajo en inglés | La mayoría de las entradas TFC, TFG y TFM conservan el texto en español; actualmente solo PhD, RR y `MUANBD` proporcionan texto en inglés. | Conservar este comportamiento durante la migración. Las traducciones completas al inglés se posponen explícitamente. |
 
-## Matriz de titulaciones objetivo
+## Matriz actual de titulaciones
 
-La columna `Tipo de trabajo` contiene el valor canónico que se utilizará en TeX y en los nombres de fichero de distribución. Los nombres de las titulaciones siguen siendo independientes del idioma durante esta migración, salvo que el registro almacena el nombre en inglés solicitado para `GSI` para su uso futuro.
+La tabla sigue el orden de Config/degrees.tex. El tipo de trabajo es el valor canónico utilizado por TeX y por los nombres de fichero. La columna de nombre muestra el nombre base en español; las variantes inglesas y las formas con saltos de línea se declaran por separado cuando existen.
 
 | Identificador | Estado | Nombre de la titulación (`\myDegreefull`) | Tipo de trabajo | `\myWorkTypeFull` español / inglés | Perfil de maquetación |
 |---|---|---|---|---|---|
@@ -50,7 +50,16 @@ La columna `Tipo de trabajo` contiene el valor canónico que se utilizará en Te
 | `GISI` | Activo | Grado en Ingeniería en Sistemas de Información | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GIEAI` | Activo | Grado en Ingeniería en Electrónica y Automática Industrial | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GITI` | Activo | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
+| `GFIE` | Activo | Grado en Física e Instrumentación Espacial | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
+| `GBS` | Activo | Grado en Biología Sanitaria | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
+| `GB` | Activo | Grado en Biología | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
+| `GQ` | Activo | Grado en Química | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
+| `GCA` | Activo | Grado en Ciencias Ambientales | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
+| `GCCTF` | Activo | Grado en Criminalística: Ciencias y Tecnologías Forenses | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `ITI-URJC` | Activo | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo Fin de Grado / Bachelor's Thesis | `urjc-iti-tfg` |
+| `GISTS-UPM` | Activo | Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
+| `GIB-UPM` | Activo | Grado en Ingeniería Biomédica | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
+| `GISD-UPM` | Activo | Grado en Ingeniería y Sistemas de Datos | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-gisd-tfg` |
 | `MUSEA` | Activo | Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
 | `MUIT` | Activo | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
 | `MUII` | Activo | Máster Universitario en Ingeniería Industrial | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
@@ -58,13 +67,21 @@ La columna `Tipo de trabajo` contiene el valor canónico que se utilizará en Te
 | `MUCTE` | Activo | Máster Universitario en Ciencia y Tecnología desde el Espacio | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-mucte` |
 | `MUANBD` | Activo | Máster Universitario en Analítica de Negocio y Big Data | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muanbd` |
 | `MUC` | Activo | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-muc-2026` |
+| `MUIT-UPM` | Activo | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUCS-UPM` | Activo | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUESFV-UPM` | Activo | Máster Universitario en Energía Solar Fotovoltaica | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUIB-UPM` | Activo | Máster Universitario en Ingeniería Biomédica | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUIRST-UPM` | Activo | Máster Universitario en Ingeniería de Redes y Servicios Telemáticos | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUISE-UPM` | Activo | Máster Universitario en Ingeniería de Sistemas Electrónicos | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUTSC-UPM` | Activo | Máster Universitario en Teoría de la Señal y Comunicaciones | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUNE-UPM` | Activo | Máster Universitario en Neurotecnología | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-mune-tfm` |
 | `PHDUAH` | Activo | Estudios de Doctorado | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
 | `PHD-ETSIT-UPM` | Activo | Doctor Ingeniero de Telecomunicación | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
-| `GEINTRARR` | Experimental | GEINTRA Research Report | `RR` | Informe técnico del Grupo de investigación `\myResearchGroup` / `\myResearchGroup` Research Report | `geintra-report` |
+| `GEINTRARR` | Experimental | GEINTRA Research Report | `RR` | Informe técnico del Grupo de investigación \myResearchGroup{} / \myResearchGroup{} Research Report | `geintra-report` |
 
-## Definiciones de los perfiles de maquetación
+## Definiciones actuales de los perfiles de maquetación
 
-Estos nombres de perfil describen las secuencias de entrada activas seleccionadas por el registro.
+La tabla reproduce las entradas de Config/layout-profiles.tex. Los ficheros se incluyen una sola vez y en el orden indicado; cada fichero gestiona sus propios límites de página.
 
 | Perfil | Secuencia de entrada de portadas | Entrada de contraportada |
 |---|---|---|
@@ -77,19 +94,24 @@ Estos nombres de perfil describen las secuencias de entrada activas seleccionada
 | `uah-muanbd` | `cover/uah/portada-tfm-normativa-uah.tex`, después `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
 | `uah-muc-2026` | `cover/uah/portada-tfm-ciberseguridad-uah-2026.tex`, después `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
 | `uah-phd` | `cover/uah/cover-phd-uah.tex` | Ninguna |
+| `upm-etsit-tft` | `cover/upm/portada-tfg-etsit-upm.tex`, después `cover/upm/tribunal-tfg-etsit-upm.tex`, después `cover/upm/cover-tfg-etsit-upm.tex` | `cover/upm/backpage-etsit-upm.tex` |
+| `upm-etsit-gisd-tfg` | `cover/upm/portada-tfg-etsit-upm.tex`, después `cover/upm/tribunal-tfg-gisd-upm.tex`, después `cover/upm/cover-tfg-etsit-upm.tex` | `cover/upm/backpage-etsit-upm.tex` |
+| `upm-etsit-mune-tfm` | `cover/upm/cover-tfm-mune-etsit-upm.tex` | `cover/upm/backpage-etsit-upm.tex` |
 | `upm-phd` | `cover/upm/portada-phd-upm.tex`, después `cover/upm/cover-phd-upm.tex`, después `cover/upm/credits-phd-upm.tex` | Ninguna |
 | `geintra-report` | `cover/uah/portada-geintra-rr.tex` | Ninguna |
 
+El perfil `upm-etsit-mune-tfm` incluye un fichero envoltorio: cover-tfm-mune-etsit-upm.tex selecciona los textos según el idioma e incluye la cubierta exterior, su hoja específica de tribunal y la portada interior compartida. El perfil `upm-phd` utiliza los recursos de phd-layout.tex para la cubierta, portada interior y créditos, sin contraportada.
+
 ## Compatibilidad de los nombres con saltos de línea
 
-El registro debe conservar los valores especializados con saltos de línea utilizados actualmente por `MUSEA`, `MUIT`, `MUII`, `MUIE`, `MUCTE`, `GMC`, `MUC` y `MUANBD`. Para cualquier otra titulación debe exponer los siguientes valores efectivos:
+El registro conserva los valores especializados con saltos de línea de `MUSEA`, `MUIT`, `MUII`, `MUIE`, `MUCTE`, `GMC`, `MUC`, `MUANBD` y `GISTS-UPM`. Para cualquier otra titulación debe exponer los siguientes valores efectivos:
 
 ```latex
 \myDegreefullwrapped = \myDegreefull
 \myDegreefullwrappedUpcase = \MakeUppercase{\myDegreefull}
 ```
 
-## Auditoría de compatibilidad
+## Auditoría de la migración inicial (histórico)
 
 El registro inactivo se comprobó frente a los condicionales heredados de `Config/postamble.tex`, el encaminamiento de `Book/cover/cover.tex` y `Book/cover/backpage.tex`, y las correspondencias de nombres de fichero de `Config/worktypes.txt`.
 
