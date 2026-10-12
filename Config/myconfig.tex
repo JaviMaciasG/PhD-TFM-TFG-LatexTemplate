@@ -18,6 +18,7 @@
 
 % Control compilation flavour (for PFCs, TFMs, TFGs, Thesis, etc...)
 % Degree (titulación), can be:
+% Identifiers outside UAH use <degree>-<university>; keep the hyphen.
 % Bachelor Degrees at UAH:
 %  In the Polytechic School:
 %   GITT   - Grado en Ingeniería en Tecnologías de la Telecomunicación
@@ -50,11 +51,24 @@
 %   MUANBD - Máster Universitario en Analítica de Negocio y Big Data
 %
 % PhD Programs:
-%  PHDUAH - Doctorado UAH
-%  PHDUPM - Doctorado UPM
+%  PHDUAH  - Doctorado UAH
+%  PHD-ETSIT-UPM - Doctorado de la ETSIT-UPM
 %
 % Degrees at URJC:
-%  ITIURJC - Grado en Ingeniería en Tecnologías Industriales (ESCET-URJC)
+%  ITI-URJC - Grado en Ingeniería en Tecnologías Industriales (ESCET-URJC)
+%
+% Degrees at ETSIT-UPM:
+%  GISTS-UPM  - Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación
+%  GIB-UPM    - Grado en Ingeniería Biomédica
+%  GISD-UPM   - Grado en Ingeniería y Sistemas de Datos
+%  MUIT-UPM   - Máster Universitario en Ingeniería de Telecomunicación
+%  MUCS-UPM   - Máster Universitario en Ciberseguridad
+%  MUESFV-UPM - Máster Universitario en Energía Solar Fotovoltaica
+%  MUIB-UPM   - Máster Universitario en Ingeniería Biomédica
+%  MUIRST-UPM - Máster Universitario en Ingeniería de Redes y Servicios Telemáticos
+%  MUISE-UPM  - Máster Universitario en Ingeniería de Sistemas Electrónicos
+%  MUTSC-UPM  - Máster Universitario en Teoría de la Señal y Comunicaciones
+%  MUNE-UPM   - Máster Universitario en Neurotecnología (páginas en español o inglés)
 %
 % Misc documents:
 %  GEINTRARR - Geintra Research Report (alpha support)
@@ -124,23 +138,50 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Advisor data
+% GISD-UPM: el tutor definido en myAcademicTutorFullName se muestra como
+% supervisor técnico, no como supervisor académico.
 \newcommand{\myAcademicTutorFullName}{Roberto Barra Chicote} 
 \newcommand{\myAcademicTutorGender}{male}
 \newcommand{\myAcademicTutorDNI}{20052001-J}
-\newcommand{\myAcademicTutorDepartmentOrInstitution}{Amazon Text-To-Speech Research} 
+% Departamento e institución son campos separados; deja vacío lo que no proceda.
+\newcommand{\myAcademicTutorDepartment}{Departamento de Electrónica}
+\newcommand{\myAcademicTutorDepartmentEnglish}{Department of Electronics}
+\newcommand{\myAcademicTutorInstitution}{Amazon Text-To-Speech Research}
+\newcommand{\myAcademicTutorInstitutionEnglish}{Amazon Text-To-Speech Research}
 \newcommand{\myAcademicTutorPosition}{Principal Scientist}
+\newcommand{\myAcademicTutorPositionEnglish}{Principal Scientist} % Créditos de tesis UPM en inglés
 \newcommand{\myAcademicTutorEmail}{roberto.barra@somewhere.com}
 \newcommand{\myAcademicTutorForeignUniversity}{Foreign University name}
 \newcommand{\myAcademicTutorForeignCity}{Foreign city name}
 \newcommand{\myAcademicTutorIsPhD}{true} % true or false, for EPS-UAH TFM regulations
 
+% Ponente ETSIT-UPM (GISTS/GIB y másteres con su mismo modelo): papel distinto
+% del tutor y del cotutor. Déjalo vacío si
+% todavía no está asignado; la hoja del tribunal deja el valor vacío, sin puntos.
+\newcommand{\myPonenteFullName}{}
+% Modelo GISTS/GIB y másteres asociados: si hay ponente, se muestra su
+% departamento; si no, el del tutor.
+\newcommand{\myPonenteDepartment}{}
+
+% Supervisión técnica del MUNE-UPM, distinta de la supervisión académica
+% (myAcademicTutorFullName). Puede ser la misma persona; indica ambos nombres.
+% Si todavía no está asignada, déjalo vacío para mostrar una línea en blanco.
+\newcommand{\myUPMTechnicalSupervisorFullName}{}
+% GISD-UPM no utiliza myUPMTechnicalSupervisorFullName: usa el tutor y cotutor.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CoAdvisor data
+% GISD-UPM: el cotutor definido en myCoTutorFullName se muestra como supervisor
+% académico; completa este campo y myAcademicCotutorDepartment.
 \newcommand{\myCoTutorFullName}{María Isidra de Guzmán y de la Cerda} % Leave it empty if no cotutor
 \newcommand{\myCoTutorGender}{female}
 \newcommand{\myCoTutorDNI}{17850606-F}
-\newcommand{\myCoTutorDepartmentOrInstitution}{Universidad de Alcalá}
+\newcommand{\myAcademicCotutorDepartment}{}
+\newcommand{\myAcademicCotutorDepartmentEnglish}{}
+\newcommand{\myAcademicCotutorInstitution}{Universidad de Alcalá}
+\newcommand{\myAcademicCotutorInstitutionEnglish}{University of Alcalá}
 \newcommand{\myCoTutorPosition}{Catedrática de Universidad}
+\newcommand{\myCoTutorPositionEnglish}{Full Professor} % Créditos de tesis UPM en inglés
 \newcommand{\myCoTutorEmail}{maria.guzman@uah.es}
 \newcommand{\myCoTutorIsPhD}{true} % true or false, for EPS-UAH TFM regulations
 
@@ -149,11 +190,23 @@
 % The university, its acronym and the school are selected automatically from
 % Config/degrees.tex and Config/institutions.tex according to \myDegree.
 
-\newcommand{\myDepartment}{Departamento de Electrónica}
-\newcommand{\myDepartmentEnglish}{Departament of Electronics}
+% El departamento del documento se obtiene del tutor o, si está vacío, del
+% cotutor. Configúralo en sus campos Department/DepartmentEnglish anteriores.
 
 \newcommand{\myPhDProgram}{Programa de Doctorado en Electrónica: Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
 \newcommand{\myPhDProgramEnglish}{PhD. Program in Electronics: Advanced Electronic Systems. Intelligent Systems}
+
+% Tesis PHD-ETSIT-UPM: utiliza el nombre oficial completo del programa en los campos
+% anteriores (Doctorado en ... / Doctoral Degree in ...), sin abreviarlo.
+% Titulación previa de acceso al doctorado, no el título de doctor que solicitas.
+\newcommand{\myUPMdegree}{Ingeniero de Telecomunicación}
+\newcommand{\myUPMdegreeEnglish}{Telecommunication Engineer}
+% Año de solicitud del depósito; puede ser distinto del año de defensa.
+\newcommand{\myThesisDepositYear}{\myThesisDefenseYear}
+% Texto completo de financiación competitiva para los créditos PHD-ETSIT-UPM.
+% Déjalo vacío si no procede; admite texto LaTeX y no aparece en otras titulaciones.
+\newcommand{\myThesisFundingStatement}{}
+\newcommand{\myThesisFundingStatementEnglish}{}
 
 \newcommand{\myResearchGroup}{GEINTRA}
 
@@ -163,19 +216,33 @@
 \newcommand{\myTribunalPresident}{Francisca de Nebrija}
 \newcommand{\myTribunalPresidentGender}{female}
 \newcommand{\myTribunalPresidentDNI}{} % Required by the confidentiality commitment
+% ETSIT-UPM: el primer vocal (FirstSpokesperson) se muestra como Vocal.
 \newcommand{\myTribunalFirstSpokesperson}{Francisco Vallés de Covarrubias}
 \newcommand{\myTribunalFirstSpokespersonGender}{male}
 \newcommand{\myTribunalFirstSpokespersonDNI}{} % Required by the confidentiality commitment
-\newcommand{\myTribunalSecondSpokesperson}{María Castellano Arroyo}
+\newcommand{\myTribunalSecondSpokesperson}{Sira Elena Palazuelos Cagigas}
 \newcommand{\myTribunalSecondSpokespersonGender}{female}
 \newcommand{\myTribunalSecondSpokespersonDNI}{} % Required by the confidentiality commitment
 \newcommand{\myTribunalAlternateMember}{Elio Antonio de Nebrija}
 \newcommand{\myTribunalAlternateMemberGender}{male}
 \newcommand{\myTribunalAlternateMemberDNI}{} % Required by the confidentiality commitment
-\newcommand{\myTribunalSecretary}{Sira Elena Palazuelos Cagigas}
+\newcommand{\myTribunalSecretary}{María Castellano Arroyo}
+\newcommand{\myTribunalSecretaryGender}{female} % male o female; independiente de la secretaría del departamento
 \newcommand{\myDepartmentSecretary}{Departmento de Electrónica} % Por TFGs & TFMs & MUSEA-TFMs paperwork
 \newcommand{\myDepartmentSecretaryGender}{female}                 % Por TFGs & TFMs & MUSEA-TFMs paperwork
 \newcommand{\myTFMComisionPresident}{Felipe Espinosa Zapata}      % Por MUIE TFMs, no need to define gender... presidentE always
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tribunal ampliado y revisores externos para tesis PHD-ETSIT-UPM.
+% Completa los nombres asignados; deja vacíos los campos que no procedan.
+\newcommand{\myTribunalThirdSpokesperson}{Francisca de Pedrasa}
+\newcommand{\myTribunalSecondAlternateMember}{Fernando de Mena}
+\newcommand{\myFirstExternalReviewerFullName}{Gaspar de Astete}
+\newcommand{\myFirstExternalReviewerInstitution}{Universidad de Alcalá}
+\newcommand{\myFirstExternalReviewerInstitutionEnglish}{University of Alcalá}
+\newcommand{\mySecondExternalReviewerFullName}{Beatriz Galindo}
+\newcommand{\mySecondExternalReviewerInstitution}{Universidad de Alcalá}
+\newcommand{\mySecondExternalReviewerInstitutionEnglish}{University of Alcalá}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Grades. If set, the final grade will be automagically calculated in the
@@ -328,7 +395,6 @@
                                    % the author signing the agreement
                                    % (should be "alumno" in most cases)
 
-\newcommand{\myUPMdegree}{Ingeniero de Telecomunicación} % Used in UPM
 % END Deprecated and less useful definitions, just keep them...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -2,6 +2,8 @@
 
 This repo contains a generic template for PhD, Msc (TFM) and BsC (TFG) thesis documents mainly designed to be used at the University of Alcala (UAH), so that it is written in Spanish, although the template can generate the documents in English (just setting a variable in the configuration file).
 
+It also supports some degrees at URJC and ETSIT-UPM. See the available identifiers in `Config/myconfig.tex` and the details in the manual.
+
 The Spanish version of this introduction is [README.md](README.md). Additional guides are stored in [Documentation/en/](Documentation/en/) and [Documentation/es/](Documentation/es/).
 
 The template uses configuration variables (defined in the `Config/myconfig.tex` file) to customize all the document generation process, so that you don't need to devote any effort to comply with formatting requirements (cover and back pages for example), document layout, etc.
@@ -154,17 +156,6 @@ If you follow the `make` compilation alternative, the Makefile can convert suppo
 ### Acronyms and symbols
 
 Define acronyms in `Book/acronyms/defacronymsgl.tex` and symbols in `Book/symbols/defsymbolsgl.tex`. Their presentation is controlled by the corresponding `acronymsgl.tex` and `symbolsgl.tex` files and the shared glossary configuration, but you do not need to modify them.
-
-### External PDF pages
-
-Use `\includepdf` when an approval letter or another PDF must be inserted into the document:
-
-```latex
-\includepdf[pages=-]{letters/my-letter.pdf}
-\clearemptydoublepage
-```
-
-The `pages=-` option includes every page. This feature is disabled by default: the manual does not include the sample PDF letter. If you need it, enable `\myIncludeSampleLetter` in `Config/myconfig.tex` and replace the PDF path in the corresponding block of `Book/book.tex`.
 
 ## To work with the paperwork
 

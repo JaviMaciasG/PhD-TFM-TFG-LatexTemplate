@@ -1,0 +1,10 @@
+Escudo UPM reproducido en escudo-upm-doctorado.png
+
+Extraído sin modificar del PDF de UPM_thesis_template_es, de Maria Blanco (UPM).
+Fuente: https://www.overleaf.com/latex/templates/upm-thesis-template-es/ycptmymgxdzj
+Licencia de la plantilla fuente: Creative Commons Attribution 4.0 International.
+https://creativecommons.org/licenses/by/4.0/
+
+La atribución y licencia de la plantilla no implican autorización para otros
+usos de las marcas o emblemas institucionales. Aquí se utiliza el escudo para
+reproducir las páginas exigidas por la normativa de tesis de la UPM.

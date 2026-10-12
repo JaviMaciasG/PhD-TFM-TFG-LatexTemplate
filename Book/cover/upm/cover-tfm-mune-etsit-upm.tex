@@ -1,0 +1,25 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: páginas iniciales del TFM del MUNE en la ETSIT-UPM.
+%
+% Uso: inclusión automática; normalmente no debes modificarlo.
+% Modelo: 04-MUNE_MS.Thesis_Template.docx; normativa ETSIT-UPM, 18-03-2025.
+% Comparte las cubiertas ETSIT-UPM y conserva sus nombres institucionales.
+% No se compila por separado.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begingroup
+% Selecciona los textos españoles o ingleses según myLanguage, sin alterar
+% los datos del grado ni los nombres institucionales.
+\ifthenelse{\equal{\myLanguage}{spanish}}
+{
+  \newcommand{\UPMETsitCoverDegree}{\myDegreefullwrappedUpcase}
+  \newcommand{\UPMETsitCoverWorkType}{\MakeUppercase{\myWorkTypeFull}}
+}
+{
+  \newcommand{\UPMETsitCoverDegree}{\MakeUppercase{\DegreeRegistryValue{degree-name-english}}}
+  \newcommand{\UPMETsitCoverWorkType}{\MakeUppercase{\DegreeRegistryValue{work-type-full-english}}}
+}
+\input{cover/upm/portada-tfg-etsit-upm.tex}
+\input{cover/upm/tribunal-tfm-mune-etsit-upm.tex}
+\input{cover/upm/cover-tfg-etsit-upm.tex}
+\endgroup

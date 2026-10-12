@@ -82,10 +82,45 @@
 
 \InstitutionRegistryLoadStyle
 
+% Separate adviser departments from their institutions. Undefined optional
+% fields are empty; department-only fields never fall back to an institution.
+\providecommand{\myAcademicTutorDepartment}{}
+\providecommand{\myAcademicTutorDepartmentEnglish}{}
+\providecommand{\myAcademicTutorInstitution}{}
+\providecommand{\myAcademicTutorInstitutionEnglish}{}
+\providecommand{\myAcademicCotutorDepartment}{}
+\providecommand{\myAcademicCotutorDepartmentEnglish}{}
+\providecommand{\myAcademicCotutorInstitution}{}
+\providecommand{\myAcademicCotutorInstitutionEnglish}{}
+\newcommand{\DocumentDepartment}{%
+  \ifthenelse{\equal{\myAcademicTutorDepartment}{}}
+    {\myAcademicCotutorDepartment}{\myAcademicTutorDepartment}}
+\newcommand{\DocumentDepartmentEnglish}{%
+  \ifthenelse{\equal{\myAcademicTutorDepartmentEnglish}{}}
+    {\myAcademicCotutorDepartmentEnglish}{\myAcademicTutorDepartmentEnglish}}
+% Deprecated compatibility names: no longer editable fields in myconfig.tex.
+\providecommand{\myDepartment}{}
+\renewcommand{\myDepartment}{\DocumentDepartment}
+\providecommand{\myDepartmentEnglish}{}
+\renewcommand{\myDepartmentEnglish}{\DocumentDepartmentEnglish}
+
+% Affiliation fields display both values, without dangling commas when empty.
+\newcommand{\FormatAdviserAffiliation}[2]{%
+  \ifthenelse{\equal{#1}{}}{#2}{%
+    #1\ifthenelse{\equal{#2}{}}{}{, #2}}}
+\newcommand{\AcademicTutorAffiliation}{%
+  \FormatAdviserAffiliation{\myAcademicTutorDepartment}{\myAcademicTutorInstitution}}
+\newcommand{\AcademicTutorAffiliationEnglish}{%
+  \FormatAdviserAffiliation{\myAcademicTutorDepartmentEnglish}{\myAcademicTutorInstitutionEnglish}}
+\newcommand{\AcademicCotutorAffiliation}{%
+  \FormatAdviserAffiliation{\myAcademicCotutorDepartment}{\myAcademicCotutorInstitution}}
+\newcommand{\AcademicCotutorAffiliationEnglish}{%
+  \FormatAdviserAffiliation{\myAcademicCotutorDepartmentEnglish}{\myAcademicCotutorInstitutionEnglish}}
+
 \ifthenelse{\equal{\myLanguage}{spanish}}
 {
   \usepackage[english, spanish, es-lcroman]{babel}
-  \newcommand{\myFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity} 
+  \newcommand{\myFullAffiliation}{Grupo de investigación \myResearchGroup \\ \DocumentDepartment \\ \myUniversity}
   \newcommand{\myBookTitle}{\myBookTitleSpanish}
   \newcommand{\mypdflang}{es}
   \newcommand{\myPresentedBy}{Presentado por}
@@ -94,7 +129,7 @@
 } 
 {
   \usepackage[spanish, english]{babel}
-  \newcommand{\myFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversityEnglish}
+  \newcommand{\myFullAffiliation}{\myResearchGroup Research Group \\ \DocumentDepartmentEnglish \\ \myUniversityEnglish}
   \newcommand{\myBookTitle}{\myBookTitleEnglish}
   \newcommand{\mypdflang}{en}
   \newcommand{\myPresentedBy}{Presented by}
@@ -171,6 +206,16 @@
 }
 {
   \newcommand{\wordDonOrDonaAutor}{Dª.}
+}
+
+% Independent of department secretary; older configurations omit this field.
+\providecommand{\myTribunalSecretaryGender}{female}
+\ifthenelse{\equal{\myTribunalSecretaryGender}{male}}
+{
+  \newcommand{\wordTribunalSecretarioOrSecretaria}{Secretario}
+}
+{
+  \newcommand{\wordTribunalSecretarioOrSecretaria}{Secretaria}
 }
 
 \ifthenelse{\equal{\myTribunalPresidentGender}{male}}

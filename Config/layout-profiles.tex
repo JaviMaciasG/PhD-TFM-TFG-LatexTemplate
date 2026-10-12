@@ -71,11 +71,42 @@
   cover-files = {cover/uah/cover-phd-uah.tex}
 }
 
+% The Word template contains an outer cover, assessment sheet and inner title
+% page. Shared by GISTS/GIB and the Spanish-model masters; work-type text
+% comes from the degree registry. A plain orange back cover completes the set.
+\DeclareLayoutProfile{upm-etsit-tft}{
+  cover-files = {
+    cover/upm/portada-tfg-etsit-upm.tex,
+    cover/upm/tribunal-tfg-etsit-upm.tex,
+    cover/upm/cover-tfg-etsit-upm.tex
+  },
+  backpage-file = {cover/upm/backpage-etsit-upm.tex}
+}
+
+% GISD shares both covers; its assessment sheet distinguishes technical and
+% academic supervision instead of tutor and ponente.
+\DeclareLayoutProfile{upm-etsit-gisd-tfg}{
+  cover-files = {
+    cover/upm/portada-tfg-etsit-upm.tex,
+    cover/upm/tribunal-tfg-gisd-upm.tex,
+    cover/upm/cover-tfg-etsit-upm.tex
+  },
+  backpage-file = {cover/upm/backpage-etsit-upm.tex}
+}
+
+% MUNE retains the shared artwork; opening-page texts follow myLanguage.
+\DeclareLayoutProfile{upm-etsit-mune-tfm}{
+  cover-files = {cover/upm/cover-tfm-mune-etsit-upm.tex},
+  backpage-file = {cover/upm/backpage-etsit-upm.tex}
+}
+
 \DeclareLayoutProfile{upm-phd}{
   cover-files = {
     cover/upm/portada-phd-upm.tex,
-    cover/upm/cover-phd-upm.tex
+    cover/upm/cover-phd-upm.tex,
+    cover/upm/credits-phd-upm.tex
   }
+  % El modelo doctoral oficial no prescribe una contraportada independiente.
 }
 
 \DeclareLayoutProfile{geintra-report}{

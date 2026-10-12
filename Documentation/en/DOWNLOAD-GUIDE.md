@@ -27,7 +27,7 @@ After downloading an archive, extract or upload it, compile `Book/book.tex` once
 # Complete example documents
 
 - **`TFG-GIEC-spanish.pdf`**: UAH GIEC bachelor final project. Spanish; standard content structure; `standard` typesetting; `institutional` page fonts.
-- **`TFG-ITIURJC-english-editorial-document-fonts.pdf`**: URJC ITI bachelor final project. English; standard content structure; `editorial` typesetting; `document` page fonts.
+- **`TFG-ITI-URJC-english-editorial-document-fonts.pdf`**: URJC ITI bachelor final project. English; standard content structure; `editorial` typesetting; `document` page fonts.
 - **`TFM-MUIE-spanish-modern-institutional-fonts.pdf`**: UAH MUIE master final project. Spanish; standard content structure; `modern` typesetting; `institutional` page fonts.
 - **`TFM-MUCTE-english-framed-document-fonts.pdf`**: UAH MUCTE master final project. English; standard content structure; `framed` typesetting; `document` page fonts.
 - **`TFM-MUC-spanish-shaded-institutional-fonts.pdf`**: UAH MUC master final project. Spanish; standard content structure; `shaded` typesetting; `institutional` page fonts.
@@ -49,7 +49,7 @@ Every example is a complete document, so you can inspect the covers, front matte
 # Choosing an example
 
 - Start with `TFG-GIEC-spanish.pdf` if you want to understand the normal workflow or simply verify the default appearance.
-- Use the ITIURJC example if you are working at URJC or want to see how institutional support changes without changing the document workflow.
+- Use the ITI-URJC example if you are working at URJC or want to see how institutional support changes without changing the document workflow.
 - Compare the MUIE, MUCTE and MUC examples when you need to inspect their different master cover sequences.
 - Use the conventional PHDUAH example for an ordinary doctoral thesis and the compendium example only when your thesis is formally presented as a compendium of publications.
 

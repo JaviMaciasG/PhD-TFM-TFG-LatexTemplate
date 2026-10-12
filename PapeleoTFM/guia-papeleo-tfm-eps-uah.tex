@@ -71,6 +71,8 @@ Abre \fichero{Config/myconfig.tex} y sustituye los datos de ejemplo por los tuyo
 
 El nombre \variable{myAuthorFullName} se obtiene normalmente de \variable{myAuthorName} y \variable{myAuthorSurname}; revisa ambas cuando una ficha te pida el nombre completo. La plantilla utiliza \variable{myBookTitleSpanish} o \variable{myBookTitleEnglish} según \variable{myLanguage}. \variable{myPaperworkDate} toma por defecto la fecha \variable{myThesisDepositDate}, aunque puedes cambiarla. No todos los formularios imprimen esa fecha: las fichas te indican cuáles la usan y cuáles dejan la fecha para su firma o utilizan la fecha del equipo.
 
+Configura por separado el departamento y la institución del tutor y del cotutor. Los campos de afiliación muestran ambos datos cuando están disponibles. En los campos de departamento del documento se utiliza \variable{myAcademicTutorDepartment}; si está vacío, se utiliza \variable{myAcademicCotutorDepartment}. Si ambos están vacíos, el campo queda vacío: no se sustituye el departamento por la institución.
+
 \subsection{Género gramatical y singular o plural}
 
 Configura correctamente \variable{myAuthorGender}, \variable{myAcademicTutorGender} y \variable{myCoTutorGender}, con los valores exactos \texttt{male} o \texttt{female}. La plantilla no deduce el género a partir del nombre ni valida otros valores. En el acta también importan \variable{myTribunalPresidentGender}, \variable{myTribunalFirstSpokespersonGender} y \variable{myTribunalSecondSpokespersonGender}. Cada ficha indica las variables que afectan realmente a su texto.
@@ -98,8 +100,8 @@ Si una casilla es fija, debes editar el fichero \texttt{.tex} del formulario cua
 Configura los datos y opciones siguientes:
 \begin{itemize}
   \item Estudiante y trabajo: \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myDegree}, \variable{myBookTitleSpanish} y \variable{myBookTitleEnglish} si \variable{myLanguage} es \texttt{english}.
-  \item Director: \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDNI} y \variable{myAcademicTutorDepartmentOrInstitution}.
-  \item Codirector: \variable{myCoTutorFullName}, \variable{myCoTutorDNI} y \variable{myCoTutorDepartmentOrInstitution}. Su bloque y firma se omiten si su nombre está vacío.
+  \item Director: \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDNI}, \variable{myAcademicTutorDepartment} y \variable{myAcademicTutorInstitution}.
+  \item Codirector: \variable{myCoTutorFullName}, \variable{myCoTutorDNI}, \variable{myAcademicCotutorDepartment} y \variable{myAcademicCotutorInstitution}. Su bloque y firma se omiten si su nombre está vacío.
   \item Publicación: \variable{myAuthorizationOpenPublishing}, con \texttt{Yes} o \texttt{No}. Si autorizas, \variable{myAuthorizationOpenPublishingEmbargoMonths} selecciona \texttt{0}, \texttt{6}, \texttt{12}, \texttt{18} o \texttt{24} meses de embargo. No utilices otros valores.
   \item Género: \variable{myAuthorGender}, \variable{myAcademicTutorGender} y \variable{myCoTutorGender}. Adaptan los rótulos y firmas, por ejemplo \emph{la autora}, \emph{la directora} y \emph{el codirector}.
 \end{itemize}
@@ -124,8 +126,8 @@ Solo si \variable{myDegree} es \texttt{MUIE}, aparecen las casillas de confidenc
 Revisa estas variables:
 \begin{itemize}
   \item Estudiante: \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorTelephone} y \variable{myAuthorEmail}.
-  \item Director académico: \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDNI}, \variable{myAcademicTutorDepartmentOrInstitution} y \variable{myAcademicTutorEmail}.
-  \item Entidad y tutor externo: \variable{myCoTutorFullName}, \variable{myCoTutorDepartmentOrInstitution}, \variable{myCoTutorPosition}, \variable{myCoTutorDNI} y \variable{myCoTutorEmail}. Si no hay cotutor, los campos derivados de él muestran \hl{N/D}.
+  \item Director académico: \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDNI}, \variable{myAcademicTutorDepartment}, \variable{myAcademicTutorInstitution} y \variable{myAcademicTutorEmail}.
+  \item Entidad y tutor externo: \variable{myCoTutorFullName}, \variable{myAcademicCotutorInstitution}, \variable{myCoTutorPosition}, \variable{myCoTutorDNI} y \variable{myCoTutorEmail}. Si no hay cotutor, los campos derivados de él muestran \hl{N/D}.
   \item Trabajo: \variable{myDegree}, \variable{myBookTitleSpanish} y \variable{myThesisAcademicYear}; la titulación proporciona el centro y el tipo de trabajo.
   \item Género: \variable{myAuthorGender} y \variable{myCoTutorGender}, para los tratamientos del estudiante y del tutor externo. Algunos rótulos son fijos.
 \end{itemize}
@@ -137,7 +139,7 @@ Los restantes campos \hl{N/D} deben completarse: datos de identificación y dire
 
 \fichero{TFM-ActaYRubricaDefensa-EPS-UAH.tex}. Anexo XI de la normativa EPS-UAH aprobada el 31/10/2025 y el 30/01/2026. Es el modelo EPS-UAH con su rúbrica: no se convierte automáticamente en el acta específica del MUIE por seleccionar ese máster.
 
-Utiliza \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myDegree}, \variable{myBookTitleSpanish}, \variable{myBookTitleEnglish} si \variable{myLanguage} es \texttt{english}, \variable{myAcademicTutorFullName}, \variable{myCoTutorFullName}, \variable{myDepartment}, \variable{myThesisAcademicYear} y \variable{myTribunalGrade}. Este formulario no suma la nota del tutor: la calificación utilizada es \variable{myTribunalGrade}.
+Utiliza \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myDegree}, \variable{myBookTitleSpanish}, \variable{myBookTitleEnglish} si \variable{myLanguage} es \texttt{english}, \variable{myAcademicTutorFullName}, \variable{myCoTutorFullName}, \variable{myAcademicTutorDepartment} y \variable{myAcademicCotutorDepartment}, \variable{myThesisAcademicYear} y \variable{myTribunalGrade}. Este formulario no suma la nota del tutor: la calificación utilizada es \variable{myTribunalGrade}.
 
 Los firmantes del tribunal son \variable{myTribunalPresident}, \variable{myTribunalFirstSpokesperson} y \variable{myTribunalSecondSpokesperson}. Sus rótulos utilizan \variable{myTribunalPresidentGender}, \variable{myTribunalFirstSpokespersonGender} y \variable{myTribunalSecondSpokespersonGender}, por ejemplo \emph{Presidenta}, \emph{Vocal 1ª} y \emph{Vocal 2º}. Los rótulos del estudiante y de la dirección utilizan \variable{myAuthorGender}, \variable{myAcademicTutorGender} y \variable{myCoTutorGender}. El suplente no aparece en esta acta. Completa las observaciones y la rúbrica y revisa las firmas.
 
@@ -153,7 +155,7 @@ Utiliza \variable{myAuthorFullName}, \variable{myBookTitleSpanish} o \variable{m
 
 \fichero{TFM-AnexoV-SolicitudCambioTFM-EPS-UAH.tex}. Anexo V de la normativa EPS-UAH aprobada el 31/10/2025 y el 30/01/2026. Recoge los datos de la dirección, del estudiante y del trabajo cuyo cambio solicitas.
 
-Utiliza \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDepartmentOrInstitution}, \variable{myCoTutorFullName}, \variable{myCoTutorDepartmentOrInstitution}, \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorEmail} y \variable{myBookTitleSpanish} o \variable{myBookTitleEnglish}. Un cotutor vacío produce \hl{N/D} en sus datos. No usa variables de género para sus rótulos: mantiene \emph{Director/a} y \emph{Codirector/a}. Debes completar la exposición razonada, lo que solicitas y el espacio de firma, marcados como \hl{N/D}; no hay variables de configuración específicas para esos campos.
+Utiliza \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDepartment} y \variable{myAcademicTutorInstitution}, \variable{myCoTutorFullName}, \variable{myAcademicCotutorDepartment} y \variable{myAcademicCotutorInstitution}, \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorEmail} y \variable{myBookTitleSpanish} o \variable{myBookTitleEnglish}. Un cotutor vacío produce \hl{N/D} en sus datos. No usa variables de género para sus rótulos: mantiene \emph{Director/a} y \emph{Codirector/a}. Debes completar la exposición razonada, lo que solicitas y el espacio de firma, marcados como \hl{N/D}; no hay variables de configuración específicas para esos campos.
 
 \medskip
 \begin{minipage}{\linewidth}

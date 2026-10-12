@@ -106,7 +106,7 @@ The selection can be summarized as:
 
 Before editing files, choose two identifiers when applicable:
 
-- A degree identifier such as `GIEC`, `MUIT`, or `ITIURJC`. It is the value users put in `\myDegree`, appears in generated PDF filenames, and should remain stable once released.
+- A degree identifier such as `GIEC`, `MUIT`, or `ITI-URJC`. It is the value users put in `\myDegree`, appears in generated PDF filenames, and should remain stable once released. For non-UAH degrees, use `<degree>-<university>` (for example, `ITI-URJC` or `MUIT-UPM`); the hyphen is supported by the registry and LaTeX string comparisons. School-specific identifiers can add the school acronym, as in `PHD-ETSIT-UPM`.
 - An institution identifier such as `UAH`, `UPM`, or `URJC`. Reuse an existing identifier when the university is already registered.
 
 Use short ASCII identifiers without spaces. Uppercase degree and institution identifiers follow the current convention. Layout-profile names use lowercase words separated with hyphens, for example `uah-tfg-2024` or `urjc-iti-tfg`.
@@ -209,7 +209,7 @@ Prefer the macros already derived from the registries and `myconfig.tex`:
 - `\myDegreefull`, `\myDegreefullwrapped`, and `\myDegreefullwrappedUpcase`.
 - `\myWorkType` and `\myWorkTypeFull`.
 - `\myBookTitle`, `\myAuthorFullName`, `\myAcademicTutorFullName`, and `\myCoTutorFullName`.
-- `\myDepartment` and `\myDepartmentEnglish`, which deliberately remain user-configurable because departments can vary within one degree.
+- Adviser departments and institutions, including their English versions, remain configurable in `myconfig.tex`. The document department uses the tutor department, falling back to the co-tutor department when empty. The old `\myDepartment` and `\myDepartmentEnglish` names are derived aliases in `postamble.tex`, not editable fields.
 - Existing language, gender, date, and advisor macros defined by the shared configuration.
 
 Do not hard-code a university, school, author, tutor, language, or degree name when an existing macro represents it. Treat an empty `\myCoTutorFullName` explicitly if the page displays cotutor information.

@@ -2,6 +2,10 @@
 
 This document records the legacy degree-dependent behaviour and the approved behaviour of the authoritative degree registry. Its purpose is to distinguish deliberate corrections from accidental changes and to preserve the migration audit.
 
+## Non-UAH identifier convention
+
+Non-UAH degree identifiers now use `<degree>-<university>`, for example `ITI-URJC`, `GIB-UPM`, `MUIT-UPM` and `PHD-ETSIT-UPM`. Existing configurations must replace the former concatenated identifiers (such as `ITIURJC` or `PHDUPM`); the old identifiers are not aliases. UAH identifiers and `GEINTRARR` are unchanged. Generated filenames use the new identifiers. The historical audit below retains the identifiers used at the time.
+
 ## Migration rules
 
 - Preserve the current degree names, work-type text and layout selection unless this document explicitly records an approved change.
@@ -46,7 +50,7 @@ The `Work type` column contains the canonical value that will be used by TeX and
 | `GISI` | Active | Grado en Ingeniería en Sistemas de Información | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GIEAI` | Active | Grado en Ingeniería en Electrónica y Automática Industrial | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GITI` | Active | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
-| `ITIURJC` | Active | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo Fin de Grado / Bachelor's Thesis | `urjc-iti-tfg` |
+| `ITI-URJC` | Active | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo Fin de Grado / Bachelor's Thesis | `urjc-iti-tfg` |
 | `MUSEA` | Active | Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
 | `MUIT` | Active | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
 | `MUII` | Active | Máster Universitario en Ingeniería Industrial | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
@@ -55,7 +59,7 @@ The `Work type` column contains the canonical value that will be used by TeX and
 | `MUANBD` | Active | Máster Universitario en Analítica de Negocio y Big Data | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muanbd` |
 | `MUC` | Active | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-muc-2026` |
 | `PHDUAH` | Active | Estudios de Doctorado | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
-| `PHDUPM` | Active | Doctor Ingeniero de Telecomunicación | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
+| `PHD-ETSIT-UPM` | Active | Doctor Ingeniero de Telecomunicación | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
 | `GEINTRARR` | Experimental | GEINTRA Research Report | `RR` | Informe técnico del Grupo de investigación `\myResearchGroup` / `\myResearchGroup` Research Report | `geintra-report` |
 
 ## Layout profile definitions
@@ -73,7 +77,7 @@ These profile names describe the active input sequences selected by the registry
 | `uah-muanbd` | `cover/uah/portada-tfm-normativa-uah.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
 | `uah-muc-2026` | `cover/uah/portada-tfm-ciberseguridad-uah-2026.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
 | `uah-phd` | `cover/uah/cover-phd-uah.tex` | None |
-| `upm-phd` | `cover/upm/portada-phd-upm.tex`, then `cover/upm/cover-phd-upm.tex` | None |
+| `upm-phd` | `cover/upm/portada-phd-upm.tex`, then `cover/upm/cover-phd-upm.tex`, then `cover/upm/credits-phd-upm.tex` | None |
 | `geintra-report` | `cover/uah/portada-geintra-rr.tex` | None |
 
 ## Wrapped-name compatibility

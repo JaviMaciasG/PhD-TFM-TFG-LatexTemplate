@@ -1,0 +1,46 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: portada interior blanca de TFG/TFM de la ETSIT-UPM.
+%
+% Uso: inclusión automática; normalmente no debes modificarlo.
+% Modelo: 01-Plantilla-2-conAnexos-2_MODIFICADO_GRADOS-2.docx.
+% No se compila por separado.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+\begingroup
+\providecommand{\UPMETsitCoverDegree}{\myDegreefullwrappedUpcase}
+\providecommand{\UPMETsitCoverWorkType}{\MakeUppercase{\myWorkTypeFull}}
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=north,align=center,text width=18cm,inner sep=0pt,
+    font=\sffamily\bfseries\fontsize{20}{24}\selectfont]
+    at ([xshift=10.5cm,yshift=-2.5cm]current page.north west)
+    {\MakeUppercase{\myUniversity}};
+  \node[anchor=north,align=center,text width=18cm,inner sep=0pt,
+    font=\sffamily\bfseries\fontsize{16}{19}\selectfont]
+    at ([xshift=10.5cm,yshift=-4cm]current page.north west)
+    {ESCUELA TÉCNICA SUPERIOR\\DE INGENIEROS DE TELECOMUNICACIÓN};
+  \node[anchor=north,inner sep=0pt]
+    at ([xshift=10.5cm,yshift=-6cm]current page.north west)
+    {% Los JPG originales son cuadrados y contienen amplios márgenes blancos.
+     \adjustbox{trim=0 {0.4\height} 0 {0.32\height},clip,width=8cm}{%
+       \ifthenelse{\equal{\colorspaceused}{rgb}}
+         {\includegraphics{logos/upm/logoetsit_tamano.jpg}}
+         {\includegraphics{logos/upm/logoetsit_tamano-cmyk.jpg}}}};
+  \node[anchor=north,align=center,text width=16cm,inner sep=0pt,
+    font=\sffamily\bfseries\fontsize{20}{24}\selectfont]
+    (upm-work-type) at ([xshift=10.5cm,yshift=-10cm]current page.north west)
+    {\UPMETsitCoverDegree\\[0.35cm]\UPMETsitCoverWorkType};
+  % El borde inferior del año queda a 2,5 cm del borde de la página.
+  \node[anchor=south,align=center,text width=16cm,inner sep=0pt,outer sep=0pt,
+    font=\sffamily\bfseries\fontsize{20}{24}\selectfont]
+    (upm-author-year) at ([yshift=2.5cm]current page.south)
+    {\myAuthorFullName\\[0.35cm]\myThesisDefenseYear};
+  % Centro del título al 35 % del hueco real: más próximo al tipo de trabajo.
+  \path (upm-work-type.south) -- (upm-author-year.north)
+    node[pos=0.35,anchor=center,align=center,text width=15cm,inner sep=0pt,
+      font=\sffamily\bfseries\fontsize{20}{24}\selectfont]
+      {\hyphenchar\font=-1\hyphenpenalty=10000\sloppy\MakeUppercase{\myBookTitle}};
+\end{tikzpicture}
+\null
+\clearemptydoublepage
+\endgroup

@@ -27,7 +27,7 @@ Después de descargar un archivo, extráelo o súbelo, compila `Book/book.tex` u
 # Documentos de ejemplo completos
 
 - **`TFG-GIEC-spanish.pdf`**: trabajo fin de grado del GIEC en la UAH. Español; estructura de contenido estándar; estilo tipográfico `standard`; fuentes de página `institutional`.
-- **`TFG-ITIURJC-english-editorial-document-fonts.pdf`**: trabajo fin de grado de ITI en la URJC. Inglés; estructura de contenido estándar; estilo tipográfico `editorial`; fuentes de página `document`.
+- **`TFG-ITI-URJC-english-editorial-document-fonts.pdf`**: trabajo fin de grado de ITI en la URJC. Inglés; estructura de contenido estándar; estilo tipográfico `editorial`; fuentes de página `document`.
 - **`TFM-MUIE-spanish-modern-institutional-fonts.pdf`**: trabajo fin de máster del MUIE en la UAH. Español; estructura de contenido estándar; estilo tipográfico `modern`; fuentes de página `institutional`.
 - **`TFM-MUCTE-english-framed-document-fonts.pdf`**: trabajo fin de máster del MUCTE en la UAH. Inglés; estructura de contenido estándar; estilo tipográfico `framed`; fuentes de página `document`.
 - **`TFM-MUC-spanish-shaded-institutional-fonts.pdf`**: trabajo fin de máster del MUC en la UAH. Español; estructura de contenido estándar; estilo tipográfico `shaded`; fuentes de página `institutional`.
@@ -49,7 +49,7 @@ Cada ejemplo es un documento completo, por lo que puedes examinar las portadas, 
 # Elegir un ejemplo
 
 - Empieza por `TFG-GIEC-spanish.pdf` si quieres entender el flujo de trabajo habitual o simplemente comprobar el aspecto predeterminado.
-- Utiliza el ejemplo ITIURJC si trabajas en la URJC o quieres ver cómo cambia el soporte institucional sin modificar el flujo de trabajo del documento.
+- Utiliza el ejemplo ITI-URJC si trabajas en la URJC o quieres ver cómo cambia el soporte institucional sin modificar el flujo de trabajo del documento.
 - Compara los ejemplos de MUIE, MUCTE y MUC cuando necesites examinar sus distintas secuencias de portadas de máster.
 - Utiliza el ejemplo convencional PHDUAH para una tesis doctoral ordinaria y el ejemplo de compendio únicamente cuando tu tesis se presente formalmente como compendio de publicaciones.
 

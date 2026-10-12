@@ -1,0 +1,45 @@
+% Fixture: exercise cover selection without compiling the full manual.
+\documentclass[openright]{book}
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\renewcommand{\myDegree}{\CoverTestDegree}
+\renewcommand{\myTypesettingStyle}{\CoverTestStyle}
+\renewcommand{\colorspaceused}{\CoverTestColorSpace}
+\newcommand{\myInstitutionalPageFontMode}{\CoverTestFontMode}
+\renewcommand{\myLanguage}{\CoverTestLanguage}
+\renewcommand{\myCoTutorFullName}{\CoverTestCoTutor}
+\renewcommand{\myAcademicTutorFullName}{Tutor de ejemplo}
+\renewcommand{\myAcademicTutorDepartment}{Departamento del tutor}
+\renewcommand{\myAcademicCotutorDepartment}{Departamento del cotutor}
+\renewcommand{\myPonenteFullName}{\CoverTestPonente}
+\renewcommand{\myPonenteDepartment}{Departamento del ponente}
+\renewcommand{\myTribunalFirstSpokesperson}{Primer vocal de ejemplo}
+\renewcommand{\myTribunalSecondSpokesperson}{Segundo vocal no utilizado}
+\renewcommand{\myUPMTechnicalSupervisorFullName}{\CoverTestTechnicalSupervisor}
+\providecommand{\CoverTestSecretaryGender}{female}
+\ifthenelse{\equal{\CoverTestSecretaryGender}{legacy}}
+  {\let\myTribunalSecretaryGender\undefined}
+  {\renewcommand{\myTribunalSecretaryGender}{\CoverTestSecretaryGender}}
+% Deliberately opposite: the tribunal label must not use this variable.
+\ifthenelse{\equal{\CoverTestSecretaryGender}{male}}
+  {\renewcommand{\myDepartmentSecretaryGender}{female}}
+  {\renewcommand{\myDepartmentSecretaryGender}{male}}
+\input{../Config/glossaries.tex}
+\input{../Config/postamble.tex}
+\input{../Config/typesetting/typesetting.tex}
+\begin{document}
+\frontmatter
+\input{../Config/setlanguagedependentissues.tex}
+\renewcommand{\myThesisDefenseYear}{2027}
+\ifdefined\CoverTestLongText
+  \renewcommand{\myBookTitle}{Diseño, implementación y validación de un sistema de análisis de señales para aplicaciones de ingeniería}
+  \renewcommand{\myAuthorFullName}{María de los Ángeles Fernández de la Torre y García}
+\fi
+\ThesisInstitutionalPage{cover/cover.tex}
+\typeout{COVER-TEST-DEGREE: \myDegree}
+\typeout{COVER-TEST-TYPE: \myWorkType}
+\typeout{COVER-TEST-INSTITUTION: \myUniversityAcronym}
+\typeout{COVER-TEST-BACK: \DegreeRegistryLayoutValue{backpage-file}}
+\typeout{COVER-TEST-SECRETARY: \wordTribunalSecretarioOrSecretaria}
+\ThesisInstitutionalPage{cover/backpage.tex}
+\end{document}

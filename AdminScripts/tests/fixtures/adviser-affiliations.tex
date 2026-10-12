@@ -1,0 +1,42 @@
+% Regression fixture: departments, institutions and deprecated aliases.
+\documentclass{book}
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\input{../Config/glossaries.tex}
+\input{../Config/postamble.tex}
+\begin{document}
+\renewcommand{\myAcademicTutorDepartment}{TutorDept}
+\renewcommand{\myAcademicTutorDepartmentEnglish}{TutorDeptEN}
+\renewcommand{\myAcademicCotutorDepartment}{CotutorDept}
+\renewcommand{\myAcademicCotutorDepartmentEnglish}{CotutorDeptEN}
+\renewcommand{\myAcademicTutorInstitution}{TutorInstitution}
+\renewcommand{\myAcademicTutorInstitutionEnglish}{TutorInstitutionEN}
+\renewcommand{\myAcademicCotutorInstitution}{CotutorInstitution}
+\renewcommand{\myAcademicCotutorInstitutionEnglish}{CotutorInstitutionEN}
+Department: \DocumentDepartment\par
+DepartmentEN: \DocumentDepartmentEnglish\par
+Legacy: \myDepartment\par
+LegacyEN: \myDepartmentEnglish\par
+Tutor: \AcademicTutorAffiliation\par
+TutorEN: \AcademicTutorAffiliationEnglish\par
+Cotutor: \AcademicCotutorAffiliation\par
+CotutorEN: \AcademicCotutorAffiliationEnglish\par
+\renewcommand{\myAcademicTutorDepartment}{}
+\renewcommand{\myAcademicTutorDepartmentEnglish}{}
+Fallback: \DocumentDepartment\par
+FallbackEN: \DocumentDepartmentEnglish\par
+InstitutionOnly: \AcademicTutorAffiliation\par
+InstitutionOnlyEN: \AcademicTutorAffiliationEnglish\par
+\renewcommand{\myAcademicCotutorInstitution}{}
+\renewcommand{\myAcademicCotutorInstitutionEnglish}{}
+DepartmentOnly: \AcademicCotutorAffiliation\par
+DepartmentOnlyEN: \AcademicCotutorAffiliationEnglish\par
+\renewcommand{\myAcademicCotutorDepartment}{}
+\renewcommand{\myAcademicCotutorDepartmentEnglish}{}
+EmptyDepartment: [\DocumentDepartment]\par
+EmptyDepartmentEN: [\DocumentDepartmentEnglish]\par
+EmptyLegacy: [\myDepartment]\par
+EmptyLegacyEN: [\myDepartmentEnglish]\par
+EmptyAffiliation: [\AcademicCotutorAffiliation]\par
+EmptyAffiliationEN: [\AcademicCotutorAffiliationEnglish]\par
+\end{document}

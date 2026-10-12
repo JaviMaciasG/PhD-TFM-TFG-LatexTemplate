@@ -20,7 +20,8 @@ defined_variables=$(sed -nE \
   's/^[[:space:]]*\\(newcommand|renewcommand|providecommand)[[:space:]]*\{\\(my[A-Za-z]+)\}.*/\2/p' \
   Config/myconfig.tex | LC_ALL=C sort -u)
 documented_variables=$(rg --no-filename -o '\bmy[A-Za-z]+\b' \
-  --glob '*.tex' --glob '*.md' "${documentation[@]}" | \
+  --glob '*.tex' --glob '*.md' --glob '!content-standard.tex' "${documentation[@]}" | \
+  # Content manifests contain executable selection logic, not field descriptions.
   # File names and the documented myInclude... prefix are not variables.
   sed '/^myconfig$/d; /^myInclude$/d' | LC_ALL=C sort -u)
 unknown_variables=$(LC_ALL=C comm -23 \

@@ -41,11 +41,11 @@ Los identificadores admitidos actualmente por \texttt{\textbackslash{}myDegree},
   \end{itemize}
   \item \textbf{Universidad Rey Juan Carlos}:
   \begin{itemize}
-    \item \textbf{Escuela Superior de Ciencias Experimentales y Tecnología}: trabajo fin de grado \texttt{ITIURJC}.
+    \item \textbf{Escuela Superior de Ciencias Experimentales y Tecnología}: trabajo fin de grado \texttt{ITI-URJC}.
   \end{itemize}
   \item \textbf{Universidad Politécnica de Madrid}:
   \begin{itemize}
-    \item \textbf{Escuela Técnica Superior de Ingenieros de Telecomunicación}: tesis doctoral \texttt{PHDUPM}.
+    \item \textbf{Escuela Técnica Superior de Ingenieros de Telecomunicación}: trabajos fin de grado \texttt{GISTS-UPM}, \texttt{GIB-UPM} y \texttt{GISD-UPM}; trabajos fin de máster \texttt{MUIT-UPM}, \texttt{MUCS-UPM}, \texttt{MUESFV-UPM}, \texttt{MUIB-UPM}, \texttt{MUIRST-UPM}, \texttt{MUISE-UPM}, \texttt{MUTSC-UPM} y \texttt{MUNE-UPM} (Máster Universitario en Neurotecnología); y tesis doctoral \texttt{PHD-ETSIT-UPM}. Los TFG y TFM incluyen la cubierta naranja, la hoja del tribunal y la portada interior del modelo ETSIT-UPM, además de una contraportada completamente naranja con el año de defensa centrado; el GISD y el MUNE distinguen la supervisión técnica y la académica. Las páginas iniciales del MUNE se generan en español o inglés según \texttt{\textbackslash{}myLanguage}, incluidos los títulos, los rótulos del tribunal y la fecha de defensa; los nombres de la Universidad, la Escuela y el Departamento se conservan como están configurados. Revisa los requisitos lingüísticos de tu convocatoria antes de entregar la memoria.
   \end{itemize}
   \item \textbf{Grupo de investigación GEINTRA}: informe de investigación \texttt{GEINTRARR}, cuyo soporte se considera todavía experimental.
 \end{itemize}
@@ -131,23 +131,30 @@ Los datos postales y el teléfono no son necesarios para componer el libro, pero
 Define los datos del tutor académico mediante las siguientes variables:
 
 \begin{itemize}
-  \item \texttt{\textbackslash{}myAcademicTutorFullName}: nombre completo del tutor académico o director principal del trabajo.
+  \item \texttt{\textbackslash{}myAcademicTutorFullName}: nombre completo del tutor académico o director principal del trabajo. En el GISD-UPM, este tutor se muestra como supervisor técnico, no como supervisor académico.
   \item \texttt{\textbackslash{}myAcademicTutorGender}: género gramatical utilizado para adaptar los textos referidos al tutor. Admite los valores \texttt{male} y \texttt{female}.
   \item \texttt{\textbackslash{}myAcademicTutorDNI}: DNI, NIE u otro identificador del tutor requerido en determinados documentos administrativos y autorizaciones.
-  \item \texttt{\textbackslash{}myAcademicTutorDepartmentOrInstitution}: departamento, empresa o institución a la que pertenece el tutor.
+  \item \texttt{\textbackslash{}myAcademicTutorDepartment} y \texttt{\textbackslash{}myAcademicTutorDepartmentEnglish}: departamento del tutor en español e inglés. El departamento general del documento se obtiene de estos campos; si el campo del idioma correspondiente está vacío, se utiliza el del cotutor. Si ambos están vacíos, el campo queda vacío.
+  \item \texttt{\textbackslash{}myAcademicTutorInstitution} y \texttt{\textbackslash{}myAcademicTutorInstitutionEnglish}: universidad, empresa o institución del tutor en español e inglés. Los formularios que solicitan la afiliación o departamento e institución muestran ambos datos, separados por una coma si los dos están completos; una institución no sustituye a un departamento en un campo que pide solamente Departamento.
   \item \texttt{\textbackslash{}myAcademicTutorPosition}: cargo o puesto profesional del tutor.
   \item \texttt{\textbackslash{}myAcademicTutorEmail}: dirección de correo electrónico del tutor.
   \item \texttt{\textbackslash{}myAcademicTutorForeignUniversity}: universidad extranjera a la que pertenece el tutor cuando se utiliza la autorización específica para tutores extranjeros.
   \item \texttt{\textbackslash{}myAcademicTutorForeignCity}: ciudad utilizada para fechar la autorización del tutor extranjero.
+  \item \texttt{\textbackslash{}myPonenteFullName}: nombre del ponente de un TFG del GISTS o GIB, o de un TFM que utilice el mismo modelo de la ETSIT-UPM, distinto del tutor y del cotutor. Puede dejarse vacío; en ese caso, la hoja del tribunal mantiene el campo vacío, sin puntos. Esta hoja utiliza también los nombres de los miembros del tribunal y la fecha de defensa, y deja la calificación en blanco para su cumplimentación oficial.
+  \item \texttt{\textbackslash{}myPonenteDepartment}: departamento del ponente del GISTS o GIB, o de los TFM con el mismo modelo. Si has definido un ponente en \texttt{\textbackslash{}myPonenteFullName}, completa este campo: su valor aparece en Departamento. Si no hay ponente, se utiliza el departamento del tutor, definido en \texttt{\textbackslash{}myAcademicTutorDepartment}.
+  \item \texttt{\textbackslash{}myUPMTechnicalSupervisorFullName}: nombre de la persona encargada de la supervisión técnica del TFM del MUNE-UPM. La supervisión académica se configura con \texttt{\textbackslash{}myAcademicTutorFullName} y su departamento con \texttt{\textbackslash{}myAcademicTutorDepartment}. Ambos roles pueden corresponder a la misma persona, pero debes indicar el nombre en ambas variables. Si dejas vacía la supervisión técnica, se muestra una línea para completarla. Esta hoja no utiliza el campo de ponente ni el cotutor.
 \end{itemize}
+
+En el GISD-UPM, el tutor configurado en \texttt{\textbackslash{}myAcademicTutorFullName} realiza la supervisión técnica, y el cotutor configurado en \texttt{\textbackslash{}myCoTutorFullName} realiza la supervisión académica. El campo Departamento de su hoja de tribunal utiliza \texttt{\textbackslash{}myAcademicCotutorDepartment}. Completa ambos nombres; si corresponden a la misma persona, indícala en ambos campos. El GISD no utiliza \texttt{\textbackslash{}myUPMTechnicalSupervisorFullName} ni el ponente, y no sustituye automáticamente un cotutor vacío por el tutor.
 
 La información del cotutor se define mediante las siguientes variables:
 
 \begin{itemize}
-  \item \texttt{\textbackslash{}myCoTutorFullName}: nombre completo del cotutor o codirector. Si tu trabajo no tiene cotutor, deja esta variable vacía; distintas cubiertas y formularios utilizan este valor vacío para omitir automáticamente sus datos.
+  \item \texttt{\textbackslash{}myCoTutorFullName}: nombre completo del cotutor o codirector. En el GISD-UPM, este cotutor se muestra como supervisor académico: completa su nombre y su departamento en \texttt{\textbackslash{}myAcademicCotutorDepartment}. Para los demás documentos, si tu trabajo no tiene cotutor, deja esta variable vacía; distintas cubiertas y formularios utilizan este valor vacío para omitir automáticamente sus datos.
   \item \texttt{\textbackslash{}myCoTutorGender}: género gramatical utilizado para adaptar los textos referidos al cotutor. Admite los valores \texttt{male} y \texttt{female}.
   \item \texttt{\textbackslash{}myCoTutorDNI}: DNI, NIE u otro identificador del cotutor requerido en determinados documentos administrativos y autorizaciones.
-  \item \texttt{\textbackslash{}myCoTutorDepartmentOrInstitution}: departamento, empresa o institución a la que pertenece el cotutor.
+  \item \texttt{\textbackslash{}myAcademicCotutorDepartment} y \texttt{\textbackslash{}myAcademicCotutorDepartmentEnglish}: departamento del cotutor en español e inglés. Se utiliza como departamento del documento cuando el del tutor está vacío; en el GISD-UPM es el departamento de la supervisión académica.
+  \item \texttt{\textbackslash{}myAcademicCotutorInstitution} y \texttt{\textbackslash{}myAcademicCotutorInstitutionEnglish}: universidad, empresa o institución del cotutor en español e inglés. Los formularios combinan este dato con el departamento cuando solicitan una afiliación; los convenios de cooperación utilizan la institución como entidad externa.
   \item \texttt{\textbackslash{}myCoTutorPosition}: cargo o puesto profesional del cotutor.
   \item \texttt{\textbackslash{}myCoTutorEmail}: dirección de correo electrónico del cotutor.
 \end{itemize}
@@ -159,8 +166,6 @@ Las variables antiguas \texttt{\textbackslash{}myFirstAdvisorFullName}, \texttt{
 La universidad y el centro se obtienen automáticamente de la titulación seleccionada. En \texttt{myconfig.tex} solo tienes que completar los datos de afiliación que pueden variar entre trabajos de una misma titulación:
 
 \begin{itemize}
-  \item \texttt{\textbackslash{}myDepartment}: nombre del departamento en español.
-  \item \texttt{\textbackslash{}myDepartmentEnglish}: nombre del departamento en inglés.
   \item \texttt{\textbackslash{}myPhDProgram}: nombre del programa de doctorado en español. Solo necesitarás esta variable para los documentos que muestren esta información.
   \item \texttt{\textbackslash{}myPhDProgramEnglish}: nombre del programa de doctorado en inglés.
   \item \texttt{\textbackslash{}myResearchGroup}: nombre o acrónimo del grupo de investigación. También se utiliza al generar informes de investigación mediante \texttt{GEINTRARR}.
@@ -174,7 +179,7 @@ Configura la composición del tribunal y los cargos académicos mediante las sig
   \item \texttt{\textbackslash{}myTribunalPresident}: nombre completo de la persona que preside el tribunal.
   \item \texttt{\textbackslash{}myTribunalPresidentGender}: género gramatical de la presidencia del tribunal. Admite los valores \texttt{male} y \texttt{female}.
   \item \texttt{\textbackslash{}myTribunalPresidentDNI}: DNI o NIF de la persona que preside el tribunal, utilizado en el compromiso de confidencialidad.
-  \item \texttt{\textbackslash{}myTribunalFirstSpokesperson}: nombre completo del primer vocal del tribunal.
+  \item \texttt{\textbackslash{}myTribunalFirstSpokesperson}: nombre completo del primer vocal del tribunal. En las hojas de tribunal de los TFG y TFM con el modelo GISTS/GIB de la ETSIT-UPM se muestra como Vocal, y en el modelo inglés del MUNE como Member.
   \item \texttt{\textbackslash{}myTribunalFirstSpokespersonGender}: género gramatical del primer vocal. Admite los valores \texttt{male} y \texttt{female}.
   \item \texttt{\textbackslash{}myTribunalFirstSpokespersonDNI}: DNI o NIF del primer vocal, utilizado en el compromiso de confidencialidad.
   \item \texttt{\textbackslash{}myTribunalSecondSpokesperson}: nombre completo del segundo vocal cuando la composición del tribunal lo requiera.
@@ -184,6 +189,7 @@ Configura la composición del tribunal y los cargos académicos mediante las sig
   \item \texttt{\textbackslash{}myTribunalAlternateMemberGender}: género gramatical del miembro suplente. Admite los valores \texttt{male} y \texttt{female}.
   \item \texttt{\textbackslash{}myTribunalAlternateMemberDNI}: DNI o NIF del miembro suplente, utilizado en el compromiso de confidencialidad.
   \item \texttt{\textbackslash{}myTribunalSecretary}: nombre de la persona que actúa como secretaria del tribunal cuando este puesto sea necesario.
+  \item \texttt{\textbackslash{}myTribunalSecretaryGender}: género gramatical de la secretaría del tribunal, independiente del de la secretaría del departamento. Admite \texttt{male} y \texttt{female}; las hojas de tribunal en español de los TFG y TFM de la ETSIT-UPM muestran Secretario o Secretaria según este valor. En inglés, el MUNE utiliza Secretary.
   \item \texttt{\textbackslash{}myDepartmentSecretary}: nombre de la persona responsable de la secretaría del departamento que debe aparecer o firmar en determinados formularios.
   \item \texttt{\textbackslash{}myDepartmentSecretaryGender}: género gramatical de la persona responsable de la secretaría del departamento. Admite los valores \texttt{male} y \texttt{female}.
   \item \texttt{\textbackslash{}myTFMComisionPresident}: nombre de la persona que preside la comisión de trabajos fin de máster. Se utiliza específicamente en la documentación del MUIE.
@@ -238,14 +244,28 @@ La autorización de publicación, el embargo y la licencia representan decisione
 
 \section{Informes de investigación y tesis de la UPM}
 
-Estas variables proporcionan los datos específicos de los informes de investigación y de las tesis de la UPM:
+Si seleccionas \texttt{PHD-ETSIT-UPM}, la plantilla genera la cubierta, la portada interior y la página de créditos para las tesis de la ETSIT-UPM, basadas en el modelo de tesis UPM. Estas páginas aparecen en las páginas físicas impares 1, 3 y 5 del PDF, con páginas en blanco entre ellas y sin una página en blanco inicial. Las dos primeras páginas institucionales no se numeran; los créditos empiezan en la página romana i. La portada interior incluye los escudos de la ETSIT y de la UPM, con los nombres de Universidad y Escuela centrados verticalmente junto a ellos. El resto de páginas preliminares utiliza números romanos y el cuerpo números arábigos, siempre centrados en el pie, con independencia del estilo tipográfico seleccionado. El modelo oficial no establece una contraportada independiente, por lo que la plantilla no añade ninguna para esta titulación.
+
+Para completar estas páginas, revisa las siguientes variables de \texttt{Config/myconfig.tex}:
 
 \begin{itemize}
-  \item \texttt{\textbackslash{}myResearchReportID}: identificador mostrado en la cubierta de los informes de investigación generados con \texttt{\textbackslash{}myDegree} establecido a \texttt{GEINTRARR}.
-  \item \texttt{\textbackslash{}myUPMdegree}: denominación de la titulación mostrada en las cubiertas de tesis de la Universidad Politécnica de Madrid.
+  \item \texttt{\textbackslash{}myPhDProgram} y \texttt{\textbackslash{}myPhDProgramEnglish}: nombre oficial completo del programa de doctorado, sin abreviarlo. Para la portada UPM, introduce la denominación completa con su encabezamiento, por ejemplo Doctorado en Ingeniería de Sistemas Electrónicos o Doctoral Degree in Electronic Systems Engineering. No conserves el programa de la UAH utilizado como ejemplo si no es el tuyo.
+  \item \texttt{\textbackslash{}myUPMdegree} y \texttt{\textbackslash{}myUPMdegreeEnglish}: titulación académica previa con la que accediste al doctorado, en español e inglés; no es el título de doctor que solicitas.
+  \item \texttt{\textbackslash{}myThesisDepositYear}: año de solicitud del depósito, mostrado junto a Madrid. Por defecto toma el año de defensa, pero debes cambiarlo si el depósito y la defensa corresponden a años distintos.
+  \item \texttt{\textbackslash{}myThesisFundingStatement} y \texttt{\textbackslash{}myThesisFundingStatementEnglish}: texto completo de financiación competitiva, por ejemplo Esta tesis ha sido parcialmente financiada por el proyecto XYZ. Déjalos vacíos si no procede; el texto correspondiente al idioma elegido aparece al final de los créditos y admite formato \LaTeX{}.
+  \item \texttt{\textbackslash{}myAcademicTutorFullName}, \texttt{\textbackslash{}myAcademicTutorGender}, \texttt{\textbackslash{}myAcademicTutorPosition}, \texttt{\textbackslash{}myAcademicTutorPositionEnglish}, \texttt{\textbackslash{}myAcademicTutorInstitution} y \texttt{\textbackslash{}myAcademicTutorInstitutionEnglish}: nombre, género gramatical, puesto e institución del director. Los créditos utilizan la institución, no su departamento.
+  \item \texttt{\textbackslash{}myCoTutorFullName}, \texttt{\textbackslash{}myCoTutorGender}, \texttt{\textbackslash{}myCoTutorPosition}, \texttt{\textbackslash{}myCoTutorPositionEnglish}, \texttt{\textbackslash{}myAcademicCotutorInstitution} y \texttt{\textbackslash{}myAcademicCotutorInstitutionEnglish}: datos equivalentes del codirector. Si no existe, deja vacío su nombre para omitirlo en ambas páginas.
+  \item \texttt{\textbackslash{}myTribunalPresident}, \texttt{\textbackslash{}myTribunalSecretary}, \texttt{\textbackslash{}myTribunalFirstSpokesperson}, \texttt{\textbackslash{}myTribunalSecondSpokesperson} y \texttt{\textbackslash{}myTribunalThirdSpokesperson}: presidencia, secretaría y hasta tres vocales del tribunal; los rótulos de presidencia y secretaría respetan sus variables de género gramatical. Los nombres vacíos se omiten.
+  \item \texttt{\textbackslash{}myTribunalAlternateMember} y \texttt{\textbackslash{}myTribunalSecondAlternateMember}: primer y segundo suplente. Deja vacío el nombre de los que no correspondan.
+  \item \texttt{\textbackslash{}myFirstExternalReviewerFullName} y \texttt{\textbackslash{}mySecondExternalReviewerFullName}: nombres completos de los dos revisores externos. Sus instituciones se indican en \texttt{\textbackslash{}myFirstExternalReviewerInstitution} y \texttt{\textbackslash{}mySecondExternalReviewerInstitution}, o en sus variantes terminadas en \texttt{English}. Puedes dejar vacía la institución; si no hay nombre, se omite toda la entrada.
+  \item \texttt{\textbackslash{}myThesisDefenseDate} y \texttt{\textbackslash{}myThesisdefenseDateEnglish}: fecha de defensa que aparece en los créditos, según el idioma elegido. No debe confundirse con el año de depósito de la cubierta.
 \end{itemize}
 
-El soporte para informes de investigación se considera experimental. Solo necesitarás la variable \texttt{\textbackslash{}myUPMdegree} si utilizas una plantilla de la UPM que dependa de ella.
+Los rótulos siguen \texttt{\textbackslash{}myLanguage}, pero los nombres oficiales de Universidad y Escuela permanecen en español. El género del autor y de los directores determina las formas Doctora, Dra., Directora y Codirectora cuando corresponde. La página de créditos de esta versión se cumplimenta con los revisores, los miembros del tribunal y la fecha de defensa configurados. Ten en cuenta que el modelo oficial de depósito exige dejar esos tres apartados sin completar y utiliza las primeras páginas consecutivas: esta presentación de la memoria final no debe confundirse con una copia lista para el depósito. Comprueba los requisitos de tu convocatoria antes de entregarla.
+
+Comprueba que el título y tu nombre coincidan exactamente con los registrados en THESIS. Debes redactar los dos resúmenes, español e inglés, en texto plano, con un máximo de 4000 caracteres cada uno, incluidos los espacios; la plantilla no comprueba automáticamente esa longitud ni la ausencia de símbolos. Consulta siempre las \href{https://www.upm.es/Estudiantes/Estudios_Titulaciones/Estudios_Doctorado/Tesis/NormasRedaccionTesis}{normas oficiales de redacción de tesis UPM}; para una tesis por compendio también debes revisar sus requisitos específicos, además de las instrucciones de la sección~\ref{sec:tesis-compendio}.
+
+Para los informes de investigación, \texttt{\textbackslash{}myResearchReportID} identifica el informe cuando eliges \texttt{GEINTRARR}; su soporte se considera experimental. Los campos de titulación previa de las tesis UPM no se utilizan en los TFG y TFM de la ETSIT-UPM, cuya denominación se obtiene del identificador seleccionado.
 
 \section{Colores de los enlaces}
 

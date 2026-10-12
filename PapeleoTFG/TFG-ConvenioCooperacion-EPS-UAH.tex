@@ -43,7 +43,7 @@
 \ifthenelse{\equal{\myCoTutorFullName}{}}{%
   \newcommand{\AnnexEntityName}{\AnnexNA}%
 }{%
-  \newcommand{\AnnexEntityName}{\myCoTutorDepartmentOrInstitution}%
+  \newcommand{\AnnexEntityName}{\myAcademicCotutorInstitution}%
 }
 \newcommand{\AnnexEntityTutorName}{%
   \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorFullName}}
@@ -163,7 +163,7 @@ e-mail & \multicolumn{3}{l|}{\AnnexEntityTutorEmail}\\\hline
 \hline
 \AnnexSection{Datos \wordTutorDelOrDeLa{} \wordTutorOrTutora{} en la Universidad de Alcalá}
 Nombre y apellidos & \multicolumn{3}{l|}{\myAcademicTutorFullName}\\\hline
-Departamento & \myAcademicTutorDepartmentOrInstitution & NIF & \myAcademicTutorDNI\\\hline
+Departamento & \myAcademicTutorDepartment & NIF & \myAcademicTutorDNI\\\hline
 & \multicolumn{1}{l|}{} & Teléfono & \AnnexNA\\\hline
 e-mail & \multicolumn{3}{l|}{\myAcademicTutorEmail}\\\hline
 \end{tabularx}

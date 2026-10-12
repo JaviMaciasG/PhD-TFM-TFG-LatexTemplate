@@ -2,6 +2,10 @@
 
 Este documento recoge el comportamiento heredado dependiente de la titulación y el comportamiento aprobado del registro de titulaciones de referencia. Su finalidad es distinguir las correcciones deliberadas de los cambios accidentales y conservar la auditoría de la migración.
 
+## Convención de identificadores fuera de la UAH
+
+Los identificadores de titulaciones fuera de la UAH usan ahora `<titulación>-<universidad>`, por ejemplo `ITI-URJC`, `GIB-UPM`, `MUIT-UPM` y `PHD-ETSIT-UPM`. Las configuraciones existentes deben sustituir los identificadores concatenados anteriores (como `ITIURJC` o `PHDUPM`); los identificadores antiguos no son alias. Los identificadores de la UAH y `GEINTRARR` no cambian. Los nombres de los ficheros generados usan los nuevos identificadores. La auditoría histórica que sigue conserva los identificadores usados en aquel momento.
+
 ## Reglas de migración
 
 - Conservar los nombres actuales de las titulaciones, el texto del tipo de trabajo y la selección de maquetación, salvo que este documento recoja explícitamente un cambio aprobado.
@@ -46,7 +50,7 @@ La columna `Tipo de trabajo` contiene el valor canónico que se utilizará en Te
 | `GISI` | Activo | Grado en Ingeniería en Sistemas de Información | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GIEAI` | Activo | Grado en Ingeniería en Electrónica y Automática Industrial | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GITI` | Activo | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
-| `ITIURJC` | Activo | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo Fin de Grado / Bachelor's Thesis | `urjc-iti-tfg` |
+| `ITI-URJC` | Activo | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo Fin de Grado / Bachelor's Thesis | `urjc-iti-tfg` |
 | `MUSEA` | Activo | Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
 | `MUIT` | Activo | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
 | `MUII` | Activo | Máster Universitario en Ingeniería Industrial | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
@@ -55,7 +59,7 @@ La columna `Tipo de trabajo` contiene el valor canónico que se utilizará en Te
 | `MUANBD` | Activo | Máster Universitario en Analítica de Negocio y Big Data | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muanbd` |
 | `MUC` | Activo | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-muc-2026` |
 | `PHDUAH` | Activo | Estudios de Doctorado | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
-| `PHDUPM` | Activo | Doctor Ingeniero de Telecomunicación | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
+| `PHD-ETSIT-UPM` | Activo | Doctor Ingeniero de Telecomunicación | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
 | `GEINTRARR` | Experimental | GEINTRA Research Report | `RR` | Informe técnico del Grupo de investigación `\myResearchGroup` / `\myResearchGroup` Research Report | `geintra-report` |
 
 ## Definiciones de los perfiles de maquetación
@@ -73,7 +77,7 @@ Estos nombres de perfil describen las secuencias de entrada activas seleccionada
 | `uah-muanbd` | `cover/uah/portada-tfm-normativa-uah.tex`, después `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
 | `uah-muc-2026` | `cover/uah/portada-tfm-ciberseguridad-uah-2026.tex`, después `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
 | `uah-phd` | `cover/uah/cover-phd-uah.tex` | Ninguna |
-| `upm-phd` | `cover/upm/portada-phd-upm.tex`, después `cover/upm/cover-phd-upm.tex` | Ninguna |
+| `upm-phd` | `cover/upm/portada-phd-upm.tex`, después `cover/upm/cover-phd-upm.tex`, después `cover/upm/credits-phd-upm.tex` | Ninguna |
 | `geintra-report` | `cover/uah/portada-geintra-rr.tex` | Ninguna |
 
 ## Compatibilidad de los nombres con saltos de línea

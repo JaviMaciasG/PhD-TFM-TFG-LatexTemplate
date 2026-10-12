@@ -1,58 +1,25 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Función: portada institucional UPM de tesis doctoral.
+% Función: cubierta doctoral UPM según el modelo oficial.
 %
-% Uso: mantenimiento de la plantilla; normalmente no debes modificarlo.
-% Se incluye según el perfil seleccionado; no se compila por separado.
+% Uso: inclusión automática; normalmente no debes modificarlo.
+% Completa los datos en Config/myconfig.tex. No se compila por separado.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\input{cover/upm/phd-layout.tex}
+% Las páginas sin numeración no deben crear destinos page.i/page.ii.
+\hypersetup{pageanchor=false}
+\UPMPhDClearToOddPage
 \thispagestyle{empty}
-\large
-\vspace{3cm}
-\begin{center}
-
-  \Huge\textbf{UNIVERSIDAD POLITÉCNICA DE MADRID}
-
-  \vspace{1cm}
-
-  \huge{Escuela Técnica Superior\\de Ingenieros de Telecomunicación} 
-
-  \vspace{1cm}
-
-\ifthenelse{\equal{\colorspaceused}{rgb}}
-{
-  \includegraphics[width=80mm]{logos/upm/logoetsit_tamano.jpg}
-}
-{
-  \includegraphics[width=80mm]{logos/upm/logoetsit_tamano-cmyk.jpg}
-}
-
-
-  
-%  \vspace{1cm}   
-  
-  \LARGE\textbf{\myBookTitle}
-  
-%  \vspace{5mm}
-  
-  \myAuthorFullName
-
-  \vspace{5mm}
-
-  \myUPMdegree
-
-  \vspace{1cm}
-
-\end{center}
-
-\begin{bottomparagraph}
-  \begin{center}
-    \huge{\myThesisDefenseYear}
-  \end{center}
-\end{bottomparagraph}
-
-
-\clearemptydoublepage
-
-%%% Local Variables:
-%%% TeX-master: "../book"
-%%% End:
+\null
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=north,align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{14.4}{18.8}{bx}] at ([yshift=-2.5cm]current page.north) {\MakeUppercase{\myUniversity}\\\mySchool};
+  \node[anchor=north,inner sep=0pt] at ([yshift=-5cm]current page.north) {\includegraphics[width=5cm]{logos/upm/escudo-upm-doctorado.png}};
+  \node[align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{20.74}{28.9}{bx}] at ([yshift=-12.6cm]current page.north) {\myBookTitle};
+  \node[anchor=north,align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{20.74}{25}{bx}] at ([yshift=-16.3cm]current page.north) {\UPMPhDThesisLabel};
+  \node[anchor=north,align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{14.4}{18.8}{m}] at ([yshift=-17.4cm]current page.north) {\UPMPhDSubmission};
+  \node[anchor=north,align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{17.28}{21}{bx}] at ([yshift=-19cm]current page.north) {\myAuthorFullName};
+  \node[anchor=north,align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{14.4}{18.8}{m}] at ([yshift=-19.9cm]current page.north) {\UPMPhDPreviousDegree};
+  \node[anchor=south,align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{14.4}{18.8}{m}] at ([yshift=2.5cm]current page.south) {Madrid, \myThesisDepositYear};
+\end{tikzpicture}
+% La siguiente página institucional ajusta su propia paridad física.
+\clearpage

@@ -1,0 +1,53 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: recursos comunes de las páginas doctorales oficiales de la UPM.
+%
+% Uso: mantenimiento de la plantilla; normalmente no debes modificarlo.
+% Modelo: UPM_thesis_template_es/en, Maria Blanco (UPM), CC BY 4.0.
+% https://www.upm.es/Estudiantes/Estudios_Titulaciones/Estudios_Doctorado/Tesis/NormasRedaccionTesis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\providecommand{\myUPMdegreeEnglish}{\myUPMdegree}
+\providecommand{\myThesisDepositYear}{\myThesisDefenseYear}
+\providecommand{\myThesisFundingStatement}{}
+\providecommand{\myThesisFundingStatementEnglish}{}
+\providecommand{\myAcademicTutorPositionEnglish}{\myAcademicTutorPosition}
+\providecommand{\myCoTutorPositionEnglish}{\myCoTutorPosition}
+\providecommand{\myTribunalThirdSpokesperson}{}
+\providecommand{\myTribunalSecondAlternateMember}{}
+\providecommand{\myFirstExternalReviewerFullName}{}
+\providecommand{\myFirstExternalReviewerInstitution}{}
+\providecommand{\myFirstExternalReviewerInstitutionEnglish}{}
+\providecommand{\mySecondExternalReviewerFullName}{}
+\providecommand{\mySecondExternalReviewerInstitution}{}
+\providecommand{\mySecondExternalReviewerInstitutionEnglish}{}
+
+\newcommand{\UPMPhDText}[2]{\ifthenelse{\equal{\myLanguage}{spanish}}{#1}{#2}}
+% Las fuentes institucionales no dependen del estilo elegido para el cuerpo.
+\newcommand{\UPMPhDFont}[3]{\setstretch{1}\fontencoding{T1}\fontfamily{lmr}\fontseries{#3}\fontshape{n}\fontsize{#1}{#2}\selectfont}
+\newcommand{\UPMPhDProgramme}{\UPMPhDText{\myPhDProgram}{\myPhDProgramEnglish}}
+\newcommand{\UPMPhDPreviousDegree}{\UPMPhDText{\myUPMdegree}{\myUPMdegreeEnglish}}
+\newcommand{\UPMPhDDoctor}{\ifthenelse{\equal{\myAuthorGender}{female}}{Doctora}{Doctor}}
+\newcommand{\UPMPhDTutor}{\UPMPhDText{\wordDrOrDraTutor}{Dr.}~\myAcademicTutorFullName}
+\newcommand{\UPMPhDCoTutor}{\UPMPhDText{\wordDrOrDraCoTutor}{Dr.}~\myCoTutorFullName}
+\newcommand{\UPMPhDFunding}{\UPMPhDText{\myThesisFundingStatement}{\myThesisFundingStatementEnglish}}
+\newcommand{\UPMPhDThesisLabel}{\UPMPhDText{T E S I S\quad D O C T O R A L}{D O C T O R A L\quad T H E S I S}}
+\newcommand{\UPMPhDSubmission}{\UPMPhDText{Presentada para optar al título de \UPMPhDDoctor{} por:}{Submitted for the degree of Doctor by:}}
+% Sangría común y columnas alineadas para cargos y nombres.
+\newcommand{\UPMPhDPersonRow}[2]{%
+  \hspace*{1cm}\begin{minipage}[t]{3cm}\setlength{\parskip}{0pt}#1:\end{minipage}%
+  \begin{minipage}[t]{12cm}\setlength{\parskip}{0pt}#2\end{minipage}\par\vspace{10pt}%
+}
+% Omite personas sin nombre y evita comas si no hay institución.
+\newcommand{\UPMPhDReviewer}[4]{%
+  \ifthenelse{\equal{#2}{}}{}{%
+    \UPMPhDPersonRow{#1}{#2\UPMPhDText{\ifthenelse{\equal{#3}{}}{}{, #3}}{\ifthenelse{\equal{#4}{}}{}{, #4}}}%
+  }%
+}
+\newcommand{\UPMPhDCommitteeMember}[2]{\ifthenelse{\equal{#2}{}}{}{\UPMPhDPersonRow{#1}{#2}}}
+% Paridad física del PDF, independiente de los reinicios de numeración romana.
+\newcommand{\UPMPhDClearToOddPage}{%
+  \clearpage
+  \ifodd\numexpr\ReadonlyShipoutCounter\relax
+    \thispagestyle{empty}\null\clearpage
+  \fi
+}

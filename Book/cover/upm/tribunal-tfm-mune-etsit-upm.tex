@@ -1,0 +1,50 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: hoja de datos y tribunal del TFM del MUNE en la ETSIT-UPM.
+%
+% Uso: inclusión automática; normalmente no debes modificarlo.
+% Completa los nombres e idioma en Config/myconfig.tex; la nota queda en blanco.
+% Modelo: 04-MUNE_MS.Thesis_Template.docx; normativa ETSIT-UPM, 18-03-2025.
+% No se compila por separado.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+\begingroup
+\normalfont\fontsize{12}{15}\selectfont
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35cm}
+\providecommand{\myUPMTechnicalSupervisorFullName}{}
+% Traducciones locales: no añaden variables de configuración para el usuario.
+\newcommand{\MUNEText}[2]{\ifthenelse{\equal{\myLanguage}{spanish}}{#1}{#2}}
+
+\colorbox{UPMetsitHeadingOrange}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\fontsize{16}{19}\selectfont\UPMETsitCoverDegree}}
+
+\colorbox{UPMetsitHeadingOrange}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\fontsize{16}{19}\selectfont\UPMETsitCoverWorkType}}
+
+\begin{tabularx}{\linewidth}{@{}p{4.8cm}X@{}}
+  \MUNEText{Título}{Title}: & \myBookTitle \\[0.25cm]
+  \wordAutorOrAutoraTitle: & \myAuthorFullName \\[0.25cm]
+  \MUNEText{Supervisión técnica}{Technical Supervisor}: & \ifthenelse{\equal{\myUPMTechnicalSupervisorFullName}{}}{\dotfill}{\myUPMTechnicalSupervisorFullName} \\[0.25cm]
+  \MUNEText{Supervisión académica}{Academic Supervisor}: & \myAcademicTutorFullName \\[0.25cm]
+  \MUNEText{Departamento}{Department}: & \myAcademicTutorDepartment
+\end{tabularx}
+
+\vspace{0.4cm}
+\colorbox{UPMetsitHeadingOrange}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\fontsize{16}{19}\selectfont\MUNEText{MIEMBROS DEL TRIBUNAL}{MEMBERS OF THE EXAMINATION COMMITTEE}}}
+
+\begin{tabularx}{\linewidth}{@{}p{2.9cm}X@{}}
+  \MUNEText{\wordPresidenteOrPresidenta}{President}: & \myTribunalPresident \\[0.7cm]
+  \MUNEText{Vocal}{Member}: & \myTribunalFirstSpokesperson \\[0.7cm]
+  \MUNEText{\wordTribunalSecretarioOrSecretaria}{Secretary}: & \myTribunalSecretary \\[0.7cm]
+  \MUNEText{Suplente}{Substitute}: & \myTribunalAlternateMember
+\end{tabularx}
+
+\vspace{0.7cm}
+\MUNEText{Los miembros del tribunal arriba nombrados acuerdan otorgar la calificación de:}{The above-named members of the panel agree to grant the qualification of:} \dotfill
+
+\vspace{1cm}
+\begin{flushright}
+  Madrid, \myDefenseDateFull
+\end{flushright}
+
+\clearemptydoublepage
+\endgroup

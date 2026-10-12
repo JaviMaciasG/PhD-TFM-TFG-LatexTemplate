@@ -5,6 +5,9 @@
 % Selecciona tu titulación en Config/myconfig.tex.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Fuera de la UAH, los identificadores usan <titulación>-<universidad>.
+% El guion forma parte del identificador y es válido en las comparaciones TeX.
+
 % Legacy pre-Bologna degrees.
 \DeclareDegree{IT}{
   status = legacy,
@@ -286,7 +289,7 @@
   layout-profile = uah-tfg-2024
 }
 
-\DeclareDegree{ITIURJC}{
+\DeclareDegree{ITI-URJC}{
   status = active,
   institution = URJC,
   school = {Escuela Superior de Ciencias Experimentales y Tecnología},
@@ -296,6 +299,45 @@
   work-type-full-spanish = {Trabajo Fin de Grado},
   work-type-full-english = {Bachelor's Thesis},
   layout-profile = urjc-iti-tfg
+}
+
+% Bachelor's degrees at ETSIT-UPM.
+\DeclareDegree{GISTS-UPM}{
+  status = active,
+  institution = UPM,
+  school = {Escuela Técnica Superior de Ingenieros de Telecomunicación},
+  school-english = {School of Telecommunication Engineering},
+  degree-name = {Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación},
+  degree-name-wrapped = {Grado en Ingeniería de Tecnologías\\y Servicios de Telecomunicación},
+  degree-name-wrapped-uppercase = {\MakeUppercase{Grado en Ingeniería de Tecnologías}\\\MakeUppercase{y Servicios de Telecomunicación}},
+  work-type = TFG,
+  work-type-full-spanish = {Trabajo Fin de Grado},
+  work-type-full-english = {Trabajo Fin de Grado},
+  layout-profile = upm-etsit-tft
+}
+
+\DeclareDegree{GIB-UPM}{
+  status = active,
+  institution = UPM,
+  school = {Escuela Técnica Superior de Ingenieros de Telecomunicación},
+  school-english = {School of Telecommunication Engineering},
+  degree-name = {Grado en Ingeniería Biomédica},
+  work-type = TFG,
+  work-type-full-spanish = {Trabajo Fin de Grado},
+  work-type-full-english = {Trabajo Fin de Grado},
+  layout-profile = upm-etsit-tft
+}
+
+\DeclareDegree{GISD-UPM}{
+  status = active,
+  institution = UPM,
+  school = {Escuela Técnica Superior de Ingenieros de Telecomunicación},
+  school-english = {School of Telecommunication Engineering},
+  degree-name = {Grado en Ingeniería y Sistemas de Datos},
+  work-type = TFG,
+  work-type-full-spanish = {Trabajo Fin de Grado},
+  work-type-full-english = {Trabajo Fin de Grado},
+  layout-profile = upm-etsit-gisd-tfg
 }
 
 % Master's degrees.
@@ -397,6 +439,104 @@
   layout-profile = uah-muc-2026
 }
 
+% Master's degrees sharing the GISTS/GIB ETSIT-UPM opening-page model.
+\DeclareDegree{MUIT-UPM}{
+  status = active,
+  institution = UPM,
+  school = {Escuela Técnica Superior de Ingenieros de Telecomunicación},
+  school-english = {School of Telecommunication Engineering},
+  degree-name = {Máster Universitario en Ingeniería de Telecomunicación},
+  work-type = TFM,
+  work-type-full-spanish = {Trabajo Fin de Máster},
+  work-type-full-english = {Trabajo Fin de Máster},
+  layout-profile = upm-etsit-tft
+}
+
+\DeclareDegree{MUCS-UPM}{
+  status = active,
+  institution = UPM,
+  school = {Escuela Técnica Superior de Ingenieros de Telecomunicación},
+  school-english = {School of Telecommunication Engineering},
+  degree-name = {Máster Universitario en Ciberseguridad},
+  work-type = TFM,
+  work-type-full-spanish = {Trabajo Fin de Máster},
+  work-type-full-english = {Trabajo Fin de Máster},
+  layout-profile = upm-etsit-tft
+}
+
+\DeclareDegree{MUESFV-UPM}{
+  status = active,
+  institution = UPM,
+  school = {Escuela Técnica Superior de Ingenieros de Telecomunicación},
+  school-english = {School of Telecommunication Engineering},
+  degree-name = {Máster Universitario en Energía Solar Fotovoltaica},
+  work-type = TFM,
+  work-type-full-spanish = {Trabajo Fin de Máster},
+  work-type-full-english = {Trabajo Fin de Máster},
+  layout-profile = upm-etsit-tft
+}
+
+\DeclareDegree{MUIB-UPM}{
+  status = active,
+  institution = UPM,
+  school = {Escuela Técnica Superior de Ingenieros de Telecomunicación},
+  school-english = {School of Telecommunication Engineering},
+  degree-name = {Máster Universitario en Ingeniería Biomédica},
+  work-type = TFM,
+  work-type-full-spanish = {Trabajo Fin de Máster},
+  work-type-full-english = {Trabajo Fin de Máster},
+  layout-profile = upm-etsit-tft
+}
+
+\DeclareDegree{MUIRST-UPM}{
+  status = active,
+  institution = UPM,
+  school = {Escuela Técnica Superior de Ingenieros de Telecomunicación},
+  school-english = {School of Telecommunication Engineering},
+  degree-name = {Máster Universitario en Ingeniería de Redes y Servicios Telemáticos},
+  work-type = TFM,
+  work-type-full-spanish = {Trabajo Fin de Máster},
+  work-type-full-english = {Trabajo Fin de Máster},
+  layout-profile = upm-etsit-tft
+}
+
+\DeclareDegree{MUISE-UPM}{
+  status = active,
+  institution = UPM,
+  school = {Escuela Técnica Superior de Ingenieros de Telecomunicación},
+  school-english = {School of Telecommunication Engineering},
+  degree-name = {Máster Universitario en Ingeniería de Sistemas Electrónicos},
+  work-type = TFM,
+  work-type-full-spanish = {Trabajo Fin de Máster},
+  work-type-full-english = {Trabajo Fin de Máster},
+  layout-profile = upm-etsit-tft
+}
+
+\DeclareDegree{MUTSC-UPM}{
+  status = active,
+  institution = UPM,
+  school = {Escuela Técnica Superior de Ingenieros de Telecomunicación},
+  school-english = {School of Telecommunication Engineering},
+  degree-name = {Máster Universitario en Teoría de la Señal y Comunicaciones},
+  work-type = TFM,
+  work-type-full-spanish = {Trabajo Fin de Máster},
+  work-type-full-english = {Trabajo Fin de Máster},
+  layout-profile = upm-etsit-tft
+}
+
+\DeclareDegree{MUNE-UPM}{
+  status = active,
+  institution = UPM,
+  school = {Escuela Técnica Superior de Ingenieros de Telecomunicación},
+  school-english = {School of Telecommunication Engineering},
+  degree-name = {Máster Universitario en Neurotecnología},
+  degree-name-english = {Master of Science in Neurotechnology},
+  work-type = TFM,
+  work-type-full-spanish = {Trabajo Fin de Máster},
+  work-type-full-english = {Master's Thesis},
+  layout-profile = upm-etsit-mune-tfm
+}
+
 % Doctoral degrees and research reports.
 \DeclareDegree{PHDUAH}{
   status = active,
@@ -410,7 +550,7 @@
   layout-profile = uah-phd
 }
 
-\DeclareDegree{PHDUPM}{
+\DeclareDegree{PHD-ETSIT-UPM}{
   status = active,
   institution = UPM,
   school = {Escuela Técnica Superior de Ingenieros de Telecomunicación},

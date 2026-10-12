@@ -1,72 +1,25 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Función: cubierta institucional UPM de tesis doctoral.
+% Función: portada interior doctoral UPM según el modelo oficial.
 %
-% Uso: mantenimiento de la plantilla; normalmente no debes modificarlo.
-% Se incluye según el perfil seleccionado; no se compila por separado.
+% Uso: inclusión automática; normalmente no debes modificarlo.
+% Completa los datos en Config/myconfig.tex. No se compila por separado.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\UPMPhDClearToOddPage
 \thispagestyle{empty}
-\large
-\begin{center}
-
-  \Huge\textbf{UNIVERSIDAD POLITÉCNICA DE MADRID}
-
-  \vspace{7mm}
-
-  \huge{Escuela Técnica Superior\\de Ingenieros de Telecomunicación}
-
-  \vspace{1cm}
-  
-  \centerline{\includegraphics[width=80mm]{logos/upm/logoetsit_tamano.jpg}}
-
-%  \vspace{1cm}   
-
-  \Large\textbf{\myBookTitle}
-
-%  \vspace{2cm}
-  
-  \ifthenelse{\equal{\myLanguage}{english}}
-  {
-    \textbf {Author}
-  }
-  {
-    \textbf {\expandafter\makefirstuc\expandafter{\wordAutorOrAutora}}
-  }
-  
-%  \vspace{5mm}
-  
-  \myAuthorFullName
-  
-  \vspace{1cm}
-  
-  \ifthenelse{\equal{\myLanguage}{english}}
-  {
-    \textbf {\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}}
-  }
-  {
-    \textbf {\expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}}
-  }  
-%  \vspace{5mm}
-  
-  \myAdvisors
-  
-\end{center}
-
-\begin{bottomparagraph}
-  \begin{center}
-    \textbf{\myThesisDefenseYear}\\
-    \vspace{5mm}
-    \textbf{\myWorkTypeFull}
-  \end{center}
-\end{bottomparagraph}
-
-
-\normalsize
-
-\clearemptydoublepage
-
-%%% Local Variables:
-%%% TeX-master: "../book"
-%%% End:
-
-
+\null
+\begin{tikzpicture}[remember picture,overlay]
+  % Escudos y nombres comparten el centro vertical del bloque institucional.
+  \node[anchor=west,inner sep=0pt] at ([xshift=2.5cm,yshift=-4cm]current page.north west) {\adjustbox{trim={0.1767\width} {0.1770\height} {0.1767\width} {0.1770\height},clip,height=3.6cm}{\includegraphics{logos/upm/escudo-etsit-upm-color.png}}};
+  \node[anchor=west,inner sep=0pt] at ([xshift=5.9cm,yshift=-4cm]current page.north west) {\includegraphics[height=3.6cm]{logos/upm/escudo-upm-doctorado.png}};
+  \node[anchor=east,align=center,text width=9cm,inner sep=0pt,font=\UPMPhDFont{12}{14.4}{m}] at ([xshift=-2.5cm,yshift=-4cm]current page.north east) {\MakeUppercase{\myUniversity}\\\mySchool};
+  \node[anchor=north,align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{14.4}{18.8}{bx}] at ([yshift=-7.3cm]current page.north) {\UPMPhDProgramme};
+  \node[align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{20.74}{28.9}{bx}] at ([yshift=-10.8cm]current page.north) {\myBookTitle};
+  \node[anchor=north,align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{20.74}{25}{bx}] at ([yshift=-14.5cm]current page.north) {\UPMPhDThesisLabel};
+  \node[anchor=north,align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{14.4}{18.8}{m}] at ([yshift=-15.6cm]current page.north) {\UPMPhDSubmission};
+  \node[anchor=north,align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{17.28}{21}{bx}] at ([yshift=-17.2cm]current page.north) {\myAuthorFullName};
+  \node[anchor=north,align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{14.4}{18.8}{m}] at ([yshift=-18.1cm]current page.north) {\UPMPhDPreviousDegree};
+  \node[anchor=north,align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{14.4}{18.8}{m}] at ([yshift=-20cm]current page.north) {\UPMPhDText{Bajo la dirección de:}{Under the supervision of:}\\\UPMPhDTutor\ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\\UPMPhDCoTutor}};
+  \node[anchor=south,align=center,text width=16cm,inner sep=0pt,font=\UPMPhDFont{14.4}{18.8}{m}] at ([yshift=2.5cm]current page.south) {Madrid, \myThesisDepositYear};
+\end{tikzpicture}
+\clearpage

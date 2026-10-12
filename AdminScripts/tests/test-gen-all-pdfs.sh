@@ -111,6 +111,7 @@ assert_count "$("$generator" --all-degrees --dry-run)" "$((tfgs + tfms + phds + 
 assert_count "$("$generator" --all --dry-run)" "$(((tfgs + tfms + 2 * phds + reports) * 2 * style_count * 2))"
 assert_count "$("$generator" --all --degrees PHDUAH --dry-run)" "$((2 * 2 * style_count * 2))"
 assert_count "$("$generator" --degrees GIEC,GITT,GIEC --dry-run)" 2
+assert_count "$("$generator" --degrees ITI-URJC,MUIT-UPM,PHD-ETSIT-UPM --dry-run)" 3
 assert_count "$("$generator" --degrees GIEC --all-styles --all-fonts --dry-run)" "$((style_count * 2))"
 assert_count "$("$generator" --all --universities URJC --dry-run)" "$((2 * style_count * 2))"
 assert_count "$("$generator" --all-tfms --layout-profiles uah-muc-2026 --dry-run)" 1
@@ -121,6 +122,9 @@ assert_count "$("$generator" --degrees GIEC --styles framed,standard,framed --fo
 assert_contains "$("$generator" --list-options)" 'Universities: UAH URJC UPM GEINTRA'
 assert_contains "$("$generator" --help)" '--yes'
 expect_error --degrees INVALID --dry-run
+expect_error --degrees ITIURJC --dry-run
+expect_error --degrees PHDUPM --dry-run
+expect_error --degrees PHD-UPM --dry-run
 expect_error --degree-types TFC --dry-run
 expect_error --degrees IT --dry-run
 expect_error --universities INVALID --dry-run
@@ -155,6 +159,12 @@ assert_contains "$output" '[OK] 001/002 TFG-GIEC-spanish-standard-standard-insti
 assert_contains "$output" '[OK] 002/002 TFG-GIEC-spanish-standard-framed-institutional.pdf'
 [[ $(find "$fixture/success" -name '*.pdf' | wc -l) == 2 ]] || exit 1
 assert_contains "$("$generator" --degrees GIEC --styles standard,framed --dry-run --output-dir "$fixture/success")" '[REPLACE]'
+
+output=$("$generator" --degrees ITI-URJC,MUIT-UPM,PHD-ETSIT-UPM --yes --output-dir "$fixture/hyphenated")
+assert_contains "$output" '3 successful, 0 failed (3 planned)'
+for filename in TFG-ITI-URJC TFM-MUIT-UPM PhD-PHD-ETSIT-UPM; do
+  [[ -f $fixture/hyphenated/$filename-spanish-standard-standard-institutional.pdf ]] || exit 1
+done
 
 output=$("$generator" --all --degrees PHDUAH --yes --output-dir "$fixture/phd-matrix")
 assert_contains "$output" "$((2 * 2 * style_count * 2)) successful, 0 failed"

@@ -55,4 +55,18 @@
 \input{../Config/typesetting/apply/headings.tex}
 \input{../Config/typesetting/apply/contents.tex}
 \input{../Config/typesetting/apply/pagestyle.tex}
+% UPM doctoral numbering is mandatory and takes precedence over every style.
+\ifthenelse{\equal{\myLayoutProfile}{upm-phd}}{%
+  \fancyhead[LE,RO]{}%
+  \fancyfoot{}%
+  \fancyfoot[C]{\normalfont\thepage}%
+  \fancypagestyle{plain}{%
+    \fancyhf{}%
+    \fancyfoot[C]{\normalfont\thepage}%
+    \renewcommand{\headrulewidth}{0pt}%
+    \renewcommand{\footrulewidth}{0pt}%
+  }%
+  % Included publication PDFs use headings; retain marks, not top page numbers.
+  \let\ps@headings\ps@fancy
+}{}%
 \makeatother

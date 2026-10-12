@@ -26,6 +26,10 @@
 
 \begin{appendices}
   \input{appendix/codigo-algoritmos-listados.tex}
+  % Apéndice de la plantilla ETSIT-UPM; se omite para los demás centros.
+  \ifthenelse{\equal{\myUniversityAcronym}{UPM}\AND\equal{\mySchool}{Escuela Técnica Superior de Ingenieros de Telecomunicación}}
+    {\input{appendix/aspectos-eticos.tex}}
+    {}
 \end{appendices}
 
 %%% Local Variables:

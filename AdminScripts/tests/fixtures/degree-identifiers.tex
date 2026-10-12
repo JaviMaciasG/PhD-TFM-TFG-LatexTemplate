@@ -1,0 +1,42 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: comprobar los identificadores de titulaciones y sus comparaciones.
+%
+% Uso: prueba automatizada; no debes modificarlo para preparar tu documento.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+\usepackage{ifthen}
+\newcommand{\myLanguage}{\TestLanguage}
+\newcommand{\myDegree}{}
+\input{\TestConfigDirectory/degree-registry.tex}
+\input{\TestConfigDirectory/institutions.tex}
+\input{\TestConfigDirectory/layout-profiles.tex}
+\input{\TestConfigDirectory/degrees.tex}
+
+\newcommand{\CheckDegree}[3]{%
+  \renewcommand{\myDegree}{#1}%
+  \DegreeRegistrySelect{\myDegree}%
+  \ifthenelse{\equal{\myDegree}{#1}\AND\equal{\myUniversityAcronym}{#2}\AND\equal{\myWorkType}{#3}}%
+    {\typeout{PASS: #1 / #2 / #3 / \myLanguage}}%
+    {\PackageError{degree-identifiers}{Incorrect registry selection for #1}{Check identifier comparisons}}%
+}
+
+\begin{document}
+\CheckDegree{ITI-URJC}{URJC}{TFG}
+\CheckDegree{GISTS-UPM}{UPM}{TFG}
+\CheckDegree{GIB-UPM}{UPM}{TFG}
+\CheckDegree{GISD-UPM}{UPM}{TFG}
+\CheckDegree{MUIT-UPM}{UPM}{TFM}
+\CheckDegree{MUCS-UPM}{UPM}{TFM}
+\CheckDegree{MUESFV-UPM}{UPM}{TFM}
+\CheckDegree{MUIB-UPM}{UPM}{TFM}
+\CheckDegree{MUIRST-UPM}{UPM}{TFM}
+\CheckDegree{MUISE-UPM}{UPM}{TFM}
+\CheckDegree{MUTSC-UPM}{UPM}{TFM}
+\CheckDegree{MUNE-UPM}{UPM}{TFM}
+\CheckDegree{PHD-ETSIT-UPM}{UPM}{PhD}
+\CheckDegree{GIEC}{UAH}{TFG}
+\CheckDegree{MUIT}{UAH}{TFM}
+\CheckDegree{PHDUAH}{UAH}{PhD}
+\CheckDegree{GEINTRARR}{UAH}{RR}
+\end{document}

@@ -1,0 +1,20 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: contraportada naranja de TFG/TFM de la ETSIT-UPM.
+%
+% Uso: inclusión automática; normalmente no debes modificarlo.
+% Muestra el año de defensa centrado, con tamaño doble al de la cubierta.
+% No se compila por separado.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleartoleftpage
+\thispagestyle{empty}
+\begingroup
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[UPMetsitOrange] (current page.south west) rectangle (current page.north east);
+  \node[anchor=center,inner sep=0pt,text=black,
+    font=\sffamily\bfseries\fontsize{40}{48}\selectfont]
+    at (current page.center) {\myThesisDefenseYear};
+\end{tikzpicture}
+\null
+\clearpage
+\endgroup

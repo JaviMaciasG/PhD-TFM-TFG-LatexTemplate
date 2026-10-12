@@ -1,0 +1,18 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: adaptación de la hoja del tribunal al TFG del GISD-UPM.
+%
+% Uso: inclusión automática; normalmente no debes modificarlo.
+% Configura el tutor (supervisión técnica) y cotutor (académica) en myconfig.tex.
+% Modelo: 05-Plantilla-2-conAnexos-2_MODIFICADO_GRADOS-2_v6.docx.
+% No se compila por separado.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begingroup
+\newcommand{\UPMTFGLabelWidth}{4.8cm}
+\newcommand{\UPMTFGDepartment}{\myAcademicCotutorDepartment}
+\newcommand{\UPMTFGSupervisorRows}{%
+  Supervisión técnica: & \myAcademicTutorFullName \\[0.25cm]
+  Supervisión académica: & \myCoTutorFullName \\[0.25cm]
+}
+\input{cover/upm/tribunal-tfg-etsit-upm.tex}
+\endgroup

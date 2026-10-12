@@ -30,7 +30,7 @@ La selección puede resumirse así:
 
 Antes de editar los ficheros, elija dos identificadores cuando corresponda:
 
-- Un identificador de titulación como `GIEC`, `MUIT` o `ITIURJC`. Es el valor que los usuarios asignan a `\myDegree`, aparece en los nombres de los PDF generados y debería permanecer estable una vez publicado.
+- Un identificador de titulación como `GIEC`, `MUIT` o `ITI-URJC`. Es el valor que los usuarios asignan a `\myDegree`, aparece en los nombres de los PDF generados y debería permanecer estable una vez publicado. Para titulaciones fuera de la UAH, utiliza `<titulación>-<universidad>` (por ejemplo, `ITI-URJC` o `MUIT-UPM`); el registro y las comparaciones de cadenas de LaTeX admiten el guion. Los identificadores específicos de un centro pueden añadir sus siglas, como en `PHD-ETSIT-UPM`.
 - Un identificador de institución como `UAH`, `UPM` o `URJC`. Reutilice un identificador existente cuando la universidad ya esté registrada.
 
 Use identificadores ASCII cortos y sin espacios. Los identificadores de titulaciones e instituciones en mayúsculas siguen la convención actual. Los nombres de los perfiles de maquetación usan palabras en minúsculas separadas por guiones, por ejemplo `uah-tfg-2024` o `urjc-iti-tfg`.
@@ -133,7 +133,7 @@ Use preferentemente las macros ya derivadas de los registros y de `myconfig.tex`
 - `\myDegreefull`, `\myDegreefullwrapped` y `\myDegreefullwrappedUpcase`.
 - `\myWorkType` y `\myWorkTypeFull`.
 - `\myBookTitle`, `\myAuthorFullName`, `\myAcademicTutorFullName` y `\myCoTutorFullName`.
-- `\myDepartment` y `\myDepartmentEnglish`, que se mantienen deliberadamente configurables por el usuario porque los departamentos pueden variar dentro de una misma titulación.
+- Los departamentos e instituciones de tutor y cotutor, con sus versiones inglesas, siguen siendo configurables en `myconfig.tex`. El departamento del documento usa el del tutor o, si está vacío, el del cotutor. Los nombres antiguos `\myDepartment` y `\myDepartmentEnglish` son alias derivados en `postamble.tex`, no campos editables.
 - Las macros existentes de idioma, género, fecha y tutor definidas por la configuración compartida.
 
 No codifique directamente el nombre de una universidad, centro, autor, tutor, idioma o titulación cuando exista una macro que lo represente. Trate explícitamente el caso de `\myCoTutorFullName` vacío si la página muestra información del cotutor.

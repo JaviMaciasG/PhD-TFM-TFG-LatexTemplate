@@ -1,0 +1,50 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: página de créditos doctoral UPM según el modelo oficial.
+%
+% Uso: inclusión automática; normalmente no debes modificarlo.
+% Esta versión cumplimenta revisores, tribunal y fecha para la memoria final.
+% El modelo oficial de depósito pide dejar esos apartados sin completar.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% La página de créditos empieza en una página física impar y se numera como i.
+\UPMPhDClearToOddPage
+\pagenumbering{roman}
+\hypersetup{pageanchor=true}
+\thispagestyle{myplain}
+\null
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=north west,align=left,text width=16cm,inner sep=0pt,font=\UPMPhDFont{14}{18}{m}] at ([xshift=2.5cm,yshift=-2.5cm]current page.north west) {%
+    \begin{minipage}[t][\dimexpr\paperheight-5cm\relax][s]{16cm}
+    \raggedright
+    \setlength{\parindent}{0pt}%
+    \setlength{\parskip}{0pt}%
+    % Tres bloques con separaciones iguales; la fecha queda al pie.
+    \begingroup
+    \setlength{\parskip}{10pt}%
+    \UPMPhDText{Título}{Title}: \myBookTitle\par
+    \UPMPhDText{\ifthenelse{\equal{\myAuthorGender}{female}}{Autora}{Autor}}{Author}: \myAuthorFullName\par
+    \UPMPhDText{Programa de Doctorado}{Doctoral Programme}: \UPMPhDProgramme\par\medskip
+    \UPMPhDText{Dirección de Tesis}{Thesis Supervision}:\par\medskip
+    \hspace*{1cm}\begin{minipage}{15cm}\UPMPhDTutor, \UPMPhDText{\myAcademicTutorPosition}{\myAcademicTutorPositionEnglish}, \UPMPhDText{\myAcademicTutorInstitution}{\myAcademicTutorInstitutionEnglish} (\UPMPhDText{\ifthenelse{\equal{\myAcademicTutorGender}{female}}{Directora}{Director}}{Supervisor})\end{minipage}\par
+    \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\medskip\hspace*{1cm}\begin{minipage}{15cm}\UPMPhDCoTutor, \UPMPhDText{\myCoTutorPosition}{\myCoTutorPositionEnglish}, \UPMPhDText{\myAcademicCotutorInstitution}{\myAcademicCotutorInstitutionEnglish} (\UPMPhDText{\ifthenelse{\equal{\myCoTutorGender}{female}}{Codirectora}{Codirector}}{Co-supervisor})\end{minipage}\par}%
+    \endgroup
+    \vfill
+    \UPMPhDText{Revisores Externos}{External Reviewers}:\par\medskip
+    \UPMPhDReviewer{\UPMPhDText{Revisor 1}{Reviewer 1}}{\myFirstExternalReviewerFullName}{\myFirstExternalReviewerInstitution}{\myFirstExternalReviewerInstitutionEnglish}%
+    \UPMPhDReviewer{\UPMPhDText{Revisor 2}{Reviewer 2}}{\mySecondExternalReviewerFullName}{\mySecondExternalReviewerInstitution}{\mySecondExternalReviewerInstitutionEnglish}%
+    \vfill
+    \UPMPhDText{Tribunal de Tesis}{Thesis Defense Committee}:\par\medskip
+    \UPMPhDCommitteeMember{\UPMPhDText{\wordPresidenteOrPresidenta}{Chair}}{\myTribunalPresident}%
+    \UPMPhDCommitteeMember{\UPMPhDText{\wordTribunalSecretarioOrSecretaria}{Secretary}}{\myTribunalSecretary}%
+    \UPMPhDCommitteeMember{\UPMPhDText{Vocal 1}{Member 1}}{\myTribunalFirstSpokesperson}%
+    \UPMPhDCommitteeMember{\UPMPhDText{Vocal 2}{Member 2}}{\myTribunalSecondSpokesperson}%
+    \UPMPhDCommitteeMember{\UPMPhDText{Vocal 3}{Member 3}}{\myTribunalThirdSpokesperson}%
+    \UPMPhDCommitteeMember{\UPMPhDText{Suplente 1}{Alternate 1}}{\myTribunalAlternateMember}%
+    \UPMPhDCommitteeMember{\UPMPhDText{Suplente 2}{Alternate 2}}{\myTribunalSecondAlternateMember}%
+    \vfill
+    \UPMPhDText{\ifthenelse{\equal{\myThesisFundingStatement}{}}{}{\myThesisFundingStatement\par\medskip}}{\ifthenelse{\equal{\myThesisFundingStatementEnglish}{}}{}{\myThesisFundingStatementEnglish\par\medskip}}%
+    \UPMPhDText{Fecha de defensa de tesis}{Thesis defense date}: \UPMPhDText{\myThesisDefenseDate}{\myThesisdefenseDateEnglish}\par
+    \end{minipage}
+  };
+\end{tikzpicture}
+\clearpage
