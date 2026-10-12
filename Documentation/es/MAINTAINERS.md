@@ -139,6 +139,7 @@ bash AdminScripts/tests/test-etsit-upm-tfg.sh --compile
 bash AdminScripts/tests/test-upm-phd.sh
 bash AdminScripts/tests/test-adviser-affiliations.sh
 bash AdminScripts/tests/test-degree-identifiers.sh
+bash AdminScripts/tests/test-master-translations.sh --compile
 bash AdminScripts/tests/test-user-documentation-variables.sh
 ```
 
@@ -193,9 +194,12 @@ Los campos obligatorios son:
 Los campos opcionales son:
 
 - `school-english`: nombre del centro en inglés. Si se omite, `\mySchoolEnglish` toma el valor de `\mySchool`.
-- `degree-name-english`: se conserva como metadato del registro. Actualmente, la selección de la titulación sigue asignando `degree-name` a `\myDegreefull` en ambos idiomas, por lo que no debe confiar en este campo para cambiar automáticamente el nombre renderizado de la titulación.
+- `degree-name-english`: se selecciona automáticamente para los TFM cuando `\myLanguage` es `english`; si se omite o está vacío, se mantienen el nombre español y sus versiones con saltos de línea. Los demás tipos de trabajo conservan su selección actual del nombre.
 - `degree-name-wrapped`: una forma con saltos de línea explícitos que utilizan las portadas con anchura limitada. Si se omite, `\myDegreefullwrapped` toma el valor de `\myDegreefull`.
 - `degree-name-wrapped-uppercase`: una forma explícita en mayúsculas y con saltos de línea. Si se omite, `\myDegreefullwrappedUpcase` aplica `\MakeUppercase` a `\myDegreefull`.
+- `degree-name-wrapped-english` y `degree-name-wrapped-uppercase-english`: versiones opcionales en inglés para las portadas de TFM. Cuando se selecciona el nombre inglés, los campos omitidos toman ese nombre y su versión en mayúsculas, nunca las versiones españolas con saltos de línea.
+
+Todos los TFM compatibles utilizan `Master's Thesis` en inglés. MUNE-UPM conserva `Master of Science in Neurotechnology`. La portada exterior de MUC constituye una excepción intencionada: su imagen de fondo mantiene los textos españoles de la titulación y del tipo de trabajo; las páginas posteriores con texto LaTeX utilizan los nombres ingleses seleccionados.
 
 Mantenga el formato de la declaración compatible con `Config/query-degree-registry.sh`:
 

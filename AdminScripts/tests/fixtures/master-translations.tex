@@ -1,0 +1,107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: comprobar los nombres y las versiones con saltos de línea de TFM.
+%
+% Uso: prueba automatizada; no debes modificarlo para preparar tu documento.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{ifthen}
+\newcommand{\myLanguage}{\TestLanguage}
+\input{\TestConfigDirectory/degree-registry.tex}
+\input{\TestConfigDirectory/institutions.tex}
+\input{\TestConfigDirectory/layout-profiles.tex}
+\input{\TestConfigDirectory/degrees.tex}
+
+\makeatletter
+\newcommand{\CheckValue}[2]{%
+  \begingroup
+  % Compara el texto; las pruebas de portadas comprueban las mayúsculas.
+  \def\MakeUppercase##1{##1}%
+  \protected@edef\actual{#1}%
+  \protected@edef\expected{#2}%
+  \protected@edef\actual{\actual}%
+  \protected@edef\expected{\expected}%
+  \ifx\actual\expected\else
+    \PackageError{master-translations}{Unexpected value: \meaning\actual}{Expected \meaning\expected}%
+  \fi
+  \endgroup
+}
+\makeatother
+
+\newcommand{\CheckMaster}[4]{%
+  \DegreeRegistrySelect{#1}%
+  \CheckValue{\myWorkType}{TFM}%
+  \ifthenelse{\equal{\myLanguage}{english}}%
+  {%
+    \CheckValue{\myDegreefull}{#3}%
+    \CheckValue{\myWorkTypeFull}{Master's Thesis}%
+    \CheckValue{\myDegreefullwrapped}{#4}%
+    \CheckValue{\myDegreefullwrappedUpcase}{\MakeUppercase{#4}}%
+  }%
+  {%
+    \CheckValue{\myDegreefull}{#2}%
+    \CheckValue{\myWorkTypeFull}{Trabajo Fin de Máster}%
+    \ifthenelse{\equal{\DegreeRegistryValue{degree-name-wrapped}}{}}%
+      {\CheckValue{\myDegreefullwrapped}{#2}}%
+      {\CheckValue{\myDegreefullwrapped}{\DegreeRegistryValue{degree-name-wrapped}}}%
+    \ifthenelse{\equal{\DegreeRegistryValue{degree-name-wrapped-uppercase}}{}}%
+      {\CheckValue{\myDegreefullwrappedUpcase}{\MakeUppercase{#2}}}%
+      {\CheckValue{\myDegreefullwrappedUpcase}{\DegreeRegistryValue{degree-name-wrapped-uppercase}}}%
+  }%
+  \typeout{PASS: master #1 / \myLanguage}%
+}
+
+\begin{document}
+\CheckMaster{MUSEA}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}{Master's Degree in Advanced Electronic Systems. Intelligent Systems}{Master's Degree in Advanced Electronic Systems\\Intelligent Systems}
+\CheckMaster{MUIT}{Máster Universitario en Ingeniería de Telecomunicación}{Master's Degree in Telecommunication Engineering}{Master's Degree in\\Telecommunication Engineering}
+\CheckMaster{MUII}{Máster Universitario en Ingeniería Industrial}{Master's Degree in Industrial Engineering}{Master's Degree in\\Industrial Engineering}
+\CheckMaster{MUIE}{Máster Universitario en Ingeniería Electrónica}{Master's Degree in Electronic Engineering}{Master's Degree in\\Electronic Engineering}
+\CheckMaster{MUCTE}{Máster Universitario en Ciencia y Tecnología desde el Espacio}{Master's Degree in Science and Technology from Space}{Master's Degree in\\Science and Technology from Space}
+\CheckMaster{MUANBD}{Máster Universitario en Analítica de Negocio y Big Data}{Master's Degree in Business Analytics and Big Data}{Master's Degree in\\Business Analytics and Big Data}
+\CheckMaster{MUC}{Máster Universitario en Ciberseguridad}{Master's Degree in Cybersecurity}{Master's Degree in Cybersecurity}
+\CheckMaster{MUIT-UPM}{Máster Universitario en Ingeniería de Telecomunicación}{Master's Degree in Telecommunication Engineering}{Master's Degree in Telecommunication Engineering}
+\CheckMaster{MUCS-UPM}{Máster Universitario en Ciberseguridad}{Master's Degree in Cybersecurity}{Master's Degree in Cybersecurity}
+\CheckMaster{MUESFV-UPM}{Máster Universitario en Energía Solar Fotovoltaica}{Master's Degree in Photovoltaic Solar Energy}{Master's Degree in Photovoltaic Solar Energy}
+\CheckMaster{MUIB-UPM}{Máster Universitario en Ingeniería Biomédica}{Master's Degree in Biomedical Engineering}{Master's Degree in Biomedical Engineering}
+\CheckMaster{MUIRST-UPM}{Máster Universitario en Ingeniería de Redes y Servicios Telemáticos}{Master's Degree in Telematic Networks and Services Engineering}{Master's Degree in Telematic Networks and Services Engineering}
+\CheckMaster{MUISE-UPM}{Máster Universitario en Ingeniería de Sistemas Electrónicos}{Master's Degree in Electronic Systems Engineering}{Master's Degree in Electronic Systems Engineering}
+\CheckMaster{MUTSC-UPM}{Máster Universitario en Teoría de la Señal y Comunicaciones}{Master's Degree in Signal Theory and Communications}{Master's Degree in Signal Theory and Communications}
+\CheckMaster{MUNE-UPM}{Máster Universitario en Neurotecnología}{Master of Science in Neurotechnology}{Master of Science in Neurotechnology}
+
+% La selección repetida no debe dejar activo el nombre inglés de un TFM.
+\ExplSyntaxOn
+\seq_map_inline:Nn \g_uah_degree_registry_ids_seq
+  {
+    \DegreeRegistrySelect{#1}
+    \tl_set:Nx \l_tmpa_tl {\myWorkType}
+    \str_if_eq:VnF \l_tmpa_tl {TFM}
+      {
+        \CheckValue{\myDegreefull}{\DegreeRegistryValue{degree-name}}
+        \tl_set:Nx \l_tmpa_tl {\DegreeRegistryValue{degree-name-wrapped}}
+        \tl_if_blank:VTF \l_tmpa_tl
+          {\CheckValue{\myDegreefullwrapped}{\myDegreefull}}
+          {\CheckValue{\myDegreefullwrapped}{\DegreeRegistryValue{degree-name-wrapped}}}
+      }
+  }
+\ExplSyntaxOff
+\typeout{PASS: non-TFM names unchanged}
+
+\DeclareDegree{TEST-TFM}{
+  status = experimental,
+  institution = UAH,
+  school = {Centro de prueba},
+  degree-name = {Máster de prueba},
+  degree-name-wrapped = {Máster\\de prueba},
+  degree-name-wrapped-uppercase = {\MakeUppercase{Máster}\\\MakeUppercase{de prueba}},
+  work-type = TFM,
+  work-type-full-spanish = {Trabajo Fin de Máster},
+  work-type-full-english = {Master's Thesis},
+  layout-profile = uah-tfm-eps
+}
+\DegreeRegistrySelect{TEST-TFM}
+\CheckValue{\myDegreefull}{Máster de prueba}
+\CheckValue{\myDegreefullwrapped}{Máster\\de prueba}
+\CheckValue{\myDegreefullwrappedUpcase}{\MakeUppercase{Máster}\\\MakeUppercase{de prueba}}
+\typeout{PASS: untranslated TFM fallback}
+\end{document}

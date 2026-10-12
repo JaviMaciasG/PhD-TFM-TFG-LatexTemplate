@@ -8,17 +8,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begingroup
-% Selecciona los textos españoles o ingleses según myLanguage, sin alterar
-% los datos del grado ni los nombres institucionales.
-\ifthenelse{\equal{\myLanguage}{spanish}}
-{
-  \newcommand{\UPMETsitCoverDegree}{\myDegreefullwrappedUpcase}
-  \newcommand{\UPMETsitCoverWorkType}{\MakeUppercase{\myWorkTypeFull}}
-}
-{
-  \newcommand{\UPMETsitCoverDegree}{\MakeUppercase{\DegreeRegistryValue{degree-name-english}}}
-  \newcommand{\UPMETsitCoverWorkType}{\MakeUppercase{\DegreeRegistryValue{work-type-full-english}}}
-}
+% El registro selecciona los textos según myLanguage y conserva los nombres
+% institucionales.
+\newcommand{\UPMETsitCoverDegree}{\myDegreefullwrappedUpcase}
+\newcommand{\UPMETsitCoverWorkType}{\MakeUppercase{\myWorkTypeFull}}
 \input{cover/upm/portada-tfg-etsit-upm.tex}
 \input{cover/upm/tribunal-tfm-mune-etsit-upm.tex}
 \input{cover/upm/cover-tfg-etsit-upm.tex}

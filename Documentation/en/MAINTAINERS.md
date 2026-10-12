@@ -139,6 +139,7 @@ bash AdminScripts/tests/test-etsit-upm-tfg.sh --compile
 bash AdminScripts/tests/test-upm-phd.sh
 bash AdminScripts/tests/test-adviser-affiliations.sh
 bash AdminScripts/tests/test-degree-identifiers.sh
+bash AdminScripts/tests/test-master-translations.sh --compile
 bash AdminScripts/tests/test-user-documentation-variables.sh
 ```
 
@@ -193,9 +194,12 @@ The required fields are:
 The optional fields are:
 
 - `school-english`: English school name. If omitted, `\mySchoolEnglish` falls back to `\mySchool`.
-- `degree-name-english`: retained as registry metadata. At present, degree selection still assigns `degree-name` to `\myDegreefull` in both languages, so do not rely on this field to switch the rendered degree name automatically.
+- `degree-name-english`: selected automatically for TFM degrees when `\myLanguage` is `english`; if omitted or empty, the Spanish name and wrapped forms remain in use. Other work types retain their existing name selection.
 - `degree-name-wrapped`: an explicitly wrapped form used by covers with limited width. If omitted, `\myDegreefullwrapped` falls back to `\myDegreefull`.
 - `degree-name-wrapped-uppercase`: an explicitly wrapped uppercase form. If omitted, `\myDegreefullwrappedUpcase` applies `\MakeUppercase` to `\myDegreefull`.
+- `degree-name-wrapped-english` and `degree-name-wrapped-uppercase-english`: optional English cover forms for TFMs. When the English degree name is selected, omitted forms fall back to that name and its uppercase version, never to the Spanish wrapped forms.
+
+All supported TFMs use `Master's Thesis` in English. MUNE-UPM retains `Master of Science in Neurotechnology`. The MUC outer cover is an intentional exception: its background artwork keeps the Spanish degree and work-type labels unchanged; subsequent text-based pages use the selected English names.
 
 Keep the declaration formatting compatible with `Config/query-degree-registry.sh`:
 

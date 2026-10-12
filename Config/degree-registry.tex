@@ -20,6 +20,9 @@
 \tl_new:N \l_uah_degree_name_english_tl
 \tl_new:N \l_uah_degree_name_wrapped_tl
 \tl_new:N \l_uah_degree_name_wrapped_uppercase_tl
+\tl_new:N \l_uah_degree_name_wrapped_english_tl
+\tl_new:N \l_uah_degree_name_wrapped_uppercase_english_tl
+\bool_new:N \l_uah_degree_english_tfm_bool
 \tl_new:N \l_uah_degree_work_type_tl
 \tl_new:N \l_uah_degree_work_type_full_spanish_tl
 \tl_new:N \l_uah_degree_work_type_full_english_tl
@@ -56,6 +59,8 @@
     degree-name-english            .tl_set:N = \l_uah_degree_name_english_tl,
     degree-name-wrapped            .tl_set:N = \l_uah_degree_name_wrapped_tl,
     degree-name-wrapped-uppercase  .tl_set:N = \l_uah_degree_name_wrapped_uppercase_tl,
+    degree-name-wrapped-english    .tl_set:N = \l_uah_degree_name_wrapped_english_tl,
+    degree-name-wrapped-uppercase-english .tl_set:N = \l_uah_degree_name_wrapped_uppercase_english_tl,
     work-type                      .tl_set:N = \l_uah_degree_work_type_tl,
     work-type-full-spanish         .tl_set:N = \l_uah_degree_work_type_full_spanish_tl,
     work-type-full-english         .tl_set:N = \l_uah_degree_work_type_full_english_tl,
@@ -89,6 +94,8 @@
     \tl_clear:N \l_uah_degree_name_english_tl
     \tl_clear:N \l_uah_degree_name_wrapped_tl
     \tl_clear:N \l_uah_degree_name_wrapped_uppercase_tl
+    \tl_clear:N \l_uah_degree_name_wrapped_english_tl
+    \tl_clear:N \l_uah_degree_name_wrapped_uppercase_english_tl
     \tl_clear:N \l_uah_degree_work_type_tl
     \tl_clear:N \l_uah_degree_work_type_full_spanish_tl
     \tl_clear:N \l_uah_degree_work_type_full_english_tl
@@ -129,6 +136,8 @@
         \uah_degree_store:nnV {#1} {degree-name-english} \l_uah_degree_name_english_tl
         \uah_degree_store:nnV {#1} {degree-name-wrapped} \l_uah_degree_name_wrapped_tl
         \uah_degree_store:nnV {#1} {degree-name-wrapped-uppercase} \l_uah_degree_name_wrapped_uppercase_tl
+        \uah_degree_store:nnV {#1} {degree-name-wrapped-english} \l_uah_degree_name_wrapped_english_tl
+        \uah_degree_store:nnV {#1} {degree-name-wrapped-uppercase-english} \l_uah_degree_name_wrapped_uppercase_english_tl
         \uah_degree_store:nnV {#1} {work-type} \l_uah_degree_work_type_tl
         \uah_degree_store:nnV {#1} {work-type-full-spanish} \l_uah_degree_work_type_full_spanish_tl
         \uah_degree_store:nnV {#1} {work-type-full-english} \l_uah_degree_work_type_full_english_tl
@@ -231,6 +240,22 @@
         \tl_gset:Nn \g_uah_selected_degree_tl {#1}
         \uah_define_from_selected_property:Nn \myDegreefull {degree-name}
         \uah_define_from_selected_property:Nn \myWorkType {work-type}
+        % Solo los TFM seleccionan automáticamente el nombre en inglés.
+        \bool_set_false:N \l_uah_degree_english_tfm_bool
+        \tl_set:Nx \l_tmpa_tl {\myLanguage}
+        \tl_set:Nx \l_tmpb_tl {\myWorkType}
+        \str_if_eq:VnT \l_tmpa_tl {english}
+          {
+            \str_if_eq:VnT \l_tmpb_tl {TFM}
+              {
+                \prop_get:NnN \g_uah_degree_registry_prop {#1/degree-name-english} \l_tmpa_tl
+                \tl_if_blank:VF \l_tmpa_tl
+                  {
+                    \bool_set_true:N \l_uah_degree_english_tfm_bool
+                    \cs_set:Npx \myDegreefull { \exp_not:V \l_tmpa_tl }
+                  }
+              }
+          }
         \uah_define_from_selected_property:Nn \myLayoutProfile {layout-profile}
         \uah_define_from_selected_institution:Nn \myUniversity {university-name}
         \uah_define_from_selected_institution:Nn \myUniversityEnglish {university-name-english}
@@ -244,11 +269,15 @@
         \str_if_eq:VnTF \l_tmpa_tl {spanish}
           { \uah_define_from_selected_property:Nn \myWorkTypeFull {work-type-full-spanish} }
           { \uah_define_from_selected_property:Nn \myWorkTypeFull {work-type-full-english} }
-        \prop_get:NnN \g_uah_degree_registry_prop {#1/degree-name-wrapped} \l_tmpa_tl
+        \bool_if:NTF \l_uah_degree_english_tfm_bool
+          { \prop_get:NnN \g_uah_degree_registry_prop {#1/degree-name-wrapped-english} \l_tmpa_tl }
+          { \prop_get:NnN \g_uah_degree_registry_prop {#1/degree-name-wrapped} \l_tmpa_tl }
         \tl_if_blank:VTF \l_tmpa_tl
           { \cs_set:Npn \myDegreefullwrapped {\myDegreefull} }
           { \cs_set:Npx \myDegreefullwrapped { \exp_not:V \l_tmpa_tl } }
-        \prop_get:NnN \g_uah_degree_registry_prop {#1/degree-name-wrapped-uppercase} \l_tmpa_tl
+        \bool_if:NTF \l_uah_degree_english_tfm_bool
+          { \prop_get:NnN \g_uah_degree_registry_prop {#1/degree-name-wrapped-uppercase-english} \l_tmpa_tl }
+          { \prop_get:NnN \g_uah_degree_registry_prop {#1/degree-name-wrapped-uppercase} \l_tmpa_tl }
         \tl_if_blank:VTF \l_tmpa_tl
           { \cs_set:Npn \myDegreefullwrappedUpcase {\MakeUppercase{\myDegreefull}} }
           { \cs_set:Npx \myDegreefullwrappedUpcase { \exp_not:V \l_tmpa_tl } }

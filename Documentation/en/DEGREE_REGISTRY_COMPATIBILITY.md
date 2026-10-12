@@ -60,20 +60,20 @@ The table follows the order of Config/degrees.tex. Work type is the canonical va
 | `GISTS-UPM` | Active | Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
 | `GIB-UPM` | Active | Grado en Ingeniería Biomédica | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
 | `GISD-UPM` | Active | Grado en Ingeniería y Sistemas de Datos | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-gisd-tfg` |
-| `MUSEA` | Active | Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
-| `MUIT` | Active | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
-| `MUII` | Active | Máster Universitario en Ingeniería Industrial | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
-| `MUIE` | Active | Máster Universitario en Ingeniería Electrónica | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-muie` |
-| `MUCTE` | Active | Máster Universitario en Ciencia y Tecnología desde el Espacio | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-mucte` |
+| `MUSEA` | Active | Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
+| `MUIT` | Active | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
+| `MUII` | Active | Máster Universitario en Ingeniería Industrial | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
+| `MUIE` | Active | Máster Universitario en Ingeniería Electrónica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muie` |
+| `MUCTE` | Active | Máster Universitario en Ciencia y Tecnología desde el Espacio | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-mucte` |
 | `MUANBD` | Active | Máster Universitario en Analítica de Negocio y Big Data | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muanbd` |
-| `MUC` | Active | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-muc-2026` |
-| `MUIT-UPM` | Active | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
-| `MUCS-UPM` | Active | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
-| `MUESFV-UPM` | Active | Máster Universitario en Energía Solar Fotovoltaica | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
-| `MUIB-UPM` | Active | Máster Universitario en Ingeniería Biomédica | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
-| `MUIRST-UPM` | Active | Máster Universitario en Ingeniería de Redes y Servicios Telemáticos | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
-| `MUISE-UPM` | Active | Máster Universitario en Ingeniería de Sistemas Electrónicos | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
-| `MUTSC-UPM` | Active | Máster Universitario en Teoría de la Señal y Comunicaciones | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUC` | Active | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muc-2026` |
+| `MUIT-UPM` | Active | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUCS-UPM` | Active | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUESFV-UPM` | Active | Máster Universitario en Energía Solar Fotovoltaica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUIB-UPM` | Active | Máster Universitario en Ingeniería Biomédica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUIRST-UPM` | Active | Máster Universitario en Ingeniería de Redes y Servicios Telemáticos | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUISE-UPM` | Active | Máster Universitario en Ingeniería de Sistemas Electrónicos | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUTSC-UPM` | Active | Máster Universitario en Teoría de la Señal y Comunicaciones | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
 | `MUNE-UPM` | Active | Máster Universitario en Neurotecnología | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-mune-tfm` |
 | `PHDUAH` | Active | Estudios de Doctorado | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
 | `PHD-ETSIT-UPM` | Active | Doctor Ingeniero de Telecomunicación | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
@@ -124,6 +124,8 @@ The inactive registry was checked against the legacy conditionals in `Config/pos
 
 Activation added `GSI` to the effective generation set. Cover and back-page routing was switched to the combined profiles in the same change as the canonical PhD and research-report work types, avoiding any intermediate state in which the old routing would reject those values. The subsequent tooling migration removed `Config/worktypes.txt`; the Makefile and PDF generator now obtain identifiers and canonical work types directly from `Config/degrees.tex` through `Config/query-degree-registry.sh`.
 
-## Deferred work
+## Subsequent translations and deferred work
 
-After the registry migration is complete and verified, review the English translations of `\myWorkTypeFull` and degree names as a separate change. This must not be folded into the compatibility migration because it would make output differences harder to diagnose.
+English TFM translations were added after the compatibility migration. All 15 supported master degrees now select their English name and `Master's Thesis` when `\myLanguage` is `english`; MUNE-UPM retains `Master of Science in Neurotechnology`. English wrapped forms use their own optional fields and fall back to the English name. Spanish output and other work types retain their previous behaviour. The MUC outer-cover artwork intentionally retains its Spanish labels.
+
+English degree-name translations for other work types, and the remaining Spanish TFC/TFG work-type labels, are still deferred.

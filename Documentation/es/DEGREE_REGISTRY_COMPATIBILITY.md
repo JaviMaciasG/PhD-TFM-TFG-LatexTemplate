@@ -60,20 +60,20 @@ La tabla sigue el orden de Config/degrees.tex. El tipo de trabajo es el valor ca
 | `GISTS-UPM` | Activo | Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
 | `GIB-UPM` | Activo | Grado en Ingeniería Biomédica | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
 | `GISD-UPM` | Activo | Grado en Ingeniería y Sistemas de Datos | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-gisd-tfg` |
-| `MUSEA` | Activo | Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
-| `MUIT` | Activo | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
-| `MUII` | Activo | Máster Universitario en Ingeniería Industrial | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-tfm-eps` |
-| `MUIE` | Activo | Máster Universitario en Ingeniería Electrónica | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-muie` |
-| `MUCTE` | Activo | Máster Universitario en Ciencia y Tecnología desde el Espacio | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-mucte` |
+| `MUSEA` | Activo | Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
+| `MUIT` | Activo | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
+| `MUII` | Activo | Máster Universitario en Ingeniería Industrial | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
+| `MUIE` | Activo | Máster Universitario en Ingeniería Electrónica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muie` |
+| `MUCTE` | Activo | Máster Universitario en Ciencia y Tecnología desde el Espacio | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-mucte` |
 | `MUANBD` | Activo | Máster Universitario en Analítica de Negocio y Big Data | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muanbd` |
-| `MUC` | Activo | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `uah-muc-2026` |
-| `MUIT-UPM` | Activo | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
-| `MUCS-UPM` | Activo | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
-| `MUESFV-UPM` | Activo | Máster Universitario en Energía Solar Fotovoltaica | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
-| `MUIB-UPM` | Activo | Máster Universitario en Ingeniería Biomédica | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
-| `MUIRST-UPM` | Activo | Máster Universitario en Ingeniería de Redes y Servicios Telemáticos | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
-| `MUISE-UPM` | Activo | Máster Universitario en Ingeniería de Sistemas Electrónicos | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
-| `MUTSC-UPM` | Activo | Máster Universitario en Teoría de la Señal y Comunicaciones | `TFM` | Trabajo Fin de Máster / Trabajo Fin de Máster | `upm-etsit-tft` |
+| `MUC` | Activo | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muc-2026` |
+| `MUIT-UPM` | Activo | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUCS-UPM` | Activo | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUESFV-UPM` | Activo | Máster Universitario en Energía Solar Fotovoltaica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUIB-UPM` | Activo | Máster Universitario en Ingeniería Biomédica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUIRST-UPM` | Activo | Máster Universitario en Ingeniería de Redes y Servicios Telemáticos | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUISE-UPM` | Activo | Máster Universitario en Ingeniería de Sistemas Electrónicos | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUTSC-UPM` | Activo | Máster Universitario en Teoría de la Señal y Comunicaciones | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
 | `MUNE-UPM` | Activo | Máster Universitario en Neurotecnología | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-mune-tfm` |
 | `PHDUAH` | Activo | Estudios de Doctorado | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
 | `PHD-ETSIT-UPM` | Activo | Doctor Ingeniero de Telecomunicación | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
@@ -124,6 +124,8 @@ El registro inactivo se comprobó frente a los condicionales heredados de `Confi
 
 La activación añadió `GSI` al conjunto efectivo de generación. El encaminamiento de portadas y contraportadas se cambió a los perfiles combinados en el mismo cambio que los tipos de trabajo canónicos de doctorado e informe de investigación, evitando cualquier estado intermedio en el que el encaminamiento anterior rechazase esos valores. La migración posterior de las herramientas eliminó `Config/worktypes.txt`; el Makefile y el generador de PDF obtienen ahora los identificadores y tipos de trabajo canónicos directamente de `Config/degrees.tex` mediante `Config/query-degree-registry.sh`.
 
-## Trabajo pospuesto
+## Traducciones posteriores y trabajo pospuesto
 
-Una vez completada y verificada la migración del registro, revise las traducciones al inglés de `\myWorkTypeFull` y de los nombres de las titulaciones como un cambio independiente. Esto no debe integrarse en la migración de compatibilidad, porque dificultaría el diagnóstico de las diferencias en la salida.
+Las traducciones de los TFM al inglés se añadieron después de la migración de compatibilidad. Los 15 másteres compatibles seleccionan ahora su nombre inglés y `Master's Thesis` cuando `\myLanguage` es `english`; MUNE-UPM conserva `Master of Science in Neurotechnology`. Las versiones inglesas con saltos de línea utilizan campos opcionales propios y, si se omiten, toman el nombre inglés. La salida en español y los demás tipos de trabajo mantienen su comportamiento anterior. La imagen de la portada exterior de MUC conserva intencionadamente sus textos españoles.
+
+Siguen pendientes las traducciones de los nombres de otras titulaciones y de los tipos de trabajo TFC/TFG que aún conservan textos españoles.
