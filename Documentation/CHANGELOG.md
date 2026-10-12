@@ -2,7 +2,44 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.0.0] - 2026-10-12
+
+### Breaking Changes
+
+- Extend ETSIT-UPM support and separate adviser affiliations
+
+
+### Features
+
+- Added 'escudo' for ETSIT-UPM
+
+
+### Bug Fixes
+
+- Support builds from extracted distributions
+
+- Synchronize Dropbox publications in place
+
+- Start the dedication and preliminary chapters on recto pages
+
+- Recognize breaking Conventional Commit titles
+
+
+### Documentation
+
+- Align degree references and overview with ETSIT-UPM support
+
+
+### Maintenance
+
+- Prepare v8.0.0
+
 ## [v7.3.0] - 2026-10-09
+
+### Breaking Changes
+
+- Add selectable isolated PDF generation
+
 
 ### Features
 
@@ -36,11 +73,6 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Prepare v7.3.0
 
-
-### Other Changes
-
-- Feat(pdf-generation)!: add selectable isolated PDF generation
-
 ## [v7.2.3] - 2026-10-08
 
 ### Bug Fixes
@@ -66,7 +98,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Other Changes
 
-- Build(distribution): distinguish styles comparison and guide PDFs
+- Distinguish styles comparison and guide PDFs
 
 ## [v7.2.1] - 2026-10-08
 
