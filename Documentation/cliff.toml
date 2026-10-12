@@ -30,10 +30,11 @@ limit_tags = 0
 sort_commits = "oldest"
 commit_preprocessors = [
     { pattern = "\\n[\\s\\S]*", replace = "" },
-    { pattern = "(?i)^(chore\\+fea|feat|fea|fix|docs?|refactor|chore)(\\([^)]*\\))?:\\s*", replace = "" },
+    { pattern = "(?i)^(chore\\+fea|feat|fea|fix|docs?|style|refactor|perf|test|build|ci|chore)(\\([^)]*\\))?!?:\\s*", replace = "" },
 ]
 processing_order = ["commit_parsers", "commit_preprocessors", "link_parsers"]
 commit_parsers = [
+    { message = "(?i)^(feat|fea|fix|docs?|style|refactor|perf|test|build|ci|chore)(\\([^)]*\\))?!:", group = "Breaking Changes" },
     { message = "(?i)^chore\\+fea:", group = "Features" },
     { message = "(?i)^(feat|fea)(\\([^)]*\\))?:", group = "Features" },
     { message = "(?i)^fix(\\([^)]*\\))?:", group = "Bug Fixes" },
