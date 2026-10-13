@@ -2,6 +2,17 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.4.1] - 2026-10-13
+
+### Bug Fixes
+
+- Hide font policies from public examples and user guidance
+
+
+### Maintenance
+
+- Prepare v8.4.1
+
 ## [v8.4.0] - 2026-10-13
 
 ### Features
