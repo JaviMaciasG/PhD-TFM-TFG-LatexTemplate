@@ -9,7 +9,7 @@ If you want to start a new document, download the current ZIP or TGZ archive. Bo
 
 If you want to inspect the result before downloading the template, start with `TFG-GIEC-spanish.pdf`. It uses the default structure and appearance, and its first chapters constitute the complete user manual.
 
-The remaining PDFs are deliberately selected examples rather than one generated document for every supported degree. Together they demonstrate both languages, the supported document structures, the alternative typesetting styles, both institutional-page font policies, URJC and ETSIT-UPM support, and the distinct MUIE, MUCTE and MUC cover designs. The absence of a dedicated PDF for a degree does not mean that the degree is unsupported; consult `Config/myconfig.tex` and the manual for the complete list of identifiers.
+The remaining PDFs are deliberately selected examples rather than one generated document for every supported degree. Together they demonstrate both languages, the supported document structures, the alternative typesetting styles, URJC and ETSIT-UPM support, and the distinct MUIE, MUCTE and MUC cover designs. The absence of a dedicated PDF for a degree does not mean that the degree is unsupported; consult `Config/myconfig.tex` and the manual for the complete list of identifiers.
 
 # Template archives and release information
 
@@ -26,14 +26,14 @@ After downloading an archive, extract or upload it, compile `Book/book.tex` once
 
 # Complete example documents
 
-- **`TFG-GIEC-spanish.pdf`**: UAH GIEC bachelor final project. Spanish; standard content structure; `standard` typesetting; `institutional` page fonts.
-- **`TFM-MUIE-spanish-modern-institutional-fonts.pdf`**: UAH MUIE master final project. Spanish; standard content structure; `modern` typesetting; `institutional` page fonts.
-- **`TFM-MUCTE-english-framed-document-fonts.pdf`**: UAH MUCTE master final project. English; standard content structure; `framed` typesetting; `document` page fonts.
-- **`TFM-MUC-spanish-shaded-institutional-fonts.pdf`**: UAH MUC master final project. Spanish; standard content structure; `shaded` typesetting; `institutional` page fonts.
-- **`PhD-PHDUAH-english-conventional-mimosis-document-fonts.pdf`**: Conventional UAH doctoral thesis. English; standard content structure; `mimosis` typesetting; `document` page fonts.
-- **`PhD-PHDUAH-spanish-compendium-standard-institutional-fonts.pdf`**: UAH doctoral thesis by compendium of publications. Spanish; compendium structure; `standard` typesetting; `institutional` page fonts.
-- **`TFG-GISTS-UPM-spanish.pdf`**: ETSIT-UPM GISTS bachelor final project. Spanish; standard content structure; `standard` typesetting; `institutional` page fonts. Shows the orange cover and back page, the assessment page without highlighted headings, and the ethical-aspects appendix.
-- **`TFG-ITI-URJC-english-editorial-document-fonts.pdf`**: URJC ITI bachelor final project. English; standard content structure; `editorial` typesetting; `document` page fonts.
+- **`TFG-GIEC-spanish.pdf`**: UAH GIEC bachelor final project. Spanish; standard content structure; `standard` typesetting.
+- **`TFM-MUIE-spanish-modern.pdf`**: UAH MUIE master final project. Spanish; standard content structure; `modern` typesetting.
+- **`TFM-MUCTE-english-framed.pdf`**: UAH MUCTE master final project. English; standard content structure; `framed` typesetting.
+- **`TFM-MUC-spanish-shaded.pdf`**: UAH MUC master final project. Spanish; standard content structure; `shaded` typesetting.
+- **`PhD-PHDUAH-english-conventional-mimosis.pdf`**: Conventional UAH doctoral thesis. English; standard content structure; `mimosis` typesetting.
+- **`PhD-PHDUAH-spanish-compendium-standard.pdf`**: UAH doctoral thesis by compendium of publications. Spanish; compendium structure; `standard` typesetting.
+- **`TFG-GISTS-UPM-spanish.pdf`**: ETSIT-UPM GISTS bachelor final project. Spanish; standard content structure; `standard` typesetting. Shows the orange cover and back page, the assessment page without highlighted headings, and the ethical-aspects appendix.
+- **`TFG-ITI-URJC-english-editorial.pdf`**: URJC ITI bachelor final project. English; standard content structure; `editorial` typesetting.
 
 The five alternative typesetting styles appear exactly once. The default `standard` style appears in the main GIEC example, the GISTS-UPM example and the compendium example, so that institutional and structural differences can be assessed without an additional visual variation.
 
@@ -41,7 +41,7 @@ The five alternative typesetting styles appear exactly once. The default `standa
 
 The `standard` content structure is appropriate for TFGs, TFMs and conventional doctoral theses. The `compendium` structure is a specialized alternative for doctoral theses presented as a compendium of publications.
 
-The typesetting style controls the document fonts, chapter and section headings, table of contents and running headers. The `institutional` font policy preserves the original fonts on institutional pages such as covers and back pages, whereas `document` lets those pages inherit the selected document fonts. Neither choice changes the institutional logos, wording or page layout.
+The typesetting style controls the document fonts, chapter and section headings, table of contents and running headers. By default, covers retain their institutional fonts without any additional configuration.
 
 Open `02-TYPESETTING-STYLES-COMPARISON.pdf` for a direct comparison of the styles without having to move between the complete example documents. It repeats the same table of contents, chapter opening, ordinary page with equations and long chapter title for every registered style. The active style name appears in the upper-right corner of each sample page.
 
@@ -55,7 +55,7 @@ Every example is a complete document, so you can inspect the covers, front matte
 - Use the GISTS-UPM example to inspect the shared ETSIT-UPM opening-page layout used by GISTS, GIB and several supported master degrees, together with the ethical-aspects appendix.
 - Use the ITI-URJC example if you are working at URJC or want to see how institutional support changes without changing the document workflow.
 
-The visual styles are distributed across these documents to avoid publishing every possible combination. Any supported document can select any available style and either institutional-page font policy through `Config/myconfig.tex`; the pairings in this folder are examples, not restrictions.
+The visual styles are distributed across these documents to avoid publishing every possible combination. Any supported document can select any available style through `Config/myconfig.tex`; the pairings in this folder are examples, not restrictions.
 
 # Keeping the files together
 

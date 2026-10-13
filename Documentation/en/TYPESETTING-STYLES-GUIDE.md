@@ -86,8 +86,6 @@ compendium organisation of the content, not a typesetting profile.
 
 Covers and back pages automatically retain their institutional fonts, even when you select a different typesetting style for the document body. You do not need to configure any additional field in `Config/myconfig.tex`.
 
-The style comparison may also show institutional pages using the document fonts. This is an advanced testing variant: logos, explicit sizes and layout remain unchanged, but new font metrics can change line breaks. If you need to change this behaviour, consult the maintainer documentation; for normal use, retain the original institutional fonts.
-
 ### 2.3 Build the selected document
 
 From `Book`:

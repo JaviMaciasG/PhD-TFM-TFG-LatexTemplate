@@ -9,7 +9,7 @@ Si quieres empezar un documento nuevo, descarga el archivo ZIP o TGZ actual. Amb
 
 Si quieres examinar el resultado antes de descargar la plantilla, empieza por `TFG-GIEC-spanish.pdf`. Utiliza la estructura y el aspecto predeterminados, y sus primeros capítulos constituyen el manual de usuario completo.
 
-Los PDF restantes son ejemplos seleccionados deliberadamente, en lugar de un documento generado para cada titulación compatible. En conjunto muestran los dos idiomas, las estructuras de documento compatibles, los estilos tipográficos alternativos, las dos políticas de fuentes para las páginas institucionales, la compatibilidad con la URJC y la ETSIT-UPM y los distintos diseños de portada de MUIE, MUCTE y MUC. La ausencia de un PDF específico para una titulación no significa que esta no sea compatible; consulta `Config/myconfig.tex` y el manual para ver la lista completa de identificadores.
+Los PDF restantes son ejemplos seleccionados deliberadamente, en lugar de un documento generado para cada titulación compatible. En conjunto muestran los dos idiomas, las estructuras de documento compatibles, los estilos tipográficos alternativos, la compatibilidad con la URJC y la ETSIT-UPM y los distintos diseños de portada de MUIE, MUCTE y MUC. La ausencia de un PDF específico para una titulación no significa que esta no sea compatible; consulta `Config/myconfig.tex` y el manual para ver la lista completa de identificadores.
 
 # Archivos de la plantilla e información de la versión
 
@@ -26,14 +26,14 @@ Después de descargar un archivo, extráelo o súbelo, compila `Book/book.tex` u
 
 # Documentos de ejemplo completos
 
-- **`TFG-GIEC-spanish.pdf`**: trabajo fin de grado del GIEC en la UAH. Español; estructura de contenido estándar; estilo tipográfico `standard`; fuentes de página `institutional`.
-- **`TFM-MUIE-spanish-modern-institutional-fonts.pdf`**: trabajo fin de máster del MUIE en la UAH. Español; estructura de contenido estándar; estilo tipográfico `modern`; fuentes de página `institutional`.
-- **`TFM-MUCTE-english-framed-document-fonts.pdf`**: trabajo fin de máster del MUCTE en la UAH. Inglés; estructura de contenido estándar; estilo tipográfico `framed`; fuentes de página `document`.
-- **`TFM-MUC-spanish-shaded-institutional-fonts.pdf`**: trabajo fin de máster del MUC en la UAH. Español; estructura de contenido estándar; estilo tipográfico `shaded`; fuentes de página `institutional`.
-- **`PhD-PHDUAH-english-conventional-mimosis-document-fonts.pdf`**: tesis doctoral convencional de la UAH. Inglés; estructura de contenido estándar; estilo tipográfico `mimosis`; fuentes de página `document`.
-- **`PhD-PHDUAH-spanish-compendium-standard-institutional-fonts.pdf`**: tesis doctoral de la UAH por compendio de publicaciones. Español; estructura de compendio; estilo tipográfico `standard`; fuentes de página `institutional`.
-- **`TFG-GISTS-UPM-spanish.pdf`**: trabajo fin de grado del GISTS en la ETSIT-UPM. Español; estructura de contenido estándar; estilo tipográfico `standard`; fuentes de página `institutional`. Muestra la portada y la contraportada naranjas, la hoja de datos y tribunal sin títulos resaltados y el apéndice de aspectos éticos.
-- **`TFG-ITI-URJC-english-editorial-document-fonts.pdf`**: trabajo fin de grado de ITI en la URJC. Inglés; estructura de contenido estándar; estilo tipográfico `editorial`; fuentes de página `document`.
+- **`TFG-GIEC-spanish.pdf`**: trabajo fin de grado del GIEC en la UAH. Español; estructura de contenido estándar; estilo tipográfico `standard`.
+- **`TFM-MUIE-spanish-modern.pdf`**: trabajo fin de máster del MUIE en la UAH. Español; estructura de contenido estándar; estilo tipográfico `modern`.
+- **`TFM-MUCTE-english-framed.pdf`**: trabajo fin de máster del MUCTE en la UAH. Inglés; estructura de contenido estándar; estilo tipográfico `framed`.
+- **`TFM-MUC-spanish-shaded.pdf`**: trabajo fin de máster del MUC en la UAH. Español; estructura de contenido estándar; estilo tipográfico `shaded`.
+- **`PhD-PHDUAH-english-conventional-mimosis.pdf`**: tesis doctoral convencional de la UAH. Inglés; estructura de contenido estándar; estilo tipográfico `mimosis`.
+- **`PhD-PHDUAH-spanish-compendium-standard.pdf`**: tesis doctoral de la UAH por compendio de publicaciones. Español; estructura de compendio; estilo tipográfico `standard`.
+- **`TFG-GISTS-UPM-spanish.pdf`**: trabajo fin de grado del GISTS en la ETSIT-UPM. Español; estructura de contenido estándar; estilo tipográfico `standard`. Muestra la portada y la contraportada naranjas, la hoja de datos y tribunal sin títulos resaltados y el apéndice de aspectos éticos.
+- **`TFG-ITI-URJC-english-editorial.pdf`**: trabajo fin de grado de ITI en la URJC. Inglés; estructura de contenido estándar; estilo tipográfico `editorial`.
 
 Los cinco estilos tipográficos alternativos aparecen exactamente una vez. El estilo predeterminado `standard` aparece en el ejemplo principal del GIEC, en el de GISTS-UPM y en el de compendio, para que puedan evaluarse las diferencias institucionales y de estructura sin añadir otra variación visual.
 
@@ -41,7 +41,7 @@ Los cinco estilos tipográficos alternativos aparecen exactamente una vez. El es
 
 La estructura de contenido `standard` es adecuada para TFG, TFM y tesis doctorales convencionales. La estructura `compendium` es una alternativa especializada para tesis doctorales presentadas como compendio de publicaciones.
 
-El estilo tipográfico controla las fuentes del documento, los encabezados de capítulos y secciones, el índice y las cabeceras de página. La política de fuentes `institutional` conserva las fuentes originales en las páginas institucionales, como la portada y la contraportada, mientras que `document` permite que esas páginas hereden las fuentes seleccionadas para el documento. Ninguna de las dos opciones modifica los logotipos institucionales, los textos ni la maquetación de las páginas.
+El estilo tipográfico controla las fuentes del documento, los encabezados de capítulos y secciones, el índice y las cabeceras de página. Por defecto, las portadas conservan sus fuentes institucionales sin que tengas que configurar nada más.
 
 Abre `02-TYPESETTING-STYLES-COMPARISON.pdf` para comparar directamente los estilos sin tener que ir cambiando entre los documentos de ejemplo completos. Para cada estilo registrado repite el mismo índice, inicio de capítulo, página ordinaria con ecuaciones y título de capítulo largo. El nombre del estilo activo aparece en la esquina superior derecha de cada página de muestra.
 
@@ -55,7 +55,7 @@ Cada ejemplo es un documento completo, por lo que puedes examinar las portadas, 
 - Utiliza el ejemplo GISTS-UPM para examinar las páginas iniciales compartidas por GISTS, GIB y varios másteres compatibles de la ETSIT-UPM, junto con el apéndice de aspectos éticos.
 - Utiliza el ejemplo ITI-URJC si trabajas en la URJC o quieres ver cómo cambia el soporte institucional sin modificar el flujo de trabajo del documento.
 
-Los estilos visuales se distribuyen entre estos documentos para evitar publicar todas las combinaciones posibles. Cualquier documento compatible puede seleccionar cualquier estilo disponible y cualquiera de las dos políticas de fuentes para páginas institucionales mediante `Config/myconfig.tex`; las combinaciones de esta carpeta son ejemplos, no restricciones.
+Los estilos visuales se distribuyen entre estos documentos para evitar publicar todas las combinaciones posibles. Cualquier documento compatible puede seleccionar cualquier estilo disponible mediante `Config/myconfig.tex`; las combinaciones de esta carpeta son ejemplos, no restricciones.
 
 # Mantener juntos los archivos
 

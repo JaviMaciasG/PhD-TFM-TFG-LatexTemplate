@@ -89,13 +89,13 @@ cp -p -- "$temporary_directory/01-DOWNLOAD-GUIDE.pdf" "$output_directory/01-DOWN
 # degree|language|structure|style|font policy|published filename
 samples=(
   'GIEC|spanish|standard|standard|institutional|TFG-GIEC-spanish.pdf'
-  'ITI-URJC|english|standard|editorial|document|TFG-ITI-URJC-english-editorial-document-fonts.pdf'
+  'ITI-URJC|english|standard|editorial|document|TFG-ITI-URJC-english-editorial.pdf'
   'GISTS-UPM|spanish|standard|standard|institutional|TFG-GISTS-UPM-spanish.pdf'
-  'MUIE|spanish|standard|modern|institutional|TFM-MUIE-spanish-modern-institutional-fonts.pdf'
-  'MUCTE|english|standard|framed|document|TFM-MUCTE-english-framed-document-fonts.pdf'
-  'MUC|spanish|standard|shaded|institutional|TFM-MUC-spanish-shaded-institutional-fonts.pdf'
-  'PHDUAH|english|standard|mimosis|document|PhD-PHDUAH-english-conventional-mimosis-document-fonts.pdf'
-  'PHDUAH|spanish|compendium|standard|institutional|PhD-PHDUAH-spanish-compendium-standard-institutional-fonts.pdf'
+  'MUIE|spanish|standard|modern|institutional|TFM-MUIE-spanish-modern.pdf'
+  'MUCTE|english|standard|framed|document|TFM-MUCTE-english-framed.pdf'
+  'MUC|spanish|standard|shaded|institutional|TFM-MUC-spanish-shaded.pdf'
+  'PHDUAH|english|standard|mimosis|document|PhD-PHDUAH-english-conventional-mimosis.pdf'
+  'PHDUAH|spanish|compendium|standard|institutional|PhD-PHDUAH-spanish-compendium-standard.pdf'
 )
 
 generated_files=(

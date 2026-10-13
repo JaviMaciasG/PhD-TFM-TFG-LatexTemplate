@@ -92,8 +92,43 @@ grep -q 'Dropbox was not modified' "$fixture/cancel.log"
 grep -q 'Generating TFG-GISTS-UPM-spanish.pdf (GISTS-UPM, spanish, standard, standard, institutional)' "$fixture/cancel.log"
 grep -q 'Generated 11 PDF files' "$fixture/cancel.log"
 [[ -s $fixture/repository/Book/public-samples/TFG-GISTS-UPM-spanish.pdf ]]
+public_names=(
+  TFG-GIEC-spanish.pdf
+  TFM-MUIE-spanish-modern.pdf
+  TFM-MUCTE-english-framed.pdf
+  TFM-MUC-spanish-shaded.pdf
+  PhD-PHDUAH-english-conventional-mimosis.pdf
+  PhD-PHDUAH-spanish-compendium-standard.pdf
+  TFG-GISTS-UPM-spanish.pdf
+  TFG-ITI-URJC-english-editorial.pdf
+)
+for filename in "${public_names[@]}"; do
+  [[ -s $fixture/repository/Book/public-samples/$filename ]]
+  grep -Fq "Generating $filename (" "$fixture/cancel.log"
+  for language in es en; do
+    grep -Fq "$filename" "$repository_root/Documentation/$language/DOWNLOAD-GUIDE.md"
+  done
+done
+[[ -z $(find "$fixture/repository/Book/public-samples" -maxdepth 1 -type f \
+  \( -name '*-institutional-fonts.pdf' -o -name '*-document-fonts.pdf' \) -print -quit) ]]
 [[ $before == "$(snapshot)" ]]
+
+# Renamed files replace old policy-suffixed publications through the normal sync.
+rename_source="$fixture/renamed-publication"
+rename_destination="$fixture/renamed-destination"
+mkdir "$rename_source" "$rename_destination"
+cp "$fixture/repository/Book/public-samples/"*.pdf "$rename_source/"
+cp "$fixture/repository/RELEASE.txt" "$rename_source/"
+printf 'obsolete policy-suffixed sample\n' >"$rename_destination/TFM-MUIE-spanish-modern-institutional-fonts.pdf"
+printf 'obsolete policy-suffixed sample\n' >"$rename_destination/TFG-ITI-URJC-english-editorial-document-fonts.pdf"
+printf 'original GIEC sample\n' >"$rename_destination/TFG-GIEC-spanish.pdf"
+giec_inode=$(stat -c %i "$rename_destination/TFG-GIEC-spanish.pdf")
+bash "$helper" "$rename_source" "$rename_destination" >"$fixture/rename-sync.log"
+[[ ! -e $rename_destination/TFM-MUIE-spanish-modern-institutional-fonts.pdf ]]
+[[ ! -e $rename_destination/TFG-ITI-URJC-english-editorial-document-fonts.pdf ]]
+[[ $(stat -c %i "$rename_destination/TFG-GIEC-spanish.pdf") == "$giec_inode" ]]
+for filename in "${public_names[@]}"; do cmp "$rename_source/$filename" "$rename_destination/$filename"; done
 if FAIL_FIXTURE_BUILD=true PATH="$fixture/bin:$PATH" bash "$generator" --destination "$destination" </dev/null >"$fixture/failure.log" 2>&1; then exit 1; fi
 grep -q 'Dropbox was not modified' "$fixture/failure.log"
 [[ $before == "$(snapshot)" ]]
-echo 'PASS: preview, in-place checksum update, obsolete-file deletion, unrelated-file protection, archive policy, invalid inputs, cancellation and build failure.'
+echo 'PASS: preview, in-place checksum update, obsolete-file deletion, unrelated-file protection, archive policy, invalid inputs, cancellation, build failure and policy-free public sample names.'

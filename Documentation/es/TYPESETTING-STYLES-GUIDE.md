@@ -59,8 +59,6 @@ Sustituye su valor; no añadas un segundo `\newcommand` con el mismo nombre. Los
 
 Las portadas y contraportadas conservan automáticamente sus fuentes institucionales, aunque selecciones otro estilo para el cuerpo del documento. No necesitas configurar ningún campo adicional en `Config/myconfig.tex`.
 
-La comparación de estilos también puede mostrar páginas institucionales con las fuentes del documento. Es una variante avanzada para pruebas: los logotipos, los tamaños explícitos y la maquetación se mantienen, pero las nuevas métricas pueden cambiar los saltos de línea. Si necesitas modificar ese comportamiento, consulta la documentación para mantenedores; para un uso normal, conserva las fuentes institucionales originales.
-
 ### 2.3 Compilar el documento seleccionado
 
 Desde `Book`:
