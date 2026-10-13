@@ -134,7 +134,7 @@ Los campos de departamento e institución del tutor y cotutor son independientes
 
 Las páginas doctorales comparten Book/cover/upm/phd-layout.tex. La portada interior utiliza los escudos de la ETSIT y la UPM con los nombres institucionales centrados verticalmente. Los créditos agrupan los datos de tesis y directores, los revisores externos y el tribunal; conserva las columnas de nombres alineadas con sangría y la fecha de defensa al pie. Las personas opcionales sin nombre se omiten. Los créditos cumplimentados corresponden a la presentación de la memoria final, no a los campos vacíos de revisores, tribunal y fecha del modelo oficial de depósito; conserva esta distinción en el manual de usuario. Mantén la atribución del escudo UPM reutilizado en Book/logos/upm/UPM-DOCTORADO-LICENSE.txt.
 
-Book/content-standard.tex incluye appendix/aspectos-eticos.tex solo para titulaciones UPM cuyo centro sea la ETSIT; la misma condición y el mismo fuente deben mantenerse en las copias orig. Es material de ejemplo de la plantilla ETSIT, no un requisito automático para todas las tesis ni un componente de la estructura mínima preparada. No lo añadas implícitamente a otras universidades ni al cuerpo de la modalidad por compendio.
+Book/content-standard.tex incluye appendix/aspectos-eticos.tex solo para titulaciones UPM cuyo centro sea la ETSIT; la misma condición y el mismo fuente deben mantenerse en las copias orig. La estructura mínima estándar utiliza también esta condición, y Book/appendix/bare/aspectos-eticos.tex proporciona el apéndice editable tanto para la preparación manual como para make bare-standard. Es material de ejemplo de la plantilla ETSIT, no un requisito automático para todas las tesis. No lo añadas implícitamente a otras universidades ni al cuerpo de la modalidad por compendio.
 
 Ejecuta estas comprobaciones específicas tras modificar las maquetaciones o su configuración:
 
@@ -144,6 +144,7 @@ bash AdminScripts/tests/test-upm-phd.sh
 bash AdminScripts/tests/test-adviser-affiliations.sh
 bash AdminScripts/tests/test-degree-identifiers.sh
 bash AdminScripts/tests/test-master-translations.sh --compile
+bash AdminScripts/tests/test-bare-upm-ethics.sh
 bash AdminScripts/tests/test-user-documentation-variables.sh
 ```
 

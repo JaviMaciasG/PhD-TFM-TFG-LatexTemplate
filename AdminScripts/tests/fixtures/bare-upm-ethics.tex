@@ -1,0 +1,30 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: comprobar el apéndice ético de la estructura mínima estándar.
+%
+% Uso: prueba automatizada; no debes modificarlo para preparar tu documento.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{book}
+\usepackage[T1]{fontenc}
+\usepackage{ifthen}
+\usepackage{appendix}
+\newcommand{\myLanguage}{spanish}
+\input{../Config/degree-registry.tex}
+\input{../Config/institutions.tex}
+\input{../Config/layout-profiles.tex}
+\input{../Config/degrees.tex}
+\DegreeRegistrySelect{\TestDegree}
+\ifdefined\TestOtherSchool
+  \renewcommand{\mySchool}{Otro centro UPM}
+\fi
+
+% Se comprueba la inclusión real del apéndice sin compilar los demás ejemplos.
+\let\OriginalInput\input
+\renewcommand{\input}[1]{%
+  \ifthenelse{\equal{#1}{appendix/aspectos-eticos.tex}}%
+    {\typeout{PASS: ETHICAL-APPENDIX-INCLUDED}\OriginalInput{#1}}%
+    {}%
+}
+\begin{document}
+\OriginalInput{content-standard.tex}
+\end{document}

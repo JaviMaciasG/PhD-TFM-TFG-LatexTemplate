@@ -134,7 +134,7 @@ Tutor and cotutor department/institution fields are separate, with Spanish and E
 
 The doctoral pages share Book/cover/upm/phd-layout.tex. The inner title page uses the ETSIT and UPM crests with vertically aligned institution names. The credits group thesis details and advisors, external reviewers, and committee members; keep their indented name columns aligned and the defence date at the bottom. Empty optional people are omitted. The populated credits represent the final thesis presentation, not the blank reviewer/committee/date fields of the official deposit model; retain that distinction in the user manual. Keep the reused UPM crest attribution in Book/logos/upm/UPM-DOCTORADO-LICENSE.txt.
 
-Book/content-standard.tex includes appendix/aspectos-eticos.tex only for UPM degrees whose school is ETSIT; the same condition and source belong in the maintained orig copies. This is sample material from the ETSIT template, not an automatic requirement for every PhD or a component of the prepared minimal structure. Do not add it to unrelated universities or to the compendium body implicitly.
+Book/content-standard.tex includes appendix/aspectos-eticos.tex only for UPM degrees whose school is ETSIT; the same condition and source belong in the maintained orig copies. The standard bare structure uses this condition too, and Book/appendix/bare/aspectos-eticos.tex supplies the editable appendix for both manual preparation and make bare-standard. This is sample material from the ETSIT template, not an automatic requirement for every PhD. Do not add it to unrelated universities or to the compendium body implicitly.
 
 Run the focused checks after modifying these layouts or their configuration:
 
@@ -144,6 +144,7 @@ bash AdminScripts/tests/test-upm-phd.sh
 bash AdminScripts/tests/test-adviser-affiliations.sh
 bash AdminScripts/tests/test-degree-identifiers.sh
 bash AdminScripts/tests/test-master-translations.sh --compile
+bash AdminScripts/tests/test-bare-upm-ethics.sh
 bash AdminScripts/tests/test-user-documentation-variables.sh
 ```
 

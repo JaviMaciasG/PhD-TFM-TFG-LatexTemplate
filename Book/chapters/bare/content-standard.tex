@@ -16,6 +16,10 @@
 \begin{appendices}
   \input{appendix/manual.tex}
   \input{appendix/herramientas.tex}
+  % Apéndice de la plantilla ETSIT-UPM; se omite para los demás centros.
+  \ifthenelse{\equal{\myUniversityAcronym}{UPM}\AND\equal{\mySchool}{Escuela Técnica Superior de Ingenieros de Telecomunicación}}
+    {\input{appendix/aspectos-eticos.tex}}
+    {}
 \end{appendices}
 
 %%% Local Variables:
