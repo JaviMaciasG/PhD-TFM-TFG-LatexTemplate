@@ -2,6 +2,17 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.3.0] - 2026-10-13
+
+### Features
+
+- Include a customizable Spanish project README
+
+
+### Maintenance
+
+- Prepare v8.3.0
+
 ## [v8.2.0] - 2026-10-13
 
 ### Features
