@@ -2,6 +2,22 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.2.0] - 2026-10-13
+
+### Features
+
+- Add a Spanish GISTS-UPM public example
+
+
+### Documentation
+
+- Clarify Spanish configuration guidance and hide legacy degrees
+
+
+### Maintenance
+
+- Prepare v8.2.0
+
 ## [v8.1.0] - 2026-10-12
 
 ### Features
