@@ -15,6 +15,8 @@ fi
 command -v pandoc >/dev/null 2>&1 || { echo "ERROR: pandoc is required to render the typesetting guide for the distribution." >&2; exit 1; }
 [[ -f README.pdf ]] || { echo "ERROR: README.pdf is missing; run make README.pdf first." >&2; exit 1; }
 [[ -f TYPESETTING-STYLES-COMPARISON.pdf ]] || { echo "ERROR: TYPESETTING-STYLES-COMPARISON.pdf is missing; run make -C Documentation first." >&2; exit 1; }
+project_readme=Documentation/es/README-PROYECTO.md
+[[ -s $project_readme ]] || { echo "ERROR: project README template is missing or empty: $project_readme" >&2; exit 1; }
 
 guide_sources=(
   PapeleoTFG/guia-papeleo-tfg-eps-uah.tex
@@ -69,10 +71,12 @@ while IFS= read -r file; do
   cp -p -- "$file" "$stage/$file"
 done < "$manifest"
 
+# Students receive a project README, not the upstream repository introduction.
+cp -p -- "$project_readme" "$stage/README.md"
 mv "$stage/README.pdf" "$stage/00-README.pdf"
 mv "$stage/TYPESETTING-STYLES-COMPARISON.pdf" "$stage/02-TYPESETTING-STYLES-COMPARISON.pdf"
 
-for required_file in 00-README.pdf 02-TYPESETTING-STYLES-COMPARISON.pdf RELEASE.txt Makefile 04-TYPESETTING-STYLES-GUIDE.pdf sync-git-sources.sh Book/book.tex Config/myconfig.tex "${guide_pdfs[@]}"; do
+for required_file in README.md 00-README.pdf 02-TYPESETTING-STYLES-COMPARISON.pdf RELEASE.txt Makefile 04-TYPESETTING-STYLES-GUIDE.pdf sync-git-sources.sh Book/book.tex Config/myconfig.tex "${guide_pdfs[@]}"; do
   [[ -f $stage/$required_file ]] || { echo "ERROR: required distribution file is missing: $required_file" >&2; exit 1; }
 done
 

@@ -11,6 +11,7 @@ documentation=(
   PapeleoTFG/guia-papeleo-tfg-eps-uah.tex
   PapeleoTFM/guia-papeleo-tfm-eps-uah.tex
   Documentation/es/DOWNLOAD-GUIDE.md
+  Documentation/es/README-PROYECTO.md
   Documentation/en/DOWNLOAD-GUIDE.md
   Documentation/es/TYPESETTING-STYLES-GUIDE.md
   Documentation/en/TYPESETTING-STYLES-GUIDE.md

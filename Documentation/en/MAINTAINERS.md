@@ -48,6 +48,10 @@ The optional `AdminScripts/maintainer.mk` fragment supplies this target only in 
 
 The distribution is assembled from an explicit structural allowlist of tracked user sources. It contains `RELEASE.txt`, all registered degree and institutional variants, the book, anteproyecto, paperwork, user build files, `00-README.pdf`, `02-TYPESETTING-STYLES-COMPARISON.pdf`, the rendered user-facing `04-TYPESETTING-STYLES-GUIDE.pdf`, the Git synchronization helper, and required input assets. It excludes `Documentation/`, `AdminScripts/`, `Deprecated/`, `normativas/`, `UsefulDocs/`, slide material, and other generated PDFs. The command validates mandatory and forbidden paths and compiles the default book, anteproyecto, and all three paperwork groups from an isolated staged copy before creating the archives. It does not commit, tag, push, modify `RELEASE.txt`, or leave the rendered guide PDF in the repository root.
 
+The archives also include a root-level `README.md` copied from `Documentation/es/README-PROYECTO.md`. This Spanish project template contains placeholders for students to complete before their first commit; it does not configure compilation. Keep the upstream repository README files unchanged, retain `00-README.pdf` as the template introduction, and do not include the internal source path or render an additional PDF for this project README.
+
+Run `bash AdminScripts/tests/test-distribution-readme.sh` to check the README packaging with isolated fixture sources, real ZIP/TGZ archives and mocked PDF compilation. This regression does not replace the full staged compilation performed by `make distrib`.
+
 Before publishing, start from a clean worktree, confirm that `RELEASE.txt` matches the intended Git tag, run the complete PDF regression generation, run `make distrib`, inspect both archives, and verify that they unpack and compile in a clean directory.
 
 ## Generating the public Dropbox examples

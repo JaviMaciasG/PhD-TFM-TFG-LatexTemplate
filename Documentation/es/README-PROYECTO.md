@@ -1,0 +1,28 @@
+# [Título del trabajo]
+
+Sustituye los textos entre corchetes por los datos de tu trabajo y elimina esta frase cuando hayas terminado.
+
+- Autor/a: [Nombre completo]
+- Titulación: [Nombre de la titulación] (`[Identificador]`)
+- Universidad y centro: [Universidad y escuela o facultad]
+- Tutor/a: [Nombre completo]
+- Cotutor/a: [Nombre completo, o elimina esta línea si no hay cotutor]
+- Curso académico: [Curso]
+
+## Descripción
+
+[Breve descripción del trabajo y sus objetivos]
+
+## Preparación y compilación
+
+Configura los datos del documento en `Config/myconfig.tex`, incluido el identificador de tu titulación. Los datos de este README describen el proyecto, pero no configuran la compilación.
+
+El documento principal es `Book/book.tex`. Puedes compilarlo desde tu editor LaTeX habitual o desde Overleaf, con el procesamiento de bibliografía mediante Biber. No necesitas utilizar Make.
+
+Para organizar tu contenido, edita `Book/content-standard.tex`; si preparas una tesis por compendio de publicaciones, utiliza `Book/content-compendium.tex` y selecciona esa estructura en `Config/myconfig.tex`.
+
+Consulta [00-README.pdf](00-README.pdf) y el manual que obtienes al compilar la plantilla por primera vez para conocer el procedimiento completo, incluida la preparación de una estructura mínima antes de empezar a escribir.
+
+## Plantilla utilizada
+
+Este trabajo utiliza la [plantilla PhD-TFM-TFG-LaTeX de Javier Macías-Guarasa y colaboradores](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate). La versión utilizada figura en [RELEASE.txt](RELEASE.txt).
