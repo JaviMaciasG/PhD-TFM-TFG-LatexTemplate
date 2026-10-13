@@ -2,6 +2,17 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.3.1] - 2026-10-13
+
+### Documentation
+
+- List UAH examples before UPM and URJC
+
+
+### Maintenance
+
+- Prepare v8.3.1
+
 ## [v8.3.0] - 2026-10-13
 
 ### Features
