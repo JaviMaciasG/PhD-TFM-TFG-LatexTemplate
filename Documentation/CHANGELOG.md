@@ -2,6 +2,19 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.4.0] - 2026-10-13
+
+### Features
+
+- Include the ethical-aspects appendix for ETSIT-UPM degrees
+
+
+### Maintenance
+
+- Remove useless comment on dots usage
+
+- Prepare v8.4.0
+
 ## [v8.3.1] - 2026-10-13
 
 ### Documentation
