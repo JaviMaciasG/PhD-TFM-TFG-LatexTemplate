@@ -27,13 +27,13 @@ Después de descargar un archivo, extráelo o súbelo, compila `Book/book.tex` u
 # Documentos de ejemplo completos
 
 - **`TFG-GIEC-spanish.pdf`**: trabajo fin de grado del GIEC en la UAH. Español; estructura de contenido estándar; estilo tipográfico `standard`; fuentes de página `institutional`.
-- **`TFG-ITI-URJC-english-editorial-document-fonts.pdf`**: trabajo fin de grado de ITI en la URJC. Inglés; estructura de contenido estándar; estilo tipográfico `editorial`; fuentes de página `document`.
-- **`TFG-GISTS-UPM-spanish.pdf`**: trabajo fin de grado del GISTS en la ETSIT-UPM. Español; estructura de contenido estándar; estilo tipográfico `standard`; fuentes de página `institutional`. Muestra la portada y la contraportada naranjas, la hoja de datos y tribunal sin títulos resaltados y el apéndice de aspectos éticos.
 - **`TFM-MUIE-spanish-modern-institutional-fonts.pdf`**: trabajo fin de máster del MUIE en la UAH. Español; estructura de contenido estándar; estilo tipográfico `modern`; fuentes de página `institutional`.
 - **`TFM-MUCTE-english-framed-document-fonts.pdf`**: trabajo fin de máster del MUCTE en la UAH. Inglés; estructura de contenido estándar; estilo tipográfico `framed`; fuentes de página `document`.
 - **`TFM-MUC-spanish-shaded-institutional-fonts.pdf`**: trabajo fin de máster del MUC en la UAH. Español; estructura de contenido estándar; estilo tipográfico `shaded`; fuentes de página `institutional`.
 - **`PhD-PHDUAH-english-conventional-mimosis-document-fonts.pdf`**: tesis doctoral convencional de la UAH. Inglés; estructura de contenido estándar; estilo tipográfico `mimosis`; fuentes de página `document`.
 - **`PhD-PHDUAH-spanish-compendium-standard-institutional-fonts.pdf`**: tesis doctoral de la UAH por compendio de publicaciones. Español; estructura de compendio; estilo tipográfico `standard`; fuentes de página `institutional`.
+- **`TFG-GISTS-UPM-spanish.pdf`**: trabajo fin de grado del GISTS en la ETSIT-UPM. Español; estructura de contenido estándar; estilo tipográfico `standard`; fuentes de página `institutional`. Muestra la portada y la contraportada naranjas, la hoja de datos y tribunal sin títulos resaltados y el apéndice de aspectos éticos.
+- **`TFG-ITI-URJC-english-editorial-document-fonts.pdf`**: trabajo fin de grado de ITI en la URJC. Inglés; estructura de contenido estándar; estilo tipográfico `editorial`; fuentes de página `document`.
 
 Los cinco estilos tipográficos alternativos aparecen exactamente una vez. El estilo predeterminado `standard` aparece en el ejemplo principal del GIEC, en el de GISTS-UPM y en el de compendio, para que puedan evaluarse las diferencias institucionales y de estructura sin añadir otra variación visual.
 
@@ -50,10 +50,10 @@ Cada ejemplo es un documento completo, por lo que puedes examinar las portadas, 
 # Elegir un ejemplo
 
 - Empieza por `TFG-GIEC-spanish.pdf` si quieres entender el flujo de trabajo habitual o simplemente comprobar el aspecto predeterminado.
-- Utiliza el ejemplo ITI-URJC si trabajas en la URJC o quieres ver cómo cambia el soporte institucional sin modificar el flujo de trabajo del documento.
-- Utiliza el ejemplo GISTS-UPM para examinar las páginas iniciales compartidas por GISTS, GIB y varios másteres compatibles de la ETSIT-UPM, junto con el apéndice de aspectos éticos.
 - Compara los ejemplos de MUIE, MUCTE y MUC cuando necesites examinar sus distintas secuencias de portadas de máster.
 - Utiliza el ejemplo convencional PHDUAH para una tesis doctoral ordinaria y el ejemplo de compendio únicamente cuando tu tesis se presente formalmente como compendio de publicaciones.
+- Utiliza el ejemplo GISTS-UPM para examinar las páginas iniciales compartidas por GISTS, GIB y varios másteres compatibles de la ETSIT-UPM, junto con el apéndice de aspectos éticos.
+- Utiliza el ejemplo ITI-URJC si trabajas en la URJC o quieres ver cómo cambia el soporte institucional sin modificar el flujo de trabajo del documento.
 
 Los estilos visuales se distribuyen entre estos documentos para evitar publicar todas las combinaciones posibles. Cualquier documento compatible puede seleccionar cualquier estilo disponible y cualquiera de las dos políticas de fuentes para páginas institucionales mediante `Config/myconfig.tex`; las combinaciones de esta carpeta son ejemplos, no restricciones.
 
