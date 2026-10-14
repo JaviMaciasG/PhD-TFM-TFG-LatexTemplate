@@ -2,6 +2,21 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.4.2] - 2026-10-14
+
+### Bug Fixes
+
+- Fixed María de Pedraza surname
+
+- Improve institutional information page spacing and alignment
+
+- Complete example DNI values and document their meanings
+
+
+### Maintenance
+
+- Prepare v8.4.2
+
 ## [v8.4.1] - 2026-10-13
 
 ### Bug Fixes
