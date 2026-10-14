@@ -10,8 +10,6 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Improve institutional information page spacing and alignment
 
-- Complete example DNI values and document their meanings
-
 
 ### Maintenance
 
