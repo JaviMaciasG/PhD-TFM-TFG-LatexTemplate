@@ -36,6 +36,11 @@
 \renewcommand{\mySecondExternalReviewerFullName}{Segundo revisor de ejemplo}
 \renewcommand{\mySecondExternalReviewerInstitution}{}
 \renewcommand{\mySecondExternalReviewerInstitutionEnglish}{}
+\providecommand{\PhDTestReviewers}{two}
+\ifthenelse{\equal{\PhDTestReviewers}{none}}{%
+  \renewcommand{\myFirstExternalReviewerFullName}{}
+  \renewcommand{\mySecondExternalReviewerFullName}{}
+}{}
 \input{../Config/glossaries.tex}
 \input{../Config/postamble.tex}
 \input{../Config/typesetting/typesetting.tex}

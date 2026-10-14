@@ -83,6 +83,23 @@ for row in "${cases[@]}"; do
   grep -q "COVER-TEST-SECRETARY: $expected_secretary" "$fixture/Book/$name.log"
   pdftotext "$fixture/Book/$name.pdf" "$fixture/$name.txt"
   pdftotext -f 3 -l 3 -layout "$fixture/Book/$name.pdf" "$fixture/$name-sheet.txt"
+  pdftotext -f 3 -l 3 -bbox "$fixture/Book/$name.pdf" "$fixture/$name-sheet.xml"
+  python3 - "$fixture/$name-sheet.xml" <<'PY'
+import sys
+import xml.etree.ElementTree as ET
+ns = {'x': 'http://www.w3.org/1999/xhtml'}
+words = ET.parse(sys.argv[1]).findall('.//x:word', ns)
+def text(word):
+    return (word.text or '').replace('’', "'")
+work_type = next(word for index, word in enumerate(words)
+                 if text(word) == 'TRABAJO'
+                 or (text(word) == "MASTER'S" and index + 1 < len(words)
+                     and text(words[index + 1]) == 'THESIS'))
+work_top = float(work_type.attrib['yMin'])
+degree_bottom = max(float(word.attrib['yMax']) for word in words
+                    if float(word.attrib['yMax']) < work_top)
+assert work_top - degree_bottom >= 20, 'Insufficient degree/work-type spacing on assessment page'
+PY
   if [[ $degree == MUNE-UPM ]]; then
     if [[ $language == english ]]; then
       grep -q 'MASTER OF SCIENCE IN NEUROTECHNOLOGY' "$fixture/$name.txt"

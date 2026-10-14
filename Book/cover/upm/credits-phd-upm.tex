@@ -18,7 +18,8 @@
     \raggedright
     \setlength{\parindent}{0pt}%
     \setlength{\parskip}{0pt}%
-    % Tres bloques con separaciones iguales; la fecha queda al pie.
+    % Distribuye sólo los bloques presentes; la fecha queda al pie.
+    \newcommand{\UPMPhDBlockGap}{\par\vspace{0.35cm plus 1fill}}%
     \begingroup
     \setlength{\parskip}{10pt}%
     \UPMPhDText{Título}{Title}: \myBookTitle\par
@@ -28,21 +29,31 @@
     \hspace*{1cm}\begin{minipage}{15cm}\UPMPhDTutor, \UPMPhDText{\myAcademicTutorPosition}{\myAcademicTutorPositionEnglish}, \UPMPhDText{\myAcademicTutorInstitution}{\myAcademicTutorInstitutionEnglish} (\UPMPhDText{\ifthenelse{\equal{\myAcademicTutorGender}{female}}{Directora}{Director}}{Supervisor})\end{minipage}\par
     \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\medskip\hspace*{1cm}\begin{minipage}{15cm}\UPMPhDCoTutor, \UPMPhDText{\myCoTutorPosition}{\myCoTutorPositionEnglish}, \UPMPhDText{\myAcademicCotutorInstitution}{\myAcademicCotutorInstitutionEnglish} (\UPMPhDText{\ifthenelse{\equal{\myCoTutorGender}{female}}{Codirectora}{Codirector}}{Co-supervisor})\end{minipage}\par}%
     \endgroup
-    \vfill
-    \UPMPhDText{Revisores Externos}{External Reviewers}:\par\medskip
-    \UPMPhDReviewer{\UPMPhDText{Revisor 1}{Reviewer 1}}{\myFirstExternalReviewerFullName}{\myFirstExternalReviewerInstitution}{\myFirstExternalReviewerInstitutionEnglish}%
-    \UPMPhDReviewer{\UPMPhDText{Revisor 2}{Reviewer 2}}{\mySecondExternalReviewerFullName}{\mySecondExternalReviewerInstitution}{\mySecondExternalReviewerInstitutionEnglish}%
-    \vfill
+    \ifthenelse{\equal{\myFirstExternalReviewerFullName}{}\AND\equal{\mySecondExternalReviewerFullName}{}}{}{%
+      \UPMPhDBlockGap
+      \UPMPhDText{Revisores Externos}{External Reviewers}:\par\medskip
+      \hspace*{1cm}\begin{minipage}{15cm}
+      \begin{tabularx}{\linewidth}[t]{@{}l@{\hspace{0.4cm}}>{\raggedright\arraybackslash}X@{}}
+      \UPMPhDReviewer{\UPMPhDText{Revisor 1}{Reviewer 1}}{\myFirstExternalReviewerFullName}{\myFirstExternalReviewerInstitution}{\myFirstExternalReviewerInstitutionEnglish}%
+      \UPMPhDReviewer{\UPMPhDText{Revisor 2}{Reviewer 2}}{\mySecondExternalReviewerFullName}{\mySecondExternalReviewerInstitution}{\mySecondExternalReviewerInstitutionEnglish}%
+      \end{tabularx}
+      \end{minipage}\par
+    }%
+    \UPMPhDBlockGap
     \UPMPhDText{Tribunal de Tesis}{Thesis Defense Committee}:\par\medskip
+    \hspace*{1cm}\begin{minipage}{15cm}
+    \begin{tabularx}{\linewidth}[t]{@{}l@{\hspace{0.4cm}}>{\raggedright\arraybackslash}X@{}}
     \UPMPhDCommitteeMember{\UPMPhDText{\wordPresidenteOrPresidenta}{Chair}}{\myTribunalPresident}%
     \UPMPhDCommitteeMember{\UPMPhDText{\wordTribunalSecretarioOrSecretaria}{Secretary}}{\myTribunalSecretary}%
     \UPMPhDCommitteeMember{\UPMPhDText{Vocal 1}{Member 1}}{\myTribunalFirstSpokesperson}%
     \UPMPhDCommitteeMember{\UPMPhDText{Vocal 2}{Member 2}}{\myTribunalSecondSpokesperson}%
     \UPMPhDCommitteeMember{\UPMPhDText{Vocal 3}{Member 3}}{\myTribunalThirdSpokesperson}%
-    \UPMPhDCommitteeMember{\UPMPhDText{Suplente 1}{Alternate 1}}{\myTribunalAlternateMember}%
-    \UPMPhDCommitteeMember{\UPMPhDText{Suplente 2}{Alternate 2}}{\myTribunalSecondAlternateMember}%
-    \vfill
-    \UPMPhDText{\ifthenelse{\equal{\myThesisFundingStatement}{}}{}{\myThesisFundingStatement\par\medskip}}{\ifthenelse{\equal{\myThesisFundingStatementEnglish}{}}{}{\myThesisFundingStatementEnglish\par\medskip}}%
+    \UPMPhDCommitteeMember{\UPMPhDText{Suplente 1}{Alternate member 1}}{\myTribunalAlternateMember}%
+    \UPMPhDCommitteeMember{\UPMPhDText{Suplente 2}{Alternate member 2}}{\myTribunalSecondAlternateMember}%
+    \end{tabularx}
+    \end{minipage}\par
+    \UPMPhDText{\ifthenelse{\equal{\myThesisFundingStatement}{}}{}{\UPMPhDBlockGap\myThesisFundingStatement\par}}{\ifthenelse{\equal{\myThesisFundingStatementEnglish}{}}{}{\UPMPhDBlockGap\myThesisFundingStatementEnglish\par}}%
+    \UPMPhDBlockGap
     \UPMPhDText{Fecha de defensa de tesis}{Thesis defense date}: \UPMPhDText{\myThesisDefenseDate}{\myThesisdefenseDateEnglish}\par
     \end{minipage}
   };

@@ -32,10 +32,9 @@
 \newcommand{\UPMPhDFunding}{\UPMPhDText{\myThesisFundingStatement}{\myThesisFundingStatementEnglish}}
 \newcommand{\UPMPhDThesisLabel}{\UPMPhDText{T E S I S\quad D O C T O R A L}{D O C T O R A L\quad T H E S I S}}
 \newcommand{\UPMPhDSubmission}{\UPMPhDText{Presentada para optar al título de \UPMPhDDoctor{} por:}{Submitted for the degree of Doctor by:}}
-% Sangría común y columnas alineadas para cargos y nombres.
+% Filas para tablas: el cargo ajusta su anchura y el nombre ocupa el resto.
 \newcommand{\UPMPhDPersonRow}[2]{%
-  \hspace*{1cm}\begin{minipage}[t]{3cm}\setlength{\parskip}{0pt}#1:\end{minipage}%
-  \begin{minipage}[t]{12cm}\setlength{\parskip}{0pt}#2\end{minipage}\par\vspace{10pt}%
+  #1: & #2 \\[10pt]%
 }
 % Omite personas sin nombre y evita comas si no hay institución.
 \newcommand{\UPMPhDReviewer}[4]{%
