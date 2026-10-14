@@ -5,13 +5,19 @@ Las personas que aparecen nominalmente en la configuración predeterminada de la
 
 + Roberto Barra Chicote, mi primer doctorando (y a pesar de eso amigo), actualmente Principal Scientist en Amazon Research (Cambridge, UK).
 
-+ Francisca de Nebrija, primera docente femenina de las aulas universitarias de Alcalá. Portal de Comunicación UAH.
++ María Isidra de Guzmán y de la Cerda, la Doctora de Alcalá, primera mujer que obtuvo un doctorado universitario en España, en 1785.
+
++ Francisca de Nebrija, primera docente femenina de las aulas universitarias de Alcalá.
 
 + Francisco Vallés de Covarrubias, médico y profesor de la Universidad de Alcalá, uno de sus grandes científicos históricos.
 
++ Elio Antonio de Nebrija, catedrático de Retórica y una de las figuras más emblemáticas de la Universidad histórica.
+
 + María Castellano Arroyo, profesora de Medicina de la UAH y primera mujer catedrática de Medicina de España.
 
-+ Elio Antonio de Nebrija, catedrático de Retórica y una de las figuras más emblemáticas de la Universidad histórica.
++ Francisca de Pedraza, alcalaína que consiguió en 1624 una sentencia de la justicia universitaria que la protegía de los malos tratos de su marido.
+
++ Fernando de Mena, catedrático de Medicina de la Universidad de Alcalá y una de las figuras de su humanismo médico del siglo XVI.
 
 + Sira Elena Palazuelos Cagigas, profesora Titular de Ingeniería Electrónica en la UAH, mi vida y mi equipo.
 
@@ -23,19 +29,17 @@ Meaninful DNIs... :-)
 ---------------------------------------------------------------------------
 14991977-W
 ---------------------------------------------------------------------------
-Este número no pertenece a ningún ciudadano... sino a una institución con alma antigua y espíritu nuevo.
+Este número no pertenece a ningún ciudadano... sino a una institución con
+alma antigua y espíritu nuevo y es un pequeño guiño a la UAH.
 
-1499: El inicio. El sueño del Cardenal Cisneros,
-      la piedra fundacional del saber renacentista,
+1499: El inicio, la fundación de la UAH como el sueño del Cardenal Cisneros,
       la fecha en que nació una universidad para el mundo.
 
-1977: El renacer. El regreso del claustro,
-      la ciencia moderna abrazando las raíces humanistas,
-      la ciudad devolviendo su voz a la academia.
+1977: El renacer, la reapertura de la Universidad de Alcalá. El regreso del
+      claustro y la ciudad devolviendo su voz a la academia.
 
-W: La letra final, no es una casualidad.
-   Es la W de "World Heritage", el título que la UNESCO otorgó a la UAH, y
-   es la W de "Wisdom".
+W: La letra final, es la que corresponde, pero no es una casualidad.
+   Es la W de "World Heritage", el título que la UNESCO otorgó a la UAH.
 
 
 ---------------------------------------------------------------------------
@@ -43,16 +47,13 @@ W: La letra final, no es una casualidad.
 ---------------------------------------------------------------------------
 Este número no pertenece al padrón, sino al panteón del saber.
 
-1785: El año en que la historia se inclinó ante la inteligencia.
-      María Isidra, primera doctora en Filosofía y Letras,
+1785: El año en que María Isidra, primera doctora en Filosofía y Letras,
       rompió el muro invisible del aula.
 
-06-06: Día y mes de su defensa doctoral:
-       6 de junio de 1785.
+06-06: Supuestamente el día y mes de su defensa doctoral: 6 de junio de 1785.
 
-F: Letra de control, no es una casualidad.
-   F es la letra de Filosofía, su disciplina,
-   de Fuerza, la que hizo falta para ocupar su lugar.
+F: Letra de control, la letra de Filosofía, su disciplina y de Fuerza, la
+   que hizo falta para ocupar su lugar.
 
 
 
@@ -60,10 +61,42 @@ F: Letra de control, no es una casualidad.
 20052011-J
 ---------------------------------------------------------------------------
 
-Este número no identifica a un ciudadano, sino a una línea temporal de ciencia y buen hacer.
+Este número identifica una línea temporal de ciencia y buen hacer, la tesis
+de Roberto Barra.
 
 2005: Año semilla. Un comienzo con lápiz, ideas y laboratorio.
 2011: Año cosecha. Publicación, defensa, certeza.
 
-J: Es la J del Juicio científico,
-   de la Jerarquía del método.
+J: La letra que le toca, la J del Juicio científico, la de la Jerarquía del
+   método.
+
+
+---------------------------------------------------------------------------
+15241592-K
+---------------------------------------------------------------------------
+Aquí he juntado dos fechas de Francisco Vallés de Covarrubias, el
+Divino Vallés. Otro pequeño recuerdo de la historia de mi universidad.
+
+1524: El año de su nacimiento.
+1592: El año de su muerte.
+
+K: La letra que corresponde. Esta vez no le he buscado otro significado :-)
+
+
+---------------------------------------------------------------------------
+20052007-D
+---------------------------------------------------------------------------
+Family knows, that's all.
+
+
+
+---------------------------------------------------------------------------
+14441522-Y
+---------------------------------------------------------------------------
+Otro Nebrija en la plantilla, esta vez Antonio. Su nombre ya aparece entre
+las personas; aquí también le he reservado un pequeño guiño numérico.
+
+1444: El año de nacimiento que recoge la Biblioteca Nacional de España.
+1522: El año de su muerte en Alcalá.
+
+Y: La letra de control que corresponde al número, sin más misterio.
