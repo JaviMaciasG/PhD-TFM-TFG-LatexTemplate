@@ -22,7 +22,7 @@ for kind in tfg tfm; do
   guide="${kind^^}-GuiaPapeleo-EPS-UAH"
   source="$component/$guide.tex"
   expected=8
-  [[ $kind == tfm ]] && expected=6
+  [[ $kind == tfm ]] && expected=7
 
   documents=$(make --no-print-directory -s -C "$component" \
     --eval='print-guide-inventory:;@printf "%s\n" $(DOCUMENTS)' print-guide-inventory)
@@ -111,5 +111,7 @@ check_contains 'anexo VIII / anexo 4' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
 check_contains 'paperwork-guides' Documentation/Makefile
 check_contains '\equal{\myDegree}{MUII}' PapeleoTFM/TFM-VistoBuenoTutor.tex
 check_contains '\texttt{MUIT} y \texttt{MUII}' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
+check_contains '\variable{myTFMComisionPresidentGender}' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
+check_contains 'anexo III de la normativa MUIE-UAH' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
 bash -n AdminScripts/go.build-distribution.sh
 printf 'PASS: %s paperwork-guide checks\n' "$checks"

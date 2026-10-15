@@ -1,0 +1,130 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: hoja de control del anteproyecto de TFM en la EPS-UAH.
+%
+% Normativa de TFM:
+% EPS-UAH: anexo VII; aprobada el 31/10/2025 y el 30/01/2026.
+% MUIE-UAH: anexo III; aprobada el 15/06/2026.
+%
+% Uso: configura Config/myconfig.tex y compila este fichero por separado.
+% Normalmente no necesitas modificarlo. La zona sombreada corresponde a la
+% comisión: sus casillas y fechas se rellenan a mano.
+% Revisa su adecuación al procedimiento vigente de tu titulación.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\input{../Config/postamble.tex}
+
+% Compatibilidad con configuraciones anteriores a este formulario.
+\providecommand{\myTFMComisionPresidentGender}{male}
+
+\title{Hoja de control de anteproyecto de \myWorkTypeFull}
+\date{\myThesisProposalDate}
+\author{\myAuthorFullName}
+
+\begin{document}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\input{../Config/setlanguagedependentissues.tex}
+
+\begin{spacing}{1.0}
+\begin{center}
+
+  \ifthenelse{\equal{\myDegree}{MUIE}}
+  {
+    \Large\textbf{CONTROL DE ANTEPROYECTO DE \MakeUppercase{\myWorkType}}
+  }
+  {
+    \Large\textbf{HOJA DE CONTROL DE ANTEPROYECTO DE \MakeUppercase{\myWorkType}}
+  }
+
+  \DocumentDepartment
+
+\end{center}
+\end{spacing}
+\medskip
+
+\underline{\textbf{Datos personales \wordAutorDelOrDeLa{} \wordAlumnoOrAlumna}}
+\small
+\begin{spacing}{1.0}
+  \begin{tabularx}{\textwidth}{@{}X@{}}
+    NOMBRE Y APELLIDOS: \myAuthorFullName \hfill DNI: \myAuthorDNI \\
+    DIRECCIÓN: \myAuthorStreet \hfill CÓDIGO POSTAL: \myAuthorPostalCode \\
+    POBLACIÓN: \myAuthorCity \quad PROVINCIA: \myAuthorProvince \\
+    TELÉFONO: \myAuthorTelephone \quad EMAIL: \myAuthorEmail \\
+    ESTUDIOS: \myDegreefull \\
+    PERFIL/ESPECIALIDAD: \mySpecialty \\
+    \rule{0pt}{1.7em}IDIOMA ESCOGIDO PARA DESARROLLAR EL TRABAJO: [\xUseSpanish] ESPAÑOL \quad [\xUseEnglish] INGLÉS
+  \end{tabularx}
+\end{spacing}
+
+\medskip
+\normalsize
+\underline{\textbf{Datos de la propuesta de anteproyecto}}
+\small
+
+\begin{tabularx}{\textwidth}{|X|}
+  \hline
+  TÍTULO DEL \myWorkType: \myBookTitleSpanish \\
+  \ifthenelse{\equal{\myLanguage}{english}}
+  {
+  TÍTULO EN INGLÉS: \myBookTitleEnglish \\
+  }
+  {
+  }
+  \\
+  \hline
+\end{tabularx}
+
+\begin{spacing}{1.0}
+  \begin{tabularx}{\textwidth}{X}
+    \MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica}: \myAcademicTutorFullName  \\
+    \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\MakeUppercase{\wordCoTutorOrCoTutora}: \myCoTutorFullName \\}
+    \begin{center}
+      Alcalá de Henares, \myThesisProposalDate
+    \end{center}
+ \end{tabularx}
+  \begin{tabularx}{\textwidth}{X X}
+    Visto bueno \wordTutorDelOrDeLa{} \wordTutorOrTutora{} \okCoTutorOrCotutora{} & \wordAlumnoOrAlumnaUpcaseFirt{} \\
+    \\
+    \\ ~
+    \\ ~
+ \end{tabularx}
+\end{spacing}
+
+\normalsize
+\begin{spacing}{1.0}
+\small
+  \begin{tabularx}{\textwidth}{| X |}
+    \hline
+    \cellcolor{gray!10} \underline{\textbf{Acuerdo de la Comisión de \myWorkType{} (\emph{a rellenar por la Comisión})}} \\
+    \cellcolor{gray!10}\rule{0pt}{1.8em}Aceptado: $\Box$ Sí \quad $\Box$ No \quad Fecha: \underline{\hspace{2cm}}\\
+    \cellcolor{gray!10}Periodo de validez: \hrulefill\\
+    \cellcolor{gray!10} Causa del rechazo: \hrulefill\\
+    \cellcolor{gray!10} \hrulefill\\
+    \cellcolor{gray!10} \hrulefill\\
+    \cellcolor{gray!10} ~\\
+
+    \ifthenelse{\equal{\myDegree}{MUII}\OR\equal{\myDegree}{MUIT}}
+    {
+      \cellcolor{gray!10}\textbf{TRIBUNAL CALIFICADOR} (nombrado por la Comisión Académica del Máster):\\
+    }
+    {
+      \cellcolor{gray!10}\textbf{TRIBUNAL CALIFICADOR:}\\
+    }
+    \cellcolor{gray!10}\spacingFour{}\wordPresidenteOrPresidenta: \myTribunalPresident \\
+    \cellcolor{gray!10}\spacingFour{}\wordVocalPrimeroOrPrimera{} \wordNumberVocalPrimeroOrPrimera: \myTribunalFirstSpokesperson{} \\
+    \cellcolor{gray!10}\spacingFour{}\wordVocalSegundoOrSegunda{} \wordNumberVocalSegundoOrSegunda: \myTribunalSecondSpokesperson{}\\
+    \cellcolor{gray!10}\spacingFour{}Suplente: \myTribunalAlternateMember{} \\
+    \cellcolor{gray!10}\rule{0pt}{2.3em}\hfill Alcalá de Henares, a \underline{\hspace{0.8cm}} de \underline{\hspace{3cm}} de \underline{\hspace{1.2cm}}\\
+    \cellcolor{gray!10}\rule{0pt}{2em}\ifthenelse{\equal{\myDegree}{MUIE}}{Sello del departamento}{}\hfill Fdo: \ifthenelse{\equal{\myTFMComisionPresidentGender}{male}}{Presidente}{Presidenta} de la Comisión de \myWorkType{}\\
+    \cellcolor{gray!10}\rule{0pt}{1.3cm}\\
+    \hline
+ \end{tabularx}
+\end{spacing}
+
+\end{document}

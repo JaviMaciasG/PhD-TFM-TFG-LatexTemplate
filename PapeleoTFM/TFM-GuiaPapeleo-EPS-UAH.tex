@@ -43,9 +43,9 @@
 
 \section{Qué encontrarás aquí}
 
-Hemos preparado seis formularios que reutilizan los datos de tu trabajo. Esta guía se centra en la EPS-UAH y distingue las particularidades del Máster Universitario en Ingeniería Electrónica (MUIE). No pretende cubrir todos los másteres de la UAH: comprueba qué normativa y qué formularios corresponden a tu titulación antes de presentar los documentos.
+Hemos preparado siete formularios que reutilizan los datos de tu trabajo. Esta guía se centra en la EPS-UAH y distingue las particularidades del Máster Universitario en Ingeniería Electrónica (MUIE). No pretende cubrir todos los másteres de la UAH: comprueba qué normativa y qué formularios corresponden a tu titulación antes de presentar los documentos.
 
-Los convenios, solicitudes y actas se identifican con la normativa de TFM EPS-UAH aprobada en Junta de Centro el 31/10/2025 y por la Comisión de Máster Universitario el 30/01/2026. En los dos formularios compartidos indicamos también las correspondencias con el reglamento UAH modificado el 14/05/2026 y la normativa MUIE-UAH aprobada el 15/06/2026. La correspondencia entre anexos no garantiza que todos los formatos sean intercambiables ni sustituye la comprobación de las versiones oficiales vigentes.
+Los convenios, solicitudes y actas se identifican con la normativa de TFM EPS-UAH aprobada en Junta de Centro el 31/10/2025 y por la Comisión de Máster Universitario el 30/01/2026. En los formularios compartidos indicamos también, cuando procede, las correspondencias con el reglamento UAH modificado el 14/05/2026 y la normativa MUIE-UAH aprobada el 15/06/2026. La correspondencia entre anexos no garantiza que todos los formatos sean intercambiables ni sustituye la comprobación de las versiones oficiales vigentes.
 
 Puedes localizar los formularios mediante este resumen:
 
@@ -60,6 +60,7 @@ Documento & Anexo normativa EPS-UAH \\
 \hyperref[form:acta]{Acta de defensa y rúbrica} & XI \\
 \hyperref[form:prorroga]{Solicitud de prórroga} & IV \\
 \hyperref[form:cambio]{Solicitud de cambio del TFM} & V \\
+\hyperref[form:control-anteproyecto]{Hoja de control del anteproyecto} & VII \\
 \bottomrule
 \end{tabularx}
 
@@ -135,6 +136,23 @@ Los restantes campos \hl{N/D} deben completarse: datos de identificación y dire
 
 \section{Evaluación y solicitudes}
 
+\subsection{Hoja de control del anteproyecto}\label{form:control-anteproyecto}
+
+\fichero{TFM-AnexoVII-HojaControlAnteproyecto-EPS-UAH.tex}. Corresponde al anexo VII de la normativa EPS-UAH aprobada el 31/10/2025 y el 30/01/2026 y al anexo III de la normativa MUIE-UAH aprobada el 15/06/2026. Puedes utilizarla para los másteres sujetos a estas normativas: recoge la propuesta, el visto bueno de la dirección y el acuerdo de la Comisión de TFM.
+
+Revisa los datos siguientes en \fichero{Config/myconfig.tex}:
+\begin{itemize}
+  \item Estudiante: \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorStreet}, \variable{myAuthorPostalCode}, \variable{myAuthorCity}, \variable{myAuthorProvince}, \variable{myAuthorTelephone} y \variable{myAuthorEmail}.
+  \item Trabajo: \variable{myDegree}, \variable{mySpecialty} para el campo \emph{PERFIL/ESPECIALIDAD}, \variable{myLanguage}, \variable{myBookTitleSpanish}, \variable{myBookTitleEnglish} si el idioma es \texttt{english}, y \variable{myThesisProposalDate} para la fecha de la propuesta. El formulario siempre muestra el campo de perfil/especialidad, aunque esté vacío, y marca el idioma elegido automáticamente.
+  \item Dirección y departamento: \variable{myAcademicTutorFullName}, \variable{myCoTutorFullName}, \variable{myAcademicTutorDepartment} y, como alternativa cuando este último está vacío, \variable{myAcademicCotutorDepartment}. El cotutor se omite si su nombre está vacío.
+  \item Tribunal: \variable{myTribunalPresident}, \variable{myTribunalFirstSpokesperson}, \variable{myTribunalSecondSpokesperson} y \variable{myTribunalAlternateMember}; sus nombres se imprimen sin líneas de relleno posteriores.
+  \item Género: \variable{myAuthorGender}, \variable{myAcademicTutorGender} y \variable{myCoTutorGender} adaptan los textos del estudiante y la dirección; \variable{myTribunalPresidentGender}, \variable{myTribunalFirstSpokespersonGender} y \variable{myTribunalSecondSpokespersonGender} adaptan los cargos del tribunal. \variable{myTFMComisionPresidentGender}, con \texttt{male} o \texttt{female}, selecciona \emph{Presidente} o \emph{Presidenta de la Comisión de TFM} en la firma: no es el género de la presidencia del tribunal. El suplente mantiene el rótulo común \emph{Suplente}.
+\end{itemize}
+
+El acuerdo corresponde siempre a la Comisión de TFM. Solo en \texttt{MUIE} aparece \emph{Sello del departamento}; solo en \texttt{MUII} y \texttt{MUIT} se añade al tribunal la indicación \emph{nombrado por la Comisión Académica del Máster}. La firma muestra el cargo de la presidencia de la comisión, no su nombre: \variable{myTFMComisionPresident} no se utiliza en este formulario.
+
+La comisión completa la zona sombreada: las casillas de aceptación \emph{Sí/No}, la fecha del acuerdo, el periodo de validez, la causa de rechazo, la fecha administrativa alineada a la derecha y la firma. No hay variables para estos campos ni se deducen sus valores de la configuración; las casillas se dejan vacías para rellenarlas manualmente. Revisa los miembros del tribunal y recoge también el visto bueno de la dirección y la firma del estudiante.
+
 \subsection{Acta de defensa y rúbrica}\label{form:acta}
 
 \fichero{TFM-ActaYRubricaDefensa-EPS-UAH.tex}. Anexo XI de la normativa EPS-UAH aprobada el 31/10/2025 y el 30/01/2026. Es el modelo EPS-UAH con su rúbrica: no se convierte automáticamente en el acta específica del MUIE por seleccionar ese máster.
@@ -173,7 +191,7 @@ make                         # Todos los formularios
 make autorizaciones          # Publicación y visto bueno
 make convenios               # Convenio de cooperación
 make evaluacion              # Acta y rúbrica
-make solicitudes             # Prórroga y cambio de TFM
+make solicitudes             # Control del anteproyecto, prórroga y cambio
 make TFM-VistoBuenoTutor.pdf
 make help                    # Opciones disponibles
 \end{verbatim}

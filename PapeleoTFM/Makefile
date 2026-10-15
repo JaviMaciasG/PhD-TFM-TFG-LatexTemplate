@@ -15,6 +15,7 @@ EVALUATION_DOCUMENTS := \
 	TFM-ActaYRubricaDefensa-EPS-UAH
 
 REQUEST_DOCUMENTS := \
+	TFM-AnexoVII-HojaControlAnteproyecto-EPS-UAH \
 	TFM-AnexoIV-SolicitudProrroga-EPS-UAH \
 	TFM-AnexoV-SolicitudCambioTFM-EPS-UAH
 
@@ -68,7 +69,7 @@ help:
 		'make autorizaciones  Generate publication and defense authorizations' \
 		'make convenios       Generate the cooperation-agreement form' \
 		'make evaluacion      Generate the defense record and rubric' \
-		'make solicitudes     Generate extension and assignment-change requests' \
+		'make solicitudes     Generate proposal control, extension and assignment-change forms' \
 		'make FILE.pdf        Generate one specific form' \
 		'make clean           Remove auxiliary files' \
 		'make cleanall        Remove auxiliary files and generated PDFs'
