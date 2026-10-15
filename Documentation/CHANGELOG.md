@@ -2,6 +2,19 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.5.1] - 2026-10-15
+
+### Bug Fixes
+
+- Standardize document cleanup and preserve PDFs
+
+
+### Maintenance
+
+- Improved layout of comments
+
+- Prepare v8.5.1
+
 ## [v8.5.0] - 2026-10-15
 
 ### Features
