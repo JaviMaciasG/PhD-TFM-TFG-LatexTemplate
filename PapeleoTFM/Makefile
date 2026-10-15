@@ -25,7 +25,7 @@ DOCUMENTS := \
 	$(REQUEST_DOCUMENTS)
 PDFFILES := $(addsuffix .pdf,$(DOCUMENTS))
 TEXFILES := $(addsuffix .tex,$(DOCUMENTS))
-GUIDE_DOCUMENT := guia-papeleo-tfm-eps-uah
+GUIDE_DOCUMENT := TFM-GuiaPapeleo-EPS-UAH
 GUIDE_TEX := $(GUIDE_DOCUMENT).tex
 GUIDE_PDF := $(GUIDE_DOCUMENT).pdf
 GUIDE_BUILD_TEX := $(wildcard $(GUIDE_TEX))

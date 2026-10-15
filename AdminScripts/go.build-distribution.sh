@@ -19,8 +19,8 @@ project_readme=Documentation/es/README-PROYECTO.md
 [[ -s $project_readme ]] || { echo "ERROR: project README template is missing or empty: $project_readme" >&2; exit 1; }
 
 guide_sources=(
-  PapeleoTFG/guia-papeleo-tfg-eps-uah.tex
-  PapeleoTFM/guia-papeleo-tfm-eps-uah.tex
+  PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
+  PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
 )
 guide_pdfs=("${guide_sources[@]/%.tex/.pdf}")
 # Build these generic guides even when this script is invoked without make distrib.
@@ -49,10 +49,10 @@ pandoc Documentation/es/TYPESETTING-STYLES-GUIDE.md -t pdf \
   git ls-files -- Anteproyecto Book Config PapeleoTFG PapeleoTFM
 } | while IFS= read -r file; do
   case "$file" in
-    TODO|*/TODO|Book/slides/*|Documentation/*|Config/myconfig-phd.tex|Config/preamble-slides.tex|PapeleoTFG/guia-papeleo-tfg-eps-uah.tex|PapeleoTFM/guia-papeleo-tfm-eps-uah.tex) continue ;;
+    TODO|*/TODO|Book/slides/*|Documentation/*|Config/myconfig-phd.tex|Config/preamble-slides.tex|PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex|PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex) continue ;;
     *.pdf)
       case "$file" in
-        PapeleoTFG/guia-papeleo-tfg-eps-uah.pdf|PapeleoTFM/guia-papeleo-tfm-eps-uah.pdf) ;;
+        PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.pdf|PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.pdf) ;;
         Book/additional/*.pdf|Book/cover/*.pdf|Book/cover/*/*.pdf|Book/diagrams/*.pdf|Book/figures/*.pdf|Book/letters/*.pdf|Book/logos/*.pdf|Book/logos/*/*.pdf|Book/logos/*/*/*.pdf|Book/portadaTFGs/*.pdf|Book/publications/*.pdf) ;;
         *) continue ;;
       esac

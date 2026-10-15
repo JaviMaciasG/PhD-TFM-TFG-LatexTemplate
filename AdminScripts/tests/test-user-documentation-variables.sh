@@ -8,8 +8,8 @@ cd "$repository_root"
 documentation=(
   README.md README-en.md
   Book/chapters Book/appendix
-  PapeleoTFG/guia-papeleo-tfg-eps-uah.tex
-  PapeleoTFM/guia-papeleo-tfm-eps-uah.tex
+  PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
+  PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
   Documentation/es/DOWNLOAD-GUIDE.md
   Documentation/es/README-PROYECTO.md
   Documentation/en/DOWNLOAD-GUIDE.md
@@ -34,7 +34,7 @@ if [[ -n $unknown_variables ]]; then
   exit 1
 fi
 
-for guide in PapeleoTFG/guia-papeleo-tfg-eps-uah.tex PapeleoTFM/guia-papeleo-tfm-eps-uah.tex; do
+for guide in PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex; do
   grep -Fq 'Anexo normativa EPS-UAH' "$guide"
   if grep -Fq '\raggedright' "$guide"; then
     printf 'FAIL: guide prose must be fully justified: %s\n' "$guide" >&2

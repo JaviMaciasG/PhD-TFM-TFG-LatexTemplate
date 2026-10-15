@@ -14,8 +14,8 @@ case ${0##*/} in
     directory=$2
     if [[ ${3:-} == guia ]]; then
       case ${directory##*/} in
-        PapeleoTFG) guide=guia-papeleo-tfg-eps-uah ;;
-        PapeleoTFM) guide=guia-papeleo-tfm-eps-uah ;;
+        PapeleoTFG) guide=TFG-GuiaPapeleo-EPS-UAH ;;
+        PapeleoTFM) guide=TFM-GuiaPapeleo-EPS-UAH ;;
         *) exit 1 ;;
       esac
       printf 'Fixture paperwork guide\n' >"$directory/$guide.pdf"
@@ -42,7 +42,7 @@ for tool in pymupdf pandoc make; do
 done
 for file in .gitignore .latexmkrc LICENSE Makefile sync-git-sources.sh \
   Book/book.tex Config/myconfig.tex Anteproyecto/anteproyecto.tex \
-  PapeleoTFG/guia-papeleo-tfg-eps-uah.tex PapeleoTFM/guia-papeleo-tfm-eps-uah.tex \
+  PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex \
   Documentation/es/TYPESETTING-STYLES-GUIDE.md; do
   printf 'Fixture source\n' >"$source_root/$file"
 done

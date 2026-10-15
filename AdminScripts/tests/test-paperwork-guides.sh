@@ -19,7 +19,7 @@ check_contains() {
 
 for kind in tfg tfm; do
   component="Papeleo${kind^^}"
-  guide="guia-papeleo-${kind}-eps-uah"
+  guide="${kind^^}-GuiaPapeleo-EPS-UAH"
   source="$component/$guide.tex"
   expected=8
   [[ $kind == tfm ]] && expected=6
@@ -100,16 +100,16 @@ for form in PapeleoTFG/TFG-ConvenioCooperacion-EPS-UAH.tex \
   check_contains '\sethlcolor{yellow}' "$form"
 done
 
-check_contains '\variable{myResearchVicerrectorGender}' PapeleoTFG/guia-papeleo-tfg-eps-uah.tex
-check_contains '\variable{myTribunalAlternateMemberGender}' PapeleoTFG/guia-papeleo-tfg-eps-uah.tex
-check_contains '\variable{myAuthorizationOpenPublishingEmbargoMonths}' PapeleoTFM/guia-papeleo-tfm-eps-uah.tex
-check_contains '\variable{myConfidentialContent}' PapeleoTFM/guia-papeleo-tfm-eps-uah.tex
-check_contains 'quedan vacías todas las opciones de embargo' PapeleoTFM/guia-papeleo-tfm-eps-uah.tex
-check_contains 'no en las de confidencialidad' PapeleoTFM/guia-papeleo-tfm-eps-uah.tex
-check_contains 'no interviene en este formulario' PapeleoTFG/guia-papeleo-tfg-eps-uah.tex
-check_contains 'anexo VIII / anexo 4' PapeleoTFM/guia-papeleo-tfm-eps-uah.tex
+check_contains '\variable{myResearchVicerrectorGender}' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
+check_contains '\variable{myTribunalAlternateMemberGender}' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
+check_contains '\variable{myAuthorizationOpenPublishingEmbargoMonths}' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
+check_contains '\variable{myConfidentialContent}' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
+check_contains 'quedan vacías todas las opciones de embargo' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
+check_contains 'no en las de confidencialidad' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
+check_contains 'no interviene en este formulario' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
+check_contains 'anexo VIII / anexo 4' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
 check_contains 'paperwork-guides' Documentation/Makefile
 check_contains '\equal{\myDegree}{MUII}' PapeleoTFM/TFM-VistoBuenoTutor.tex
-check_contains '\texttt{MUIT} y \texttt{MUII}' PapeleoTFM/guia-papeleo-tfm-eps-uah.tex
+check_contains '\texttt{MUIT} y \texttt{MUII}' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
 bash -n AdminScripts/go.build-distribution.sh
 printf 'PASS: %s paperwork-guide checks\n' "$checks"
