@@ -2,6 +2,24 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.5.0] - 2026-10-15
+
+### Features
+
+- Add EPS-UAH TFM proposal control form
+
+
+### Refactoring
+
+- Normalize EPS-UAH guide filenames
+
+
+### Maintenance
+
+- Minor change in changelog text (removed useless commit info)
+
+- Prepare v8.5.0
+
 ## [v8.4.2] - 2026-10-14
 
 ### Bug Fixes
