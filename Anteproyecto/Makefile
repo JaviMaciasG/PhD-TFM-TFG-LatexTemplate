@@ -55,7 +55,7 @@ CONVERSION_STAMPS = pdf_dia_done pdf_svg_done pdf_eps_done
 
 .DEFAULT_GOAL := all
 
-.PHONY: all anteproyecto anteproyecto_latexmk snapshot flatten latexdiff clean cleanall clean_latexmk help
+.PHONY: all anteproyecto anteproyecto_latexmk snapshot flatten latexdiff clean distclean help
 
 all: $(CONVERSION_STAMPS) anteproyecto
 
@@ -100,15 +100,15 @@ pdf_eps_done: $(PDFS_FROM_EPS)
 	@echo "Converting $< to $@..."
 	$(EPSPDF_TOOL) $< $@
 
+CLEAN_TEX_FILES = $(TEX_FILE) $(FLATTEN_TEX_FILE) $(SNAPSHOT_FLATTEN_TEX_FILE) $(DIFF_FLATTEN_TEX_FILE)
+
 clean:
-	$(call latexmk_clean,$(TEX_FILE))
+	$(call latexmk_clean,$(CLEAN_TEX_FILES))
 	$(RM) $(CONVERSION_STAMPS)
 
-cleanall:
-	$(call latexmk_cleanall,$(TEX_FILE))
+distclean:
+	$(call latexmk_distclean,$(CLEAN_TEX_FILES))
 	$(RM) $(CONVERSION_STAMPS)
-
-clean_latexmk: cleanall
 
 help:
 	@printf '%s\n' \
@@ -117,7 +117,6 @@ help:
 		'make flatten             Flatten the current document' \
 		'make latexdiff            Generate the comparison document' \
 		'make clean               Remove auxiliary files' \
-		'make cleanall            Remove auxiliary files and anteproyecto.pdf' \
-		'make anteproyecto_latexmk Compatibility alias for make anteproyecto' \
-		'make clean_latexmk        Compatibility alias for make cleanall'
+		'make distclean           Remove auxiliary files and generated document PDFs' \
+		'make anteproyecto_latexmk Compatibility alias for make anteproyecto'
 

@@ -28,7 +28,7 @@ La compilación genera \texttt{anteproyecto.pdf}. El \texttt{Makefile} utiliza \
 
 Si trabajas en Overleaf, sigue el procedimiento de la sección~\ref{sec:compilacion-overleaf} y selecciona \texttt{Anteproyecto/anteproyecto.tex} como documento principal.
 
-El \texttt{Makefile} también proporciona los objetivos \texttt{snapshot}, \texttt{flatten}, \texttt{latexdiff}, \texttt{clean}, \texttt{cleanall} y \texttt{help}. Los nombres \texttt{anteproyecto\_latexmk} y \texttt{clean\_latexmk} se conservan como alias compatibles de \texttt{anteproyecto} y \texttt{cleanall}, respectivamente. Los objetivos de revisión siguen el mismo principio que los equivalentes del libro principal, descritos en la sección~\ref{sec:control-de-cambios}.
+El \texttt{Makefile} también proporciona los objetivos \texttt{snapshot}, \texttt{flatten}, \texttt{latexdiff}, \texttt{clean}, \texttt{distclean} y \texttt{help}. El nombre \texttt{anteproyecto\_latexmk} se conserva como alias de \texttt{anteproyecto}. Los objetivos de revisión siguen el mismo principio que los equivalentes del libro principal, descritos en la sección~\ref{sec:control-de-cambios}.
 
 \section{Caso especializado: tesis por compendio de publicaciones}
 \label{sec:tesis-compendio}
@@ -112,7 +112,7 @@ El uso de \texttt{make} es opcional y requiere \texttt{latexmk}. Cada invocació
 
 Si solo necesitas un formulario, puedes indicar directamente el nombre del PDF, por ejemplo \texttt{make TFG-InformeTutorYRubrica-EPS-UAH.pdf}. Los dos directorios utilizan la misma organización de objetivos: \texttt{autorizaciones} genera las autorizaciones y documentos afines, \texttt{convenios} genera los formularios de cooperación educativa y \texttt{evaluacion} genera los informes, actas y rúbricas. En \texttt{PapeleoTFM/} también puedes utilizar \texttt{solicitudes} para generar las solicitudes de prórroga y cambio de TFM. El objetivo \texttt{help} de cada directorio muestra las opciones disponibles.
 
-El objetivo \texttt{clean} elimina únicamente los ficheros auxiliares de la compilación y conserva los PDF generados; utiliza \texttt{cleanall} cuando también quieras eliminar esos PDF.
+El objetivo \texttt{clean} elimina únicamente los ficheros auxiliares de la compilación y conserva los PDF generados; utiliza \texttt{distclean} cuando también quieras eliminar esos PDF.
 
 Desde la raíz del repositorio puedes ejecutar \texttt{make paperwork} para generar únicamente el conjunto de formularios que corresponde a la titulación seleccionada en \texttt{myconfig.tex}. El objetivo \texttt{make all-documents} añade además el README, el libro principal y el anteproyecto; el objetivo predeterminado de la raíz no cambia y continúa generando únicamente el README y el libro.
 

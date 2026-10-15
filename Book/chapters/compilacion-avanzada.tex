@@ -24,14 +24,14 @@ Para el uso habitual de la plantilla solo necesitarás los siguientes objetivos:
 
 \begin{itemize}
   \item \texttt{all}: compila el documento completo y genera las copias finales; es el objetivo ejecutado de forma predeterminada por \texttt{make}.
-  \item \texttt{clean}: elimina los ficheros auxiliares y los PDF de trabajo generados durante la compilación.
+  \item \texttt{clean}: elimina los ficheros auxiliares de compilación y conserva los PDF generados.
 \end{itemize}
 
 Los siguientes objetivos proporcionan operaciones avanzadas para la revisión y la preparación del proyecto:
 
 \begin{itemize}
   \item \texttt{all\_latexmk}: se conserva como alias compatible del objetivo predeterminado \texttt{all}, que ya utiliza \texttt{latexmk}.
-  \item \texttt{clean\_latexmk}: elimina los ficheros auxiliares mediante \texttt{latexmk} y completa después la limpieza de otros ficheros generados.
+  \item \texttt{distclean}: elimina los auxiliares y los PDF del documento, sus versiones comprimidas, las copias con el nombre de la titulación configurada y los documentos de comparación; conserva los PDF que utilizas como recursos.
   \item \texttt{snapshot}: genera mediante \texttt{latexpand} una copia unificada del documento que puede utilizarse como referencia para una revisión posterior.
   \item \texttt{flatten}: genera una copia unificada del estado actual del documento.
   \item \texttt{latexdiff}: compara la instantánea con el estado actual y genera un PDF que muestra las diferencias.
@@ -57,7 +57,7 @@ Algunos objetivos del \texttt{Makefile} utilizan herramientas adicionales. Solo 
   \item \texttt{Ghostscript}: genera la copia comprimida del documento cuando se utiliza el objetivo \texttt{all} del \texttt{Makefile}.
   \item \texttt{Inkscape}: convierte automáticamente los diagramas en formato \texttt{svg} a \texttt{pdf}.
   \item \texttt{Dia} y \texttt{epspdf}: convierten automáticamente los diagramas en formato \texttt{dia} a \texttt{pdf}; \texttt{epspdf} también convierte las figuras en formato \texttt{eps} a \texttt{pdf}.
-  \item \texttt{latexmk}: controla las dependencias y las pasadas de compilación del objetivo predeterminado \texttt{all}; también lo utilizan los objetivos \texttt{all\_latexmk} y \texttt{clean\_latexmk}.
+  \item \texttt{latexmk}: controla las dependencias y las pasadas de compilación del objetivo predeterminado \texttt{all}; también lo utilizan los objetivos \texttt{all\_latexmk}, \texttt{clean} y \texttt{distclean}.
   \item \texttt{latexpand} y \texttt{latexdiff}: permiten unificar los fuentes y generar documentos que muestran las diferencias entre dos versiones.
   \item \texttt{Perl}: es necesario para ejecutar \texttt{makeglossaries} en los sistemas que no incluyan ya un intérprete compatible.
 \end{itemize}

@@ -47,7 +47,7 @@ SHARED_CONFIG := \
 
 .DEFAULT_GOAL := all
 
-.PHONY: all thesis research-stays cotutelle industrial-doctorate list clean cleanall help
+.PHONY: all thesis research-stays cotutelle industrial-doctorate list clean distclean help
 
 all: $(PDFFILES)
 
@@ -75,8 +75,8 @@ list:
 clean:
 	$(call latexmk_clean,$(TEXFILES))
 
-cleanall:
-	$(call latexmk_cleanall,$(TEXFILES))
+distclean:
+	$(call latexmk_distclean,$(TEXFILES))
 
 help:
 	@printf '%s\n' \
@@ -88,6 +88,6 @@ help:
 		'make FILE.pdf              Generate one form listed by make list' \
 		'make list                  List the generated PDF names by category' \
 		'make clean                 Remove auxiliary files' \
-		'make cleanall              Remove auxiliary files and generated PDFs' \
+		'make distclean             Remove auxiliary files and generated PDFs' \
 		'' \
 		'Run make from PapeleoPHD/ so that the shared ../Config paths resolve correctly.'

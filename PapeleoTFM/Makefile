@@ -33,7 +33,7 @@ GUIDE_BUILD_TEX := $(wildcard $(GUIDE_TEX))
 
 .DEFAULT_GOAL := all
 
-.PHONY: all autorizaciones convenios evaluacion solicitudes guia FORCE clean cleanall help
+.PHONY: all autorizaciones convenios evaluacion solicitudes guia FORCE clean distclean help
 
 all: $(PDFFILES)
 
@@ -60,8 +60,8 @@ endif
 clean:
 	$(call latexmk_clean,$(TEXFILES) $(GUIDE_BUILD_TEX))
 
-cleanall:
-	$(call latexmk_cleanall,$(TEXFILES) $(GUIDE_BUILD_TEX))
+distclean:
+	$(call latexmk_distclean,$(TEXFILES) $(GUIDE_BUILD_TEX))
 
 help:
 	@printf '%s\n' \
@@ -72,4 +72,4 @@ help:
 		'make solicitudes     Generate proposal control, extension and assignment-change forms' \
 		'make FILE.pdf        Generate one specific form' \
 		'make clean           Remove auxiliary files' \
-		'make cleanall        Remove auxiliary files and generated PDFs'
+		'make distclean       Remove auxiliary files and generated PDFs'

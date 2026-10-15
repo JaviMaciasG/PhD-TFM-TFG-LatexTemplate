@@ -28,10 +28,23 @@ define latexmk_build
 	$(LATEXMK) $(LATEXMK_FLAGS) $(1)
 endef
 
+# Known job files supplement latexmk's dependency-aware cleanup, including
+# bibliography and SyncTeX files which latexmk may otherwise retain.
+# Root-level auxiliary patterns also cover old job names after a source rename;
+# PDFs are never included in these patterns.
+LATEX_AUX_EXTENSIONS := aux bbl bcf bcf-SAVE-ERROR blg fdb_latexmk fls log out run.xml synctex synctex.gz toc lof lot lol loa cod vdo acn acr alg sbl sym slg glo gls glg glsdefs ist idx ind ilg nav snm vrb
+# PhD sources live in subdirectories but normally write to the working directory.
+latex_cleanup_stems = $(sort $(basename $(1)) $(basename $(notdir $(1))))
+
 define latexmk_clean
-	$(LATEXMK) -r "$(LATEXMKRC)" -c $(1)
+	$(if $(strip $(wildcard $(1))),$(LATEXMK) -r "$(LATEXMKRC)" -c $(wildcard $(1)) || printf '%s\n' 'Warning: latexmk cleanup failed; removing known auxiliary files directly.',:)
+	@for stem in $(sort $(call latex_cleanup_stems,$(1)) $(2)); do \
+		$(RM) -- $(addprefix "$$stem".,$(LATEX_AUX_EXTENSIONS)); \
+	done
+	@$(RM) -- $(addprefix *.,$(LATEX_AUX_EXTENSIONS))
 endef
 
-define latexmk_cleanall
-	$(LATEXMK) -r "$(LATEXMKRC)" -C $(1)
+define latexmk_distclean
+	$(call latexmk_clean,$(1),$(2))
+	$(RM) -- $(addsuffix .pdf,$(call latex_cleanup_stems,$(1)))
 endef

@@ -69,7 +69,7 @@ PDFS_FROM_SVG = $(patsubst %.svg, %.pdf, $(SVG_SOURCES))
 PDFS_FROM_EPS = $(patsubst %.eps, %.pdf, $(EPS_SOURCES))
 
 # Dummy targets
-DUMMY_MAIN_TARGETS = all final-pdfs bare bare-standard bare-compendium backup-chapters backup-compendium orig orig-standard orig-compendium orig-chapters bare-chapters clean-orig-figures clean-orig-diagrams all_latexmk clean clean_latexmk
+DUMMY_MAIN_TARGETS = all final-pdfs bare bare-standard bare-compendium backup-chapters backup-compendium orig orig-standard orig-compendium orig-chapters bare-chapters clean-orig-figures clean-orig-diagrams all_latexmk clean distclean
 DUMMY_DIFF_TARGETS = snapshot flatten latexdiff
 DUMMY_TARGETS = pdf_dia_done pdf_svg_done pdf_eps_done
 
@@ -252,20 +252,15 @@ pdf_eps_done: $(PDFS_FROM_EPS)
 	$(EPSPDF_TOOL) $^ $@
 
 
-clean:
-	$(RM) $(DUMMY_TARGETS)
-	$(RM) $(ROOT_FILENAME).pdf $(ROOT_FILENAME).acn $(ROOT_FILENAME).sbl $(ROOT_FILENAME).out $(ROOT_FILENAME).log $(ROOT_FILENAME).bcf $(ROOT_FILENAME).aux $(ROOT_FILENAME).bbl  $(ROOT_FILENAME).blg  $(ROOT_FILENAME).ist $(ROOT_FILENAME).glsdefs $(ROOT_FILENAME).toc $(ROOT_FILENAME).run.xml $(ROOT_FILENAME).lot $(ROOT_FILENAME).lof $(ROOT_FILENAME).loa $(ROOT_FILENAME).cod $(ROOT_FILENAME).alg $(ROOT_FILENAME).acr $(ROOT_FILENAME).sym $(ROOT_FILENAME).slg
+CLEAN_TEX_FILES = $(TEX_FILE) $(FLATTEN_TEX_FILE) $(SNAPSHOT_FLATTEN_TEX_FILE) $(DIFF_FLATTEN_TEX_FILE)
+CLEAN_EXTRA_AUX_STEMS = $(basename $(CHAPTER_SOURCES) $(COMPENDIUM_CHAPTER_SOURCES) $(APPENDIX_SOURCES))
 
-clean_latexmk:
-	$(call latexmk_cleanall,$(TEX_FILE))
-	$(RM) $(ROOT_FILENAME).bbl
-	$(RM) $(ROOT_FILENAME).sbl
-	$(RM) $(ROOT_FILENAME).ist
-	$(RM) $(ROOT_FILENAME).acn
-	$(RM) $(ROOT_FILENAME).cod
-	$(RM) $(ROOT_FILENAME).alg
-	$(RM) $(ROOT_FILENAME).acr
-	$(RM) $(ROOT_FILENAME).sym
-	$(RM) $(ROOT_FILENAME).slg
+clean:
+	$(call latexmk_clean,$(CLEAN_TEX_FILES),$(CLEAN_EXTRA_AUX_STEMS))
+	$(RM) $(DUMMY_TARGETS)
+
+distclean:
+	$(call latexmk_distclean,$(CLEAN_TEX_FILES),$(CLEAN_EXTRA_AUX_STEMS))
+	$(RM) $(DUMMY_TARGETS) $(ROOT_FILENAME)-compressed.pdf $(ROOT_FINAL_BOOK_FILENAME).pdf $(ROOT_FINAL_BOOK_FILENAME)-compressed.pdf
 
 .PHONY: $(DUMMY_MAIN_TARGETS) $(DUMMY_DIFF_TARGETS)

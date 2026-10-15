@@ -83,7 +83,7 @@ for kind in tfg tfm; do
   touch "$temporary_directory/$component/$guide.pdf"
   make --no-print-directory -s -C "$temporary_directory/$component" \
     LATEX_CONFIG_DIR="$repository_root/Config" guia
-  for target in clean cleanall; do
+  for target in clean distclean; do
     cleanup=$(make --no-print-directory -n -C "$temporary_directory/$component" \
       LATEX_CONFIG_DIR="$repository_root/Config" "$target")
     [[ $cleanup != *"$guide"* ]] || { echo "FAIL: $target touches the PDF-only guide" >&2; exit 1; }
