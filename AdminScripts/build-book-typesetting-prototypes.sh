@@ -10,6 +10,9 @@ font_mode=institutional
 language=spanish
 degree=
 document_structure=
+chapter_bibliographies=
+final_bibliography=
+bibliography_numbering=
 output_directory=
 list_styles=false
 declare -a requested_styles=()
@@ -24,6 +27,9 @@ Options:
   --language LANGUAGE             spanish (default) or english.
   --degree IDENTIFIER             Override myDegree for every build.
   --structure STRUCTURE           standard or compendium; defaults to myconfig.
+  --chapter-bibliographies BOOL    true or false; defaults to myconfig.
+  --final-bibliography BOOL        true or false; defaults to myconfig.
+  --bibliography-numbering MODE    global or chapter; defaults to myconfig.
   --output-dir DIRECTORY          Default: Book/typesetting-prototypes.
   --root DIRECTORY                Template repository root.
   --list-styles                   Print registered styles and exit.
@@ -59,6 +65,18 @@ while (($#)); do
     --structure)
       (($# >= 2)) || { echo "ERROR: --structure requires a value." >&2; exit 2; }
       document_structure=$2
+      shift 2
+      ;;
+    --chapter-bibliographies|--final-bibliography|--bibliography-numbering)
+      (($# >= 2)) || { echo "ERROR: $1 requires a value." >&2; exit 2; }
+      case $1 in
+        --chapter-bibliographies) chapter_bibliographies=$2 ;;
+        --final-bibliography) final_bibliography=$2 ;;
+        --bibliography-numbering) bibliography_numbering=$2 ;;
+      esac
+      case $2 in
+        '') echo "ERROR: $1 requires a non-empty value." >&2; exit 2 ;;
+      esac
       shift 2
       ;;
     --output-dir)
@@ -105,6 +123,16 @@ esac
 case $language in
   spanish|english) ;;
   *) echo "ERROR: --language must be spanish or english." >&2; exit 2 ;;
+esac
+for value in "$chapter_bibliographies" "$final_bibliography"; do
+  case $value in
+    ''|true|false) ;;
+    *) echo "ERROR: bibliography switches must be true or false." >&2; exit 2 ;;
+  esac
+done
+case $bibliography_numbering in
+  ''|global|chapter) ;;
+  *) echo "ERROR: --bibliography-numbering must be global or chapter." >&2; exit 2 ;;
 esac
 if [[ -n $document_structure ]]; then
   case $document_structure in
@@ -250,6 +278,9 @@ for style in "${requested_styles[@]}"; do
   replace_config_value myLanguage "$language" "$config" || exit 1
   [[ -z $degree ]] || replace_config_value myDegree "$degree" "$config" || exit 1
   [[ -z $document_structure ]] || replace_config_value myDocumentStructure "$document_structure" "$config" || exit 1
+  [[ -z $chapter_bibliographies ]] || replace_config_value myIncludeChapterBibliographies "$chapter_bibliographies" "$config" || exit 1
+  [[ -z $final_bibliography ]] || replace_config_value myIncludeFinalBibliography "$final_bibliography" "$config" || exit 1
+  [[ -z $bibliography_numbering ]] || replace_config_value myBibliographyNumbering "$bibliography_numbering" "$config" || exit 1
 
   name="book-${style}${language_suffix}${font_suffix}"
   build_log="$output_directory/${name}-build.log"

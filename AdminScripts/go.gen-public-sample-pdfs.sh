@@ -86,7 +86,8 @@ fi
 cp -p -- "$repository_root/README.pdf" "$output_directory/00-README.pdf"
 cp -p -- "$temporary_directory/01-DOWNLOAD-GUIDE.pdf" "$output_directory/01-DOWNLOAD-GUIDE.pdf"
 
-# degree|language|structure|style|font policy|published filename
+# degree|language|structure|style|font policy|published filename|bibliography profile
+# Missing bibliography profiles use the usual general bibliography only.
 samples=(
   'GIEC|spanish|standard|standard|institutional|TFG-GIEC-spanish.pdf'
   'ITI-URJC|english|standard|editorial|document|TFG-ITI-URJC-english-editorial.pdf'
@@ -95,6 +96,7 @@ samples=(
   'MUCTE|english|standard|framed|document|TFM-MUCTE-english-framed.pdf'
   'MUC|spanish|standard|shaded|institutional|TFM-MUC-spanish-shaded.pdf'
   'PHDUAH|english|standard|mimosis|document|PhD-PHDUAH-english-conventional-mimosis.pdf'
+  'PHDUAH|spanish|standard|editorial|document|PhD-PHDUAH-spanish-conventional-chapterbib-editorial.pdf|chapter'
   'PHDUAH|spanish|compendium|standard|institutional|PhD-PHDUAH-spanish-compendium-standard.pdf'
 )
 
@@ -108,6 +110,9 @@ comparison_inputs="$temporary_directory/typesetting-comparison"
 comparison_output="$repository_root/TYPESETTING-STYLES-COMPARISON.pdf"
 echo "[INF] Generating $comparison_output from Spanish GIEC samples..."
 if "$builder" \
+    --chapter-bibliographies false \
+    --final-bibliography true \
+    --bibliography-numbering global \
     --degree GIEC \
     --language spanish \
     --structure standard \
@@ -126,7 +131,13 @@ else
 fi
 
 for index in "${!samples[@]}"; do
-  IFS='|' read -r degree language structure style font_mode output_name <<<"${samples[$index]}"
+  IFS='|' read -r degree language structure style font_mode output_name bibliography_profile <<<"${samples[$index]}"
+  chapter_bibliographies=false
+  bibliography_numbering=global
+  if [[ ${bibliography_profile:-} == chapter ]]; then
+    chapter_bibliographies=true
+    bibliography_numbering=chapter
+  fi
   build_directory="$temporary_directory/sample-$index"
   mkdir -p "$build_directory"
   echo "[INF] Generating $output_name ($degree, $language, $structure, $style, $font_mode)..."
@@ -136,6 +147,9 @@ for index in "${!samples[@]}"; do
       --structure "$structure" \
       --styles "$style" \
       --font-mode "$font_mode" \
+      --chapter-bibliographies "$chapter_bibliographies" \
+      --final-bibliography true \
+      --bibliography-numbering "$bibliography_numbering" \
       --output-dir "$build_directory"; then
     language_suffix=
     [[ $language == english ]] && language_suffix=-english

@@ -31,11 +31,12 @@ After downloading an archive, extract or upload it, compile `Book/book.tex` once
 - **`TFM-MUCTE-english-framed.pdf`**: UAH MUCTE master final project. English; standard content structure; `framed` typesetting.
 - **`TFM-MUC-spanish-shaded.pdf`**: UAH MUC master final project. Spanish; standard content structure; `shaded` typesetting.
 - **`PhD-PHDUAH-english-conventional-mimosis.pdf`**: Conventional UAH doctoral thesis. English; standard content structure; `mimosis` typesetting.
+- **`PhD-PHDUAH-spanish-conventional-chapterbib-editorial.pdf`**: Conventional UAH doctoral thesis. Spanish; standard content structure; `editorial` typesetting. Includes per-chapter bibliographies with local numbering and a general bibliography with independent numbering.
 - **`PhD-PHDUAH-spanish-compendium-standard.pdf`**: UAH doctoral thesis by compendium of publications. Spanish; compendium structure; `standard` typesetting.
 - **`TFG-GISTS-UPM-spanish.pdf`**: ETSIT-UPM GISTS bachelor final project. Spanish; standard content structure; `standard` typesetting. Shows the orange cover and back page, the assessment page without highlighted headings, and the ethical-aspects appendix.
 - **`TFG-ITI-URJC-english-editorial.pdf`**: URJC ITI bachelor final project. English; standard content structure; `editorial` typesetting.
 
-The five alternative typesetting styles appear exactly once. The default `standard` style appears in the main GIEC example, the GISTS-UPM example and the compendium example, so that institutional and structural differences can be assessed without an additional visual variation.
+All five alternative typesetting styles are represented. The `editorial` style appears in the URJC example and the thesis with per-chapter bibliographies. The default `standard` style appears in the main GIEC example, the GISTS-UPM example and the compendium example, so that institutional and structural differences can be assessed without an additional visual variation.
 
 # Understanding the variations
 
@@ -52,6 +53,7 @@ Every example is a complete document, so you can inspect the covers, front matte
 - Start with `TFG-GIEC-spanish.pdf` if you want to understand the normal workflow or simply verify the default appearance.
 - Compare the MUIE, MUCTE and MUC examples when you need to inspect their different master cover sequences.
 - Use the conventional PHDUAH example for an ordinary doctoral thesis and the compendium example only when your thesis is formally presented as a compendium of publications.
+- Open `PhD-PHDUAH-spanish-conventional-chapterbib-editorial.pdf` to inspect the bibliographies at the end of each chapter and compare them with the general bibliography. Citations link to the entries in the corresponding chapter.
 - Use the GISTS-UPM example to inspect the shared ETSIT-UPM opening-page layout used by GISTS, GIB and several supported master degrees, together with the ethical-aspects appendix.
 - Use the ITI-URJC example if you are working at URJC or want to see how institutional support changes without changing the document workflow.
 
