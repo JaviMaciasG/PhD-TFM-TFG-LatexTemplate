@@ -2,6 +2,29 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.6.0] - 2026-10-16
+
+### Features
+
+- Support individual TFGs at ETSII
+
+
+### Bug Fixes
+
+- Separate work department from adviser affiliations
+
+
+### Documentation
+
+- Simplify supported degree descriptions
+
+
+### Maintenance
+
+- Back to default GIEC degree
+
+- Prepare v8.6.0
+
 ## [v8.5.1] - 2026-10-15
 
 ### Bug Fixes
