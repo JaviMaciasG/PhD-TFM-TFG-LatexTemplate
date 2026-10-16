@@ -81,6 +81,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 - Degree code (e.g., `GIEC`, `MUIT`, `PHDUAH`, `ITI-URJC`, `GIB-UPM`, `MUNE-UPM`, `PHD-ETSIT-UPM`)
 - Author and advisor identity data
 - Separate tutor/cotutor department and institution fields, with English variants
+- Independent department where the work is carried out (`\myDepartment`, `\myDepartmentEnglish`)
 - Expanded doctoral committee, external-reviewer and project-specific metadata
 - Dates, legal/publishing options, and grades
 - Link colors and optional helper macros
@@ -96,7 +97,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 - Language-dependent labels and wording
 - Gender-dependent grammatical variants
 - Advisor singular/plural wording
-- Combined adviser affiliations and tutor-first document-department selection, with cotutor fallback
+- Combined adviser affiliations and an independent work department, configurable in Spanish and English
 - Work-type and document metadata used throughout covers and paperwork
 
 ## Document composition model

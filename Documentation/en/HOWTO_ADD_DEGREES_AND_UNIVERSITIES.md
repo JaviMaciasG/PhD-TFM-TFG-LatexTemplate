@@ -136,7 +136,7 @@ Prefer the macros already derived from the registries and `myconfig.tex`:
 - `\myDegreefull`, `\myDegreefullwrapped`, and `\myDegreefullwrappedUpcase`.
 - `\myWorkType` and `\myWorkTypeFull`.
 - `\myBookTitle`, `\myAuthorFullName`, `\myAcademicTutorFullName`, and `\myCoTutorFullName`.
-- Adviser departments and institutions, including their English versions, remain configurable in `myconfig.tex`. The document department uses the tutor department, falling back to the co-tutor department when empty. The old `\myDepartment` and `\myDepartmentEnglish` names are derived aliases in `postamble.tex`, not editable fields.
+- Adviser departments and institutions describe personal affiliations. Configure the department where the work is carried out independently through `\myDepartment` and `\myDepartmentEnglish` in `myconfig.tex`; never infer it from advisers, and leave empty values empty.
 - Existing language, gender, date, and advisor macros defined by the shared configuration.
 
 Do not hard-code a university, school, author, tutor, language, or degree name when an existing macro represents it. Treat an empty `\myCoTutorFullName` explicitly if the page displays cotutor information.

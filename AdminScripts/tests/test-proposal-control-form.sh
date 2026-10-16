@@ -19,6 +19,7 @@ for spec in "${cases[@]}"; do
     -e "s/\\\\newcommand{\\\\myDegree}{[^}]*}/\\\\newcommand{\\\\myDegree}{$degree}/" \
     -e "s/\\\\newcommand{\\\\myLanguage}{[^}]*}/\\\\newcommand{\\\\myLanguage}{$language}/" \
     -e 's/\\newcommand{\\myDocumentStructure}{[^}]*}/\\newcommand{\\myDocumentStructure}{standard}/' \
+    -e 's/\\newcommand{\\myDepartment}{[^}]*}/\\newcommand{\\myDepartment}{Departamento del trabajo}/' \
     "$fixture/Config/myconfig.tex"
   president=Presidente
   if [[ $language == english ]]; then
@@ -75,7 +76,11 @@ for spec in "${cases[@]}"; do
   fi
   if [[ $cotutor == absent ]]; then
     ! grep -q 'COTUTOR' "$fixture/form.txt"
-    grep -q 'Departamento de prueba' "$fixture/form.txt"
+    grep -q 'Departamento del trabajo' "$fixture/form.txt"
+    if grep -q 'Departamento de prueba' "$fixture/form.txt"; then
+      echo 'FAIL: work department inferred from cotutor' >&2
+      exit 1
+    fi
   fi
   pdftotext -bbox "$fixture/PapeleoTFM/$document.pdf" "$fixture/form.xml"
   python3 - "$fixture/form.xml" <<'PY'

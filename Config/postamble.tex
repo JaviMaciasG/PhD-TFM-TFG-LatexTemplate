@@ -92,17 +92,10 @@
 \providecommand{\myAcademicCotutorDepartmentEnglish}{}
 \providecommand{\myAcademicCotutorInstitution}{}
 \providecommand{\myAcademicCotutorInstitutionEnglish}{}
-\newcommand{\DocumentDepartment}{%
-  \ifthenelse{\equal{\myAcademicTutorDepartment}{}}
-    {\myAcademicCotutorDepartment}{\myAcademicTutorDepartment}}
-\newcommand{\DocumentDepartmentEnglish}{%
-  \ifthenelse{\equal{\myAcademicTutorDepartmentEnglish}{}}
-    {\myAcademicCotutorDepartmentEnglish}{\myAcademicTutorDepartmentEnglish}}
-% Deprecated compatibility names: no longer editable fields in myconfig.tex.
+% The work department is independent of personal adviser affiliations.
+% Older configurations may omit it; never infer or overwrite its value.
 \providecommand{\myDepartment}{}
-\renewcommand{\myDepartment}{\DocumentDepartment}
 \providecommand{\myDepartmentEnglish}{}
-\renewcommand{\myDepartmentEnglish}{\DocumentDepartmentEnglish}
 
 % Affiliation fields display both values, without dangling commas when empty.
 \newcommand{\FormatAdviserAffiliation}[2]{%
@@ -120,7 +113,7 @@
 \ifthenelse{\equal{\myLanguage}{spanish}}
 {
   \usepackage[english, spanish, es-lcroman]{babel}
-  \newcommand{\myFullAffiliation}{Grupo de investigación \myResearchGroup \\ \DocumentDepartment \\ \myUniversity}
+  \newcommand{\myFullAffiliation}{Grupo de investigación \myResearchGroup \\ \myDepartment \\ \myUniversity}
   \newcommand{\myBookTitle}{\myBookTitleSpanish}
   \newcommand{\mypdflang}{es}
   \newcommand{\myPresentedBy}{Presentado por}
@@ -129,7 +122,7 @@
 } 
 {
   \usepackage[spanish, english]{babel}
-  \newcommand{\myFullAffiliation}{\myResearchGroup Research Group \\ \DocumentDepartmentEnglish \\ \myUniversityEnglish}
+  \newcommand{\myFullAffiliation}{\myResearchGroup Research Group \\ \myDepartmentEnglish \\ \myUniversityEnglish}
   \newcommand{\myBookTitle}{\myBookTitleEnglish}
   \newcommand{\mypdflang}{en}
   \newcommand{\myPresentedBy}{Presented by}

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Compile affiliation and department fallback cases without changing user files.
+# Check work-department independence without changing user files.
 set -euo pipefail
 test_directory=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 repository_root=$(cd -- "$test_directory/../.." && pwd)
@@ -9,33 +9,47 @@ mkdir -p "$fixture/Book"
 cp -a "$repository_root/Config" "$fixture/Config"
 cp -a "$repository_root/Book/biblio" "$fixture/Book/"
 cp "$test_directory/fixtures/adviser-affiliations.tex" "$fixture/Book/test.tex"
+for language in spanish english; do
+for configuration in current legacy; do
+job="departments-$language-$configuration"
+legacy_option=
+[[ $configuration != legacy ]] || legacy_option='\def\DepartmentTestLegacy{1}'
 (
   cd "$fixture/Book"
-  pdflatex -interaction=nonstopmode -halt-on-error test.tex > build.log 2>&1 || { tail -n 60 build.log >&2; exit 1; }
-  pdftotext -layout test.pdf test.txt
+  pdflatex -interaction=nonstopmode -halt-on-error -jobname="$job" "\def\DepartmentTestLanguage{$language}$legacy_option\input{test.tex}" > build.log 2>&1 || { tail -n 60 build.log >&2; exit 1; }
+  pdftotext -layout "$job.pdf" "$job.txt"
 )
+initial=InitialWorkDept
+initial_en=InitialWorkDeptEN
+[[ $configuration != legacy ]] || { initial=; initial_en=; }
+grep -Fq "AfterLoad: [$initial]" "$fixture/Book/$job.txt"
+grep -Fq "AfterLoadEN: [$initial_en]" "$fixture/Book/$job.txt"
 while IFS= read -r expected; do
-  grep -Fq "$expected" "$fixture/Book/test.txt" || { echo "FAIL: missing $expected" >&2; exit 1; }
+  grep -Fq "$expected" "$fixture/Book/$job.txt" || { echo "FAIL: missing $expected" >&2; exit 1; }
 done <<'EXPECTED'
-Department: TutorDept
-DepartmentEN: TutorDeptEN
-Legacy: TutorDept
-LegacyEN: TutorDeptEN
+Department: WorkDept
+DepartmentEN: WorkDeptEN
 Tutor: TutorDept, TutorInstitution
 TutorEN: TutorDeptEN, TutorInstitutionEN
 Cotutor: CotutorDept, CotutorInstitution
 CotutorEN: CotutorDeptEN, CotutorInstitutionEN
-Fallback: CotutorDept
-FallbackEN: CotutorDeptEN
+Independent: WorkDept
+IndependentEN: WorkDeptEN
 InstitutionOnly: TutorInstitution
 InstitutionOnlyEN: TutorInstitutionEN
 DepartmentOnly: CotutorDept
 DepartmentOnlyEN: CotutorDeptEN
 EmptyDepartment: []
 EmptyDepartmentEN: []
-EmptyLegacy: []
-EmptyLegacyEN: []
+NoAdviserDepartments: WorkDept
+NoAdviserDepartmentsEN: WorkDeptEN
+ChangedAdviser: WorkDept
+ChangedAdviserEN: WorkDeptEN
+UnchangedEnglishDepartment: WorkDeptEN
+UnchangedTutor: ChangedTutorDept, TutorInstitution
 EmptyAffiliation: []
 EmptyAffiliationEN: []
 EXPECTED
-echo 'PASS: Spanish/English department precedence, empty fields, affiliation composition and deprecated aliases.'
+printf 'PASS: independent work department / %s / %s configuration\n' "$language" "$configuration"
+done
+done

@@ -81,6 +81,7 @@ El `Makefile` de la raíz también puede generar una versión PDF del README y d
 - Código de titulación (por ejemplo, `GIEC`, `MUIT`, `PHDUAH`, `ITI-URJC`, `GIB-UPM`, `MUNE-UPM`, `PHD-ETSIT-UPM`)
 - Datos de identidad del autor y del tutor
 - Campos separados de departamento e institución del tutor y cotutor, con variantes inglesas
+- Departamento donde se realiza el trabajo, configurado de forma independiente (`\myDepartment`, `\myDepartmentEnglish`)
 - Tribunal doctoral ampliado, revisores externos y metadatos específicos del proyecto
 - Fechas, opciones legales/de publicación y calificaciones
 - Colores de enlaces y macros auxiliares opcionales
@@ -96,7 +97,7 @@ El `Makefile` de la raíz también puede generar una versión PDF del README y d
 - Etiquetas y textos dependientes del idioma
 - Variantes gramaticales dependientes del género
 - Redacción singular/plural para tutores
-- Afiliaciones combinadas de los tutores y selección del departamento del tutor, con el del cotutor como alternativa
+- Afiliaciones combinadas de los tutores y departamento del trabajo independiente, configurable en español e inglés
 - Tipo de trabajo y metadatos del documento utilizados en portadas y documentación administrativa
 
 ## Modelo de composición del documento

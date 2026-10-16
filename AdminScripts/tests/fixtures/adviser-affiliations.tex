@@ -1,10 +1,23 @@
-% Regression fixture: departments, institutions and deprecated aliases.
+% Regression fixture: independent work departments and personal affiliations.
 \documentclass{book}
 \input{../Config/preamble.tex}
 \input{../Config/myconfig.tex}
+\providecommand{\DepartmentTestLanguage}{spanish}
+\renewcommand{\myLanguage}{\DepartmentTestLanguage}
+\ifdefined\DepartmentTestLegacy
+  \let\myDepartment\undefined
+  \let\myDepartmentEnglish\undefined
+\else
+  \renewcommand{\myDepartment}{InitialWorkDept}
+  \renewcommand{\myDepartmentEnglish}{InitialWorkDeptEN}
+\fi
 \input{../Config/glossaries.tex}
 \input{../Config/postamble.tex}
 \begin{document}
+AfterLoad: [\myDepartment]\par
+AfterLoadEN: [\myDepartmentEnglish]\par
+\renewcommand{\myDepartment}{WorkDept}
+\renewcommand{\myDepartmentEnglish}{WorkDeptEN}
 \renewcommand{\myAcademicTutorDepartment}{TutorDept}
 \renewcommand{\myAcademicTutorDepartmentEnglish}{TutorDeptEN}
 \renewcommand{\myAcademicCotutorDepartment}{CotutorDept}
@@ -13,18 +26,16 @@
 \renewcommand{\myAcademicTutorInstitutionEnglish}{TutorInstitutionEN}
 \renewcommand{\myAcademicCotutorInstitution}{CotutorInstitution}
 \renewcommand{\myAcademicCotutorInstitutionEnglish}{CotutorInstitutionEN}
-Department: \DocumentDepartment\par
-DepartmentEN: \DocumentDepartmentEnglish\par
-Legacy: \myDepartment\par
-LegacyEN: \myDepartmentEnglish\par
+Department: \myDepartment\par
+DepartmentEN: \myDepartmentEnglish\par
 Tutor: \AcademicTutorAffiliation\par
 TutorEN: \AcademicTutorAffiliationEnglish\par
 Cotutor: \AcademicCotutorAffiliation\par
 CotutorEN: \AcademicCotutorAffiliationEnglish\par
 \renewcommand{\myAcademicTutorDepartment}{}
 \renewcommand{\myAcademicTutorDepartmentEnglish}{}
-Fallback: \DocumentDepartment\par
-FallbackEN: \DocumentDepartmentEnglish\par
+Independent: \myDepartment\par
+IndependentEN: \myDepartmentEnglish\par
 InstitutionOnly: \AcademicTutorAffiliation\par
 InstitutionOnlyEN: \AcademicTutorAffiliationEnglish\par
 \renewcommand{\myAcademicCotutorInstitution}{}
@@ -33,10 +44,18 @@ DepartmentOnly: \AcademicCotutorAffiliation\par
 DepartmentOnlyEN: \AcademicCotutorAffiliationEnglish\par
 \renewcommand{\myAcademicCotutorDepartment}{}
 \renewcommand{\myAcademicCotutorDepartmentEnglish}{}
-EmptyDepartment: [\DocumentDepartment]\par
-EmptyDepartmentEN: [\DocumentDepartmentEnglish]\par
-EmptyLegacy: [\myDepartment]\par
-EmptyLegacyEN: [\myDepartmentEnglish]\par
+NoAdviserDepartments: \myDepartment\par
+NoAdviserDepartmentsEN: \myDepartmentEnglish\par
+\renewcommand{\myAcademicTutorDepartment}{ChangedTutorDept}
+\renewcommand{\myAcademicTutorDepartmentEnglish}{ChangedTutorDeptEN}
+ChangedAdviser: \myDepartment\par
+ChangedAdviserEN: \myDepartmentEnglish\par
+\renewcommand{\myDepartment}{}
+EmptyDepartment: [\myDepartment]\par
+UnchangedEnglishDepartment: \myDepartmentEnglish\par
+\renewcommand{\myDepartmentEnglish}{}
+EmptyDepartmentEN: [\myDepartmentEnglish]\par
+UnchangedTutor: \AcademicTutorAffiliation\par
 EmptyAffiliation: [\AcademicCotutorAffiliation]\par
 EmptyAffiliationEN: [\AcademicCotutorAffiliationEnglish]\par
 \end{document}

@@ -150,9 +150,6 @@
 % mismo modelo): papel distinto del tutor y del cotutor. Déjalo vacío si todavía
 % no está asignado; la hoja del tribunal deja el valor vacío.
 \newcommand{\myPonenteFullName}{}
-% Modelo GISTS/GIB y másteres asociados: si hay ponente, se muestra su
-% departamento; si no, el del tutor.
-\newcommand{\myPonenteDepartment}{}
 
 % Sólo para titulaciones UPM: Supervisión técnica del MUNE-UPM, distinta de la
 % supervisión académica (myAcademicTutorFullName). Puede ser la misma persona;
@@ -164,7 +161,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Datos del cotutor
 % GISD-UPM: el cotutor definido en myCoTutorFullName se muestra como supervisor
-% académico; completa este campo y myAcademicCotutorDepartment.
+% académico; completa su nombre en el campo siguiente.
 \newcommand{\myCoTutorFullName}{María Isidra de Guzmán y de la Cerda} % Déjalo vacío si no hay cotutor.
 \newcommand{\myCoTutorGender}{female}
 \newcommand{\myCoTutorDNI}{17850606-F}
@@ -182,8 +179,10 @@
 % La universidad, su acrónimo y el centro se seleccionan automáticamente en
 % Config/degrees.tex y Config/institutions.tex según \myDegree.
 
-% El departamento del documento se obtiene del tutor o, si está vacío, del
-% cotutor. Configúralo en sus campos Department/DepartmentEnglish anteriores.
+% Departamento donde se realiza el trabajo, independiente de las afiliaciones
+% del tutor y del cotutor. Deja vacío lo que no proceda: no se infiere ni traduce.
+\newcommand{\myDepartment}{Departamento de Electrónica}
+\newcommand{\myDepartmentEnglish}{Department of Electronics}
 
 \newcommand{\myPhDProgram}{Programa de Doctorado en Electrónica: Sistemas Electrónicos Avanzados. Sistemas Inteligentes}
 \newcommand{\myPhDProgramEnglish}{PhD. Program in Electronics: Advanced Electronic Systems. Intelligent Systems}

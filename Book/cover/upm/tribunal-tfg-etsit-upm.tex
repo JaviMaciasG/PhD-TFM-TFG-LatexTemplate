@@ -13,14 +13,8 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.35cm}
 \providecommand{\myPonenteFullName}{}
-\providecommand{\myPonenteDepartment}{}
 % GISD overrides only the supervision rows and their label width.
 \providecommand{\UPMTFGLabelWidth}{2.9cm}
-\providecommand{\UPMTFGDepartment}{%
-  \ifthenelse{\equal{\myPonenteFullName}{}}
-    {\myAcademicTutorDepartment}
-    {\myPonenteDepartment}%
-}
 \providecommand{\UPMTFGSupervisorRows}{%
   \wordTutorOrTutoraTitle: & \myAcademicTutorFullName \\[0.25cm]
   \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\wordCoTutorOrCoTutoraTitle: & \myCoTutorFullName \\[0.25cm]}
@@ -36,7 +30,7 @@
   Título: & \myBookTitle \\[0.25cm]
   \wordAutorOrAutoraTitle: & \myAuthorFullName \\[0.25cm]
   \UPMTFGSupervisorRows
-  Departamento: & \UPMTFGDepartment
+  Departamento: & \myDepartment
 \end{tabularx}
 
 \vspace{0.4cm}

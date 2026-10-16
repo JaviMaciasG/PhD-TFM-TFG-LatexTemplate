@@ -136,7 +136,7 @@ Use preferentemente las macros ya derivadas de los registros y de `myconfig.tex`
 - `\myDegreefull`, `\myDegreefullwrapped` y `\myDegreefullwrappedUpcase`.
 - `\myWorkType` y `\myWorkTypeFull`.
 - `\myBookTitle`, `\myAuthorFullName`, `\myAcademicTutorFullName` y `\myCoTutorFullName`.
-- Los departamentos e instituciones de tutor y cotutor, con sus versiones inglesas, siguen siendo configurables en `myconfig.tex`. El departamento del documento usa el del tutor o, si está vacío, el del cotutor. Los nombres antiguos `\myDepartment` y `\myDepartmentEnglish` son alias derivados en `postamble.tex`, no campos editables.
+- Los departamentos e instituciones de tutor y cotutor describen sus afiliaciones personales. El departamento donde se realiza el trabajo se configura de forma independiente mediante `\myDepartment` y `\myDepartmentEnglish` en `myconfig.tex`; no se infiere de los tutores y sus valores vacíos permanecen vacíos.
 - Las macros existentes de idioma, género, fecha y tutor definidas por la configuración compartida.
 
 No codifique directamente el nombre de una universidad, centro, autor, tutor, idioma o titulación cuando exista una macro que lo represente. Trate explícitamente el caso de `\myCoTutorFullName` vacío si la página muestra información del cotutor.

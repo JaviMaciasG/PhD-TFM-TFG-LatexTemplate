@@ -130,9 +130,9 @@ Keep these current degree/profile assignments aligned with Config/degrees.tex an
 | `upm-etsit-mune-tfm` | `MUNE-UPM` | Wrapper selecting Spanish or English texts, a specific committee sheet and the shared covers. |
 | `upm-phd` | `PHD-ETSIT-UPM` | Doctoral outer cover, inner title page and credits; no independent back cover. |
 
-Keep the work-type labels in shared undergraduate/master covers derived from the degree registry. GISTS/GIB and masters using their model take the department from the ponente when one is named, otherwise from the tutor; an unnamed ponente leaves the field empty. GISD maps the tutor to technical supervision and the cotutor to academic supervision, with the cotutor department. MUNE uses the separate technical-supervisor field and the tutor for academic supervision. Committee labels reuse the configured grammatical genders.
+Keep the work-type labels in shared undergraduate/master covers derived from the degree registry. All information sheets use the work department configured through `\myDepartment` and `\myDepartmentEnglish`, never inferred from the ponente or supervisors. GISD maps the tutor to technical supervision and the cotutor to academic supervision. MUNE uses the separate technical-supervisor field and the tutor for academic supervision. Committee labels reuse the configured grammatical genders.
 
-Tutor and cotutor department/institution fields are separate, with Spanish and English variants. Keep affiliation composition and tutor-first document-department fallback centralized in Config/postamble.tex rather than duplicating them in covers or forms. Fields requesting an institution only must not receive the combined affiliation.
+Tutor and cotutor department/institution fields describe their personal affiliations, with Spanish and English variants. Keep affiliation composition centralized in Config/postamble.tex. Configure the work department independently in myconfig.tex: never infer it from these affiliations or overwrite it. Fields requesting an institution only must not receive the combined affiliation.
 
 The doctoral pages share Book/cover/upm/phd-layout.tex. The inner title page uses the ETSIT and UPM crests with vertically aligned institution names. The credits group thesis details and advisors, external reviewers, and committee members; keep their indented name columns aligned and the defence date at the bottom. Empty optional people are omitted. The populated credits represent the final thesis presentation, not the blank reviewer/committee/date fields of the official deposit model; retain that distinction in the user manual. Keep the reused UPM crest attribution in Book/logos/upm/UPM-DOCTORADO-LICENSE.txt.
 
@@ -251,7 +251,7 @@ Prefer the macros already derived from the registries and `myconfig.tex`:
 - `\myDegreefull`, `\myDegreefullwrapped`, and `\myDegreefullwrappedUpcase`.
 - `\myWorkType` and `\myWorkTypeFull`.
 - `\myBookTitle`, `\myAuthorFullName`, `\myAcademicTutorFullName`, and `\myCoTutorFullName`.
-- Adviser departments and institutions, including their English versions, remain configurable in `myconfig.tex`. The document department uses the tutor department, falling back to the co-tutor department when empty. The old `\myDepartment` and `\myDepartmentEnglish` names are derived aliases in `postamble.tex`, not editable fields.
+- Adviser departments and institutions describe personal affiliations. Configure the department where the work is carried out independently through `\myDepartment` and `\myDepartmentEnglish` in `myconfig.tex`; never infer it from advisers, and leave empty values empty.
 - Existing language, gender, date, and advisor macros defined by the shared configuration.
 
 Do not hard-code a university, school, author, tutor, language, or degree name when an existing macro represents it. Treat an empty `\myCoTutorFullName` explicitly if the page displays cotutor information.

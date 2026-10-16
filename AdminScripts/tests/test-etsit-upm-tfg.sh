@@ -110,7 +110,7 @@ PY
       grep -q 'Secretary:' "$fixture/$name.txt"
       grep -q 'Member:.*Primer vocal de ejemplo' "$fixture/$name-sheet.txt"
       grep -q 'Academic Supervisor:.*Tutor de ejemplo' "$fixture/$name-sheet.txt"
-      grep -q 'Department:.*Departamento del tutor' "$fixture/$name-sheet.txt"
+      grep -q 'Department:.*Work department' "$fixture/$name-sheet.txt"
       grep -q 'June' "$fixture/$name-sheet.txt"
       ! grep -q 'junio' "$fixture/$name-sheet.txt"
       ! grep -q 'MIEMBROS DEL TRIBUNAL' "$fixture/$name.txt"
@@ -121,7 +121,7 @@ PY
       grep -q 'MIEMBROS DEL TRIBUNAL' "$fixture/$name.txt"
       grep -q 'Supervisión técnica:' "$fixture/$name.txt"
       grep -q 'Supervisión académica:.*Tutor de ejemplo' "$fixture/$name-sheet.txt"
-      grep -q 'Departamento:.*Departamento del tutor' "$fixture/$name-sheet.txt"
+      grep -q 'Departamento:.*Departamento del trabajo' "$fixture/$name-sheet.txt"
       grep -q 'Vocal:.*Primer vocal de ejemplo' "$fixture/$name-sheet.txt"
       grep -q "$expected_secretary:" "$fixture/$name-sheet.txt"
       grep -q 'Presidenta:' "$fixture/$name-sheet.txt"
@@ -152,7 +152,7 @@ PY
     grep -q 'Supervisión académica:' "$fixture/$name.txt"
     ! grep -q 'Ponente:' "$fixture/$name.txt"
     grep -q 'Supervisión técnica:.*Tutor de ejemplo' "$fixture/$name-sheet.txt"
-    grep -q 'Departamento:.*Departamento del cotutor' "$fixture/$name-sheet.txt"
+    grep -q 'Departamento:.*Departamento del trabajo' "$fixture/$name-sheet.txt"
     if [[ -n $cotutor ]]; then
       grep -q "Supervisión académica:.*$cotutor" "$fixture/$name-sheet.txt"
     else
@@ -161,10 +161,10 @@ PY
     if [[ -n $technical_supervisor ]]; then ! grep -q "$technical_supervisor" "$fixture/$name.txt"; fi
   elif [[ $degree != MUNE-UPM && -n $ponente ]]; then
     grep -q "$ponente" "$fixture/$name.txt"
-    grep -q 'Departamento:.*Departamento del ponente' "$fixture/$name-sheet.txt"
+    grep -q 'Departamento:.*Departamento del trabajo' "$fixture/$name-sheet.txt"
   elif [[ $degree != MUNE-UPM ]]; then
     grep -Eq '^[[:space:]]*Ponente:[[:space:]]*$' "$fixture/$name-sheet.txt"
-    grep -q 'Departamento:.*Departamento del tutor' "$fixture/$name-sheet.txt"
+    grep -q 'Departamento:.*Departamento del trabajo' "$fixture/$name-sheet.txt"
   fi
   if [[ -n ${ETSIT_UPM_TEST_OUTPUT_DIR:-} ]]; then
     mkdir -p "$ETSIT_UPM_TEST_OUTPUT_DIR"
