@@ -40,7 +40,7 @@ Ten en cuenta que la compilación principal se realiza mediante `pdflatex+biber`
 
 Me refiero aquí a distribuciones similares a Debian (principalmente Ubuntu), aunque las instrucciones y los nombres de los paquetes deberían ser parecidos en otras distribuciones.
 
-Te recomiendo instalar la distribución Tex Live (`sudo apt-get install texlive` será suficiente en un equipo Ubuntu, por ejemplo). La mayoría de los paquetes necesarios se instalarán de forma predeterminada; las excepciones habituales son `texlive-publishers`, `texlive-lang-spanish` y `texlive-lang-english`. Instálalos también.
+Te recomiendo instalar la distribución Tex Live (`sudo apt-get install texlive` será suficiente en un equipo Ubuntu, por ejemplo). La mayoría de los paquetes necesarios se instalarán de forma predeterminada. Las excepciones habituales son `texlive-publishers`, `texlive-lang-spanish` y `texlive-lang-english`, así que instálalos también.
 
 También puedes utilizar `sudo apt-get install texlive-full` para instalar una distribución completa y muy amplia de Tex Live, pero ocupará mucho espacio en disco.
 
@@ -106,9 +106,9 @@ El repositorio Git completo también contiene `AdminScripts/`, `Deprecated/`, `n
 
 ## Configurar tus datos
 
-Personaliza tus datos, titulación e idioma en `Config/myconfig.tex`. Los comentarios del archivo te orientan y el capítulo de configuración del manual contiene la referencia completa. **Importante**: no elimines ni comentes las definiciones de variables; si un dato no corresponde a tu caso, como el cotutor, deja su valor vacío.
+Personaliza tus datos, titulación e idioma en `Config/myconfig.tex`. Los comentarios del archivo te orientan y el capítulo de configuración del manual contiene la referencia completa. **Importante**: no elimines ni comentes las definiciones de variables. Si un dato no corresponde a tu caso, como por ejemplo el cotutor, deja su valor vacío.
 
-También puedes probar otros estilos tipográficos para el documento principal; es una opción preliminar que se explica en el manual y no necesitas modificarla para empezar.
+También puedes probar otros estilos tipográficos para el documento principal (es una opción preliminar que se explica en el manual y no necesitas modificarla para empezar).
 
 ## Para trabajar en el "anteproyecto"
 
@@ -121,25 +121,25 @@ También puedes probar otros estilos tipográficos para el documento principal; 
 
 ### Caso general
 
-Después de descargar la plantilla, compila primero `Book/book.tex` sin modificarlo. El PDF resultante es el manual completo, incluidos ejemplos de las funcionalidades disponibles; utiliza esta primera compilación para comprobar que todo funciona y revisar la guía antes de empezar tu documento.
+Después de descargar la plantilla, compila primero `Book/book.tex` sin modificarlo. El PDF resultante es el manual completo, incluidos ejemplos de las funcionalidades disponibles. Utiliza esta primera compilación para comprobar que todo funciona y revisar la guía antes de empezar tu documento.
 
 1. Revisa tus datos en el archivo de configuración, como se indica arriba.
 2. Mantén `\myDocumentStructure` con el valor `standard`, tal como se suministra, y utiliza las variables `\myInclude...` para seleccionar si quieres incluir en el documento los elementos opcionales: la carta PDF de ejemplo, dedicatoria, agradecimientos, lista de figuras, lista de tablas, listas de acrónimos y símbolos, y listas de código, algoritmos y vídeos.
 3. Añade, elimina o reordena las líneas `\input{...}` de `Book/content-standard.tex` para organizar capítulos y apéndices, y escribe el contenido en los archivos de `Book/abstract/`, `Book/chapters/`, `Book/appendix/` y los demás directorios de contenido según sea necesario. Normalmente no deberías tener que modificar `Book/book.tex`.
-4. Compila `Book/book.tex` con una herramienta de compilación LaTeX estándar o desde tu editor LaTeX preferido. Recuerda configurar la herramienta o el editor para utilizar `pdflatex` y `biber`; añade `makeglossaries` únicamente si utilizas acrónimos o símbolos. Ejecuta las pasadas adicionales de LaTeX necesarias para resolver las referencias, la bibliografía y los glosarios que pueda haber.
+4. Compila `Book/book.tex` con una herramienta de compilación LaTeX estándar o desde tu editor LaTeX preferido. Recuerda configurar la herramienta o el editor para utilizar `pdflatex` y `biber`, y añade `makeglossaries` únicamente si utilizas acrónimos o símbolos. Ejecuta las pasadas adicionales de LaTeX necesarias para resolver las referencias, la bibliografía y los glosarios que pueda haber.
 
 Si vas a preparar una tesis por compendio, consulta el caso especializado más abajo.
 
-Si prefieres automatizar la compilación, ejecuta `make` desde `Book/`; esta alternativa requiere `latexmk`, pero no necesitas Make para utilizar la plantilla. Encontrarás los requisitos y los objetivos disponibles en el apartado del manual *Compilación mediante el Makefile*.
+Si prefieres automatizar la compilación, ejecuta `make` desde `Book/`. Esta alternativa requiere `latexmk`, pero no necesitas Make para utilizar la plantilla. Encontrarás los requisitos y los objetivos disponibles en el apartado del manual *Compilación mediante el Makefile*.
 
-Cuando estés preparado para escribir tu propio documento, parte de la estructura mínima estándar: copia los archivos de capítulo de `Book/chapters/bare/` a `Book/chapters`, excepto su archivo de organización `content-standard.tex`, y los archivos de `Book/appendix/bare/` a `Book/appendix`; después utiliza `Book/chapters/bare/content-standard.tex` para sustituir `Book/content-standard.tex`. El manual ofrece el procedimiento completo orientado a principiantes. Si utilizas el Makefile suministrado, mantén `\myDocumentStructure` con el valor `standard` y ejecuta `make bare` desde `Book/`; crea una copia de seguridad, instala los archivos fuente mínimos y desactiva el material de ejemplo opcional.
+Cuando estés preparado para escribir tu propio documento, parte de la estructura mínima estándar: copia los archivos de capítulo de `Book/chapters/bare/` a `Book/chapters`, excepto su archivo de organización `content-standard.tex`, y los archivos de `Book/appendix/bare/` a `Book/appendix`. Después utiliza `Book/chapters/bare/content-standard.tex` para sustituir `Book/content-standard.tex`. El manual ofrece el procedimiento completo orientado a principiantes. Si utilizas el Makefile suministrado, mantén `\myDocumentStructure` con el valor `standard` y ejecuta `make bare` desde `Book/`. Después crea una copia de seguridad, instala los archivos fuente mínimos y desactiva el material de ejemplo opcional.
 
 
-Una vez que la estructura mínima esté preparada, crea tu repositorio Git y realiza un primer *commit* de sus archivos fuente. Si prefieres un cliente Git gráfico, conserva el `.gitignore` proporcionado, pide al cliente que incluya en el *commit* todos los cambios no ignorados, revisa la lista de archivos propuesta y crea después el *commit*; el cliente puede denominar esta operación *Stage all*, *Stage all changes*, *Select all* o simplemente mostrar casillas para seleccionar los archivos que se incluirán. El procedimiento completo para principiantes, los archivos que nunca deben incluirse en un *commit* y la alternativa `make sync-git-sources`, que tiene en cuenta las dependencias, se explican en la sección del manual *Preparación del repositorio Git*.
+Una vez que la estructura mínima esté preparada, crea tu repositorio Git y realiza un primer *commit* de sus archivos fuente. Si prefieres un cliente Git gráfico, conserva el `.gitignore` proporcionado, pide al cliente que incluya en el *commit* todos los cambios no ignorados, revisa la lista de archivos propuesta y crea después el *commit*. El cliente que uses puede denominar esta operación *Stage all*, *Stage all changes*, *Select all* o simplemente mostrar casillas para seleccionar los archivos que se incluirán. El procedimiento completo para principiantes, los archivos que nunca deben incluirse en un *commit* y la alternativa `make sync-git-sources`, que tiene en cuenta las dependencias, se explican en la sección del manual *Preparación del repositorio Git*.
 
 ### Caso especializado: tesis doctoral por compendio de publicaciones
 
-Si tu tesis doctoral se presenta por compendio de publicaciones, establece `\myDocumentStructure` como `compendium` y selecciona tu programa de doctorado mediante `\myDegree` en `Config/myconfig.tex`. Organiza el contenido en `Book/content-compendium.tex` y compila el mismo `Book/book.tex`. El manual explica la estructura mínima y la incorporación de publicaciones en los apartados *Caso particular: tesis por compendio de publicaciones* y *Caso especializado: tesis por compendio de publicaciones*; comprueba también la normativa de tu programa y los permisos de reutilización de los artículos.
+Si tu tesis doctoral se presenta por compendio de publicaciones, establece `\myDocumentStructure` como `compendium` y selecciona tu programa de doctorado mediante `\myDegree` en `Config/myconfig.tex`. Organiza el contenido en `Book/content-compendium.tex` y compila el mismo `Book/book.tex`. El manual explica la estructura mínima y la incorporación de publicaciones en los apartados *Caso particular: tesis por compendio de publicaciones* y *Caso especializado: tesis por compendio de publicaciones*. Comprueba también la normativa de tu programa y los permisos de reutilización de los artículos.
 
 ## Personalizar el contenido del documento principal
 
@@ -160,7 +160,7 @@ Define los acrónimos en `Book/acronyms/defacronymsgl.tex` y los símbolos en `B
 ## Para trabajar con la documentación administrativa
 
 1. Ve a `PapeleoTFG/`, `PapeleoTFM/` o `PapeleoPHD/`, según el tipo de documento que necesites.
-2. Edita los archivos que necesites y compílalos mediante los `Makefile` correspondientes o con tu editor/herramienta de compilación LaTeX habitual. Al ejecutar `make`, se utiliza `latexmk` para generar todos los formularios del directorio y evitar recompilar los documentos que no hayan cambiado; utiliza `make help` para ver los grupos y objetivos individuales disponibles. Si utilizas [Overleaf](https://www.overleaf.com/), cambia el `main document` para que sea el que quieras compilar.
+2. Edita los archivos que necesites y compílalos con tu editor/herramienta de compilación LaTeX habitual o mediante los `Makefile` correspondientes. Al ejecutar `make`, se utiliza `latexmk` para generar todos los formularios del directorio y evitar recompilar los documentos que no hayan cambiado. Utiliza `make help` para ver los grupos y objetivos individuales disponibles. Si utilizas [Overleaf](https://www.overleaf.com/), cambia el `main document` para que sea el que quieras compilar.
 
 
 # Gestión de la bibliografía

@@ -21,14 +21,16 @@ Los PDF precompilados son ejemplos representativos y no una copia para cada titu
 
 Si trabajas localmente, para compilar la plantilla necesitas una distribución de \LaTeX{} suficientemente completa y actualizada. TeX Live es una opción habitual en GNU/Linux, MiKTeX y TeX Live están disponibles para Windows, y MacTeX proporciona una distribución adaptada a macOS. Asegúrate de que la distribución que elijas proporcione \texttt{pdflatex} y Biber, además de los paquetes cargados desde \texttt{Config/preamble.tex}.
 
-Si prefieres trabajar en línea con Overleaf, no necesitas instalar una distribución ni un editor en tu equipo. La plataforma proporciona el entorno de compilación; en la sección~\ref{sec:compilacion-overleaf} te explicamos cómo importar la plantilla y seleccionar el documento principal.
+Si prefieres trabajar en línea con Overleaf, no necesitas instalar una distribución ni un editor en tu equipo. La plataforma proporciona el entorno de compilación y en la sección~\ref{sec:compilacion-overleaf} te explicamos cómo importar la plantilla y seleccionar el documento principal.
 
-Biber es necesario cuando el documento incluye bibliografía. Si utilizas acrónimos o símbolos, también necesitarás \texttt{makeglossaries}; el libro de ejemplo distribuido con la plantilla contiene ambos elementos y, por tanto, requiere esta herramienta para generar todos sus listados.
+Biber es necesario cuando el documento incluye bibliografía. Si utilizas acrónimos o símbolos, también necesitarás \texttt{makeglossaries}, ya que el libro de ejemplo distribuido con la plantilla contiene ambos elementos y, por tanto, requiere esta herramienta para generar todos sus listados.
 
-Si durante la compilación recibes un aviso de que falta un fichero \texttt{.sty}, instala el paquete de tu distribución de \LaTeX{} que lo contiene. En MiKTeX puedes activar la instalación automática de paquetes; TeX Live y MacTeX proporcionan sus propias herramientas para administrar los paquetes instalados.
+Si durante la compilación recibes un aviso de que falta un fichero \texttt{.sty}, instala el paquete de tu distribución de \LaTeX{} que lo contiene. En MiKTeX puedes activar la instalación automática de paquetes, mientras que TeX Live y MacTeX proporcionan sus propias herramientas para administrar los paquetes instalados.
 
-No necesitas utilizar \texttt{make} para trabajar con la plantilla. Puedes compilarla con cualquier editor o herramienta de construcción de \LaTeX{} que permita configurar las herramientas descritas en la sección~\ref{sec:compilacion}; si lo prefieres, también puedes hacerlo desde una terminal. El \texttt{Makefile} incluido es únicamente una forma opcional de automatizar el proceso y resulta especialmente cómodo en sistemas GNU/Linux.
+No necesitas utilizar \texttt{make} para trabajar con la plantilla. Puedes compilarla con cualquier editor o herramienta de construcción de \LaTeX{} que permita configurar las herramientas descritas en la sección~\ref{sec:compilacion}. Si lo prefieres, también puedes hacerlo desde una terminal. El \texttt{Makefile} incluido es únicamente una forma opcional de automatizar el proceso y resulta especialmente cómodo en sistemas GNU/Linux.
 
+
+Puedes ampliar estas indicaciones con la documentación del proyecto \LaTeX{}~\cite{latex-project-docs} y el manual de Biber~\cite{biber-manual}, pero no necesitas ni mucho menos leerlos completos para empezar.
 
 \section{Compilación del documento principal}
 \label{sec:compilacion}
@@ -45,7 +47,7 @@ Si prefieres automatizar el proceso mediante \texttt{make}, consulta \textit{Com
 
 \subsection{Windows}
 
-En Windows puedes utilizar MiKTeX o TeX Live junto con TeXstudio u otro editor de \LaTeX{}. En la configuración del editor, selecciona Biber como procesador de la bibliografía y, si utilizas acrónimos o símbolos, añade \texttt{makeglossaries} a la cadena de construcción. Para ejecutar \texttt{makeglossaries} también necesitas un intérprete de Perl; Strawberry Perl es una de las alternativas disponibles para Windows.
+En Windows puedes utilizar MiKTeX o TeX Live junto con TeXstudio u otro editor de \LaTeX{}. En la configuración del editor, selecciona Biber como procesador de la bibliografía y, si utilizas acrónimos o símbolos, añade \texttt{makeglossaries} a la cadena de construcción. Para ejecutar \texttt{makeglossaries} también necesitas un intérprete de Perl (Strawberry Perl es una de las alternativas disponibles para Windows).
 
 No necesitas instalar \texttt{make} para trabajar con la plantilla en Windows. Si quieres utilizar el \texttt{Makefile} descrito en el apartado~\ref{sec:compilacion-makefile}, puedes hacerlo desde un entorno compatible que proporcione las herramientas requeridas, como WSL, aunque normalmente te resultará más sencillo configurar la cadena de compilación en el propio editor.
 
@@ -62,7 +64,7 @@ Las primeras comprobaciones de la generación de glosarios en macOS fueron reali
 \subsection{Overleaf}
 \label{sec:compilacion-overleaf}
 
-Si no quieres instalar y mantener un entorno local, puedes trabajar en línea mediante \href{https://www.overleaf.com/}{Overleaf}. Para importar la plantilla sigue estos pasos:
+Si no quieres instalar y mantener un entorno local, puedes trabajar en línea mediante \href{https://www.overleaf.com/}{Overleaf}, cuya guía de primeros pasos puede servirte de apoyo~\cite{overleaf-first-project}. Para importar la plantilla sigue estos pasos:
 
 \begin{itemize}
   \item Inicia sesión en Overleaf y selecciona \textit{New Project} y, a continuación, \textit{Upload Project}.
@@ -71,7 +73,7 @@ Si no quieres instalar y mantener un entorno local, puedes trabajar en línea me
   \item Comprueba que el compilador seleccionado sea pdfLaTeX y compila el proyecto.
 \end{itemize}
 
-Overleaf gestiona la cadena de construcción con sus propias herramientas, por lo que no necesitas ejecutar el \texttt{Makefile}. El libro utiliza Biber para la bibliografía y \texttt{makeglossaries} para los acrónimos y símbolos; después de importar el proyecto, comprueba que se generen correctamente la bibliografía y ambos listados. Si alguno no se actualiza, revisa primero el documento principal seleccionado y utiliza la opción de recompilar el proyecto desde cero.
+Overleaf gestiona la cadena de construcción con sus propias herramientas, por lo que no necesitas ejecutar el \texttt{Makefile}. El libro utiliza Biber para la bibliografía y \texttt{makeglossaries} para los acrónimos y símbolos. Después de importar el proyecto, comprueba que se generen correctamente la bibliografía y ambos listados. Si alguno no se actualiza, revisa primero el documento principal seleccionado y utiliza la opción de recompilar el proyecto desde cero.
 
 El libro de ejemplo es relativamente complejo y su compilación puede superar el tiempo disponible en algunos planes de Overleaf. Si la compilación se interrumpe por este motivo, comprueba los límites vigentes de tu cuenta y elimina temporalmente los ejemplos o elementos opcionales que no necesites. Para generar el anteproyecto o un formulario administrativo tendrás que cambiar el documento principal, como se explica en el capítulo~\ref{cha:documentos-complementarios}.
 
@@ -91,13 +93,13 @@ Una vez que hayas comprobado que todo funciona, puedes comenzar a escribir tu me
 Para preparar manualmente una memoria convencional con \texttt{standard}, sigue estos pasos:
 
 \begin{itemize}
-  \item Elimina los ficheros \texttt{.tex} situados directamente en \texttt{chapters/} y \texttt{appendix/}; no elimines sus subdirectorios ni su contenido.
+  \item Elimina los ficheros \texttt{.tex} situados directamente en \texttt{chapters/} y \texttt{appendix/}, pero no elimines sus subdirectorios ni su contenido.
   \item Copia a \texttt{chapters/} los ficheros de capítulo de \texttt{chapters/bare/}, sin copiar allí el fichero \texttt{content-standard.tex}, y copia los ficheros de \texttt{appendix/bare/} a \texttt{appendix/}.
-  \item Sustituye \texttt{Book/content-standard.tex} por \texttt{Book/chapters/bare/content-standard.tex}; este fichero ya incluye los capítulos y apéndices mínimos que acabas de copiar.
-  \item Revisa en \texttt{Config/myconfig.tex} las variables \texttt{\textbackslash{}myInclude...} descritas en la sección~\ref{sec:elementos-opcionales-configuracion}. Estas variables controlan la carta PDF de ejemplo, la dedicatoria, los agradecimientos y los índices independientes de figuras, tablas, acrónimos, símbolos, código, algoritmos y vídeos; deja en \texttt{false} los elementos que todavía no necesites.
+  \item Sustituye \texttt{Book/content-standard.tex} por \texttt{Book/chapters/bare/content-standard.tex}. Este fichero ya incluye los capítulos y apéndices mínimos que acabas de copiar.
+  \item Revisa en \texttt{Config/myconfig.tex} las variables \texttt{\textbackslash{}myInclude...} descritas en la sección~\ref{sec:elementos-opcionales-configuracion}. Estas variables controlan la carta PDF de ejemplo, la dedicatoria, los agradecimientos y los índices independientes de figuras, tablas, acrónimos, símbolos, código, algoritmos y vídeos. Deja en \texttt{false} los elementos que todavía no necesites.
 \end{itemize}
 
-Si utilizas \texttt{make}, ejecuta \texttt{make bare} desde \texttt{Book/}. Como \texttt{standard} es el valor predeterminado, el objetivo crea una copia de seguridad, instala los capítulos, apéndices y el fichero \texttt{content-standard.tex} mínimos, y desactiva el material opcional de ejemplo. También puedes solicitar explícitamente esta preparación mediante \texttt{make bare-standard}; \texttt{bare-chapters} se conserva como alias compatible. Estos objetivos se describen con más detalle en la sección~\ref{sec:compilacion-makefile}.
+Si utilizas \texttt{make}, ejecuta \texttt{make bare} desde \texttt{Book/}. Como \texttt{standard} es el valor predeterminado, el objetivo crea una copia de seguridad, instala los capítulos, apéndices y el fichero \texttt{content-standard.tex} mínimos, y desactiva el material opcional de ejemplo. También puedes solicitar explícitamente esta preparación mediante \texttt{make bare-standard}. Estos objetivos se describen con más detalle en la sección~\ref{sec:compilacion-makefile}.
 
 \subsection{Caso particular: tesis por compendio de publicaciones}
 
@@ -108,9 +110,11 @@ Solo si vas a preparar una tesis doctoral por compendio debes seleccionar \textt
 
 Después de comprobar la compilación y preparar la estructura mínima, te recomendamos crear un repositorio Git para tu trabajo y realizar un primer commit con los ficheros necesarios para reconstruir los documentos. Puedes prepararlo desde una aplicación gráfica sin utilizar la línea de comandos o, si dispones de \texttt{make} y Bash, dejar que la plantilla determine las dependencias compilables. En ambos casos debes revisar los cambios antes de crear el commit: \LaTeX{} genera numerosos ficheros auxiliares que no forman parte de tu trabajo y que solo añadirían ruido al historial.
 
+Si es tu primer contacto con Git, su documentación de referencia~\cite{git-manual} te ayudará a entender el repositorio, el área de preparación y los commits, aunque utilices una aplicación gráfica para trabajar con ellos.
+
 \subsection{Ficheros que debes versionar}
 
-Si has descargado la distribución ZIP o TGZ, encontrarás en su raíz un \texttt{README.md} preparado para describir tu trabajo. Antes del primer commit, sustituye sus textos entre corchetes por el título, la autoría, la titulación, el centro, los tutores, el curso y una breve descripción; elimina las líneas opcionales que no necesites. Este fichero presenta tu proyecto en el repositorio, pero no configura la compilación: los datos del documento siguen definiéndose en \texttt{Config/myconfig.tex}.
+Si has descargado la distribución ZIP o TGZ, encontrarás en su raíz un \texttt{README.md} preparado para describir tu trabajo. Antes del primer commit, sustituye sus textos entre corchetes por el título, la autoría, la titulación, el centro, los tutores, el curso y una breve descripción, y elimina las líneas opcionales que no necesites. Este fichero presenta tu proyecto en el repositorio, pero no configura la compilación: los datos del documento siguen definiéndose en \texttt{Config/myconfig.tex}.
 
 En el primer commit debes incluir los siguientes tipos de ficheros:
 
@@ -122,9 +126,9 @@ En el primer commit debes incluir los siguientes tipos de ficheros:
   \item Los \texttt{Makefile}, los ficheros \texttt{.gitignore}, el fichero \texttt{README.md}, la licencia y cualquier script propio que necesites para reconstruir los documentos.
 \end{itemize}
 
-A medida que avances, añade los nuevos capítulos, referencias bibliográficas, figuras, datos o scripts que incorpores al trabajo y registra también la eliminación de los que dejes de utilizar. Antes de cada commit, revisa la lista de cambios que muestra tu cliente de Git y selecciona los ficheros que correspondan; si trabajas desde la línea de comandos, puedes consultar \texttt{git status}, añadir rutas concretas mediante \texttt{git add} y retirar únicamente del índice un fichero que quieras conservar en tu equipo mediante \texttt{git rm --cached}.
+A medida que avances, añade los nuevos capítulos, referencias bibliográficas, figuras, datos o scripts que incorpores al trabajo y registra también la eliminación de los que dejes de utilizar. Antes de cada commit, revisa la lista de cambios que muestra tu cliente de Git y selecciona los ficheros que correspondan. Si trabajas desde la línea de comandos, puedes consultar \texttt{git status}, añadir rutas concretas mediante \texttt{git add} y retirar únicamente del índice un fichero que quieras conservar en tu equipo mediante \texttt{git rm --cached}.
 
-No debes subir nunca los auxiliares creados durante la compilación, como los ficheros \texttt{.aux}, \texttt{.log}, \texttt{.fls}, \texttt{.fdb\_latexmk}, \texttt{.synctex.gz}, \texttt{.bcf}, \texttt{.blg}, \texttt{.bbl}, \texttt{.run.xml}, \texttt{.toc}, \texttt{.lof} o \texttt{.lot}; tampoco los archivos temporales del editor, los paquetes de distribución ni los PDF generados del libro, el anteproyecto o el papeleo. Como excepción, puedes conservar la versión final definitiva del documento si existe una razón clara para versionarla, pero no acumules en Git los PDF de cada compilación.
+No debes subir nunca los auxiliares creados durante la compilación, como los ficheros \texttt{.aux}, \texttt{.log}, \texttt{.fls}, \texttt{.fdb\_latexmk}, \texttt{.synctex.gz}, \texttt{.bcf}, \texttt{.blg}, \texttt{.bbl}, \texttt{.run.xml}, \texttt{.toc}, \texttt{.lof} o \texttt{.lot}; ni tampoco los archivos temporales del editor, los paquetes de distribución ni los PDF generados del libro, el anteproyecto o el papeleo. Como excepción, puedes conservar la versión final definitiva del documento si existe una razón clara para versionarla, pero no acumules en Git los PDF de cada compilación.
 
 \subsection{Primer commit mediante una aplicación gráfica}
 
@@ -133,7 +137,7 @@ La forma más sencilla de preparar el primer commit sin utilizar la línea de co
 Puedes utilizar GitHub Desktop, el panel de control de versiones de Visual Studio Code, GitKraken, Sourcetree u otro cliente gráfico. Aunque no todos presentan las mismas opciones ni emplean los mismos nombres, todos permiten seleccionar los cambios que formarán parte de un commit. Sigue este procedimiento:
 
 \begin{itemize}
-  \item Abre como repositorio la carpeta raíz de la plantilla, en la que se encuentran \texttt{README.md}, \texttt{Config/} y \texttt{Book/}; si todavía no es un repositorio, utiliza la opción de la aplicación para crear o inicializar uno en esa carpeta.
+  \item Abre como repositorio la carpeta raíz de la plantilla, en la que se encuentran \texttt{README.md}, \texttt{Config/} y \texttt{Book/}. Si todavía no es un repositorio, utiliza la opción de la aplicación para crear o inicializar uno en esa carpeta.
   \item Selecciona todos los cambios no ignorados para incluirlos en el primer commit. Según la aplicación, la operación puede denominarse \emph{Stage all}, \emph{Stage all changes}, \emph{Select all} o mostrarse como una casilla que permite marcar todos los ficheros.
   \item Revisa la lista antes de confirmar. Debes reconocer las fuentes y los recursos descritos en el apartado anterior, pero no deben aparecer auxiliares de \LaTeX{} ni los PDF generados durante tus pruebas.
   \item Escribe un mensaje que describa el inicio de tu trabajo y crea el commit. Publicarlo o sincronizarlo posteriormente con GitHub, GitLab u otro servidor es una operación separada y opcional.
@@ -143,7 +147,7 @@ Este procedimiento resulta especialmente apropiado para el primer commit. En los
 
 \subsection{Sincronización mediante el \texttt{Makefile}}
 
-Antes de utilizar este objetivo debes trabajar dentro de un repositorio Git, bien porque hayas clonado la plantilla desde GitHub u otro servidor, bien porque hayas creado un repositorio local en la carpeta raíz mediante \texttt{git init .}; después de preparar y confirmar el primer commit podrás configurar un repositorio remoto y publicarlo mediante \texttt{git push}.
+Antes de utilizar este objetivo debes trabajar dentro de un repositorio Git, bien porque hayas clonado la plantilla desde GitHub u otro servidor, bien porque hayas creado un repositorio local en la carpeta raíz mediante \texttt{git init .}. Después de preparar y confirmar el primer commit podrás configurar un repositorio remoto y publicarlo mediante \texttt{git push}.
 
 Si dispones de \texttt{make} y Bash, ejecuta desde el directorio raíz del proyecto:
 
@@ -153,12 +157,12 @@ make sync-git-sources
 
 Este objetivo es la alternativa avanzada y dependiente de la compilación al procedimiento gráfico. Genera de nuevo las dependencias de \LaTeX{} del libro, el anteproyecto y todos los formularios, identifica los ficheros locales imprescindibles para compilarlos y los compara con el contenido versionado. Antes de actuar muestra los ficheros que añadirá o actualizará y aquellos que dejarán de estar versionados, y te pide confirmación. Si aceptas, actualiza únicamente el índice de Git: los ficheros descartados permanecen en el disco y no se ejecutan ni \texttt{git commit} ni \texttt{git push}. Al terminar, revisa \texttt{git status} y crea tú mismo el commit adecuado.
 
-Puedes volver a ejecutar el objetivo cada vez que cambien las dependencias. Si no puede generarse información de dependencias, el proceso se detiene antes de modificar el índice; si una fuente produce dependencias pero no completa la compilación, muestra una advertencia para que revises el error. Como medida de seguridad, el objetivo está desactivado cuando detecta la marca local que identifica el repositorio oficial de mantenimiento de la plantilla.
+Puedes volver a ejecutar el objetivo cada vez que cambien las dependencias. Si no puede generarse información de dependencias, el proceso se detiene antes de modificar el índice. Si una fuente produce dependencias pero no completa la compilación, muestra una advertencia para que revises el error. Como medida de seguridad, el objetivo está desactivado cuando detecta la marca local que identifica el repositorio oficial de mantenimiento de la plantilla.
 
 \section{Resumen del capítulo}
 \label{sec:resumen-primeros-pasos}
 
-Ya sabes qué archivos encontrarás en la carpeta de descargas, qué herramientas necesita la plantilla, cómo generar el documento desde tu editor habitual en GNU/Linux, Windows o macOS, o mediante Overleaf, cómo trabajar con el anteproyecto, cómo preparar la estructura mínima con la que puedes comenzar a escribir tu trabajo y cómo registrar correctamente sus fuentes en Git. Recuerda que Biber es necesario para la bibliografía y que solo tendrás que ejecutar \texttt{makeglossaries} cuando utilices acrónimos o símbolos; el siguiente paso es adaptar las variables descritas en el capítulo~\ref{cha:configuracion}.
+Ya sabes qué archivos encontrarás en la carpeta de descargas, qué herramientas necesita la plantilla, cómo generar el documento desde tu editor habitual en GNU/Linux, Windows o macOS, o mediante Overleaf, cómo trabajar con el anteproyecto, cómo preparar la estructura mínima con la que puedes comenzar a escribir tu trabajo y cómo registrar correctamente sus fuentes en Git. Recuerda que Biber es necesario para la bibliografía y que solo tendrás que ejecutar \texttt{makeglossaries} cuando utilices acrónimos o símbolos, y el siguiente paso es adaptar las variables descritas en el capítulo~\ref{cha:configuracion}.
 
 %%% Local Variables:
 %%% TeX-master: "../book"

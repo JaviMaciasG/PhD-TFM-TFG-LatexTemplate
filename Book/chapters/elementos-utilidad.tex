@@ -12,7 +12,7 @@ En este capítulo presentamos varios recursos integrados en la plantilla. Recorr
 \section{Comandos personalizados}
 \label{sec:uso-de-comandos}
 
-Después de las variables de configuración descritas en la sección~\ref{sec:definicion-del-tipo} hemos dejado en \texttt{Config/myconfig.tex} una zona destinada a definir comandos personalizados. Incluimos algunas definiciones a modo de ejemplo para mostrarte cómo puedes crear las tuyas; puedes conservarlas, adaptarlas o eliminarlas cuando dejen de resultarte útiles.
+Después de las variables de configuración descritas en la sección~\ref{sec:definicion-del-tipo} hemos dejado en \texttt{Config/myconfig.tex} una zona destinada a definir comandos personalizados. Incluimos algunas definiciones a modo de ejemplo para mostrarte cómo puedes crear las tuyas. Puedes conservarlas, adaptarlas o eliminarlas cuando dejen de resultarte útiles.
 
 Los comandos de ejemplo incluidos actualmente son:
 
@@ -20,8 +20,8 @@ Los comandos de ejemplo incluidos actualmente son:
   \item Comandos de formateo y revisión:
   \begin{itemize}
     \item \texttt{\textbackslash{}texten\{texto\}}: presenta en cursiva una palabra o expresión en inglés dentro de un documento en español. Uso y resultado: \texttt{\textbackslash{}texten\{English\}} produce \texten{English}.
-    \item \texttt{\textbackslash{}new\{texto\}}: resalta texto en magenta. Puede resultarte útil durante la revisión, pero comprueba que no queden marcas de este tipo en la versión definitiva. Uso y resultado: \texttt{\textbackslash{}new\{texto revisado\}} produce \new{texto revisado}.
-    \item \texttt{\textbackslash{}todojmg}: crea una nota de revisión en línea identificada como JMG mediante el paquete \texttt{todonotes}. Uso: \texttt{\textbackslash{}todojmg\{Revisar este párrafo\}}.
+    \item \texttt{\textbackslash{}new\{texto\}}: resalta texto en magenta mediante las funciones de color de \texttt{xcolor}~\cite{xcolor-manual}. Puede resultarte útil durante la revisión, pero comprueba que no queden marcas de este tipo en la versión definitiva. Uso y resultado: \texttt{\textbackslash{}new\{texto revisado\}} produce \new{texto revisado}.
+    \item \texttt{\textbackslash{}todojmg}: crea una nota de revisión en línea identificada como JMG mediante el paquete \texttt{todonotes}~\cite{todonotes-manual}. Uso: \texttt{\textbackslash{}todojmg\{Revisar este párrafo\}}.
     \item \texttt{\textbackslash{}todorbc}: crea una nota de revisión en línea identificada como RBC mediante el paquete \texttt{todonotes}. Uso: \texttt{\textbackslash{}todorbc\{Comprobar este dato\}}.
     \item \texttt{\textbackslash{}todomig}: crea una nota de revisión en línea identificada como MIG mediante el paquete \texttt{todonotes}. Uso: \texttt{\textbackslash{}todomig\{Completar esta sección\}}.
   \end{itemize}
@@ -66,7 +66,7 @@ Puedes editar o eliminar el bloque de cita de cada capítulo sin afectar al rest
 \section{Gestión de figuras y diagramas en la plantilla}
 \label{sec:diagrama}
 
-Puedes incluir directamente ficheros \texttt{pdf}, \texttt{png} y \texttt{jpg} mediante \texttt{\textbackslash{}includegraphics}. Para evitar que tengas que escribir la ruta completa de cada figura, ya hemos configurado en \texttt{Book/book.tex} los directorios \texttt{logos/}, \texttt{figures/} y \texttt{diagrams/} mediante \texttt{\textbackslash{}graphicspath}; normalmente bastará con que indiques su ruta relativa dentro de uno de ellos. Los logotipos institucionales se organizan en los subdirectorios \texttt{logos/uah/}, \texttt{logos/upm/} y \texttt{logos/urjc/}, y los recursos compartidos en \texttt{logos/shared/}.
+Puedes incluir directamente ficheros \texttt{pdf}, \texttt{png} y \texttt{jpg} mediante \texttt{\textbackslash{}includegraphics}, del paquete \texttt{graphicx}~\cite{graphicx-manual}. Para evitar que tengas que escribir la ruta completa de cada figura, ya hemos configurado en \texttt{Book/book.tex} los directorios \texttt{logos/}, \texttt{figures/} y \texttt{diagrams/} mediante \texttt{\textbackslash{}graphicspath}, así que normalmente bastará con que indiques su ruta relativa dentro de uno de ellos. Los logotipos institucionales se organizan en los subdirectorios \texttt{logos/uah/}, \texttt{logos/upm/} y \texttt{logos/urjc/}, y los recursos compartidos en \texttt{logos/shared/}.
 
 El \texttt{Makefile} descrito en el apartado~\ref{sec:compilacion-makefile} puede convertir automáticamente fuentes \texttt{dia}, \texttt{svg} y \texttt{eps} a PDF cuando están instaladas las herramientas opcionales necesarias, enumeradas en ese mismo apartado. Los PDF generados pueden incluirse después como cualquier otra figura.
 
@@ -75,7 +75,7 @@ La figura~\ref{fig:fig_clobj} utiliza \texttt{diagrams/Esquema\_objetos.pdf}, qu
 \begin{figure}[tphb]
   \centering
   \includegraphics{Esquema_objetos}
-  \caption{Clasificación de los objetos para la gramática; los pies de figura también pueden contener acrónimos como \acs{ETTS} y símbolos como \ac{xidet}.}
+  \caption{Clasificación de los objetos para la gramática. Los pies de figura también pueden contener acrónimos como \acs{ETTS} y símbolos como \ac{xidet}.}
   \label{fig:fig_clobj}
 \end{figure}
 
@@ -84,7 +84,7 @@ Incluye en todas las figuras un pie descriptivo y una etiqueta única mediante \
 \section{Definición y uso de acrónimos}
 \label{sec:uso-de-acronimos}
 
-La plantilla gestiona los acrónimos mediante el paquete \texttt{glossaries}. Sus definiciones se encuentran en \texttt{acronyms/defacronymsgl.tex}, mientras que \texttt{acronyms/acronymsgl.tex} configura y genera el listado correspondiente.
+La plantilla gestiona los acrónimos mediante el paquete \texttt{glossaries}~\cite{glossaries-manual}. Sus definiciones se encuentran en \texttt{acronyms/defacronymsgl.tex}, mientras que \texttt{acronyms/acronymsgl.tex} configura y genera el listado correspondiente.
 
 Puedes definir un acrónimo mediante una orden como:
 
@@ -107,7 +107,7 @@ Para que puedas ver el mecanismo en funcionamiento, reiniciamos primero el estad
 
 \glsresetall[acronym]
 
-Si ahora nos referimos a \ac{ETTS}, aparecerá su forma desarrollada por tratarse del primer uso; al volver a escribir \ac{ETTS}, se mostrará únicamente el acrónimo. También puedes forzar la forma abreviada con \acs{EMODB}, la forma desarrollada con \acl{EMODB} o la forma completa con \acf{EMODB}.
+Si ahora nos referimos a \ac{ETTS}, aparecerá su forma desarrollada por tratarse del primer uso y, al volver a escribir \ac{ETTS}, se mostrará únicamente el acrónimo. También puedes forzar la forma abreviada con \acs{EMODB}, la forma desarrollada con \acl{EMODB} o la forma completa con \acf{EMODB}.
 
 Puedes definir mediante \texttt{\textbackslash{}newglossaryentry} las entradas que necesiten plurales personalizados u otros atributos, como muestra el acrónimo \texttt{SOC} incluido en el fichero de ejemplo. Para generar el listado, ejecuta \texttt{makeglossaries}, tal como se explica en la sección~\ref{sec:compilacion}.
 
@@ -120,7 +120,7 @@ Los símbolos se gestionan también mediante \texttt{glossaries}. Se definen en 
 
 Los ejemplos incluidos representan el ángstrom, \ac{angstrom}; el ohmio, \ac{ohm}; una señal de audio, \ac{xdet}; una señal capturada por el micrófono \(i\), \ac{xidet}; y la independencia condicional, \ac{condindep}. Puedes utilizar la orden \texttt{\textbackslash{}ac\{clave\}} tanto con acrónimos como con estas entradas de símbolos.
 
-Las definiciones permanecen disponibles aunque ocultes sus listas. Utiliza \texttt{\textbackslash{}myIncludeListOfAcronyms} y \texttt{\textbackslash{}myIncludeListOfSymbols} en \texttt{Config/myconfig.tex} para decidir si aparecen esas páginas. Si no utilizas acrónimos ni símbolos tampoco necesitarás ejecutar \texttt{makeglossaries}; la sección~\ref{sec:compilacion} explica cuándo debes incorporar esta herramienta al proceso de compilación.
+Las definiciones permanecen disponibles aunque ocultes sus listas. Utiliza \texttt{\textbackslash{}myIncludeListOfAcronyms} y \texttt{\textbackslash{}myIncludeListOfSymbols} en \texttt{Config/myconfig.tex} para decidir si aparecen esas páginas. Si no utilizas acrónimos ni símbolos tampoco necesitarás ejecutar \texttt{makeglossaries}. La sección~\ref{sec:compilacion} explica cuándo debes incorporar esta herramienta al proceso de compilación.
 
 \section{Enlaces a vídeos y listados adicionales}
 \label{sec:intro-videolink}
@@ -136,6 +136,8 @@ Puedes añadir un enlace mediante una orden como:
 Para usarlo, basta con que incluyas elementos similares a \videoLink{Introducción al Laboratorio de Circuitos Electrónicos (I)}{https://www.youtube.com/watch?v=U1P2ZP0f8KM} o \videoLink{Introducción al Laboratorio de Circuitos Electrónicos (V)}{https://www.youtube.com/watch?v=nPsxMqKRGx0}. La orden incorpora el enlace al texto y registra la entrada en el listado de vídeos. Para mostrar ese listado, asigna el valor \texttt{true} a \texttt{\textbackslash{}myIncludeListOfVideos} en \texttt{Config/myconfig.tex}.
 
 Lo importante no es tanto que sea un listado de vídeos, sino que este ejemplo muestra cómo se pueden integrar listados de elementos adicionales que sean a su vez enlaces y configurar la generación del índice para crear enlaces visitables desde el propio índice, además de su indexación convencional.
+
+La parte enlazable de estos ejemplos utiliza \texttt{hyperref}~\cite{hyperref-manual}. Nuestra orden para los vídeos añade además el registro en un listado propio: no se trata de una orden estándar del paquete.
 
 \section{Resumen del capítulo}
 \label{sec:resumen-elementos-utilidad}

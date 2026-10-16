@@ -13,18 +13,18 @@ No necesitas las herramientas de este capítulo para comenzar a escribir o para 
 \section{Compilación mediante el \texttt{Makefile}}
 \label{sec:compilacion-makefile}
 
-Para facilitar la generación del documento incluimos un \texttt{Makefile}. No somos expertos ni en \texttt{make} ni en \LaTeX{}, así que seguramente no sea el mejor \texttt{Makefile} del mundo, pero creemos que cumple su función y puede servir también como ejemplo para adaptar el proceso de compilación a tus necesidades.
+Para facilitar la generación del documento incluimos un \texttt{Makefile}. El manual de GNU Make~\cite{make} explica cómo se relacionan sus objetivos, reglas y dependencias. No somos expertos ni en \texttt{make} ni en \LaTeX{}, así que seguramente no sea el mejor \texttt{Makefile} del mundo, pero creemos que cumple su función y puede servir también como ejemplo para adaptar el proceso de compilación a tus necesidades.
 
-El objetivo predeterminado \texttt{all}, ejecutado al invocar \texttt{make} sin argumentos, convierte primero los diagramas y figuras que lo necesiten y utiliza \texttt{latexmk} para controlar la compilación. Esta herramienta ejecuta \texttt{pdflatex}, Biber y las pasadas adicionales que sean necesarias; la configuración incluida integra también \texttt{makeglossaries} cuando cambian los acrónimos, los símbolos o un glosario.
+El objetivo predeterminado \texttt{all}, ejecutado al invocar \texttt{make} sin argumentos, convierte primero los diagramas y figuras que lo necesiten y utiliza \texttt{latexmk}~\cite{latexmk-manual} para controlar la compilación. Esta herramienta ejecuta \texttt{pdflatex}, Biber y las pasadas adicionales que sean necesarias, y la configuración incluida integra también \texttt{makeglossaries} cuando cambian los acrónimos, los símbolos o un glosario.
 
-La compilación genera \texttt{book.pdf} y \texttt{book-compressed.pdf}. También crea copias cuyos nombres identifican el tipo de trabajo, la titulación, el autor y el idioma configurados; en las tesis doctorales añade además \texttt{-standard} o \texttt{-compendium} para distinguir la estructura seleccionada. La versión comprimida utiliza la configuración \texttt{/prepress} de Ghostscript; la antigua versión de calidad \texttt{/screen} está desactivada porque degradaba excesivamente las imágenes.
+La compilación genera \texttt{book.pdf} y \texttt{book-compressed.pdf}. También crea copias cuyos nombres identifican el tipo de trabajo, la titulación, el autor y el idioma configurados. En las tesis doctorales añade además \texttt{-standard} o \texttt{-compendium} para distinguir la estructura seleccionada. La versión comprimida utiliza la configuración \texttt{/prepress} de Ghostscript. La antigua versión de calidad \texttt{/screen} está desactivada porque degradaba excesivamente las imágenes.
 
 En las ejecuciones posteriores, \texttt{latexmk} comprueba las dependencias registradas y evita recompilar el documento cuando ninguna fuente ha cambiado. En ese caso tampoco se repiten la compresión ni las copias finales, por lo que sus fechas de modificación permanecen intactas.
 
 Para el uso habitual de la plantilla solo necesitarás los siguientes objetivos:
 
 \begin{itemize}
-  \item \texttt{all}: compila el documento completo y genera las copias finales; es el objetivo ejecutado de forma predeterminada por \texttt{make}.
+  \item \texttt{all}: compila el documento completo y genera las copias finales y es el objetivo ejecutado de forma predeterminada por \texttt{make}.
   \item \texttt{clean}: elimina los ficheros auxiliares de compilación y conserva los PDF generados.
 \end{itemize}
 
@@ -32,14 +32,14 @@ Los siguientes objetivos proporcionan operaciones avanzadas para la revisión y 
 
 \begin{itemize}
   \item \texttt{all\_latexmk}: se conserva como alias compatible del objetivo predeterminado \texttt{all}, que ya utiliza \texttt{latexmk}.
-  \item \texttt{distclean}: elimina los auxiliares y los PDF del documento, sus versiones comprimidas, las copias con el nombre de la titulación configurada y los documentos de comparación; conserva los PDF que utilizas como recursos.
+  \item \texttt{distclean}: elimina los auxiliares y los PDF del documento, sus versiones comprimidas, las copias con el nombre de la titulación configurada y los documentos de comparación, pero conserva los PDF que utilizas como recursos.
   \item \texttt{snapshot}: genera mediante \texttt{latexpand} una copia unificada del documento que puede utilizarse como referencia para una revisión posterior.
   \item \texttt{flatten}: genera una copia unificada del estado actual del documento.
   \item \texttt{latexdiff}: compara la instantánea con el estado actual y genera un PDF que muestra las diferencias.
   \item \texttt{backup-chapters}: crea copias fechadas de los capítulos convencionales, los apéndices, \texttt{content-standard.tex} y \texttt{myconfig.tex}.
-  \item \texttt{orig-standard}: selecciona la estructura \texttt{standard}, sustituye los capítulos, apéndices y \texttt{content-standard.tex} por las versiones completas del manual y reactiva sus elementos opcionales después de crear una copia de seguridad; \texttt{orig-chapters} se conserva como alias compatible.
-  \item \texttt{bare-standard}: selecciona la estructura normal \texttt{standard}, instala los capítulos, apéndices y \texttt{content-standard.tex} mínimos y desactiva el material opcional de ejemplo; \texttt{bare-chapters} se conserva como alias de este objetivo.
-  \item \texttt{bare}: utiliza normalmente \texttt{bare-standard}; si un estudiante de doctorado ha seleccionado expresamente \texttt{compendium}, prepara en su lugar la estructura especializada. Después ofrece eliminar los gráficos y diagramas existentes.
+  \item \texttt{orig-standard}: selecciona la estructura \texttt{standard}, sustituye los capítulos, apéndices y \texttt{content-standard.tex} por las versiones completas del manual y reactiva sus elementos opcionales después de crear una copia de seguridad. \texttt{orig-chapters} se conserva como alias compatible.
+  \item \texttt{bare-standard}: selecciona la estructura normal \texttt{standard}, instala los capítulos, apéndices y \texttt{content-standard.tex} mínimos y desactiva el material opcional de ejemplo. \texttt{bare-chapters} se conserva como alias de este objetivo.
+  \item \texttt{bare}: utiliza normalmente \texttt{bare-standard}. Si un estudiante de doctorado ha seleccionado expresamente \texttt{compendium}, prepara en su lugar la estructura especializada. Después ofrece eliminar los gráficos y diagramas existentes.
   \item \texttt{backup-compendium}: crea una copia fechada de los capítulos especializados, \texttt{content-compendium.tex} y \texttt{myconfig.tex}.
   \item \texttt{bare-compendium}: selecciona la estructura especializada \texttt{compendium}, instala sus seis capítulos y \texttt{content-compendium.tex} mínimos, y desactiva el material opcional de ejemplo.
   \item \texttt{orig-compendium}: selecciona la estructura \texttt{compendium}, restaura sus seis capítulos completos y \texttt{content-compendium.tex} desde \texttt{chapters/compendium/orig/}, y reactiva el material opcional de ejemplo.
@@ -57,8 +57,8 @@ Algunos objetivos del \texttt{Makefile} utilizan herramientas adicionales. Solo 
 \begin{itemize}
   \item \texttt{Ghostscript}: genera la copia comprimida del documento cuando se utiliza el objetivo \texttt{all} del \texttt{Makefile}.
   \item \texttt{Inkscape}: convierte automáticamente los diagramas en formato \texttt{svg} a \texttt{pdf}.
-  \item \texttt{Dia} y \texttt{epspdf}: convierten automáticamente los diagramas en formato \texttt{dia} a \texttt{pdf}; \texttt{epspdf} también convierte las figuras en formato \texttt{eps} a \texttt{pdf}.
-  \item \texttt{latexmk}: controla las dependencias y las pasadas de compilación del objetivo predeterminado \texttt{all}; también lo utilizan los objetivos \texttt{all\_latexmk}, \texttt{clean} y \texttt{distclean}.
+  \item \texttt{Dia} y \texttt{epspdf}: convierten automáticamente los diagramas en formato \texttt{dia} a \texttt{pdf}. \texttt{epspdf} también convierte las figuras en formato \texttt{eps} a \texttt{pdf}.
+  \item \texttt{latexmk}: controla las dependencias y las pasadas de compilación del objetivo predeterminado \texttt{all}. También lo utilizan los objetivos \texttt{all\_latexmk}, \texttt{clean} y \texttt{distclean}.
   \item \texttt{latexpand} y \texttt{latexdiff}: permiten unificar los fuentes y generar documentos que muestran las diferencias entre dos versiones.
   \item \texttt{Perl}: es necesario para ejecutar \texttt{makeglossaries} en los sistemas que no incluyan ya un intérprete compatible.
 \end{itemize}
@@ -69,9 +69,9 @@ Si eliges la compilación mediante el \texttt{Makefile}, necesitas \texttt{latex
 \section{Generación del documento con control de cambios}
 \label{sec:control-de-cambios}
 
-Uno de los problemas que encontramos al trabajar con \LaTeX{} aparece durante la revisión: después de entregar un borrador, el tutor o director puede querer comprobar cómo se han incorporado sus sugerencias. En un procesador de textos como LibreOffice (vaaaaaaaaale, o Microsoft Word también) resulta habitual activar el control de cambios o comparar dos documentos; con \LaTeX{} también podemos obtener un resultado equivalente mediante algunas herramientas adicionales.
+Uno de los problemas que encontramos al trabajar con \LaTeX{} aparece durante la revisión: después de entregar un borrador, el tutor o director puede querer comprobar cómo se han incorporado sus sugerencias. En un procesador de textos como LibreOffice (vaaaaaaaaale, o Microsoft Word también) resulta habitual activar el control de cambios o comparar dos documentos, pero con \LaTeX{} también podemos obtener un resultado equivalente mediante algunas herramientas adicionales.
 
-Para ello utilizamos \texttt{latexdiff}, que compara dos versiones de un documento \LaTeX{} y genera un nuevo fichero en el que se marcan visualmente las inserciones y eliminaciones. Al compilarlo obtenemos un PDF independiente mucho más cómodo para revisar que un \texttt{diff} a palo seco de los ficheros fuente.
+Para ello utilizamos \texttt{latexdiff}~\cite{latexdiff-manual}, que compara dos versiones de un documento \LaTeX{} y genera un nuevo fichero en el que se marcan visualmente las inserciones y eliminaciones. Al compilarlo obtenemos un PDF independiente mucho más cómodo para revisar que un \texttt{diff} a palo seco de los ficheros fuente.
 
 Como el libro se divide mediante múltiples órdenes \texttt{\textbackslash{}input}, antes de realizar la comparación se utiliza \texttt{latexpand} para generar una versión unificada. El \texttt{Makefile} de \texttt{Book/} automatiza este procedimiento mediante los objetivos \texttt{snapshot}, \texttt{flatten} y \texttt{latexdiff}.
 
@@ -114,7 +114,7 @@ El flujo de revisión no requiere obligatoriamente la utilidad \texttt{make}. Cr
 
 \begin{enumerate}
   \item Instala \texttt{latexdiff} y un intérprete de Perl. MiKTeX incluye \texttt{latexdiff}, y Strawberry Perl es una de las alternativas disponibles para Windows.
-  \item Guarda una copia del documento que utilizarás como referencia; por ejemplo, \texttt{book-snapshot.tex}.
+  \item Guarda una copia del documento que utilizarás como referencia (por ejemplo, \texttt{book-snapshot.tex}).
   \item Realiza las modificaciones necesarias en el documento.
   \item Ejecuta desde el directorio \texttt{Book/}:
 \end{enumerate}
@@ -141,7 +141,7 @@ Las comprobaciones más habituales son:
   \item Si no aparece la bibliografía o las citas quedan sin resolver, comprueba que hayas ejecutado Biber y realiza después las pasadas adicionales de \texttt{pdflatex}.
   \item Si no aparecen los listados de acrónimos o símbolos, ejecuta \texttt{makeglossaries} antes de las pasadas finales de \texttt{pdflatex}.
   \item Si falla la conversión de un fichero \texttt{dia}, \texttt{svg} o \texttt{eps}, instala la herramienta opcional correspondiente o proporciona directamente una versión compatible en \texttt{pdf}, \texttt{png} o \texttt{jpg}.
-  \item Si las referencias cruzadas o los índices no están actualizados, repite las pasadas de \texttt{pdflatex}; antes de recompilar también puedes utilizar \texttt{make clean} para eliminar los auxiliares anteriores.
+  \item Si las referencias cruzadas o los índices no están actualizados, repite las pasadas de \texttt{pdflatex}. Antes de recompilar también puedes utilizar \texttt{make clean} para eliminar los auxiliares anteriores.
   \item Si \texttt{latexdiff} genera un fichero que no compila, revisa el primer error de \texttt{book-flatten-diff.tex}. Las tablas, fórmulas, entornos TikZ y órdenes personalizadas pueden necesitar correcciones manuales en el documento de diferencias.
   \item Si una cubierta o un formulario no coincide con el modelo institucional esperado, comprueba \texttt{\textbackslash{}myDegree}, el idioma, los datos compartidos y la normativa vigente antes de modificar directamente la plantilla.
 \end{itemize}

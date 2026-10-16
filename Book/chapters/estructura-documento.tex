@@ -9,6 +9,8 @@
 
 En este capítulo recorremos las partes que forman el documento principal para que sepas dónde escribir cada contenido. Comenzaremos por su organización general, seguiremos el orden de las páginas iniciales, el cuerpo y el cierre, y terminaremos distinguiendo qué partes tendrás que modificar. Las describimos todas para que tengas una referencia completa, pero no tendrás que modificar muchas de ellas porque la plantilla las genera o selecciona automáticamente.
 
+La organización por capítulos, secciones y apéndices sigue las convenciones de la clase \texttt{book}. Para profundizar en estas estructuras puedes consultar la guía de Lamport~\cite{lamport94} y la documentación del proyecto \LaTeX{}~\cite{latex-project-docs}.
+
 \section{Organización general del documento}
 \label{sec:estr-del-docum}
 
@@ -31,11 +33,11 @@ La parte inicial del documento, delimitada mediante \texttt{\textbackslash{}fron
 
 \begin{itemize}
   \item Portada y páginas iniciales, seleccionadas automáticamente por \texttt{cover/cover.tex} a partir de la titulación configurada mediante \texttt{\textbackslash{}myDegree}. Normalmente solo tendrás que configurar los datos de \texttt{Config/myconfig.tex}, sin modificar \texttt{cover/cover.tex} ni las plantillas institucionales, organizadas por universidad en \texttt{cover/uah/}, \texttt{cover/upm/} y \texttt{cover/urjc/}.
-  \item Documentos PDF preliminares, opcionales y desactivados de forma predeterminada. El bloque de \texttt{\textbackslash{}includepdf} en \texttt{Book/book.tex} permite incorporar una carta de autorización u otro PDF antes de la dedicatoria. Para utilizarlo, sustituye allí la ruta del ejemplo \texttt{letters/sampleLetter.pdf} por la de tu documento y activa \texttt{\textbackslash{}myIncludeSampleLetter} en \texttt{Config/myconfig.tex}; \texttt{pages=-} incluye todas sus páginas.
+  \item Documentos PDF preliminares, opcionales y desactivados de forma predeterminada. El bloque de \texttt{\textbackslash{}includepdf} en \texttt{Book/book.tex} permite incorporar una carta de autorización u otro PDF antes de la dedicatoria. Para utilizarlo, sustituye allí la ruta del ejemplo \texttt{letters/sampleLetter.pdf} por la de tu documento y activa \texttt{\textbackslash{}myIncludeSampleLetter} en \texttt{Config/myconfig.tex}. La opción \texttt{pages=-} incluye todas sus páginas.
   \item Dedicatoria y agradecimientos, incluidos desde \texttt{dedication/dedicatoria.tex} y \texttt{acknowledgements/agradecimientos.tex}. Puedes mostrarlos u ocultarlos mediante \texttt{\textbackslash{}myIncludeDedication} y \texttt{\textbackslash{}myIncludeAcknowledgements}.
-  \item Definiciones de acrónimos y símbolos, incluidas desde \texttt{acronyms/defacronymsgl.tex} y \texttt{symbols/defsymbolsgl.tex}. Sus listas se controlan mediante \texttt{\textbackslash{}myIncludeListOfAcronyms} y \texttt{\textbackslash{}myIncludeListOfSymbols}; las secciones~\ref{sec:uso-de-acronimos} y~\ref{sec:simbolos} explican su definición y uso.
+  \item Definiciones de acrónimos y símbolos, incluidas desde \texttt{acronyms/defacronymsgl.tex} y \texttt{symbols/defsymbolsgl.tex}. Sus listas se controlan mediante \texttt{\textbackslash{}myIncludeListOfAcronyms} y \texttt{\textbackslash{}myIncludeListOfSymbols}. Las secciones~\ref{sec:uso-de-acronimos} y~\ref{sec:simbolos} explican su definición y uso.
   \item Resumen en español, incluido desde \texttt{abstract/resumen.tex}, y resumen en inglés, incluido desde \texttt{abstract/abstract.tex}. Normalmente tendrás que editar ambos ficheros con el contenido de tu trabajo.
-  \item Resumen extendido en español, disponible en \texttt{abstract/resumen-extendido.tex}. Su inclusión está comentada de forma predeterminada; actívala únicamente cuando lo requiera tu tipo de trabajo.
+  \item Resumen extendido en español, disponible en \texttt{abstract/resumen-extendido.tex}. Su inclusión está comentada de forma predeterminada. Actívala únicamente cuando lo requiera tu tipo de trabajo.
   \item Índice general, incluido siempre desde \texttt{cover/table-of-contents.tex}, e índices de figuras y tablas, generados respectivamente desde \texttt{cover/list-of-figures.tex} y \texttt{cover/list-of-tables.tex}. Estos dos últimos se controlan mediante \texttt{\textbackslash{}myIncludeListOfFigures} y \texttt{\textbackslash{}myIncludeListOfTables}.
   \item Listados adicionales de código, algoritmos y vídeos, generados desde \texttt{cover/list-of-code.tex}, \texttt{cover/list-of-algorithms.tex} y \texttt{cover/list-of-videos.tex}, y controlados mediante las variables \texttt{\textbackslash{}myIncludeListOfCode}, \texttt{\textbackslash{}myIncludeListOfAlgorithms} y \texttt{\textbackslash{}myIncludeListOfVideos}. La sección~\ref{sec:intro-videolink} explica el ejemplo dedicado a los vídeos.
 \end{itemize}
@@ -47,14 +49,14 @@ La orden \texttt{\textbackslash{}mainmatter} da paso al contenido principal y ac
 
 \begin{itemize}
   \item Capítulos principales, incluidos explícitamente desde el directorio \texttt{chapters/} mediante las órdenes \texttt{\textbackslash{}input} de \texttt{Book/content-standard.tex}. El documento distribuido contiene esta guía, un capítulo de elementos básicos que incluye ejemplos de figuras y tablas, y otro de composición avanzada. Cuando prepares tu trabajo, sustituye esta selección por tus propios capítulos o utiliza la estructura mínima descrita en la sección~\ref{sec:estructura-minima}.
-  \item Pliego de condiciones, disponible en \texttt{pliego/pliego.tex}, y presupuesto, disponible en \texttt{presupuesto/presupuesto.tex}. Sus órdenes de inclusión están comentadas de forma predeterminada; actívalas únicamente cuando necesites estos documentos. Los ejemplos proceden de un trabajo académico de Jesús Martínez y se conservan como material de referencia; debido a su antigüedad, contrástalos con la normativa y los formatos actuales.
-  \item Bibliografía, impresa mediante \texttt{biblio/bibliography.tex}. Añade tus referencias a los ficheros \texttt{.bib} declarados en \texttt{biblio/bibliofiles.tex}; normalmente no necesitarás modificar \texttt{biblio/bibliography.tex}.
+  \item Pliego de condiciones, disponible en \texttt{pliego/pliego.tex}, y presupuesto, disponible en \texttt{presupuesto/presupuesto.tex}. Sus órdenes de inclusión están comentadas de forma predeterminada. Actívalas únicamente cuando necesites estos documentos. Los ejemplos proceden de un trabajo académico de Jesús Martínez y se conservan como material de referencia. Debido a su antigüedad, contrástalos con la normativa y los formatos actuales.
+  \item Bibliografía, impresa mediante \texttt{biblio/bibliography.tex}. Añade tus referencias a los ficheros \texttt{.bib} declarados en \texttt{biblio/bibliofiles.tex}. Normalmente no necesitarás modificar \texttt{biblio/bibliography.tex}.
   \item Apéndices, agrupados mediante el entorno \texttt{appendices} e incluidos explícitamente mediante las órdenes \texttt{\textbackslash{}input} de \texttt{Book/content-standard.tex}. El documento distribuido dedica un apéndice al código fuente, los algoritmos y los listados adicionales. Puedes reemplazarlos, añadir otros nuevos u omitirlos según las necesidades de tu trabajo.
 \end{itemize}
 
 \section{Estructura especializada para tesis por compendio}
 
-Solo si preparas una tesis doctoral por compendio de publicaciones debes seleccionar \texttt{compendium} mediante \texttt{\textbackslash{}myDocumentStructure} y organizar su cuerpo en \texttt{Book/content-compendium.tex}. Este fichero sustituye la selección convencional de capítulos por un resumen extendido, sitúa su bibliografía antes de la segunda parte y declara los PDF de las publicaciones. La sección~\ref{sec:tesis-compendio} contiene las instrucciones completas; el resto de usuarios puede ignorar esta estructura especializada.
+Solo si preparas una tesis doctoral por compendio de publicaciones debes seleccionar \texttt{compendium} mediante \texttt{\textbackslash{}myDocumentStructure} y organizar su cuerpo en \texttt{Book/content-compendium.tex}. Este fichero sustituye la selección convencional de capítulos por un resumen extendido, sitúa su bibliografía antes de la segunda parte y declara los PDF de las publicaciones. La sección~\ref{sec:tesis-compendio} contiene las instrucciones completas. El resto de usuarios puede ignorar esta estructura especializada.
 
 \section{Cierre del documento}
 \label{sec:cierre-documento}
@@ -78,7 +80,7 @@ Modifica las órdenes de inclusión de \texttt{Book/content-standard.tex} cuando
 \section{Resumen del capítulo}
 \label{sec:resumen-estructura-documento}
 
-El documento se organiza mediante \texttt{\textbackslash{}frontmatter}, \texttt{\textbackslash{}mainmatter} y \texttt{\textbackslash{}backmatter}. En la práctica trabajarás principalmente con \texttt{Config/myconfig.tex}, \texttt{Book/content-standard.tex}, los capítulos, los resúmenes y la bibliografía; activarás otros contenidos mediante las variables \texttt{\textbackslash{}myInclude...} y dejarás intactos \texttt{Book/book.tex} y los mecanismos automáticos de cubiertas. La excepción es la tesis doctoral por compendio, cuyo cuerpo se organiza mediante \texttt{Book/content-compendium.tex}.
+El documento se organiza mediante \texttt{\textbackslash{}frontmatter}, \texttt{\textbackslash{}mainmatter} y \texttt{\textbackslash{}backmatter}. En la práctica trabajarás principalmente con \texttt{Config/myconfig.tex}, \texttt{Book/content-standard.tex}, los capítulos, los resúmenes y la bibliografía. Activarás otros contenidos mediante las variables \texttt{\textbackslash{}myInclude...} y dejarás intactos \texttt{Book/book.tex} y los mecanismos automáticos de cubiertas. La excepción es la tesis doctoral por compendio, cuyo cuerpo se organiza mediante \texttt{Book/content-compendium.tex}.
 
 %%% Local Variables:
 %%% TeX-master: "../book"

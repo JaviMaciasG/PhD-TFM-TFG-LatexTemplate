@@ -14,7 +14,7 @@ Los apéndices se numeran de forma independiente y resultan adecuados para inclu
 \label{sec:codigo-fuente}
 
 Para la inclusión de código fuente se utiliza el paquete
-\texttt{listings}, para el que se han definido algunos estilos de
+\texttt{listings}~\cite{listings-manual}, para el que se han definido algunos estilos de
 ejemplo que pueden verse en el fichero \texttt{Config/preamble.tex} y
 que se usan a continuación.
 
@@ -136,11 +136,13 @@ done
 
 Desde la versión de abril de 2014, empezamos a usar el paquete \texttt{algorithm2e} para incluir algoritmos. Los ajustes generales dependientes del paquete se encuentran en \texttt{Config/preamble.tex}, mientras que \texttt{cover/list-of-algorithms.tex} genera su índice.
 
+Los entornos de código con pie, como \texttt{codefloat}, se definen mediante \texttt{float}~\cite{float-manual}. Esa capa controla el contenedor y su colocación, mientras que \texttt{listings} se encarga de presentar el código.
+
 Hay otras opciones disponibles (por ejemplo las descritas en
 \url{http://en.wikibooks.org/wiki/LaTeX/Algorithm}), y podemos
 abordarlas, pero por el momento nos quedamos con \texttt{algorithm2e}.
 
-Incluimos dos ejemplos directamente del manual: uno sencillo en el
+Incluimos dos ejemplos directamente del manual de \texttt{algorithm2e}~\cite{algorithm2e-manual}: uno sencillo en el
 algoritmo~\ref{alg:howto}, y otro un poco más complicado en el
 algoritmo~\ref{alg:restriction}.
 
@@ -208,7 +210,7 @@ algoritmo~\ref{alg:restriction}.
 \section{Ejemplos de inclusión de enlaces a vídeos y listado}
 \label{sec:videolink}
 
-En marzo de 2023 recibimos una pregunta sobre la posibilidad de incluir enlaces a vídeos en el documento y generar automáticamente un listado similar al de tablas, figuras o algoritmos. La orden se define en \texttt{Config/postamble.tex}, mientras que el listado se genera desde \texttt{cover/list-of-videos.tex}. Para usarla, basta con que incluyas elementos similares a \videoLink{Amplificadores realimentados: motivación}{https://youtu.be/9xXuasS8B3M} o \videoLink{Amplificadores realimentados: teoría ideal}{https://youtu.be/ZGMwGX7VCbg}.
+En marzo de 2023 recibimos una pregunta sobre la posibilidad de incluir enlaces a vídeos en el documento y generar automáticamente un listado similar al de tablas, figuras o algoritmos. Los enlaces se apoyan en \texttt{hyperref}~\cite{hyperref-manual}. La orden se define en \texttt{Config/postamble.tex}, mientras que el listado se genera desde \texttt{cover/list-of-videos.tex}. Para usarla, basta con que incluyas elementos similares a \videoLink{Amplificadores realimentados: motivación}{https://youtu.be/9xXuasS8B3M} o \videoLink{Amplificadores realimentados: teoría ideal}{https://youtu.be/ZGMwGX7VCbg}.
 
 
 %%% Local Variables:

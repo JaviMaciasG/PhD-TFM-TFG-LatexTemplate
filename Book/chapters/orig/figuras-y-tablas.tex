@@ -14,7 +14,7 @@
 
 Esta sección presenta ejemplos de figuras y tablas que pueden adaptarse a la mayoría de los documentos. Los casos que requieren una composición más elaborada se reúnen en el capítulo~\ref{cha:ejemplos-avanzados}.
 
-La figura~\ref{fig:figura-convencional} muestra la inclusión habitual de una imagen con \texttt{figure}, \texttt{\textbackslash{}includegraphics}, un pie descriptivo y una etiqueta para citarla desde el texto.
+La figura~\ref{fig:figura-convencional} muestra la inclusión habitual de una imagen con \texttt{figure}, \texttt{\textbackslash{}includegraphics}, del paquete \texttt{graphicx}~\cite{graphicx-manual}, un pie descriptivo y una etiqueta para citarla desde el texto.
 
 \begin{figure}[h]
   \centering
@@ -22,6 +22,8 @@ La figura~\ref{fig:figura-convencional} muestra la inclusión habitual de una im
   \caption{Ejemplo de figura convencional.}
   \label{fig:figura-convencional}
 \end{figure}
+
+Los pies se escriben con \texttt{\textbackslash{}caption}. El paquete \texttt{caption} permite personalizar su presentación~\cite{caption-manual}, aunque normalmente puedes conservar el formato proporcionado por la plantilla.
 
 \subsection{Tabla convencional}
 \label{sec:tabla-convencional}
@@ -52,7 +54,7 @@ La tabla~\ref{tab:table1} muestra una estructura convencional con título, etiqu
 \subsection{Subfiguras}
 \label{sec:subfiguras}
 
-El entorno \texttt{subfigure} permite reunir varias imágenes dentro de una misma figura. La figura~\ref{fig:fig3} contiene dos subfiguras, que también pueden citarse individualmente; por ejemplo, \ref{fig:fig3}.\subref{fig:fig3b}.
+El entorno \texttt{subfigure}, proporcionado por \texttt{subcaption}~\cite{subcaption-manual}, permite reunir varias imágenes dentro de una misma figura. La figura~\ref{fig:fig3} contiene dos subfiguras, que también pueden citarse individualmente (por ejemplo, \ref{fig:fig3}.\subref{fig:fig3b}).
 
 % For this to work you need to (in preamble.tex):
 % - remove \usepackage{subfig}

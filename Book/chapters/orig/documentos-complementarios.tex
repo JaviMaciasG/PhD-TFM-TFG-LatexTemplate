@@ -15,7 +15,7 @@ Además del libro principal, hemos incluido una plantilla de anteproyecto y vari
 
 Para ayudarte a preparar la propuesta inicial de un TFG o TFM, hemos incluido una plantilla simplificada en el directorio \texttt{Anteproyecto/}. Su fichero principal es \texttt{Anteproyecto/anteproyecto.tex} y reutiliza los datos que hayas definido en \texttt{Config/myconfig.tex}, incluidos el tipo de trabajo, la titulación, el título, la autoría, los tutores, el departamento y la fecha de propuesta.
 
-El contenido de ejemplo está organizado en secciones de introducción, objetivos, metodología, plan de trabajo y bibliografía. Adapta estas secciones a los requisitos de tu titulación; puedes ampliarlas, eliminarlas o reordenarlas libremente.
+El contenido de ejemplo está organizado en secciones de introducción, objetivos, metodología, plan de trabajo y bibliografía. El plan de trabajo incluye un diagrama de Gantt creado con \texttt{pgfgantt}. Puedes consultar su manual~\cite{pgfgantt-manual} si quieres adaptar el calendario y las tareas. Adapta estas secciones a los requisitos de tu titulación. Puedes ampliarlas, eliminarlas o reordenarlas libremente.
 
 Puedes compilar el anteproyecto con cualquier editor o herramienta habitual de \LaTeX{}. También hemos incluido un \texttt{Makefile}, que puedes ejecutar mediante:
 
@@ -33,11 +33,11 @@ El \texttt{Makefile} también proporciona los objetivos \texttt{snapshot}, \text
 \section{Caso especializado: tesis por compendio de publicaciones}
 \label{sec:tesis-compendio}
 
-Esta sección está destinada únicamente a estudiantes de doctorado que presenten su tesis por compendio de publicaciones; el resto de usuarios debe mantener la estructura \texttt{standard} y trabajar con \texttt{Book/content-standard.tex}. Para el caso especializado, utiliza \texttt{Book/book.tex} como documento principal, selecciona \texttt{compendium} como valor de \texttt{\textbackslash{}myDocumentStructure} y elige con \texttt{\textbackslash{}myDegree} un programa de doctorado admitido. La plantilla genera un error si intentas combinar esta estructura con un TFG, TFM u otro tipo de trabajo.
+Esta sección está destinada únicamente a estudiantes de doctorado que presenten su tesis por compendio de publicaciones. El resto de usuarios debe mantener la estructura \texttt{standard} y trabajar con \texttt{Book/content-standard.tex}. Para el caso especializado, utiliza \texttt{Book/book.tex} como documento principal, selecciona \texttt{compendium} como valor de \texttt{\textbackslash{}myDocumentStructure} y elige con \texttt{\textbackslash{}myDegree} un programa de doctorado admitido. La plantilla genera un error si intentas combinar esta estructura con un TFG, TFM u otro tipo de trabajo.
 
 La organización especializada se define en \texttt{Book/content-compendium.tex}. Su primera parte contiene el resumen extendido de la tesis y utiliza los ficheros \texttt{introduction.tex}, \texttt{objectives.tex}, \texttt{previous-work.tex}, \texttt{methodology.tex}, \texttt{thesis-contributions.tex} y \texttt{conclusions.tex} del directorio \texttt{Book/chapters/compendium/}. Puedes ampliar, combinar o reordenar esta propuesta según las necesidades de la tesis. La bibliografía se imprime al final de esta primera parte, antes de comenzar la relación de publicaciones.
 
-La segunda parte incorpora las publicaciones en su formato original. Guarda sus PDF definitivos en \texttt{Book/publications/} y añade una llamada por publicación en \texttt{Book/content-compendium.tex}. La orden proporcionada tiene la forma siguiente:
+La segunda parte incorpora las publicaciones en su formato original mediante \texttt{pdfpages}~\cite{pdfpages-manual}. Guarda sus PDF definitivos en \texttt{Book/publications/} y añade una llamada por publicación en \texttt{Book/content-compendium.tex}. La orden proporcionada tiene la forma siguiente:
 
 \begin{verbatim}
 \includecompendiumpublication[
@@ -49,9 +49,11 @@ La segunda parte incorpora las publicaciones en su formato original. Guarda sus 
  {publications/publication-file.pdf}
 \end{verbatim}
 
-La orden crea un capítulo numerado y su entrada en el índice, imprime mediante BibLaTeX la referencia correspondiente, muestra la información adicional cuando se proporciona e incluye todas las páginas del PDF con la escala configurada en \texttt{Config/preamble.tex}. En esas páginas mantiene la numeración de la tesis y utiliza como cabecera el título abreviado indicado en el segundo argumento obligatorio. El argumento opcional admite órdenes habituales de \LaTeX{}, párrafos, enlaces, referencias y listas; puedes omitirlo por completo cuando no tengas que indicar el estado de publicación, la contribución del doctorando, los permisos de reutilización u otra información específica. Los autores, la revista o congreso, la fecha y el DOI deben mantenerse en la entrada de \texttt{biblio/biblio.bib} para no duplicarlos en la llamada.
+La orden crea un capítulo numerado y su entrada en el índice, imprime mediante BibLaTeX la referencia correspondiente, muestra la información adicional cuando se proporciona e incluye todas las páginas del PDF con la escala configurada en \texttt{Config/preamble.tex}. En esas páginas mantiene la numeración de la tesis y utiliza como cabecera el título abreviado indicado en el segundo argumento obligatorio. El argumento opcional admite órdenes habituales de \LaTeX{}, párrafos, enlaces, referencias y listas. Puedes omitirlo por completo cuando no tengas que indicar el estado de publicación, la contribución del doctorando, los permisos de reutilización u otra información específica. Los autores, la revista o congreso, la fecha y el DOI deben mantenerse en la entrada de \texttt{biblio/biblio.bib} para no duplicarlos en la llamada.
 
-Selecciona siempre \texttt{Book/book.tex} como documento principal si trabajas desde tu editor o desde Overleaf. Si utilizas \texttt{make}, ejecuta el objetivo normal \texttt{make} desde \texttt{Book/}; la estructura elegida en \texttt{myconfig.tex} utiliza la misma secuencia de PDFLaTeX, Biber y glosarios. Antes de depositar la tesis, comprueba tanto la normativa doctoral aplicable como los derechos de reutilización de cada publicación.
+Selecciona siempre \texttt{Book/book.tex} como documento principal si trabajas desde tu editor o desde Overleaf. Si utilizas \texttt{make}, ejecuta el objetivo normal \texttt{make} desde \texttt{Book/}. La estructura elegida en \texttt{myconfig.tex} utiliza la misma secuencia de PDFLaTeX, Biber y glosarios. Antes de depositar la tesis, comprueba tanto la normativa doctoral aplicable como los derechos de reutilización de cada publicación.
+
+Para orientarte sobre las licencias de reutilización puedes consultar la documentación de Creative Commons~\cite{creativecommons-licenses}. El código de conducta de ALLEA~\cite{allea2023integrity} ofrece además pautas generales sobre autoría, reconocimiento de contribuciones e integridad investigadora. Estas lecturas no sustituyen la comprobación de los permisos concretos de cada publicación.
 
 \section{Documentación administrativa}
 \label{sec:introapp1}
@@ -60,7 +62,7 @@ Para evitar que tengas que introducir varias veces los mismos datos, hemos prepa
 
 \subsection{Documentos para TFG}
 
-Si trabajas en la EPS-UAH, consulta \texttt{PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.pdf}: te explicamos para qué sirve cada formulario, su anexo y normativa de referencia, las variables concretas que utiliza, el género gramatical y los campos que tendrás que completar. Puedes abrir la guía directamente; no necesitas compilarla ni utilizar Make.
+Si trabajas en la EPS-UAH, consulta \texttt{PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.pdf}: te explicamos para qué sirve cada formulario, su anexo y normativa de referencia, las variables concretas que utiliza, el género gramatical y los campos que tendrás que completar. Puedes abrir la guía directamente, sin necesidad de compilarla ni utilizar Make.
 
 El directorio \texttt{PapeleoTFG/} contiene actualmente:
 
@@ -75,7 +77,7 @@ El directorio \texttt{PapeleoTFG/} contiene actualmente:
   \item \texttt{TFG-ActaYRubricaDefensa-EPS-UAH.tex}: acta y rúbrica del tribunal de defensa.
 \end{itemize}
 
-El \texttt{Makefile} de este directorio compila todos los formularios independientes y genera un PDF por cada uno; los restantes ficheros \texttt{.tex} son fragmentos auxiliares incluidos por esos formularios y no deben compilarse por separado. También puedes abrir y compilar individualmente el documento que necesites con tu editor o herramienta de \LaTeX{} preferidos.
+El \texttt{Makefile} de este directorio compila todos los formularios independientes y genera un PDF por cada uno. Los restantes ficheros \texttt{.tex} son fragmentos auxiliares incluidos por esos formularios y no deben compilarse por separado. También puedes abrir y compilar individualmente el documento que necesites con tu editor o herramienta de \LaTeX{} preferidos.
 
 \subsection{Documentos para TFM}
 
@@ -112,9 +114,9 @@ El uso de \texttt{make} es opcional y requiere \texttt{latexmk}. Cada invocació
 
 Si solo necesitas un formulario, puedes indicar directamente el nombre del PDF, por ejemplo \texttt{make TFG-InformeTutorYRubrica-EPS-UAH.pdf}. Los dos directorios utilizan la misma organización de objetivos: \texttt{autorizaciones} genera las autorizaciones y documentos afines, \texttt{convenios} genera los formularios de cooperación educativa y \texttt{evaluacion} genera los informes, actas y rúbricas. En \texttt{PapeleoTFM/} también puedes utilizar \texttt{solicitudes} para generar las solicitudes de prórroga y cambio de TFM. El objetivo \texttt{help} de cada directorio muestra las opciones disponibles.
 
-El objetivo \texttt{clean} elimina únicamente los ficheros auxiliares de la compilación y conserva los PDF generados; utiliza \texttt{distclean} cuando también quieras eliminar esos PDF.
+El objetivo \texttt{clean} elimina únicamente los ficheros auxiliares de la compilación y conserva los PDF generados. Utiliza \texttt{distclean} cuando también quieras eliminar esos PDF.
 
-Desde la raíz del repositorio puedes ejecutar \texttt{make paperwork} para generar únicamente el conjunto de formularios que corresponde a la titulación seleccionada en \texttt{myconfig.tex}. El objetivo \texttt{make all-documents} añade además el README, el libro principal y el anteproyecto; el objetivo predeterminado de la raíz no cambia y continúa generando únicamente el README y el libro.
+Desde la raíz del repositorio puedes ejecutar \texttt{make paperwork} para generar únicamente el conjunto de formularios que corresponde a la titulación seleccionada en \texttt{myconfig.tex}. El objetivo \texttt{make all-documents} añade además el README, el libro principal y el anteproyecto. El objetivo predeterminado de la raíz no cambia y continúa generando únicamente el README y el libro.
 
 En Overleaf puedes generar cada formulario seleccionando su fichero \texttt{.tex} como documento principal, de acuerdo con las indicaciones de la sección~\ref{sec:compilacion-overleaf}.
 

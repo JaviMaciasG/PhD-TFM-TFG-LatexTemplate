@@ -31,6 +31,8 @@ Si durante la compilación recibes un aviso de que falta un fichero \texttt{.sty
 No necesitas utilizar \texttt{make} para trabajar con la plantilla. Puedes compilarla con cualquier editor o herramienta de construcción de \LaTeX{} que permita configurar las herramientas descritas en la sección~\ref{sec:compilacion}; si lo prefieres, también puedes hacerlo desde una terminal. El \texttt{Makefile} incluido es únicamente una forma opcional de automatizar el proceso y resulta especialmente cómodo en sistemas GNU/Linux.
 
 
+Puedes ampliar estas indicaciones con la documentación del proyecto \LaTeX{}~\cite{latex-project-docs} y el manual de Biber~\cite{biber-manual}; no necesitas leerlos completos para empezar.
+
 \section{Compilación del documento principal}
 \label{sec:compilacion}
 
@@ -63,7 +65,7 @@ Las primeras comprobaciones de la generación de glosarios en macOS fueron reali
 \subsection{Overleaf}
 \label{sec:compilacion-overleaf}
 
-Si no quieres instalar y mantener un entorno local, puedes trabajar en línea mediante \href{https://www.overleaf.com/}{Overleaf}. Para importar la plantilla sigue estos pasos:
+Si no quieres instalar y mantener un entorno local, puedes trabajar en línea mediante \href{https://www.overleaf.com/}{Overleaf}, cuya guía de primeros pasos puede servirte de apoyo~\cite{overleaf-first-project}. Para importar la plantilla sigue estos pasos:
 
 \begin{itemize}
   \item Inicia sesión en Overleaf y selecciona \textit{New Project} y, a continuación, \textit{Upload Project}.
@@ -108,6 +110,8 @@ Solo si vas a preparar una tesis doctoral por compendio debes seleccionar \textt
 \label{sec:preparacion-repositorio-git}
 
 Después de comprobar la compilación y preparar la estructura mínima, te recomendamos crear un repositorio Git para tu trabajo y realizar un primer commit con los ficheros necesarios para reconstruir los documentos. Puedes prepararlo desde una aplicación gráfica sin utilizar la línea de comandos o, si dispones de \texttt{make} y Bash, dejar que la plantilla determine las dependencias compilables. En ambos casos debes revisar los cambios antes de crear el commit: \LaTeX{} genera numerosos ficheros auxiliares que no forman parte de tu trabajo y que solo añadirían ruido al historial.
+
+Si es tu primer contacto con Git, su documentación de referencia~\cite{git-manual} te ayudará a entender el repositorio, el área de preparación y los commits, aunque utilices una aplicación gráfica para trabajar con ellos.
 
 \subsection{Ficheros que debes versionar}
 

@@ -17,7 +17,9 @@
   \end{Fuente}
 \end{FraseCelebre}
 
-En este capítulo reunimos ejemplos de los elementos de \LaTeX{} que utilizarás con más frecuencia. Veremos estructuras, listas y citas, expresiones matemáticas y referencias cruzadas, niveles de organización, figuras y tablas; puedes acudir directamente al apartado que necesites.
+En este capítulo reunimos ejemplos de los elementos de \LaTeX{} que utilizarás con más frecuencia. Veremos estructuras, listas y citas, expresiones matemáticas y referencias cruzadas, niveles de organización, figuras y tablas. Puedes acudir directamente al apartado que necesites.
+
+Si algún ejemplo se te queda corto, la guía de Lamport~\cite{lamport94} puede ayudarte a ampliar estas construcciones sin depender de las decisiones concretas de nuestra plantilla.
 
 \section{Estructura, listas y citas}
 \label{sec:estructura-listas-citas}
@@ -31,7 +33,7 @@ Una lista sin numerar puede construirse mediante el entorno \texttt{itemize}:
   \item Segundo elemento de ejemplo.
 \end{itemize}
 
-Las fuentes bibliográficas se citan con \texttt{\textbackslash{}cite\{\}} (no olvides usar un espacio inseparable ``\~'' entre el texto previo y el comando \texttt{\textbackslash{}cite\{\}}). Por ejemplo, esta plantilla describe el proyecto \texis{} en~\cite{texis}. También puedes añadir una aclaración mediante una nota al pie\footnote{Este es un ejemplo de nota al pie.}.
+El manual de \texttt{biblatex}~\cite{biblatex-manual} describe las variantes de las órdenes de cita. Las fuentes bibliográficas se citan con \texttt{\textbackslash{}cite\{\}} (no olvides usar un espacio inseparable ``\~'' entre el texto previo y el comando \texttt{\textbackslash{}cite\{\}}). Por ejemplo, esta plantilla describe el proyecto \texis{} en~\cite{texis}. También puedes añadir una aclaración mediante una nota al pie\footnote{Este es un ejemplo de nota al pie.}.
 
 En algunas ocasiones puedes querer mostrar una referencia bibliográfica completa en el propio texto sin repetirla después en la bibliografía final. Por ejemplo, la orden \texttt{\textbackslash{}fullcite} nos permite incorporar directamente la siguiente referencia en el texto (por ejemplo cuando estás listando las publicaciones resultado de tu tesis doctoral):
 
@@ -48,7 +50,7 @@ La opción \texttt{skipbib} permite utilizar la entrada con las órdenes de cita
 \section{Matemáticas y referencias cruzadas}
 \label{sec:matematicas-referencias}
 
-Puedes incluir expresiones matemáticas en línea, como $\sigma=0.75$, o utilizar un entorno independiente para una ecuación numerada:
+Para expresiones y entornos matemáticos utilizamos las facilidades de \LaTeX{} y \texttt{amsmath}, cuyo manual puedes consultar si necesitas fórmulas más elaboradas~\cite{amsmath-manual}. Puedes incluir expresiones matemáticas en línea, como $\sigma=0.75$, o utilizar un entorno independiente para una ecuación numerada:
 
 \begin{equation}
   \label{eq:ejemplo-basico}
