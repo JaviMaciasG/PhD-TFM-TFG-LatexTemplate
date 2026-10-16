@@ -2,6 +2,17 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.6.1] - 2026-10-16
+
+### Bug Fixes
+
+- Leave back-cover padding pages empty
+
+
+### Maintenance
+
+- Prepare v8.6.1
+
 ## [v8.6.0] - 2026-10-16
 
 ### Features
