@@ -1,0 +1,27 @@
+% Exercise ETSII covers with the normal initialization and font policy.
+\documentclass[openright]{book}
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\renewcommand{\myDegree}{\CoverTestDegree}
+\renewcommand{\myDocumentStructure}{standard}
+\renewcommand{\myTypesettingStyle}{\CoverTestStyle}
+\renewcommand{\myLanguage}{\CoverTestLanguage}
+\renewcommand{\myCoTutorFullName}{\CoverTestCotutor}
+\renewcommand{\myAcademicTutorFullName}{Tutora de ejemplo}
+\renewcommand{\myAcademicTutorGender}{\CoverTestTutorGender}
+\renewcommand{\myCoTutorGender}{female}
+\renewcommand{\myAuthorGender}{\CoverTestAuthorGender}
+\renewcommand{\myAuthorFullName}{María de los Ángeles Fernández de la Torre}
+\input{../Config/glossaries.tex}
+\input{../Config/postamble.tex}
+\input{../Config/typesetting/typesetting.tex}
+\graphicspath{{./logos/}}
+\begin{document}
+\frontmatter
+\input{../Config/setlanguagedependentissues.tex}
+\renewcommand{\myThesisDefenseYear}{2027}
+\renewcommand{\myBookTitle}{Diseño, implementación y validación de un sistema de análisis de datos para aplicaciones de ingeniería}
+\ifthenelse{\equal{\CoverTestLanguage}{english}}{\renewcommand{\myBookTitle}{Data analysis system}}{}
+\ThesisInstitutionalPage{cover/cover.tex}
+\ThesisInstitutionalPage{cover/backpage.tex}
+\end{document}

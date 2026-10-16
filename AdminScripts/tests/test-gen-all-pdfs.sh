@@ -76,7 +76,7 @@ expect_error() {
   checks=$((checks + 1))
 }
 mapfile -t ids < <(sh "$query" identifiers "$registry")
-tfgs=0; tfms=0; phds=0; reports=0
+tfgs=0; tfms=0; phds=0; reports=0; urjc_degrees=0
 declare -A representatives=()
 for id in "${ids[@]}"; do
   type=$(sh "$query" work-type "$id" "$registry")
@@ -88,6 +88,7 @@ for id in "${ids[@]}"; do
     TFC) continue ;;
   esac
   university=$(sh "$query" institution "$id" "$registry")
+  [[ $university != URJC ]] || urjc_degrees=$((urjc_degrees + 1))
   layout=$(sh "$query" layout-profile "$id" "$registry")
   representatives["$university|$type|$layout"]=true
 done
@@ -113,7 +114,7 @@ assert_count "$("$generator" --all --degrees PHDUAH --dry-run)" "$((2 * 2 * styl
 assert_count "$("$generator" --degrees GIEC,GITT,GIEC --dry-run)" 2
 assert_count "$("$generator" --degrees ITI-URJC,MUIT-UPM,PHD-ETSIT-UPM --dry-run)" 3
 assert_count "$("$generator" --degrees GIEC --all-styles --all-fonts --dry-run)" "$((style_count * 2))"
-assert_count "$("$generator" --all --universities URJC --dry-run)" "$((2 * style_count * 2))"
+assert_count "$("$generator" --all --universities URJC --dry-run)" "$((urjc_degrees * 2 * style_count * 2))"
 assert_count "$("$generator" --all-tfms --layout-profiles uah-muc-2026 --dry-run)" 1
 assert_count "$("$generator" --degree-types RR --dry-run)" "$reports"
 assert_count "$("$generator" --degrees GEINTRARR --dry-run)" 1
@@ -164,6 +165,12 @@ output=$("$generator" --degrees ITI-URJC,MUIT-UPM,PHD-ETSIT-UPM --yes --output-d
 assert_contains "$output" '3 successful, 0 failed (3 planned)'
 for filename in TFG-ITI-URJC TFM-MUIT-UPM PhD-PHD-ETSIT-UPM; do
   [[ -f $fixture/hyphenated/$filename-spanish-standard-standard-institutional.pdf ]] || exit 1
+done
+
+output=$("$generator" --all --universities URJC --layout-profiles urjc-etsii-tfg --styles standard --font-modes institutional --languages spanish --yes --output-dir "$fixture/etsii")
+assert_contains "$output" '8 successful, 0 failed (8 planned)'
+for degree in GCID-URJC GDDV-URJC GII-URJC GICO-URJC GICI-URJC GIS-URJC GIA-URJC GMAT-URJC; do
+  [[ -f $fixture/etsii/TFG-$degree-spanish-standard-standard-institutional.pdf ]] || exit 1
 done
 
 output=$("$generator" --all --degrees PHDUAH --yes --output-dir "$fixture/phd-matrix")

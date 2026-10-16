@@ -1,0 +1,49 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: portada de TFG individual de la ETSII-URJC.
+%
+% Uso: inclusión automática; normalmente no debes modificarlo.
+% Modelo: Anexo I de la normativa ETSII-URJC, 3 de noviembre de 2023.
+% No se compila por separado.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+\begingroup
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[white] (current page.south west) rectangle (current page.north east);
+  \node[anchor=north,inner sep=0pt] at ([yshift=-5.2cm]current page.north)
+    {\includegraphics[width=10.2cm]{urjc/URJ_logo_Color_POS.png}};
+  \node[anchor=center,align=center,text width=18cm,inner sep=0pt,
+    font=\sffamily\bfseries\fontsize{12}{15}\selectfont]
+    at ([yshift=-11.5cm]current page.north) {\MakeUppercase{\mySchool}};
+  \node[anchor=center,align=center,text width=17cm,inner sep=0pt,
+    font=\sffamily\bfseries\fontsize{13}{16}\selectfont]
+    at ([yshift=-13.3cm]current page.north) {\MakeUppercase{\myDegreefull}};
+  \node[anchor=center,align=center,text width=17cm,inner sep=0pt,
+    font=\sffamily\bfseries\fontsize{13}{16}\selectfont]
+    at ([yshift=-14.55cm]current page.north) {Curso Académico \myThesisAcademicYear};
+  \node[anchor=center,inner sep=0pt,font=\sffamily\bfseries\fontsize{13}{16}\selectfont]
+    at ([yshift=-16.35cm]current page.north) {\myWorkTypeFull};
+  \node[anchor=center,align=center,text width=16cm,inner sep=0pt,
+    font=\sffamily\bfseries\fontsize{14}{18}\selectfont]
+    at ([yshift=-20cm]current page.north) {\MakeUppercase{\myBookTitle}};
+  \node[anchor=north,inner sep=0pt,text width=12cm,
+    font=\sffamily\fontsize{13}{17}\selectfont]
+    at ([yshift=-24.1cm]current page.north) {%
+      \renewcommand{\arraystretch}{1.35}%
+      \begin{tabular}{@{}l@{\hspace{1cm}}p{8cm}@{}}
+        \textbf{\ifthenelse{\equal{\myAuthorGender}{male}}{Autor}{Autora}:}
+          & \myAuthorFullName \\[0.3cm]
+        \textbf{\ifthenelse{\equal{\myCoTutorFullName}{}}%
+          {\ifthenelse{\equal{\myAcademicTutorGender}{male}}{Tutor}{Tutora}}%
+          {\ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{Tutoras}{Tutores}}:}
+          & \myAcademicTutorFullName
+        \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\ & \myCoTutorFullName}
+      \end{tabular}};
+\end{tikzpicture}
+\null
+\clearpage
+\endgroup
+
+%%% Local Variables:
+%%% TeX-master: "../../book"
+%%% End:

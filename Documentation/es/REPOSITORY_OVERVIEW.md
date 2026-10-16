@@ -2,7 +2,7 @@
 
 ## Qué es este repositorio
 
-Este repositorio es un ecosistema completo de plantillas LaTeX centrado en los documentos académicos finales de la Universidad de Alcalá (UAH), con soporte adicional para la ESCET-URJC y la ETSIT-UPM, que incluye:
+Este repositorio es un ecosistema completo de plantillas LaTeX centrado en los documentos académicos finales de la Universidad de Alcalá (UAH), con soporte adicional para la ESCET-URJC, la ETSII-URJC y la ETSIT-UPM, que incluye:
 
 - Trabajos Fin de Grado (TFG)
 - Trabajos Fin de Máster (TFM)

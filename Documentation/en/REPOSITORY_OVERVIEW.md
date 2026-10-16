@@ -2,7 +2,7 @@
 
 ## What this repository is
 
-This repository is a comprehensive LaTeX template ecosystem focused on final academic documents at Universidad de Alcalá (UAH), with additional support for ESCET-URJC and ETSIT-UPM, including:
+This repository is a comprehensive LaTeX template ecosystem focused on final academic documents at Universidad de Alcalá (UAH), with additional support for ESCET-URJC, ETSII-URJC and ETSIT-UPM, including:
 
 - Bachelor final projects (TFG)
 - Master final projects (TFM)

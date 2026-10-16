@@ -18,7 +18,7 @@ while IFS= read -r degree; do
       checks=$((checks + 1)) ;;
   esac
 done < <(sh "$query" identifiers)
-[[ $checks == 13 ]] || { echo "FAIL: expected 13 renamed degrees, found $checks" >&2; exit 1; }
+[[ $checks == 21 ]] || { echo "FAIL: expected 21 non-UAH degrees, found $checks" >&2; exit 1; }
 
 fixture=$(mktemp -d)
 trap 'rm -rf -- "$fixture"' EXIT
@@ -30,6 +30,6 @@ for language in spanish english; do
     tail -n 60 "$fixture/$language-output.log" >&2
     exit 1
   fi
-  [[ $(grep -c '^PASS:' "$fixture/identifiers-$language.log") == 17 ]] || exit 1
+  [[ $(grep -c '^PASS:' "$fixture/identifiers-$language.log") == 25 ]] || exit 1
 done
-printf 'PASS: %s renamed degrees; 34 LaTeX registry/conditional assertions.\n' "$checks"
+printf 'PASS: %s non-UAH degrees; 50 LaTeX registry/conditional assertions.\n' "$checks"

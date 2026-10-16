@@ -57,6 +57,14 @@ La tabla sigue el orden de Config/degrees.tex. El tipo de trabajo es el valor ca
 | `GCA` | Activo | Grado en Ciencias Ambientales | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GCCTF` | Activo | Grado en Criminalística: Ciencias y Tecnologías Forenses | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `ITI-URJC` | Activo | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo Fin de Grado / Bachelor's Thesis | `urjc-iti-tfg` |
+| `GCID-URJC` | Activo | Grado en Ciencia e Ingeniería de Datos | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GDDV-URJC` | Activo | Grado en Diseño y Desarrollo de Videojuegos | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GII-URJC` | Activo | Grado en Ingeniería Informática | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GICO-URJC` | Activo | Grado en Ingeniería de Computadores | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GICI-URJC` | Activo | Grado en Ingeniería de la Ciberseguridad | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GIS-URJC` | Activo | Grado en Ingeniería del Software | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GIA-URJC` | Activo | Grado en Inteligencia Artificial | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GMAT-URJC` | Activo | Grado en Matemáticas | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
 | `GISTS-UPM` | Activo | Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
 | `GIB-UPM` | Activo | Grado en Ingeniería Biomédica | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
 | `GISD-UPM` | Activo | Grado en Ingeniería y Sistemas de Datos | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-gisd-tfg` |

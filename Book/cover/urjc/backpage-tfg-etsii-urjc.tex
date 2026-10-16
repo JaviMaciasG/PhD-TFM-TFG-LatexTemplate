@@ -1,0 +1,23 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: contraportada blanca de TFG de la ETSII-URJC.
+%
+% Uso: inclusión automática; normalmente no debes modificarlo.
+% Muestra únicamente el año de defensa centrado. No se compila por separado.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleartoleftpage
+\thispagestyle{empty}
+\begingroup
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[white] (current page.south west) rectangle (current page.north east);
+  \node[anchor=center,inner sep=0pt,text=black,
+    font=\sffamily\bfseries\fontsize{40}{48}\selectfont]
+    at (current page.center) {\myThesisDefenseYear};
+\end{tikzpicture}
+\null
+\clearpage
+\endgroup
+
+%%% Local Variables:
+%%% TeX-master: "../../book"
+%%% End:
