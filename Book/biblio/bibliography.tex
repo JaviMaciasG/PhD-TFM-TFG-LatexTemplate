@@ -41,7 +41,12 @@
   %% % ...
   %% % \addbibresource{\myreferencespath\mybibfileN}
 
-  \printbibliography[heading=bibintoc]
+  % Other documents (such as the anteproyecto) retain their usual bibliography.
+  \ifdefined\ThesisPrintFinalBibliography
+    \ThesisPrintFinalBibliography
+  \else
+    \printbibliography[heading=bibintoc]
+  \fi
 
 
 }

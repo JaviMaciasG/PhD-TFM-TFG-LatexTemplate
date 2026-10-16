@@ -165,6 +165,8 @@ Define acronyms in `Book/acronyms/defacronymsgl.tex` and symbols in `Book/symbol
 
 # Bibliography handling
 
+The template supports per-chapter bibliographies, a general bibliography, or both, as explained in the manual.
+
 Regarding bibliography files, for normal use, you just have to edit `Book/biblio/biblio.bib` to include your desired BibTeX entries.
 
 If you have a number of different `.bib` files, add each of them under `Book/biblio/` and define its path in `Book/biblio/bibliofiles.tex` following the examples in that file. No changes are needed elsewhere.

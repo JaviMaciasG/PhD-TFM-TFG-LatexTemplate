@@ -96,6 +96,33 @@ Desactivar uno de estos listados no desactiva la prestación correspondiente: pu
 
 Los listados de acrónimos y símbolos utilizan \texttt{glossaries}. Sus opciones y órdenes se describen en el manual del paquete~\cite{glossaries-manual}. En la sección~\ref{sec:uso-de-acronimos} encontrarás los ejemplos concretos que usamos aquí.
 
+\section{Bibliografía por capítulos y bibliografía general}
+\label{sec:bibliografias-capitulos}
+
+Puedes mantener una única bibliografía general, incluir las referencias al final de cada capítulo o combinar ambas opciones. No necesitas añadir órdenes a los capítulos ni a los apéndices: configura estas variables en \texttt{Config/myconfig.tex} y la plantilla se encarga del resto.
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myIncludeChapterBibliographies}: con \texttt{true}, añade al final de cada capítulo numerado y de cada apéndice una sección sin numerar con las referencias utilizadas en él. Esa sección aparece en el índice general y se omite si no hay referencias que mostrar. Su valor predeterminado es \texttt{false}.
+  \item \texttt{\textbackslash{}myIncludeFinalBibliography}: con \texttt{true}, conserva la bibliografía general, que reúne las referencias de todo el documento, incluidas las de los apéndices y las páginas preliminares. Su valor predeterminado es \texttt{true}. En la estructura estándar aparece antes de los apéndices, como hasta ahora.
+  \item \texttt{\textbackslash{}myBibliographyNumbering}: selecciona \texttt{global}, el valor predeterminado, para que cada referencia conserve su número en todo el documento, o \texttt{chapter} para reiniciar la numeración en cada capítulo. Esta elección solo afecta al libro y tiene efecto cuando activas las bibliografías por capítulo.
+\end{itemize}
+
+Por ejemplo, con las bibliografías por capítulo activadas y numeración \texttt{global}, una publicación citada como [5] seguirá siendo [5] en los demás capítulos. Si seleccionas \texttt{chapter}, esa misma publicación podría ser [1] en un capítulo y [3] en otro, según su orden de aparición. En este último caso, cada cita enlaza con la entrada de su bibliografía de capítulo y la bibliografía general, si la mantienes, utiliza una numeración independiente. No debes interpretar el número de una cita local como el número de la entrada en esa lista general.
+
+Para probar las bibliografías por capítulo sin renunciar a la general, utiliza esta configuración:
+
+\begin{verbatim}
+\newcommand{\myIncludeChapterBibliographies}{true}
+\newcommand{\myIncludeFinalBibliography}{true}
+\newcommand{\myBibliographyNumbering}{global}
+\end{verbatim}
+
+Cambia los valores de las definiciones existentes, no añadas una segunda definición de cada variable. Si solo quieres las listas por capítulo, selecciona \texttt{false} en \texttt{\textbackslash{}myIncludeFinalBibliography}. Las entradas excluidas de la bibliografía, como el ejemplo de \texttt{nobiblio.bib} de la sección~\ref{sec:estructura-listas-citas}, tampoco aparecen en las listas por capítulo.
+
+En una tesis por compendio, las bibliografías por capítulo corresponden únicamente al resumen extendido de la primera parte. La bibliografía general permanece entre las dos partes y no se añaden listas de referencias después de los PDF de las publicaciones. El anteproyecto y los formularios mantienen su bibliografía habitual, independientemente de estas opciones.
+
+La compilación sigue utilizando PDFLaTeX y Biber, tanto desde tu editor como desde Overleaf o mediante el Makefile. Después de cambiar estas opciones o las referencias utilizadas, completa las pasadas necesarias para actualizar las listas, su numeración y sus enlaces. La bibliografía general puede incluir referencias citadas más adelante en los apéndices porque el proceso utiliza la información de las pasadas anteriores.
+
 \section{Título, palabras clave y confidencialidad}
 
 Utiliza las siguientes variables para definir los títulos, las palabras clave y el carácter confidencial del trabajo:

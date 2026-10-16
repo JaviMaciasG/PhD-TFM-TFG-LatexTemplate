@@ -165,6 +165,8 @@ Define los acrónimos en `Book/acronyms/defacronymsgl.tex` y los símbolos en `B
 
 # Gestión de la bibliografía
 
+La plantilla permite incluir bibliografías por capítulo, una bibliografía general o ambas, como se explica en el manual.
+
 En cuanto a los archivos de bibliografía, para un uso normal solo tienes que editar `Book/biblio/biblio.bib` para incluir las entradas BibTeX que quieras.
 
 Si tienes varios archivos `.bib`, añade cada uno de ellos en `Book/biblio/` y define su ruta en `Book/biblio/bibliofiles.tex` siguiendo los ejemplos que contiene ese archivo. No es necesario realizar cambios en ningún otro lugar.

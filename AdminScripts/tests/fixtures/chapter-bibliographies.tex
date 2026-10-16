@@ -1,0 +1,57 @@
+\documentclass[openright]{book}
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\input{../Config/glossaries.tex}
+\providecommand{\TestChapterBibliographies}{true}
+\providecommand{\TestFinalBibliography}{true}
+\providecommand{\TestNumbering}{chapter}
+\providecommand{\TestLanguage}{english}
+\providecommand{\TestStyle}{standard}
+\edef\myIncludeChapterBibliographies{\TestChapterBibliographies}
+\edef\myIncludeFinalBibliography{\TestFinalBibliography}
+\edef\myBibliographyNumbering{\TestNumbering}
+\renewcommand{\myLanguage}{\TestLanguage}
+\renewcommand{\myTypesettingStyle}{\TestStyle}
+\ifdefined\TestCompendium
+  \renewcommand{\myDocumentStructure}{compendium}
+  \renewcommand{\myDegree}{PHDUAH}
+\fi
+\input{../Config/postamble.tex}
+\input{../Config/typesetting/typesetting.tex}
+\input{../Config/book-bibliography.tex}
+\addbibresource{fixture.bib}
+\AtEveryCitekey{\typeout{BIBTEST: \thefield{entrykey}:\therefsection:\thefield{labelnumber}}}
+\begin{document}
+\frontmatter
+\chapter*{Prelude}
+Preliminary citation: \cite{prelude}.
+\tableofcontents
+\mainmatter
+\ifdefined\TestCompendium\part{Summary}\fi
+\chapter{First chapter}
+First citations: \cite{alpha,beta}.
+\fullcite{excluded}
+\nocite{explicit}
+\section{Last ordinary section}
+End of first chapter.
+\chapter{Second chapter}
+Second citations, reversed: \cite{beta,alpha}.
+\chapter{Empty chapter}
+This chapter deliberately contains no citations.
+\input{biblio/bibliography.tex}
+\ifdefined\TestCompendium
+  \part{Publications}
+  \chapter{Publication introduction}
+  Publication reference: \fullcite{gamma}.
+\else
+  \begin{appendices}
+    \chapter{An appendix}
+    \ifdefined\TestOmitAppendixReference
+      No appendix citation in this version.
+    \else
+      Appendix-only citation: \cite{gamma}.
+    \fi
+  \end{appendices}
+\fi
+\backmatter
+\end{document}

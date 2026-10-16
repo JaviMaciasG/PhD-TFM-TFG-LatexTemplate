@@ -1,0 +1,112 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: bibliografías automáticas del libro y de sus capítulos.
+%
+% Uso: mantenimiento de la plantilla; normalmente no debes modificarlo.
+% Se incluye solo desde Book/book.tex, después del estilo tipográfico.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\providecommand{\myIncludeChapterBibliographies}{false}
+\providecommand{\myIncludeFinalBibliography}{true}
+\providecommand{\myBibliographyNumbering}{global}
+\ValidateBooleanOption{\myIncludeChapterBibliographies}{\string\myIncludeChapterBibliographies}
+\ValidateBooleanOption{\myIncludeFinalBibliography}{\string\myIncludeFinalBibliography}
+\ifboolexpr{test {\ifdefstring{\myBibliographyNumbering}{global}} or
+           test {\ifdefstring{\myBibliographyNumbering}{chapter}}}
+  {}
+  {\PackageError{UAH-template}{Invalid bibliography numbering '\myBibliographyNumbering'}
+    {Use 'global' or 'chapter' in Config/myconfig.tex.}}
+
+\makeatletter
+\newif\ifthesis@chapterbib
+\newif\ifthesis@collectkeys
+\thesis@collectkeystrue
+\let\thesis@previouskeys\@empty
+\let\thesis@currentkeys\@empty
+
+% Previous-run keys populate section 0 without changing the current-run list.
+% Rewriting the list on every run also removes references no longer used.
+\newcommand{\ThesisBibliographyKey}[1]{\listgadd\thesis@previouskeys{#1}}
+\newcommand{\thesis@rememberkey}[1]{%
+  \ifthesis@collectkeys
+    \ifinlist{#1}\thesis@currentkeys{}{%
+      \listgadd\thesis@currentkeys{#1}%
+      \if@filesw
+        \immediate\write\@auxout{\string\ThesisBibliographyKey{#1}}%
+      \fi}%
+  \fi}
+
+\newcommand{\ThesisFinishChapterBibliography}{%
+  \ifthesis@chapterbib
+    \global\thesis@chapterbibfalse
+    % Finish pending floats (including their citations) before closing scope.
+    \clearpage
+    \ifdefstring{\myBibliographyNumbering}{chapter}
+      {\printbibliography[heading=subbibintoc,title={\thesis@chapterbibtitle}]%
+       \endrefsection}
+      {\printbibliography[heading=subbibintoc,title={\thesis@chapterbibtitle},segment=\therefsegment]%
+       \endrefsegment}%
+  \fi}
+
+\newcommand{\thesis@beginchapterbib}{%
+  \if@mainmatter
+    \ifnum\c@secnumdepth>\m@ne
+      \ifdefstring{\myIncludeChapterBibliographies}{true}{%
+        % The PDFs in Part II of a compendium are not summary chapters.
+        \ifboolexpr{bool {standarddocument} or test {\ifnumless{\value{part}}{2}}}{%
+          \ifdefstring{\myBibliographyNumbering}{chapter}{\refsection}{\refsegment}%
+          \global\thesis@chapterbibtrue
+        }{}%
+      }{}%
+    \fi
+  \fi}
+
+\ifthenelse{\equal{\myLanguage}{english}}
+  {\newcommand{\thesis@chapterbibtitle}{Chapter references}}
+  {\newcommand{\thesis@chapterbibtitle}{Bibliografía del capítulo}}
+
+\newcommand{\ThesisPrintFinalBibliography}{%
+  \ThesisFinishChapterBibliography
+  \ifdefstring{\myIncludeFinalBibliography}{true}
+    {\printbibliography[heading=bibintoc,section=0]}{}%
+}
+
+\newcommand{\thesis@hookerror}{\PackageError{UAH-template}
+  {Cannot install automatic chapter bibliography hooks}{Check the selected chapter layout.}}
+% Wrap the public command rather than \@chapter: titlesec-based styles use a
+% different internal dispatcher. Preserve both starred and optional-title forms.
+\NewDocumentCommand{\thesis@chapter}{s o m}{%
+  \ThesisFinishChapterBibliography
+  \IfBooleanTF{#1}
+    {\thesis@savedchapter*{#3}}
+    {\thesis@beginchapterbib
+     \IfNoValueTF{#2}{\thesis@savedchapter{#3}}{\thesis@savedchapter[#2]{#3}}}%
+}
+\ifdefined\AtEveryEntrykey
+  % Includes \cite, \fullcite and explicit \nocite requests, even on pass 1.
+  \AtEveryEntrykey{\thesis@rememberkey{#1}}{}{\thesis@hookerror}
+  % BibLaTeX's wildcard path does not call the individual-entry hook.
+  \let\thesis@savednocite\nocite
+  \renewrobustcmd*{\nocite}[1]{%
+    \ifstrequal{#1}{*}{\thesis@rememberkey{*}}{}%
+    \thesis@savednocite{#1}}
+  \AtBeginDocument{%
+    \ifboolexpr{test {\ifdefstring{\myIncludeChapterBibliographies}{true}} and
+                 test {\ifdefstring{\myIncludeFinalBibliography}{true}} and
+                 test {\ifdefstring{\myBibliographyNumbering}{chapter}}}{%
+      \thesis@collectkeysfalse
+      \forlistloop{\nocite}\thesis@previouskeys
+      \thesis@collectkeystrue
+    }{}%
+    % Close before page breaks or appendix counter resets. Start only numbered
+    % main-matter chapters, before their titles (which can contain citations).
+    \let\thesis@savedchapter\chapter
+    \let\chapter\thesis@chapter
+    \pretocmd{\part}{\ThesisFinishChapterBibliography}{}{\thesis@hookerror}
+    \pretocmd{\appendix}{\ThesisFinishChapterBibliography}{}{\thesis@hookerror}
+    \pretocmd{\backmatter}{\ThesisFinishChapterBibliography}{}{\thesis@hookerror}
+  }%
+  \AtEndDocument{\ThesisFinishChapterBibliography}
+\else
+  \renewcommand{\ThesisFinishChapterBibliography}{}%
+\fi
+\makeatother
