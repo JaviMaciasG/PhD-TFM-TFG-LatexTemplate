@@ -71,7 +71,7 @@ The table follows the order of Config/degrees.tex. Work type is the canonical va
 | `MUSEA` | Active | Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
 | `MUIT` | Active | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
 | `MUII` | Active | Máster Universitario en Ingeniería Industrial | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
-| `MUIE` | Active | Máster Universitario en Ingeniería Electrónica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muie` |
+| `MUIE` | Active | Máster Universitario en Ingeniería Electrónica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
 | `MUCTE` | Active | Máster Universitario en Ciencia y Tecnología desde el Espacio | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-mucte` |
 | `MUANBD` | Active | Máster Universitario en Analítica de Negocio y Big Data | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muanbd` |
 | `MUC` | Active | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muc-2026` |
@@ -97,7 +97,6 @@ The table reproduces the entries in Config/layout-profiles.tex. Files are includ
 | `uah-tfg-2024` | `cover/uah/portada-tfg-uah-2024.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfg-uah-2024.tex` |
 | `urjc-iti-tfg` | `cover/urjc/portada-tfg-urjc.tex`, then `cover/urjc/cover-pfc-tfg-tfm-urjc.tex` | `cover/urjc/backpage-tfg-urjc.tex` |
 | `uah-tfm-eps` | `cover/uah/portada-tfm-normativa-eps.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
-| `uah-muie` | `cover/uah/portada-tfg-uah.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfg-uah.tex` |
 | `uah-mucte` | `cover/uah/cover-tfm-mucte.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
 | `uah-muanbd` | `cover/uah/portada-tfm-normativa-uah.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
 | `uah-muc-2026` | `cover/uah/portada-tfm-ciberseguridad-uah-2026.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |

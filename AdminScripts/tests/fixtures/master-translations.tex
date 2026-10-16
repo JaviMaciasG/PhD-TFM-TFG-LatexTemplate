@@ -52,7 +52,17 @@
   \typeout{PASS: master #1 / \myLanguage}%
 }
 
+\newcommand{\CheckEPSMasterLayout}[1]{%
+  \DegreeRegistrySelect{#1}%
+  \CheckValue{\myLayoutProfile}{uah-tfm-eps}%
+  \CheckValue{\DegreeRegistryLayoutValue{backpage-file}}{cover/uah/backpage-tfm-normativa-uah.tex}%
+  \typeout{PASS: shared EPS master layout #1}%
+}
+
 \begin{document}
+\CheckEPSMasterLayout{MUIT}
+\CheckEPSMasterLayout{MUII}
+\CheckEPSMasterLayout{MUIE}
 \CheckMaster{MUSEA}{Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes}{Master's Degree in Advanced Electronic Systems. Intelligent Systems}{Master's Degree in Advanced Electronic Systems\\Intelligent Systems}
 \CheckMaster{MUIT}{Máster Universitario en Ingeniería de Telecomunicación}{Master's Degree in Telecommunication Engineering}{Master's Degree in\\Telecommunication Engineering}
 \CheckMaster{MUII}{Máster Universitario en Ingeniería Industrial}{Master's Degree in Industrial Engineering}{Master's Degree in\\Industrial Engineering}

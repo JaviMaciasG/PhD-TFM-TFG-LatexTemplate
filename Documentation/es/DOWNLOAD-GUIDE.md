@@ -27,7 +27,7 @@ Después de descargar un archivo, extráelo o súbelo, compila `Book/book.tex` u
 # Documentos de ejemplo completos
 
 - **`TFG-GIEC-spanish.pdf`**: trabajo fin de grado del GIEC en la UAH. Español; estructura de contenido estándar; estilo tipográfico `standard`.
-- **`TFM-MUIE-spanish-modern.pdf`**: trabajo fin de máster del MUIE en la UAH. Español; estructura de contenido estándar; estilo tipográfico `modern`.
+- **`TFM-MUIE-spanish-modern.pdf`**: trabajo fin de máster del MUIE en la UAH. Español; estructura de contenido estándar; estilo tipográfico `modern`. Utiliza el mismo modelo de portada y contraportada que MUIT y MUII.
 - **`TFM-MUCTE-english-framed.pdf`**: trabajo fin de máster del MUCTE en la UAH. Inglés; estructura de contenido estándar; estilo tipográfico `framed`.
 - **`TFM-MUC-spanish-shaded.pdf`**: trabajo fin de máster del MUC en la UAH. Español; estructura de contenido estándar; estilo tipográfico `shaded`.
 - **`PhD-PHDUAH-english-conventional-mimosis.pdf`**: tesis doctoral convencional de la UAH. Inglés; estructura de contenido estándar; estilo tipográfico `mimosis`.

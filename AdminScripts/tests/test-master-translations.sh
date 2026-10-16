@@ -15,6 +15,7 @@ for language in spanish english; do
     exit 1
   fi
   [[ $(grep -c '^PASS: master ' "$fixture/masters-$language.log") == 15 ]]
+  [[ $(grep -c '^PASS: shared EPS master layout ' "$fixture/masters-$language.log") == 3 ]]
   grep -q '^PASS: untranslated TFM fallback' "$fixture/masters-$language.log"
   grep -q '^PASS: non-TFM names unchanged' "$fixture/masters-$language.log"
 done

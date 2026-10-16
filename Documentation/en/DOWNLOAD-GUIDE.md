@@ -27,7 +27,7 @@ After downloading an archive, extract or upload it, compile `Book/book.tex` once
 # Complete example documents
 
 - **`TFG-GIEC-spanish.pdf`**: UAH GIEC bachelor final project. Spanish; standard content structure; `standard` typesetting.
-- **`TFM-MUIE-spanish-modern.pdf`**: UAH MUIE master final project. Spanish; standard content structure; `modern` typesetting.
+- **`TFM-MUIE-spanish-modern.pdf`**: UAH MUIE master final project. Spanish; standard content structure; `modern` typesetting. Uses the same cover and back-page layout as MUIT and MUII.
 - **`TFM-MUCTE-english-framed.pdf`**: UAH MUCTE master final project. English; standard content structure; `framed` typesetting.
 - **`TFM-MUC-spanish-shaded.pdf`**: UAH MUC master final project. Spanish; standard content structure; `shaded` typesetting.
 - **`PhD-PHDUAH-english-conventional-mimosis.pdf`**: Conventional UAH doctoral thesis. English; standard content structure; `mimosis` typesetting.
