@@ -1,12 +1,664 @@
 % Bibliography used by the example document.
 %
-% The first block contains entries cited by the active chapters. The final
-% block keeps a small set of unused entries as examples of common BibLaTeX
-% entry types. Unused entries are not printed in the bibliography.
+% Entries are grouped by topic and sorted by citation key within each section
+% or subsection. This source organisation does not group the printed bibliography.
+% Unused entries are not printed.
+% Undated web pages intentionally have no date/year; urldate records access.
+% Some research references were imported from biblio-jmg.bib.
 
-% Entries cited by the example document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX guides and templates
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Fake papers used only by the thesis-by-compendium example
+@Book{lamport94,
+  author =	 {Leslie Lamport},
+  title = 	 {LaTeX: A Document Preparation System, 2nd edition},
+  publisher = 	 {Addison Wesley Professional},
+  year = 	 1994,
+  series =	 {}
+}
+
+@online{latex-project-docs,
+  author       = {{The LaTeX Project}},
+  title        = {Core Documentation},
+  url          = {https://www.latex-project.org/help/documentation/},
+  urldate      = {2026-10-16},
+}
+
+@manual{nelson90,
+  author       = {Nelson, Sam},
+  title        = {Document Preparation with {LaTeX}},
+  organization = {University of Stirling},
+  year         = {1990},
+  month        = oct,
+}
+
+@online{overleaf-first-project,
+  author       = {{Overleaf}},
+  title        = {Your First Project},
+  url          = {https://docs.overleaf.com/getting-started/your-first-project},
+  urldate      = {2026-10-16},
+}
+
+@misc{texis,
+  title   = {{TeXiS}: Una plantilla de {LaTeX} para tesis y otros documentos},
+  url     = {http://gaia.fdi.ucm.es/projects/texis/},
+  urldate = {2026-10-03}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tools and software
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@Misc{cvs,
+  note =	 {\url{http://savannah.nongnu.org/projects/cvs/}},
+  title =	 {Página de la aplicación CVS},
+  urldate = {2026-10-03}
+}
+
+@Misc{emacs,
+  note =	 {\url{http://savannah.gnu.org/projects/emacs/}},
+  title =	 {Página de la aplicación emacs},
+  urldate = {2026-10-03}
+}
+
+@Misc{gcc,
+  note =	 {\url{http://savannah.gnu.org/projects/gcc/}},
+  title =	 {Página de la aplicación gcc},
+  urldate = {2026-10-03}
+}
+
+@misc{git-latexdiff,
+  title   = {Página de \texttt{git-latexdiff} en Gitorious},
+  url     = {https://gitorious.org/git-latexdiff},
+  urldate = {2026-10-03}
+}
+
+@online{git-manual,
+  organization = {{The Git Project}},
+  title        = {git Documentation},
+  url          = {https://git-scm.com/docs/git},
+  urldate      = {2026-10-16},
+}
+
+@Misc{gnulinux,
+  note =	 {\url{http://es.wikipedia.org/wiki/GNU/Linux}},
+  title =	 {Información sobre GNU/Linux en wikipedia},
+  urldate = {2026-10-03}
+}
+
+@manual{latexdiff-manual,
+  author       = {Tilmann, F. J.},
+  title        = {Marking Up Differences Between {LaTeX} Files with {latexdiff}},
+  date         = {2025-12-30},
+  url          = {https://mirrors.ctan.org/support/latexdiff/doc/latexdiff-man.pdf},
+  urldate      = {2026-10-16},
+}
+
+@manual{latexmk-manual,
+  author       = {Collins, John},
+  title        = {{latexmk}: Generate {LaTeX} Document},
+  date         = {2026-03-09},
+  version      = {4.88},
+  url          = {https://mirrors.ctan.org/support/latexmk/latexmk.txt},
+  urldate      = {2026-10-16},
+}
+
+@Misc{make,
+  note =	 {\url{http://savannah.gnu.org/projects/make/}},
+  title =	 {Página de la aplicación make},
+  urldate = {2026-10-03}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX package manuals
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Bibliographies
+
+@manual{biber-manual,
+  author       = {Kime, Philip and Charette, François},
+  title        = {Biber},
+  subtitle     = {A Backend Bibliography Processor for {biblatex}},
+  date         = {2026-08-13},
+  version      = {2.22},
+  url          = {https://mirrors.ctan.org/biblio/biber/base/documentation/biber.pdf},
+  urldate      = {2026-10-16},
+}
+
+@manual{biblatex-manual,
+  author       = {Kime, Philip and Wemheuer, Moritz and Lehman, Philipp},
+  title        = {The {biblatex} Package},
+  subtitle     = {Programmable Bibliographies and Citations},
+  date         = {2026-09-24},
+  version      = {3.22a},
+  url          = {https://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf},
+  urldate      = {2026-10-16},
+}
+
+% Languages, hyperlinks and glossaries
+
+@manual{babel-manual,
+  author       = {Bezos, Javier and Braams, Johannes L.},
+  title        = {Babel},
+  subtitle     = {User Guide},
+  date         = {2026-10-15},
+  version      = {26.14},
+  url          = {https://mirrors.ctan.org/macros/latex/required/babel/base/babel.pdf},
+  urldate      = {2026-10-16},
+}
+
+@manual{glossaries-manual,
+  author       = {Talbot, Nicola L. C.},
+  title        = {User Manual for {glossaries.sty}},
+  date         = {2026-04-21},
+  version      = {5.1},
+  url          = {https://mirrors.ctan.org/macros/latex/contrib/glossaries/glossaries-user.pdf},
+  urldate      = {2026-10-16},
+}
+
+@manual{hyperref-manual,
+  author       = {Rahtz, Sebastian and Oberdiek, Heiko and {The LaTeX3 Project}},
+  title        = {Hypertext Marks in {LaTeX}: A Manual for {hyperref}},
+  date         = {2026-10-09},
+  version      = {7.01s},
+  url          = {https://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf},
+  urldate      = {2026-10-16},
+}
+
+% Graphics and PDF inclusion
+
+@manual{graphicx-manual,
+  author       = {Carlisle, D. P.},
+  title        = {Packages in the {graphics} Bundle},
+  date         = {2026-05-17},
+  url          = {https://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf},
+  urldate      = {2026-10-16},
+}
+
+@manual{pdfpages-manual,
+  author       = {Matthias, Andreas},
+  title        = {The {pdfpages} Package},
+  date         = {2026-03-30},
+  url          = {https://mirrors.ctan.org/macros/latex/contrib/pdfpages/pdfpages.pdf},
+  urldate      = {2026-10-16},
+}
+
+% Mathematics and advanced composition
+
+@manual{amsmath-manual,
+  author       = {{American Mathematical Society} and {LaTeX Project}},
+  title        = {User's Guide for the {amsmath} Package},
+  date         = {2020-02-18},
+  version      = {2.1},
+  url          = {https://mirrors.ctan.org/macros/latex/required/amsmath/amsldoc.pdf},
+  urldate      = {2026-10-16},
+}
+
+@manual{longtable-manual,
+  author       = {Carlisle, David},
+  title        = {The {longtable} Package},
+  date         = {2026-01-28},
+  url          = {https://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf},
+  urldate      = {2026-10-16},
+}
+
+@manual{rotating-manual,
+  author       = {Fairbairns, Robin and Rahtz, Sebastian and Barroca, Leonor},
+  title        = {A Package for Rotated Objects in {LaTeX}},
+  date         = {2026-05-17},
+  version      = {2.16e},
+  url          = {https://mirrors.ctan.org/macros/latex/required/graphics/rotating.pdf},
+  urldate      = {2026-10-16},
+}
+
+@manual{subcaption-manual,
+  author       = {Sommerfeldt, Axel},
+  title        = {The {subcaption} Package},
+  date         = {2023-08-13},
+  version      = {1.6},
+  url          = {https://mirrors.ctan.org/macros/latex/contrib/caption/subcaption.pdf},
+  urldate      = {2026-10-16},
+}
+
+@manual{wrapfig-manual,
+  author       = {Arseneau, Donald},
+  title        = {The {wrapfig} Package},
+  date         = {2003-01-31},
+  url          = {https://mirrors.ctan.org/macros/latex/contrib/wrapfig/wrapfig-doc.pdf},
+  urldate      = {2026-10-16},
+}
+
+% Code listings and algorithms
+
+@manual{algorithm2e-manual,
+  author       = {Fiorio, Christophe},
+  title        = {{algorithm2e.sty}: Package for Algorithms},
+  date         = {2017-07-18},
+  version      = {5.2},
+  url          = {https://mirrors.ctan.org/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf},
+  urldate      = {2026-10-16},
+}
+
+@manual{listings-manual,
+  author       = {Heinz, Carsten and Moses, Brooks and Hoffmann, Jobst},
+  title        = {The {Listings} Package},
+  date         = {2025-11-14},
+  version      = {1.11b},
+  url          = {https://mirrors.ctan.org/macros/latex/contrib/listings/listings.pdf},
+  urldate      = {2026-10-16},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Licensing, research integrity and sustainability
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@report{allea2023integrity,
+  author       = {{ALLEA -- All European Academies}},
+  title        = {The European Code of Conduct for Research Integrity},
+  subtitle     = {Revised Edition 2023},
+  institution  = {ALLEA},
+  type         = {Code of conduct},
+  location     = {Berlin},
+  date         = {2023-06-23},
+  url          = {https://allea.org/code-of-conduct/},
+  urldate      = {2026-10-16},
+}
+
+@online{creativecommons-licenses,
+  author       = {{Creative Commons}},
+  title        = {Sharing Openly, Sharing Globally},
+  url          = {https://creativecommons.org/cc-licenses/},
+  urldate      = {2026-10-16},
+}
+
+@report{un2030agenda,
+  author       = {{United Nations General Assembly}},
+  title        = {Transforming Our World: The 2030 Agenda for Sustainable Development},
+  institution  = {United Nations},
+  type         = {Resolution},
+  number       = {A/RES/70/1},
+  date         = {2015-09-25},
+  url          = {https://sdgs.un.org/2030agenda},
+  urldate      = {2026-10-16},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Distributed acoustic sensing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@inproceedings{martins2015early,
+  author    = {Hugo F. Martins and Daniel Piote and Javier Tejedor and Javier Macias-Guarasa and Juan Pastor-Graells and Sonia Martin-Lopez and Pedro Corredera and Filip De Smet and Willy Postvoll and Carl H. Ahlen and Miguel Gonzalez-Herraez},
+  title     = {{Early Detection of Pipeline Integrity Threats Using a Smart Fiber Optic Surveillance System: The PIT-STOP Project}},
+  booktitle = {24th International Conference on Optical Fibre Sensors},
+  series    = {Proceedings of SPIE},
+  year      = {2015},
+  volume    = {9634},
+  pages     = {96347X},
+  doi       = {10.1117/12.2192075}
+}
+
+@article{ramirez2026jstars,
+  author  = {Ramirez-Torres, Erick Eduardo and
+             Macias-Guarasa, Javier and
+             Pizarro, Daniel and
+             Tejedor, Javier and
+             Palazuelos-Cagigas, Sira Elena and
+             Vidal-Moreno, Pedro J. and
+             Martin-Lopez, Sonia and
+             Gonzalez-Herraez, Miguel and
+             Vanthillo, Roel},
+  title   = {{Vessel Detection and Localization Using Distributed Acoustic Sensing in Submarine Optical Fiber Cables}},
+  journal = {IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing},
+  year    = {2026},
+  volume  = {19},
+  pages   = {27946--27965},
+  doi     = {10.1109/JSTARS.2026.3716768},
+}
+
+@misc{ramireztorres2026distributedacousticsensingdataset,
+      title={A Distributed Acoustic Sensing Dataset for Vessel Detection and Localization in Submarine Cable Protection},
+      author={Erick Eduardo Ramirez-Torres and Javier Macias-Guarasa and Daniel Pizarro and Javier Tejedor and Sira Elena Palazuelos-Cagigas and Pedro J. Vidal-Moreno and María R. Fernández-Ruiz and Sonia Martin-Lopez and Miguel Gonzalez-Herraez and Roel Vanthillo},
+      year={2026},
+      eprint={2607.28306},
+      archivePrefix={arXiv},
+      primaryClass={physics.geo-ph},
+      url={https://arxiv.org/abs/2607.28306},
+      doi={10.48550/arXiv.2607.28306}
+}
+
+@article{tejedor2016pitstop,
+  author  = {Javier Tejedor and Hugo F. Martins and Daniel Piote and Javier Macias-Guarasa and Juan Pastor-Graells and Sonia Martin-Lopez and Pedro Corredera Guillen and Filip De Smet and Willy Postvoll and Miguel Gonzalez-Herraez},
+  title   = {{Toward Prevention of Pipeline Integrity Threats Using a Smart Fiber-Optic Surveillance System}},
+  journal = {Journal of Lightwave Technology},
+  year    = {2016},
+  volume  = {34},
+  number  = {19},
+  pages   = {4445--4453},
+  doi     = {10.1109/JLT.2016.2542981}
+}
+
+@article{tejedor2017machine,
+  author  = {Javier Tejedor and Javier Macias-Guarasa and Hugo F. Martins and Juan Pastor-Graells and Pedro Corredera and Sonia Martin-Lopez},
+  title   = {{Machine Learning Methods for Pipeline Surveillance Systems Based on Distributed Acoustic Sensing: A Review}},
+  journal = {Applied Sciences},
+  year    = {2017},
+  volume  = {7},
+  number  = {8},
+  pages   = {841},
+  doi     = {10.3390/app7080841}
+}
+
+@article{tejedor2017novel,
+  author  = {Javier Tejedor and Javier Macias-Guarasa and Hugo F. Martins and Daniel Piote and Juan Pastor-Graells and Sonia Martin-Lopez and Pedro Corredera and Miguel Gonzalez-Herraez},
+  title   = {{A Novel Fiber Optic Based Surveillance System for Prevention of Pipeline Integrity Threats}},
+  journal = {Sensors},
+  year    = {2017},
+  volume  = {17},
+  number  = {2},
+  pages   = {355},
+  doi     = {10.3390/s17020355}
+}
+
+@article{tejedor2018real,
+  author  = {Javier Tejedor and Javier Macias-Guarasa and Hugo F. Martins and Juan Pastor-Graells and Sonia Martin-Lopez and Pedro Corredera Guillen and Guy De Pauw and Filip De Smet and Willy Postvoll and Carl H. Ahlen and Miguel Gonzalez-Herraez},
+  title   = {{Real Field Deployment of a Smart Fiber-Optic Surveillance System for Pipeline Integrity Threat Detection: Architectural Issues and Blind Field Test Results}},
+  journal = {Journal of Lightwave Technology},
+  year    = {2018},
+  volume  = {36},
+  number  = {4},
+  pages   = {1052--1062},
+  doi     = {10.1109/JLT.2017.2780126}
+}
+
+@article{tejedor2019contextual,
+  author  = {Javier Tejedor and Javier Macias-Guarasa and Hugo F. Martins and Sonia Martin-Lopez and Miguel Gonzalez-Herraez},
+  title   = {{A Contextual GMM-HMM Smart Fiber Optic Surveillance System for Pipeline Integrity Threat Detection}},
+  journal = {Journal of Lightwave Technology},
+  year    = {2019},
+  volume  = {37},
+  number  = {18},
+  pages   = {4514--4522},
+  doi     = {10.1109/JLT.2019.2908816}
+}
+
+@article{tejedor2021multiposition,
+  author  = {Javier Tejedor and Javier Macias-Guarasa and Hugo F. Martins and Sonia Martin-Lopez and Miguel Gonzalez-Herraez},
+  title   = {{A Multi-Position Approach in a Smart Fiber-Optic Surveillance System for Pipeline Integrity Threat Detection}},
+  journal = {Electronics},
+  year    = {2021},
+  volume  = {10},
+  number  = {6},
+  pages   = {712},
+  doi     = {10.3390/electronics10060712}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Acoustic localisation and microphone arrays
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@book{brandstein01,
+  editor    = {Brandstein, Michael and Ward, Darren},
+  title     = {Microphone Arrays: Signal Processing Techniques and Applications},
+  publisher = {Springer},
+  year      = {2001},
+}
+
+@phdthesis{seltzer03,
+  author = {Seltzer, Michael L.},
+  title  = {Microphone Array Processing for Robust Speech Recognition},
+  school = {Carnegie Mellon University},
+  year   = {2003},
+}
+
+@mastersthesis{varma02,
+  author = {Varma, Krishnaraj},
+  title  = {Time-Delay-Estimate-Based Direction-of-Arrival Estimation for Speech in Reverberant Environments},
+  school = {Virginia Polytechnic Institute and State University},
+  year   = {2002},
+}
+
+@article{velasco2012source,
+  author  = {Jose F. Velasco and Daniel Pizarro and Javier Macias-Guarasa},
+  title   = {{Source Localization with Acoustic Sensor Arrays Using Generative Model Based Fitting with Sparse Constraints}},
+  journal = {Sensors},
+  year    = {2012},
+  volume  = {12},
+  number  = {10},
+  pages   = {13781--13812},
+  doi     = {10.3390/s121013781}
+}
+
+@article{velasco2016generative,
+  author  = {Jose F. Velasco and Carlos J. Martin-Arguedas and Javier Macias-Guarasa and Daniel Pizarro and Manuel Mazo},
+  title   = {{Proposal and Validation of an Analytical Generative Model of SRP-PHAT Power Maps in Reverberant Scenarios}},
+  journal = {Signal Processing},
+  year    = {2016},
+  volume  = {119},
+  pages   = {209--228},
+  doi     = {10.1016/j.sigpro.2015.08.003}
+}
+
+@article{velasco2016tdoa,
+  author  = {Jose F. Velasco and Daniel Pizarro and Javier Macias-Guarasa and Afsaneh Asaei},
+  title   = {{TDOA Matrices: Algebraic Properties and Their Application to Robust Denoising With Missing Data}},
+  journal = {IEEE Transactions on Signal Processing},
+  year    = {2016},
+  volume  = {64},
+  number  = {20},
+  pages   = {5242--5254},
+  doi     = {10.1109/TSP.2016.2593690}
+}
+
+@article{vera2018asldeep,
+  author  = {Juan Manuel Vera-Diaz and Daniel Pizarro and Javier Macias-Guarasa},
+  title   = {{Towards End-to-End Acoustic Localization Using Deep Learning: From Audio Signals to Source Position Coordinates}},
+  journal = {Sensors},
+  year    = {2018},
+  volume  = {18},
+  number  = {10},
+  pages   = {3418},
+  doi     = {10.3390/s18103418}
+}
+
+@article{veradiaz2021acoustic,
+  author  = {Juan Manuel Vera-Diaz and Daniel Pizarro and Javier Macias-Guarasa},
+  title   = {{Acoustic Source Localization with Deep Generalized Cross Correlations}},
+  journal = {Signal Processing},
+  year    = {2021},
+  volume  = {187},
+  pages   = {108169},
+  doi     = {10.1016/j.sigpro.2021.108169}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Speech processing and accessible communication
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@inproceedings{armani03,
+  author    = {Armani, Luca and Matassoni, Marco and Omologo, Maurizio and Svaizer, Piergiorgio},
+  title     = {Use of a {CSP}-Based Voice Activity Detector for Distant-Talking {ASR}},
+  booktitle = {European Conference on Speech Communication and Technology},
+  year      = {2003},
+  pages     = {501--504},
+}
+
+@inproceedings{barrachicote2006prosodic,
+  author    = {Roberto Barra-Chicote and Juan Manuel Montero and Javier Macias-Guarasa and Luis Fernando D'Haro and Ruben San-Segundo and Ricardo de Cordoba},
+  title     = {{Prosodic and Segmental Rubrics in Emotion Identification}},
+  booktitle = {2006 IEEE International Conference on Acoustics, Speech and Signal Processing Proceedings},
+  year      = {2006},
+  volume    = {1},
+  pages     = {1085--1088},
+  doi       = {10.1109/ICASSP.2006.1660213}
+}
+
+@article{barrachicote2010analysis,
+  author  = {Roberto Barra-Chicote and Junichi Yamagishi and Simon King and Juan Manuel Montero and Javier Macias-Guarasa},
+  title   = {{Analysis of Statistical Parametric and Unit Selection Speech Synthesis Systems Applied to Emotional Speech}},
+  journal = {Speech Communication},
+  year    = {2010},
+  volume  = {52},
+  number  = {5},
+  pages   = {394--404},
+  doi     = {10.1016/j.specom.2009.12.007}
+}
+
+@inproceedings{cordoba2001interactive,
+  author    = {Ricardo de Cordoba and Ruben San-Segundo and Juan Manuel Montero and Jose Colas and Javier Ferreiros and Javier Macias-Guarasa and Jose Manuel Pardo},
+  title     = {{An Interactive Directory Assistance Service for Spanish with Large-Vocabulary Recognition}},
+  booktitle = {7th European Conference on Speech Communication and Technology (EUROSPEECH 2001)},
+  year      = {2001},
+  pages     = {1279--1282},
+  doi       = {10.21437/Eurospeech.2001-331}
+}
+
+@article{sansegundo2008proposing,
+  author  = {Ruben San-Segundo and Juan Manuel Montero and Javier Macias-Guarasa and Ricardo de Cordoba and Javier Ferreiros and Jose Manuel Pardo},
+  title   = {{Proposing a Speech to Gesture Translation Architecture for Spanish Deaf People}},
+  journal = {Journal of Visual Languages \& Computing},
+  year    = {2008},
+  volume  = {19},
+  number  = {5},
+  pages   = {523--538},
+  doi     = {10.1016/j.jvlc.2007.06.002}
+}
+
+@article{sansegundo2008speech,
+  author  = {Ruben San-Segundo and Roberto Barra-Chicote and Ricardo de Cordoba and Luis Fernando D'Haro and Fernando Fernandez-Martinez and Javier Ferreiros and Juan Manuel Lucas and Javier Macias-Guarasa and Juan Manuel Montero and Jose Manuel Pardo},
+  title   = {{Speech to Sign Language Translation System for Spanish}},
+  journal = {Speech Communication},
+  year    = {2008},
+  volume  = {50},
+  number  = {11-12},
+  pages   = {1009--1020},
+  doi     = {10.1016/j.specom.2008.02.001}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Intelligent spaces, computer vision and human assessment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{luna2017robust,
+  author  = {Carlos A. Luna and Cristina Losada-Gutierrez and David Fuentes-Jimenez and Alvaro Fernandez-Rincon and Manuel Mazo and Javier Macias-Guarasa},
+  title   = {{Robust People Detection Using Depth Information from an Overhead Time-of-Flight Camera}},
+  journal = {Expert Systems with Applications},
+  year    = {2017},
+  volume  = {71},
+  pages   = {240--256},
+  doi     = {10.1016/j.eswa.2016.11.019}
+}
+
+@techreport{moore2002,
+  author      = {Moore, Darren C.},
+  title       = {The {IDIAP} Smart Meeting Room},
+  institution = {IDIAP Research Institute},
+  location    = {Switzerland},
+  year        = {2004},
+  month       = nov,
+  url         = {http://publications.idiap.ch/downloads/reports/2002/com02-07.pdf},
+}
+
+% Conference held in 2023, proceedings published in 2024 according to the
+% UAH publication record. The key uses the event year.
+@inproceedings{nieva2023eyeful,
+  author       = {Nieva-Suárez, Álvaro and
+                  Melino-Carrero, Alessandro and
+                  Guardiola-Luna, Irene and
+                  Calvo-del-Castillo, Pablo and
+                  Monasterio-Expósito, Leticia and
+                  Murillo-Teruel, Marina and
+                  Martín-Sánchez, José Luis and
+                  Palazuelos Cagigas, Sira E. and
+                  Losada-Gutiérrez, Cristina and
+                  Marrón-Romera, Marta and
+                  Macias-Guarasa, Javier and
+                  Obeso-Benítez, Paula and
+                  Hernández-Hernández, Lucía and
+                  Redondo-Cardeña, Beatriz and
+                  Yusta-Ceacero, Aitor and
+                  Fernández-Gómez, Gemma and
+                  Rodríguez-Pérez, Pilar and
+                  García-Bravo, Cristina and
+                  Serrada-Tejeda, Sergio and
+                  Trugeda-Pedrajo, Nuria and
+                  Valdez-Disla, Leandro and
+                  Morales Cabezas, M. Matilde and
+                  Martínez-Piédrola, Rosa M. and
+                  Pérez-de-Heredia-Torres, Marta},
+  title        = {Towards Automatic Evaluation of Human Functional Limitations: The {EYEFUL} Project},
+  booktitle    = {XXX Seminario Anual de Automática, Electrónica Industrial e Instrumentación},
+  eventtitle   = {SAAEI 2023},
+  eventdate    = {2023-07-05/2023-07-07},
+  venue        = {Sevilla, Spain},
+  publisher    = {Editorial Universidad de Sevilla},
+  date         = {2024},
+  pages        = {83--88},
+  url          = {https://portalcientifico.uah.es/documentos/6ab4577e81b144b159bb78df},
+  urldate      = {2026-10-16},
+}
+
+@article{nieva2024proposal,
+  title={A proposal for automatic evaluation of human functional limitations in activities of daily living},
+  author={Nieva-Su{\'a}rez, {\'A}lvaro and Guardiola-Luna, Irene and Melino-Carrero, Alessandro and Murillo-Teruel, Marina and Calvo-del-Castillo, Pablo and de-la-Fuente-Lasa, Santiago and Fuentes-Jimenez, David and Martin-Sanchez, Jose Luis and Palazuelos-Cagigas, Sira E and Losada-Gutierrez, Cristina and others},
+  journal={IEEE Journal of Biomedical and Health Informatics},
+  volume={29},
+  number={12},
+  pages={9221--9232},
+  year={2024},
+  publisher={IEEE}
+}
+
+@article{potorti2017comparing,
+  author  = {Francesco Potorti and Sangjoon Park and Antonio Ramon Jimenez Ruiz and Paolo Barsocchi and Michele Girolami and Antonino Crivello and So Yeon Lee and Jae Hyun Lim and Joaquin Torres-Sospedra and Fernando Seco and Raul Montoliu and German Martin Mendoza-Silva and Maria del Carmen Perez Rubio and Cristina Losada-Gutierrez and Felipe Espinosa and Javier Macias-Guarasa},
+  title   = {{Comparing the Performance of Indoor Localization Systems through the EvAAL Framework}},
+  journal = {Sensors},
+  year    = {2017},
+  volume  = {17},
+  number  = {10},
+  pages   = {2327},
+  doi     = {10.3390/s17102327}
+}
+
+@article{Sanabria2026Landmark,
+  author  = {Sanabria-Macias, Frank and
+             Prados-Torreblanca, Andrés and
+             Marron-Romera, Marta and
+             Macias-Guarasa, Javier and
+             Buenaposada, José M. and
+             Baumela, Luis and
+             Palazuelos-Cagigas, Sira E.},
+  title   = {{Landmark-Assisted Face and Mouth {3D} Localization in Smart Spaces with a Monocular Camera}},
+  journal = {Journal of Visual Communication and Image Representation},
+  year    = {2026},
+  volume  = {118},
+  pages   = {104842},
+  issn    = {1047-3203},
+  doi     = {10.1016/j.jvcir.2026.104842},
+  OPTurl     = {https://www.sciencedirect.com/science/article/pii/S1047320326001379},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Engineering education
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{macias2006PBL,
+  author  = {Javier Macias-Guarasa and Juan Manuel Montero and Ruben San-Segundo and Alvaro Araujo and Octavio Nieto-Taladriz},
+  title   = {{A Project-Based Learning Approach to Design Electronic Systems Curricula}},
+  journal = {IEEE Transactions on Education},
+  year    = {2006},
+  volume  = {49},
+  number  = {3},
+  pages   = {389--397},
+  doi     = {10.1109/TE.2006.879784}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fictional compendium publications
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% These three papers are invented demonstration material, not real publications.
+% Used only by the thesis-by-compendium example.
 
 @article{garcia2026paper1,
   author       = {García, Alicia and Smith, Robert and Doe, Jane},
@@ -39,155 +691,4 @@
   number       = {1},
   pages        = {73--74},
   note         = {Fictional demonstration publication; mock identifier WMCE-2026-073},
-}
-
-@Misc{gnulinux,
-  note =	 {\url{http://es.wikipedia.org/wiki/GNU/Linux}},
-  title =	 {Información sobre GNU/Linux en wikipedia},
-  urldate = {2026-10-03}
-}
-
-@Book{lamport94,
-  author =	 {Leslie Lamport},
-  title = 	 {LaTeX: A Document Preparation System, 2nd edition},
-  publisher = 	 {Addison Wesley Professional},
-  year = 	 1994,
-  series =	 {}
-}
-
-@Misc{emacs,
-  note =	 {\url{http://savannah.gnu.org/projects/emacs/}},
-  title =	 {Página de la aplicación emacs},
-  urldate = {2026-10-03}
-}
-
-@Misc{cvs,
-  note =	 {\url{http://savannah.nongnu.org/projects/cvs/}},
-  title =	 {Página de la aplicación CVS},
-  urldate = {2026-10-03}
-}
-
-@Misc{gcc,
-  note =	 {\url{http://savannah.gnu.org/projects/gcc/}},
-  title =	 {Página de la aplicación gcc},
-  urldate = {2026-10-03}
-}
-
-@Misc{make,
-  note =	 {\url{http://savannah.gnu.org/projects/make/}},
-  title =	 {Página de la aplicación make},
-  urldate = {2026-10-03}
-}
-
-@misc{git-latexdiff,
-  title   = {Página de \texttt{git-latexdiff} en Gitorious},
-  url     = {https://gitorious.org/git-latexdiff},
-  urldate = {2026-10-03}
-}
-
-@techreport{moore2002,
-  author      = {Moore, Darren C.},
-  title       = {The {IDIAP} Smart Meeting Room},
-  institution = {IDIAP Research Institute},
-  location    = {Switzerland},
-  year        = {2004},
-  month       = nov,
-  url         = {http://publications.idiap.ch/downloads/reports/2002/com02-07.pdf},
-}
-
-@article{ramirez2026jstars,
-  author  = {Ramirez-Torres, Erick Eduardo and
-             Macias-Guarasa, Javier and
-             Pizarro, Daniel and
-             Tejedor, Javier and
-             Palazuelos-Cagigas, Sira Elena and
-             Vidal-Moreno, Pedro J. and
-             Martin-Lopez, Sonia and
-             Gonzalez-Herraez, Miguel and
-             Vanthillo, Roel},
-  title   = {Vessel Detection and Localization Using Distributed Acoustic Sensing in Submarine Optical Fiber Cables},
-  journal = {IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing},
-  year    = {2026},
-  volume  = {19},
-  pages   = {27946--27965},
-  doi     = {10.1109/JSTARS.2026.3716768},
-}
-
-@article{Sanabria2026Landmark,
-  author  = {Sanabria-Macias, Frank and
-             Prados-Torreblanca, Andrés and
-             Marron-Romera, Marta and
-             Macias-Guarasa, Javier and
-             Buenaposada, José M. and
-             Baumela, Luis and
-             Palazuelos-Cagigas, Sira E.},
-  title   = {Landmark-Assisted Face and Mouth {3D} Localization in Smart Spaces with a Monocular Camera},
-  journal = {Journal of Visual Communication and Image Representation},
-  year    = {2026},
-  volume  = {118},
-  pages   = {104842},
-  issn    = {1047-3203},
-  doi     = {10.1016/j.jvcir.2026.104842},
-  OPTurl     = {https://www.sciencedirect.com/science/article/pii/S1047320326001379},
-}
-
-@misc{texis,
-  title   = {{TeXiS}: Una plantilla de {LaTeX} para tesis y otros documentos},
-  url     = {http://gaia.fdi.ucm.es/projects/texis/},
-  urldate = {2026-10-03}
-}
-
-@article{velasco2016generative,
-  author  = {Velasco, Jose and
-             Martín-Arguedas, Carlos J. and
-             Macias-Guarasa, Javier and
-             Pizarro, Daniel and
-             Mazo, Manuel},
-  title   = {Proposal and Validation of an Analytical Generative Model of {SRP-PHAT} Power Maps in Reverberant Scenarios},
-  journal = {Signal Processing},
-  year    = {2016},
-  volume  = {119},
-  pages   = {209--228},
-  issn    = {0165-1684},
-  doi     = {10.1016/j.sigpro.2015.08.003},
-  OPTurl     = {https://www.sciencedirect.com/science/article/pii/S0165168415002650},
-}
-
-% Unused examples of other common entry types
-
-@inproceedings{armani03,
-  author    = {Armani, Luca and Matassoni, Marco and Omologo, Maurizio and Svaizer, Piergiorgio},
-  title     = {Use of a {CSP}-Based Voice Activity Detector for Distant-Talking {ASR}},
-  booktitle = {European Conference on Speech Communication and Technology},
-  year      = {2003},
-  pages     = {501--504},
-}
-
-@book{brandstein01,
-  editor    = {Brandstein, Michael and Ward, Darren},
-  title     = {Microphone Arrays: Signal Processing Techniques and Applications},
-  publisher = {Springer},
-  year      = {2001},
-}
-
-@manual{nelson90,
-  author       = {Nelson, Sam},
-  title        = {Document Preparation with {LaTeX}},
-  organization = {University of Stirling},
-  year         = {1990},
-  month        = oct,
-}
-
-@phdthesis{seltzer03,
-  author = {Seltzer, Michael L.},
-  title  = {Microphone Array Processing for Robust Speech Recognition},
-  school = {Carnegie Mellon University},
-  year   = {2003},
-}
-
-@mastersthesis{varma02,
-  author = {Varma, Krishnaraj},
-  title  = {Time-Delay-Estimate-Based Direction-of-Arrival Estimation for Speech in Reverberant Environments},
-  school = {Virginia Polytechnic Institute and State University},
-  year   = {2002},
 }
