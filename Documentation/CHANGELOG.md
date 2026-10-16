@@ -2,6 +2,32 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.7.0] - 2026-10-16
+
+### Features
+
+- Add automatic per-chapter reference lists
+
+- Add editorial PhD chapter-bibliography example
+
+
+### Documentation
+
+- Expand and organise reference entries by topic
+
+- Add manuals for demonstrated LaTeX features
+
+- Expand reference examples and reduce semicolon usage
+
+
+### Maintenance
+
+- Added missing year field to web refs
+
+- Added misc regulation docs
+
+- Prepare v8.7.0
+
 ## [v8.6.1] - 2026-10-16
 
 ### Bug Fixes
@@ -74,6 +100,8 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 - Fixed María de Pedraza surname
 
 - Improve institutional information page spacing and alignment
+
+- Complete example DNI values and document their meanings
 
 
 ### Maintenance
