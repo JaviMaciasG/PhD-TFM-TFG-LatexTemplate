@@ -6,7 +6,10 @@
 
 \definecolor{pantone293}{RGB}{35,91,168}
 \definecolor{headingPortadaTFG}{RGB}{152,118,52}
-\definecolor{headingPortadaTFM}{RGB}{0,90,170}
+% MUIT y MUII: azul de las franjas según la normativa EPS-UAH de octubre de 2026.
+\ifthenelse{\equal{\myDegree}{MUIT}\OR\equal{\myDegree}{MUII}}
+{\definecolor{headingPortadaTFM}{HTML}{002C91}}
+{\definecolor{headingPortadaTFM}{RGB}{0,90,170}}
 \definecolor{textoHeadingPortadaTFM}{RGB}{208,205,102}
 \definecolor{textoHeadingPortadaTFG}{RGB}{208,205,102}
 \definecolor{UAHcolorpantone293}{rgb}{0,0.239,0.647}
