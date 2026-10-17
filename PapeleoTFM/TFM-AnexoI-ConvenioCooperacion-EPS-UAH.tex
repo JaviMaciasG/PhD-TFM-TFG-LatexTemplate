@@ -147,7 +147,7 @@ Nombre del Centro & \multicolumn{3}{l|}{\AnnexEntityName}\\\hline
 % -------------------------------------------------------------------------
 \begin{tabularx}{\textwidth}{|L{4.55cm}|Y|L{3.15cm}|Y|}
 \hline
-\rowcolor{annexContactShade}\multicolumn{4}{|l|}{\bfseries\itshape Datos de la persona de contacto (Tutor)}\\\hline
+\rowcolor{annexContactShade}\multicolumn{4}{|l|}{\bfseries\itshape Datos de la persona de contacto (\expandafter\makefirstuc\expandafter{\wordCoDirectorOrCoDirectora})}\\\hline
 Nombre y apellidos & \multicolumn{3}{l|}{\AnnexEntityTutorName}\\\hline
 Cargo & \AnnexEntityTutorPosition & NIF & \AnnexEntityTutorDNI\\\hline
 & \multicolumn{1}{l|}{} & Teléfono & \AnnexNA\\\hline
@@ -161,7 +161,7 @@ e-mail & \multicolumn{3}{l|}{\AnnexEntityTutorEmail}\\\hline
 % -------------------------------------------------------------------------
 \begin{tabularx}{\textwidth}{|L{4.55cm}|Y|L{3.15cm}|Y|}
 \hline
-\AnnexSection{Datos \wordTutorDelOrDeLa{} \wordTutorOrTutora{} en la Universidad de Alcalá}
+\AnnexSection{Datos \wordTutorDelOrDeLa{} \wordDirectorOrdirectora{} en la Universidad de Alcalá}
 Nombre y apellidos & \multicolumn{3}{l|}{\myAcademicTutorFullName}\\\hline
 Departamento & \myAcademicTutorDepartment & NIF & \myAcademicTutorDNI\\\hline
 & \multicolumn{1}{l|}{} & Teléfono & \AnnexNA\\\hline
@@ -192,8 +192,8 @@ Título del \myWorkType & \multicolumn{3}{l|}{\myBookTitleSpanish}\\\hline
 \begin{minipage}[t]{0.965\textwidth}
 \vspace{0.05cm}
 \setlength{\parindent}{0pt}
-\hspace*{0.10cm}$\bullet$\hspace{0.48cm}El tutor de la entidad realizará las labores propias durante el periodo acordado.\\
-\hspace*{0.10cm}$\bullet$\hspace{0.48cm}El tutor/a de la entidad recibirá un certificado de la Universidad que haga constar su labor de tutorización del \myWorkType.
+\hspace*{0.10cm}$\bullet$\hspace{0.48cm}\expandafter\makefirstuc\expandafter{\wordCoDirectorElOrLa} \wordCoDirectorOrCoDirectora{} de la entidad realizará las labores propias durante el periodo acordado.\\
+\hspace*{0.10cm}$\bullet$\hspace{0.48cm}\expandafter\makefirstuc\expandafter{\wordCoDirectorElOrLa} \wordCoDirectorOrCoDirectora{} de la entidad recibirá un certificado de la Universidad que haga constar su labor de tutorización del \myWorkType.
 \vspace{0.3cm}
 \end{minipage}\\\hline
 \rowcolor{annexSectionBlue}\bfseries\itshape BREVE RESUMEN DEL \myWorkType\\\hline
@@ -214,10 +214,11 @@ En Alcalá de Henares, a \today % \myPaperworkDate
 \centering Por la Universidad de Alcalá &
 \centering Por la empresa &
 \centering\arraybackslash \expandafter\makefirstuc\expandafter{\wordAutorElOrLa{}} estudiante\\\hline
-\vspace{1.3cm}\rule{0pt}{0.43cm}Coordinador \myWorkType &
+\vspace{1.3cm}\rule{0pt}{0.43cm}\mySchoolDeputyDirectorFullName &
 \rule{0pt}{0.43cm}\wordDonOrDonaCoTutor{} \AnnexEntityTutorName &
 \rule{0pt}{0.43cm}\wordDonOrDonaAutor \myAuthorFullName\\
-\mySchool &  \expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora{}} de \myWorkType{} en la entidad & \\\hline
+\wordSubdirectorOrSubdirectora{} de la &  \expandafter\makefirstuc\expandafter{\wordCoDirectorOrCoDirectora{}} de \myWorkType{} en la entidad & \\
+\mySchool & & \\\hline
 \end{tabularx}
 
 \end{document}

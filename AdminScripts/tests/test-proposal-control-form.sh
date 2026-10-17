@@ -75,7 +75,7 @@ for spec in "${cases[@]}"; do
     grep -Eq '\[X\] ESPAÑOL.*\[ *\] INGLÉS' "$fixture/form.txt"
   fi
   if [[ $cotutor == absent ]]; then
-    ! grep -q 'COTUTOR' "$fixture/form.txt"
+    ! grep -q 'CODIRECTOR' "$fixture/form.txt"
     grep -q 'Departamento del trabajo' "$fixture/form.txt"
     if grep -q 'Departamento de prueba' "$fixture/form.txt"; then
       echo 'FAIL: work department inferred from cotutor' >&2

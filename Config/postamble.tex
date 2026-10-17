@@ -296,6 +296,15 @@
 }
 
 
+% Cargo de la persona que firma los convenios de cooperación por la escuela.
+\ifthenelse{\equal{\mySchoolDeputyDirectorGender}{male}}
+{
+  \newcommand{\wordSubdirectorOrSubdirectora}{Subdirector}
+}
+{
+  \newcommand{\wordSubdirectorOrSubdirectora}{Subdirectora}
+}
+
 % Set name of advisors and define words depending on singular/plural
 \ifthenelse{\equal{\myCoTutorFullName}{}}
 {

@@ -48,7 +48,7 @@
 \end{spacing}
 \medskip
 
-\underline{\textbf{Datos personales \wordAutorDelOrDeLa{} \wordAlumnoOrAlumna}}
+\underline{\textbf{Datos personales \wordAutorDelOrDeLa{} estudiante}}
 \small
 \begin{spacing}{1.0}
   \begin{tabularx}{\textwidth}{@{}X@{}}
@@ -82,14 +82,14 @@
 
 \begin{spacing}{1.0}
   \begin{tabularx}{\textwidth}{X}
-    \MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica}: \myAcademicTutorFullName  \\
-    \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\MakeUppercase{\wordCoTutorOrCoTutora}: \myCoTutorFullName \\}
+    \MakeUppercase{\wordDirectorOrdirectora} \MakeUppercase{\wordAcademicoOrAcademica}: \myAcademicTutorFullName  \\
+    \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\MakeUppercase{\wordCoDirectorOrCoDirectora}: \myCoTutorFullName \\}
     \begin{center}
       Alcalá de Henares, \myThesisProposalDate
     \end{center}
  \end{tabularx}
   \begin{tabularx}{\textwidth}{X X}
-    Visto bueno \wordTutorDelOrDeLa{} \wordTutorOrTutora{} \okCoTutorOrCotutora{} & \wordAlumnoOrAlumnaUpcaseFirt{} \\
+    Visto bueno \wordTutorDelOrDeLa{} \wordDirectorOrdirectora{}\ifthenelse{\equal{\myCoTutorFullName}{}}{}{ y \wordCoTutorDelOrDeLa{} \wordCoDirectorOrCoDirectora{}} & Estudiante \\
     \\
     \\ ~
     \\ ~

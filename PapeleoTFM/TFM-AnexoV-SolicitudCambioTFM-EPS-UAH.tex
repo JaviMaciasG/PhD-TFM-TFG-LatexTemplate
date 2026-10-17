@@ -39,50 +39,53 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-{\Large
+{\normalsize
+\setlength{\parindent}{0pt}
 \maketitle
 
 \thispagestyle{empty}
 
-\noindent\textbf{\underline{Datos del Director/a académico/a}} (si procede)
+\vspace*{\fill}
+
+\noindent\textbf{\underline{Datos \wordTutorDelOrDeLa{} \wordDirectorOrdirectora{} \wordAcademicoOrAcademica{}}} (si procede)
 
 \vspace{0.25cm}
 
-\hspace*{1.5cm}NOMBRE: \myAcademicTutorFullName
+\hspace*{0.5cm}NOMBRE: \myAcademicTutorFullName
 
 \vspace{0.25cm}
 
-\hspace*{1.5cm}AFILIACIÓN: \AcademicTutorAffiliation
+\hspace*{0.5cm}AFILIACIÓN: \AcademicTutorAffiliation
 
 \vspace{0.4cm}
 
-\noindent\textbf{\underline{Datos del Codirector/a}} (si procede)
+\noindent\textbf{\underline{Datos \wordCoTutorDelOrDeLa{} \wordCoDirectorOrCoDirectora{}}} (si procede)
 
 \vspace{0.25cm}
 
-\hspace*{1.5cm}NOMBRE:
+\hspace*{0.5cm}NOMBRE:
 \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorFullName}
 
 \vspace{0.25cm}
 
-\hspace*{1.5cm}AFILIACIÓN:
+\hspace*{0.5cm}AFILIACIÓN:
 \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\AcademicCotutorAffiliation}
 
 \vspace{0.4cm}
 
-\noindent\textbf{\underline{Datos del Estudiante}} (si procede)
+\noindent\textbf{\underline{Datos \wordAutorDelOrDeLa{} estudiante}} (si procede)
 
 \vspace{0.25cm}
 
-\hspace*{1.5cm}NOMBRE: \myAuthorFullName
+\hspace*{0.5cm}NOMBRE: \myAuthorFullName
 
 \vspace{0.25cm}
 
-\hspace*{1.5cm}DNI: \myAuthorDNI
+\hspace*{0.5cm}DNI: \myAuthorDNI
 
 \vspace{0.25cm}
 
-\hspace*{1.5cm}EMAIL: \myAuthorEmail
+\hspace*{0.5cm}EMAIL: \myAuthorEmail
 
 \vspace{0.4cm}
 
@@ -90,29 +93,35 @@
 
 \vspace{0.25cm}
 
-\noindent\hspace*{1.5cm}\begin{minipage}[t]{\dimexpr\textwidth-1.5cm\relax}
+\noindent\hspace*{0.5cm}\begin{minipage}[t]{\dimexpr\textwidth-0.5cm\relax}
 \raggedright TÍTULO TFM: \myBookTitle
 \end{minipage}
 
 \vspace{0.25cm}
 
-\hspace*{1.5cm}EXPONE RAZONADAMENTE:
+\hspace*{0.5cm}EXPONE RAZONADAMENTE:
 
 \vspace{0.15cm}
 
-\hspace*{1.5cm}\AnnexNA
+\hspace*{0.5cm}\AnnexNA
 
 \vspace{0.75cm}
 
-\hspace*{1.5cm}SOLICITA: \AnnexNA
+\hspace*{0.5cm}SOLICITA:
 
-\newpage
+\vspace{0.15cm}
+
+\hspace*{0.5cm}\AnnexNA
+
+\vspace{0.75cm}
 
 \vspace*{1cm}
 
 \begin{center}
 Fdo.: \AnnexNA
 \end{center}
+
+\vspace*{\fill}
 
 }
 \end{document}
