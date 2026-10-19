@@ -1,4 +1,6 @@
-# Introducción
+# Plantilla LaTeX para TFGs, TFMs y tesis doctorales
+
+## Introducción
 
 Este repositorio contiene una plantilla genérica para documentos de tesis doctoral (PhD), trabajos fin de máster (MSc/TFM) y trabajos fin de grado (BSc/TFG), diseñada principalmente para utilizarse en la Universidad de Alcalá (UAH). Por ello está escrita en español, aunque la plantilla también puede generar los documentos en inglés (basta con establecer una variable en el archivo de configuración).
 
@@ -13,9 +15,9 @@ También se ofrece soporte para generar el "anteproyecto" (en la carpeta `Antepr
 Lee la guía que aparece al principio de cualquiera de los ejemplos precompilados de la distribución de Dropbox (por ejemplo, el [TFG del GIEC en la UAH](https://www.dropbox.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv&dl=0)). El capítulo 1 presenta la plantilla y te dirige a los capítulos siguientes según lo que necesites.
 
 
-# Inicio rápido
+## Inicio rápido
 
-## Descargar la plantilla
+### Descargar la plantilla
 
 Se puede acceder a la plantilla de dos formas:
 
@@ -24,19 +26,19 @@ Se puede acceder a la plantilla de dos formas:
 2. En mi Dropbox, en formatos zip y tgz, accesible desde [esta carpeta de descargas de Dropbox](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0). La carpeta también contiene una selección de documentos de ejemplo completos. Abre [`01-DOWNLOAD-GUIDE.pdf`](https://www.dropbox.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk&dl=0) para ver la lista y qué muestra cada archivo. Que no exista un PDF para una titulación concreta no significa que no sea compatible.
 
 
-## Elegir dónde quieres trabajar
+### Elegir dónde quieres trabajar
 
 Tienes dos opciones principales para trabajar con la plantilla: hacerlo localmente en cualquier PC (mi configuración preferida utiliza [TeXstudio](https://www.texstudio.org/)) o hacerlo en línea mediante [Overleaf](https://www.overleaf.com/). Ambas opciones se describen a continuación.
 
 
-### Trabajar en un equipo local
+#### Trabajar en un equipo local
 
 Necesitarás una buena distribución de LaTeX (Tex Live, MiKTeX, MacTeX, etc., según tu entorno de trabajo). Para ver una lista de todos los paquetes necesarios, puedes consultar las instrucciones `\usepackage{...}` del archivo `Config/preamble.tex`, aunque no debería ser necesario ni suponer un problema, ya que la mayoría de las distribuciones incluirán todo lo que necesitas. Si encuentras errores porque algún paquete no está disponible, instálalo (debería ser bastante sencillo).
 
 Ten en cuenta que la compilación principal se realiza mediante `pdflatex+biber`. Puedes compilar el documento con [TeXstudio](https://www.texstudio.org/) o con cualquier buen editor de LaTeX después de configurar las herramientas necesarias. El flujo de trabajo `make` proporcionado automatiza el proceso completo y resulta práctico si está disponible en tu entorno, pero no es necesario para utilizar la plantilla.
 
 
-#### Notas sobre la instalación en GNU/Linux
+##### Notas sobre la instalación en GNU/Linux
 
 Me refiero aquí a distribuciones similares a Debian (principalmente Ubuntu), aunque las instrucciones y los nombres de los paquetes deberían ser parecidos en otras distribuciones.
 
@@ -47,7 +49,7 @@ También puedes utilizar `sudo apt-get install texlive-full` para instalar una d
 En cuanto a editores, volvería a recomendar [TeXstudio](https://www.texstudio.org/) o [emacs](https://www.gnu.org/software/emacs/). Personalmente utilizo este último con la [configuración Doom emacs](https://github.com/doomemacs/doomemacs), pero la curva de aprendizaje puede ser realmente pronunciada, por lo que [TeXstudio](https://www.texstudio.org/) es, en mi opinión, una opción mucho más segura.
 
 
-#### Notas sobre la instalación en Windows
+##### Notas sobre la instalación en Windows
 
 Este es el procedimiento que recomiendo para dejarlo todo preparado (si no te funciona, por favor [avísame](mailto:javier.maciasguarasa@uah.es)):
 
@@ -62,12 +64,12 @@ Este es el procedimiento que recomiendo para dejarlo todo preparado (si no te fu
 3. Instala un intérprete de Perl si piensas utilizar acrónimos, gestionados en la plantilla mediante `makeglossaries`, algo que recomiendo totalmente. He utilizado [Strawberry perl](https://strawberryperl.com/), aunque puedes visitar el sitio de Perl (https://www.perl.org/get.html) y consultar otras alternativas.
 
 
-#### Notas sobre la configuración de TeXStudio (MUY IMPORTANTE)
+##### Notas sobre la configuración de TeXStudio (MUY IMPORTANTE)
 
 El soporte bibliográfico se proporciona mediante [biblatex](https://www.ctan.org/pkg/biblatex), por lo que el *backend* es ahora biber (desde 2022). Esto significa que debes configurar [TeXstudio](https://www.texstudio.org/) (o tu editor de \LaTeX{} preferido) para utilizar biber como procesador de bibliografía. En la aplicación [TeXstudio](https://www.texstudio.org/), ve simplemente a `Options > Configure TeXstudio > Build > Default Bibliography > Biber`.
 
 
-### Trabajar en [Overleaf](https://www.overleaf.com/)
+#### Trabajar en [Overleaf](https://www.overleaf.com/)
 
 Antes de nada, tengo una mala noticia respecto al uso de [Overleaf](https://www.overleaf.com/) para compilar tu trabajo: por lo que sé, la modalidad gratuita de [Overleaf](https://www.overleaf.com/) (desde 2024, con sus nuevas restricciones) no te asignará suficiente tiempo de compilación para generar el archivo PDF :-(.
 
@@ -89,7 +91,7 @@ También puedes necesitar algunos de los archivos de documentación administrati
 En el pasado hemos tenido varios problemas con [Overleaf](https://www.overleaf.com/) (principalmente relacionados con los glosarios), y ahora deberían funcionar correctamente. Si en el futuro surgen nuevos problemas, [ponte en contacto conmigo](mailto:javier.maciasguarasa@uah.es) y/o consulta [este repositorio](https://github.com/gkilleen33/overleaf-offline/tree/master), que contiene buenas configuraciones para `latexmkrc` que deberían darte pistas sobre cómo resolverlos.
 
 
-## Estructura del repositorio
+### Estructura del repositorio
 
 Los directorios que necesitan la mayoría de los usuarios son:
 
@@ -104,22 +106,22 @@ En algunos casos también puedes necesitar los recursos que se encuentran en:
 El repositorio Git completo también contiene `AdminScripts/`, `Deprecated/`, `normativas/`, `UsefulDocs/` y archivos Markdown orientados a los mantenedores. Sirven para el desarrollo, la referencia histórica y la preparación de versiones, y se omiten deliberadamente de la distribución ZIP/TGZ ordinaria.
 
 
-## Configurar tus datos
+### Configurar tus datos
 
 Personaliza tus datos, titulación e idioma en `Config/myconfig.tex`. Los comentarios del archivo te orientan y el capítulo de configuración del manual contiene la referencia completa. **Importante**: no elimines ni comentes las definiciones de variables. Si un dato no corresponde a tu caso, como por ejemplo el cotutor, deja su valor vacío.
 
 También puedes probar otros estilos tipográficos para el documento principal (es una opción preliminar que se explica en el manual y no necesitas modificarla para empezar).
 
-## Para trabajar en el "anteproyecto"
+### Para trabajar en el "anteproyecto"
 
 1. Configura los metadatos del documento en `Config/myconfig.tex`.
 2. Ve al directorio `Anteproyecto`, donde encontrarás el archivo `anteproyecto.tex`. Este es el archivo en el que debes trabajar y el punto de entrada para la compilación. En el repositorio se proporciona un ejemplo.
 3. Edita el archivo para adaptarlo a tus necesidades
 4. Compílalo (hay disponible un `Makefile` incremental basado en `latexmk`, aunque puedes utilizar tu herramienta o comando habitual de compilación de LaTeX dentro de tu editor preferido).
 
-## Para trabajar en el documento principal
+### Para trabajar en el documento principal
 
-### Caso general
+#### Caso general
 
 Después de descargar la plantilla, compila primero `Book/book.tex` sin modificarlo. El PDF resultante es el manual completo, incluidos ejemplos de las funcionalidades disponibles. Utiliza esta primera compilación para comprobar que todo funciona y revisar la guía antes de empezar tu documento.
 
@@ -137,13 +139,13 @@ Cuando estés preparado para escribir tu propio documento, parte de la estructur
 
 Una vez que la estructura mínima esté preparada, crea tu repositorio Git y realiza un primer *commit* de sus archivos fuente. Si prefieres un cliente Git gráfico, conserva el `.gitignore` proporcionado, pide al cliente que incluya en el *commit* todos los cambios no ignorados, revisa la lista de archivos propuesta y crea después el *commit*. El cliente que uses puede denominar esta operación *Stage all*, *Stage all changes*, *Select all* o simplemente mostrar casillas para seleccionar los archivos que se incluirán. El procedimiento completo para principiantes, los archivos que nunca deben incluirse en un *commit* y la alternativa `make sync-git-sources`, que tiene en cuenta las dependencias, se explican en la sección del manual *Preparación del repositorio Git*.
 
-### Caso especializado: tesis doctoral por compendio de publicaciones
+#### Caso especializado: tesis doctoral por compendio de publicaciones
 
 Si tu tesis doctoral se presenta por compendio de publicaciones, establece `\myDocumentStructure` como `compendium` y selecciona tu programa de doctorado mediante `\myDegree` en `Config/myconfig.tex`. Organiza el contenido en `Book/content-compendium.tex` y compila el mismo `Book/book.tex`. El manual explica la estructura mínima y la incorporación de publicaciones en los apartados *Caso particular: tesis por compendio de publicaciones* y *Caso especializado: tesis por compendio de publicaciones*. Comprueba también la normativa de tu programa y los permisos de reutilización de los artículos.
 
-## Personalizar el contenido del documento principal
+### Personalizar el contenido del documento principal
 
-### Figuras y diagramas
+#### Figuras y diagramas
 
 Coloca las ilustraciones del documento en `Book/figures/` o `Book/diagrams/`. Como `Book/book.tex` añade ambos directorios a `\graphicspath`, normalmente pueden incluirse por nombre de archivo:
 
@@ -153,17 +155,17 @@ Coloca las ilustraciones del documento en `Book/figures/` o `Book/diagrams/`. Co
 
 Si sigues la alternativa de compilación con `make`, el Makefile puede convertir archivos fuente `dia`, `SVG` y `EPS` compatibles cuando estén instaladas las herramientas externas correspondientes. Los archivos PDF, PNG y JPEG pueden utilizarse directamente con `pdflatex`. Mantén los logotipos institucionales en `Book/logos/`, separados de las ilustraciones específicas del documento.
 
-### Acrónimos y símbolos
+#### Acrónimos y símbolos
 
 Define los acrónimos en `Book/acronyms/defacronymsgl.tex` y los símbolos en `Book/symbols/defsymbolsgl.tex`. Su presentación se controla mediante los archivos `acronymsgl.tex` y `symbolsgl.tex` correspondientes y la configuración compartida de glosarios, pero no necesitas modificarlos.
 
-## Para trabajar con la documentación administrativa
+### Para trabajar con la documentación administrativa
 
 1. Ve a `PapeleoTFG/`, `PapeleoTFM/` o `PapeleoPHD/`, según el tipo de documento que necesites.
 2. Edita los archivos que necesites y compílalos con tu editor/herramienta de compilación LaTeX habitual o mediante los `Makefile` correspondientes. Al ejecutar `make`, se utiliza `latexmk` para generar todos los formularios del directorio y evitar recompilar los documentos que no hayan cambiado. Utiliza `make help` para ver los grupos y objetivos individuales disponibles. Si utilizas [Overleaf](https://www.overleaf.com/), cambia el `main document` para que sea el que quieras compilar.
 
 
-# Gestión de la bibliografía
+## Gestión de la bibliografía
 
 La plantilla permite incluir bibliografías por capítulo, una bibliografía general o ambas, como se explica en el manual.
 
@@ -173,9 +175,9 @@ Si tienes varios archivos `.bib`, añade cada uno de ellos en `Book/biblio/` y d
 
 Recuerda que el *backend* predeterminado para el procesamiento de la bibliografía es ahora `biber` (desde septiembre de 2022). Esto implica que debes indicar a tu editor o entorno de compilación \LaTeX{} que estás utilizando `biber` en lugar de `bibtex`. Esto se aplica, por ejemplo, a TeXStudio, como se ha descrito anteriormente.
 
-# Colaboración con tu tutor o con otros compañeros
+## Colaboración con tu tutor o con otros compañeros
 
-## Uso de GitHub para el control de versiones
+### Uso de GitHub para el control de versiones
 
 Recomiendo encarecidamente utilizar [GitHub](https://www.github.com) para llevar el control y permitir compartir el código fuente LaTeX. El control de versiones permite:
 
@@ -185,11 +187,11 @@ Recomiendo encarecidamente utilizar [GitHub](https://www.github.com) para llevar
 
 Encontrarás mucha información útil sobre [GitHub](https://www.github.com), así que no voy a aburrirte aquí con los detalles.
 
-## Gestión de la revisión del documento
+### Gestión de la revisión del documento
 
 Para gestionar la revisión del documento (por ejemplo, por parte de tu tutor), puedes utilizar las herramientas del repositorio de [GitHub](https://www.github.com). También me ha resultado útil el proceso de revisión mediante el paquete `todonotes`. Está instalado de forma predeterminada y hemos definido algunas macros útiles al final del archivo `Config/myconfig.tex` (busca entradas `\todo...`). Consúltalas si te interesan. El documento de la plantilla también incluye una sección dedicada a generar un documento de *control de cambios*.
 
-# Descargo de responsabilidad, petición de ayuda y ofrecimiento de ayuda
+## Descargo de responsabilidad, petición de ayuda y ofrecimiento de ayuda
 
 Queda mucho trabajo por hacer para mejorar la documentación de esta plantilla, y haré todo lo posible, pero no puedo prometer nada. Sé que la estructura y la complejidad de la plantilla pueden resultar abrumadoras al enfrentarse a ella por primera vez, por lo que me gustaría que contribuyeras con ideas o sugerencias sobre cómo hacerla más fácil de entender y utilizar.
 
