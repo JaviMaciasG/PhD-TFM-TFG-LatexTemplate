@@ -24,7 +24,7 @@ Si trabajas localmente, para compilar la plantilla necesitas una distribución d
 
 Si prefieres trabajar en línea con Overleaf, no necesitas instalar una distribución ni un editor en tu equipo. La plataforma proporciona el entorno de compilación; en la sección~\ref{sec:compilacion-overleaf} te explicamos cómo importar la plantilla y seleccionar el documento principal.
 
-Biber es necesario cuando el documento incluye bibliografía. Si utilizas acrónimos o símbolos, también necesitarás \texttt{makeglossaries}; el libro de ejemplo distribuido con la plantilla contiene ambos elementos y, por tanto, requiere esta herramienta para generar todos sus listados.
+Biber es necesario cuando el documento incluye bibliografía. Para los acrónimos y símbolos, la plantilla utiliza la opción \texttt{automake} del paquete \texttt{glossaries}, que intenta ejecutar \texttt{makeindex} automáticamente. Si tu distribución permite esa ejecución, no necesitas instalar Perl ni ejecutar el script \texttt{makeglossaries} para compilar desde el editor. En una primera compilación puede hacer falta volver a compilar para incorporar los listados generados. La vía opcional mediante el \texttt{Makefile} tiene requisitos distintos, descritos en la sección~\ref{sec:compilacion-makefile}.
 
 Si durante la compilación recibes un aviso de que falta un fichero \texttt{.sty}, instala el paquete de tu distribución de \LaTeX{} que lo contiene. En MiKTeX puedes activar la instalación automática de paquetes; TeX Live y MacTeX proporcionan sus propias herramientas para administrar los paquetes instalados.
 
@@ -38,9 +38,11 @@ Puedes ampliar estas indicaciones con la documentación del proyecto \LaTeX{}~\c
 
 Antes de compilar el documento, completa la configuración compartida en \texttt{Config/myconfig.tex} siguiendo las indicaciones de la sección~\ref{sec:definicion-del-tipo}. Después, abre \texttt{Book/book.tex} como documento principal en tu editor de \LaTeX{} y utiliza su función habitual de compilación o construcción.
 
-Para generar correctamente todos los elementos del libro, configura el editor para utilizar \texttt{pdflatex} como compilador y Biber como procesador de la bibliografía. Si utilizas acrónimos o símbolos, añade también \texttt{makeglossaries} a la cadena de construcción. Finalmente, realiza las pasadas adicionales de \texttt{pdflatex} necesarias para actualizar las referencias cruzadas, los índices, la bibliografía y los glosarios.
+Para generar correctamente todos los elementos del libro, configura el editor para utilizar \texttt{pdflatex} como compilador y Biber como procesador de la bibliografía. Utiliza su función de construcción para actualizar las referencias cruzadas, los índices y la bibliografía. Las listas de acrónimos y símbolos se preparan automáticamente mediante \texttt{makeindex} cuando el entorno permite su ejecución. Si aún no aparecen después de la primera compilación, vuelve a compilar. Si siguen sin actualizarse, busca los mensajes de \texttt{makeindex} en el registro de compilación para comprobar si la ejecución está bloqueada o ha fallado, antes de instalar herramientas adicionales.
 
 \subsection{GNU/Linux}
+
+Si utilizas Debian o Ubuntu y prefieres instalar desde la terminal, encontrarás ejemplos de los comandos en la sección~\ref{sec:instalacion-gnu-linux}.
 
 En GNU/Linux puedes utilizar tu editor de \LaTeX{} preferido. Asegúrate de abrir \texttt{Book/book.tex} como documento principal y de configurar la cadena de construcción como se explica en la sección~\ref{sec:compilacion}.
 
@@ -48,7 +50,7 @@ Si prefieres automatizar el proceso mediante \texttt{make}, consulta \textit{Com
 
 \subsection{Windows}
 
-En Windows puedes utilizar MiKTeX o TeX Live junto con TeXstudio u otro editor de \LaTeX{}. En la configuración del editor, selecciona Biber como procesador de la bibliografía y, si utilizas acrónimos o símbolos, añade \texttt{makeglossaries} a la cadena de construcción. Para ejecutar \texttt{makeglossaries} también necesitas un intérprete de Perl; Strawberry Perl es una de las alternativas disponibles para Windows.
+En Windows puedes utilizar MiKTeX o TeX Live junto con TeXstudio u otro editor de \LaTeX{}. En la configuración del editor, selecciona \texttt{pdflatex} como compilador y Biber como procesador de la bibliografía. La generación automática de acrónimos y símbolos no requiere Perl ni el script \texttt{makeglossaries} cuando \texttt{makeindex} puede ejecutarse desde \LaTeX{}. Esto se ha comprobado con MiKTeX y TeXstudio en Windows 11, sin instalar Perl por separado.
 
 No necesitas instalar \texttt{make} para trabajar con la plantilla en Windows. Si quieres utilizar el \texttt{Makefile} descrito en el apartado~\ref{sec:compilacion-makefile}, puedes hacerlo desde un entorno compatible que proporcione las herramientas requeridas, como WSL, aunque normalmente te resultará más sencillo configurar la cadena de compilación en el propio editor.
 
@@ -56,9 +58,9 @@ Parte de estas instrucciones se basa en la información que nos proporcionó Cri
 
 \subsection{macOS}
 
-En macOS puedes utilizar MacTeX junto con TeXShop, TeXstudio u otro editor compatible. Configura la cadena de construcción para incluir \texttt{pdflatex}, Biber y, si utilizas acrónimos o símbolos, \texttt{makeglossaries} en el orden explicado en la sección~\ref{sec:compilacion}.
+En macOS puedes utilizar MacTeX junto con TeXShop, TeXstudio u otro editor compatible. Configura el editor para utilizar \texttt{pdflatex} y Biber, como se explica en la sección~\ref{sec:compilacion}.
 
-Si tu editor no actualiza correctamente los acrónimos o símbolos, utiliza desde el propio editor la opción para ejecutar \texttt{makeglossaries} y realiza después dos nuevas pasadas de \texttt{pdflatex}. No necesitas borrar el resto de los ficheros del proyecto para regenerar los glosarios.
+Si tu editor no actualiza correctamente los acrónimos o símbolos, vuelve a compilar y comprueba en el registro si se ha ejecutado \texttt{makeindex}. Como alternativa, si dispones de \texttt{makeglossaries}, puedes ejecutarlo desde el editor y compilar después para incorporar los listados. No necesitas borrar el resto de los ficheros del proyecto para regenerarlos.
 
 Las primeras comprobaciones de la generación de glosarios en macOS fueron realizadas y compartidas con nosotros por Carlos Cruz. Muchas gracias por su ayuda.
 
@@ -74,7 +76,7 @@ Si no quieres instalar y mantener un entorno local, puedes trabajar en línea me
   \item Comprueba que el compilador seleccionado sea pdfLaTeX y compila el proyecto.
 \end{itemize}
 
-Overleaf gestiona la cadena de construcción con sus propias herramientas, por lo que no necesitas ejecutar el \texttt{Makefile}. El libro utiliza Biber para la bibliografía y \texttt{makeglossaries} para los acrónimos y símbolos; después de importar el proyecto, comprueba que se generen correctamente la bibliografía y ambos listados. Si alguno no se actualiza, revisa primero el documento principal seleccionado y utiliza la opción de recompilar el proyecto desde cero.
+Overleaf gestiona la cadena de construcción con sus propias herramientas, por lo que no necesitas ejecutar el \texttt{Makefile}. El libro utiliza Biber para la bibliografía y la configuración incluida permite preparar las listas de acrónimos y símbolos mediante \texttt{makeindex}. Después de importar el proyecto, comprueba que se generen correctamente la bibliografía y ambos listados. Si alguno no se actualiza, revisa primero el documento principal seleccionado y utiliza la opción de recompilar el proyecto desde cero.
 
 El libro de ejemplo es relativamente complejo y su compilación puede superar el tiempo disponible en algunos planes de Overleaf. Si la compilación se interrumpe por este motivo, comprueba los límites vigentes de tu cuenta y elimina temporalmente los ejemplos o elementos opcionales que no necesites. Para generar el anteproyecto o un formulario administrativo tendrás que cambiar el documento principal, como se explica en el capítulo~\ref{cha:documentos-complementarios}.
 
@@ -163,7 +165,7 @@ Puedes volver a ejecutar el objetivo cada vez que cambien las dependencias. Si n
 \section{Resumen del capítulo}
 \label{sec:resumen-primeros-pasos}
 
-Ya sabes qué archivos encontrarás en la carpeta de descargas, qué herramientas necesita la plantilla, cómo generar el documento desde tu editor habitual en GNU/Linux, Windows o macOS, o mediante Overleaf, cómo trabajar con el anteproyecto, cómo preparar la estructura mínima con la que puedes comenzar a escribir tu trabajo y cómo registrar correctamente sus fuentes en Git. Recuerda que Biber es necesario para la bibliografía y que solo tendrás que ejecutar \texttt{makeglossaries} cuando utilices acrónimos o símbolos; el siguiente paso es adaptar las variables descritas en el capítulo~\ref{cha:configuracion}.
+Ya sabes qué archivos encontrarás en la carpeta de descargas, qué herramientas necesita la plantilla, cómo generar el documento desde tu editor habitual en GNU/Linux, Windows o macOS, o mediante Overleaf, cómo trabajar con el anteproyecto, cómo preparar la estructura mínima con la que puedes comenzar a escribir tu trabajo y cómo registrar correctamente sus fuentes en Git. Recuerda que Biber procesa la bibliografía y que la plantilla intenta generar automáticamente los listados de acrónimos y símbolos mediante \texttt{makeindex}. El siguiente paso es adaptar las variables descritas en el capítulo~\ref{cha:configuracion}.
 
 %%% Local Variables:
 %%% TeX-master: "../book"
