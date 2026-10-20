@@ -2,6 +2,12 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.7.3] - 2026-10-20
+
+### Bug Fixes
+
+- Localize information sheets and remove dotted placeholders
+
 ## [v8.7.2] - 2026-10-20
 
 ### Features
