@@ -1,5 +1,39 @@
 ---
 title: "Introducción a la plantilla LaTeX para TFGs, TFMs y tesis doctorales"
-author: "Javier Macias-Guarasa"
-date: 2026-10-01
+author: "Javier Macías Guarasa"
+date: 2026-10-17
+header-includes:
+  - |
+    ```{=latex}
+    \usepackage{etoolbox}
+    % Evita una última página casi vacía sin reducir el tamaño del texto.
+    \setlength{\parskip}{4pt plus 1pt minus 1pt}
+    % Aplica sangría al texto sin modificar el Markdown ni el espaciado del índice.
+    \setlength{\parindent}{1.5em}
+    % Mantén el índice completo en una página al ampliar las subsecciones.
+    \let\readmeOriginalToc\tableofcontents
+    \renewcommand{\tableofcontents}{%
+      \begingroup\small\readmeOriginalToc\endgroup}
+    % Mantén el correo en una sola línea, sin cambiar su enlace en Markdown.
+    \AtBeginDocument{%
+      % Pandoc repite el texto de las notas reutilizadas en Markdown.
+      % Conserva una sola nota para referencias consecutivas al mismo texto.
+      \let\readmeOriginalFootnote\footnote
+      \def\readmePreviousFootnote{}
+      \renewcommand{\footnote}[1]{%
+        \def\readmeCurrentFootnote{#1}%
+        \ifx\readmeCurrentFootnote\readmePreviousFootnote
+          \textsuperscript{\hyperlink{readme-note-\readmePreviousFootnoteNumber}{\readmePreviousFootnoteNumber}}%
+        \else
+          \global\let\readmePreviousFootnote\readmeCurrentFootnote
+          \readmeOriginalFootnote{\hypertarget{readme-note-\thefootnote}{}#1}%
+          \xdef\readmePreviousFootnoteNumber{\thefootnote}%
+        \fi}
+      \let\readmeOriginalHref\href
+      \renewcommand{\href}[2]{%
+        \ifstrequal{#1}{mailto:javier.maciasguarasa@uah.es}
+          {\mbox{\readmeOriginalHref{#1}{#2}}}
+          {\readmeOriginalHref{#1}{#2}}}%
+    }
+    ```
 ---

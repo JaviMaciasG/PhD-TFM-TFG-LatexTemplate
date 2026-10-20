@@ -1,0 +1,19 @@
+TeXstudio Colibre icons
+======================
+
+Files: texstudio-build-and-view.svg, texstudio-build-and-view.png,
+       texstudio-build-and-view-16.png
+Original file: images-ng/colibre/build.svg
+Source: https://raw.githubusercontent.com/texstudio-org/texstudio/97e77ebbe8e44e3d4d4523a3cd58823be2b01e75/images-ng/colibre/build.svg
+Upstream revision: 97e77ebbe8e44e3d4d4523a3cd58823be2b01e75
+Copyright: 2018 Andreas Kainz
+License: CC0-1.0
+Local license text: CC0-1.0.txt
+License text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+License reference: https://launchpad.net/ubuntu/noble/+source/texstudio/+copyright
+
+The SVG is an unchanged copy of the upstream icon, renamed for clarity.
+The PNG files are transparent 128 x 128 and 16 x 16 pixel renderings made
+with rsvg-convert.
+The 16 x 16 PNG has 144-DPI metadata for inline PDF display; its pixel
+dimensions and pixel values are unchanged.

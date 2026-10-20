@@ -12,10 +12,10 @@ WORK_TYPE = $(shell sh $(DEGREE_REGISTRY_TOOL) work-type "$(DEGREE_NAME)" "$(DEG
 
 all: README.pdf book
 
-README.pdf README-revised.pdf: README_PANDOC_FLAGS := --shift-heading-level-by=-1
+README.pdf: README_PANDOC_FLAGS := --shift-heading-level-by=-1
 
 # Omit the Markdown title before shifting headings so YAML keeps its own title.
-README.pdf README-revised.pdf: %.pdf: %.md %.yaml
+README.pdf: %.pdf: %.md %.yaml Book/figures/manual/texstudio-build-and-view-16.png
 	sed '1{/^# /d;}' $< | pandoc $*.yaml - -f markdown -t pdf -o $@ $(README_PANDOC_FLAGS) --metadata lang=es --variable urlcolor=blue --number-sections --table-of-contents --highlight-style kate -V colorlinks -V geometry:"top=2cm, bottom=1.5cm, left=2cm, right=2cm"  --toc-depth=4
 
 book:
@@ -55,7 +55,6 @@ sync-git-sources:
 help:
 	@printf '%s\n' \
 		'make                     Generate README.pdf and the main book' \
-		'make README-revised.pdf  Generate the proposed revised introduction PDF' \
 		'make book                Generate the main book' \
 		'make anteproyecto        Generate the project proposal' \
 		'make paperwork           Generate paperwork matching myDegree' \

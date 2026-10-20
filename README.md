@@ -1,205 +1,386 @@
-# Plantilla LaTeX para TFGs, TFMs y tesis doctorales
+# Plantilla LaTeX para TFG, TFM y tesis doctorales
 
 ## Introducción
 
-Este repositorio contiene una plantilla genérica para documentos de tesis doctoral (PhD), trabajos fin de máster (MSc/TFM) y trabajos fin de grado (BSc/TFG), diseñada principalmente para utilizarse en la Universidad de Alcalá (UAH). Por ello está escrita en español, aunque la plantilla también puede generar los documentos en inglés (basta con establecer una variable en el archivo de configuración).
+Escribir un TFG, un TFM o una tesis doctoral ya da bastante trabajo. Pelearte con los márgenes, la portada y la numeración, no debería formar parte del pack.
 
-También incluye soporte para algunas titulaciones de la URJC y de la ETSIT-UPM. Consulta los identificadores disponibles en `Config/myconfig.tex` y los detalles en el manual.
+La plantilla está diseñada principalmente para la Universidad de Alcalá (UAH), aunque también incluye soporte para algunas titulaciones de la URJC y de la ETSIT-UPM. Permite generar documentos en español o en inglés y cubre desde trabajos académicos convencionales hasta anteproyectos, documentación administrativa y tesis doctorales por compendio de publicaciones.
 
-La versión en inglés de esta introducción está disponible en [README-en.md](README-en.md). Las guías adicionales se encuentran en la carpeta [Documentation/](Documentation/), incluida la [guía de descarga](Documentation/es/DOWNLOAD-GUIDE.md).
+Al usar la plantilla puede que tantos archivos y opciones te impongan un poco. Es normal, pero no necesitas conocerlos todos ni tener nivel Jedi para empezar. Sólo tendrás que ocuparte de unos pocos archivos, y te iré indicando cuáles. El resto lo irás descubriendo cuando lo necesites, así que relax y ánimo, porque estoy seguro de que puedes con ello.
 
-La plantilla utiliza variables de configuración (definidas en el archivo `Config/myconfig.tex`) para personalizar todo el proceso de generación del documento, de modo que no tengas que dedicar esfuerzo a cumplir los requisitos de formato (por ejemplo, portada y contraportada), la maquetación del documento, etc.
 
-También se ofrece soporte para generar el "anteproyecto" (en la carpeta `Anteproyecto`), junto con parte de la documentación administrativa exigida por la normativa vigente. Desde octubre de 2026 he estado trabajando en actualizar toda la documentación requerida para los TFG y TFM de la UAH (en las carpetas `PapeleoTFG/` y `PapeleoTFM/`) para adaptarla a la normativa aprobada recientemente. Este soporte te resultará útil tanto a ti como a tu tutor o tutores (informe y rúbrica del tutor, rúbrica de defensa y autorización para publicación en abierto (para tutor/autor/tutor extranjero)). El soporte de documentación administrativa para doctorado está pendiente de revisarse por completo conforme a la nueva normativa.
+## Qué hace la plantilla por ti
 
-Lee la guía que aparece al principio de cualquiera de los ejemplos precompilados de la distribución de Dropbox (por ejemplo, el [TFG del GIEC en la UAH](https://www.dropbox.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv&dl=0)). El capítulo 1 presenta la plantilla y te dirige a los capítulos siguientes según lo que necesites.
+Con sólo definir, de forma muy sencilla, unos pocos datos de configuración, la plantilla se encarga de buena parte del formato de tu documento, incluyendo además ejemplos que puedes adaptar a tu trabajo. En concreto gestiona:
 
+- Portadas, contraportadas, páginas preliminares, estructura de capítulos y apéndices.
+- Índice general y listas de figuras, tablas, código, algoritmos (y elementos interesantes como las listas de vídeos).
+- Figuras, tablas, ecuaciones y referencias cruzadas.
+- Bibliografía por capítulo, bibliografía general o ambas.
+- Acrónimos y listas de símbolos.
+- Distintos estilos tipográficos, para cambiar rápidamente el aspecto visual de forma muy cómoda.
+- Anteproyectos, parte de la documentación administrativa e incluso las tesis doctorales por compendio de publicaciones.
 
-## Inicio rápido
+## Empieza aquí: la versión corta
 
-### Descargar la plantilla
+Este es el recorrido que te propongo (usa los enlaces para ir a la sección de este documento donde te doy detalles):
 
-Se puede acceder a la plantilla de dos formas:
+1. **[Prepara tu entorno](#prepara-tu-entorno)**: una instalación local con `TeXstudio` o un proyecto en `Overleaf` o `Prism`.
+2. **[Descarga y descomprime la distribución para estudiantes](#descarga-y-descomprime-la-distribución-para-estudiantes)**.
+3. **[Compila el ejemplo sin modificar nada](#compila-el-ejemplo-sin-modificar-nada)** para comprobar que todo funciona y consultar el manual que genera.
+4. **[Introduce tus datos y compila de nuevo](#introduce-tus-datos-y-compila-de-nuevo)** para comprobarlos en el PDF.
+5. **[Prepara la estructura mínima](#prepara-la-plantilla-para-escribir)** y empieza a escribir tu documento.
 
-1. En GitHub, si quieres clonar o hacer un *fork* de mi versión de trabajo. Está disponible en
-[la página del proyecto de mi cuenta de GitHub](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate), de modo que puedes clonarla desde [la URL de clonación](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate.git). Ten en cuenta que contiene muchos archivos adicionales que no deberían resultar útiles para el usuario general
-2. En mi Dropbox, en formatos zip y tgz, accesible desde [esta carpeta de descargas de Dropbox](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0). La carpeta también contiene una selección de documentos de ejemplo completos. Abre [`01-DOWNLOAD-GUIDE.pdf`](https://www.dropbox.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk&dl=0) para ver la lista y qué muestra cada archivo. Que no exista un PDF para una titulación concreta no significa que no sea compatible.
+Si el PDF muestra tu nombre y el título de tu trabajo, ya tienes la plantilla funcionando. Enhorabuena, el 80 % del miedo ya está superado. El resto lo irás aprendiendo cuando lo necesites.
 
+## Prepara tu entorno
 
-### Elegir dónde quieres trabajar
+Para empezar te recomiendo trabajar en tu equipo con una distribución de LaTeX y [`TeXstudio`](https://www.texstudio.org/). Si ya utilizas otro editor, puedes seguir haciéndolo. También puedes trabajar desde el navegador con `Overleaf` o `Prism`.[^privacidad]
 
-Tienes dos opciones principales para trabajar con la plantilla: hacerlo localmente en cualquier PC (mi configuración preferida utiliza [TeXstudio](https://www.texstudio.org/)) o hacerlo en línea mediante [Overleaf](https://www.overleaf.com/). Ambas opciones se describen a continuación.
+[^privacidad]: Antes de subir tu proyecto a un servicio en línea, revisa sus condiciones de privacidad y, si utilizas funciones de IA, los controles de uso de datos. Si contiene información confidencial, datos personales o material sujeto a acuerdos con terceros, consulta primero con tu tutor o institución. Una instalación local permite trabajar sin subir el proyecto a estos servicios.
 
+### Windows
 
-#### Trabajar en un equipo local
+1. Instala la versión actual de [`MiKTeX`](https://miktex.org/download).
+2. Durante la instalación, permite que `MiKTeX` instale los paquetes que falten, automáticamente o tras preguntarte.
+3. Abre la aplicación `MiKTeX Console`, comprueba si hay actualizaciones e instálalas (ejecuta la opción `Check for updates` que verás en la pantalla principal).
+4. Instala [`TeXstudio`](https://www.texstudio.org/).
 
-Necesitarás una buena distribución de LaTeX (Tex Live, MiKTeX, MacTeX, etc., según tu entorno de trabajo). Para ver una lista de todos los paquetes necesarios, puedes consultar las instrucciones `\usepackage{...}` del archivo `Config/preamble.tex`, aunque no debería ser necesario ni suponer un problema, ya que la mayoría de las distribuciones incluirán todo lo que necesitas. Si encuentras errores porque algún paquete no está disponible, instálalo (debería ser bastante sencillo).
+Después, sigue las instrucciones de [Configura `TeXstudio`](#configura-texstudio).
 
-Ten en cuenta que la compilación principal se realiza mediante `pdflatex+biber`. Puedes compilar el documento con [TeXstudio](https://www.texstudio.org/) o con cualquier buen editor de LaTeX después de configurar las herramientas necesarias. El flujo de trabajo `make` proporcionado automatiza el proceso completo y resulta práctico si está disponible en tu entorno, pero no es necesario para utilizar la plantilla.
+### GNU/Linux
 
+En Ubuntu o Debian, busca estos nombres exactos en el gestor de paquetes de tu sistema:
 
-##### Notas sobre la instalación en GNU/Linux
+- `texlive-full`: instala la distribución completa de LaTeX, con sus paquetes, fuentes e idiomas. Ocupa varios gigabytes y puede tardar en instalarse, pero evita que tengas que averiguar qué paquetes individuales necesita la plantilla.
+- `texstudio`: instala el editor en el que escribirás tu trabajo.
+- `biber`: instala la herramienta que prepara la bibliografía. Con `texlive-full` normalmente ya quedará instalado como dependencia, pero puedes comprobarlo en el gestor.
 
-Me refiero aquí a distribuciones similares a Debian (principalmente Ubuntu), aunque las instrucciones y los nombres de los paquetes deberían ser parecidos en otras distribuciones.
+Por ejemplo, si tienes el Gestor de paquetes `Synaptic` en Ubuntu, ábrelo, busca cada nombre, selecciona `Marcar para instalar` y pulsa `Aplicar`. Acepta también las dependencias que proponga. `Synaptic` no viene instalado en todas las versiones de Ubuntu. La [ayuda de Ubuntu sobre `Synaptic`](https://help.ubuntu.com/stable/ubuntu-help/addremove-install-synaptic.html.en) explica cómo obtenerlo y utilizarlo. Si prefieres instalar desde la terminal, encontrarás los comandos en el manual.
 
-Te recomiendo instalar la distribución Tex Live (`sudo apt-get install texlive` será suficiente en un equipo Ubuntu, por ejemplo). La mayoría de los paquetes necesarios se instalarán de forma predeterminada. Las excepciones habituales son `texlive-publishers`, `texlive-lang-spanish` y `texlive-lang-english`, así que instálalos también.
+En otras distribuciones GNU/Linux, instala `TeX Live`, `TeXstudio` y `biber` mediante su gestor de paquetes. Los nombres de las colecciones de `TeX Live` pueden ser distintos de los anteriores.
 
-También puedes utilizar `sudo apt-get install texlive-full` para instalar una distribución completa y muy amplia de Tex Live, pero ocupará mucho espacio en disco.
+Después, sigue las instrucciones de [Configura `TeXstudio`](#configura-texstudio).
 
-En cuanto a editores, volvería a recomendar [TeXstudio](https://www.texstudio.org/) o [emacs](https://www.gnu.org/software/emacs/). Personalmente utilizo este último con la [configuración Doom emacs](https://github.com/doomemacs/doomemacs), pero la curva de aprendizaje puede ser realmente pronunciada, por lo que [TeXstudio](https://www.texstudio.org/) es, en mi opinión, una opción mucho más segura.
+### macOS
 
+1. Instala [`MacTeX`](https://www.tug.org/mactex/).
+2. Instala [`TeXstudio`](https://www.texstudio.org/) si quieres seguir el recorrido recomendado.
 
-##### Notas sobre la instalación en Windows
+La instalación completa de `MacTeX` ya proporciona `biber`.
 
-Este es el procedimiento que recomiendo para dejarlo todo preparado (si no te funciona, por favor [avísame](mailto:javier.maciasguarasa@uah.es)):
+Después, sigue las instrucciones de [Configura `TeXstudio`](#configura-texstudio).
 
-1. Instala la última versión de [MikTeX](https://miktex.org). Selecciona la instalación de los paquetes necesarios sobre la marcha (bien "Yes" o "Ask me first")
+### Configura `TeXstudio`
 
-   1.1. Ejecuta `MiKTeX Console` y `Check for updates` (de lo contrario, probablemente obtendrás un error al compilar fuentes LaTeX)
+La plantilla utiliza `biber` para preparar las referencias bibliográficas. Sólo tienes que seleccionarlo en el editor, no aprender a utilizarlo por separado. Esta configuración es la misma para Windows, GNU/Linux y macOS:
 
-   1.2. En `MiKTeX Console`, ejecuta ahora `Updates|Update`
+1. Abre `Opciones` > `Configurar TeXstudio`. En macOS, abre `TeXstudio` > `Preferencias`.
+2. Entra en `Compilar` y selecciona `Biber` en `Herramienta bibliográfica por defecto`.
+3. Confirma los cambios con `Aceptar`.
 
-2. Instala la última versión de [TeXstudio](https://www.texstudio.org/)
+Si los menús están en inglés, busca `Options` > `Configure TeXstudio` (o `TeXstudio` > `Preferences` en macOS) y después `Build` > `Default Bibliography Tool` > `Biber`.
 
-3. Instala un intérprete de Perl si piensas utilizar acrónimos, gestionados en la plantilla mediante `makeglossaries`, algo que recomiendo totalmente. He utilizado [Strawberry perl](https://strawberryperl.com/), aunque puedes visitar el sitio de Perl (https://www.perl.org/get.html) y consultar otras alternativas.
+### `Overleaf`
 
+Con [`Overleaf`](https://www.overleaf.com/) puedes trabajar desde el navegador, sin instalar LaTeX ni `TeXstudio` en tu equipo.[^privacidad] Sólo necesitas una cuenta y conexión a Internet. Las instrucciones para importar la plantilla están en [Compila el ejemplo en `Overleaf`](#compila-el-ejemplo-en-overleaf).
 
-##### Notas sobre la configuración de TeXStudio (MUY IMPORTANTE)
+Ojo: con el plan gratuito es casi seguro que no podrás compilar el manual completo porque esa versión de `Overleaf` limita mucho el tiempo de compilación. Si se agota ese tiempo, no significa que hayas hecho algo mal. Puedes utilizar una instalación local o, después de revisar el manual precompilado, probar con la estructura mínima y prescindir del material de ejemplo que no necesites. Un documento más pequeño puede caber en el límite de tiempo, pero no puedo garantizártelo.
 
-El soporte bibliográfico se proporciona mediante [biblatex](https://www.ctan.org/pkg/biblatex), por lo que el *backend* es ahora biber (desde 2022). Esto significa que debes configurar [TeXstudio](https://www.texstudio.org/) (o tu editor de \LaTeX{} preferido) para utilizar biber como procesador de bibliografía. En la aplicación [TeXstudio](https://www.texstudio.org/), ve simplemente a `Options > Configure TeXstudio > Build > Default Bibliography > Biber`.
+### `Prism`
 
+[`Prism`](https://prism.openai.com/) es otra alternativa para trabajar con LaTeX desde el navegador, con funciones de asistencia mediante IA.[^privacidad] Necesitas una cuenta de `ChatGPT` con acceso a `Prism` y conexión a Internet, pero no instalar LaTeX ni `TeXstudio`. He comprobado que la distribución de la plantilla se importa y compila sin modificaciones.
 
-#### Trabajar en [Overleaf](https://www.overleaf.com/)
+Las instrucciones de [Compila el ejemplo en `Prism`](#compila-el-ejemplo-en-prism) te guiarán para generar tu primer PDF, sin pedirte que utilices las funciones de IA. Puedes consultar la [información oficial sobre privacidad en `Prism`](https://help.openai.com/en/articles/20001050-troubleshooting-and-getting-help-in-prism) antes de subir tu trabajo.
 
-Antes de nada, tengo una mala noticia respecto al uso de [Overleaf](https://www.overleaf.com/) para compilar tu trabajo: por lo que sé, la modalidad gratuita de [Overleaf](https://www.overleaf.com/) (desde 2024, con sus nuevas restricciones) no te asignará suficiente tiempo de compilación para generar el archivo PDF :-(.
+### Si te manejas con la terminal
 
-En cualquier caso, si quieres trabajar con la plantilla en [Overleaf](https://www.overleaf.com/) (utilizando uno de los planes de pago), es bastante sencillo. Estos son los pasos principales:
+`make` es una alternativa opcional al editor para automatizar tareas. Además de la distribución de LaTeX y `biber`, esta vía necesita `make`, `bash`, `latexmk`, `perl` y `makeglossaries` (si te falta alguna de esas herramientas en tu distribución, te dará un claro mensaje de error y basta con instalar lo que falte). El objetivo predeterminado del libro utiliza también `Ghostscript` para generar una copia comprimida. El manual detalla estos requisitos y las herramientas adicionales para convertir determinados formatos de figuras y diagramas.
 
-1. Inicia sesión en [Overleaf](https://www.overleaf.com/)
-2. En la página principal, selecciona el botón `New Project`
-3. Selecciona `Upload project`
-4. Selecciona el zip correspondiente entre los que encontrarás en la [carpeta de Dropbox de la plantilla](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)
-5. [Overleaf](https://www.overleaf.com/) hará su magia y, en unos segundos, tendrás instalada la plantilla
+**No necesitas utilizar la terminal ni** `make` **para trabajar con la plantilla**: tu editor de LaTeX es una alternativa igualmente válida. Si eliges esta vía, encontrarás las instrucciones en [Compilación opcional con `make`](#compilación-opcional-con-make).
 
-Recuerda que tendrás que seleccionar el "documento principal" (puedes acceder a esta opción mediante las opciones que aparecen al hacer clic en el logotipo de Overleaf, en la esquina superior izquierda de la página principal del proyecto). Consulta más abajo las secciones "Para trabajar en..." para ver cuáles son los archivos principales disponibles. Los más relevantes para seleccionar como "documento principal" son:
+## Tu primer PDF, paso a paso
 
-+ `Anteproyecto/anteproyecto.tex`
-+ `Book/book.tex`
+### Descarga y descomprime la distribución para estudiantes
 
-También puedes necesitar algunos de los archivos de documentación administrativa descritos en la sección Estructura del repositorio (#repository-structure).
+Para escribir tu documento te recomiendo que descargues la distribución `zip` de [`Dropbox`](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)[^1].
 
-En el pasado hemos tenido varios problemas con [Overleaf](https://www.overleaf.com/) (principalmente relacionados con los glosarios), y ahora deberían funcionar correctamente. Si en el futuro surgen nuevos problemas, [ponte en contacto conmigo](mailto:javier.maciasguarasa@uah.es) y/o consulta [este repositorio](https://github.com/gkilleen33/overleaf-offline/tree/master), que contiene buenas configuraciones para `latexmkrc` que deberían darte pistas sobre cómo resolverlos.
+[^1]: El [repositorio de `GitHub`](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate) contiene además herramientas de mantenimiento, normativa y archivos históricos. Puedes clonarlo o crear un *fork* si quieres contribuir, pero no necesitas esos materiales para empezar.
 
+La [guía de descarga en PDF](https://www.dropbox.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk&dl=0) explica qué muestra cada ejemplo. Sólo mostramos algunos ejemplos para no abrumarte con decenas de ficheros y posibilidades, y que no exista un PDF para tu titulación concreta no significa que no esté soportada (la lista es muy grande). Si quieres consultar el manual antes de instalar nada, abre el [ejemplo de TFG del GIEC en la UAH](https://www.dropbox.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv&dl=0).
 
-### Estructura del repositorio
+Descomprime la plantilla en una carpeta en la que tengas permisos de escritura. Conserva juntos los directorios de la distribución: `Book/` necesita los archivos compartidos de `Config/`.
 
-Los directorios que necesitan la mayoría de los usuarios son:
+### Compila el ejemplo sin modificar nada
 
-- `Config/`: configuración compartida del documento.
-- `Book/`: documento principal de TFG, TFM o doctorado, con sus capítulos, apéndices, resúmenes, bibliografía e ilustraciones.
-- `Anteproyecto/`: documento de anteproyecto o propuesta. Su punto de entrada es `Anteproyecto/anteproyecto.tex`.
+Con el [entorno preparado](#prepara-tu-entorno), abre `Book/book.tex` en `TeXstudio` y selecciona `Herramientas` > `Compilar y ver` (`F5`), o pulsa el icono de la doble flecha verde ![Compilar y ver](Book/figures/manual/texstudio-build-and-view-16.png) de la barra de herramientas. Haz esta primera compilación antes de modificar nada. Si utilizas otro editor, abre ese mismo archivo y utiliza su función habitual de construcción. Para trabajar desde el navegador, sigue las instrucciones de [`Overleaf`](#compila-el-ejemplo-en-overleaf) o [`Prism`](#compila-el-ejemplo-en-prism).
 
-En algunos casos también puedes necesitar los recursos que se encuentran en:
+La plantilla genera automáticamente las listas de acrónimos y símbolos. Para esta vía desde el editor no necesitas instalar nada más (salvo la distribución de LaTeX, claro). Si las listas no aparecen tras la primera compilación, vuelve a compilar. Para otras incidencias, consulta el apartado de compilación del manual.
 
-- `PapeleoTFG/`, `PapeleoTFM/` y `PapeleoPHD/`: documentos administrativos asociados a cada tipo de trabajo (`PapeleoPHD/` todavía no está disponible, lo siento).
+El PDF resultante es una prueba de que tu entorno funciona, el manual de la plantilla y una colección de ejemplos. Revísalo para orientarte, sin necesidad de leerlo entero. Si esta primera compilación falla, consulta [Problemas frecuentes](#problemas-frecuentes) antes de cambiar otros archivos.
 
-El repositorio Git completo también contiene `AdminScripts/`, `Deprecated/`, `normativas/`, `UsefulDocs/` y archivos Markdown orientados a los mantenedores. Sirven para el desarrollo, la referencia histórica y la preparación de versiones, y se omiten deliberadamente de la distribución ZIP/TGZ ordinaria.
+### Compila el ejemplo en `Overleaf`
 
+Inicia sesión en `Overleaf`, crea un proyecto mediante `New Project` > `Upload Project` y sube el `zip` de la distribución sin descomprimir. Abre `Settings` > `Compiler` > `Main document` y selecciona `Book/book.tex`. Comprueba que el compilador sea `pdfLaTeX` y pulsa `Recompile`. No necesitas configurar `biber` por separado. Si se agota el tiempo de compilación, revisa el aviso del apartado [`Overleaf`](#overleaf).
 
-### Configurar tus datos
+Cuando quieras compilar otro documento independiente, como `Anteproyecto/anteproyecto.tex` o un formulario del papeleo, selecciónalo en ese mismo campo `Main document`. Para trabajar en los capítulos del libro, mantén seleccionado `Book/book.tex`, no el archivo de cada capítulo.
 
-Personaliza tus datos, titulación e idioma en `Config/myconfig.tex`. Los comentarios del archivo te orientan y el capítulo de configuración del manual contiene la referencia completa. **Importante**: no elimines ni comentes las definiciones de variables. Si un dato no corresponde a tu caso, como por ejemplo el cotutor, deja su valor vacío.
+### Compila el ejemplo en `Prism`
 
-También puedes probar otros estilos tipográficos para el documento principal (es una opción preliminar que se explica en el manual y no necesitas modificarla para empezar).
+Inicia sesión en `Prism` y, en la lista de proyectos, abre el desplegable `Import` y selecciona `Import a .zip file`. Sube el `zip` de la distribución sin descomprimir y espera a que se importe el proyecto completo, incluidos `Book/` y `Config/`. Selecciona `Book/book.tex` en la lista `Archivos` y pulsa `Compilar`. Comprueba el resultado en la vista del PDF antes de modificar ningún archivo. No necesitas ejecutar el `Makefile` ni solicitar cambios al asistente de IA para esta primera prueba.
 
-### Para trabajar en el "anteproyecto"
+Para compilar otro documento independiente, como `Anteproyecto/anteproyecto.tex` o un formulario del papeleo, selecciónalo en `Archivos` y pulsa `Compilar`. Si estás escribiendo un capítulo del libro, selecciona `Book/book.tex` para compilar el documento completo, no el archivo del capítulo.
 
-1. Configura los metadatos del documento en `Config/myconfig.tex`.
-2. Ve al directorio `Anteproyecto`, donde encontrarás el archivo `anteproyecto.tex`. Este es el archivo en el que debes trabajar y el punto de entrada para la compilación. En el repositorio se proporciona un ejemplo.
-3. Edita el archivo para adaptarlo a tus necesidades
-4. Compílalo (hay disponible un `Makefile` incremental basado en `latexmk`, aunque puedes utilizar tu herramienta o comando habitual de compilación de LaTeX dentro de tu editor preferido).
+Si necesitas ayuda con la importación, consulta la [guía oficial de `Prism`](https://help.openai.com/en/articles/20001050-troubleshooting-and-getting-help-in-prism). Después continúa con [Introduce tus datos y compila de nuevo](#introduce-tus-datos-y-compila-de-nuevo).
 
-### Para trabajar en el documento principal
+### Introduce tus datos y compila de nuevo
 
-#### Caso general
+Abre `Config/myconfig.tex` y utiliza la búsqueda de tu editor para localizar las siguientes definiciones. No necesitas conocer sus números de línea, que pueden cambiar entre versiones. En una definición como `\newcommand{\myDegree}{GIEC}`, cambia sólo el contenido del último par de llaves.
 
-Después de descargar la plantilla, compila primero `Book/book.tex` sin modificarlo. El PDF resultante es el manual completo, incluidos ejemplos de las funcionalidades disponibles. Utiliza esta primera compilación para comprobar que todo funciona y revisar la guía antes de empezar tu documento.
+- **Titulación:** busca `\myDegree` y sustituye `GIEC` por el identificador de tu titulación. Los comentarios inmediatamente anteriores contienen las opciones disponibles.
+- **Idioma:** busca `\myLanguage` y elige `spanish` o `english`.
+- **Título:** busca `\myBookTitleSpanish` y `\myBookTitleEnglish` y sustituye los títulos de ejemplo por los de tu trabajo. La plantilla selecciona el que corresponda al idioma, aunque algunas páginas institucionales pueden utilizar ambos.
+- **Autoría:** completa `\myAuthorName` y `\myAuthorSurname`. En `\myAuthorGender`, indica `male` o `female` para adaptar el género gramatical.
+- **Tutoría:** completa `\myAcademicTutorFullName` y `\myAcademicTutorGender`. Si tienes cotutor, completa también `\myCoTutorFullName` y `\myCoTutorGender`. Si no, deja vacío el último par de llaves de la definición de su nombre: `{}`.
 
-1. Revisa tus datos en el archivo de configuración, como se indica arriba.
-2. Mantén `\myDocumentStructure` con el valor `standard`, tal como se suministra, y utiliza las variables `\myInclude...` para seleccionar si quieres incluir en el documento los elementos opcionales: la carta PDF de ejemplo, dedicatoria, agradecimientos, lista de figuras, lista de tablas, listas de acrónimos y símbolos, y listas de código, algoritmos y vídeos.
-3. Añade, elimina o reordena las líneas `\input{...}` de `Book/content-standard.tex` para organizar capítulos y apéndices, y escribe el contenido en los archivos de `Book/abstract/`, `Book/chapters/`, `Book/appendix/` y los demás directorios de contenido según sea necesario. Normalmente no deberías tener que modificar `Book/book.tex`.
-4. Compila `Book/book.tex` con una herramienta de compilación LaTeX estándar o desde tu editor LaTeX preferido. Recuerda configurar la herramienta o el editor para utilizar `pdflatex` y `biber`, y añade `makeglossaries` únicamente si utilizas acrónimos o símbolos. Ejecuta las pasadas adicionales de LaTeX necesarias para resolver las referencias, la bibliografía y los glosarios que pueda haber.
+Con estos datos puedes comprobar la personalización inicial. Deja las opciones avanzadas para más adelante y revisa los demás campos cuando los necesites. Las fechas, como la de defensa, puedes completarlas cuando las conozcas.
 
-Si vas a preparar una tesis por compendio, consulta el caso especializado más abajo.
+> **Importante:** no elimines ni comentes las definiciones de variables. Si un dato opcional no corresponde a tu caso, como el cotutor, conserva la variable y deja su valor vacío.
 
-Si prefieres automatizar la compilación, ejecuta `make` desde `Book/`. Esta alternativa requiere `latexmk`, pero no necesitas Make para utilizar la plantilla. Encontrarás los requisitos y los objetivos disponibles en el apartado del manual *Compilación mediante el Makefile*.
+Vuelve a compilar `Book/book.tex` y comprueba que aparecen tu nombre, el título y la titulación correctos. Comprueba también que se hayan actualizado los nombres de los tutores y las fechas que hayas introducido si el modelo de tu titulación muestra esos datos, como ocurre en los modelos de la UAH. No dejes los datos de ejemplo en la versión que entregues. `Book/book.tex` es el archivo que compilas, pero normalmente no tendrás que editarlo: la configuración y el contenido están separados.
 
-Cuando estés preparado para escribir tu propio documento, parte de la estructura mínima estándar: copia los archivos de capítulo de `Book/chapters/bare/` a `Book/chapters`, excepto su archivo de organización `content-standard.tex`, y los archivos de `Book/appendix/bare/` a `Book/appendix`. Después utiliza `Book/chapters/bare/content-standard.tex` para sustituir `Book/content-standard.tex`. El manual ofrece el procedimiento completo orientado a principiantes. Si utilizas el Makefile suministrado, mantén `\myDocumentStructure` con el valor `standard` y ejecuta `make bare` desde `Book/`. Después crea una copia de seguridad, instala los archivos fuente mínimos y desactiva el material de ejemplo opcional.
+### Compilación opcional con `make`
 
+Si has preparado las herramientas del apartado [Si te manejas con la terminal](#si-te-manejas-con-la-terminal), abre una terminal en `Book/` y ejecuta:
 
-Una vez que la estructura mínima esté preparada, crea tu repositorio Git y realiza un primer *commit* de sus archivos fuente. Si prefieres un cliente Git gráfico, conserva el `.gitignore` proporcionado, pide al cliente que incluya en el *commit* todos los cambios no ignorados, revisa la lista de archivos propuesta y crea después el *commit*. El cliente que uses puede denominar esta operación *Stage all*, *Stage all changes*, *Select all* o simplemente mostrar casillas para seleccionar los archivos que se incluirán. El procedimiento completo para principiantes, los archivos que nunca deben incluirse en un *commit* y la alternativa `make sync-git-sources`, que tiene en cuenta las dependencias, se explican en la sección del manual *Preparación del repositorio Git*.
-
-#### Caso especializado: tesis doctoral por compendio de publicaciones
-
-Si tu tesis doctoral se presenta por compendio de publicaciones, establece `\myDocumentStructure` como `compendium` y selecciona tu programa de doctorado mediante `\myDegree` en `Config/myconfig.tex`. Organiza el contenido en `Book/content-compendium.tex` y compila el mismo `Book/book.tex`. El manual explica la estructura mínima y la incorporación de publicaciones en los apartados *Caso particular: tesis por compendio de publicaciones* y *Caso especializado: tesis por compendio de publicaciones*. Comprueba también la normativa de tu programa y los permisos de reutilización de los artículos.
-
-### Personalizar el contenido del documento principal
-
-#### Figuras y diagramas
-
-Coloca las ilustraciones del documento en `Book/figures/` o `Book/diagrams/`. Como `Book/book.tex` añade ambos directorios a `\graphicspath`, normalmente pueden incluirse por nombre de archivo:
-
-```latex
-\includegraphics[width=0.8\textwidth]{my-figure.png}
+```bash
+make
 ```
 
-Si sigues la alternativa de compilación con `make`, el Makefile puede convertir archivos fuente `dia`, `SVG` y `EPS` compatibles cuando estén instaladas las herramientas externas correspondientes. Los archivos PDF, PNG y JPEG pueden utilizarse directamente con `pdflatex`. Mantén los logotipos institucionales en `Book/logos/`, separados de las ilustraciones específicas del documento.
+El `Makefile` utiliza `latexmk` para coordinar LaTeX, `biber` y el procesamiento de glosarios, realizar las pasadas necesarias y evitar recompilaciones innecesarias. Los directorios del anteproyecto y del papeleo también incluyen ficheros `Makefile`. Más abajo encontrarás otros dos usos: preparar la estructura mínima y seleccionar los fuentes para `git`, que se explica en el apartado de [colaboración](#colaboración-con-tu-tutor-y-revisión-del-documento).
 
-#### Acrónimos y símbolos
+## Los archivos que realmente necesitas conocer
 
-Define los acrónimos en `Book/acronyms/defacronymsgl.tex` y los símbolos en `Book/symbols/defsymbolsgl.tex`. Su presentación se controla mediante los archivos `acronymsgl.tex` y `symbolsgl.tex` correspondientes y la configuración compartida de glosarios, pero no necesitas modificarlos.
+La separación en carpetas no busca complicarte el trabajo, sino mantener cada elemento en su sitio para que puedas encontrarlo con facilidad. La mayoría de los archivos cumplen una función concreta y no tendrás que ocuparte de todos a la vez.
 
-### Para trabajar con la documentación administrativa
+Al principio basta con localizar estos archivos:
 
-1. Ve a `PapeleoTFG/`, `PapeleoTFM/` o `PapeleoPHD/`, según el tipo de documento que necesites.
-2. Edita los archivos que necesites y compílalos con tu editor/herramienta de compilación LaTeX habitual o mediante los `Makefile` correspondientes. Al ejecutar `make`, se utiliza `latexmk` para generar todos los formularios del directorio y evitar recompilar los documentos que no hayan cambiado. Utiliza `make help` para ver los grupos y objetivos individuales disponibles. Si utilizas [Overleaf](https://www.overleaf.com/), cambia el `main document` para que sea el que quieras compilar.
+- `Config/myconfig.tex`: donde encontrarás los datos y las opciones generales del documento.
+- `Book/book.tex`: donde encontrarás el documento principal que debes compilar, aunque normalmente no tendrás que editarlo.
+- `Book/content-standard.tex`: donde encontrarás la organización de los capítulos, la bibliografía y los apéndices.
+- `Book/biblio/biblio.bib`: donde encontrarás las referencias bibliográficas.
 
+Y estas carpetas, donde irás guardando el contenido de tu trabajo:
 
-## Gestión de la bibliografía
+- `Book/chapters/`: donde encontrarás los capítulos del trabajo.
+- `Book/abstract/`: donde encontrarás el resumen y el abstract.
+- `Book/appendix/`: donde encontrarás los apéndices.
+- `Book/figures/`: donde encontrarás las figuras e imágenes.
+- `Book/diagrams/`: donde encontrarás los diagramas editables o generados.
 
-La plantilla permite incluir bibliografías por capítulo, una bibliografía general o ambas, como se explica en el manual.
+Por ahora, céntrate en estos archivos y carpetas. Los demás pueden esperar.
 
-En cuanto a los archivos de bibliografía, para un uso normal solo tienes que editar `Book/biblio/biblio.bib` para incluir las entradas BibTeX que quieras.
+Encontrarás los archivos que debes compilar para el anteproyecto y los formularios en [Cuando necesites algo más](#cuando-necesites-algo-más).
 
-Si tienes varios archivos `.bib`, añade cada uno de ellos en `Book/biblio/` y define su ruta en `Book/biblio/bibliofiles.tex` siguiendo los ejemplos que contiene ese archivo. No es necesario realizar cambios en ningún otro lugar.
+## Prepara la plantilla para escribir
 
-Recuerda que el *backend* predeterminado para el procesamiento de la bibliografía es ahora `biber` (desde septiembre de 2022). Esto implica que debes indicar a tu editor o entorno de compilación \LaTeX{} que estás utilizando `biber` en lugar de `bibtex`. Esto se aplica, por ejemplo, a TeXStudio, como se ha descrito anteriormente.
+Ya puedes escribir en la plantilla tal como está. Sin embargo, sus capítulos contienen el manual y los ejemplos. Para empezar tu trabajo sin tener que retirarlos uno a uno, puedes sustituirlos por una estructura mínima con capítulos casi vacíos. Esta preparación es opcional: conserva la organización actual si prefieres adaptarla por tu cuenta.
 
-## Colaboración con tu tutor o con otros compañeros
+Una vez que hayas compilado y revisado el manual, guarda una copia de seguridad de la carpeta completa, incluyendo cualquier contenido que hayas escrito, por si algo sale mal.
 
-### Uso de GitHub para el control de versiones
+Cuando hayas preparado la estructura mínima con cualquiera de los dos métodos siguientes, organiza tu trabajo añadiendo, eliminando o reordenando las instrucciones `\input{...}` de `Book/content-standard.tex`. Escribe en los archivos de contenido, compila `Book/book.tex` y revisa el PDF y los avisos. Hacer cambios pequeños y compilar con frecuencia facilita encontrar los errores.
 
-Recomiendo encarecidamente utilizar [GitHub](https://www.github.com) para llevar el control y permitir compartir el código fuente LaTeX. El control de versiones permite:
+### Método manual
 
-- Seguir los cambios a lo largo del tiempo.
-- Colaborar con tu tutor o con otros compañeros.
-- Mantener una copia de seguridad de tu trabajo en un repositorio remoto.
+La distribución incluye versiones mínimas (es decir, casi vacías para que puedas escribir *tu* libro) de una estructura inicial de capítulos en:
 
-Encontrarás mucha información útil sobre [GitHub](https://www.github.com), así que no voy a aburrirte aquí con los detalles.
+```text
+Book/chapters/bare/
+Book/appendix/bare/
+```
 
-### Gestión de la revisión del documento
+Para preparar manualmente una estructura mínima convencional, sigue estos pasos:
 
-Para gestionar la revisión del documento (por ejemplo, por parte de tu tutor), puedes utilizar las herramientas del repositorio de [GitHub](https://www.github.com). También me ha resultado útil el proceso de revisión mediante el paquete `todonotes`. Está instalado de forma predeterminada y hemos definido algunas macros útiles al final del archivo `Config/myconfig.tex` (busca entradas `\todo...`). Consúltalas si te interesan. El documento de la plantilla también incluye una sección dedicada a generar un documento de *control de cambios*.
+1. Comprueba que has guardado la copia de seguridad antes de sustituir o eliminar archivos.
+2. Para no dejar capítulos de ejemplo que puedan confundirte, elimina sólo los archivos `.tex` situados directamente en `Book/chapters/` y `Book/appendix/`. No elimines las carpetas ni sus subcarpetas, como `bare/`, `orig/` o `compendium/`, ni los archivos de otros tipos. Esta limpieza no es necesaria para compilar, pero deja más claro qué contenido vas a utilizar.
+3. Copia a `Book/chapters/` los archivos de capítulo de `Book/chapters/bare/`, excepto el archivo de organización `content-standard.tex`.
+4. Copia a `Book/appendix/` los archivos de `Book/appendix/bare/`.
+5. Sustituye `Book/content-standard.tex` por `Book/chapters/bare/content-standard.tex`.
+6. Revisa en `Config/myconfig.tex` qué elementos opcionales quieres incluir y deja en `false` los que no necesites. Por ejemplo, las listas de vídeos y de símbolos suelen ser prescindibles al empezar, porque se utilizan en trabajos con necesidades más específicas.
+7. Compila de nuevo `Book/book.tex`.
 
-## Descargo de responsabilidad, petición de ayuda y ofrecimiento de ayuda
+### Si te sientes cómodo con la terminal
 
-Queda mucho trabajo por hacer para mejorar la documentación de esta plantilla, y haré todo lo posible, pero no puedo prometer nada. Sé que la estructura y la complejidad de la plantilla pueden resultar abrumadoras al enfrentarse a ella por primera vez, por lo que me gustaría que contribuyeras con ideas o sugerencias sobre cómo hacerla más fácil de entender y utilizar.
+Si utilizas `make`, ejecuta desde `Book/`:
 
-Hay bastantes malas prácticas de programación y hábitos muy poco profesionales, pero no soy un experto y simplemente intenté conseguir que todo funcionara directamente. Sería estupendo que pudieras contribuir de cualquier forma a mejorar esta plantilla, así que [envíame un mensaje](mailto:javier.maciasguarasa@uah.es) o considera la posibilidad de enviar una *pull request*.
+```bash
+make bare
+```
 
-Además, si necesitas ayuda para hacer que esto funcione, tienes algún error de compilación o incluso sugerencias de mejora, ponte en contacto conmigo en [mi dirección de correo electrónico](mailto:javier.maciasguarasa@uah.es).
+Este objetivo crea una copia de seguridad, prepara la estructura mínima, instala los archivos fuente correspondientes y desactiva parte del material opcional de ejemplo. También ofrece eliminar figuras y diagramas de ejemplo, sólo si lo confirmas. Antes de ejecutarlo, comprueba igualmente que has guardado tu propia copia de seguridad.
 
-¡Que lo disfrutes!
+También puedes preparar la estructura mínima de una tesis doctoral por compendio si esa es la estructura seleccionada. Consulta el manual antes de aplicarlo a un documento que ya hayas empezado.
+
+## Colaboración con tu tutor y revisión del documento
+
+### `git` para conservar y compartir tu trabajo
+
+`git` guarda el historial de tu proyecto en un repositorio y te permite recuperar versiones anteriores. Cada *commit* registra un conjunto de cambios con un mensaje que los describe. No lo necesitas para compilar, pero te lo recomiendo para no depender de copias llamadas "final", "final-bueno" y "ahora-sí-final".
+
+`git` conserva el historial en tu equipo. Puedes compartir una copia remota mediante `GitHub`, `GitLab` u otro servicio, pero recuerda sincronizar tus cambios para mantenerla al día.
+
+Cuando tengas preparada la estructura mínima, puedes crear tu repositorio y hacer el primer *commit* desde una aplicación gráfica, sin utilizar la consola:
+
+1. Abre la carpeta raíz del proyecto y utiliza la opción de crear o inicializar un repositorio, si todavía no existe.
+2. Conserva el fichero `.gitignore` incluido en la plantilla. Se encarga de excluir los archivos auxiliares y los PDF generados durante la compilación.
+3. Selecciona todos los archivos que te proponga la aplicación para el primer *commit*. La opción puede llamarse `Stage all changes`, `Select all` o aparecer como una casilla para marcarlos todos. Aunque haya muchos, no tienes que elegirlos uno a uno. Si aparecen archivos personales que hayas copiado a esa carpeta y no quieras compartir, desmárcalos.
+4. Escribe un mensaje que describa el inicio de tu trabajo y crea el *commit*. Publicarlo en un servicio remoto es una operación posterior y separada.
+
+El apartado *Preparación del repositorio `git`* del manual explica qué archivos conservar, cuáles no debes subir y cómo continuar con los siguientes *commits*. Encontrarás mucha información sobre `git` y `GitHub`, así que no voy a aburrirte aquí con los detalles.
+
+Si te sientes comodo en el terminal y utilizas `make`, con el repositorio ya creado, ejecuta `make sync-git-sources` desde la raíz para seleccionar los fuentes según las dependencias de compilación. Te mostrará los cambios y te pedirá confirmación antes de preparar el próximo *commit*. Puede dejar de versionar archivos que no detecte como necesarios para compilar, sin borrarlos del disco. Esta opción no hace el *commit* ni sube al repositorio online los cambios por ti. Consulta los requisitos en el manual.
+
+### Revisar el documento con tu tutor
+
+El historial de `git` te ayuda a ver qué ha cambiado, pero no sustituye los comentarios sobre el contenido. Puedes combinarlo con las herramientas de revisión del servicio que utilices para compartir el proyecto.
+
+También me ha resultado útil el paquete `todonotes`, que ya carga la plantilla. Al final de `Config/myconfig.tex` encontrarás comandos de ejemplo como `\todojmg`, `\todorbc` y `\todomig`, que puedes adaptar a las personas que revisen tu trabajo. Por ejemplo, `\todojmg{Revisar esta explicación}` inserta una nota de revisión. El manual describe estas ayudas y la generación de un documento de control de cambios. Vuelve a estas ayudas cuando empieces a intercambiar versiones con tu tutor.
+
+## Cuando necesites algo más
+
+Incorpora estas funciones a medida que las necesites. El manual contiene los detalles y ejemplos completos.
+
+### Anteproyecto
+
+Para trabajar en tu anteproyecto, abre `Anteproyecto/anteproyecto.tex`, que comparte con el documento principal los datos definidos en `Config/myconfig.tex`. Si trabajas en línea, sigue las instrucciones para seleccionar el documento en [`Overleaf`](#compila-el-ejemplo-en-overleaf) o [`Prism`](#compila-el-ejemplo-en-prism).
+
+### Bibliografía
+
+Para un uso normal, añade tus referencias BibTeX a `Book/biblio/biblio.bib`. La plantilla utiliza `biblatex` con `biber`. Si trabajas con `TeXstudio`, aplica la configuración indicada en [Configura `TeXstudio`](#configura-texstudio).
+
+Si trabajas con varios archivos `.bib`, colócalos en `Book/biblio/` y decláralos en `Book/biblio/bibliofiles.tex` siguiendo los ejemplos existentes.
+
+### Figuras y diagramas
+
+Guarda las ilustraciones en `Book/figures/` o `Book/diagrams/`. Puedes utilizar figuras en formato PDF, PNG y JPEG directamente en la plantilla.
+
+Por ejemplo:
+
+```latex
+\includegraphics[width=0.8\textwidth]{mi-figura.png}
+```
+
+Los ficheros `Makefile` pueden convertir algunos formatos fuente, como SVG, EPS o DIA, cuando las herramientas externas correspondientes están instaladas.
+
+### Acrónimos y símbolos
+
+Puedes definir tus acrónimos y símbolos en:
+
+```text
+Book/acronyms/defacronymsgl.tex
+Book/symbols/defsymbolsgl.tex
+```
+
+Ambos archivos contienen ya ejemplos que puedes imitar para añadir tus propias definiciones. Para generar las listas (índices), sigue las indicaciones de [la primera compilación](#compila-el-ejemplo-sin-modificar-nada). Si utilizas `make`, recuerda los requisitos de [Si te manejas con la terminal](#si-te-manejas-con-la-terminal).
+
+### Documentación administrativa
+
+Encontrarás algunos de los documentos administrativos agrupados por tipo de trabajo en los directorios:
+
+```text
+PapeleoTFG/
+PapeleoTFM/
+```
+
+Puedes compilar el archivo `.tex` de un formulario concreto desde tu editor o utilizar los ficheros `Makefile` correspondientes (ejecuta `make help` en la carpeta correspondiente para obtener más ayuda). Si trabajas en línea, selecciónalo como se explica en los apartados de [`Overleaf`](#compila-el-ejemplo-en-overleaf) o [`Prism`](#compila-el-ejemplo-en-prism). Consulta las guías PDF incluidas en esas carpetas y verifica siempre la normativa aplicable.
+
+### Tesis doctoral por compendio de publicaciones
+
+Para una tesis doctoral por compendio:
+
+- Selecciona el programa de doctorado mediante `\myDegree`.
+- Establece `\myDocumentStructure` como `compendium` en `Config/myconfig.tex`.
+- Organiza el contenido en `Book/content-compendium.tex`.
+- Continúa compilando `Book/book.tex`.
+
+Consulta el manual y la normativa de tu programa antes de incorporar publicaciones, especialmente en lo relativo a permisos de reutilización.
+
+## Problemas frecuentes
+
+### No se genera el PDF
+
+Prueba primero con una copia recién descargada, sin modificaciones. Si tampoco compila:
+
+1. Revisa el primer mensaje de error real del registro, no solo el último.
+2. Actualiza tu distribución de LaTeX.
+3. Permite que se instalen los paquetes que falten.
+4. Comprueba que estás compilando `Book/book.tex`.
+5. Verifica que tienes seleccionado `biber`, como se explica en [Configura `TeXstudio`](#configura-texstudio). Si has cambiado el compilador de `TeXstudio`, comprueba que `Compilador por defecto` sea `PdfLaTeX` en `Opciones` > `Configurar TeXstudio` > `Compilar` (en macOS, `TeXstudio` > `Preferencias` > `Compilar`).
+
+### La bibliografía no aparece
+
+Comprueba que:
+
+- Las entradas están en `Book/biblio/biblio.bib` o en un archivo declarado en `Book/biblio/bibliofiles.tex`.
+- Has citado las referencias en el texto.
+- Has seguido las instrucciones de [Configura `TeXstudio`](#configura-texstudio) para seleccionar `biber`.
+
+Tras esa verificación, vuelve a compilar como se explica en [Compila el ejemplo sin modificar nada](#compila-el-ejemplo-sin-modificar-nada). Si la bibliografía sigue sin aparecer y no hay errores pendientes en el registro, prueba a ejecutar `Herramientas` > `Limpiar los archivos auxiliares` en `TeXstudio`. Revisa la lista de archivos que eliminará, pulsa `Aceptar` y vuelve a compilar. Esta limpieza es una medida para resolver el problema, no un paso necesario en cada compilación.
+
+### El ejemplo compilaba antes de que lo modificara
+
+Guarda todos los archivos y vuelve a compilar `Book/book.tex`. En `TeXstudio`, abre el panel de mensajes o del registro y localiza el primer error, no los avisos de formato. Si el editor permite saltar a su ubicación, abre la línea indicada y revisa también las anteriores: a veces el problema empieza antes de donde LaTeX lo detecta.
+
+Comprueba primero los cambios que acabas de hacer:
+
+- Que cada llave de apertura `{` tenga su cierre `}` y no hayas eliminado una barra inversa `\` de un comando.
+- Que no hayas comentado ni borrado una definición de `Config/myconfig.tex`.
+- Que las rutas y los nombres de los archivos coincidan exactamente con los que utilizas, incluida su extensión.
+- Que los caracteres especiales del texto estén escritos correctamente, por ejemplo `\%`, `\&` o `\_` cuando quieras imprimir esos signos.
+- Que las entradas bibliográficas conserven sus llaves y las comas entre campos.
+
+Si identificas un cambio reciente que pueda ser el responsable, guarda antes una copia del archivo y deshaz sólo ese cambio para probar. También puedes compararlo con tu copia de seguridad. Evita sustituir carpetas completas o borrar tu trabajo para intentar resolver un error.
+
+Si tus cambios en `myconfig.tex` no aparecen, comprueba además que editas la misma copia que estás compilando.
+
+### No entiendo el mensaje de error
+
+Revisa los errores del registro de compilación. Empieza por el primero: los demás suelen ser daños colaterales. Anota:
+
+- El archivo y la línea indicados.
+- El texto exacto del error.
+- El último cambio que realizaste.
+
+Si solicitas ayuda, incluye esa información. Un mensaje como "no compila" describe el síntoma, pero ofrece pocas pistas técnicas.
+
+## Manual, ejemplos y ayuda
+
+Al compilar la distribución, obtendrás también el manual completo y una colección de ejemplos. No necesitas leerlo de principio a fin antes de empezar: consúltalo cuando quieras configurar una función o copiar la estructura de un ejemplo.
+
+Los enlaces a la guía de descarga y al ejemplo precompilado están en [Descarga y descomprime la distribución para estudiantes](#descarga-y-descomprime-la-distribución-para-estudiantes). Para comunicar un error reproducible o proponer una mejora, puedes utilizar el [sistema de incidencias de `GitHub`](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate/issues).
+
+Si necesitas ayuda con un error de compilación o quieres enviar una sugerencia, puedes escribirme a [javier.maciasguarasa@uah.es](mailto:javier.maciasguarasa@uah.es). Incluye, si es posible, el sistema operativo, la distribución de LaTeX, el editor, el archivo que estabas compilando y el primer mensaje de error.
+
+## Créditos, licencia y contribuciones
+
+Soy Javier Macías Guarasa y mantengo esta plantilla para que puedas dedicar más tiempo al contenido de tu trabajo que al formato. Tus correcciones, experiencias y sugerencias me ayudan a mejorarla, y así ha sido a lo largo de los años.
+
+No soy un experto en LaTeX ni en diseñar plantillas, y muchas decisiones han salido de intentar resolver problemas concretos. Como te decía en la introducción de este documento, soy muy consciente de que la estructura puede resultar abrumadora al principio y que todavía hay cosas que podrían hacerse más sencillas. Si ves alguna, o tienes cualquier sugerencia, cuéntamelo enviándome un mensaje a [javier.maciasguarasa@uah.es](mailto:javier.maciasguarasa@uah.es).
+
+El proyecto sigue evolucionando y todas las contribuciones son bienvenidas, especialmente para:
+
+- Corregir errores.
+- Mejorar la documentación.
+- Actualizar formularios y requisitos institucionales.
+- Ampliar la compatibilidad con titulaciones.
+- Simplificar la experiencia de quienes utilizan la plantilla por primera vez.
+
+Puedes proponer cambios mediante una *pull request* o comunicar una incidencia en [`GitHub`](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate).
+
+Consulta el archivo de licencia incluido en la distribución antes de redistribuir o modificar el proyecto.
+
+¡Que lo disfrutes y, sobre todo, que la plantilla te permita dedicar más tiempo al contenido que al formato!
+
 
 
 Javi
