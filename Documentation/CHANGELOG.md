@@ -2,6 +2,35 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.7.2] - 2026-10-20
+
+### Features
+
+- Configure UAH agreement signatories and update TFM forms
+
+
+### Bug Fixes
+
+- Use regulation blue for MUIT and MUII bands
+
+- Preserve manual illustrations when removing example figures
+
+
+### Documentation
+
+- Clarify glossary requirements and installation options
+
+- Add a guided beginner workflow and PDF rendering
+
+- Replace the introduction with a guided beginner workflow
+
+- Align beginner guidance and supporting documentation
+
+
+### Maintenance
+
+- Minor adjustments in final section
+
 ## [v8.7.1] - 2026-10-16
 
 ### Bug Fixes
