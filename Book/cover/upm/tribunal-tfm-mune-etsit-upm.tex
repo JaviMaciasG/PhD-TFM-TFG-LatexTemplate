@@ -24,23 +24,25 @@
 \begin{tabularx}{\linewidth}{@{}p{4.8cm}X@{}}
   \MUNEText{Título}{Title}: & \myBookTitle \\[0.25cm]
   \wordAutorOrAutoraTitle: & \myAuthorFullName \\[0.25cm]
-  \MUNEText{Supervisión técnica}{Technical Supervisor}: & \ifthenelse{\equal{\myUPMTechnicalSupervisorFullName}{}}{\dotfill}{\myUPMTechnicalSupervisorFullName} \\[0.25cm]
+  \MUNEText{Supervisión técnica}{Technical Supervisor}: & \myUPMTechnicalSupervisorFullName \\[0.25cm]
   \MUNEText{Supervisión académica}{Academic Supervisor}: & \myAcademicTutorFullName \\[0.25cm]
-  \MUNEText{Departamento}{Department}: & \MUNEText{\myDepartment}{\myDepartmentEnglish}
+  % La normativa conserva los nombres institucionales también en inglés.
+  \MUNEText{Departamento}{Department}: & \myDepartment
 \end{tabularx}
 
 \vspace{0.4cm}
 \parbox{\linewidth}{\fontsize{16}{19}\selectfont\MUNEText{MIEMBROS DEL TRIBUNAL}{MEMBERS OF THE EXAMINATION COMMITTEE}}
 
-\begin{tabularx}{\linewidth}{@{}p{2.9cm}X@{}}
-  \MUNEText{\wordPresidenteOrPresidenta}{President}: & \myTribunalPresident \\[0.7cm]
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+  \MUNEText{\wordPresidenteOrPresidenta}{Chair}: & \myTribunalPresident \\[0.7cm]
   \MUNEText{Vocal}{Member}: & \myTribunalFirstSpokesperson \\[0.7cm]
   \MUNEText{\wordTribunalSecretarioOrSecretaria}{Secretary}: & \myTribunalSecretary \\[0.7cm]
-  \MUNEText{Suplente}{Substitute}: & \myTribunalAlternateMember
+  \MUNEText{Suplente}{Alternate member}: & \myTribunalAlternateMember
 \end{tabularx}
 
 \vspace{0.7cm}
-\MUNEText{Los miembros del tribunal arriba nombrados acuerdan otorgar la calificación de:}{The above-named members of the panel agree to grant the qualification of:} \dotfill
+\MUNEText{Los miembros del tribunal arriba nombrados acuerdan otorgar la calificación de:}{The above-named members of the examination committee agree to award the following grade:}\par
+\vspace{\baselineskip}
 
 \vspace{1cm}
 \begin{flushright}

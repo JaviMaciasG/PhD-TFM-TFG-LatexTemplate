@@ -13,12 +13,13 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.35cm}
 \providecommand{\myPonenteFullName}{}
-% GISD overrides only the supervision rows and their label width.
-\providecommand{\UPMTFGLabelWidth}{2.9cm}
+% Traducciones locales; conserva los nombres propios institucionales.
+\newcommand{\UPMTFGText}[2]{\ifthenelse{\equal{\myLanguage}{spanish}}{#1}{#2}}
+% GISD redefine únicamente las filas de supervisión.
 \providecommand{\UPMTFGSupervisorRows}{%
   \wordTutorOrTutoraTitle: & \myAcademicTutorFullName \\[0.25cm]
-  \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\wordCoTutorOrCoTutoraTitle: & \myCoTutorFullName \\[0.25cm]}
-  Ponente: & \myPonenteFullName \\[0.25cm]
+  \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\wordCoTutorOrCoTutoraTitle: & \myCoTutorFullName \\[0.25cm]}%
+  \UPMTFGText{Ponente}{Academic sponsor}: & \myPonenteFullName \\[0.25cm]
 }
 
 \parbox{\linewidth}{\fontsize{16}{19}\selectfont\MakeUppercase{\myDegreefull}}
@@ -26,30 +27,31 @@
 
 \parbox{\linewidth}{\fontsize{16}{19}\selectfont\MakeUppercase{\myWorkTypeFull}}
 
-\begin{tabularx}{\linewidth}{@{}p{\UPMTFGLabelWidth}X@{}}
-  Título: & \myBookTitle \\[0.25cm]
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+  \UPMTFGText{Título}{Title}: & \myBookTitle \\[0.25cm]
   \wordAutorOrAutoraTitle: & \myAuthorFullName \\[0.25cm]
   \UPMTFGSupervisorRows
-  Departamento: & \myDepartment
+  \UPMTFGText{Departamento}{Department}: & \myDepartment
 \end{tabularx}
 
 \vspace{0.4cm}
-\parbox{\linewidth}{\fontsize{16}{19}\selectfont MIEMBROS DEL TRIBUNAL}
+\parbox{\linewidth}{\fontsize{16}{19}\selectfont\UPMTFGText{MIEMBROS DEL TRIBUNAL}{MEMBERS OF THE EXAMINATION COMMITTEE}}
 
-\begin{tabularx}{\linewidth}{@{}p{2.9cm}X@{}}
-  \wordPresidenteOrPresidenta: & \myTribunalPresident \\[0.7cm]
-  Vocal: & \myTribunalFirstSpokesperson \\[0.7cm]
-  \wordTribunalSecretarioOrSecretaria: & \myTribunalSecretary \\[0.7cm]
-  Suplente: & \myTribunalAlternateMember
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+  \UPMTFGText{\wordPresidenteOrPresidenta}{Chair}: & \myTribunalPresident \\[0.7cm]
+  \UPMTFGText{Vocal}{Member}: & \myTribunalFirstSpokesperson \\[0.7cm]
+  \UPMTFGText{\wordTribunalSecretarioOrSecretaria}{Secretary}: & \myTribunalSecretary \\[0.7cm]
+  \UPMTFGText{Suplente}{Alternate member}: & \myTribunalAlternateMember
 \end{tabularx}
 
 \vspace{0.7cm}
-Los miembros del tribunal arriba nombrados acuerdan otorgar la calificación de: \dotfill
+\UPMTFGText{Los miembros del tribunal arriba nombrados acuerdan otorgar la calificación de:}{The above-named members of the examination committee agree to award the following grade:}\par
+\vspace{\baselineskip}
 
 % No se aplica la suma de notas de las rúbricas UAH a un tribunal ETSIT-UPM.
 \vspace{1cm}
 \begin{flushright}
-  Madrid, a \myThesisDefenseDate
+  Madrid, \myDefenseDateFull
 \end{flushright}
 
 \clearemptydoublepage
