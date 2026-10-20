@@ -363,7 +363,7 @@ Si necesitas ayuda con un error de compilación o quieres enviar una sugerencia,
 
 ## Créditos, licencia y contribuciones
 
-Soy Javier Macías Guarasa y mantengo esta plantilla para que puedas dedicar más tiempo al contenido de tu trabajo que al formato. Tus correcciones, experiencias y sugerencias me ayudan a mejorarla, y así ha sido a lo largo de los años.
+Mantengo esta plantilla para que puedas dedicar más tiempo al contenido de tu trabajo que al formato. Tus correcciones, experiencias y sugerencias me ayudan a mejorarla, y así ha sido a lo largo de los años.
 
 No soy un experto en LaTeX ni en diseñar plantillas, y muchas decisiones han salido de intentar resolver problemas concretos. Como te decía en la introducción de este documento, soy muy consciente de que la estructura puede resultar abrumadora al principio y que todavía hay cosas que podrían hacerse más sencillas. Si ves alguna, o tienes cualquier sugerencia, cuéntamelo enviándome un mensaje a [javier.maciasguarasa@uah.es](mailto:javier.maciasguarasa@uah.es).
 
@@ -379,7 +379,7 @@ Puedes proponer cambios mediante una *pull request* o comunicar una incidencia e
 
 Consulta el archivo de licencia incluido en la distribución antes de redistribuir o modificar el proyecto.
 
-¡Que lo disfrutes y, sobre todo, que la plantilla te permita dedicar más tiempo al contenido que al formato!
+Enjoy!
 
 
 

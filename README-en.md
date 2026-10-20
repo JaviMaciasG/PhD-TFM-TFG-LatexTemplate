@@ -379,7 +379,7 @@ You can suggest changes through a *pull request* or report an issue on [`GitHub`
 
 Consult the licence file included in the distribution before redistributing or modifying the project.
 
-Enjoy it and, above all, may the template let you spend more time on the content than on formatting!
+Enjoy!
 
 
 
