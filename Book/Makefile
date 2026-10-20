@@ -188,13 +188,13 @@ bare-compendium: backup-compendium
 	@echo " Done!"
 
 clean-orig-figures:
-	@echo "About to delete the files in the 'figures' directory (except sample figures/Figure1.png)..."
+	@echo "About to delete the files in the 'figures' directory (except sample figures/Figure1.png and figures/manual/)..."
 	@echo "This cannot be undone..."
 	@echo "Got it?..."
 	@read -p "I will ask you once... Are you sure to delete all files there? " dodelete; \
 	if [ "$$dodelete" == "Y" ]; \
 	then \
-	find figures -type f \( -iname '*.png' -o -iname '*.eps' -o -iname '*.pdf' -o -iname '*.jpg' \) ! -name 'Figure1.png' -delete; \
+	find figures -type f \( -iname '*.png' -o -iname '*.eps' -o -iname '*.pdf' -o -iname '*.jpg' \) ! -name 'Figure1.png' ! -path 'figures/manual/*' -delete; \
 	fi
 
 clean-orig-diagrams:
