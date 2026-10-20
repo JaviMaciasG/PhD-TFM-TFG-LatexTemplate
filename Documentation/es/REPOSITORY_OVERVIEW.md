@@ -30,10 +30,11 @@ El fichero `sync-git-sources.sh` de la raíz es la implementación orientada al 
 
 ## Flujo de trabajo principal del usuario
 
-1. Configure los metadatos personales/de la titulación en `Config/myconfig.tex`.
-2. Mantenga la estructura normal `standard`, edite `Book/content-standard.tex` y escriba los capítulos, resúmenes, apéndices y bibliografía correspondientes. Solo los estudiantes de doctorado que utilicen la modalidad por compendio seleccionan la estructura especializada `content-compendium.tex`.
-3. Compile `Book/book.tex` con su editor LaTeX o herramienta de compilación habitual configurada para `biber`; de forma opcional, use `make` desde `Book/` para automatizar la secuencia completa.
-4. Si lo desea, compile `Anteproyecto/` y las plantillas de documentación correspondientes en los directorios `Papeleo*`.
+1. Descargue y descomprima la distribución de usuario y prepare su editor o un proyecto en `Overleaf` o `Prism`. En `TeXstudio`, seleccione `biber` como herramienta bibliográfica.
+2. Compile `Book/book.tex` sin modificar la plantilla para comprobar el entorno y consultar el manual generado.
+3. Introduzca los datos personales y de la titulación en `Config/myconfig.tex`, vuelva a compilar y compruebe el resultado.
+4. Prepare, si lo desea, la estructura mínima. Mantenga la estructura habitual `standard`, organice el contenido en `Book/content-standard.tex` y escriba los capítulos, resúmenes, apéndices y bibliografía. Solo los estudiantes de doctorado que presenten una tesis por compendio seleccionan `compendium` y utilizan `Book/content-compendium.tex`.
+5. Siga compilando `Book/book.tex` desde su editor o servicio en línea. Utilice `make` desde `Book/` únicamente si prefiere esa automatización. El anteproyecto y los formularios son documentos independientes que puede compilar cuando los necesite.
 
 El `Makefile` de la raíz también puede generar una versión PDF del README y delegar la compilación en `Book/`. En los checkouts del repositorio carga opcionalmente `AdminScripts/maintainer.mk`, que añade el objetivo `make distrib`, exclusivo para mantenedores; ese fragmento no está presente en las distribuciones de usuario.
 
@@ -143,7 +144,7 @@ El manual estándar incluye Book/appendix/aspectos-eticos.tex solo para titulaci
 
 ## Riesgos / puntos críticos de complejidad
 
-- Una compilación básica desde un editor necesita `pdflatex` y, cuando corresponda, `biber` o `makeglossaries`; los flujos mediante Makefile requieren además `latexmk`, mientras que determinados objetivos pueden utilizar `pandoc`, Dia, Inkscape, Ghostscript, `latexpand` o `latexdiff`.
+- Una compilación desde el editor utiliza `pdflatex` y `biber` cuando hay bibliografía. La opción `automake` de `glossaries` genera los listados mediante `makeindex` cuando el entorno permite ejecutarlo, sin requerir el script `makeglossaries` ni `perl` para esa tarea. La configuración suministrada de `latexmk`, utilizada por los Makefiles, sí invoca `makeglossaries` y necesita `perl`. El objetivo predeterminado de Book también utiliza `Ghostscript` para comprimir el PDF. Otros objetivos pueden necesitar `pandoc`, `Dia`, `Inkscape`, `latexpand` o `latexdiff`.
 - Los Makefiles activos de los documentos comparten su configuración de motor y dependencias, pero la automatización de versiones y registros sigue dependiendo de herramientas de shell.
 - La estructura de distintas épocas y los recursos duplicados pueden dificultar la incorporación de nuevos usuarios.
 - El contenido heredado/Deprecated aumenta el ruido de navegación para los usuarios que empiezan.
@@ -152,8 +153,8 @@ El manual estándar incluye Book/appendix/aspectos-eticos.tex solo para titulaci
 
 Para un usuario nuevo, el camino más seguro es:
 
-1. Leer `README.md` completo una vez.
-2. Editar inicialmente solo `Config/myconfig.tex`.
-3. Mantener `\myDocumentStructure` con el valor `standard` y partir de `Book/content-standard.tex` con los capítulos de ejemplo existentes o su versión mínima preparada. Solo los estudiantes de doctorado que utilicen la modalidad por compendio deberían seleccionar `compendium` y trabajar con `Book/content-compendium.tex` y su estructura especializada preparada.
-4. Compilar `Book/book.tex` con su editor y comprobar que el backend de bibliografía está configurado como `biber`; use `make` únicamente si prefiere la automatización suministrada.
-5. Solo después de una primera compilación correcta, modifique los ficheros de portadas/documentación administrativa.
+1. Seguir el inicio rápido de `README.md`, sin tener que leerlo entero antes de empezar.
+2. Compilar la plantilla sin modificarla y revisar el manual resultante.
+3. Personalizar `Config/myconfig.tex`, volver a compilar y comprobar los datos mostrados.
+4. Guardar una copia de seguridad antes de sustituir fuentes y preparar opcionalmente la estructura mínima descrita en el manual. Escribir en los archivos de contenido y organizar los capítulos en `Book/content-standard.tex`. La estructura especializada de compendio utiliza `Book/content-compendium.tex`.
+5. Dejar normalmente intactos `Book/book.tex` y las plantillas institucionales de portadas. Editar formularios y campos adicionales solo cuando el procedimiento administrativo lo requiera.

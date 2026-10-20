@@ -5,7 +5,7 @@ author: "Javier Macías-Guarasa"
 
 # What should I download?
 
-If you want to start a new document, download the current ZIP or TGZ archive. Both archives contain the same template; ZIP is normally the most convenient option for Windows, macOS and Overleaf, while TGZ may be more convenient on GNU/Linux. The `RELEASE.txt` file identifies the published template version.
+If you want to start a new document, download the current ZIP or TGZ archive. Both archives contain the same template. ZIP is normally the most convenient option for Windows, macOS, `Overleaf` and `Prism`, while TGZ may be more convenient on GNU/Linux. The `RELEASE.txt` file identifies the published template version.
 
 If you want to inspect the result before downloading the template, start with `TFG-GIEC-spanish.pdf`. It uses the default structure and appearance, and its first chapters constitute the complete user manual.
 

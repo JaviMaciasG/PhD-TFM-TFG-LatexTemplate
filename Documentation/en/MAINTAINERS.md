@@ -34,7 +34,19 @@ The active document Makefiles include `Config/latex-common.mk`, which defines th
 
 Every active document target deliberately invokes a lightweight `latexmk` dependency check. An unchanged document must not rerun LaTeX, Biber, `makeglossaries`, conversion, compression or copy commands. When adding a new paperwork document, add its base name to the appropriate directory list and let `latexmk` discover its direct and shared inputs. Preserve the compatibility aliases documented in the user manual, and update the root paperwork dispatcher only when introducing a new maintained work type.
 
+## Maintaining the introduction and user documentation
+
+Keep `README.md` as the main Spanish introduction and `README-en.md` as its complete translation, with the same content, tone, section order, lists and examples. Preserve external destinations and asset paths, but adapt internal links to the headings in each language. Do not translate command, variable or file names. Preserve literal interface labels and manual section titles where necessary to help readers find them.
+
+Keep the initial workflow consistent across the READMEs, manual and download guides: download, set up the environment, compile without modifications, consult the manual, enter personal details and optionally prepare the minimal structure. The editor workflow is sufficient to get started. Acronym and symbol generation uses `makeindex` automatically when the environment permits it, without requiring the `makeglossaries` script or `perl` for that task. The supplied `latexmk` configuration does use both. Preserve this distinction in requirements and troubleshooting guidance.
+
+Help illustrations belong in `Book/figures/manual/`. Preserve the original Colibre SVG icon, its PNG variants and the provenance and licence notices in `LICENSES.txt` and `CC0-1.0.txt`. The Biber configuration screenshot is kept alongside these illustrations but is not covered by the icon's CC0 notice. Assets referenced by the manual must be tracked so that they enter the distribution. `clean-orig-figures` preserves this folder when preparing a minimal structure.
+
+When editing a manual chapter, update its copy in `Book/chapters/orig/` while retaining the restoration-specific header. Check cross-references, preserve citations and historical acknowledgements, and keep each prose paragraph on one source line. Avoid duplicating procedures: maintain one authoritative explanation and refer to it from other sections.
+
 ## Building the documentation PDFs
+
+The introductory PDF is generated only in Spanish with `make README.pdf`, from `README.md` and `README.yaml`. The title comes from YAML, while the Markdown's main heading is omitted before shifting heading levels. The YAML preserves paragraph indentation, the compact contents, reuse of the privacy footnote and the unbroken email address. The build icon is an explicit target dependency. `README-en.md` does not generate another PDF or change the distribution language.
 
 Run `make -C Documentation` to build the two Spanish PDFs kept in the repository root: `README.pdf` and `TYPESETTING-STYLES-COMPARISON.pdf`. The latter compares the registered Book styles using Spanish GIEC pages. This requires Pandoc, PyMuPDF and a PDF-capable LaTeX setup. The other guides remain Markdown files in `Documentation/en/` and `Documentation/es/`; their PDFs are not generated into the repository root. The generated changelog is not part of this target because historical commit messages may contain LaTeX commands and are not intended as a rendered user guide. Distribution archives rename the first two files to `00-README.pdf` and `02-TYPESETTING-STYLES-COMPARISON.pdf`.
 

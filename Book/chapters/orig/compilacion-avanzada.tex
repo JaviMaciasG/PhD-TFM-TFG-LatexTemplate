@@ -157,21 +157,46 @@ También existen otras alternativas integradas con Git, como \texttt{git-latexdi
 \section{Resolución de problemas}
 \label{sec:problemas-conocidos}
 
-Los problemas observados antiguamente con Ubuntu 12.04, el paquete \texttt{xcolor}, Evince y Xpdf ya no describen entornos actuales y se han retirado de esta guía. Si una compilación falla, localiza el primer error del registro, ya que muchos de los mensajes posteriores suelen ser consecuencias de ese fallo inicial.
+Si una compilación falla, empieza por el primer error real del registro, no por los avisos de formato ni por el último mensaje. Los demás suelen ser daños colaterales. Puedes seguir las comprobaciones de este apartado desde tu editor, sin utilizar la terminal ni conocer los comandos internos de compilación.
 
-Las comprobaciones más habituales son:
+\subsection{Primeras comprobaciones}
+
+Guarda todos los archivos y comprueba que estás compilando \texttt{Book/book.tex}, o el fichero independiente del anteproyecto o formulario que corresponda. Si tu editor permite saltar a la línea del error, ábrela y revisa también las anteriores: a veces el problema empieza antes de donde \LaTeX{} lo detecta. En \texttt{Overleaf} o \texttt{Prism}, verifica el documento seleccionado siguiendo las secciones~\ref{sec:compilacion-overleaf} y~\ref{sec:compilacion-prism}.
+
+Si el ejemplo compilaba antes de que lo modificaras, revisa primero tus cambios recientes:
+
+\begin{itemize}
+  \item Comprueba que cada llave de apertura \texttt{\{} tenga su cierre \texttt{\}} y que no hayas eliminado una barra inversa de un comando.
+  \item Comprueba que no hayas comentado ni borrado una definición de \texttt{Config/myconfig.tex}.
+  \item Revisa que las rutas y los nombres de los archivos coincidan exactamente con los que utilizas, incluida su extensión y el uso de mayúsculas y minúsculas.
+  \item Escribe los caracteres especiales como \texttt{\textbackslash{}\%}, \texttt{\textbackslash{}\&} o \texttt{\textbackslash{}\_} cuando quieras imprimir esos signos en el texto.
+  \item Revisa que las entradas bibliográficas conserven sus llaves y las comas entre campos.
+\end{itemize}
+
+Si identificas un cambio que pueda ser el responsable, guarda antes una copia del archivo y deshaz solo ese cambio para probar. También puedes compararlo con tu copia de seguridad. Evita sustituir carpetas completas o borrar tu trabajo para intentar resolver un error. Si los datos que has cambiado no aparecen en el PDF, comprueba que editas la misma copia del proyecto que estás compilando.
+
+Si tampoco compila una copia recién descargada y sin modificaciones, revisa la instalación y las actualizaciones de tu distribución de \LaTeX{}. Estas comprobaciones te ayudarán a distinguir un problema del entorno de un error introducido al editar.
+
+\subsection{Bibliografía, listados y herramientas}
+\label{sec:diagnostico-bibliografia-listados}
+
+Según el elemento que falle, comprueba lo siguiente:
 
 \begin{itemize}
   \item Si falta un fichero \texttt{.sty}, instala el paquete correspondiente desde la distribución de \LaTeX{} que utilices.
-  \item Si no aparece la bibliografía o las citas quedan sin resolver, comprueba que hayas ejecutado Biber y realiza después las pasadas adicionales de \texttt{pdflatex}.
-  \item Si no aparecen los listados de acrónimos o símbolos, vuelve a compilar y comprueba los mensajes de \texttt{makeindex} en el registro. Si utilizas la vía mediante el \texttt{Makefile}, verifica además que \texttt{makeglossaries} esté disponible. No habilites la ejecución irrestricta de comandos como primera solución.
+  \item Si no aparece la bibliografía o las citas quedan sin resolver, comprueba que has citado las referencias y que sus entradas están en \texttt{Book/biblio/biblio.bib} o en otro fichero declarado en \texttt{Book/biblio/bibliofiles.tex}. En \texttt{TeXstudio}, revisa la selección de \texttt{biber} siguiendo la sección~\ref{sec:configurar-texstudio} y vuelve a utilizar \texttt{Compilar y ver}. Si trabajas desde la terminal, comprueba la salida de \texttt{biber} y completa la compilación para incorporar sus resultados.
+  \item Si no aparecen los listados de acrónimos o símbolos, vuelve a compilar y comprueba los mensajes de \texttt{makeindex} en el registro, como se explica en la sección~\ref{sec:compilacion-editor}. Si utilizas la vía mediante el \texttt{Makefile}, verifica además que \texttt{makeglossaries} esté disponible. No habilites la ejecución irrestricta de comandos como primera solución.
   \item Si falla la conversión de un fichero \texttt{dia}, \texttt{svg} o \texttt{eps}, instala la herramienta opcional correspondiente o proporciona directamente una versión compatible en \texttt{pdf}, \texttt{png} o \texttt{jpg}.
-  \item Si las referencias cruzadas o los índices no están actualizados, repite las pasadas de \texttt{pdflatex}. Antes de recompilar también puedes utilizar \texttt{make clean} para eliminar los auxiliares anteriores.
+  \item Si las referencias cruzadas o los índices no están actualizados, guarda los archivos y vuelve a utilizar la función de construcción de tu editor o ejecuta \texttt{make} si has elegido esa vía. Comprueba antes que los archivos que quieres incluir estén declarados en el fichero de contenido correspondiente.
   \item Si \texttt{latexdiff} genera un fichero que no compila, revisa el primer error de \texttt{book-flatten-diff.tex}. Las tablas, fórmulas, entornos TikZ y órdenes personalizadas pueden necesitar correcciones manuales en el documento de diferencias.
   \item Si una cubierta o un formulario no coincide con el modelo institucional esperado, comprueba \texttt{\textbackslash{}myDegree}, el idioma, los datos compartidos y la normativa vigente antes de modificar directamente la plantilla.
 \end{itemize}
 
-Cuando nos comuniques un problema, incluye el sistema operativo, la distribución y versión de \LaTeX{}, la titulación seleccionada, el comando de compilación y el primer error relevante del fichero de registro. También puedes proponer correcciones mediante el repositorio del proyecto.
+Solo si el problema persiste después de estas comprobaciones y de volver a compilar, sin errores pendientes en el registro, prueba a limpiar los auxiliares. En \texttt{TeXstudio}, utiliza \texttt{Herramientas} > \texttt{Limpiar los archivos auxiliares}, revisa la lista de los que eliminará y pulsa \texttt{Aceptar}. Si trabajas con \texttt{make}, puedes utilizar \texttt{make clean} en el directorio del documento. Después vuelve a compilar. Esta limpieza es una medida para resolver problemas, no un paso necesario en cada compilación, y no requiere borrar tus fuentes ni los PDF que utilizas como recursos.
+
+\subsection{Cómo solicitar ayuda}
+
+Si necesitas ayuda, incluye el sistema operativo, la distribución y versión de \LaTeX{}, el editor o servicio utilizado, la titulación seleccionada, el archivo que estabas compilando, el primer error relevante y el último cambio que realizaste. Si trabajas desde la terminal, añade también el comando que ejecutaste. Un mensaje como ``no compila'' describe el síntoma, pero ofrece pocas pistas técnicas. También puedes proponer correcciones mediante el repositorio del proyecto.
 
 Si encuentras algún otro problema, escribe a \contactauthor{} para contárnoslo y trataremos de solucionarlo. Y si ya has encontrado una solución, no dudes en compartirla: tu contribución puede ser útil para quienes utilicen la plantilla después.
 

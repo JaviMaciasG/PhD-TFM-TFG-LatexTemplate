@@ -30,10 +30,11 @@ The root-level `sync-git-sources.sh` is the user-facing implementation behind `m
 
 ## Main user workflow
 
-1. Configure personal/degree metadata in `Config/myconfig.tex`.
-2. Keep the normal `standard` structure, edit `Book/content-standard.tex`, and write the relevant chapters, abstracts, appendices, and bibliography. Only PhD students using the compendium modality select the specialized `content-compendium.tex` structure.
-3. Compile `Book/book.tex` with your usual LaTeX editor or build tool configured for `biber`; optionally use `make` from `Book/` to automate the complete sequence.
-4. Optionally compile `Anteproyecto/` and the corresponding paperwork templates in `Papeleo*` directories.
+1. Download and extract the student distribution and set up your editor or a project in `Overleaf` or `Prism`. In `TeXstudio`, select `biber` as the bibliography tool.
+2. Compile `Book/book.tex` without modifying the template to check your environment and consult the generated manual.
+3. Enter personal and degree details in `Config/myconfig.tex`, compile again and check the result.
+4. Prepare the minimal structure if you wish. Keep the usual `standard` structure, organise the content in `Book/content-standard.tex` and write your chapters, abstracts, appendices and bibliography. Only doctoral students submitting a thesis by compendium select `compendium` and use `Book/content-compendium.tex`.
+5. Keep compiling `Book/book.tex` from your editor or online service. Use `make` from `Book/` only if you prefer that automation. The proposal and forms are standalone documents you can compile when needed.
 
 The root `Makefile` can also produce a PDF version of the README and delegate the build to `Book/`. In repository checkouts it optionally loads `AdminScripts/maintainer.mk`, which adds the maintainer-only `make distrib` target; that fragment is absent from user releases.
 
@@ -143,7 +144,7 @@ The standard manual includes Book/appendix/aspectos-eticos.tex only for ETSIT-UP
 
 ## Risks / complexity hotspots
 
-- A basic editor-based build needs `pdflatex` and, when applicable, `biber` or `makeglossaries`; Makefile workflows additionally require `latexmk`, while particular targets may use `pandoc`, Dia, Inkscape, Ghostscript, `latexpand`, or `latexdiff`.
+- Editor-based compilation uses `pdflatex` and `biber` when there is a bibliography. The `automake` option of `glossaries` generates lists through `makeindex` when the environment permits its execution, without requiring the `makeglossaries` script or `perl` for that task. The supplied `latexmk` configuration, used by the Makefiles, does invoke `makeglossaries` and needs `perl`. Book's default target also uses `Ghostscript` to compress the PDF. Other targets may need `pandoc`, `Dia`, `Inkscape`, `latexpand` or `latexdiff`.
 - The active document Makefiles share their engine and dependency configuration, but release and registry automation still relies on shell tooling.
 - Mixed-era structure and duplicated assets can make onboarding harder.
 - Legacy/Deprecated content increases navigation noise for first-time users.
@@ -152,8 +153,8 @@ The standard manual includes Book/appendix/aspectos-eticos.tex only for ETSIT-UP
 
 For a new user, the safest path is:
 
-1. Read `README.md` once end-to-end.
-2. Edit only `Config/myconfig.tex` first.
-3. Keep `\myDocumentStructure` set to `standard` and start from `Book/content-standard.tex` with the existing example chapters or its prepared minimal version. Only PhD students using the compendium modality should instead select `compendium` and work through `Book/content-compendium.tex` and its specialized prepared structure.
-4. Build `Book/book.tex` with your editor and verify that its bibliography backend is set to `biber`; use `make` only if you prefer the provided automation.
-5. Only after successful first compile, touch covers/paperwork files.
+1. Follow the quick start in `README.md` or its English translation, `README-en.md`, without having to read the whole document first.
+2. Compile the template without modifications and review the resulting manual.
+3. Personalise `Config/myconfig.tex`, compile again and check the displayed details.
+4. Save a backup before replacing sources and optionally prepare the minimal structure described in the manual. Write in the content files and organise chapters in `Book/content-standard.tex`. The specialised compendium structure uses `Book/content-compendium.tex`.
+5. Normally leave `Book/book.tex` and institutional cover templates untouched. Edit forms and additional fields only when the administrative procedure requires it.

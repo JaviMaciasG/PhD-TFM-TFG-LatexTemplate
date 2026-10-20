@@ -26,7 +26,7 @@ make
 
 La compilación genera \texttt{anteproyecto.pdf}. El \texttt{Makefile} utiliza \texttt{latexmk} para controlar las dependencias, ejecutar Biber y las pasadas de \texttt{pdflatex} que sean necesarias, y evitar la recompilación cuando ninguna fuente ha cambiado.
 
-Si trabajas en Overleaf, sigue el procedimiento de la sección~\ref{sec:compilacion-overleaf} y selecciona \texttt{Anteproyecto/anteproyecto.tex} como documento principal.
+Si trabajas en línea, selecciona \texttt{Anteproyecto/anteproyecto.tex} siguiendo el procedimiento de \texttt{Overleaf} o \texttt{Prism}, descrito en las secciones~\ref{sec:compilacion-overleaf} y~\ref{sec:compilacion-prism}.
 
 El \texttt{Makefile} también proporciona los objetivos \texttt{snapshot}, \texttt{flatten}, \texttt{latexdiff}, \texttt{clean}, \texttt{distclean} y \texttt{help}. El nombre \texttt{anteproyecto\_latexmk} se conserva como alias de \texttt{anteproyecto}. Los objetivos de revisión siguen el mismo principio que los equivalentes del libro principal, descritos en la sección~\ref{sec:control-de-cambios}.
 
@@ -51,7 +51,7 @@ La segunda parte incorpora las publicaciones en su formato original mediante \te
 
 La orden crea un capítulo numerado y su entrada en el índice, imprime mediante BibLaTeX la referencia correspondiente, muestra la información adicional cuando se proporciona e incluye todas las páginas del PDF con la escala configurada en \texttt{Config/preamble.tex}. En esas páginas mantiene la numeración de la tesis y utiliza como cabecera el título abreviado indicado en el segundo argumento obligatorio. El argumento opcional admite órdenes habituales de \LaTeX{}, párrafos, enlaces, referencias y listas. Puedes omitirlo por completo cuando no tengas que indicar el estado de publicación, la contribución del doctorando, los permisos de reutilización u otra información específica. Los autores, la revista o congreso, la fecha y el DOI deben mantenerse en la entrada de \texttt{biblio/biblio.bib} para no duplicarlos en la llamada.
 
-Selecciona siempre \texttt{Book/book.tex} como documento principal si trabajas desde tu editor o desde Overleaf. Si utilizas \texttt{make}, ejecuta el objetivo normal \texttt{make} desde \texttt{Book/}. La estructura elegida en \texttt{myconfig.tex} utiliza la misma secuencia de PDFLaTeX, Biber y glosarios. Antes de depositar la tesis, comprueba tanto la normativa doctoral aplicable como los derechos de reutilización de cada publicación.
+Selecciona siempre \texttt{Book/book.tex} como documento principal, también en \texttt{Overleaf} o \texttt{Prism}, siguiendo las secciones~\ref{sec:compilacion-overleaf} y~\ref{sec:compilacion-prism}. Si utilizas \texttt{make}, ejecuta el objetivo normal \texttt{make} desde \texttt{Book/}. La estructura elegida en \texttt{myconfig.tex} utiliza la misma secuencia de \texttt{pdflatex}, \texttt{biber} y glosarios. Antes de depositar la tesis, comprueba tanto la normativa doctoral aplicable como los derechos de reutilización de cada publicación.
 
 Para orientarte sobre las licencias de reutilización puedes consultar la documentación de Creative Commons~\cite{creativecommons-licenses}. El código de conducta de ALLEA~\cite{allea2023integrity} ofrece además pautas generales sobre autoría, reconocimiento de contribuciones e integridad investigadora. Estas lecturas no sustituyen la comprobación de los permisos concretos de cada publicación.
 
@@ -118,7 +118,7 @@ El objetivo \texttt{clean} elimina únicamente los ficheros auxiliares de la com
 
 Desde la raíz del repositorio puedes ejecutar \texttt{make paperwork} para generar únicamente el conjunto de formularios que corresponde a la titulación seleccionada en \texttt{myconfig.tex}. El objetivo \texttt{make all-documents} añade además el README, el libro principal y el anteproyecto. El objetivo predeterminado de la raíz no cambia y continúa generando únicamente el README y el libro.
 
-En Overleaf puedes generar cada formulario seleccionando su fichero \texttt{.tex} como documento principal, de acuerdo con las indicaciones de la sección~\ref{sec:compilacion-overleaf}.
+En \texttt{Overleaf} o \texttt{Prism} puedes generar cada formulario independiente seleccionando su fichero \texttt{.tex}, de acuerdo con las indicaciones de las secciones~\ref{sec:compilacion-overleaf} y~\ref{sec:compilacion-prism}. Los fragmentos auxiliares no se compilan por separado.
 
 Las plantillas adaptan automáticamente determinados términos al género gramatical configurado y omiten los datos del cotutor cuando \texttt{\textbackslash{}myCoTutorFullName} está vacío. Aun así, revisa cuidadosamente el PDF resultante, las firmas requeridas y la coherencia de todos los datos.
 
@@ -128,7 +128,7 @@ Los modelos administrativos y sus requisitos pueden cambiar. Antes de presentar 
 \section{Resumen del capítulo}
 \label{sec:resumen-documentos-complementarios}
 
-El anteproyecto, la tesis por compendio y los formularios administrativos reutilizan la configuración común para evitar que introduzcas varias veces los mismos datos. Puedes compilarlos independientemente del libro ordinario, también mediante Overleaf si seleccionas el documento principal adecuado, pero debes revisar cada PDF y contrastar siempre las plantillas con los requisitos y modelos oficiales vigentes antes de presentarlos.
+El anteproyecto, la tesis por compendio y los formularios administrativos reutilizan la configuración común para evitar que introduzcas varias veces los mismos datos. El anteproyecto y los formularios se compilan por separado, mientras que la tesis por compendio utiliza el mismo \texttt{Book/book.tex}. Puedes trabajar también en \texttt{Overleaf} o \texttt{Prism} seleccionando el fichero adecuado. Revisa cada PDF y contrasta siempre las plantillas con los requisitos y modelos oficiales vigentes antes de presentarlos.
 
 %%% Local Variables:
 %%% TeX-master: "../book"

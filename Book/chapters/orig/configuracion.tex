@@ -93,7 +93,7 @@ Las siguientes variables controlan los índices y listados generados automática
   \item \texttt{\textbackslash{}myIncludeListOfVideos}: incluye el índice de vídeos.
 \end{itemize}
 
-Desactivar uno de estos listados no desactiva la prestación correspondiente: puedes seguir utilizando figuras, tablas, acrónimos, símbolos, código, algoritmos o enlaces a vídeos en el cuerpo del documento. Solo se omite su índice independiente. Si no utilizas acrónimos ni símbolos tampoco tendrás que ejecutar \texttt{makeglossaries}, como se explica en la sección~\ref{sec:compilacion}.
+Desactivar uno de estos listados no desactiva la prestación correspondiente: puedes seguir utilizando figuras, tablas, acrónimos, símbolos, código, algoritmos o enlaces a vídeos en el cuerpo del documento. Solo se omite su índice independiente. La sección~\ref{sec:compilacion-editor} explica la generación automática de los acrónimos y símbolos desde el editor. El script \texttt{makeglossaries} corresponde a la configuración opcional del \texttt{Makefile}, descrita en la sección~\ref{sec:compilacion-makefile}.
 
 Los listados de acrónimos y símbolos utilizan \texttt{glossaries}. Sus opciones y órdenes se describen en el manual del paquete~\cite{glossaries-manual}. En la sección~\ref{sec:uso-de-acronimos} encontrarás los ejemplos concretos que usamos aquí.
 
@@ -122,7 +122,7 @@ Cambia los valores de las definiciones existentes, no añadas una segunda defini
 
 En una tesis por compendio, las bibliografías por capítulo corresponden únicamente al resumen extendido de la primera parte. La bibliografía general permanece entre las dos partes y no se añaden listas de referencias después de los PDF de las publicaciones. El anteproyecto y los formularios mantienen su bibliografía habitual, independientemente de estas opciones.
 
-La compilación sigue utilizando PDFLaTeX y Biber, tanto desde tu editor como desde Overleaf o mediante el Makefile. Después de cambiar estas opciones o las referencias utilizadas, completa las pasadas necesarias para actualizar las listas, su numeración y sus enlaces. La bibliografía general puede incluir referencias citadas más adelante en los apéndices porque el proceso utiliza la información de las pasadas anteriores.
+La compilación sigue utilizando \texttt{pdflatex} y \texttt{biber}, tanto desde tu editor como desde \texttt{Overleaf}, \texttt{Prism} o mediante el \texttt{Makefile}. Después de cambiar estas opciones o las referencias utilizadas, utiliza la función de construcción de tu entorno para actualizar las listas, su numeración y sus enlaces. La bibliografía general puede incluir referencias citadas más adelante en los apéndices porque el proceso utiliza la información de las pasadas anteriores.
 
 \section{Título, palabras clave y confidencialidad}
 

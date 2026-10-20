@@ -183,9 +183,11 @@ Las casillas de propuesta para Matrícula de Honor dependen de \variable{myTribu
 \setlength{\parskip}{4pt}
 \section{Cómo generar los documentos}
 
-No necesitas Make. Abre el formulario que necesites en tu editor de LaTeX, mantén la estructura de directorios y compílalo con PDFLaTeX desde \fichero{PapeleoTFG/}. Si tu editor lo requiere, establece esa carpeta como directorio de trabajo. En Overleaf, selecciona el fichero del formulario como documento principal. Estas plantillas no necesitan Biber ni \texttt{makeglossaries}; los fragmentos de rúbrica y secciones compartidas no se compilan por separado.
+No necesitas \texttt{make}. Abre el formulario que necesites en tu editor de \LaTeX{}, mantén la estructura de directorios y compílalo con \texttt{pdflatex} desde \fichero{PapeleoTFG/}. Si tu editor lo requiere, establece esa carpeta como directorio de trabajo. Estas plantillas no necesitan \texttt{biber} ni \texttt{makeglossaries}. Los fragmentos de rúbrica y secciones compartidas no se compilan por separado.
 
-Si utilizas Make, ejecuta estas órdenes desde \fichero{PapeleoTFG/}; necesitas \texttt{latexmk} además de la distribución de LaTeX:
+También puedes trabajar en línea. En \texttt{Overleaf}, abre \texttt{Settings} > \texttt{Compiler} > \texttt{Main document}, selecciona el fichero \texttt{.tex} del formulario dentro de \fichero{PapeleoTFG/} y pulsa \texttt{Recompile}. En \texttt{Prism}, selecciona ese fichero en la lista \texttt{Archivos} y pulsa \texttt{Compilar}. Conserva el proyecto completo, incluido \fichero{Config/}, y revisa las condiciones de privacidad del servicio antes de subir datos personales o información confidencial. \fichero{00-README.pdf} explica cómo importar la distribución en estas plataformas.
+
+Si utilizas \texttt{make}, ejecuta estas órdenes desde \fichero{PapeleoTFG/}. Necesitas \texttt{latexmk} y su intérprete \texttt{perl}, además de \texttt{make}, \texttt{bash} y la distribución de \LaTeX{}:
 
 \medskip
 \begin{minipage}{\linewidth}

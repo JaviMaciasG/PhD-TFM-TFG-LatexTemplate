@@ -17,7 +17,7 @@ Sustituye los textos entre corchetes por los datos de tu trabajo y elimina esta 
 
 Configura los datos del documento en `Config/myconfig.tex`, incluido el identificador de tu titulación. Los datos de este README describen el proyecto, pero no configuran la compilación.
 
-El documento principal es `Book/book.tex`. Puedes compilarlo desde tu editor LaTeX habitual o desde Overleaf, con el procesamiento de bibliografía mediante Biber. No necesitas utilizar Make.
+El documento principal es `Book/book.tex`. Puedes compilarlo desde tu editor LaTeX habitual o desde `Overleaf` o `Prism`, con el procesamiento de bibliografía mediante `biber`. No necesitas utilizar `make`.
 
 Para organizar tu contenido, edita `Book/content-standard.tex`; si preparas una tesis por compendio de publicaciones, utiliza `Book/content-compendium.tex` y selecciona esa estructura en `Config/myconfig.tex`.
 

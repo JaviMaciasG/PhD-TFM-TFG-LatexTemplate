@@ -110,7 +110,7 @@ Para que puedas ver el mecanismo en funcionamiento, reiniciamos primero el estad
 
 Si ahora nos referimos a \ac{ETTS}, aparecerá su forma desarrollada por tratarse del primer uso y, al volver a escribir \ac{ETTS}, se mostrará únicamente el acrónimo. También puedes forzar la forma abreviada con \acs{EMODB}, la forma desarrollada con \acl{EMODB} o la forma completa con \acf{EMODB}.
 
-Puedes definir mediante \texttt{\textbackslash{}newglossaryentry} las entradas que necesiten plurales personalizados u otros atributos, como muestra el acrónimo \texttt{SOC} incluido en el fichero de ejemplo. Para generar el listado, ejecuta \texttt{makeglossaries}, tal como se explica en la sección~\ref{sec:compilacion}.
+Puedes definir mediante \texttt{\textbackslash{}newglossaryentry} las entradas que necesiten plurales personalizados u otros atributos, como muestra el acrónimo \texttt{SOC} incluido en el fichero de ejemplo. El listado se prepara automáticamente al compilar desde el editor cuando el entorno permite ejecutar \texttt{makeindex}. Sigue las indicaciones de la sección~\ref{sec:compilacion-editor}. La configuración del \texttt{Makefile} utiliza el script \texttt{makeglossaries}, como se explica en la sección~\ref{sec:compilacion-makefile}.
 
 También puedes comprobar cómo se gestionan los plurales: la primera aparición de \acp{SOC} utiliza la forma desarrollada configurada y, al repetir \acp{SOC}, se muestra su forma abreviada plural. Después podemos volver al singular mediante \ac{SOC}.
 
@@ -121,7 +121,7 @@ Los símbolos se gestionan también mediante \texttt{glossaries}. Se definen en 
 
 Los ejemplos incluidos representan el ángstrom, \ac{angstrom}; el ohmio, \ac{ohm}; una señal de audio, \ac{xdet}; una señal capturada por el micrófono \(i\), \ac{xidet}; y la independencia condicional, \ac{condindep}. Puedes utilizar la orden \texttt{\textbackslash{}ac\{clave\}} tanto con acrónimos como con estas entradas de símbolos.
 
-Las definiciones permanecen disponibles aunque ocultes sus listas. Utiliza \texttt{\textbackslash{}myIncludeListOfAcronyms} y \texttt{\textbackslash{}myIncludeListOfSymbols} en \texttt{Config/myconfig.tex} para decidir si aparecen esas páginas. Si no utilizas acrónimos ni símbolos tampoco necesitarás ejecutar \texttt{makeglossaries}. La sección~\ref{sec:compilacion} explica cuándo debes incorporar esta herramienta al proceso de compilación.
+Las definiciones permanecen disponibles aunque ocultes sus listas. Utiliza \texttt{\textbackslash{}myIncludeListOfAcronyms} y \texttt{\textbackslash{}myIncludeListOfSymbols} en \texttt{Config/myconfig.tex} para decidir si aparecen esas páginas. La generación automática desde el editor se explica en la sección~\ref{sec:compilacion-editor}. No confundas el paquete \texttt{glossaries}, que carga la plantilla, con el script externo \texttt{makeglossaries} utilizado por la vía opcional del \texttt{Makefile}.
 
 \section{Enlaces a vídeos y listados adicionales}
 \label{sec:intro-videolink}
