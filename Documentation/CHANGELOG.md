@@ -2,6 +2,12 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.8.1] - 2026-10-21
+
+### Documentation
+
+- Clarify local and browser setup workflows
+
 ## [v8.8.0] - 2026-10-21
 
 ### Breaking Changes
