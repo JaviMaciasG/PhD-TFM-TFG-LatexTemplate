@@ -2,11 +2,25 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
-## [v8.7.3] - 2026-10-20
+## [v8.8.0] - 2026-10-21
+
+### Breaking Changes
+
+- Register doctoral structures and school-specific degrees
+
 
 ### Bug Fixes
 
 - Localize information sheets and remove dotted placeholders
+
+- Correct UAH academic years and MUCTE date language
+
+- Correct advisor labels and balance URJC cover layouts
+
+
+### Maintenance
+
+- Prepare v8.7.3
 
 ## [v8.7.2] - 2026-10-20
 
@@ -36,6 +50,8 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 ### Maintenance
 
 - Minor adjustments in final section
+
+- Prepare v8.7.2
 
 ## [v8.7.1] - 2026-10-16
 
