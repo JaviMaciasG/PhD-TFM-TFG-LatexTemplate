@@ -21,7 +21,7 @@ Para empezar a escribir, descarga la distribución ZIP o TGZ y descomprímela en
 \section{Prerrequisitos}
 \label{sec:prerrequisitos}
 
-Para empezar te recomiendo trabajar en tu equipo con una distribución de \LaTeX{} completa y actualizada y el editor \href{https://www.texstudio.org/}{\texttt{TeXstudio}}. Si ya utilizas otro editor, puedes seguir haciéndolo. También puedes trabajar desde el navegador con \texttt{Overleaf} o \texttt{Prism}, sin instalar una distribución ni un editor en tu equipo\footnote{Antes de subir tu proyecto a un servicio en línea, revisa sus condiciones de privacidad y, si utilizas funciones de IA, los controles de uso de datos. Si contiene información confidencial, datos personales o material sujeto a acuerdos con terceros, consulta primero con tu tutor o institución. Una instalación local permite trabajar sin subir el proyecto a estos servicios.}. Las secciones~\ref{sec:compilacion-overleaf} y~\ref{sec:compilacion-prism} explican esas alternativas.
+Para empezar te recomiendo trabajar en tu equipo con una distribución de \LaTeX{} completa y actualizada y el editor \href{https://www.texstudio.org/}{\texttt{TeXstudio}}. Si ya utilizas otro editor, puedes seguir haciéndolo. También puedes trabajar desde el navegador con \texttt{Overleaf} o \texttt{Prism}, sin instalar una distribución ni un editor en tu equipo\footnote{Antes de subir tu proyecto a un servicio en línea, revisa sus condiciones de privacidad y, si utilizas funciones de IA, los controles de uso de datos. Si contiene información confidencial, datos personales o material sujeto a acuerdos con terceros, consulta primero con tu tutor o institución. Una instalación local permite trabajar sin subir el proyecto a estos servicios.}. La sección~\ref{sec:entorno-navegador} describe sus requisitos y limitaciones, y la sección~\ref{sec:compilacion-navegador} explica cómo generar tu primer PDF con ellas.
 
 La plantilla utiliza \texttt{biber} para preparar la bibliografía. Las distribuciones indicadas a continuación proporcionan esa herramienta, y solo tendrás que seleccionarla en el editor como se explica en la sección~\ref{sec:configurar-texstudio}. No necesitas aprender a ejecutarla por separado para seguir este recorrido.
 
@@ -86,7 +86,28 @@ Si los menús están en inglés, busca \texttt{Options} > \texttt{Configure TeXs
 
 \texttt{TeXstudio} utiliza \texttt{pdflatex} de forma predeterminada. Si no has cambiado el compilador, puedes dejarlo como está. Si utilizas otro editor, selecciona \texttt{biber} como procesador bibliográfico y comprueba que su compilador sea \texttt{pdflatex}.
 
-\subsection{Alternativa opcional con \texttt{make}}
+\subsection{Si prefieres trabajar desde el navegador}
+\label{sec:entorno-navegador}
+
+Estas alternativas te permiten trabajar sin instalar \LaTeX{} en tu equipo. Revisa los requisitos y limitaciones del servicio que elijas antes de subir tu proyecto, y ten en cuenta la nota sobre privacidad de la sección~\ref{sec:prerrequisitos}.
+
+\subsubsection{\texttt{Overleaf}}
+\label{sec:entorno-overleaf}
+
+Con \href{https://www.overleaf.com/}{\texttt{Overleaf}} puedes trabajar desde el navegador. Sólo necesitas una cuenta y conexión a Internet. Su guía de primeros pasos puede servirte de apoyo~\cite{overleaf-first-project}.
+
+Ojo: con el plan gratuito es casi seguro que no podrás compilar el manual completo porque el tiempo disponible es muy limitado. Si se agota, no significa que hayas hecho algo mal. Puedes utilizar una instalación local o, después de revisar el manual precompilado, probar con la estructura mínima de la sección~\ref{sec:estructura-minima} y prescindir del material de ejemplo que no necesites. Un documento más pequeño puede caber en el límite de tiempo, pero no puedo garantizártelo.
+
+La sección~\ref{sec:compilacion-overleaf} explica cómo importar la distribución y compilarla.
+
+\subsubsection{\texttt{Prism}}
+\label{sec:entorno-prism}
+
+\href{https://prism.openai.com/}{\texttt{Prism}} es otra alternativa para trabajar con \LaTeX{} desde el navegador, con funciones de asistencia mediante IA. Necesitas una cuenta de \texttt{ChatGPT} con acceso a \texttt{Prism} y conexión a Internet, pero no instalar \LaTeX{} ni \texttt{TeXstudio}. He comprobado que la distribución de la plantilla se importa y compila sin modificaciones. Antes de subir tu trabajo, revisa las condiciones de privacidad y los controles de uso de datos, como indicamos en la sección~\ref{sec:prerrequisitos}. Puedes consultar también la \href{https://help.openai.com/en/articles/20001050-troubleshooting-and-getting-help-in-prism}{información oficial de \texttt{Prism}}.
+
+La sección~\ref{sec:compilacion-prism} te guía para generar tu primer PDF sin pedirte que utilices las funciones de IA.
+
+\subsection{Si te manejas con el terminal: herramientas opcionales para \texttt{make}}
 
 \texttt{make} permite automatizar tareas, pero tu editor es una alternativa igualmente válida. Para utilizar el \texttt{Makefile} suministrado necesitas, además de la distribución de \LaTeX{} y \texttt{biber}, las herramientas \texttt{make}, \texttt{bash}, \texttt{latexmk}, \texttt{perl} y \texttt{makeglossaries}. El objetivo predeterminado utiliza también \texttt{Ghostscript} para generar una copia comprimida. Encontrarás el procedimiento y las herramientas adicionales para convertir figuras y diagramas en la sección~\ref{sec:compilacion-makefile}.
 
@@ -108,10 +129,15 @@ Si recibes un aviso de que falta un fichero \texttt{.sty}, instala el paquete co
 
 El PDF resultante es este manual y una colección de ejemplos. Revísalo para orientarte, sin necesidad de leerlo entero. Cuando todo funcione, continúa con la sección~\ref{sec:primera-personalizacion}.
 
-\subsection{Overleaf}
+\subsection{Si trabajas desde el navegador}
+\label{sec:compilacion-navegador}
+
+Después de descargar la distribución, utiliza el ZIP sin descomprimir para importar el proyecto en el servicio que hayas elegido. Antes de empezar, revisa los requisitos y limitaciones de \texttt{Overleaf} en la sección~\ref{sec:entorno-overleaf} o de \texttt{Prism} en la sección~\ref{sec:entorno-prism}.
+
+\subsubsection{Compila el ejemplo en \texttt{Overleaf}}
 \label{sec:compilacion-overleaf}
 
-Si prefieres trabajar desde el navegador, puedes utilizar \href{https://www.overleaf.com/}{\texttt{Overleaf}}. Su guía de primeros pasos puede servirte de apoyo~\cite{overleaf-first-project}. Para importar y compilar la plantilla sigue estos pasos:
+Para importar y compilar la plantilla sigue estos pasos:
 
 \begin{itemize}
   \item Inicia sesión y selecciona \texttt{New Project} > \texttt{Upload Project}.
@@ -122,14 +148,14 @@ Si prefieres trabajar desde el navegador, puedes utilizar \href{https://www.over
 
 \texttt{Overleaf} gestiona la cadena de construcción, incluida la bibliografía, sin que tengas que configurar \texttt{biber} por separado ni ejecutar el \texttt{Makefile}. Comprueba que aparezcan las referencias y los listados de acrónimos y símbolos. Si alguno no se actualiza, revisa el documento principal seleccionado y prueba a recompilar el proyecto desde cero.
 
-Ojo: con el plan gratuito es casi seguro que no podrás compilar el manual completo porque el tiempo disponible es muy limitado. Si se agota, no significa que hayas hecho algo mal. Puedes utilizar una instalación local o, después de revisar el manual precompilado, probar con la estructura mínima de la sección~\ref{sec:estructura-minima} y prescindir del material de ejemplo que no necesites. Un documento más pequeño puede caber en el límite de tiempo, pero no puedo garantizártelo.
+Si se agota el tiempo de compilación, revisa el aviso de la sección~\ref{sec:entorno-overleaf}.
 
 Para compilar otro documento independiente, como \texttt{Anteproyecto/anteproyecto.tex} o un formulario administrativo, selecciónalo en el mismo campo \texttt{Main document}. Para trabajar en los capítulos del libro, mantén seleccionado \texttt{Book/book.tex}.
 
-\subsection{Prism}
-\label{sec:compilacion-prism}
+Después continúa con la primera personalización de la sección~\ref{sec:primera-personalizacion}.
 
-\href{https://prism.openai.com/}{\texttt{Prism}} es otra alternativa para trabajar con \LaTeX{} desde el navegador, con funciones de asistencia mediante IA. Necesitas una cuenta de \texttt{ChatGPT} con acceso a \texttt{Prism} y conexión a Internet, pero no instalar \LaTeX{} ni \texttt{TeXstudio}. He comprobado que la distribución de la plantilla se importa y compila sin modificaciones. Antes de subir tu trabajo, revisa las condiciones de privacidad y los controles de uso de datos, como indicamos en la sección~\ref{sec:prerrequisitos}. Puedes consultar también la \href{https://help.openai.com/en/articles/20001050-troubleshooting-and-getting-help-in-prism}{información oficial de \texttt{Prism}}.
+\subsubsection{Compila el ejemplo en \texttt{Prism}}
+\label{sec:compilacion-prism}
 
 Para generar tu primer PDF sin solicitar cambios al asistente de IA, sigue estos pasos:
 
@@ -141,6 +167,8 @@ Para generar tu primer PDF sin solicitar cambios al asistente de IA, sigue estos
 \end{itemize}
 
 Para compilar el anteproyecto o un formulario independiente, selecciona su fichero en \texttt{Archivos} y pulsa \texttt{Compilar}. Si estás escribiendo un capítulo del libro, selecciona \texttt{Book/book.tex} para compilar el documento completo, no el fichero del capítulo. No necesitas ejecutar el \texttt{Makefile} ni utilizar las funciones de IA para compilar.
+
+Después continúa con la primera personalización de la sección~\ref{sec:primera-personalizacion}.
 
 \section{Los archivos que realmente necesitas conocer}
 \label{sec:archivos-esenciales}

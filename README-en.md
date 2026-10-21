@@ -23,9 +23,11 @@ By simply filling in a few configuration details, you let the template take care
 
 ## Start here: the short version
 
+To get started, I recommend a local installation with `TeXstudio`. If you need to work in your browser, you'll find the alternatives further down.
+
 Here's the route I suggest (use the links to jump to the section of this document where I explain the details):
 
-1. **[Set up your environment](#set-up-your-environment)**: a local installation with `TeXstudio` or a project in `Overleaf` or `Prism`.
+1. **[Set up your environment](#set-up-your-environment)** to work locally with `TeXstudio`.
 2. **[Download and extract the student distribution](#download-and-extract-the-student-distribution)**.
 3. **[Compile the example without changing anything](#compile-the-example-without-changing-anything)** to check that everything works and consult the manual it generates.
 4. **[Enter your details and compile again](#enter-your-details-and-compile-again)** to check them in the PDF.
@@ -35,7 +37,7 @@ If the PDF shows your name and your thesis title, you've got the template workin
 
 ## Set up your environment
 
-To get started, I recommend working on your own computer with a LaTeX distribution and [`TeXstudio`](https://www.texstudio.org/). If you already use another editor, you can keep using it. You can also work in your browser with `Overleaf` or `Prism`.[^privacidad]
+To get started, I recommend working on your own computer with a LaTeX distribution and [`TeXstudio`](https://www.texstudio.org/). If you already use another editor, you can keep using it. You can also [work in your browser](#if-you-prefer-working-in-your-browser) with `Overleaf` or `Prism`.[^privacidad]
 
 [^privacidad]: Before uploading your project to an online service, review its privacy terms and, if you use AI features, its data-use controls. If your project contains confidential information, personal data or material covered by agreements with third parties, check with your advisor or institution first. A local installation lets you work without uploading your project to these services.
 
@@ -81,13 +83,17 @@ The template uses `biber` to prepare bibliographic references. You only need to 
 
 If the menus are in English, look for `Options` > `Configure TeXstudio` (or `TeXstudio` > `Preferences` on macOS), then `Build` > `Default Bibliography Tool` > `Biber`.
 
-### `Overleaf`
+### If you prefer working in your browser
+
+These alternatives let you work without installing LaTeX on your computer. Review the requirements and limitations of your chosen service before uploading your project.
+
+#### `Overleaf`
 
 With [`Overleaf`](https://www.overleaf.com/), you can work in your browser without installing LaTeX or `TeXstudio` on your computer.[^privacidad] You only need an account and an Internet connection. The instructions for importing the template are in [Compile the example in `Overleaf`](#compile-the-example-in-overleaf).
 
 A word of warning: on the free plan, you almost certainly won't be able to compile the complete manual because that version of `Overleaf` has a very restrictive compilation time limit. If it times out, it doesn't mean you've done anything wrong. You can use a local installation or, after reviewing the precompiled manual, try the minimal structure and leave out any example material you don't need. A smaller document may fit within the time limit, but I can't guarantee it.
 
-### `Prism`
+#### `Prism`
 
 [`Prism`](https://prism.openai.com/) is another option for working with LaTeX in your browser, with AI assistance features.[^privacidad] You need a `ChatGPT` account with access to `Prism` and an Internet connection, but you don't need to install LaTeX or `TeXstudio`. I've checked that the template distribution imports and compiles without modifications.
 
@@ -97,7 +103,7 @@ The instructions in [Compile the example in `Prism`](#compile-the-example-in-pri
 
 `make` is an optional alternative to the editor for automating tasks. Besides the LaTeX distribution and `biber`, this route needs `make`, `bash`, `latexmk`, `perl` and `makeglossaries` (if any of these tools is missing from your distribution, you'll get a clear error message and can simply install what's missing). The book's default target also uses `Ghostscript` to generate a compressed copy. The manual explains these requirements and the additional tools for converting certain figure and diagram formats.
 
-**You don't need to use the terminal or** `make` **to work with the template**: your LaTeX editor is an equally valid alternative. If you choose this route, you'll find the instructions in [Optional compilation with `make`](#optional-compilation-with-make).
+**You don't need to use the terminal or** `make` **to work with the template**: your LaTeX editor is an equally valid alternative. If you choose this route, you'll find the instructions in [If you're comfortable with the terminal: optional compilation with `make`](#if-youre-comfortable-with-the-terminal-optional-compilation-with-make).
 
 ## Your first PDF, step by step
 
@@ -119,13 +125,21 @@ The template automatically generates the lists of acronyms and symbols. When usi
 
 The resulting PDF confirms that your environment works and serves as the template manual and a collection of examples. Browse it to get your bearings, without having to read it all. If this first compilation fails, check [Common problems](#common-problems) before changing other files.
 
-### Compile the example in `Overleaf`
+### If you work in your browser
+
+After [downloading the distribution](#download-and-extract-the-student-distribution), use the `zip` file without extracting it to import the project into your chosen service.
+
+Before importing the project, review the requirements and limitations of [`Overleaf`](#overleaf) or [`Prism`](#prism), as appropriate.
+
+#### Compile the example in `Overleaf`
 
 Log in to `Overleaf`, create a project through `New Project` > `Upload Project` and upload the distribution `zip` without extracting it. Open `Settings` > `Compiler` > `Main document` and select `Book/book.tex`. Check that the compiler is `pdfLaTeX` and click `Recompile`. You don't need to configure `biber` separately. If compilation times out, review the warning in the [`Overleaf`](#overleaf) section.
 
 When you want to compile another standalone document, such as `Anteproyecto/anteproyecto.tex` or a paperwork form, select it in the same `Main document` field. To work on the book's chapters, keep `Book/book.tex` selected, not the individual chapter file.
 
-### Compile the example in `Prism`
+Then continue with [Enter your details and compile again](#enter-your-details-and-compile-again).
+
+#### Compile the example in `Prism`
 
 Log in to `Prism` and, in the project list, open the `Import` dropdown and select `Import a .zip file`. Upload the distribution `zip` without extracting it and wait for the complete project to import, including `Book/` and `Config/`. Select `Book/book.tex` in the `Archivos` list and click `Compilar`. Check the result in the PDF view before changing any files. You don't need to run the `Makefile` or ask the AI assistant to make changes for this first test.
 
@@ -149,7 +163,7 @@ These details let you check the initial personalisation. Leave the advanced opti
 
 Compile `Book/book.tex` again and check that your name, title and degree appear correctly. Also check that the advisors' names and any dates you've entered have been updated if your degree's layout displays those details, as the UAH layouts do. Don't leave the example details in the version you submit. `Book/book.tex` is the file you compile, but you normally won't need to edit it: configuration and content are kept separate.
 
-### Optional compilation with `make`
+### If you're comfortable with the terminal: optional compilation with `make`
 
 If you've installed the tools described in [If you're comfortable with the terminal](#if-youre-comfortable-with-the-terminal), open a terminal in `Book/` and run:
 

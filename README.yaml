@@ -13,7 +13,7 @@ header-includes:
     % Mantén el índice completo en una página al ampliar las subsecciones.
     \let\readmeOriginalToc\tableofcontents
     \renewcommand{\tableofcontents}{%
-      \begingroup\small\readmeOriginalToc\endgroup}
+      \begingroup\footnotesize\readmeOriginalToc\endgroup}
     % Mantén el correo en una sola línea, sin cambiar su enlace en Markdown.
     \AtBeginDocument{%
       % Pandoc repite el texto de las notas reutilizadas en Markdown.

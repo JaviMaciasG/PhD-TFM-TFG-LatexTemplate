@@ -23,9 +23,11 @@ Con sólo definir, de forma muy sencilla, unos pocos datos de configuración, la
 
 ## Empieza aquí: la versión corta
 
+Para empezar, te recomiendo una instalación local con `TeXstudio`. Si necesitas trabajar desde el navegador, encontrarás las alternativas más adelante.
+
 Este es el recorrido que te propongo (usa los enlaces para ir a la sección de este documento donde te doy detalles):
 
-1. **[Prepara tu entorno](#prepara-tu-entorno)**: una instalación local con `TeXstudio` o un proyecto en `Overleaf` o `Prism`.
+1. **[Prepara tu entorno](#prepara-tu-entorno)** para trabajar en tu equipo con `TeXstudio`.
 2. **[Descarga y descomprime la distribución para estudiantes](#descarga-y-descomprime-la-distribución-para-estudiantes)**.
 3. **[Compila el ejemplo sin modificar nada](#compila-el-ejemplo-sin-modificar-nada)** para comprobar que todo funciona y consultar el manual que genera.
 4. **[Introduce tus datos y compila de nuevo](#introduce-tus-datos-y-compila-de-nuevo)** para comprobarlos en el PDF.
@@ -35,7 +37,7 @@ Si el PDF muestra tu nombre y el título de tu trabajo, ya tienes la plantilla f
 
 ## Prepara tu entorno
 
-Para empezar te recomiendo trabajar en tu equipo con una distribución de LaTeX y [`TeXstudio`](https://www.texstudio.org/). Si ya utilizas otro editor, puedes seguir haciéndolo. También puedes trabajar desde el navegador con `Overleaf` o `Prism`.[^privacidad]
+Para empezar te recomiendo trabajar en tu equipo con una distribución de LaTeX y [`TeXstudio`](https://www.texstudio.org/). Si ya utilizas otro editor, puedes seguir haciéndolo. También puedes [trabajar desde el navegador](#si-prefieres-trabajar-desde-el-navegador) con `Overleaf` o `Prism`.[^privacidad]
 
 [^privacidad]: Antes de subir tu proyecto a un servicio en línea, revisa sus condiciones de privacidad y, si utilizas funciones de IA, los controles de uso de datos. Si contiene información confidencial, datos personales o material sujeto a acuerdos con terceros, consulta primero con tu tutor o institución. Una instalación local permite trabajar sin subir el proyecto a estos servicios.
 
@@ -81,13 +83,17 @@ La plantilla utiliza `biber` para preparar las referencias bibliográficas. Sól
 
 Si los menús están en inglés, busca `Options` > `Configure TeXstudio` (o `TeXstudio` > `Preferences` en macOS) y después `Build` > `Default Bibliography Tool` > `Biber`.
 
-### `Overleaf`
+### Si prefieres trabajar desde el navegador
+
+Estas alternativas te permiten trabajar sin instalar LaTeX en tu equipo. Revisa los requisitos y limitaciones del servicio que elijas antes de subir tu proyecto.
+
+#### `Overleaf`
 
 Con [`Overleaf`](https://www.overleaf.com/) puedes trabajar desde el navegador, sin instalar LaTeX ni `TeXstudio` en tu equipo.[^privacidad] Sólo necesitas una cuenta y conexión a Internet. Las instrucciones para importar la plantilla están en [Compila el ejemplo en `Overleaf`](#compila-el-ejemplo-en-overleaf).
 
 Ojo: con el plan gratuito es casi seguro que no podrás compilar el manual completo porque esa versión de `Overleaf` limita mucho el tiempo de compilación. Si se agota ese tiempo, no significa que hayas hecho algo mal. Puedes utilizar una instalación local o, después de revisar el manual precompilado, probar con la estructura mínima y prescindir del material de ejemplo que no necesites. Un documento más pequeño puede caber en el límite de tiempo, pero no puedo garantizártelo.
 
-### `Prism`
+#### `Prism`
 
 [`Prism`](https://prism.openai.com/) es otra alternativa para trabajar con LaTeX desde el navegador, con funciones de asistencia mediante IA.[^privacidad] Necesitas una cuenta de `ChatGPT` con acceso a `Prism` y conexión a Internet, pero no instalar LaTeX ni `TeXstudio`. He comprobado que la distribución de la plantilla se importa y compila sin modificaciones.
 
@@ -97,7 +103,7 @@ Las instrucciones de [Compila el ejemplo en `Prism`](#compila-el-ejemplo-en-pris
 
 `make` es una alternativa opcional al editor para automatizar tareas. Además de la distribución de LaTeX y `biber`, esta vía necesita `make`, `bash`, `latexmk`, `perl` y `makeglossaries` (si te falta alguna de esas herramientas en tu distribución, te dará un claro mensaje de error y basta con instalar lo que falte). El objetivo predeterminado del libro utiliza también `Ghostscript` para generar una copia comprimida. El manual detalla estos requisitos y las herramientas adicionales para convertir determinados formatos de figuras y diagramas.
 
-**No necesitas utilizar la terminal ni** `make` **para trabajar con la plantilla**: tu editor de LaTeX es una alternativa igualmente válida. Si eliges esta vía, encontrarás las instrucciones en [Compilación opcional con `make`](#compilación-opcional-con-make).
+**No necesitas utilizar la terminal ni** `make` **para trabajar con la plantilla**: tu editor de LaTeX es una alternativa igualmente válida. Si eliges esta vía, encontrarás las instrucciones en [Si te manejas con el terminal: compilación opcional con `make`](#si-te-manejas-con-el-terminal-compilación-opcional-con-make).
 
 ## Tu primer PDF, paso a paso
 
@@ -119,13 +125,21 @@ La plantilla genera automáticamente las listas de acrónimos y símbolos. Para 
 
 El PDF resultante es una prueba de que tu entorno funciona, el manual de la plantilla y una colección de ejemplos. Revísalo para orientarte, sin necesidad de leerlo entero. Si esta primera compilación falla, consulta [Problemas frecuentes](#problemas-frecuentes) antes de cambiar otros archivos.
 
-### Compila el ejemplo en `Overleaf`
+### Si trabajas desde el navegador
+
+Después de [descargar la distribución](#descarga-y-descomprime-la-distribución-para-estudiantes), utiliza el archivo `zip` sin descomprimir para importar el proyecto en el servicio que hayas elegido.
+
+Antes de importar el proyecto, revisa los requisitos y limitaciones de [`Overleaf`](#overleaf) o [`Prism`](#prism), según corresponda.
+
+#### Compila el ejemplo en `Overleaf`
 
 Inicia sesión en `Overleaf`, crea un proyecto mediante `New Project` > `Upload Project` y sube el `zip` de la distribución sin descomprimir. Abre `Settings` > `Compiler` > `Main document` y selecciona `Book/book.tex`. Comprueba que el compilador sea `pdfLaTeX` y pulsa `Recompile`. No necesitas configurar `biber` por separado. Si se agota el tiempo de compilación, revisa el aviso del apartado [`Overleaf`](#overleaf).
 
 Cuando quieras compilar otro documento independiente, como `Anteproyecto/anteproyecto.tex` o un formulario del papeleo, selecciónalo en ese mismo campo `Main document`. Para trabajar en los capítulos del libro, mantén seleccionado `Book/book.tex`, no el archivo de cada capítulo.
 
-### Compila el ejemplo en `Prism`
+Después continúa con [Introduce tus datos y compila de nuevo](#introduce-tus-datos-y-compila-de-nuevo).
+
+#### Compila el ejemplo en `Prism`
 
 Inicia sesión en `Prism` y, en la lista de proyectos, abre el desplegable `Import` y selecciona `Import a .zip file`. Sube el `zip` de la distribución sin descomprimir y espera a que se importe el proyecto completo, incluidos `Book/` y `Config/`. Selecciona `Book/book.tex` en la lista `Archivos` y pulsa `Compilar`. Comprueba el resultado en la vista del PDF antes de modificar ningún archivo. No necesitas ejecutar el `Makefile` ni solicitar cambios al asistente de IA para esta primera prueba.
 
@@ -149,7 +163,7 @@ Con estos datos puedes comprobar la personalización inicial. Deja las opciones 
 
 Vuelve a compilar `Book/book.tex` y comprueba que aparecen tu nombre, el título y la titulación correctos. Comprueba también que se hayan actualizado los nombres de los tutores y las fechas que hayas introducido si el modelo de tu titulación muestra esos datos, como ocurre en los modelos de la UAH. No dejes los datos de ejemplo en la versión que entregues. `Book/book.tex` es el archivo que compilas, pero normalmente no tendrás que editarlo: la configuración y el contenido están separados.
 
-### Compilación opcional con `make`
+### Si te manejas con el terminal: compilación opcional con `make`
 
 Si has preparado las herramientas del apartado [Si te manejas con la terminal](#si-te-manejas-con-la-terminal), abre una terminal en `Book/` y ejecuta:
 
