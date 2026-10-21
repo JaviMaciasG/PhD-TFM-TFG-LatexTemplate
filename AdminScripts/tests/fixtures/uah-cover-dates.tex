@@ -1,0 +1,21 @@
+% Fixture: verify cover dates without compiling the full manual.
+\documentclass[openright]{book}
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\renewcommand{\myDegree}{\CoverTestDegree}
+\renewcommand{\myLanguage}{\CoverTestLanguage}
+\renewcommand{\myTypesettingStyle}{standard}
+\renewcommand{\myThesisAcademicYear}{2030/2031}
+\renewcommand{\myThesisDefenseYear}{2032}
+\renewcommand{\myThesisDefenseDate}{24 de junio de 2032}
+\renewcommand{\myThesisdefenseDateEnglish}{June 24\textsuperscript{th}, 2032}
+\input{../Config/glossaries.tex}
+\input{../Config/postamble.tex}
+\input{../Config/typesetting/typesetting.tex}
+\graphicspath{{./logos/}}
+\begin{document}
+\frontmatter
+\input{../Config/setlanguagedependentissues.tex}
+\ThesisInstitutionalPage{cover/cover.tex}
+\ThesisInstitutionalPage{cover/backpage.tex}
+\end{document}
