@@ -34,6 +34,7 @@ source_root="$fixture/repository"
 mkdir -p "$source_root/Documentation/es" "$source_root/AdminScripts" \
   "$source_root/Book" "$source_root/Config" "$source_root/Anteproyecto" \
   "$source_root/PapeleoTFG" "$source_root/PapeleoTFM" "$fixture/bin"
+mkdir -p "$source_root/Book/appendix/orig" "$source_root/Book/cover/urjc"
 cp "$repository_root/AdminScripts/go.build-distribution.sh" "$source_root/AdminScripts/"
 cp "$repository_root/Documentation/es/README-PROYECTO.md" "$source_root/Documentation/es/"
 for tool in pymupdf pandoc make; do
@@ -42,6 +43,8 @@ for tool in pymupdf pandoc make; do
 done
 for file in .gitignore .latexmkrc LICENSE Makefile sync-git-sources.sh \
   Book/book.tex Config/myconfig.tex Anteproyecto/anteproyecto.tex \
+  Book/appendix/titulaciones-soportadas.tex Book/appendix/orig/titulaciones-soportadas.tex \
+  Book/cover/urjc/portada-tfg-eif-urjc.tex \
   PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex \
   Documentation/es/TYPESETTING-STYLES-GUIDE.md; do
   printf 'Fixture source\n' >"$source_root/$file"
@@ -67,6 +70,7 @@ unzip -q "$source_root/$base.zip" -d "$fixture/zip"
 for unpacked in "$fixture/tgz" "$fixture/zip"; do
   cmp "$source_root/Documentation/es/README-PROYECTO.md" "$unpacked/README.md"
   [[ -s $unpacked/00-README.pdf && -s $unpacked/Book/book.tex && -s $unpacked/Config/myconfig.tex ]]
+  [[ -s $unpacked/Book/appendix/titulaciones-soportadas.tex && -s $unpacked/Book/cover/urjc/portada-tfg-eif-urjc.tex ]]
   [[ ! -e $unpacked/Documentation && ! -e $unpacked/README-en.md && ! -e $unpacked/README-PROYECTO.md ]]
 done
 diff -r "$fixture/tgz" "$fixture/zip"

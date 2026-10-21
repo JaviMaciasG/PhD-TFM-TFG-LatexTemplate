@@ -298,8 +298,7 @@ You can compile the `.tex` file for an individual form from your editor or use t
 
 For a doctoral thesis by compendium:
 
-- Select the doctoral programme through `\myDegree`.
-- Set `\myDocumentStructure` to `compendium` in `Config/myconfig.tex`.
+- Select `PHDUAH-COMPENDIUM` or `PHD-ETSIT-UPM-COMPENDIUM` through `\myDegree` in `Config/myconfig.tex`, according to your university.
 - Organise the content in `Book/content-compendium.tex`.
 - Keep compiling `Book/book.tex`.
 

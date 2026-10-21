@@ -4,7 +4,7 @@ This document combines the current degree and layout-profile tables from Config/
 
 ## Non-UAH identifier convention
 
-Non-UAH degree identifiers use `<degree>-<university>`, for example `ITI-URJC`, `GIB-UPM` and `MUIT-UPM`. School-specific identifiers can add the school acronym, as in `PHD-ETSIT-UPM`. Generated PDF filenames use these same identifiers.
+Non-UAH degree identifiers use `<degree>-<school>-<university>`, for example `ITI-ESCET-URJC`, `GIB-ETSIT-UPM` and `MUIT-ETSIT-UPM`. UPM identifiers use `ETSIT` as the school acronym, including `PHD-ETSIT-UPM`. Generated PDF filenames use these same identifiers. URJC identifiers always include the school: `<degree>-<school>-URJC`, for example `ITI-ESCET-URJC` or `GII-ETSII-URJC`.
 
 ## Migration rules
 
@@ -46,7 +46,6 @@ The table follows the order of Config/degrees.tex. Work type is the canonical va
 | `GII` | Active | Grado en Ingeniería Informática | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GMC` | Active | Grado en Matemáticas y Computación | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GIS` | Active | Grado en Sistemas de Información | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
-| `GSI` | Legacy | Grado en Sistemas de Información | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GISI` | Active | Grado en Ingeniería en Sistemas de Información | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GIEAI` | Active | Grado en Ingeniería en Electrónica y Automática Industrial | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GITI` | Active | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
@@ -56,18 +55,31 @@ The table follows the order of Config/degrees.tex. Work type is the canonical va
 | `GQ` | Active | Grado en Química | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GCA` | Active | Grado en Ciencias Ambientales | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GCCTF` | Active | Grado en Criminalística: Ciencias y Tecnologías Forenses | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
-| `ITI-URJC` | Active | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo Fin de Grado / Bachelor's Thesis | `urjc-iti-tfg` |
-| `GCID-URJC` | Active | Grado en Ciencia e Ingeniería de Datos | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GDDV-URJC` | Active | Grado en Diseño y Desarrollo de Videojuegos | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GII-URJC` | Active | Grado en Ingeniería Informática | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GICO-URJC` | Active | Grado en Ingeniería de Computadores | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GICI-URJC` | Active | Grado en Ingeniería de la Ciberseguridad | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GIS-URJC` | Active | Grado en Ingeniería del Software | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GIA-URJC` | Active | Grado en Inteligencia Artificial | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GMAT-URJC` | Active | Grado en Matemáticas | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GISTS-UPM` | Active | Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
-| `GIB-UPM` | Active | Grado en Ingeniería Biomédica | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
-| `GISD-UPM` | Active | Grado en Ingeniería y Sistemas de Datos | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-gisd-tfg` |
+| `ITI-ESCET-URJC` | Active | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo Fin de Grado / Bachelor's Thesis | `urjc-iti-tfg` |
+| `GCID-ETSII-URJC` | Active | Grado en Ciencia e Ingeniería de Datos | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GDDV-ETSII-URJC` | Active | Grado en Diseño y Desarrollo de Videojuegos | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GII-ETSII-URJC` | Active | Grado en Ingeniería Informática | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GICO-ETSII-URJC` | Active | Grado en Ingeniería de Computadores | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GICI-ETSII-URJC` | Active | Grado en Ingeniería de la Ciberseguridad | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GIS-ETSII-URJC` | Active | Grado en Ingeniería del Software | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GIA-ETSII-URJC` | Active | Grado en Inteligencia Artificial | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GMAT-ETSII-URJC` | Active | Grado en Matemáticas | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GISAM-EIF-URJC` | Active | Grado en Ingeniería en Sistemas Audiovisuales y Multimedia | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIST-EIF-URJC` | Active | Grado en Ingeniería en Sistemas de Telecomunicación | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIT-EIF-URJC` | Active | Grado en Ingeniería en Telemática | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GITT-EIF-URJC` | Active | Grado en Ingeniería en Tecnologías de Telecomunicación | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIAA-EIF-URJC` | Active | Grado en Ingeniería Aeroespacial en Aeronavegación | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIATA-EIF-URJC` | Active | Grado en Ingeniería Aeroespacial en Transporte y Aeropuertos | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIAVA-EIF-URJC` | Active | Grado en Ingeniería Aeroespacial en Vehículos Aeroespaciales | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIA-EIF-URJC` | Active | Grado en Ingeniería Aeroespacial | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIB-EIF-URJC` | Active | Grado en Ingeniería Biomédica | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIRS-EIF-URJC` | Active | Grado en Ingeniería de Robótica Software | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GCID-EIF-URJC` | Active | Grado en Ciencia e Ingeniería de Datos | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GP-EIF-URJC` | Active | Grado en Paisajismo | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GFA-EIF-URJC` | Active | Grado en Fundamentos de la Arquitectura | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GISTS-ETSIT-UPM` | Active | Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
+| `GIB-ETSIT-UPM` | Active | Grado en Ingeniería Biomédica | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
+| `GISD-ETSIT-UPM` | Active | Grado en Ingeniería y Sistemas de Datos | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-gisd-tfg` |
 | `MUSEA` | Active | Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
 | `MUIT` | Active | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
 | `MUII` | Active | Máster Universitario en Ingeniería Industrial | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
@@ -75,16 +87,18 @@ The table follows the order of Config/degrees.tex. Work type is the canonical va
 | `MUCTE` | Active | Máster Universitario en Ciencia y Tecnología desde el Espacio | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-mucte` |
 | `MUANBD` | Active | Máster Universitario en Analítica de Negocio y Big Data | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muanbd` |
 | `MUC` | Active | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muc-2026` |
-| `MUIT-UPM` | Active | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
-| `MUCS-UPM` | Active | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
-| `MUESFV-UPM` | Active | Máster Universitario en Energía Solar Fotovoltaica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
-| `MUIB-UPM` | Active | Máster Universitario en Ingeniería Biomédica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
-| `MUIRST-UPM` | Active | Máster Universitario en Ingeniería de Redes y Servicios Telemáticos | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
-| `MUISE-UPM` | Active | Máster Universitario en Ingeniería de Sistemas Electrónicos | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
-| `MUTSC-UPM` | Active | Máster Universitario en Teoría de la Señal y Comunicaciones | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
-| `MUNE-UPM` | Active | Máster Universitario en Neurotecnología | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-mune-tfm` |
+| `MUIT-ETSIT-UPM` | Active | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUCS-ETSIT-UPM` | Active | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUESFV-ETSIT-UPM` | Active | Máster Universitario en Energía Solar Fotovoltaica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUIB-ETSIT-UPM` | Active | Máster Universitario en Ingeniería Biomédica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUIRST-ETSIT-UPM` | Active | Máster Universitario en Ingeniería de Redes y Servicios Telemáticos | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUISE-ETSIT-UPM` | Active | Máster Universitario en Ingeniería de Sistemas Electrónicos | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUTSC-ETSIT-UPM` | Active | Máster Universitario en Teoría de la Señal y Comunicaciones | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUNE-ETSIT-UPM` | Active | Máster Universitario en Neurotecnología | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-mune-tfm` |
 | `PHDUAH` | Active | Estudios de Doctorado | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
 | `PHD-ETSIT-UPM` | Active | Doctor Ingeniero de Telecomunicación | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
+| `PHDUAH-COMPENDIUM` | Active variant | Inherits `PHDUAH` | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
+| `PHD-ETSIT-UPM-COMPENDIUM` | Active variant | Inherits `PHD-ETSIT-UPM` | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
 | `GEINTRARR` | Experimental | GEINTRA Research Report | `RR` | Informe técnico del Grupo de investigación \myResearchGroup{} / \myResearchGroup{} Research Report | `geintra-report` |
 
 ## Current layout profile definitions
@@ -96,6 +110,8 @@ The table reproduces the entries in Config/layout-profiles.tex. Files are includ
 | `uah-tfc` | `cover/uah/portada-pfc-uah.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | None |
 | `uah-tfg-2024` | `cover/uah/portada-tfg-uah-2024.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfg-uah-2024.tex` |
 | `urjc-iti-tfg` | `cover/urjc/portada-tfg-urjc.tex`, then `cover/urjc/cover-pfc-tfg-tfm-urjc.tex` | `cover/urjc/backpage-tfg-urjc.tex` |
+| `urjc-etsii-tfg` | `cover/urjc/portada-tfg-etsii-urjc.tex` | `cover/urjc/backpage-tfg-etsii-urjc.tex` |
+| `urjc-eif-tfg` | `cover/urjc/portada-tfg-eif-urjc.tex` | None |
 | `uah-tfm-eps` | `cover/uah/portada-tfm-normativa-eps.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
 | `uah-mucte` | `cover/uah/cover-tfm-mucte.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
 | `uah-muanbd` | `cover/uah/portada-tfm-normativa-uah.tex`, then `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
@@ -111,7 +127,7 @@ The `upm-etsit-mune-tfm` profile includes a wrapper: cover-tfm-mune-etsit-upm.te
 
 ## Wrapped-name compatibility
 
-The registry preserves specialised wrapped values for `MUSEA`, `MUIT`, `MUII`, `MUIE`, `MUCTE`, `GMC`, `MUC`, `MUANBD` and `GISTS-UPM`. For every other degree it must expose the following effective values:
+The registry preserves specialised wrapped values for `MUSEA`, `MUIT`, `MUII`, `MUIE`, `MUCTE`, `GMC`, `MUC`, `MUANBD` and `GISTS-ETSIT-UPM`. For every other degree it must expose the following effective values:
 
 ```latex
 \myDegreefullwrapped = \myDegreefull
@@ -133,6 +149,6 @@ Activation added `GSI` to the effective generation set. Cover and back-page rout
 
 ## Subsequent translations and deferred work
 
-English TFM translations were added after the compatibility migration. All 15 supported master degrees now select their English name and `Master's Thesis` when `\myLanguage` is `english`; MUNE-UPM retains `Master of Science in Neurotechnology`. English wrapped forms use their own optional fields and fall back to the English name. Spanish output and other work types retain their previous behaviour. The MUC outer-cover artwork intentionally retains its Spanish labels.
+English TFM translations were added after the compatibility migration. All 15 supported master degrees now select their English name and `Master's Thesis` when `\myLanguage` is `english`; MUNE-ETSIT-UPM retains `Master of Science in Neurotechnology`. English wrapped forms use their own optional fields and fall back to the English name. Spanish output and other work types retain their previous behaviour. The MUC outer-cover artwork intentionally retains its Spanish labels.
 
 English degree-name translations for other work types, and the remaining Spanish TFC/TFG work-type labels, are still deferred.

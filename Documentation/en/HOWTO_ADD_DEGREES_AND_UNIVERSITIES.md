@@ -30,7 +30,7 @@ The selection can be summarized as:
 
 Before editing files, choose two identifiers when applicable:
 
-- A degree identifier such as `GIEC`, `MUIT`, or `ITI-URJC`. It is the value users put in `\myDegree`, appears in generated PDF filenames, and should remain stable once released. For non-UAH degrees, use `<degree>-<university>` (for example, `ITI-URJC` or `MUIT-UPM`); the hyphen is supported by the registry and LaTeX string comparisons. School-specific identifiers can add the school acronym, as in `PHD-ETSIT-UPM`.
+- A degree identifier such as `GIEC`, `MUIT`, or `ITI-ESCET-URJC`. It is the value users put in `\myDegree`, appears in generated PDF filenames, and should remain stable once released. For non-UAH degrees, use `<degree>-<school>-<university>` (for example, `ITI-ESCET-URJC` or `MUIT-ETSIT-UPM`); the hyphen is supported by the registry and LaTeX string comparisons. UPM identifiers use `ETSIT` as the school acronym, including `PHD-ETSIT-UPM`. URJC identifiers always include the school: `<degree>-<school>-URJC`, for example `ITI-ESCET-URJC` or `GII-ETSII-URJC`.
 - An institution identifier such as `UAH`, `UPM`, or `URJC`. Reuse an existing identifier when the university is already registered.
 
 Use short ASCII identifiers without spaces. Uppercase degree and institution identifiers follow the current convention. Layout-profile names use lowercase words separated with hyphens, for example `uah-tfg-2024` or `urjc-iti-tfg`.
@@ -91,7 +91,7 @@ The optional fields are:
 - `degree-name-wrapped-uppercase`: an explicitly wrapped uppercase form. If omitted, `\myDegreefullwrappedUpcase` applies `\MakeUppercase` to `\myDegreefull`.
 - `degree-name-wrapped-english` and `degree-name-wrapped-uppercase-english`: optional English cover forms for TFMs. When the English degree name is selected, omitted forms fall back to that name and its uppercase version, never to the Spanish wrapped forms.
 
-All supported TFMs use `Master's Thesis` in English. MUNE-UPM retains `Master of Science in Neurotechnology`. The MUC outer cover is an intentional exception: its background artwork keeps the Spanish degree and work-type labels unchanged; subsequent text-based pages use the selected English names.
+All supported TFMs use `Master's Thesis` in English. MUNE-ETSIT-UPM retains `Master of Science in Neurotechnology`. The MUC outer cover is an intentional exception: its background artwork keeps the Spanish degree and work-type labels unchanged; subsequent text-based pages use the selected English names.
 
 Keep the declaration formatting compatible with `Config/query-degree-registry.sh`:
 

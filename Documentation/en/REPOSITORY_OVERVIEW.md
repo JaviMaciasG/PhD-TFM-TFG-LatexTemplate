@@ -2,7 +2,7 @@
 
 ## What this repository is
 
-This repository is a comprehensive LaTeX template ecosystem focused on final academic documents at Universidad de Alcalá (UAH), with additional support for ESCET-URJC, ETSII-URJC and ETSIT-UPM, including:
+This repository is a comprehensive LaTeX template ecosystem focused on final academic documents at Universidad de Alcalá (UAH), with additional support for ESCET-URJC, ETSII-URJC, EIF-URJC and ETSIT-UPM, including:
 
 - Bachelor final projects (TFG)
 - Master final projects (TFM)
@@ -79,7 +79,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 - Document structure (`standard` for normal use and `compendium` for the specialized PhD modality)
 - Book typesetting style (`\myTypesettingStyle`); institutional pages retain their original fonts by default.
 - Optional preliminary elements and generated lists through the validated `\myInclude...` switches
-- Degree code (e.g., `GIEC`, `MUIT`, `PHDUAH`, `ITI-URJC`, `GIB-UPM`, `MUNE-UPM`, `PHD-ETSIT-UPM`)
+- Degree code (e.g., `GIEC`, `MUIT`, `PHDUAH`, `ITI-ESCET-URJC`, `GIB-ETSIT-UPM`, `MUNE-ETSIT-UPM`, `PHD-ETSIT-UPM`)
 - Author and advisor identity data
 - Separate tutor/cotutor department and institution fields, with English variants
 - Independent department where the work is carried out (`\myDepartment`, `\myDepartmentEnglish`)
@@ -88,6 +88,8 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 - Link colors and optional helper macros
 
 ### Degree registry and layouts
+
+The standard manual also includes a supported-degree appendix, grouped by university and school, with identifiers, full names and available English translations. Its read-only renderer uses the registry directly and excludes legacy degrees and research reports. The short identifier list remains in the configuration chapter. EIF-URJC degrees share a dedicated bilingual cover profile without a back cover.
 
 `Config/degrees.tex` is the authoritative registry of degree identifiers, work categories (`TFG`, `TFM`, `PhD`, etc.), display names, institutions, and schools. `Config/institutions.tex` defines university names, acronyms, and the institution style loaded for each university. Shared colors live in `Config/colors.tex`, while branded colors and cover helpers live under `Config/institution-styles/`. `Config/layout-profiles.tex` maps degree entries to their cover and back-page files. The build tools query the same registry through `Config/query-degree-registry.sh`.
 
@@ -122,6 +124,9 @@ Prepared minimal and original structures are colocated with their chapters: `Boo
 `Book/cover/cover.tex` and `Book/cover/backpage.tex` delegate cover selection to the degree registry. `Config/layout-profiles.tex` maps each degree profile to its required files.
 
 Institution-specific implementations are grouped under `Book/cover/uah/`, `Book/cover/upm/`, and `Book/cover/urjc/`. Shared orchestration and front-matter files remain directly under `Book/cover/`. Logos follow the same division under `Book/logos/`; cross-institution and project artwork is kept in `Book/logos/shared/`.
+
+
+Doctoral identifiers ending in `-COMPENDIUM` inherit the base programme’s metadata and select compendium content automatically. The optional registry property `document-structure` defaults to `standard`. `postamble.tex` derives the internal structure variable, and build tools query the same registry instead of reading a user structure flag.
 
 The ETSIT-UPM undergraduate/master variants share orange covers and an orange back cover, while GISD and MUNE have specific supervision/committee sheets. MUNE opening-page texts follow the configured Spanish/English language. PHD-ETSIT-UPM uses a separate doctoral cover, inner title page with both crests, and a credits page with advisors, external reviewers, committee members and defence date; it has no independent back cover. The current degree/profile tables and the focused regression commands are documented in MAINTAINERS.md and DEGREE_REGISTRY_COMPATIBILITY.md in this directory. These variants have received less extensive testing than the UAH cases.
 

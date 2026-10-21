@@ -1,0 +1,44 @@
+% Cover-only regression: EIF and the advisor-aware institutional layouts.
+\documentclass[openright]{book}
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\renewcommand{\myDegree}{\TestDegree}
+\renewcommand{\myLanguage}{\TestLanguage}
+\renewcommand{\myFlagSplittedAdvisors}{\TestSplit}
+\renewcommand{\myAcademicTutorFullName}{Nombre tutora principal}
+\renewcommand{\myAcademicTutorGender}{\TestTutorGender}
+\renewcommand{\myCoTutorFullName}{\TestCotutor}
+\renewcommand{\myCoTutorGender}{female}
+\renewcommand{\myAuthorGender}{\TestTutorGender}
+\renewcommand{\myAuthorFullName}{María de los Ángeles Fernández de la Torre}
+\renewcommand{\myTypesettingStyle}{standard}
+\ifdefined\TestStyle\renewcommand{\myTypesettingStyle}{\TestStyle}\fi
+\input{../Config/glossaries.tex}
+\input{../Config/postamble.tex}
+\input{../Config/typesetting/typesetting.tex}
+\graphicspath{{./logos/}}
+\begin{document}
+\frontmatter
+\input{../Config/setlanguagedependentissues.tex}
+\renewcommand{\myBookTitle}{Diseño, implementación y validación de un sistema para aplicaciones de ingeniería}
+\ifdefined\TestTitle\renewcommand{\myBookTitle}{\TestTitle}\fi
+\typeout{EIF-DOCUMENT-FONT: \familydefault}
+\ifdefined\TestCheckFont
+  \makeatletter
+  \normalfont
+  \edef\EIFExpectedFamily{\f@family}
+  \let\EIFTestIncludeGraphics\includegraphics
+  \renewcommand{\includegraphics}[2][]{%
+    \edef\EIFActualFamily{\f@family}%
+    \ifx\EIFExpectedFamily\EIFActualFamily\else
+      \PackageError{EIF-cover-test}{Cover does not use document font}{}%
+    \fi
+    \EIFTestIncludeGraphics[#1]{#2}}
+  \makeatother
+\fi
+\ThesisInstitutionalPage{cover/cover.tex}
+\ifdefined\TestSecondTitle
+  \renewcommand{\myBookTitle}{\TestSecondTitle}
+  \ThesisInstitutionalPage{cover/cover.tex}
+\fi
+\end{document}

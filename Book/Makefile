@@ -1,6 +1,7 @@
 # Makefile to generate book.pdf
 
 # Configuration
+.DEFAULT_GOAL := all
 SHELL = /bin/bash
 CONFIG_FILE = ../Config/myconfig.tex
 PRELUDE_FILE = ../Config/preamble.tex
@@ -24,7 +25,7 @@ DEGREE_NAME = $(shell grep -v "%" $(CONFIG_FILE) | grep "myDegree" | cut -f 3 -d
 AUTHOR_NAME = $(shell grep -v "%" $(CONFIG_FILE) | grep "myAuthorName" | grep -v "myAuthorFullName" | cut -f 3 -d "{" | cut -f 1 -d "}" | tr -d " " | iconv -f utf8 -t ascii//TRANSLIT)
 AUTHOR_SURNAME = $(shell grep -v "%" $(CONFIG_FILE) | grep "myAuthorSurname" | grep -v "myAuthorFullName" | cut -f 3 -d "{" | cut -f 1 -d "}" | tr -d " " | iconv -f utf8 -t ascii//TRANSLIT)
 BOOK_LANGUAGE = $(shell grep -v "%" $(CONFIG_FILE) | grep "myLanguage" | cut -f 3 -d "{" | cut -f 1 -d "}")
-DOCUMENT_STRUCTURE = $(shell grep -v "%" $(CONFIG_FILE) | grep "myDocumentStructure" | cut -f 3 -d "{" | cut -f 1 -d "}")
+DOCUMENT_STRUCTURE = $(shell sh $(DEGREE_REGISTRY_TOOL) document-structure "$(DEGREE_NAME)" "$(DEGREES_FILE)")
 BOOK_TYPE = $(shell sh $(DEGREE_REGISTRY_TOOL) work-type "$(DEGREE_NAME)" "$(DEGREES_FILE)")
 
 # Filenames
@@ -77,6 +78,17 @@ DUMMY_TARGETS = pdf_dia_done pdf_svg_done pdf_eps_done
 # consecutive Make invocations within the same second from sharing a directory.
 DATE := $(shell date "+%C%y%m%d-%H%M%S")-$(shell echo $$$$)
 
+
+# Change only the selected identifier; structure metadata stays in the registry.
+define select-document-structure
+	@selected_degree=$$(sh "$(DEGREE_REGISTRY_TOOL)" structure-variant "$(DEGREE_NAME)" $(1) "$(DEGREES_FILE)") || { echo "ERROR: no $(1) variant for $(DEGREE_NAME)." >&2; exit 1; }; \
+	sed -Ei 's!(\\newcommand\{\\myDegree\}\{)[^}]*\}!\1'"$$selected_degree"'}!' "$(CONFIG_FILE)"
+endef
+
+.PHONY: check-compendium-degree
+check-compendium-degree:
+	@sh "$(DEGREE_REGISTRY_TOOL)" structure-variant "$(DEGREE_NAME)" compendium "$(DEGREES_FILE)" >/dev/null || { echo "ERROR: select a supported PhD degree before preparing a compendium." >&2; exit 1; }
+
 # Main targets
 all: $(DUMMY_TARGETS)
 	@echo "Checking LaTeX dependencies with $(LATEXMK)"
@@ -100,7 +112,7 @@ bare:
 	elif [[ "$(DOCUMENT_STRUCTURE)" == "compendium" ]]; then \
 		$(MAKE) bare-compendium; \
 	else \
-		echo "ERROR: unknown myDocumentStructure '$(DOCUMENT_STRUCTURE)'. Use standard or compendium." >&2; \
+		echo "ERROR: unknown registry document structure '$(DOCUMENT_STRUCTURE)'. Use standard or compendium." >&2; \
 		exit 1; \
 	fi
 	$(MAKE) clean-orig-figures clean-orig-diagrams
@@ -117,7 +129,7 @@ backup-chapters:
 	cp $(APPENDIX_SOURCES) appendix/$(DATE)
 	@echo " Done!"
 
-backup-compendium:
+backup-compendium: check-compendium-degree
 	@echo "Backing up compendium sources to chapters/compendium/$(DATE)..."
 	mkdir -p chapters/compendium/$(DATE)
 	cp $(COMPENDIUM_CONTENT_FILE) chapters/compendium/$(DATE)/content-compendium.tex
@@ -131,14 +143,13 @@ orig:
 	elif [[ "$(DOCUMENT_STRUCTURE)" == "compendium" ]]; then \
 		$(MAKE) orig-compendium; \
 	else \
-		echo "ERROR: unknown myDocumentStructure '$(DOCUMENT_STRUCTURE)'. Use standard or compendium." >&2; \
+		echo "ERROR: unknown registry document structure '$(DOCUMENT_STRUCTURE)'. Use standard or compendium." >&2; \
 		exit 1; \
 	fi
 
 orig-standard: backup-chapters
 	@echo "Setting orig chapters..."
-#	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
-	sed -Ei 's!\\newcommand\{\\myDocumentStructure\}\{[^}]*\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
+	$(call select-document-structure,standard)
 #	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1true$$2!g' $(CONFIG_FILE)
 	sed -Ei 's!(\\newcommand\{\\myInclude(SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{)[^}]*\}!\1true}!g' $(CONFIG_FILE)
 	rm -f chapters/*.tex
@@ -152,8 +163,7 @@ orig-chapters: orig-standard
 
 orig-compendium: backup-compendium
 	@echo "Setting original compendium chapters and publications..."
-#	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{compendium}!' $(CONFIG_FILE)
-	sed -Ei 's!\\newcommand\{\\myDocumentStructure\}\{[^}]*\}!\\newcommand{\\myDocumentStructure}{compendium}!' $(CONFIG_FILE)
+	$(call select-document-structure,compendium)
 #	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1true$$2!g' $(CONFIG_FILE)
 	sed -Ei 's!(\\newcommand\{\\myInclude(SampleLetter|Dedication|Acknowledgements|ListOfFigures|ListOfTables|ListOfAcronyms|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{)[^}]*\}!\1true}!g' $(CONFIG_FILE)
 	rm -f chapters/compendium/*.tex
@@ -163,8 +173,7 @@ orig-compendium: backup-compendium
 
 bare-standard: backup-chapters
 	@echo "Setting bare chapters..."
-#	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
-	sed -Ei 's!\\newcommand\{\\myDocumentStructure\}\{[^}]*\}!\\newcommand{\\myDocumentStructure}{standard}!' $(CONFIG_FILE)
+	$(call select-document-structure,standard)
 #	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1false$$2!g' $(CONFIG_FILE)
 	sed -Ei 's!(\\newcommand\{\\myInclude(SampleLetter|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{)[^}]*\}!\1false}!g' $(CONFIG_FILE)
 	rm -f chapters/*.tex
@@ -178,8 +187,7 @@ bare-chapters: bare-standard
 
 bare-compendium: backup-compendium
 	@echo "Setting bare compendium chapters and publications..."
-#	perl -0pi -e 's!\\newcommand\{\\myDocumentStructure\}\{.*?\}!\\newcommand{\\myDocumentStructure}{compendium}!' $(CONFIG_FILE)
-	sed -Ei 's!\\newcommand\{\\myDocumentStructure\}\{[^}]*\}!\\newcommand{\\myDocumentStructure}{compendium}!' $(CONFIG_FILE)
+	$(call select-document-structure,compendium)
 #	perl -0pi -e 's!(\\newcommand\{\\myInclude(?:SampleLetter|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{).*?(\})!$$1false$$2!g' $(CONFIG_FILE)
 	sed -Ei 's!(\\newcommand\{\\myInclude(SampleLetter|ListOfSymbols|ListOfCode|ListOfAlgorithms|ListOfVideos)\}\{)[^}]*\}!\1false}!g' $(CONFIG_FILE)
 	rm -f chapters/compendium/*.tex

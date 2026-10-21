@@ -1,0 +1,58 @@
+% Fixture: registry structure selection, inheritance and legacy migration.
+\documentclass{book}
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\input{../Config/glossaries.tex}
+\renewcommand{\myDegree}{\TestDegree}
+\ifdefined\TestLegacyStructure
+  \newcommand{\myDocumentStructure}{\TestLegacyStructure}
+\fi
+\input{../Config/postamble.tex}
+\ifdefined\TestStandalone
+  \DeclareDegree{DIRECTCOMP}{
+    status = active,
+    institution = UAH,
+    school = {Test school},
+    degree-name = {Test doctorate},
+    work-type = PhD,
+    work-type-full-spanish = {Tesis Doctoral},
+    work-type-full-english = {Doctoral Thesis},
+    layout-profile = uah-phd,
+    document-structure = compendium
+  }
+  \DeclareDegree{DIRECTSTANDARD}{
+    status = active,
+    institution = UAH,
+    school = {Test school},
+    degree-name = {Test doctorate},
+    work-type = PhD,
+    work-type-full-spanish = {Tesis Doctoral},
+    work-type-full-english = {Doctoral Thesis},
+    layout-profile = uah-phd
+  }
+  \DegreeRegistrySelect{DIRECTCOMP}
+  \ifthenelse{\equal{\DegreeRegistryValue{document-structure}}{compendium}}{}%
+    {\PackageError{structure-test}{Direct compendium property failed}{Check declaration}}
+  \DegreeRegistrySelect{DIRECTSTANDARD}
+  \ifthenelse{\equal{\DegreeRegistryValue{document-structure}}{standard}}{}%
+    {\PackageError{structure-test}{Default leaked between declarations}{Check reset}}
+  \DegreeRegistrySelect{\TestDegree}
+\fi
+\ifdefined\TestDeclaration\TestDeclaration\fi
+\begin{document}
+\ifthenelse{\equal{\myDocumentStructure}{\ExpectedStructure}}
+  {\typeout{PASS: REGISTRY-STRUCTURE}}%
+  {\PackageError{structure-test}{Incorrect structure}{Check registry selection}}
+\ifstandarddocument
+  \ifthenelse{\equal{\ExpectedStructure}{standard}}{}%
+    {\PackageError{structure-test}{Incorrect standard conditional}{Check postamble}}
+\else
+  \ifthenelse{\equal{\ExpectedStructure}{compendium}}{}%
+    {\PackageError{structure-test}{Incorrect compendium conditional}{Check postamble}}
+\fi
+\typeout{STRUCTURE-TEST-BASE: \DegreeRegistryValue{base-degree}}
+\typeout{STRUCTURE-TEST-WORK: \myWorkType}
+\typeout{STRUCTURE-TEST-INSTITUTION: \myUniversityAcronym}
+\typeout{STRUCTURE-TEST-LAYOUT: \myLayoutProfile}
+Structure selection checked.
+\end{document}

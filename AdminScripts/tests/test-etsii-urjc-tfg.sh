@@ -4,7 +4,7 @@ set -euo pipefail
 test_directory=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 repository_root=$(cd -- "$test_directory/../.." && pwd)
 query="$repository_root/Config/query-degree-registry.sh"
-degrees=(GCID-URJC GDDV-URJC GII-URJC GICO-URJC GICI-URJC GIS-URJC GIA-URJC GMAT-URJC)
+degrees=(GCID-ETSII-URJC GDDV-ETSII-URJC GII-ETSII-URJC GICO-ETSII-URJC GICI-ETSII-URJC GIS-ETSII-URJC GIA-ETSII-URJC GMAT-ETSII-URJC)
 fixture=$(mktemp -d)
 trap 'rm -rf -- "$fixture"' EXIT
 mkdir -p "$fixture/Book"
@@ -16,13 +16,13 @@ for degree in "${degrees[@]}"; do
   [[ $(sh "$query" institution "$degree") == URJC ]]
   [[ $(sh "$query" layout-profile "$degree") == urjc-etsii-tfg ]]
 done
-[[ $(sh "$query" layout-profile ITI-URJC) == urjc-iti-tfg ]]
+[[ $(sh "$query" layout-profile ITI-ESCET-URJC) == urjc-iti-tfg ]]
 [[ -s $repository_root/Book/logos/urjc/URJ_logo_Color_POS.png ]]
 for degree in "${degrees[@]}"; do
   language=spanish style=standard cotutor='Cotutora de ejemplo' tutor_gender=female author_gender=female
-  [[ $degree != GMAT-URJC ]] || { language=english; style=framed; cotutor=''; }
-  [[ $degree != GIA-URJC ]] || { tutor_gender=male; author_gender=male; }
-  [[ $degree != GII-URJC ]] || { tutor_gender=male; cotutor=''; }
+  [[ $degree != GMAT-ETSII-URJC ]] || { language=english; style=framed; cotutor=''; }
+  [[ $degree != GIA-ETSII-URJC ]] || { tutor_gender=male; author_gender=male; }
+  [[ $degree != GII-ETSII-URJC ]] || { tutor_gender=male; cotutor=''; }
   for pass in 1 2; do
     (cd "$fixture/Book" && pdflatex -interaction=nonstopmode -halt-on-error -jobname="$degree" \
       "\def\CoverTestDegree{$degree}\def\CoverTestLanguage{$language}\def\CoverTestStyle{$style}\def\CoverTestCotutor{$cotutor}\def\CoverTestTutorGender{$tutor_gender}\def\CoverTestAuthorGender{$author_gender}\input{$test_directory/fixtures/etsii-urjc-cover.tex}") \
@@ -31,7 +31,7 @@ for degree in "${degrees[@]}"; do
   pdf="$fixture/Book/$degree.pdf"
   [[ $(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}') == 2 ]]
   pdftotext -f 1 -l 1 -layout "$pdf" "$fixture/cover.txt"
-  grep -q 'ESCUELA TÉCNICA SUPERIOR DE INGENIERÍA INFORMÁTICA' "$fixture/cover.txt"
+  tr '\n' ' ' < "$fixture/cover.txt" | sed -E 's/[[:space:]]+/ /g' | grep -q 'ESCUELA TÉCNICA SUPERIOR DE INGENIERÍA INFORMÁTICA'
   grep -q 'Trabajo de Fin de Grado' "$fixture/cover.txt"
   author_label=Autora tutor_label=Tutora plural_label=Tutoras
   [[ $author_gender != male ]] || author_label=Autor
@@ -48,6 +48,22 @@ for degree in "${degrees[@]}"; do
   pdftotext -f 2 -l 2 "$pdf" "$fixture/back.txt"
   [[ $(tr -d '[:space:]\f' < "$fixture/back.txt") == 2027 ]]
   pdftotext -f 2 -l 2 -bbox "$pdf" "$fixture/back.xml"
+  pdftotext -f 1 -l 1 -bbox "$pdf" "$fixture/front.xml"
+  python3 - "$fixture/front.xml" "$cotutor" <<'PY'
+import sys
+import xml.etree.ElementTree as ET
+ns = {'x': 'http://www.w3.org/1999/xhtml'}
+words = ET.parse(sys.argv[1]).findall('.//x:word', ns)
+author_label = next(w for w in words if w.text in ('Autor:', 'Autora:'))
+advisor_label = next(w for w in words if w.text in ('Tutor:', 'Tutora:', 'Tutores:', 'Tutoras:'))
+author = next(w for w in words if w.text == 'María')
+advisor = next(w for w in words if w.text == 'Tutora')
+assert abs(float(author_label.get('xMin')) - float(advisor_label.get('xMin'))) < 1.5, 'Labels are not aligned'
+assert abs(float(author.get('xMin')) - float(advisor.get('xMin'))) < 1.5, 'Names are not aligned'
+if sys.argv[2]:
+    coadvisor = next(w for w in words if w.text == 'Cotutora')
+    assert abs(float(author.get('xMin')) - float(coadvisor.get('xMin'))) < 1.5, 'Co-advisor name is not aligned'
+PY
   python3 - "$fixture/back.xml" <<'PY'
 import sys
 import xml.etree.ElementTree as ET

@@ -110,11 +110,13 @@ $all_styles && [[ ${specified[styles]:-false} == true ]] && die "--all-styles co
 $all_fonts && [[ ${specified[fonts]:-false} == true ]] && die "--all-fonts conflicts with --font-modes."
 
 declare -a registered_degrees=() registered_styles=() registered_universities=() registered_layouts=()
-declare -A degree_type=() degree_university=() degree_layout=()
+declare -A degree_type=() degree_university=() degree_layout=() degree_base=() degree_structure=()
 mapfile -t registered_degrees < <(sh "$query" identifiers "$registry")
 ((${#registered_degrees[@]})) || die "cannot read degree registry."
 for degree in "${registered_degrees[@]}"; do
   degree_type[$degree]=$(sh "$query" work-type "$degree" "$registry")
+  degree_base[$degree]=$(sh "$query" base-degree "$degree" "$registry")
+  degree_structure[$degree]=$(sh "$query" document-structure "$degree" "$registry")
   degree_university[$degree]=$(sh "$query" institution "$degree" "$registry")
   degree_layout[$degree]=$(sh "$query" layout-profile "$degree" "$registry")
   contains "${degree_university[$degree]}" "${registered_universities[@]}" || registered_universities+=("${degree_university[$degree]}")
@@ -184,13 +186,18 @@ order_list structures standard compendium
 
 declare -a selected_degrees=() matrix=()
 declare -A represented=()
+declare -a selected_bases=()
+for requested in "${degrees[@]}"; do
+  contains "${degree_base[$requested]}" "${selected_bases[@]}" || selected_bases+=("${degree_base[$requested]}")
+done
 for degree in "${registered_degrees[@]}"; do
+  [[ ${degree_base[$degree]} == "$degree" ]] || continue
   type=${degree_type[$degree]}
   university=${degree_university[$degree]}
   layout=${degree_layout[$degree]}
   [[ $type != TFC ]] || continue
   contains "$type" "${degree_types[@]}" || continue
-  ((${#degrees[@]} == 0)) || contains "$degree" "${degrees[@]}" || continue
+  ((${#degrees[@]} == 0)) || contains "$degree" "${selected_bases[@]}" || continue
   ((${#universities[@]} == 0)) || contains "$university" "${universities[@]}" || continue
   ((${#layouts[@]} == 0)) || contains "$layout" "${layouts[@]}" || continue
   ((${#expanded_types[@]} == 0)) || contains "$type" "${expanded_types[@]}" || continue
@@ -198,17 +205,31 @@ for degree in "${registered_degrees[@]}"; do
     echo "[INF] Excluding $degree: compendium is PhD-only."
     continue
   fi
-  key="$university|$type|$layout"
+  key="$university|$type|$layout|${degree_structure[$degree]}"
   if ! $all && ! $all_degrees && ((${#degrees[@]} == 0 && ${#expanded_types[@]} == 0)); then
     [[ ${represented[$key]:-false} == false ]] || continue
     represented[$key]=true
   fi
-  selected_degrees+=("$degree")
+  degree_structures=("${structures[@]}")
+  if [[ ${specified[structures]:-false} != true ]] && ! $all; then
+    degree_structures=("${degree_structure[$degree]}")
+  fi
+  if (("${#degrees[@]}")) && [[ ${specified[structures]:-false} != true ]] && { ! $all || ! contains "$degree" "${degrees[@]}"; }; then
+    degree_structures=()
+    for requested in "${degrees[@]}"; do
+      [[ ${degree_base[$requested]} == "$degree" ]] || continue
+      contains "${degree_structure[$requested]}" "${degree_structures[@]}" || degree_structures+=("${degree_structure[$requested]}")
+    done
+  fi
+  for structure in "${degree_structures[@]}"; do
+    effective=$(sh "$query" structure-variant "$degree" "$structure" "$registry") || continue
+    contains "$effective" "${selected_degrees[@]}" || selected_degrees+=("$effective")
+  done
   for language in "${languages[@]}"; do
-    for structure in "${structures[@]}"; do
-      [[ $structure != compendium || $type == PhD ]] || continue
+    for structure in "${degree_structures[@]}"; do
+      effective=$(sh "$query" structure-variant "$degree" "$structure" "$registry") || continue
       for font in "${fonts[@]}"; do
-        for style in "${styles[@]}"; do matrix+=("$degree|$language|$structure|$style|$font"); done
+        for style in "${styles[@]}"; do matrix+=("$effective|$language|$structure|$style|$font"); done
       done
     done
   done
@@ -220,10 +241,15 @@ case $output_directory in
   "$repository_root"|"$repository_root/Book"|"$repository_root/Config"|/) die "choose a dedicated output directory." ;;
 esac
 output_name() {
-  printf '%s-%s-%s-%s-%s-%s' "${degree_type[$1]}" "$1" "$2" "$3" "$4" "$5"
+  printf '%s-%s-%s-%s-%s-%s' "${degree_type[$1]}" "${degree_base[$1]}" "$2" "$3" "$4" "$5"
 }
+declare -a planned_structures=()
+for row in "${matrix[@]}"; do
+  IFS='|' read -r degree language structure style font <<<"$row"
+  contains "$structure" "${planned_structures[@]}" || planned_structures+=("$structure")
+done
 printf '\nGeneration preview: %s documents\nDestination: %s\n' "${#matrix[@]}" "$output_directory"
-printf 'Degrees: %s\nLanguages: %s\nStructures: %s\nStyles: %s\nFont modes: %s\n\n' "${selected_degrees[*]}" "${languages[*]}" "${structures[*]}" "${styles[*]}" "${fonts[*]}"
+printf 'Degrees: %s\nLanguages: %s\nStructures: %s\nStyles: %s\nFont modes: %s\n\n' "${selected_degrees[*]}" "${languages[*]}" "${planned_structures[*]}" "${styles[*]}" "${fonts[*]}"
 printf '%-10s %-10s %-23s %-8s %-10s %-10s %-13s %s\n' DEGREE UNIVERSITY LAYOUT LANGUAGE STRUCTURE STYLE FONT PDF
 for row in "${matrix[@]}"; do
   IFS='|' read -r degree language structure style font <<<"$row"
@@ -251,46 +277,44 @@ trap 'exit 143' TERM
 success_count=0
 error_count=0
 group_count=0
-for degree in "${selected_degrees[@]}"; do
-  for language in "${languages[@]}"; do
-    for structure in "${structures[@]}"; do
-      [[ $structure != compendium || ${degree_type[$degree]} == PhD ]] || continue
-      for font in "${fonts[@]}"; do
-        group_count=$((group_count + 1))
-        group_directory="$temporary_directory/group-$group_count"
-        group_log="$temporary_directory/group-$group_count.log"
-        echo "[INF] Building $degree / $language / $structure / $font (${#styles[@]} styles)..."
-        if "$builder" --degree "$degree" --language "$language" --structure "$structure" \
-            --font-mode "$font" --styles "${styles[@]}" --output-dir "$group_directory" >"$group_log" 2>&1; then
-          group_status=0
-        else
-          group_status=$?
-          echo "[WARN] Builder exited with status $group_status; inspecting individual outputs." >&2
-        fi
-        for style in "${styles[@]}"; do
-          name=$(output_name "$degree" "$language" "$structure" "$style" "$font")
-          prototype_name="book-$style"
-          [[ $language != english ]] || prototype_name+=-english
-          [[ $font != document ]] || prototype_name+=-document-fonts
-          log="$output_directory/$name.log"
-          cp -- "$group_log" "$log"
-          [[ ! -f $group_directory/$prototype_name-build.log ]] || cp -- "$group_directory/$prototype_name-build.log" "$log"
-          if [[ -f $group_directory/$prototype_name.pdf ]] && \
-              gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress \
-                -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$group_directory/$name-compressed.pdf" \
-                "$group_directory/$prototype_name.pdf" >>"$log" 2>&1 && \
-              [[ -s $group_directory/$name-compressed.pdf ]] && \
-              cp -- "$group_directory/$name-compressed.pdf" "$output_directory/.$name.pdf.tmp" && \
-              mv -f -- "$output_directory/.$name.pdf.tmp" "$output_directory/$name.pdf"; then
-            success_count=$((success_count + 1))
-            printf '[OK] %03d/%03d %s.pdf\n' "$success_count" "${#matrix[@]}" "$name"
-          else
-            error_count=$((error_count + 1))
-            echo "[ERR] $name failed; see $log" >&2
-          fi
-        done
-      done
-    done
+declare -A built_groups=()
+for row in "${matrix[@]}"; do
+  IFS='|' read -r degree language structure style font <<<"$row"
+  key="$degree|$language|$structure|$font"
+  [[ ${built_groups[$key]:-false} == false ]] || continue
+  built_groups[$key]=true
+  group_count=$((group_count + 1))
+  group_directory="$temporary_directory/group-$group_count"
+  group_log="$temporary_directory/group-$group_count.log"
+  echo "[INF] Building $degree / $language / $structure / $font (${#styles[@]} styles)..."
+  if "$builder" --degree "$degree" --language "$language" --structure "$structure" \
+      --font-mode "$font" --styles "${styles[@]}" --output-dir "$group_directory" >"$group_log" 2>&1; then
+    group_status=0
+  else
+    group_status=$?
+    echo "[WARN] Builder exited with status $group_status; inspecting individual outputs." >&2
+  fi
+  for style in "${styles[@]}"; do
+    name=$(output_name "$degree" "$language" "$structure" "$style" "$font")
+    prototype_name="book-$style"
+    [[ $language != english ]] || prototype_name+=-english
+    [[ $font != document ]] || prototype_name+=-document-fonts
+    log="$output_directory/$name.log"
+    cp -- "$group_log" "$log"
+    [[ ! -f $group_directory/$prototype_name-build.log ]] || cp -- "$group_directory/$prototype_name-build.log" "$log"
+    if [[ -f $group_directory/$prototype_name.pdf ]] && \
+        gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress \
+          -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$group_directory/$name-compressed.pdf" \
+          "$group_directory/$prototype_name.pdf" >>"$log" 2>&1 && \
+        [[ -s $group_directory/$name-compressed.pdf ]] && \
+        cp -- "$group_directory/$name-compressed.pdf" "$output_directory/.$name.pdf.tmp" && \
+        mv -f -- "$output_directory/.$name.pdf.tmp" "$output_directory/$name.pdf"; then
+      success_count=$((success_count + 1))
+      printf '[OK] %03d/%03d %s.pdf\n' "$success_count" "${#matrix[@]}" "$name"
+    else
+      error_count=$((error_count + 1))
+      echo "[ERR] $name failed; see $log" >&2
+    fi
   done
 done
 printf '\nGeneration finished: %s successful, %s failed (%s planned).\n' "$success_count" "$error_count" "${#matrix[@]}"

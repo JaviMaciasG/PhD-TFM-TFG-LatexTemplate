@@ -18,7 +18,6 @@ for spec in "${cases[@]}"; do
   sed -i \
     -e "s/\\\\newcommand{\\\\myDegree}{[^}]*}/\\\\newcommand{\\\\myDegree}{$degree}/" \
     -e "s/\\\\newcommand{\\\\myLanguage}{[^}]*}/\\\\newcommand{\\\\myLanguage}{$language}/" \
-    -e 's/\\newcommand{\\myDocumentStructure}{[^}]*}/\\newcommand{\\myDocumentStructure}{standard}/' \
     -e 's/\\newcommand{\\myDepartment}{[^}]*}/\\newcommand{\\myDepartment}{Departamento del trabajo}/' \
     "$fixture/Config/myconfig.tex"
   president=Presidente

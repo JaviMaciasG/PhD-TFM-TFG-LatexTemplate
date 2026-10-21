@@ -2,7 +2,7 @@
 
 ## Qué es este repositorio
 
-Este repositorio es un ecosistema completo de plantillas LaTeX centrado en los documentos académicos finales de la Universidad de Alcalá (UAH), con soporte adicional para la ESCET-URJC, la ETSII-URJC y la ETSIT-UPM, que incluye:
+Este repositorio es un ecosistema completo de plantillas LaTeX centrado en los documentos académicos finales de la Universidad de Alcalá (UAH), con soporte adicional para la ESCET-URJC, la ETSII-URJC, la EIF-URJC y la ETSIT-UPM, que incluye:
 
 - Trabajos Fin de Grado (TFG)
 - Trabajos Fin de Máster (TFM)
@@ -79,7 +79,7 @@ El `Makefile` de la raíz también puede generar una versión PDF del README y d
 - Estructura del documento (`standard` para el uso normal y `compendium` para la modalidad especializada de doctorado)
 - Estilo de maquetación de Book (`\myTypesettingStyle`); las páginas institucionales conservan sus fuentes originales de forma predeterminada.
 - Elementos preliminares opcionales y listas generadas mediante los conmutadores validados `\myInclude...`
-- Código de titulación (por ejemplo, `GIEC`, `MUIT`, `PHDUAH`, `ITI-URJC`, `GIB-UPM`, `MUNE-UPM`, `PHD-ETSIT-UPM`)
+- Código de titulación (por ejemplo, `GIEC`, `MUIT`, `PHDUAH`, `ITI-ESCET-URJC`, `GIB-ETSIT-UPM`, `MUNE-ETSIT-UPM`, `PHD-ETSIT-UPM`)
 - Datos de identidad del autor y del tutor
 - Campos separados de departamento e institución del tutor y cotutor, con variantes inglesas
 - Departamento donde se realiza el trabajo, configurado de forma independiente (`\myDepartment`, `\myDepartmentEnglish`)
@@ -88,6 +88,8 @@ El `Makefile` de la raíz también puede generar una versión PDF del README y d
 - Colores de enlaces y macros auxiliares opcionales
 
 ### Registro de titulaciones y maquetaciones
+
+El manual estándar incluye también un apéndice de titulaciones soportadas, organizado por universidad y centro, con identificadores, nombres completos y traducciones inglesas disponibles. Su generador de solo lectura consulta directamente el registro y excluye las titulaciones heredadas y los informes de investigación. El capítulo de configuración conserva la lista resumida de identificadores. Los grados EIF-URJC comparten un perfil de portada bilingüe específico, sin contraportada.
 
 `Config/degrees.tex` es el registro de referencia de identificadores de titulaciones, categorías de trabajo (`TFG`, `TFM`, `PhD`, etc.), nombres visibles, instituciones y centros. `Config/institutions.tex` define los nombres de las universidades, sus siglas y el estilo institucional que se carga para cada universidad. Los colores compartidos están en `Config/colors.tex`, mientras que los colores de marca y las utilidades para portadas están en `Config/institution-styles/`. `Config/layout-profiles.tex` relaciona las entradas de titulaciones con sus ficheros de portada y contraportada. Las herramientas de compilación consultan el mismo registro mediante `Config/query-degree-registry.sh`.
 
@@ -122,6 +124,9 @@ Las estructuras mínimas y originales preparadas se encuentran junto a los capí
 `Book/cover/cover.tex` y `Book/cover/backpage.tex` delegan la selección de portadas en el registro de titulaciones. `Config/layout-profiles.tex` relaciona cada perfil de titulación con los ficheros necesarios.
 
 Las implementaciones específicas de institución se agrupan en `Book/cover/uah/`, `Book/cover/upm/` y `Book/cover/urjc/`. La orquestación compartida y los ficheros de preliminares permanecen directamente en `Book/cover/`. Los logotipos siguen la misma división en `Book/logos/`; los elementos gráficos compartidos entre instituciones y los de proyectos se mantienen en `Book/logos/shared/`.
+
+
+Los identificadores doctorales terminados en `-COMPENDIUM` heredan los datos del programa base y seleccionan automáticamente el contenido por compendio. La propiedad opcional `document-structure` del registro tiene el valor predeterminado `standard`. `postamble.tex` obtiene de ella la variable interna de estructura, y las herramientas de compilación consultan el mismo registro en lugar de leer una opción del usuario.
 
 Las variantes TFG/TFM de la ETSIT-UPM comparten cubiertas naranjas y una contraportada naranja, mientras que el GISD y el MUNE tienen hojas específicas de supervisión y tribunal. Los textos iniciales del MUNE siguen el idioma español o inglés configurado. PHD-ETSIT-UPM utiliza una cubierta doctoral independiente, una portada interior con ambos escudos y una página de créditos con directores, revisores externos, tribunal y fecha de defensa; no tiene contraportada independiente. Las tablas actuales de titulaciones y perfiles y las órdenes de regresión específicas se documentan en MAINTAINERS.md y DEGREE_REGISTRY_COMPATIBILITY.md de este directorio. Estas variantes se han probado menos exhaustivamente que los casos UAH.
 

@@ -23,6 +23,13 @@ guide_sources=(
   PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
 )
 guide_pdfs=("${guide_sources[@]/%.tex/.pdf}")
+# Required by the default manual and the EIF institutional profile, including
+# when testing a release before these newly added sources have been committed.
+reference_sources=(
+  Book/appendix/titulaciones-soportadas.tex
+  Book/appendix/orig/titulaciones-soportadas.tex
+  Book/cover/urjc/portada-tfg-eif-urjc.tex
+)
 # Build these generic guides even when this script is invoked without make distrib.
 make -C PapeleoTFG guia
 make -C PapeleoTFM guia
@@ -46,6 +53,7 @@ pandoc Documentation/es/TYPESETTING-STYLES-GUIDE.md -t pdf \
     Makefile \
     RELEASE.txt \
     sync-git-sources.sh
+  printf '%s\n' "${reference_sources[@]}"
   git ls-files -- Anteproyecto Book Config PapeleoTFG PapeleoTFM
 } | while IFS= read -r file; do
   case "$file" in

@@ -17,25 +17,6 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-% Validate the user-facing document structure and expose a simple conditional
-% for Book/book.tex.
-\newif\ifstandarddocument
-\ifthenelse{\equal{\myDocumentStructure}{standard}}
-{
-  \standarddocumenttrue
-}
-{
-  \ifthenelse{\equal{\myDocumentStructure}{compendium}}
-  {
-    \standarddocumentfalse
-  }
-  {
-    \PackageError{UAH-template}
-      {Unknown document structure '\myDocumentStructure'}
-      {Use 'standard' or 'compendium' in Config/myconfig.tex.}
-  }
-}
-
 % Fail early when a boolean user option contains an unsupported value.
 \newcommand{\ValidateBooleanOption}[2]{%
   \ifthenelse{\equal{#1}{true}}%
@@ -58,6 +39,7 @@
 \ValidateBooleanOption{\myIncludeListOfVideos}{\string\myIncludeListOfVideos}
 \ValidateBooleanOption{\myAcademicTutorIsPhD}{\string\myAcademicTutorIsPhD}
 \ValidateBooleanOption{\myCoTutorIsPhD}{\string\myCoTutorIsPhD}
+\ValidateBooleanOption{\myFlagSplittedAdvisors}{\string\myFlagSplittedAdvisors}
 
 % Select the degree before defining text that depends on its institution.
 \providecommand{\myConfigDirectory}{../Config}
@@ -67,18 +49,20 @@
 \input{\myConfigDirectory/degrees.tex}
 \DegreeRegistrySelect{\myDegree}
 
-% A thesis by compendium is only valid for a doctoral programme.
-\ifthenelse{\equal{\myDocumentStructure}{compendium}}
-{
-  \ifthenelse{\equal{\myWorkType}{PhD}}
-  {}
-  {
-    \PackageError{UAH-template}
-      {The compendium structure requires a PhD programme}
-      {Set \string\myDegree\space to a doctoral programme, or select the standard document structure.}
-  }
-}
-{}
+% The registry owns the structure; retain the internal interface for book.tex.
+\ifdefined\myDocumentStructure
+  \edef\PreviousDocumentStructure{\myDocumentStructure}
+  \edef\RegistryDocumentStructure{\DegreeRegistryValue{document-structure}}
+  \ifx\PreviousDocumentStructure\RegistryDocumentStructure\else
+    \PackageWarningNoLine{UAH-template}{Ignoring legacy myDocumentStructure.
+      Select PHDUAH-COMPENDIUM or PHD-ETSIT-UPM-COMPENDIUM for a compendium;
+      select the corresponding base identifier for a standard thesis}
+  \fi
+\fi
+\edef\myDocumentStructure{\DegreeRegistryValue{document-structure}}
+\newif\ifstandarddocument
+\ifthenelse{\equal{\myDocumentStructure}{standard}}
+  {\standarddocumenttrue}{\standarddocumentfalse}
 
 \InstitutionRegistryLoadStyle
 

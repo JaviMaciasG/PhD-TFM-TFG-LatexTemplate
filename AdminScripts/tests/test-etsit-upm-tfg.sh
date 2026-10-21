@@ -4,12 +4,12 @@ set -euo pipefail
 test_directory=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 repository_root=$(cd -- "$test_directory/../.." && pwd)
 query="$repository_root/Config/query-degree-registry.sh"
-for degree in GISTS-UPM GIB-UPM; do
+for degree in GISTS-ETSIT-UPM GIB-ETSIT-UPM; do
   [[ $(sh "$query" work-type "$degree") == TFG ]]
   [[ $(sh "$query" institution "$degree") == UPM ]]
   [[ $(sh "$query" layout-profile "$degree") == upm-etsit-tft ]]
 done
-masters=(MUIT-UPM MUCS-UPM MUESFV-UPM MUIB-UPM MUIRST-UPM MUISE-UPM MUTSC-UPM)
+masters=(MUIT-ETSIT-UPM MUCS-ETSIT-UPM MUESFV-ETSIT-UPM MUIB-ETSIT-UPM MUIRST-ETSIT-UPM MUISE-ETSIT-UPM MUTSC-ETSIT-UPM)
 for degree in "${masters[@]}"; do
   [[ $(sh "$query" work-type "$degree") == TFM ]]
   [[ $(sh "$query" institution "$degree") == UPM ]]
@@ -17,13 +17,13 @@ for degree in "${masters[@]}"; do
 done
 # MUIT without the suffix still selects the existing UAH master.
 [[ $(sh "$query" institution MUIT) == UAH ]]
-[[ $(sh "$query" work-type GISD-UPM) == TFG ]]
-[[ $(sh "$query" institution GISD-UPM) == UPM ]]
-[[ $(sh "$query" layout-profile GISD-UPM) == upm-etsit-gisd-tfg ]]
+[[ $(sh "$query" work-type GISD-ETSIT-UPM) == TFG ]]
+[[ $(sh "$query" institution GISD-ETSIT-UPM) == UPM ]]
+[[ $(sh "$query" layout-profile GISD-ETSIT-UPM) == upm-etsit-gisd-tfg ]]
 [[ -s $repository_root/Book/cover/upm/tribunal-tfg-gisd-upm.tex ]]
-[[ $(sh "$query" work-type MUNE-UPM) == TFM ]]
-[[ $(sh "$query" institution MUNE-UPM) == UPM ]]
-[[ $(sh "$query" layout-profile MUNE-UPM) == upm-etsit-mune-tfm ]]
+[[ $(sh "$query" work-type MUNE-ETSIT-UPM) == TFM ]]
+[[ $(sh "$query" institution MUNE-ETSIT-UPM) == UPM ]]
+[[ $(sh "$query" layout-profile MUNE-ETSIT-UPM) == upm-etsit-mune-tfm ]]
 [[ -s $repository_root/Book/cover/upm/cover-tfm-mune-etsit-upm.tex ]]
 [[ -s $repository_root/Book/cover/upm/tribunal-tfm-mune-etsit-upm.tex ]]
 [[ $(sh "$query" layout-profile PHD-ETSIT-UPM) == upm-phd ]]
@@ -43,19 +43,19 @@ cp -a "$repository_root/Config" "$fixture/Config"
 cp -a "$repository_root/Book/cover" "$repository_root/Book/logos" "$repository_root/Book/biblio" "$fixture/Book/"
 before=$(sha256sum "$repository_root/Config/myconfig.tex")
 cases=(
-  'GIB-UPM|standard|rgb|institutional|spanish|Cotutora de ejemplo|Ponente de ejemplo||male'
-  'GISTS-UPM|framed|cmyk|institutional|spanish||||female'
-  'GIB-UPM|editorial|rgb|document|english||Ponente de ejemplo'
-  'GIB-UPM|framed|rgb|institutional|english||||male'
-  'GISTS-UPM|editorial|rgb|institutional|english|Cotutora de ejemplo|Ponente de ejemplo||female'
-  'GISD-UPM|standard|rgb|institutional|spanish|Cotutora academica de ejemplo|Ponente no utilizado|Supervisora tecnica no utilizada'
-  'GISD-UPM|framed|cmyk|institutional|spanish||||legacy'
-  'GISD-UPM|standard|rgb|institutional|english|Cotutora academica de ejemplo|Ponente no utilizado|Supervisora tecnica no utilizada|male'
-  'GISD-UPM|framed|cmyk|institutional|english||||legacy'
-  'MUNE-UPM|standard|rgb|institutional|english|Cotutora no utilizada|Ponente no utilizado|Technical supervisor example'
-  'MUNE-UPM|editorial|rgb|institutional|english||||male'
-  'MUNE-UPM|framed|cmyk|document|spanish|||'
-  'MUNE-UPM|editorial|rgb|institutional|spanish|Cotutora no utilizada|Ponente no utilizado|Supervisora tecnica de ejemplo|male'
+  'GIB-ETSIT-UPM|standard|rgb|institutional|spanish|Cotutora de ejemplo|Ponente de ejemplo||male'
+  'GISTS-ETSIT-UPM|framed|cmyk|institutional|spanish||||female'
+  'GIB-ETSIT-UPM|editorial|rgb|document|english||Ponente de ejemplo'
+  'GIB-ETSIT-UPM|framed|rgb|institutional|english||||male'
+  'GISTS-ETSIT-UPM|editorial|rgb|institutional|english|Cotutora de ejemplo|Ponente de ejemplo||female'
+  'GISD-ETSIT-UPM|standard|rgb|institutional|spanish|Cotutora academica de ejemplo|Ponente no utilizado|Supervisora tecnica no utilizada'
+  'GISD-ETSIT-UPM|framed|cmyk|institutional|spanish||||legacy'
+  'GISD-ETSIT-UPM|standard|rgb|institutional|english|Cotutora academica de ejemplo|Ponente no utilizado|Supervisora tecnica no utilizada|male'
+  'GISD-ETSIT-UPM|framed|cmyk|institutional|english||||legacy'
+  'MUNE-ETSIT-UPM|standard|rgb|institutional|english|Cotutora no utilizada|Ponente no utilizado|Technical supervisor example'
+  'MUNE-ETSIT-UPM|editorial|rgb|institutional|english||||male'
+  'MUNE-ETSIT-UPM|framed|cmyk|document|spanish|||'
+  'MUNE-ETSIT-UPM|editorial|rgb|institutional|spanish|Cotutora no utilizada|Ponente no utilizado|Supervisora tecnica de ejemplo|male'
 )
 for degree in "${masters[@]}"; do
   cases+=("$degree|standard|rgb|institutional|spanish|Cotutora de ejemplo|Ponente de ejemplo||female")
@@ -65,7 +65,7 @@ for row in "${cases[@]}"; do
   IFS='|' read -r degree style color_space font_mode language cotutor ponente technical_supervisor secretary_gender <<<"$row"
   secretary_gender=${secretary_gender:-female}
   long_text=''
-  [[ $degree != GISTS-UPM ]] || long_text='\def\CoverTestLongText{1}'
+  [[ $degree != GISTS-ETSIT-UPM ]] || long_text='\def\CoverTestLongText{1}'
   name="$degree-$language-$style-$color_space"
   for pass in 1 2; do
     (cd "$fixture/Book" && pdflatex -interaction=nonstopmode -halt-on-error -jobname="$name" \
@@ -78,7 +78,7 @@ for row in "${cases[@]}"; do
     cp "$fixture/Book/$name.pdf" "$ETSIT_UPM_TEST_OUTPUT_DIR/"
   fi
   expected_type=$(sh "$query" work-type "$degree")
-  if [[ $expected_type == TFM && $degree != MUNE-UPM ]]; then
+  if [[ $expected_type == TFM && $degree != MUNE-ETSIT-UPM ]]; then
     pdftotext -f 1 -l 5 "$fixture/Book/$name.pdf" "$fixture/$name-covers.txt"
     if [[ $language == spanish ]]; then
       grep -q "TRABAJO FIN DE MÁSTER" "$fixture/$name-covers.txt"
@@ -142,7 +142,7 @@ PY
     grep -q 'Madrid, a .*junio' "$fixture/$name-sheet.txt"
     ! grep -q 'MEMBERS OF THE EXAMINATION COMMITTEE' "$fixture/$name.txt"
   fi
-  if [[ $degree == MUNE-UPM ]]; then
+  if [[ $degree == MUNE-ETSIT-UPM ]]; then
     if [[ $language == english ]]; then
       grep -q 'MASTER OF SCIENCE IN NEUROTECHNOLOGY' "$fixture/$name.txt"
       grep -Eq "MASTER['’]S THESIS" "$fixture/$name.txt"
@@ -185,7 +185,7 @@ PY
   fi
   ! grep -q 'Secretario/a:' "$fixture/$name.txt"
   ! grep -q 'Segundo vocal no utilizado' "$fixture/$name-sheet.txt"
-  if [[ $degree == GISD-UPM ]]; then
+  if [[ $degree == GISD-ETSIT-UPM ]]; then
     technical_label='Supervisión técnica'
     academic_label='Supervisión académica'
     department_label='Departamento'
@@ -207,7 +207,7 @@ PY
       grep -Eq "^[[:space:]]*$academic_label:[[:space:]]*$" "$fixture/$name-sheet.txt"
     fi
     if [[ -n $technical_supervisor ]]; then ! grep -q "$technical_supervisor" "$fixture/$name.txt"; fi
-  elif [[ $degree != MUNE-UPM && -n $ponente ]]; then
+  elif [[ $degree != MUNE-ETSIT-UPM && -n $ponente ]]; then
     grep -q "$ponente" "$fixture/$name.txt"
     if [[ $language == english ]]; then
       grep -q 'Academic sponsor:' "$fixture/$name-sheet.txt"
@@ -216,7 +216,7 @@ PY
     else
       grep -q 'Departamento:.*Departamento del trabajo' "$fixture/$name-sheet.txt"
     fi
-  elif [[ $degree != MUNE-UPM ]]; then
+  elif [[ $degree != MUNE-ETSIT-UPM ]]; then
     sponsor_label=Ponente
     [[ $language != english ]] || sponsor_label='Academic sponsor'
     grep -Eq "^[[:space:]]*$sponsor_label:[[:space:]]*$" "$fixture/$name-sheet.txt"

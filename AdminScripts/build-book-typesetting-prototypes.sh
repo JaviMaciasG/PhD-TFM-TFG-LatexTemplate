@@ -26,7 +26,7 @@ Options:
   --font-mode MODE                institutional (default) or document.
   --language LANGUAGE             spanish (default) or english.
   --degree IDENTIFIER             Override myDegree for every build.
-  --structure STRUCTURE           standard or compendium; defaults to myconfig.
+  --structure STRUCTURE           standard or compendium; defaults to the degree registry.
   --chapter-bibliographies BOOL    true or false; defaults to myconfig.
   --final-bibliography BOOL        true or false; defaults to myconfig.
   --bibliography-numbering MODE    global or chapter; defaults to myconfig.
@@ -150,6 +150,22 @@ if [[ -n $degree ]]; then
   sh "$degree_registry_tool" work-type "$degree" "$degree_registry" >/dev/null 2>&1 || {
     echo "ERROR: unknown degree identifier: $degree" >&2
     exit 2
+  }
+fi
+
+
+# Resolve structure requests before creating output directories or source copies.
+degree_registry_tool="$repository_root/Config/query-degree-registry.sh"
+degree_registry="$repository_root/Config/degrees.tex"
+if [[ -z $degree ]]; then
+  degree=$(sed -n 's/^\\newcommand{\\myDegree}{\([^}]*\)}.*/\1/p' "$repository_root/Config/myconfig.tex")
+fi
+sh "$degree_registry_tool" work-type "$degree" "$degree_registry" >/dev/null || {
+  echo "ERROR: unknown degree identifier: $degree" >&2; exit 2;
+}
+if [[ -n $document_structure ]]; then
+  degree=$(sh "$degree_registry_tool" structure-variant "$degree" "$document_structure" "$degree_registry") || {
+    echo "ERROR: no $document_structure variant for the requested degree." >&2; exit 2;
   }
 fi
 
@@ -277,7 +293,6 @@ for style in "${requested_styles[@]}"; do
   replace_config_value myInstitutionalPageFontMode "$font_mode" "$config" true || exit 1
   replace_config_value myLanguage "$language" "$config" || exit 1
   [[ -z $degree ]] || replace_config_value myDegree "$degree" "$config" || exit 1
-  [[ -z $document_structure ]] || replace_config_value myDocumentStructure "$document_structure" "$config" || exit 1
   [[ -z $chapter_bibliographies ]] || replace_config_value myIncludeChapterBibliographies "$chapter_bibliographies" "$config" || exit 1
   [[ -z $final_bibliography ]] || replace_config_value myIncludeFinalBibliography "$final_bibliography" "$config" || exit 1
   [[ -z $bibliography_numbering ]] || replace_config_value myBibliographyNumbering "$bibliography_numbering" "$config" || exit 1

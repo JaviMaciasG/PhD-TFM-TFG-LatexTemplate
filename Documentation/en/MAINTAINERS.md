@@ -16,7 +16,7 @@ Mark every authoritative maintenance checkout once with `git config template.off
 
 Each prepared structure is kept beside the chapters it organizes. The standard templates live under `Book/chapters/bare/` and `Book/chapters/orig/`; the specialized templates live under `Book/chapters/compendium/bare/` and `Book/chapters/compendium/orig/`. Each directory contains its corresponding `content-*.tex` file, which the Makefile explicitly excludes from the chapter-copy list and copies to the `Book/` root separately. Whenever a distributed organization changes, update both its active files and canonical `orig` copies. The Makefile must copy these prepared files; it must not return to rewriting marked regions inside `book.tex`.
 
-The `bare` and `orig` targets dispatch according to `\myDocumentStructure`; the explicit `bare-standard`, `bare-compendium`, `orig-standard`, and `orig-compendium` targets are also available. Keep `bare-chapters` and `orig-chapters` as backward-compatible aliases for the standard structure.
+The `bare` and `orig` targets dispatch according to the selected degree’s registry structure; the explicit `bare-standard`, `bare-compendium`, `orig-standard`, and `orig-compendium` targets are also available. Keep `bare-chapters` and `orig-chapters` as backward-compatible aliases for the standard structure.
 
 The user-facing Boolean options in `Config/myconfig.tex` share the `\myInclude...` prefix and accept exactly `true` or `false`. `Config/postamble.tex` validates every option. When adding a switch, update its validation, the relevant conditional inclusion, the configuration chapter and its maintained `orig` copy. Switches controlling generated lists should not disable the underlying LaTeX feature.
 
@@ -124,12 +124,30 @@ The selection can be summarized as:
 
 Before editing files, choose two identifiers when applicable:
 
-- A degree identifier such as `GIEC`, `MUIT`, or `ITI-URJC`. It is the value users put in `\myDegree`, appears in generated PDF filenames, and should remain stable once released. For non-UAH degrees, use `<degree>-<university>` (for example, `ITI-URJC` or `MUIT-UPM`); the hyphen is supported by the registry and LaTeX string comparisons. School-specific identifiers can add the school acronym, as in `PHD-ETSIT-UPM`.
+- A degree identifier such as `GIEC`, `MUIT`, or `ITI-ESCET-URJC`. It is the value users put in `\myDegree`, appears in generated PDF filenames, and should remain stable once released. For non-UAH degrees, use `<degree>-<school>-<university>` (for example, `ITI-ESCET-URJC` or `MUIT-ETSIT-UPM`); the hyphen is supported by the registry and LaTeX string comparisons. UPM identifiers use `ETSIT` as the school acronym, including `PHD-ETSIT-UPM`. URJC identifiers always include the school: `<degree>-<school>-URJC`, for example `ITI-ESCET-URJC` or `GII-ETSII-URJC`.
 - An institution identifier such as `UAH`, `UPM`, or `URJC`. Reuse an existing identifier when the university is already registered.
 
 Use short ASCII identifiers without spaces. Uppercase degree and institution identifiers follow the current convention. Layout-profile names use lowercase words separated with hyphens, for example `uah-tfg-2024` or `urjc-iti-tfg`.
 
 Do not encode a separate work type into the degree identifier merely to solve a filename problem. The canonical work type is stored independently in the `work-type` field.
+
+## Advisor presentation and the manual catalogue
+
+`\myFlagSplittedAdvisors` accepts only `true` or `false`. It controls UAH TFG covers, the EPS-UAH master cover, MUCTE pages, the ESCET-URJC outer cover and the shared UAH information sheet. Grouping must not change roles: tutor/cotutor for Spanish TFGs, director/codirector for Spanish TFMs and TFCs, and advisor/co-advisor in English. Omit absent co-advisors entirely and preserve grammatical gender and number. Label changes stay local to covers rather than changing paperwork commands.
+
+Do not impose this flag on fixed layouts: MUC and MUANBD outer covers, doctoral covers, ETSII-URJC, EIF-URJC and UPM pages. MUC and MUANBD do use the flag in their shared UAH information sheet. GISD and MUNE retain their specific technical/academic supervision assignments.
+
+The `Book/appendix/titulaciones-soportadas.tex` appendix reads the registry through `\DegreeRegistryPrintCatalogue` without selecting a different degree or changing its metadata. It groups active academic entries by university and school, displays the identifier and Spanish name followed by the registered translation or `not translated` in parentheses, and distinguishes compendium doctoral variants. Legacy degrees and research reports are excluded. Also update the short identifier lists in myconfig.tex and the configuration chapter when adding degrees. UPM currently has only one supported school, so its section title combines university and school names without a redundant school subsection.
+
+## Maintaining EIF-URJC and ETSII-URJC cover layouts
+
+The cover is an intentional adaptation of the official model: it uses the selected document font regardless of the advanced institutional font mode. Keep this exception limited to `urjc-eif-tfg` and `urjc-etsii-tfg` in the institutional-page wrapper. The school uses 18 pt, the degree 16 pt, the title 18 pt and the personal details/year 16 pt. A fixed-height minipage with weighted stretchable gaps balances the logo and academic year at 4 cm from the page edges and accommodates different title lengths. Run `bash AdminScripts/tests/test-eif-cover-layout.sh` to check short and long titles in all six styles together.
+
+The ETSII-URJC cover uses the same font sizes and flexible spacing but keeps its original wording and content order: academic year below the degree, then work type and title, with author/advisor details at the bottom. Its 4 cm bottom margin is measured from that final personal-details block, not the academic year. Its back cover remains unchanged.
+
+The thirteen identifiers ending in `-EIF-URJC` share the `urjc-eif-tfg` profile, with no back cover. Its cover follows Annex 1 of the EIF regulation amended on 4 July 2025 and reuses the URJC logo. Keep the school name in Spanish in both language models. This TFG cover reads `degree-name-english` locally for English without changing the naming policy for other covers. Translations are descriptive, not certified official English names. Two supervisors use a plural heading and separate name lines regardless of the grouping flag. Only individual TFGs are supported.
+
+Run `bash AdminScripts/tests/test-eif-advisors-catalogue.sh` to check names, covers, advisors and the catalogue together. The test reuses one temporary source tree and can retain PDFs through `EIF_TEST_OUTPUT_DIR`.
 
 ## Maintaining ETSIT-UPM support
 
@@ -137,10 +155,10 @@ Keep these current degree/profile assignments aligned with Config/degrees.tex an
 
 | Layout profile | Degrees | Opening pages and back cover |
 |---|---|---|
-| `upm-etsit-tft` | `GISTS-UPM`, `GIB-UPM`, `MUIT-UPM`, `MUCS-UPM`, `MUESFV-UPM`, `MUIB-UPM`, `MUIRST-UPM`, `MUISE-UPM`, `MUTSC-UPM` | Shared orange outer cover, committee sheet, inner title page and orange back cover. |
-| `upm-etsit-gisd-tfg` | `GISD-UPM` | Shared covers with a specific technical/academic supervision committee sheet. |
-| `upm-etsit-mune-tfm` | `MUNE-UPM` | Wrapper selecting Spanish or English texts, a specific committee sheet and the shared covers. |
-| `upm-phd` | `PHD-ETSIT-UPM` | Doctoral outer cover, inner title page and credits; no independent back cover. |
+| `upm-etsit-tft` | `GISTS-ETSIT-UPM`, `GIB-ETSIT-UPM`, `MUIT-ETSIT-UPM`, `MUCS-ETSIT-UPM`, `MUESFV-ETSIT-UPM`, `MUIB-ETSIT-UPM`, `MUIRST-ETSIT-UPM`, `MUISE-ETSIT-UPM`, `MUTSC-ETSIT-UPM` | Shared orange outer cover, committee sheet, inner title page and orange back cover. |
+| `upm-etsit-gisd-tfg` | `GISD-ETSIT-UPM` | Shared covers with a specific technical/academic supervision committee sheet. |
+| `upm-etsit-mune-tfm` | `MUNE-ETSIT-UPM` | Wrapper selecting Spanish or English texts, a specific committee sheet and the shared covers. |
+| `upm-phd` | `PHD-ETSIT-UPM`, `PHD-ETSIT-UPM-COMPENDIUM` | Doctoral outer cover, inner title page and credits; no independent back cover. |
 
 Keep the work-type labels in shared undergraduate/master covers derived from the degree registry. The shared, GISD and MUNE information sheets use the work department defined in `\myDepartment`, including with `\myLanguage{english}`: the GISD and MUNE regulations state that institutional names must not be translated. Translate the label to `Department`, not the department name, and never infer it from the ponente or supervisors. The `\myDepartmentEnglish` variable remains available for other documents that require it.
 
@@ -216,13 +234,15 @@ The required fields are:
 
 The optional fields are:
 
+- `document-structure`: `standard` (default for each entry) or `compendium` (PhD only).
+
 - `school-english`: English school name. If omitted, `\mySchoolEnglish` falls back to `\mySchool`.
 - `degree-name-english`: selected automatically for TFM degrees when `\myLanguage` is `english`; if omitted or empty, the Spanish name and wrapped forms remain in use. Other work types retain their existing name selection.
 - `degree-name-wrapped`: an explicitly wrapped form used by covers with limited width. If omitted, `\myDegreefullwrapped` falls back to `\myDegreefull`.
 - `degree-name-wrapped-uppercase`: an explicitly wrapped uppercase form. If omitted, `\myDegreefullwrappedUpcase` applies `\MakeUppercase` to `\myDegreefull`.
 - `degree-name-wrapped-english` and `degree-name-wrapped-uppercase-english`: optional English cover forms for TFMs. When the English degree name is selected, omitted forms fall back to that name and its uppercase version, never to the Spanish wrapped forms.
 
-All supported TFMs use `Master's Thesis` in English. MUNE-UPM retains `Master of Science in Neurotechnology`. The MUC outer cover is an intentional exception: its background artwork keeps the Spanish degree and work-type labels unchanged; subsequent text-based pages use the selected English names.
+All supported TFMs use `Master's Thesis` in English. MUNE-ETSIT-UPM retains `Master of Science in Neurotechnology`. The MUC outer cover is an intentional exception: its background artwork keeps the Spanish degree and work-type labels unchanged; subsequent text-based pages use the selected English names.
 
 Keep the declaration formatting compatible with `Config/query-degree-registry.sh`:
 
@@ -231,6 +251,25 @@ Keep the declaration formatting compatible with `Config/query-degree-registry.sh
 - Keep the trailing comma on `work-type`.
 
 The TeX registry itself is more flexible, but the Makefile and PDF-generation script intentionally use the simple line-oriented query tool.
+
+
+### Doctoral structure variants
+
+Students select `PHDUAH` or `PHD-ETSIT-UPM` for a conventional thesis and the corresponding `-COMPENDIUM` identifier for a compendium. Do not expose `\myDocumentStructure` in `myconfig.tex`: `postamble.tex` assigns that internal variable from the selected registry property. A conflicting legacy definition produces a migration warning and does not override the registry.
+
+Declare the base doctoral degree first. Its omitted `document-structure` defaults to `standard`. Then add a variant without duplicating institutional metadata:
+
+```latex
+\DeclareDegreeVariant{NEWPHD-COMPENDIUM}{NEWPHD}{
+  document-structure = compendium
+}
+```
+
+Only `document-structure` can be overridden by a variant. Unknown bases, duplicate identifiers, unsupported structures and non-PhD compendia are errors. All inherited fields remain accessible through the normal registry interface. For a standalone PhD entry that always uses compendium, specify `document-structure = compendium` directly in its `\DeclareDegree` declaration.
+
+The shell query helper exposes `document-structure`, `base-degree` and `structure-variant DEGREE standard|compendium`. Both declarations must start at column one, with the variant header `\DeclareDegreeVariant{ID}{BASE}{` on one line and each property on its own line. Keep TeX and shell default/inheritance behaviour covered by regression tests.
+
+The Makefile reads the effective registry structure. Explicit `bare-standard`/`orig-standard` and `bare-compendium`/`orig-compendium` select the matching identifier in the same family. Compendium requests for non-PhD degrees fail before backups or edits. The isolated builder retains `--structure` as a request to resolve a variant, not as a configuration override. The all-PDF generator deduplicates effective selections and retains base identifiers in output filenames, preserving existing published links.
 
 ### Step 3: create a layout profile only if needed
 

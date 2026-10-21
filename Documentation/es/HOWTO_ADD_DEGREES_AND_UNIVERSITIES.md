@@ -30,7 +30,7 @@ La selección puede resumirse así:
 
 Antes de editar los ficheros, elija dos identificadores cuando corresponda:
 
-- Un identificador de titulación como `GIEC`, `MUIT` o `ITI-URJC`. Es el valor que los usuarios asignan a `\myDegree`, aparece en los nombres de los PDF generados y debería permanecer estable una vez publicado. Para titulaciones fuera de la UAH, utiliza `<titulación>-<universidad>` (por ejemplo, `ITI-URJC` o `MUIT-UPM`); el registro y las comparaciones de cadenas de LaTeX admiten el guion. Los identificadores específicos de un centro pueden añadir sus siglas, como en `PHD-ETSIT-UPM`.
+- Un identificador de titulación como `GIEC`, `MUIT` o `ITI-ESCET-URJC`. Es el valor que los usuarios asignan a `\myDegree`, aparece en los nombres de los PDF generados y debería permanecer estable una vez publicado. Para titulaciones fuera de la UAH, utiliza `<titulación>-<centro>-<universidad>` (por ejemplo, `ITI-ESCET-URJC` o `MUIT-ETSIT-UPM`); el registro y las comparaciones de cadenas de LaTeX admiten el guion. Los identificadores de la UPM utilizan `ETSIT` como centro, también en `PHD-ETSIT-UPM`. Los identificadores de la URJC incluyen siempre el centro: `<titulación>-<centro>-URJC`, por ejemplo `ITI-ESCET-URJC` o `GII-ETSII-URJC`.
 - Un identificador de institución como `UAH`, `UPM` o `URJC`. Reutilice un identificador existente cuando la universidad ya esté registrada.
 
 Use identificadores ASCII cortos y sin espacios. Los identificadores de titulaciones e instituciones en mayúsculas siguen la convención actual. Los nombres de los perfiles de maquetación usan palabras en minúsculas separadas por guiones, por ejemplo `uah-tfg-2024` o `urjc-iti-tfg`.
@@ -91,7 +91,7 @@ Los campos opcionales son:
 - `degree-name-wrapped-uppercase`: una forma explícita en mayúsculas y con saltos de línea. Si se omite, `\myDegreefullwrappedUpcase` aplica `\MakeUppercase` a `\myDegreefull`.
 - `degree-name-wrapped-english` y `degree-name-wrapped-uppercase-english`: versiones opcionales en inglés para las portadas de TFM. Cuando se selecciona el nombre inglés, los campos omitidos toman ese nombre y su versión en mayúsculas, nunca las versiones españolas con saltos de línea.
 
-Todos los TFM compatibles utilizan `Master's Thesis` en inglés. MUNE-UPM conserva `Master of Science in Neurotechnology`. La portada exterior de MUC constituye una excepción intencionada: su imagen de fondo mantiene los textos españoles de la titulación y del tipo de trabajo; las páginas posteriores con texto LaTeX utilizan los nombres ingleses seleccionados.
+Todos los TFM compatibles utilizan `Master's Thesis` en inglés. MUNE-ETSIT-UPM conserva `Master of Science in Neurotechnology`. La portada exterior de MUC constituye una excepción intencionada: su imagen de fondo mantiene los textos españoles de la titulación y del tipo de trabajo; las páginas posteriores con texto LaTeX utilizan los nombres ingleses seleccionados.
 
 Mantenga el formato de la declaración compatible con `Config/query-degree-registry.sh`:
 

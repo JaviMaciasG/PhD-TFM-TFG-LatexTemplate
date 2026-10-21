@@ -1,0 +1,65 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: portada de TFG individual de la EIF-URJC.
+%
+% Uso: inclusión automática; normalmente no debes modificarlo.
+% Modelo: Anexo 1 del reglamento EIF-URJC, modificado el 4 de julio de 2025.
+% No se compila por separado.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+\begingroup
+% Conserva las fuentes del estilo elegido, no la fuente del modelo Word.
+\normalfont
+\newcommand{\EIFDegreeName}{\myDegreefull}
+\newcommand{\EIFWorkType}{TRABAJO FIN DE GRADO}
+\newcommand{\EIFAuthorLabel}{\ifthenelse{\equal{\myAuthorGender}{male}}{Autor}{Autora}}
+\newcommand{\EIFAdvisorLabel}{%
+  \ifthenelse{\equal{\myCoTutorFullName}{}}%
+    {\ifthenelse{\equal{\myAcademicTutorGender}{male}}{Tutor}{Tutora}}%
+    {\ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{Tutoras}{Tutores}}}
+\newcommand{\EIFAcademicYearLabel}{Curso académico}
+\ifthenelse{\equal{\myLanguage}{english}}{%
+  \edef\EIFEnglishDegreeName{\DegreeRegistryValue{degree-name-english}}%
+  \ifthenelse{\equal{\EIFEnglishDegreeName}{}}{}{\renewcommand{\EIFDegreeName}{\EIFEnglishDegreeName}}%
+  \renewcommand{\EIFWorkType}{BACHELOR THESIS}%
+  \renewcommand{\EIFAuthorLabel}{Author}%
+  \renewcommand{\EIFAdvisorLabel}{\ifthenelse{\equal{\myCoTutorFullName}{}}{Supervisor}{Supervisors}}%
+  \renewcommand{\EIFAcademicYearLabel}{Academic year}%
+}{}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[white] (current page.south west) rectangle (current page.north east);
+  % El bloque completo deja 4 cm arriba y abajo. Los espacios elásticos
+  % reparten la altura restante tras componer el título y los nombres.
+  \node[anchor=center,inner sep=0pt,outer sep=0pt] at (current page.center) {%
+    \begin{minipage}[c][\dimexpr\paperheight-8cm\relax][s]{16cm}
+      \centering
+      \setlength{\parindent}{0pt}
+      \setlength{\parskip}{0pt}
+      \linespread{1}\selectfont
+      \vspace*{0pt}
+      \includegraphics[width=6.4cm]{urjc/URJ_logo_Color_POS.png}\par
+      \vspace{\stretch{1.3}}
+      {\fontsize{18}{22}\selectfont\MakeUppercase{\mySchool}\par}
+      \vspace{\stretch{0.6}}
+      {\fontsize{16}{20}\selectfont\MakeUppercase{\EIFDegreeName}\par}
+      \vspace{\stretch{1}}
+      {\bfseries\fontsize{18}{22}\selectfont\EIFWorkType\par}
+      \vspace{\stretch{1.1}}
+      {\bfseries\fontsize{18}{23}\selectfont\myBookTitle\par}
+      \vspace{\stretch{1.4}}
+      {\fontsize{16}{20}\selectfont
+        \EIFAuthorLabel: \myAuthorFullName\par
+        \vspace{0.5cm}
+        \EIFAdvisorLabel: \myAcademicTutorFullName
+        \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\\myCoTutorFullName}\par}
+      \vspace{\stretch{1.3}}
+      {\fontsize{16}{20}\selectfont\EIFAcademicYearLabel: \myThesisAcademicYear\par}
+    \end{minipage}};
+\end{tikzpicture}
+\null
+\clearpage
+\endgroup
+
+%%% Local Variables:
+%%% TeX-master: "../../book"
+%%% End:

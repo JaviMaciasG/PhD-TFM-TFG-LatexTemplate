@@ -27,6 +27,7 @@ fixture=$(mktemp -d)
 trap 'rm -rf -- "$fixture"' EXIT
 mkdir -p "$fixture/source/Config/typesetting/styles" "$fixture/source/Book" "$fixture/bin"
 cp "$repository_root/Config/myconfig.tex" "$fixture/source/Config/"
+cp "$repository_root/Config/query-degree-registry.sh" "$repository_root/Config/degrees.tex" "$fixture/source/Config/"
 cp "$repository_root/Config/typesetting/typesetting.tex" "$fixture/source/Config/typesetting/"
 cp "$repository_root/Config/typesetting/styles/"*.tex "$fixture/source/Config/typesetting/styles/"
 cp "$repository_root/Book/book.tex" "$fixture/source/Book/"

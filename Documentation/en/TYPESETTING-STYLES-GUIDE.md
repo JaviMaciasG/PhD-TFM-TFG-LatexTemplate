@@ -79,12 +79,11 @@ Edit the existing style definition in `Config/myconfig.tex`:
 
 Replace its value; do not add a second `\newcommand` with the same name. Names are case-sensitive. The default style is `standard`. Institutional pages retain their original fonts automatically; no additional user setting is needed. The dispatcher also supplies the default style when its command is absent, although the build helpers expect one existing style definition.
 
-`\myDocumentStructure` is a separate setting: it selects the standard or
-compendium organisation of the content, not a typesetting profile.
+The degree identifier selects standard or compendium content independently of the typesetting style. Select `PHDUAH-COMPENDIUM` or `PHD-ETSIT-UPM-COMPENDIUM` through `\myDegree` for a compendium.
 
 ### 2.2 Fonts on institutional pages
 
-Covers and back pages automatically retain their institutional fonts, even when you select a different typesetting style for the document body. You do not need to configure any additional field in `Config/myconfig.tex`.
+Covers and back pages normally retain their institutional fonts, even when you select a different typesetting style for the document body. The EIF-URJC and ETSII-URJC covers are exceptions: they use the selected document fonts. You do not need to configure any additional field in `Config/myconfig.tex`.
 
 ### 2.3 Build the selected document
 

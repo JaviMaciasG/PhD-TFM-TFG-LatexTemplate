@@ -1,0 +1,39 @@
+% Exercise the actual manual appendix without the rest of the book.
+\documentclass{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[spanish,es-lcroman]{babel}
+\usepackage{hyperref}
+\newcommand{\myLanguage}{spanish}
+\newcommand{\myDegree}{MUIT}
+\input{../Config/degree-registry.tex}
+\input{../Config/institutions.tex}
+\input{../Config/layout-profiles.tex}
+\input{../Config/degrees.tex}
+\DegreeRegistrySelect{\myDegree}
+\edef\SelectedNameBefore{\myDegreefull}
+\edef\SelectedSchoolBefore{\mySchool}
+\ExplSyntaxOn
+\tl_set_eq:NN \l_tmpc_tl \g_uah_selected_degree_tl
+\cs_new_eq:NN \catalogue_test_entry:n \uah_catalogue_entry:n
+\cs_set_protected:Npn \uah_catalogue_entry:n #1
+  {\typeout{CATALOGUE:~#1}\catalogue_test_entry:n {#1}}
+\ExplSyntaxOff
+\begin{document}
+\tableofcontents
+\appendix
+\input{appendix/titulaciones-soportadas.tex}
+\ExplSyntaxOn
+\tl_if_eq:NNF \l_tmpc_tl \g_uah_selected_degree_tl
+  {\PackageError{catalogue-test}{Selected~degree~changed}{}}
+\ExplSyntaxOff
+\edef\SelectedNameAfter{\myDegreefull}
+\edef\SelectedSchoolAfter{\mySchool}
+\ifx\SelectedNameBefore\SelectedNameAfter\else
+  \PackageError{catalogue-test}{Selected name changed}{}
+\fi
+\ifx\SelectedSchoolBefore\SelectedSchoolAfter\else
+  \PackageError{catalogue-test}{Selected school changed}{}
+\fi
+\end{document}

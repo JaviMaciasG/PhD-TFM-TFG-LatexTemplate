@@ -15,7 +15,6 @@ cp "$repository_root/PapeleoTFG/"*.tex "$fixture/PapeleoTFG/"
 cp "$repository_root/PapeleoTFM/"*.tex "$fixture/PapeleoTFM/"
 cp "$test_directory/fixtures/work-department-urjc.tex" "$fixture/Book/urjc.tex"
 sed -i \
-  -e 's/\\newcommand{\\myDocumentStructure}{[^}]*}/\\newcommand{\\myDocumentStructure}{standard}/' \
   -e 's/\\newcommand{\\myDepartment}{[^}]*}/\\newcommand{\\myDepartment}{WorkDeptES}/' \
   -e 's/\\newcommand{\\myDepartmentEnglish}{[^}]*}/\\newcommand{\\myDepartmentEnglish}{WorkDeptEN}/' \
   -e 's/\\newcommand{\\myAcademicTutorDepartment}{[^}]*}/\\newcommand{\\myAcademicTutorDepartment}{TutorDept}/' \

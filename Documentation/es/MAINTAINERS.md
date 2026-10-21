@@ -16,7 +16,7 @@ Marque una vez cada checkout de mantenimiento de referencia con `git config temp
 
 Cada estructura preparada se mantiene junto a los capítulos que organiza. Las plantillas estándar están en `Book/chapters/bare/` y `Book/chapters/orig/`; las plantillas especializadas están en `Book/chapters/compendium/bare/` y `Book/chapters/compendium/orig/`. Cada directorio contiene su fichero `content-*.tex` correspondiente, que el Makefile excluye explícitamente de la lista de copia de capítulos y copia por separado a la raíz de `Book/`. Siempre que cambie una organización distribuida, actualice tanto sus ficheros activos como sus copias canónicas `orig`. El Makefile debe copiar estos ficheros preparados; no debe volver a reescribir regiones marcadas dentro de `book.tex`.
 
-Los objetivos `bare` y `orig` despachan según `\myDocumentStructure`; también están disponibles los objetivos explícitos `bare-standard`, `bare-compendium`, `orig-standard` y `orig-compendium`. Mantenga `bare-chapters` y `orig-chapters` como alias compatibles hacia atrás de la estructura estándar.
+Los objetivos `bare` y `orig` despachan según la estructura de la titulación seleccionada en el registro; también están disponibles los objetivos explícitos `bare-standard`, `bare-compendium`, `orig-standard` y `orig-compendium`. Mantenga `bare-chapters` y `orig-chapters` como alias compatibles hacia atrás de la estructura estándar.
 
 Las opciones booleanas orientadas al usuario de `Config/myconfig.tex` comparten el prefijo `\myInclude...` y aceptan exactamente `true` o `false`. `Config/postamble.tex` valida cada opción. Al añadir un conmutador, actualice su validación, la inclusión condicional correspondiente, el capítulo de configuración y su copia `orig` mantenida. Los conmutadores que controlan listas generadas no deberían deshabilitar la funcionalidad LaTeX subyacente.
 
@@ -124,12 +124,30 @@ La selección puede resumirse así:
 
 Antes de editar los ficheros, elija dos identificadores cuando corresponda:
 
-- Un identificador de titulación como `GIEC`, `MUIT` o `ITI-URJC`. Es el valor que los usuarios asignan a `\myDegree`, aparece en los nombres de los PDF generados y debería permanecer estable una vez publicado. Para titulaciones fuera de la UAH, utiliza `<titulación>-<universidad>` (por ejemplo, `ITI-URJC` o `MUIT-UPM`); el registro y las comparaciones de cadenas de LaTeX admiten el guion. Los identificadores específicos de un centro pueden añadir sus siglas, como en `PHD-ETSIT-UPM`.
+- Un identificador de titulación como `GIEC`, `MUIT` o `ITI-ESCET-URJC`. Es el valor que los usuarios asignan a `\myDegree`, aparece en los nombres de los PDF generados y debería permanecer estable una vez publicado. Para titulaciones fuera de la UAH, utiliza `<titulación>-<centro>-<universidad>` (por ejemplo, `ITI-ESCET-URJC` o `MUIT-ETSIT-UPM`); el registro y las comparaciones de cadenas de LaTeX admiten el guion. Los identificadores de la UPM utilizan `ETSIT` como centro, también en `PHD-ETSIT-UPM`. Los identificadores de la URJC incluyen siempre el centro: `<titulación>-<centro>-URJC`, por ejemplo `ITI-ESCET-URJC` o `GII-ETSII-URJC`.
 - Un identificador de institución como `UAH`, `UPM` o `URJC`. Reutilice un identificador existente cuando la universidad ya esté registrada.
 
 Use identificadores ASCII cortos y sin espacios. Los identificadores de titulaciones e instituciones en mayúsculas siguen la convención actual. Los nombres de los perfiles de maquetación usan palabras en minúsculas separadas por guiones, por ejemplo `uah-tfg-2024` o `urjc-iti-tfg`.
 
 No codifique un tipo de trabajo independiente dentro del identificador de la titulación únicamente para resolver un problema con el nombre de fichero. El tipo de trabajo canónico se almacena de forma independiente en el campo `work-type`.
+
+## Presentación de los tutores y catálogo del manual
+
+`\myFlagSplittedAdvisors` admite únicamente `true` o `false`. Controla las portadas de TFG UAH, la portada EPS-UAH de TFM, las páginas MUCTE, la portada ESCET-URJC y la hoja de información UAH compartida. La agrupación no debe cambiar el cargo: tutor/cotutor en TFG, director/codirector en TFM y TFC, advisor/co-advisor en inglés. Omite por completo el cotutor cuando no exista y conserva las formas femeninas y el plural cuando corresponda. Los cambios de rótulos son locales a las cubiertas para no alterar los formularios.
+
+No fuerces esta opción en los modelos fijos: portadas MUC y MUANBD, doctorados, ETSII-URJC, EIF-URJC y páginas UPM. MUANBD y MUC sí utilizan la opción en su hoja de información UAH compartida. Las asignaciones específicas de supervisión técnica y académica de GISD y MUNE siguen siendo independientes.
+
+El apéndice `Book/appendix/titulaciones-soportadas.tex` consulta el registro mediante `\DegreeRegistryPrintCatalogue`, sin seleccionar otra titulación ni modificar sus datos. Agrupa las entradas académicas activas por universidad y centro, muestra el identificador y el nombre español seguido de la traducción registrada o `not translated` entre paréntesis, y distingue los doctorados por compendio. Las titulaciones heredadas y los informes de investigación no forman parte de este catálogo. Actualiza también los identificadores resumidos en myconfig.tex y en el capítulo de configuración cuando añadas titulaciones. La UPM tiene actualmente un único centro soportado, por lo que el título de su sección combina universidad y centro sin repetir una subsección para este último.
+
+## Mantenimiento de las portadas EIF-URJC y ETSII-URJC
+
+La portada adapta intencionadamente el modelo oficial: utiliza la fuente del estilo del documento, independientemente de la política avanzada de fuentes institucionales. Mantén esta excepción limitada a `urjc-eif-tfg` y `urjc-etsii-tfg` en el envoltorio de páginas institucionales. El centro utiliza 18 pt, la titulación 16 pt, el título 18 pt y los datos personales y el curso 16 pt. Una minipágina de altura fija con espacios elásticos ponderados equilibra el logotipo y el curso académico a 4 cm de los bordes y admite títulos de distintas longitudes. Ejecuta `bash AdminScripts/tests/test-eif-cover-layout.sh` para comprobar conjuntamente títulos cortos y largos en los seis estilos.
+
+La portada ETSII-URJC utiliza los mismos tamaños de fuente y espacios elásticos, pero conserva sus textos y el orden de sus contenidos: curso académico debajo de la titulación, tipo de trabajo y título a continuación, y datos de autor y tutores al pie. Su margen inferior de 4 cm se mide desde ese bloque final de datos personales, no desde el curso académico. La contraportada no cambia.
+
+Los trece identificadores terminados en `-EIF-URJC` comparten el perfil `urjc-eif-tfg`, sin contraportada. La portada reproduce el Anexo 1 del reglamento EIF modificado el 4 de julio de 2025 y utiliza el logotipo URJC existente. El nombre del centro se conserva en español, también en el modelo inglés. Solo esta portada de TFG consulta localmente `degree-name-english` al seleccionar inglés, sin cambiar la política general de nombres para otras portadas. Las traducciones son descriptivas, no una certificación de nombres oficiales. Con dos tutores, el encabezado es plural y los nombres aparecen en líneas separadas, independientemente de la opción de agrupación. Solo se admiten TFG individuales.
+
+Ejecuta `bash AdminScripts/tests/test-eif-advisors-catalogue.sh` para comprobar conjuntamente los nombres, las portadas, los tutores y el catálogo. La prueba reutiliza un único árbol temporal y permite conservar los PDF mediante `EIF_TEST_OUTPUT_DIR`.
 
 ## Mantenimiento del soporte ETSIT-UPM
 
@@ -137,10 +155,10 @@ Mantén estas asignaciones actuales de titulaciones y perfiles coherentes con Co
 
 | Perfil de maquetación | Titulaciones | Páginas iniciales y contraportada |
 |---|---|---|
-| `upm-etsit-tft` | `GISTS-UPM`, `GIB-UPM`, `MUIT-UPM`, `MUCS-UPM`, `MUESFV-UPM`, `MUIB-UPM`, `MUIRST-UPM`, `MUISE-UPM`, `MUTSC-UPM` | Cubierta exterior naranja, hoja de tribunal y portada interior compartidas, y contraportada naranja. |
-| `upm-etsit-gisd-tfg` | `GISD-UPM` | Cubiertas compartidas con una hoja específica de supervisión técnica y académica. |
-| `upm-etsit-mune-tfm` | `MUNE-UPM` | Fichero envoltorio que selecciona textos españoles o ingleses, hoja específica de tribunal y cubiertas compartidas. |
-| `upm-phd` | `PHD-ETSIT-UPM` | Cubierta doctoral, portada interior y créditos; sin contraportada independiente. |
+| `upm-etsit-tft` | `GISTS-ETSIT-UPM`, `GIB-ETSIT-UPM`, `MUIT-ETSIT-UPM`, `MUCS-ETSIT-UPM`, `MUESFV-ETSIT-UPM`, `MUIB-ETSIT-UPM`, `MUIRST-ETSIT-UPM`, `MUISE-ETSIT-UPM`, `MUTSC-ETSIT-UPM` | Cubierta exterior naranja, hoja de tribunal y portada interior compartidas, y contraportada naranja. |
+| `upm-etsit-gisd-tfg` | `GISD-ETSIT-UPM` | Cubiertas compartidas con una hoja específica de supervisión técnica y académica. |
+| `upm-etsit-mune-tfm` | `MUNE-ETSIT-UPM` | Fichero envoltorio que selecciona textos españoles o ingleses, hoja específica de tribunal y cubiertas compartidas. |
+| `upm-phd` | `PHD-ETSIT-UPM`, `PHD-ETSIT-UPM-COMPENDIUM` | Cubierta doctoral, portada interior y créditos; sin contraportada independiente. |
 
 Conserva los rótulos del tipo de trabajo de las cubiertas compartidas de TFG/TFM derivados del registro. Las hojas de información compartidas, GISD y MUNE utilizan el departamento del trabajo definido en `\myDepartment`, también con `\myLanguage{english}`: las normativas GISD y MUNE indican que los nombres institucionales no se traducen. Traduce el rótulo a `Department`, no el nombre del departamento, y no lo deduzcas del ponente ni de los supervisores. La variable `\myDepartmentEnglish` sigue disponible para otros documentos que la requieran.
 
@@ -216,13 +234,15 @@ Los campos obligatorios son:
 
 Los campos opcionales son:
 
+- `document-structure`: `standard` (valor predeterminado de cada entrada) o `compendium` (solo doctorado).
+
 - `school-english`: nombre del centro en inglés. Si se omite, `\mySchoolEnglish` toma el valor de `\mySchool`.
 - `degree-name-english`: se selecciona automáticamente para los TFM cuando `\myLanguage` es `english`; si se omite o está vacío, se mantienen el nombre español y sus versiones con saltos de línea. Los demás tipos de trabajo conservan su selección actual del nombre.
 - `degree-name-wrapped`: una forma con saltos de línea explícitos que utilizan las portadas con anchura limitada. Si se omite, `\myDegreefullwrapped` toma el valor de `\myDegreefull`.
 - `degree-name-wrapped-uppercase`: una forma explícita en mayúsculas y con saltos de línea. Si se omite, `\myDegreefullwrappedUpcase` aplica `\MakeUppercase` a `\myDegreefull`.
 - `degree-name-wrapped-english` y `degree-name-wrapped-uppercase-english`: versiones opcionales en inglés para las portadas de TFM. Cuando se selecciona el nombre inglés, los campos omitidos toman ese nombre y su versión en mayúsculas, nunca las versiones españolas con saltos de línea.
 
-Todos los TFM compatibles utilizan `Master's Thesis` en inglés. MUNE-UPM conserva `Master of Science in Neurotechnology`. La portada exterior de MUC constituye una excepción intencionada: su imagen de fondo mantiene los textos españoles de la titulación y del tipo de trabajo; las páginas posteriores con texto LaTeX utilizan los nombres ingleses seleccionados.
+Todos los TFM compatibles utilizan `Master's Thesis` en inglés. MUNE-ETSIT-UPM conserva `Master of Science in Neurotechnology`. La portada exterior de MUC constituye una excepción intencionada: su imagen de fondo mantiene los textos españoles de la titulación y del tipo de trabajo; las páginas posteriores con texto LaTeX utilizan los nombres ingleses seleccionados.
 
 Mantenga el formato de la declaración compatible con `Config/query-degree-registry.sh`:
 
@@ -231,6 +251,24 @@ Mantenga el formato de la declaración compatible con `Config/query-degree-regis
 - Mantenga la coma final en `work-type`.
 
 El propio registro TeX es más flexible, pero el Makefile y el script de generación de PDF utilizan intencionadamente la sencilla herramienta de consulta orientada a líneas.
+
+### Variantes de estructura doctoral
+
+Los estudiantes seleccionan `PHDUAH` o `PHD-ETSIT-UPM` para una tesis convencional y el identificador correspondiente terminado en `-COMPENDIUM` para un compendio. No expongas `\myDocumentStructure` en `myconfig.tex`: `postamble.tex` asigna esta variable interna a partir del registro. Una definición antigua incompatible genera un aviso de migración y no prevalece sobre el registro.
+
+Declara primero el programa doctoral base. Si omites `document-structure`, su valor es `standard`. Después añade una variante sin duplicar los datos institucionales:
+
+```latex
+\DeclareDegreeVariant{NEWPHD-COMPENDIUM}{NEWPHD}{
+  document-structure = compendium
+}
+```
+
+Las variantes solo permiten redefinir `document-structure`. Son errores una base desconocida, un identificador repetido, una estructura no admitida o un compendio no doctoral. Todos los campos heredados siguen disponibles en la interfaz habitual del registro. Si una entrada doctoral independiente utiliza siempre compendio, puedes indicar `document-structure = compendium` directamente en su declaración `\DeclareDegree`.
+
+El script de consulta admite `document-structure`, `base-degree` y `structure-variant DEGREE standard|compendium`. Ambas declaraciones deben comenzar en la primera columna, con la cabecera `\DeclareDegreeVariant{ID}{BASE}{` en una línea y cada propiedad en su propia línea. Las pruebas deben comprobar que TeX y el script aplican los mismos valores predeterminados y la misma herencia.
+
+El Makefile consulta la estructura efectiva del registro. Los objetivos explícitos `bare-standard`/`orig-standard` y `bare-compendium`/`orig-compendium` seleccionan el identificador correspondiente de la misma familia. Las peticiones de compendio para titulaciones no doctorales se rechazan antes de crear copias o modificar ficheros. El constructor aislado conserva `--structure` como petición de una variante, no como sustitución de la configuración. El generador de todos los PDF evita combinaciones efectivas duplicadas y conserva los identificadores base en los nombres de salida para mantener los enlaces publicados.
 
 ### Paso 3: cree un perfil de maquetación solo si es necesario
 

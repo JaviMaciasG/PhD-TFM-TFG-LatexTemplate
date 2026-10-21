@@ -27,7 +27,6 @@ for spec in "${cases[@]}"; do
   [[ $coadvisor == present ]] || coadvisor_name=''
   sed \
     -e 's/\\newcommand{\\myDegree}{[^}]*}/\\newcommand{\\myDegree}{MUIT}/' \
-    -e 's/\\newcommand{\\myDocumentStructure}{[^}]*}/\\newcommand{\\myDocumentStructure}{standard}/' \
     -e "s/\\\\newcommand{\\\\myLanguage}{[^}]*}/\\\\newcommand{\\\\myLanguage}{$language}/" \
     -e "s/\\\\newcommand{\\\\myAuthorGender}{[^}]*}/\\\\newcommand{\\\\myAuthorGender}{$student}/" \
     -e "s/\\\\newcommand{\\\\myAcademicTutorGender}{[^}]*}/\\\\newcommand{\\\\myAcademicTutorGender}{$director}/" \

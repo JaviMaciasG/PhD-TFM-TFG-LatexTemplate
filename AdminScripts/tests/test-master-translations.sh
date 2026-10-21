@@ -27,7 +27,7 @@ mkdir -p "$fixture/Book"
 cp -a "$repository_root/Config" "$fixture/Config"
 cp -a "$repository_root/Book/cover" "$repository_root/Book/logos" "$repository_root/Book/biblio" "$fixture/Book/"
 before=$(sha256sum "$repository_root/Config/myconfig.tex")
-masters=(MUSEA MUIT MUII MUIE MUCTE MUANBD MUC MUIT-UPM MUCS-UPM MUESFV-UPM MUIB-UPM MUIRST-UPM MUISE-UPM MUTSC-UPM MUNE-UPM)
+masters=(MUSEA MUIT MUII MUIE MUCTE MUANBD MUC MUIT-ETSIT-UPM MUCS-ETSIT-UPM MUESFV-ETSIT-UPM MUIB-ETSIT-UPM MUIRST-ETSIT-UPM MUISE-ETSIT-UPM MUTSC-ETSIT-UPM MUNE-ETSIT-UPM)
 for language in spanish english; do
   for degree in "${masters[@]}"; do
     job="master-$degree-$language"

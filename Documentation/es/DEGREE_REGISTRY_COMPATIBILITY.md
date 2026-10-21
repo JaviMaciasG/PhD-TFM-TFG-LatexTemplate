@@ -4,7 +4,7 @@ Este documento reúne las tablas actuales de titulaciones y perfiles de maquetac
 
 ## Convención de identificadores fuera de la UAH
 
-Los identificadores de titulaciones fuera de la UAH usan `<titulación>-<universidad>`, por ejemplo `ITI-URJC`, `GIB-UPM` y `MUIT-UPM`. Los identificadores específicos de un centro pueden añadir sus siglas, como `PHD-ETSIT-UPM`. Los nombres de los PDF generados utilizan estos mismos identificadores.
+Los identificadores de titulaciones fuera de la UAH usan `<titulación>-<centro>-<universidad>`, por ejemplo `ITI-ESCET-URJC`, `GIB-ETSIT-UPM` y `MUIT-ETSIT-UPM`. Los identificadores de la UPM utilizan `ETSIT` como centro, también en `PHD-ETSIT-UPM`. Los nombres de los PDF generados utilizan estos mismos identificadores. Los identificadores de la URJC incluyen siempre el centro: `<titulación>-<centro>-URJC`, por ejemplo `ITI-ESCET-URJC` o `GII-ETSII-URJC`.
 
 ## Reglas de migración
 
@@ -46,7 +46,6 @@ La tabla sigue el orden de Config/degrees.tex. El tipo de trabajo es el valor ca
 | `GII` | Activo | Grado en Ingeniería Informática | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GMC` | Activo | Grado en Matemáticas y Computación | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GIS` | Activo | Grado en Sistemas de Información | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
-| `GSI` | Heredado | Grado en Sistemas de Información | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GISI` | Activo | Grado en Ingeniería en Sistemas de Información | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GIEAI` | Activo | Grado en Ingeniería en Electrónica y Automática Industrial | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GITI` | Activo | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
@@ -56,18 +55,31 @@ La tabla sigue el orden de Config/degrees.tex. El tipo de trabajo es el valor ca
 | `GQ` | Activo | Grado en Química | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GCA` | Activo | Grado en Ciencias Ambientales | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
 | `GCCTF` | Activo | Grado en Criminalística: Ciencias y Tecnologías Forenses | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `uah-tfg-2024` |
-| `ITI-URJC` | Activo | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo Fin de Grado / Bachelor's Thesis | `urjc-iti-tfg` |
-| `GCID-URJC` | Activo | Grado en Ciencia e Ingeniería de Datos | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GDDV-URJC` | Activo | Grado en Diseño y Desarrollo de Videojuegos | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GII-URJC` | Activo | Grado en Ingeniería Informática | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GICO-URJC` | Activo | Grado en Ingeniería de Computadores | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GICI-URJC` | Activo | Grado en Ingeniería de la Ciberseguridad | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GIS-URJC` | Activo | Grado en Ingeniería del Software | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GIA-URJC` | Activo | Grado en Inteligencia Artificial | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GMAT-URJC` | Activo | Grado en Matemáticas | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
-| `GISTS-UPM` | Activo | Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
-| `GIB-UPM` | Activo | Grado en Ingeniería Biomédica | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
-| `GISD-UPM` | Activo | Grado en Ingeniería y Sistemas de Datos | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-gisd-tfg` |
+| `ITI-ESCET-URJC` | Activo | Grado en Ingeniería en Tecnologías Industriales | `TFG` | Trabajo Fin de Grado / Bachelor's Thesis | `urjc-iti-tfg` |
+| `GCID-ETSII-URJC` | Activo | Grado en Ciencia e Ingeniería de Datos | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GDDV-ETSII-URJC` | Activo | Grado en Diseño y Desarrollo de Videojuegos | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GII-ETSII-URJC` | Activo | Grado en Ingeniería Informática | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GICO-ETSII-URJC` | Activo | Grado en Ingeniería de Computadores | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GICI-ETSII-URJC` | Activo | Grado en Ingeniería de la Ciberseguridad | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GIS-ETSII-URJC` | Activo | Grado en Ingeniería del Software | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GIA-ETSII-URJC` | Activo | Grado en Inteligencia Artificial | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GMAT-ETSII-URJC` | Activo | Grado en Matemáticas | `TFG` | Trabajo de Fin de Grado / Trabajo de Fin de Grado | `urjc-etsii-tfg` |
+| `GISAM-EIF-URJC` | Activo | Grado en Ingeniería en Sistemas Audiovisuales y Multimedia | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIST-EIF-URJC` | Activo | Grado en Ingeniería en Sistemas de Telecomunicación | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIT-EIF-URJC` | Activo | Grado en Ingeniería en Telemática | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GITT-EIF-URJC` | Activo | Grado en Ingeniería en Tecnologías de Telecomunicación | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIAA-EIF-URJC` | Activo | Grado en Ingeniería Aeroespacial en Aeronavegación | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIATA-EIF-URJC` | Activo | Grado en Ingeniería Aeroespacial en Transporte y Aeropuertos | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIAVA-EIF-URJC` | Activo | Grado en Ingeniería Aeroespacial en Vehículos Aeroespaciales | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIA-EIF-URJC` | Activo | Grado en Ingeniería Aeroespacial | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIB-EIF-URJC` | Activo | Grado en Ingeniería Biomédica | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GIRS-EIF-URJC` | Activo | Grado en Ingeniería de Robótica Software | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GCID-EIF-URJC` | Activo | Grado en Ciencia e Ingeniería de Datos | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GP-EIF-URJC` | Activo | Grado en Paisajismo | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GFA-EIF-URJC` | Activo | Grado en Fundamentos de la Arquitectura | `TFG` | Trabajo de Fin de Grado / Bachelor Thesis | `urjc-eif-tfg` |
+| `GISTS-ETSIT-UPM` | Activo | Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
+| `GIB-ETSIT-UPM` | Activo | Grado en Ingeniería Biomédica | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-tft` |
+| `GISD-ETSIT-UPM` | Activo | Grado en Ingeniería y Sistemas de Datos | `TFG` | Trabajo Fin de Grado / Trabajo Fin de Grado | `upm-etsit-gisd-tfg` |
 | `MUSEA` | Activo | Máster Universitario en Sistemas Electrónicos Avanzados. Sistemas Inteligentes | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
 | `MUIT` | Activo | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
 | `MUII` | Activo | Máster Universitario en Ingeniería Industrial | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-tfm-eps` |
@@ -75,16 +87,18 @@ La tabla sigue el orden de Config/degrees.tex. El tipo de trabajo es el valor ca
 | `MUCTE` | Activo | Máster Universitario en Ciencia y Tecnología desde el Espacio | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-mucte` |
 | `MUANBD` | Activo | Máster Universitario en Analítica de Negocio y Big Data | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muanbd` |
 | `MUC` | Activo | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Master's Thesis | `uah-muc-2026` |
-| `MUIT-UPM` | Activo | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
-| `MUCS-UPM` | Activo | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
-| `MUESFV-UPM` | Activo | Máster Universitario en Energía Solar Fotovoltaica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
-| `MUIB-UPM` | Activo | Máster Universitario en Ingeniería Biomédica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
-| `MUIRST-UPM` | Activo | Máster Universitario en Ingeniería de Redes y Servicios Telemáticos | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
-| `MUISE-UPM` | Activo | Máster Universitario en Ingeniería de Sistemas Electrónicos | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
-| `MUTSC-UPM` | Activo | Máster Universitario en Teoría de la Señal y Comunicaciones | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
-| `MUNE-UPM` | Activo | Máster Universitario en Neurotecnología | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-mune-tfm` |
+| `MUIT-ETSIT-UPM` | Activo | Máster Universitario en Ingeniería de Telecomunicación | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUCS-ETSIT-UPM` | Activo | Máster Universitario en Ciberseguridad | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUESFV-ETSIT-UPM` | Activo | Máster Universitario en Energía Solar Fotovoltaica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUIB-ETSIT-UPM` | Activo | Máster Universitario en Ingeniería Biomédica | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUIRST-ETSIT-UPM` | Activo | Máster Universitario en Ingeniería de Redes y Servicios Telemáticos | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUISE-ETSIT-UPM` | Activo | Máster Universitario en Ingeniería de Sistemas Electrónicos | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUTSC-ETSIT-UPM` | Activo | Máster Universitario en Teoría de la Señal y Comunicaciones | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
+| `MUNE-ETSIT-UPM` | Activo | Máster Universitario en Neurotecnología | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-mune-tfm` |
 | `PHDUAH` | Activo | Estudios de Doctorado | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
 | `PHD-ETSIT-UPM` | Activo | Doctor Ingeniero de Telecomunicación | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
+| `PHDUAH-COMPENDIUM` | Variante activa | Hereda de `PHDUAH` | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
+| `PHD-ETSIT-UPM-COMPENDIUM` | Variante activa | Hereda de `PHD-ETSIT-UPM` | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
 | `GEINTRARR` | Experimental | GEINTRA Research Report | `RR` | Informe técnico del Grupo de investigación \myResearchGroup{} / \myResearchGroup{} Research Report | `geintra-report` |
 
 ## Definiciones actuales de los perfiles de maquetación
@@ -96,6 +110,8 @@ La tabla reproduce las entradas de Config/layout-profiles.tex. Los ficheros se i
 | `uah-tfc` | `cover/uah/portada-pfc-uah.tex`, después `cover/uah/cover-pfc-tfg-tfm-uah.tex` | Ninguna |
 | `uah-tfg-2024` | `cover/uah/portada-tfg-uah-2024.tex`, después `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfg-uah-2024.tex` |
 | `urjc-iti-tfg` | `cover/urjc/portada-tfg-urjc.tex`, después `cover/urjc/cover-pfc-tfg-tfm-urjc.tex` | `cover/urjc/backpage-tfg-urjc.tex` |
+| `urjc-etsii-tfg` | `cover/urjc/portada-tfg-etsii-urjc.tex` | `cover/urjc/backpage-tfg-etsii-urjc.tex` |
+| `urjc-eif-tfg` | `cover/urjc/portada-tfg-eif-urjc.tex` | Ninguna |
 | `uah-tfm-eps` | `cover/uah/portada-tfm-normativa-eps.tex`, después `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
 | `uah-mucte` | `cover/uah/cover-tfm-mucte.tex`, después `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
 | `uah-muanbd` | `cover/uah/portada-tfm-normativa-uah.tex`, después `cover/uah/cover-pfc-tfg-tfm-uah.tex` | `cover/uah/backpage-tfm-normativa-uah.tex` |
@@ -111,7 +127,7 @@ El perfil `upm-etsit-mune-tfm` incluye un fichero envoltorio: cover-tfm-mune-ets
 
 ## Compatibilidad de los nombres con saltos de línea
 
-El registro conserva los valores especializados con saltos de línea de `MUSEA`, `MUIT`, `MUII`, `MUIE`, `MUCTE`, `GMC`, `MUC`, `MUANBD` y `GISTS-UPM`. Para cualquier otra titulación debe exponer los siguientes valores efectivos:
+El registro conserva los valores especializados con saltos de línea de `MUSEA`, `MUIT`, `MUII`, `MUIE`, `MUCTE`, `GMC`, `MUC`, `MUANBD` y `GISTS-ETSIT-UPM`. Para cualquier otra titulación debe exponer los siguientes valores efectivos:
 
 ```latex
 \myDegreefullwrapped = \myDegreefull
@@ -133,6 +149,6 @@ La activación añadió `GSI` al conjunto efectivo de generación. El encaminami
 
 ## Traducciones posteriores y trabajo pospuesto
 
-Las traducciones de los TFM al inglés se añadieron después de la migración de compatibilidad. Los 15 másteres compatibles seleccionan ahora su nombre inglés y `Master's Thesis` cuando `\myLanguage` es `english`; MUNE-UPM conserva `Master of Science in Neurotechnology`. Las versiones inglesas con saltos de línea utilizan campos opcionales propios y, si se omiten, toman el nombre inglés. La salida en español y los demás tipos de trabajo mantienen su comportamiento anterior. La imagen de la portada exterior de MUC conserva intencionadamente sus textos españoles.
+Las traducciones de los TFM al inglés se añadieron después de la migración de compatibilidad. Los 15 másteres compatibles seleccionan ahora su nombre inglés y `Master's Thesis` cuando `\myLanguage` es `english`; MUNE-ETSIT-UPM conserva `Master of Science in Neurotechnology`. Las versiones inglesas con saltos de línea utilizan campos opcionales propios y, si se omiten, toman el nombre inglés. La salida en español y los demás tipos de trabajo mantienen su comportamiento anterior. La imagen de la portada exterior de MUC conserva intencionadamente sus textos españoles.
 
 Siguen pendientes las traducciones de los nombres de otras titulaciones y de los tipos de trabajo TFC/TFG que aún conservan textos españoles.

@@ -94,9 +94,9 @@ before=$(snapshot)
 PATH="$fixture/bin:$PATH" bash "$generator" --destination "$destination" </dev/null >"$fixture/cancel.log" 2>&1
 grep -q 'Synchronization preview' "$fixture/cancel.log"
 grep -q 'Dropbox was not modified' "$fixture/cancel.log"
-grep -q 'Generating TFG-GISTS-UPM-spanish.pdf (GISTS-UPM, spanish, standard, standard, institutional)' "$fixture/cancel.log"
+grep -q 'Generating TFG-GISTS-ETSIT-UPM-spanish.pdf (GISTS-ETSIT-UPM, spanish, standard, standard, institutional)' "$fixture/cancel.log"
 grep -q 'Generated 12 PDF files' "$fixture/cancel.log"
-[[ -s $fixture/repository/Book/public-samples/TFG-GISTS-UPM-spanish.pdf ]]
+[[ -s $fixture/repository/Book/public-samples/TFG-GISTS-ETSIT-UPM-spanish.pdf ]]
 public_names=(
   TFG-GIEC-spanish.pdf
   TFM-MUIE-spanish-modern.pdf
@@ -105,8 +105,8 @@ public_names=(
   PhD-PHDUAH-english-conventional-mimosis.pdf
   PhD-PHDUAH-spanish-conventional-chapterbib-editorial.pdf
   PhD-PHDUAH-spanish-compendium-standard.pdf
-  TFG-GISTS-UPM-spanish.pdf
-  TFG-ITI-URJC-english-editorial.pdf
+  TFG-GISTS-ETSIT-UPM-spanish.pdf
+  TFG-GII-ETSII-URJC-english-editorial.pdf
 )
 for filename in "${public_names[@]}"; do
   [[ -s $fixture/repository/Book/public-samples/$filename ]]
@@ -121,6 +121,7 @@ for filename in "${public_names[@]}"; do
   done
 done
 grep -q 'Generating PhD-PHDUAH-spanish-conventional-chapterbib-editorial.pdf (PHDUAH, spanish, standard, editorial, document)' "$fixture/cancel.log"
+grep -q 'Generating TFG-GII-ETSII-URJC-english-editorial.pdf (GII-ETSII-URJC, english, standard, editorial, document)' "$fixture/cancel.log"
 [[ -z $(find "$fixture/repository/Book/public-samples" -maxdepth 1 -type f \
   \( -name '*-institutional-fonts.pdf' -o -name '*-document-fonts.pdf' \) -print -quit) ]]
 [[ $before == "$(snapshot)" ]]
@@ -133,11 +134,13 @@ cp "$fixture/repository/Book/public-samples/"*.pdf "$rename_source/"
 cp "$fixture/repository/RELEASE.txt" "$rename_source/"
 printf 'obsolete policy-suffixed sample\n' >"$rename_destination/TFM-MUIE-spanish-modern-institutional-fonts.pdf"
 printf 'obsolete policy-suffixed sample\n' >"$rename_destination/TFG-ITI-URJC-english-editorial-document-fonts.pdf"
+printf 'obsolete ESCET example\n' >"$rename_destination/TFG-ITI-URJC-english-editorial.pdf"
 printf 'original GIEC sample\n' >"$rename_destination/TFG-GIEC-spanish.pdf"
 giec_inode=$(stat -c %i "$rename_destination/TFG-GIEC-spanish.pdf")
 bash "$helper" "$rename_source" "$rename_destination" >"$fixture/rename-sync.log"
 [[ ! -e $rename_destination/TFM-MUIE-spanish-modern-institutional-fonts.pdf ]]
 [[ ! -e $rename_destination/TFG-ITI-URJC-english-editorial-document-fonts.pdf ]]
+[[ ! -e $rename_destination/TFG-ITI-URJC-english-editorial.pdf ]]
 [[ $(stat -c %i "$rename_destination/TFG-GIEC-spanish.pdf") == "$giec_inode" ]]
 for filename in "${public_names[@]}"; do cmp "$rename_source/$filename" "$rename_destination/$filename"; done
 if FAIL_FIXTURE_BUILD=true PATH="$fixture/bin:$PATH" bash "$generator" --destination "$destination" </dev/null >"$fixture/failure.log" 2>&1; then exit 1; fi

@@ -33,7 +33,6 @@ for spec in "${cases[@]}"; do
     sed \
       -e "s/\\\\newcommand{\\\\myDegree}{[^}]*}/\\\\newcommand{\\\\myDegree}{$degree}/" \
       -e 's/\\newcommand{\\myLanguage}{[^}]*}/\\newcommand{\\myLanguage}{spanish}/' \
-      -e 's/\\newcommand{\\myDocumentStructure}{[^}]*}/\\newcommand{\\myDocumentStructure}{standard}/' \
       -e "s/\\\\newcommand{\\\\mySchoolDeputyDirectorFullName}{[^}]*}/\\\\newcommand{\\\\mySchoolDeputyDirectorFullName}{$name}/" \
       -e "s/\\\\newcommand{\\\\mySchoolDeputyDirectorGender}{[^}]*}/\\\\newcommand{\\\\mySchoolDeputyDirectorGender}{$gender}/" \
       "$repository_root/Config/myconfig.tex" > "$fixture/Config/myconfig.tex"

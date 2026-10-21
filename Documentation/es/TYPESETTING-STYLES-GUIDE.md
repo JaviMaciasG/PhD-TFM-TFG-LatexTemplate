@@ -53,11 +53,11 @@ Edita la definición existente del estilo en `Config/myconfig.tex`:
 
 Sustituye su valor; no añadas un segundo `\newcommand` con el mismo nombre. Los nombres distinguen entre mayúsculas y minúsculas. El estilo predeterminado es `standard`. Las páginas institucionales conservan sus fuentes originales automáticamente, sin que tengas que configurar otra variable. El despachador también proporciona el estilo predeterminado cuando el comando no existe, aunque los auxiliares de compilación esperan una definición existente del estilo.
 
-`\myDocumentStructure` es un ajuste independiente: selecciona la organización estándar o por compendio del contenido, no un perfil tipográfico.
+La titulación selecciona la organización estándar o por compendio del contenido, independientemente del estilo tipográfico. Para un compendio, selecciona `PHDUAH-COMPENDIUM` o `PHD-ETSIT-UPM-COMPENDIUM` mediante `\myDegree`.
 
 ### 2.2 Fuentes de las páginas institucionales
 
-Las portadas y contraportadas conservan automáticamente sus fuentes institucionales, aunque selecciones otro estilo para el cuerpo del documento. No necesitas configurar ningún campo adicional en `Config/myconfig.tex`.
+Por lo general, las portadas y contraportadas conservan automáticamente sus fuentes institucionales, aunque selecciones otro estilo para el cuerpo del documento. Las portadas de los grados EIF-URJC y ETSII-URJC son excepciones: utilizan las fuentes del estilo seleccionado. No necesitas configurar ningún campo adicional en `Config/myconfig.tex`.
 
 ### 2.3 Compilar el documento seleccionado
 

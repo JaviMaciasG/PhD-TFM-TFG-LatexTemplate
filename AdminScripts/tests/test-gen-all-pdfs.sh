@@ -79,6 +79,7 @@ mapfile -t ids < <(sh "$query" identifiers "$registry")
 tfgs=0; tfms=0; phds=0; reports=0; urjc_degrees=0
 declare -A representatives=()
 for id in "${ids[@]}"; do
+  [[ $(sh "$query" base-degree "$id" "$registry") == "$id" ]] || continue
   type=$(sh "$query" work-type "$id" "$registry")
   case $type in
     TFG) tfgs=$((tfgs + 1)) ;;
@@ -112,7 +113,11 @@ assert_count "$("$generator" --all-degrees --dry-run)" "$((tfgs + tfms + phds + 
 assert_count "$("$generator" --all --dry-run)" "$(((tfgs + tfms + 2 * phds + reports) * 2 * style_count * 2))"
 assert_count "$("$generator" --all --degrees PHDUAH --dry-run)" "$((2 * 2 * style_count * 2))"
 assert_count "$("$generator" --degrees GIEC,GITT,GIEC --dry-run)" 2
-assert_count "$("$generator" --degrees ITI-URJC,MUIT-UPM,PHD-ETSIT-UPM --dry-run)" 3
+assert_count "$("$generator" --degrees PHDUAH-COMPENDIUM --dry-run)" 1
+assert_count "$("$generator" --all --degrees PHDUAH-COMPENDIUM --dry-run)" "$((2 * style_count * 2))"
+assert_contains "$("$generator" --degrees PHDUAH-COMPENDIUM --dry-run)" "PhD-PHDUAH-spanish-compendium-standard-institutional.pdf"
+assert_count "$("$generator" --degrees PHDUAH,PHDUAH-COMPENDIUM --structures standard,compendium --dry-run)" 2
+assert_count "$("$generator" --degrees ITI-ESCET-URJC,MUIT-ETSIT-UPM,PHD-ETSIT-UPM --dry-run)" 3
 assert_count "$("$generator" --degrees GIEC --all-styles --all-fonts --dry-run)" "$((style_count * 2))"
 assert_count "$("$generator" --all --universities URJC --dry-run)" "$((urjc_degrees * 2 * style_count * 2))"
 assert_count "$("$generator" --all-tfms --layout-profiles uah-muc-2026 --dry-run)" 1
@@ -124,6 +129,8 @@ assert_contains "$("$generator" --list-options)" 'Universities: UAH URJC UPM GEI
 assert_contains "$("$generator" --help)" '--yes'
 expect_error --degrees INVALID --dry-run
 expect_error --degrees ITIURJC --dry-run
+expect_error --degrees ITI-URJC --dry-run
+expect_error --degrees GII-URJC --dry-run
 expect_error --degrees PHDUPM --dry-run
 expect_error --degrees PHD-UPM --dry-run
 expect_error --degree-types TFC --dry-run
@@ -161,15 +168,15 @@ assert_contains "$output" '[OK] 002/002 TFG-GIEC-spanish-standard-framed-institu
 [[ $(find "$fixture/success" -name '*.pdf' | wc -l) == 2 ]] || exit 1
 assert_contains "$("$generator" --degrees GIEC --styles standard,framed --dry-run --output-dir "$fixture/success")" '[REPLACE]'
 
-output=$("$generator" --degrees ITI-URJC,MUIT-UPM,PHD-ETSIT-UPM --yes --output-dir "$fixture/hyphenated")
+output=$("$generator" --degrees ITI-ESCET-URJC,MUIT-ETSIT-UPM,PHD-ETSIT-UPM --yes --output-dir "$fixture/hyphenated")
 assert_contains "$output" '3 successful, 0 failed (3 planned)'
-for filename in TFG-ITI-URJC TFM-MUIT-UPM PhD-PHD-ETSIT-UPM; do
+for filename in TFG-ITI-ESCET-URJC TFM-MUIT-ETSIT-UPM PhD-PHD-ETSIT-UPM; do
   [[ -f $fixture/hyphenated/$filename-spanish-standard-standard-institutional.pdf ]] || exit 1
 done
 
 output=$("$generator" --all --universities URJC --layout-profiles urjc-etsii-tfg --styles standard --font-modes institutional --languages spanish --yes --output-dir "$fixture/etsii")
 assert_contains "$output" '8 successful, 0 failed (8 planned)'
-for degree in GCID-URJC GDDV-URJC GII-URJC GICO-URJC GICI-URJC GIS-URJC GIA-URJC GMAT-URJC; do
+for degree in GCID-ETSII-URJC GDDV-ETSII-URJC GII-ETSII-URJC GICO-ETSII-URJC GICI-ETSII-URJC GIS-ETSII-URJC GIA-ETSII-URJC GMAT-ETSII-URJC; do
   [[ -f $fixture/etsii/TFG-$degree-spanish-standard-standard-institutional.pdf ]] || exit 1
 done
 

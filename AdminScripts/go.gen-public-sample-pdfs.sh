@@ -90,14 +90,14 @@ cp -p -- "$temporary_directory/01-DOWNLOAD-GUIDE.pdf" "$output_directory/01-DOWN
 # Missing bibliography profiles use the usual general bibliography only.
 samples=(
   'GIEC|spanish|standard|standard|institutional|TFG-GIEC-spanish.pdf'
-  'ITI-URJC|english|standard|editorial|document|TFG-ITI-URJC-english-editorial.pdf'
-  'GISTS-UPM|spanish|standard|standard|institutional|TFG-GISTS-UPM-spanish.pdf'
+  'GII-ETSII-URJC|english|standard|editorial|document|TFG-GII-ETSII-URJC-english-editorial.pdf'
+  'GISTS-ETSIT-UPM|spanish|standard|standard|institutional|TFG-GISTS-ETSIT-UPM-spanish.pdf'
   'MUIE|spanish|standard|modern|institutional|TFM-MUIE-spanish-modern.pdf'
   'MUCTE|english|standard|framed|document|TFM-MUCTE-english-framed.pdf'
   'MUC|spanish|standard|shaded|institutional|TFM-MUC-spanish-shaded.pdf'
   'PHDUAH|english|standard|mimosis|document|PhD-PHDUAH-english-conventional-mimosis.pdf'
   'PHDUAH|spanish|standard|editorial|document|PhD-PHDUAH-spanish-conventional-chapterbib-editorial.pdf|chapter'
-  'PHDUAH|spanish|compendium|standard|institutional|PhD-PHDUAH-spanish-compendium-standard.pdf'
+  'PHDUAH-COMPENDIUM|spanish|compendium|standard|institutional|PhD-PHDUAH-spanish-compendium-standard.pdf'
 )
 
 generated_files=(
