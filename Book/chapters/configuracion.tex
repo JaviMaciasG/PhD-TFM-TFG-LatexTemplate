@@ -7,11 +7,11 @@
 \chapter{Configuración de la plantilla}
 \label{cha:configuracion}
 
-La mayor parte de la adaptación de la plantilla se realiza en \texttt{Config/myconfig.tex}. En este capítulo describimos todas las variables disponibles para que puedas utilizarlo como referencia: comenzaremos por la configuración general y recorreremos después los datos académicos, las fechas, la publicación, los enlaces y los ajustes de compatibilidad. Normalmente solo tendrás que completar las que correspondan a tu tipo de trabajo y a los documentos que vayas a generar.
+La mayor parte de la adaptación de la plantilla se realiza en \texttt{Config/myconfig.tex}. En este capítulo encontrarás las variables organizadas según lo que quieras configurar: los datos del trabajo, las personas que intervienen, el contenido opcional, la presentación y los documentos administrativos. Si estás empezando, comienza por la sección~\ref{sec:datos-generales-configuracion} y completa solo los datos que conozcas. Los demás apartados te servirán de referencia cuando los necesites, incluidos los casos específicos y los ajustes de compatibilidad.
 
 A partir de los datos que indiques, la plantilla adapta automáticamente parte de los textos generados. Entre otros aspectos, selecciona las formas correspondientes al género gramatical de la persona autora, los tutores y otros cargos, y ajusta el singular o el plural según exista únicamente un tutor o también un cotutor. De este modo, puede generar automáticamente expresiones como \emph{tutor/tutora}, \emph{director/directora}, \emph{tutor/tutores} o \emph{emite/emiten}. Esta adaptación se aplica principalmente a las cubiertas y a los documentos administrativos. Revisa siempre el PDF resultante para comprobar que la redacción es adecuada para tu caso.
 
-\section{Configuración del documento}
+\section{Cómo configurar la plantilla}
 \label{sec:definicion-del-tipo}
 
 La configuración compartida se encuentra en \texttt{Config/myconfig.tex}. Este fichero contiene los datos utilizados para generar el libro, el anteproyecto y los documentos administrativos, por lo que normalmente tendrás que adaptarlo antes de editar el contenido de tu trabajo. Las variables se definen mediante órdenes \texttt{\textbackslash{}newcommand}. Para cambiar una variable, modifica únicamente el contenido situado entre las últimas llaves de su definición, sin alterar el nombre de la orden.
@@ -20,14 +20,18 @@ Además de completar \texttt{Config/myconfig.tex}, revisa \texttt{Book/content-s
 
 La bibliografía utiliza \texttt{biblatex} con Biber. Si necesitas ampliar los ejemplos de citas del capítulo~\ref{cha:elementos-basicos}, el manual de \texttt{biblatex}~\cite{biblatex-manual} explica las órdenes de cita y la preparación de los ficheros bibliográficos, pero no necesitas modificar esa infraestructura para añadir tus referencias.
 
-\section{Estructura, idioma, titulación y presentación de los tutores}
+\section{Datos generales del trabajo}
+\label{sec:datos-generales-configuracion}
 
-Las siguientes variables controlan la estructura, el idioma, la titulación y la presentación conjunta o separada de los tutores:
+Empieza por los datos que identifican tu trabajo. Las fechas y los campos que todavía no conozcas pueden esperar hasta que los necesites.
+
+\subsection{Titulación, idioma y estructura}
+
+Las siguientes variables determinan la titulación, el idioma y la estructura del documento:
 
 \begin{itemize}
   \item \texttt{\textbackslash{}myLanguage}: idioma principal del documento, gestionado mediante Babel~\cite{babel-manual}. Admite los valores \texttt{spanish} y \texttt{english}. Esta selección determina, entre otros elementos, los textos automáticos, las cabeceras, el título utilizado y las palabras clave incorporadas a los metadatos del PDF.
   \item \texttt{\textbackslash{}myDegree}: identificador de la titulación o del tipo concreto de documento. Su valor determina el tipo general de trabajo y la estructura del documento, y selecciona automáticamente las portadas, contraportadas, nombres de titulación y otros textos aplicables.
-  \item \texttt{\textbackslash{}myFlagSplittedAdvisors}: controla cómo se presentan el tutor y el cotutor en las páginas que admiten ambas formas. El valor \texttt{true} utiliza líneas separadas para el tutor y el cotutor, mientras que el valor \texttt{false} utiliza una denominación conjunta. Se aplica a las portadas de TFG de la UAH, las portadas EPS-UAH de TFM, las páginas del MUCTE, la portada ESCET-URJC y la hoja de información UAH compartida. No modifica las páginas de formato fijo de la ETSII-URJC, la EIF-URJC o la UPM, ni las portadas de doctorado, MUC o MUANBD.
   \item \texttt{\textbackslash{}mySpecialty}: especialidad o itinerario asociado a la titulación. Puede dejarse vacío cuando no resulte aplicable.
 \end{itemize}
 
@@ -54,92 +58,22 @@ Los identificadores admitidos actualmente por \texttt{\textbackslash{}myDegree},
 
 Consulta siempre la lista actualizada de identificadores admitidos en los comentarios que aparecen inmediatamente antes de la definición de \texttt{\textbackslash{}myDegree} en \texttt{Config/myconfig.tex}. Solo tienes que elegir allí el identificador correspondiente y la plantilla seleccionará automáticamente los datos y las páginas institucionales aplicables.
 
-Para los TFG de la EIF-URJC, utiliza el idioma indicado en la guía docente. El reglamento limita la memoria a 100 páginas sin contar anexos y el resumen a una página. En las conclusiones debes mencionar las competencias del grado que has aplicado y las nuevas que has adquirido. También debes incluir una reflexión sobre el impacto social, económico y medioambiental del trabajo y sus responsabilidades éticas y profesionales si tu cohorte de entrada es 2025/2026 o posterior. Para las cohortes anteriores, esta reflexión se recomienda. Los márgenes, la fuente y el interlineado que cita el reglamento son ejemplos de un formato legible, no ajustes impuestos automáticamente por la plantilla. Comprueba siempre los requisitos vigentes con tu tutor o tutora.
+Si preparas un TFG de la EIF-URJC, consulta también las indicaciones de la sección~\ref{sec:indicaciones-eif-urjc}.
 
-\section{Estilos tipográficos del documento (implementación preliminar)}
-\label{sec:estilos-tipograficos}
+\subsection{Título y palabras clave}
 
-El libro principal permite probar distintos estilos tipográficos sin cambiar su contenido ni editar \texttt{Book/book.tex}. Se trata todavía de una implementación preliminar, por lo que, si no quieres valorar alternativas de diseño, puedes conservar sin más el estilo proporcionado en \texttt{Config/myconfig.tex}. Esta funcionalidad solo afecta al libro principal: el anteproyecto y los documentos administrativos mantienen su formato específico.
-
-Selecciona el estilo mediante \texttt{\textbackslash{}myTypesettingStyle} en \texttt{Config/myconfig.tex}. El valor \texttt{standard}, utilizado de forma predeterminada, conserva el aspecto tradicional de la plantilla. Los valores admitidos y una breve descripción de cada uno aparecen en los comentarios situados antes de esta variable. Por lo general, la portada y la contraportada conservan sus fuentes institucionales originales incluso cuando eliges otro estilo para el cuerpo del documento, sin que tengas que configurar nada más. Como excepción, las portadas de los grados de la EIF-URJC y de la ETSII-URJC utilizan las fuentes del estilo seleccionado.
-
-Si quieres comparar los estilos antes de elegir uno, abre \texttt{02-TYPESETTING-STYLES-COMPARISON.pdf} en la carpeta de descargas enlazada en la sección~\ref{sec:descarga-ejemplos}. El documento muestra para cada estilo el índice general, el comienzo de un capítulo, una página ordinaria con ecuaciones y un título de capítulo largo. El nombre del estilo aparece en la esquina superior derecha de cada página de muestra.
-
-Elegir uno de los estilos incluidos es sencillo y sólo requiere modificar esa variable. En cambio, modificar estos estilos o crear uno nuevo es una tarea avanzada: su implementación afecta de forma coordinada a las fuentes, los encabezados, los títulos, los índices y otros elementos del documento. La guía completa es, por tanto, un documento técnico y relativamente complejo. Te recomendamos consultarla únicamente si necesitas personalizar la implementación y hacerlo con cuidado, comprobando después el resultado en todo el documento.
-
-Los estilos alternativos requieren \texttt{pdfLaTeX} y los paquetes de fuentes indicados para cada caso. Si alguno no está instalado, puedes instalarlo mediante tu distribución de \LaTeX{} o volver al estilo \texttt{standard}. Encontrarás la relación completa de estilos, ejemplos de configuración, dependencias y detalles técnicos en \texttt{04-TYPESETTING-STYLES-GUIDE.pdf}, situado en la raíz de la plantilla.
-
-\section{Elementos opcionales del documento}
-\label{sec:elementos-opcionales-configuracion}
-
-Las variables cuyo nombre comienza por \texttt{\textbackslash{}myInclude} te permiten mostrar u ocultar contenido opcional sin comentar órdenes en \texttt{book.tex}. Todas admiten exclusivamente los valores \texttt{true} y \texttt{false}. La plantilla genera un error explícito si escribes otro valor.
-
-Las siguientes variables controlan el contenido preliminar de ejemplo:
-
-\begin{itemize}
-  \item \texttt{\textbackslash{}myIncludeSampleLetter}: permite insertar un PDF preliminar, como una carta de autorización. Su valor predeterminado es \texttt{false}, por lo que el manual no incluye el PDF de ejemplo. Si lo necesitas, selecciona \texttt{true} y sustituye la ruta del PDF en el bloque correspondiente de \texttt{Book/book.tex}, que utiliza \texttt{\textbackslash{}includepdf}.
-  \item \texttt{\textbackslash{}myIncludeDedication}: incluye la dedicatoria definida en \texttt{dedication/dedicatoria.tex}.
-  \item \texttt{\textbackslash{}myIncludeAcknowledgements}: incluye los agradecimientos definidos en \texttt{acknowledgements/agradecimientos.tex}.
-\end{itemize}
-
-Las siguientes variables controlan los índices y listados generados automáticamente:
-
-\begin{itemize}
-  \item \texttt{\textbackslash{}myIncludeListOfFigures}: incluye el índice de figuras.
-  \item \texttt{\textbackslash{}myIncludeListOfTables}: incluye el índice de tablas.
-  \item \texttt{\textbackslash{}myIncludeListOfAcronyms}: incluye la lista de acrónimos.
-  \item \texttt{\textbackslash{}myIncludeListOfSymbols}: incluye la lista de símbolos.
-  \item \texttt{\textbackslash{}myIncludeListOfCode}: incluye el índice de listados de código fuente.
-  \item \texttt{\textbackslash{}myIncludeListOfAlgorithms}: incluye el índice de algoritmos.
-  \item \texttt{\textbackslash{}myIncludeListOfVideos}: incluye el índice de vídeos.
-\end{itemize}
-
-Desactivar uno de estos listados no desactiva la prestación correspondiente: puedes seguir utilizando figuras, tablas, acrónimos, símbolos, código, algoritmos o enlaces a vídeos en el cuerpo del documento. Solo se omite su índice independiente. La sección~\ref{sec:compilacion-editor} explica la generación automática de los acrónimos y símbolos desde el editor. El script \texttt{makeglossaries} corresponde a la configuración opcional del \texttt{Makefile}, descrita en la sección~\ref{sec:compilacion-makefile}.
-
-Los listados de acrónimos y símbolos utilizan \texttt{glossaries}. Sus opciones y órdenes se describen en el manual del paquete~\cite{glossaries-manual}. En la sección~\ref{sec:uso-de-acronimos} encontrarás los ejemplos concretos que usamos aquí.
-
-\section{Bibliografía por capítulos y bibliografía general}
-\label{sec:bibliografias-capitulos}
-
-Puedes mantener una única bibliografía general, incluir las referencias al final de cada capítulo o combinar ambas opciones. No necesitas añadir órdenes a los capítulos ni a los apéndices: configura estas variables en \texttt{Config/myconfig.tex} y la plantilla se encarga del resto.
-
-\begin{itemize}
-  \item \texttt{\textbackslash{}myIncludeChapterBibliographies}: con \texttt{true}, añade al final de cada capítulo numerado y de cada apéndice una sección sin numerar con las referencias utilizadas en él. Esa sección aparece en el índice general y se omite si no hay referencias que mostrar. Su valor predeterminado es \texttt{false}.
-  \item \texttt{\textbackslash{}myIncludeFinalBibliography}: con \texttt{true}, conserva la bibliografía general, que reúne las referencias de todo el documento, incluidas las de los apéndices y las páginas preliminares. Su valor predeterminado es \texttt{true}. En la estructura estándar aparece antes de los apéndices, como hasta ahora.
-  \item \texttt{\textbackslash{}myBibliographyNumbering}: selecciona \texttt{global}, el valor predeterminado, para que cada referencia conserve su número en todo el documento, o \texttt{chapter} para reiniciar la numeración en cada capítulo. Esta elección solo afecta al libro y tiene efecto cuando activas las bibliografías por capítulo.
-\end{itemize}
-
-Por ejemplo, con las bibliografías por capítulo activadas y numeración \texttt{global}, una publicación citada como [5] seguirá siendo [5] en los demás capítulos. Si seleccionas \texttt{chapter}, esa misma publicación podría ser [1] en un capítulo y [3] en otro, según su orden de aparición. En este último caso, cada cita enlaza con la entrada de su bibliografía de capítulo y la bibliografía general, si la mantienes, utiliza una numeración independiente. No debes interpretar el número de una cita local como el número de la entrada en esa lista general.
-
-Para probar las bibliografías por capítulo sin renunciar a la general, utiliza esta configuración:
-
-\begin{verbatim}
-\newcommand{\myIncludeChapterBibliographies}{true}
-\newcommand{\myIncludeFinalBibliography}{true}
-\newcommand{\myBibliographyNumbering}{global}
-\end{verbatim}
-
-Cambia los valores de las definiciones existentes, no añadas una segunda definición de cada variable. Si solo quieres las listas por capítulo, selecciona \texttt{false} en \texttt{\textbackslash{}myIncludeFinalBibliography}. Las entradas excluidas de la bibliografía, como el ejemplo de \texttt{nobiblio.bib} de la sección~\ref{sec:estructura-listas-citas}, tampoco aparecen en las listas por capítulo.
-
-En una tesis por compendio, las bibliografías por capítulo corresponden únicamente al resumen extendido de la primera parte. La bibliografía general permanece entre las dos partes y no se añaden listas de referencias después de los PDF de las publicaciones. El anteproyecto y los formularios mantienen su bibliografía habitual, independientemente de estas opciones.
-
-La compilación sigue utilizando \texttt{pdflatex} y \texttt{biber}, tanto desde tu editor como desde \texttt{Overleaf}, \texttt{Prism} o mediante el \texttt{Makefile}. Después de cambiar estas opciones o las referencias utilizadas, utiliza la función de construcción de tu entorno para actualizar las listas, su numeración y sus enlaces. La bibliografía general puede incluir referencias citadas más adelante en los apéndices porque el proceso utiliza la información de las pasadas anteriores.
-
-\section{Título, palabras clave y confidencialidad}
-
-Utiliza las siguientes variables para definir los títulos, las palabras clave y el carácter confidencial del trabajo:
+Utiliza las siguientes variables para definir los títulos y las palabras clave del trabajo:
 
 \begin{itemize}
   \item \texttt{\textbackslash{}myBookTitleSpanish}: título completo del trabajo en español.
   \item \texttt{\textbackslash{}myBookTitleEnglish}: título completo del trabajo en inglés.
   \item \texttt{\textbackslash{}myThesisKeywords}: palabras clave en español. Se utilizan en el resumen y en los metadatos del PDF cuando el idioma principal es español.
   \item \texttt{\textbackslash{}myThesisKeywordsEnglish}: palabras clave en inglés. Se utilizan en el resumen en inglés y en los metadatos del PDF cuando el idioma principal es inglés.
-  \item \texttt{\textbackslash{}myConfidentialContent}: indica si el trabajo contiene material confidencial en los documentos administrativos que contemplan esta posibilidad. Admite los valores \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
 \end{itemize}
 
 La plantilla selecciona automáticamente el título según \texttt{\textbackslash{}myLanguage}: utiliza \texttt{\textbackslash{}myBookTitleSpanish} cuando su valor es \texttt{spanish} y \texttt{\textbackslash{}myBookTitleEnglish} cuando es \texttt{english}. Solo tienes que completar esos títulos en la configuración.
 
-\section{Datos de autoría}
+\subsection{Datos de autoría}
 
 Los datos personales y de contacto de la persona autora se configuran mediante las siguientes variables:
 
@@ -159,7 +93,40 @@ Los datos personales y de contacto de la persona autora se configuran mediante l
 
 Los datos postales y el teléfono no son necesarios para componer el libro, pero se comparten con los documentos administrativos que los solicitan. Si no vas a generar ninguno de esos formularios, puedes dejarlos vacíos. Antes de distribuir públicamente los fuentes de tu trabajo, comprueba que \texttt{Config/myconfig.tex} no contiene datos personales que no deban publicarse.
 
-\section{Tutor académico y cotutor}
+\subsection{Afiliación académica}
+
+La universidad y el centro se obtienen automáticamente de la titulación seleccionada. En \texttt{myconfig.tex} solo tienes que completar los datos de afiliación que pueden variar entre trabajos de una misma titulación:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myDepartment} y \texttt{\textbackslash{}myDepartmentEnglish}: departamento donde realizas el trabajo, en español e inglés. Se utiliza en los campos generales de departamento de las cubiertas, las páginas institucionales, el anteproyecto y los formularios. Es independiente de las afiliaciones del tutor, cotutor o ponente: no se deduce de ellas ni se traduce automáticamente. Si dejas un campo vacío, permanece vacío.
+  \item \texttt{\textbackslash{}myPhDProgram}: nombre del programa de doctorado en español. Solo necesitarás esta variable para los documentos que muestren esta información.
+  \item \texttt{\textbackslash{}myPhDProgramEnglish}: nombre del programa de doctorado en inglés.
+  \item \texttt{\textbackslash{}myResearchGroup}: nombre o acrónimo del grupo de investigación. También se utiliza al generar informes de investigación mediante \texttt{GEINTRARR}.
+\end{itemize}
+
+\subsection{Fechas}
+
+Introduce las fechas como texto ya formateado, no como valores que la plantilla convierta automáticamente. Así podrás utilizar el formato requerido por cada documento, incluidos los ordinales y nombres de meses en inglés.
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myThesisProposalDate}: fecha de presentación o firma del anteproyecto. Se utiliza en la plantilla del anteproyecto y en los formularios que hacen referencia a su solicitud.
+  \item \texttt{\textbackslash{}myThesisDepositDate}: fecha de depósito del trabajo en español.
+  \item \texttt{\textbackslash{}myThesisDepositDateEnglish}: fecha de depósito del trabajo en inglés.
+  \item \texttt{\textbackslash{}myThesisAcademicYear}: curso académico mostrado en las actas y rúbricas que lo requieren (por ejemplo, \texttt{2025/2026}).
+  \item \texttt{\textbackslash{}myThesisDefenseYear}: año de defensa utilizado en las cubiertas y contraportadas correspondientes.
+  \item \texttt{\textbackslash{}myThesisDefenseDate}: fecha completa de defensa en español. En los informes de investigación también se utiliza como fecha de la cubierta.
+  \item \texttt{\textbackslash{}myThesisdefenseDateEnglish}: fecha completa de defensa en inglés. Respeta exactamente este nombre, incluida la letra minúscula de \texttt{defense}.
+  \item \texttt{\textbackslash{}myPaperworkDate}: fecha en español utilizada para firmar o fechar los documentos administrativos. Su definición puede reutilizar \texttt{\textbackslash{}myThesisDepositDate} cuando ambas fechas coincidan.
+  \item \texttt{\textbackslash{}myPaperworkDateEnglish}: fecha equivalente en inglés. Se utiliza, entre otros casos, en la autorización para tutores extranjeros y puede reutilizar \texttt{\textbackslash{}myThesisDepositDateEnglish}.
+\end{itemize}
+
+Si preparas un anteproyecto en inglés, escribe la fecha de propuesta en ese idioma en \texttt{\textbackslash{}myThesisProposalDate}. La configuración actual utiliza un único campo para esa fecha.
+
+\section{Tutoría, tribunal y personal académico}
+
+En estos apartados puedes completar los datos de las personas que intervienen en la dirección, la evaluación y la tramitación del trabajo. Rellena únicamente los campos que utilice tu titulación.
+
+\subsection{Tutor académico y cotutor}
 
 Define los datos del tutor académico mediante las siguientes variables:
 
@@ -193,20 +160,18 @@ La información del cotutor se define mediante las siguientes variables:
 
 Las variables antiguas \texttt{\textbackslash{}myFirstAdvisorFullName}, \texttt{\textbackslash{}mySecondAdvisorFullName}, \texttt{\textbackslash{}myFirstAdvisorDNI} y \texttt{\textbackslash{}mySecondAdvisorDNI} se conservan como alias por compatibilidad. No las edites: sus valores se obtienen respectivamente de las variables actuales del tutor académico y del cotutor.
 
-\section{Afiliación académica}
+\subsection{Presentación conjunta o separada de los tutores}
+\label{sec:presentacion-tutores}
 
-La universidad y el centro se obtienen automáticamente de la titulación seleccionada. En \texttt{myconfig.tex} solo tienes que completar los datos de afiliación que pueden variar entre trabajos de una misma titulación:
+Puedes elegir cómo se presentan el tutor y el cotutor en las páginas que admiten ambas formas mediante esta variable:
 
 \begin{itemize}
-  \item \texttt{\textbackslash{}myDepartment} y \texttt{\textbackslash{}myDepartmentEnglish}: departamento donde realizas el trabajo, en español e inglés. Se utiliza en los campos generales de departamento de las cubiertas, las páginas institucionales, el anteproyecto y los formularios. Es independiente de las afiliaciones del tutor, cotutor o ponente: no se deduce de ellas ni se traduce automáticamente. Si dejas un campo vacío, permanece vacío.
-  \item \texttt{\textbackslash{}myPhDProgram}: nombre del programa de doctorado en español. Solo necesitarás esta variable para los documentos que muestren esta información.
-  \item \texttt{\textbackslash{}myPhDProgramEnglish}: nombre del programa de doctorado en inglés.
-  \item \texttt{\textbackslash{}myResearchGroup}: nombre o acrónimo del grupo de investigación. También se utiliza al generar informes de investigación mediante \texttt{GEINTRARR}.
+  \item \texttt{\textbackslash{}myFlagSplittedAdvisors}: controla cómo se presentan el tutor y el cotutor en las páginas que admiten ambas formas. El valor \texttt{true} utiliza líneas separadas para el tutor y el cotutor, mientras que el valor \texttt{false} utiliza una denominación conjunta. Se aplica a las portadas de TFG de la UAH, las portadas EPS-UAH de TFM, las páginas del MUCTE, la portada ESCET-URJC y la hoja de información UAH compartida. No modifica las páginas de formato fijo de la ETSII-URJC, la EIF-URJC o la UPM, ni las portadas de doctorado, MUC o MUANBD.
 \end{itemize}
 
-\section{Tribunal y personal académico}
+\subsection{Tribunal}
 
-Configura la composición del tribunal y los cargos académicos mediante las siguientes variables:
+Configura la composición del tribunal mediante las siguientes variables:
 
 \begin{itemize}
   \item \texttt{\textbackslash{}myTribunalPresident}: nombre completo de la persona que preside el tribunal.
@@ -223,6 +188,14 @@ Configura la composición del tribunal y los cargos académicos mediante las sig
   \item \texttt{\textbackslash{}myTribunalAlternateMemberDNI}: DNI o NIF del miembro suplente, utilizado en el compromiso de confidencialidad.
   \item \texttt{\textbackslash{}myTribunalSecretary}: nombre de la persona que actúa como secretaria del tribunal cuando este puesto sea necesario.
   \item \texttt{\textbackslash{}myTribunalSecretaryGender}: género gramatical de la secretaría del tribunal, independiente del de la secretaría del departamento. Admite \texttt{male} y \texttt{female}. Las hojas de tribunal en español de los TFG y TFM de la ETSIT-UPM muestran Secretario o Secretaria según este valor. En inglés, el MUNE utiliza Secretary.
+\end{itemize}
+
+\subsection{Otros cargos académicos}
+\label{sec:otros-cargos-configuracion}
+
+Completa los cargos que soliciten los documentos administrativos de tu titulación:
+
+\begin{itemize}
   \item \texttt{\textbackslash{}myDepartmentSecretary}: nombre de la persona responsable de la secretaría del departamento que debe aparecer o firmar en determinados formularios.
   \item \texttt{\textbackslash{}myDepartmentSecretaryGender}: género gramatical de la persona responsable de la secretaría del departamento. Admite los valores \texttt{male} y \texttt{female}.
   \item \texttt{\textbackslash{}mySchoolDeputyDirectorFullName}: nombre completo de quien firma por la UAH en los convenios de cooperación educativa de TFG y TFM. Si lo dejas vacío, la línea del nombre permanece en blanco.
@@ -232,77 +205,84 @@ Configura la composición del tribunal y los cargos académicos mediante las sig
 
 No todas las titulaciones utilizan la misma composición de tribunal ni los mismos cargos administrativos. Puedes dejar vacíos los campos que no aparezcan en los documentos correspondientes a la titulación que hayas seleccionado.
 
-\section{Calificaciones}
+\section{Contenido opcional y bibliografía}
+\label{sec:elementos-opcionales-configuracion}
 
-Las siguientes variables recogen las calificaciones y la posible propuesta de matrícula de honor:
+Las variables cuyo nombre comienza por \texttt{\textbackslash{}myInclude} te permiten mostrar u ocultar contenido opcional sin comentar órdenes en \texttt{book.tex}. Todas admiten exclusivamente los valores \texttt{true} y \texttt{false}. La plantilla genera un error explícito si escribes otro valor.
 
-\begin{itemize}
-  \item \texttt{\textbackslash{}myAcademicTutorGrade}: calificación asignada por el tutor académico. En la rúbrica de TFG incluida actualmente corresponde a un máximo de siete puntos.
-  \item \texttt{\textbackslash{}myTribunalGrade}: calificación asignada por el tribunal. En la rúbrica de TFG incluida actualmente corresponde a un máximo de tres puntos.
-  \item \texttt{\textbackslash{}myTribunalMHProposal}: indica si el tribunal propone la concesión de matrícula de honor. Admite los valores \texttt{YES} y \texttt{NO}, respetando las mayúsculas.
-\end{itemize}
+\subsection{Páginas preliminares}
 
-Las calificaciones del tutor y del tribunal se utilizan en los documentos de acta y rúbrica que las contemplan. La plantilla calcula automáticamente la calificación conjunta en esos formularios. Estos valores no afectan al contenido ni a la compilación del libro principal.
-
-\section{Fechas}
-
-Introduce las fechas como texto ya formateado, no como valores que la plantilla convierta automáticamente. Así podrás utilizar el formato requerido por cada documento, incluidos los ordinales y nombres de meses en inglés.
+Las siguientes variables controlan el contenido preliminar de ejemplo:
 
 \begin{itemize}
-  \item \texttt{\textbackslash{}myThesisProposalDate}: fecha de presentación o firma del anteproyecto. Se utiliza en la plantilla del anteproyecto y en los formularios que hacen referencia a su solicitud.
-  \item \texttt{\textbackslash{}myThesisDepositDate}: fecha de depósito del trabajo en español.
-  \item \texttt{\textbackslash{}myThesisDepositDateEnglish}: fecha de depósito del trabajo en inglés.
-  \item \texttt{\textbackslash{}myThesisAcademicYear}: curso académico mostrado en las actas y rúbricas que lo requieren (por ejemplo, \texttt{2025/2026}).
-  \item \texttt{\textbackslash{}myThesisDefenseYear}: año de defensa utilizado en las cubiertas y contraportadas correspondientes.
-  \item \texttt{\textbackslash{}myThesisDefenseDate}: fecha completa de defensa en español. En los informes de investigación también se utiliza como fecha de la cubierta.
-  \item \texttt{\textbackslash{}myThesisdefenseDateEnglish}: fecha completa de defensa en inglés. Respeta exactamente este nombre, incluida la letra minúscula de \texttt{defense}.
-  \item \texttt{\textbackslash{}myPaperworkDate}: fecha en español utilizada para firmar o fechar los documentos administrativos. Su definición puede reutilizar \texttt{\textbackslash{}myThesisDepositDate} cuando ambas fechas coincidan.
-  \item \texttt{\textbackslash{}myPaperworkDateEnglish}: fecha equivalente en inglés. Se utiliza, entre otros casos, en la autorización para tutores extranjeros y puede reutilizar \texttt{\textbackslash{}myThesisDepositDateEnglish}.
+  \item \texttt{\textbackslash{}myIncludeSampleLetter}: permite insertar un PDF preliminar, como una carta de autorización. Su valor predeterminado es \texttt{false}, por lo que el manual no incluye el PDF de ejemplo. Si lo necesitas, selecciona \texttt{true} y sustituye la ruta del PDF en el bloque correspondiente de \texttt{Book/book.tex}, que utiliza \texttt{\textbackslash{}includepdf}.
+  \item \texttt{\textbackslash{}myIncludeDedication}: incluye la dedicatoria definida en \texttt{dedication/dedicatoria.tex}.
+  \item \texttt{\textbackslash{}myIncludeAcknowledgements}: incluye los agradecimientos definidos en \texttt{acknowledgements/agradecimientos.tex}.
 \end{itemize}
 
-Si preparas un anteproyecto en inglés, escribe la fecha de propuesta en ese idioma en \texttt{\textbackslash{}myThesisProposalDate}. La configuración actual utiliza un único campo para esa fecha.
+\subsection{Índices y listados}
 
-\section{Publicación en abierto y licencia}
-
-Utiliza las siguientes variables para configurar la publicación en abierto, el embargo, los cargos responsables y la licencia del documento:
+Las siguientes variables controlan los índices y listados generados automáticamente:
 
 \begin{itemize}
-  \item \texttt{\textbackslash{}myAuthorizationOpenPublishing}: indica si se autoriza la publicación en abierto en los documentos que contemplan esta decisión. Los valores previstos son \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
-  \item \texttt{\textbackslash{}myAuthorizationOpenPublishingEmbargoMonths}: duración del embargo antes de la publicación en abierto. Los valores contemplados por los textos automáticos son \texttt{0}, \texttt{6}, \texttt{12}, \texttt{18} y \texttt{24} meses.
-  \item \texttt{\textbackslash{}myResearchVicerrector}: nombre y tratamiento de la persona responsable del vicerrectorado que aparece en los formularios de publicación correspondientes.
-  \item \texttt{\textbackslash{}myResearchVicerrectorGender}: género gramatical utilizado para adaptar el cargo del vicerrectorado. Admite los valores \texttt{male} y \texttt{female}.
-  \item \texttt{\textbackslash{}myCopyrightStatement}: declaración de derechos incorporada a los metadatos del PDF.
-  \item \texttt{\textbackslash{}myLicenseURL}: dirección de la licencia incorporada a los metadatos del PDF.
+  \item \texttt{\textbackslash{}myIncludeListOfFigures}: incluye el índice de figuras.
+  \item \texttt{\textbackslash{}myIncludeListOfTables}: incluye el índice de tablas.
+  \item \texttt{\textbackslash{}myIncludeListOfAcronyms}: incluye la lista de acrónimos.
+  \item \texttt{\textbackslash{}myIncludeListOfSymbols}: incluye la lista de símbolos.
+  \item \texttt{\textbackslash{}myIncludeListOfCode}: incluye el índice de listados de código fuente.
+  \item \texttt{\textbackslash{}myIncludeListOfAlgorithms}: incluye el índice de algoritmos.
+  \item \texttt{\textbackslash{}myIncludeListOfVideos}: incluye el índice de vídeos.
 \end{itemize}
 
-La autorización de publicación, el embargo y la licencia representan decisiones diferentes. Comprueba que sus valores sean coherentes entre sí y con las condiciones institucionales aplicables. Sustituye también los nombres de cargos y las direcciones de licencia de ejemplo por información vigente antes de generar los documentos definitivos.
+Desactivar uno de estos listados no desactiva la prestación correspondiente: puedes seguir utilizando figuras, tablas, acrónimos, símbolos, código, algoritmos o enlaces a vídeos en el cuerpo del documento. Solo se omite su índice independiente. La sección~\ref{sec:compilacion-editor} explica la generación automática de los acrónimos y símbolos desde el editor. El script \texttt{makeglossaries} corresponde a la configuración opcional del \texttt{Makefile}, descrita en la sección~\ref{sec:compilacion-makefile}.
 
-\section{Informes de investigación y tesis de la UPM}
+Los listados de acrónimos y símbolos utilizan \texttt{glossaries}. Sus opciones y órdenes se describen en el manual del paquete~\cite{glossaries-manual}. En la sección~\ref{sec:uso-de-acronimos} encontrarás los ejemplos concretos que usamos aquí.
 
-Si seleccionas \texttt{PHD-ETSIT-UPM} o \texttt{PHD-ETSIT-UPM-COMPENDIUM}, la plantilla genera la cubierta, la portada interior y la página de créditos para las tesis de la ETSIT-UPM, basadas en el modelo de tesis UPM. Estas páginas aparecen en las páginas físicas impares 1, 3 y 5 del PDF, con páginas en blanco entre ellas y sin una página en blanco inicial. Las dos primeras páginas institucionales no se numeran y los créditos empiezan en la página romana i. La portada interior incluye los escudos de la ETSIT y de la UPM, con los nombres de Universidad y Escuela centrados verticalmente junto a ellos. El resto de páginas preliminares utiliza números romanos y el cuerpo números arábigos, siempre centrados en el pie, con independencia del estilo tipográfico seleccionado. El modelo oficial no establece una contraportada independiente, por lo que la plantilla no añade ninguna para esta titulación.
+\subsection{Bibliografía por capítulos y bibliografía general}
+\label{sec:bibliografias-capitulos}
 
-Para completar estas páginas, revisa las siguientes variables de \texttt{Config/myconfig.tex}:
+Puedes mantener una única bibliografía general, incluir las referencias al final de cada capítulo o combinar ambas opciones. No necesitas añadir órdenes a los capítulos ni a los apéndices: configura estas variables en \texttt{Config/myconfig.tex} y la plantilla se encarga del resto.
 
 \begin{itemize}
-  \item \texttt{\textbackslash{}myPhDProgram} y \texttt{\textbackslash{}myPhDProgramEnglish}: nombre oficial completo del programa de doctorado, sin abreviarlo. Para la portada UPM, introduce la denominación completa con su encabezamiento, por ejemplo Doctorado en Ingeniería de Sistemas Electrónicos o Doctoral Degree in Electronic Systems Engineering. No conserves el programa de la UAH utilizado como ejemplo si no es el tuyo.
-  \item \texttt{\textbackslash{}myUPMdegree} y \texttt{\textbackslash{}myUPMdegreeEnglish}: titulación académica previa con la que accediste al doctorado, en español e inglés. No es el título de doctor que solicitas.
-  \item \texttt{\textbackslash{}myThesisDepositYear}: año de solicitud del depósito, mostrado junto a Madrid. Por defecto toma el año de defensa, pero debes cambiarlo si el depósito y la defensa corresponden a años distintos.
-  \item \texttt{\textbackslash{}myThesisFundingStatement} y \texttt{\textbackslash{}myThesisFundingStatementEnglish}: texto completo de financiación competitiva, por ejemplo Esta tesis ha sido parcialmente financiada por el proyecto XYZ. Déjalos vacíos si no procede. El texto correspondiente al idioma elegido aparece al final de los créditos y admite formato \LaTeX{}.
-  \item \texttt{\textbackslash{}myAcademicTutorFullName}, \texttt{\textbackslash{}myAcademicTutorGender}, \texttt{\textbackslash{}myAcademicTutorPosition}, \texttt{\textbackslash{}myAcademicTutorPositionEnglish}, \texttt{\textbackslash{}myAcademicTutorInstitution} y \texttt{\textbackslash{}myAcademicTutorInstitutionEnglish}: nombre, género gramatical, puesto e institución del director. Los créditos utilizan la institución, no su departamento.
-  \item \texttt{\textbackslash{}myCoTutorFullName}, \texttt{\textbackslash{}myCoTutorGender}, \texttt{\textbackslash{}myCoTutorPosition}, \texttt{\textbackslash{}myCoTutorPositionEnglish}, \texttt{\textbackslash{}myAcademicCotutorInstitution} y \texttt{\textbackslash{}myAcademicCotutorInstitutionEnglish}: datos equivalentes del codirector. Si no existe, deja vacío su nombre para omitirlo en ambas páginas.
-  \item \texttt{\textbackslash{}myTribunalPresident}, \texttt{\textbackslash{}myTribunalSecretary}, \texttt{\textbackslash{}myTribunalFirstSpokesperson}, \texttt{\textbackslash{}myTribunalSecondSpokesperson} y \texttt{\textbackslash{}myTribunalThirdSpokesperson}: presidencia, secretaría y hasta tres vocales del tribunal. Los rótulos de presidencia y secretaría respetan sus variables de género gramatical. Los nombres vacíos se omiten.
-  \item \texttt{\textbackslash{}myTribunalAlternateMember} y \texttt{\textbackslash{}myTribunalSecondAlternateMember}: primer y segundo suplente. Deja vacío el nombre de los que no correspondan.
-  \item \texttt{\textbackslash{}myFirstExternalReviewerFullName} y \texttt{\textbackslash{}mySecondExternalReviewerFullName}: nombres completos de los dos revisores externos. Sus instituciones se indican en \texttt{\textbackslash{}myFirstExternalReviewerInstitution} y \texttt{\textbackslash{}mySecondExternalReviewerInstitution}, o en sus variantes terminadas en \texttt{English}. Puedes dejar vacía la institución. Si no hay nombre, se omite toda la entrada.
-  \item \texttt{\textbackslash{}myThesisDefenseDate} y \texttt{\textbackslash{}myThesisdefenseDateEnglish}: fecha de defensa que aparece en los créditos, según el idioma elegido. No debe confundirse con el año de depósito de la cubierta.
+  \item \texttt{\textbackslash{}myIncludeChapterBibliographies}: con \texttt{true}, añade al final de cada capítulo numerado y de cada apéndice una sección sin numerar con las referencias utilizadas en él. Esa sección aparece en el índice general y se omite si no hay referencias que mostrar. Su valor predeterminado es \texttt{false}.
+  \item \texttt{\textbackslash{}myIncludeFinalBibliography}: con \texttt{true}, conserva la bibliografía general, que reúne las referencias de todo el documento, incluidas las de los apéndices y las páginas preliminares. Su valor predeterminado es \texttt{true}. En la estructura estándar aparece antes de los apéndices, como hasta ahora.
+  \item \texttt{\textbackslash{}myBibliographyNumbering}: selecciona \texttt{global}, el valor predeterminado, para que cada referencia conserve su número en todo el documento, o \texttt{chapter} para reiniciar la numeración en cada capítulo. Esta elección solo afecta al libro y tiene efecto cuando activas las bibliografías por capítulo.
 \end{itemize}
 
-Los rótulos siguen \texttt{\textbackslash{}myLanguage}, pero los nombres oficiales de Universidad y Escuela permanecen en español. El género del autor y de los directores determina las formas Doctora, Dra., Directora y Codirectora cuando corresponde. La página de créditos de esta versión se cumplimenta con los revisores, los miembros del tribunal y la fecha de defensa configurados. Ten en cuenta que el modelo oficial de depósito exige dejar esos tres apartados sin completar y utiliza las primeras páginas consecutivas: esta presentación de la memoria final no debe confundirse con una copia lista para el depósito. Comprueba los requisitos de tu convocatoria antes de entregarla.
+Por ejemplo, con las bibliografías por capítulo activadas y numeración \texttt{global}, una publicación citada como [5] seguirá siendo [5] en los demás capítulos. Si seleccionas \texttt{chapter}, esa misma publicación podría ser [1] en un capítulo y [3] en otro, según su orden de aparición. En este último caso, cada cita enlaza con la entrada de su bibliografía de capítulo y la bibliografía general, si la mantienes, utiliza una numeración independiente. No debes interpretar el número de una cita local como el número de la entrada en esa lista general.
 
-Comprueba que el título y tu nombre coincidan exactamente con los registrados en THESIS. Debes redactar los dos resúmenes, español e inglés, en texto plano, con un máximo de 4000 caracteres cada uno, incluidos los espacios. La plantilla no comprueba automáticamente esa longitud ni la ausencia de símbolos. Consulta siempre las \href{https://www.upm.es/Estudiantes/Estudios_Titulaciones/Estudios_Doctorado/Tesis/NormasRedaccionTesis}{normas oficiales de redacción de tesis UPM}. Para una tesis por compendio también debes revisar sus requisitos específicos, además de las instrucciones de la sección~\ref{sec:tesis-compendio}.
+Para probar las bibliografías por capítulo sin renunciar a la general, utiliza esta configuración:
 
-Para los informes de investigación, \texttt{\textbackslash{}myResearchReportID} identifica el informe cuando eliges \texttt{GEINTRARR}. Su soporte se considera experimental. Los campos de titulación previa de las tesis UPM no se utilizan en los TFG y TFM de la ETSIT-UPM, cuya denominación se obtiene del identificador seleccionado.
+\begin{verbatim}
+\newcommand{\myIncludeChapterBibliographies}{true}
+\newcommand{\myIncludeFinalBibliography}{true}
+\newcommand{\myBibliographyNumbering}{global}
+\end{verbatim}
 
-\section{Colores de los enlaces}
+Cambia los valores de las definiciones existentes, no añadas una segunda definición de cada variable. Si solo quieres las listas por capítulo, selecciona \texttt{false} en \texttt{\textbackslash{}myIncludeFinalBibliography}. Las entradas excluidas de la bibliografía, como el ejemplo de \texttt{nobiblio.bib} de la sección~\ref{sec:estructura-listas-citas}, tampoco aparecen en las listas por capítulo.
+
+En una tesis por compendio, las bibliografías por capítulo corresponden únicamente al resumen extendido de la primera parte. La bibliografía general permanece entre las dos partes y no se añaden listas de referencias después de los PDF de las publicaciones. El anteproyecto y los formularios mantienen su bibliografía habitual, independientemente de estas opciones.
+
+La compilación sigue utilizando \texttt{pdflatex} y \texttt{biber}, tanto desde tu editor como desde \texttt{Overleaf}, \texttt{Prism} o mediante el \texttt{Makefile}. Después de cambiar estas opciones o las referencias utilizadas, utiliza la función de construcción de tu entorno para actualizar las listas, su numeración y sus enlaces. La bibliografía general puede incluir referencias citadas más adelante en los apéndices porque el proceso utiliza la información de las pasadas anteriores.
+
+\section{Presentación del documento}
+
+Puedes conservar el aspecto predeterminado o ajustar el estilo y los colores de los enlaces con las opciones siguientes.
+
+\subsection{Estilos tipográficos (implementación preliminar)}
+\label{sec:estilos-tipograficos}
+
+El libro principal permite probar distintos estilos tipográficos sin cambiar su contenido ni editar \texttt{Book/book.tex}. Se trata todavía de una implementación preliminar, por lo que, si no quieres valorar alternativas de diseño, puedes conservar sin más el estilo proporcionado en \texttt{Config/myconfig.tex}. Esta funcionalidad solo afecta al libro principal: el anteproyecto y los documentos administrativos mantienen su formato específico.
+
+Selecciona el estilo mediante \texttt{\textbackslash{}myTypesettingStyle} en \texttt{Config/myconfig.tex}. El valor \texttt{standard}, utilizado de forma predeterminada, conserva el aspecto tradicional de la plantilla. Los valores admitidos y una breve descripción de cada uno aparecen en los comentarios situados antes de esta variable.
+
+Si quieres comparar los estilos antes de elegir uno, abre \nolinkurl{02-TYPESETTING-STYLES-COMPARISON.pdf} en la carpeta de descargas enlazada en la sección~\ref{sec:descarga-ejemplos}. El documento muestra para cada estilo el índice general, el comienzo de un capítulo, una página ordinaria con ecuaciones y un título de capítulo largo. El nombre del estilo aparece en la esquina superior derecha de cada página de muestra.
+
+Elegir uno de los estilos incluidos es sencillo y sólo requiere modificar esa variable. En cambio, modificar estos estilos o crear uno nuevo es una tarea avanzada: su implementación afecta de forma coordinada a las fuentes, los encabezados, los títulos, los índices y otros elementos del documento. La guía completa es, por tanto, un documento técnico y relativamente complejo. Te recomendamos consultarla únicamente si necesitas personalizar la implementación y hacerlo con cuidado, comprobando después el resultado en todo el documento.
+
+Los estilos alternativos requieren \texttt{pdfLaTeX} y los paquetes de fuentes indicados para cada caso. Si alguno no está instalado, puedes instalarlo mediante tu distribución de \LaTeX{} o volver al estilo \texttt{standard}. Encontrarás la relación completa de estilos, ejemplos de configuración, dependencias y detalles técnicos en \texttt{04-TYPESETTING-STYLES-GUIDE.pdf}, situado en la raíz de la plantilla.
+
+\subsection{Colores de los enlaces}
 
 Los enlaces del PDF se generan mediante \texttt{hyperref}. Su manual~\cite{hyperref-manual} te servirá si más adelante necesitas ir más allá de los colores que puedes seleccionar aquí.
 
@@ -320,6 +300,74 @@ Utiliza como valores de color nombres o expresiones reconocidos por los paquetes
 
 Utilizar \texttt{black} para los índices permite que sus entradas mantengan el aspecto del texto normal, aunque sigan siendo enlaces activos. Antes de elegir otros colores, comprueba su legibilidad tanto en pantalla como en una copia impresa.
 
+\section{Confidencialidad, publicación y documentación administrativa}
+
+Revisa estas opciones cuando prepares autorizaciones, formularios o la entrega del documento. No es necesario resolverlas todas para empezar a escribir.
+
+\subsection{Confidencialidad}
+
+Indica si tu trabajo contiene material confidencial mediante esta variable:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myConfidentialContent}: indica si el trabajo contiene material confidencial en los documentos administrativos que contemplan esta posibilidad. Admite los valores \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
+\end{itemize}
+
+\subsection{Publicación en abierto y licencia}
+
+Utiliza las siguientes variables para configurar la publicación en abierto, el embargo, los cargos responsables y la licencia del documento:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myAuthorizationOpenPublishing}: indica si se autoriza la publicación en abierto en los documentos que contemplan esta decisión. Los valores previstos son \texttt{Yes} y \texttt{No}, respetando las mayúsculas y minúsculas.
+  \item \texttt{\textbackslash{}myAuthorizationOpenPublishingEmbargoMonths}: duración del embargo antes de la publicación en abierto. Los valores contemplados por los textos automáticos son \texttt{0}, \texttt{6}, \texttt{12}, \texttt{18} y \texttt{24} meses.
+  \item \texttt{\textbackslash{}myResearchVicerrector}: nombre y tratamiento de la persona responsable del vicerrectorado que aparece en los formularios de publicación correspondientes.
+  \item \texttt{\textbackslash{}myResearchVicerrectorGender}: género gramatical utilizado para adaptar el cargo del vicerrectorado. Admite los valores \texttt{male} y \texttt{female}.
+  \item \texttt{\textbackslash{}myCopyrightStatement}: declaración de derechos incorporada a los metadatos del PDF.
+  \item \texttt{\textbackslash{}myLicenseURL}: dirección de la licencia incorporada a los metadatos del PDF.
+\end{itemize}
+
+La autorización de publicación, el embargo y la licencia representan decisiones diferentes. Comprueba que sus valores sean coherentes entre sí y con las condiciones institucionales aplicables. Sustituye también los nombres de cargos y las direcciones de licencia de ejemplo por información vigente antes de generar los documentos definitivos.
+
+\subsection{Calificaciones}
+
+Las siguientes variables recogen las calificaciones y la posible propuesta de matrícula de honor:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myAcademicTutorGrade}: calificación asignada por el tutor académico. En la rúbrica de TFG incluida actualmente corresponde a un máximo de siete puntos.
+  \item \texttt{\textbackslash{}myTribunalGrade}: calificación asignada por el tribunal. En la rúbrica de TFG incluida actualmente corresponde a un máximo de tres puntos.
+  \item \texttt{\textbackslash{}myTribunalMHProposal}: indica si el tribunal propone la concesión de matrícula de honor. Admite los valores \texttt{YES} y \texttt{NO}, respetando las mayúsculas.
+\end{itemize}
+
+Las calificaciones del tutor y del tribunal se utilizan en los documentos de acta y rúbrica que las contemplan. La plantilla calcula automáticamente la calificación conjunta en esos formularios. Estos valores no afectan al contenido ni a la compilación del libro principal.
+
+\section{Configuración de casos específicos}
+
+Estos apartados reúnen las opciones que solo necesitarás si preparas una tesis de la ETSIT-UPM o un informe de investigación.
+
+\subsection{Tesis doctorales de la ETSIT-UPM}
+\label{sec:configuracion-phd-upm}
+
+Si seleccionas \texttt{PHD-ETSIT-UPM} o \texttt{PHD-ETSIT-UPM-COMPENDIUM}, revisa las siguientes variables de \texttt{Config/myconfig.tex}. Algunas son comunes a otros trabajos y otras son específicas de estas tesis:
+
+\begin{itemize}
+  \item \texttt{\textbackslash{}myPhDProgram} y \texttt{\textbackslash{}myPhDProgramEnglish}: nombre oficial completo del programa de doctorado, sin abreviarlo. Para la portada UPM, introduce la denominación completa con su encabezamiento, por ejemplo Doctorado en Ingeniería de Sistemas Electrónicos o Doctoral Degree in Electronic Systems Engineering. No conserves el programa de la UAH utilizado como ejemplo si no es el tuyo.
+  \item \texttt{\textbackslash{}myUPMdegree} y \texttt{\textbackslash{}myUPMdegreeEnglish}: titulación académica previa con la que accediste al doctorado, en español e inglés. No es el título de doctor que solicitas.
+  \item \texttt{\textbackslash{}myThesisDepositYear}: año de solicitud del depósito. Por defecto toma el año de defensa, pero debes cambiarlo si el depósito y la defensa corresponden a años distintos.
+  \item \texttt{\textbackslash{}myThesisFundingStatement} y \texttt{\textbackslash{}myThesisFundingStatementEnglish}: texto completo de financiación competitiva, por ejemplo Esta tesis ha sido parcialmente financiada por el proyecto XYZ. Déjalos vacíos si no procede. Completa el texto correspondiente al idioma elegido. Admite formato \LaTeX{}.
+  \item \texttt{\textbackslash{}myAcademicTutorFullName}, \texttt{\textbackslash{}myAcademicTutorGender}, \texttt{\textbackslash{}myAcademicTutorPosition}, \texttt{\textbackslash{}myAcademicTutorPositionEnglish}, \texttt{\textbackslash{}myAcademicTutorInstitution} y \texttt{\textbackslash{}myAcademicTutorInstitutionEnglish}: nombre, género gramatical, puesto e institución del director. Los créditos utilizan la institución, no su departamento.
+  \item \texttt{\textbackslash{}myCoTutorFullName}, \texttt{\textbackslash{}myCoTutorGender}, \texttt{\textbackslash{}myCoTutorPosition}, \texttt{\textbackslash{}myCoTutorPositionEnglish}, \texttt{\textbackslash{}myAcademicCotutorInstitution} y \texttt{\textbackslash{}myAcademicCotutorInstitutionEnglish}: datos equivalentes del codirector. Si no existe, deja vacío su nombre.
+  \item \texttt{\textbackslash{}myTribunalPresident}, \texttt{\textbackslash{}myTribunalSecretary}, \texttt{\textbackslash{}myTribunalFirstSpokesperson}, \texttt{\textbackslash{}myTribunalSecondSpokesperson} y \texttt{\textbackslash{}myTribunalThirdSpokesperson}: presidencia, secretaría y hasta tres vocales del tribunal. Los rótulos de presidencia y secretaría respetan sus variables de género gramatical. Los nombres vacíos se omiten.
+  \item \texttt{\textbackslash{}myTribunalAlternateMember} y \texttt{\textbackslash{}myTribunalSecondAlternateMember}: primer y segundo suplente. Deja vacío el nombre de los que no correspondan.
+  \item \texttt{\textbackslash{}myFirstExternalReviewerFullName} y \texttt{\textbackslash{}mySecondExternalReviewerFullName}: nombres completos de los dos revisores externos. Sus instituciones se indican en \texttt{\textbackslash{}myFirstExternalReviewerInstitution} y \texttt{\textbackslash{}mySecondExternalReviewerInstitution}, o en sus variantes terminadas en \texttt{English}. Puedes dejar vacía la institución. Si no hay nombre, se omite toda la entrada.
+  \item \texttt{\textbackslash{}myThesisDefenseDate} y \texttt{\textbackslash{}myThesisdefenseDateEnglish}: fecha de defensa que aparece en los créditos, según el idioma elegido. No debe confundirse con el año de depósito de la cubierta.
+\end{itemize}
+
+Antes de entregar la tesis, comprueba los requisitos de tu convocatoria en las \href{https://www.upm.es/Estudiantes/Estudios_Titulaciones/Estudios_Doctorado/Tesis/NormasRedaccionTesis}{normas oficiales de redacción de tesis UPM}. Si preparas una tesis por compendio, consulta también la sección~\ref{sec:tesis-compendio}.
+
+\subsection{Informes de investigación}
+\label{sec:configuracion-informes}
+
+Si seleccionas \texttt{GEINTRARR}, utiliza \texttt{\textbackslash{}myResearchReportID} para identificar el informe y \texttt{\textbackslash{}myResearchGroup} para indicar el grupo de investigación. Completa también el título, la autoría y la fecha del trabajo descritos en la sección~\ref{sec:datos-generales-configuracion}. El soporte de estos informes se considera experimental.
+
 \section{Configuración automática y compatibilidad}
 
 La plantilla obtiene automáticamente el nombre de la titulación, el tipo de trabajo, la universidad y el centro a partir de \texttt{\textbackslash{}myDegree}, y reutiliza el nombre y correo que hayas configurado para la persona autora. Solo tienes que completar los campos correspondientes de \texttt{Config/myconfig.tex}, sin necesidad de configurar por separado esa información para cada documento.
@@ -327,7 +375,6 @@ La plantilla obtiene automáticamente el nombre de la titulación, el tipo de tr
 La variable \texttt{\textbackslash{}mybookFigure} se conserva únicamente por compatibilidad con formularios antiguos. Ya no es necesaria para las plantillas actuales, así que normalmente no debes modificarla.
 
 Una vez que hayas completado las variables aplicables, la plantilla reutilizará sus valores en las cubiertas, los formularios, los textos adaptados al género gramatical y los metadatos del PDF. Esta configuración automática no sustituye la revisión de la normativa vigente ni la comprobación de los PDF generados.
-
 
 \section{Resumen del capítulo}
 \label{sec:resumen-configuracion}
