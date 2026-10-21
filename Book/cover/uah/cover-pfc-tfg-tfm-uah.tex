@@ -5,6 +5,19 @@
 % Se incluye según el perfil seleccionado; no se compila por separado.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begingroup
+% La agrupación no cambia el cargo: tutor en TFG, director en TFM/TFC.
+\newcommand{\UAHCoverAdvisorRole}{\wordDirectorOrDirectoraTitle}
+\newcommand{\UAHCoverCoAdvisorRole}{\wordCoDirectorOrCoDirectoraTitle}
+\newcommand{\UAHCoverAdvisorGroup}{Directores}
+\ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{\renewcommand{\UAHCoverAdvisorGroup}{Directoras}}{}
+\ifthenelse{\equal{\myWorkType}{TFG}}{%
+  \renewcommand{\UAHCoverAdvisorRole}{\wordTutorOrTutoraTitle}%
+  \renewcommand{\UAHCoverCoAdvisorRole}{\wordCoTutorOrCoTutoraTitle}%
+  \renewcommand{\UAHCoverAdvisorGroup}{Tutores}%
+  \ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{\renewcommand{\UAHCoverAdvisorGroup}{Tutoras}}{}%
+}{}
+\ifthenelse{\equal{\myCoTutorFullName}{}}{\renewcommand{\UAHCoverAdvisorGroup}{\UAHCoverAdvisorRole}}{}
 \thispagestyle{empty}
 \large
 \begin{center}
@@ -57,15 +70,13 @@
 
     }
     {%
-      % \expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}: \myAdvisors
-      % \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}: \myAdvisors
-      \expandafter\makefirstuc\expandafter{\wordDirectorOrdirectora}:    \myAcademicTutorFullName{}
+      \UAHCoverAdvisorRole: \myAcademicTutorFullName{}
 
       \ifthenelse{\equal{\myCoTutorFullName}{}}
       {
       }
       {
-        \expandafter\makefirstuc\expandafter{\wordCoDirectorOrCoDirectora}: \myCoTutorFullName{}
+        \UAHCoverCoAdvisorRole: \myCoTutorFullName{}
       }
     }
   }
@@ -75,7 +86,7 @@
       \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
     }
     {
-      \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}: \myAdvisors
+      \UAHCoverAdvisorGroup: \myAdvisors
     }
   }
 
@@ -148,6 +159,7 @@
 \normalsize
 
 \clearemptydoublepage
+\endgroup
 
 %%% Local Variables:
 %%% TeX-master: "../book"

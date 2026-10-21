@@ -5,6 +5,16 @@
 % Se incluye según el perfil seleccionado; no se compila por separado.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begingroup
+% El cargo en los TFM es director/codirector, también al agrupar los nombres.
+\renewcommand{\wordTutorOrTutora}{\wordDirectorOrdirectora}
+\renewcommand{\wordCoTutorOrCoTutora}{\wordCoDirectorOrCoDirectora}
+\ifthenelse{\equal{\myCoTutorFullName}{}}{%
+  \renewcommand{\wordTutorOrTutores}{\wordDirectorOrdirectora}%
+}{%
+  \renewcommand{\wordTutorOrTutores}{directores}%
+  \ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{\renewcommand{\wordTutorOrTutores}{directoras}}{}%
+}
 \thispagestyle{empty}
 
 \hspace{-1cm}\begin{tabular}[c]{p{.5\textwidth}p{.5\textwidth}}
@@ -100,6 +110,8 @@
 \end{bottomparagraph}
 
 \clearemptydoublepage
+
+\endgroup
 
 %%% Local Variables:
 %%% TeX-master: "../book"

@@ -15,7 +15,12 @@
       \let\@makeschapterhead\thesis@originalmakeschapter
       \let\chaptermark\thesis@originalchaptermark
       \let\ps@plain\thesis@originalplain
-      \ifthenelse{\equal{\myInstitutionalPageFontMode}{institutional}}{%
+      % Solo las portadas EIF y ETSII utilizan las fuentes del documento;
+      % las contraportadas conservan la política institucional habitual.
+      \ifthenelse{\equal{\myInstitutionalPageFontMode}{institutional}\AND
+                  \(\NOT\equal{#1}{cover/cover.tex}\OR
+                    \(\NOT\equal{\myLayoutProfile}{urjc-eif-tfg}\AND
+                      \NOT\equal{\myLayoutProfile}{urjc-etsii-tfg}\)\)}{%
         \let\rmdefault\thesis@originalrm
         \let\sfdefault\thesis@originalsf
         \let\ttdefault\thesis@originaltt

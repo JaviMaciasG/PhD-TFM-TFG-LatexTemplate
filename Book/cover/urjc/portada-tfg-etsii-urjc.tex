@@ -8,37 +8,45 @@
 
 \thispagestyle{empty}
 \begingroup
+% Adaptación tipográfica del modelo, con el mismo equilibrio que la EIF.
+\normalfont
+\newcommand{\ETSIIAuthorLabel}{\ifthenelse{\equal{\myAuthorGender}{male}}{Autor}{Autora}}
+\newcommand{\ETSIIAdvisorLabel}{%
+  \ifthenelse{\equal{\myCoTutorFullName}{}}%
+    {\ifthenelse{\equal{\myAcademicTutorGender}{male}}{Tutor}{Tutora}}%
+    {\ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{Tutoras}{Tutores}}}
 \begin{tikzpicture}[remember picture,overlay]
   \fill[white] (current page.south west) rectangle (current page.north east);
-  \node[anchor=north,inner sep=0pt] at ([yshift=-5.2cm]current page.north)
-    {\includegraphics[width=10.2cm]{urjc/URJ_logo_Color_POS.png}};
-  \node[anchor=center,align=center,text width=18cm,inner sep=0pt,
-    font=\sffamily\bfseries\fontsize{12}{15}\selectfont]
-    at ([yshift=-11.5cm]current page.north) {\MakeUppercase{\mySchool}};
-  \node[anchor=center,align=center,text width=17cm,inner sep=0pt,
-    font=\sffamily\bfseries\fontsize{13}{16}\selectfont]
-    at ([yshift=-13.3cm]current page.north) {\MakeUppercase{\myDegreefull}};
-  \node[anchor=center,align=center,text width=17cm,inner sep=0pt,
-    font=\sffamily\bfseries\fontsize{13}{16}\selectfont]
-    at ([yshift=-14.55cm]current page.north) {Curso Académico \myThesisAcademicYear};
-  \node[anchor=center,inner sep=0pt,font=\sffamily\bfseries\fontsize{13}{16}\selectfont]
-    at ([yshift=-16.35cm]current page.north) {\myWorkTypeFull};
-  \node[anchor=center,align=center,text width=16cm,inner sep=0pt,
-    font=\sffamily\bfseries\fontsize{14}{18}\selectfont]
-    at ([yshift=-20cm]current page.north) {\MakeUppercase{\myBookTitle}};
-  \node[anchor=north,inner sep=0pt,text width=12cm,
-    font=\sffamily\fontsize{13}{17}\selectfont]
-    at ([yshift=-24.1cm]current page.north) {%
-      \renewcommand{\arraystretch}{1.35}%
-      \begin{tabular}{@{}l@{\hspace{1cm}}p{8cm}@{}}
-        \textbf{\ifthenelse{\equal{\myAuthorGender}{male}}{Autor}{Autora}:}
-          & \myAuthorFullName \\[0.3cm]
-        \textbf{\ifthenelse{\equal{\myCoTutorFullName}{}}%
-          {\ifthenelse{\equal{\myAcademicTutorGender}{male}}{Tutor}{Tutora}}%
-          {\ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{Tutoras}{Tutores}}:}
-          & \myAcademicTutorFullName
-        \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\ & \myCoTutorFullName}
-      \end{tabular}};
+  % Márgenes superior e inferior de 4 cm y separación proporcional que
+  % se adapta a la altura real del título, la titulación y los nombres.
+  % Conserva el orden ETSII: curso tras la titulación y personas al pie.
+  \node[anchor=center,inner sep=0pt,outer sep=0pt] at (current page.center) {%
+    \begin{minipage}[c][\dimexpr\paperheight-8cm\relax][s]{16cm}
+      \centering
+      \setlength{\parindent}{0pt}
+      \setlength{\parskip}{0pt}
+      \linespread{1}\selectfont
+      \vspace*{0pt}
+      \includegraphics[width=6.4cm]{urjc/URJ_logo_Color_POS.png}\par
+      \vspace{\stretch{1.3}}
+      {\fontsize{18}{22}\selectfont\MakeUppercase{\mySchool}\par}
+      \vspace{\stretch{0.6}}
+      {\fontsize{16}{20}\selectfont\MakeUppercase{\myDegreefull}\par}
+      \vspace{\stretch{0.4}}
+      {\fontsize{16}{20}\selectfont Curso Académico \myThesisAcademicYear\par}
+      \vspace{\stretch{1}}
+      {\bfseries\fontsize{18}{22}\selectfont\myWorkTypeFull\par}
+      \vspace{\stretch{1.1}}
+      {\bfseries\fontsize{18}{23}\selectfont\MakeUppercase{\myBookTitle}\par}
+      \vspace{\stretch{1.4}}
+      {\fontsize{16}{20}\selectfont
+        \renewcommand{\arraystretch}{1.2}%
+        \begin{tabularx}{12cm}[b]{@{}l@{\hspace{1cm}}>{\raggedright\arraybackslash}X@{}}
+          \textbf{\ETSIIAuthorLabel:} & \myAuthorFullName \\[0.3cm]
+          \textbf{\ETSIIAdvisorLabel:} & \myAcademicTutorFullName
+          \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\ & \myCoTutorFullName}
+        \end{tabularx}\par}
+    \end{minipage}};
 \end{tikzpicture}
 \null
 \clearpage

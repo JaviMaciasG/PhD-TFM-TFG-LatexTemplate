@@ -5,6 +5,8 @@
 % Se incluye según el perfil seleccionado; no se compila por separado.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begingroup
+\ifthenelse{\NOT\equal{\myCoTutorFullName}{}\AND\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{\renewcommand{\wordTutorOrTutores}{tutoras}}{}
 \thispagestyle{empty}
 
 %\begingroup
@@ -113,6 +115,8 @@
 % \newpage
 \clearemptydoublepage
 
+
+\endgroup
 
 %%% Local Variables:
 %%% TeX-master: "../book"
