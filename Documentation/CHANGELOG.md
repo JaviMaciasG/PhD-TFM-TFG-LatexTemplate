@@ -8,6 +8,8 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Clarify local and browser setup workflows
 
+- Use consistent Spanish wording for the terminal
+
 ## [v8.8.0] - 2026-10-21
 
 ### Breaking Changes

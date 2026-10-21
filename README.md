@@ -103,7 +103,7 @@ Las instrucciones de [Compila el ejemplo en `Prism`](#compila-el-ejemplo-en-pris
 
 `make` es una alternativa opcional al editor para automatizar tareas. Además de la distribución de LaTeX y `biber`, esta vía necesita `make`, `bash`, `latexmk`, `perl` y `makeglossaries` (si te falta alguna de esas herramientas en tu distribución, te dará un claro mensaje de error y basta con instalar lo que falte). El objetivo predeterminado del libro utiliza también `Ghostscript` para generar una copia comprimida. El manual detalla estos requisitos y las herramientas adicionales para convertir determinados formatos de figuras y diagramas.
 
-**No necesitas utilizar la terminal ni** `make` **para trabajar con la plantilla**: tu editor de LaTeX es una alternativa igualmente válida. Si eliges esta vía, encontrarás las instrucciones en [Si te manejas con el terminal: compilación opcional con `make`](#si-te-manejas-con-el-terminal-compilación-opcional-con-make).
+**No necesitas utilizar la terminal ni** `make` **para trabajar con la plantilla**: tu editor de LaTeX es una alternativa igualmente válida. Si eliges esta vía, encontrarás las instrucciones en [Si te manejas con la terminal: compilación opcional con `make`](#si-te-manejas-con-la-terminal-compilación-opcional-con-make).
 
 ## Tu primer PDF, paso a paso
 
@@ -163,7 +163,7 @@ Con estos datos puedes comprobar la personalización inicial. Deja las opciones 
 
 Vuelve a compilar `Book/book.tex` y comprueba que aparecen tu nombre, el título y la titulación correctos. Comprueba también que se hayan actualizado los nombres de los tutores y las fechas que hayas introducido si el modelo de tu titulación muestra esos datos, como ocurre en los modelos de la UAH. No dejes los datos de ejemplo en la versión que entregues. `Book/book.tex` es el archivo que compilas, pero normalmente no tendrás que editarlo: la configuración y el contenido están separados.
 
-### Si te manejas con el terminal: compilación opcional con `make`
+### Si te manejas con la terminal: compilación opcional con `make`
 
 Si has preparado las herramientas del apartado [Si te manejas con la terminal](#si-te-manejas-con-la-terminal), abre una terminal en `Book/` y ejecuta:
 
@@ -252,7 +252,7 @@ Cuando tengas preparada la estructura mínima, puedes crear tu repositorio y hac
 
 El apartado *Preparación del repositorio `git`* del manual explica qué archivos conservar, cuáles no debes subir y cómo continuar con los siguientes *commits*. Encontrarás mucha información sobre `git` y `GitHub`, así que no voy a aburrirte aquí con los detalles.
 
-Si te sientes comodo en el terminal y utilizas `make`, con el repositorio ya creado, ejecuta `make sync-git-sources` desde la raíz para seleccionar los fuentes según las dependencias de compilación. Te mostrará los cambios y te pedirá confirmación antes de preparar el próximo *commit*. Puede dejar de versionar archivos que no detecte como necesarios para compilar, sin borrarlos del disco. Esta opción no hace el *commit* ni sube al repositorio online los cambios por ti. Consulta los requisitos en el manual.
+Si te sientes cómodo en la terminal y utilizas `make`, con el repositorio ya creado, ejecuta `make sync-git-sources` desde la raíz para seleccionar los fuentes según las dependencias de compilación. Te mostrará los cambios y te pedirá confirmación antes de preparar el próximo *commit*. Puede dejar de versionar archivos que no detecte como necesarios para compilar, sin borrarlos del disco. Esta opción no hace el *commit* ni sube al repositorio online los cambios por ti. Consulta los requisitos en el manual.
 
 ### Revisar el documento con tu tutor
 
