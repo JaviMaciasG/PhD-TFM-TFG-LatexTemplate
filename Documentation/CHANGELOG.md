@@ -2,6 +2,12 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.8.3] - 2026-10-23
+
+### Bug Fixes
+
+- Start figure and table captions at one
+
 ## [v8.8.2] - 2026-10-21
 
 ### Documentation
