@@ -30,7 +30,7 @@ El fichero `sync-git-sources.sh` de la raíz es la implementación orientada al 
 
 ## Flujo de trabajo principal del usuario
 
-1. Descargue y descomprima la distribución de usuario y prepare su editor o un proyecto en `Overleaf` o `Prism`. En `TeXstudio`, seleccione `biber` como herramienta bibliográfica.
+1. Descargue y descomprima la distribución de usuario y prepare su editor o un proyecto en `Overleaf`. En `TeXstudio`, seleccione `biber` como herramienta bibliográfica.
 2. Compile `Book/book.tex` sin modificar la plantilla para comprobar el entorno y consultar el manual generado.
 3. Introduzca los datos personales y de la titulación en `Config/myconfig.tex`, vuelva a compilar y compruebe el resultado.
 4. Prepare, si lo desea, la estructura mínima. Mantenga la estructura habitual `standard`, organice el contenido en `Book/content-standard.tex` y escriba los capítulos, resúmenes, apéndices y bibliografía. Solo los estudiantes de doctorado que presenten una tesis por compendio seleccionan `compendium` y utilizan `Book/content-compendium.tex`.

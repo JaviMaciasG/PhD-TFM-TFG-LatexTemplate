@@ -7,7 +7,7 @@
 \chapter{Primeros pasos}
 \label{cha:primeros-pasos}
 
-En este capítulo te acompaño desde la descarga de la plantilla hasta la generación del primer PDF. Primero encontrarás los archivos publicados y los ejemplos, después prepararás tu entorno y compilarás la plantilla sin modificarla para comprobar que funciona. A continuación podrás introducir tus datos, conocer el anteproyecto y preparar una estructura mínima para escribir tu trabajo. Al final te explico cómo registrar sus fuentes en Git. Puedes trabajar desde tu editor habitual de \LaTeX{}, con Overleaf o con Prism, sin utilizar una terminal ni conocer el \texttt{Makefile}.
+En este capítulo te acompaño desde la descarga de la plantilla hasta la generación del primer PDF. Primero encontrarás los archivos publicados y los ejemplos, después prepararás tu entorno y compilarás la plantilla sin modificarla para comprobar que funciona. A continuación podrás introducir tus datos, conocer el anteproyecto y preparar una estructura mínima para escribir tu trabajo. Al final te explico cómo registrar sus fuentes en Git. Puedes trabajar desde tu editor habitual de \LaTeX{} o con Overleaf, sin utilizar una terminal ni conocer el \texttt{Makefile}.
 
 \section{Descarga y documentos de ejemplo}
 \label{sec:descarga-ejemplos}
@@ -21,7 +21,7 @@ Para empezar a escribir, descarga la distribución ZIP o TGZ y descomprímela en
 \section{Prerrequisitos}
 \label{sec:prerrequisitos}
 
-Para empezar te recomiendo trabajar en tu equipo con una distribución de \LaTeX{} completa y actualizada y el editor \href{https://www.texstudio.org/}{\texttt{TeXstudio}}. Si ya utilizas otro editor, puedes seguir haciéndolo. También puedes trabajar desde el navegador con \texttt{Overleaf} o \texttt{Prism}, sin instalar una distribución ni un editor en tu equipo\footnote{Antes de subir tu proyecto a un servicio en línea, revisa sus condiciones de privacidad y, si utilizas funciones de IA, los controles de uso de datos. Si contiene información confidencial, datos personales o material sujeto a acuerdos con terceros, consulta primero con tu tutor o institución. Una instalación local permite trabajar sin subir el proyecto a estos servicios.}. La sección~\ref{sec:entorno-navegador} describe sus requisitos y limitaciones, y la sección~\ref{sec:compilacion-navegador} explica cómo generar tu primer PDF con ellas.
+Para empezar te recomiendo trabajar en tu equipo con una distribución de \LaTeX{} completa y actualizada y el editor \href{https://www.texstudio.org/}{\texttt{TeXstudio}}. Si ya utilizas otro editor, puedes seguir haciéndolo. También puedes trabajar desde el navegador con \texttt{Overleaf}, sin instalar una distribución ni un editor en tu equipo\footnote{Antes de subir tu proyecto a un servicio en línea, revisa sus condiciones de privacidad y, si utilizas funciones de IA, los controles de uso de datos. Si contiene información confidencial, datos personales o material sujeto a acuerdos con terceros, consulta primero con tu tutor o institución. Una instalación local permite trabajar sin subir el proyecto a estos servicios.}. La sección~\ref{sec:entorno-navegador} describe sus requisitos y limitaciones, y la sección~\ref{sec:compilacion-navegador} explica cómo generar tu primer PDF con esta opción.
 
 La plantilla utiliza \texttt{biber} para preparar la bibliografía. Las distribuciones indicadas a continuación proporcionan esa herramienta, y solo tendrás que seleccionarla en el editor como se explica en la sección~\ref{sec:configurar-texstudio}. No necesitas aprender a ejecutarla por separado para seguir este recorrido.
 
@@ -88,24 +88,15 @@ Si los menús están en inglés, busca \texttt{Options} > \texttt{Configure TeXs
 
 \subsection{Si prefieres trabajar desde el navegador}
 \label{sec:entorno-navegador}
-
-Estas alternativas te permiten trabajar sin instalar \LaTeX{} en tu equipo. Revisa los requisitos y limitaciones del servicio que elijas antes de subir tu proyecto, y ten en cuenta la nota sobre privacidad de la sección~\ref{sec:prerrequisitos}.
-
-\subsubsection{\texttt{Overleaf}}
 \label{sec:entorno-overleaf}
+
+Esta alternativa te permite trabajar sin instalar \LaTeX{} en tu equipo. Revisa los requisitos y limitaciones del servicio antes de subir tu proyecto, y ten en cuenta la nota sobre privacidad de la sección~\ref{sec:prerrequisitos}.
 
 Con \href{https://www.overleaf.com/}{\texttt{Overleaf}} puedes trabajar desde el navegador. Sólo necesitas una cuenta y conexión a Internet. Su guía de primeros pasos puede servirte de apoyo~\cite{overleaf-first-project}.
 
 Ojo: con el plan gratuito es casi seguro que no podrás compilar el manual completo porque el tiempo disponible es muy limitado. Si se agota, no significa que hayas hecho algo mal. Puedes utilizar una instalación local o, después de revisar el manual precompilado, probar con la estructura mínima de la sección~\ref{sec:estructura-minima} y prescindir del material de ejemplo que no necesites. Un documento más pequeño puede caber en el límite de tiempo, pero no puedo garantizártelo.
 
 La sección~\ref{sec:compilacion-overleaf} explica cómo importar la distribución y compilarla.
-
-\subsubsection{\texttt{Prism}}
-\label{sec:entorno-prism}
-
-\href{https://prism.openai.com/}{\texttt{Prism}} es otra alternativa para trabajar con \LaTeX{} desde el navegador, con funciones de asistencia mediante IA. Necesitas una cuenta de \texttt{ChatGPT} con acceso a \texttt{Prism} y conexión a Internet, pero no instalar \LaTeX{} ni \texttt{TeXstudio}. He comprobado que la distribución de la plantilla se importa y compila sin modificaciones. Antes de subir tu trabajo, revisa las condiciones de privacidad y los controles de uso de datos, como indicamos en la sección~\ref{sec:prerrequisitos}. Puedes consultar también la \href{https://help.openai.com/en/articles/20001050-troubleshooting-and-getting-help-in-prism}{información oficial de \texttt{Prism}}.
-
-La sección~\ref{sec:compilacion-prism} te guía para generar tu primer PDF sin pedirte que utilices las funciones de IA.
 
 \subsection{Si te manejas con la terminal: herramientas opcionales para \texttt{make}}
 
@@ -131,11 +122,9 @@ El PDF resultante es este manual y una colección de ejemplos. Revísalo para or
 
 \subsection{Si trabajas desde el navegador}
 \label{sec:compilacion-navegador}
-
-Después de descargar la distribución, utiliza el ZIP sin descomprimir para importar el proyecto en el servicio que hayas elegido. Antes de empezar, revisa los requisitos y limitaciones de \texttt{Overleaf} en la sección~\ref{sec:entorno-overleaf} o de \texttt{Prism} en la sección~\ref{sec:entorno-prism}.
-
-\subsubsection{Compila el ejemplo en \texttt{Overleaf}}
 \label{sec:compilacion-overleaf}
+
+Después de descargar la distribución, utiliza el ZIP sin descomprimir para importar el proyecto en \texttt{Overleaf}. Antes de empezar, revisa sus requisitos y limitaciones en la sección~\ref{sec:entorno-overleaf}.
 
 Para importar y compilar la plantilla sigue estos pasos:
 
@@ -151,22 +140,6 @@ Para importar y compilar la plantilla sigue estos pasos:
 Si se agota el tiempo de compilación, revisa el aviso de la sección~\ref{sec:entorno-overleaf}.
 
 Para compilar otro documento independiente, como \texttt{Anteproyecto/anteproyecto.tex} o un formulario administrativo, selecciónalo en el mismo campo \texttt{Main document}. Para trabajar en los capítulos del libro, mantén seleccionado \texttt{Book/book.tex}.
-
-Después continúa con la primera personalización de la sección~\ref{sec:primera-personalizacion}.
-
-\subsubsection{Compila el ejemplo en \texttt{Prism}}
-\label{sec:compilacion-prism}
-
-Para generar tu primer PDF sin solicitar cambios al asistente de IA, sigue estos pasos:
-
-\begin{itemize}
-  \item Inicia sesión y, en la lista de proyectos, abre el desplegable \texttt{Import} y selecciona \texttt{Import a .zip file}.
-  \item Sube el ZIP de la distribución sin descomprimir y espera a que se importe el proyecto completo, incluidos \texttt{Book/} y \texttt{Config/}.
-  \item Selecciona \texttt{Book/book.tex} en la lista \texttt{Archivos} y pulsa \texttt{Compilar}.
-  \item Comprueba el resultado en la vista del PDF antes de modificar ningún archivo.
-\end{itemize}
-
-Para compilar el anteproyecto o un formulario independiente, selecciona su fichero en \texttt{Archivos} y pulsa \texttt{Compilar}. Si estás escribiendo un capítulo del libro, selecciona \texttt{Book/book.tex} para compilar el documento completo, no el fichero del capítulo. No necesitas ejecutar el \texttt{Makefile} ni utilizar las funciones de IA para compilar.
 
 Después continúa con la primera personalización de la sección~\ref{sec:primera-personalizacion}.
 
@@ -222,7 +195,7 @@ Vuelve a compilar \texttt{Book/book.tex} y comprueba que aparecen tu nombre, el 
 \section{Trabajo con el anteproyecto}
 \label{sec:primeros-pasos-anteproyecto}
 
-Si antes de comenzar la memoria necesitas preparar un anteproyecto, utiliza \texttt{Anteproyecto/anteproyecto.tex} como documento principal. Esta plantilla reutiliza los datos definidos en \texttt{Config/myconfig.tex} y puedes compilarla con tu editor habitual o mediante su \texttt{Makefile} opcional. Si trabajas en línea, selecciona ese fichero como se explica para \texttt{Overleaf} y \texttt{Prism} en las secciones~\ref{sec:compilacion-overleaf} y~\ref{sec:compilacion-prism}. Encontrarás una descripción más completa de su contenido y compilación en la sección~\ref{sec:plantilla-de-anteproyecto}.
+Si antes de comenzar la memoria necesitas preparar un anteproyecto, utiliza \texttt{Anteproyecto/anteproyecto.tex} como documento principal. Esta plantilla reutiliza los datos definidos en \texttt{Config/myconfig.tex} y puedes compilarla con tu editor habitual o mediante su \texttt{Makefile} opcional. Si trabajas en línea, selecciona ese fichero como se explica para \texttt{Overleaf} en la sección~\ref{sec:compilacion-overleaf}. Encontrarás una descripción más completa de su contenido y compilación en la sección~\ref{sec:plantilla-de-anteproyecto}.
 
 \section{Preparación de una estructura mínima}
 \label{sec:estructura-minima}
@@ -318,7 +291,7 @@ Puedes volver a ejecutar el objetivo cada vez que cambien las dependencias. Si n
 \section{Resumen del capítulo}
 \label{sec:resumen-primeros-pasos}
 
-Ya sabes cómo descargar la distribución, preparar tu entorno y compilarla sin modificarla antes de introducir tus datos. Puedes trabajar con tu editor en GNU/Linux, Windows o macOS, o desde el navegador con \texttt{Overleaf} o \texttt{Prism}. También has visto cómo preparar el anteproyecto, la estructura mínima y el repositorio Git. Recuerda que \texttt{biber} procesa la bibliografía y que las listas de acrónimos y símbolos se generan automáticamente cuando el entorno permite ejecutar \texttt{makeindex}. El capítulo~\ref{cha:configuracion} te servirá de referencia para completar los datos y las opciones que necesites.
+Ya sabes cómo descargar la distribución, preparar tu entorno y compilarla sin modificarla antes de introducir tus datos. Puedes trabajar con tu editor en GNU/Linux, Windows o macOS, o desde el navegador con \texttt{Overleaf}. También has visto cómo preparar el anteproyecto, la estructura mínima y el repositorio Git. Recuerda que \texttt{biber} procesa la bibliografía y que las listas de acrónimos y símbolos se generan automáticamente cuando el entorno permite ejecutar \texttt{makeindex}. El capítulo~\ref{cha:configuracion} te servirá de referencia para completar los datos y las opciones que necesites.
 
 %%% Local Variables:
 %%% TeX-master: "../book"

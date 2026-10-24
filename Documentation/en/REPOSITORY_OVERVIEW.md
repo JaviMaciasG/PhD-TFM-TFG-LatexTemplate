@@ -30,7 +30,7 @@ The root-level `sync-git-sources.sh` is the user-facing implementation behind `m
 
 ## Main user workflow
 
-1. Download and extract the student distribution and set up your editor or a project in `Overleaf` or `Prism`. In `TeXstudio`, select `biber` as the bibliography tool.
+1. Download and extract the student distribution and set up your editor or a project in `Overleaf`. In `TeXstudio`, select `biber` as the bibliography tool.
 2. Compile `Book/book.tex` without modifying the template to check your environment and consult the generated manual.
 3. Enter personal and degree details in `Config/myconfig.tex`, compile again and check the result.
 4. Prepare the minimal structure if you wish. Keep the usual `standard` structure, organise the content in `Book/content-standard.tex` and write your chapters, abstracts, appendices and bibliography. Only doctoral students submitting a thesis by compendium select `compendium` and use `Book/content-compendium.tex`.

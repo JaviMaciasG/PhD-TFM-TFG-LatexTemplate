@@ -5,7 +5,7 @@ author: "Javier Macías-Guarasa"
 
 # ¿Qué debo descargar?
 
-Si quieres empezar un documento nuevo, descarga el archivo ZIP o TGZ actual. Ambos archivos contienen la misma plantilla. ZIP suele ser la opción más cómoda para Windows, macOS, `Overleaf` y `Prism`, mientras que TGZ puede resultar más conveniente en GNU/Linux. El archivo `RELEASE.txt` identifica la versión publicada de la plantilla.
+Si quieres empezar un documento nuevo, descarga el archivo ZIP o TGZ actual. Ambos archivos contienen la misma plantilla. ZIP suele ser la opción más cómoda para Windows, macOS y `Overleaf`, mientras que TGZ puede resultar más conveniente en GNU/Linux. El archivo `RELEASE.txt` identifica la versión publicada de la plantilla.
 
 Si quieres examinar el resultado antes de descargar la plantilla, empieza por `TFG-GIEC-spanish.pdf`. Utiliza la estructura y el aspecto predeterminados, y sus primeros capítulos constituyen el manual de usuario completo.
 

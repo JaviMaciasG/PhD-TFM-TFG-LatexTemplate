@@ -37,7 +37,7 @@ Si el PDF muestra tu nombre y el título de tu trabajo, ya tienes la plantilla f
 
 ## Prepara tu entorno
 
-Para empezar te recomiendo trabajar en tu equipo con una distribución de LaTeX y [`TeXstudio`](https://www.texstudio.org/). Si ya utilizas otro editor, puedes seguir haciéndolo. También puedes [trabajar desde el navegador](#si-prefieres-trabajar-desde-el-navegador) con `Overleaf` o `Prism`.[^privacidad]
+Para empezar te recomiendo trabajar en tu equipo con una distribución de LaTeX y [`TeXstudio`](https://www.texstudio.org/). Si ya utilizas otro editor, puedes seguir haciéndolo. También puedes [trabajar desde el navegador](#si-prefieres-trabajar-desde-el-navegador) con `Overleaf`.[^privacidad]
 
 [^privacidad]: Antes de subir tu proyecto a un servicio en línea, revisa sus condiciones de privacidad y, si utilizas funciones de IA, los controles de uso de datos. Si contiene información confidencial, datos personales o material sujeto a acuerdos con terceros, consulta primero con tu tutor o institución. Una instalación local permite trabajar sin subir el proyecto a estos servicios.
 
@@ -85,19 +85,11 @@ Si los menús están en inglés, busca `Options` > `Configure TeXstudio` (o `TeX
 
 ### Si prefieres trabajar desde el navegador
 
-Estas alternativas te permiten trabajar sin instalar LaTeX en tu equipo. Revisa los requisitos y limitaciones del servicio que elijas antes de subir tu proyecto.
-
-#### `Overleaf`
+Esta alternativa te permite trabajar sin instalar LaTeX en tu equipo. Revisa los requisitos y limitaciones del servicio antes de subir tu proyecto.
 
 Con [`Overleaf`](https://www.overleaf.com/) puedes trabajar desde el navegador, sin instalar LaTeX ni `TeXstudio` en tu equipo.[^privacidad] Sólo necesitas una cuenta y conexión a Internet. Las instrucciones para importar la plantilla están en [Compila el ejemplo en `Overleaf`](#compila-el-ejemplo-en-overleaf).
 
 Ojo: con el plan gratuito es casi seguro que no podrás compilar el manual completo porque esa versión de `Overleaf` limita mucho el tiempo de compilación. Si se agota ese tiempo, no significa que hayas hecho algo mal. Puedes utilizar una instalación local o, después de revisar el manual precompilado, probar con la estructura mínima y prescindir del material de ejemplo que no necesites. Un documento más pequeño puede caber en el límite de tiempo, pero no puedo garantizártelo.
-
-#### `Prism`
-
-[`Prism`](https://prism.openai.com/) es otra alternativa para trabajar con LaTeX desde el navegador, con funciones de asistencia mediante IA.[^privacidad] Necesitas una cuenta de `ChatGPT` con acceso a `Prism` y conexión a Internet, pero no instalar LaTeX ni `TeXstudio`. He comprobado que la distribución de la plantilla se importa y compila sin modificaciones.
-
-Las instrucciones de [Compila el ejemplo en `Prism`](#compila-el-ejemplo-en-prism) te guiarán para generar tu primer PDF, sin pedirte que utilices las funciones de IA. Puedes consultar la [información oficial sobre privacidad en `Prism`](https://help.openai.com/en/articles/20001050-troubleshooting-and-getting-help-in-prism) antes de subir tu trabajo.
 
 ### Si te manejas con la terminal
 
@@ -119,33 +111,23 @@ Descomprime la plantilla en una carpeta en la que tengas permisos de escritura. 
 
 ### Compila el ejemplo sin modificar nada
 
-Con el [entorno preparado](#prepara-tu-entorno), abre `Book/book.tex` en `TeXstudio` y selecciona `Herramientas` > `Compilar y ver` (`F5`), o pulsa el icono de la doble flecha verde ![Compilar y ver](Book/figures/manual/texstudio-build-and-view-16.png) de la barra de herramientas. Haz esta primera compilación antes de modificar nada. Si utilizas otro editor, abre ese mismo archivo y utiliza su función habitual de construcción. Para trabajar desde el navegador, sigue las instrucciones de [`Overleaf`](#compila-el-ejemplo-en-overleaf) o [`Prism`](#compila-el-ejemplo-en-prism).
+Con el [entorno preparado](#prepara-tu-entorno), abre `Book/book.tex` en `TeXstudio` y selecciona `Herramientas` > `Compilar y ver` (`F5`), o pulsa el icono de la doble flecha verde ![Compilar y ver](Book/figures/manual/texstudio-build-and-view-16.png) de la barra de herramientas. Haz esta primera compilación antes de modificar nada. Si utilizas otro editor, abre ese mismo archivo y utiliza su función habitual de construcción. Para trabajar desde el navegador, sigue las instrucciones de [`Overleaf`](#compila-el-ejemplo-en-overleaf).
 
 La plantilla genera automáticamente las listas de acrónimos y símbolos. Para esta vía desde el editor no necesitas instalar nada más (salvo la distribución de LaTeX, claro). Si las listas no aparecen tras la primera compilación, vuelve a compilar. Para otras incidencias, consulta el apartado de compilación del manual.
 
 El PDF resultante es una prueba de que tu entorno funciona, el manual de la plantilla y una colección de ejemplos. Revísalo para orientarte, sin necesidad de leerlo entero. Si esta primera compilación falla, consulta [Problemas frecuentes](#problemas-frecuentes) antes de cambiar otros archivos.
 
-### Si trabajas desde el navegador
+### Compila el ejemplo en `Overleaf`
 
-Después de [descargar la distribución](#descarga-y-descomprime-la-distribución-para-estudiantes), utiliza el archivo `zip` sin descomprimir para importar el proyecto en el servicio que hayas elegido.
+Después de [descargar la distribución](#descarga-y-descomprime-la-distribución-para-estudiantes), utiliza el archivo `zip` sin descomprimir para importar el proyecto en `Overleaf`.
 
-Antes de importar el proyecto, revisa los requisitos y limitaciones de [`Overleaf`](#overleaf) o [`Prism`](#prism), según corresponda.
+Antes de importar el proyecto, revisa los requisitos y limitaciones de [`Overleaf`](#si-prefieres-trabajar-desde-el-navegador).
 
-#### Compila el ejemplo en `Overleaf`
-
-Inicia sesión en `Overleaf`, crea un proyecto mediante `New Project` > `Upload Project` y sube el `zip` de la distribución sin descomprimir. Abre `Settings` > `Compiler` > `Main document` y selecciona `Book/book.tex`. Comprueba que el compilador sea `pdfLaTeX` y pulsa `Recompile`. No necesitas configurar `biber` por separado. Si se agota el tiempo de compilación, revisa el aviso del apartado [`Overleaf`](#overleaf).
+Inicia sesión en `Overleaf`, crea un proyecto mediante `New Project` > `Upload Project` y sube el `zip` de la distribución sin descomprimir. Abre `Settings` > `Compiler` > `Main document` y selecciona `Book/book.tex`. Comprueba que el compilador sea `pdfLaTeX` y pulsa `Recompile`. No necesitas configurar `biber` por separado. Si se agota el tiempo de compilación, revisa el aviso del apartado [`Overleaf`](#si-prefieres-trabajar-desde-el-navegador).
 
 Cuando quieras compilar otro documento independiente, como `Anteproyecto/anteproyecto.tex` o un formulario del papeleo, selecciónalo en ese mismo campo `Main document`. Para trabajar en los capítulos del libro, mantén seleccionado `Book/book.tex`, no el archivo de cada capítulo.
 
 Después continúa con [Introduce tus datos y compila de nuevo](#introduce-tus-datos-y-compila-de-nuevo).
-
-#### Compila el ejemplo en `Prism`
-
-Inicia sesión en `Prism` y, en la lista de proyectos, abre el desplegable `Import` y selecciona `Import a .zip file`. Sube el `zip` de la distribución sin descomprimir y espera a que se importe el proyecto completo, incluidos `Book/` y `Config/`. Selecciona `Book/book.tex` en la lista `Archivos` y pulsa `Compilar`. Comprueba el resultado en la vista del PDF antes de modificar ningún archivo. No necesitas ejecutar el `Makefile` ni solicitar cambios al asistente de IA para esta primera prueba.
-
-Para compilar otro documento independiente, como `Anteproyecto/anteproyecto.tex` o un formulario del papeleo, selecciónalo en `Archivos` y pulsa `Compilar`. Si estás escribiendo un capítulo del libro, selecciona `Book/book.tex` para compilar el documento completo, no el archivo del capítulo.
-
-Si necesitas ayuda con la importación, consulta la [guía oficial de `Prism`](https://help.openai.com/en/articles/20001050-troubleshooting-and-getting-help-in-prism). Después continúa con [Introduce tus datos y compila de nuevo](#introduce-tus-datos-y-compila-de-nuevo).
 
 ### Introduce tus datos y compila de nuevo
 
@@ -266,7 +248,7 @@ Incorpora estas funciones a medida que las necesites. El manual contiene los det
 
 ### Anteproyecto
 
-Para trabajar en tu anteproyecto, abre `Anteproyecto/anteproyecto.tex`, que comparte con el documento principal los datos definidos en `Config/myconfig.tex`. Si trabajas en línea, sigue las instrucciones para seleccionar el documento en [`Overleaf`](#compila-el-ejemplo-en-overleaf) o [`Prism`](#compila-el-ejemplo-en-prism).
+Para trabajar en tu anteproyecto, abre `Anteproyecto/anteproyecto.tex`, que comparte con el documento principal los datos definidos en `Config/myconfig.tex`. Si trabajas en línea, sigue las instrucciones para seleccionar el documento en [`Overleaf`](#compila-el-ejemplo-en-overleaf).
 
 ### Bibliografía
 
@@ -306,7 +288,7 @@ PapeleoTFG/
 PapeleoTFM/
 ```
 
-Puedes compilar el archivo `.tex` de un formulario concreto desde tu editor o utilizar los ficheros `Makefile` correspondientes (ejecuta `make help` en la carpeta correspondiente para obtener más ayuda). Si trabajas en línea, selecciónalo como se explica en los apartados de [`Overleaf`](#compila-el-ejemplo-en-overleaf) o [`Prism`](#compila-el-ejemplo-en-prism). Consulta las guías PDF incluidas en esas carpetas y verifica siempre la normativa aplicable.
+Puedes compilar el archivo `.tex` de un formulario concreto desde tu editor o utilizar los ficheros `Makefile` correspondientes (ejecuta `make help` en la carpeta correspondiente para obtener más ayuda). Si trabajas en línea, selecciónalo como se explica en el apartado de [`Overleaf`](#compila-el-ejemplo-en-overleaf). Consulta las guías PDF incluidas en esas carpetas y verifica siempre la normativa aplicable.
 
 ### Tesis doctoral por compendio de publicaciones
 

@@ -37,7 +37,7 @@ If the PDF shows your name and your thesis title, you've got the template workin
 
 ## Set up your environment
 
-To get started, I recommend working on your own computer with a LaTeX distribution and [`TeXstudio`](https://www.texstudio.org/). If you already use another editor, you can keep using it. You can also [work in your browser](#if-you-prefer-working-in-your-browser) with `Overleaf` or `Prism`.[^privacidad]
+To get started, I recommend working on your own computer with a LaTeX distribution and [`TeXstudio`](https://www.texstudio.org/). If you already use another editor, you can keep using it. You can also [work in your browser](#if-you-prefer-working-in-your-browser) with `Overleaf`.[^privacidad]
 
 [^privacidad]: Before uploading your project to an online service, review its privacy terms and, if you use AI features, its data-use controls. If your project contains confidential information, personal data or material covered by agreements with third parties, check with your advisor or institution first. A local installation lets you work without uploading your project to these services.
 
@@ -85,19 +85,11 @@ If the menus are in English, look for `Options` > `Configure TeXstudio` (or `TeX
 
 ### If you prefer working in your browser
 
-These alternatives let you work without installing LaTeX on your computer. Review the requirements and limitations of your chosen service before uploading your project.
-
-#### `Overleaf`
+This alternative lets you work without installing LaTeX on your computer. Review the requirements and limitations of the service before uploading your project.
 
 With [`Overleaf`](https://www.overleaf.com/), you can work in your browser without installing LaTeX or `TeXstudio` on your computer.[^privacidad] You only need an account and an Internet connection. The instructions for importing the template are in [Compile the example in `Overleaf`](#compile-the-example-in-overleaf).
 
 A word of warning: on the free plan, you almost certainly won't be able to compile the complete manual because that version of `Overleaf` has a very restrictive compilation time limit. If it times out, it doesn't mean you've done anything wrong. You can use a local installation or, after reviewing the precompiled manual, try the minimal structure and leave out any example material you don't need. A smaller document may fit within the time limit, but I can't guarantee it.
-
-#### `Prism`
-
-[`Prism`](https://prism.openai.com/) is another option for working with LaTeX in your browser, with AI assistance features.[^privacidad] You need a `ChatGPT` account with access to `Prism` and an Internet connection, but you don't need to install LaTeX or `TeXstudio`. I've checked that the template distribution imports and compiles without modifications.
-
-The instructions in [Compile the example in `Prism`](#compile-the-example-in-prism) will guide you through generating your first PDF without asking you to use the AI features. You can consult the [official privacy information for `Prism`](https://help.openai.com/en/articles/20001050-troubleshooting-and-getting-help-in-prism) before uploading your work.
 
 ### If you're comfortable with the terminal
 
@@ -119,33 +111,23 @@ Extract the template into a folder where you have write permissions. Keep the di
 
 ### Compile the example without changing anything
 
-With your [environment set up](#set-up-your-environment), open `Book/book.tex` in `TeXstudio` and select `Herramientas` > `Compilar y ver` (`F5`), or click the double green arrow icon ![Build and view](Book/figures/manual/texstudio-build-and-view-16.png) on the toolbar. Do this first compilation before changing anything. If you use another editor, open the same file and use its usual build function. To work in your browser, follow the instructions for [`Overleaf`](#compile-the-example-in-overleaf) or [`Prism`](#compile-the-example-in-prism).
+With your [environment set up](#set-up-your-environment), open `Book/book.tex` in `TeXstudio` and select `Herramientas` > `Compilar y ver` (`F5`), or click the double green arrow icon ![Build and view](Book/figures/manual/texstudio-build-and-view-16.png) on the toolbar. Do this first compilation before changing anything. If you use another editor, open the same file and use its usual build function. To work in your browser, follow the instructions for [`Overleaf`](#compile-the-example-in-overleaf).
 
 The template automatically generates the lists of acronyms and symbols. When using the editor this way, you don't need to install anything else (apart from the LaTeX distribution, of course). If the lists don't appear after the first compilation, compile again. For other issues, consult the compilation section of the manual.
 
 The resulting PDF confirms that your environment works and serves as the template manual and a collection of examples. Browse it to get your bearings, without having to read it all. If this first compilation fails, check [Common problems](#common-problems) before changing other files.
 
-### If you work in your browser
+### Compile the example in `Overleaf`
 
-After [downloading the distribution](#download-and-extract-the-student-distribution), use the `zip` file without extracting it to import the project into your chosen service.
+After [downloading the distribution](#download-and-extract-the-student-distribution), use the `zip` file without extracting it to import the project into `Overleaf`.
 
-Before importing the project, review the requirements and limitations of [`Overleaf`](#overleaf) or [`Prism`](#prism), as appropriate.
+Before importing the project, review the requirements and limitations of [`Overleaf`](#if-you-prefer-working-in-your-browser).
 
-#### Compile the example in `Overleaf`
-
-Log in to `Overleaf`, create a project through `New Project` > `Upload Project` and upload the distribution `zip` without extracting it. Open `Settings` > `Compiler` > `Main document` and select `Book/book.tex`. Check that the compiler is `pdfLaTeX` and click `Recompile`. You don't need to configure `biber` separately. If compilation times out, review the warning in the [`Overleaf`](#overleaf) section.
+Log in to `Overleaf`, create a project through `New Project` > `Upload Project` and upload the distribution `zip` without extracting it. Open `Settings` > `Compiler` > `Main document` and select `Book/book.tex`. Check that the compiler is `pdfLaTeX` and click `Recompile`. You don't need to configure `biber` separately. If compilation times out, review the warning in the [`Overleaf`](#if-you-prefer-working-in-your-browser) section.
 
 When you want to compile another standalone document, such as `Anteproyecto/anteproyecto.tex` or a paperwork form, select it in the same `Main document` field. To work on the book's chapters, keep `Book/book.tex` selected, not the individual chapter file.
 
 Then continue with [Enter your details and compile again](#enter-your-details-and-compile-again).
-
-#### Compile the example in `Prism`
-
-Log in to `Prism` and, in the project list, open the `Import` dropdown and select `Import a .zip file`. Upload the distribution `zip` without extracting it and wait for the complete project to import, including `Book/` and `Config/`. Select `Book/book.tex` in the `Archivos` list and click `Compilar`. Check the result in the PDF view before changing any files. You don't need to run the `Makefile` or ask the AI assistant to make changes for this first test.
-
-To compile another standalone document, such as `Anteproyecto/anteproyecto.tex` or a paperwork form, select it in `Archivos` and click `Compilar`. If you're writing a chapter of the book, select `Book/book.tex` to compile the complete document, not the chapter file.
-
-If you need help importing the project, consult the [official `Prism` guide](https://help.openai.com/en/articles/20001050-troubleshooting-and-getting-help-in-prism). Then continue with [Enter your details and compile again](#enter-your-details-and-compile-again).
 
 ### Enter your details and compile again
 
@@ -266,7 +248,7 @@ Add these features as you need them. The manual contains the full details and ex
 
 ### Project proposal
 
-To work on your project proposal, open `Anteproyecto/anteproyecto.tex`, which shares the details defined in `Config/myconfig.tex` with the main document. If you work online, follow the document-selection instructions for [`Overleaf`](#compile-the-example-in-overleaf) or [`Prism`](#compile-the-example-in-prism).
+To work on your project proposal, open `Anteproyecto/anteproyecto.tex`, which shares the details defined in `Config/myconfig.tex` with the main document. If you work online, follow the document-selection instructions for [`Overleaf`](#compile-the-example-in-overleaf).
 
 ### Bibliography
 
@@ -306,7 +288,7 @@ PapeleoTFG/
 PapeleoTFM/
 ```
 
-You can compile the `.tex` file for an individual form from your editor or use the corresponding `Makefile` files (run `make help` in the relevant folder for more help). If you work online, select it as explained in the [`Overleaf`](#compile-the-example-in-overleaf) or [`Prism`](#compile-the-example-in-prism) sections. Consult the PDF guides included in those folders and always check the applicable regulations.
+You can compile the `.tex` file for an individual form from your editor or use the corresponding `Makefile` files (run `make help` in the relevant folder for more help). If you work online, select it as explained in the [`Overleaf`](#compile-the-example-in-overleaf) section. Consult the PDF guides included in those folders and always check the applicable regulations.
 
 ### Doctoral thesis by compendium of publications
 
