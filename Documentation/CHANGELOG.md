@@ -2,6 +2,22 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.8.4] - 2026-10-24
+
+### Features
+
+- Added latest TFM regulations approved at EPS-UAH
+
+
+### Bug Fixes
+
+- Use gender-aware external co-tutor wording in TFG agreements
+
+
+### Documentation
+
+- Update the TFM agreement regulation reference
+
 ## [v8.8.3] - 2026-10-23
 
 ### Bug Fixes
