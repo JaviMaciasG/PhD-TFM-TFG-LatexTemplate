@@ -2,6 +2,12 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.8.6] - 2026-10-26
+
+### Maintenance
+
+- Minor changes to improve info to the users
+
 ## [v8.8.5] - 2026-10-24
 
 ### Documentation
