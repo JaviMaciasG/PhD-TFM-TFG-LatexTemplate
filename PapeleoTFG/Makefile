@@ -15,7 +15,7 @@ AGREEMENT_DOCUMENTS := \
 EVALUATION_DOCUMENTS := \
 	TFG-AnexoIII-InformeTutorYRubrica-EPS-UAH \
 	TFG-AnexoIX-ActaYRubricaDefensa-EPS-UAH \
-	TFG-AnexoIII-InformeTutorPlagio-UAH
+	TFG-AnexoII-InformeTutorPlagio-UAH
 
 DOCUMENTS := \
 	$(AUTHORIZATION_DOCUMENTS) \

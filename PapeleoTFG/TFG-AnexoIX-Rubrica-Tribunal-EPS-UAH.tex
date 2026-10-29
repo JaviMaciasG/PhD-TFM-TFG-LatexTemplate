@@ -8,18 +8,21 @@
 % Normalmente no necesitas modificar este fichero.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newgeometry{margin=2cm}
 \begin{landscape}
-\thispagestyle{plain}
-\noindent \textbf{RÚBRICA PARA LA EVALUACIÓN DE LA DEFENSA DEL TFG}\footnote{Aprobada en Comisión de Calidad de la EPS el 25/06/2024.}\footnote{Esta rúbrica se aplica salvo que la memoria de verificación del grado requiera una específica.}
+\fontsize{10.95}{13.6}\selectfont % Conserva el tamaño de la rúbrica al ampliar el acta.
+\thispagestyle{empty}
+\begin{minipage}[t][\dimexpr\textheight-\topskip\relax][t]{\linewidth}
+\begin{center}
+{\fontsize{10}{12}\selectfont\textbf{RÚBRICA PARA LA EVALUACIÓN DE LA DEFENSA DEL TFG}\textsuperscript{5,6}\par}
+\end{center}
 \renewcommand{\arraystretch}{1.4} % Increases row height
 
-\begin{table}[ht]
-  \centering
-  \small
+{\fontsize{10}{12}\selectfont
 \begin{tabularx}{\linewidth}{|p{7cm}|p{9cm}|p{1cm}|p{1cm}|p{5cm}|}
 \cline{1-5}
 \textbf{Resultados de aprendizaje} & \textbf{Criterios de Evaluación} & \textbf{Peso} & \textbf{Calif} & \textbf{Informe del Tribunal} \\ \cline{1-5}
-  \multirow{6}{=}{%
+  \raisebox{0pt}[0pt][0pt]{%
   \begin{minipage}[t]{7cm}
     \textbf{BLOQUE 1: Proyecto}
     \begin{itemize}[left=5pt, itemsep=1pt, topsep=1pt]
@@ -31,11 +34,10 @@
     & Defiende un proyecto en el ámbito de la profesión (CE5) &  &  &  \\ \cline{2-4}
     & Maneja especificaciones, reglamentos y normativa (CE3) & & & \\ \cline{2-4}
     & Proyectos con estándar de calidad adecuado (CE4) & & & \\ \cline{2-4}
-    & \cellcolor[HTML]{C0C0C0}Peso Máximo / Calificación &  &  &  \\
-    & \cellcolor[HTML]{C0C0C0}(Peso máximo: 3 puntos) &  &  &  \\ \cline{1-5}
-  \multirow{8}{=}{%
+    & \cellcolor[HTML]{C0C0C0}\strut & & & \\
+    & \cellcolor[HTML]{C0C0C0}\multirow[c]{-2}{=}{\hspace*{2mm}\textbf{Calificación}} & \multirow[c]{-2}{=}{\centering 3} & & \\ \cline{1-5}
+  \raisebox{0pt}[0pt][0pt]{%
   \begin{minipage}[t]{7cm}
-    \vspace{-5mm}
     \textbf{BLOQUE 2: Memoria y presentación oral}
     \begin{itemize}[left=5pt, itemsep=1pt, topsep=1pt]
       \item Transmitir información de forma oral y escrita (RATFG3)
@@ -49,18 +51,18 @@
     & Exposición ajustada en tiempo (CE13) &  &  &  \\ \cline{2-4}
     & Memoria escrita tratando con profundidad los temas, y referenciando adecuadamente (CE15) &  &  &  \\ \cline{2-4}
     & Memoria escrita con claridad y calidad (CE17) &  &  &  \\ \cline{2-4}
-    & \cellcolor[HTML]{C0C0C0}Peso Máximo / Calificación &  &  &  \\
-    & \cellcolor[HTML]{C0C0C0}(Peso máximo: 7 puntos) &  &  &  \\ \cline{1-5}
+    & \cellcolor[HTML]{C0C0C0}\strut & & & \\
+    & \cellcolor[HTML]{C0C0C0}\multirow[c]{-2}{=}{\hspace*{2mm}\textbf{Calificación}} & \multirow[c]{-2}{=}{\centering 7} & & \\ \cline{1-5}
 \end{tabularx}
 %\caption{Rúbrica para la evaluación del desarrollo del TFG}
 \label{tab:evaluacion_tfg}
 
-\end{table}
+}
 
 \par\medskip
-\noindent En Alcalá de Henares, a \myThesisDefenseDate.
+\hfill En Alcalá de Henares, a \myThesisDefenseDate.
 
-\medskip
+\par\vfill
 \ifthenelse{\equal{\myTribunalSecondSpokesperson}{}}
 {
   \noindent\begin{tabularx}{\linewidth}{|X|X|}
@@ -80,4 +82,10 @@
     Fdo.: \myTribunalPresident & Fdo.: \myTribunalFirstSpokesperson & Fdo.: \myTribunalSecondSpokesperson \\ \hline
   \end{tabularx}
 }
+\par\medskip
+\noindent\rule{0.4\linewidth}{0.4pt}\par
+{\fontsize{7}{8.5}\selectfont
+\noindent\textsuperscript{5} Aprobada en Comisión de Calidad de la EPS el 25/06/2024.\par
+\noindent\textsuperscript{6} Esta rúbrica aplicará en todos los grados salvo los que su memoria de verificación contenga aspectos que la hagan incompatible, en cuyo caso se diseñará una específica.\par}
+\end{minipage}
 \end{landscape}

@@ -11,110 +11,106 @@
 
 \documentclass[10pt,a4paper,oneside]{article}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% BEGIN Preamble and configuration section
-%
-\input{../Config/preamble.tex}    % DO NOT TOUCH THIS LINE. You can edit
-                                  % the file to modify some default settings
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\input{../Config/postamble.tex}
 
-\input{../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
-                                  % to set your specific settings (related
-                                  % to the document language, your degree,
-                                  % document details (such as title, author
-                                  % (you), your email, name of the tribunal
-                                  % members, document year, keyword and
-                                  % palabras clave) and link colors), and
-                                  % define your commonly used commands
-                                  % (some examples are provided).
+% Aspecto institucional del anexo III, independiente del estilo del libro.
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\singlespacing
+\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm,headheight=0pt,headsep=0pt}
+\definecolor{annexReportBlue}{HTML}{004A99}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
 
-\input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
-% "postamble" is not a valid word... :-)
-
-%\usepackage[table]{xcolor}   % for \columncolor
-%\usepackage{array}           % for m‐column spec
-\usepackage{booktabs}        % nicer rules (optional)
-
-\newcolumntype{M}[1]{%
-  >{\cellcolor[HTML]{CCCCCC}\raggedright\arraybackslash}%
-  m{#1}%
-}
-\setlength{\extrarowheight}{0pt}
-
-%\setlength{\extrarowheight}{0.8em}
-
-
-%
-% END Preamble and configuration section
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\title{Informe del Tutor Académico y Rúbrica}  % Title of the report
-\date{\today}                                  % Date of the report
-\author{\myAcademicTutorFullName}              % Advisor's name
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Let's start with the real stuff
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\geometry{a4paper,margin=2cm}
+\newcommand{\AnnexReportTitle}[1]{%
+  \par\noindent{\color{annexReportBlue}\bfseries\fontsize{16}{19}\selectfont #1\par}}
+\newcommand{\AnnexReportHeading}[1]{%
+  \par\noindent{\color{annexReportBlue}\fontsize{11}{14}\selectfont #1\par}\vspace{5mm}}
+\newlength{\AnnexReportLabelWidth}
+\newcommand{\AnnexReportField}[2]{%
+  \par\noindent\hspace*{7mm}\begin{minipage}[t]{\dimexpr\linewidth-7mm\relax}%
+  \settowidth{\AnnexReportLabelWidth}{#1: }%
+  \hangindent=\AnnexReportLabelWidth\hangafter=1
+  \makebox[\AnnexReportLabelWidth][l]{#1: }#2\par
+  \end{minipage}\par\vspace{6mm}}
+\newcommand{\AnnexReportPrivacy}{%
+  \par\noindent\begin{minipage}{\linewidth}
+  \fontsize{6}{7}\selectfont
+  \renewcommand{\scriptsize}{\fontsize{6}{7}\selectfont}
+  \input{TFG-AnexoIII-SeccionTextoProteccionDatos-EPS-UAH.tex}
+  \end{minipage}\par}
 
 \begin{document}
 \input{../Config/setlanguagedependentissues.tex}
-\input{TFG-AnexoIII-SeccionInformePlagio-UAH.tex}
-\input{TFG-AnexoIII-SeccionTextoProteccionDatos-EPS-UAH.tex}
+\pagestyle{empty}
+\AnnexReportTitle{INFORME DEL TUTOR ACADÉMICO SOBRE EL RESULTADO DE LA HERRAMIENTA DE CONTROL DE PLAGIO APLICADA A LA MEMORIA PRESENTADA}
+
+\vspace{12mm}
+\AnnexReportHeading{DATOS DEL ESTUDIANTE}
+\AnnexReportField{Nombre y apellidos}{\myAuthorFullName}
+\AnnexReportField{Correo electrónico}{\myAuthorEmail}
+\AnnexReportField{Titulación (Plan de Estudios)}{\myDegreefull}
+\AnnexReportField{Título del TFG}{\myBookTitleSpanish}
+\ifthenelse{\equal{\myLanguage}{english}}{\AnnexReportField{Título en inglés}{\myBookTitleEnglish}}{}
+
+\vspace{7mm}
+\AnnexReportHeading{RESULTADOS DE LA HERRAMIENTA DE CONTROL DE PLAGIO}
+\AnnexReportField{Datos de coincidencias}{}
+\vspace{2cm}
+\AnnexReportField{Observaciones}{}
+\vspace{2cm}
+\AnnexReportField{Conclusión al resultado de la herramienta antiplagio}{}
+\vfill
+\AnnexReportPrivacy
 \clearpage
 
-\thispagestyle{plain}
-\noindent\textbf{\large ACTA DE EVALUACIÓN DE TRABAJO DE FIN DE GRADO}
-\par\medskip
-\noindent CURSO \myThesisAcademicYear
-
-\section*{\MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}
-\begin{description}
-  \item[Nombre y apellidos:] \myAcademicTutorFullName
-  \item[Departamento:] \myAcademicTutorDepartment
-\end{description}
+\AnnexReportTitle{ACTA DE EVALUACIÓN DE TRABAJO DE FIN DE GRADO.}
+\vspace{9mm}
+\AnnexReportHeading{CURSO \myThesisAcademicYear}
+\AnnexReportHeading{DATOS \MakeUppercase{\wordTutorDelOrDeLa} \MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}
+\AnnexReportField{Nombre y apellidos}{\myAcademicTutorFullName}
+\AnnexReportField{Departamento}{\myAcademicTutorDepartment}
 
 \ifthenelse{\equal{\myCoTutorFullName}{}}{}{
-  \section*{DATOS \MakeUppercase{\wordCoTutorDelOrDeLa} \MakeUppercase{\wordCoTutorOrCoTutora} (si procede)}
-  \begin{description}
-    \item[Nombre y apellidos:] \myCoTutorFullName
-    \item[Departamento / institución:] \AcademicCotutorAffiliation
-  \end{description}
+  \AnnexReportHeading{DATOS \MakeUppercase{\wordCoTutorDelOrDeLa} \MakeUppercase{\wordCoTutorOrCoTutora} (si procede)}
+  \AnnexReportField{Nombre y apellidos}{\myCoTutorFullName}
+  \AnnexReportField{Departamento/institución}{\AcademicCotutorAffiliation}
 }
 
-\medskip
-\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
-  \textbf{CALIFICACIÓN (hasta 10 puntos, según rúbrica de evaluación):} \myAcademicTutorGrade}}
-
-\medskip
-\noindent\textbf{COMENTARIOS:}
-\vspace{1.5cm}
+\AnnexReportHeading{Calificación (hasta 10 puntos, según rúbrica de evaluación): \myAcademicTutorGrade}
+\vspace{8mm}
+\AnnexReportHeading{Comentarios:}
 \vfill
-
-\noindent En Alcalá de Henares, a la fecha de la firma digital.
-
-\medskip
+\begin{center}
+  \textit{En Alcalá de Henares, a la fecha de la firma digital.}
+\end{center}
+\vspace{4mm}
+\begin{center}
+\begin{minipage}{0.8\linewidth}
 \ifthenelse{\equal{\myCoTutorFullName}{}}
 {
-  \noindent\begin{tabularx}{\linewidth}{|X|}
+  \begin{tabularx}{\linewidth}{|X|}
     \hline
-    \expandafter\makefirstuc\expandafter{\wordTutorOrTutora} \\
-    \rule{0pt}{1.7cm} \\
-    Fdo.: \myAcademicTutorFullName \\ \hline
+    \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutora} \wordAcademicoOrAcademica}\\
+    \rule{0pt}{1.4cm}\\
+    \textbf{Fdo.:} \myAcademicTutorFullName\\\hline
   \end{tabularx}
 }
 {
-  \noindent\begin{tabularx}{\linewidth}{|X|X|}
+  \begin{tabularx}{\linewidth}{|X|X|}
     \hline
-    \expandafter\makefirstuc\expandafter{\wordTutorOrTutora} &
-    \expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora} \\
-    \rule{0pt}{1.7cm} & \\
-    Fdo.: \myAcademicTutorFullName & Fdo.: \myCoTutorFullName \\ \hline
+    \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutora} \wordAcademicoOrAcademica} &
+    \textbf{\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora} \ifthenelse{\equal{\myCoTutorGender}{male}}{académico}{académica} (si procede)}\\
+    \rule{0pt}{1.4cm} & \\
+    \textbf{Fdo.:} \myAcademicTutorFullName & \textbf{Fdo.:} \myCoTutorFullName\\\hline
   \end{tabularx}
 }
-
-\medskip
-\input{TFG-AnexoIII-SeccionTextoProteccionDatos-EPS-UAH.tex}
+\end{minipage}
+\end{center}
+\vspace{3mm}
+\AnnexReportPrivacy
 \clearpage
-\input{TFG-AnexoIII-Rubrica-Tutor-EPS-UAH.tex}
+\input{TFG-AnexoIII-SeccionRubrica-Tutor-EPS-UAH.tex}
 \end{document}

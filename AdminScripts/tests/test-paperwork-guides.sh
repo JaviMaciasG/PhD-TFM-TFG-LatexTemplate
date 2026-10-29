@@ -101,6 +101,12 @@ for form in PapeleoTFG/TFG-AnexoV-ConvenioCooperacion-EPS-UAH.tex \
 done
 
 check_contains '\variable{myAcademicTutorDepartment}' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
+check_contains '\fichero{TFG-AnexoII-InformeTutorPlagio-UAH.tex}' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
+check_contains 'Informe general de control de plagio} & II (UAH)' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
+check_contains '\variable{myAcademicTutorPosition}' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
+check_contains '\variable{myAcademicTutorEmail}' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
+check_contains '\variable{myCoTutorPosition}' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
+check_contains '\variable{myCoTutorEmail}' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
 check_contains '\variable{myTribunalAlternateMemberGender}' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
 check_contains '\variable{myAuthorizationOpenPublishingEmbargoMonths}' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
 check_contains '\variable{myConfidentialContent}' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex

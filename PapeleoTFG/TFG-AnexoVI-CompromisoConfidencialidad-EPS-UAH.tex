@@ -25,6 +25,11 @@
 % END Preamble and configuration section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Aspecto institucional del anexo VI.
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{annexConfidentialityBlue}{HTML}{004A99}
+
 % Keep the form compatible with older myconfig.tex files that do not yet
 % define the tribunal members' DNI/NIF values.
 \providecommand{\myTribunalPresidentDNI}{}
@@ -56,8 +61,9 @@
   \thispagestyle{empty}%
 
   \begin{center}
-    \LARGE\bfseries COMPROMISO DE CONFIDENCIALIDAD EN TRABAJOS DE FIN DE GRADO (TFG)
+    {\color{annexConfidentialityBlue}\LARGE\bfseries COMPROMISO DE CONFIDENCIALIDAD EN TRABAJOS DE FIN DE GRADO (TFG)}
   \end{center}
+  \fontsize{12}{14.4}\selectfont
 
   \vspace{1.2cm}
 
@@ -72,21 +78,15 @@
   \noindent\textbf{SE COMPROMETE:}
 
   \begin{enumerate}[label=\Roman*.,leftmargin=1.1cm,itemsep=0.25cm,topsep=0.25cm]
-    \item A no difundir ni por escrito ni oralmente el contenido del trabajo sin el
-          consentimiento previo y por escrito del estudiante.
+    \item A no difundir ni por escrito ni oralmente el contenido del trabajo sin el consentimiento previo y por escrito del estudiante.
 
-    \item A aplicar cuantas precauciones sean razonables para evitar la revelación a
-          terceras personas.
+    \item A aplicar cuantas precauciones sean razonables para evitar la revelación a terceras personas.
 
-    \item A no hacer servir el trabajo para ninguna otra finalidad que no sea la de
-          su evaluación académica.
+    \item A no hacer servir el trabajo para ninguna otra finalidad que no sea la de su evaluación académica.
 
-    \item A custodiar el trabajo durante el plazo exigido por la legislación vigente
-          y, una vez transcurrido este plazo, proceder a su destrucción de acuerdo con
-          el procedimiento establecido por la Universidad a estos efectos.
+    \item A custodiar el trabajo durante el plazo exigido por la legislación vigente y, una vez transcurrido este plazo, proceder a su destrucción de acuerdo con el procedimiento establecido por la Universidad a estos efectos.
 
-    \item A comunicar al estudiante cualquier hecho que pueda afectar a los
-          compromisos de este documento.
+    \item A comunicar \wordAutorAlOrALa{} estudiante cualquier hecho que pueda afectar a los compromisos de este documento.
   \end{enumerate}
 
   \vspace{0.2cm}

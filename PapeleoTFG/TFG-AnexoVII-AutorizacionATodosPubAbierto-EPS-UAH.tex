@@ -9,7 +9,7 @@
 % específicos del formulario.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[11pt,a4paper,oneside]{article}
+\documentclass[10pt,a4paper,oneside]{article}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN Preamble and configuration section
@@ -21,6 +21,12 @@
 % END Preamble and configuration section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.3}
+\definecolor{annexDefenceBlue}{HTML}{004A99}
+
 \begin{document}
 
 \pagestyle{empty}
@@ -30,7 +36,7 @@
 
 \begin{spacing}{1.0}
 \begin{center}
-  \large\textbf{FORMULARIO DE AUTORIZACIÓN PARA LA INCLUSIÓN DEL
+  \fontsize{11}{13}\color{annexDefenceBlue}\selectfont\textbf{FORMULARIO DE AUTORIZACIÓN PARA LA INCLUSIÓN DEL
   TRABAJO FIN DE GRADO EN EL ARCHIVO ABIERTO INSTITUCIONAL E-BUAH
   DE LA UNIVERSIDAD DE ALCALÁ}
 \end{center}
@@ -38,7 +44,9 @@
 
 \vspace{0.3cm}
 
-\noindent\textbf{\underline{ARCHIVO ABIERTO INSTITUCIONAL E-BUAH DE LA UNIVERSIDAD DE ALCALÁ.}}
+\begin{center}
+  \noindent{\fontsize{10}{12}\selectfont\textbf{\underline{ARCHIVO ABIERTO INSTITUCIONAL E-BUAH DE LA UNIVERSIDAD DE ALCALÁ.}}}
+\end{center}
 
 \vspace{0.4cm}
 
@@ -100,20 +108,20 @@
 
 \vspace{0.15cm}
 
-\hspace{0.8cm}\boxAuthorizeOpenPublishing{} AUTORIZAN
+\hspace{0.8cm}\TextSizedCheckbox{\boxAuthorizeOpenPublishing{}} AUTORIZAN
 
 \vspace{0.15cm}
 
-\hspace{0.8cm}\boxDoNotAuthorizeOpenPublishing{} NO AUTORIZAN
+\hspace{0.8cm}\TextSizedCheckbox{\boxDoNotAuthorizeOpenPublishing{}} NO AUTORIZAN
 
 \vspace{0.35cm}
 
 \begin{spacing}{0.9}
-El depósito y puesta a disposición del Trabajo Fin de Grado en el Repositorio Institucional de la Universidad e-BUAH, de acceso abierto. Aceptando la licencia para su publicación y otorgando las condiciones de uso de la licencia Creative Commons \textit{Reconocimiento-NoComercial-Sin-ObraDerivada}.
+El depósito y puesta a disposición del Trabajo Fin de Grado en el \href{https://ebuah.uah.es/dspace/}{Repositorio Institucional de la Universidad e-BUAH}, de acceso abierto. Aceptando la \href{https://biblioteca.uah.es/biblioteca/documentos/Licencia_eBuah.pdf}{licencia} para su publicación y otorgando las condiciones de uso de la licencia Creative Commons \textit{Reconocimiento-NoComercial-Sin-ObraDerivada}.
 
 \vspace{0.15cm}
 
-Más información en: \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}
+Más información en: \href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{https://creativecommons.org/licenses/by-nc-nd/4.0/}
 \end{spacing}
 
 \vspace{0.45cm}
@@ -147,10 +155,13 @@ Más información en: \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}
 
 \vspace{0.35cm}
 
+\vfill
+\noindent\begin{minipage}{\textwidth}
 \begin{spacing}{0.8}
 {\scriptsize
-Los datos personales recogidos serán tratados por la Universidad de Alcalá con la finalidad de gestionar su autorización para la inclusión del Trabajo de Fin de Grado en el Archivo Abierto Institucional e-BUAH de la Universidad y su acceso libre a través de Internet, así como con fines estadísticos. La base legítima de dicho tratamiento es la ejecución de su autorización, las obligaciones legales en materia educativa y de investigación, así como su consentimiento expreso. Más allá de la publicación en el citado Repositorio, los datos no serán cedidos salvo los casos previstos legalmente y se conservarán durante el tiempo legalmente establecido y el necesario para cumplir con la finalidad descrita. El órgano responsable del tratamiento es la Secretaría General de la Universidad, ante quien se podrán ejercer los correspondientes derechos, mediante escrito dirigido a la Delegada de Protección de Datos (Colegio de San Ildefonso, Plaza de San Diego, s/n. 28801 Alcalá de Henares. Madrid) o por correo electrónico (protecciondedatos@uah.es), adjuntando copia del DNI o equivalente. En caso de conflicto, se podrá plantear recurso ante la Agencia Española de Protección de Datos. Para una información más detallada puede consultarse la Política de Privacidad de la Universidad.
+Los datos personales recogidos serán tratados por la Universidad de Alcalá con la finalidad de gestionar su autorización para la inclusión del Trabajo de Fin de Grado en el Archivo Abierto Institucional e-BUAH de la Universidad y su acceso libre a través de Internet, así como con fines estadísticos. La base legítima de dicho tratamiento es la ejecución de su autorización, las obligaciones legales en materia educativa y de investigación, así como su consentimiento expreso. Más allá de la publicación en el citado Repositorio, los datos no serán cedidos salvo los casos previstos legalmente y se conservarán durante el tiempo legalmente establecido y el necesario para cumplir con la finalidad descrita. El órgano responsable del tratamiento es la Secretaría General de la Universidad, ante quien se podrán ejercer los correspondientes derechos, mediante escrito dirigido a la Delegada de Protección de Datos (Colegio de San Ildefonso, Plaza de San Diego, s/n. 28801 Alcalá de Henares. Madrid) o por correo electrónico (\href{mailto:protecciondedatos@uah.es}{protecciondedatos@uah.es}), adjuntando copia del DNI o equivalente. En caso de conflicto, se podrá plantear recurso ante la Agencia Española de Protección de Datos. Para una información más detallada puede consultarse la Política de Privacidad de la Universidad.
 }
 \end{spacing}
+\end{minipage}
 
 \end{document}

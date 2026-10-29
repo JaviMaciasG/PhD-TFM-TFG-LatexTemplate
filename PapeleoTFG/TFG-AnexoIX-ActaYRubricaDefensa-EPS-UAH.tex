@@ -9,166 +9,84 @@
 % específicos del formulario.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[11pt,a4paper,oneside]{article}
+\documentclass[12pt,a4paper,oneside]{article}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% BEGIN Preamble and configuration section
-%
-\input{../Config/preamble.tex}    % DO NOT TOUCH THIS LINE. You can edit
-                                  % the file to modify some default settings
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\input{../Config/postamble.tex}
+\input{../Config/grades-calculation.tex}
 
-\input{../Config/myconfig.tex}    % DO NOT TOUCH THIS LINE, but EDIT THIS FILE
-                                  % to set your specific settings (related
-                                  % to the document language, your degree,
-                                  % document details (such as title, author
-                                  % (you), your email, name of the tribunal
-                                  % members, document year, keyword and
-                                  % palabras clave) and link colors), and
-                                  % define your commonly used commands
-                                  % (some examples are provided).
+% Conserva la decisión configurada y adapta únicamente el tamaño de las casillas.
+\ifthenelse{\equal{\myTribunalMHProposal}{YES}}
+{\renewcommand{\MHProposalBoxes}{\TextSizedCheckbox{$\XBox$} Sí ~~~~ \TextSizedCheckbox{$\Box$} No}}
+{\renewcommand{\MHProposalBoxes}{\TextSizedCheckbox{$\Box$} Sí ~~~~ \TextSizedCheckbox{$\XBox$} No}}
 
-\input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE. Yes, I know,
-                                  % "postamble" is not a valid word... :-)
+% Aspecto institucional del anexo IX, sin cabeceras ni pies universitarios.
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\singlespacing
+\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm,headheight=0pt,headsep=0pt}
+\definecolor{annexDefenceBlue}{HTML}{004A99}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
 
-\input{../Config/grades-calculation.tex}       % DO NOT TOUCH THIS LINE.
-\geometry{a4paper,margin=2cm}
-\setlist[description]{itemsep=0pt,parsep=0pt,topsep=3pt}
-%
-% END Preamble and configuration section
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\AnnexDefenceHeading}[1]{%
+  \par\noindent{\color{annexDefenceBlue}\fontsize{13}{16}\selectfont #1\par}\vspace{4mm}}
+\newlength{\AnnexDefenceLabelWidth}
+\newcommand{\AnnexDefenceField}[2]{%
+  \par\noindent\hspace*{7mm}\begin{minipage}[t]{\dimexpr\linewidth-7mm\relax}%
+  \settowidth{\AnnexDefenceLabelWidth}{#1: }%
+  \hangindent=\AnnexDefenceLabelWidth\hangafter=1
+  \makebox[\AnnexDefenceLabelWidth][l]{#1: }#2\par
+  \end{minipage}\par\vspace{4mm}}
 
-
-\title{Acta y rúbrica de defensa de TFG}  % Title of the report
-\date{\today}                                  % Date of the report
-\author{\myAcademicTutorFullName}                           % Advisor's name
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Let's start with the real stuff
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+\input{../Config/setlanguagedependentissues.tex}
+\pagestyle{empty}
 
+\begin{center}
+{\color{annexDefenceBlue}\bfseries\fontsize{16}{19}\selectfont ACTA Y RÚBRICA PARA LA EVALUACIÓN DE LA DEFENSA DEL TRABAJO DE FIN DE GRADO\par}
+\end{center}
+\vspace{3mm}
+\AnnexDefenceHeading{CURSO \myThesisAcademicYear}
+\AnnexDefenceHeading{DATOS DEL ESTUDIANTE}
+\AnnexDefenceField{Nombre y apellidos}{\myAuthorFullName}
+\AnnexDefenceField{Correo electrónico}{\myAuthorEmail}
+\AnnexDefenceField{Titulación (Plan de Estudios)}{\myDegreefull}
+\AnnexDefenceField{Título del TFG}{\myBookTitleSpanish}
+\ifthenelse{\equal{\myLanguage}{english}}{\AnnexDefenceField{Título en inglés}{\myBookTitleEnglish}}{}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% BEGIN within-document configuration, frontpage and cover pages generation
-%
-\input{../Config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
-%
-% END within-document configuration, frontpage and cover pages generation
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AnnexDefenceHeading{DATOS \MakeUppercase{\wordTutorDelOrDeLa} \MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}
+\AnnexDefenceField{Nombre y apellidos}{\myAcademicTutorFullName}
+\ifthenelse{\equal{\myCoTutorFullName}{}}{}{\AnnexDefenceField{\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}}{\myCoTutorFullName}}
+\AnnexDefenceField{Departamento}{\myAcademicTutorDepartment}
 
-%\maketitle
+\AnnexDefenceHeading{CALIFICACIÓN FINAL DEL TRABAJO}
+\noindent\hspace*{7mm}\begin{minipage}{\dimexpr\linewidth-7mm\relax}
+Calificación de tutor/cotutor (hasta 10 puntos, según Anexo III. Informe de tutor académico y rúbrica): \myAcademicTutorGrade.
+\par\vspace{6mm}
+Calificación del tribunal (hasta 10 puntos, según rúbrica): \myTribunalGrade.
+\end{minipage}
 
+\vspace{8mm}
+\noindent\hspace*{5mm}\fbox{\parbox{\dimexpr\linewidth-5mm-2\fboxsep-2\fboxrule\relax}{%
+  Calificación final\textsuperscript{3}: \myFinalGrade{}, \myFinalGradeName}}
+\par\vspace{5mm}
+\noindent\hspace*{7mm}Propuesto para Matrícula de Honor\textsuperscript{4} (marcar con una X)\hfill\MHProposalBoxes
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% BEGIN Report content
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\noindent \textbf{ACTA Y RÚBRICA DE DEFENSA DE TRABAJO DE FIN DE GRADO. CURSO \myThesisAcademicYear}
+\vfill
+\noindent\rule{0.3\linewidth}{0.4pt}\par
+{\fontsize{7.5}{9}\selectfont
+\noindent\textsuperscript{3} Los pesos de la calificación son: tutor/cotutor académico 70\,\% y Tribunal 30\,\%.\par\smallskip
+\noindent\textsuperscript{4} El Tribunal podrá proponer para Matrícula de Honor un TFG con calificación de Sobresaliente. Si el estudiante es propuesto para Matrícula de Honor, se debe rellenar obligatoriamente el campo de ``Observaciones del Tribunal''.\par
+El estudiante que, habiendo sido propuesto para Matrícula de Honor, solicitara la expedición de su Título de Graduado con anterioridad a su resolución por la Comisión Docente, y que posteriormente le fuera concedida la calificación de Matrícula de Honor, dicha calificación no se verá reflejada en su expediente académico, si bien se le comunicará mediante resolución del Secretario de la Comisión a los efectos oportunos que considere el beneficiario. En todo caso, se informa que las Matrículas de Honor no afectan al cálculo de la media de su expediente académico, al ser una calificación honorífica.\par}
 
-%\vspace{0.5cm}
-\thispagestyle{plain}
-%\pagestyle{empty} % Remove headers and footers
-\fancyhf{} % Clear existing headers and footers
-\fancyfoot[C]{\thepage} % Print page number at the center bottom
-
-
-\section*{ESTUDIANTE}
-
-\begin{description}
-  \item[Título del TFG:] \myBookTitleSpanish
-  \ifthenelse{\equal{\myLanguage}{english}}       % DO NOT TOUCH THIS LINE
-  {                                               % DO NOT TOUCH THIS LINE
-  \item[Título en inglés:] \myBookTitleEnglish    % DO NOT TOUCH THIS LINE
-  }                                               % DO NOT TOUCH THIS LINE
-  {                                               % DO NOT TOUCH THIS LINE
-  }                                               % DO NOT TOUCH THIS LINE
-  \item[Autor:] \myAuthorFullName
-  \item[DNI:] \myAuthorDNI
-  \item[Correo electrónico:] \myAuthorEmail
-  \item[Titulación:] \myDegreefull
-\end{description}
-
-%\vspace{0.5cm}
-
-
-\section*{\MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}
-
-\begin{description}
-  \item[\expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:] \myAcademicTutorFullName
-        \ifthenelse{\equal{\myCoTutorFullName}{}}
-        {
-        }
-        {
-  \item[\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}:] \myCoTutorFullName
-        }
-  \item[Departamento:] \myAcademicTutorDepartment
-
-        \ifthenelse{\equal{\myCoTutorFullName}{}}
-        {
-  \item[Calificación \wordTutorDelOrDeLa{} \wordTutorOrTutora:] \myAcademicTutorGrade{} (sobre 10)
-      }
-        {
-  \item[Calificación \wordTutorDelOrDeLa{} \wordTutorOrTutora{} y \wordCoTutorDelOrDeLa{} \wordCoTutorOrCoTutora:] \myAcademicTutorGrade{} (sobre 10)
-          }
-\end{description}
-
-%\vspace{0.5cm}
-
-\section*{TRIBUNAL CALIFICADOR}
-
-\begin{description}
-  \item[Calificación del tribunal (hasta 10 puntos, según rúbrica):] \myTribunalGrade{}
-\end{description}
-
-%\vspace{1cm}
-
-\begin{table}[ht]
-  \centering
-  \begin{tabularx}{\textwidth}{|X|}
-    \hline
-    \vspace{-1mm}
-    \textbf{Calificación final:}\newline
-    \indent ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   \myFinalGrade{}, \myFinalGradeName{}
-    \vspace{1mm} \\ \hline
-  \end{tabularx}
-\end{table}
-
-\noindent La calificación final se calcula con un 70\,\% de la nota del tutor/cotutor y un 30\,\% de la nota del tribunal, ambas sobre diez.
-
-\medskip
-\noindent\textbf{Propuesto para Matrícula de Honor}$\mathbf{^{*}}$ ~~~~~~~~ \MHProposalBoxes{}
-
-\noindent$^{*}$ El Tribunal podrá proponer para Matrícula de Honor un TFG con calificación de Sobresaliente. Si el estudiante es propuesto para Matrícula de Honor, se debe rellenar obligatoriamente el campo de ``Observaciones del Tribunal''.
-
-\noindent El estudiante que, habiendo sido propuesto para Matrícula de Honor, solicitara la expedición de su Título de Graduado con anterioridad a su resolución por la Comisión Docente, y que posteriormente le fuera concedida la calificación de Matrícula de Honor, dicha calificación no se verá reflejada en su expediente académico, si bien se le comunicará mediante resolución del Secretario de la Comisión a los efectos oportunos que considere el beneficiario. En todo caso, se informa que las Matrículas de Honor no afectan al cálculo de la media de su expediente académico, al ser una calificación honorífica.
-
-\newpage
-
-\thispagestyle{plain}
-
-%\thispagestyle{empty} % Remove headers/footers
-
-\begin{tikzpicture}[remember picture, overlay]
-  % Draw a rectangle that perfectly aligns with text margins
-  \draw [thick]
-    ($(current page.north west) + (2cm,-2cm)$)
-    rectangle
-    ($(current page.south east) + (-2cm,2cm)$);
-\end{tikzpicture}
-
-% Content inside the rectangle
-\vspace*{2mm}
-
-\noindent\hspace*{2mm}\textbf{OBSERVACIONES DEL TRIBUNAL:}
-
-\newpage
+\clearpage
+\noindent\fbox{\begin{minipage}[t][\dimexpr\textheight-2\fboxsep-2\fboxrule-\topskip\relax][t]{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\vspace{2mm}
+\hspace*{2mm}{\color{annexDefenceBlue}\fontsize{13}{16}\selectfont OBSERVACIONES DEL TRIBUNAL:}
+\end{minipage}}
+\clearpage
 
 \input{TFG-AnexoIX-Rubrica-Tribunal-EPS-UAH.tex}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% END Report content
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 \end{document}

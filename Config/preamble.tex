@@ -551,7 +551,15 @@
 % Add support for fonts at arbitrary sizes september 2014, for TFG's cover
 \usepackage{fix-cm}
 
-\usepackage{graphicx}                                                                      
+\usepackage{graphicx}
+
+% Casillas ajustadas a la altura de las mayúsculas del texto que las acompaña.
+\newlength{\TextSizedCheckboxHeight}
+\newcommand{\TextSizedCheckbox}[1]{%
+  \begingroup
+  \settoheight{\TextSizedCheckboxHeight}{A}%
+  \resizebox{!}{\TextSizedCheckboxHeight}{#1}%
+  \endgroup}
 
 %   \providecommand{\DIFadd}[1]{{\protect\color{blue}#1}} %DIF PREAMBLE
 %   \providecommand{\DIFdel}[1]{{\protect\color{red}\protect\scriptsize{#1}}}
