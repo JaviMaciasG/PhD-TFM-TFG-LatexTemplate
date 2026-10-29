@@ -4,6 +4,9 @@ LATEX_ENGINE ?= $(PDFLATEX)
 LATEX_CONFIG_DIR := ../Config
 include $(LATEX_CONFIG_DIR)/latex-common.mk
 
+# Paperwork forms do not use bibliographies; skip both BibTeX and Biber.
+override LATEXMK_FLAGS += -bibtex-
+
 THESIS_TEXFILES := $(sort $(wildcard 02-TesisDoctoral/PHD-*.tex))
 RESEARCH_STAY_TEXFILES := $(sort $(wildcard 03-MencionInternacional/PHD-*.tex))
 INDUSTRIAL_DOCTORATE_TEXFILES := $(sort $(wildcard 04-DoctoradoIndustrial/PHD-*.tex))

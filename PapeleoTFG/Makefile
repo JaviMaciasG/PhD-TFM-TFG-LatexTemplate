@@ -4,6 +4,9 @@ LATEX_ENGINE ?= $(PDFLATEX)
 LATEX_CONFIG_DIR := ../Config
 include $(LATEX_CONFIG_DIR)/latex-common.mk
 
+# Paperwork forms do not use bibliographies; skip both BibTeX and Biber.
+override LATEXMK_FLAGS += -bibtex-
+
 AUTHORIZATION_DOCUMENTS := \
 	TFG-AnexoVIII-AutorizacionTutorExtranjeroPubAbierto-EPS-UAH \
 	TFG-AnexoVI-CompromisoConfidencialidad-EPS-UAH \
