@@ -1,0 +1,15 @@
+\documentclass{article}
+\usepackage{pgf,ifthen}
+\providecommand{\GradeTestWorkType}{TFG}
+\providecommand{\GradeTestTutor}{10}
+\providecommand{\GradeTestTribunal}{10}
+\newcommand{\myWorkType}{\GradeTestWorkType}
+\newcommand{\myAcademicTutorGrade}{\GradeTestTutor}
+\newcommand{\myTribunalGrade}{\GradeTestTribunal}
+\newcommand{\myTribunalMHProposal}{NO}
+\input{../Config/grades-calculation.tex}
+\begin{document}
+\typeout{GRADE RESULT=\myFinalGrade}
+\typeout{GRADE NAME=\myFinalGradeName}
+Grade: \myFinalGrade.
+\end{document}

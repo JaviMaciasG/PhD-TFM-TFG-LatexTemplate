@@ -258,10 +258,13 @@
 \newcommand{\mySecondExternalReviewerInstitutionEnglish}{University of Alcalá}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Calificaciones. Si las defines, la nota final se calcula automágicamente
-% en el documento de acta y rúbrica.
-\newcommand{\myAcademicTutorGrade}{7}
-\newcommand{\myTribunalGrade}{3}
+% Calificaciones numéricas de 0 a 10, no aportaciones ya ponderadas.
+% TFG EPS-UAH: nota final = 0.7 * tutor + 0.3 * tribunal.
+% Un suspenso de cualquiera de las partes es vinculante. Si la media diera
+% aprobado, la plantilla detiene la compilación para que consultes al departamento.
+% TFM: la nota final es la del tribunal; la nota del tutor no interviene.
+\newcommand{\myAcademicTutorGrade}{10} % Nota del tutor/cotutor del TFG, sobre 10.
+\newcommand{\myTribunalGrade}{10} % Nota del tribunal del TFG o nota final del TFM, sobre 10.
 \newcommand{\myTribunalMHProposal}{NO} % Los valores admitidos son YES o NO.
 
 

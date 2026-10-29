@@ -25,7 +25,7 @@ for spec in "${cases[@]}"; do
   IFS='|' read -r gender name <<< "$spec"
   for kind in TFG TFM; do
     degree=GIEC
-    document=TFG-ConvenioCooperacion-EPS-UAH
+    document=TFG-AnexoV-ConvenioCooperacion-EPS-UAH
     if [[ $kind == TFM ]]; then
       degree=MUIT
       document=TFM-AnexoI-ConvenioCooperacion-EPS-UAH

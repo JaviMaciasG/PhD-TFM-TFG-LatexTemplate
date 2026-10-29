@@ -49,6 +49,8 @@ for file in .gitignore .latexmkrc LICENSE Makefile sync-git-sources.sh \
   Documentation/es/TYPESETTING-STYLES-GUIDE.md; do
   printf 'Fixture source\n' >"$source_root/$file"
 done
+cp "$repository_root/PapeleoTFG/"*.tex "$repository_root/PapeleoTFG/Makefile" "$source_root/PapeleoTFG/"
+cp "$repository_root/Config/grades-calculation.tex" "$source_root/Config/"
 printf 'vtest\n' >"$source_root/RELEASE.txt"
 printf 'Upstream repository introduction\n' >"$source_root/README.md"
 printf 'Upstream English introduction\n' >"$source_root/README-en.md"
@@ -72,6 +74,13 @@ for unpacked in "$fixture/tgz" "$fixture/zip"; do
   [[ -s $unpacked/00-README.pdf && -s $unpacked/Book/book.tex && -s $unpacked/Config/myconfig.tex ]]
   [[ -s $unpacked/Book/appendix/titulaciones-soportadas.tex && -s $unpacked/Book/cover/urjc/portada-tfg-eif-urjc.tex ]]
   [[ ! -e $unpacked/Documentation && ! -e $unpacked/README-en.md && ! -e $unpacked/README-PROYECTO.md ]]
+  for form in "$repository_root/PapeleoTFG/"TFG-Anexo*.tex; do
+    cmp "$form" "$unpacked/PapeleoTFG/${form##*/}"
+  done
+  cmp "$source_root/Config/grades-calculation.tex" "$unpacked/Config/grades-calculation.tex"
+  [[ ! -e $unpacked/PapeleoTFG/TFG-AutorizacionAutorPubAbierto-EPS-UAH.tex ]]
+  [[ ! -e $unpacked/PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex ]]
+  [[ -s $unpacked/PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.pdf ]]
 done
 diff -r "$fixture/tgz" "$fixture/zip"
 [[ $(sha256sum "$source_root/README.md" "$source_root/README-en.md") == "$upstream_before" ]]

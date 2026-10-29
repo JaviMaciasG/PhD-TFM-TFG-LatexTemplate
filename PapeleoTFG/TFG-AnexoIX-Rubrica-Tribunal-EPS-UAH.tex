@@ -2,7 +2,7 @@
 % Función: rúbrica del tribunal para la evaluación del TFG.
 %
 % Normativa de TFG:
-% EPS-UAH: anexo X; revisada el 05/06/2026.
+% EPS-UAH: anexo IX; revisada el 05/06/2026.
 %
 % Uso: se incluye desde otros formularios; no se compila por separado.
 % Normalmente no necesitas modificar este fichero.
@@ -10,7 +10,7 @@
 
 \begin{landscape}
 \thispagestyle{plain}
-\noindent \textbf{RÚBRICA PARA LA EVALUACIÓN DEL DESARROLLO DEL TFG}\footnote{Aprobado en Comisión de Calidad el 25 de junio de 2024}
+\noindent \textbf{RÚBRICA PARA LA EVALUACIÓN DE LA DEFENSA DEL TFG}\footnote{Aprobada en Comisión de Calidad de la EPS el 25/06/2024.}\footnote{Esta rúbrica se aplica salvo que la memoria de verificación del grado requiera una específica.}
 \renewcommand{\arraystretch}{1.4} % Increases row height
 
 \begin{table}[ht]
@@ -19,7 +19,7 @@
 \begin{tabularx}{\linewidth}{|p{7cm}|p{9cm}|p{1cm}|p{1cm}|p{5cm}|}
 \cline{1-5}
 \textbf{Resultados de aprendizaje} & \textbf{Criterios de Evaluación} & \textbf{Peso} & \textbf{Calif} & \textbf{Informe del Tribunal} \\ \cline{1-5}
-  \multirow{4}{=}{%
+  \multirow{6}{=}{%
   \begin{minipage}[t]{7cm}
     \textbf{BLOQUE 1: Proyecto}
     \begin{itemize}[left=5pt, itemsep=1pt, topsep=1pt]
@@ -27,10 +27,12 @@
       \item Integración de competencias adquiridas (RATFG5)
     \end{itemize}
   \end{minipage}}
-    & Integra competencias (CE1) &  &  & \multirow[t]{7}{=}{} \\ \cline{2-4}
+    & Integra competencias (CE1) &  &  &  \\ \cline{2-4}
     & Defiende un proyecto en el ámbito de la profesión (CE5) &  &  &  \\ \cline{2-4}
+    & Maneja especificaciones, reglamentos y normativa (CE3) & & & \\ \cline{2-4}
+    & Proyectos con estándar de calidad adecuado (CE4) & & & \\ \cline{2-4}
     & \cellcolor[HTML]{C0C0C0}Peso Máximo / Calificación &  &  &  \\
-    & \cellcolor[HTML]{C0C0C0}(Peso máximo: 1 punto) &  &  &  \\ \cline{1-5}
+    & \cellcolor[HTML]{C0C0C0}(Peso máximo: 3 puntos) &  &  &  \\ \cline{1-5}
   \multirow{8}{=}{%
   \begin{minipage}[t]{7cm}
     \vspace{-5mm}
@@ -48,43 +50,34 @@
     & Memoria escrita tratando con profundidad los temas, y referenciando adecuadamente (CE15) &  &  &  \\ \cline{2-4}
     & Memoria escrita con claridad y calidad (CE17) &  &  &  \\ \cline{2-4}
     & \cellcolor[HTML]{C0C0C0}Peso Máximo / Calificación &  &  &  \\
-    & \cellcolor[HTML]{C0C0C0}(Peso máximo: 2 puntos) &  &  &  \\ \cline{1-5}
+    & \cellcolor[HTML]{C0C0C0}(Peso máximo: 7 puntos) &  &  &  \\ \cline{1-5}
 \end{tabularx}
 %\caption{Rúbrica para la evaluación del desarrollo del TFG}
 \label{tab:evaluacion_tfg}
 
 \end{table}
 
-\centering
-\noindent En Alcalá de Henares a \myThesisDefenseDate
+\par\medskip
+\noindent En Alcalá de Henares, a \myThesisDefenseDate.
 
-\begin{table}[ht]
-  \centering
-  %\makebox[\textwidth]{
-  %\begin{tabularx}{\linewidth}{|p{9cm}|p{9cm}|} % Using p{} for fixed-width columns
-  \begin{tabular}{|p{9cm}|p{9cm}|} % Use tabular instead of tabularx
-    \cline{1-2}
-    \begin{minipage}{9cm} % Corrected minipage usage
-      \centering
-      \vspace{0.2cm} % Space for signature
-      \wordPresidenteOrPresidenta \\
-      \vspace{2cm} % Space for signature
-      Fdo: \myTribunalPresident
-      \vspace{0.2cm} % Space for signature
-    \end{minipage}
-    &
-    \begin{minipage}{9cm} % Corrected minipage usage
-      \centering
-      \vspace{0.2cm} % Space for signature
-      \wordVocalPrimeroOrPrimera \\
-      \vspace{2cm} % Space for signature
-      Fdo: \myTribunalFirstSpokesperson
-      \vspace{0.2cm} % Space for signature
-    \end{minipage}
-    \\
-    \cline{1-2}
-  \end{tabular}
-  %} % End of \makebox
-\end{table}
-
+\medskip
+\ifthenelse{\equal{\myTribunalSecondSpokesperson}{}}
+{
+  \noindent\begin{tabularx}{\linewidth}{|X|X|}
+    \hline
+    \wordPresidenteOrPresidenta & \wordVocalPrimeroOrPrimera{} \wordNumberVocalPrimeroOrPrimera \\
+    \rule{0pt}{1.5cm} & \\
+    Fdo.: \myTribunalPresident & Fdo.: \myTribunalFirstSpokesperson \\ \hline
+  \end{tabularx}
+}
+{
+  \noindent\begin{tabularx}{\linewidth}{|X|X|X|}
+    \hline
+    \wordPresidenteOrPresidenta &
+    \wordVocalPrimeroOrPrimera{} \wordNumberVocalPrimeroOrPrimera &
+    \ifthenelse{\equal{\myTribunalSecondSpokespersonGender}{male}}{Secretario / Vocal 2º}{Secretaria / Vocal 2ª} (si procede) \\
+    \rule{0pt}{1.5cm} & & \\
+    Fdo.: \myTribunalPresident & Fdo.: \myTribunalFirstSpokesperson & Fdo.: \myTribunalSecondSpokesperson \\ \hline
+  \end{tabularx}
+}
 \end{landscape}

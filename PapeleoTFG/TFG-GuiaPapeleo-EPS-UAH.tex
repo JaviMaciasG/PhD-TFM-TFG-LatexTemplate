@@ -43,7 +43,7 @@
 
 \section{Qué encontrarás aquí}
 
-Hemos preparado ocho formularios que reutilizan los datos de tu trabajo para que no tengas que introducirlos una y otra vez. En esta guía te contamos para qué sirve cada uno, qué variables utiliza y qué tendrás que revisar antes de presentarlo. Se refiere a la normativa de TFG de la EPS-UAH, aprobada el 25/06/2024 y revisada el 05/06/2026; no pretende cubrir todos los centros de la UAH ni sustituir los formularios y procedimientos oficiales vigentes.
+Hemos preparado siete formularios que reutilizan los datos de tu trabajo para que no tengas que introducirlos una y otra vez. En esta guía te contamos para qué sirve cada uno, qué variables utiliza y qué tendrás que revisar antes de presentarlo. Los formularios están actualizados a la normativa de TFG de la EPS-UAH de octubre de 2026. Esta guía no pretende cubrir todos los centros de la UAH ni sustituir los formularios y procedimientos oficiales vigentes.
 
 Puedes localizar los documentos mediante este resumen. Cada nombre enlaza con su explicación dentro de la guía.
 
@@ -52,14 +52,13 @@ Puedes localizar los documentos mediante este resumen. Cada nombre enlaza con su
 \toprule
 Documento & Anexo normativa EPS-UAH \\
 \midrule
-\hyperref[form:conjunta]{Autorización conjunta de publicación} & VIII \\
-\hyperref[form:autor]{Autorización de la persona autora} & VII \\
-\hyperref[form:extranjero]{Autorización del tutor extranjero} & IX \\
+\hyperref[form:conjunta]{Autorización conjunta de publicación} & VII \\
+\hyperref[form:extranjero]{Autorización del tutor extranjero} & VIII \\
 \hyperref[form:confidencialidad]{Compromisos de confidencialidad} & VI \\
 \hyperref[form:convenio]{Convenio de cooperación educativa} & V \\
 \hyperref[form:informe]{Informe del tutor y rúbrica} & III \\
 \hyperref[form:plagio]{Informe de control de plagio} & III \\
-\hyperref[form:acta]{Acta de defensa y rúbrica del tribunal} & X \\
+\hyperref[form:acta]{Acta de defensa y rúbrica del tribunal} & IX \\
 \bottomrule
 \end{tabularx}
 
@@ -93,7 +92,7 @@ Si una casilla es fija, debes editar el fichero \texttt{.tex} del formulario cua
 
 \subsection{Autorización conjunta de publicación}\label{form:conjunta}
 
-\fichero{TFG-AutorizacionALLPubAbierto-EPS-UAH.tex}. Anexo VIII de la normativa EPS-UAH, revisada el 05/06/2026. Reúne la autorización y las firmas del estudiante, el tutor y, si existe, el cotutor. No es necesario generar también la autorización individual del autor salvo que el procedimiento aplicable te la pida.
+\fichero{TFG-AnexoVII-AutorizacionATodosPubAbierto-EPS-UAH.tex}. Anexo VII de la normativa EPS-UAH de octubre de 2026. Reúne la autorización y las firmas del estudiante, el tutor y, si existe, el cotutor.
 
 Configura los siguientes datos:
 \begin{itemize}
@@ -105,21 +104,15 @@ Configura los siguientes datos:
 \end{itemize}
 Las casillas dependen de \variable{myAuthorizationOpenPublishing}: \texttt{Yes} marca \emph{AUTORIZAN} y deja vacía \emph{NO AUTORIZAN}; \texttt{No} hace lo contrario. \variable{myAuthorizationOpenPublishingEmbargoMonths} no interviene en este formulario. Revisa la decisión de autorización y recoge las firmas correspondientes.
 
-\subsection{Autorización de la persona autora}\label{form:autor}
-
-\fichero{TFG-AutorizacionAutorPubAbierto-EPS-UAH.tex}. Anexo VII de la normativa EPS-UAH, revisada el 05/06/2026. Contiene la declaración y autorización individual de quien ha realizado el trabajo y el espacio de firma por la Universidad; no utiliza los datos del tutor ni del tribunal.
-
-Los datos utilizados son \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myBookTitleSpanish} o \variable{myBookTitleEnglish} (según \variable{myLanguage}), \variable{myPaperworkDate}, \variable{myResearchVicerrector} y la universidad derivada de \variable{myDegree}. Revisa \variable{myAuthorGender} y \variable{myResearchVicerrectorGender}: aparecen expresiones como \emph{autor/autora}, \emph{notificado/notificada} y \emph{Vicerrector/Vicerrectora}. La declaración no utiliza las casillas de \variable{myAuthorizationOpenPublishing}: revisa el texto y las firmas antes de utilizarla.
-
 \subsection{Autorización del tutor extranjero}\label{form:extranjero}
 
-\fichero{TFG-AutorizacionTutorExtranjeroPubAbierto-EPS-UAH.tex}. Anexo IX de la normativa EPS-UAH, revisada el 05/06/2026. Está redactado en inglés y utiliza los datos del \emph{tutor académico}, no los del cotutor: revisa que esta correspondencia sea adecuada para tu caso.
+\fichero{TFG-AnexoVIII-AutorizacionTutorExtranjeroPubAbierto-EPS-UAH.tex}. Anexo VIII de la normativa EPS-UAH de octubre de 2026. Está redactado en inglés y utiliza los datos del \emph{tutor académico}, no los del cotutor: comprueba que el nombre y los campos de universidad y ciudad extranjeras describan a esa misma persona.
 
 Configura \variable{myAcademicTutorFullName}, \variable{myAcademicTutorForeignUniversity}, \variable{myAcademicTutorForeignCity}, \variable{myAuthorFullName}, \variable{myBookTitleEnglish} y \variable{myPaperworkDateEnglish}. El texto utiliza \emph{Professor} y no emplea variables de género. Las casillas son fijas: \emph{I agree} está marcada y \emph{I disagree} está vacía; no dependen de \variable{myAuthorizationOpenPublishing}. Si el tutor no autoriza, debes editar este fichero e intercambiar \verb|$\XBox$| y \verb|$\Box$| en esas dos opciones. Comprueba la decisión y obtén la firma y el sello indicados.
 
 \subsection{Compromisos de confidencialidad}\label{form:confidencialidad}
 
-\fichero{TFG-CompromisoConfidencialidad-EPS-UAH.tex}. Anexo VI de la normativa EPS-UAH, revisada el 05/06/2026. Genera un compromiso para el tutor y otro para cada persona opcional cuyo nombre esté configurado: cotutor, presidente, dos vocales y suplente. El resultado es un único PDF con hasta seis compromisos; en cada uno firman la persona correspondiente y el estudiante.
+\fichero{TFG-AnexoVI-CompromisoConfidencialidad-EPS-UAH.tex}. Anexo VI de la normativa EPS-UAH de octubre de 2026. Genera un compromiso para el tutor y otro para cada persona opcional cuyo nombre esté configurado: cotutor, presidente, dos vocales y suplente. El resultado es un único PDF con hasta seis compromisos; en cada uno firman la persona correspondiente y el estudiante.
 
 Revisa estas variables:
 \begin{itemize}
@@ -137,7 +130,7 @@ Un nombre opcional vacío omite esa persona y un DNI de profesor vacío deja una
 
 \subsection{Anexo al convenio}\label{form:convenio}
 
-\fichero{TFG-ConvenioCooperacion-EPS-UAH.tex}. Anexo V de la normativa EPS-UAH, revisada el 05/06/2026. Describe el trabajo que se realizará en una entidad externa. La persona responsable en esa entidad es el cotutor externo, de acuerdo con el artículo 3.3.b de la normativa. La plantilla utiliza esta denominación también en el encabezado de contacto y en los términos del acuerdo para mantenerla coherente con el bloque de firmas.
+\fichero{TFG-AnexoV-ConvenioCooperacion-EPS-UAH.tex}. Anexo V de la normativa EPS-UAH de octubre de 2026. Describe el trabajo que se realizará en una entidad externa. La persona responsable en esa entidad es el cotutor externo, de acuerdo con el artículo 3.3.b de la normativa. La plantilla utiliza esta denominación también en el encabezado de contacto y en los términos del acuerdo para mantenerla coherente con el bloque de firmas.
 
 Utiliza los siguientes datos:
 \begin{itemize}
@@ -154,29 +147,29 @@ Completa los campos todavía marcados como \hl{N/D}: identificación y direcció
 
 \subsection{Informe del tutor y rúbrica}\label{form:informe}
 
-\fichero{TFG-InformeTutorYRubrica-EPS-UAH.tex}. Anexo III de la normativa EPS-UAH, revisada el 05/06/2026. Incluye el informe de plagio, los datos y firmas del tutor y del cotutor, si existe, y la rúbrica del tutor.
+\fichero{TFG-AnexoIII-InformeTutorYRubrica-EPS-UAH.tex}. Anexo III de la normativa EPS-UAH de octubre de 2026. Incluye el informe de plagio, los datos y firmas del tutor y del cotutor, si existe, y la rúbrica del tutor.
 
-El fragmento de plagio utiliza \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorEmail}, \variable{myDepartment}, \variable{myDegree}, \variable{myBookTitleSpanish} y, con \variable{myLanguage} igual a \texttt{english}, \variable{myBookTitleEnglish}. El informe añade \variable{myAcademicTutorFullName}, \variable{myAcademicTutorPosition}, \variable{myAcademicTutorEmail}, \variable{myCoTutorFullName}, \variable{myCoTutorPosition}, \variable{myCoTutorEmail}, \variable{myThesisAcademicYear} y \variable{myAcademicTutorGrade} (hasta siete puntos). Los rótulos y firmas dependen de \variable{myAcademicTutorGender} y \variable{myCoTutorGender}.
+El fragmento de plagio utiliza \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorEmail}, \variable{myDepartment}, \variable{myDegree}, \variable{myBookTitleSpanish} y, con \variable{myLanguage} igual a \texttt{english}, \variable{myBookTitleEnglish}. El acta de evaluación añade \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDepartment}, \variable{myCoTutorFullName}, \variable{myAcademicCotutorDepartment}, \variable{myAcademicCotutorInstitution}, \variable{myThesisAcademicYear} y \variable{myAcademicTutorGrade}, de cero a diez. Los departamentos de los tutores son sus afiliaciones personales, independientes de \variable{myDepartment}. Los rótulos y firmas dependen de \variable{myAcademicTutorGender} y \variable{myCoTutorGender}.
 
 Completa los resultados del control de plagio, las observaciones, la conclusión, los comentarios del tutor y la rúbrica. La fecha indicada es la de la firma digital; \variable{myThesisDefenseDate} no se imprime actualmente en este documento.
 
 \subsection{Informe de control de plagio}\label{form:plagio}
 
-\fichero{TFG-InformeTutorPlagio-UAH.tex}. Es la parte de informe de plagio del anexo III de la normativa EPS-UAH, revisada el 05/06/2026. Conserva el texto de protección de datos UAH de su fragmento auxiliar; no es un nuevo anexo independiente ni incorpora la rúbrica.
+\fichero{TFG-AnexoIII-InformeTutorPlagio-UAH.tex}. Es la parte de informe de plagio del anexo III de la normativa EPS-UAH de octubre de 2026. No incorpora la rúbrica.
 
-Utiliza \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorEmail}, \variable{myDepartment}, \variable{myDegree}, \variable{myBookTitleSpanish} y, con \variable{myLanguage} igual a \texttt{english}, \variable{myBookTitleEnglish}. Revisa también \variable{myAcademicTutorFullName}, \variable{myAcademicTutorPosition}, \variable{myAcademicTutorEmail}, \variable{myCoTutorFullName}, \variable{myCoTutorPosition} y \variable{myCoTutorEmail}. Los rótulos del tutor y cotutor se adaptan con \variable{myAcademicTutorGender} y \variable{myCoTutorGender}; no se emplea \variable{myAuthorGender} para los rótulos del estudiante de este informe.
+Utiliza \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorEmail}, \variable{myDepartment}, \variable{myDegree}, \variable{myBookTitleSpanish} y, con \variable{myLanguage} igual a \texttt{english}, \variable{myBookTitleEnglish}. Revisa también \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDepartment}, \variable{myCoTutorFullName}, \variable{myAcademicCotutorDepartment} y \variable{myAcademicCotutorInstitution}. Los rótulos del tutor y cotutor se adaptan con \variable{myAcademicTutorGender} y \variable{myCoTutorGender}; no se emplea \variable{myAuthorGender} para los rótulos del estudiante de este informe.
 
 Completa coincidencias, observaciones y conclusión del análisis y recoge las firmas. La fecha es la de la firma digital, no \variable{myThesisDefenseDate}.
 
 \subsection{Acta de defensa y rúbrica del tribunal}\label{form:acta}
 
-\fichero{TFG-ActaYRubricaDefensa-EPS-UAH.tex}. Anexo X de la normativa EPS-UAH, revisada el 05/06/2026. Incluye las calificaciones y observaciones del tribunal y su rúbrica.
+\fichero{TFG-AnexoIX-ActaYRubricaDefensa-EPS-UAH.tex}. Anexo IX de la normativa EPS-UAH de octubre de 2026. Incluye las calificaciones y observaciones del tribunal y su rúbrica.
 
-Configura \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myDegree}, \variable{myBookTitleSpanish}, \variable{myBookTitleEnglish} (si \variable{myLanguage} es \texttt{english}), \variable{myAcademicTutorFullName}, \variable{myCoTutorFullName}, \variable{myDepartment} y \variable{myThesisAcademicYear}. Para las notas utiliza \variable{myAcademicTutorGrade} (hasta siete puntos), \variable{myTribunalGrade} (hasta tres puntos) y \variable{myTribunalMHProposal} (\texttt{YES} o \texttt{NO}). La plantilla suma las dos notas y obtiene la calificación final y su denominación.
+Configura \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorEmail}, \variable{myDegree}, \variable{myBookTitleSpanish}, \variable{myBookTitleEnglish} (si \variable{myLanguage} es \texttt{english}), \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDepartment}, \variable{myCoTutorFullName} y \variable{myThesisAcademicYear}. El departamento solicitado aquí es el del tutor, no el departamento independiente del trabajo. Para las notas utiliza \variable{myAcademicTutorGrade} y \variable{myTribunalGrade}, ambas de cero a diez, sin ponderarlas previamente. La nota final es \(0.7 \times \mbox{nota del tutor} + 0.3 \times \mbox{nota del tribunal}\). Por ejemplo, con 8 y 6 obtendrás 7.4. La plantilla rechaza notas fuera de ese intervalo y detiene la compilación si alguna parte está suspensa pero la media daría aprobado, de acuerdo con el artículo 9.3. En ese caso, consulta al departamento cómo consignar la nota: no inventamos una calificación máxima para el suspenso.
 
-Los rótulos de los tutores se adaptan mediante \variable{myAcademicTutorGender} y \variable{myCoTutorGender}. La rúbrica incluida añade \variable{myThesisDefenseDate}, \variable{myTribunalPresident} y \variable{myTribunalFirstSpokesperson}. Su presidencia utiliza \variable{myTribunalPresidentGender}, mientras que el comando dependiente de \variable{myTribunalFirstSpokespersonGender} mantiene el rótulo \emph{Vocal} para ambos valores. Actualmente esta rúbrica solo incluye esas dos firmas: no imprime el segundo vocal ni el suplente. El acta mantiene el rótulo fijo \emph{Autor}. Completa las observaciones y la rúbrica y comprueba que las firmas corresponden a tu tribunal.
+Los rótulos de los tutores se adaptan mediante \variable{myAcademicTutorGender} y \variable{myCoTutorGender}. La rúbrica utiliza \variable{myThesisDefenseDate}, \variable{myTribunalPresident} y \variable{myTribunalFirstSpokesperson}, con sus variables de género. Si procede una tercera firma, completa \variable{myTribunalSecondSpokesperson} y \variable{myTribunalSecondSpokespersonGender}: aparecerá como \emph{Secretario / Vocal 2º} o \emph{Secretaria / Vocal 2ª}. Si el tribunal tiene solo dos titulares, deja vacío el nombre del segundo vocal y se omite esa tercera firma. El suplente no firma salvo que sustituya a un titular. Completa las observaciones y comprueba la composición del tribunal antes de presentar el documento.
 
-Las casillas de propuesta para Matrícula de Honor dependen de \variable{myTribunalMHProposal}: \texttt{YES} marca \emph{Sí} y deja vacía \emph{No}; \texttt{NO} hace lo contrario. La propuesta no se deduce de las notas ni de su suma: debes configurar la decisión del tribunal y comprobar que cumple los requisitos aplicables.
+Las casillas de propuesta para Matrícula de Honor dependen de \variable{myTribunalMHProposal}: \texttt{YES} marca \emph{Sí} y deja vacía \emph{No}; \texttt{NO} hace lo contrario. La propuesta no se deduce de las notas ni de su media ponderada: debes configurar la decisión del tribunal y comprobar que cumple los requisitos aplicables.
 
 \medskip
 \begin{minipage}{\linewidth}
@@ -196,7 +189,7 @@ make                         # Todos los formularios
 make autorizaciones          # Publicación y confidencialidad
 make convenios               # Convenio de cooperación
 make evaluacion              # Informes, acta y rúbricas
-make TFG-InformeTutorPlagio-UAH.pdf
+make TFG-AnexoIII-InformeTutorPlagio-UAH.pdf
 make help                    # Opciones disponibles
 \end{verbatim}
 \end{minipage}

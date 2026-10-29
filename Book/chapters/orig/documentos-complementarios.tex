@@ -64,17 +64,16 @@ Para evitar que tengas que introducir varias veces los mismos datos, hemos prepa
 
 Si trabajas en la EPS-UAH, consulta \texttt{PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.pdf}: te explicamos para qué sirve cada formulario, su anexo y normativa de referencia, las variables concretas que utiliza, el género gramatical y los campos que tendrás que completar. Puedes abrir la guía directamente, sin necesidad de compilarla ni utilizar Make.
 
-El directorio \texttt{PapeleoTFG/} contiene actualmente:
+Los formularios están actualizados a la normativa de TFG de la EPS-UAH de octubre de 2026. El directorio \texttt{PapeleoTFG/} contiene actualmente:
 
 \begin{itemize}
-  \item \texttt{TFG-AutorizacionALLPubAbierto-EPS-UAH.tex}: autorización conjunta del estudiante, el tutor y, cuando exista, el cotutor para publicar el TFG en abierto.
-  \item \texttt{TFG-AutorizacionAutorPubAbierto-EPS-UAH.tex}: declaración y autorización de la persona autora para la publicación en abierto.
-  \item \texttt{TFG-AutorizacionTutorExtranjeroPubAbierto-EPS-UAH.tex}: autorización en inglés para un tutor perteneciente a una universidad extranjera.
-  \item \texttt{TFG-CompromisoConfidencialidad-EPS-UAH.tex}: compromisos individuales de confidencialidad del tutor, el cotutor y los miembros configurados del tribunal.
-  \item \texttt{TFG-ConvenioCooperacion-EPS-UAH.tex}: anexo para realizar el TFG mediante un convenio de cooperación educativa.
-  \item \texttt{TFG-InformeTutorYRubrica-EPS-UAH.tex}: informe y rúbrica del tutor o tutores.
-  \item \texttt{TFG-InformeTutorPlagio-UAH.tex}: informe del tutor sobre la revisión de plagio.
-  \item \texttt{TFG-ActaYRubricaDefensa-EPS-UAH.tex}: acta y rúbrica del tribunal de defensa.
+  \item \texttt{TFG-AnexoVII-AutorizacionATodosPubAbierto-EPS-UAH.tex}: autorización conjunta del estudiante, el tutor y, cuando exista, el cotutor para publicar el TFG en abierto.
+  \item \texttt{TFG-AnexoVIII-AutorizacionTutorExtranjeroPubAbierto-EPS-UAH.tex}: autorización en inglés para un tutor perteneciente a una universidad extranjera.
+  \item \texttt{TFG-AnexoVI-CompromisoConfidencialidad-EPS-UAH.tex}: compromisos individuales de confidencialidad del tutor, el cotutor y los miembros configurados del tribunal.
+  \item \texttt{TFG-AnexoV-ConvenioCooperacion-EPS-UAH.tex}: anexo para realizar el TFG mediante un convenio de cooperación educativa.
+  \item \texttt{TFG-AnexoIII-InformeTutorYRubrica-EPS-UAH.tex}: informe y rúbrica del tutor o tutores.
+  \item \texttt{TFG-AnexoIII-InformeTutorPlagio-UAH.tex}: informe del tutor sobre la revisión de plagio.
+  \item \texttt{TFG-AnexoIX-ActaYRubricaDefensa-EPS-UAH.tex}: acta y rúbrica del tribunal de defensa.
 \end{itemize}
 
 El \texttt{Makefile} de este directorio compila todos los formularios independientes y genera un PDF por cada uno. Los restantes ficheros \texttt{.tex} son fragmentos auxiliares incluidos por esos formularios y no deben compilarse por separado. También puedes abrir y compilar individualmente el documento que necesites con tu editor o herramienta de \LaTeX{} preferidos.
@@ -112,7 +111,7 @@ make
 
 El uso de \texttt{make} es opcional y requiere \texttt{latexmk}. Cada invocación comprueba las dependencias registradas y solo repite las pasadas de \texttt{pdflatex} cuando ha cambiado alguna fuente directa o alguno de los ficheros compartidos de \texttt{Config/}. También puedes compilar cada fichero individualmente con dos pasadas de \texttt{pdflatex} o mediante la función de construcción de tu editor de \LaTeX{} preferido. Estos formularios no utilizan la bibliografía ni los glosarios del libro principal.
 
-Si solo necesitas un formulario, puedes indicar directamente el nombre del PDF, por ejemplo \texttt{make TFG-InformeTutorYRubrica-EPS-UAH.pdf}. Los dos directorios utilizan la misma organización de objetivos: \texttt{autorizaciones} genera las autorizaciones y documentos afines, \texttt{convenios} genera los formularios de cooperación educativa y \texttt{evaluacion} genera los informes, actas y rúbricas. En \texttt{PapeleoTFM/} también puedes utilizar \texttt{solicitudes} para generar las solicitudes de prórroga y cambio de TFM. El objetivo \texttt{help} de cada directorio muestra las opciones disponibles.
+Si solo necesitas un formulario, puedes indicar directamente el nombre del PDF, por ejemplo \texttt{make TFG-AnexoIII-InformeTutorYRubrica-EPS-UAH.pdf}. Los dos directorios utilizan la misma organización de objetivos: \texttt{autorizaciones} genera las autorizaciones y documentos afines, \texttt{convenios} genera los formularios de cooperación educativa y \texttt{evaluacion} genera los informes, actas y rúbricas. En \texttt{PapeleoTFM/} también puedes utilizar \texttt{solicitudes} para generar las solicitudes de prórroga y cambio de TFM. El objetivo \texttt{help} de cada directorio muestra las opciones disponibles.
 
 El objetivo \texttt{clean} elimina únicamente los ficheros auxiliares de la compilación y conserva los PDF generados. Utiliza \texttt{distclean} cuando también quieras eliminar esos PDF.
 

@@ -49,9 +49,9 @@ build() {
 
 for spec in \
   'Anteproyecto|anteproyecto.tex|GIEC|WorkDeptES' \
-  'PapeleoTFG|TFG-ActaYRubricaDefensa-EPS-UAH.tex|GIEC|WorkDeptES' \
+  'PapeleoTFG|TFG-AnexoIX-ActaYRubricaDefensa-EPS-UAH.tex|GIEC|TutorDept' \
   'PapeleoTFM|TFM-ActaYRubricaDefensa-EPS-UAH.tex|MUIE|WorkDeptES' \
-  'PapeleoTFG|TFG-ConvenioCooperacion-EPS-UAH.tex|GIEC|TutorDept' \
+  'PapeleoTFG|TFG-AnexoV-ConvenioCooperacion-EPS-UAH.tex|GIEC|TutorDept' \
   'PapeleoTFM|TFM-AnexoI-ConvenioCooperacion-EPS-UAH.tex|MUIE|TutorDept' \
   'PapeleoTFM|TFM-AutorizacionPublicarAbierto.tex|MUIE|TutorDept' \
   'PapeleoTFM|TFM-AnexoV-SolicitudCambioTFM-EPS-UAH.tex|MUIE|TutorDept'; do

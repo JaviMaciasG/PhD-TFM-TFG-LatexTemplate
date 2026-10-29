@@ -21,7 +21,7 @@ for kind in tfg tfm; do
   component="Papeleo${kind^^}"
   guide="${kind^^}-GuiaPapeleo-EPS-UAH"
   source="$component/$guide.tex"
-  expected=8
+  expected=7
   [[ $kind == tfm ]] && expected=7
 
   documents=$(make --no-print-directory -s -C "$component" \
@@ -93,14 +93,14 @@ done
 
 check_contains 'printf '\''%s\n'\'' "${guide_pdfs[@]}" >> "$manifest"' AdminScripts/go.build-distribution.sh
 check_contains 'TODO "${guide_sources[@]}"; do' AdminScripts/go.build-distribution.sh
-for form in PapeleoTFG/TFG-ConvenioCooperacion-EPS-UAH.tex \
+for form in PapeleoTFG/TFG-AnexoV-ConvenioCooperacion-EPS-UAH.tex \
   PapeleoTFM/TFM-AnexoI-ConvenioCooperacion-EPS-UAH.tex \
   PapeleoTFM/TFM-AnexoV-SolicitudCambioTFM-EPS-UAH.tex; do
   check_contains '\newcommand{\AnnexNA}{\hl{N/D}}' "$form"
   check_contains '\sethlcolor{yellow}' "$form"
 done
 
-check_contains '\variable{myResearchVicerrectorGender}' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
+check_contains '\variable{myAcademicTutorDepartment}' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
 check_contains '\variable{myTribunalAlternateMemberGender}' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
 check_contains '\variable{myAuthorizationOpenPublishingEmbargoMonths}' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
 check_contains '\variable{myConfidentialContent}' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex

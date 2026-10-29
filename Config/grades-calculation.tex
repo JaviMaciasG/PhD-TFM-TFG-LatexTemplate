@@ -4,18 +4,42 @@
 % Uso: mantenimiento de la plantilla; normalmente no debes modificarlo.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pgfmathsetmacro{\varA}{\myAcademicTutorGrade}
-\pgfmathsetmacro{\varB}{\myTribunalGrade}
-\pgfmathsetmacro{\myFinalGrade}{\varA + \varB}
+% Las notas de entrada son valores sobre diez, no aportaciones ponderadas.
+\newcommand{\CheckPaperworkGrade}[2]{%
+  \pgfmathtruncatemacro{\gradeOutsideRange}{(#1 < 0) || (#1 > 10)}%
+  \ifnum\gradeOutsideRange=1
+    \PackageError{grades-calculation}{#2 must be between 0 and 10}%
+      {Use a numerical mark out of ten in Config/myconfig.tex.}%
+  \fi}
 
-% % Assign category based on number range using step-by-step conditions
-% \pgfmathparse{
-%   (\myFinalGrade < 5) * 1 +
-%   (\myFinalGrade >= 5) * (\myFinalGrade < 7) * 2 +
-%   (\myFinalGrade >= 7) * (\myFinalGrade < 9) * 3 +
-%   (\myFinalGrade >= 9) * 4
-% }
-% \edef\gradeCategory{\pgfmathresult}
+% La aritmética decimal evita errores de clasificación en límites como 7 y 9.
+\ExplSyntaxOn
+\newcommand{\CalculateTFGFinalGrade}{%
+  \edef\myFinalGrade{\fp_eval:n {(7 * \varA + 3 * \varB) / 10}}}
+\ExplSyntaxOff
+
+\pgfmathsetmacro{\varB}{\myTribunalGrade}
+\CheckPaperworkGrade{\varB}{myTribunalGrade}
+\ifthenelse{\equal{\myWorkType}{TFG}}
+{%
+  \pgfmathsetmacro{\varA}{\myAcademicTutorGrade}
+  \CheckPaperworkGrade{\varA}{myAcademicTutorGrade}
+  \CalculateTFGFinalGrade
+  \pgfmathtruncatemacro{\gradeContradictsFailedComponent}{%
+    ((\varA < 5) || (\varB < 5)) && (\myFinalGrade >= 5)}
+  \ifnum\gradeContradictsFailedComponent=1
+    \PackageError{grades-calculation}{TFG weighted pass with a failed component}%
+      {Article 9.3 requires a failed TFG when either component is below five.^^J%
+       Ask the department how to record the final mark; no capped mark is invented.}%
+  \fi
+}
+{%
+  \ifthenelse{\equal{\myWorkType}{TFM}}
+  {\edef\myFinalGrade{\varB}}
+  {\PackageError{grades-calculation}{Unsupported work type: \myWorkType}%
+     {This helper is intended for TFG and TFM paperwork only.}%
+   \def\myFinalGrade{0}}
+}
 
 \pgfmathparse{
   int( (\myFinalGrade < 5) * 1 +

@@ -12,11 +12,11 @@ cp -a "$repository_root/Config" "$fixture/Config"
 cp -a "$repository_root/Book/biblio" "$fixture/Book/"
 ln -s "$repository_root/Book/logos" "$fixture/Book/logos"
 cp "$repository_root/PapeleoTFG/Makefile" \
-  "$repository_root/PapeleoTFG/TFG-ConvenioCooperacion-EPS-UAH.tex" \
+  "$repository_root/PapeleoTFG/TFG-AnexoV-ConvenioCooperacion-EPS-UAH.tex" \
   "$repository_root/PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex" \
   "$fixture/PapeleoTFG/"
 
-document=TFG-ConvenioCooperacion-EPS-UAH
+document=TFG-AnexoV-ConvenioCooperacion-EPS-UAH
 cases=(
   'male|female|present|spanish'
   'female|male|present|spanish'

@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Función: informe del tutor sobre el control de plagio del TFG.
+% Función: informe del tutor y rúbrica de evaluación del TFG.
 %
 % Normativa de TFG:
 % EPS-UAH: anexo III; revisada el 05/06/2026.
@@ -55,78 +55,66 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Let's start with the real stuff
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper,margin=2cm}
+
 \begin{document}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% BEGIN within-document configuration, frontpage and cover pages generation
-%
-\input{../Config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
-%
-% END within-document configuration, frontpage and cover pages generation
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\maketitle
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% BEGIN Report content
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{TFG-SeccionInformePlagio-UAH.tex}
-\input{TFG-SeccionTextoProteccionDatos-UAH.tex}
-\newpage
+\input{../Config/setlanguagedependentissues.tex}
+\input{TFG-AnexoIII-SeccionInformePlagio-UAH.tex}
+\input{TFG-AnexoIII-SeccionTextoProteccionDatos-EPS-UAH.tex}
+\clearpage
 
 \thispagestyle{plain}
+\noindent\textbf{\large ACTA DE EVALUACIÓN DE TRABAJO DE FIN DE GRADO}
+\par\medskip
+\noindent CURSO \myThesisAcademicYear
 
-%\section*{\normalsize \MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}
-
-\noindent
-\begin{tabular}{|M{\textwidth}|}
-\hline
-\textbf{\small \MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}\vspace*{-5pt}\\
-\hline
-\end{tabular}
-
-
-
+\section*{\MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}
 \begin{description}
-  \item[Nombre:] \myAcademicTutorFullName
-  \item[Cargo:] \myAcademicTutorPosition
-  \item[Correo electrónico:] \myAcademicTutorEmail
-  \item[FIRMA:]
-
+  \item[Nombre y apellidos:] \myAcademicTutorFullName
+  \item[Departamento:] \myAcademicTutorDepartment
 \end{description}
 
-\vspace{2.25cm}
+\ifthenelse{\equal{\myCoTutorFullName}{}}{}{
+  \section*{DATOS \MakeUppercase{\wordCoTutorDelOrDeLa} \MakeUppercase{\wordCoTutorOrCoTutora} (si procede)}
+  \begin{description}
+    \item[Nombre y apellidos:] \myCoTutorFullName
+    \item[Departamento / institución:] \AcademicCotutorAffiliation
+  \end{description}
+}
 
+\medskip
+\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+  \textbf{CALIFICACIÓN (hasta 10 puntos, según rúbrica de evaluación):} \myAcademicTutorGrade}}
+
+\medskip
+\noindent\textbf{COMENTARIOS:}
+\vspace{1.5cm}
+\vfill
+
+\noindent En Alcalá de Henares, a la fecha de la firma digital.
+
+\medskip
 \ifthenelse{\equal{\myCoTutorFullName}{}}
 {
+  \noindent\begin{tabularx}{\linewidth}{|X|}
+    \hline
+    \expandafter\makefirstuc\expandafter{\wordTutorOrTutora} \\
+    \rule{0pt}{1.7cm} \\
+    Fdo.: \myAcademicTutorFullName \\ \hline
+  \end{tabularx}
 }
 {
-%\section*{\normalsize \MakeUppercase{\wordCoTutorOrCoTutora}}
-
-\noindent
-\begin{tabular}{|M{\textwidth}|}
-\hline
-\textbf{\small \MakeUppercase{\wordCoTutorOrCoTutora}}\vspace*{-5.5pt}\\
-\hline
-\end{tabular}
-
-
-\begin{description}
-  \item[Nombre:] \myCoTutorFullName
-  \item[Cargo:] \myCoTutorPosition
-  \item[Correo electrónico:] \myCoTutorEmail
-  \item[FIRMA:]
-\end{description}
+  \noindent\begin{tabularx}{\linewidth}{|X|X|}
+    \hline
+    \expandafter\makefirstuc\expandafter{\wordTutorOrTutora} &
+    \expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora} \\
+    \rule{0pt}{1.7cm} & \\
+    Fdo.: \myAcademicTutorFullName & Fdo.: \myCoTutorFullName \\ \hline
+  \end{tabularx}
 }
 
-\vspace{2.25cm}
-
-
-\noindent En Alcalá de Henares a la fecha de la firma digital % \myThesisDefenseDate
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% END Report content
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+\medskip
+\input{TFG-AnexoIII-SeccionTextoProteccionDatos-EPS-UAH.tex}
+\clearpage
+\input{TFG-AnexoIII-Rubrica-Tutor-EPS-UAH.tex}
 \end{document}

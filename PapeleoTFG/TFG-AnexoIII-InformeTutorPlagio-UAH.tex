@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Función: informe del tutor y rúbrica de evaluación del TFG.
+% Función: informe del tutor sobre el control de plagio del TFG.
 %
 % Normativa de TFG:
 % EPS-UAH: anexo III; revisada el 05/06/2026.
@@ -70,15 +70,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN Report content
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{TFG-SeccionInformePlagio-UAH.tex}
-\input{TFG-SeccionTextoProteccionDatos-EPS-UAH.tex}
+\input{TFG-AnexoIII-SeccionInformePlagio-UAH.tex}
+\input{TFG-AnexoIII-SeccionTextoProteccionDatos-EPS-UAH.tex}
 \newpage
 
 \thispagestyle{plain}
-
-\noindent \textbf{\small ACTA Y RÚBRICA DE DEFENSA DE TRABAJO DE FIN DE GRADO. CURSO \myThesisAcademicYear}
-
-\vspace{0.5cm}
 
 %\section*{\normalsize \MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}
 
@@ -93,11 +89,12 @@
 
 \begin{description}
   \item[Nombre:] \myAcademicTutorFullName
-  \item[Cargo:] \myAcademicTutorPosition
-  \item[Correo electrónico:] \myAcademicTutorEmail
+  \item[Departamento:] \myAcademicTutorDepartment
+  \item[FIRMA:]
+
 \end{description}
 
-\vspace{0.25cm}
+\vspace{2.25cm}
 
 \ifthenelse{\equal{\myCoTutorFullName}{}}
 {
@@ -115,90 +112,15 @@
 
 \begin{description}
   \item[Nombre:] \myCoTutorFullName
-  \item[Cargo:] \myCoTutorPosition
-  \item[Correo electrónico:] \myCoTutorEmail
+  \item[Departamento / institución:] \AcademicCotutorAffiliation
+  \item[FIRMA:]
 \end{description}
 }
 
-\vspace{0.25cm}
+\vspace{2.25cm}
 
-%\section*{\normalsize CALIFICACIÓN (hasta 7 puntos, según rúbrica de evaluación):  \myAcademicTutorGrade}
-
-\noindent
-\begin{tabular}{|M{\textwidth}|}
-  \hline
-  \cellcolor[HTML]{FFFFFF}
-  \textbf{\small CALIFICACIÓN (hasta 7 puntos, según rúbrica de evaluación):  \myAcademicTutorGrade}\vspace*{-5.5pt}\\
-  \cellcolor[HTML]{FFFFFF}\\
-\hline
-\end{tabular}
-
-
-\begin{description}
-  \item[Comentarios:] %\textit{(A rellenar por el/la tutor/a)}
-\end{description}
-% \vspace{4cm}
-\vfill{}
 
 \noindent En Alcalá de Henares a la fecha de la firma digital % \myThesisDefenseDate
-
-\ifthenelse{\equal{\myCoTutorFullName}{}}
-{
-  \centering
-\begin{table}[ht]
-  \centering
-
-  \begin{tabular}{|p{8cm}|} % Using p{} for fixed-width columns
-    \cline{1-1}
-    \begin{minipage}{8cm} % Corrected minipage usage
-      \centering
-      \vspace{0.5cm} % Space for signature
-      \expandafter\makefirstuc\expandafter{\wordTutorOrTutora} \\
-      \vspace{2cm} % Space for signature
-      Fdo: \myAcademicTutorFullName
-      \vspace{0.5cm} % Space for signature
-    \end{minipage}
-    \\ \cline{1-1}
-  \end{tabular}
-
-\end{table}
-}
-{
-\begin{table}[ht]
-  \centering
-
-  \begin{tabular}{|p{8cm}|p{8cm}|} % Using p{} for fixed-width columns
-    \cline{1-2}
-    \begin{minipage}{8cm} % Corrected minipage usage
-      \centering
-      \vspace{0.2cm} % Space for signature
-      \expandafter\makefirstuc\expandafter{\wordTutorOrTutora} \\
-      \vspace{2cm} % Space for signature
-      Fdo: \myAcademicTutorFullName
-      \vspace{0.2cm} % Space for signature
-    \end{minipage}
-    &
-    \begin{minipage}{8cm} % Corrected minipage usage
-      \centering
-      \vspace{0.2cm} % Space for signature
-      \expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora} \\
-      \vspace{2cm} % Space for signature
-      Fdo: \myCoTutorFullName
-      \vspace{0.2cm} % Space for signature
-    \end{minipage}
-    \\
-    \cline{1-2}
-  \end{tabular}
-
-\end{table}
-}
-
-\newpage
-
-\thispagestyle{plain}
-
-
-\input{TFG-Rubrica-Tutor-EPS-UAH.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % END Report content

@@ -2,7 +2,7 @@
 % Función: acta de defensa y rúbrica de evaluación del TFG.
 %
 % Normativa de TFG:
-% EPS-UAH: anexo X; revisada el 05/06/2026.
+% EPS-UAH: anexo IX; revisada el 05/06/2026.
 %
 % Uso: configura Config/myconfig.tex y compila este fichero por separado.
 % Normalmente no necesitas modificarlo, salvo para completar datos
@@ -31,6 +31,8 @@
                                   % "postamble" is not a valid word... :-)
 
 \input{../Config/grades-calculation.tex}       % DO NOT TOUCH THIS LINE.
+\geometry{a4paper,margin=2cm}
+\setlist[description]{itemsep=0pt,parsep=0pt,topsep=3pt}
 %
 % END Preamble and configuration section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -82,6 +84,7 @@
   }                                               % DO NOT TOUCH THIS LINE
   \item[Autor:] \myAuthorFullName
   \item[DNI:] \myAuthorDNI
+  \item[Correo electrónico:] \myAuthorEmail
   \item[Titulación:] \myDegreefull
 \end{description}
 
@@ -98,14 +101,14 @@
         {
   \item[\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}:] \myCoTutorFullName
         }
-  \item[Departmento:] \myDepartment
+  \item[Departamento:] \myAcademicTutorDepartment
 
         \ifthenelse{\equal{\myCoTutorFullName}{}}
         {
-  \item[Calificación \wordTutorDelOrDeLa{} \wordTutorOrTutora:] \myAcademicTutorGrade
+  \item[Calificación \wordTutorDelOrDeLa{} \wordTutorOrTutora:] \myAcademicTutorGrade{} (sobre 10)
       }
         {
-  \item[Calificación \wordTutorDelOrDeLa{} \wordTutorOrTutora{} y \wordCoTutorDelOrDeLa{} \wordCoTutorOrCoTutora:] \myAcademicTutorGrade
+  \item[Calificación \wordTutorDelOrDeLa{} \wordTutorOrTutora{} y \wordCoTutorDelOrDeLa{} \wordCoTutorOrCoTutora:] \myAcademicTutorGrade{} (sobre 10)
           }
 \end{description}
 
@@ -114,7 +117,7 @@
 \section*{TRIBUNAL CALIFICADOR}
 
 \begin{description}
-  \item[Calificación del tribunal (hasta 3 puntos, según rúbrica):] \myTribunalGrade{}
+  \item[Calificación del tribunal (hasta 10 puntos, según rúbrica):] \myTribunalGrade{}
 \end{description}
 
 %\vspace{1cm}
@@ -130,6 +133,9 @@
   \end{tabularx}
 \end{table}
 
+\noindent La calificación final se calcula con un 70\,\% de la nota del tutor/cotutor y un 30\,\% de la nota del tribunal, ambas sobre diez.
+
+\medskip
 \noindent\textbf{Propuesto para Matrícula de Honor}$\mathbf{^{*}}$ ~~~~~~~~ \MHProposalBoxes{}
 
 \noindent$^{*}$ El Tribunal podrá proponer para Matrícula de Honor un TFG con calificación de Sobresaliente. Si el estudiante es propuesto para Matrícula de Honor, se debe rellenar obligatoriamente el campo de ``Observaciones del Tribunal''.
@@ -145,19 +151,19 @@
 \begin{tikzpicture}[remember picture, overlay]
   % Draw a rectangle that perfectly aligns with text margins
   \draw [thick]
-    ($(current page.north west) + (\dimexpr\oddsidemargin+0.9in, -\dimexpr\topmargin+1in)$)
+    ($(current page.north west) + (2cm,-2cm)$)
     rectangle
-    ($(current page.south east) + (-\dimexpr\evensidemargin+1in, \dimexpr-\textheight-1in+\paperheight)$);
+    ($(current page.south east) + (-2cm,2cm)$);
 \end{tikzpicture}
 
 % Content inside the rectangle
-\vspace*{-.8in} % Adjust text alignment
+\vspace*{2mm}
 
-\noindent\textbf{OBSERVACIONES DEL TRIBUNAL:}
+\noindent\hspace*{2mm}\textbf{OBSERVACIONES DEL TRIBUNAL:}
 
 \newpage
 
-\input{TFG-Rubrica-Tribunal-EPS-UAH.tex}
+\input{TFG-AnexoIX-Rubrica-Tribunal-EPS-UAH.tex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

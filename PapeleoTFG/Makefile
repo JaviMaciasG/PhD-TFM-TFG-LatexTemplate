@@ -5,18 +5,17 @@ LATEX_CONFIG_DIR := ../Config
 include $(LATEX_CONFIG_DIR)/latex-common.mk
 
 AUTHORIZATION_DOCUMENTS := \
-	TFG-AutorizacionAutorPubAbierto-EPS-UAH \
-	TFG-AutorizacionTutorExtranjeroPubAbierto-EPS-UAH \
-	TFG-CompromisoConfidencialidad-EPS-UAH \
-	TFG-AutorizacionALLPubAbierto-EPS-UAH
+	TFG-AnexoVIII-AutorizacionTutorExtranjeroPubAbierto-EPS-UAH \
+	TFG-AnexoVI-CompromisoConfidencialidad-EPS-UAH \
+	TFG-AnexoVII-AutorizacionATodosPubAbierto-EPS-UAH
 
 AGREEMENT_DOCUMENTS := \
-	TFG-ConvenioCooperacion-EPS-UAH
+	TFG-AnexoV-ConvenioCooperacion-EPS-UAH
 
 EVALUATION_DOCUMENTS := \
-	TFG-InformeTutorYRubrica-EPS-UAH \
-	TFG-ActaYRubricaDefensa-EPS-UAH \
-	TFG-InformeTutorPlagio-UAH
+	TFG-AnexoIII-InformeTutorYRubrica-EPS-UAH \
+	TFG-AnexoIX-ActaYRubricaDefensa-EPS-UAH \
+	TFG-AnexoIII-InformeTutorPlagio-UAH
 
 DOCUMENTS := \
 	$(AUTHORIZATION_DOCUMENTS) \

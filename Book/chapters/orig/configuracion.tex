@@ -333,12 +333,12 @@ La autorización de publicación, el embargo y la licencia representan decisione
 Las siguientes variables recogen las calificaciones y la posible propuesta de matrícula de honor:
 
 \begin{itemize}
-  \item \texttt{\textbackslash{}myAcademicTutorGrade}: calificación asignada por el tutor académico. En la rúbrica de TFG incluida actualmente corresponde a un máximo de siete puntos.
-  \item \texttt{\textbackslash{}myTribunalGrade}: calificación asignada por el tribunal. En la rúbrica de TFG incluida actualmente corresponde a un máximo de tres puntos.
+  \item \texttt{\textbackslash{}myAcademicTutorGrade}: nota del tutor y, si existe, del cotutor del TFG, de cero a diez. Introduce la nota sin ponderarla previamente. No interviene en la nota final del TFM.
+  \item \texttt{\textbackslash{}myTribunalGrade}: nota del tribunal, de cero a diez. En el TFG es uno de los componentes de la nota final. En el TFM es directamente la nota final.
   \item \texttt{\textbackslash{}myTribunalMHProposal}: indica si el tribunal propone la concesión de matrícula de honor. Admite los valores \texttt{YES} y \texttt{NO}, respetando las mayúsculas.
 \end{itemize}
 
-Las calificaciones del tutor y del tribunal se utilizan en los documentos de acta y rúbrica que las contemplan. La plantilla calcula automáticamente la calificación conjunta en esos formularios. Estos valores no afectan al contenido ni a la compilación del libro principal.
+Para los TFG de la EPS-UAH, la plantilla calcula la nota final como \(0.7 \times \mbox{nota del tutor} + 0.3 \times \mbox{nota del tribunal}\). Por ejemplo, si introduces 8 y 6 obtendrás 7.4. La rúbrica del tutor reparte diez puntos entre proyecto (3), desarrollo (5) y memoria (2), y la del tribunal entre proyecto (3) y memoria y presentación oral (7). La plantilla rechaza notas fuera del intervalo de cero a diez y detiene la compilación del acta si alguna parte está suspensa pero la media daría aprobado, porque el artículo 9.3 hace vinculante ese suspenso. En ese caso, consulta al departamento cómo consignar la nota, sin sustituirla por una cifra inventada. En los TFM se utiliza únicamente la nota del tribunal. Estos valores no afectan al contenido ni a la compilación del libro principal.
 
 \section{Configuración de casos específicos}
 
