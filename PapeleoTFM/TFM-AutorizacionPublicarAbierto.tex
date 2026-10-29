@@ -42,10 +42,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 
-
-%\title{Solicitud de anteproyecto de \myWorkTypeFull} % DO NOT TOUCH THIS LINE
-%\date{\myThesisProposalDate}                               % DO NOT TOUCH THIS LINE
-%\author{\myAuthorFullName}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parindent}{0pt}
+\setlength{\extrarowheight}{2pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Let's start with the real stuff
@@ -141,43 +141,42 @@
 
 \textbf{Los abajo firmantes:}
 
-\boxAuthorizeOpenPublishing AUTORIZAN (en caso de autorizar, elegir la opción deseada)
+\TextSizedCheckbox{\boxAuthorizeOpenPublishing{}}~AUTORIZAN (en caso de autorizar, elegir la opción deseada)
 
 \vspace{-0.3cm}
 
-~~~\boxEmbargoZeroMonths SIN PERIODO DE EMBARGO
+~~~~\TextSizedCheckbox{\boxEmbargoZeroMonths{}}~SIN PERIODO DE EMBARGO
 
 \vspace{-0.3cm}
 
-~~~\boxEmbargoSixMonths CON PERIODO DE EMBARGO DE 6 MESES
+~~~~\TextSizedCheckbox{\boxEmbargoSixMonths{}}~CON PERIODO DE EMBARGO DE 6 MESES
 
 \vspace{-0.3cm}
 
-~~~\boxEmbargoTwelveMonths CON PERIODO DE EMBARGO DE 12 MESES
+~~~~\TextSizedCheckbox{\boxEmbargoTwelveMonths{}}~CON PERIODO DE EMBARGO DE 12 MESES
 
 \vspace{-0.3cm}
 
-~~~\boxEmbargoEighteenMonths CON PERIODO DE EMBARGO DE 18 MESES
+~~~~\TextSizedCheckbox{\boxEmbargoEighteenMonths{}}~CON PERIODO DE EMBARGO DE 18 MESES
 
 \vspace{-0.3cm}
 
-~~~\boxEmbargoTwentyfourMonths CON PERIODO DE EMBARGO DE 24 MESES
+~~~~\TextSizedCheckbox{\boxEmbargoTwentyfourMonths{}}~CON PERIODO DE EMBARGO DE 24 MESES
 
 \vspace{-0.1cm}
 
-\boxDoNotAuthorizeOpenPublishing NO AUTORIZAN
+\TextSizedCheckbox{\boxDoNotAuthorizeOpenPublishing{}}~NO AUTORIZAN
 
 \vspace{0.1cm}
 
-\begin{spacing}{0.8}
+\begin{spacing}{0.9}
+\footnotesize El depósito y puesta a disposición del Trabajo Fin de Grado en el \href{https://ebuah.uah.es/dspace/}{Repositorio Institucional de la Universidad e-BUAH}, de acceso abierto. Aceptando la \href{https://biblioteca.uah.es/biblioteca/documentos/Licencia_eBuah.pdf}{licencia} para su publicación y otorgando las condiciones de uso de la licencia Creative Commons \textit{Reconocimiento-NoComercial-Sin-ObraDerivada}.
 
-{\footnotesize El depósito y puesta a disposición del Trabajo Fin de Máster en el
-Repositorio Institucional de la Universidad, e-BUAH, de acceso libre y
-gratuito a través de Internet, y otorgando las condiciones de uso de
-la licencia Creative Commons
-Reconocimiento-NoComercial-Sin-ObraDerivada.  Más información en:
-\url{https://creativecommons.org/licenses/by-nc-nd/4.0/}}
+\vspace{0.15cm}
+
+Más información en: \href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{https://creativecommons.org/licenses/by-nc-nd/4.0/}
 \end{spacing}
+
 \vspace{0.5cm}  
 %\small
 \begin{spacing}{1.0}
@@ -204,15 +203,14 @@ Reconocimiento-NoComercial-Sin-ObraDerivada.  Más información en:
 }
 \end{spacing}
 
-\vspace{0.1cm}
+\vspace{0.5cm}
 
-{\footnotesize \url{https://ebuah.uah.es}}
+%{\footnotesize \href{https://ebuah.uah.es}{https://ebuah.uah.es}}
 
 %\vspace{0.1cm}
 
 \begin{spacing}{0.8}
-
-{\scriptsize Los datos personales recogidos serán tratados por la Universidad de
+\scriptsize Los datos personales recogidos serán tratados por la Universidad de
 Alcalá con la finalidad de gestionar su autorización para la inclusión
 del Trabajo de Fin de Máster en el Archivo Abierto Institucional
 e-BUAH de la Universidad y su acceso libre a través de Internet, así
@@ -230,8 +228,7 @@ s/n. 28801 Alcalá de Henares. Madrid) o por correo electrónico
 (protecciondedatos@uah.es), adjuntando copia del DNI o equivalente. En
 caso de conflicto, se podrá plantear recurso ante la Agencia Española
 de Protección de Datos. Para una información más detallada puede
-consultarse la Política de Privacidad de la Universidad.}
-
+consultarse la Política de Privacidad de la Universidad.
 \end{spacing}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
