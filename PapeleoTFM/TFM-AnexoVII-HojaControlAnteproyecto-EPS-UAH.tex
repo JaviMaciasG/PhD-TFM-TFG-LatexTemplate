@@ -24,6 +24,8 @@
 \date{\myThesisProposalDate}
 \author{\myAuthorFullName}
 
+\renewcommand{\arraystretch}{1.15}
+
 \begin{document}
 
 \pagestyle{empty}
@@ -58,7 +60,7 @@
     TELÉFONO: \myAuthorTelephone \quad EMAIL: \myAuthorEmail \\
     ESTUDIOS: \myDegreefull \\
     PERFIL/ESPECIALIDAD: \mySpecialty \\
-    \rule{0pt}{1.7em}IDIOMA ESCOGIDO PARA DESARROLLAR EL TRABAJO: [\xUseSpanish] ESPAÑOL \quad [\xUseEnglish] INGLÉS
+    \rule{0pt}{1.7em}IDIOMA ESCOGIDO PARA DESARROLLAR EL TRABAJO:~~~ \ifthenelse{\equal{\myLanguage}{spanish}}{\TextSizedCheckbox{$\XBox$}}{\TextSizedCheckbox{$\Box$}} ESPAÑOL \quad \ifthenelse{\equal{\myLanguage}{english}}{\TextSizedCheckbox{$\XBox$}}{\TextSizedCheckbox{$\Box$}} INGLÉS
   \end{tabularx}
 \end{spacing}
 
@@ -101,8 +103,8 @@
 \small
   \begin{tabularx}{\textwidth}{| X |}
     \hline
-    \cellcolor{gray!10} \underline{\textbf{Acuerdo de la Comisión de \myWorkType{} (\emph{a rellenar por la Comisión})}} \\
-    \cellcolor{gray!10}\rule{0pt}{1.8em}Aceptado: $\Box$ Sí \quad $\Box$ No \quad Fecha: \underline{\hspace{2cm}}\\
+    \cellcolor{gray!10} \underline{\textbf{Acuerdo de la Comisión de \myWorkType{} del Departamento (\emph{a rellenar por la Comisión})}} \\
+    \cellcolor{gray!10}\rule{0pt}{1.8em}Aceptado: \TextSizedCheckbox{$\Box$} Sí \quad \TextSizedCheckbox{$\Box$} No \quad Fecha: \underline{\hspace{2cm}}\\
     \cellcolor{gray!10}Periodo de validez: \hrulefill\\
     \cellcolor{gray!10} Causa del rechazo: \hrulefill\\
     \cellcolor{gray!10} \hrulefill\\
