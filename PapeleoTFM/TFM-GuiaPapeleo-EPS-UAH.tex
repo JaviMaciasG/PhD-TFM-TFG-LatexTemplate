@@ -102,7 +102,7 @@ Configura los datos y opciones siguientes:
 \begin{itemize}
   \item Estudiante y trabajo: \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myDegree}, \variable{myBookTitleSpanish} y \variable{myBookTitleEnglish} si \variable{myLanguage} es \texttt{english}.
   \item Director: \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDNI}, \variable{myAcademicTutorDepartment} y \variable{myAcademicTutorInstitution}.
-  \item Codirector: \variable{myCoTutorFullName}, \variable{myCoTutorDNI}, \variable{myAcademicCotutorDepartment} y \variable{myAcademicCotutorInstitution}. Su bloque y firma se omiten si su nombre está vacío.
+  \item Codirector: \variable{myCoTutorFullName}, \variable{myCoTutorDNI}, \variable{myCoTutorDepartment} y \variable{myCoTutorInstitution}. Su bloque y firma se omiten si su nombre está vacío.
   \item Publicación: \variable{myAuthorizationOpenPublishing}, con \texttt{Yes} o \texttt{No}. Si autorizas, \variable{myAuthorizationOpenPublishingEmbargoMonths} selecciona \texttt{0}, \texttt{6}, \texttt{12}, \texttt{18} o \texttt{24} meses de embargo. No utilices otros valores.
   \item Género: \variable{myAuthorGender}, \variable{myAcademicTutorGender} y \variable{myCoTutorGender}. Adaptan los rótulos y firmas, por ejemplo \emph{la autora}, \emph{la directora} y \emph{el codirector}.
 \end{itemize}
@@ -128,7 +128,7 @@ Revisa estas variables:
 \begin{itemize}
   \item Estudiante: \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorTelephone} y \variable{myAuthorEmail}.
   \item Director académico: \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDNI}, \variable{myAcademicTutorDepartment}, \variable{myAcademicTutorInstitution} y \variable{myAcademicTutorEmail}.
-  \item Entidad y codirector externo: \variable{myCoTutorFullName}, \variable{myAcademicCotutorInstitution}, \variable{myCoTutorPosition}, \variable{myCoTutorDNI} y \variable{myCoTutorEmail}. Si no hay codirector, los campos derivados de él muestran \hl{N/D}.
+  \item Entidad y codirector externo: \variable{myCoTutorFullName}, \variable{myCoTutorInstitution}, \variable{myCoTutorPosition}, \variable{myCoTutorDNI} y \variable{myCoTutorEmail}. Si no hay codirector, los campos derivados de él muestran \hl{N/D}.
   \item Firma por la UAH: \variable{mySchoolDeputyDirectorFullName} y \variable{mySchoolDeputyDirectorGender}, con \texttt{male} o \texttt{female}. El nombre aparece sobre el cargo \emph{Subdirector de la} o \emph{Subdirectora de la}, seguido del nombre de la escuela en la línea siguiente. Si el nombre está vacío, su línea permanece en blanco.
   \item Trabajo: \variable{myDegree}, \variable{myBookTitleSpanish} y \variable{myThesisAcademicYear}; la titulación proporciona el centro y el tipo de trabajo.
   \item Género: \variable{myAuthorGender}, \variable{myAcademicTutorGender} y \variable{myCoTutorGender}, para los tratamientos del estudiante y los rótulos de la dirección académica y de la entidad. Algunos rótulos son fijos.
@@ -174,7 +174,7 @@ Utiliza \variable{myAuthorFullName}, \variable{myBookTitleSpanish} o \variable{m
 
 \fichero{TFM-AnexoV-SolicitudCambioTFM-EPS-UAH.tex}. Anexo V de la normativa EPS-UAH aprobada el 31/10/2025 y el 30/01/2026. Recoge los datos de la dirección, del estudiante y del trabajo cuyo cambio solicitas.
 
-Utiliza \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDepartment} y \variable{myAcademicTutorInstitution}, \variable{myCoTutorFullName}, \variable{myAcademicCotutorDepartment} y \variable{myAcademicCotutorInstitution}, \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorEmail} y \variable{myBookTitleSpanish} o \variable{myBookTitleEnglish}. Un codirector vacío produce \hl{N/D} en sus datos. El encabezado de los datos del estudiante utiliza \variable{myAuthorGender} para escribir \emph{del estudiante} o \emph{de la estudiante}. Los encabezados de la dirección utilizan \variable{myAcademicTutorGender} y \variable{myCoTutorGender} para escribir, por ejemplo, \emph{del director académico}, \emph{de la directora académica}, \emph{del codirector} o \emph{de la codirectora}. Debes completar la exposición razonada, lo que solicitas y el espacio de firma, marcados como \hl{N/D}; no hay variables de configuración específicas para esos campos.
+Utiliza \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDepartment} y \variable{myAcademicTutorInstitution}, \variable{myCoTutorFullName}, \variable{myCoTutorDepartment} y \variable{myCoTutorInstitution}, \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorEmail} y \variable{myBookTitleSpanish} o \variable{myBookTitleEnglish}. Un codirector vacío produce \hl{N/D} en sus datos. El encabezado de los datos del estudiante utiliza \variable{myAuthorGender} para escribir \emph{del estudiante} o \emph{de la estudiante}. Los encabezados de la dirección utilizan \variable{myAcademicTutorGender} y \variable{myCoTutorGender} para escribir, por ejemplo, \emph{del director académico}, \emph{de la directora académica}, \emph{del codirector} o \emph{de la codirectora}. Debes completar la exposición razonada, lo que solicitas y el espacio de firma, marcados como \hl{N/D}; no hay variables de configuración específicas para esos campos.
 
 \medskip
 \begin{minipage}{\linewidth}

@@ -37,7 +37,7 @@ for spec in "${cases[@]}"; do
     sed -i \
       -e 's/\\newcommand{\\myCoTutorFullName}{[^}]*}/\\newcommand{\\myCoTutorFullName}{}/' \
       -e 's/\\newcommand{\\myAcademicTutorDepartment}{[^}]*}/\\newcommand{\\myAcademicTutorDepartment}{}/' \
-      -e 's/\\newcommand{\\myAcademicCotutorDepartment}{[^}]*}/\\newcommand{\\myAcademicCotutorDepartment}{Departamento de prueba}/' \
+      -e 's/\\newcommand{\\myCoTutorDepartment}{[^}]*}/\\newcommand{\\myCoTutorDepartment}{Departamento de prueba}/' \
       "$fixture/Config/myconfig.tex"
   fi
   if ! make -C "$fixture/PapeleoTFM" "$document.pdf" > "$fixture/build.log" 2>&1; then

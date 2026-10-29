@@ -18,7 +18,7 @@ sed -i \
   -e 's/\\newcommand{\\myDepartment}{[^}]*}/\\newcommand{\\myDepartment}{WorkDeptES}/' \
   -e 's/\\newcommand{\\myDepartmentEnglish}{[^}]*}/\\newcommand{\\myDepartmentEnglish}{WorkDeptEN}/' \
   -e 's/\\newcommand{\\myAcademicTutorDepartment}{[^}]*}/\\newcommand{\\myAcademicTutorDepartment}{TutorDept}/' \
-  -e 's/\\newcommand{\\myAcademicCotutorDepartment}{[^}]*}/\\newcommand{\\myAcademicCotutorDepartment}{CotutorDept}/' \
+  -e 's/\\newcommand{\\myCoTutorDepartment}{[^}]*}/\\newcommand{\\myCoTutorDepartment}{CotutorDept}/' \
   -e 's/\\newcommand{\\myCoTutorFullName}{[^}]*}/\\newcommand{\\myCoTutorFullName}{Cotutora de prueba}/' \
   "$fixture/Config/myconfig.tex"
 

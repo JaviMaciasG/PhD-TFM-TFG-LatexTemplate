@@ -51,8 +51,8 @@ sed -i \
   -e 's/\\newcommand{\\myLanguage}{[^}]*}/\\newcommand{\\myLanguage}{spanish}/' \
   -e 's/\\newcommand{\\myDepartment}{[^}]*}/\\newcommand{\\myDepartment}{WorkDept}/' \
   -e 's/\\newcommand{\\myAcademicTutorDepartment}{[^}]*}/\\newcommand{\\myAcademicTutorDepartment}{TutorDept}/' \
-  -e 's/\\newcommand{\\myAcademicCotutorDepartment}{[^}]*}/\\newcommand{\\myAcademicCotutorDepartment}{CotutorDept}/' \
-  -e 's/\\newcommand{\\myAcademicCotutorInstitution}{[^}]*}/\\newcommand{\\myAcademicCotutorInstitution}{CotutorInstitution}/' \
+  -e 's/\\newcommand{\\myCoTutorDepartment}{[^}]*}/\\newcommand{\\myCoTutorDepartment}{CotutorDept}/' \
+  -e 's/\\newcommand{\\myCoTutorInstitution}{[^}]*}/\\newcommand{\\myCoTutorInstitution}{CotutorInstitution}/' \
   -e 's/\\newcommand{\\myCoTutorFullName}{[^}]*}/\\newcommand{\\myCoTutorFullName}{Cotutora de prueba}/' \
   -e 's/\\newcommand{\\myTribunalSecondSpokesperson}{[^}]*}/\\newcommand{\\myTribunalSecondSpokesperson}{Segunda vocal de prueba}/' \
   -e 's/\\newcommand{\\myTribunalSecondSpokespersonGender}{[^}]*}/\\newcommand{\\myTribunalSecondSpokespersonGender}{female}/' \

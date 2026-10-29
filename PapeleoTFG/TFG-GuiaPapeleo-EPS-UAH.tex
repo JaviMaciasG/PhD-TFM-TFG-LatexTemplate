@@ -98,7 +98,7 @@ Configura los siguientes datos:
 \begin{itemize}
   \item Estudiante y título: \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myBookTitleSpanish} y \variable{myDegree} (para la titulación).
   \item Tutor: \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDNI}, \variable{myAcademicTutorDepartment} y \variable{myAcademicTutorInstitution}.
-  \item Cotutor, si existe: \variable{myCoTutorFullName}, \variable{myCoTutorDNI}, \variable{myAcademicCotutorDepartment} y \variable{myAcademicCotutorInstitution}.
+  \item Cotutor, si existe: \variable{myCoTutorFullName}, \variable{myCoTutorDNI}, \variable{myCoTutorDepartment} y \variable{myCoTutorInstitution}.
   \item Publicación: \variable{myAuthorizationOpenPublishing}, con \texttt{Yes} o \texttt{No}. Este formulario no muestra opciones de embargo.
   \item Género: \variable{myAuthorGender}, \variable{myAcademicTutorGender} y \variable{myCoTutorGender}; adaptan los rótulos y las firmas. La firma del cotutor desaparece si su nombre está vacío.
 \end{itemize}
@@ -136,7 +136,7 @@ Utiliza los siguientes datos:
 \begin{itemize}
   \item Estudiante: \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorTelephone} y \variable{myAuthorEmail}.
   \item Tutor académico: \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDNI}, \variable{myAcademicTutorDepartment}, \variable{myAcademicTutorInstitution} y \variable{myAcademicTutorEmail}.
-  \item Entidad y cotutor externo: \variable{myCoTutorFullName}, \variable{myAcademicCotutorInstitution}, \variable{myCoTutorPosition}, \variable{myCoTutorDNI} y \variable{myCoTutorEmail}. Sin cotutor, los campos derivados de él muestran \hl{N/D}.
+  \item Entidad y cotutor externo: \variable{myCoTutorFullName}, \variable{myCoTutorInstitution}, \variable{myCoTutorPosition}, \variable{myCoTutorDNI} y \variable{myCoTutorEmail}. Sin cotutor, los campos derivados de él muestran \hl{N/D}.
   \item Firma por la UAH: \variable{mySchoolDeputyDirectorFullName} y \variable{mySchoolDeputyDirectorGender}, con \texttt{male} o \texttt{female}. El nombre aparece sobre el cargo \emph{Subdirector de la} o \emph{Subdirectora de la}, seguido del nombre de la escuela en la línea siguiente. Si el nombre está vacío, su línea permanece en blanco.
   \item Trabajo: \variable{myDegree}, \variable{myBookTitleSpanish} y \variable{myThesisAcademicYear}. La titulación seleccionada proporciona el centro y el tipo de trabajo.
   \item Género: \variable{myAuthorGender} adapta el tratamiento del estudiante. \variable{myAcademicTutorGender} adapta el rótulo del tutor o tutora de la UAH. \variable{myCoTutorGender} adapta el encabezado de contacto, las dos cláusulas del acuerdo y la firma del cotutor externo, con las formas \emph{Cotutor/Cotutora} y \emph{El cotutor/La cotutora}.
@@ -149,7 +149,7 @@ Completa los campos todavía marcados como \hl{N/D}: identificación y direcció
 
 \fichero{TFG-AnexoIII-InformeTutorYRubrica-EPS-UAH.tex}. Anexo III de la normativa EPS-UAH de octubre de 2026. Incluye el informe de plagio, los datos y firmas del tutor y del cotutor, si existe, y la rúbrica del tutor.
 
-La primera página utiliza \variable{myAuthorFullName}, \variable{myAuthorEmail}, \variable{myDegree}, \variable{myBookTitleSpanish} y, con \variable{myLanguage} igual a \texttt{english}, \variable{myBookTitleEnglish}. El acta de evaluación añade \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDepartment}, \variable{myCoTutorFullName}, \variable{myAcademicCotutorDepartment}, \variable{myAcademicCotutorInstitution}, \variable{myThesisAcademicYear} y \variable{myAcademicTutorGrade}, de cero a diez. Los rótulos y firmas dependen de \variable{myAcademicTutorGender} y \variable{myCoTutorGender}.
+La primera página utiliza \variable{myAuthorFullName}, \variable{myAuthorEmail}, \variable{myDegree}, \variable{myBookTitleSpanish} y, con \variable{myLanguage} igual a \texttt{english}, \variable{myBookTitleEnglish}. El acta de evaluación añade \variable{myAcademicTutorFullName}, \variable{myAcademicTutorDepartment}, \variable{myCoTutorFullName}, \variable{myCoTutorDepartment}, \variable{myCoTutorInstitution}, \variable{myThesisAcademicYear} y \variable{myAcademicTutorGrade}, de cero a diez. Los rótulos y firmas dependen de \variable{myAcademicTutorGender} y \variable{myCoTutorGender}.
 
 Completa los resultados del control de plagio, las observaciones, la conclusión, los comentarios del tutor y la rúbrica. La fecha indicada es la de la firma digital; \variable{myThesisDefenseDate} no se imprime actualmente en este documento.
 
@@ -157,7 +157,7 @@ Completa los resultados del control de plagio, las observaciones, la conclusión
 
 \fichero{TFG-AnexoII-InformeTutorPlagio-UAH.tex}. Está basado en el anexo II de la normativa general de TFG de la UAH, de febrero de 2024. Es el único formulario administrativo definido en esa normativa general y puede ser útil en otros centros de la UAH, no solo en la EPS-UAH. No incorpora la rúbrica de evaluación de la EPS-UAH. Comprueba los requisitos concretos de tu centro antes de presentarlo.
 
-Utiliza \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorEmail}, \variable{myDepartment}, \variable{myDegree}, \variable{myBookTitleSpanish} y, con \variable{myLanguage} igual a \texttt{english}, \variable{myBookTitleEnglish}. Revisa también \variable{myAcademicTutorFullName}, \variable{myAcademicTutorPosition}, \variable{myAcademicTutorEmail}, \variable{myAcademicTutorDepartment}, \variable{myCoTutorFullName}, \variable{myCoTutorPosition}, \variable{myCoTutorEmail}, \variable{myAcademicCotutorDepartment} y \variable{myAcademicCotutorInstitution}. Los rótulos del tutor y cotutor se adaptan con \variable{myAcademicTutorGender} y \variable{myCoTutorGender}; no se emplea \variable{myAuthorGender} para los rótulos del estudiante de este informe.
+Utiliza \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myAuthorEmail}, \variable{myDepartment}, \variable{myDegree}, \variable{myBookTitleSpanish} y, con \variable{myLanguage} igual a \texttt{english}, \variable{myBookTitleEnglish}. Revisa también \variable{myAcademicTutorFullName}, \variable{myAcademicTutorPosition}, \variable{myAcademicTutorEmail}, \variable{myAcademicTutorDepartment}, \variable{myCoTutorFullName}, \variable{myCoTutorPosition}, \variable{myCoTutorEmail}, \variable{myCoTutorDepartment} y \variable{myCoTutorInstitution}. Los rótulos del tutor y cotutor se adaptan con \variable{myAcademicTutorGender} y \variable{myCoTutorGender}; no se emplea \variable{myAuthorGender} para los rótulos del estudiante de este informe.
 
 Completa coincidencias, observaciones y conclusión del análisis y recoge las firmas. La fecha es la de la firma digital, no \variable{myThesisDefenseDate}.
 
