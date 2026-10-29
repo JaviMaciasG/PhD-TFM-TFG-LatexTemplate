@@ -99,8 +99,8 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 \setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{1.00}
-\fontsize{8.2}{9.0}\selectfont
+\renewcommand{\arraystretch}{1.15}
+\fontsize{9}{10}\selectfont
 
 
 \vspace{0.18cm}
@@ -192,8 +192,8 @@ Título del \myWorkType & \multicolumn{3}{l|}{\myBookTitleSpanish}\\\hline
 \begin{minipage}[t]{0.965\textwidth}
 \vspace{0.05cm}
 \setlength{\parindent}{0pt}
-\hspace*{0.10cm}$\bullet$\hspace{0.48cm}\expandafter\makefirstuc\expandafter{\wordCoDirectorElOrLa} \wordCoDirectorOrCoDirectora{} de la entidad realizará las labores propias durante el periodo acordado.\\
-\hspace*{0.10cm}$\bullet$\hspace{0.48cm}\expandafter\makefirstuc\expandafter{\wordCoDirectorElOrLa} \wordCoDirectorOrCoDirectora{} de la entidad recibirá un certificado de la Universidad que haga constar su labor de tutorización del \myWorkType.
+\hspace*{0.02cm}$\bullet$\hspace{0.1cm}\expandafter\makefirstuc\expandafter{\wordCoDirectorElOrLa} \wordCoDirectorOrCoDirectora{} de la entidad realizará las labores propias durante el periodo acordado.\\
+\hspace*{0.02cm}$\bullet$\hspace{0.1cm}\expandafter\makefirstuc\expandafter{\wordCoDirectorElOrLa} \wordCoDirectorOrCoDirectora{} de la entidad recibirá un certificado de la Universidad que haga constar su labor de tutorización del \myWorkType.
 \vspace{0.3cm}
 \end{minipage}\\\hline
 \rowcolor{annexSectionBlue}\bfseries\itshape BREVE RESUMEN DEL \myWorkType\\\hline
@@ -214,10 +214,10 @@ En Alcalá de Henares, a \today % \myPaperworkDate
 \centering Por la Universidad de Alcalá &
 \centering Por la empresa &
 \centering\arraybackslash \expandafter\makefirstuc\expandafter{\wordAutorElOrLa{}} estudiante\\\hline
-\vspace{1.3cm}\rule{0pt}{0.43cm}\mySchoolDeputyDirectorFullName &
+\rule{0pt}{0.43cm}\ifthenelse{\equal{\mySchoolDeputyDirectorFullName}{}}{}{\wordDonOrDonaSubdirector{} \mySchoolDeputyDirectorFullName} &
 \rule{0pt}{0.43cm}\wordDonOrDonaCoTutor{} \AnnexEntityTutorName &
-\rule{0pt}{0.43cm}\wordDonOrDonaAutor \myAuthorFullName\\
-\wordSubdirectorOrSubdirectora{} de la &  \expandafter\makefirstuc\expandafter{\wordCoDirectorOrCoDirectora{}} de \myWorkType{} en la entidad & \\
+\rule{0pt}{0.43cm}\wordDonOrDonaAutor \myAuthorFullName\\[1.3cm]
+\wordSubdirectorOrSubdirectora{} de la &  \expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora{}} de \myWorkType{} en la entidad & \\
 \mySchool & & \\\hline
 \end{tabularx}
 

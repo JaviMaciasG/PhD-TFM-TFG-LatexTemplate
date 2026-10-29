@@ -29,12 +29,17 @@
 \newcommand{\AnnexReportHeading}[1]{%
   \par\noindent{\color{annexReportBlue}\fontsize{11}{14}\selectfont #1\par}\vspace{5mm}}
 \newlength{\AnnexReportLabelWidth}
+\newlength{\AnnexReportSignatureLabelWidth}
 \newcommand{\AnnexReportField}[2]{%
   \par\noindent\hspace*{7mm}\begin{minipage}[t]{\dimexpr\linewidth-7mm\relax}%
   \settowidth{\AnnexReportLabelWidth}{#1: }%
   \hangindent=\AnnexReportLabelWidth\hangafter=1
   \makebox[\AnnexReportLabelWidth][l]{#1: }#2\par
   \end{minipage}\par\vspace{6mm}}
+\newcommand{\AnnexReportSignature}[1]{%
+  \settowidth{\AnnexReportSignatureLabelWidth}{\textbf{Fdo.:} }%
+  \hangindent=\AnnexReportSignatureLabelWidth\hangafter=1
+  \textbf{Fdo.:} #1}
 \newcommand{\AnnexReportPrivacy}{%
   \par\noindent\begin{minipage}{\linewidth}
   \fontsize{6}{7}\selectfont
@@ -95,7 +100,7 @@
     \hline
     \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutora} \wordAcademicoOrAcademica}\\
     \rule{0pt}{1.4cm}\\
-    \textbf{Fdo.:} \myAcademicTutorFullName\\\hline
+    \AnnexReportSignature{\myAcademicTutorFullName}\\\hline
   \end{tabularx}
 }
 {
@@ -104,7 +109,7 @@
     \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutora} \wordAcademicoOrAcademica} &
     \textbf{\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora} \ifthenelse{\equal{\myCoTutorGender}{male}}{académico}{académica} (si procede)}\\
     \rule{0pt}{1.4cm} & \\
-    \textbf{Fdo.:} \myAcademicTutorFullName & \textbf{Fdo.:} \myCoTutorFullName\\\hline
+    \AnnexReportSignature{\myAcademicTutorFullName} & \AnnexReportSignature{\myCoTutorFullName}\\\hline
   \end{tabularx}
 }
 \end{minipage}

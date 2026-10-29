@@ -46,7 +46,7 @@ for spec in "${cases[@]}"; do
       echo "FAIL: overflowing $kind agreement ($spec)" >&2
       exit 1
     fi
-    pdftotext -layout "$pdf" - | tr '\n\f' '  ' | sed 's/[[:space:]]\+/ /g' > "$fixture/form.txt"
+    pdftotext -raw "$pdf" - | tr '\n\f' '  ' | sed 's/[[:space:]]\+/ /g' > "$fixture/form.txt"
     role=Subdirector
     [[ $gender == male ]] || role=Subdirectora
     grep -Fq "$role de la" "$fixture/form.txt"
@@ -54,6 +54,9 @@ for spec in "${cases[@]}"; do
     ! grep -Eq 'Coordinador (TFG|TFM)|Subdirector/a' "$fixture/form.txt"
     if [[ -n $name ]]; then
       grep -Fq "$name" "$fixture/form.txt"
+      salutation=D.
+      [[ $gender == male ]] || salutation='Dª.'
+      grep -Fq "$salutation $name" "$fixture/form.txt"
     fi
     if [[ -n ${AGREEMENT_DEPUTY_TEST_OUTPUT_DIR:-} ]]; then
       mkdir -p "$AGREEMENT_DEPUTY_TEST_OUTPUT_DIR"
