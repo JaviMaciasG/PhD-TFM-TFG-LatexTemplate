@@ -5,14 +5,14 @@ LATEX_CONFIG_DIR := ../Config
 include $(LATEX_CONFIG_DIR)/latex-common.mk
 
 AUTHORIZATION_DOCUMENTS := \
-	TFM-AutorizacionPublicarAbierto \
-	TFM-VistoBuenoTutor
+	TFM-AnexoXII-AutorizacionPublicarAbierto \
+	TFM-AnexoX-VistoBuenoTutor
 
 AGREEMENT_DOCUMENTS := \
 	TFM-AnexoI-ConvenioCooperacion-EPS-UAH
 
 EVALUATION_DOCUMENTS := \
-	TFM-ActaYRubricaDefensa-EPS-UAH
+	TFM-AnexoXI-ActaYRubricaDefensa-EPS-UAH
 
 REQUEST_DOCUMENTS := \
 	TFM-AnexoVII-HojaControlAnteproyecto-EPS-UAH \

@@ -55,11 +55,11 @@ for spec in "${cases[@]}"; do
   change="$fixture/PapeleoTFM/TFM-AnexoV-SolicitudCambioTFM-EPS-UAH.txt"
   [[ $(pdfinfo "${change%.txt}.pdf" | awk '/^Pages:/ {print $2}') == 1 ]]
   grep -Fq 'Fdo.:' "$change"
-  approval="$fixture/PapeleoTFM/TFM-VistoBuenoTutor.txt"
+  approval="$fixture/PapeleoTFM/TFM-AnexoX-VistoBuenoTutor.txt"
   agreement="$fixture/PapeleoTFM/TFM-AnexoI-ConvenioCooperacion-EPS-UAH.txt"
   grep -Eq "Datos personales $student_article estudiante" "$control"
   grep -Eq "Datos $student_article estudiante" "$change"
-  acta="$fixture/PapeleoTFM/TFM-ActaYRubricaDefensa-EPS-UAH.txt"
+  acta="$fixture/PapeleoTFM/TFM-AnexoXI-ActaYRubricaDefensa-EPS-UAH.txt"
   grep -Fq "$student_subject estudiante que, habiendo sido propuesto para Matrícula de Honor" "$acta"
   grep -Fq 'Título de Máster' "$acta"
   grep -Fq 'las Matrículas de Honor no afectan al cálculo de la media' "$acta"

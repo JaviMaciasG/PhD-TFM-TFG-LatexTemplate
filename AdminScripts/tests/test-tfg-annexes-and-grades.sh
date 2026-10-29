@@ -145,8 +145,8 @@ sed -i \
   -e 's/\\newcommand{\\myAcademicTutorGrade}{[^}]*}/\\newcommand{\\myAcademicTutorGrade}{}/' \
   -e 's/\\newcommand{\\myTribunalGrade}{[^}]*}/\\newcommand{\\myTribunalGrade}{8}/' \
   "$fixture/Config/myconfig.tex"
-make -s -C "$fixture/PapeleoTFM" TFM-ActaYRubricaDefensa-EPS-UAH.pdf > "$fixture/tfm.log" 2>&1
-pdftotext -layout "$fixture/PapeleoTFM/TFM-ActaYRubricaDefensa-EPS-UAH.pdf" "$fixture/tfm.txt"
+make -s -C "$fixture/PapeleoTFM" TFM-AnexoXI-ActaYRubricaDefensa-EPS-UAH.pdf > "$fixture/tfm.log" 2>&1
+pdftotext -layout "$fixture/PapeleoTFM/TFM-AnexoXI-ActaYRubricaDefensa-EPS-UAH.pdf" "$fixture/tfm.txt"
 grep -Fq 'El Tribunal ha resuelto otorgar la calificación de:' "$fixture/tfm.txt"
 [[ $before == "$(sha256sum "$repository_root/Config/myconfig.tex")" ]]
 [[ $standalone_before == "$(sha256sum "$repository_root/PapeleoTFG/TFG-AnexoII-InformeTutorPlagio-UAH.tex" "$repository_root/PapeleoTFG/TFG-AnexoII-SeccionInformePlagio-UAH.tex")" ]]

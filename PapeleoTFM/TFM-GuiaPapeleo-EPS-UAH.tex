@@ -92,7 +92,7 @@ Si una casilla es fija, debes editar el fichero \texttt{.tex} del formulario cua
 
 \subsection{Publicación en abierto}\label{form:publicacion}
 
-\fichero{TFM-AutorizacionPublicarAbierto.tex}. Reúne la autorización del estudiante, el director y, si existe, el codirector para la publicación en e-BUAH. Sus referencias normativas son las siguientes:
+\fichero{TFM-AnexoXII-AutorizacionPublicarAbierto.tex}. Reúne la autorización del estudiante, el director y, si existe, el codirector para la publicación en e-BUAH. Sus referencias normativas son las siguientes:
 \begin{itemize}
   \item EPS-UAH: anexo XII; aprobaciones del 31/10/2025 y 30/01/2026.
   \item UAH: anexo 4; reglamento modificado el 14/05/2026.
@@ -110,7 +110,7 @@ Las casillas dependen de \variable{myAuthorizationOpenPublishing}: \texttt{Yes} 
 
 \subsection{Visto bueno de la dirección}\label{form:visto-bueno}
 
-\fichero{TFM-VistoBuenoTutor.tex}. Recoge la conformidad de los directores para depositar y defender el TFM. Corresponde al anexo X de la normativa EPS-UAH (31/10/2025 y 30/01/2026) y al anexo VI de la normativa MUIE-UAH (15/06/2026).
+\fichero{TFM-AnexoX-VistoBuenoTutor.tex}. Recoge la conformidad de los directores para depositar y defender el TFM. Corresponde al anexo X de la normativa EPS-UAH (31/10/2025 y 30/01/2026) y al anexo VI de la normativa MUIE-UAH (15/06/2026).
 
 Utiliza \variable{myAcademicTutorFullName}, \variable{myCoTutorFullName}, \variable{myAuthorFullName}, \variable{myBookTitleSpanish} o \variable{myBookTitleEnglish}, \variable{myPaperworkDate} y \variable{myDegree}. Los tratamientos y el singular o plural dependen de \variable{myAcademicTutorGender}, \variable{myCoTutorGender} y \variable{myAuthorGender}. Las firmas utilizan los nombres de los directores, no los del tribunal.
 
@@ -156,7 +156,7 @@ La comisión completa la zona sombreada: las casillas de aceptación \emph{Sí/N
 
 \subsection{Acta de defensa y rúbrica}\label{form:acta}
 
-\fichero{TFM-ActaYRubricaDefensa-EPS-UAH.tex}. Anexo XI de la normativa EPS-UAH aprobada el 31/10/2025 y el 30/01/2026. Es el modelo EPS-UAH con su rúbrica: no se convierte automáticamente en el acta específica del MUIE por seleccionar ese máster.
+\fichero{TFM-AnexoXI-ActaYRubricaDefensa-EPS-UAH.tex}. Anexo XI de la normativa EPS-UAH aprobada el 31/10/2025 y el 30/01/2026. Es el modelo EPS-UAH con su rúbrica: no se convierte automáticamente en el acta específica del MUIE por seleccionar ese máster.
 
 Utiliza \variable{myAuthorFullName}, \variable{myAuthorDNI}, \variable{myDegree}, \variable{myBookTitleSpanish}, \variable{myBookTitleEnglish} si \variable{myLanguage} es \texttt{english}, \variable{myAcademicTutorFullName}, \variable{myCoTutorFullName}, \variable{myDepartment}, \variable{myThesisAcademicYear} y \variable{myTribunalGrade}. Este formulario no suma la nota del director: la calificación utilizada es \variable{myTribunalGrade}.
 
@@ -195,7 +195,7 @@ make autorizaciones          # Publicación y visto bueno
 make convenios               # Convenio de cooperación
 make evaluacion              # Acta y rúbrica
 make solicitudes             # Control del anteproyecto, prórroga y cambio
-make TFM-VistoBuenoTutor.pdf
+make TFM-AnexoX-VistoBuenoTutor.pdf
 make help                    # Opciones disponibles
 \end{verbatim}
 \end{minipage}

@@ -50,10 +50,10 @@ build() {
 for spec in \
   'Anteproyecto|anteproyecto.tex|GIEC|WorkDeptES' \
   'PapeleoTFG|TFG-AnexoIX-ActaYRubricaDefensa-EPS-UAH.tex|GIEC|TutorDept' \
-  'PapeleoTFM|TFM-ActaYRubricaDefensa-EPS-UAH.tex|MUIE|WorkDeptES' \
+  'PapeleoTFM|TFM-AnexoXI-ActaYRubricaDefensa-EPS-UAH.tex|MUIE|WorkDeptES' \
   'PapeleoTFG|TFG-AnexoV-ConvenioCooperacion-EPS-UAH.tex|GIEC|TutorDept' \
   'PapeleoTFM|TFM-AnexoI-ConvenioCooperacion-EPS-UAH.tex|MUIE|TutorDept' \
-  'PapeleoTFM|TFM-AutorizacionPublicarAbierto.tex|MUIE|TutorDept' \
+  'PapeleoTFM|TFM-AnexoXII-AutorizacionPublicarAbierto.tex|MUIE|TutorDept' \
   'PapeleoTFM|TFM-AnexoV-SolicitudCambioTFM-EPS-UAH.tex|MUIE|TutorDept'; do
   IFS='|' read -r directory source degree expected <<< "$spec"
   sed -i "s/\\\\newcommand{\\\\myDegree}{[^}]*}/\\\\newcommand{\\\\myDegree}{$degree}/" "$fixture/Config/myconfig.tex"

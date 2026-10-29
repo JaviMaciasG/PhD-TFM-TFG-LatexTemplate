@@ -23,6 +23,11 @@
 \input{../Config/postamble.tex}   % DO NOT TOUCH THIS LINE.
 
 \input{../Config/grades-calculation.tex}       % DO NOT TOUCH THIS LINE.
+
+% Conserva la decisión configurada y adapta únicamente el tamaño de las casillas.
+\ifthenelse{\equal{\myTribunalMHProposal}{YES}}
+{\renewcommand{\MHProposalBoxes}{\TextSizedCheckbox{$\XBox$} Sí ~~~~ \TextSizedCheckbox{$\Box$} No}}
+{\renewcommand{\MHProposalBoxes}{\TextSizedCheckbox{$\Box$} Sí ~~~~ \TextSizedCheckbox{$\XBox$} No}}
 %
 % END Preamble and configuration section
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,6 +36,17 @@
 \title{Acta de defensa de TFM y rúbrica}
 \date{\today}
 \author{\myAcademicTutorFullName}
+
+\newlength{\TFMTribunalSignatureLabelWidth}
+\newcommand{\TFMTribunalSignature}[1]{%
+  \par
+  \begingroup
+  \raggedright
+  \settowidth{\TFMTribunalSignatureLabelWidth}{Fdo.: }%
+  \hangindent=\TFMTribunalSignatureLabelWidth
+  \hangafter=1
+  \makebox[\TFMTribunalSignatureLabelWidth][l]{Fdo.: }#1\par
+  \endgroup}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -93,20 +109,22 @@
   \centering
   \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}X|}
     \hline
-    \vspace{0.45cm}
-    \myTribunalGrade
-    \vspace{0.45cm} \\ \hline
+    \vspace{0.55cm}
+    \Large \myTribunalGrade{} puntos, \myFinalGradeName
+    \vspace{0.55cm} \\ \hline
   \end{tabularx}
 \end{table}
 
 \vspace{0.25cm}
 
-\noindent\textbf{Propuesto para Matrícula de Honor * (marcar con una X)}
+\noindent\textbf{Propuesto para Matrícula de Honor$^{*}$ (marcar con una X)}
 \hfill \MHProposalBoxes{}
 
 \vspace{0.45cm}
 
+\begin{spacing}{0.9}
 \noindent$^{*}$ \expandafter\makefirstuc\expandafter{\wordAutorElOrLa} estudiante que, habiendo sido propuesto para Matrícula de Honor, solicitara la expedición de su Título de Máster con anterioridad a su resolución por la Comisión Docente, y que posteriormente le fuera concedida la calificación de Matrícula de Honor, dicha calificación no se verá reflejada en su expediente académico, si bien se le comunicará mediante resolución del Secretario de la Comisión a los efectos oportunos que considere el beneficiario. En todo caso, se informa que las Matrículas de Honor no afectan al cálculo de la media de su expediente académico, al ser una calificación honorífica.
+\end{spacing}
 
 \vfill
 
@@ -114,25 +132,31 @@
   \centering
   \begin{tabular}{|p{0.30\textwidth}|p{0.30\textwidth}|p{0.30\textwidth}|}
     \hline
-    \begin{minipage}[t][3.3cm][t]{\linewidth}
+    \begin{minipage}[t][3.5cm][t]{\linewidth}
+      \vspace*{-0.2cm}
       \textbf{\wordPresidenteOrPresidenta}
 
       \vfill
-      {\small \begin{spacing}{0.1}Fdo.: \myTribunalPresident\end{spacing}}
+      {\small \begin{spacing}{1.0}\TFMTribunalSignature{\myTribunalPresident}\end{spacing}}
+      \vspace{0.2cm}
     \end{minipage}
     &
-    \begin{minipage}[t][3.3cm][t]{\linewidth}
+    \begin{minipage}[t][3.5cm][t]{\linewidth}
+      \vspace*{-0.2cm}
       \textbf{\wordVocalPrimeroOrPrimera{} \wordNumberVocalPrimeroOrPrimera}
 
       \vfill
-      {\small \begin{spacing}{0.1}Fdo.: \myTribunalFirstSpokesperson\end{spacing}}
+      {\small \begin{spacing}{1.0}\TFMTribunalSignature{\myTribunalFirstSpokesperson}\end{spacing}}
+      \vspace{0.2cm}
     \end{minipage}
     &
-    \begin{minipage}[t][3.3cm][t]{\linewidth}
+    \begin{minipage}[t][3.5cm][t]{\linewidth}
+      \vspace*{-0.2cm}
       \textbf{\wordVocalSegundoOrSegunda{} \wordNumberVocalSegundoOrSegunda}
 
       \vfill
-      {\small \begin{spacing}{0.1}Fdo.: \myTribunalSecondSpokesperson\end{spacing}}
+      {\small \begin{spacing}{1.0}\TFMTribunalSignature{\myTribunalSecondSpokesperson}\end{spacing}}
+      \vspace{0.2cm}
     \end{minipage}
     \\
     \hline
@@ -154,7 +178,7 @@
 % Content inside the rectangle
 \vspace*{-.8in}
 
-\noindent\textbf{Observaciones del tribunal (incluir en este punto las motivaciones para proponer al TFM para la mención de Matrícula de Honor, si procede)}
+\noindent\parbox[t]{\dimexpr\textwidth-1cm\relax}{\textbf{Observaciones del tribunal} (incluir en este punto las motivaciones para proponer al TFM para la mención de Matrícula de Honor, si procede)}
 
 \newpage
 

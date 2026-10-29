@@ -115,7 +115,7 @@ check_contains 'no en las de confidencialidad' PapeleoTFM/TFM-GuiaPapeleo-EPS-UA
 check_contains 'no interviene en este formulario' PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
 check_contains 'anexo VIII / anexo 4' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
 check_contains 'paperwork-guides' Documentation/Makefile
-check_contains '\equal{\myDegree}{MUII}' PapeleoTFM/TFM-VistoBuenoTutor.tex
+check_contains '\equal{\myDegree}{MUII}' PapeleoTFM/TFM-AnexoX-VistoBuenoTutor.tex
 check_contains '\texttt{MUIT} y \texttt{MUII}' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
 check_contains '\variable{myTFMComisionPresidentGender}' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
 check_contains 'anexo III de la normativa MUIE-UAH' PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
