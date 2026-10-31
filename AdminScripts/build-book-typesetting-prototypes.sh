@@ -243,7 +243,7 @@ while IFS= read -r file; do
       ;;
     Book/.auctex-auto/*|Book/OldDocs/*|Book/SampleTypesettings/*|Book/Tools/*|Book/tools/*|Book/slides/*|\
     Book/appendix/bare/*|Book/appendix/orig/*|Book/chapters/bare/*|Book/chapters/orig/*|\
-    Book/book-flatten-snapshot.tex|Book/readme-latexdiff-windows.txt|\
+    Book/book-flatten-snapshot.tex|\
     Config/.auctex-auto/*|Documentation/en/DEGREE_REGISTRY_COMPATIBILITY.md|Config/preamble-slides.tex)
       continue
       ;;
