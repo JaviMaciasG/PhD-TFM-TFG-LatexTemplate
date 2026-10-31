@@ -2,6 +2,48 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.9.0] - 2026-10-29
+
+### Features
+
+- `\myAcademicCotutor*` variables renamed to `\myCoTutor*` for consistency
+
+- Updated TFG and TFM regulations in EPS-UAH
+
+
+### Bug Fixes
+
+- Align TFG forms with October 2026 EPS-UAH regulations
+
+- Update EPS-UAH TFG forms to 2026 regulations
+
+- Clarify signature names and roles
+
+- Correct cotutor spelling and comment
+
+- Improve proposal control form fields
+
+
+### Refactoring
+
+- Prefix forms with annex numbers
+
+
+### Maintenance
+
+- Prepare v8.9.0
+
+
+### Other Changes
+
+- Refine publication authorization form spacing
+
+- Tighten authorization choices spacing
+
+- Skip bibliography processing for forms
+
+- Refine tribunal rubric layout
+
 ## [v8.8.6] - 2026-10-26
 
 ### Maintenance
