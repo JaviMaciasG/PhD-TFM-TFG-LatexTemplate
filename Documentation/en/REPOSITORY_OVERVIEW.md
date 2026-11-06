@@ -117,6 +117,8 @@ The standard manual also includes a supported-degree appendix, grouped by univer
 
 The template intentionally keeps `book.tex` stable. Users select optional front matter in `Config/myconfig.tex` and change the body through the applicable `content-*.tex` file rather than commenting infrastructure lines in `book.tex`.
 
+With `\ZenMode` enabled, `book.tex` retains the body configuration and typesetting but omits covers, preliminaries, generated lists, and the back cover; it still loads the selected `content-*.tex` file.
+
 Prepared minimal and original structures are colocated with their chapters: `Book/chapters/{bare,orig}/` for standard documents and `Book/chapters/compendium/{bare,orig}/` for the specialized modality. Each directory also contains the `content-*.tex` organization file that the Makefile copies separately to the `Book/` root.
 
 ## Cover and degree-specific behavior

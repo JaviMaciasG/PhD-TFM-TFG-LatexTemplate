@@ -211,6 +211,17 @@ No todas las titulaciones utilizan la misma composición de tribunal ni los mism
 
 Las variables cuyo nombre comienza por \texttt{\textbackslash{}myInclude} te permiten mostrar u ocultar contenido opcional sin comentar órdenes en \texttt{book.tex}. Todas admiten exclusivamente los valores \texttt{true} y \texttt{false}. La plantilla genera un error explícito si escribes otro valor.
 
+\subsection{Modo zen para redactar}
+\label{sec:modo-zen}
+
+Si hoy solo quieres pelearte con un capítulo, no hace falta que recorras la portada y todos los índices cada vez que abras el PDF. El modo zen le quita al libro el traje de gala mientras escribes, pero conserva la tipografía, los títulos, las figuras y las demás herramientas que utilizas en los capítulos.
+
+Para activarlo, cambia la definición existente en \texttt{Config/myconfig.tex} a \verb|\newcommand{\ZenMode}{true}|. Sigue compilando \texttt{Book/book.tex} como siempre, desde tu editor, \texttt{Overleaf} o \texttt{make}. No necesitas otro documento principal. Desaparecerán del PDF las cubiertas, los documentos preliminares, la dedicatoria, los agradecimientos, los resúmenes y los índices; las definiciones de acrónimos y símbolos seguirán disponibles.
+
+El modo zen no decide qué capítulos quieres ver. Para eso, comenta temporalmente las órdenes \texttt{\textbackslash{}input\{...\}} que no necesites en \texttt{Book/content-standard.tex}, o en \texttt{Book/content-compendium.tex} si preparas una tesis por compendio. La bibliografía, los apéndices y los PDF de publicaciones también seguirán apareciendo mientras permanezcan incluidos en ese fichero. Las referencias cruzadas hacia capítulos que hayas omitido pueden mostrarse como \texttt{??}: es normal durante esta revisión parcial. La sección~\ref{sec:partes-modificar} describe cómo elegir el contenido que se compila.
+
+Cuando quieras comprobar el resultado final, vuelve a poner \texttt{\textbackslash{}ZenMode} en \texttt{false} y compila otra vez. El tribunal probablemente prefiera la versión que sí lleva portada.
+
 \subsection{Páginas preliminares}
 
 Las siguientes variables controlan el contenido preliminar de ejemplo:
@@ -338,7 +349,7 @@ Las siguientes variables recogen las calificaciones y la posible propuesta de ma
   \item \texttt{\textbackslash{}myTribunalMHProposal}: indica si el tribunal propone la concesión de matrícula de honor. Admite los valores \texttt{YES} y \texttt{NO}, respetando las mayúsculas.
 \end{itemize}
 
-Para los TFG de la EPS-UAH, la plantilla calcula la nota final como \(0.7 \times \mbox{nota del tutor} + 0.3 \times \mbox{nota del tribunal}\). Por ejemplo, si introduces 8 y 6 obtendrás 7.4. La rúbrica del tutor reparte diez puntos entre proyecto (3), desarrollo (5) y memoria (2), y la del tribunal entre proyecto (3) y memoria y presentación oral (7). La plantilla rechaza notas fuera del intervalo de cero a diez y detiene la compilación del acta si alguna parte está suspensa pero la media daría aprobado, porque el artículo 9.3 hace vinculante ese suspenso. En ese caso, consulta al departamento cómo consignar la nota, sin sustituirla por una cifra inventada. En los TFM se utiliza únicamente la nota del tribunal. Estos valores no afectan al contenido ni a la compilación del libro principal.
+Para los TFG de la EPS-UAH, la plantilla calcula la nota final como \(0.7 \times \mbox{nota del tutor} + 0.3 \times \mbox{nota del tribunal}\). Por ejemplo, si introduces 8 y 6 obtendrás 7.4. La plantilla rechaza notas fuera del intervalo de cero a diez y detiene la compilación del acta si alguna parte está suspensa pero la media daría aprobado, porque el artículo 9.3 hace vinculante ese suspenso. En ese caso, consulta al departamento cómo consignar la nota, sin sustituirla por una cifra inventada. En los TFM se utiliza únicamente la nota del tribunal. Estos valores no afectan al contenido ni a la compilación del libro principal.
 
 \section{Configuración de casos específicos}
 

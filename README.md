@@ -186,6 +186,8 @@ Una vez que hayas compilado y revisado el manual, guarda una copia de seguridad 
 
 Cuando hayas preparado la estructura mínima con cualquiera de los dos métodos siguientes, organiza tu trabajo añadiendo, eliminando o reordenando las instrucciones `\input{...}` de `Book/content-standard.tex`. Escribe en los archivos de contenido, compila `Book/book.tex` y revisa el PDF y los avisos. Hacer cambios pequeños y compilar con frecuencia facilita encontrar los errores.
 
+Cuando estés concentrado en un capítulo, quizá no te apetezca atravesar portadas, resúmenes e índices cada vez que abres el PDF. Después de compilar y revisar el manual completo, puedes poner `\ZenMode` en `true` dentro de `Config/myconfig.tex`: seguirás compilando `Book/book.tex`, pero verás solo el contenido seleccionado en `Book/content-standard.tex` (o `Book/content-compendium.tex` si preparas una tesis por compendio). Elige los capítulos comentando o activando sus líneas `\input{...}`. Antes de entregar el trabajo, devuelve `\ZenMode` a `false` y revisa el documento completo. El apartado *Modo zen para redactar* del manual te cuenta los detalles.
+
 ### Método manual
 
 La distribución incluye versiones mínimas (es decir, casi vacías para que puedas escribir *tu* libro) de una estructura inicial de capítulos en:

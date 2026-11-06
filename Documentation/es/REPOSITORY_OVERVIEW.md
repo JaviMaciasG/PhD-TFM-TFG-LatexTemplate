@@ -117,6 +117,8 @@ El manual estándar incluye también un apéndice de titulaciones soportadas, or
 
 La plantilla mantiene intencionadamente estable `book.tex`. Los usuarios seleccionan los preliminares opcionales en `Config/myconfig.tex` y modifican el cuerpo mediante el fichero `content-*.tex` aplicable, en lugar de comentar líneas de infraestructura en `book.tex`.
 
+Con `\ZenMode` activado, `book.tex` conserva la configuración y la maquetación del cuerpo, pero omite portadas, preliminares, índices y contraportada; sigue cargando el fichero `content-*.tex` seleccionado.
+
 Las estructuras mínimas y originales preparadas se encuentran junto a los capítulos correspondientes: `Book/chapters/{bare,orig}/` para documentos estándar y `Book/chapters/compendium/{bare,orig}/` para la modalidad especializada. Cada directorio contiene también el fichero de organización `content-*.tex` que el Makefile copia por separado a la raíz de `Book/`.
 
 ## Comportamiento específico de portadas y titulaciones

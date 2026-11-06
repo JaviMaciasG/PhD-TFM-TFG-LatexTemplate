@@ -211,8 +211,15 @@ No todas las titulaciones utilizan la misma composición de tribunal ni los mism
 Las variables cuyo nombre comienza por \texttt{\textbackslash{}myInclude} te permiten mostrar u ocultar contenido opcional sin comentar órdenes en \texttt{book.tex}. Todas admiten exclusivamente los valores \texttt{true} y \texttt{false}. La plantilla genera un error explícito si escribes otro valor.
 
 \subsection{Modo zen para redactar}
+\label{sec:modo-zen}
 
-La variable \texttt{\textbackslash{}ZenMode} te permite compilar el cuerpo del documento sin las cubiertas, las páginas preliminares, los índices ni la contraportada. Su valor predeterminado es \texttt{false}; si lo cambias a \texttt{true}, se conserva el formato de los capítulos y se compila la estructura seleccionada en \texttt{Book/content-standard.tex} o \texttt{Book/content-compendium.tex}. En esos ficheros puedes comentar temporalmente las órdenes \texttt{\textbackslash{}input} de los capítulos que no quieras compilar. El modo zen no elimina los elementos incluidos desde esos ficheros, como la bibliografía, los apéndices o los PDF de publicaciones. La sección~\ref{sec:partes-modificar} describe cómo elegir el contenido que se compila.
+Si hoy solo quieres pelearte con un capítulo, no hace falta que recorras la portada y todos los índices cada vez que abras el PDF. El modo zen le quita al libro el traje de gala mientras escribes, pero conserva la tipografía, los títulos, las figuras y las demás herramientas que utilizas en los capítulos.
+
+Para activarlo, cambia la definición existente en \texttt{Config/myconfig.tex} a \verb|\newcommand{\ZenMode}{true}|. Sigue compilando \texttt{Book/book.tex} como siempre, desde tu editor, \texttt{Overleaf} o \texttt{make}. No necesitas otro documento principal. Desaparecerán del PDF las cubiertas, los documentos preliminares, la dedicatoria, los agradecimientos, los resúmenes y los índices; las definiciones de acrónimos y símbolos seguirán disponibles.
+
+El modo zen no decide qué capítulos quieres ver. Para eso, comenta temporalmente las órdenes \texttt{\textbackslash{}input\{...\}} que no necesites en \texttt{Book/content-standard.tex}, o en \texttt{Book/content-compendium.tex} si preparas una tesis por compendio. La bibliografía, los apéndices y los PDF de publicaciones también seguirán apareciendo mientras permanezcan incluidos en ese fichero. Las referencias cruzadas hacia capítulos que hayas omitido pueden mostrarse como \texttt{??}: es normal durante esta revisión parcial. La sección~\ref{sec:partes-modificar} describe cómo elegir el contenido que se compila.
+
+Cuando quieras comprobar el resultado final, vuelve a poner \texttt{\textbackslash{}ZenMode} en \texttt{false} y compila otra vez. El tribunal probablemente prefiera la versión que sí lleva portada.
 
 \subsection{Páginas preliminares}
 

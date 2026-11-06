@@ -186,6 +186,8 @@ Once you've compiled and reviewed the manual, save a backup copy of the entire f
 
 Once you've prepared the minimal structure using either of the two methods below, organise your work by adding, removing or reordering the `\input{...}` instructions in `Book/content-standard.tex`. Write in the content files, compile `Book/book.tex` and review the PDF and warnings. Making small changes and compiling frequently makes errors easier to find.
 
+When you're concentrating on a chapter, you may not want to wade through covers, abstracts and lists every time you open the PDF. After compiling and reviewing the complete manual, you can set `\ZenMode` to `true` in `Config/myconfig.tex`: you'll still compile `Book/book.tex`, but see only the content selected in `Book/content-standard.tex` (or `Book/content-compendium.tex` for a thesis by compendium). Choose chapters by commenting out or restoring their `\input{...}` lines. Before submitting your work, set `\ZenMode` back to `false` and review the complete document. The manual's *Modo zen para redactar* subsection has the details.
+
 ### Manual method
 
 The distribution includes minimal versions (in other words, almost empty so you can write *your* book) of an initial chapter structure in:
