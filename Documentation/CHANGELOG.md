@@ -2,6 +2,16 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.10.1] - 2026-11-06
+
+### Bug Fixes
+
+- Keep zen mode disabled by default so new users build the complete document
+
+### Documentation
+
+- Explain when and how to use zen mode in the READMEs, manual, and repository overviews
+
 ## [v8.10.0] - 2026-11-06
 
 ### Features
