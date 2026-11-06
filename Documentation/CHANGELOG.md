@@ -2,6 +2,12 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.10.2] - 2026-11-06
+
+### Documentation
+
+- Clarify how zen mode relates to optional content and bibliography settings in the manual
+
 ## [v8.10.1] - 2026-11-06
 
 ### Bug Fixes
