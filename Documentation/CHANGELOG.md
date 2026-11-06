@@ -2,6 +2,16 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.11.1] - 2026-11-06
+
+### Refactoring
+
+- Move bilingual compendium part titles into shared configuration and simplify the standard, bare, and restoration content files
+
+### Maintenance
+
+- Refresh the sample compendium publication annotations
+
 ## [v8.11.0] - 2026-11-06
 
 ### Features
