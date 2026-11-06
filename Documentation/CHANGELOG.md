@@ -2,6 +2,16 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.11.0] - 2026-11-06
+
+### Features
+
+- Include the ethics appendix in every standard document, regardless of degree or university
+
+### Documentation
+
+- Clarify the appendix's ETSIT-UPM origin and its optional use outside the applicable regulations
+
 ## [v8.10.2] - 2026-11-06
 
 ### Documentation
