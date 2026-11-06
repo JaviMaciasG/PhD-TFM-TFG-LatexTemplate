@@ -6,13 +6,7 @@
 % Para documentos estándar, utiliza content-standard.tex.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ifthenelse{\equal{\myLanguage}{english}}
-  {
-  \part{Extended Summary of the Thesis}
-  }
-  {
-  \part{Resumen extendido de la tesis}
-  }
+\part{\myCompendiumSummaryPartTitle}
 \label{part:compendium-summary}
 
 \input{chapters/compendium/introduction.tex}
@@ -25,16 +19,11 @@
 % The bibliography belongs between the extended summary and the papers.
 \input{biblio/bibliography.tex}
 
-\ifthenelse{\equal{\myLanguage}{english}}
-  {\part{Publications Included in the Compendium}}
-  {\part{Publicaciones incluidas en el compendio}}
+\part{\myCompendiumPublicationsPartTitle}
 \label{part:compendium-publications}
 
-\includecompendiumpublication[
-  \ifthenelse{\equal{\myLanguage}{english}}
-    {Fictional demonstration paper. Replace this text with its publication status, the doctoral candidate's contribution and any relevant reuse permission.}
-    {Artículo ficticio de demostración. Sustituye este texto por su estado de publicación, la contribución del doctorando y cualquier permiso de reutilización relevante.}
-]{paper-1}
+\includecompendiumpublication[Fictional demonstration paper. Replace this text with its publication status, the doctoral candidate's contribution and any relevant reuse permission.]
+  {paper-1}
  {Coffee Cups as Fiducial Markers}
  {On the Unexpected Reliability of Coffee Cups as Fiducial Markers in Indoor Video Sequences}
  {garcia2026paper1}
@@ -47,7 +36,7 @@
  {garcia2026paper2}
  {publications/paper2.pdf}
 
-\includecompendiumpublication
+\includecompendiumpublication[Paper with $3^4$ citations]
  {paper-3}
  {Reproducible Desk-Based Vision Experiments}
  {Toward Reproducible Desk-Based Vision Experiments: A Multi-Camera Study of Papers, Pens, and Other Obstacles}

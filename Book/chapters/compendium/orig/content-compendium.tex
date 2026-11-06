@@ -5,13 +5,7 @@
 % Tras restaurarla como Book/content-compendium.tex, edita ese fichero.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ifthenelse{\equal{\myLanguage}{english}}
-  {
-  \part{Extended Summary of the Thesis}
-  }
-  {
-  \part{Resumen extendido de la tesis}
-  }
+\part{\myCompendiumSummaryPartTitle}
 \label{part:compendium-summary}
 
 \input{chapters/compendium/introduction.tex}
@@ -24,9 +18,7 @@
 % The bibliography belongs between the extended summary and the papers.
 \input{biblio/bibliography.tex}
 
-\ifthenelse{\equal{\myLanguage}{english}}
-  {\part{Publications Included in the Compendium}}
-  {\part{Publicaciones incluidas en el compendio}}
+\part{\myCompendiumPublicationsPartTitle}
 \label{part:compendium-publications}
 
 \includecompendiumpublication[
