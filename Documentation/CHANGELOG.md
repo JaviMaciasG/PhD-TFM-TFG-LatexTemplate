@@ -2,6 +2,12 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.10.0] - 2026-11-06
+
+### Features
+
+- Add zen drafting mode
+
 ## [v8.9.1] - 2026-10-31
 
 ### Maintenance
