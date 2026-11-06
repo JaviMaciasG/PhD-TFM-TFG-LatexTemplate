@@ -64,7 +64,8 @@
 % Now start text and numbering for frontmatter (toc, list of
 % tables/figures,...)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frontmatter                                  % DO NOT TOUCH THIS LINE
+\ifthenelse{\equal{\ZenMode}{false}}
+  {\frontmatter}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN within-document configuration, frontpage and cover pages generation
@@ -74,49 +75,37 @@
 \input{../Config/setlanguagedependentissues.tex} % DO NOT TOUCH THIS LINE
                                               % NOR THE FILE
 
-% This will include front page (if needed), and cover pages. Selection
-% of the adequate one is done automagically depending on values set by
-% the user in config/myconfig.tex
-\ThesisInstitutionalPage{cover/cover.tex}     % DO NOT TOUCH THIS
-                                              % LINE/FILE. You can edit
-                                              % the file in case you
-                                              % need it (there may be
-                                              % problems with vertical
-                                              % spacing if the title is
-                                              % too long...)
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% In some cases you may need to include pdf files (for example in the
-% PhD. Thesis at UAH you need to include the permission letter by the
-% advisors... It is also required for the MUSEA TFMs). You can do this
-%
-%\includepdf[frame=true,pages=3-4]{letters/sampleLetter-pages.pdf} % include pages
-%                                                       % 3-4 of pdf file
-%\clearemptydoublepage % You need to include this after including each pdf
-
-% Optional opening PDF, disabled by default in Config/myconfig.tex.
-\ifthenelse{\equal{\myIncludeSampleLetter}{true}}
+\ifthenelse{\equal{\ZenMode}{false}}
 {
-  \includepdf[pages=-]{letters/sampleLetter.pdf}
-  \clearemptydoublepage
+  % This will include front page (if needed), and cover pages. Selection
+  % of the adequate one is done automagically depending on values set by
+  % the user in config/myconfig.tex
+  \ThesisInstitutionalPage{cover/cover.tex}   % DO NOT TOUCH THIS
+                                                % LINE/FILE. You can edit
+                                                % the file in case you
+                                                % need it (there may be
+                                                % problems with vertical
+                                                % spacing if the title is
+                                                % too long...)
+
+  % In some cases you may need to include PDF files before the main text.
+  % The example is disabled by default in Config/myconfig.tex.
+  \ifthenelse{\equal{\myIncludeSampleLetter}{true}}
+  {
+    \includepdf[pages=-]{letters/sampleLetter.pdf}
+    \clearemptydoublepage
+  }
+  {}
+
+  % Dedication and acknowledgements.
+  \ifthenelse{\equal{\myIncludeDedication}{true}}
+    {\clearemptydoublepage\input{dedication/dedicatoria.tex}}
+    {}
+  \ifthenelse{\equal{\myIncludeAcknowledgements}{true}}
+    {\input{acknowledgements/agradecimientos.tex}}
+    {}
 }
 {}
-%\includepdf[pages=-]{letters/sampleLetter-pages.pdf}   % include all pages of
-%                                                 % pdf file
-
-%\includepdf[pages=-]{papeleo/vistoBuenoTutorTFM-MUSEA.pdf}   % for TFMs
-%\clearemptydoublepage % You need to add this after including each pdf
-
-% Dedication+acknowledgements (dedicatorias+agradecimientos)
-% The dedication has no chapter heading, so start it explicitly on a recto page.
-% Other preliminary sections use openright chapter headings or their own breaks.
-\ifthenelse{\equal{\myIncludeDedication}{true}}
-  {\clearemptydoublepage\input{dedication/dedicatoria.tex}}
-  {}
-\ifthenelse{\equal{\myIncludeAcknowledgements}{true}}
-  {\input{acknowledgements/agradecimientos.tex}}
-  {}
 
 % If this is the case, include definitions of acronyms (it's
 % included before resumen.tex and abstract.tex in case you want
@@ -131,46 +120,49 @@
                                               % the symbols you use
 
 % Now include resumen and abstract
-\input{abstract/resumen.tex}                  % EDIT this file
-\input{abstract/abstract.tex}                 % EDIT this file
+\ifthenelse{\equal{\ZenMode}{false}}
+{
+  \input{abstract/resumen.tex}                % EDIT this file
+  \input{abstract/abstract.tex}               % EDIT this file
 
 % Just for TFGs/PFCs at UAH, I do nothing and leave to the author the
 % inclusion of the file
 %\input{abstract/resumen-extendido.tex}       % EDIT this file
 
-% The table of contents is always included. The remaining generated lists
-% are selected independently in Config/myconfig.tex.
-\input{cover/table-of-contents.tex}
+  % The table of contents is always included in the full document. The
+  % remaining generated lists are selected independently in Config/myconfig.tex.
+  \input{cover/table-of-contents.tex}
 
-\ifthenelse{\equal{\myIncludeListOfFigures}{true}}
-  {\input{cover/list-of-figures.tex}}
-  {}
+  \ifthenelse{\equal{\myIncludeListOfFigures}{true}}
+    {\input{cover/list-of-figures.tex}}
+    {}
 
-\ifthenelse{\equal{\myIncludeListOfTables}{true}}
-  {\input{cover/list-of-tables.tex}}
-  {}
+  \ifthenelse{\equal{\myIncludeListOfTables}{true}}
+    {\input{cover/list-of-tables.tex}}
+    {}
 
-\ifthenelse{\equal{\myIncludeListOfCode}{true}}
-  {\input{cover/list-of-code.tex}}
-  {}
+  \ifthenelse{\equal{\myIncludeListOfCode}{true}}
+    {\input{cover/list-of-code.tex}}
+    {}
 
-\ifthenelse{\equal{\myIncludeListOfAlgorithms}{true}}
-  {\input{cover/list-of-algorithms.tex}}
-  {}
+  \ifthenelse{\equal{\myIncludeListOfAlgorithms}{true}}
+    {\input{cover/list-of-algorithms.tex}}
+    {}
 
-\ifthenelse{\equal{\myIncludeListOfVideos}{true}}
-  {\input{cover/list-of-videos.tex}}
-  {}
+  \ifthenelse{\equal{\myIncludeListOfVideos}{true}}
+    {\input{cover/list-of-videos.tex}}
+    {}
 
-% Now include list of acronyms and options (if this is the case)
-\ifthenelse{\equal{\myIncludeListOfAcronyms}{true}}
-  {\input{acronyms/acronymsgl.tex}}
-  {}
+  % Include the generated acronym and symbol lists when requested.
+  \ifthenelse{\equal{\myIncludeListOfAcronyms}{true}}
+    {\input{acronyms/acronymsgl.tex}}
+    {}
 
-% Now include symbols of symbols and options (if this is the case)
-\ifthenelse{\equal{\myIncludeListOfSymbols}{true}}
-  {\input{symbols/symbolsgl.tex}}
-  {}
+  \ifthenelse{\equal{\myIncludeListOfSymbols}{true}}
+    {\input{symbols/symbolsgl.tex}}
+    {}
+}
+{}
 
 %
 % END within-document configuration, frontpage and cover pages generation
@@ -207,13 +199,12 @@
 % Now start text and numbering for backmatter (just backpage in our
 % case)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\backmatter                                       % DO NOT TOUCH THIS LINE!
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Just for TFGs at UAH right now, but kept here JIC anybody else wants
-% to use it
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ThesisInstitutionalPage{cover/backpage.tex}  % EDIT this file if
-                                              % required, or comment it out
+\ifthenelse{\equal{\ZenMode}{false}}
+{
+  \backmatter                                   % DO NOT TOUCH THIS LINE!
+  \ThesisInstitutionalPage{cover/backpage.tex}  % EDIT this file if
+                                                % required, or comment it out
+}
+{}
 
 \end{document}

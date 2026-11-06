@@ -210,6 +210,10 @@ No todas las titulaciones utilizan la misma composición de tribunal ni los mism
 
 Las variables cuyo nombre comienza por \texttt{\textbackslash{}myInclude} te permiten mostrar u ocultar contenido opcional sin comentar órdenes en \texttt{book.tex}. Todas admiten exclusivamente los valores \texttt{true} y \texttt{false}. La plantilla genera un error explícito si escribes otro valor.
 
+\subsection{Modo zen para redactar}
+
+La variable \texttt{\textbackslash{}ZenMode} te permite compilar el cuerpo del documento sin las cubiertas, las páginas preliminares, los índices ni la contraportada. Su valor predeterminado es \texttt{false}; si lo cambias a \texttt{true}, se conserva el formato de los capítulos y se compila la estructura seleccionada en \texttt{Book/content-standard.tex} o \texttt{Book/content-compendium.tex}. En esos ficheros puedes comentar temporalmente las órdenes \texttt{\textbackslash{}input} de los capítulos que no quieras compilar. El modo zen no elimina los elementos incluidos desde esos ficheros, como la bibliografía, los apéndices o los PDF de publicaciones. La sección~\ref{sec:partes-modificar} describe cómo elegir el contenido que se compila.
+
 \subsection{Páginas preliminares}
 
 Las siguientes variables controlan el contenido preliminar de ejemplo:
