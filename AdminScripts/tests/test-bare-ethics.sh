@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Check bare preparation and conditional inclusion without changing live sources.
+# Check bare preparation and unconditional ethics inclusion without changing live sources.
 set -euo pipefail
 test_directory=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 repository_root=$(cd -- "$test_directory/../.." && pwd)
@@ -26,25 +26,19 @@ cmp "$repository_root/Book/chapters/bare/content-standard.tex" "$fixture/Book/co
 cmp "$repository_root/Book/appendix/bare/aspectos-eticos.tex" "$fixture/Book/appendix/aspectos-eticos.tex"
 
 check_degree() {
-  local degree=$1 expected=$2 other_school=${3:-} job="$1-$2"
+  local degree=$1 job=$2 other_school=${3:-}
   if ! (cd "$fixture/Book" && pdflatex -draftmode -interaction=nonstopmode -halt-on-error \
-    -jobname="$job" "\def\TestDegree{$degree}$other_school\input{$test_directory/fixtures/bare-upm-ethics.tex}" \
+    -jobname="$job" "\def\TestDegree{$degree}$other_school\input{$test_directory/fixtures/bare-ethics.tex}" \
     >"$job-output.log" 2>&1); then
     tail -n 60 "$fixture/Book/$job-output.log" >&2
     exit 1
   fi
-  if [[ $expected == include ]]; then
-    grep -q '^PASS: ETHICAL-APPENDIX-INCLUDED' "$fixture/Book/$job.log"
-    grep -q 'cha:aspectos-eticos' "$fixture/Book/$job.aux"
-  else
-    ! grep -q '^PASS: ETHICAL-APPENDIX-INCLUDED' "$fixture/Book/$job.log"
-    ! grep -q 'cha:aspectos-eticos' "$fixture/Book/$job.aux"
-  fi
+  grep -q '^PASS: ETHICAL-APPENDIX-INCLUDED' "$fixture/Book/$job.log"
+  grep -q 'cha:aspectos-eticos' "$fixture/Book/$job.aux"
 }
-for degree in GISTS-ETSIT-UPM GIB-ETSIT-UPM GISD-ETSIT-UPM MUIT-ETSIT-UPM MUCS-ETSIT-UPM MUESFV-ETSIT-UPM MUIB-ETSIT-UPM MUIRST-ETSIT-UPM MUISE-ETSIT-UPM MUTSC-ETSIT-UPM MUNE-ETSIT-UPM PHD-ETSIT-UPM; do
-  check_degree "$degree" include
-done
-for degree in GIEC MUIT ITI-ESCET-URJC; do check_degree "$degree" omit; done
-check_degree GISTS-ETSIT-UPM omit '\def\TestOtherSchool{1}'
+check_degree GIEC GIEC-UAH
+check_degree GISTS-ETSIT-UPM GISTS-ETSIT-UPM
+check_degree ITI-ESCET-URJC ITI-ESCET-URJC
+check_degree GISTS-ETSIT-UPM GISTS-other-UPM-school '\def\TestOtherSchool{1}'
 [[ $(sha256sum "$repository_root/Config/myconfig.tex" "$repository_root/Book/content-standard.tex" "$repository_root/Book/appendix/aspectos-eticos.tex") == "$before" ]]
-echo 'PASS: bare preparation copies the ethical appendix; all 12 ETSIT-UPM degrees include it, UAH/URJC and other UPM schools omit it; live sources unchanged.'
+echo 'PASS: bare preparation copies the ethical appendix; UAH, ETSIT-UPM, URJC and other UPM schools include it; live sources unchanged.'

@@ -132,7 +132,7 @@ Doctoral identifiers ending in `-COMPENDIUM` inherit the base programme’s meta
 
 The ETSIT-UPM undergraduate/master variants share orange covers and an orange back cover, while GISD and MUNE have specific supervision/committee sheets. MUNE opening-page texts follow the configured Spanish/English language. PHD-ETSIT-UPM uses a separate doctoral cover, inner title page with both crests, and a credits page with advisors, external reviewers, committee members and defence date; it has no independent back cover. The current degree/profile tables and the focused regression commands are documented in MAINTAINERS.md and DEGREE_REGISTRY_COMPATIBILITY.md in this directory. These variants have received less extensive testing than the UAH cases.
 
-The standard manual includes Book/appendix/aspectos-eticos.tex only for ETSIT-UPM degrees. Its conditional inclusion and source are also maintained in the orig copies; the prepared minimal and compendium bodies do not include it automatically.
+The standard manual and standard bare structure include Book/appendix/aspectos-eticos.tex for every degree. The appendix comes from the ETSIT-UPM template, but users should adapt or omit it if it does not suit their work or school regulations. The orig copies retain the same inclusion; the compendium body does not include it automatically.
 
 ## Repository maturity and maintenance signals
 

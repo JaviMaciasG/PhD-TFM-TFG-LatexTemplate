@@ -132,7 +132,7 @@ Los identificadores doctorales terminados en `-COMPENDIUM` heredan los datos del
 
 Las variantes TFG/TFM de la ETSIT-UPM comparten cubiertas naranjas y una contraportada naranja, mientras que el GISD y el MUNE tienen hojas específicas de supervisión y tribunal. Los textos iniciales del MUNE siguen el idioma español o inglés configurado. PHD-ETSIT-UPM utiliza una cubierta doctoral independiente, una portada interior con ambos escudos y una página de créditos con directores, revisores externos, tribunal y fecha de defensa; no tiene contraportada independiente. Las tablas actuales de titulaciones y perfiles y las órdenes de regresión específicas se documentan en MAINTAINERS.md y DEGREE_REGISTRY_COMPATIBILITY.md de este directorio. Estas variantes se han probado menos exhaustivamente que los casos UAH.
 
-El manual estándar incluye Book/appendix/aspectos-eticos.tex solo para titulaciones de la ETSIT-UPM. Su inclusión condicional y su fuente se mantienen también en las copias orig; los cuerpos mínimos preparados y por compendio no lo incluyen automáticamente.
+El manual estándar y la estructura mínima estándar incluyen Book/appendix/aspectos-eticos.tex para todas las titulaciones. El apéndice procede de la plantilla ETSIT-UPM, pero debe adaptarse u omitirse si no corresponde al trabajo o a la normativa del centro. La inclusión se mantiene también en las copias orig; el cuerpo por compendio no lo incluye automáticamente.
 
 ## Madurez del repositorio e indicadores de mantenimiento
 
