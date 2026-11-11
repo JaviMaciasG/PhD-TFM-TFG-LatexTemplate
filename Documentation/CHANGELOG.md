@@ -2,6 +2,16 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.12.0] - 2026-11-11
+
+### Features
+
+- Add an optional, disabled-by-default UNE-ISO 690:2024 bibliography style example
+
+- Place Spanish and English summaries on one page for ETSIT-UPM TFG and TFM documents
+
+- Support four ETSIST-UPM final degree projects with a shared institutional cover
+
 ## [v8.11.1] - 2026-11-06
 
 ### Refactoring
