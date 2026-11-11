@@ -1,0 +1,42 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: disposición de los resúmenes en español e inglés.
+%
+% Uso: mantenimiento de la plantilla; normalmente no debes modificarlo.
+% Edita abstract/resumen.tex y abstract/abstract.tex para escribirlos.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifthenelse{\equal{\myUniversityAcronym}{UPM}\AND
+  \equal{\mySchool}{Escuela Técnica Superior de Ingenieros de Telecomunicación}\AND
+  \(\equal{\myWorkType}{TFG}\OR\equal{\myWorkType}{TFM}\)}
+{
+  % Preserve the existing chapter headings while keeping both summaries
+  % on the page where Resumen normally starts.
+  \cleardoublepage
+  \begingroup
+    \let\clearpage\relax
+    \let\cleardoublepage\relax
+    \newsavebox{\ETSITSummaryBox}
+    \sbox{\ETSITSummaryBox}{%
+      \begin{minipage}{\textwidth}
+        \input{abstract/resumen.tex}
+        \input{abstract/abstract.tex}
+      \end{minipage}%
+    }
+    % The book class uses a 10 pt body font. Never scale below 9 pt.
+    \ifdim\dimexpr\ht\ETSITSummaryBox+\dp\ETSITSummaryBox\relax>
+      \dimexpr 10\textheight/9\relax
+      \PackageError{UAH-template}
+        {The Spanish and English summaries do not fit on one page at 9 pt}
+        {Shorten abstract/resumen.tex or abstract/abstract.tex.}
+    \fi
+    \noindent\adjustbox{max totalheight=\textheight}{\usebox{\ETSITSummaryBox}}\par
+  \endgroup
+}
+{
+  \input{abstract/resumen.tex}
+  \input{abstract/abstract.tex}
+}
+
+%%% Local Variables:
+%%% TeX-master: "../book"
+%%% End:

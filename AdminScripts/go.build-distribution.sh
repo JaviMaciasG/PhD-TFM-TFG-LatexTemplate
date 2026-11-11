@@ -23,9 +23,9 @@ guide_sources=(
   PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex
 )
 guide_pdfs=("${guide_sources[@]/%.tex/.pdf}")
-# Required by the default manual and the EIF institutional profile, including
-# when testing a release before these newly added sources have been committed.
+# Include essential sources when testing a release before they are committed.
 reference_sources=(
+  Book/abstract/summary-pages.tex
   Book/appendix/titulaciones-soportadas.tex
   Book/appendix/orig/titulaciones-soportadas.tex
   Book/cover/urjc/portada-tfg-eif-urjc.tex
@@ -84,7 +84,7 @@ cp -p -- "$project_readme" "$stage/README.md"
 mv "$stage/README.pdf" "$stage/00-README.pdf"
 mv "$stage/TYPESETTING-STYLES-COMPARISON.pdf" "$stage/02-TYPESETTING-STYLES-COMPARISON.pdf"
 
-for required_file in README.md 00-README.pdf 02-TYPESETTING-STYLES-COMPARISON.pdf RELEASE.txt Makefile 04-TYPESETTING-STYLES-GUIDE.pdf sync-git-sources.sh Book/book.tex Config/myconfig.tex "${guide_pdfs[@]}"; do
+for required_file in README.md 00-README.pdf 02-TYPESETTING-STYLES-COMPARISON.pdf RELEASE.txt Makefile 04-TYPESETTING-STYLES-GUIDE.pdf sync-git-sources.sh Book/book.tex Book/abstract/summary-pages.tex Config/myconfig.tex "${guide_pdfs[@]}"; do
   [[ -f $stage/$required_file ]] || { echo "ERROR: required distribution file is missing: $required_file" >&2; exit 1; }
 done
 
