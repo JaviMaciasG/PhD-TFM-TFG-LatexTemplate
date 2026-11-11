@@ -129,9 +129,9 @@ Después de modificar el documento, puedes generar la comparación mediante:
 make latexdiff
 \end{verbatim}
 
-El objetivo \texttt{latexdiff} genera primero \texttt{book-flatten.tex} con el estado actual, lo compara con \texttt{book-flatten-snapshot.tex} y crea \texttt{book-flatten-diff.tex}. A continuación procesa su bibliografía y sus glosarios y genera \texttt{book-flatten-diff.pdf}, que contiene las diferencias resaltadas.
+El objetivo \texttt{latexdiff} comprueba primero si existe una versión de referencia. Después genera \texttt{book-flatten.tex} con el estado actual, lo compara con esa referencia y crea \texttt{book-flatten-diff.tex}. A continuación procesa su bibliografía y sus glosarios y genera \texttt{book-flatten-diff.pdf}, que contiene las diferencias resaltadas.
 
-La comparación depende de que exista previamente \texttt{book-flatten-snapshot.tex}. Si quieres iniciar un nuevo ciclo de revisión, comprueba primero que hayas guardado los cambios anteriores y ejecuta de nuevo \texttt{make snapshot} para reemplazar la versión de referencia.
+Si no existe \texttt{book-flatten-snapshot.tex}, \texttt{make latexdiff} te explicará cómo crearla y te ofrecerá comparar con la última versión registrada en Git. Si aceptas, usará los ficheros de ese commit sin modificar tu instantánea ni las fuentes actuales. Esa alternativa requiere un repositorio con al menos un commit y confirmación interactiva. Si no quieres usarla o no tienes Git, ejecuta \texttt{make snapshot} para crear tu propia versión de referencia.
 
 El \texttt{Makefile} aplica además una corrección específica al resultado de \texttt{latexdiff} para tratar determinados entornos de TikZ utilizados por la plantilla. Esta corrección ayuda con los ejemplos actuales, pero un documento que contenga construcciones complejas puede requerir ajustes manuales en \texttt{book-flatten-diff.tex}.
 

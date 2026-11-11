@@ -14,6 +14,9 @@ DIA_TOOL = dia
 GS_TOOL = gs
 INKSCAPE_TOOL = inkscape
 LATEXPAND_TOOL = latexpand
+# Match the trailing slash too, so macro declarations stay intact.
+LATEXPAND_FLAGS ?= --define myConfigDirectory/=../Config/
+LATEXDIFF_TOOL ?= latexdiff
 RM = rm -f
 PDF_TOOL ?= pdflatex
 LATEX_ENGINE ?= $(PDF_TOOL)
@@ -218,20 +221,39 @@ clean-orig-diagrams:
 all_latexmk: all
 
 snapshot:
-	$(LATEXPAND_TOOL) $(TEX_FILE) > $(SNAPSHOT_FLATTEN_TEX_FILE)
+	$(LATEXPAND_TOOL) $(LATEXPAND_FLAGS) $(TEX_FILE) > $(SNAPSHOT_FLATTEN_TEX_FILE)
 
 flatten:
-	$(LATEXPAND_TOOL) $(TEX_FILE) > $(FLATTEN_TEX_FILE)
+	$(LATEXPAND_TOOL) $(LATEXPAND_FLAGS) $(TEX_FILE) > $(FLATTEN_TEX_FILE)
 
-latexdiff: flatten
-#	latexdiff --encoding=utf8 --config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" $(SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE) | sed -e 's/^[ ]*//g' | sed -e 's/[ ]*$$//g' | perl -0777 -pe 's/[}]\n\\end[{]tikzpicture[}];\n\\end[{]tikzpicture[}]/\\end{tikzpicture}\n};\n\\end{tikzpicture}/g' > $(DIFF_FLATTEN_TEX_FILE)
-	latexdiff --encoding=utf8 \
+latexdiff:
+	@set -euo pipefail; \
+	baseline="$(SNAPSHOT_FLATTEN_TEX_FILE)"; \
+	tempdir=''; \
+	trap 'if [[ -n "$$tempdir" ]]; then rm -rf -- "$$tempdir"; fi' EXIT; \
+	if [[ ! -f "$$baseline" ]]; then \
+	  echo "No snapshot found: $(SNAPSHOT_FLATTEN_TEX_FILE)."; \
+	  echo "Create one with 'make snapshot' before editing to save a comparison baseline."; \
+	  if [[ ! -t 0 ]]; then echo "ERROR: no interactive input available; create a snapshot or run make latexdiff interactively." >&2; exit 1; fi; \
+	  read -r -p "Continue by comparing with the last committed version? [y/N] " answer; \
+	  case "$$answer" in y|Y|yes|YES) ;; *) echo "Comparison cancelled. Run 'make snapshot' to create a baseline."; exit 1 ;; esac; \
+	  command -v git >/dev/null 2>&1 || { echo "ERROR: Git is required for the committed-version fallback." >&2; exit 1; }; \
+	  repo_root=$$(git -C "$$PWD" rev-parse --show-toplevel 2>/dev/null) || { echo "ERROR: this directory is not inside a Git repository; create a snapshot with 'make snapshot'." >&2; exit 1; }; \
+	  git -C "$$repo_root" rev-parse --verify 'HEAD^{commit}' >/dev/null 2>&1 || { echo "ERROR: this Git repository has no committed version yet; create a snapshot with 'make snapshot'." >&2; exit 1; }; \
+	  component_path=$${PWD#"$$repo_root"/}; \
+	  tempdir=$$(mktemp -d) || { echo "ERROR: could not create a temporary directory." >&2; exit 1; }; \
+	  git -C "$$repo_root" archive HEAD Config Book Anteproyecto | tar -xf - -C "$$tempdir"; \
+	  (cd "$$tempdir/$$component_path" && $(LATEXPAND_TOOL) $(LATEXPAND_FLAGS) $(TEX_FILE) > "$$tempdir/$(SNAPSHOT_FLATTEN_TEX_FILE)"); \
+	  baseline="$$tempdir/$(SNAPSHOT_FLATTEN_TEX_FILE)"; \
+	fi; \
+	$(MAKE) --no-print-directory flatten; \
+	$(LATEXDIFF_TOOL) --encoding=utf8 \
 	--config="PICTUREENV=(?:picture|tikzpicture|DIFnomarkup)[\w\d*@]*" \
-	$(SNAPSHOT_FLATTEN_TEX_FILE) $(FLATTEN_TEX_FILE) \
+	"$$baseline" $(FLATTEN_TEX_FILE) \
 	| sed -e 's/^[ ]*//' -e 's/[ ]*$$//' \
 	| sed -z 's/}\n\\end{tikzpicture};\n\\end{tikzpicture}/\\end{tikzpicture}\n};\n\\end{tikzpicture}/g' \
-	> $(DIFF_FLATTEN_TEX_FILE)
-	$(call latexmk_build,$(DIFF_FLATTEN_TEX_FILE))
+	> $(DIFF_FLATTEN_TEX_FILE); \
+	$(LATEXMK) $(LATEXMK_FLAGS) $(DIFF_FLATTEN_TEX_FILE)
 
 pdf_dia_done: $(PDFS_FROM_DIA)
 	@echo "Generating pdfs from DIA..."
