@@ -29,6 +29,8 @@ reference_sources=(
   Book/appendix/titulaciones-soportadas.tex
   Book/appendix/orig/titulaciones-soportadas.tex
   Book/cover/urjc/portada-tfg-eif-urjc.tex
+  Book/cover/upm/portada-pfg-etsist-upm.tex
+  Book/logos/upm/logo-tfgs-etsist-upm.png
 )
 # Build these generic guides even when this script is invoked without make distrib.
 make -C PapeleoTFG guia
