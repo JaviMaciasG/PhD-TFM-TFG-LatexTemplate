@@ -2,6 +2,12 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.12.1] - 2026-11-11
+
+### Features
+
+- Add color ETSIST-UPM and UPM logos as assets for future institutional layouts
+
 ## [v8.12.0] - 2026-11-11
 
 ### Features
