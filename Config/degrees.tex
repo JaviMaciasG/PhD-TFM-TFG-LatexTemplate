@@ -5,7 +5,7 @@
 % Selecciona tu titulación en Config/myconfig.tex.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Fuera de la UAH, los identificadores usan <titulación>-<universidad>.
+% Fuera de la UAH, los identificadores usan <titulación>-<centro>-<universidad>.
 % El guion forma parte del identificador y es válido en las comparaciones TeX.
 
 % Legacy pre-Bologna degrees.
@@ -637,6 +637,43 @@
   work-type-full-spanish = {Proyecto Fin de Grado},
   work-type-full-english = {Bachelor Thesis},
   layout-profile = upm-etsist-pfg
+}
+
+% Bachelor's final projects at EIIA-UCLM. The institutional number uses A/B/D.
+\DeclareDegree{GIE-EIIA-UCLM}{
+  status = active,
+  institution = UCLM,
+  school = {Escuela de Ingeniería Industrial y Aeroespacial de Toledo},
+  degree-name = {Grado en Ingeniería Eléctrica},
+  work-type = TFG,
+  work-type-full-spanish = {Trabajo Fin de Grado},
+  work-type-full-english = {Bachelor Thesis},
+  layout-profile = uclm-eiia-tfg,
+  institutional-tfg-code = A
+}
+
+\DeclareDegree{GIEIA-EIIA-UCLM}{
+  status = active,
+  institution = UCLM,
+  school = {Escuela de Ingeniería Industrial y Aeroespacial de Toledo},
+  degree-name = {Grado en Ingeniería Electrónica Industrial y Automática},
+  work-type = TFG,
+  work-type-full-spanish = {Trabajo Fin de Grado},
+  work-type-full-english = {Bachelor Thesis},
+  layout-profile = uclm-eiia-tfg,
+  institutional-tfg-code = B
+}
+
+\DeclareDegree{GIA-EIIA-UCLM}{
+  status = active,
+  institution = UCLM,
+  school = {Escuela de Ingeniería Industrial y Aeroespacial de Toledo},
+  degree-name = {Grado en Ingeniería Aeroespacial},
+  work-type = TFG,
+  work-type-full-spanish = {Trabajo Fin de Grado},
+  work-type-full-english = {Bachelor Thesis},
+  layout-profile = uclm-eiia-tfg,
+  institutional-tfg-code = D
 }
 
 % Master's degrees.

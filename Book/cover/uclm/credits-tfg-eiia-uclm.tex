@@ -1,0 +1,30 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: página de datos y derechos de autor de los TFG EIIA-UCLM.
+%
+% Uso: inclusión automática; normalmente no debes modificarlo.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+\begingroup
+\normalfont
+\vspace*{\fill}
+\noindent\begin{tabularx}{\textwidth}{@{}p{2cm}>{\raggedright\arraybackslash}X@{}}
+  \textit{Título:} & \myBookTitle\\[0.25em]
+  \textit{Autor:} & \myAuthorFullName\\[0.25em]
+  \textit{Grado:} & \myDegreefull\\[0.25em]
+  \textit{\UCLMAdvisorLabel:} & \myAcademicTutorFullName
+    \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\ & \myCoTutorFullName}\\[0.25em]
+  \textit{E-mail:} & \myAuthorEmail
+    \ifthenelse{\equal{\myWebsite}{}}{}{\\[0.25em]\textit{Sitio web:} & \url{\myWebsite}}%
+    \\[0.25em]
+  \textit{Dirección:} & \begin{minipage}[t]{\linewidth}\myUniversity{} -- \mySchool\\\UCLMSchoolAddress\end{minipage}
+\end{tabularx}
+
+\vspace{0.8cm}
+\noindent\myCopyrightStatement\par
+\smallskip
+\noindent \small Esta obra está bajo una \href{\myLicenseURL}{Licencia Creative Commons Atribución 4.0 Internacional}.\par
+\noindent \footnotesize Muchos de los nombres usados por las compañías para diferenciar sus productos y servicios son reclamados como marcas registradas. Allí donde estos nombres aparezcan en este documento, y cuando el autor haya sido informado de esas marcas registradas, los nombres estarán escritos en mayúsculas o como nombres propios.
+%\vspace*{1.6cm}
+\clearpage
+\endgroup

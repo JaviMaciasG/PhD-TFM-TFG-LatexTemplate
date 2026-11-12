@@ -1,0 +1,27 @@
+% Exercise EIIA-UCLM front matter with the normal registry and font policy.
+\documentclass[openright]{book}
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\renewcommand{\myDegree}{\CoverTestDegree}
+\renewcommand{\myLanguage}{\CoverTestLanguage}
+\renewcommand{\myTypesettingStyle}{\CoverTestStyle}
+\renewcommand{\myStudentRecordNumber}{\CoverTestRecord}
+\providecommand{\CoverTestWebsite}{https://example.org/tfg}
+\renewcommand{\myWebsite}{\CoverTestWebsite}
+\renewcommand{\mySchoolAddress}{}
+\renewcommand{\myAuthorFullName}{Nombre Apellidos}
+\renewcommand{\myAcademicTutorFullName}{Tutora Ejemplo}
+\renewcommand{\myAcademicTutorGender}{female}
+\renewcommand{\myCoTutorFullName}{}
+\renewcommand{\myThesisDefenseYear}{2027}
+\renewcommand{\myThesisDefenseDate}{\CoverTestDate}
+\input{../Config/glossaries.tex}
+\input{../Config/postamble.tex}
+\input{../Config/typesetting/typesetting.tex}
+\graphicspath{{./logos/}}
+\begin{document}
+\frontmatter
+\input{../Config/setlanguagedependentissues.tex}
+\renewcommand{\myBookTitle}{Un proyecto de ingeniería aeroespacial con un título suficientemente largo para comprobar la composición de la portada}
+\ThesisInstitutionalPage{cover/cover.tex}
+\end{document}

@@ -55,6 +55,10 @@ Los identificadores admitidos actualmente por \texttt{\textbackslash{}myDegree},
     \item \textbf{Escuela Técnica Superior de Ingenieros de Telecomunicación}: trabajos fin de grado \texttt{GISTS-ETSIT-UPM}, \texttt{GIB-ETSIT-UPM} y \texttt{GISD-ETSIT-UPM}; trabajos fin de máster \texttt{MUIT-ETSIT-UPM}, \texttt{MUCS-ETSIT-UPM}, \texttt{MUESFV-ETSIT-UPM}, \texttt{MUIB-ETSIT-UPM}, \texttt{MUIRST-ETSIT-UPM}, \texttt{MUISE-ETSIT-UPM}, \texttt{MUTSC-ETSIT-UPM} y \texttt{MUNE-ETSIT-UPM}; y tesis doctoral \texttt{PHD-ETSIT-UPM} o \texttt{PHD-ETSIT-UPM-COMPENDIUM} para la modalidad por compendio.
     \item \textbf{Escuela Técnica Superior de Ingeniería y Sistemas de Telecomunicación}: proyectos fin de grado \texttt{GIEC-ETSIST-UPM}, \texttt{GIST-ETSIST-UPM}, \texttt{GISI-ETSIST-UPM} y \texttt{GIT-ETSIST-UPM}.
   \end{itemize}
+  \item \textbf{Universidad de Castilla-La Mancha}:
+  \begin{itemize}
+    \item \textbf{Escuela de Ingeniería Industrial y Aeroespacial de Toledo}: trabajos fin de grado \texttt{GIE-EIIA-UCLM}, \texttt{GIEIA-EIIA-UCLM} y \texttt{GIA-EIIA-UCLM}.
+  \end{itemize}
   \item \textbf{Grupo de investigación GEINTRA}: informe de investigación \texttt{GEINTRARR}, cuyo soporte se considera todavía experimental.
 \end{itemize}
 
@@ -85,6 +89,8 @@ Los datos personales y de contacto de la persona autora se configuran mediante l
   \item \texttt{\textbackslash{}myAuthorFullName}: nombre completo utilizado en cubiertas, metadatos y documentos administrativos. La definición proporcionada concatena automáticamente \texttt{\textbackslash{}myAuthorName} y \texttt{\textbackslash{}myAuthorSurname}, por lo que normalmente no tendrás que modificarla.
   \item \texttt{\textbackslash{}myAuthorGender}: género gramatical empleado para seleccionar las formas masculinas o femeninas de los textos automáticos. Admite los valores \texttt{male} y \texttt{female}.
   \item \texttt{\textbackslash{}myAuthorEmail}: dirección de correo electrónico de la persona autora. Se utiliza en algunos formularios y en los metadatos de contacto del PDF.
+  \item \texttt{\textbackslash{}myWebsite}: dirección web opcional en la página de datos del TFG de la EIIA-UCLM. Si está vacía, no se muestra.
+  \item \texttt{\textbackslash{}myStudentRecordNumber}: número de expediente opcional para la cubierta de la EIIA-UCLM. La plantilla añade el año abreviado y el código de la titulación.
   \item \texttt{\textbackslash{}myAuthorDNI}: DNI, NIE u otro identificador requerido en los documentos administrativos aplicables.
   \item \texttt{\textbackslash{}myAuthorStreet}: calle y número del domicilio utilizados en los formularios que solicitan la dirección postal.
   \item \texttt{\textbackslash{}myAuthorCity}: localidad del domicilio.
@@ -101,6 +107,7 @@ La universidad y el centro se obtienen automáticamente de la titulación selecc
 
 \begin{itemize}
   \item \texttt{\textbackslash{}myDepartment} y \texttt{\textbackslash{}myDepartmentEnglish}: departamento donde realizas el trabajo, en español e inglés. Se utiliza en los campos generales de departamento de las cubiertas, las páginas institucionales, el anteproyecto y los formularios. Es independiente de las afiliaciones del tutor, cotutor o ponente: no se deduce de ellas ni se traduce automáticamente. Si dejas un campo vacío, permanece vacío.
+  \item \texttt{\textbackslash{}mySchoolAddress}: dirección postal opcional del centro en la página de datos de la EIIA-UCLM. Si está vacía, se utiliza la dirección del campus incluida en la plantilla.
   \item \texttt{\textbackslash{}myPhDProgram}: nombre del programa de doctorado en español. Solo necesitarás esta variable para los documentos que muestren esta información.
   \item \texttt{\textbackslash{}myPhDProgramEnglish}: nombre del programa de doctorado en inglés.
   \item \texttt{\textbackslash{}myResearchGroup}: nombre o acrónimo del grupo de investigación. También se utiliza al generar informes de investigación mediante \texttt{GEINTRARR}.
@@ -116,7 +123,7 @@ Introduce las fechas como texto ya formateado, no como valores que la plantilla 
   \item \texttt{\textbackslash{}myThesisDepositDateEnglish}: fecha de depósito del trabajo en inglés.
   \item \texttt{\textbackslash{}myThesisAcademicYear}: curso académico mostrado en las actas y rúbricas que lo requieren (por ejemplo, \texttt{2025/2026}).
   \item \texttt{\textbackslash{}myThesisDefenseYear}: año de defensa utilizado en las cubiertas y contraportadas correspondientes.
-  \item \texttt{\textbackslash{}myThesisDefenseDate}: fecha completa de defensa en español. En los informes de investigación también se utiliza como fecha de la cubierta.
+  \item \texttt{\textbackslash{}myThesisDefenseDate}: fecha completa de defensa en español. En los informes de investigación también se utiliza como fecha de la cubierta. Para la EIIA-UCLM, escribe la fecha con el patrón \texttt{24 de junio de 2027}: la plantilla extrae el mes para la portada; si no puede reconocerlo, muestra un aviso visible.
   \item \texttt{\textbackslash{}myThesisdefenseDateEnglish}: fecha completa de defensa en inglés. Respeta exactamente este nombre, incluida la letra minúscula de \texttt{defense}.
   \item \texttt{\textbackslash{}myPaperworkDate}: fecha en español utilizada para firmar o fechar los documentos administrativos. Su definición puede reutilizar \texttt{\textbackslash{}myThesisDepositDate} cuando ambas fechas coincidan.
   \item \texttt{\textbackslash{}myPaperworkDateEnglish}: fecha equivalente en inglés. Se utiliza, entre otros casos, en la autorización para tutores extranjeros y puede reutilizar \texttt{\textbackslash{}myThesisDepositDateEnglish}.
@@ -334,8 +341,8 @@ Utiliza las siguientes variables para configurar la publicación en abierto, el 
   \item \texttt{\textbackslash{}myAuthorizationOpenPublishingEmbargoMonths}: duración del embargo antes de la publicación en abierto. Los valores contemplados por los textos automáticos son \texttt{0}, \texttt{6}, \texttt{12}, \texttt{18} y \texttt{24} meses.
   \item \texttt{\textbackslash{}myResearchVicerrector}: nombre y tratamiento de la persona responsable del vicerrectorado que aparece en los formularios de publicación correspondientes.
   \item \texttt{\textbackslash{}myResearchVicerrectorGender}: género gramatical utilizado para adaptar el cargo del vicerrectorado. Admite los valores \texttt{male} y \texttt{female}.
-  \item \texttt{\textbackslash{}myCopyrightStatement}: declaración de derechos incorporada a los metadatos del PDF.
-  \item \texttt{\textbackslash{}myLicenseURL}: dirección de la licencia incorporada a los metadatos del PDF.
+  \item \texttt{\textbackslash{}myCopyrightStatement}: declaración de derechos incorporada a los metadatos del PDF y a la página de datos de la EIIA-UCLM.
+  \item \texttt{\textbackslash{}myLicenseURL}: dirección de la licencia incorporada a los metadatos del PDF y utilizada como enlace en la página de datos de la EIIA-UCLM.
 \end{itemize}
 
 La autorización de publicación, el embargo y la licencia representan decisiones diferentes. Comprueba que sus valores sean coherentes entre sí y con las condiciones institucionales aplicables. Sustituye también los nombres de cargos y las direcciones de licencia de ejemplo por información vigente antes de generar los documentos definitivos.

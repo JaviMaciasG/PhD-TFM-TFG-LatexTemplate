@@ -102,6 +102,11 @@
 %  GISI-ETSIST-UPM - Grado en Ingeniería de Sonido e Imagen
 %  GIT-ETSIST-UPM  - Grado en Ingeniería Telemática
 %
+% Titulaciones de la EIIA-UCLM (TFG):
+%  GIE-EIIA-UCLM   - Grado en Ingeniería Eléctrica
+%  GIEIA-EIIA-UCLM - Grado en Ingeniería Electrónica Industrial y Automática
+%  GIA-EIIA-UCLM   - Grado en Ingeniería Aeroespacial
+%
 % Otros documentos:
 %  GEINTRARR - Geintra Research Report (soporte preliminar)
 %
@@ -142,6 +147,10 @@
 \newcommand{\myAuthorGender}{male} 
 \newcommand{\myAuthorEmail}{javier.maciasguarasa@uah.es}
 \newcommand{\myAuthorDNI}{14991977-W}
+% Sólo para la página de datos del TFG EIIA-UCLM; deja la web vacía para omitirla.
+\newcommand{\myWebsite}{}
+% Nº de expediente del TFG EIIA-UCLM; vacío para omitir toda la línea del número.
+\newcommand{\myStudentRecordNumber}{}
 % Datos personales para la solicitud de anteproyecto; no siempre son necesarios.
 \newcommand{\myAuthorStreet}{C/ Calle de la Calle, 22}
 \newcommand{\myAuthorCity}{Meco}
@@ -201,6 +210,8 @@
 % Datos institucionales
 % La universidad, su acrónimo y el centro se seleccionan automáticamente en
 % Config/degrees.tex y Config/institutions.tex según \myDegree.
+% Sólo para EIIA-UCLM. Déjalo vacío para usar la dirección oficial del centro.
+\newcommand{\mySchoolAddress}{}
 
 % Departamento donde se realiza el trabajo, independiente de las afiliaciones
 % del tutor y del cotutor. Deja vacío lo que no proceda: no se infiere ni traduce.
@@ -284,6 +295,8 @@
 % En los RR, myThesisDefenseDate es la fecha que aparece en la portada.
 \newcommand{\myThesisAcademicYear}{2026/2027}
 \newcommand{\myThesisDefenseYear}{2027}
+% Para la portada EIIA-UCLM escribe día de mes de año, por ejemplo
+% 24 de junio de 2027. El mes de la portada se deduce de esta fecha.
 \newcommand{\myThesisDefenseDate}{24 de junio de \myThesisDefenseYear{}}
 \newcommand{\myThesisdefenseDateEnglish}{June 24\textsuperscript{th}, \myThesisDefenseYear{}}
 % Si prefieres el formato británico para la fecha en inglés, usa este ejemplo:
@@ -303,8 +316,8 @@
 \newcommand{\myResearchVicerrectorGender}{male}
 
 % Derechos de autor
-\newcommand{\myCopyrightStatement}{\myAuthorFullName{}. Some rights reserved. This document is under terms of Creative Commons license Attribution - Non Commercial - Non Derivatives.}
-\newcommand{\myLicenseURL}{http://creativecommons.org/licenses/by-nc-nd/3.0/es/}
+\newcommand{\myCopyrightStatement}{\textcopyright{} \myThesisDefenseYear{} \myAuthorFullName{}}
+\newcommand{\myLicenseURL}{https://creativecommons.org/licenses/by/4.0/}
 
 \newcommand{\myResearchReportID}{RR-2027-01}
 

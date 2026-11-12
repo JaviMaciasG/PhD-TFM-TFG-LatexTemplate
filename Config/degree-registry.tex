@@ -29,6 +29,7 @@
 \tl_new:N \l_uah_degree_work_type_full_english_tl
 \tl_new:N \l_uah_degree_layout_profile_tl
 \tl_new:N \l_uah_degree_document_structure_tl
+\tl_new:N \l_uah_degree_institutional_tfg_code_tl
 \tl_new:N \l_uah_layout_cover_files_tl
 \tl_new:N \l_uah_layout_backpage_file_tl
 \tl_new:N \l_uah_institution_university_name_tl
@@ -68,6 +69,7 @@
     work-type-full-english         .tl_set:N = \l_uah_degree_work_type_full_english_tl,
     layout-profile                 .tl_set:N = \l_uah_degree_layout_profile_tl,
     document-structure             .tl_set:N = \l_uah_degree_document_structure_tl,
+    institutional-tfg-code         .tl_set:N = \l_uah_degree_institutional_tfg_code_tl,
   }
 
 % Variants inherit institutional metadata and override only the structure.
@@ -123,6 +125,7 @@
     \tl_clear:N \l_uah_degree_work_type_full_english_tl
     \tl_clear:N \l_uah_degree_layout_profile_tl
     \tl_set:Nn \l_uah_degree_document_structure_tl {standard}
+    \tl_clear:N \l_uah_degree_institutional_tfg_code_tl
   }
 
 \cs_new_protected:Npn \uah_degree_require:nnN #1#2#3
@@ -167,6 +170,7 @@
         \uah_degree_store:nnV {#1} {work-type-full-english} \l_uah_degree_work_type_full_english_tl
         \uah_degree_store:nnV {#1} {layout-profile} \l_uah_degree_layout_profile_tl
         \uah_degree_store:nnV {#1} {document-structure} \l_uah_degree_document_structure_tl
+        \uah_degree_store:nnV {#1} {institutional-tfg-code} \l_uah_degree_institutional_tfg_code_tl
         \prop_gput:Nnn \g_uah_degree_registry_prop {#1/base-degree} {#1}
       }
   }
@@ -447,7 +451,7 @@
 \NewDocumentCommand \DegreeRegistryPrintCatalogue { }
   {
     \group_begin:
-    \clist_map_function:nN {UAH,URJC,UPM} \uah_catalogue_university:n
+    \clist_map_function:nN {UAH,URJC,UPM,UCLM} \uah_catalogue_university:n
     \group_end:
   }
 

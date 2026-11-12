@@ -1,0 +1,75 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: colores y utilidades de las portadas EIIA-UCLM.
+%
+% Uso: mantenimiento de la plantilla; normalmente no debes modificarlo.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{UCLMRed}{RGB}{183,18,52}
+\backgroundsetup{contents={}}
+
+\ExplSyntaxOn
+\tl_new:N \l_uclm_cover_month_tl
+\seq_new:N \l_uclm_cover_date_parts_seq
+\bool_new:N \l_uclm_cover_month_valid_bool
+\tl_set:Ne \l_tmpa_tl {\myThesisDefenseDate}
+\exp_args:NnV \regex_extract_once:nnN
+  {\A\s*[0-9]{1,2}\s+de\s+(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\s+de\s+}
+  \l_tmpa_tl \l_uclm_cover_date_parts_seq
+\seq_if_empty:NTF \l_uclm_cover_date_parts_seq
+  {
+    \tl_set:Nn \l_uclm_cover_month_tl {NO~SE~HA~PODIDO~DEDUCIR~EL~MES}
+    \bool_set_false:N \l_uclm_cover_month_valid_bool
+    \PackageWarning{uclm-eiia-cover}{Cannot~derive~a~month~from~myThesisDefenseDate;~use~'24~de~junio~de~2027'}
+  }
+  {
+    \bool_set_true:N \l_uclm_cover_month_valid_bool
+    \tl_set:Ne \l_uclm_cover_month_tl {\seq_item:Nn \l_uclm_cover_date_parts_seq {2}}
+  }
+\cs_new:Npn \UCLMCoverMonth {\tl_use:N \l_uclm_cover_month_tl}
+\cs_new:Npn \UCLMCoverDateSuffix {\bool_if:NT \l_uclm_cover_month_valid_bool {~DE~\myThesisDefenseYear}}
+\ExplSyntaxOff
+
+\newcommand{\UCLMSchoolAddress}{%
+  \ifthenelse{\equal{\mySchoolAddress}{}}%
+    {Campus Universitario de la Real Fábrica de Armas\\45071 Toledo}%
+    {\mySchoolAddress}}
+
+\newcommand{\UCLMAdvisorLabel}{%
+  \ifthenelse{\equal{\myCoTutorFullName}{}}%
+    {\ifthenelse{\equal{\myAcademicTutorGender}{female}}{Tutora}{Tutor}}%
+    {\ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{Tutoras}{Tutores}}}
+
+\newcommand{\UCLMRenderCover}[3]{%
+  \thispagestyle{empty}%
+  \begingroup
+  \normalfont
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[white] (current page.south west) rectangle (current page.north east);
+    \fill[#1] (current page.south west) rectangle ([xshift=6cm]current page.north west);
+    \node[anchor=north west,inner sep=0pt] at ([xshift=1.45cm,yshift=-2.0cm]current page.north west)
+      {\includegraphics[width=4cm]{uclm/#2}};
+    \node[anchor=north west,inner sep=0pt] at ([xshift=1.45cm,yshift=-5.3cm]current page.north west)
+      {\includegraphics[width=4cm]{uclm/#3}};
+    \node[anchor=north east,inner sep=0pt,outer sep=0pt]
+      at ([xshift=-1.4cm,yshift=-6.2cm]current page.north east) {%
+      \begin{minipage}[t][17.5cm][s]{12cm}
+        \raggedleft\sffamily
+        \setlength{\parindent}{0pt}\setlength{\parskip}{0pt}
+        {\bfseries\fontsize{16}{19}\selectfont TRABAJO FIN DE GRADO\par}
+        \vspace{0.6cm}
+        \ifthenelse{\equal{\myStudentRecordNumber}{}}%
+          {\mbox{}\par}%
+          {{\fontsize{14}{17}\selectfont Nº~\StrRight{\myThesisDefenseYear}{2}-\DegreeRegistryValue{institutional-tfg-code}-\myStudentRecordNumber\par}}%
+        \vspace{\stretch{1.6}}
+        {\fontsize{16}{20}\selectfont\MakeUppercase{\myDegreefull}\par}
+        \vspace{\stretch{0.7}}
+        {\bfseries\fontsize{21}{25}\selectfont\myBookTitle\par}
+        \vspace{\stretch{1.4}}
+        {\fontsize{15}{19}\selectfont\myAuthorFullName\par}
+        \vspace{\stretch{2.2}}
+        {\fontsize{14}{17}\selectfont\MakeUppercase{\UCLMCoverMonth}\UCLMCoverDateSuffix\par}
+      \end{minipage}};
+  \end{tikzpicture}%
+  \null\clearpage
+  \endgroup
+}
