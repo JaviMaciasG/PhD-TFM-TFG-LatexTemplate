@@ -4,7 +4,7 @@ Este documento reúne las tablas actuales de titulaciones y perfiles de maquetac
 
 ## Convención de identificadores fuera de la UAH
 
-Los identificadores de titulaciones fuera de la UAH usan `<titulación>-<centro>-<universidad>`, por ejemplo `ITI-ESCET-URJC`, `GIB-ETSIT-UPM` y `MUIT-ETSIT-UPM`. Los identificadores de la UPM utilizan `ETSIT` como centro, también en `PHD-ETSIT-UPM`. Los nombres de los PDF generados utilizan estos mismos identificadores. Los identificadores de la URJC incluyen siempre el centro: `<titulación>-<centro>-URJC`, por ejemplo `ITI-ESCET-URJC` o `GII-ETSII-URJC`.
+Los identificadores de titulaciones fuera de la UAH usan `<titulación>-<centro>-<universidad>`, por ejemplo `ITI-ESCET-URJC`, `GIB-ETSIT-UPM` y `MUIT-ETSIT-UPM`. Los identificadores de la UPM incluyen el centro, como en `PHD-ETSIT-UPM` y `PHD-ETSII-UPM`. Los nombres de los PDF generados utilizan estos mismos identificadores. Los identificadores de la URJC incluyen siempre el centro: `<titulación>-<centro>-URJC`, por ejemplo `ITI-ESCET-URJC` o `GII-ETSII-URJC`.
 
 ## Reglas de migración
 
@@ -97,8 +97,10 @@ La tabla sigue el orden de Config/degrees.tex. El tipo de trabajo es el valor ca
 | `MUNE-ETSIT-UPM` | Activo | Máster Universitario en Neurotecnología | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-mune-tfm` |
 | `PHDUAH` | Activo | Estudios de Doctorado | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
 | `PHD-ETSIT-UPM` | Activo | Doctor Ingeniero de Telecomunicación | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
+| `PHD-ETSII-UPM` | Activo | Doctor Ingeniero Industrial | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
 | `PHDUAH-COMPENDIUM` | Variante activa | Hereda de `PHDUAH` | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
 | `PHD-ETSIT-UPM-COMPENDIUM` | Variante activa | Hereda de `PHD-ETSIT-UPM` | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
+| `PHD-ETSII-UPM-COMPENDIUM` | Variante activa | Hereda de `PHD-ETSII-UPM` | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
 | `GEINTRARR` | Experimental | GEINTRA Research Report | `RR` | Informe técnico del Grupo de investigación \myResearchGroup{} / \myResearchGroup{} Research Report | `geintra-report` |
 
 ## Definiciones actuales de los perfiles de maquetación

@@ -118,6 +118,7 @@ assert_count "$("$generator" --all --degrees PHDUAH-COMPENDIUM --dry-run)" "$((2
 assert_contains "$("$generator" --degrees PHDUAH-COMPENDIUM --dry-run)" "PhD-PHDUAH-spanish-compendium-standard-institutional.pdf"
 assert_count "$("$generator" --degrees PHDUAH,PHDUAH-COMPENDIUM --structures standard,compendium --dry-run)" 2
 assert_count "$("$generator" --degrees ITI-ESCET-URJC,MUIT-ETSIT-UPM,PHD-ETSIT-UPM --dry-run)" 3
+assert_count "$("$generator" --degrees PHD-ETSII-UPM,PHD-ETSII-UPM-COMPENDIUM --dry-run)" 2
 assert_count "$("$generator" --degrees GIEC --all-styles --all-fonts --dry-run)" "$((style_count * 2))"
 assert_count "$("$generator" --all --universities URJC --dry-run)" "$((urjc_degrees * 2 * style_count * 2))"
 assert_count "$("$generator" --all-tfms --layout-profiles uah-muc-2026 --dry-run)" 1

@@ -124,7 +124,7 @@ La selección puede resumirse así:
 
 Antes de editar los ficheros, elija dos identificadores cuando corresponda:
 
-- Un identificador de titulación como `GIEC`, `MUIT` o `ITI-ESCET-URJC`. Es el valor que los usuarios asignan a `\myDegree`, aparece en los nombres de los PDF generados y debería permanecer estable una vez publicado. Para titulaciones fuera de la UAH, utiliza `<titulación>-<centro>-<universidad>` (por ejemplo, `ITI-ESCET-URJC` o `MUIT-ETSIT-UPM`); el registro y las comparaciones de cadenas de LaTeX admiten el guion. Los identificadores de la UPM utilizan `ETSIT` como centro, también en `PHD-ETSIT-UPM`. Los identificadores de la URJC incluyen siempre el centro: `<titulación>-<centro>-URJC`, por ejemplo `ITI-ESCET-URJC` o `GII-ETSII-URJC`.
+- Un identificador de titulación como `GIEC`, `MUIT` o `ITI-ESCET-URJC`. Es el valor que los usuarios asignan a `\myDegree`, aparece en los nombres de los PDF generados y debería permanecer estable una vez publicado. Para titulaciones fuera de la UAH, utiliza `<titulación>-<centro>-<universidad>` (por ejemplo, `ITI-ESCET-URJC` o `MUIT-ETSIT-UPM`); el registro y las comparaciones de cadenas de LaTeX admiten el guion. Los identificadores de la UPM incluyen el centro, por ejemplo `PHD-ETSIT-UPM` y `PHD-ETSII-UPM`. Los identificadores de la URJC incluyen siempre el centro: `<titulación>-<centro>-URJC`, por ejemplo `ITI-ESCET-URJC` o `GII-ETSII-URJC`.
 - Un identificador de institución como `UAH`, `UPM` o `URJC`. Reutilice un identificador existente cuando la universidad ya esté registrada.
 
 Use identificadores ASCII cortos y sin espacios. Los identificadores de titulaciones e instituciones en mayúsculas siguen la convención actual. Los nombres de los perfiles de maquetación usan palabras en minúsculas separadas por guiones, por ejemplo `uah-tfg-2024` o `urjc-iti-tfg`.
@@ -137,7 +137,7 @@ No codifique un tipo de trabajo independiente dentro del identificador de la tit
 
 No fuerces esta opción en los modelos fijos: portadas MUC y MUANBD, doctorados, ETSII-URJC, EIF-URJC y páginas UPM. MUANBD y MUC sí utilizan la opción en su hoja de información UAH compartida. Las asignaciones específicas de supervisión técnica y académica de GISD y MUNE siguen siendo independientes.
 
-El apéndice `Book/appendix/titulaciones-soportadas.tex` consulta el registro mediante `\DegreeRegistryPrintCatalogue`, sin seleccionar otra titulación ni modificar sus datos. Agrupa las entradas académicas activas por universidad y centro, muestra el identificador y el nombre español seguido de la traducción registrada o `not translated` entre paréntesis, y distingue los doctorados por compendio. Las titulaciones heredadas y los informes de investigación no forman parte de este catálogo. Actualiza también los identificadores resumidos en myconfig.tex y en el capítulo de configuración cuando añadas titulaciones. La UPM tiene actualmente un único centro soportado, por lo que el título de su sección combina universidad y centro sin repetir una subsección para este último.
+El apéndice `Book/appendix/titulaciones-soportadas.tex` consulta el registro mediante `\DegreeRegistryPrintCatalogue`, sin seleccionar otra titulación ni modificar sus datos. Agrupa las entradas académicas activas por universidad y centro, muestra el identificador y el nombre español seguido de la traducción registrada o `not translated` entre paréntesis, y distingue los doctorados por compendio. Las titulaciones heredadas y los informes de investigación no forman parte de este catálogo. Actualiza también los identificadores resumidos en myconfig.tex y en el capítulo de configuración cuando añadas titulaciones. La UPM tiene varios centros soportados, que aparecen en subsecciones separadas.
 
 ## Mantenimiento de las portadas EIF-URJC y ETSII-URJC
 
@@ -158,7 +158,7 @@ Mantén estas asignaciones actuales de titulaciones y perfiles coherentes con Co
 | `upm-etsit-tft` | `GISTS-ETSIT-UPM`, `GIB-ETSIT-UPM`, `MUIT-ETSIT-UPM`, `MUCS-ETSIT-UPM`, `MUESFV-ETSIT-UPM`, `MUIB-ETSIT-UPM`, `MUIRST-ETSIT-UPM`, `MUISE-ETSIT-UPM`, `MUTSC-ETSIT-UPM` | Cubierta exterior naranja, hoja de tribunal y portada interior compartidas, y contraportada naranja. |
 | `upm-etsit-gisd-tfg` | `GISD-ETSIT-UPM` | Cubiertas compartidas con una hoja específica de supervisión técnica y académica. |
 | `upm-etsit-mune-tfm` | `MUNE-ETSIT-UPM` | Fichero envoltorio que selecciona textos españoles o ingleses, hoja específica de tribunal y cubiertas compartidas. |
-| `upm-phd` | `PHD-ETSIT-UPM`, `PHD-ETSIT-UPM-COMPENDIUM` | Cubierta doctoral, portada interior y créditos; sin contraportada independiente. |
+| `upm-phd` | `PHD-ETSIT-UPM`, `PHD-ETSIT-UPM-COMPENDIUM`, `PHD-ETSII-UPM`, `PHD-ETSII-UPM-COMPENDIUM` | Cubierta doctoral, portada interior y créditos; sin contraportada independiente. |
 
 Conserva los rótulos del tipo de trabajo de las cubiertas compartidas de TFG/TFM derivados del registro. Las hojas de información compartidas, GISD y MUNE utilizan el departamento del trabajo definido en `\myDepartment`, también con `\myLanguage{english}`: las normativas GISD y MUNE indican que los nombres institucionales no se traducen. Traduce el rótulo a `Department`, no el nombre del departamento, y no lo deduzcas del ponente ni de los supervisores. La variable `\myDepartmentEnglish` sigue disponible para otros documentos que la requieran.
 
@@ -237,6 +237,7 @@ Los campos opcionales son:
 - `document-structure`: `standard` (valor predeterminado de cada entrada) o `compendium` (solo doctorado).
 
 - `school-english`: nombre del centro en inglés. Si se omite, `\mySchoolEnglish` toma el valor de `\mySchool`.
+- `school-logo`: ruta del escudo del centro en la portada interior doctoral UPM; obligatorio para las titulaciones que usan el perfil `upm-phd`.
 - `degree-name-english`: se selecciona automáticamente para los TFM cuando `\myLanguage` es `english`; si se omite o está vacío, se mantienen el nombre español y sus versiones con saltos de línea. Los demás tipos de trabajo conservan su selección actual del nombre.
 - `degree-name-wrapped`: una forma con saltos de línea explícitos que utilizan las portadas con anchura limitada. Si se omite, `\myDegreefullwrapped` toma el valor de `\myDegreefull`.
 - `degree-name-wrapped-uppercase`: una forma explícita en mayúsculas y con saltos de línea. Si se omite, `\myDegreefullwrappedUpcase` aplica `\MakeUppercase` a `\myDegreefull`.
@@ -254,7 +255,7 @@ El propio registro TeX es más flexible, pero el Makefile y el script de generac
 
 ### Variantes de estructura doctoral
 
-Los estudiantes seleccionan `PHDUAH` o `PHD-ETSIT-UPM` para una tesis convencional y el identificador correspondiente terminado en `-COMPENDIUM` para un compendio. No expongas `\myDocumentStructure` en `myconfig.tex`: `postamble.tex` asigna esta variable interna a partir del registro. Una definición antigua incompatible genera un aviso de migración y no prevalece sobre el registro.
+Los estudiantes seleccionan `PHDUAH`, `PHD-ETSIT-UPM` o `PHD-ETSII-UPM` para una tesis convencional y el identificador correspondiente terminado en `-COMPENDIUM` para un compendio. No expongas `\myDocumentStructure` en `myconfig.tex`: `postamble.tex` asigna esta variable interna a partir del registro. Una definición antigua incompatible genera un aviso de migración y no prevalece sobre el registro.
 
 Declara primero el programa doctoral base. Si omites `document-structure`, su valor es `standard`. Después añade una variante sin duplicar los datos institucionales:
 

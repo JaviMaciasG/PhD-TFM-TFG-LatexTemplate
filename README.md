@@ -296,7 +296,7 @@ Puedes compilar el archivo `.tex` de un formulario concreto desde tu editor o ut
 
 Para una tesis doctoral por compendio:
 
-- Selecciona `PHDUAH-COMPENDIUM` o `PHD-ETSIT-UPM-COMPENDIUM` mediante `\myDegree` en `Config/myconfig.tex`, según tu universidad.
+- Selecciona `PHDUAH-COMPENDIUM`, `PHD-ETSIT-UPM-COMPENDIUM` o `PHD-ETSII-UPM-COMPENDIUM` mediante `\myDegree` en `Config/myconfig.tex`, según tu universidad y centro.
 - Organiza el contenido en `Book/content-compendium.tex`.
 - Continúa compilando `Book/book.tex`.
 

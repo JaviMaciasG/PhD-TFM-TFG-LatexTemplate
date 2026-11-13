@@ -30,7 +30,7 @@ La selección puede resumirse así:
 
 Antes de editar los ficheros, elija dos identificadores cuando corresponda:
 
-- Un identificador de titulación como `GIEC`, `MUIT` o `ITI-ESCET-URJC`. Es el valor que los usuarios asignan a `\myDegree`, aparece en los nombres de los PDF generados y debería permanecer estable una vez publicado. Para titulaciones fuera de la UAH, utiliza `<titulación>-<centro>-<universidad>` (por ejemplo, `ITI-ESCET-URJC` o `MUIT-ETSIT-UPM`); el registro y las comparaciones de cadenas de LaTeX admiten el guion. Los identificadores de la UPM utilizan `ETSIT` como centro, también en `PHD-ETSIT-UPM`. Los identificadores de la URJC incluyen siempre el centro: `<titulación>-<centro>-URJC`, por ejemplo `ITI-ESCET-URJC` o `GII-ETSII-URJC`.
+- Un identificador de titulación como `GIEC`, `MUIT` o `ITI-ESCET-URJC`. Es el valor que los usuarios asignan a `\myDegree`, aparece en los nombres de los PDF generados y debería permanecer estable una vez publicado. Para titulaciones fuera de la UAH, utiliza `<titulación>-<centro>-<universidad>` (por ejemplo, `ITI-ESCET-URJC` o `MUIT-ETSIT-UPM`); el registro y las comparaciones de cadenas de LaTeX admiten el guion. Los identificadores de la UPM incluyen el centro, como en `PHD-ETSIT-UPM` y `PHD-ETSII-UPM`. Los identificadores de la URJC incluyen siempre el centro: `<titulación>-<centro>-URJC`, por ejemplo `ITI-ESCET-URJC` o `GII-ETSII-URJC`.
 - Un identificador de institución como `UAH`, `UPM` o `URJC`. Reutilice un identificador existente cuando la universidad ya esté registrada.
 
 Use identificadores ASCII cortos y sin espacios. Los identificadores de titulaciones e instituciones en mayúsculas siguen la convención actual. Los nombres de los perfiles de maquetación usan palabras en minúsculas separadas por guiones, por ejemplo `uah-tfg-2024` o `urjc-iti-tfg`.
@@ -86,6 +86,7 @@ Los campos obligatorios son:
 Los campos opcionales son:
 
 - `school-english`: nombre del centro en inglés. Si se omite, `\mySchoolEnglish` toma el valor de `\mySchool`.
+- `school-logo`: ruta del escudo del centro en la portada interior doctoral UPM; obligatorio para las titulaciones que usan el perfil `upm-phd`.
 - `degree-name-english`: se selecciona automáticamente para los TFM cuando `\myLanguage` es `english`; si se omite o está vacío, se mantienen el nombre español y sus versiones con saltos de línea. Los demás tipos de trabajo conservan su selección actual del nombre.
 - `degree-name-wrapped`: una forma con saltos de línea explícitos que utilizan las portadas con anchura limitada. Si se omite, `\myDegreefullwrapped` toma el valor de `\myDegreefull`.
 - `degree-name-wrapped-uppercase`: una forma explícita en mayúsculas y con saltos de línea. Si se omite, `\myDegreefullwrappedUpcase` aplica `\MakeUppercase` a `\myDegreefull`.

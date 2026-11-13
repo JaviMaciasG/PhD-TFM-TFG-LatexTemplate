@@ -124,7 +124,7 @@ The selection can be summarized as:
 
 Before editing files, choose two identifiers when applicable:
 
-- A degree identifier such as `GIEC`, `MUIT`, or `ITI-ESCET-URJC`. It is the value users put in `\myDegree`, appears in generated PDF filenames, and should remain stable once released. For non-UAH degrees, use `<degree>-<school>-<university>` (for example, `ITI-ESCET-URJC` or `MUIT-ETSIT-UPM`); the hyphen is supported by the registry and LaTeX string comparisons. UPM identifiers use `ETSIT` as the school acronym, including `PHD-ETSIT-UPM`. URJC identifiers always include the school: `<degree>-<school>-URJC`, for example `ITI-ESCET-URJC` or `GII-ETSII-URJC`.
+- A degree identifier such as `GIEC`, `MUIT`, or `ITI-ESCET-URJC`. It is the value users put in `\myDegree`, appears in generated PDF filenames, and should remain stable once released. For non-UAH degrees, use `<degree>-<school>-<university>` (for example, `ITI-ESCET-URJC` or `MUIT-ETSIT-UPM`); the hyphen is supported by the registry and LaTeX string comparisons. UPM identifiers include the school acronym, for example `PHD-ETSIT-UPM` and `PHD-ETSII-UPM`. URJC identifiers always include the school: `<degree>-<school>-URJC`, for example `ITI-ESCET-URJC` or `GII-ETSII-URJC`.
 - An institution identifier such as `UAH`, `UPM`, or `URJC`. Reuse an existing identifier when the university is already registered.
 
 Use short ASCII identifiers without spaces. Uppercase degree and institution identifiers follow the current convention. Layout-profile names use lowercase words separated with hyphens, for example `uah-tfg-2024` or `urjc-iti-tfg`.
@@ -137,7 +137,7 @@ Do not encode a separate work type into the degree identifier merely to solve a 
 
 Do not impose this flag on fixed layouts: MUC and MUANBD outer covers, doctoral covers, ETSII-URJC, EIF-URJC and UPM pages. MUC and MUANBD do use the flag in their shared UAH information sheet. GISD and MUNE retain their specific technical/academic supervision assignments.
 
-The `Book/appendix/titulaciones-soportadas.tex` appendix reads the registry through `\DegreeRegistryPrintCatalogue` without selecting a different degree or changing its metadata. It groups active academic entries by university and school, displays the identifier and Spanish name followed by the registered translation or `not translated` in parentheses, and distinguishes compendium doctoral variants. Legacy degrees and research reports are excluded. Also update the short identifier lists in myconfig.tex and the configuration chapter when adding degrees. UPM currently has only one supported school, so its section title combines university and school names without a redundant school subsection.
+The `Book/appendix/titulaciones-soportadas.tex` appendix reads the registry through `\DegreeRegistryPrintCatalogue` without selecting a different degree or changing its metadata. It groups active academic entries by university and school, displays the identifier and Spanish name followed by the registered translation or `not translated` in parentheses, and distinguishes compendium doctoral variants. Legacy degrees and research reports are excluded. Also update the short identifier lists in myconfig.tex and the configuration chapter when adding degrees. UPM has several supported schools, which appear in separate subsections.
 
 ## Maintaining EIF-URJC and ETSII-URJC cover layouts
 
@@ -158,7 +158,7 @@ Keep these current degree/profile assignments aligned with Config/degrees.tex an
 | `upm-etsit-tft` | `GISTS-ETSIT-UPM`, `GIB-ETSIT-UPM`, `MUIT-ETSIT-UPM`, `MUCS-ETSIT-UPM`, `MUESFV-ETSIT-UPM`, `MUIB-ETSIT-UPM`, `MUIRST-ETSIT-UPM`, `MUISE-ETSIT-UPM`, `MUTSC-ETSIT-UPM` | Shared orange outer cover, committee sheet, inner title page and orange back cover. |
 | `upm-etsit-gisd-tfg` | `GISD-ETSIT-UPM` | Shared covers with a specific technical/academic supervision committee sheet. |
 | `upm-etsit-mune-tfm` | `MUNE-ETSIT-UPM` | Wrapper selecting Spanish or English texts, a specific committee sheet and the shared covers. |
-| `upm-phd` | `PHD-ETSIT-UPM`, `PHD-ETSIT-UPM-COMPENDIUM` | Doctoral outer cover, inner title page and credits; no independent back cover. |
+| `upm-phd` | `PHD-ETSIT-UPM`, `PHD-ETSIT-UPM-COMPENDIUM`, `PHD-ETSII-UPM`, `PHD-ETSII-UPM-COMPENDIUM` | Doctoral outer cover, inner title page and credits; no independent back cover. |
 
 Keep the work-type labels in shared undergraduate/master covers derived from the degree registry. The shared, GISD and MUNE information sheets use the work department defined in `\myDepartment`, including with `\myLanguage{english}`: the GISD and MUNE regulations state that institutional names must not be translated. Translate the label to `Department`, not the department name, and never infer it from the ponente or supervisors. The `\myDepartmentEnglish` variable remains available for other documents that require it.
 
@@ -237,6 +237,7 @@ The optional fields are:
 - `document-structure`: `standard` (default for each entry) or `compendium` (PhD only).
 
 - `school-english`: English school name. If omitted, `\mySchoolEnglish` falls back to `\mySchool`.
+- `school-logo`: path to the school crest on the UPM doctoral inner title page; required for degrees using the `upm-phd` profile.
 - `degree-name-english`: selected automatically for TFM degrees when `\myLanguage` is `english`; if omitted or empty, the Spanish name and wrapped forms remain in use. Other work types retain their existing name selection.
 - `degree-name-wrapped`: an explicitly wrapped form used by covers with limited width. If omitted, `\myDegreefullwrapped` falls back to `\myDegreefull`.
 - `degree-name-wrapped-uppercase`: an explicitly wrapped uppercase form. If omitted, `\myDegreefullwrappedUpcase` applies `\MakeUppercase` to `\myDegreefull`.
@@ -255,7 +256,7 @@ The TeX registry itself is more flexible, but the Makefile and PDF-generation sc
 
 ### Doctoral structure variants
 
-Students select `PHDUAH` or `PHD-ETSIT-UPM` for a conventional thesis and the corresponding `-COMPENDIUM` identifier for a compendium. Do not expose `\myDocumentStructure` in `myconfig.tex`: `postamble.tex` assigns that internal variable from the selected registry property. A conflicting legacy definition produces a migration warning and does not override the registry.
+Students select `PHDUAH`, `PHD-ETSIT-UPM`, or `PHD-ETSII-UPM` for a conventional thesis and the corresponding `-COMPENDIUM` identifier for a compendium. Do not expose `\myDocumentStructure` in `myconfig.tex`: `postamble.tex` assigns that internal variable from the selected registry property. A conflicting legacy definition produces a migration warning and does not override the registry.
 
 Declare the base doctoral degree first. Its omitted `document-structure` defaults to `standard`. Then add a variant without duplicating institutional metadata:
 

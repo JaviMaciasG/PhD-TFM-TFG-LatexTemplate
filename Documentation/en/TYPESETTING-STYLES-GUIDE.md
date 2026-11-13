@@ -79,7 +79,7 @@ Edit the existing style definition in `Config/myconfig.tex`:
 
 Replace its value; do not add a second `\newcommand` with the same name. Names are case-sensitive. The default style is `standard`. Institutional pages retain their original fonts automatically; no additional user setting is needed. The dispatcher also supplies the default style when its command is absent, although the build helpers expect one existing style definition.
 
-The degree identifier selects standard or compendium content independently of the typesetting style. Select `PHDUAH-COMPENDIUM` or `PHD-ETSIT-UPM-COMPENDIUM` through `\myDegree` for a compendium.
+The degree identifier selects standard or compendium content independently of the typesetting style. Select `PHDUAH-COMPENDIUM`, `PHD-ETSIT-UPM-COMPENDIUM`, or `PHD-ETSII-UPM-COMPENDIUM` through `\myDegree` for a compendium.
 
 ### 2.2 Fonts on institutional pages
 

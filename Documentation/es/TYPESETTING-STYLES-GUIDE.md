@@ -53,7 +53,7 @@ Edita la definición existente del estilo en `Config/myconfig.tex`:
 
 Sustituye su valor; no añadas un segundo `\newcommand` con el mismo nombre. Los nombres distinguen entre mayúsculas y minúsculas. El estilo predeterminado es `standard`. Las páginas institucionales conservan sus fuentes originales automáticamente, sin que tengas que configurar otra variable. El despachador también proporciona el estilo predeterminado cuando el comando no existe, aunque los auxiliares de compilación esperan una definición existente del estilo.
 
-La titulación selecciona la organización estándar o por compendio del contenido, independientemente del estilo tipográfico. Para un compendio, selecciona `PHDUAH-COMPENDIUM` o `PHD-ETSIT-UPM-COMPENDIUM` mediante `\myDegree`.
+La titulación selecciona la organización estándar o por compendio del contenido, independientemente del estilo tipográfico. Para un compendio, selecciona `PHDUAH-COMPENDIUM`, `PHD-ETSIT-UPM-COMPENDIUM` o `PHD-ETSII-UPM-COMPENDIUM` mediante `\myDegree`.
 
 ### 2.2 Fuentes de las páginas institucionales
 

@@ -20,6 +20,9 @@ cases=(
   'PHDUAH-COMPENDIUM|english|minimal'
   'PHD-ETSIT-UPM|english|minimal'
   'PHD-ETSIT-UPM-COMPENDIUM|spanish|minimal'
+  'PHD-ETSII-UPM|spanish|minimal'
+  'PHD-ETSII-UPM-COMPENDIUM|english|minimal'
+  'PHD-ETSII-UPM|spanish|full'
   'PHDUAH-COMPENDIUM|english|full'
   'PHD-ETSIT-UPM-COMPENDIUM|spanish|full'
 )

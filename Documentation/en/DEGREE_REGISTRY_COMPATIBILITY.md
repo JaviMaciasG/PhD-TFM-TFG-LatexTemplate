@@ -4,7 +4,7 @@ This document combines the current degree and layout-profile tables from Config/
 
 ## Non-UAH identifier convention
 
-Non-UAH degree identifiers use `<degree>-<school>-<university>`, for example `ITI-ESCET-URJC`, `GIB-ETSIT-UPM` and `MUIT-ETSIT-UPM`. UPM identifiers use `ETSIT` as the school acronym, including `PHD-ETSIT-UPM`. Generated PDF filenames use these same identifiers. URJC identifiers always include the school: `<degree>-<school>-URJC`, for example `ITI-ESCET-URJC` or `GII-ETSII-URJC`.
+Non-UAH degree identifiers use `<degree>-<school>-<university>`, for example `ITI-ESCET-URJC`, `GIB-ETSIT-UPM` and `MUIT-ETSIT-UPM`. UPM identifiers include the school, as in `PHD-ETSIT-UPM` and `PHD-ETSII-UPM`. Generated PDF filenames use these same identifiers. URJC identifiers always include the school: `<degree>-<school>-URJC`, for example `ITI-ESCET-URJC` or `GII-ETSII-URJC`.
 
 ## Migration rules
 
@@ -97,8 +97,10 @@ The table follows the order of Config/degrees.tex. Work type is the canonical va
 | `MUNE-ETSIT-UPM` | Active | Máster Universitario en Neurotecnología | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-mune-tfm` |
 | `PHDUAH` | Active | Estudios de Doctorado | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
 | `PHD-ETSIT-UPM` | Active | Doctor Ingeniero de Telecomunicación | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
+| `PHD-ETSII-UPM` | Active | Doctor Ingeniero Industrial | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
 | `PHDUAH-COMPENDIUM` | Active variant | Inherits `PHDUAH` | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
 | `PHD-ETSIT-UPM-COMPENDIUM` | Active variant | Inherits `PHD-ETSIT-UPM` | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
+| `PHD-ETSII-UPM-COMPENDIUM` | Active variant | Inherits `PHD-ETSII-UPM` | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
 | `GEINTRARR` | Experimental | GEINTRA Research Report | `RR` | Informe técnico del Grupo de investigación \myResearchGroup{} / \myResearchGroup{} Research Report | `geintra-report` |
 
 ## Current layout profile definitions

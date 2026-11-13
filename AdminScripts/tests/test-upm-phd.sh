@@ -139,4 +139,20 @@ if sys.argv[3] == 'set':
 PY
   printf 'PASS: %s (cotutor: %s, funding: %s, reviewers: %s)\n' "$job" "${cotutor:-none}" "$funding_case" "$reviewers"
 done
+etsii_job=upm-phd-etsii-spanish
+for pass in 1 2; do
+  if ! (cd "$fixture/Book" && pdflatex -interaction=nonstopmode -halt-on-error -jobname="$etsii_job" \
+    '\def\PhDTestDegree{PHD-ETSII-UPM}\def\PhDTestLanguage{spanish}\def\PhDTestStyle{standard}\def\PhDTestCoTutor{}\def\PhDTestFunding{}\def\PhDTestReviewers{none}\input{test.tex}' >"$etsii_job-output.log" 2>&1); then
+    tail -n 60 "$fixture/Book/$etsii_job-output.log" >&2
+    exit 1
+  fi
+done
+pdftotext -f 1 -l 4 "$fixture/Book/$etsii_job.pdf" "$fixture/Book/$etsii_job.txt"
+grep -q 'Escuela Técnica Superior de Ingenieros Industriales' "$fixture/Book/$etsii_job.txt"
+grep -q 'escudo-etsii-upm-color.png' "$fixture/Book/$etsii_job.log"
+if [[ -n ${UPM_PHD_TEST_OUTPUT_DIR:-} ]]; then
+  mkdir -p "$UPM_PHD_TEST_OUTPUT_DIR"
+  cp "$fixture/Book/$etsii_job.pdf" "$UPM_PHD_TEST_OUTPUT_DIR/"
+fi
+echo 'PASS: ETSII-UPM doctoral school name and crest.'
 [[ $before == "$(sha256sum "$repository_root/Config/myconfig.tex")" ]]

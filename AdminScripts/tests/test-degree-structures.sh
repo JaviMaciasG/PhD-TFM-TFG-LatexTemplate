@@ -12,7 +12,7 @@ cp -a "$repository_root/Book/biblio" "$fixture/Book/"
 cp "$repository_root/Book/Makefile" "$repository_root/Book/content-"*.tex "$fixture/Book/"
 cp -a "$repository_root/Book/chapters" "$repository_root/Book/appendix" "$fixture/Book/"
 before=$(sha256sum "$repository_root/Config/myconfig.tex")
-for base in PHDUAH PHD-ETSIT-UPM; do
+for base in PHDUAH PHD-ETSIT-UPM PHD-ETSII-UPM; do
   variant="$base-COMPENDIUM"
   [[ $(sh "$query" structure-variant "$base" compendium) == "$variant" ]]
   [[ $(sh "$query" structure-variant "$variant" standard) == "$base" ]]
@@ -34,7 +34,7 @@ build() {
   (cd "$fixture/Book" && pdflatex -draftmode -interaction=nonstopmode -halt-on-error \
     -jobname="$job" "\def\TestDegree{$degree}\def\ExpectedStructure{$expected}$extra\input{$test_directory/fixtures/degree-structures.tex}") >"$fixture/$job.log" 2>&1
 }
-for degree in GIEC PHDUAH PHDUAH-COMPENDIUM PHD-ETSIT-UPM PHD-ETSIT-UPM-COMPENDIUM GEINTRARR; do
+for degree in GIEC PHDUAH PHDUAH-COMPENDIUM PHD-ETSIT-UPM PHD-ETSIT-UPM-COMPENDIUM PHD-ETSII-UPM PHD-ETSII-UPM-COMPENDIUM GEINTRARR; do
   expected=$(sh "$query" document-structure "$degree")
   build "$degree" "$expected" '' "$degree" || { tail -n 60 "$fixture/$degree.log"; exit 1; }
   grep -q 'PASS: REGISTRY-STRUCTURE' "$fixture/$degree.log"
@@ -62,7 +62,7 @@ for target in bare-compendium orig-compendium; do
   grep -q 'select a supported PhD degree' "$fixture/rejected.log"
   [[ $(find "$fixture/Book" "$fixture/Config" -type f -exec sha256sum {} + | sort) == "$snapshot" ]]
 done
-for base in PHDUAH PHD-ETSIT-UPM; do
+for base in PHDUAH PHD-ETSIT-UPM PHD-ETSII-UPM; do
   sed -Ei 's!(\\newcommand\{\\myDegree\}\{)[^}]*\}!\1'"$base"'}!' "$fixture/Config/myconfig.tex"
   make -s -C "$fixture/Book" bare-compendium >"$fixture/preparation.log" 2>&1
   grep -Fq "\newcommand{\myDegree}{$base-COMPENDIUM}" "$fixture/Config/myconfig.tex"
