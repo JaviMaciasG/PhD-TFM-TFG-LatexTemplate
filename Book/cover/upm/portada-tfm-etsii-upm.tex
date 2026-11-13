@@ -12,14 +12,14 @@
 \definecolor{ETSIITFMLightBlue}{HTML}{62AEEE}
 \begin{tikzpicture}[remember picture,overlay]
   % The source image includes the prescribed white border and fixed logos.
-  \node[anchor=center,inner sep=0pt] at (current page.center)
+  \node[anchor=center,inner sep=0pt,xshift=1.5mm] at (current page.center)
     {\includegraphics[width=\paperwidth,height=\paperheight]{cover/upm/imagen-portada-tfm-etsii-upm.png}};
   \node[anchor=north west,align=left,text=white,text width=17.4cm,inner sep=0pt,
     font=\sffamily\bfseries\fontsize{29}{30}\selectfont]
     at ([xshift=2.05cm,yshift=-4.9cm]current page.north west)
     {\hyphenchar\font=-1\hyphenpenalty=10000\sloppy\MakeUppercase{\myBookTitle}};
   % The statement occupies the left half of the lower blue panel.
-  \node[anchor=east,align=right,text=ETSIITFMLightBlue,text width=8.8cm,inner sep=0pt,
+  \node[anchor=east,align=right,text=ETSIITFMLightBlue,text width=8.2cm,inner sep=0pt,
     font=\sffamily\fontsize{14.5}{16.5}\selectfont]
     at ([xshift=9.3cm,yshift=-22.2cm]current page.north west)
     {\textls[-50]{\textbf{TRABAJO FIN DE MÁSTER} PARA LA OBTENCIÓN DEL TÍTULO DE
