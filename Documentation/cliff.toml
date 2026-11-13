@@ -39,6 +39,7 @@ commit_parsers = [
     { message = "(?i)^(feat|fea)(\\([^)]*\\))?:", group = "Features" },
     { message = "(?i)^fix(\\([^)]*\\))?:", group = "Bug Fixes" },
     { message = "(?i)^docs?(\\([^)]*\\))?:", group = "Documentation" },
+    { message = "(?i)^build(\\([^)]*\\))?:", group = "Build System" },
     { message = "(?i)^refactor(\\([^)]*\\))?:", group = "Refactoring" },
     { message = "(?i)^chore(\\([^)]*\\))?:", group = "Maintenance" },
     { message = "(?i)^(Merge|merge)", skip = true },
