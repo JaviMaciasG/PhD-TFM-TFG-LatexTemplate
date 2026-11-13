@@ -2,6 +2,12 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.13.1] - 2026-11-13
+
+### Refactoring
+
+- Reuse shared wording and degree values
+
 ## [v8.13.0] - 2026-11-13
 
 ### Features
