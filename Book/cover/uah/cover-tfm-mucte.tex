@@ -6,15 +6,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begingroup
-% El cargo en los TFM es director/codirector, también al agrupar los nombres.
-\renewcommand{\wordTutorOrTutora}{\wordDirectorOrdirectora}
-\renewcommand{\wordCoTutorOrCoTutora}{\wordCoDirectorOrCoDirectora}
-\ifthenelse{\equal{\myCoTutorFullName}{}}{%
-  \renewcommand{\wordTutorOrTutores}{\wordDirectorOrdirectora}%
-}{%
-  \renewcommand{\wordTutorOrTutores}{directores}%
-  \ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{\renewcommand{\wordTutorOrTutores}{directoras}}{}%
-}
 \thispagestyle{empty}
 
 \hspace{-1cm}\begin{tabular}[c]{p{.5\textwidth}p{.5\textwidth}}
@@ -74,15 +65,13 @@
 
     }
     {%
-      % \expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}: \myAdvisors
-      % \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}: \myAdvisors
-      \expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:    \myAcademicTutorFullName{}
+      \expandafter\makefirstuc\expandafter{\wordDirectorOrdirectora}:    \myAcademicTutorFullName{}
 
       \ifthenelse{\equal{\myCoTutorFullName}{}}
       {
       }
       {
-        \expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}: \myCoTutorFullName{}
+        \expandafter\makefirstuc\expandafter{\wordCoDirectorOrCoDirectora}: \myCoTutorFullName{}
       }
     }
   }
@@ -92,7 +81,7 @@
       \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
     }
     {
-      \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}: \myAdvisors
+      \expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}: \myAdvisors
     }
   }
 
