@@ -1,0 +1,68 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: cubierta de los TFG de la ETSII-UPM.
+%
+% Uso: inclusión automática; normalmente no debes modificarlo.
+% Imagen recortada de PORTADA_Trabajo_Fin_de_Grado.docx (ETSII-UPM).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+\begingroup
+\normalfont
+\TemplateSetDefenseMonth
+\newcommand{\ETSIITFGGraduate}{Graduado}
+\definecolor{ETSIITFGLightBlue}{HTML}{62AEEE}
+\ifthenelse{\equal{\myAuthorGender}{female}}{\renewcommand{\ETSIITFGGraduate}{Graduada}}{}
+\begin{tikzpicture}[remember picture,overlay]
+  % The source image includes the prescribed white border and fixed logos.
+  \node[anchor=center,inner sep=0pt] at (current page.center)
+    {\includegraphics[width=\paperwidth,height=\paperheight]{cover/upm/imagen-portada-tfg-etsii-upm.png}};
+  \node[anchor=north west,align=left,text=white,text width=17.4cm,inner sep=0pt,
+    font=\sffamily\bfseries\fontsize{29}{30}\selectfont]
+    at ([xshift=2.05cm,yshift=-4.9cm]current page.north west)
+    {\hyphenchar\font=-1\hyphenpenalty=10000\sloppy\MakeUppercase{\myBookTitle}};
+  % The statement occupies the left half of the lower blue panel.
+  \node[anchor=east,align=right,text=ETSIITFGLightBlue,text width=8.8cm,inner sep=0pt,
+    font=\sffamily\fontsize{14.5}{16.5}\selectfont]
+    at ([xshift=9.3cm,yshift=-22.2cm]current page.north west)
+    {\textls[-50]{\textbf{TRABAJO FIN DE GRADO} PARA LA OBTENCIÓN DEL TÍTULO DE
+     \textbf{\MakeUppercase{\ETSIITFGGraduate{} EN \DegreeRegistryValue{cover-degree-field}}}}};
+  % Keep all right-side information in one block, centred on the divider.
+  \node[anchor=west,align=left,text=white,text width=10cm,inner sep=0pt,
+    font=\sffamily\fontsize{19}{20}\selectfont]
+    at ([xshift=10.1cm,yshift=-22.2cm]current page.north west)
+{{\fontsize{14.5}{18}\selectfont
+  \MakeUppercase{\TemplateDefenseMonth}\
+  \textbf{\myThesisDefenseYear}}\\[0.18cm]
+ %
+ {\bfseries\fontsize{19}{16}\selectfont
+  \parbox[t]{\linewidth}{%
+    \hangindent=0.5cm
+    \hangafter=1
+    \myAuthorFullName\par
+  }}\\[0.7cm]
+ %
+ {\bfseries\fontsize{10}{10.8}\selectfont
+  \mbox{\MakeUppercase{%
+    \wordDirectorOrDirectores{} DEL TRABAJO FIN DE GRADO}:%
+  }}\\[-0.24cm]
+ %
+ {\bfseries\fontsize{16}{18}\selectfont
+  \parbox[t]{\linewidth}{%
+    \hangindent=0.5cm
+    \hangafter=1
+    \myAcademicTutorFullName\par
+  }}%
+ %
+ \ifthenelse{\equal{\myCoTutorFullName}{}}{}{%
+   \\[-0.2cm]
+   {\bfseries\fontsize{16}{14}\selectfont
+    \parbox[t]{\linewidth}{%
+      \hangindent=0.5cm
+      \hangafter=1
+      \myCoTutorFullName\par
+    }}%
+ }};
+\end{tikzpicture}
+\null
+\clearemptydoublepage
+\endgroup

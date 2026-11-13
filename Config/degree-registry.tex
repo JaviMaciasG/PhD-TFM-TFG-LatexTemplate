@@ -31,6 +31,7 @@
 \tl_new:N \l_uah_degree_layout_profile_tl
 \tl_new:N \l_uah_degree_document_structure_tl
 \tl_new:N \l_uah_degree_institutional_tfg_code_tl
+\tl_new:N \l_uah_degree_cover_degree_field_tl
 \tl_new:N \l_uah_layout_cover_files_tl
 \tl_new:N \l_uah_layout_backpage_file_tl
 \tl_new:N \l_uah_institution_university_name_tl
@@ -72,6 +73,7 @@
     layout-profile                 .tl_set:N = \l_uah_degree_layout_profile_tl,
     document-structure             .tl_set:N = \l_uah_degree_document_structure_tl,
     institutional-tfg-code         .tl_set:N = \l_uah_degree_institutional_tfg_code_tl,
+    cover-degree-field             .tl_set:N = \l_uah_degree_cover_degree_field_tl,
   }
 
 % Variants inherit institutional metadata and override only the structure.
@@ -129,6 +131,7 @@
     \tl_clear:N \l_uah_degree_layout_profile_tl
     \tl_set:Nn \l_uah_degree_document_structure_tl {standard}
     \tl_clear:N \l_uah_degree_institutional_tfg_code_tl
+    \tl_clear:N \l_uah_degree_cover_degree_field_tl
   }
 
 \cs_new_protected:Npn \uah_degree_require:nnN #1#2#3
@@ -159,6 +162,8 @@
         \uah_degree_require:nnN {#1} {layout-profile} \l_uah_degree_layout_profile_tl
         \str_if_eq:VnT \l_uah_degree_layout_profile_tl {upm-phd}
           { \uah_degree_require:nnN {#1} {school-logo} \l_uah_degree_school_logo_tl }
+        \str_if_eq:VnT \l_uah_degree_layout_profile_tl {upm-etsii-tfg}
+          { \uah_degree_require:nnN {#1} {cover-degree-field} \l_uah_degree_cover_degree_field_tl }
         \seq_gput_right:Nn \g_uah_degree_registry_ids_seq {#1}
         \uah_degree_store:nnV {#1} {status} \l_uah_degree_status_tl
         \uah_degree_store:nnV {#1} {institution} \l_uah_degree_institution_tl
@@ -177,6 +182,7 @@
         \uah_degree_store:nnV {#1} {layout-profile} \l_uah_degree_layout_profile_tl
         \uah_degree_store:nnV {#1} {document-structure} \l_uah_degree_document_structure_tl
         \uah_degree_store:nnV {#1} {institutional-tfg-code} \l_uah_degree_institutional_tfg_code_tl
+        \uah_degree_store:nnV {#1} {cover-degree-field} \l_uah_degree_cover_degree_field_tl
         \prop_gput:Nnn \g_uah_degree_registry_prop {#1/base-degree} {#1}
       }
   }

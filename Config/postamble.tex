@@ -331,13 +331,17 @@
     \newcommand{\myAdvisorsWithDonOrDona}{\wordDonOrDonaTutor{} \myAcademicTutorFullName{} \andOrYDon{} \wordDonOrDonaCoTutor{} \myCoTutorFullName{}}
     \newcommand{\myAdvisorsConDrOrDra}{\wordDrOrDraTutor{} \myAcademicTutorFullName{}\\\wordDrOrDraCoTutor{} \myCoTutorFullName{}}
 
-    \newcommand{\wordDirectorOrDirectores}{directores}
+    \ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}
+      {\newcommand{\wordDirectorOrDirectores}{directoras}}
+      {\newcommand{\wordDirectorOrDirectores}{directores}}
     \newcommand{\wordAdvisorOrAdvisors}{advisors}
     \newcommand{\wordAdvisor}{advisor}
     \newcommand{\wordCoAdvisor}{co-advisor}
     \newcommand{\wordDaOrDan}{dan}
     \newcommand{\wordEmiteOrEmiten}{emiten}
-    \newcommand{\wordTutorOrTutores}{tutores}
+    \ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}
+      {\newcommand{\wordTutorOrTutores}{tutoras}}
+      {\newcommand{\wordTutorOrTutores}{tutores}}
     \newcommand{\wordElOrLos}{Los}
     \newcommand{\wordSuOrSus}{Su}
     \newcommand{\wordDelOrDeLos}{de los}

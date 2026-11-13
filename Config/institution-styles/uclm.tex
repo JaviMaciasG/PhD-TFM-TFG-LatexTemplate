@@ -7,28 +7,6 @@
 \definecolor{UCLMRed}{RGB}{183,18,52}
 \backgroundsetup{contents={}}
 
-\ExplSyntaxOn
-\tl_new:N \l_uclm_cover_month_tl
-\seq_new:N \l_uclm_cover_date_parts_seq
-\bool_new:N \l_uclm_cover_month_valid_bool
-\tl_set:Ne \l_tmpa_tl {\myThesisDefenseDate}
-\exp_args:NnV \regex_extract_once:nnN
-  {\A\s*[0-9]{1,2}\s+de\s+(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\s+de\s+}
-  \l_tmpa_tl \l_uclm_cover_date_parts_seq
-\seq_if_empty:NTF \l_uclm_cover_date_parts_seq
-  {
-    \tl_set:Nn \l_uclm_cover_month_tl {NO~SE~HA~PODIDO~DEDUCIR~EL~MES}
-    \bool_set_false:N \l_uclm_cover_month_valid_bool
-    \PackageWarning{uclm-eiia-cover}{Cannot~derive~a~month~from~myThesisDefenseDate;~use~'24~de~junio~de~2027'}
-  }
-  {
-    \bool_set_true:N \l_uclm_cover_month_valid_bool
-    \tl_set:Ne \l_uclm_cover_month_tl {\seq_item:Nn \l_uclm_cover_date_parts_seq {2}}
-  }
-\cs_new:Npn \UCLMCoverMonth {\tl_use:N \l_uclm_cover_month_tl}
-\cs_new:Npn \UCLMCoverDateSuffix {\bool_if:NT \l_uclm_cover_month_valid_bool {~DE~\myThesisDefenseYear}}
-\ExplSyntaxOff
-
 \newcommand{\UCLMSchoolAddress}{%
   \ifthenelse{\equal{\mySchoolAddress}{}}%
     {Campus Universitario de la Real Fábrica de Armas\\45071 Toledo}%
@@ -41,6 +19,7 @@
 
 \newcommand{\UCLMRenderCover}[3]{%
   \thispagestyle{empty}%
+  \TemplateSetDefenseMonth
   \begingroup
   \normalfont
   \begin{tikzpicture}[remember picture,overlay]
@@ -67,7 +46,7 @@
         \vspace{\stretch{1.4}}
         {\fontsize{15}{19}\selectfont\myAuthorFullName\par}
         \vspace{\stretch{2.2}}
-        {\fontsize{14}{17}\selectfont\MakeUppercase{\UCLMCoverMonth}\UCLMCoverDateSuffix\par}
+        {\fontsize{14}{17}\selectfont\TemplateDefenseMonthYear\par}
       \end{minipage}};
   \end{tikzpicture}%
   \null\clearpage

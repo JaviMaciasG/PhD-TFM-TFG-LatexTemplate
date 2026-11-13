@@ -85,6 +85,35 @@
 % To draw rectagles in tfm cover
 \usepackage{tikz}
 
+% Shared, on-demand month extraction for institutional covers. The date is
+% read only when a cover calls this helper, after myconfig.tex has been loaded.
+\ExplSyntaxOn
+\seq_new:N \l_template_defense_date_parts_seq
+\tl_new:N \l_template_defense_month_tl
+\bool_new:N \l_template_defense_month_valid_bool
+\cs_new_protected:Npn \TemplateSetDefenseMonth
+  {
+    \tl_set:Ne \l_tmpa_tl {\myThesisDefenseDate}
+    \exp_args:NnV \regex_extract_once:nnN
+      {\A\s*[0-9]{1,2}\s+de\s+(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\s+de\s+}
+      \l_tmpa_tl \l_template_defense_date_parts_seq
+    \seq_if_empty:NTF \l_template_defense_date_parts_seq
+      {
+        \tl_set:Nn \l_template_defense_month_tl {NO~SE~HA~PODIDO~DEDUCIR~EL~MES}
+        \bool_set_false:N \l_template_defense_month_valid_bool
+        \PackageWarning{template-cover-date}{Cannot~derive~a~month~from~myThesisDefenseDate;~use~'24~de~junio~de~2027'}
+      }
+      {
+        \tl_set:Ne \l_template_defense_month_tl
+          {\seq_item:Nn \l_template_defense_date_parts_seq {2}}
+        \bool_set_true:N \l_template_defense_month_valid_bool
+      }
+  }
+\cs_new:Npn \TemplateDefenseMonth {\tl_use:N \l_template_defense_month_tl}
+\cs_new:Npn \TemplateDefenseMonthYear
+  {\MakeUppercase{\TemplateDefenseMonth}\bool_if:NT \l_template_defense_month_valid_bool {~DE~\myThesisDefenseYear}}
+\ExplSyntaxOff
+
 \usepackage{geometry}
 \geometry{verbose,a4paper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
 
@@ -675,6 +704,8 @@
   \clearemptydoublepage
 }
 
+% To reduce inter-character spacing
+\usepackage[letterspace]{microtype}
 
 % Code to more agressively compress includegraphics images
 \pdfcompresslevel=9
