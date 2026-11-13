@@ -4,7 +4,7 @@
 
 Writing a bachelor's, master's or doctoral thesis is enough work already. Wrestling with margins, the cover and page numbering shouldn't be part of the package.
 
-The template is designed mainly for the University of Alcalá (UAH), although it also supports some degrees at URJC, several UPM schools and EIIA-UCLM. It can generate documents in Spanish or English and covers everything from conventional academic reports to project proposals, administrative paperwork and doctoral theses by compendium of publications.
+The template is designed mainly for the University of Alcalá (UAH), although it also supports some degrees at URJC, several UPM schools and EIIA-UCLM. It can generate documents in Spanish or English and covers everything from conventional academic reports to project proposals, administrative paperwork (for the UAH case) and doctoral theses by compendium of publications.
 
 When you first use the template, all those files and options may feel a little intimidating. That's normal, but you don't need to know them all or have Jedi-level skills to get started. You'll only need to deal with a few files, and I'll show you which ones. You'll discover the rest as you need it, so relax and keep going, because I'm sure you've got this.
 

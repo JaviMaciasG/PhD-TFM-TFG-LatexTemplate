@@ -4,7 +4,7 @@
 
 Escribir un TFG, un TFM o una tesis doctoral ya da bastante trabajo. Pelearte con los márgenes, la portada y la numeración, no debería formar parte del pack.
 
-La plantilla está diseñada principalmente para la Universidad de Alcalá (UAH), aunque también incluye soporte para algunas titulaciones de la URJC, varias escuelas de la UPM y la EIIA-UCLM. Permite generar documentos en español o en inglés y cubre desde trabajos académicos convencionales hasta anteproyectos, documentación administrativa y tesis doctorales por compendio de publicaciones.
+La plantilla está diseñada principalmente para la Universidad de Alcalá (UAH), aunque también incluye soporte para algunas titulaciones de la URJC, varias escuelas de la UPM y la EIIA-UCLM. Permite generar documentos en español o en inglés y cubre desde trabajos académicos convencionales hasta anteproyectos, documentación administrativa (para el caso de UAH) y tesis doctorales por compendio de publicaciones.
 
 Al usar la plantilla puede que tantos archivos y opciones te impongan un poco. Es normal, pero no necesitas conocerlos todos ni tener nivel Jedi para empezar. Sólo tendrás que ocuparte de unos pocos archivos, y te iré indicando cuáles. El resto lo irás descubriendo cuando lo necesites, así que relax y ánimo, porque estoy seguro de que puedes con ello.
 
