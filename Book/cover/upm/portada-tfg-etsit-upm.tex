@@ -9,8 +9,6 @@
 
 \thispagestyle{empty}
 \begingroup
-\providecommand{\UPMETsitCoverDegree}{\myDegreefullwrappedUpcase}
-\providecommand{\UPMETsitCoverWorkType}{\MakeUppercase{\myWorkTypeFull}}
 \begin{tikzpicture}[remember picture,overlay]
   % Imagen original de la plantilla Word: incluye los textos y logos superiores.
   \node[anchor=center,inner sep=0pt] at (current page.center)
@@ -18,7 +16,7 @@
   \node[anchor=north,align=center,text width=16cm,inner sep=0pt,
     font=\sffamily\bfseries\fontsize{20}{24}\selectfont]
     (upm-work-type) at ([xshift=10.5cm,yshift=-9cm]current page.north west)
-    {\UPMETsitCoverDegree\\[0.35cm]\UPMETsitCoverWorkType};
+    {\myDegreefullwrappedUpcase\\[0.35cm]\MakeUppercase{\myWorkTypeFull}};
   % El borde inferior del año queda a 2,5 cm del borde de la página.
   \node[anchor=south,align=center,text width=16cm,inner sep=0pt,outer sep=0pt,
     font=\sffamily\bfseries\fontsize{20}{24}\selectfont]

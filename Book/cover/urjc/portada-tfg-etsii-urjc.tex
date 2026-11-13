@@ -10,11 +10,6 @@
 \begingroup
 % Adaptación tipográfica del modelo, con el mismo equilibrio que la EIF.
 \normalfont
-\newcommand{\ETSIIAuthorLabel}{\ifthenelse{\equal{\myAuthorGender}{male}}{Autor}{Autora}}
-\newcommand{\ETSIIAdvisorLabel}{%
-  \ifthenelse{\equal{\myCoTutorFullName}{}}%
-    {\ifthenelse{\equal{\myAcademicTutorGender}{male}}{Tutor}{Tutora}}%
-    {\ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{Tutoras}{Tutores}}}
 \begin{tikzpicture}[remember picture,overlay]
   \fill[white] (current page.south west) rectangle (current page.north east);
   % Márgenes superior e inferior de 4 cm y separación proporcional que
@@ -42,8 +37,8 @@
       {\fontsize{16}{20}\selectfont
         \renewcommand{\arraystretch}{1.2}%
         \begin{tabularx}{12cm}[b]{@{}l@{\hspace{1cm}}>{\raggedright\arraybackslash}X@{}}
-          \textbf{\ETSIIAuthorLabel:} & \myAuthorFullName \\[0.3cm]
-          \textbf{\ETSIIAdvisorLabel:} & \myAcademicTutorFullName
+          \textbf{\expandafter\makefirstuc\expandafter{\wordAutorOrAutora}:} & \myAuthorFullName \\[0.3cm]
+          \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutores}:} & \myAcademicTutorFullName
           \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\ & \myCoTutorFullName}
         \end{tabularx}\par}
     \end{minipage}};

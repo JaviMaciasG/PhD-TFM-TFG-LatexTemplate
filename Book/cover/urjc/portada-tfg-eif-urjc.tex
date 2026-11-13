@@ -12,7 +12,6 @@
 \normalfont
 \newcommand{\EIFDegreeName}{\myDegreefull}
 \newcommand{\EIFWorkType}{TRABAJO FIN DE GRADO}
-\newcommand{\EIFAuthorLabel}{\ifthenelse{\equal{\myAuthorGender}{male}}{Autor}{Autora}}
 \newcommand{\EIFAdvisorLabel}{%
   \ifthenelse{\equal{\myCoTutorFullName}{}}%
     {\ifthenelse{\equal{\myAcademicTutorGender}{male}}{Tutor}{Tutora}}%
@@ -22,7 +21,6 @@
   \edef\EIFEnglishDegreeName{\DegreeRegistryValue{degree-name-english}}%
   \ifthenelse{\equal{\EIFEnglishDegreeName}{}}{}{\renewcommand{\EIFDegreeName}{\EIFEnglishDegreeName}}%
   \renewcommand{\EIFWorkType}{BACHELOR THESIS}%
-  \renewcommand{\EIFAuthorLabel}{Author}%
   \renewcommand{\EIFAdvisorLabel}{\ifthenelse{\equal{\myCoTutorFullName}{}}{Supervisor}{Supervisors}}%
   \renewcommand{\EIFAcademicYearLabel}{Academic year}%
 }{}
@@ -48,7 +46,7 @@
       {\bfseries\fontsize{18}{23}\selectfont\myBookTitle\par}
       \vspace{\stretch{1.4}}
       {\fontsize{16}{20}\selectfont
-        \EIFAuthorLabel: \myAuthorFullName\par
+        \wordAutorOrAutoraTitle: \myAuthorFullName\par
         \vspace{0.5cm}
         \EIFAdvisorLabel: \myAcademicTutorFullName
         \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\\myCoTutorFullName}\par}

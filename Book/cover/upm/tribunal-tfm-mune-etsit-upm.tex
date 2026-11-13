@@ -13,35 +13,32 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.35cm}
 \providecommand{\myUPMTechnicalSupervisorFullName}{}
-% Traducciones locales: no añaden variables de configuración para el usuario.
-\newcommand{\MUNEText}[2]{\ifthenelse{\equal{\myLanguage}{spanish}}{#1}{#2}}
-
-\parbox{\linewidth}{\fontsize{16}{19}\selectfont\UPMETsitCoverDegree}
+\parbox{\linewidth}{\fontsize{16}{19}\selectfont\myDegreefullwrappedUpcase}
 \par\vspace{0.5cm}
 
-\parbox{\linewidth}{\fontsize{16}{19}\selectfont\UPMETsitCoverWorkType}
+\parbox{\linewidth}{\fontsize{16}{19}\selectfont\MakeUppercase{\myWorkTypeFull}}
 
 \begin{tabularx}{\linewidth}{@{}p{4.8cm}X@{}}
-  \MUNEText{Título}{Title}: & \myBookTitle \\[0.25cm]
+  \ifSpanish{Título}{Title}: & \myBookTitle \\[0.25cm]
   \wordAutorOrAutoraTitle: & \myAuthorFullName \\[0.25cm]
-  \MUNEText{Supervisión técnica}{Technical Supervisor}: & \myUPMTechnicalSupervisorFullName \\[0.25cm]
-  \MUNEText{Supervisión académica}{Academic Supervisor}: & \myAcademicTutorFullName \\[0.25cm]
+  \ifSpanish{Supervisión técnica}{Technical Supervisor}: & \myUPMTechnicalSupervisorFullName \\[0.25cm]
+  \ifSpanish{Supervisión académica}{Academic Supervisor}: & \myAcademicTutorFullName \\[0.25cm]
   % La normativa conserva los nombres institucionales también en inglés.
-  \MUNEText{Departamento}{Department}: & \myDepartment
+  \ifSpanish{Departamento}{Department}: & \myDepartment
 \end{tabularx}
 
 \vspace{0.4cm}
-\parbox{\linewidth}{\fontsize{16}{19}\selectfont\MUNEText{MIEMBROS DEL TRIBUNAL}{MEMBERS OF THE EXAMINATION COMMITTEE}}
+\parbox{\linewidth}{\fontsize{16}{19}\selectfont\ifSpanish{MIEMBROS DEL TRIBUNAL}{MEMBERS OF THE EXAMINATION COMMITTEE}}
 
 \begin{tabularx}{\linewidth}{@{}lX@{}}
-  \MUNEText{\wordPresidenteOrPresidenta}{Chair}: & \myTribunalPresident \\[0.7cm]
-  \MUNEText{Vocal}{Member}: & \myTribunalFirstSpokesperson \\[0.7cm]
-  \MUNEText{\wordTribunalSecretarioOrSecretaria}{Secretary}: & \myTribunalSecretary \\[0.7cm]
-  \MUNEText{Suplente}{Alternate member}: & \myTribunalAlternateMember
+  \ifSpanish{\wordPresidenteOrPresidenta}{Chair}: & \myTribunalPresident \\[0.7cm]
+  \ifSpanish{Vocal}{Member}: & \myTribunalFirstSpokesperson \\[0.7cm]
+  \ifSpanish{\wordTribunalSecretarioOrSecretaria}{Secretary}: & \myTribunalSecretary \\[0.7cm]
+  \ifSpanish{Suplente}{Alternate member}: & \myTribunalAlternateMember
 \end{tabularx}
 
 \vspace{0.7cm}
-\MUNEText{Los miembros del tribunal arriba nombrados acuerdan otorgar la calificación de:}{The above-named members of the examination committee agree to award the following grade:}\par
+\ifSpanish{Los miembros del tribunal arriba nombrados acuerdan otorgar la calificación de:}{The above-named members of the examination committee agree to award the following grade:}\par
 \vspace{\baselineskip}
 
 \vspace{1cm}

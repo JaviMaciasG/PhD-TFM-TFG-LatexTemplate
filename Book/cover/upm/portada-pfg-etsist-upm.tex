@@ -10,17 +10,10 @@
 \begingroup
 \normalfont
 \definecolor{ETSISTFrameBlue}{HTML}{5286BE}
-\newcommand{\ETSISTAuthorLabel}{AUTOR}
-\newcommand{\ETSISTTutorLabel}{TUTOR}
 \newcommand{\ETSISTDirectorLabel}{DIRECTOR}
-\newcommand{\ETSISTPresidentLabel}{PRESIDENTE}
-\newcommand{\ETSISTSecretaryLabel}{SECRETARIO}
 \newcommand{\ETSISTSecretarySignature}{El Secretario,}
-\ifthenelse{\equal{\myAuthorGender}{female}}{\renewcommand{\ETSISTAuthorLabel}{AUTORA}}{}
-\ifthenelse{\equal{\myAcademicTutorGender}{female}}{\renewcommand{\ETSISTTutorLabel}{TUTORA}}{}
 \ifthenelse{\equal{\myCoTutorGender}{female}}{\renewcommand{\ETSISTDirectorLabel}{DIRECTORA}}{}
-\ifthenelse{\equal{\myTribunalPresidentGender}{female}}{\renewcommand{\ETSISTPresidentLabel}{PRESIDENTA}}{}
-\ifthenelse{\equal{\myTribunalSecretaryGender}{female}}{\renewcommand{\ETSISTSecretaryLabel}{SECRETARIA}\renewcommand{\ETSISTSecretarySignature}{La Secretaria,}}{}
+\ifthenelse{\equal{\myTribunalSecretaryGender}{female}}{\renewcommand{\ETSISTSecretarySignature}{La Secretaria,}}{}
 \begin{tikzpicture}[remember picture,overlay]
   % El marco del ejemplo tiene tres lados y un pequeño tramo separado abajo.
   \fill[white] (current page.south west) rectangle (current page.north east);
@@ -45,21 +38,21 @@
       \end{tabular}\par
       \vfill
       \begin{tabular}{@{}p{4.4cm}@{\hspace{0.3cm}}p{10.4cm}@{}}
-        \textbf{\ETSISTAuthorLabel:} & \myAuthorFullName\\[0.25cm]
+        \textbf{\MakeUppercase{\wordAutorOrAutora}:} & \myAuthorFullName\\[0.25cm]
         \textbf{TITULACIÓN:} & \myDegreefull\\[0.25cm]
-        \textbf{\ETSISTTutorLabel:} & \myAcademicTutorFullName
+        \textbf{\MakeUppercase{\wordTutorOrTutora}:} & \myAcademicTutorFullName
         \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\[0.25cm]\textbf{\ETSISTDirectorLabel:} & \myCoTutorFullName}\\[0.25cm]
         \textbf{DEPARTAMENTO:} & \myDepartment
       \end{tabular}\par
       \vfill
-      {\raggedleft\bfseries V.º B.º \ETSISTTutorLabel\par}
+      {\raggedleft\bfseries V.º B.º \MakeUppercase{\wordTutorOrTutora}\par}
       \vfill
       {\bfseries Miembros del Tribunal Calificador:\par}
       \vfill
       \begin{tabular}{@{}p{4.4cm}@{\hspace{0.3cm}}p{10.4cm}@{}}
-        \textbf{\ETSISTPresidentLabel:} & \myTribunalPresident\\[0.25cm]
+        \textbf{\MakeUppercase{\wordPresidenteOrPresidenta}:} & \myTribunalPresident\\[0.25cm]
         \textbf{VOCAL:} & \myTribunalFirstSpokesperson\\[0.25cm]
-        \textbf{\ETSISTSecretaryLabel:} & \myTribunalSecretary
+        \textbf{\MakeUppercase{\wordTribunalSecretarioOrSecretaria}:} & \myTribunalSecretary
       \end{tabular}\par
       \vfill
       \begin{tabular}{@{}p{4.4cm}@{\hspace{0.3cm}}p{10.4cm}@{}}

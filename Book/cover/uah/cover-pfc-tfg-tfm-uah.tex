@@ -7,17 +7,6 @@
 
 \begingroup
 % La agrupación no cambia el cargo: tutor en TFG, director en TFM/TFC.
-\newcommand{\UAHCoverAdvisorRole}{\wordDirectorOrDirectoraTitle}
-\newcommand{\UAHCoverCoAdvisorRole}{\wordCoDirectorOrCoDirectoraTitle}
-\newcommand{\UAHCoverAdvisorGroup}{Directores}
-\ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{\renewcommand{\UAHCoverAdvisorGroup}{Directoras}}{}
-\ifthenelse{\equal{\myWorkType}{TFG}}{%
-  \renewcommand{\UAHCoverAdvisorRole}{\wordTutorOrTutoraTitle}%
-  \renewcommand{\UAHCoverCoAdvisorRole}{\wordCoTutorOrCoTutoraTitle}%
-  \renewcommand{\UAHCoverAdvisorGroup}{Tutores}%
-  \ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{\renewcommand{\UAHCoverAdvisorGroup}{Tutoras}}{}%
-}{}
-\ifthenelse{\equal{\myCoTutorFullName}{}}{\renewcommand{\UAHCoverAdvisorGroup}{\UAHCoverAdvisorRole}}{}
 \thispagestyle{empty}
 \large
 \begin{center}
@@ -70,13 +59,13 @@
 
     }
     {%
-      \UAHCoverAdvisorRole: \myAcademicTutorFullName{}
+      \ifthenelse{\equal{\myWorkType}{TFG}}{\wordTutorOrTutoraTitle}{\wordDirectorOrDirectoraTitle}: \myAcademicTutorFullName{}
 
       \ifthenelse{\equal{\myCoTutorFullName}{}}
       {
       }
       {
-        \UAHCoverCoAdvisorRole: \myCoTutorFullName{}
+        \ifthenelse{\equal{\myWorkType}{TFG}}{\wordCoTutorOrCoTutoraTitle}{\wordCoDirectorOrCoDirectoraTitle}: \myCoTutorFullName{}
       }
     }
   }
@@ -86,7 +75,15 @@
       \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
     }
     {
-      \UAHCoverAdvisorGroup: \myAdvisors
+      \ifthenelse{\equal{\myCoTutorFullName}{}}{%
+        \ifthenelse{\equal{\myWorkType}{TFG}}{\wordTutorOrTutoraTitle}{\wordDirectorOrDirectoraTitle}%
+      }{%
+        \ifthenelse{\equal{\myWorkType}{TFG}}{%
+          \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}%
+        }{%
+          \expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}%
+        }%
+      }: \myAdvisors
     }
   }
 
