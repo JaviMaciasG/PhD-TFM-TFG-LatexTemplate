@@ -2,6 +2,36 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.13.0] - 2026-11-13
+
+### Features
+
+- Support three bachelor thesis degrees
+
+- Support ETSII doctoral theses
+
+- Add ETSII TFG cover support
+
+- Support ETSII master theses
+
+### Bug Fixes
+
+- Preserve configuration macro during flattening
+
+- Validate language before selecting degree
+
+### Documentation
+
+- Clarify UAH paperwork scope
+
+### Refactoring
+
+- Use centralized advisor labels
+
+### Other Changes
+
+- Emphasize Madrid year on doctoral covers
+
 ## [v8.12.1] - 2026-11-11
 
 ### Features
