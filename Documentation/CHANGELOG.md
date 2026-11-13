@@ -2,6 +2,12 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.13.3] - 2026-11-13
+
+### Refactoring
+
+- Keep separate advisor lines without a flag
+
 ## [v8.13.2] - 2026-11-13
 
 ### Build System
