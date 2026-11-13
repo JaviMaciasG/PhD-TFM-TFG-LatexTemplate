@@ -42,6 +42,17 @@
 \ValidateBooleanOption{\myCoTutorIsPhD}{\string\myCoTutorIsPhD}
 \ValidateBooleanOption{\myFlagSplittedAdvisors}{\string\myFlagSplittedAdvisors}
 
+% Reject unsupported languages before the degree registry or Babel uses one.
+\ifthenelse{\equal{\myLanguage}{spanish}\OR\equal{\myLanguage}{english}}
+  {}
+  {\PackageError{UAH-template}
+    {Invalid value '\myLanguage' for \string\myLanguage}
+    {Use exactly 'spanish' or 'english' in Config/myconfig.tex.}}
+
+% Keep the language choice readable wherever both versions of a text appear.
+\newcommand{\ifEnglish}[2]{\ifthenelse{\equal{\myLanguage}{english}}{#1}{#2}}
+\newcommand{\ifSpanish}[2]{\ifthenelse{\equal{\myLanguage}{spanish}}{#1}{#2}}
+
 % Select the degree before defining text that depends on its institution.
 \providecommand{\myConfigDirectory}{../Config}
 \input{\myConfigDirectory/degree-registry.tex}
