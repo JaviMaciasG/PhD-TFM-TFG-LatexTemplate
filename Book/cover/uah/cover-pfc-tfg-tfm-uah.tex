@@ -43,47 +43,25 @@
   
   \vspace{1mm}
   
-  \ifthenelse{\equal{\myFlagSplittedAdvisors}{true}}
+  \ifthenelse{\equal{\myLanguage}{english}}
   {
-    \ifthenelse{\equal{\myLanguage}{english}}
+    \expandafter\makefirstuc\expandafter{\wordAdvisor}: \myAcademicTutorFullName{}
+
+    \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
-      % \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
-      \expandafter\makefirstuc\expandafter{\wordAdvisor}: \myAcademicTutorFullName{}
-
-      \ifthenelse{\equal{\myCoTutorFullName}{}}
-      {
-      }
-      {
-        \expandafter\makefirstuc\expandafter{\wordCoAdvisor}: \myCoTutorFullName{}
-      }
-
     }
-    {%
-      \ifthenelse{\equal{\myWorkType}{TFG}}{\wordTutorOrTutoraTitle}{\wordDirectorOrDirectoraTitle}: \myAcademicTutorFullName{}
-
-      \ifthenelse{\equal{\myCoTutorFullName}{}}
-      {
-      }
-      {
-        \ifthenelse{\equal{\myWorkType}{TFG}}{\wordCoTutorOrCoTutoraTitle}{\wordCoDirectorOrCoDirectoraTitle}: \myCoTutorFullName{}
-      }
+    {
+      \expandafter\makefirstuc\expandafter{\wordCoAdvisor}: \myCoTutorFullName{}
     }
   }
-  {
-    \ifthenelse{\equal{\myLanguage}{english}}
+  {%
+    \ifthenelse{\equal{\myWorkType}{TFG}}{\wordTutorOrTutoraTitle}{\wordDirectorOrDirectoraTitle}: \myAcademicTutorFullName{}
+
+    \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
-      \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
     }
     {
-      \ifthenelse{\equal{\myCoTutorFullName}{}}{%
-        \ifthenelse{\equal{\myWorkType}{TFG}}{\wordTutorOrTutoraTitle}{\wordDirectorOrDirectoraTitle}%
-      }{%
-        \ifthenelse{\equal{\myWorkType}{TFG}}{%
-          \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}%
-        }{%
-          \expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}%
-        }%
-      }: \myAdvisors
+      \ifthenelse{\equal{\myWorkType}{TFG}}{\wordCoTutorOrCoTutoraTitle}{\wordCoDirectorOrCoDirectoraTitle}: \myCoTutorFullName{}
     }
   }
 

@@ -56,13 +56,7 @@
   {
     \begin{tikzpicture}[remember picture, overlay]
       \node [yshift=0,    xshift=0.55\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{16}{16}\selectfont\textbf{\myPresentedBy{}:\\\myAuthorFullName}\par};
-      \ifthenelse{\equal{\myFlagSplittedAdvisors}{false}}
-      {
-        \node [yshift=-3cm, xshift=0.55\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{16}{16}\selectfont\textbf{\myAdvisedBy{}:\\\myAdvisors}\par};
-      }
-      {
-        \node [yshift=-3cm, xshift=0.55\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{16}{16}\selectfont\textbf{\myAdvisedBy{}:\\\wordDrOrDraTutor{} \wordDonOrDonaTutor{} \myAcademicTutorFullName{}\ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\\wordDrOrDraCoTutor{} \wordDonOrDonaCoTutor{} \myCoTutorFullName{}}}\par};
-      }
+      \node [yshift=-3cm, xshift=0.55\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{16}{16}\selectfont\textbf{\myAdvisedBy{}:\\\wordDrOrDraTutor{} \wordDonOrDonaTutor{} \myAcademicTutorFullName{}\ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\\wordDrOrDraCoTutor{} \wordDonOrDonaCoTutor{} \myCoTutorFullName{}}}\par};
       \node [yshift=-7cm, xshift=0.55\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{pantone293}\fontsize{16}{16}\selectfont\textbf{Alcalá de Henares, \myDefenseDateFull}\par};
     \end{tikzpicture}
   };

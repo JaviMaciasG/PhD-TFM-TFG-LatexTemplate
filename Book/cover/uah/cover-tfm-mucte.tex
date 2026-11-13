@@ -49,39 +49,25 @@
   
   \vspace{1mm}
   
-  \ifthenelse{\equal{\myFlagSplittedAdvisors}{true}}
+  \ifthenelse{\equal{\myLanguage}{english}}
   {
-    \ifthenelse{\equal{\myLanguage}{english}}
+    \expandafter\makefirstuc\expandafter{\wordAdvisor}: \myAcademicTutorFullName{}
+
+    \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
-      % \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
-      \expandafter\makefirstuc\expandafter{\wordAdvisor}: \myAcademicTutorFullName{}
-
-      \ifthenelse{\equal{\myCoTutorFullName}{}}
-      {
-      }
-      {
-        \expandafter\makefirstuc\expandafter{\wordCoAdvisor}: \myCoTutorFullName{}
-      }
-
     }
-    {%
-      \expandafter\makefirstuc\expandafter{\wordDirectorOrdirectora}:    \myAcademicTutorFullName{}
-
-      \ifthenelse{\equal{\myCoTutorFullName}{}}
-      {
-      }
-      {
-        \expandafter\makefirstuc\expandafter{\wordCoDirectorOrCoDirectora}: \myCoTutorFullName{}
-      }
+    {
+      \expandafter\makefirstuc\expandafter{\wordCoAdvisor}: \myCoTutorFullName{}
     }
   }
-  {
-    \ifthenelse{\equal{\myLanguage}{english}}
+  {%
+    \expandafter\makefirstuc\expandafter{\wordDirectorOrdirectora}:    \myAcademicTutorFullName{}
+
+    \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
-      \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
     }
     {
-      \expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}: \myAdvisors
+      \expandafter\makefirstuc\expandafter{\wordCoDirectorOrCoDirectora}: \myCoTutorFullName{}
     }
   }
 

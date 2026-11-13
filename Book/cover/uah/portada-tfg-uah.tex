@@ -61,57 +61,27 @@
 
   \vspace{0.5cm}
 
-  % If also director: add corresponding line (mybookDirectors IS NOT DEFINED AS FOR ME (JMG)
-  % \ifthenelse{\equal{\myLanguage}{english}}
-  % {
-  % \textbf{\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}:} \myAdvisors
-  % }
-  %   {
-  %   \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutores}:}  \myAdvisors
-  % %   \textbf{\expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}:}  \mybookdirectors
-  % }
-
-  %   ---
-  \ifthenelse{\equal{\myFlagSplittedAdvisors}{true}}
+  \ifthenelse{\equal{\myLanguage}{english}}
   {
-    \ifthenelse{\equal{\myLanguage}{english}}
+    \textbf{\expandafter\makefirstuc\expandafter{\wordAdvisor}:} \myAcademicTutorFullName{}
+
+    \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
-      % \expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}: \myAdvisors
-      \textbf{\expandafter\makefirstuc\expandafter{\wordAdvisor}:} \myAcademicTutorFullName{}
-
-      \ifthenelse{\equal{\myCoTutorFullName}{}}
-      {
-      }
-      {
-        \textbf{\expandafter\makefirstuc\expandafter{\wordCoAdvisor}:} \myCoTutorFullName{}
-      }
-
     }
-    {%
-      % \expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}: \myAdvisors
-      % \expandafter\makefirstuc\expandafter{\wordTutorOrTutores}: \myAdvisors
-      \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:}    \myAcademicTutorFullName{}
-
-      \ifthenelse{\equal{\myCoTutorFullName}{}}
-      {
-      }
-      {
-        \textbf{\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}:} \myCoTutorFullName{}
-      }
+    {
+      \textbf{\expandafter\makefirstuc\expandafter{\wordCoAdvisor}:} \myCoTutorFullName{}
     }
   }
-  {
-    \ifthenelse{\equal{\myLanguage}{english}}
+  {%
+    \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:} \myAcademicTutorFullName{}
+
+    \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
-      \textbf{\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}:} \myAdvisors
     }
     {
-      \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutores}:} \myAdvisors
+      \textbf{\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}:} \myCoTutorFullName{}
     }
-  }  
-
-
-  % ---
+  }
 
 
 \end{center}

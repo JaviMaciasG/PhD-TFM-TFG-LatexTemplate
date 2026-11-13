@@ -133,9 +133,9 @@ Do not encode a separate work type into the degree identifier merely to solve a 
 
 ## Advisor presentation and the manual catalogue
 
-`\myFlagSplittedAdvisors` accepts only `true` or `false`. It controls UAH TFG covers, the EPS-UAH master cover, MUCTE pages, the ESCET-URJC outer cover and the shared UAH information sheet. Grouping must not change roles: tutor/cotutor for Spanish TFGs, director/codirector for Spanish TFMs and TFCs, and advisor/co-advisor in English. Omit absent co-advisors entirely and preserve grammatical gender and number. Label changes stay local to covers rather than changing paperwork commands.
+The UAH TFG covers, EPS-UAH master cover, MUCTE pages, ESCET-URJC outer cover and shared UAH information sheet present the advisor and co-advisor on separate lines. Keep their roles accurate: tutor/cotutor for Spanish TFGs, director/codirector for Spanish TFMs and TFCs, and advisor/co-advisor in English. Omit absent co-advisors entirely and preserve grammatical gender and number. Label changes stay local to covers rather than changing paperwork commands.
 
-Do not impose this flag on fixed layouts: MUC and MUANBD outer covers, doctoral covers, ETSII-URJC, EIF-URJC and UPM pages. MUC and MUANBD do use the flag in their shared UAH information sheet. GISD and MUNE retain their specific technical/academic supervision assignments.
+Do not impose these advisor lines on fixed layouts: MUC and MUANBD outer covers, doctoral covers, ETSII-URJC, EIF-URJC and UPM pages. MUC and MUANBD use the separate lines in their shared UAH information sheet. GISD and MUNE retain their specific technical/academic supervision assignments.
 
 The `Book/appendix/titulaciones-soportadas.tex` appendix reads the registry through `\DegreeRegistryPrintCatalogue` without selecting a different degree or changing its metadata. It groups active academic entries by university and school, displays the identifier and Spanish name followed by the registered translation or `not translated` in parentheses, and distinguishes compendium doctoral variants. Legacy degrees and research reports are excluded. Also update the short identifier lists in myconfig.tex and the configuration chapter when adding degrees. UPM has several supported schools, which appear in separate subsections.
 

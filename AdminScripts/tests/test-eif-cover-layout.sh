@@ -19,7 +19,7 @@ for i in "${!styles[@]}"; do
   if [[ $school == ETSII ]]; then
     degree=GICI-ETSII-URJC
   fi
-  definitions="\def\TestDegree{$degree}\def\TestLanguage{$language}\def\TestSplit{false}\def\TestCotutor{$cotutor}\def\TestTutorGender{female}\def\TestStyle{$style}\def\TestCheckFont{1}"
+  definitions="\def\TestDegree{$degree}\def\TestLanguage{$language}\def\TestCotutor{$cotutor}\def\TestTutorGender{female}\def\TestStyle{$style}\def\TestCheckFont{1}"
   definitions+='\def\TestTitle{Diseño de sistemas}\def\TestSecondTitle{Diseño, implementación y evaluación experimental de una plataforma de procesamiento de señales y análisis de datos para la supervisión de sistemas aeroespaciales distribuidos en entornos complejos}'
   for pass in 1 2; do
     (cd "$fixture/Book" && pdflatex -interaction=nonstopmode -halt-on-error -jobname="$style" \
