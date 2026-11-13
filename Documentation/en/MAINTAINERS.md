@@ -30,15 +30,15 @@ The preliminary Book-only visual layer lives under `Config/typesetting/` and is 
 
 In `Book`, `Anteproyecto`, and the `Papeleo*` directories, expose only `clean` and `distclean` for cleanup: `clean` removes auxiliary files while preserving PDFs; `distclean` also removes known generated document PDFs. Do not add alternative cleanup target names. The shared helpers supplement dependency-aware cleanup with known auxiliary extensions, including root-level leftovers from renamed documents, and handle PhD sources in subdirectories whose outputs are written in the paperwork root. Keep resource PDFs and PDF-only distributed paperwork guides protected; a guide PDF is removable only when its source is present. Validate changes with `bash AdminScripts/tests/test-document-cleanup.sh`, which runs exclusively in isolated fixtures.
 
-The active document Makefiles include `Config/latex-common.mk`, which defines the supported LaTeX engines and the common `latexmk` build and cleanup commands. Glossary dependencies are registered centrally in `Config/latexmkrc`. Keep document lists, user-facing group targets, conversion rules and final-output processing in the Makefile belonging to each directory; do not duplicate engine flags or unconditional sequences of LaTeX and Biber passes there.
+The active document Makefiles include `Config/latex-common.mk`, which defines the supported LaTeX engines and the common `latexmk` build and cleanup commands. The `automake` option of `glossaries` generates acronym and symbol lists; `Config/latexmkrc` retains only extra cleanup extensions. Keep document lists, user-facing group targets, conversion rules and final-output processing in the Makefile belonging to each directory; do not duplicate engine flags or unconditional sequences of LaTeX and Biber passes there.
 
-Every active document target deliberately invokes a lightweight `latexmk` dependency check. An unchanged document must not rerun LaTeX, Biber, `makeglossaries`, conversion, compression or copy commands. When adding a new paperwork document, add its base name to the appropriate directory list and let `latexmk` discover its direct and shared inputs. Preserve the compatibility aliases documented in the user manual, and update the root paperwork dispatcher only when introducing a new maintained work type.
+Every active document target deliberately invokes a lightweight `latexmk` dependency check. An unchanged document must not rerun LaTeX, Biber, `makeindex`, conversion, compression or copy commands. When adding a new paperwork document, add its base name to the appropriate directory list and let `latexmk` discover its direct and shared inputs. Preserve the compatibility aliases documented in the user manual, and update the root paperwork dispatcher only when introducing a new maintained work type.
 
 ## Maintaining the introduction and user documentation
 
 Keep `README.md` as the main Spanish introduction and `README-en.md` as its complete translation, with the same content, tone, section order, lists and examples. Preserve external destinations and asset paths, but adapt internal links to the headings in each language. Do not translate command, variable or file names. Preserve literal interface labels and manual section titles where necessary to help readers find them.
 
-Keep the initial workflow consistent across the READMEs, manual and download guides: download, set up the environment, compile without modifications, consult the manual, enter personal details and optionally prepare the minimal structure. The editor workflow is sufficient to get started. Acronym and symbol generation uses `makeindex` automatically when the environment permits it, without requiring the `makeglossaries` script or `perl` for that task. The supplied `latexmk` configuration does use both. Preserve this distinction in requirements and troubleshooting guidance.
+Keep the initial workflow consistent across the READMEs, manual and download guides: download, set up the environment, compile without modifications, consult the manual, enter personal details and optionally prepare the minimal structure. The editor workflow is sufficient to get started. Acronym and symbol generation uses `makeindex` automatically when the environment permits it, without requiring the `makeglossaries` script. `latexmk` still requires `perl`; the Makefiles do not run `makeglossaries` separately. The user-facing documentation has not yet been updated to reflect this change.
 
 Help illustrations belong in `Book/figures/manual/`. Preserve the original Colibre SVG icon, its PNG variants and the provenance and licence notices in `LICENSES.txt` and `CC0-1.0.txt`. The Biber configuration screenshot is kept alongside these illustrations but is not covered by the icon's CC0 notice. Assets referenced by the manual must be tracked so that they enter the distribution. `clean-orig-figures` preserves this folder when preparing a minimal structure.
 
@@ -488,7 +488,7 @@ make clean
 make
 ```
 
-The `make` target uses `latexmk` to run pdfLaTeX, Biber, `makeglossaries`, and additional pdfLaTeX passes only when their inputs require them. Compression and descriptive output copies are also regenerated only when their source PDF changes.
+The `make` target uses `latexmk` to run pdfLaTeX, Biber, and additional pdfLaTeX passes only when their inputs require them. The `automake` option runs `makeindex` for acronyms and symbols. Compression and descriptive output copies are also regenerated only when their source PDF changes.
 
 Test both:
 

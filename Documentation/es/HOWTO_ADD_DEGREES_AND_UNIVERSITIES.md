@@ -318,7 +318,7 @@ make clean
 make
 ```
 
-El objetivo `make` ejecuta pdfLaTeX, Biber, `makeglossaries`, pasadas adicionales de pdfLaTeX, compresión y generación de ficheros de salida. También actualiza y prepara para commit `RELEASE.txt`; revise el árbol de trabajo después.
+El objetivo `make` ejecuta pdfLaTeX, Biber, pasadas adicionales de pdfLaTeX, compresión y generación de ficheros de salida. El paquete `glossaries` procesa automáticamente los acrónimos y símbolos mediante `makeindex`. También actualiza y prepara para commit `RELEASE.txt`; revise el árbol de trabajo después.
 
 Pruebe ambos valores:
 

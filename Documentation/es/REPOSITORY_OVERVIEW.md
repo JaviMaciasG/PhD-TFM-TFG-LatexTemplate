@@ -54,7 +54,7 @@ El `Makefile` de la raíz también puede generar una versión PDF del README y d
 
 - Múltiples pasadas de `pdflatex` cuando son necesarias
 - Procesado de la bibliografía con `biber` cuando es necesario
-- Procesado condicional con `makeglossaries` para glosarios, acrónimos y símbolos
+- Procesado automático con `makeindex` para glosarios, acrónimos y símbolos mediante la opción `automake` del paquete
 - Compatibilidad con la conversión de figuras/diagramas (`dia`, `inkscape`, `epspdf`)
 - Salida comprimida con Ghostscript (`-compressed`); la antigua salida de baja calidad `-screen` está deshabilitada
 - Flujos de aplanado/instantánea/diferencias (`latexpand`, `latexdiff`)
@@ -65,7 +65,7 @@ El `Makefile` de la raíz también puede generar una versión PDF del README y d
 - Los Makefiles de `PapeleoTFG/`, `PapeleoTFM/` y `PapeleoPHD/` utilizan `latexmk` para seguir las dependencias directas y de configuración compartida de cada documento administrativo.
 - Los objetivos de raíz `anteproyecto`, `paperwork` y `all-documents` pueden orquestar opcionalmente estos componentes; `paperwork` selecciona el directorio correspondiente al tipo de titulación configurado.
 - El objetivo de raíz `sync-git-sources` invoca `sync-git-sources.sh` para actualizar el índice Git de un usuario a partir de las dependencias del libro, el anteproyecto y la documentación administrativa; el script se niega a ejecutarse en el repositorio oficial de la plantilla marcado como tal.
-- Las opciones compartidas del motor y la integración de glosarios están en `Config/latex-common.mk` y `Config/latexmkrc`.
+- Las opciones compartidas del motor están en `Config/latex-common.mk`; `Config/latexmkrc` conserva extensiones adicionales para limpiar los archivos de glosarios.
 - `AdminScripts/build-book-typesetting-prototypes.sh` genera muestras aisladas del libro completo para los perfiles visuales registrados. `AdminScripts/build-book-style-comparisons.sh` utiliza Python y PyMuPDF para añadir preliminares bilingües neutros y extraer, etiquetar y componer las páginas de comparación.
 - `AdminScripts/go.gen-public-sample-pdfs.sh` genera la matriz pública reducida de Dropbox y, opcionalmente, publica sus PDF junto con `RELEASE.txt` tras una confirmación interactiva. El objetivo `publish-dropbox`, exclusivo para mantenedores, también genera y publica ambos archivos de versión validados en la misma operación confirmada. `go.gen-all-pdfs.sh` muestra una matriz de regresión seleccionable y pide confirmación; por defecto genera representantes y `--all` activa la cobertura exhaustiva. Compila en copias aisladas y guarda PDF y registros en `Book/all-pdfs/`.
 
@@ -151,7 +151,7 @@ El manual estándar y la estructura mínima estándar incluyen Book/appendix/asp
 
 ## Riesgos / puntos críticos de complejidad
 
-- Una compilación desde el editor utiliza `pdflatex` y `biber` cuando hay bibliografía. La opción `automake` de `glossaries` genera los listados mediante `makeindex` cuando el entorno permite ejecutarlo, sin requerir el script `makeglossaries` ni `perl` para esa tarea. La configuración suministrada de `latexmk`, utilizada por los Makefiles, sí invoca `makeglossaries` y necesita `perl`. El objetivo predeterminado de Book también utiliza `Ghostscript` para comprimir el PDF. Otros objetivos pueden necesitar `pandoc`, `Dia`, `Inkscape`, `latexpand` o `latexdiff`.
+- Una compilación desde el editor utiliza `pdflatex` y `biber` cuando hay bibliografía. La opción `automake` de `glossaries` genera los listados mediante `makeindex` cuando el entorno permite ejecutarlo, sin requerir el script `makeglossaries` ni `perl` para esa tarea. Los Makefiles utilizan la misma generación interna de glosarios, aunque `latexmk` necesita `perl`. El objetivo predeterminado de Book también utiliza `Ghostscript` para comprimir el PDF. Otros objetivos pueden necesitar `pandoc`, `Dia`, `Inkscape`, `latexpand` o `latexdiff`.
 - Los Makefiles activos de los documentos comparten su configuración de motor y dependencias, pero la automatización de versiones y registros sigue dependiendo de herramientas de shell.
 - La estructura de distintas épocas y los recursos duplicados pueden dificultar la incorporación de nuevos usuarios.
 - El contenido heredado/Deprecated aumenta el ruido de navegación para los usuarios que empiezan.

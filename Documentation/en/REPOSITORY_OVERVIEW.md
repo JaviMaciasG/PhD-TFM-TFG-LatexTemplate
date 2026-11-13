@@ -54,7 +54,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 
 - Multi-pass `pdflatex` when required
 - Bibliography processing with `biber` when required
-- Conditional `makeglossaries` processing for glossaries, acronyms, and symbols
+- Automatic `makeindex` processing for glossaries, acronyms, and symbols through the package's `automake` option
 - Figure/diagram conversion support (`dia`, `inkscape`, `epspdf`)
 - Ghostscript compressed output (`-compressed`); the former low-quality `-screen` output is disabled
 - Flatten/snapshot/diff workflows (`latexpand`, `latexdiff`)
@@ -65,7 +65,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 - The Makefiles under `PapeleoTFG/`, `PapeleoTFM/`, and `PapeleoPHD/` use `latexmk` to track direct and shared configuration dependencies for every administrative document.
 - The root targets `anteproyecto`, `paperwork`, and `all-documents` optionally orchestrate these components; `paperwork` selects the directory matching the configured degree type.
 - The root target `sync-git-sources` invokes `sync-git-sources.sh` to update a user's Git index from the dependencies of the book, proposal, and paperwork; the script refuses to run in the marked official template repository.
-- Shared engine options and glossary integration live in `Config/latex-common.mk` and `Config/latexmkrc`.
+- Shared engine options live in `Config/latex-common.mk`; `Config/latexmkrc` retains extra glossary cleanup extensions.
 - `AdminScripts/build-book-typesetting-prototypes.sh` builds isolated full-book samples for the registered visual profiles. `AdminScripts/build-book-style-comparisons.sh` uses Python and PyMuPDF to add neutral bilingual front matter and extract, label, and compose the comparison pages.
 - `AdminScripts/go.gen-public-sample-pdfs.sh` generates the reduced public Dropbox matrix and optionally publishes its PDFs plus `RELEASE.txt` after interactive confirmation. The maintainer-only `publish-dropbox` target also builds and publishes both validated release archives in the same confirmed operation. `go.gen-all-pdfs.sh` previews a selectable regression matrix and asks for confirmation; its default is representative, while `--all` enables exhaustive coverage. Builds use isolated copies and save PDFs and logs under `Book/all-pdfs/`.
 
@@ -151,7 +151,7 @@ The standard manual and standard bare structure include Book/appendix/aspectos-e
 
 ## Risks / complexity hotspots
 
-- Editor-based compilation uses `pdflatex` and `biber` when there is a bibliography. The `automake` option of `glossaries` generates lists through `makeindex` when the environment permits its execution, without requiring the `makeglossaries` script or `perl` for that task. The supplied `latexmk` configuration, used by the Makefiles, does invoke `makeglossaries` and needs `perl`. Book's default target also uses `Ghostscript` to compress the PDF. Other targets may need `pandoc`, `Dia`, `Inkscape`, `latexpand` or `latexdiff`.
+- Editor-based compilation uses `pdflatex` and `biber` when there is a bibliography. The `automake` option of `glossaries` generates lists through `makeindex` when the environment permits its execution, without requiring the `makeglossaries` script or `perl` for that task. The Makefiles use the same internal glossary generation, while `latexmk` itself requires `perl`. Book's default target also uses `Ghostscript` to compress the PDF. Other targets may need `pandoc`, `Dia`, `Inkscape`, `latexpand` or `latexdiff`.
 - The active document Makefiles share their engine and dependency configuration, but release and registry automation still relies on shell tooling.
 - Mixed-era structure and duplicated assets can make onboarding harder.
 - Legacy/Deprecated content increases navigation noise for first-time users.
