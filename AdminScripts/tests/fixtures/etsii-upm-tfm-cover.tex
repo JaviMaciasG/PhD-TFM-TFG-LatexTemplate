@@ -1,0 +1,25 @@
+% One ETSII-UPM TFM cover/backpage build, independent of the user's myconfig values.
+\documentclass[openright]{book}
+\input{../Config/preamble.tex}
+\input{../Config/myconfig.tex}
+\renewcommand{\myDegree}{\TestDegree}
+\renewcommand{\myLanguage}{spanish}
+\renewcommand{\myAuthorFullName}{Autora de Ejemplo}
+\renewcommand{\myAcademicTutorFullName}{Directora de Ejemplo}
+\renewcommand{\myAcademicTutorGender}{female}
+\renewcommand{\myCoTutorFullName}{\TestCoTutor}
+\renewcommand{\myCoTutorGender}{female}
+\renewcommand{\myThesisDefenseYear}{2027}
+\renewcommand{\myThesisDefenseDate}{24 de junio de \myThesisDefenseYear{}}
+\input{../Config/glossaries.tex}
+\input{../Config/postamble.tex}
+\renewcommand{\myBookTitle}{Diseño y evaluación de un sistema industrial con un título suficientemente largo para comprobar el ajuste de la cubierta}
+\input{../Config/typesetting/typesetting.tex}
+\graphicspath{{./logos/}}
+\begin{document}
+\frontmatter
+\input{../Config/setlanguagedependentissues.tex}
+\ThesisInstitutionalPage{cover/cover.tex}
+\chapter*{Prueba de contenido}
+\ThesisInstitutionalPage{cover/backpage.tex}
+\end{document}

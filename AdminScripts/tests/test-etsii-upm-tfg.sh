@@ -21,8 +21,9 @@ for pass in 1 2; do
 done
 pdf="$temporary_directory/etsii-upm-tfg.pdf"
 [[ $(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}') == 4 ]]
-pdftotext "$pdf" "$temporary_directory/cover.txt"
-grep -q 'GRADUADA EN INGENIERÍA EN TECNOLOGÍAS INDUSTRIALES' "$temporary_directory/cover.txt"
+pdftotext -raw "$pdf" "$temporary_directory/cover.txt"
+normalized_text=$(tr '[:space:]' ' ' < "$temporary_directory/cover.txt" | tr -s ' ')
+[[ $normalized_text == *'GRADUADA EN INGENIERÍA EN TECNOLOGÍAS INDUSTRIALES'* ]]
 grep -q 'Autora de Ejemplo' "$temporary_directory/cover.txt"
 ! grep -q 'AUTORA:' "$temporary_directory/cover.txt"
 grep -q 'DIRECTORES DEL TRABAJO FIN DE GRADO' "$temporary_directory/cover.txt"

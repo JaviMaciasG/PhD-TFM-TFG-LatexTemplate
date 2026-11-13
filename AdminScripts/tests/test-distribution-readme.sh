@@ -49,6 +49,11 @@ for file in .gitignore .latexmkrc LICENSE Makefile sync-git-sources.sh \
   Documentation/es/TYPESETTING-STYLES-GUIDE.md; do
   printf 'Fixture source\n' >"$source_root/$file"
 done
+# Keep the fixture aligned with the distribution script's explicit pre-commit sources.
+while IFS= read -r file; do
+  mkdir -p "$source_root/$(dirname "$file")"
+  [[ -e $source_root/$file ]] || printf 'Fixture source\n' >"$source_root/$file"
+done < <(awk '/^reference_sources=\(/ { in_list=1; next } in_list && /^\)/ { exit } in_list { gsub(/^[[:space:]]+|[[:space:]]+$/, ""); print }' "$repository_root/AdminScripts/go.build-distribution.sh")
 cp "$repository_root/PapeleoTFG/"*.tex "$repository_root/PapeleoTFG/Makefile" "$source_root/PapeleoTFG/"
 cp "$repository_root/Config/grades-calculation.tex" "$source_root/Config/"
 printf 'vtest\n' >"$source_root/RELEASE.txt"
@@ -73,6 +78,7 @@ for unpacked in "$fixture/tgz" "$fixture/zip"; do
   cmp "$source_root/Documentation/es/README-PROYECTO.md" "$unpacked/README.md"
   [[ -s $unpacked/00-README.pdf && -s $unpacked/Book/book.tex && -s $unpacked/Config/myconfig.tex ]]
   [[ -s $unpacked/Book/appendix/titulaciones-soportadas.tex && -s $unpacked/Book/cover/urjc/portada-tfg-eif-urjc.tex ]]
+  [[ -s $unpacked/Book/cover/upm/portada-tfm-etsii-upm.tex && -s $unpacked/Book/cover/upm/backpage-tfm-etsii-upm.tex && -s $unpacked/Book/cover/upm/imagen-portada-tfm-etsii-upm.png ]]
   [[ ! -e $unpacked/Documentation && ! -e $unpacked/README-en.md && ! -e $unpacked/README-PROYECTO.md ]]
   for form in "$repository_root/PapeleoTFG/"TFG-Anexo*.tex; do
     cmp "$form" "$unpacked/PapeleoTFG/${form##*/}"

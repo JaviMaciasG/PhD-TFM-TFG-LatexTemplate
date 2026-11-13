@@ -14,12 +14,12 @@ for language in spanish english; do
     tail -n 60 "$fixture/$language-output.log" >&2
     exit 1
   fi
-  [[ $(grep -c '^PASS: master ' "$fixture/masters-$language.log") == 15 ]]
+  [[ $(grep -c '^PASS: master ' "$fixture/masters-$language.log") == 17 ]]
   [[ $(grep -c '^PASS: shared EPS master layout ' "$fixture/masters-$language.log") == 3 ]]
   grep -q '^PASS: untranslated TFM fallback' "$fixture/masters-$language.log"
   grep -q '^PASS: non-TFM names unchanged' "$fixture/masters-$language.log"
 done
-echo 'PASS: all 15 master names and labels in Spanish and English, wrapping, fallback and non-TFM compatibility.'
+echo 'PASS: all 17 master names and labels in Spanish and English, wrapping, fallback and non-TFM compatibility.'
 if (($# == 0)); then exit 0; fi
 
 # Real covers are built in isolation, never with the user's live configuration.

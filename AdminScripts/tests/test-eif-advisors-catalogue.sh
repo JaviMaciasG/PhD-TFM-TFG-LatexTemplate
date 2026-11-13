@@ -114,7 +114,7 @@ assert 'Inglés:' not in text
 PY
 grep -q 'Modalidad de tesis por' "$fixture/text.txt"
 [[ $(grep -c '\\contentsline {section}' "$fixture/Book/catalogue.toc") == 5 ]]
-[[ $(grep -c '\\contentsline {subsection}' "$fixture/Book/catalogue.toc") == 8 ]]
+[[ $(grep -c '\\contentsline {subsection}' "$fixture/Book/catalogue.toc") == 9 ]]
 for degree in GIE-EIIA-UCLM GIEIA-EIIA-UCLM GIA-EIIA-UCLM; do
   grep -Fxq "CATALOGUE: $degree" "$fixture/Book/catalogue.log"
 done

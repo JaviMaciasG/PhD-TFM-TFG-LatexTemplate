@@ -35,6 +35,9 @@ reference_sources=(
   Book/cover/upm/backpage-tfg-etsii-upm.tex
   Book/cover/upm/imagen-portada-tfg-etsii-upm.png
   Book/cover/upm/imagen-contraportada-tfg-etsii-upm.png
+  Book/cover/upm/portada-tfm-etsii-upm.tex
+  Book/cover/upm/backpage-tfm-etsii-upm.tex
+  Book/cover/upm/imagen-portada-tfm-etsii-upm.png
   Book/cover/uclm/portada-tfg-eiia-uclm.tex
   Book/cover/uclm/credits-tfg-eiia-uclm.tex
   Book/logos/uclm/Logo_UCLM_2025_b.pdf

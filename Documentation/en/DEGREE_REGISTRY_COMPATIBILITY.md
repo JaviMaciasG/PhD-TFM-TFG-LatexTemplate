@@ -95,6 +95,8 @@ The table follows the order of Config/degrees.tex. Work type is the canonical va
 | `MUISE-ETSIT-UPM` | Active | Máster Universitario en Ingeniería de Sistemas Electrónicos | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
 | `MUTSC-ETSIT-UPM` | Active | Máster Universitario en Teoría de la Señal y Comunicaciones | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-tft` |
 | `MUNE-ETSIT-UPM` | Active | Máster Universitario en Neurotecnología | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsit-mune-tfm` |
+| `MUII-ETSII-UPM` | Active | Máster Universitario en Ingeniería Industrial | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsii-tfm` |
+| `MUIQ-ETSII-UPM` | Active | Máster Universitario en Ingeniería Química | `TFM` | Trabajo Fin de Máster / Master's Thesis | `upm-etsii-tfm` |
 | `PHDUAH` | Active | Estudios de Doctorado | `PhD` | Tesis Doctoral / Doctoral Thesis | `uah-phd` |
 | `PHD-ETSIT-UPM` | Active | Doctor Ingeniero de Telecomunicación | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
 | `PHD-ETSII-UPM` | Active | Doctor Ingeniero Industrial | `PhD` | Tesis Doctoral / Doctoral Thesis | `upm-phd` |
