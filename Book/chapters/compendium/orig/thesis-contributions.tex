@@ -1,69 +1,34 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Función: capítulo de ejemplo de contribuciones de la tesis de la tesis por compendio.
+% Función: capítulo de ejemplo de contribuciones de la tesis por compendio.
 %
 % Uso: copia de restauración; normalmente no debes modificarla.
 % Tras restaurarla, modifica la copia activa para adaptarla a tu trabajo.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ifthenelse{\equal{\myLanguage}{english}}
-{
-  \chapter{Thesis Contributions}
-}
-{
-  \chapter{Contribuciones de la tesis}
-}
+\chapter{Contribuciones de la tesis}
 \label{cha:compendium-contributions}
 
-\ifthenelse{\equal{\myLanguage}{english}}
-{
-  For examples of how to identify a contribution, compare the localisation method~\cite{Sanabria2026Landmark}, the functional-assessment proposal~\cite{nieva2024proposal} and the vessel-detection and localisation study~\cite{ramirez2026jstars}. Cite the real work when using it as background, and distinguish its authorship from your own contributions. These real references are separate from the three fictional publications used below to demonstrate the compendium structure.
-}
-{
-  Como ejemplos para identificar una contribución, puedes comparar el método de localización~\cite{Sanabria2026Landmark}, la propuesta de evaluación funcional~\cite{nieva2024proposal} y el estudio de detección y localización de barcos~\cite{ramirez2026jstars}. Cita el trabajo real cuando lo utilices como antecedente y distingue su autoría de tus propias contribuciones. Estas referencias reales son independientes de las tres publicaciones ficticias utilizadas a continuación para mostrar la estructura del compendio.
-}
+Como ejemplos para identificar una contribución, puedes comparar el método de localización~\cite{Sanabria2026Landmark}, la propuesta de evaluación funcional~\cite{nieva2024proposal} y el estudio de detección y localización de barcos~\cite{ramirez2026jstars}. Cita el trabajo real cuando lo utilices como antecedente y distingue su autoría de tus propias contribuciones. Estas referencias reales son independientes de las tres publicaciones ficticias utilizadas a continuación para mostrar la estructura del compendio.
 
-\ifthenelse{\equal{\myLanguage}{english}}
-{
-  \section{Overview of the Contributions}
+\section{Resumen de las contribuciones}
 
-  Present and discuss the original contributions of the thesis. Explain how the publications relate to one another, which objective each publication addresses and how their combined results constitute a unified doctoral contribution. The three fictional papers distributed with this example illustrate how to cite each included publication while discussing its contribution~\cite{garcia2026paper1,garcia2026paper2,garcia2026paper3}.
+Presenta y discute las contribuciones originales de la tesis. Explica cómo se relacionan las publicaciones entre sí, qué objetivo aborda cada una y cómo sus resultados combinados constituyen una contribución doctoral unificada. Los tres artículos ficticios distribuidos con este ejemplo muestran cómo citar cada publicación incluida al discutir su contribución~\cite{garcia2026paper1,garcia2026paper2,garcia2026paper3}.
 
-  \subsection{Relationship between the publications}
+\subsection{Relación entre las publicaciones}
 
-  Explain the role of each publication and the progression from the initial research question to the combined results of the thesis.
+Explica el papel de cada publicación y la progresión desde la pregunta inicial de investigación hasta los resultados conjuntos de la tesis.
 
-  \section{Supporting Research Material}
-  \subsection{Videos and demonstrations}
+\section{Material de apoyo a la investigación}
+\subsection{Vídeos y demostraciones}
 
-  Remember that you can very easily include links to videos in the document, and that a list similar to the lists of tables, figures, or algorithms will be generated automatically. The command is defined in \texttt{Config/postamble.tex}, while the list is rendered from \texttt{cover/list-of-videos.tex}. To use it, simply include elements such as \videoLink{Feedback amplifiers: motivation}{https://youtu.be/9xXuasS8B3M} or \videoLink{Feedback amplifiers: ideal theory}{https://youtu.be/ZGMwGX7VCbg}.
+Recuerda que puedes incluir muy fácilmente enlaces a vídeos en el documento y generar automáticamente un listado similar al de tablas, figuras o algoritmos. La orden se define en \texttt{Config/postamble.tex}, mientras que el listado se genera desde \texttt{cover/list-of-videos.tex}. Para usarla, basta con que incluyas elementos similares a \videoLink{Amplificadores realimentados: motivación}{https://youtu.be/9xXuasS8B3M} o \videoLink{Amplificadores realimentados: teoría ideal}{https://youtu.be/ZGMwGX7VCbg}.
 
-  \subsection{Algorithms and source code}
+\subsection{Algoritmos y código fuente}
 
-  You can also include algorithms such as Algorithm~\ref{alg:restriction}, and symbols such as~\ac{xidet}.
+Y también puedes incluir algoritmos como el algoritmo~\ref{alg:restriction}, y símbolos como~\ac{xidet}.
 
-  In addition, you can include source code listings such as the one shown in Listing~\ref{cod:sample2}.
-}
-{
-  \section{Resumen de las contribuciones}
+Además de listados de código fuente como en el listado~\ref{cod:sample2}.
 
-  Presenta y discute las contribuciones originales de la tesis. Explica cómo se relacionan las publicaciones entre sí, qué objetivo aborda cada una y cómo sus resultados combinados constituyen una contribución doctoral unificada. Los tres artículos ficticios distribuidos con este ejemplo muestran cómo citar cada publicación incluida al discutir su contribución~\cite{garcia2026paper1,garcia2026paper2,garcia2026paper3}.
-
-  \subsection{Relación entre las publicaciones}
-
-  Explica el papel de cada publicación y la progresión desde la pregunta inicial de investigación hasta los resultados conjuntos de la tesis.
-
-  \section{Material de apoyo a la investigación}
-  \subsection{Vídeos y demostraciones}
-
-  Recuerda que puedes incluir muy fácilmente enlaces a vídeos en el documento y generar automáticamente un listado similar al de tablas, figuras o algoritmos. La orden se define en \texttt{Config/postamble.tex}, mientras que el listado se genera desde \texttt{cover/list-of-videos.tex}. Para usarla, basta con que incluyas elementos similares a \videoLink{Amplificadores realimentados: motivación}{https://youtu.be/9xXuasS8B3M} o \videoLink{Amplificadores realimentados: teoría ideal}{https://youtu.be/ZGMwGX7VCbg}.
-
-  \subsection{Algoritmos y código fuente}
-
-  Y también puedes incluir algoritmos como el algoritmo~\ref{alg:restriction}, y símbolos como~\ac{xidet}.
-
-  Además de listados de código fuente como en el listado~\ref{cod:sample2}.
-
-}
 
 \begin{algorithm}
   \caption{IntervalRestriction\label{IR}}
