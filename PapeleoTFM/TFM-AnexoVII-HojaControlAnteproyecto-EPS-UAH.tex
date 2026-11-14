@@ -60,7 +60,7 @@
     TELÉFONO: \myAuthorTelephone \quad EMAIL: \myAuthorEmail \\
     ESTUDIOS: \myDegreefull \\
     PERFIL/ESPECIALIDAD: \mySpecialty \\
-    \rule{0pt}{1.7em}IDIOMA ESCOGIDO PARA DESARROLLAR EL TRABAJO:~~~ \ifthenelse{\equal{\myLanguage}{spanish}}{\TextSizedCheckbox{$\XBox$}}{\TextSizedCheckbox{$\Box$}} ESPAÑOL \quad \ifthenelse{\equal{\myLanguage}{english}}{\TextSizedCheckbox{$\XBox$}}{\TextSizedCheckbox{$\Box$}} INGLÉS
+    \rule{0pt}{1.7em}IDIOMA ESCOGIDO PARA DESARROLLAR EL TRABAJO:~~~ \ifSpanish{\TextSizedCheckbox{$\XBox$}}{\TextSizedCheckbox{$\Box$}} ESPAÑOL \quad \ifEnglish{\TextSizedCheckbox{$\XBox$}}{\TextSizedCheckbox{$\Box$}} INGLÉS
   \end{tabularx}
 \end{spacing}
 
@@ -72,7 +72,7 @@
 \begin{tabularx}{\textwidth}{|X|}
   \hline
   TÍTULO DEL \myWorkType: \myBookTitleSpanish \\
-  \ifthenelse{\equal{\myLanguage}{english}}
+  \ifEnglish
   {
   TÍTULO EN INGLÉS: \myBookTitleEnglish \\
   }

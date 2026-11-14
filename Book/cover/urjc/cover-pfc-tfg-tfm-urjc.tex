@@ -26,7 +26,7 @@
 	\Large
 
 	\justify
-  \ifthenelse{\equal{\myLanguage}{english}}
+  \ifEnglish
   {
     This work, entitled \textbf{\MakeUppercase{\myBookTitle}}, is the Bachelor's Thesis submitted by \textbf{\myAuthorFullName} in partial fulfilment of the requirements for the degree of {\myDegreefull}. It was carried out at the \textbf{\mySchoolEnglish} of \textbf{\myUniversityEnglish}, in the \textbf{\myDepartmentEnglish}, under the supervision of \textbf{\myAcademicTutorFullName}\ifthenelse{\equal{\myCoTutorFullName}{}}{}{ and \textbf{\myCoTutorFullName}}.
   }
@@ -36,7 +36,7 @@
 
   \vspace{2cm}
   \flushright
-  \ifthenelse{\equal{\myLanguage}{english}}
+  \ifEnglish
   {Móstoles, \myThesisDepositDateEnglish{}}
   {Móstoles, a \myThesisDepositDate{}}
 

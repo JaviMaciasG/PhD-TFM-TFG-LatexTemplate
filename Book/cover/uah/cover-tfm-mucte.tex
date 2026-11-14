@@ -38,36 +38,36 @@
 
   \vspace{1.5cm}
   
-  \ifthenelse{\equal{\myLanguage}{english}}
+  \ifEnglish
   {
     Author: \myAuthorFullName
   }
   {
-    \expandafter\makefirstuc\expandafter{\wordAutorOrAutora}: \myAuthorFullName
+    \CapitalizeFirstLetter{\wordAutorOrAutora}: \myAuthorFullName
   }
   
   
   \vspace{1mm}
   
-  \ifthenelse{\equal{\myLanguage}{english}}
+  \ifEnglish
   {
-    \expandafter\makefirstuc\expandafter{\wordAdvisor}: \myAcademicTutorFullName{}
+    \CapitalizeFirstLetter{\wordAdvisor}: \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-      \expandafter\makefirstuc\expandafter{\wordCoAdvisor}: \myCoTutorFullName{}
+      \CapitalizeFirstLetter{\wordCoAdvisor}: \myCoTutorFullName{}
     }
   }
   {%
-    \expandafter\makefirstuc\expandafter{\wordDirectorOrdirectora}:    \myAcademicTutorFullName{}
+    \CapitalizeFirstLetter{\wordDirectorOrdirectora}:    \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-      \expandafter\makefirstuc\expandafter{\wordCoDirectorOrCoDirectora}: \myCoTutorFullName{}
+      \CapitalizeFirstLetter{\wordCoDirectorOrCoDirectora}: \myCoTutorFullName{}
     }
   }
 
@@ -80,7 +80,7 @@
 
 \begin{bottomparagraph}
   \begin{center}
-    \huge{\ifthenelse{\equal{\myLanguage}{english}}{\myThesisdefenseDateEnglish}{\myThesisDefenseDate}}
+    \huge{\ifEnglish{\myThesisdefenseDateEnglish}{\myThesisDefenseDate}}
   \end{center}
 \end{bottomparagraph}
 

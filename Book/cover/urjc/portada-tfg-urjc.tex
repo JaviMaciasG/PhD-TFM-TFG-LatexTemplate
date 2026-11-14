@@ -57,7 +57,7 @@
 
   \vspace{3cm}
 
-  \ifthenelse{\equal{\myLanguage}{english}}
+  \ifEnglish
   {
     \textbf{Author:}  \myAuthorFullName
   }
@@ -67,25 +67,25 @@
 
   \vspace{0.5cm}
 
-  \ifthenelse{\equal{\myLanguage}{english}}
+  \ifEnglish
   {
-    \textbf{\expandafter\makefirstuc\expandafter{\wordAdvisor}:} \myAcademicTutorFullName{}
+    \textbf{\CapitalizeFirstLetter{\wordAdvisor}:} \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-      \textbf{\expandafter\makefirstuc\expandafter{\wordCoAdvisor}:} \myCoTutorFullName{}
+      \textbf{\CapitalizeFirstLetter{\wordCoAdvisor}:} \myCoTutorFullName{}
     }
   }
   {%
-    \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:} \myAcademicTutorFullName{}
+    \textbf{\CapitalizeFirstLetter{\wordTutorOrTutora}:} \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-      \textbf{\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}:} \myCoTutorFullName{}
+      \textbf{\CapitalizeFirstLetter{\wordCoTutorOrCoTutora}:} \myCoTutorFullName{}
     }
   }
 
@@ -95,7 +95,7 @@
 \begin{bottomparagraph}
   \begin{center}
     \color{textoHeadingPortadaTFGURJC}
-    \ifthenelse{\equal{\myLanguage}{english}}
+    \ifEnglish
     {\huge{Academic year \myThesisAcademicYear}}
     {\huge{Curso académico \myThesisAcademicYear}}
   \end{center}

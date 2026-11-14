@@ -37,8 +37,8 @@
       {\fontsize{16}{20}\selectfont
         \renewcommand{\arraystretch}{1.2}%
         \begin{tabularx}{12cm}[b]{@{}l@{\hspace{1cm}}>{\raggedright\arraybackslash}X@{}}
-          \textbf{\expandafter\makefirstuc\expandafter{\wordAutorOrAutora}:} & \myAuthorFullName \\[0.3cm]
-          \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutores}:} & \myAcademicTutorFullName
+          \textbf{\CapitalizeFirstLetter{\wordAutorOrAutora}:} & \myAuthorFullName \\[0.3cm]
+          \textbf{\CapitalizeFirstLetter{\wordTutorOrTutores}:} & \myAcademicTutorFullName
           \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\ & \myCoTutorFullName}
         \end{tabularx}\par}
     \end{minipage}};

@@ -54,11 +54,11 @@
 \AnnexDefenceField{Correo electrónico}{\myAuthorEmail}
 \AnnexDefenceField{Titulación (Plan de Estudios)}{\myDegreefull}
 \AnnexDefenceField{Título del TFG}{\myBookTitleSpanish}
-\ifthenelse{\equal{\myLanguage}{english}}{\AnnexDefenceField{Título en inglés}{\myBookTitleEnglish}}{}
+\ifEnglish{\AnnexDefenceField{Título en inglés}{\myBookTitleEnglish}}{}
 
 \AnnexDefenceHeading{DATOS \MakeUppercase{\wordTutorDelOrDeLa} \MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}
 \AnnexDefenceField{Nombre y apellidos}{\myAcademicTutorFullName}
-\ifthenelse{\equal{\myCoTutorFullName}{}}{}{\AnnexDefenceField{\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}}{\myCoTutorFullName}}
+\ifthenelse{\equal{\myCoTutorFullName}{}}{}{\AnnexDefenceField{\CapitalizeFirstLetter{\wordCoTutorOrCoTutora}}{\myCoTutorFullName}}
 \AnnexDefenceField{Departamento}{\myAcademicTutorDepartment}
 
 \AnnexDefenceHeading{CALIFICACIÓN FINAL DEL TRABAJO}

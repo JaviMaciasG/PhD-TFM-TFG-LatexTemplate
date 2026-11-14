@@ -35,37 +35,29 @@
 
   \vspace{25mm}
 
-  \ifthenelse{\equal{\myLanguage}{english}}
-  {
-    % \colorUAH \textbf{Author:}  \myAuthorFullName
-    \colorUAH \myAuthorFullName
-  }
-  {
-    % \colorUAH \textbf{Autor:}  \myAuthorFullName
-    \colorUAH \myAuthorFullName
-  }
+  \colorUAH \myAuthorFullName
 
   \vspace{0.5cm}
 
-  \ifthenelse{\equal{\myLanguage}{english}}
+  \ifEnglish
   {
-    \colorUAH {\expandafter\makefirstuc\expandafter{\wordAdvisor}:} \myAcademicTutorFullName{}
+    \colorUAH {\CapitalizeFirstLetter{\wordAdvisor}:} \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-      \colorUAH {\expandafter\makefirstuc\expandafter{\wordCoAdvisor}:} \myCoTutorFullName{}
+      \colorUAH {\CapitalizeFirstLetter{\wordCoAdvisor}:} \myCoTutorFullName{}
     }
   }
   {%
-    \colorUAH {\expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:} \myAcademicTutorFullName{}
+    \colorUAH {\CapitalizeFirstLetter{\wordTutorOrTutora}:} \myAcademicTutorFullName{}
 
     \ifthenelse{\equal{\myCoTutorFullName}{}}
     {
     }
     {
-      \colorUAH {\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}:} \myCoTutorFullName{}
+      \colorUAH {\CapitalizeFirstLetter{\wordCoTutorOrCoTutora}:} \myCoTutorFullName{}
     }
   }
 

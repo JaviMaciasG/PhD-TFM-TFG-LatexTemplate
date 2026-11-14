@@ -16,7 +16,7 @@
   \centerline{\includegraphics[height=2.5cm]{uah/2026/vA_azul_LogoPrincipal.png}}
 
 
-  \ifthenelse{\equal{\myLanguage}{english}}
+  \ifEnglish
   {
     \huge{{\myPhDProgramEnglish}}
   }
@@ -30,7 +30,7 @@
 
   \vspace{5cm}
   
-  \ifthenelse{\equal{\myLanguage}{english}}
+  \ifEnglish
   {
     \huge{{PhD. Thesis Presented by}}
   }
@@ -84,7 +84,7 @@
   %\centerline{\includegraphics[height=3cm]{uah/01_logo-vA_pant293.pdf}}
   \centerline{\includegraphics[height=2.5cm]{uah/2026/vA_azul_LogoPrincipal.png}}
 
-  \ifthenelse{\equal{\myLanguage}{english}}
+  \ifEnglish
   {
     \huge{{\myPhDProgramEnglish}}
   }
@@ -98,7 +98,7 @@
 
   \vspace{10mm}
   
-  \ifthenelse{\equal{\myLanguage}{english}}
+  \ifEnglish
   {
     \huge{{PhD. Thesis Presented by}}
   }
@@ -111,12 +111,12 @@
 
   \vspace{10mm}
 
-  \ifthenelse{\equal{\myLanguage}{english}}
+  \ifEnglish
   {
-    \huge {\expandafter\makefirstuc\expandafter{\wordAdvisorOrAdvisors}}
+    \huge {\CapitalizeFirstLetter{\wordAdvisorOrAdvisors}}
   }
   {
-    \huge {\expandafter\makefirstuc\expandafter{\wordDirectorOrDirectores}}
+    \huge {\CapitalizeFirstLetter{\wordDirectorOrDirectores}}
   }  
 
   \textbf{\myAdvisorsConDrOrDra}
@@ -133,7 +133,7 @@
 
     \color{pantone293}
 
-    \ifthenelse{\equal{\myLanguage}{english}}
+    \ifEnglish
     {
       \huge {Alcalá de Henares, \myThesisdefenseDateEnglish}
     }

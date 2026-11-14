@@ -58,7 +58,7 @@
 \AnnexReportField{Correo electrónico}{\myAuthorEmail}
 \AnnexReportField{Titulación (Plan de Estudios)}{\myDegreefull}
 \AnnexReportField{Título del TFG}{\myBookTitleSpanish}
-\ifthenelse{\equal{\myLanguage}{english}}{\AnnexReportField{Título en inglés}{\myBookTitleEnglish}}{}
+\ifEnglish{\AnnexReportField{Título en inglés}{\myBookTitleEnglish}}{}
 
 \vspace{7mm}
 \AnnexReportHeading{RESULTADOS DE LA HERRAMIENTA DE CONTROL DE PLAGIO}
@@ -98,7 +98,7 @@
 {
   \begin{tabularx}{\linewidth}{|X|}
     \hline
-    \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutora} \wordAcademicoOrAcademica}\\
+    \textbf{\CapitalizeFirstLetter{\wordTutorOrTutora} \wordAcademicoOrAcademica}\\
     \rule{0pt}{1.4cm}\\
     \AnnexReportSignature{\myAcademicTutorFullName}\\\hline
   \end{tabularx}
@@ -106,8 +106,8 @@
 {
   \begin{tabularx}{\linewidth}{|X|X|}
     \hline
-    \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutora} \wordAcademicoOrAcademica} &
-    \textbf{\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora} \ifthenelse{\equal{\myCoTutorGender}{male}}{académico}{académica} (si procede)}\\
+    \textbf{\CapitalizeFirstLetter{\wordTutorOrTutora} \wordAcademicoOrAcademica} &
+    \textbf{\CapitalizeFirstLetter{\wordCoTutorOrCoTutora} \ifthenelse{\equal{\myCoTutorGender}{male}}{académico}{académica} (si procede)}\\
     \rule{0pt}{1.4cm} & \\
     \AnnexReportSignature{\myAcademicTutorFullName} & \AnnexReportSignature{\myCoTutorFullName}\\\hline
   \end{tabularx}

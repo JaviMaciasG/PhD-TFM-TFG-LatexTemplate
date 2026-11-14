@@ -52,6 +52,11 @@
 \newcommand{\ifEnglish}[2]{\ifthenelse{\equal{\myLanguage}{english}}{#1}{#2}}
 \newcommand{\ifSpanish}[2]{\ifthenelse{\equal{\myLanguage}{spanish}}{#1}{#2}}
 
+% Capitalize only the first letter of an expandable word or simple phrase.
+% Fully expand chained word commands before passing the result to mfirstuc;
+% do not use this helper with arbitrary formatting or non-expandable commands.
+\newcommand{\CapitalizeFirstLetter}[1]{\expandafter\makefirstuc\expandafter{\expanded{#1}}}
+
 % Select the degree before defining text that depends on its institution.
 \providecommand{\myConfigDirectory}{../Config}
 \input{\myConfigDirectory/degree-registry.tex}

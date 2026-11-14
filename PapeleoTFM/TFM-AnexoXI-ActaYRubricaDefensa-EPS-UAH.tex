@@ -82,21 +82,21 @@
 
 \begin{description}
   \item[Título del TFM:] \myBookTitleSpanish
-  \ifthenelse{\equal{\myLanguage}{english}}
+  \ifEnglish
   {
   \item[Título en inglés:] \myBookTitleEnglish
   }
   {
   }
-  \item[\expandafter\makefirstuc\expandafter{\wordAutorOrAutora}:] \myAuthorFullName
+  \item[\CapitalizeFirstLetter{\wordAutorOrAutora}:] \myAuthorFullName
   \item[DNI:] \myAuthorDNI
   \item[Estudios:] \myDegreefull
-  \item[\expandafter\makefirstuc\expandafter{\wordDirectorOrdirectora}:] \myAcademicTutorFullName
+  \item[\CapitalizeFirstLetter{\wordDirectorOrdirectora}:] \myAcademicTutorFullName
   \ifthenelse{\equal{\myCoTutorFullName}{}}
   {
   }
   {
-  \item[\expandafter\makefirstuc\expandafter{\wordCoDirectorOrCoDirectora}:] \myCoTutorFullName
+  \item[\CapitalizeFirstLetter{\wordCoDirectorOrCoDirectora}:] \myCoTutorFullName
   }
   \item[Departamento:] \myDepartment
 \end{description}
@@ -123,7 +123,7 @@
 \vspace{0.45cm}
 
 \begin{spacing}{0.9}
-\noindent$^{*}$ \expandafter\makefirstuc\expandafter{\wordAutorElOrLa} estudiante que, habiendo sido propuesto para Matrícula de Honor, solicitara la expedición de su Título de Máster con anterioridad a su resolución por la Comisión Docente, y que posteriormente le fuera concedida la calificación de Matrícula de Honor, dicha calificación no se verá reflejada en su expediente académico, si bien se le comunicará mediante resolución del Secretario de la Comisión a los efectos oportunos que considere el beneficiario. En todo caso, se informa que las Matrículas de Honor no afectan al cálculo de la media de su expediente académico, al ser una calificación honorífica.
+\noindent$^{*}$ \CapitalizeFirstLetter{\wordAutorElOrLa} estudiante que, habiendo sido propuesto para Matrícula de Honor, solicitara la expedición de su Título de Máster con anterioridad a su resolución por la Comisión Docente, y que posteriormente le fuera concedida la calificación de Matrícula de Honor, dicha calificación no se verá reflejada en su expediente académico, si bien se le comunicará mediante resolución del Secretario de la Comisión a los efectos oportunos que considere el beneficiario. En todo caso, se informa que las Matrículas de Honor no afectan al cálculo de la media de su expediente académico, al ser una calificación honorífica.
 \end{spacing}
 
 \vfill

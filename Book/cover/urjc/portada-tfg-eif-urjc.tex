@@ -17,7 +17,7 @@
     {\ifthenelse{\equal{\myAcademicTutorGender}{male}}{Tutor}{Tutora}}%
     {\ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{Tutoras}{Tutores}}}
 \newcommand{\EIFAcademicYearLabel}{Curso académico}
-\ifthenelse{\equal{\myLanguage}{english}}{%
+\ifEnglish{%
   \edef\EIFEnglishDegreeName{\DegreeRegistryValue{degree-name-english}}%
   \ifthenelse{\equal{\EIFEnglishDegreeName}{}}{}{\renewcommand{\EIFDegreeName}{\EIFEnglishDegreeName}}%
   \renewcommand{\EIFWorkType}{BACHELOR THESIS}%

@@ -74,11 +74,11 @@
 \maketitle
 
 \begin{description}                               % DO NOT TOUCH THIS LINE
-\item[\expandafter\makefirstuc\expandafter{\wordAutorOrAutora}:] \myAuthorFullName                       % DO NOT TOUCH THIS LINE
-\item[\expandafter\makefirstuc\expandafter{\wordTutorOrTutores}:] \myAdvisors                   % DO NOT TOUCH THIS LINE
+\item[\CapitalizeFirstLetter{\wordAutorOrAutora}:] \myAuthorFullName                       % DO NOT TOUCH THIS LINE
+\item[\CapitalizeFirstLetter{\wordTutorOrTutores}:] \myAdvisors                   % DO NOT TOUCH THIS LINE
   \item[Titulación:] \myDegreefull                % DO NOT TOUCH THIS LINE
   \item[Título:] \myBookTitleSpanish              % DO NOT TOUCH THIS LINE
-  \ifthenelse{\equal{\myLanguage}{english}}       % DO NOT TOUCH THIS LINE
+  \ifEnglish                                      % DO NOT TOUCH THIS LINE
   {                                               % DO NOT TOUCH THIS LINE
   \item[Título en inglés:] \myBookTitleEnglish    % DO NOT TOUCH THIS LINE
   }                                               % DO NOT TOUCH THIS LINE
