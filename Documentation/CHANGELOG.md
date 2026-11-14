@@ -2,6 +2,12 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.13.4] - 2026-11-14
+
+### Maintenance
+
+- Adjusting bg cover image and text positions
+
 ## [v8.13.3] - 2026-11-13
 
 ### Refactoring
