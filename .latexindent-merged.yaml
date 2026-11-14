@@ -1,0 +1,49 @@
+# General-purpose LaTeX formatting + TikZ-specific formatting.
+# Use with: latexindent -m -l=latexindent-merged.yaml -o=formatted.tex input.tex
+# IMPORTANT: Review changes to inline environments or whitespace-sensitive content.
+defaultIndent: '  '
+
+removeTrailingWhitespace:
+  beforeProcessing: 0
+  afterProcessing: 1
+
+modifyLineBreaks:
+  preserveBlankLines: 1
+  condenseMultipleBlankLinesInto: 1
+
+  environments:
+    # Global fallback, applies to environments not overridden below.
+    BeginStartsOnOwnLine: 1
+    BodyStartsOnOwnLine: 1
+    EndStartsOnOwnLine: 1
+    EndFinishesWithLineBreak: 1
+
+    # Kept explicitly to preserve the original cover-page preferences.
+    tikzpicture:
+      BeginStartsOnOwnLine: 1
+      BodyStartsOnOwnLine: 1
+      EndStartsOnOwnLine: 1
+      EndFinishesWithLineBreak: 1
+
+    minipage:
+      BodyStartsOnOwnLine: 1
+      EndStartsOnOwnLine: 1
+
+  optionalArguments:
+    # By default, don't split generic comma-separated options.
+    CommaFinishesWithLineBreak: 0
+
+    node:
+      OptArgBodyStartsOnOwnLine: 1
+      CommaFinishesWithLineBreak: 1
+      RSqBStartsOnOwnLine: 1
+
+    draw:
+      OptArgBodyStartsOnOwnLine: 1
+      CommaFinishesWithLineBreak: 1
+      RSqBStartsOnOwnLine: 1
+
+  mandatoryArguments:
+    node:
+      MandArgBodyStartsOnOwnLine: 1
+      RCuBStartsOnOwnLine: 1
