@@ -2,6 +2,12 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.13.5] - 2026-11-14
+
+### Refactoring
+
+- Simplify editable chapters to Spanish examples
+
 ## [v8.13.4] - 2026-11-14
 
 ### Maintenance
