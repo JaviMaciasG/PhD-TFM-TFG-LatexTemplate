@@ -27,7 +27,7 @@
     \ifSpanish{Programa de Doctorado}{Doctoral Programme}: \UPMPhDProgramme\par\medskip
     \ifSpanish{Dirección de Tesis}{Thesis Supervision}:\par\medskip
     \hspace*{1cm}\begin{minipage}{15cm}\UPMPhDTutor, \ifSpanish{\myAcademicTutorPosition}{\myAcademicTutorPositionEnglish}, \ifSpanish{\myAcademicTutorInstitution}{\myAcademicTutorInstitutionEnglish} (\ifSpanish{\ifthenelse{\equal{\myAcademicTutorGender}{female}}{Directora}{Director}}{Supervisor})\end{minipage}\par
-    \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\medskip\hspace*{1cm}\begin{minipage}{15cm}\UPMPhDCoTutor, \ifSpanish{\myCoTutorPosition}{\myCoTutorPositionEnglish}, \ifSpanish{\myCoTutorInstitution}{\myCoTutorInstitutionEnglish} (\ifSpanish{\ifthenelse{\equal{\myCoTutorGender}{female}}{Codirectora}{Codirector}}{Co-supervisor})\end{minipage}\par}%
+    \ifCoTutorPresent{\medskip\hspace*{1cm}\begin{minipage}{15cm}\UPMPhDCoTutor, \ifSpanish{\myCoTutorPosition}{\myCoTutorPositionEnglish}, \ifSpanish{\myCoTutorInstitution}{\myCoTutorInstitutionEnglish} (\ifSpanish{\ifthenelse{\equal{\myCoTutorGender}{female}}{Codirectora}{Codirector}}{Co-supervisor})\end{minipage}\par}{}%
     \endgroup
     \ifthenelse{\equal{\myFirstExternalReviewerFullName}{}\AND\equal{\mySecondExternalReviewerFullName}{}}{}{%
       \UPMPhDBlockGap

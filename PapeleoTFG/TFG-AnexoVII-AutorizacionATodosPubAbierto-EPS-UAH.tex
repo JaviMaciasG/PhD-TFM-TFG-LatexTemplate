@@ -84,8 +84,7 @@
 \end{tabularx}
 \end{spacing}
 
-\ifthenelse{\equal{\myCoTutorFullName}{}}
-{}
+\ifCoTutorPresent
 {
   \vspace{0.4cm}
 
@@ -101,6 +100,7 @@
   \end{tabularx}
   \end{spacing}
 }
+{}
 
 \vspace{0.4cm}
 
@@ -127,18 +127,7 @@ Más información en: \href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{
 \vspace{0.45cm}
 
 \begin{spacing}{1.0}
-\ifthenelse{\equal{\myCoTutorFullName}{}}
-{
-  \begin{tabularx}{\textwidth}{|X|X|}
-    \hline
-    Firmado: \wordAutorElOrLa{} \wordAutorOrAutora &
-    Firmado: \wordDirectorElOrLa{} \wordTutorOrTutora{} del Trabajo Fin de Grado \\
-    & \\
-    & \\
-    & \\
-    \hline
-  \end{tabularx}
-}
+\ifCoTutorPresent
 {
   \begin{tabularx}{\textwidth}{|X|X|X|}
     \hline
@@ -148,6 +137,17 @@ Más información en: \href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{
     & & \\
     & & \\
     & & \\
+    \hline
+  \end{tabularx}
+}
+{
+  \begin{tabularx}{\textwidth}{|X|X|}
+    \hline
+    Firmado: \wordAutorElOrLa{} \wordAutorOrAutora &
+    Firmado: \wordDirectorElOrLa{} \wordTutorOrTutora{} del Trabajo Fin de Grado \\
+    & \\
+    & \\
+    & \\
     \hline
   \end{tabularx}
 }

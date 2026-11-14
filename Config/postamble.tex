@@ -52,6 +52,12 @@
 \newcommand{\ifEnglish}[2]{\ifthenelse{\equal{\myLanguage}{english}}{#1}{#2}}
 \newcommand{\ifSpanish}[2]{\ifthenelse{\equal{\myLanguage}{spanish}}{#1}{#2}}
 
+% Test whether an optional co-tutor has been provided.
+% The first argument is used when the co-tutor is present, the second otherwise.
+\newcommand{\ifCoTutorPresent}[2]{%
+  \ifthenelse{\equal{\myCoTutorFullName}{}}{#2}{#1}%
+}
+
 % Capitalize only the first letter of an expandable word or simple phrase.
 % Fully expand chained word commands before passing the result to mfirstuc;
 % do not use this helper with arbitrary formatting or non-expandable commands.
@@ -312,8 +318,29 @@
 }
 
 % Set name of advisors and define words depending on singular/plural
-\ifthenelse{\equal{\myCoTutorFullName}{}}
+\ifCoTutorPresent
 {
+    \newcommand{\myAdvisors}{\myAcademicTutorFullName{} \andOrY{} \myCoTutorFullName{}}
+    \newcommand{\myAdvisorsWithDonOrDona}{\wordDonOrDonaTutor{} \myAcademicTutorFullName{} \andOrYDon{} \wordDonOrDonaCoTutor{} \myCoTutorFullName{}}
+    \newcommand{\myAdvisorsConDrOrDra}{\wordDrOrDraTutor{} \myAcademicTutorFullName{}\\\wordDrOrDraCoTutor{} \myCoTutorFullName{}}
+
+    \ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}
+      {\newcommand{\wordDirectorOrDirectores}{directoras}}
+      {\newcommand{\wordDirectorOrDirectores}{directores}}
+    \newcommand{\wordAdvisorOrAdvisors}{advisors}
+    \newcommand{\wordAdvisor}{advisor}
+    \newcommand{\wordCoAdvisor}{co-advisor}
+    \newcommand{\wordDaOrDan}{dan}
+    \newcommand{\wordEmiteOrEmiten}{emiten}
+    \ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}
+      {\newcommand{\wordTutorOrTutores}{tutoras}}
+      {\newcommand{\wordTutorOrTutores}{tutores}}
+    \newcommand{\wordElOrLos}{Los}
+    \newcommand{\wordSuOrSus}{Su}
+    \newcommand{\wordDelOrDeLos}{de los}
+    \newcommand{\wordHagoOrHacemos}{hacemos}
+  }
+  {
   \newcommand{\myAdvisors}{\myAcademicTutorFullName{}}
   \newcommand{\myAdvisorsWithDonOrDona}{\wordDonOrDonaTutor{} \myAcademicTutorFullName{}}
   \newcommand{\myAdvisorsConDrOrDra}{\wordDrOrDraTutor{} \myAcademicTutorFullName{}}
@@ -340,27 +367,6 @@
     \newcommand{\wordDelOrDeLos}{de la}
   }
     \newcommand{\wordHagoOrHacemos}{hago}
-  }
-  {
-    \newcommand{\myAdvisors}{\myAcademicTutorFullName{} \andOrY{} \myCoTutorFullName{}}
-    \newcommand{\myAdvisorsWithDonOrDona}{\wordDonOrDonaTutor{} \myAcademicTutorFullName{} \andOrYDon{} \wordDonOrDonaCoTutor{} \myCoTutorFullName{}}
-    \newcommand{\myAdvisorsConDrOrDra}{\wordDrOrDraTutor{} \myAcademicTutorFullName{}\\\wordDrOrDraCoTutor{} \myCoTutorFullName{}}
-
-    \ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}
-      {\newcommand{\wordDirectorOrDirectores}{directoras}}
-      {\newcommand{\wordDirectorOrDirectores}{directores}}
-    \newcommand{\wordAdvisorOrAdvisors}{advisors}
-    \newcommand{\wordAdvisor}{advisor}
-    \newcommand{\wordCoAdvisor}{co-advisor}
-    \newcommand{\wordDaOrDan}{dan}
-    \newcommand{\wordEmiteOrEmiten}{emiten}
-    \ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}
-      {\newcommand{\wordTutorOrTutores}{tutoras}}
-      {\newcommand{\wordTutorOrTutores}{tutores}}
-    \newcommand{\wordElOrLos}{Los}
-    \newcommand{\wordSuOrSus}{Su}
-    \newcommand{\wordDelOrDeLos}{de los}
-    \newcommand{\wordHagoOrHacemos}{hacemos}
   }
 
 % Set Autor/Autora field
@@ -406,14 +412,14 @@
 }
 
 % This is to write or not signed by cotutor/cotutora
-\ifthenelse{\equal{\myCoTutorFullName}{}}
-{
-  \newcommand{\okCoTutorOrCotutora}{}
-  \newcommand{\signedByCoTutorOrCoTutora}{}
-}
+\ifCoTutorPresent
 {
   \newcommand{\okCoTutorOrCotutora}{y \wordCoTutorDelOrDeLa{} \wordCoTutorOrCoTutora{}}
   \newcommand{\signedByCoTutorOrCoTutora}{\MakeUppercase{\wordCoTutorOrCoTutora} (si procede): \mySecondAdvisorFullName}
+}
+{
+  \newcommand{\okCoTutorOrCotutora}{}
+  \newcommand{\signedByCoTutorOrCoTutora}{}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

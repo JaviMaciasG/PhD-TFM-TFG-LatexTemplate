@@ -13,7 +13,7 @@
   \textit{Autor:} & \myAuthorFullName\\[0.25em]
   \textit{Grado:} & \myDegreefull\\[0.25em]
   \textit{\UCLMAdvisorLabel:} & \myAcademicTutorFullName
-    \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\ & \myCoTutorFullName}\\[0.25em]
+    \ifCoTutorPresent{\\ & \myCoTutorFullName}{}\\[0.25em]
   \textit{E-mail:} & \myAuthorEmail
     \ifthenelse{\equal{\myWebsite}{}}{}{\\[0.25em]\textit{Sitio web:} & \url{\myWebsite}}%
     \\[0.25em]

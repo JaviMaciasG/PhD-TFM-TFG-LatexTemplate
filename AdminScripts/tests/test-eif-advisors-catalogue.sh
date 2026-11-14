@@ -28,9 +28,9 @@ build() {
   fi
 }
 cover() {
-  local job=$1 degree=$2 language=$3 split=$4 cotutor=$5 gender=$6
+  local job=$1 degree=$2 language=$3 cotutor=$4 gender=$5
   build "$job" eif-advisors-cover \
-    "\def\TestDegree{$degree}\def\TestLanguage{$language}\def\TestSplit{$split}\def\TestCotutor{$cotutor}\def\TestTutorGender{$gender}"
+    "\def\TestDegree{$degree}\def\TestLanguage{$language}\def\TestCotutor{$cotutor}\def\TestTutorGender{$gender}"
   if [[ $degree == *-EIF-URJC ]]; then
     ! grep -Eq 'Overfull \\hbox|Overfull \\vbox' "$fixture/Book/$job.log"
   fi
@@ -42,10 +42,10 @@ for i in "${!degrees[@]}"; do
   [[ $(sh "$query" work-type "$degree") == TFG ]]
   [[ $(sh "$query" institution "$degree") == URJC ]]
   [[ $(sh "$query" layout-profile "$degree") == urjc-eif-tfg ]]
-  language=spanish split=true gender=female cotutor='Nombre cotutora'
-  ((i % 2 == 0)) || { language=english; split=false; gender=male; }
+  language=spanish gender=female cotutor='Nombre cotutora'
+  ((i % 2 == 0)) || { language=english; gender=male; }
   ((i % 3 != 0)) || cotutor=''
-  cover "$degree" "$degree" "$language" "$split" "$cotutor" "$gender"
+  cover "$degree" "$degree" "$language" "$cotutor" "$gender"
   [[ $(pdfinfo "$fixture/Book/$degree.pdf" | awk '/^Pages:/ {print $2}') == 1 ]]
   grep -q 'ESCUELA DE INGENIERÍA DE FUENLABRADA' "$fixture/text.txt"
   grep -q 'Nombre tutora principal' "$fixture/text.txt"
@@ -60,26 +60,23 @@ for i in "${!degrees[@]}"; do
     if [[ -n $cotutor ]]; then grep -q 'Tutoras:' "$fixture/text.txt"; else grep -q 'Tutora:' "$fixture/text.txt"; fi
   fi
   if [[ -n $cotutor ]]; then grep -q "$cotutor" "$fixture/text.txt"; else ! grep -q 'Nombre cotutora' "$fixture/text.txt"; fi
-  echo "PASS: $degree ($language, split=$split)."
+  echo "PASS: $degree ($language)."
 done
 fi
 
 # Exercise each changed layout branch, reusing outer+inner cover builds.
 cases=(
-  'tfg-split|GIEC|spanish|true|Nombre cotutora|female|Tutora:|Cotutora:'
-  'tfg-group|GIEC|spanish|false|Nombre cotutora|female|Tutoras:|'
-  'tfm-split|MUIT|spanish|true||female|Directora:|'
-  'tfm-group|MUII|spanish|false|Nombre cotutora|female|Directoras:|'
-  'tfg-english|GIEC|english|true|Nombre cotutora|male|Advisor:|Co-advisor:'
-  'tfm-english|MUIT|english|false|Nombre cotutora|male|Advisors:|'
-  'mucte-split|MUCTE|spanish|true|Nombre cotutora|female|Directora:|Codirectora:'
-  'mucte-group|MUCTE|spanish|false|Nombre cotutora|female|Directoras:|'
-  'escet-group|ITI-ESCET-URJC|spanish|false|Nombre cotutora|female|Tutoras:|'
+  'tfg-uah|GIEC|spanish|Nombre cotutora|female|Tutora:|Cotutora:'
+  'tfm-uah|MUIT|spanish||female|Directora:|'
+  'tfg-english|GIEC|english|Nombre cotutora|male|Advisor:|Co-advisor:'
+  'tfm-english|MUIT|english|Nombre cotutora|male|Advised by:|'
+  'mucte|MUCTE|spanish|Nombre cotutora|female|Directora:|Codirectora:'
+  'escet|ITI-ESCET-URJC|spanish|Nombre cotutora|female|Tutora:|Cotutora:'
 )
 if [[ $scope == all || $scope == advisors ]]; then
 for spec in "${cases[@]}"; do
-  IFS='|' read -r job degree language split cotutor gender label co_label <<<"$spec"
-  cover "$job" "$degree" "$language" "$split" "$cotutor" "$gender"
+  IFS='|' read -r job degree language cotutor gender label co_label <<<"$spec"
+  cover "$job" "$degree" "$language" "$cotutor" "$gender"
   grep -q "$label" "$fixture/text.txt"
   [[ -z $co_label ]] || grep -q "$co_label" "$fixture/text.txt"
   if [[ -z $cotutor ]]; then
@@ -88,12 +85,6 @@ for spec in "${cases[@]}"; do
   fi
   echo "PASS: advisor layout $job."
 done
-
-if (cd "$fixture/Book" && pdflatex -interaction=nonstopmode -halt-on-error -jobname=invalid \
-  "\def\TestDegree{GIEC}\def\TestLanguage{spanish}\def\TestSplit{invalid}\def\TestCotutor{}\def\TestTutorGender{female}\input{$test_directory/fixtures/eif-advisors-cover.tex}") >"$fixture/invalid.log" 2>&1; then
-  echo 'FAIL: invalid advisor flag was accepted.' >&2; exit 1
-fi
-grep -q "Invalid value 'invalid'" "$fixture/invalid.log"
 fi
 if [[ $scope == all || $scope == catalogue ]]; then
 build catalogue degree-catalogue

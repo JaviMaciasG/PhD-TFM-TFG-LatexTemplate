@@ -98,9 +98,7 @@
 
 \vspace{2.25cm}
 
-\ifthenelse{\equal{\myCoTutorFullName}{}}
-{
-}
+\ifCoTutorPresent
 {
 %\section*{\normalsize \MakeUppercase{\wordCoTutorOrCoTutora}}
 
@@ -119,6 +117,8 @@
   \item[Correo electrónico:] \myCoTutorEmail
   \item[Firma:]
 \end{description}
+}
+{
 }
 
 \vspace{2.25cm}

@@ -85,13 +85,13 @@
 \begin{spacing}{1.0}
   \begin{tabularx}{\textwidth}{X}
     \MakeUppercase{\wordDirectorOrdirectora} \MakeUppercase{\wordAcademicoOrAcademica}: \myAcademicTutorFullName  \\
-    \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\MakeUppercase{\wordCoDirectorOrCoDirectora}: \myCoTutorFullName \\}
+    \ifCoTutorPresent{\MakeUppercase{\wordCoDirectorOrCoDirectora}: \myCoTutorFullName \\}{}
     \begin{center}
       Alcalá de Henares, \myThesisProposalDate
     \end{center}
  \end{tabularx}
   \begin{tabularx}{\textwidth}{X X}
-    Visto bueno \wordTutorDelOrDeLa{} \wordDirectorOrdirectora{}\ifthenelse{\equal{\myCoTutorFullName}{}}{}{ y \wordCoTutorDelOrDeLa{} \wordCoDirectorOrCoDirectora{}} & Estudiante \\
+    Visto bueno \wordTutorDelOrDeLa{} \wordDirectorOrdirectora{}\ifCoTutorPresent{ y \wordCoTutorDelOrDeLa{} \wordCoDirectorOrCoDirectora{}}{} & Estudiante \\
     \\
     \\ ~
     \\ ~

@@ -76,7 +76,9 @@ for spec in "${cases[@]}"; do
   grep -q "Datos $codirector_article $codirector_role" "$change"
   grep -q "${director_role^^}" "$control"
   if [[ $coadvisor == present ]]; then
-    grep -q 'directores del Trabajo' "$approval"
+    advisor_plural=directores
+    [[ $director != female || $codirector != female ]] || advisor_plural=directoras
+    grep -q "$advisor_plural del Trabajo" "$approval"
     grep -q 'dan su conformidad' "$approval"
     grep -q "${codirector_role^^}" "$control"
     grep -q "$codirector_role de la entidad recibirá" "$agreement"

@@ -40,19 +40,19 @@
 
 % The external/entity tutor is represented by the co-tutor when one is
 % configured. If no co-tutor is configured, the form deliberately shows N/D.
-\ifthenelse{\equal{\myCoTutorFullName}{}}{%
-  \newcommand{\AnnexEntityName}{\AnnexNA}%
-}{%
+\ifCoTutorPresent{%
   \newcommand{\AnnexEntityName}{\myCoTutorInstitution}%
+}{%
+  \newcommand{\AnnexEntityName}{\AnnexNA}%
 }
 \newcommand{\AnnexEntityTutorName}{%
-  \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorFullName}}
+  \ifCoTutorPresent{\myCoTutorFullName}{\AnnexNA}}
 \newcommand{\AnnexEntityTutorPosition}{%
-  \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorPosition}}
+  \ifCoTutorPresent{\myCoTutorPosition}{\AnnexNA}}
 \newcommand{\AnnexEntityTutorDNI}{%
-  \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorDNI}}
+  \ifCoTutorPresent{\myCoTutorDNI}{\AnnexNA}}
 \newcommand{\AnnexEntityTutorEmail}{%
-  \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorEmail}}
+  \ifCoTutorPresent{\myCoTutorEmail}{\AnnexNA}}
 
 % Reusable section-heading row matching the blue/grey bands in the source.
 \newcommand{\AnnexSection}[1]{%
@@ -217,7 +217,7 @@ En Alcalá de Henares, a \today % \myPaperworkDate
 \rule{0pt}{0.43cm}\ifthenelse{\equal{\mySchoolDeputyDirectorFullName}{}}{}{\wordDonOrDonaSubdirector{} \mySchoolDeputyDirectorFullName} &
 \rule{0pt}{0.43cm}\wordDonOrDonaCoTutor{} \AnnexEntityTutorName &
 \rule{0pt}{0.43cm}\wordDonOrDonaAutor \myAuthorFullName\\[1.3cm]
-\wordSubdirectorOrSubdirectora{} de la &  \CapitalizeFirstLetter{\wordCoTutorOrCoTutora{}} de \myWorkType{} en la entidad & \\
+\wordSubdirectorOrSubdirectora{} de la &  \CapitalizeFirstLetter{\wordCoDirectorOrCoDirectora{}} de \myWorkType{} en la entidad & \\
 \mySchool & & \\\hline
 \end{tabularx}
 

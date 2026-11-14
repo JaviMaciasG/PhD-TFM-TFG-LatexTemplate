@@ -16,7 +16,7 @@
 % GISD redefine únicamente las filas de supervisión.
 \providecommand{\UPMTFGSupervisorRows}{%
   \wordTutorOrTutoraTitle: & \myAcademicTutorFullName \\[0.25cm]
-  \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\wordCoTutorOrCoTutoraTitle: & \myCoTutorFullName \\[0.25cm]}%
+  \ifCoTutorPresent{\wordCoTutorOrCoTutoraTitle: & \myCoTutorFullName \\[0.25cm]}{}%
   \ifSpanish{Ponente}{Academic sponsor}: & \myPonenteFullName \\[0.25cm]
 }
 

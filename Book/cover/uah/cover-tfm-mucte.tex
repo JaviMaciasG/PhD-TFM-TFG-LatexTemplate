@@ -53,21 +53,21 @@
   {
     \CapitalizeFirstLetter{\wordAdvisor}: \myAcademicTutorFullName{}
 
-    \ifthenelse{\equal{\myCoTutorFullName}{}}
-    {
-    }
+    \ifCoTutorPresent
     {
       \CapitalizeFirstLetter{\wordCoAdvisor}: \myCoTutorFullName{}
+    }
+    {
     }
   }
   {%
     \CapitalizeFirstLetter{\wordDirectorOrdirectora}:    \myAcademicTutorFullName{}
 
-    \ifthenelse{\equal{\myCoTutorFullName}{}}
-    {
-    }
+    \ifCoTutorPresent
     {
       \CapitalizeFirstLetter{\wordCoDirectorOrCoDirectora}: \myCoTutorFullName{}
+    }
+    {
     }
   }
 

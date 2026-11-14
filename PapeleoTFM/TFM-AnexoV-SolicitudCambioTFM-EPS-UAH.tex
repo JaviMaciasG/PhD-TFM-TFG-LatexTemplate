@@ -64,12 +64,12 @@
 \vspace{0.25cm}
 
 \hspace*{0.5cm}NOMBRE:
-\ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorFullName}
+\ifCoTutorPresent{\myCoTutorFullName}{\AnnexNA}
 
 \vspace{0.25cm}
 
 \hspace*{0.5cm}AFILIACIÓN:
-\ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\AcademicCotutorAffiliation}
+\ifCoTutorPresent{\AcademicCotutorAffiliation}{\AnnexNA}
 
 \vspace{0.4cm}
 

@@ -68,10 +68,11 @@ for spec in "${cases[@]}"; do
   if [[ $language == english ]]; then
     grep -q 'PERFIL/ESPECIALIDAD:.*Perfil de prueba' "$fixture/form.txt"
     grep -q 'TÍTULO EN INGLÉS:' "$fixture/form.txt"
-    grep -Eq '\[ *\] ESPAÑOL.*\[X\] INGLÉS' "$fixture/form.txt"
+    # pdftotext extracts the marked/empty graphical boxes as 4/2, not [X]/[ ].
+    grep -Eq '2 ESPAÑOL.*4 INGLÉS' "$fixture/form.txt"
   else
     ! grep -q 'TÍTULO EN INGLÉS:' "$fixture/form.txt"
-    grep -Eq '\[X\] ESPAÑOL.*\[ *\] INGLÉS' "$fixture/form.txt"
+    grep -Eq '4 ESPAÑOL.*2 INGLÉS' "$fixture/form.txt"
   fi
   if [[ $cotutor == absent ]]; then
     ! grep -q 'CODIRECTOR' "$fixture/form.txt"

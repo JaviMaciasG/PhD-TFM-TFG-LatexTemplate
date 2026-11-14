@@ -49,10 +49,10 @@ Trabajo Fin de Máster Universitario:
 
 \noindent durante el curso académico \myThesisAcademicYear{} con la autorización de
 \wordDonOrDonaTutor{} \myAcademicTutorFullName{}, \wordDirectorOrdirectora{} del TFM%
-\ifthenelse{\equal{\myCoTutorFullName}{}}%
-  {.}%
+\ifCoTutorPresent%
   {, y de \wordDonOrDonaCoTutor{} \myCoTutorFullName{},
-   \wordCoDirectorOrCoDirectora{} del TFM.}
+   \wordCoDirectorOrCoDirectora{} del TFM.}%
+  {.}
 
 \vspace{2cm}
 
@@ -63,7 +63,7 @@ Firmado:
 \begin{minipage}[t]{0.58\textwidth}
 \centering
 \wordDirectorOrDirectoraTitle{}%
-\ifthenelse{\equal{\myCoTutorFullName}{}}{}{ y \wordCoDirectorOrCoDirectora}
+\ifCoTutorPresent{ y \wordCoDirectorOrCoDirectora}{}
 \end{minipage}%
 \begin{minipage}[t]{0.42\textwidth}
 \centering

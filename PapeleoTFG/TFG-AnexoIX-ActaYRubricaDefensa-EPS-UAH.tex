@@ -58,7 +58,7 @@
 
 \AnnexDefenceHeading{DATOS \MakeUppercase{\wordTutorDelOrDeLa} \MakeUppercase{\wordTutorOrTutora} \MakeUppercase{\wordAcademicoOrAcademica} DE LA UNIVERSIDAD DE ALCALÁ}
 \AnnexDefenceField{Nombre y apellidos}{\myAcademicTutorFullName}
-\ifthenelse{\equal{\myCoTutorFullName}{}}{}{\AnnexDefenceField{\CapitalizeFirstLetter{\wordCoTutorOrCoTutora}}{\myCoTutorFullName}}
+\ifCoTutorPresent{\AnnexDefenceField{\CapitalizeFirstLetter{\wordCoTutorOrCoTutora}}{\myCoTutorFullName}}{}
 \AnnexDefenceField{Departamento}{\myAcademicTutorDepartment}
 
 \AnnexDefenceHeading{CALIFICACIÓN FINAL DEL TRABAJO}

@@ -41,7 +41,7 @@
         \textbf{\MakeUppercase{\wordAutorOrAutora}:} & \myAuthorFullName\\[0.25cm]
         \textbf{TITULACIÓN:} & \myDegreefull\\[0.25cm]
         \textbf{\MakeUppercase{\wordTutorOrTutora}:} & \myAcademicTutorFullName
-        \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\[0.25cm]\textbf{\ETSISTDirectorLabel:} & \myCoTutorFullName}\\[0.25cm]
+        \ifCoTutorPresent{\\[0.25cm]\textbf{\ETSISTDirectorLabel:} & \myCoTutorFullName}{}\\[0.25cm]
         \textbf{DEPARTAMENTO:} & \myDepartment
       \end{tabular}\par
       \vfill

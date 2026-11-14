@@ -65,21 +65,21 @@
   {
     \textbf{\expandafter\makefirstuc\expandafter{\wordAdvisor}:} \myAcademicTutorFullName{}
 
-    \ifthenelse{\equal{\myCoTutorFullName}{}}
-    {
-    }
+    \ifCoTutorPresent
     {
       \textbf{\expandafter\makefirstuc\expandafter{\wordCoAdvisor}:} \myCoTutorFullName{}
+    }
+    {
     }
   }
   {%
     \textbf{\expandafter\makefirstuc\expandafter{\wordTutorOrTutora}:} \myAcademicTutorFullName{}
 
-    \ifthenelse{\equal{\myCoTutorFullName}{}}
-    {
-    }
+    \ifCoTutorPresent
     {
       \textbf{\expandafter\makefirstuc\expandafter{\wordCoTutorOrCoTutora}:} \myCoTutorFullName{}
+    }
+    {
     }
   }
 

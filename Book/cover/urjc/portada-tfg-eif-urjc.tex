@@ -36,8 +36,8 @@
       {\fontsize{16}{20}\selectfont
         \wordAutorOrAutoraTitle: \myAuthorFullName\par
         \vspace{0.5cm}
-        \ifEnglish{\ifthenelse{\equal{\myCoTutorFullName}{}}{Supervisor}{Supervisors}}{\CapitalizeFirstLetter{\wordTutorOrTutores}}: \myAcademicTutorFullName
-        \ifthenelse{\equal{\myCoTutorFullName}{}}{}{\\\myCoTutorFullName}\par}
+        \ifEnglish{\ifCoTutorPresent{Supervisors}{Supervisor}}{\CapitalizeFirstLetter{\wordTutorOrTutores}}: \myAcademicTutorFullName
+        \ifCoTutorPresent{\\\myCoTutorFullName}{}\par}
       \vspace{\stretch{1.3}}
       {\fontsize{16}{20}\selectfont\ifSpanish{Curso académico}{Academic year}: \myThesisAcademicYear\par}
     \end{minipage}};

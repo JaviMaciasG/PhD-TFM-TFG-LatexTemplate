@@ -43,21 +43,21 @@
   {
     \colorUAH {\CapitalizeFirstLetter{\wordAdvisor}:} \myAcademicTutorFullName{}
 
-    \ifthenelse{\equal{\myCoTutorFullName}{}}
-    {
-    }
+    \ifCoTutorPresent
     {
       \colorUAH {\CapitalizeFirstLetter{\wordCoAdvisor}:} \myCoTutorFullName{}
+    }
+    {
     }
   }
   {%
     \colorUAH {\CapitalizeFirstLetter{\wordTutorOrTutora}:} \myAcademicTutorFullName{}
 
-    \ifthenelse{\equal{\myCoTutorFullName}{}}
-    {
-    }
+    \ifCoTutorPresent
     {
       \colorUAH {\CapitalizeFirstLetter{\wordCoTutorOrCoTutora}:} \myCoTutorFullName{}
+    }
+    {
     }
   }
 

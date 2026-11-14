@@ -71,21 +71,21 @@
   {
     \textbf{\CapitalizeFirstLetter{\wordAdvisor}:} \myAcademicTutorFullName{}
 
-    \ifthenelse{\equal{\myCoTutorFullName}{}}
-    {
-    }
+    \ifCoTutorPresent
     {
       \textbf{\CapitalizeFirstLetter{\wordCoAdvisor}:} \myCoTutorFullName{}
+    }
+    {
     }
   }
   {%
     \textbf{\CapitalizeFirstLetter{\wordTutorOrTutora}:} \myAcademicTutorFullName{}
 
-    \ifthenelse{\equal{\myCoTutorFullName}{}}
-    {
-    }
+    \ifCoTutorPresent
     {
       \textbf{\CapitalizeFirstLetter{\wordCoTutorOrCoTutora}:} \myCoTutorFullName{}
+    }
+    {
     }
   }
 

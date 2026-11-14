@@ -40,19 +40,19 @@
 
 % The external/entity tutor is represented by the co-tutor when one is
 % configured. If no co-tutor is configured, the form deliberately shows N/D.
-\ifthenelse{\equal{\myCoTutorFullName}{}}{%
-  \newcommand{\AnnexEntityName}{\AnnexNA}%
-}{%
+\ifCoTutorPresent{%
   \newcommand{\AnnexEntityName}{\myCoTutorInstitution}%
+}{%
+  \newcommand{\AnnexEntityName}{\AnnexNA}%
 }
 \newcommand{\AnnexEntityTutorName}{%
-  \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorFullName}}
+  \ifCoTutorPresent{\myCoTutorFullName}{\AnnexNA}}
 \newcommand{\AnnexEntityTutorPosition}{%
-  \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorPosition}}
+  \ifCoTutorPresent{\myCoTutorPosition}{\AnnexNA}}
 \newcommand{\AnnexEntityTutorDNI}{%
-  \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorDNI}}
+  \ifCoTutorPresent{\myCoTutorDNI}{\AnnexNA}}
 \newcommand{\AnnexEntityTutorEmail}{%
-  \ifthenelse{\equal{\myCoTutorFullName}{}}{\AnnexNA}{\myCoTutorEmail}}
+  \ifCoTutorPresent{\myCoTutorEmail}{\AnnexNA}}
 
 % Reusable section-heading row matching the blue/grey bands in the source.
 \newcommand{\AnnexSection}[1]{%

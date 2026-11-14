@@ -78,11 +78,11 @@
 \AnnexReportField{Nombre y apellidos}{\myAcademicTutorFullName}
 \AnnexReportField{Departamento}{\myAcademicTutorDepartment}
 
-\ifthenelse{\equal{\myCoTutorFullName}{}}{}{
+\ifCoTutorPresent{
   \AnnexReportHeading{DATOS \MakeUppercase{\wordCoTutorDelOrDeLa} \MakeUppercase{\wordCoTutorOrCoTutora} (si procede)}
   \AnnexReportField{Nombre y apellidos}{\myCoTutorFullName}
   \AnnexReportField{Departamento/institución}{\AcademicCotutorAffiliation}
-}
+}{}
 
 \AnnexReportHeading{Calificación (hasta 10 puntos, según rúbrica de evaluación): \myAcademicTutorGrade}
 \vspace{8mm}
@@ -94,15 +94,7 @@
 \vspace{4mm}
 \begin{center}
 \begin{minipage}{0.8\linewidth}
-\ifthenelse{\equal{\myCoTutorFullName}{}}
-{
-  \begin{tabularx}{\linewidth}{|X|}
-    \hline
-    \textbf{\CapitalizeFirstLetter{\wordTutorOrTutora} \wordAcademicoOrAcademica}\\
-    \rule{0pt}{1.4cm}\\
-    \AnnexReportSignature{\myAcademicTutorFullName}\\\hline
-  \end{tabularx}
-}
+\ifCoTutorPresent
 {
   \begin{tabularx}{\linewidth}{|X|X|}
     \hline
@@ -110,6 +102,14 @@
     \textbf{\CapitalizeFirstLetter{\wordCoTutorOrCoTutora} \ifthenelse{\equal{\myCoTutorGender}{male}}{académico}{académica} (si procede)}\\
     \rule{0pt}{1.4cm} & \\
     \AnnexReportSignature{\myAcademicTutorFullName} & \AnnexReportSignature{\myCoTutorFullName}\\\hline
+  \end{tabularx}
+}
+{
+  \begin{tabularx}{\linewidth}{|X|}
+    \hline
+    \textbf{\CapitalizeFirstLetter{\wordTutorOrTutora} \wordAcademicoOrAcademica}\\
+    \rule{0pt}{1.4cm}\\
+    \AnnexReportSignature{\myAcademicTutorFullName}\\\hline
   \end{tabularx}
 }
 \end{minipage}

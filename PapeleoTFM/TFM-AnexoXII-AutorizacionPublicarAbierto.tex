@@ -118,9 +118,7 @@
   \end{tabularx}
 \end{spacing}
 
-\ifthenelse{\equal{\myCoTutorFullName}{}}
-{
-}
+\ifCoTutorPresent
 {
   \vspace{0.5cm}
   \textbf{3. \MakeUppercase{\wordCoDirectorOrCoDirectora} DEL \MakeUppercase{\myWorkTypeFull}}
@@ -135,6 +133,8 @@
       \hline
     \end{tabularx}
   \end{spacing}
+}
+{
 }
 
 \vspace{0.5cm}
@@ -178,17 +178,7 @@ Más información en: \href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{
 \vspace{0.5cm}  
 %\small
 \begin{spacing}{1.0}
-\ifthenelse{\equal{\myCoTutorFullName}{}}
-{
-    \begin{tabularx}{\textwidth}{|X|X|}
-    \hline
-    Firmado: \wordAutorElOrLa{} \wordAutorOrAutora & Firmado: \wordDirectorElOrLa{} \wordDirectorOrdirectora \\
-    & \\
-    & \\
-    & \\
-    \hline
-  \end{tabularx}
-}
+\ifCoTutorPresent
 {
    \begin{tabularx}{\textwidth}{|X|X|X|}
    \hline
@@ -196,6 +186,16 @@ Más información en: \href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{
     & & \\
     & & \\
     & & \\
+    \hline
+  \end{tabularx}
+}
+{
+    \begin{tabularx}{\textwidth}{|X|X|}
+    \hline
+    Firmado: \wordAutorElOrLa{} \wordAutorOrAutora & Firmado: \wordDirectorElOrLa{} \wordDirectorOrdirectora \\
+    & \\
+    & \\
+    & \\
     \hline
   \end{tabularx}
 }

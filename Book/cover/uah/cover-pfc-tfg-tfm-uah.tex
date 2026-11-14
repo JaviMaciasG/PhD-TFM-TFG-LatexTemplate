@@ -47,21 +47,21 @@
   {
     \CapitalizeFirstLetter{\wordAdvisor}: \myAcademicTutorFullName{}
 
-    \ifthenelse{\equal{\myCoTutorFullName}{}}
-    {
-    }
+    \ifCoTutorPresent
     {
       \CapitalizeFirstLetter{\wordCoAdvisor}: \myCoTutorFullName{}
+    }
+    {
     }
   }
   {%
     \ifthenelse{\equal{\myWorkType}{TFG}}{\wordTutorOrTutoraTitle}{\wordDirectorOrDirectoraTitle}: \myAcademicTutorFullName{}
 
-    \ifthenelse{\equal{\myCoTutorFullName}{}}
-    {
-    }
+    \ifCoTutorPresent
     {
       \ifthenelse{\equal{\myWorkType}{TFG}}{\wordCoTutorOrCoTutoraTitle}{\wordCoDirectorOrCoDirectoraTitle}: \myCoTutorFullName{}
+    }
+    {
     }
   }
 

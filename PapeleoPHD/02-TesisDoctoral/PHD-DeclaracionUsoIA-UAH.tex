@@ -24,7 +24,7 @@
 \textbf{Doctorando/a:} \PhDUnderline{14.0cm}{\myAuthorFullName}\\[0.28cm]
 \textbf{Título de la tesis:} \PhDUnderline{13.2cm}{\myBookTitle}\\[0.28cm]
 \textbf{Programa de Doctorado:} \PhDUnderline{11.6cm}{\myPhDProgram}\\[0.28cm]
-\textbf{Director/es de la tesis:} \PhDUnderline{12.0cm}{\myAcademicTutorFullName\ifthenelse{\equal{\myCoTutorFullName}{}}{}{, \myCoTutorFullName}}
+\textbf{Director/es de la tesis:} \PhDUnderline{12.0cm}{\myAcademicTutorFullName\ifCoTutorPresent{, \myCoTutorFullName}{}}
 
 \vspace{0.45cm}
 \textbf{II. Uso de herramientas de inteligencia artificial (IA):}

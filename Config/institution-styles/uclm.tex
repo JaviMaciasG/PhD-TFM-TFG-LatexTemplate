@@ -13,9 +13,9 @@
     {\mySchoolAddress}}
 
 \newcommand{\UCLMAdvisorLabel}{%
-  \ifthenelse{\equal{\myCoTutorFullName}{}}%
-    {\ifthenelse{\equal{\myAcademicTutorGender}{female}}{Tutora}{Tutor}}%
-    {\ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{Tutoras}{Tutores}}}
+  \ifCoTutorPresent%
+    {\ifthenelse{\equal{\myAcademicTutorGender}{female}\AND\equal{\myCoTutorGender}{female}}{Tutoras}{Tutores}}%
+    {\ifthenelse{\equal{\myAcademicTutorGender}{female}}{Tutora}{Tutor}}}
 
 \newcommand{\UCLMRenderCover}[3]{%
   \thispagestyle{empty}%

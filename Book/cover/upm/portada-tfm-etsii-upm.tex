@@ -51,7 +51,7 @@
     \myAcademicTutorFullName\par
   }}%
  %
- \ifthenelse{\equal{\myCoTutorFullName}{}}{}{%
+ \ifCoTutorPresent{%
    \\[-0.2cm]
    {\bfseries\fontsize{16}{14}\selectfont
     \parbox[t]{\linewidth}{%
@@ -59,7 +59,7 @@
       \hangafter=1
       \myCoTutorFullName\par
     }}%
- }};
+ }{}};
 \end{tikzpicture}
 \null
 \clearemptydoublepage
