@@ -27,15 +27,20 @@
 % \end{tikzpicture}
 
 \begin{tikzpicture}[remember picture,overlay]
-	\node[yshift=-\paperheight] at (current page.north west)
-	{
-		\begin{tikzpicture}[remember picture, overlay]
-			\draw[fill=headingPortadaTFGURJC,headingPortadaTFGURJC] (0,0) rectangle (\paperwidth,\paperheight);
-			% \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFGURJC}\textbf{\myUniversity}};
-			% \node [yshift=\paperheight-9.5cm, xshift=0.5\paperwidth, font=\Large, text centered, midway] {\color{textoHeadingPortadaTFGURJC}\textbf{\mySchool}};
-			% \node [yshift=\paperheight-12.5cm, xshift=0.5\paperwidth, font=\Large, text centered, midway] {\color{textoHeadingPortadaTFGURJC}\textbf{\myDegreefull}};
-		\end{tikzpicture}
-	};
+  \node[
+    yshift=-\paperheight
+  ] at (current page.north west)
+  {
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[
+        fill=headingPortadaTFGURJC,
+        headingPortadaTFGURJC
+      ] (0,0) rectangle (\paperwidth,\paperheight);
+      % \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFGURJC}\textbf{\myUniversity}};
+      % \node [yshift=\paperheight-9.5cm, xshift=0.5\paperwidth, font=\Large, text centered, midway] {\color{textoHeadingPortadaTFGURJC}\textbf{\mySchool}};
+      % \node [yshift=\paperheight-12.5cm, xshift=0.5\paperwidth, font=\Large, text centered, midway] {\color{textoHeadingPortadaTFGURJC}\textbf{\myDegreefull}};
+    \end{tikzpicture}
+  };
 \end{tikzpicture}
 
 \large
@@ -44,8 +49,6 @@
 \begin{center}
   \centerline{\includegraphics[height=2.8cm]{urjc/URJC-logo-Monocromo-Blanco.png}}
 \end{center}
-
-
 
 %%% Local Variables:
 %%% TeX-master: "../book"

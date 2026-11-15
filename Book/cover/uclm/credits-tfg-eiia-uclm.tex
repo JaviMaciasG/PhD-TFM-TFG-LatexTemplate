@@ -8,16 +8,20 @@
 \begingroup
 \normalfont
 \vspace*{\fill}
-\noindent\begin{tabularx}{\textwidth}{@{}p{2cm}>{\raggedright\arraybackslash}X@{}}
-  \textit{Título:} & \myBookTitle\\[0.25em]
-  \textit{Autor:} & \myAuthorFullName\\[0.25em]
-  \textit{Grado:} & \myDegreefull\\[0.25em]
+\noindent
+\begin{tabularx}
+  {\textwidth}{@{}p{2cm}>{\raggedright\arraybackslash}X@{}}
+  \textit{Título:}            & \myBookTitle                                                                   \\[0.25em]
+  \textit{Autor:}             & \myAuthorFullName                                                              \\[0.25em]
+  \textit{Grado:}             & \myDegreefull                                                                  \\[0.25em]
   \textit{\UCLMAdvisorLabel:} & \myAcademicTutorFullName
-    \ifCoTutorPresent{\\ & \myCoTutorFullName}{}\\[0.25em]
-  \textit{E-mail:} & \myAuthorEmail
-    \ifthenelse{\equal{\myWebsite}{}}{}{\\[0.25em]\textit{Sitio web:} & \url{\myWebsite}}%
-    \\[0.25em]
-  \textit{Dirección:} & \begin{minipage}[t]{\linewidth}\myUniversity{} -- \mySchool\\\UCLMSchoolAddress\end{minipage}
+  \ifCoTutorPresent{                                                                                           \\ & \myCoTutorFullName}{}\\[0.25em]
+  \textit{E-mail:}            & \myAuthorEmail
+  \ifthenelse{\equal{\myWebsite}{}}{}{                                                                         \\[0.25em]\textit{Sitio web:} & \url{\myWebsite}} %
+  \\[0.25em]
+  \textit{Dirección:}         &
+                                \begin{minipage}[t]{\linewidth}\myUniversity{} -- \mySchool\\\UCLMSchoolAddress
+                                \end{minipage}
 \end{tabularx}
 
 \vspace{0.8cm}

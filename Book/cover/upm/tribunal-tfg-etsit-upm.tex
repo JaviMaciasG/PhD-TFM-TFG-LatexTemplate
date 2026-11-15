@@ -17,7 +17,9 @@
 \providecommand{\UPMTFGSupervisorRows}{%
   \wordTutorOrTutoraTitle: & \myAcademicTutorFullName \\[0.25cm]
   \ifCoTutorPresent{\wordCoTutorOrCoTutoraTitle: & \myCoTutorFullName \\[0.25cm]}{}%
-  \ifSpanish{Ponente}{Academic sponsor}: & \myPonenteFullName \\[0.25cm]
+  \ifthenelse{\equal{\myPonenteFullName}{}}{}{%
+    \ifSpanish{Ponente}{Academic sponsor}: & \myPonenteFullName \\[0.25cm]
+  }%
 }
 
 \parbox{\linewidth}{\fontsize{16}{19}\selectfont\MakeUppercase{\myDegreefull}}
@@ -25,9 +27,10 @@
 
 \parbox{\linewidth}{\fontsize{16}{19}\selectfont\MakeUppercase{\myWorkTypeFull}}
 
-\begin{tabularx}{\linewidth}{@{}lX@{}}
-  \ifSpanish{Título}{Title}: & \myBookTitle \\[0.25cm]
-  \wordAutorOrAutoraTitle: & \myAuthorFullName \\[0.25cm]
+\begin{tabularx}
+  {\linewidth}{@{}lX@{}}
+  \ifSpanish{Título}{Title}:            & \myBookTitle      \\[0.25cm]
+  \wordAutorOrAutoraTitle:              & \myAuthorFullName \\[0.25cm]
   \UPMTFGSupervisorRows
   \ifSpanish{Departamento}{Department}: & \myDepartment
 \end{tabularx}
@@ -35,11 +38,12 @@
 \vspace{0.4cm}
 \parbox{\linewidth}{\fontsize{16}{19}\selectfont\ifSpanish{MIEMBROS DEL TRIBUNAL}{MEMBERS OF THE EXAMINATION COMMITTEE}}
 
-\begin{tabularx}{\linewidth}{@{}lX@{}}
-  \ifSpanish{\wordPresidenteOrPresidenta}{Chair}: & \myTribunalPresident \\[0.7cm]
-  \ifSpanish{Vocal}{Member}: & \myTribunalFirstSpokesperson \\[0.7cm]
-  \ifSpanish{\wordTribunalSecretarioOrSecretaria}{Secretary}: & \myTribunalSecretary \\[0.7cm]
-  \ifSpanish{Suplente}{Alternate member}: & \myTribunalAlternateMember
+\begin{tabularx}
+  {\linewidth}{@{}lX@{}}
+  \ifSpanish{\wordPresidenteOrPresidenta}{Chair}:             & \myTribunalPresident         \\[0.7cm]
+  \ifSpanish{Vocal}{Member}:                                  & \myTribunalFirstSpokesperson \\[0.7cm]
+  \ifSpanish{\wordTribunalSecretarioOrSecretaria}{Secretary}: & \myTribunalSecretary         \\[0.7cm]
+  \ifSpanish{Suplente}{Alternate member}:                     & \myTribunalAlternateMember
 \end{tabularx}
 
 \vspace{0.7cm}

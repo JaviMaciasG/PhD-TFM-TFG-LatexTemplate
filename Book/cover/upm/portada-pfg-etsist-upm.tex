@@ -21,11 +21,25 @@
   \fill[ETSISTFrameBlue] ([xshift=1.8cm,yshift=-1.3cm]current page.north west) rectangle ([xshift=2.25cm,yshift=-28.3cm]current page.north west);
   \fill[ETSISTFrameBlue] ([xshift=1.8cm,yshift=-27.85cm]current page.north west) rectangle ([xshift=18.5cm,yshift=-28.3cm]current page.north west);
   \fill[ETSISTFrameBlue] ([xshift=18.95cm,yshift=-27.85cm]current page.north west) rectangle ([xshift=19.45cm,yshift=-28.3cm]current page.north west);
-  \node[anchor=north,inner sep=0pt] at ([yshift=-2.55cm]current page.north)
-    {\includegraphics[width=9cm]{upm/logo-tfgs-etsist-upm.png}};
+  \node[
+    anchor=north,
+    inner sep=0pt
+  ] at ([
+    yshift=-2.55cm
+  ]current page.north)
+  {
+    \includegraphics[width=9cm]{upm/logo-tfgs-etsist-upm.png}
+  };
   % Centro del área libre situada entre el logotipo y el borde inferior.
-  \node[anchor=center,inner sep=0pt,outer sep=0pt]
-    at ([yshift=-16.55cm]current page.north) {%
+  \node[
+    anchor=center,
+    inner sep=0pt,
+    outer sep=0pt
+  ]
+  at ([
+    yshift=-16.55cm
+  ]current page.north) {
+    %
     \begin{minipage}[c][19.6cm][s]{15.1cm}
       \setlength{\parindent}{0pt}
       \setlength{\parskip}{0pt}
@@ -33,36 +47,45 @@
       \vspace*{0pt}\vfill
       {\centering\bfseries\fontsize{17}{21}\selectfont PROYECTO FIN DE GRADO\par}
       \vfill
-      \begin{tabular}{@{}p{4.4cm}@{\hspace{0.3cm}}p{10.4cm}@{}}
+      \begin{tabular}
+        {@{}p{4.4cm}@{\hspace{0.3cm}}p{10.4cm}@{}}
         \textbf{TÍTULO:} & \raggedright\myBookTitle
-      \end{tabular}\par
+      \end{tabular}
+      \par
       \vfill
-      \begin{tabular}{@{}p{4.4cm}@{\hspace{0.3cm}}p{10.4cm}@{}}
-        \textbf{\MakeUppercase{\wordAutorOrAutora}:} & \myAuthorFullName\\[0.25cm]
-        \textbf{TITULACIÓN:} & \myDegreefull\\[0.25cm]
+      \begin{tabular}
+        {@{}p{4.4cm}@{\hspace{0.3cm}}p{10.4cm}@{}}
+        \textbf{\MakeUppercase{\wordAutorOrAutora}:} & \myAuthorFullName        \\[0.25cm]
+        \textbf{TITULACIÓN:}                         & \myDegreefull            \\[0.25cm]
         \textbf{\MakeUppercase{\wordTutorOrTutora}:} & \myAcademicTutorFullName
-        \ifCoTutorPresent{\\[0.25cm]\textbf{\ETSISTDirectorLabel:} & \myCoTutorFullName}{}\\[0.25cm]
-        \textbf{DEPARTAMENTO:} & \myDepartment
-      \end{tabular}\par
+        \ifCoTutorPresent{                                                      \\[0.25cm]\textbf{\ETSISTDirectorLabel:} & \myCoTutorFullName}{}\\[0.25cm]
+        \textbf{DEPARTAMENTO:}                       & \myDepartment
+      \end{tabular}
+      \par
       \vfill
       {\raggedleft\bfseries V.º B.º \MakeUppercase{\wordTutorOrTutora}\par}
       \vfill
       {\bfseries Miembros del Tribunal Calificador:\par}
       \vfill
-      \begin{tabular}{@{}p{4.4cm}@{\hspace{0.3cm}}p{10.4cm}@{}}
-        \textbf{\MakeUppercase{\wordPresidenteOrPresidenta}:} & \myTribunalPresident\\[0.25cm]
-        \textbf{VOCAL:} & \myTribunalFirstSpokesperson\\[0.25cm]
+      \begin{tabular}
+        {@{}p{4.4cm}@{\hspace{0.3cm}}p{10.4cm}@{}}
+        \textbf{\MakeUppercase{\wordPresidenteOrPresidenta}:}         & \myTribunalPresident         \\[0.25cm]
+        \textbf{VOCAL:}                                               & \myTribunalFirstSpokesperson \\[0.25cm]
         \textbf{\MakeUppercase{\wordTribunalSecretarioOrSecretaria}:} & \myTribunalSecretary
-      \end{tabular}\par
+      \end{tabular}
+      \par
       \vfill
-      \begin{tabular}{@{}p{4.4cm}@{\hspace{0.3cm}}p{10.4cm}@{}}
-        \textbf{Fecha de lectura:} & \myThesisDefenseDate\\[0.25cm]
-        \textbf{Calificación:} &
-      \end{tabular}\par
+      \begin{tabular}
+        {@{}p{4.4cm}@{\hspace{0.3cm}}p{10.4cm}@{}}
+        \textbf{Fecha de lectura:} & \myThesisDefenseDate \\[0.25cm]
+        \textbf{Calificación:}     &
+      \end{tabular}
+      \par
       \vfill
       {\raggedleft\bfseries\ETSISTSecretarySignature\par}
       \vfill\vspace*{0pt}
-    \end{minipage}};
+    \end{minipage}
+  };
 \end{tikzpicture}
 \null
 \clearpage

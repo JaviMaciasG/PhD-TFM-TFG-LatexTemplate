@@ -26,12 +26,34 @@
 % Remember to also change the default value in Config/preamble.tex if you need
 % to modify it.
 \begin{tikzpicture}[remember picture,overlay]
-  \node[yshift=-5cm] at (current page.north west)
+  \node[
+    yshift=-5cm
+  ] at (current page.north west)
   {
     \begin{tikzpicture}[remember picture, overlay]
-      \draw[fill=headingPortadaTFG,headingPortadaTFG, fill opacity=1] (0,0) rectangle (\paperwidth,5cm);
-      \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\myUniversity}};
-      \node [yshift=2cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFM}\textbf{\mySchool}};
+      \draw[
+        fill=headingPortadaTFG,
+        headingPortadaTFG,
+        fill opacity=1
+      ] (0,0) rectangle (\paperwidth,5cm);
+      \node [
+        yshift=3cm,
+        xshift=0.5\paperwidth,
+        font=\Huge,
+        text centered,
+        midway
+      ] {
+        \color{textoHeadingPortadaTFM}\textbf{\myUniversity}
+      };
+      \node [
+        yshift=2cm,
+        xshift=0.5\paperwidth,
+        font=\Huge,
+        text centered,
+        midway
+      ] {
+        \color{textoHeadingPortadaTFM}\textbf{\mySchool}
+      };
     \end{tikzpicture}
   };
 \end{tikzpicture}
@@ -53,10 +75,10 @@
 
   \ifthenelse{\equal{\myLanguage}{english}}
   {
-    \textbf{Author:}  \myAuthorFullName 
+    \textbf{Author:}  \myAuthorFullName
   }
   {
-    \textbf{Autor:}  \myAuthorFullName 
+    \textbf{Autor:}  \myAuthorFullName
   }
 
   \vspace{0.5cm}
@@ -83,7 +105,6 @@
     }
   }
 
-
 \end{center}
 
 \begin{bottomparagraph}
@@ -94,7 +115,6 @@
 
 % \newpage
 \clearemptydoublepage
-
 
 %%% Local Variables:
 %%% TeX-master: "../book"

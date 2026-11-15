@@ -18,23 +18,25 @@
 
 \parbox{\linewidth}{\fontsize{16}{19}\selectfont\MakeUppercase{\myWorkTypeFull}}
 
-\begin{tabularx}{\linewidth}{@{}p{4.8cm}X@{}}
-  \ifSpanish{Título}{Title}: & \myBookTitle \\[0.25cm]
-  \wordAutorOrAutoraTitle: & \myAuthorFullName \\[0.25cm]
-  \ifSpanish{Supervisión técnica}{Technical Supervisor}: & \myUPMTechnicalSupervisorFullName \\[0.25cm]
-  \ifSpanish{Supervisión académica}{Academic Supervisor}: & \myAcademicTutorFullName \\[0.25cm]
+\begin{tabularx}
+  {\linewidth}{@{}p{4.8cm}X@{}}
+  \ifSpanish{Título}{Title}:                              & \myBookTitle                      \\[0.25cm]
+  \wordAutorOrAutoraTitle:                                & \myAuthorFullName                 \\[0.25cm]
+  \ifSpanish{Supervisión técnica}{Technical Supervisor}:  & \myUPMTechnicalSupervisorFullName \\[0.25cm]
+  \ifSpanish{Supervisión académica}{Academic Supervisor}: & \myAcademicTutorFullName          \\[0.25cm]
   % La normativa conserva los nombres institucionales también en inglés.
-  \ifSpanish{Departamento}{Department}: & \myDepartment
+  \ifSpanish{Departamento}{Department}:                   & \myDepartment
 \end{tabularx}
 
 \vspace{0.4cm}
 \parbox{\linewidth}{\fontsize{16}{19}\selectfont\ifSpanish{MIEMBROS DEL TRIBUNAL}{MEMBERS OF THE EXAMINATION COMMITTEE}}
 
-\begin{tabularx}{\linewidth}{@{}lX@{}}
-  \ifSpanish{\wordPresidenteOrPresidenta}{Chair}: & \myTribunalPresident \\[0.7cm]
-  \ifSpanish{Vocal}{Member}: & \myTribunalFirstSpokesperson \\[0.7cm]
-  \ifSpanish{\wordTribunalSecretarioOrSecretaria}{Secretary}: & \myTribunalSecretary \\[0.7cm]
-  \ifSpanish{Suplente}{Alternate member}: & \myTribunalAlternateMember
+\begin{tabularx}
+  {\linewidth}{@{}lX@{}}
+  \ifSpanish{\wordPresidenteOrPresidenta}{Chair}:             & \myTribunalPresident         \\[0.7cm]
+  \ifSpanish{Vocal}{Member}:                                  & \myTribunalFirstSpokesperson \\[0.7cm]
+  \ifSpanish{\wordTribunalSecretarioOrSecretaria}{Secretary}: & \myTribunalSecretary         \\[0.7cm]
+  \ifSpanish{Suplente}{Alternate member}:                     & \myTribunalAlternateMember
 \end{tabularx}
 
 \vspace{0.7cm}

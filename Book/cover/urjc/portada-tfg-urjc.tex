@@ -22,10 +22,15 @@
 % \end{tikzpicture}
 
 \begin{tikzpicture}[remember picture,overlay]
-  \node[yshift=-\paperheight] at (current page.north west)
+  \node[
+    yshift=-\paperheight
+  ] at (current page.north west)
   {
     \begin{tikzpicture}[remember picture, overlay]
-      \draw[fill=headingPortadaTFGURJC,headingPortadaTFGURJC] (0,0) rectangle (\paperwidth,\paperheight);
+      \draw[
+        fill=headingPortadaTFGURJC,
+        headingPortadaTFGURJC
+      ] (0,0) rectangle (\paperwidth,\paperheight);
       % \node [yshift=3cm, xshift=0.5\paperwidth, font=\Huge, text centered, midway] {\color{textoHeadingPortadaTFGURJC}\textbf{\myUniversity}};
       % \node [yshift=\paperheight-9.5cm, xshift=0.5\paperwidth, font=\Large, text centered, midway] {\color{textoHeadingPortadaTFGURJC}\textbf{\mySchool}};
       % \node [yshift=\paperheight-12.5cm, xshift=0.5\paperwidth, font=\Large, text centered, midway] {\color{textoHeadingPortadaTFGURJC}\textbf{\myDegreefull}};
@@ -37,8 +42,8 @@
 \vspace{0.5cm}
 \begin{center}
 
-	\centerline{\includegraphics[height=2.8cm]{urjc/URJC-logo-Monocromo-Blanco.png}}
-	\vspace{5mm}
+  \centerline{\includegraphics[height=2.8cm]{urjc/URJC-logo-Monocromo-Blanco.png}}
+  \vspace{5mm}
   % titulación a la que se opta
   \color{textoHeadingPortadaTFGURJC}
 
@@ -89,7 +94,6 @@
     }
   }
 
-
 \end{center}
 
 \begin{bottomparagraph}
@@ -103,7 +107,6 @@
 
 % \newpage
 \clearemptydoublepage
-
 
 \endgroup
 

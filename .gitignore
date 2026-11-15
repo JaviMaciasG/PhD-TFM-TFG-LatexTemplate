@@ -613,3 +613,5 @@ OldDocs
 
 # placeholder for old files
 Old/
+
+*.bak0

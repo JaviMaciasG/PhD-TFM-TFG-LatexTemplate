@@ -21,64 +21,138 @@
 % \end{tikzpicture}
 
 \begin{tikzpicture}[remember picture,overlay]
-  \node[yshift=-14cm] at (current page.north west)
+  \node[
+    yshift=-14cm
+  ] at (current page.north west)
   {
     \begin{tikzpicture}[remember picture, overlay]
-      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (6cm,14cm);
-      \node [yshift=7cm, xshift=3cm, text centered, midway, rotate=+90] {\color{white}\fontsize{110}{132}\selectfont\myUniversityAcronym};
+      \draw[
+        fill=headingPortadaTFM,
+        headingPortadaTFM
+      ] (0,0) rectangle (6cm,14cm);
+      \node [
+        yshift=7cm,
+        xshift=3cm,
+        text centered,
+        midway,
+        rotate=+90
+      ] {
+        \color{white}\fontsize{110}{132}\selectfont\myUniversityAcronym
+      };
     \end{tikzpicture}
   };
 \end{tikzpicture}
 
 % title box
 \begin{tikzpicture}
-  \node [xshift=7cm] at (current page.north west)
+  \node [
+    xshift=7cm
+  ] at (current page.north west)
   {
     \begin{tikzpicture}[remember picture, overlay]
-      
-      \node [yshift=-3.5cm, xshift=0.5\paperwidth, align=center, text width=14cm, text centered, midway] {\begin{minipage}[c][13cm][c]{13cm}\centering\color{black}\fontsize{26}{31}\selectfont\textbf{\myBookTitle{}\\}\par\fontsize{18}{26}\selectfont\textbf{[\myResearchReportID{}]}\par\end{minipage}};
+
+      \node [
+        yshift=-3.5cm,
+        xshift=0.5\paperwidth,
+        align=center,
+        text width=14cm,
+        text centered,
+        midway
+      ] {
+        \begin{minipage}[c][13cm][c]{13cm}\centering\color{black}\fontsize{26}{31}\selectfont\textbf{\myBookTitle{}\\}\par\fontsize{18}{26}\selectfont\textbf{[\myResearchReportID{}]}\par
+        \end{minipage}
+      };
     \end{tikzpicture}
   };
 \end{tikzpicture}
 
 \begin{tikzpicture}[remember picture,overlay]
-  \node[yshift=-\paperheight] at (current page.north west)
+  \node[
+    yshift=-\paperheight
+  ] at (current page.north west)
   {
     \begin{tikzpicture}[remember picture, overlay]
-      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2cm);
+      \draw[
+        fill=headingPortadaTFM,
+        headingPortadaTFM
+      ] (0,0) rectangle (\paperwidth,2cm);
     \end{tikzpicture}
   };
 \end{tikzpicture}
 
 % Middle rectangle
 \begin{tikzpicture}[remember picture,overlay]
-  \node[yshift=-17cm] at (current page.north west)
+  \node[
+    yshift=-17cm
+  ] at (current page.north west)
   {
     \begin{tikzpicture}[remember picture, overlay]
-      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2.8cm);
-      \node [yshift=1.8cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{15}\selectfont\textbf{\myWorkTypeFull}\par};
-      \node [yshift=0.5cm, xshift=0.5\paperwidth, align=center, text width=0.95*\paperwidth, text centered, midway] {\color{white}\fontsize{20}{26}\selectfont\textbf{\myDepartment}};
+      \draw[
+        fill=headingPortadaTFM,
+        headingPortadaTFM
+      ] (0,0) rectangle (\paperwidth,2.8cm);
+      \node [
+        yshift=1.8cm,
+        xshift=0.5\paperwidth,
+        align=center,
+        text width=0.95*\paperwidth,
+        text centered,
+        midway
+      ] {
+        \color{white}\fontsize{20}{15}\selectfont\textbf{\myWorkTypeFull}\par
+      };
+      \node [
+        yshift=0.5cm,
+        xshift=0.5\paperwidth,
+        align=center,
+        text width=0.95*\paperwidth,
+        text centered,
+        midway
+      ] {
+        \color{white}\fontsize{20}{26}\selectfont\textbf{\myDepartment}
+      };
     \end{tikzpicture}
   };
 \end{tikzpicture}
 
 % Author information
 \begin{tikzpicture}[remember picture,overlay]
-  \node[yshift=-19cm] at (current page.north west)
+  \node[
+    yshift=-19cm
+  ] at (current page.north west)
   {
     \begin{tikzpicture}[remember picture, overlay]
-      \node [yshift=0,    xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{\myAuthorFullName}\par};
-      \node [yshift=-6cm, xshift=0.5\paperwidth, text width=0.95\paperwidth, align=flush left] {\color{black}\fontsize{18}{15}\selectfont\textbf{Alcalá de Henares, \myThesisDefenseDate}\par};
+      \node [
+        yshift=0,
+        xshift=0.5\paperwidth,
+        text width=0.95\paperwidth,
+        align=flush left
+      ] {
+        \color{black}\fontsize{18}{15}\selectfont\textbf{\myAuthorFullName}\par
+      };
+      \node [
+        yshift=-6cm,
+        xshift=0.5\paperwidth,
+        text width=0.95\paperwidth,
+        align=flush left
+      ] {
+        \color{black}\fontsize{18}{15}\selectfont\textbf{Alcalá de Henares, \myThesisDefenseDate}\par
+      };
     \end{tikzpicture}
   };
 \end{tikzpicture}
 
 % lower rectangle
 \begin{tikzpicture}[remember picture,overlay]
-  \node[yshift=-\paperheight] at (current page.north west)
+  \node[
+    yshift=-\paperheight
+  ] at (current page.north west)
   {
     \begin{tikzpicture}[remember picture, overlay]
-      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2cm);
+      \draw[
+        fill=headingPortadaTFM,
+        headingPortadaTFM
+      ] (0,0) rectangle (\paperwidth,2cm);
     \end{tikzpicture}
   };
 \end{tikzpicture}

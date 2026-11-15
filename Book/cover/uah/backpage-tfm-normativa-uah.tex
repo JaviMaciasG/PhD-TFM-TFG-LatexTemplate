@@ -10,7 +10,6 @@
 \cleartoleftpage
 \thispagestyle{empty}
 
-
 % To add background watermark
 %\BgThispage
 
@@ -25,10 +24,15 @@
 % \end{tikzpicture}
 
 \begin{tikzpicture}[remember picture,overlay]
-  \node[yshift=-4cm] at (current page.north west)
+  \node[
+    yshift=-4cm
+  ] at (current page.north west)
   {
     \begin{tikzpicture}[remember picture, overlay]
-      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,4cm);
+      \draw[
+        fill=headingPortadaTFM,
+        headingPortadaTFM
+      ] (0,0) rectangle (\paperwidth,4cm);
       %\node [yshift=7cm, xshift=3cm, text centered, midway, rotate=+90] {\color{white}\fontsize{110}{132}\selectfont\myUniversityAcronym};
     \end{tikzpicture}
   };
@@ -36,22 +40,23 @@
 
 \null
 \vspace{11cm}
-\begin{center}
-  {\color{pantone293} \fontsize{40}{48} \selectfont {\myThesisDefenseYear}} % Customize font size
+\begin{center}{\color{pantone293} \fontsize{40}{48} \selectfont {\myThesisDefenseYear}} % Customize font size
 \end{center}
-
 
 % lower rectangle
 \begin{tikzpicture}[remember picture,overlay]
-  \node[yshift=-\paperheight] at (current page.north west)
+  \node[
+    yshift=-\paperheight
+  ] at (current page.north west)
   {
     \begin{tikzpicture}[remember picture, overlay]
-      \draw[fill=headingPortadaTFM,headingPortadaTFM] (0,0) rectangle (\paperwidth,2cm);
+      \draw[
+        fill=headingPortadaTFM,
+        headingPortadaTFM
+      ] (0,0) rectangle (\paperwidth,2cm);
     \end{tikzpicture}
   };
 \end{tikzpicture}
-
-
 
 % \begin{bottomparagraph}
 %   \begin{center}
@@ -61,7 +66,6 @@
 
 %\newpage
 %\clearemptydoublepage
-
 
 %%% Local Variables:
 %%% TeX-master: "../book"

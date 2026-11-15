@@ -13,48 +13,70 @@
 \thispagestyle{myplain}
 \null
 \begin{tikzpicture}[remember picture,overlay]
-  \node[anchor=north west,align=left,text width=16cm,inner sep=0pt,font=\UPMPhDFont{14}{18}{m}] at ([xshift=2.5cm,yshift=-2.5cm]current page.north west) {%
+  \node[
+    anchor=north west,
+    align=left,
+    text width=16cm,
+    inner sep=0pt,
+    font=\UPMPhDFont{14}{18}{m}
+  ] at ([
+    xshift=2.5cm,
+    yshift=-2.5cm
+  ]current page.north west) {
+    %
     \begin{minipage}[t][\dimexpr\paperheight-5cm\relax][s]{16cm}
-    \raggedright
-    \setlength{\parindent}{0pt}%
-    \setlength{\parskip}{0pt}%
-    % Distribuye sólo los bloques presentes; la fecha queda al pie.
-    \newcommand{\UPMPhDBlockGap}{\par\vspace{0.35cm plus 1fill}}%
-    \begingroup
-    \setlength{\parskip}{10pt}%
-    \ifSpanish{Título}{Title}: \myBookTitle\par
-    \ifSpanish{\ifthenelse{\equal{\myAuthorGender}{female}}{Autora}{Autor}}{Author}: \myAuthorFullName\par
-    \ifSpanish{Programa de Doctorado}{Doctoral Programme}: \UPMPhDProgramme\par\medskip
-    \ifSpanish{Dirección de Tesis}{Thesis Supervision}:\par\medskip
-    \hspace*{1cm}\begin{minipage}{15cm}\UPMPhDTutor, \ifSpanish{\myAcademicTutorPosition}{\myAcademicTutorPositionEnglish}, \ifSpanish{\myAcademicTutorInstitution}{\myAcademicTutorInstitutionEnglish} (\ifSpanish{\ifthenelse{\equal{\myAcademicTutorGender}{female}}{Directora}{Director}}{Supervisor})\end{minipage}\par
-    \ifCoTutorPresent{\medskip\hspace*{1cm}\begin{minipage}{15cm}\UPMPhDCoTutor, \ifSpanish{\myCoTutorPosition}{\myCoTutorPositionEnglish}, \ifSpanish{\myCoTutorInstitution}{\myCoTutorInstitutionEnglish} (\ifSpanish{\ifthenelse{\equal{\myCoTutorGender}{female}}{Codirectora}{Codirector}}{Co-supervisor})\end{minipage}\par}{}%
-    \endgroup
-    \ifthenelse{\equal{\myFirstExternalReviewerFullName}{}\AND\equal{\mySecondExternalReviewerFullName}{}}{}{%
+      \raggedright
+      \setlength{\parindent}{0pt}%
+      \setlength{\parskip}{0pt}%
+      % Distribuye sólo los bloques presentes; la fecha queda al pie.
+      \newcommand{\UPMPhDBlockGap}{\par\vspace{0.35cm plus 1fill}}%
+      \begingroup
+      \setlength{\parskip}{10pt}%
+      \ifSpanish{Título}{Title}: \myBookTitle\par
+      \ifSpanish{\ifthenelse{\equal{\myAuthorGender}{female}}{Autora}{Autor}}{Author}: \myAuthorFullName\par
+      \ifSpanish{Programa de Doctorado}{Doctoral Programme}: \UPMPhDProgramme\par\medskip
+      \ifSpanish{Dirección de Tesis}{Thesis Supervision}:\par\medskip
+      \hspace*{1cm}
+      \begin{minipage}{15cm}\UPMPhDTutor, \ifSpanish{\myAcademicTutorPosition}{\myAcademicTutorPositionEnglish}, \ifSpanish{\myAcademicTutorInstitution}{\myAcademicTutorInstitutionEnglish} (\ifSpanish{\ifthenelse{\equal{\myAcademicTutorGender}{female}}{Directora}{Director}}{Supervisor})
+      \end{minipage}
+      \par
+      \ifCoTutorPresent{\medskip\hspace*{1cm}
+        \begin{minipage}{15cm}\UPMPhDCoTutor, \ifSpanish{\myCoTutorPosition}{\myCoTutorPositionEnglish}, \ifSpanish{\myCoTutorInstitution}{\myCoTutorInstitutionEnglish} (\ifSpanish{\ifthenelse{\equal{\myCoTutorGender}{female}}{Codirectora}{Codirector}}{Co-supervisor})
+        \end{minipage}
+        \par}{}%
+      \endgroup
+      \ifthenelse{\equal{\myFirstExternalReviewerFullName}{}\AND\equal{\mySecondExternalReviewerFullName}{}}{}{%
+        \UPMPhDBlockGap
+        \ifSpanish{Revisores Externos}{External Reviewers}:\par\medskip
+        \hspace*{1cm}
+        \begin{minipage}{15cm}
+          \begin{tabularx}
+            {\linewidth}[t]{@{}l@{\hspace{0.4cm}}>{\raggedright\arraybackslash}X@{}}
+            \UPMPhDReviewer{\ifSpanish{Revisor 1}{Reviewer 1}}{\myFirstExternalReviewerFullName}{\myFirstExternalReviewerInstitution}{\myFirstExternalReviewerInstitutionEnglish}%
+            \UPMPhDReviewer{\ifSpanish{Revisor 2}{Reviewer 2}}{\mySecondExternalReviewerFullName}{\mySecondExternalReviewerInstitution}{\mySecondExternalReviewerInstitutionEnglish}%
+          \end{tabularx}
+        \end{minipage}
+        \par
+      }%
       \UPMPhDBlockGap
-      \ifSpanish{Revisores Externos}{External Reviewers}:\par\medskip
-      \hspace*{1cm}\begin{minipage}{15cm}
-      \begin{tabularx}{\linewidth}[t]{@{}l@{\hspace{0.4cm}}>{\raggedright\arraybackslash}X@{}}
-      \UPMPhDReviewer{\ifSpanish{Revisor 1}{Reviewer 1}}{\myFirstExternalReviewerFullName}{\myFirstExternalReviewerInstitution}{\myFirstExternalReviewerInstitutionEnglish}%
-      \UPMPhDReviewer{\ifSpanish{Revisor 2}{Reviewer 2}}{\mySecondExternalReviewerFullName}{\mySecondExternalReviewerInstitution}{\mySecondExternalReviewerInstitutionEnglish}%
-      \end{tabularx}
-      \end{minipage}\par
-    }%
-    \UPMPhDBlockGap
-    \ifSpanish{Tribunal de Tesis}{Thesis Defense Committee}:\par\medskip
-    \hspace*{1cm}\begin{minipage}{15cm}
-    \begin{tabularx}{\linewidth}[t]{@{}l@{\hspace{0.4cm}}>{\raggedright\arraybackslash}X@{}}
-    \UPMPhDCommitteeMember{\ifSpanish{\wordPresidenteOrPresidenta}{Chair}}{\myTribunalPresident}%
-    \UPMPhDCommitteeMember{\ifSpanish{\wordTribunalSecretarioOrSecretaria}{Secretary}}{\myTribunalSecretary}%
-    \UPMPhDCommitteeMember{\ifSpanish{Vocal 1}{Member 1}}{\myTribunalFirstSpokesperson}%
-    \UPMPhDCommitteeMember{\ifSpanish{Vocal 2}{Member 2}}{\myTribunalSecondSpokesperson}%
-    \UPMPhDCommitteeMember{\ifSpanish{Vocal 3}{Member 3}}{\myTribunalThirdSpokesperson}%
-    \UPMPhDCommitteeMember{\ifSpanish{Suplente 1}{Alternate member 1}}{\myTribunalAlternateMember}%
-    \UPMPhDCommitteeMember{\ifSpanish{Suplente 2}{Alternate member 2}}{\myTribunalSecondAlternateMember}%
-    \end{tabularx}
-    \end{minipage}\par
-    \ifSpanish{\ifthenelse{\equal{\myThesisFundingStatement}{}}{}{\UPMPhDBlockGap\myThesisFundingStatement\par}}{\ifthenelse{\equal{\myThesisFundingStatementEnglish}{}}{}{\UPMPhDBlockGap\myThesisFundingStatementEnglish\par}}%
-    \UPMPhDBlockGap
-    \ifSpanish{Fecha de defensa de tesis}{Thesis defense date}: \ifSpanish{\myThesisDefenseDate}{\myThesisdefenseDateEnglish}\par
+      \ifSpanish{Tribunal de Tesis}{Thesis Defense Committee}:\par\medskip
+      \hspace*{1cm}
+      \begin{minipage}{15cm}
+        \begin{tabularx}
+          {\linewidth}[t]{@{}l@{\hspace{0.4cm}}>{\raggedright\arraybackslash}X@{}}
+          \UPMPhDCommitteeMember{\ifSpanish{\wordPresidenteOrPresidenta}{Chair}}{\myTribunalPresident}%
+          \UPMPhDCommitteeMember{\ifSpanish{\wordTribunalSecretarioOrSecretaria}{Secretary}}{\myTribunalSecretary}%
+          \UPMPhDCommitteeMember{\ifSpanish{Vocal 1}{Member 1}}{\myTribunalFirstSpokesperson}%
+          \UPMPhDCommitteeMember{\ifSpanish{Vocal 2}{Member 2}}{\myTribunalSecondSpokesperson}%
+          \UPMPhDCommitteeMember{\ifSpanish{Vocal 3}{Member 3}}{\myTribunalThirdSpokesperson}%
+          \UPMPhDCommitteeMember{\ifSpanish{Suplente 1}{Alternate member 1}}{\myTribunalAlternateMember}%
+          \UPMPhDCommitteeMember{\ifSpanish{Suplente 2}{Alternate member 2}}{\myTribunalSecondAlternateMember}%
+        \end{tabularx}
+      \end{minipage}
+      \par
+      \ifSpanish{\ifthenelse{\equal{\myThesisFundingStatement}{}}{}{\UPMPhDBlockGap\myThesisFundingStatement\par}}{\ifthenelse{\equal{\myThesisFundingStatementEnglish}{}}{}{\UPMPhDBlockGap\myThesisFundingStatementEnglish\par}}%
+      \UPMPhDBlockGap
+      \ifSpanish{Fecha de defensa de tesis}{Thesis defense date}: \ifSpanish{\myThesisDefenseDate}{\myThesisdefenseDateEnglish}\par
     \end{minipage}
   };
 \end{tikzpicture}

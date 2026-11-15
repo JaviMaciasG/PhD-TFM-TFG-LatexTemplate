@@ -15,7 +15,12 @@
   % Márgenes superior e inferior de 4 cm y separación proporcional que
   % se adapta a la altura real del título, la titulación y los nombres.
   % Conserva el orden ETSII: curso tras la titulación y personas al pie.
-  \node[anchor=center,inner sep=0pt,outer sep=0pt] at (current page.center) {%
+  \node[
+    anchor=center,
+    inner sep=0pt,
+    outer sep=0pt
+  ] at (current page.center) {
+    %
     \begin{minipage}[c][\dimexpr\paperheight-8cm\relax][s]{16cm}
       \centering
       \setlength{\parindent}{0pt}
@@ -36,12 +41,15 @@
       \vspace{\stretch{1.4}}
       {\fontsize{16}{20}\selectfont
         \renewcommand{\arraystretch}{1.2}%
-        \begin{tabularx}{12cm}[b]{@{}l@{\hspace{1cm}}>{\raggedright\arraybackslash}X@{}}
-          \textbf{\CapitalizeFirstLetter{\wordAutorOrAutora}:} & \myAuthorFullName \\[0.3cm]
-          \textbf{\CapitalizeFirstLetter{\wordTutorOrTutores}:} & \myAcademicTutorFullName
-          \ifCoTutorPresent{\\ & \myCoTutorFullName}{}
-        \end{tabularx}\par}
-    \end{minipage}};
+        \begin{tabularx}
+          {12cm}[b]{@{}l@{\hspace{1cm}}>{\raggedright\arraybackslash}X@{}}
+          \textbf{\ifEnglish{Author}{\CapitalizeFirstLetter{\wordAutorOrAutora}}:}  & \myAuthorFullName        \\[0.3cm]
+          \textbf{\ifEnglish{\ifCoTutorPresent{Supervisors}{Supervisor}}{\CapitalizeFirstLetter{\wordTutorOrTutores}}:} & \myAcademicTutorFullName
+          \ifCoTutorPresent{                                                               \\ & \myCoTutorFullName}{}
+        \end{tabularx}
+        \par}
+    \end{minipage}
+  };
 \end{tikzpicture}
 \null
 \clearpage
