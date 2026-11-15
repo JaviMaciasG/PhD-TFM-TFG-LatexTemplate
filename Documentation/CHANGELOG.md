@@ -2,11 +2,50 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.13.6] - 2026-11-15
+
+### Features
+
+- Added latexindent config to properly format tex files (focus on tikz)
+
+- Added script for formatting tex and comparing pdf results
+
+
+### Bug Fixes
+
+- Centralize cotutor checks and correct form labels
+
+- Correct language labels and optional sponsor row
+
+
+### Refactoring
+
+- Simplify language and role-label choices
+
+- Use shared values in EIF title page
+
+
+### Maintenance
+
+- Keep latexindent profiles with maintainer tools
+
+- Prepare v8.13.6
+
+
+### Other Changes
+
+- Align English-title conditional comment
+
 ## [v8.13.5] - 2026-11-14
 
 ### Refactoring
 
 - Simplify editable chapters to Spanish examples
+
+
+### Maintenance
+
+- Prepare v8.13.5
 
 ## [v8.13.4] - 2026-11-14
 
@@ -14,11 +53,18 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Adjusting bg cover image and text positions
 
+- Prepare v8.13.4
+
 ## [v8.13.3] - 2026-11-13
 
 ### Refactoring
 
 - Keep separate advisor lines without a flag
+
+
+### Maintenance
+
+- Prepare v8.13.3
 
 ## [v8.13.2] - 2026-11-13
 
@@ -26,11 +72,21 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Avoid duplicate local glossary processing
 
+
+### Maintenance
+
+- Prepare v8.13.2
+
 ## [v8.13.1] - 2026-11-13
 
 ### Refactoring
 
 - Reuse shared wording and degree values
+
+
+### Maintenance
+
+- Prepare v8.13.1
 
 ## [v8.13.0] - 2026-11-13
 
@@ -44,19 +100,28 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Support ETSII master theses
 
+
 ### Bug Fixes
 
 - Preserve configuration macro during flattening
 
 - Validate language before selecting degree
 
+
 ### Documentation
 
 - Clarify UAH paperwork scope
 
+
 ### Refactoring
 
 - Use centralized advisor labels
+
+
+### Maintenance
+
+- Prepare v8.13.0
+
 
 ### Other Changes
 
@@ -66,71 +131,84 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Features
 
-- Add color ETSIST-UPM and UPM logos as assets for future institutional layouts
+- Added UPM logos for future use
+
+
+### Maintenance
+
+- Prepare v8.12.1
 
 ## [v8.12.0] - 2026-11-11
 
 ### Features
 
-- Add an optional, disabled-by-default UNE-ISO 690:2024 bibliography style example
+- Added sample support for bib style following ISO 690:2024 (commented out)
 
-- Place Spanish and English summaries on one page for ETSIT-UPM TFG and TFM documents
+- Place Spanish and English summaries on one page
 
-- Support four ETSIST-UPM final degree projects with a shared institutional cover
+- Support four individual final degree projects
 
-## [v8.11.1] - 2026-11-06
-
-### Refactoring
-
-- Move bilingual compendium part titles into shared configuration and simplify the standard, bare, and restoration content files
 
 ### Maintenance
 
-- Refresh the sample compendium publication annotations
+- Prepare v8.12.0
+
+## [v8.11.1] - 2026-11-06
+
+### Maintenance
+
+- Removed conditional elements in contents*.tex
+
+- Prepare v8.11.1
 
 ## [v8.11.0] - 2026-11-06
 
 ### Features
 
-- Include the ethics appendix in every standard document, regardless of degree or university
+- Include ethics appendix for all standard degrees
 
-### Documentation
 
-- Clarify the appendix's ETSIT-UPM origin and its optional use outside the applicable regulations
+### Maintenance
+
+- Prepare v8.11.0
 
 ## [v8.10.2] - 2026-11-06
-
-### Documentation
-
-- Clarify how zen mode relates to optional content and bibliography settings in the manual
-
-## [v8.10.1] - 2026-11-06
-
-### Bug Fixes
-
-- Keep zen mode disabled by default so new users build the complete document
-
-### Documentation
-
-- Explain when and how to use zen mode in the READMEs, manual, and repository overviews
-
-## [v8.10.0] - 2026-11-06
 
 ### Features
 
 - Add zen drafting mode
 
-## [v8.9.1] - 2026-10-31
+
+### Bug Fixes
+
+- Disable zen mode by default
+
+
+### Documentation
+
+- Expand drafting guidance
+
+- Clarify optional-content section introduction
+
 
 ### Maintenance
 
-- Organize acknowledgements and remove stale note
+- Prepare v8.10.0
 
-## [v8.9.0] - 2026-10-29
+- Prepare v8.10.1
+
+- Prepare v8.10.2
+
+
+### Other Changes
+
+- Align compendium restoration formatting
+
+## [v8.9.1] - 2026-10-31
 
 ### Features
 
-- `\myAcademicCotutor*` variables renamed to `\myCoTutor*` for consistency
+- \myAcademicCotutor* variables renamed to \myCoTutor* for consistency
 
 - Updated TFG and TFM regulations in EPS-UAH
 
@@ -148,6 +226,16 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 - Improve proposal control form fields
 
 
+### Documentation
+
+- Add v8.9.0 release notes
+
+
+### Build System
+
+- Skip bibliography processing for forms
+
+
 ### Refactoring
 
 - Prefix forms with annex numbers
@@ -157,14 +245,16 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Prepare v8.9.0
 
+- Organize acknowledgements and remove stale note
+
+- Prepare v8.9.1
+
 
 ### Other Changes
 
 - Refine publication authorization form spacing
 
 - Tighten authorization choices spacing
-
-- Skip bibliography processing for forms
 
 - Refine tribunal rubric layout
 
@@ -174,841 +264,18 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Minor changes to improve info to the users
 
+- Prepare v8.8.6
+
 ## [v8.8.5] - 2026-10-24
 
 ### Documentation
 
 - Remove references to Prism, as they are discontinuing it in January 2027 :-(
 
-## [v8.8.4] - 2026-10-24
-
-### Features
-
-- Added latest TFM regulations approved at EPS-UAH
-
-
-### Bug Fixes
-
-- Use gender-aware external co-tutor wording in TFG agreements
-
-
-### Documentation
-
-- Update the TFM agreement regulation reference
-
 
 ### Maintenance
 
-- Prepare v8.8.4
-
-## [v8.8.3] - 2026-10-23
-
-### Bug Fixes
-
-- Start figure and table captions at one
-
-
-### Maintenance
-
-- Prepare v8.8.3
-
-## [v8.8.2] - 2026-10-21
-
-### Documentation
-
-- Group configuration guidance by purpose
-
-
-### Maintenance
-
-- Prepare v8.8.2
-
-## [v8.8.1] - 2026-10-21
-
-### Documentation
-
-- Clarify local and browser setup workflows
-
-- Use consistent Spanish wording for the terminal
-
-
-### Maintenance
-
-- Prepare v8.8.1
-
-## [v8.8.0] - 2026-10-21
-
-### Breaking Changes
-
-- Register doctoral structures and school-specific degrees
-
-
-### Bug Fixes
-
-- Localize information sheets and remove dotted placeholders
-
-- Correct UAH academic years and MUCTE date language
-
-- Correct advisor labels and balance URJC cover layouts
-
-
-### Maintenance
-
-- Prepare v8.7.3
-
-- Prepare v8.8.0
-
-## [v8.7.2] - 2026-10-20
-
-### Features
-
-- Configure UAH agreement signatories and update TFM forms
-
-
-### Bug Fixes
-
-- Use regulation blue for MUIT and MUII bands
-
-- Preserve manual illustrations when removing example figures
-
-
-### Documentation
-
-- Clarify glossary requirements and installation options
-
-- Add a guided beginner workflow and PDF rendering
-
-- Replace the introduction with a guided beginner workflow
-
-- Align beginner guidance and supporting documentation
-
-
-### Maintenance
-
-- Minor adjustments in final section
-
-- Prepare v8.7.2
-
-## [v8.7.1] - 2026-10-16
-
-### Bug Fixes
-
-- Align MUIE with the shared EPS master layout
-
-
-### Maintenance
-
-- Prepare v8.7.1
-
-## [v8.7.0] - 2026-10-16
-
-### Features
-
-- Add automatic per-chapter reference lists
-
-- Add editorial PhD chapter-bibliography example
-
-
-### Documentation
-
-- Expand and organise reference entries by topic
-
-- Add manuals for demonstrated LaTeX features
-
-- Expand reference examples and reduce semicolon usage
-
-
-### Maintenance
-
-- Added missing year field to web refs
-
-- Added misc regulation docs
-
-- Prepare v8.7.0
-
-## [v8.6.1] - 2026-10-16
-
-### Bug Fixes
-
-- Leave back-cover padding pages empty
-
-
-### Maintenance
-
-- Prepare v8.6.1
-
-## [v8.6.0] - 2026-10-16
-
-### Features
-
-- Support individual TFGs at ETSII
-
-
-### Bug Fixes
-
-- Separate work department from adviser affiliations
-
-
-### Documentation
-
-- Simplify supported degree descriptions
-
-
-### Maintenance
-
-- Back to default GIEC degree
-
-- Prepare v8.6.0
-
-## [v8.5.1] - 2026-10-15
-
-### Bug Fixes
-
-- Standardize document cleanup and preserve PDFs
-
-
-### Maintenance
-
-- Improved layout of comments
-
-- Prepare v8.5.1
-
-## [v8.5.0] - 2026-10-15
-
-### Features
-
-- Add EPS-UAH TFM proposal control form
-
-
-### Refactoring
-
-- Normalize EPS-UAH guide filenames
-
-
-### Maintenance
-
-- Minor change in changelog text (removed useless commit info)
-
-- Prepare v8.5.0
-
-## [v8.4.2] - 2026-10-14
-
-### Bug Fixes
-
-- Fixed María de Pedraza surname
-
-- Improve institutional information page spacing and alignment
-
-- Complete example DNI values and document their meanings
-
-
-### Maintenance
-
-- Prepare v8.4.2
-
-## [v8.4.1] - 2026-10-13
-
-### Bug Fixes
-
-- Hide font policies from public examples and user guidance
-
-
-### Maintenance
-
-- Prepare v8.4.1
-
-## [v8.4.0] - 2026-10-13
-
-### Features
-
-- Include the ethical-aspects appendix for ETSIT-UPM degrees
-
-
-### Maintenance
-
-- Remove useless comment on dots usage
-
-- Prepare v8.4.0
-
-## [v8.3.1] - 2026-10-13
-
-### Documentation
-
-- List UAH examples before UPM and URJC
-
-
-### Maintenance
-
-- Prepare v8.3.1
-
-## [v8.3.0] - 2026-10-13
-
-### Features
-
-- Include a customizable Spanish project README
-
-
-### Maintenance
-
-- Prepare v8.3.0
-
-## [v8.2.0] - 2026-10-13
-
-### Features
-
-- Add a Spanish GISTS-UPM public example
-
-
-### Documentation
-
-- Clarify Spanish configuration guidance and hide legacy degrees
-
-
-### Maintenance
-
-- Prepare v8.2.0
-
-## [v8.1.0] - 2026-10-12
-
-### Features
-
-- Reorganized papework folders
-
-- Localize master degree names and thesis labels in English
-
-
-### Bug Fixes
-
-- Remove orange highlighting from ETSIT-UPM assessment headings
-
-
-### Maintenance
-
-- Prepare v8.1.0
-
-## [v8.0.0] - 2026-10-12
-
-### Breaking Changes
-
-- Extend ETSIT-UPM support and separate adviser affiliations
-
-
-### Features
-
-- Added 'escudo' for ETSIT-UPM
-
-
-### Bug Fixes
-
-- Support builds from extracted distributions
-
-- Synchronize Dropbox publications in place
-
-- Start the dedication and preliminary chapters on recto pages
-
-- Recognize breaking Conventional Commit titles
-
-
-### Documentation
-
-- Align degree references and overview with ETSIT-UPM support
-
-
-### Maintenance
-
-- Prepare v8.0.0
-
-## [v7.3.0] - 2026-10-09
-
-### Breaking Changes
-
-- Add selectable isolated PDF generation
-
-
-### Features
-
-- Provide EPS-UAH form guides in user distributions
-
-
-### Bug Fixes
-
-- Fixed wrong GIEC URL
-
-- Enable the TURNITIN section for MUII
-
-- Highlight unavailable fields with Spanish placeholders
-
-- Provide paperwork guides as PDF-only documentation
-
-- Simplify manual defaults and expose only editable settings
-
-
-### Documentation
-
-- Standardize headers across distributed template sources
-
-
-### Refactoring
-
-- Hide the advanced institutional font policy
-
-
-### Maintenance
-
-- Prepare v7.3.0
-
-## [v7.2.3] - 2026-10-08
-
-### Bug Fixes
-
-- Validate Dropbox destination before building
-
-
-### Documentation
-
-- Focus getting started on the basic workflow
-
-- README.md content simplified (English version too)
-
-- Regenerate v7.2.3 release notes
-
-
-### Maintenance
-
-- Prepare v7.2.2
-
-- Prepare v7.2.3
-
-
-### Other Changes
-
-- Distinguish styles comparison and guide PDFs
-
-## [v7.2.1] - 2026-10-08
-
-### Bug Fixes
-
-- Stabilize indexing of Spanish Roman page numbers
-
-
-### Maintenance
-
-- Updated changeglo
-
-- Prepare v7.2.1
-
-## [v7.2.0] - 2026-10-08
-
-### Features
-
-- Updating to release v7.2.0
-
-
-### Bug Fixes
-
-- Keep documentation PDF names unnumbered in the repository
-
-
-### Documentation
-
-- Reorganize guides and make Spanish README the landing page
-
-- Organize bilingual guides and generate changelog
-
-
-### Maintenance
-
-- Doc language is no longer loaded in documentclass definition (it is done in postamble.tex
-
-- Renamed English md files to -en (preparing translation)
-
-## [v7.1.0] - 2026-10-07
-
-### Maintenance
-
-- Adding two subsections to avoid single sibling
-
-- Fixed wrong punctuation marks
-
-- Fixed title
-
-- Date update
-
-## [v7.0.0] - 2026-10-06
-
-### Features
-
-- Added colors used in commented out code (JIC)
-
-- Add configurable Book typesetting styles
-
-- Add curated public distribution and typesetting guides
-
-- Added form of Annex I in TFM-EPS-UAH regulations (educational agreement with institution)
-
-- Fully replicating new cover page for TFM at EPS-UAH
-
-- Increased for size in chapter titles (ñapa)
-
-- Moved papeleo to PapeleoTFM root dir (name explicits the related regulations) & nes form for TFMs at EPS-UAH
-
-- Visto bueno document updated to EPS-UAH regulations (for both MUIE and MUIT/MUII, don't know about other Masters
-
-- New form for Anexx V in EPS-UAH TFM regulations
-
-- Working in TFM Acta for EPS-UAH
-
-- Improved documents for papeleo TFG (UAH and EPS-UAH)
-
-- Improve paperwork for TFGs at UAH and EPS-UAH
-
-- Updated regulations and paperwork
-
-- New paperwork docs for TFGs at EPS-UAH
-
-- Generate confidentiality forms for all TFG evaluators
-
-- New and improved paperwork docs for TFGs and TFMs at EPS-UAH
-
-- Unify TFG and TFM paperwork builds
-
-- Organize and build PhD paperwork collections
-
-- Working in PapeleoPhD
-
-- Working in PapeleoPhD
-
-- Updating to release v7.0.0
-
-
-### Bug Fixes
-
-- Unify entry styles across generated lists
-
-- Remove remaining framed TOC leaders
-
-- Fixed wrong variable name (case issue)
-
-
-### Documentation
-
-- Explain automatic grammatical agreement
-
-
-### Maintenance
-
-- Updated access date in bib refs
-
-- Now referencing TFG-GIEC-spanish.pdf
-
-- Updated dates in myconfig.tex variables
-
-- Changed form title size
-
-- Renamed form to state it applies to TFM at EPS-UAH
-
-- Improved layot for prorroga form
-
-- Move unused solicitud.tex to deprecated
-
-- Updated to follow new format in EPS-UAH TFM regulations
-
-- Working in TFM Acta for EPS-UAH
-
-- Minor mods to fix line spacing overlaping table border and extra title
-
-- Removed old files for TFM regulations
-
-- Added comment (TODO)
-
-- Improving documentation
-
-- Removing distribution of PapeleoPhD
-
-- Removed useless file
-
-## [v6.0.0] - 2026-10-02
-
-### Features
-
-- Add maintainer distribution workflow
-
-- Ignoring new files
-
-- Add ITIURJC degree support
-
-- Add maintainer distribution workflow
-
-- Add UAH Faculty of Sciences degrees
-
-- Add PhD thesis-by-compendium template
-
-- Unify standard and compendium book entry points
-
-- Now compendium requires a PhD program and generates an error otherwise
-
-- Softened description of bare start
-
-- Simplify document structure and optional content
-
-- Identify PhD structure in output filenames
-
-- Generate every PhD document structure
-
-- Minor indentation change
-
-- Cleaned repo structure and redesigned distrib building
-
-- Bare chapters improvements
-
-- Bare chapters improvements
-
-- Now bare introduccion.tex shows minimal samples of figure, table, equation and acronym
-
-
-### Bug Fixes
-
-- Back to default GIEC
-
-- Report PDF generation failures
-
-- Preserve release metadata during book builds
-
-- Exclude regulations from release archives
-
-- Restore latexmk builds and document graphical Git setup
-
-- Fixed missing bib entries in anteproyecto.tex sample
-
-- Added missing Config files in sync-git-sources.sh
-
-- Fixed type in find command
-
-
-### Documentation
-
-- Explain how to add degrees and universities
-
-- Simplify degree selection guidance
-
-- Clarify cover file sequence behavior
-
-- Clarify Git repository prerequisite
-
-- Cross-reference compendium from standard workflows
-
-
-### Refactoring
-
-- Centralize degree configuration
-
-- Derive institutions from degree registry
-
-- Organize institutional branding assets
-
-- Present standard book structure first
-
-- Split generated lists into dedicated cover files
-
-- Colocate prepared document structures
-
-- Make active LaTeX builds incremental
-
-
-### Maintenance
-
-- Minor mods in acknowlegements material
-
-- Adding ignored paths
-
-- Archive unused legacy resources
-
-- Added relevant names to tribunal (easter egg like)
-
-- Adjusted pdf zoom value (scaled pdfs were too close to header)
-
-- Added comments to ease book.tex understanding
-
-- Reordered definition of document structure
-
-- Reordering variable sections
-
-- Changed unused path for future use
-
-- Prepare v6.0.0 release
-
-- Merge devel into master
-
-- Removed useless scripts
-
-- Removed README.md from mandatory distrib files
-
-- Fixed pdf link to dropbox & do not generate docs for pre-Bologna degrees
-
-## [v5.0.0a] - 2026-09-16
-
-### Features
-
-- Document the repository structure
-
-- Clarify the main book workflow
-
-- Add book content customization guidance
-
-- Improved references to the 'make' build alternative
-
-- Add a minimal book starting structure
-
-- Synchronize Git sources from LaTeX dependencies
-
-
-### Bug Fixes
-
-- Update paperwork paths in README
-
-- Remove unsupported BibTeX guidance
-
-- Focus bibliography guidance on Biber
-
-- Correct the Overleaf download link
-
-- Stop generating low-quality screen PDFs
-
-- Refresh repository overview metadata
-
-- Use a unique label for the video links section
-
-- Modernize paperwork builds
-
-
-### Documentation
-
-- Update the introduction and repository structure
-
-- Modernize the compilation instructions
-
-- Update the generated document structure
-
-- Document general and author configuration
-
-- Document academic and assessment configuration
-
-- Complete the shared configuration reference
-
-- Update project and paperwork guidance
-
-- Modernize revision and troubleshooting guidance
-
-- Refresh the LaTeX usage examples
-
-- Restore presentation notes and personal tone
-
-- Restore the complete video link example
-
-- Restore the invitation to contribute fixes
-
-- Restore the personal revision guidance
-
-- Restore the personal Makefile introduction
-
-- Personalize the custom command guidance
-
-- Personalize the figure inclusion guidance
-
-- Restore the diagram example footnote
-
-- Restore the personal thanks to Cristina Losada
-
-- Restore the personal thanks to Carlos Cruz
-
-- Restore the interactive acronym example
-
-- Restore the acronym plural example
-
-- Personalize the preliminary proposal guidance
-
-- Personalize the paperwork introduction
-
-- Remove duplicate Makefile instructions
-
-- Replace description lists with itemized lists
-
-- Address the reader in compilation guidance
-
-- Address the reader in structure guidance
-
-- Address the reader in configuration guidance
-
-- Address the reader in paperwork guidance
-
-- Address the reader in revision guidance
-
-- Address the reader in usage examples
-
-- Introduce itemized variable lists
-
-- Prioritize editor-based compilation
-
-- Improve introduction cross-references
-
-- Integrate optional tools into makefile guidance
-
-- Clarify which document elements require editing
-
-- Distinguish basic and advanced make targets
-
-- Align guidance with the reorganized template
-
-- Expand template examples and citation guidance
-
-- Promote template utilities to a dedicated chapter
-
-- Categorize custom command examples
-
-- Clarify the document structure chapter
-
-- Add chapter introductions and summaries
-
-- Add Overleaf guidance and refine README structure
-
-- Clean and format the example bibliography
-
-- Streamline README navigation and bibliography guidance
-
-- Acknowledge AI-assisted template revisions
-
-- Refine advanced composition examples
-
-- Explain how to start from the minimal structure
-
-- Introduce the anteproyecto in first steps
-
-
-### Refactoring
-
-- Reorganize the example document as a tutorial
-
-- Rebalance tutorial chapters and appendix
-
-- Split the template guide into focused chapters
-
-- Include chapters directly from book
-
-
-### Maintenance
-
-- Changes for generating specific grades documents
-
-- Remove the redundant HOWTO guide
-
-- Record remaining repository updates
-
-- Consolidate repository ignore rules
-
-
-### Other Changes
-
-- Release v5.0.0a
+- Prepare v8.8.5
 
 ## [v8.8.4] - 2026-10-24
 
@@ -1403,16 +670,16 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 - Regenerate v7.2.3 release notes
 
 
+### Build System
+
+- Distinguish styles comparison and guide PDFs
+
+
 ### Maintenance
 
 - Prepare v7.2.2
 
 - Prepare v7.2.3
-
-
-### Other Changes
-
-- Distinguish styles comparison and guide PDFs
 
 ## [v7.2.1] - 2026-10-08
 
