@@ -1,0 +1,13 @@
+defaultIndent: "  "
+indentPreamble: 0
+
+lookForAlignDelims:
+  tabular: 0
+  tabularx: 0
+  longtable: 0
+  array: 0
+
+indentAfterItems:
+  itemize: 1
+  enumerate: 1
+  description: 1
