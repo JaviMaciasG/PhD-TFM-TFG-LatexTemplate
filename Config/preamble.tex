@@ -117,6 +117,8 @@
 \usepackage{geometry}
 \geometry{verbose,a4paper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
 
+\usepackage{setspace}
+
 \usepackage{hyperref}
 \usepackage{hyperxmp}
 \hypersetup{
@@ -195,7 +197,6 @@
 
 \usepackage{multirow}
 
-\usepackage{setspace}
 
 \newcommand{\mycaptiontable}[1]{
   \begin{spacing}{0.6}
@@ -335,12 +336,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
-%   This is to set background images (in our case to set background image
-%   in TFMs front and back pages)
-%   If you want to set this background, use \BgThispage in the
-%   corresponding pages
-%   \usepackage[pages=some]{sty/background}
-\usepackage[pages=some]{background}
+% Institutional page backgrounds are added for a single page through the
+% shipout hooks provided by eso-pic in the corresponding institution style.
 
 % This is to allow do a clearpage and let the next one to be placed in
 % even pages (to set a backpage for example)

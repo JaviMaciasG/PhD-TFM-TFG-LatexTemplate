@@ -15,15 +15,21 @@
 \definecolor{UAHcolorpantone293}{rgb}{0,0.239,0.647}
 \newcommand{\colorUAH}{\color{UAHcolorpantone293}}
 
-\ifthenelse{\equal{\colorspaceused}{rgb}}
-{
-  \backgroundsetup{scale=1,angle=0,opacity=.1,color=pink,contents={\includegraphics[width=.7\paperwidth]{logos/uah/logoEPS-UAH.jpg}},vshift=-50pt,hshift=0pt}
-}
-{
-  \backgroundsetup{scale=1,angle=0,opacity=.1,color=pink,contents={\includegraphics[width=.7\paperwidth]{logos/uah/logoEPS-UAH-cmyk.jpg}},vshift=-50pt,hshift=0pt}
-}
-
 \usepackage{eso-pic}
+
+\ifthenelse{\equal{\colorspaceused}{rgb}}
+  {\newcommand{\UAHWatermarkImage}{logos/uah/logoEPS-UAH.jpg}}
+  {\newcommand{\UAHWatermarkImage}{logos/uah/logoEPS-UAH-cmyk.jpg}}
+
+\newcommand{\UAHWatermarkThisPage}{%
+  \AddToShipoutPictureBG*{%
+    \begin{tikzpicture}[remember picture,overlay,scale=1]
+      \node[rotate=0,scale=1,opacity=.1,anchor=center,xshift=0pt,
+        yshift=-50pt,color=pink,inner sep=0pt] at (current page.center)
+        {\includegraphics[width=.7\paperwidth]{\UAHWatermarkImage}};
+    \end{tikzpicture}%
+  }%
+}
 
 \newcommand\PutFrontPageBackground{%
   \AddToShipoutPicture*{%
