@@ -2,6 +2,24 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.13.8] - 2026-11-16
+
+### Bug Fixes
+
+- Remove ineffective hyperref options
+
+- Preserve footnote links and replace legacy page backgrounds
+
+
+### Documentation
+
+- Clarify historical release summaries
+
+
+### Maintenance
+
+- Prepare v8.13.8
+
 ## [v8.13.7] - 2026-11-16
 
 ### Bug Fixes
