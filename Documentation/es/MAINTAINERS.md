@@ -8,7 +8,7 @@ Marque una vez cada checkout de mantenimiento de referencia con `git config temp
 
 ## Generar el registro de cambios
 
-`Documentation/CHANGELOG.md` se genera en inglés a partir de las etiquetas Git. Instale `git-cliff` en el sistema de mantenimiento y ejecute `make -C Documentation changelog`; así se regenera todo el historial etiquetado hasta la versión indicada en `RELEASE.txt`. El fichero versionado `Documentation/cliff.toml` clasifica los prefijos de commit del repositorio y conserva los mensajes heredados no reconocidos bajo “Other Changes”. Las etiquetas que apuntan al mismo commit se agrupan en una sola sección. El resultado se genera automáticamente; ajuste la configuración en lugar de editar el changelog a mano. El objetivo habitual para generar los PDF no requiere `git-cliff`.
+`Documentation/CHANGELOG.md` se genera en inglés a partir de las etiquetas Git. Instale `git-cliff` y Python 3 en el sistema de mantenimiento y ejecute `make -C Documentation changelog`; así se regenera todo el historial etiquetado hasta la versión indicada en `RELEASE.txt`. `Documentation/cliff.toml` clasifica los prefijos de commit, mientras que `Documentation/changelog-overrides.json` aporta redacciones revisadas y específicas para los resúmenes históricos demasiado vagos. El generador comprueba que cada prefijo de hash identifica un único commit etiquetado. Las etiquetas que apuntan al mismo commit se agrupan en una sola sección. El resultado se genera automáticamente; ajuste la configuración o el fichero de excepciones en lugar de editar el changelog a mano. El objetivo habitual para generar los PDF no requiere `git-cliff` ni Python.
 
 ## Mantener las estructuras de los documentos y los conmutadores de contenido opcional
 

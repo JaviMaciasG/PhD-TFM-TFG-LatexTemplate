@@ -8,7 +8,7 @@ Mark every authoritative maintenance checkout once with `git config template.off
 
 ## Generating the changelog
 
-`Documentation/CHANGELOG.md` is generated in English from Git tags. Install `git-cliff` on the maintainer system and run `make -C Documentation changelog`; this regenerates the complete tagged history up to the version in `RELEASE.txt`. The tracked `Documentation/cliff.toml` maps the repository's commit prefixes and keeps unmatched legacy messages under “Other Changes”. Tags that point to the same commit are grouped together in one section. The output is generated, so adjust the configuration rather than editing the changelog by hand. The normal PDF target does not require `git-cliff`.
+`Documentation/CHANGELOG.md` is generated in English from Git tags. Install `git-cliff` and Python 3 on the maintainer system, then run `make -C Documentation changelog`; this regenerates the complete tagged history up to the version in `RELEASE.txt`. `Documentation/cliff.toml` classifies commit prefixes, while `Documentation/changelog-overrides.json` supplies reviewed, commit-specific wording for vague historical summaries. The generator verifies that each hash prefix matches exactly one tagged commit before rendering. Tags that point to the same commit are grouped together in one section. The output is generated, so adjust the configuration or override file rather than editing the changelog by hand. The normal PDF target does not require `git-cliff` or Python.
 
 ## Maintaining the document structures and optional-content switches
 

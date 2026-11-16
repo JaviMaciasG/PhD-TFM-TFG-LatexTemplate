@@ -31,7 +31,6 @@ sort_commits = "oldest"
 commit_preprocessors = [
     { pattern = "\\n[\\s\\S]*", replace = "" },
     { pattern = "(?i)^(chore\\+fea|feat|fea|fix|docs?|style|refactor|perf|test|build|ci|chore)(\\([^)]*\\))?!?:\\s*", replace = "" },
-    { pattern = "(?i)^print all fields in the credits page$", replace = "Keep UPM PhD credits-page labels visible when their fields are blank" },
 ]
 processing_order = ["commit_parsers", "commit_preprocessors", "link_parsers"]
 commit_parsers = [

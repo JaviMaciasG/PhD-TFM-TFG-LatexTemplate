@@ -6,14 +6,14 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Bug Fixes
 
-- Now using Presidente/a correctly in UAH/URJC cover pages
+- Render tribunal-chair titles with gender agreement in UAH and URJC covers
 
-- Keep UPM PhD credits-page labels visible when their fields are blank
+- Keep reviewer, committee, and defense-date labels visible on UPM PhD credits pages when their values are blank
 
 
 ### Documentation
 
-- Do not address specific issues related to regulations in the manual, just added a general comment
+- Replace regulation-specific manual notes with a general reminder to check current rules
 
 
 ### Maintenance
@@ -31,16 +31,16 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Bug Fixes
 
-- Centralize cotutor checks and correct form labels
+- Centralize cotutor-presence checks and gender-aware labels across covers and paperwork
 
-- Correct language labels and optional sponsor row
+- Translate ETSII-URJC cover labels and omit the ETSIT-UPM academic-sponsor row when its name is blank
 
 
 ### Refactoring
 
-- Simplify language and role-label choices
+- Reuse language and capitalization helpers across covers, lists, anteproyecto, and paperwork
 
-- Use shared values in EIF title page
+- Reuse degree-registry values and shared labels on EIF-URJC TFG covers
 
 
 ### Maintenance
@@ -69,7 +69,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Maintenance
 
-- Adjusting bg cover image and text positions
+- Adjust the background image and text placement on ETSII-UPM TFM covers
 
 - Prepare v8.13.4
 
@@ -110,13 +110,13 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Features
 
-- Support three bachelor thesis degrees
+- Add three EIIA-UCLM TFG degrees and their four-page institutional covers
 
-- Support ETSII doctoral theses
+- Add standard and compendium doctoral-thesis support for ETSII-UPM
 
-- Add ETSII TFG cover support
+- Add ETSII-UPM cover and back-page support for three engineering TFGs
 
-- Support ETSII master theses
+- Add dedicated ETSII-UPM TFM covers for MUII and MUIQ
 
 
 ### Bug Fixes
@@ -133,7 +133,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Refactoring
 
-- Use centralized advisor labels
+- Reuse shared gender-aware tutor and director labels in UAH and URJC covers
 
 
 ### Maintenance
@@ -149,7 +149,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Features
 
-- Added UPM logos for future use
+- Add UPM and ETSIST logo assets for institutional covers
 
 
 ### Maintenance
@@ -164,7 +164,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Place Spanish and English summaries on one page
 
-- Support four individual final degree projects
+- Add one shared cover for four individual ETSIST-UPM final-degree projects
 
 
 ### Maintenance
@@ -175,7 +175,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Maintenance
 
-- Removed conditional elements in contents*.tex
+- Remove language conditionals from the compendium content entry points
 
 - Prepare v8.11.1
 
@@ -194,7 +194,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Features
 
-- Add zen drafting mode
+- Add Zen mode to compile selected chapters without covers, lists, or front matter
 
 
 ### Bug Fixes
@@ -204,7 +204,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Documentation
 
-- Expand drafting guidance
+- Explain how to select chapters while drafting in Zen mode
 
 - Clarify optional-content section introduction
 
@@ -228,20 +228,20 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - \myAcademicCotutor* variables renamed to \myCoTutor* for consistency
 
-- Updated TFG and TFM regulations in EPS-UAH
+- Add the 2026 EPS-UAH TFG and TFM regulations and their source templates
 
 
 ### Bug Fixes
 
 - Align TFG forms with October 2026 EPS-UAH regulations
 
-- Update EPS-UAH TFG forms to 2026 regulations
+- Update EPS-UAH TFG paperwork templates to the 2026 regulations
 
 - Clarify signature names and roles
 
-- Correct cotutor spelling and comment
+- Correct the cotutor variable spelling and its myconfig comment
 
-- Improve proposal control form fields
+- Resize checkboxes and clarify the commission decision in the EPS-UAH TFM proposal-control form
 
 
 ### Documentation
@@ -251,36 +251,36 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Build System
 
-- Skip bibliography processing for forms
+- Skip bibliography processing when building TFG and TFM paperwork
 
 
 ### Refactoring
 
-- Prefix forms with annex numbers
+- Add regulation-annex numbers to TFG paperwork filenames
 
 
 ### Maintenance
 
 - Prepare v8.9.0
 
-- Organize acknowledgements and remove stale note
+- Reorganize acknowledgements and remove an outdated note
 
 - Prepare v8.9.1
 
 
 ### Other Changes
 
-- Refine publication authorization form spacing
+- Increase spacing in the EPS-UAH open-publication authorization form
 
-- Tighten authorization choices spacing
+- Tighten spacing around publication-embargo choices
 
-- Refine tribunal rubric layout
+- Refine the EPS-UAH TFG tribunal-rubric layout
 
 ## [v8.8.6] - 2026-10-26
 
 ### Maintenance
 
-- Minor changes to improve info to the users
+- Clarify bibliography guidance and add an objectives-and-scope section to the anteproyecto
 
 - Prepare v8.8.6
 
@@ -309,7 +309,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Documentation
 
-- Update the TFM agreement regulation reference
+- Update the regulation reference in the EPS-UAH TFM cooperation agreement
 
 
 ### Maintenance
@@ -364,7 +364,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Correct UAH academic years and MUCTE date language
 
-- Correct advisor labels and balance URJC cover layouts
+- Correct gendered advisor labels and balance the URJC cover layouts
 
 
 ### Maintenance
@@ -389,7 +389,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Documentation
 
-- Clarify glossary requirements and installation options
+- Clarify glossary-tool requirements and installation options for beginners
 
 - Add a guided beginner workflow and PDF rendering
 
@@ -400,7 +400,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Maintenance
 
-- Minor adjustments in final section
+- Refine the closing guidance in the English and Spanish READMEs
 
 - Prepare v8.7.2
 
@@ -419,9 +419,9 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Features
 
-- Add automatic per-chapter reference lists
+- Add automatic chapter-level reference lists and an optional final bibliography
 
-- Add editorial PhD chapter-bibliography example
+- Add an editorial-style UAH PhD example with chapter bibliographies
 
 
 ### Documentation
@@ -435,9 +435,9 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Maintenance
 
-- Added missing year field to web refs
+- Add publication years to the web references in biblio.bib
 
-- Added misc regulation docs
+- Add source documents for UAH doctoral-school paperwork
 
 - Prepare v8.7.0
 
@@ -445,7 +445,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Bug Fixes
 
-- Leave back-cover padding pages empty
+- Keep any padding page before a back cover blank
 
 
 ### Maintenance
@@ -456,17 +456,17 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Features
 
-- Support individual TFGs at ETSII
+- Support individual TFG workflows for ETSII-URJC degrees
 
 
 ### Bug Fixes
 
-- Separate work department from adviser affiliations
+- Store the work department independently of tutor and cotutor affiliations
 
 
 ### Documentation
 
-- Simplify supported degree descriptions
+- Simplify supported-degree descriptions in the user manual
 
 
 ### Maintenance
@@ -479,12 +479,12 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Bug Fixes
 
-- Standardize document cleanup and preserve PDFs
+- Standardize paperwork clean and distclean targets without deleting PDFs
 
 
 ### Maintenance
 
-- Improved layout of comments
+- Reformat and organize the comments in Config/myconfig.tex
 
 - Prepare v8.5.1
 
@@ -502,7 +502,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Maintenance
 
-- Minor change in changelog text (removed useless commit info)
+- Remove redundant commit metadata from generated changelog entries
 
 - Prepare v8.5.0
 
@@ -510,9 +510,9 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Bug Fixes
 
-- Fixed María de Pedraza surname
+- Correct María de Pedraza's sample surname in Config/myconfig.tex
 
-- Improve institutional information page spacing and alignment
+- Improve spacing and alignment on UPM institutional information pages
 
 - Complete example DNI values and document their meanings
 
@@ -560,7 +560,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Features
 
-- Include a customizable Spanish project README
+- Add a distribution README with placeholders for degree and document details
 
 
 ### Maintenance
@@ -587,7 +587,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Features
 
-- Reorganized papework folders
+- Remove superseded TFM regulations and source form templates
 
 - Localize master degree names and thesis labels in English
 
@@ -605,23 +605,23 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Breaking Changes
 
-- Extend ETSIT-UPM support and separate adviser affiliations
+- Extend ETSIT-UPM TFG, TFM, and PhD support and separate supervisor affiliations
 
 
 ### Features
 
-- Added 'escudo' for ETSIT-UPM
+- Add the ETSIT-UPM crest to the doctoral cover resources
 
 
 ### Bug Fixes
 
-- Support builds from extracted distributions
+- Allow PDF generation from an extracted distribution without Git
 
 - Synchronize Dropbox publications in place
 
 - Start the dedication and preliminary chapters on recto pages
 
-- Recognize breaking Conventional Commit titles
+- Recognize breaking Conventional Commit markers in changelog generation
 
 
 ### Documentation
@@ -637,7 +637,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Breaking Changes
 
-- Add selectable isolated PDF generation
+- Add filters for degree, university, work type, layout, language, structure, style, and font mode
 
 
 ### Features
@@ -647,13 +647,13 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Bug Fixes
 
-- Fixed wrong GIEC URL
+- Correct the GIEC link in the English and Spanish READMEs
 
-- Enable the TURNITIN section for MUII
+- Include the Turnitin section for MUII documents
 
-- Highlight unavailable fields with Spanish placeholders
+- Highlight unavailable paperwork fields with yellow N/D placeholders
 
-- Provide paperwork guides as PDF-only documentation
+- Distribute paperwork guides as PDFs without their editable TeX sources
 
 - Simplify manual defaults and expose only editable settings
 
@@ -665,7 +665,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Refactoring
 
-- Hide the advanced institutional font policy
+- Hide the advanced institutional font policy from standard myconfig and user guidance
 
 
 ### Maintenance
@@ -676,21 +676,21 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Bug Fixes
 
-- Validate Dropbox destination before building
+- Validate the Dropbox destination before generating distribution files
 
 
 ### Documentation
 
 - Focus getting started on the basic workflow
 
-- README.md content simplified (English version too)
+- Simplify the English README while keeping it aligned with the Spanish version
 
 - Regenerate v7.2.3 release notes
 
 
 ### Build System
 
-- Distinguish styles comparison and guide PDFs
+- Use distinct filenames for the typesetting comparison and guide PDFs
 
 
 ### Maintenance
@@ -708,7 +708,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Maintenance
 
-- Updated changeglo
+- Update the changelog-generation instructions
 
 - Prepare v7.2.1
 
@@ -743,9 +743,9 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Adding two subsections to avoid single sibling
 
-- Fixed wrong punctuation marks
+- Correct punctuation in the README
 
-- Fixed title
+- Hyphenate the title in the generated README PDF
 
 - Date update
 
@@ -767,80 +767,80 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Moved papeleo to PapeleoTFM root dir (name explicits the related regulations) & nes form for TFMs at EPS-UAH
 
-- Visto bueno document updated to EPS-UAH regulations (for both MUIE and MUIT/MUII, don't know about other Masters
+- Replace the generic TFM tutor-approval form with an EPS-UAH version for MUIE, MUIT, and MUII
 
-- New form for Anexx V in EPS-UAH TFM regulations
+- Add the EPS-UAH TFM Annex V form for requesting a change to the assigned thesis
 
-- Working in TFM Acta for EPS-UAH
+- Add the EPS-UAH TFM defense record and tribunal rubric
 
-- Improved documents for papeleo TFG (UAH and EPS-UAH)
+- Update TFG paperwork forms and build targets for UAH and EPS-UAH
 
-- Improve paperwork for TFGs at UAH and EPS-UAH
+- Align UAH and EPS-UAH TFG reports and publication-authorization forms
 
-- Updated regulations and paperwork
+- Add the 2026 UAH and EPS-UAH TFG/TFM regulations and source templates
 
 - New paperwork docs for TFGs at EPS-UAH
 
 - Generate confidentiality forms for all TFG evaluators
 
-- New and improved paperwork docs for TFGs and TFMs at EPS-UAH
+- Add and revise cooperation and open-publication forms for EPS-UAH TFGs and TFMs
 
-- Unify TFG and TFM paperwork builds
+- Use consistent Makefile build targets for TFG and TFM paperwork
 
-- Organize and build PhD paperwork collections
+- Organize PhD paperwork by topic and add Makefile generation targets
 
-- Working in PapeleoPhD
+- Reformat UAH doctoral forms and update the PapeleoPHD build rules
 
-- Working in PapeleoPhD
+- Add shared page-layout helpers for UAH doctoral forms
 
 - Updating to release v7.0.0
 
 
 ### Bug Fixes
 
-- Unify entry styles across generated lists
+- Unify entry styling across the table of contents and generated lists
 
 - Remove remaining framed TOC leaders
 
-- Fixed wrong variable name (case issue)
+- Fix a case-sensitive grade-calculation macro reference in the TFM forms
 
 
 ### Documentation
 
-- Explain automatic grammatical agreement
+- Explain automatic grammatical-gender and number agreement in paperwork
 
 
 ### Maintenance
 
-- Updated access date in bib refs
+- Refresh access dates for bibliography web references
 
 - Now referencing TFG-GIEC-spanish.pdf
 
-- Updated dates in myconfig.tex variables
+- Update sample academic and defense dates in Config/myconfig.tex
 
-- Changed form title size
+- Increase the title size in the TFM open-publication authorization form
 
 - Renamed form to state it applies to TFM at EPS-UAH
 
-- Improved layot for prorroga form
+- Improve the layout of the TFM extension-request form
 
 - Move unused solicitud.tex to deprecated
 
-- Updated to follow new format in EPS-UAH TFM regulations
+- Align EPS-UAH TFM covers with the updated regulation format
 
-- Working in TFM Acta for EPS-UAH
+- Refine the tables and spacing in the EPS-UAH TFM defense record
 
-- Minor mods to fix line spacing overlaping table border and extra title
+- Fix overlapping cell text and remove a duplicate title in the TFM defense form
 
 - Removed old files for TFM regulations
 
-- Added comment (TODO)
+- Add initial UAH doctoral paperwork templates and record remaining TODOs
 
 - Improving documentation
 
 - Removing distribution of PapeleoPhD
 
-- Removed useless file
+- Remove the obsolete doctoral research-stay project-form template
 
 ## [v6.0.0] - 2026-10-02
 
@@ -850,35 +850,35 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Ignoring new files
 
-- Add ITIURJC degree support
+- Add ITI degree support for URJC
 
 - Add maintainer distribution workflow
 
-- Add UAH Faculty of Sciences degrees
+- Register and document new UAH Faculty of Sciences degrees
 
-- Add PhD thesis-by-compendium template
+- Add a PhD thesis-by-compendium structure and publication-inclusion helper
 
 - Unify standard and compendium book entry points
 
-- Now compendium requires a PhD program and generates an error otherwise
+- Require a PhD program when compendium structure is selected
 
 - Softened description of bare start
 
-- Simplify document structure and optional content
+- Separate editable standard/compendium content files and add optional-content flags
 
-- Identify PhD structure in output filenames
+- Add standard/compendium suffixes to generated PhD PDF filenames
 
-- Generate every PhD document structure
+- Generate Spanish and English PhD PDFs for both document structures
 
-- Minor indentation change
+- Reformat the language-dependent part titles in the compendium content file
 
 - Cleaned repo structure and redesigned distrib building
 
-- Bare chapters improvements
+- Preserve the bare sample figure and remove only optional content when creating bare chapters
 
-- Bare chapters improvements
+- Remove the Perl dependency from the Anteproyecto latexdiff target and refine bare-chapter cleanup
 
-- Now bare introduccion.tex shows minimal samples of figure, table, equation and acronym
+- Add figure, table, equation, and acronym examples to the bare introduction
 
 
 ### Bug Fixes
@@ -887,17 +887,17 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Report PDF generation failures
 
-- Preserve release metadata during book builds
+- Preserve RELEASE.txt metadata during book builds
 
-- Exclude regulations from release archives
+- Exclude regulations and source templates from distribution archives
 
 - Restore latexmk builds and document graphical Git setup
 
 - Fixed missing bib entries in anteproyecto.tex sample
 
-- Added missing Config files in sync-git-sources.sh
+- Add missing Config dependencies to sync-git-sources
 
-- Fixed type in find command
+- Correct the file-type predicate in the Book Makefile search command
 
 
 ### Documentation
@@ -906,9 +906,9 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Simplify degree selection guidance
 
-- Clarify cover file sequence behavior
+- Document how profiles behave with one, two, or more cover/back-page files
 
-- Clarify Git repository prerequisite
+- Explain that sync-git-sources requires an existing Git repository
 
 - Cross-reference compendium from standard workflows
 
@@ -917,104 +917,104 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Centralize degree configuration
 
-- Derive institutions from degree registry
+- Resolve university and school details from the degree registry
 
-- Organize institutional branding assets
+- Organize university logos and institutional branding assets
 
 - Present standard book structure first
 
 - Split generated lists into dedicated cover files
 
-- Colocate prepared document structures
+- Keep prepared bare and original content files beside their chapter sources
 
-- Make active LaTeX builds incremental
+- Avoid redundant LaTeX rebuilds when inputs have not changed
 
 
 ### Maintenance
 
-- Minor mods in acknowlegements material
+- Refine acknowledgement wording and contributor credits
 
 - Adding ignored paths
 
-- Archive unused legacy resources
+- Move unused resources into Deprecated while preserving their directory structure
 
-- Added relevant names to tribunal (easter egg like)
+- Add sample tribunal names and corresponding example DNI values
 
-- Adjusted pdf zoom value (scaled pdfs were too close to header)
+- Adjust the scaling of included publication PDFs in compendium theses
 
-- Added comments to ease book.tex understanding
+- Explain the standard and compendium content branches in book.tex
 
-- Reordered definition of document structure
+- Prioritize the standard structure in book.tex before the compendium branch
 
-- Reordering variable sections
+- Group myconfig variables by configuration purpose
 
-- Changed unused path for future use
+- Set the configurable output directory in the PDF-generation script
 
 - Prepare v6.0.0 release
 
 - Merge devel into master
 
-- Removed useless scripts
+- Remove the obsolete first-commit helper scripts
 
 - Removed README.md from mandatory distrib files
 
-- Fixed pdf link to dropbox & do not generate docs for pre-Bologna degrees
+- Fix the Dropbox example-PDF link and exclude pre-Bologna degrees from generation
 
 ## [v5.0.0a] - 2026-09-16
 
 ### Features
 
-- Document the repository structure
+- Describe the repository's top-level directory structure
 
 - Clarify the main book workflow
 
-- Add book content customization guidance
+- Explain how to replace the sample book content with thesis chapters
 
-- Improved references to the 'make' build alternative
+- Clarify Makefile as an optional build path in the README
 
-- Add a minimal book starting structure
+- Add a ready-to-copy minimal book structure for new thesis projects
 
-- Synchronize Git sources from LaTeX dependencies
+- Derive Git synchronization inputs from LaTeX dependency analysis
 
 
 ### Bug Fixes
 
-- Update paperwork paths in README
+- Correct paperwork folder paths in the README
 
-- Remove unsupported BibTeX guidance
+- Remove unsupported BibTeX setup instructions from the README
 
-- Focus bibliography guidance on Biber
+- Focus bibliography setup guidance on Biber
 
-- Correct the Overleaf download link
+- Correct the Overleaf template download link
 
-- Stop generating low-quality screen PDFs
+- Stop generating low-quality screen-version PDFs
 
 - Refresh repository overview metadata
 
 - Use a unique label for the video links section
 
-- Modernize paperwork builds
+- Use consistent latexmk-based build targets for paperwork Makefiles
 
 
 ### Documentation
 
-- Update the introduction and repository structure
+- Update the manual introduction and repository-structure guidance
 
 - Modernize the compilation instructions
 
-- Update the generated document structure
+- Document the generated book structure and its included sections
 
-- Document general and author configuration
+- Document general and author metadata variables in myconfig.tex
 
-- Document academic and assessment configuration
+- Document academic and assessment variables in myconfig.tex
 
-- Complete the shared configuration reference
+- Complete the manual's reference for shared configuration variables
 
 - Update project and paperwork guidance
 
-- Modernize revision and troubleshooting guidance
+- Update revision and troubleshooting guidance in the manual
 
-- Refresh the LaTeX usage examples
+- Refresh the manual's examples of LaTeX elements and utilities
 
 - Restore presentation notes and personal tone
 
@@ -1062,15 +1062,15 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Introduce itemized variable lists
 
-- Prioritize editor-based compilation
+- Prioritize editor-based compilation in the README
 
-- Improve introduction cross-references
+- Add explicit cross-references to the introduction chapter
 
-- Integrate optional tools into makefile guidance
+- Move optional tools and targets into advanced Makefile guidance
 
 - Clarify which document elements require editing
 
-- Distinguish basic and advanced make targets
+- Distinguish basic and advanced Makefile targets
 
 - Align guidance with the reorganized template
 
@@ -1082,37 +1082,37 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Clarify the document structure chapter
 
-- Add chapter introductions and summaries
+- Add numbered chapter introductions and summaries to the manual
 
 - Add Overleaf guidance and refine README structure
 
-- Clean and format the example bibliography
+- Reorganize and format bibliography examples in biblio.bib
 
 - Streamline README navigation and bibliography guidance
 
-- Acknowledge AI-assisted template revisions
+- Credit AI assistance in the acknowledgements
 
 - Refine advanced composition examples
 
 - Explain how to start from the minimal structure
 
-- Introduce the anteproyecto in first steps
+- Introduce the anteproyecto workflow in the first-steps chapter
 
 
 ### Refactoring
 
 - Reorganize the example document as a tutorial
 
-- Rebalance tutorial chapters and appendix
+- Rebalance the tutorial chapters and LaTeX-example appendix
 
 - Split the template guide into focused chapters
 
-- Include chapters directly from book
+- Include chapter files directly from book.tex instead of an intermediate contents file
 
 
 ### Maintenance
 
-- Changes for generating specific grades documents
+- Add options to generate selected degree and document combinations
 
 - Remove the redundant HOWTO guide
 
@@ -1186,7 +1186,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Removed deactivatetilden as it breaks compilation with TexLive 2025 (still don't know why)
 
-- Wrong name in MUANDB (my bad)
+- Correct the sample name of the MUANDB degree
 
 
 ### Maintenance
@@ -1248,7 +1248,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Add new logo UAH with white font
 
-- Updated (most) covers to new UAH logos
+- Apply the new UAH logos to supported covers and add the EPS TFM cover draft
 
 
 ### Bug Fixes
@@ -1274,9 +1274,9 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Other Changes
 
-- Fun: updated "meaningful" DNIs for participants
+- Update sample DNI values and their explanations
 
-- Fun: updated "meaningful" DNIs for participants
+- Update sample DNI values and their explanations
 
 - Release v4.2.2
 
@@ -1316,29 +1316,29 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Fixed wrong uppercase of MUSEA
 
-- Now properly handling evaluation committee member & sex for TFM and TFGs
+- Render evaluation-committee role labels with gender agreement on TFG/TFM covers
 
 - Removed vspace (should not be used)
 
 - Too long committee name
 
-- Now properly handling English/Spanish in standard UAH TFM template cover
+- Render the standard UAH TFM cover correctly in Spanish and English
 
 
 ### Maintenance
 
-- Minor changes, improved rendering
+- Improve the TFG tutor rubric and document its use in the HOWTO
 
-- Minor changes, improved rendering
+- Refine the layout of the UAH TFG tutor report and rubric
 
-- Minor changes, improved content
+- Clarify myconfig settings, figure placement, and editing guidance in the HOWTO
 
-- Cleaning up files
+- Consolidate shared preamble and postamble settings and remove obsolete request-form configurations
 
 
 ### Other Changes
 
-- Fea+chore: added suport for MUANBD + cleaning up
+- Add the MUANBD master's identifier and simplify shared cover and request-form configuration
 
 - Release v4.2.0
 
@@ -1392,7 +1392,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Features
 
-- Minor update related to Papeleo rework
+- Update the introduction to match the reorganized paperwork folders
 
 
 ### Other Changes
@@ -1442,7 +1442,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Added Miguel Tradecete for bug reporting contributions :-)
 
-- Added support for MUC & more
+- Add MUC support and update cover/back-page selection for UAH master's degrees
 
 
 ### Bug Fixes
@@ -1470,7 +1470,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Bug Fixes
 
-- Fixed wrong numbering in anteproyecto
+- Correct figure numbering in the anteproyecto
 
 
 ### Maintenance
@@ -1509,17 +1509,17 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Added variables for foreign tutor
 
-- Updated dates to show major update in Feb 2025
+- Update sample dates to reflect the February 2025 template revision
 
 - Added variables for TFG defense grades
 
 - General Makefile for TFG paperwork
 
-- Minor improvements in signature section
+- Align the signature fields in the TFG open-publication authorization
 
-- New code for the TFG rubrica
+- Add configurable criteria and scoring rows for the TFG rubric
 
-- New code for the TFG rubrica tutor/tribunal
+- Separate the TFG tutor rubric from the tribunal rubric configuration
 
 - Added gender management in new documents
 
@@ -1531,12 +1531,12 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Setting up new TFM directory
 
-- Minor updates to reflect recent changes on paperwork support
+- Align the introduction and README with the expanded paperwork support
 
 
 ### Bug Fixes
 
-- Fixed compilation error due to lofcounter re-definition
+- Fix duplicate list-of-figures counter setup in the TFG request form
 
 - Removed useless lines
 
@@ -1571,7 +1571,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Ignoring *tgz *tar.gz *rubbercache files
 
-- Improved README.md
+- Clarify the README workflow and remove generated PDFs from version control
 
 - Added todo comments
 
@@ -1661,7 +1661,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Now spanish is default \myLanguage
 
-- Minor changes for full generation
+- Generate Spanish examples before English ones and copy generated PDFs to the Dropbox folder
 
 ## [v3.1.5] - 2023-06-29
 
@@ -1679,7 +1679,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Fixing typo
 
-- Minor change in introduction
+- Refresh macOS acronym guidance and reorganize the example document-structure list
 
 - Back to default style for added tex in latexdiff output
 
@@ -1747,13 +1747,13 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Fixed nobiblio entry to fix its appearance in the references section
 
-- New work to add list of videos
+- Add a generated list of videos and a video-link example to the manual
 
-- Fixed wrong default of embargo (was 24, now 0)
+- Set the default publication embargo to zero months
 
 - Now ignoring new .vdo aux file
 
-- Fixed variable DirectorOrDirectora already defined when it is Directora...
+- Avoid redefining the feminine director label in UAH covers
 
 ## [v3.0.7] - 2023-02-22
 
@@ -1775,7 +1775,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 ### Other Changes
 
-- Improved README.md and README.pdf generation.
+- Add the MUCTE TFM cover and refine README PDF generation
 
 ## [v3.0.5] - 2023-01-08
 
@@ -1831,7 +1831,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Added Miguel Cuberto in contributors list
 
-- Minor changes
+- Clarify the initial download and compilation instructions in the README
 
 ## [v3.0.3] - 2022-10-29
 
@@ -1867,7 +1867,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Changes in default documents
 
-- Removed useless file
+- Remove the unused sample budget file
 
 - Now sample pliego is correct
 
@@ -1959,13 +1959,13 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Silly line removal
 
-- Changes to avoid users editing the Config/preamble.tex file to deal with bibliography
+- Clarify how to add bibliography files without editing the shared preamble
 
-- Changes to avoid users editing the Config/preamble.tex file to deal with bibliography
+- Clarify how to add bibliography files without editing the shared preamble
 
-- Changes to avoid users editing the Config/preamble.tex file to deal with bibliography
+- Clarify how to add bibliography files without editing the shared preamble
 
-- Changes to avoid users editing the Config/preamble.tex file to deal with bibliography
+- Clarify how to add bibliography files without editing the shared preamble
 
 - Added proper make clean commands
 
@@ -1975,7 +1975,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - New file with info on biblio related changes
 
-- Cleaning up files
+- Remove the obsolete budget chapter from the example and bare structures
 
 ## [v2.0.4, v2.0.5] - 2022-01-13
 
@@ -1995,7 +1995,7 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 
 - Adding TeX-master variable in introduction.tex
 
-- Just indentation improvement
+- Reindent the UAH TFG back-cover layout
 
 - Now omitting "signed by coadvisor" lines if there is no coadvisor
 
