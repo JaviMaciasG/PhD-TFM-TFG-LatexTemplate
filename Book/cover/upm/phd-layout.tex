@@ -34,13 +34,11 @@
 \newcommand{\UPMPhDPersonRow}[2]{%
   #1: & #2 \\[10pt]%
 }
-% Omite personas sin nombre y evita comas si no hay institución.
+% Mantiene siempre los rótulos y deja vacíos los datos no indicados.
 \newcommand{\UPMPhDReviewer}[4]{%
-  \ifthenelse{\equal{#2}{}}{}{%
-    \UPMPhDPersonRow{#1}{#2\ifSpanish{\ifthenelse{\equal{#3}{}}{}{, #3}}{\ifthenelse{\equal{#4}{}}{}{, #4}}}%
-  }%
+  \UPMPhDPersonRow{#1}{#2\ifSpanish{\ifthenelse{\equal{#3}{}}{}{, #3}}{\ifthenelse{\equal{#4}{}}{}{, #4}}}%
 }
-\newcommand{\UPMPhDCommitteeMember}[2]{\ifthenelse{\equal{#2}{}}{}{\UPMPhDPersonRow{#1}{#2}}}
+\newcommand{\UPMPhDCommitteeMember}[2]{\UPMPhDPersonRow{#1}{#2}}
 % Paridad física del PDF, independiente de los reinicios de numeración romana.
 \newcommand{\UPMPhDClearToOddPage}{%
   \clearpage

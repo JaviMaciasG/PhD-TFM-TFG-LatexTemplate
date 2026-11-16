@@ -45,19 +45,17 @@
         \end{minipage}
         \par}{}%
       \endgroup
-      \ifthenelse{\equal{\myFirstExternalReviewerFullName}{}\AND\equal{\mySecondExternalReviewerFullName}{}}{}{%
-        \UPMPhDBlockGap
-        \ifSpanish{Revisores Externos}{External Reviewers}:\par\medskip
-        \hspace*{1cm}
-        \begin{minipage}{15cm}
-          \begin{tabularx}
-            {\linewidth}[t]{@{}l@{\hspace{0.4cm}}>{\raggedright\arraybackslash}X@{}}
-            \UPMPhDReviewer{\ifSpanish{Revisor 1}{Reviewer 1}}{\myFirstExternalReviewerFullName}{\myFirstExternalReviewerInstitution}{\myFirstExternalReviewerInstitutionEnglish}%
-            \UPMPhDReviewer{\ifSpanish{Revisor 2}{Reviewer 2}}{\mySecondExternalReviewerFullName}{\mySecondExternalReviewerInstitution}{\mySecondExternalReviewerInstitutionEnglish}%
-          \end{tabularx}
-        \end{minipage}
-        \par
-      }%
+      \UPMPhDBlockGap
+      \ifSpanish{Revisores Externos}{External Reviewers}:\par\medskip
+      \hspace*{1cm}
+      \begin{minipage}{15cm}
+        \begin{tabularx}
+          {\linewidth}[t]{@{}l@{\hspace{0.4cm}}>{\raggedright\arraybackslash}X@{}}
+          \UPMPhDReviewer{\ifSpanish{Revisor 1}{Reviewer 1}}{\myFirstExternalReviewerFullName}{\myFirstExternalReviewerInstitution}{\myFirstExternalReviewerInstitutionEnglish}%
+          \UPMPhDReviewer{\ifSpanish{Revisor 2}{Reviewer 2}}{\mySecondExternalReviewerFullName}{\mySecondExternalReviewerInstitution}{\mySecondExternalReviewerInstitutionEnglish}%
+        \end{tabularx}
+      \end{minipage}
+      \par
       \UPMPhDBlockGap
       \ifSpanish{Tribunal de Tesis}{Thesis Defense Committee}:\par\medskip
       \hspace*{1cm}
