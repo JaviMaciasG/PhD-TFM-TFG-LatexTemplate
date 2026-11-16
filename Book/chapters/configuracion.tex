@@ -64,8 +64,6 @@ Los identificadores admitidos actualmente por \texttt{\textbackslash{}myDegree},
 
 Consulta siempre la lista actualizada de identificadores admitidos en los comentarios que aparecen inmediatamente antes de la definición de \texttt{\textbackslash{}myDegree} en \texttt{Config/myconfig.tex}. Solo tienes que elegir allí el identificador correspondiente y la plantilla seleccionará automáticamente los datos y las páginas institucionales aplicables.
 
-Si preparas un TFG de la EIF-URJC, consulta también las indicaciones de la sección~\ref{sec:indicaciones-eif-urjc}.
-
 \subsection{Título y palabras clave}
 
 Utiliza las siguientes variables para definir los títulos y las palabras clave del trabajo:
@@ -371,6 +369,8 @@ Si seleccionas una tesis doctoral de la ETSIT-UPM o la ETSII-UPM, convencional o
   \item \texttt{\textbackslash{}myFirstExternalReviewerFullName} y \texttt{\textbackslash{}mySecondExternalReviewerFullName}: nombres completos de los dos revisores externos. Sus instituciones se indican en \texttt{\textbackslash{}myFirstExternalReviewerInstitution} y \texttt{\textbackslash{}mySecondExternalReviewerInstitution}, o en sus variantes terminadas en \texttt{English}. Puedes dejar vacía la institución. Si no hay nombre, se omite toda la entrada.
   \item \texttt{\textbackslash{}myThesisDefenseDate} y \texttt{\textbackslash{}myThesisdefenseDateEnglish}: fecha de defensa que aparece en los créditos, según el idioma elegido. No debe confundirse con el año de depósito de la cubierta.
 \end{itemize}
+
+En la página de créditos de las tesis UPM, la plantilla imprime los nombres de las personas revisoras externas y del tribunal, así como la fecha de defensa, a partir de los valores definidos en \texttt{Config/myconfig.tex}. Si el modelo que debes presentar exige que alguno de esos datos figure en blanco, deja vacías las variables correspondientes. Los rótulos de esos apartados forman parte del diseño y pueden seguir apareciendo aunque no se haya indicado ningún dato.
 
 Antes de entregar la tesis, comprueba los requisitos de tu convocatoria en las \href{https://www.upm.es/Estudiantes/Estudios_Titulaciones/Estudios_Doctorado/Tesis/NormasRedaccionTesis}{normas oficiales de redacción de tesis UPM}. Si preparas una tesis por compendio, consulta también la sección~\ref{sec:tesis-compendio}.
 
