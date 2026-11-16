@@ -2,6 +2,24 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.13.7] - 2026-11-16
+
+### Bug Fixes
+
+- Now using Presidente/a correctly in UAH/URJC cover pages
+
+- Keep UPM PhD credits-page labels visible when their fields are blank
+
+
+### Documentation
+
+- Do not address specific issues related to regulations in the manual, just added a general comment
+
+
+### Maintenance
+
+- Prepare v8.13.7
+
 ## [v8.13.6] - 2026-11-15
 
 ### Features
