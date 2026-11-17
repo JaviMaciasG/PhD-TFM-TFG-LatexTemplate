@@ -703,8 +703,17 @@
 \usepackage[letterspace]{microtype}
 
 % Code to more agressively compress includegraphics images
-\pdfcompresslevel=9
-\pdfobjcompresslevel=3
+\ifPDFTeX
+  \pdfcompresslevel=9
+  \pdfobjcompresslevel=3
+\else
+  \ifLuaTeX
+    \pdfvariable compresslevel=9
+    \pdfvariable objcompresslevel=3
+  \fi
+  % XeLaTeX: no se establecen estas primitivas.
+\fi
+%\pdfobjcompresslevel=3
 
 %%% Local Variables:
 %%% TeX-master: "../book"
