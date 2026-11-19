@@ -40,11 +40,14 @@ reference_sources=(
   Book/cover/upm/imagen-portada-tfm-etsii-upm.png
   Book/cover/uclm/portada-tfg-eiia-uclm.tex
   Book/cover/uclm/credits-tfg-eiia-uclm.tex
+  Book/cover/us/portada-phd-etsii-us.tex
+  Book/logos/us/escudo-trp.png
   Book/logos/uclm/Logo_UCLM_2025_b.pdf
   Book/logos/uclm/Logo_EIIA_2024_b.pdf
   Book/logos/uclm/Logo_UCLM_2025.pdf
   Book/logos/uclm/Logo_EIIA_2024.pdf
   Config/institution-styles/uclm.tex
+  Config/institution-styles/us.tex
 )
 # Build these generic guides even when this script is invoked without make distrib.
 make -C PapeleoTFG guia

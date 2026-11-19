@@ -296,7 +296,7 @@ You can compile the `.tex` file for an individual form from your editor or use t
 
 For a doctoral thesis by compendium:
 
-- Select `PHDUAH-COMPENDIUM`, `PHD-ETSIT-UPM-COMPENDIUM`, or `PHD-ETSII-UPM-COMPENDIUM` through `\myDegree` in `Config/myconfig.tex`, according to your university and school.
+- Select `PHDUAH-COMPENDIUM`, `PHD-ETSIT-UPM-COMPENDIUM`, `PHD-ETSII-UPM-COMPENDIUM`, or `PHD-ETSII-US-COMPENDIUM` through `\myDegree` in `Config/myconfig.tex`, according to your university and school.
 - Organise the content in `Book/content-compendium.tex`.
 - Keep compiling `Book/book.tex`.
 

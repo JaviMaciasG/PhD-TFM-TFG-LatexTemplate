@@ -53,9 +53,11 @@
 %  PHDUAH  - Doctorado UAH
 %  PHD-ETSIT-UPM - Doctorado de la ETSIT-UPM
 %  PHD-ETSII-UPM - Doctorado de la ETSII-UPM
+%  PHD-ETSII-US - Doctorado en Ingeniería Informática de la ETSII-US
 %  PHDUAH-COMPENDIUM - Doctorado UAH por compendio de publicaciones
 %  PHD-ETSIT-UPM-COMPENDIUM - Doctorado ETSIT-UPM por compendio de publicaciones
 %  PHD-ETSII-UPM-COMPENDIUM - Doctorado ETSII-UPM por compendio de publicaciones
+%  PHD-ETSII-US-COMPENDIUM - Doctorado ETSII-US por compendio de publicaciones
 %
 % Titulaciones de la ESCET-URJC:
 %  ITI-ESCET-URJC - Grado en Ingeniería en Tecnologías Industriales (ESCET-URJC)
@@ -172,6 +174,7 @@
 % Datos del tutor
 % GISD-ETSIT-UPM: el tutor definido en myAcademicTutorFullName se muestra como
 % supervisor técnico, no como supervisor académico.
+% En ETSII-US, indica aquí a quien dirige la tesis, no a quien solo ejerce la tutoría.
 \newcommand{\myAcademicTutorFullName}{Roberto Barra Chicote} 
 \newcommand{\myAcademicTutorGender}{male}
 \newcommand{\myAcademicTutorDNI}{20052011-J}
@@ -203,6 +206,7 @@
 % Datos del cotutor
 % GISD-ETSIT-UPM: el cotutor definido en myCoTutorFullName se muestra como supervisor
 % académico; completa su nombre en el campo siguiente.
+% En ETSII-US, este campo corresponde a quien codirige la tesis, si procede.
 \newcommand{\myCoTutorFullName}{María Isidra de Guzmán y de la Cerda} % Déjalo vacío si no hay cotutor.
 \newcommand{\myCoTutorGender}{female}
 \newcommand{\myCoTutorDNI}{17850606-F}
@@ -237,6 +241,7 @@
 \newcommand{\myUPMdegree}{Ingeniero de Telecomunicación}
 \newcommand{\myUPMdegreeEnglish}{Telecommunication Engineer}
 % Año de solicitud del depósito; puede ser distinto del año de defensa.
+% Se utiliza también en la cubierta de las tesis de la ETSII-US.
 \newcommand{\myThesisDepositYear}{\myThesisDefenseYear}
 % Texto completo de financiación competitiva para los créditos doctorales UPM.
 % Déjalo vacío si no procede; admite texto LaTeX y no aparece en otras titulaciones.

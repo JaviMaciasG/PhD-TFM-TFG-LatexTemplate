@@ -1,0 +1,51 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: cubierta de tesis doctoral de la ETSII-US basada en el ejemplo.
+%
+% Uso: inclusión automática; normalmente no debes modificarla.
+% Completa los datos en Config/myconfig.tex. No se compila por separado.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+\null
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=north, inner sep=0pt] at
+    ([yshift=-3.55cm]current page.north) {%
+      \begin{minipage}[t][20.9cm][s]{16cm}
+        \normalfont\rmfamily\centering
+        \noindent
+        \begin{minipage}[c]{3.5cm}
+          \includegraphics[width=\linewidth]{\USInstitutionalCrest}
+        \end{minipage}\hspace{0.4cm}%
+        \begin{minipage}[c]{11.2cm}
+          \centering\fontsize{12}{14}\selectfont
+          \MakeUppercase{\myUniversity}\\\mySchool
+        \end{minipage}\par
+        \vspace{\stretch{2}}
+        {\bfseries\fontsize{14}{17}\selectfont
+          \ifEnglish{\DegreeRegistryValue{degree-name-english}}{\myDegreefull}\par}
+        \vspace{\stretch{2}}
+        {\bfseries\fontsize{21}{27}\selectfont \myBookTitle\par}
+        \vspace{\stretch{3}}
+        {\bfseries\fontsize{21}{25}\selectfont
+          \textls[150]{\MakeUppercase{\myWorkTypeFull}}\par}
+        \smallskip
+        {\fontsize{14}{17}\selectfont
+          \ifEnglish
+            {Submitted for the degree of Doctor by:}
+            {Presentada para optar al título de
+              \ifthenelse{\equal{\myAuthorGender}{female}}{Doctora}{Doctor} por:}\par}
+        \vspace{\stretch{1}}
+        {\bfseries\fontsize{17}{21}\selectfont \myAuthorFullName\par}
+        \vspace{\stretch{3}}
+        {\fontsize{12}{15}\selectfont
+          \ifEnglish
+            {\CapitalizeFirstLetter{\wordAdvisorOrAdvisors}}
+            {\CapitalizeFirstLetter{\wordDirectorOrDirectores}}:\par}
+        \smallskip
+        {\fontsize{14}{18}\selectfont \myAdvisorsConDrOrDra\par}
+        \vspace{\stretch{2}}
+        {\fontsize{14}{17}\selectfont Sevilla, \myThesisDepositYear\par}
+      \end{minipage}%
+    };
+\end{tikzpicture}
+\clearpage

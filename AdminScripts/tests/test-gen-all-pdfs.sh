@@ -126,7 +126,10 @@ assert_count "$("$generator" --degree-types RR --dry-run)" "$reports"
 assert_count "$("$generator" --degrees GEINTRARR --dry-run)" 1
 assert_count "$("$generator" --degrees GIEC,PHDUAH --structures compendium --dry-run)" 1
 assert_count "$("$generator" --degrees GIEC --styles framed,standard,framed --font-modes document,institutional --languages english,spanish --dry-run)" 8
-assert_contains "$("$generator" --list-options)" 'Universities: UAH URJC UPM UCLM GEINTRA'
+assert_contains "$("$generator" --list-options)" 'Universities: UAH URJC UPM UCLM US GEINTRA'
+us_matrix=$("$generator" --universities US --structures standard,compendium --languages spanish,english --dry-run)
+assert_count "$us_matrix" 4
+assert_contains "$us_matrix" 'PhD-PHD-ETSII-US-english-compendium-standard-institutional.pdf'
 assert_contains "$("$generator" --help)" '--yes'
 expect_error --degrees INVALID --dry-run
 expect_error --degrees ITIURJC --dry-run

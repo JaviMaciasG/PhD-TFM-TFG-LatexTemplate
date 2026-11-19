@@ -8,11 +8,12 @@ checks=0
 while IFS= read -r degree; do
   institution=$(sh "$query" institution "$degree")
   case $institution in
-    UPM|URJC|UCLM)
+    UPM|URJC|UCLM|US)
       [[ ${degree%-COMPENDIUM} == *-"$institution" ]] || { echo "FAIL: missing university suffix: $degree" >&2; exit 1; }
       if [[ $institution == UPM ]]; then
         [[ ${degree%-COMPENDIUM} == *-ETSIT-UPM || ${degree%-COMPENDIUM} == *-ETSIST-UPM || ${degree%-COMPENDIUM} == *-ETSII-UPM ]] || { echo "FAIL: missing UPM school suffix: $degree" >&2; exit 1; }
       fi
+      [[ $institution != US || ${degree%-COMPENDIUM} == *-ETSII-US ]] || { echo "FAIL: missing ETSII-US school suffix: $degree" >&2; exit 1; }
       legacy=${degree//-/}
       if sh "$query" work-type "$legacy" >/dev/null 2>&1; then
         echo "FAIL: obsolete identifier still registered: $legacy" >&2
@@ -21,7 +22,7 @@ while IFS= read -r degree; do
       checks=$((checks + 1)) ;;
   esac
 done < <(sh "$query" identifiers)
-[[ $checks == 49 ]] || { echo "FAIL: expected 49 non-UAH degrees, found $checks" >&2; exit 1; }
+[[ $checks == 51 ]] || { echo "FAIL: expected 51 non-UAH degrees, found $checks" >&2; exit 1; }
 for old in ITI-URJC GCID-URJC GDDV-URJC GII-URJC GICO-URJC GICI-URJC GIS-URJC GIA-URJC GMAT-URJC; do
   if sh "$query" work-type "$old" >/dev/null 2>&1; then
     echo "FAIL: obsolete URJC identifier still registered: $old" >&2
@@ -52,7 +53,7 @@ for language in spanish english; do
     tail -n 60 "$fixture/$language-output.log" >&2
     exit 1
   fi
-  [[ $(grep -c '^PASS:' "$fixture/identifiers-$language.log") == 54 ]] || exit 1
+  [[ $(grep -c '^PASS:' "$fixture/identifiers-$language.log") == 56 ]] || exit 1
 done
 if pdflatex -draftmode -interaction=nonstopmode -halt-on-error \
   -output-directory="$fixture" -jobname=rejected-urjc \
@@ -62,4 +63,4 @@ if pdflatex -draftmode -interaction=nonstopmode -halt-on-error \
   exit 1
 fi
 grep -q "Unsupported degree identifier 'GII-URJC'" "$fixture/rejected-output.log"
-printf 'PASS: %s non-UAH degrees; 108 LaTeX registry/conditional assertions.\n' "$checks"
+printf 'PASS: %s non-UAH degrees; 112 LaTeX registry/conditional assertions.\n' "$checks"
