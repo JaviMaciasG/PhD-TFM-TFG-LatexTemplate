@@ -4,6 +4,9 @@
 \input{../Config/myconfig.tex}
 \input{../Config/glossaries.tex}
 \renewcommand{\myDegree}{\TestDegree}
+\ifdefined\TestLanguage
+  \renewcommand{\myLanguage}{\TestLanguage}
+\fi
 \ifdefined\TestLegacyStructure
   \newcommand{\myDocumentStructure}{\TestLegacyStructure}
 \fi
@@ -36,6 +39,15 @@
   \DegreeRegistrySelect{DIRECTSTANDARD}
   \ifthenelse{\equal{\DegreeRegistryValue{document-structure}}{standard}}{}%
     {\PackageError{structure-test}{Default leaked between declarations}{Check reset}}
+  \DeclareDegreeVariant{DIRECTVARIANT}{DIRECTSTANDARD}{document-structure=compendium}
+  \DegreeRegistrySelect{DIRECTVARIANT}
+  \edef\VariantStructure{\DegreeRegistryValue{document-structure}}
+  \edef\VariantBase{\DegreeRegistryValue{base-degree}}
+  \ifthenelse{\equal{\VariantStructure}{compendium}\AND\equal{\VariantBase}{DIRECTSTANDARD}}{}%
+    {\PackageError{structure-test}{Variant did not inherit its base}{Check record copy}}
+  \DegreeRegistrySelect{DIRECTSTANDARD}
+  \ifthenelse{\equal{\DegreeRegistryValue{document-structure}}{standard}}{}%
+    {\PackageError{structure-test}{Variant modified its parent}{Check record copy}}
   \DegreeRegistrySelect{\TestDegree}
 \fi
 \ifdefined\TestDeclaration\TestDeclaration\fi

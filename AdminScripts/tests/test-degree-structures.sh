@@ -40,7 +40,9 @@ for degree in GIEC PHDUAH PHDUAH-COMPENDIUM PHD-ETSIT-UPM PHD-ETSIT-UPM-COMPENDI
   grep -q 'PASS: REGISTRY-STRUCTURE' "$fixture/$degree.log"
 done
 build PHDUAH standard '\def\TestLegacyStructure{compendium}' legacy
-build PHDUAH standard '\def\TestStandalone{1}' standalone
+for language in spanish english; do
+  build PHDUAH standard "\def\TestStandalone{1}\def\TestLanguage{$language}" "standalone-$language"
+done
 grep -q 'Ignoring legacy myDocumentStructure' "$fixture/legacy.log"
 build PHDUAH-COMPENDIUM compendium '\def\TestLegacyStructure{standard}' legacy-variant
 grep -q 'Ignoring legacy myDocumentStructure' "$fixture/legacy-variant.log"
@@ -49,11 +51,14 @@ invalid=(
   '\DeclareDegreeVariant{BAD}{PHDUAH}{document-structure=unknown}'
   '\DeclareDegreeVariant{BAD}{UNKNOWN}{document-structure=compendium}'
   '\DeclareDegreeVariant{PHDUAH}{PHDUAH}{document-structure=compendium}'
+  '\DeclareDegree{PHDUAH}{}'
 )
 for i in "${!invalid[@]}"; do
   ! build PHDUAH standard "\def\TestDeclaration{${invalid[$i]}}" "invalid-$i"
   grep -q '^!' "$fixture/invalid-$i.log"
 done
+grep -Fq "Degree identifier 'PHDUAH'" "$fixture/invalid-3.log"
+grep -Fq "Degree identifier 'PHDUAH'" "$fixture/invalid-4.log"
 # Non-PhD compendium targets must not create backups or edit any sources.
 sed -Ei 's!(\\newcommand\{\\myDegree\}\{)[^}]*\}!\1GIEC}!' "$fixture/Config/myconfig.tex"
 snapshot=$(find "$fixture/Book" "$fixture/Config" -type f -exec sha256sum {} + | sort)

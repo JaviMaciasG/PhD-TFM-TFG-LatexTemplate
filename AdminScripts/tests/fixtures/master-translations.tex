@@ -83,7 +83,7 @@
 
 % La selección repetida no debe dejar activo el nombre inglés de un TFM.
 \ExplSyntaxOn
-\seq_map_inline:Nn \g_uah_degree_registry_ids_seq
+\seq_map_inline:Nn \g_template_degree_registry_ids_seq
   {
     \DegreeRegistrySelect{#1}
     \tl_set:Nx \l_tmpa_tl {\myWorkType}

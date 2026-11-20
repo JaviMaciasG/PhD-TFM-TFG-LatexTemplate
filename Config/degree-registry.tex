@@ -6,473 +6,467 @@
 
 \ExplSyntaxOn
 
-\prop_new:N \g_uah_degree_registry_prop
-\prop_new:N \l_uah_degree_snapshot_prop
-\prop_new:N \g_uah_institution_registry_prop
-\prop_new:N \g_uah_layout_profile_prop
-\seq_new:N  \g_uah_degree_registry_ids_seq
-\tl_new:N   \g_uah_selected_degree_tl
+\prop_new:N \g_template_institution_registry_prop
+\prop_new:N \g_template_layout_profile_prop
+\seq_new:N  \g_template_degree_registry_ids_seq
+\tl_new:N   \g_template_selected_degree_tl
 
-\tl_new:N \l_uah_degree_status_tl
-\tl_new:N \l_uah_degree_institution_tl
-\tl_new:N \l_uah_degree_school_tl
-\tl_new:N \l_uah_degree_school_english_tl
-\tl_new:N \l_uah_degree_school_logo_tl
-\tl_new:N \l_uah_degree_name_tl
-\tl_new:N \l_uah_degree_name_english_tl
-\tl_new:N \l_uah_degree_name_wrapped_tl
-\tl_new:N \l_uah_degree_name_wrapped_uppercase_tl
-\tl_new:N \l_uah_degree_name_wrapped_english_tl
-\tl_new:N \l_uah_degree_name_wrapped_uppercase_english_tl
-\bool_new:N \l_uah_degree_english_tfm_bool
-\tl_new:N \l_uah_degree_work_type_tl
-\tl_new:N \l_uah_degree_work_type_full_spanish_tl
-\tl_new:N \l_uah_degree_work_type_full_english_tl
-\tl_new:N \l_uah_degree_layout_profile_tl
-\tl_new:N \l_uah_degree_document_structure_tl
-\tl_new:N \l_uah_degree_institutional_tfg_code_tl
-\tl_new:N \l_uah_degree_cover_degree_field_tl
-\tl_new:N \l_uah_layout_cover_files_tl
-\tl_new:N \l_uah_layout_backpage_file_tl
-\tl_new:N \l_uah_institution_university_name_tl
-\tl_new:N \l_uah_institution_university_name_english_tl
-\tl_new:N \l_uah_institution_university_acronym_tl
-\tl_new:N \l_uah_institution_style_file_tl
+\tl_new:N \l_template_degree_status_tl
+\tl_new:N \l_template_degree_institution_tl
+\tl_new:N \l_template_degree_school_tl
+\tl_new:N \l_template_degree_school_english_tl
+\tl_new:N \l_template_degree_school_logo_tl
+\tl_new:N \l_template_degree_name_tl
+\tl_new:N \l_template_degree_name_english_tl
+\tl_new:N \l_template_degree_name_wrapped_tl
+\tl_new:N \l_template_degree_name_wrapped_uppercase_tl
+\tl_new:N \l_template_degree_name_wrapped_english_tl
+\tl_new:N \l_template_degree_name_wrapped_uppercase_english_tl
+\bool_new:N \l_template_degree_english_tfm_bool
+\tl_new:N \l_template_degree_work_type_tl
+\tl_new:N \l_template_degree_work_type_full_spanish_tl
+\tl_new:N \l_template_degree_work_type_full_english_tl
+\tl_new:N \l_template_degree_layout_profile_tl
+\tl_new:N \l_template_degree_document_structure_tl
+\tl_new:N \l_template_degree_institutional_tfg_code_tl
+\tl_new:N \l_template_degree_cover_degree_field_tl
+\tl_new:N \l_template_layout_cover_files_tl
+\tl_new:N \l_template_layout_backpage_file_tl
+\tl_new:N \l_template_institution_university_name_tl
+\tl_new:N \l_template_institution_university_name_english_tl
+\tl_new:N \l_template_institution_university_acronym_tl
+\tl_new:N \l_template_institution_style_file_tl
 
-\msg_new:nnn { uah-degree-registry } { duplicate-degree }
+\msg_new:nnn { template-degree-registry } { duplicate-degree }
   { Degree~identifier~'#1'~has~already~been~declared. }
-\msg_new:nnn { uah-degree-registry } { unknown-degree }
+\msg_new:nnn { template-degree-registry } { unknown-degree }
   { Unsupported~degree~identifier~'#1'. }
-\msg_new:nnn { uah-degree-registry } { duplicate-institution }
+\msg_new:nnn { template-degree-registry } { duplicate-institution }
   { Institution~identifier~'#1'~has~already~been~declared. }
-\msg_new:nnn { uah-degree-registry } { unknown-institution }
+\msg_new:nnn { template-degree-registry } { unknown-institution }
   { Degree~'#1'~references~the~unknown~institution~'#2'. }
-\msg_new:nnn { uah-degree-registry } { missing-degree-field }
+\msg_new:nnn { template-degree-registry } { missing-degree-field }
   { Degree~'#1'~does~not~define~the~required~field~'#2'. }
-\msg_new:nnn { uah-degree-registry } { duplicate-layout-profile }
+\msg_new:nnn { template-degree-registry } { duplicate-layout-profile }
   { Layout~profile~'#1'~has~already~been~declared. }
-\msg_new:nnn { uah-degree-registry } { unknown-layout-profile }
+\msg_new:nnn { template-degree-registry } { unknown-layout-profile }
   { Degree~'#1'~references~the~unknown~layout~profile~'#2'. }
 
-\keys_define:nn { uah/degree }
+\keys_define:nn { template/degree }
   {
-    status                         .tl_set:N = \l_uah_degree_status_tl,
-    institution                    .tl_set:N = \l_uah_degree_institution_tl,
-    school                         .tl_set:N = \l_uah_degree_school_tl,
-    school-english                 .tl_set:N = \l_uah_degree_school_english_tl,
-    school-logo                    .tl_set:N = \l_uah_degree_school_logo_tl,
-    degree-name                    .tl_set:N = \l_uah_degree_name_tl,
-    degree-name-english            .tl_set:N = \l_uah_degree_name_english_tl,
-    degree-name-wrapped            .tl_set:N = \l_uah_degree_name_wrapped_tl,
-    degree-name-wrapped-uppercase  .tl_set:N = \l_uah_degree_name_wrapped_uppercase_tl,
-    degree-name-wrapped-english    .tl_set:N = \l_uah_degree_name_wrapped_english_tl,
-    degree-name-wrapped-uppercase-english .tl_set:N = \l_uah_degree_name_wrapped_uppercase_english_tl,
-    work-type                      .tl_set:N = \l_uah_degree_work_type_tl,
-    work-type-full-spanish         .tl_set:N = \l_uah_degree_work_type_full_spanish_tl,
-    work-type-full-english         .tl_set:N = \l_uah_degree_work_type_full_english_tl,
-    layout-profile                 .tl_set:N = \l_uah_degree_layout_profile_tl,
-    document-structure             .tl_set:N = \l_uah_degree_document_structure_tl,
-    institutional-tfg-code         .tl_set:N = \l_uah_degree_institutional_tfg_code_tl,
-    cover-degree-field             .tl_set:N = \l_uah_degree_cover_degree_field_tl,
+    status                         .tl_set:N = \l_template_degree_status_tl,
+    institution                    .tl_set:N = \l_template_degree_institution_tl,
+    school                         .tl_set:N = \l_template_degree_school_tl,
+    school-english                 .tl_set:N = \l_template_degree_school_english_tl,
+    school-logo                    .tl_set:N = \l_template_degree_school_logo_tl,
+    degree-name                    .tl_set:N = \l_template_degree_name_tl,
+    degree-name-english            .tl_set:N = \l_template_degree_name_english_tl,
+    degree-name-wrapped            .tl_set:N = \l_template_degree_name_wrapped_tl,
+    degree-name-wrapped-uppercase  .tl_set:N = \l_template_degree_name_wrapped_uppercase_tl,
+    degree-name-wrapped-english    .tl_set:N = \l_template_degree_name_wrapped_english_tl,
+    degree-name-wrapped-uppercase-english .tl_set:N = \l_template_degree_name_wrapped_uppercase_english_tl,
+    work-type                      .tl_set:N = \l_template_degree_work_type_tl,
+    work-type-full-spanish         .tl_set:N = \l_template_degree_work_type_full_spanish_tl,
+    work-type-full-english         .tl_set:N = \l_template_degree_work_type_full_english_tl,
+    layout-profile                 .tl_set:N = \l_template_degree_layout_profile_tl,
+    document-structure             .tl_set:N = \l_template_degree_document_structure_tl,
+    institutional-tfg-code         .tl_set:N = \l_template_degree_institutional_tfg_code_tl,
+    cover-degree-field             .tl_set:N = \l_template_degree_cover_degree_field_tl,
   }
 
 % Variants inherit institutional metadata and override only the structure.
-\keys_define:nn { uah/degree-variant }
-  { document-structure .tl_set:N = \l_uah_degree_document_structure_tl }
+\keys_define:nn { template/degree-variant }
+  { document-structure .tl_set:N = \l_template_degree_document_structure_tl }
 
-\cs_new_protected:Npn \uah_degree_validate_structure:n #1
+\cs_new_protected:Npn \template_degree_validate_structure:n #1
   {
-    \str_case:VnF \l_uah_degree_document_structure_tl
+    \str_case:VnF \l_template_degree_document_structure_tl
       { {standard} {} {compendium} {} }
       { \PackageError{UAH-template}{Invalid~document~structure~for~#1}
           {Use~standard~or~compendium~in~the~degree~registry.} }
-    \str_if_eq:VnT \l_uah_degree_document_structure_tl {compendium}
+    \str_if_eq:VnT \l_template_degree_document_structure_tl {compendium}
       {
-        \str_if_eq:VnF \l_uah_degree_work_type_tl {PhD}
+        \str_if_eq:VnF \l_template_degree_work_type_tl {PhD}
           { \PackageError{UAH-template}{Compendium~requires~a~PhD~degree~(#1)}
               {Only~doctoral~entries~can~select~compendium.} }
       }
   }
 
-\keys_define:nn { uah/institution }
+\keys_define:nn { template/institution }
   {
-    university-name          .tl_set:N = \l_uah_institution_university_name_tl,
-    university-name-english  .tl_set:N = \l_uah_institution_university_name_english_tl,
-    university-acronym       .tl_set:N = \l_uah_institution_university_acronym_tl,
-    style-file                .tl_set:N = \l_uah_institution_style_file_tl,
+    university-name          .tl_set:N = \l_template_institution_university_name_tl,
+    university-name-english  .tl_set:N = \l_template_institution_university_name_english_tl,
+    university-acronym       .tl_set:N = \l_template_institution_university_acronym_tl,
+    style-file                .tl_set:N = \l_template_institution_style_file_tl,
   }
 
-\keys_define:nn { uah/layout-profile }
+\keys_define:nn { template/layout-profile }
   {
-    cover-files   .tl_set:N = \l_uah_layout_cover_files_tl,
-    backpage-file .tl_set:N = \l_uah_layout_backpage_file_tl,
+    cover-files   .tl_set:N = \l_template_layout_cover_files_tl,
+    backpage-file .tl_set:N = \l_template_layout_backpage_file_tl,
   }
 
 \cs_generate_variant:Nn \prop_get:NnN { NxN }
 \cs_generate_variant:Nn \prop_if_in:NnTF { NxTF }
-\cs_generate_variant:Nn \prop_gput:Nnn { Nxn }
 
-\cs_new_protected:Npn \uah_degree_clear_fields:
+\cs_new_protected:Npn \template_degree_clear_fields:
   {
-    \tl_clear:N \l_uah_degree_status_tl
-    \tl_clear:N \l_uah_degree_institution_tl
-    \tl_clear:N \l_uah_degree_school_tl
-    \tl_clear:N \l_uah_degree_school_english_tl
-    \tl_clear:N \l_uah_degree_school_logo_tl
-    \tl_clear:N \l_uah_degree_name_tl
-    \tl_clear:N \l_uah_degree_name_english_tl
-    \tl_clear:N \l_uah_degree_name_wrapped_tl
-    \tl_clear:N \l_uah_degree_name_wrapped_uppercase_tl
-    \tl_clear:N \l_uah_degree_name_wrapped_english_tl
-    \tl_clear:N \l_uah_degree_name_wrapped_uppercase_english_tl
-    \tl_clear:N \l_uah_degree_work_type_tl
-    \tl_clear:N \l_uah_degree_work_type_full_spanish_tl
-    \tl_clear:N \l_uah_degree_work_type_full_english_tl
-    \tl_clear:N \l_uah_degree_layout_profile_tl
-    \tl_set:Nn \l_uah_degree_document_structure_tl {standard}
-    \tl_clear:N \l_uah_degree_institutional_tfg_code_tl
-    \tl_clear:N \l_uah_degree_cover_degree_field_tl
+    \tl_clear:N \l_template_degree_status_tl
+    \tl_clear:N \l_template_degree_institution_tl
+    \tl_clear:N \l_template_degree_school_tl
+    \tl_clear:N \l_template_degree_school_english_tl
+    \tl_clear:N \l_template_degree_school_logo_tl
+    \tl_clear:N \l_template_degree_name_tl
+    \tl_clear:N \l_template_degree_name_english_tl
+    \tl_clear:N \l_template_degree_name_wrapped_tl
+    \tl_clear:N \l_template_degree_name_wrapped_uppercase_tl
+    \tl_clear:N \l_template_degree_name_wrapped_english_tl
+    \tl_clear:N \l_template_degree_name_wrapped_uppercase_english_tl
+    \tl_clear:N \l_template_degree_work_type_tl
+    \tl_clear:N \l_template_degree_work_type_full_spanish_tl
+    \tl_clear:N \l_template_degree_work_type_full_english_tl
+    \tl_clear:N \l_template_degree_layout_profile_tl
+    \tl_set:Nn \l_template_degree_document_structure_tl {standard}
+    \tl_clear:N \l_template_degree_institutional_tfg_code_tl
+    \tl_clear:N \l_template_degree_cover_degree_field_tl
   }
 
-\cs_new_protected:Npn \uah_degree_require:nnN #1#2#3
+\cs_new_protected:Npn \template_degree_require:nnN #1#2#3
   {
     \tl_if_blank:VTF #3
-      { \msg_error:nnnn { uah-degree-registry } { missing-degree-field } {#1} {#2} }
+      { \msg_error:nnnn { template-degree-registry } { missing-degree-field } {#1} {#2} }
       { }
   }
 
-\cs_new_protected:Npn \uah_degree_store:nnV #1#2#3
-  { \prop_gput:NnV \g_uah_degree_registry_prop { #1/#2 } #3 }
+% One small property list per degree, with a separate sequence for catalogue order.
+\cs_new:Npn \template_degree_record:n #1 { g_template_degree_#1_prop }
 
-\cs_new_protected:Npn \uah_degree_declare:nn #1#2
+\cs_new:Npn \template_degree_item:nn #1#2
+  { \prop_item:cn { \template_degree_record:n {#1} } {#2} }
+
+\cs_new_protected:Npn \template_degree_get:nnN #1#2#3
+  { \prop_get:cnN { \template_degree_record:n {#1} } {#2} #3 }
+
+\cs_new_protected:Npn \template_degree_store:nnV #1#2#3
+  { \exp_args:Nc \prop_gput:NnV { \template_degree_record:n {#1} } {#2} #3 }
+
+\cs_new_protected:Npn \template_degree_declare:nn #1#2
   {
-    \seq_if_in:NnTF \g_uah_degree_registry_ids_seq {#1}
-      { \msg_error:nnn { uah-degree-registry } { duplicate-degree } {#1} }
+    \cs_if_exist:cTF { \template_degree_record:n {#1} }
+      { \msg_error:nnn { template-degree-registry } { duplicate-degree } {#1} }
       {
-        \uah_degree_clear_fields:
-        \keys_set:nn { uah/degree } {#2}
-        \uah_degree_validate_structure:n {#1}
-        \uah_degree_require:nnN {#1} {status} \l_uah_degree_status_tl
-        \uah_degree_require:nnN {#1} {institution} \l_uah_degree_institution_tl
-        \uah_degree_require:nnN {#1} {school} \l_uah_degree_school_tl
-        \uah_degree_require:nnN {#1} {degree-name} \l_uah_degree_name_tl
-        \uah_degree_require:nnN {#1} {work-type} \l_uah_degree_work_type_tl
-        \uah_degree_require:nnN {#1} {work-type-full-spanish} \l_uah_degree_work_type_full_spanish_tl
-        \uah_degree_require:nnN {#1} {work-type-full-english} \l_uah_degree_work_type_full_english_tl
-        \uah_degree_require:nnN {#1} {layout-profile} \l_uah_degree_layout_profile_tl
-        \str_if_eq:VnT \l_uah_degree_layout_profile_tl {upm-phd}
-          { \uah_degree_require:nnN {#1} {school-logo} \l_uah_degree_school_logo_tl }
-        \str_if_eq:VnT \l_uah_degree_layout_profile_tl {upm-etsii-tfg}
-          { \uah_degree_require:nnN {#1} {cover-degree-field} \l_uah_degree_cover_degree_field_tl }
-        \seq_gput_right:Nn \g_uah_degree_registry_ids_seq {#1}
-        \uah_degree_store:nnV {#1} {status} \l_uah_degree_status_tl
-        \uah_degree_store:nnV {#1} {institution} \l_uah_degree_institution_tl
-        \uah_degree_store:nnV {#1} {school} \l_uah_degree_school_tl
-        \uah_degree_store:nnV {#1} {school-english} \l_uah_degree_school_english_tl
-        \uah_degree_store:nnV {#1} {school-logo} \l_uah_degree_school_logo_tl
-        \uah_degree_store:nnV {#1} {degree-name} \l_uah_degree_name_tl
-        \uah_degree_store:nnV {#1} {degree-name-english} \l_uah_degree_name_english_tl
-        \uah_degree_store:nnV {#1} {degree-name-wrapped} \l_uah_degree_name_wrapped_tl
-        \uah_degree_store:nnV {#1} {degree-name-wrapped-uppercase} \l_uah_degree_name_wrapped_uppercase_tl
-        \uah_degree_store:nnV {#1} {degree-name-wrapped-english} \l_uah_degree_name_wrapped_english_tl
-        \uah_degree_store:nnV {#1} {degree-name-wrapped-uppercase-english} \l_uah_degree_name_wrapped_uppercase_english_tl
-        \uah_degree_store:nnV {#1} {work-type} \l_uah_degree_work_type_tl
-        \uah_degree_store:nnV {#1} {work-type-full-spanish} \l_uah_degree_work_type_full_spanish_tl
-        \uah_degree_store:nnV {#1} {work-type-full-english} \l_uah_degree_work_type_full_english_tl
-        \uah_degree_store:nnV {#1} {layout-profile} \l_uah_degree_layout_profile_tl
-        \uah_degree_store:nnV {#1} {document-structure} \l_uah_degree_document_structure_tl
-        \uah_degree_store:nnV {#1} {institutional-tfg-code} \l_uah_degree_institutional_tfg_code_tl
-        \uah_degree_store:nnV {#1} {cover-degree-field} \l_uah_degree_cover_degree_field_tl
-        \prop_gput:Nnn \g_uah_degree_registry_prop {#1/base-degree} {#1}
+        \template_degree_clear_fields:
+        \keys_set:nn { template/degree } {#2}
+        \template_degree_validate_structure:n {#1}
+        \template_degree_require:nnN {#1} {status} \l_template_degree_status_tl
+        \template_degree_require:nnN {#1} {institution} \l_template_degree_institution_tl
+        \template_degree_require:nnN {#1} {school} \l_template_degree_school_tl
+        \template_degree_require:nnN {#1} {degree-name} \l_template_degree_name_tl
+        \template_degree_require:nnN {#1} {work-type} \l_template_degree_work_type_tl
+        \template_degree_require:nnN {#1} {work-type-full-spanish} \l_template_degree_work_type_full_spanish_tl
+        \template_degree_require:nnN {#1} {work-type-full-english} \l_template_degree_work_type_full_english_tl
+        \template_degree_require:nnN {#1} {layout-profile} \l_template_degree_layout_profile_tl
+        \str_if_eq:VnT \l_template_degree_layout_profile_tl {upm-phd}
+          { \template_degree_require:nnN {#1} {school-logo} \l_template_degree_school_logo_tl }
+        \str_if_eq:VnT \l_template_degree_layout_profile_tl {upm-etsii-tfg}
+          { \template_degree_require:nnN {#1} {cover-degree-field} \l_template_degree_cover_degree_field_tl }
+        \prop_new:c { \template_degree_record:n {#1} }
+        \seq_gput_right:Nn \g_template_degree_registry_ids_seq {#1}
+        \template_degree_store:nnV {#1} {status} \l_template_degree_status_tl
+        \template_degree_store:nnV {#1} {institution} \l_template_degree_institution_tl
+        \template_degree_store:nnV {#1} {school} \l_template_degree_school_tl
+        \template_degree_store:nnV {#1} {school-english} \l_template_degree_school_english_tl
+        \template_degree_store:nnV {#1} {school-logo} \l_template_degree_school_logo_tl
+        \template_degree_store:nnV {#1} {degree-name} \l_template_degree_name_tl
+        \template_degree_store:nnV {#1} {degree-name-english} \l_template_degree_name_english_tl
+        \template_degree_store:nnV {#1} {degree-name-wrapped} \l_template_degree_name_wrapped_tl
+        \template_degree_store:nnV {#1} {degree-name-wrapped-uppercase} \l_template_degree_name_wrapped_uppercase_tl
+        \template_degree_store:nnV {#1} {degree-name-wrapped-english} \l_template_degree_name_wrapped_english_tl
+        \template_degree_store:nnV {#1} {degree-name-wrapped-uppercase-english} \l_template_degree_name_wrapped_uppercase_english_tl
+        \template_degree_store:nnV {#1} {work-type} \l_template_degree_work_type_tl
+        \template_degree_store:nnV {#1} {work-type-full-spanish} \l_template_degree_work_type_full_spanish_tl
+        \template_degree_store:nnV {#1} {work-type-full-english} \l_template_degree_work_type_full_english_tl
+        \template_degree_store:nnV {#1} {layout-profile} \l_template_degree_layout_profile_tl
+        \template_degree_store:nnV {#1} {document-structure} \l_template_degree_document_structure_tl
+        \template_degree_store:nnV {#1} {institutional-tfg-code} \l_template_degree_institutional_tfg_code_tl
+        \template_degree_store:nnV {#1} {cover-degree-field} \l_template_degree_cover_degree_field_tl
+        \exp_args:Nc \prop_gput:Nnn { \template_degree_record:n {#1} } {base-degree} {#1}
       }
   }
 
-\cs_new_protected:Npn \uah_degree_variant:nnn #1#2#3
+\cs_new_protected:Npn \template_degree_variant:nnn #1#2#3
   {
-    \seq_if_in:NnTF \g_uah_degree_registry_ids_seq {#1}
-      { \msg_error:nnn { uah-degree-registry } { duplicate-degree } {#1} }
+    \cs_if_exist:cTF { \template_degree_record:n {#1} }
+      { \msg_error:nnn { template-degree-registry } { duplicate-degree } {#1} }
       {
-        \seq_if_in:NnTF \g_uah_degree_registry_ids_seq {#2}
+        \cs_if_exist:cTF { \template_degree_record:n {#2} }
           {
-            \prop_get:NnN \g_uah_degree_registry_prop {#2/document-structure} \l_uah_degree_document_structure_tl
-            \prop_get:NnN \g_uah_degree_registry_prop {#2/work-type} \l_uah_degree_work_type_tl
-            \keys_set:nn { uah/degree-variant } {#3}
-            \uah_degree_validate_structure:n {#1}
-            % Snapshot first: do not mutate the property list being iterated.
-            % Copy every property so future metadata is inherited automatically.
-            \prop_set_eq:NN \l_uah_degree_snapshot_prop \g_uah_degree_registry_prop
-            \prop_map_inline:Nn \l_uah_degree_snapshot_prop
-              {
-                \seq_set_split:Nnn \l_tmpa_seq {/} {##1}
-                \str_if_eq:eeT {\seq_item:Nn \l_tmpa_seq {1}} {#2}
-                  { \prop_gput:Nxn \g_uah_degree_registry_prop
-                      {#1/\seq_item:Nn \l_tmpa_seq {2}} {##2} }
-              }
-            \uah_degree_store:nnV {#1} {document-structure} \l_uah_degree_document_structure_tl
-            \seq_gput_right:Nn \g_uah_degree_registry_ids_seq {#1}
+            \template_degree_get:nnN {#2} {document-structure} \l_template_degree_document_structure_tl
+            \template_degree_get:nnN {#2} {work-type} \l_template_degree_work_type_tl
+            \keys_set:nn { template/degree-variant } {#3}
+            \template_degree_validate_structure:n {#1}
+            % Copy only the parent's record, preserving every inherited field.
+            \prop_new:c { \template_degree_record:n {#1} }
+            \prop_gset_eq:cc { \template_degree_record:n {#1} } { \template_degree_record:n {#2} }
+            \template_degree_store:nnV {#1} {document-structure} \l_template_degree_document_structure_tl
+            \seq_gput_right:Nn \g_template_degree_registry_ids_seq {#1}
           }
-          { \msg_error:nnn { uah-degree-registry } { unknown-degree } {#2} }
+          { \msg_error:nnn { template-degree-registry } { unknown-degree } {#2} }
       }
   }
 
-\cs_new_protected:Npn \uah_institution_declare:nn #1#2
+\cs_new_protected:Npn \template_institution_declare:nn #1#2
   {
-    \prop_if_in:NnTF \g_uah_institution_registry_prop {#1/university-name}
-      { \msg_error:nnn { uah-degree-registry } { duplicate-institution } {#1} }
+    \prop_if_in:NnTF \g_template_institution_registry_prop {#1/university-name}
+      { \msg_error:nnn { template-degree-registry } { duplicate-institution } {#1} }
       {
-        \tl_clear:N \l_uah_institution_university_name_tl
-        \tl_clear:N \l_uah_institution_university_name_english_tl
-        \tl_clear:N \l_uah_institution_university_acronym_tl
-        \tl_clear:N \l_uah_institution_style_file_tl
-        \keys_set:nn { uah/institution } {#2}
-        \uah_degree_require:nnN {#1} {university-name} \l_uah_institution_university_name_tl
-        \uah_degree_require:nnN {#1} {university-acronym} \l_uah_institution_university_acronym_tl
-        \uah_degree_require:nnN {#1} {style-file} \l_uah_institution_style_file_tl
-        \prop_gput:NnV \g_uah_institution_registry_prop {#1/university-name} \l_uah_institution_university_name_tl
-        \prop_gput:NnV \g_uah_institution_registry_prop {#1/university-name-english} \l_uah_institution_university_name_english_tl
-        \prop_gput:NnV \g_uah_institution_registry_prop {#1/university-acronym} \l_uah_institution_university_acronym_tl
-        \prop_gput:NnV \g_uah_institution_registry_prop {#1/style-file} \l_uah_institution_style_file_tl
+        \tl_clear:N \l_template_institution_university_name_tl
+        \tl_clear:N \l_template_institution_university_name_english_tl
+        \tl_clear:N \l_template_institution_university_acronym_tl
+        \tl_clear:N \l_template_institution_style_file_tl
+        \keys_set:nn { template/institution } {#2}
+        \template_degree_require:nnN {#1} {university-name} \l_template_institution_university_name_tl
+        \template_degree_require:nnN {#1} {university-acronym} \l_template_institution_university_acronym_tl
+        \template_degree_require:nnN {#1} {style-file} \l_template_institution_style_file_tl
+        \prop_gput:NnV \g_template_institution_registry_prop {#1/university-name} \l_template_institution_university_name_tl
+        \prop_gput:NnV \g_template_institution_registry_prop {#1/university-name-english} \l_template_institution_university_name_english_tl
+        \prop_gput:NnV \g_template_institution_registry_prop {#1/university-acronym} \l_template_institution_university_acronym_tl
+        \prop_gput:NnV \g_template_institution_registry_prop {#1/style-file} \l_template_institution_style_file_tl
       }
   }
 
-\cs_new_protected:Npn \uah_layout_profile_declare:nn #1#2
+\cs_new_protected:Npn \template_layout_profile_declare:nn #1#2
   {
-    \prop_if_in:NnTF \g_uah_layout_profile_prop {#1/cover-files}
-      { \msg_error:nnn { uah-degree-registry } { duplicate-layout-profile } {#1} }
+    \prop_if_in:NnTF \g_template_layout_profile_prop {#1/cover-files}
+      { \msg_error:nnn { template-degree-registry } { duplicate-layout-profile } {#1} }
       {
-        \tl_clear:N \l_uah_layout_cover_files_tl
-        \tl_clear:N \l_uah_layout_backpage_file_tl
-        \keys_set:nn { uah/layout-profile } {#2}
-        \prop_gput:NnV \g_uah_layout_profile_prop {#1/cover-files} \l_uah_layout_cover_files_tl
-        \prop_gput:NnV \g_uah_layout_profile_prop {#1/backpage-file} \l_uah_layout_backpage_file_tl
+        \tl_clear:N \l_template_layout_cover_files_tl
+        \tl_clear:N \l_template_layout_backpage_file_tl
+        \keys_set:nn { template/layout-profile } {#2}
+        \prop_gput:NnV \g_template_layout_profile_prop {#1/cover-files} \l_template_layout_cover_files_tl
+        \prop_gput:NnV \g_template_layout_profile_prop {#1/backpage-file} \l_template_layout_backpage_file_tl
       }
   }
 
-\cs_new:Npn \uah_degree_selected_item:n #1
-  {
-    \exp_args:NNe \prop_item:Nn \g_uah_degree_registry_prop
-      { \g_uah_selected_degree_tl/#1 }
-  }
+\cs_new:Npn \template_degree_selected_item:n #1
+  { \template_degree_item:nn { \g_template_selected_degree_tl } {#1} }
 
-\cs_new:Npn \uah_layout_selected_item:n #1
+\cs_new:Npn \template_layout_selected_item:n #1
   {
-    \exp_args:NNe \prop_item:Nn \g_uah_layout_profile_prop
+    \exp_args:NNe \prop_item:Nn \g_template_layout_profile_prop
       { \myLayoutProfile/#1 }
   }
 
-\cs_new_protected:Npn \uah_define_from_selected_property:Nn #1#2
+\cs_new_protected:Npn \template_define_from_selected_property:Nn #1#2
   {
-    \prop_get:NxN \g_uah_degree_registry_prop
-      { \g_uah_selected_degree_tl/#2 } \l_tmpa_tl
+    \template_degree_get:nnN { \g_template_selected_degree_tl } {#2} \l_tmpa_tl
     \cs_set:Npx #1 { \exp_not:V \l_tmpa_tl }
   }
 
-\cs_new_protected:Npn \uah_degree_validate_profile:n #1
+\cs_new_protected:Npn \template_degree_validate_profile:n #1
   {
-    \prop_get:NnN \g_uah_degree_registry_prop {#1/layout-profile} \l_tmpa_tl
-    \prop_if_in:NxTF \g_uah_layout_profile_prop { \l_tmpa_tl/cover-files }
+    \template_degree_get:nnN {#1} {layout-profile} \l_tmpa_tl
+    \prop_if_in:NxTF \g_template_layout_profile_prop { \l_tmpa_tl/cover-files }
       { }
-      { \msg_error:nnnn { uah-degree-registry } { unknown-layout-profile } {#1} {\l_tmpa_tl} }
+      { \msg_error:nnnn { template-degree-registry } { unknown-layout-profile } {#1} {\l_tmpa_tl} }
   }
 
-\cs_new_protected:Npn \uah_degree_validate_institution:n #1
+\cs_new_protected:Npn \template_degree_validate_institution:n #1
   {
-    \prop_get:NnN \g_uah_degree_registry_prop {#1/institution} \l_tmpa_tl
-    \prop_if_in:NxTF \g_uah_institution_registry_prop { \l_tmpa_tl/university-name }
+    \template_degree_get:nnN {#1} {institution} \l_tmpa_tl
+    \prop_if_in:NxTF \g_template_institution_registry_prop { \l_tmpa_tl/university-name }
       { }
-      { \msg_error:nnnn { uah-degree-registry } { unknown-institution } {#1} {\l_tmpa_tl} }
+      { \msg_error:nnnn { template-degree-registry } { unknown-institution } {#1} {\l_tmpa_tl} }
   }
 
-\cs_new_protected:Npn \uah_define_from_selected_institution:Nn #1#2
+\cs_new_protected:Npn \template_define_from_selected_institution:Nn #1#2
   {
-    \prop_get:NxN \g_uah_degree_registry_prop
-      { \g_uah_selected_degree_tl/institution } \l_tmpa_tl
-    \prop_get:NxN \g_uah_institution_registry_prop
+    \template_degree_get:nnN { \g_template_selected_degree_tl } {institution} \l_tmpa_tl
+    \prop_get:NxN \g_template_institution_registry_prop
       { \l_tmpa_tl/#2 } \l_tmpb_tl
     \cs_set:Npx #1 { \exp_not:V \l_tmpb_tl }
   }
 
-\cs_new_protected:Npn \uah_institution_load_selected_style:
+\cs_new_protected:Npn \template_institution_load_selected_style:
   {
-    \prop_get:NxN \g_uah_degree_registry_prop
-      { \g_uah_selected_degree_tl/institution } \l_tmpa_tl
-    \prop_get:NxN \g_uah_institution_registry_prop
+    \template_degree_get:nnN { \g_template_selected_degree_tl } {institution} \l_tmpa_tl
+    \prop_get:NxN \g_template_institution_registry_prop
       { \l_tmpa_tl/style-file } \l_tmpb_tl
     \exp_args:NV \file_input:n \l_tmpb_tl
   }
 
-\cs_new_protected:Npn \uah_degree_select:n #1
+\cs_new_protected:Npn \template_degree_select:n #1
   {
-    \prop_if_in:NnTF \g_uah_degree_registry_prop {#1/work-type}
+    \cs_if_exist:cTF { \template_degree_record:n {#1} }
       {
-        \uah_degree_validate_profile:n {#1}
-        \uah_degree_validate_institution:n {#1}
-        \tl_gset:Nn \g_uah_selected_degree_tl {#1}
-        \uah_define_from_selected_property:Nn \myDegreefull {degree-name}
-        \uah_define_from_selected_property:Nn \myWorkType {work-type}
+        \template_degree_validate_profile:n {#1}
+        \template_degree_validate_institution:n {#1}
+        \tl_gset:Nn \g_template_selected_degree_tl {#1}
+        \template_define_from_selected_property:Nn \myDegreefull {degree-name}
+        \template_define_from_selected_property:Nn \myWorkType {work-type}
         % Solo los TFM seleccionan automáticamente el nombre en inglés.
-        \bool_set_false:N \l_uah_degree_english_tfm_bool
+        \bool_set_false:N \l_template_degree_english_tfm_bool
         \tl_set:Nx \l_tmpa_tl {\myLanguage}
         \tl_set:Nx \l_tmpb_tl {\myWorkType}
         \str_if_eq:VnT \l_tmpa_tl {english}
           {
             \str_if_eq:VnT \l_tmpb_tl {TFM}
               {
-                \prop_get:NnN \g_uah_degree_registry_prop {#1/degree-name-english} \l_tmpa_tl
+                \template_degree_get:nnN {#1} {degree-name-english} \l_tmpa_tl
                 \tl_if_blank:VF \l_tmpa_tl
                   {
-                    \bool_set_true:N \l_uah_degree_english_tfm_bool
+                    \bool_set_true:N \l_template_degree_english_tfm_bool
                     \cs_set:Npx \myDegreefull { \exp_not:V \l_tmpa_tl }
                   }
               }
           }
-        \uah_define_from_selected_property:Nn \myLayoutProfile {layout-profile}
-        \uah_define_from_selected_institution:Nn \myUniversity {university-name}
-        \uah_define_from_selected_institution:Nn \myUniversityEnglish {university-name-english}
-        \uah_define_from_selected_institution:Nn \myUniversityAcronym {university-acronym}
-        \uah_define_from_selected_property:Nn \mySchool {school}
-        \prop_get:NnN \g_uah_degree_registry_prop {#1/school-english} \l_tmpa_tl
+        \template_define_from_selected_property:Nn \myLayoutProfile {layout-profile}
+        \template_define_from_selected_institution:Nn \myUniversity {university-name}
+        \template_define_from_selected_institution:Nn \myUniversityEnglish {university-name-english}
+        \template_define_from_selected_institution:Nn \myUniversityAcronym {university-acronym}
+        \template_define_from_selected_property:Nn \mySchool {school}
+        \template_degree_get:nnN {#1} {school-english} \l_tmpa_tl
         \tl_if_blank:VTF \l_tmpa_tl
           { \cs_set:Npn \mySchoolEnglish {\mySchool} }
           { \cs_set:Npx \mySchoolEnglish { \exp_not:V \l_tmpa_tl } }
         \tl_set:Nx \l_tmpa_tl {\myLanguage}
         \str_if_eq:VnTF \l_tmpa_tl {spanish}
-          { \uah_define_from_selected_property:Nn \myWorkTypeFull {work-type-full-spanish} }
-          { \uah_define_from_selected_property:Nn \myWorkTypeFull {work-type-full-english} }
-        \bool_if:NTF \l_uah_degree_english_tfm_bool
-          { \prop_get:NnN \g_uah_degree_registry_prop {#1/degree-name-wrapped-english} \l_tmpa_tl }
-          { \prop_get:NnN \g_uah_degree_registry_prop {#1/degree-name-wrapped} \l_tmpa_tl }
+          { \template_define_from_selected_property:Nn \myWorkTypeFull {work-type-full-spanish} }
+          { \template_define_from_selected_property:Nn \myWorkTypeFull {work-type-full-english} }
+        \bool_if:NTF \l_template_degree_english_tfm_bool
+          { \template_degree_get:nnN {#1} {degree-name-wrapped-english} \l_tmpa_tl }
+          { \template_degree_get:nnN {#1} {degree-name-wrapped} \l_tmpa_tl }
         \tl_if_blank:VTF \l_tmpa_tl
           { \cs_set:Npn \myDegreefullwrapped {\myDegreefull} }
           { \cs_set:Npx \myDegreefullwrapped { \exp_not:V \l_tmpa_tl } }
-        \bool_if:NTF \l_uah_degree_english_tfm_bool
-          { \prop_get:NnN \g_uah_degree_registry_prop {#1/degree-name-wrapped-uppercase-english} \l_tmpa_tl }
-          { \prop_get:NnN \g_uah_degree_registry_prop {#1/degree-name-wrapped-uppercase} \l_tmpa_tl }
+        \bool_if:NTF \l_template_degree_english_tfm_bool
+          { \template_degree_get:nnN {#1} {degree-name-wrapped-uppercase-english} \l_tmpa_tl }
+          { \template_degree_get:nnN {#1} {degree-name-wrapped-uppercase} \l_tmpa_tl }
         \tl_if_blank:VTF \l_tmpa_tl
           { \cs_set:Npn \myDegreefullwrappedUpcase {\MakeUppercase{\myDegreefull}} }
           { \cs_set:Npx \myDegreefullwrappedUpcase { \exp_not:V \l_tmpa_tl } }
       }
-      { \msg_error:nnn { uah-degree-registry } { unknown-degree } {#1} }
+      { \msg_error:nnn { template-degree-registry } { unknown-degree } {#1} }
   }
 
-\cs_new_protected:Npn \uah_layout_input_cover_files:
+\cs_new_protected:Npn \template_layout_input_cover_files:
   {
     \exp_args:Ne \clist_map_inline:nn
-      { \uah_layout_selected_item:n {cover-files} }
+      { \template_layout_selected_item:n {cover-files} }
       { \file_input:n {##1} }
   }
 
-\cs_new_protected:Npn \uah_layout_input_backpage_file:
+\cs_new_protected:Npn \template_layout_input_backpage_file:
   {
-    \tl_set:Nx \l_tmpa_tl { \uah_layout_selected_item:n {backpage-file} }
+    \tl_set:Nx \l_tmpa_tl { \template_layout_selected_item:n {backpage-file} }
     \tl_if_blank:VF \l_tmpa_tl
       { \exp_args:NV \file_input:n \l_tmpa_tl }
   }
 
 \NewDocumentCommand \DeclareDegree { m m }
-  { \uah_degree_declare:nn {#1} {#2} }
+  { \template_degree_declare:nn {#1} {#2} }
 \NewDocumentCommand \DeclareInstitution { m m }
-  { \uah_institution_declare:nn {#1} {#2} }
+  { \template_institution_declare:nn {#1} {#2} }
 \NewDocumentCommand \DeclareLayoutProfile { m m }
-  { \uah_layout_profile_declare:nn {#1} {#2} }
+  { \template_layout_profile_declare:nn {#1} {#2} }
 \NewDocumentCommand \DegreeRegistrySelect { m }
-  { \exp_args:Ne \uah_degree_select:n {#1} }
+  { \exp_args:Ne \template_degree_select:n {#1} }
 \NewDocumentCommand \DeclareDegreeVariant { m m m }
-  { \uah_degree_variant:nnn {#1}{#2}{#3} }
+  { \template_degree_variant:nnn {#1}{#2}{#3} }
 \NewDocumentCommand \InstitutionRegistryLoadStyle { }
-  { \uah_institution_load_selected_style: }
+  { \template_institution_load_selected_style: }
 \NewExpandableDocumentCommand \DegreeRegistryValue { m }
-  { \uah_degree_selected_item:n {#1} }
+  { \template_degree_selected_item:n {#1} }
 \NewExpandableDocumentCommand \DegreeRegistryLayoutValue { m }
-  { \uah_layout_selected_item:n {#1} }
+  { \template_layout_selected_item:n {#1} }
 \NewExpandableDocumentCommand \DegreeRegistryIdentifiers { }
-  { \seq_use:Nn \g_uah_degree_registry_ids_seq {,~} }
+  { \seq_use:Nn \g_template_degree_registry_ids_seq {,~} }
 \NewDocumentCommand \DegreeRegistryInputCover { }
-  { \uah_layout_input_cover_files: }
+  { \template_layout_input_cover_files: }
 \NewDocumentCommand \DegreeRegistryInputBackPage { }
-  { \uah_layout_input_backpage_file: }
+  { \template_layout_input_backpage_file: }
 
 % Catálogo del manual: consulta de solo lectura, sin seleccionar titulaciones.
-\seq_new:N \l_uah_catalogue_schools_seq
-\tl_new:N \l_uah_catalogue_school_tl
+\seq_new:N \l_template_catalogue_schools_seq
+\tl_new:N \l_template_catalogue_school_tl
 % The maintainer exporter replaces this sink to write the same LaTeX to disk.
-\cs_new_protected:Npn \uah_catalogue_emit:n #1 {#1}
-\prg_new_conditional:Npnn \uah_catalogue_degree:n #1 { T, TF }
+\cs_new_protected:Npn \template_catalogue_emit:n #1 {#1}
+\prg_new_conditional:Npnn \template_catalogue_degree:n #1 { T, TF }
   {
-    \str_if_eq:eeTF {\prop_item:Nn \g_uah_degree_registry_prop {#1/status}} {active}
+    \str_if_eq:eeTF {\template_degree_item:nn {#1} {status}} {active}
       {
-        \str_case_e:nnF {\prop_item:Nn \g_uah_degree_registry_prop {#1/work-type}}
+        \str_case_e:nnF {\template_degree_item:nn {#1} {work-type}}
           { {TFG}{\prg_return_true:} {TFM}{\prg_return_true:} {PhD}{\prg_return_true:} }
           {\prg_return_false:}
       }
       {\prg_return_false:}
   }
-\cs_new_protected:Npn \uah_catalogue_entry:n #1
+\cs_new_protected:Npn \template_catalogue_entry:n #1
   {
-    \prop_get:NnN \g_uah_degree_registry_prop {#1/degree-name-english} \l_tmpa_tl
-    \exp_args:Ne \uah_catalogue_emit:n
+    \template_degree_get:nnN {#1} {degree-name-english} \l_tmpa_tl
+    \exp_args:Ne \template_catalogue_emit:n
       {
         \exp_not:n {\item \texttt{#1}:~}
-        \prop_item:Nn \g_uah_degree_registry_prop {#1/degree-name}
+        \template_degree_item:nn {#1} {degree-name}
         \exp_not:n {\nobreakspace{}(}
         \tl_if_blank:VTF \l_tmpa_tl {\exp_not:n {\mbox{not~translated}}} {\exp_not:V \l_tmpa_tl}
         ).
-        \str_if_eq:eeT {\prop_item:Nn \g_uah_degree_registry_prop {#1/document-structure}} {compendium}
+        \str_if_eq:eeT {\template_degree_item:nn {#1} {document-structure}} {compendium}
           {~Modalidad~de~tesis~por~compendio~de~publicaciones.}
       }
   }
-\cs_new_protected:Npn \uah_catalogue_school:nn #1#2
+\cs_new_protected:Npn \template_catalogue_school:nn #1#2
   {
     \str_if_eq:nnTF {#1}{UPM}
-      {\int_compare:nNnF {\seq_count:N \l_uah_catalogue_schools_seq} = {1} {\uah_catalogue_emit:n {\subsection{#2}}}}
-      {\uah_catalogue_emit:n {\subsection{#2}}}
-    \uah_catalogue_emit:n {\begin{itemize}}
-      \seq_map_inline:Nn \g_uah_degree_registry_ids_seq
+      {\int_compare:nNnF {\seq_count:N \l_template_catalogue_schools_seq} = {1} {\template_catalogue_emit:n {\subsection{#2}}}}
+      {\template_catalogue_emit:n {\subsection{#2}}}
+    \template_catalogue_emit:n {\begin{itemize}}
+      \seq_map_inline:Nn \g_template_degree_registry_ids_seq
         {
-          \uah_catalogue_degree:nT {##1}
+          \template_catalogue_degree:nT {##1}
             {
-              \str_if_eq:eeT {\prop_item:Nn \g_uah_degree_registry_prop {##1/institution}} {#1}
+              \str_if_eq:eeT {\template_degree_item:nn {##1} {institution}} {#1}
                 {
-                  \str_if_eq:eeT {\prop_item:Nn \g_uah_degree_registry_prop {##1/school}} {#2}
-                    {\uah_catalogue_entry:n {##1}}
+                  \str_if_eq:eeT {\template_degree_item:nn {##1} {school}} {#2}
+                    {\template_catalogue_entry:n {##1}}
                 }
             }
         }
-    \uah_catalogue_emit:n {\end{itemize}}
+    \template_catalogue_emit:n {\end{itemize}}
   }
-\cs_new_protected:Npn \uah_catalogue_university:n #1
+\cs_new_protected:Npn \template_catalogue_university:n #1
   {
-    \seq_clear:N \l_uah_catalogue_schools_seq
-    \seq_map_inline:Nn \g_uah_degree_registry_ids_seq
+    \seq_clear:N \l_template_catalogue_schools_seq
+    \seq_map_inline:Nn \g_template_degree_registry_ids_seq
       {
-        \uah_catalogue_degree:nT {##1}
+        \template_catalogue_degree:nT {##1}
           {
-            \str_if_eq:eeT {\prop_item:Nn \g_uah_degree_registry_prop {##1/institution}} {#1}
+            \str_if_eq:eeT {\template_degree_item:nn {##1} {institution}} {#1}
               {
-                \tl_set:Ne \l_uah_catalogue_school_tl {\prop_item:Nn \g_uah_degree_registry_prop {##1/school}}
-                \seq_if_in:NVF \l_uah_catalogue_schools_seq \l_uah_catalogue_school_tl
-                  {\seq_put_right:NV \l_uah_catalogue_schools_seq \l_uah_catalogue_school_tl}
+                \tl_set:Ne \l_template_catalogue_school_tl {\template_degree_item:nn {##1} {school}}
+                \seq_if_in:NVF \l_template_catalogue_schools_seq \l_template_catalogue_school_tl
+                  {\seq_put_right:NV \l_template_catalogue_schools_seq \l_template_catalogue_school_tl}
               }
           }
       }
-    \tl_set:Ne \l_tmpa_tl {\prop_item:Nn \g_uah_institution_registry_prop {#1/university-name}}
+    \tl_set:Ne \l_tmpa_tl {\prop_item:Nn \g_template_institution_registry_prop {#1/university-name}}
     \str_if_eq:nnT {#1}{UPM}
       {
-        \int_compare:nNnT {\seq_count:N \l_uah_catalogue_schools_seq} = {1}
-          {\tl_put_right:Ne \l_tmpa_tl {~--~\seq_item:Nn \l_uah_catalogue_schools_seq {1}}}
+        \int_compare:nNnT {\seq_count:N \l_template_catalogue_schools_seq} = {1}
+          {\tl_put_right:Ne \l_tmpa_tl {~--~\seq_item:Nn \l_template_catalogue_schools_seq {1}}}
       }
-    \exp_args:Ne \uah_catalogue_emit:n
+    \exp_args:Ne \template_catalogue_emit:n
       {\exp_not:n {\section} {\exp_not:V \l_tmpa_tl}}
     % El título completo se conserva en el texto y en el índice; la cabecera
     % utiliza las siglas para no desbordar con los centros de la UPM.
     \str_if_eq:nnT {#1}{UPM}
-      {\uah_catalogue_emit:n {\sectionmark{UPM}}}
-    \seq_map_inline:Nn \l_uah_catalogue_schools_seq {\uah_catalogue_school:nn {#1}{##1}}
+      {\template_catalogue_emit:n {\sectionmark{UPM}}}
+    \seq_map_inline:Nn \l_template_catalogue_schools_seq {\template_catalogue_school:nn {#1}{##1}}
   }
 \NewDocumentCommand \DegreeRegistryPrintCatalogue { }
   {
     \group_begin:
-    \clist_map_function:nN {UAH,URJC,UPM,UCLM,US} \uah_catalogue_university:n
+    \clist_map_function:nN {UAH,URJC,UPM,UCLM,US} \template_catalogue_university:n
     \group_end:
   }
 

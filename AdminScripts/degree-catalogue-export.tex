@@ -10,7 +10,7 @@
   {
     \group_begin:
     \iow_open:Nn \g_template_catalogue_export_iow {degree-catalogue-body.tex}
-    \cs_set_protected:Npn \uah_catalogue_emit:n ##1
+    \cs_set_protected:Npn \template_catalogue_emit:n ##1
       {\iow_now:Nn \g_template_catalogue_export_iow {##1}}
     \DegreeRegistryPrintCatalogue
     \iow_close:N \g_template_catalogue_export_iow
