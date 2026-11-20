@@ -110,6 +110,7 @@
       }
   }
 \cs_new:Npn \TemplateDefenseMonth {\tl_use:N \l_template_defense_month_tl}
+\cs_new:Npn \TemplateIfDefenseMonthValid {\bool_if:NTF \l_template_defense_month_valid_bool}
 \cs_new:Npn \TemplateDefenseMonthYear
   {\MakeUppercase{\TemplateDefenseMonth}\bool_if:NT \l_template_defense_month_valid_bool {~DE~\myThesisDefenseYear}}
 \ExplSyntaxOff

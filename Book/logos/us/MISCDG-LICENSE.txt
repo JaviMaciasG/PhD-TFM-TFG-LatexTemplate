@@ -1,0 +1,11 @@
+MISCDG cover artwork
+
+The MISCDG programme mark in logo-miscdg-us.png is from TFM – Template,
+by Escuela Internacional de Posgrado – MISCDG (Universidad de Sevilla).
+https://www.overleaf.com/latex/templates/tfm-template/grwhgyyvhtmv
+
+Overleaf lists the template under Creative Commons Attribution 4.0 International.
+https://creativecommons.org/licenses/by/4.0/
+
+The PNG is an unmodified copy of fig/miscdg-2.png from the Overleaf project,
+renamed for this repository. The LaTeX cover layout has been adapted.

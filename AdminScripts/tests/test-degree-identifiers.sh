@@ -22,7 +22,8 @@ while IFS= read -r degree; do
       checks=$((checks + 1)) ;;
   esac
 done < <(sh "$query" identifiers)
-[[ $checks == 51 ]] || { echo "FAIL: expected 51 non-UAH degrees, found $checks" >&2; exit 1; }
+[[ $checks == 52 ]] || { echo "FAIL: expected 52 non-UAH degrees, found $checks" >&2; exit 1; }
+[[ $(sh "$query" layout-profile MISCDG-ETSII-US) == us-etsii-miscdg-tfm ]]
 for old in ITI-URJC GCID-URJC GDDV-URJC GII-URJC GICO-URJC GICI-URJC GIS-URJC GIA-URJC GMAT-URJC; do
   if sh "$query" work-type "$old" >/dev/null 2>&1; then
     echo "FAIL: obsolete URJC identifier still registered: $old" >&2
@@ -53,7 +54,7 @@ for language in spanish english; do
     tail -n 60 "$fixture/$language-output.log" >&2
     exit 1
   fi
-  [[ $(grep -c '^PASS:' "$fixture/identifiers-$language.log") == 56 ]] || exit 1
+  [[ $(grep -c '^PASS:' "$fixture/identifiers-$language.log") == 57 ]] || exit 1
 done
 if pdflatex -draftmode -interaction=nonstopmode -halt-on-error \
   -output-directory="$fixture" -jobname=rejected-urjc \
@@ -63,4 +64,4 @@ if pdflatex -draftmode -interaction=nonstopmode -halt-on-error \
   exit 1
 fi
 grep -q "Unsupported degree identifier 'GII-URJC'" "$fixture/rejected-output.log"
-printf 'PASS: %s non-UAH degrees; 112 LaTeX registry/conditional assertions.\n' "$checks"
+printf 'PASS: %s non-UAH degrees; 114 LaTeX registry/conditional assertions.\n' "$checks"

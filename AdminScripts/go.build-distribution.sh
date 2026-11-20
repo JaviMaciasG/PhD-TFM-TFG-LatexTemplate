@@ -41,7 +41,10 @@ reference_sources=(
   Book/cover/uclm/portada-tfg-eiia-uclm.tex
   Book/cover/uclm/credits-tfg-eiia-uclm.tex
   Book/cover/us/portada-phd-etsii-us.tex
+  Book/cover/us/portada-tfm-miscdg-etsii-us.tex
   Book/logos/us/escudo-trp.png
+  Book/logos/us/logo-miscdg-us.png
+  Book/logos/us/MISCDG-LICENSE.txt
   Book/logos/uclm/Logo_UCLM_2025_b.pdf
   Book/logos/uclm/Logo_EIIA_2024_b.pdf
   Book/logos/uclm/Logo_UCLM_2025.pdf
