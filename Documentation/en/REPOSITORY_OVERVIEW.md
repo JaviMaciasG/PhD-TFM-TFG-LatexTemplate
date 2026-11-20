@@ -139,7 +139,7 @@ The standard manual and standard bare structure include Book/appendix/aspectos-e
 - The project contains long-lived legacy material and historical comments (`$Id` tags, old workflows).
 - `Deprecated/` keeps earlier assets/tools, indicating strong backward compatibility concerns.
 - `TODO` still tracks pending improvements (e.g., acronym issues, Windows usage guidance).
-- User documentation starts at the Spanish `README.md` (the English overview is `README-en.md`), with additional examples embedded in the template chapters. `Documentation/en/TYPESETTING-STYLES-GUIDE.md` is the authoritative source for the preliminary visual-style layer, while user distributions contain its rendered `04-TYPESETTING-STYLES-GUIDE.pdf`. Maintainer procedures for release packaging and adding degrees or universities are centralized in `Documentation/en/MAINTAINERS.md`.
+- User documentation starts at the Spanish `README.md` (the English overview is `README-en.md`), with additional examples embedded in the template chapters. `Documentation/en/TYPESETTING-STYLES-GUIDE.md` is the authoritative source for the typesetting styles, while user distributions contain its rendered `04-TYPESETTING-STYLES-GUIDE.pdf`. Maintainer procedures for release packaging and adding degrees or universities are centralized in `Documentation/en/MAINTAINERS.md`.
 
 ## Strengths
 

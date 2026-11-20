@@ -1,6 +1,6 @@
 # Estilos tipográficos: guía de uso y mantenimiento
 
-Esta guía describe la capa preliminar de composición tipográfica exclusiva de Book, incluido su uso, implementación, validación, herramientas para mantenedores y atribución a terceros. Todas las rutas del repositorio son relativas a la raíz de la plantilla. Los ejemplos de *shell* indican su directorio de trabajo.
+Esta guía explica cómo usar, implementar y validar los estilos tipográficos del libro principal. También recoge las herramientas para mantenedores y la atribución a terceros. Todas las rutas del repositorio son relativas a la raíz de la plantilla. Los ejemplos de *shell* indican su directorio de trabajo.
 
 Seleccionar uno de los estilos suministrados es una operación normal de usuario y solo requiere cambiar el selector de estilo documentado. Modificar un estilo o crear uno nuevo es una tarea avanzada: la tipografía, los encabezados, las listas generadas, las cabeceras de página y las páginas institucionales interactúan entre varios archivos. Aborda esos cambios con cuidado, lee las secciones relevantes de esta guía técnica y valida el documento completo después de cada modificación.
 

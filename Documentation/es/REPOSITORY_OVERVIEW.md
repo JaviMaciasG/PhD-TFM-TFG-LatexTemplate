@@ -139,7 +139,7 @@ El manual estándar y la estructura mínima estándar incluyen Book/appendix/asp
 - El proyecto contiene material heredado de larga duración y comentarios históricos (etiquetas `$Id`, flujos de trabajo antiguos).
 - `Deprecated/` conserva recursos/herramientas anteriores, lo que indica una fuerte preocupación por la compatibilidad hacia atrás.
 - `TODO` sigue recogiendo mejoras pendientes (por ejemplo, problemas con acrónimos y orientación de uso en Windows).
-- La documentación de usuario comienza en el `README.md` en español (la descripción general en inglés es `README-en.md`), con ejemplos adicionales integrados en los capítulos de la plantilla. `Documentation/es/TYPESETTING-STYLES-GUIDE.md` es la fuente de referencia de la capa preliminar de estilos visuales, mientras que las distribuciones para usuarios contienen su versión renderizada `04-TYPESETTING-STYLES-GUIDE.pdf`. Los procedimientos para mantenedores relacionados con la generación de versiones y la incorporación de titulaciones o universidades están centralizados en `Documentation/es/MAINTAINERS.md`.
+- La documentación de usuario comienza en el `README.md` en español (la descripción general en inglés es `README-en.md`), con ejemplos adicionales integrados en los capítulos de la plantilla. `Documentation/es/TYPESETTING-STYLES-GUIDE.md` es la fuente de referencia de los estilos tipográficos, mientras que las distribuciones para usuarios contienen su versión renderizada `04-TYPESETTING-STYLES-GUIDE.pdf`. Los procedimientos para mantenedores relacionados con la generación de versiones y la incorporación de titulaciones o universidades están centralizados en `Documentation/es/MAINTAINERS.md`.
 
 ## Puntos fuertes
 

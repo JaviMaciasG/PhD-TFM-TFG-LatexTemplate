@@ -20,7 +20,7 @@ Los PDF restantes son ejemplos seleccionados deliberadamente, en lugar de un doc
 - `01-DOWNLOAD-GUIDE.pdf`: esta guía, proporcionada en un formato que puede abrirse directamente desde Dropbox.
 - `02-TYPESETTING-STYLES-COMPARISON.pdf`: comparación visual bilingüe de todos los estilos tipográficos disponibles, utilizando las mismas páginas representativas para cada uno.
 
-Cada archivo ZIP o TGZ también contiene `04-TYPESETTING-STYLES-GUIDE.pdf` en su directorio raíz. Ese documento es la guía completa de uso y referencia para configurar los estilos tipográficos preliminares; es distinto del archivo de comparación visual `02-TYPESETTING-STYLES-COMPARISON.pdf` que se proporciona junto a los archivos comprimidos.
+Cada archivo ZIP o TGZ también contiene `04-TYPESETTING-STYLES-GUIDE.pdf` en su directorio raíz. Ese documento es la guía completa de uso y referencia para configurar los estilos tipográficos; es distinto del archivo de comparación visual `02-TYPESETTING-STYLES-COMPARISON.pdf` que se proporciona junto a los archivos comprimidos.
 
 Después de descargar un archivo, extráelo o súbelo, compila `Book/book.tex` una vez sin modificarlo y utiliza el manual resultante para comprobar tu instalación y aprender el flujo de trabajo habitual.
 

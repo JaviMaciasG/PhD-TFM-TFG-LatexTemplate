@@ -1,6 +1,6 @@
 # Typesetting styles: usage and maintainer guide
 
-This guide describes the preliminary Book-only typesetting layer, including its
+This guide describes the typesetting styles for the main book, including their
 use, implementation, validation, maintainer tools and third-party attribution.
 All repository paths are relative to the template root. Shell examples state
 their working directory.

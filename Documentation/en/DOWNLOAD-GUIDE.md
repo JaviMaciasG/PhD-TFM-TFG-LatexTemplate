@@ -20,7 +20,7 @@ The remaining PDFs are deliberately selected examples rather than one generated 
 - `01-DOWNLOAD-GUIDE.pdf`: this guide, provided in a format that can be opened directly from Dropbox.
 - `02-TYPESETTING-STYLES-COMPARISON.pdf`: a bilingual visual comparison of every available typesetting style, using the same representative pages for each one.
 
-Each ZIP or TGZ archive also contains `04-TYPESETTING-STYLES-GUIDE.pdf` in its root directory. That document is the complete usage and reference guide for configuring the preliminary typesetting styles; it is different from the visual comparison file `02-TYPESETTING-STYLES-COMPARISON.pdf` provided alongside the archives.
+Each ZIP or TGZ archive also contains `04-TYPESETTING-STYLES-GUIDE.pdf` in its root directory. That document is the complete usage and reference guide for configuring the typesetting styles; it is different from the visual comparison file `02-TYPESETTING-STYLES-COMPARISON.pdf` provided alongside the archives.
 
 After downloading an archive, extract or upload it, compile `Book/book.tex` once without modifying it, and use the resulting manual to check your installation and learn the normal workflow.
 
