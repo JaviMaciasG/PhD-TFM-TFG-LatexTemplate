@@ -2,6 +2,36 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.14.0] - 2026-11-20
+
+### Features
+
+- Add conventional and compendium PhD thesis support for ETSII-US
+
+- Add bilingual MISCDG master's thesis covers for ETSII-US using the original Overleaf artwork
+
+- Add bilingual covers for six ETSII-US undergraduate degrees and derive the submission month and year from the deposit date
+
+
+### Bug Fixes
+
+- Fix LuaLaTeX and XeLaTeX compilation by using engine-specific PDF compression settings
+
+
+### Documentation
+
+- Streamline Chapter 3, group degree-specific settings, and remove the preliminary label from the typesetting documentation
+
+
+### Maintenance
+
+- Prepare v8.14.0
+
+
+### Other Changes
+
+- Speed up manual compilation by precomputing the degree catalogue once for the release archives, public samples, and local appendix copies
+
 ## [v8.13.8] - 2026-11-16
 
 ### Bug Fixes

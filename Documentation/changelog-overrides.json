@@ -1,4 +1,10 @@
 {
+  "4d8a2e6bf3ab": "Fix LuaLaTeX and XeLaTeX compilation by using engine-specific PDF compression settings",
+  "60387dc56871": "Add conventional and compendium PhD thesis support for ETSII-US",
+  "00245f0b48a9": "Add bilingual MISCDG master's thesis covers for ETSII-US using the original Overleaf artwork",
+  "1d74ef55c345": "Add bilingual covers for six ETSII-US undergraduate degrees and derive the submission month and year from the deposit date",
+  "0bd702148d23": "Speed up manual compilation by precomputing the degree catalogue once for the release archives, public samples, and local appendix copies",
+  "37c01485b4a4": "Streamline Chapter 3, group degree-specific settings, and remove the preliminary label from the typesetting documentation",
   "a26a3f9a8c7b": "Render tribunal-chair titles with gender agreement in UAH and URJC covers",
   "efad1b108d14": "Keep reviewer, committee, and defense-date labels visible on UPM PhD credits pages when their values are blank",
   "93c551f380ce": "Replace regulation-specific manual notes with a general reminder to check current rules",
