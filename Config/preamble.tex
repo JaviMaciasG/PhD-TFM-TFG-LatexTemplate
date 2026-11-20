@@ -664,6 +664,20 @@
 % https://tex.stackexchange.com/questions/58848/ap%C3%A9ndices-appendix-spanish-accent):
 \usepackage[titletoc]{appendix}
 \usepackage{etoolbox}
+
+% pgfgantt can leave a comma behind when a repeating vgrid ends mid-pattern.
+% Close the two conditionals before discarding the unused pattern and its
+% terminator. Leave package versions with a different parser unchanged.
+\makeatletter
+\def\template@gantt@discard#1\relax,{}
+\patchcmd{\gtt@vgrid@do}
+  {\ifnum\gtt@currgrid>\gtt@chartwidth\else}
+  {\ifnum\gtt@currgrid>\gtt@chartwidth
+     \expandafter\expandafter\expandafter\template@gantt@discard
+   \else}
+  {}{}
+\makeatother
+
 \makeatletter
 \appto{\appendices}{\def\Hy@chapapp{Appendix}}
 \makeatother
