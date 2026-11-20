@@ -2,6 +2,29 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.14.2] - 2026-11-20
+
+### Bug Fixes
+
+- Prevent glossary commands in a manual example caption from being repeated in the list of figures
+
+
+### Documentation
+
+- Explain how to find degree identifiers
+
+
+### Maintenance
+
+- List the University of Seville among the supported universities in the READMEs
+
+- Prepare v8.14.2
+
+
+### Other Changes
+
+- Speed up degree-registry lookups by storing metadata in smaller per-degree records
+
 ## [v8.14.1] - 2026-11-20
 
 ### Bug Fixes

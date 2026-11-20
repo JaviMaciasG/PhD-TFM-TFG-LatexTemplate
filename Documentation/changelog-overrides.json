@@ -1,4 +1,7 @@
 {
+  "021f56b": "List the University of Seville among the supported universities in the READMEs",
+  "9a316b1": "Speed up degree-registry lookups by storing metadata in smaller per-degree records",
+  "ed94fd4": "Prevent glossary commands in a manual example caption from being repeated in the list of figures",
   "9a9bfb9": "Prevent the missing-comma warning in Anteproyecto Gantt charts without changing their layout",
   "4d8a2e6bf3ab": "Fix LuaLaTeX and XeLaTeX compilation by using engine-specific PDF compression settings",
   "60387dc56871": "Add conventional and compendium PhD thesis support for ETSII-US",
