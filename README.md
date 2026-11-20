@@ -133,7 +133,7 @@ Después continúa con [Introduce tus datos y compila de nuevo](#introduce-tus-d
 
 Abre `Config/myconfig.tex` y utiliza la búsqueda de tu editor para localizar las siguientes definiciones. No necesitas conocer sus números de línea, que pueden cambiar entre versiones. En una definición como `\newcommand{\myDegree}{GIEC}`, cambia sólo el contenido del último par de llaves.
 
-- **Titulación:** busca `\myDegree` y sustituye `GIEC` por el identificador de tu titulación. Los comentarios inmediatamente anteriores contienen las opciones disponibles.
+- **Titulación:** busca `\myDegree` y sustituye `GIEC` por el identificador de tu titulación. Las opciones están en los comentarios que hay encima de esa definición. Como la lista es larga, busca las siglas de tu universidad o de tu centro para encontrar antes tu titulación.
 - **Idioma:** busca `\myLanguage` y elige `spanish` o `english`.
 - **Título:** busca `\myBookTitleSpanish` y `\myBookTitleEnglish` y sustituye los títulos de ejemplo por los de tu trabajo. La plantilla selecciona el que corresponda al idioma, aunque algunas páginas institucionales pueden utilizar ambos.
 - **Autoría:** completa `\myAuthorName` y `\myAuthorSurname`. En `\myAuthorGender`, indica `male` o `female` para adaptar el género gramatical.

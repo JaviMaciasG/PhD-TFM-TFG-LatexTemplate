@@ -133,7 +133,7 @@ Then continue with [Enter your details and compile again](#enter-your-details-an
 
 Open `Config/myconfig.tex` and use your editor's search function to find the following definitions. You don't need to know their line numbers, which may change between versions. In a definition such as `\newcommand{\myDegree}{GIEC}`, change only the contents of the last pair of braces.
 
-- **Degree:** search for `\myDegree` and replace `GIEC` with your degree's identifier. The comments immediately above it contain the available options.
+- **Degree:** search for `\myDegree` and replace `GIEC` with your degree's identifier. The available options are in the comments above that definition. The list is long, so search for your university or school acronym to find your degree faster.
 - **Language:** search for `\myLanguage` and choose `spanish` or `english`.
 - **Title:** search for `\myBookTitleSpanish` and `\myBookTitleEnglish` and replace the example titles with those of your thesis. The template selects the one matching the language, although some institutional pages may use both.
 - **Authorship:** fill in `\myAuthorName` and `\myAuthorSurname`. Set `\myAuthorGender` to `male` or `female` to adapt the grammatical gender.
