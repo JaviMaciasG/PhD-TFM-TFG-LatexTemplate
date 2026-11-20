@@ -22,7 +22,12 @@ while IFS= read -r degree; do
       checks=$((checks + 1)) ;;
   esac
 done < <(sh "$query" identifiers)
-[[ $checks == 52 ]] || { echo "FAIL: expected 52 non-UAH degrees, found $checks" >&2; exit 1; }
+[[ $checks == 58 ]] || { echo "FAIL: expected 58 non-UAH degrees, found $checks" >&2; exit 1; }
+for degree in GIC-ETSII-US GIS-ETSII-US GITI-ETSII-US GISA-ETSII-US GIIA-ETSII-US DGIIM-ETSII-US; do
+  [[ $(sh "$query" institution "$degree") == US ]]
+  [[ $(sh "$query" work-type "$degree") == TFG ]]
+  [[ $(sh "$query" layout-profile "$degree") == us-etsii-tfg ]]
+done
 [[ $(sh "$query" layout-profile MISCDG-ETSII-US) == us-etsii-miscdg-tfm ]]
 for old in ITI-URJC GCID-URJC GDDV-URJC GII-URJC GICO-URJC GICI-URJC GIS-URJC GIA-URJC GMAT-URJC; do
   if sh "$query" work-type "$old" >/dev/null 2>&1; then
@@ -54,7 +59,7 @@ for language in spanish english; do
     tail -n 60 "$fixture/$language-output.log" >&2
     exit 1
   fi
-  [[ $(grep -c '^PASS:' "$fixture/identifiers-$language.log") == 57 ]] || exit 1
+  [[ $(grep -c '^PASS:' "$fixture/identifiers-$language.log") == 63 ]] || exit 1
 done
 if pdflatex -draftmode -interaction=nonstopmode -halt-on-error \
   -output-directory="$fixture" -jobname=rejected-urjc \
@@ -64,4 +69,4 @@ if pdflatex -draftmode -interaction=nonstopmode -halt-on-error \
   exit 1
 fi
 grep -q "Unsupported degree identifier 'GII-URJC'" "$fixture/rejected-output.log"
-printf 'PASS: %s non-UAH degrees; 114 LaTeX registry/conditional assertions.\n' "$checks"
+printf 'PASS: %s non-UAH degrees; 126 LaTeX registry/conditional assertions.\n' "$checks"

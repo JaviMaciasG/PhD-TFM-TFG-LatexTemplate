@@ -130,6 +130,9 @@ assert_contains "$("$generator" --list-options)" 'Universities: UAH URJC UPM UCL
 us_matrix=$("$generator" --universities US --degree-types PhD --structures standard,compendium --languages spanish,english --dry-run)
 assert_count "$us_matrix" 4
 assert_contains "$us_matrix" 'PhD-PHD-ETSII-US-english-compendium-standard-institutional.pdf'
+us_tfg_matrix=$("$generator" --universities US --all-tfgs --languages spanish,english --dry-run)
+assert_count "$us_tfg_matrix" 12
+assert_contains "$us_tfg_matrix" 'TFG-DGIIM-ETSII-US-english-standard-standard-institutional.pdf'
 us_tfm_matrix=$("$generator" --universities US --all-tfms --languages spanish,english --dry-run)
 assert_count "$us_tfm_matrix" 2
 assert_contains "$us_tfm_matrix" 'TFM-MISCDG-ETSII-US-english-standard-standard-institutional.pdf'

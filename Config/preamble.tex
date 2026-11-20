@@ -85,19 +85,35 @@
 % To draw rectagles in tfm cover
 \usepackage{tikz}
 
-% Shared, on-demand month extraction for institutional covers. The date is
-% read only when a cover calls this helper, after myconfig.tex has been loaded.
+% Shared, on-demand date extraction for institutional covers, after myconfig.tex.
 \ExplSyntaxOn
-\seq_new:N \l_template_defense_date_parts_seq
+\seq_new:N \l_template_cover_date_parts_seq
+\tl_new:N \l_template_cover_date_tl
 \tl_new:N \l_template_defense_month_tl
 \bool_new:N \l_template_defense_month_valid_bool
+\tl_new:N \l_template_deposit_month_year_tl
+\cs_new_protected:Npn \template_extract_cover_date:nn #1#2
+  {
+    \tl_set:Ne \l_template_cover_date_tl {#1}
+    \exp_args:NnV \regex_extract_once:nnN
+      {\A\s*[0-9]{1,2}\s+de\s+(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\s+de\s+#2}
+      \l_template_cover_date_tl \l_template_cover_date_parts_seq
+  }
+\cs_new:Npn \TemplateCoverMonthEnglish #1
+  {
+    \str_case_e:nn {#1}
+      {
+        {enero}{January} {febrero}{February} {marzo}{March}
+        {abril}{April} {mayo}{May} {junio}{June}
+        {julio}{July} {agosto}{August} {septiembre}{September}
+        {octubre}{October} {noviembre}{November} {diciembre}{December}
+      }
+  }
 \cs_new_protected:Npn \TemplateSetDefenseMonth
   {
-    \tl_set:Ne \l_tmpa_tl {\myThesisDefenseDate}
-    \exp_args:NnV \regex_extract_once:nnN
-      {\A\s*[0-9]{1,2}\s+de\s+(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\s+de\s+}
-      \l_tmpa_tl \l_template_defense_date_parts_seq
-    \seq_if_empty:NTF \l_template_defense_date_parts_seq
+    % Preserve the existing month-only parse and the separate defense year.
+    \template_extract_cover_date:nn {\myThesisDefenseDate} {}
+    \seq_if_empty:NTF \l_template_cover_date_parts_seq
       {
         \tl_set:Nn \l_template_defense_month_tl {NO~SE~HA~PODIDO~DEDUCIR~EL~MES}
         \bool_set_false:N \l_template_defense_month_valid_bool
@@ -105,7 +121,7 @@
       }
       {
         \tl_set:Ne \l_template_defense_month_tl
-          {\seq_item:Nn \l_template_defense_date_parts_seq {2}}
+          {\seq_item:Nn \l_template_cover_date_parts_seq {2}}
         \bool_set_true:N \l_template_defense_month_valid_bool
       }
   }
@@ -113,6 +129,26 @@
 \cs_new:Npn \TemplateIfDefenseMonthValid {\bool_if:NTF \l_template_defense_month_valid_bool}
 \cs_new:Npn \TemplateDefenseMonthYear
   {\MakeUppercase{\TemplateDefenseMonth}\bool_if:NT \l_template_defense_month_valid_bool {~DE~\myThesisDefenseYear}}
+\cs_new_protected:Npn \TemplateSetDepositMonthYear
+  {
+    \tl_clear:N \l_template_deposit_month_year_tl
+    \template_extract_cover_date:nn {\myThesisDepositDate} {([0-9]{4})\s*\Z}
+    \seq_if_empty:NTF \l_template_cover_date_parts_seq
+      {
+        \tl_if_blank:VF \l_template_cover_date_tl
+          {\PackageWarning{template-cover-date}{Cannot~derive~the~cover~date~from~myThesisDepositDate;~use~'15~de~junio~de~2027'}}
+      }
+      {
+        \tl_set:Ne \l_template_deposit_month_year_tl
+          {
+            \str_if_eq:eeTF {\myLanguage} {english}
+              {\TemplateCoverMonthEnglish{\seq_item:Nn \l_template_cover_date_parts_seq {2}}~}
+              {\seq_item:Nn \l_template_cover_date_parts_seq {2}~de~}
+            \seq_item:Nn \l_template_cover_date_parts_seq {3}
+          }
+      }
+  }
+\cs_new:Npn \TemplateDepositMonthYear {\tl_use:N \l_template_deposit_month_year_tl}
 \ExplSyntaxOff
 
 \usepackage{geometry}

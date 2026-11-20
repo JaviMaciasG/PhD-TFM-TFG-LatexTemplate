@@ -11,18 +11,6 @@
 \definecolor{MISCDGCoverPink}{RGB}{236,191,191}
 \definecolor{MISCDGCoverYellow}{RGB}{254,238,202}
 \TemplateSetDefenseMonth
-\ExplSyntaxOn
-\cs_set:Npn \MISCDGEnglishMonth
-  {
-    \str_case_e:nn {\TemplateDefenseMonth}
-      {
-        {enero}{January} {febrero}{February} {marzo}{March}
-        {abril}{April} {mayo}{May} {junio}{June}
-        {julio}{July} {agosto}{August} {septiembre}{September}
-        {octubre}{October} {noviembre}{November} {diciembre}{December}
-      }
-  }
-\ExplSyntaxOff
 \thispagestyle{empty}
 \null
 \begin{tikzpicture}[remember picture,overlay]
@@ -57,7 +45,7 @@
       \vfill
       {\bfseries\fontsize{12}{14}\selectfont
         \TemplateIfDefenseMonthValid
-          {\ifEnglish{\MISCDGEnglishMonth{} examination session, }%
+          {\ifEnglish{\TemplateCoverMonthEnglish{\TemplateDefenseMonth} examination session, }%
             {Convocatoria de \CapitalizeFirstLetter{\TemplateDefenseMonth}, }}{}%
         \ifEnglish{academic year}{curso} \myThesisAcademicYear\par}
     \end{minipage}%

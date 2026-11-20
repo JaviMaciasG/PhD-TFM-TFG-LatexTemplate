@@ -1,0 +1,48 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Función: cubierta de TFG de la ETSII-US.
+%
+% Uso: inclusión automática; normalmente no debes modificarla.
+% Completa los datos en Config/myconfig.tex. No se compila por separado.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begingroup
+\TemplateSetDepositMonthYear
+\ifEnglish
+  {\def\ETSIIUSDepartment{\myDepartmentEnglish}}
+  {\def\ETSIIUSDepartment{\myDepartment}}
+\thispagestyle{empty}
+\null
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=north, inner sep=0pt] at
+    ([yshift=-4.1cm]current page.north) {%
+      \begin{minipage}[t][20.3cm][s]{16cm}
+        \normalfont\rmfamily\centering
+        \noindent\includegraphics[width=14cm]{\USETSIIHorizontalLogo}\par
+        \vspace{\stretch{2}}
+        {\bfseries\fontsize{15}{19}\selectfont\MakeUppercase{\myWorkTypeFull}\par}
+        \medskip
+        {\bfseries\fontsize{21}{26}\selectfont\myBookTitle\par}
+        \vspace{\stretch{1}}
+        \ifEnglish{Prepared by}{Realizado por}\par
+        {\bfseries\fontsize{14}{18}\selectfont\myAuthorFullName\par}
+        \vspace{\stretch{2}}
+        \ifEnglish{For the degree of}{Para la obtención del título de}\par
+        {\bfseries\fontsize{13}{17}\selectfont
+          \ifEnglish{\DegreeRegistryValue{degree-name-english}}{\myDegreefull}\par}
+        \vspace{\stretch{1}}
+        \ifEnglish{Supervised by}{Dirigido por}\par
+        {\fontsize{13}{17}\selectfont
+          \myAcademicTutorFullName
+          \ifCoTutorPresent{\\\myCoTutorFullName}{}\par}
+        \ifthenelse{\equal{\ETSIIUSDepartment}{}}{}{%
+          \vspace{\stretch{1}}%
+          {\fontsize{13}{17}\selectfont\ETSIIUSDepartment\par}}
+        \vspace{\stretch{2}}
+        \ifthenelse{\equal{\TemplateDepositMonthYear}{}}{}{%
+          {\bfseries\fontsize{13}{17}\selectfont
+            \ifEnglish{Seville}{Sevilla}, \TemplateDepositMonthYear\par}}
+      \end{minipage}%
+    };
+\end{tikzpicture}
+\clearpage
+\endgroup
