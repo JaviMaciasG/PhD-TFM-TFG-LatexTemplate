@@ -1,4 +1,5 @@
 {
+  "9a9bfb9": "Prevent the missing-comma warning in Anteproyecto Gantt charts without changing their layout",
   "4d8a2e6bf3ab": "Fix LuaLaTeX and XeLaTeX compilation by using engine-specific PDF compression settings",
   "60387dc56871": "Add conventional and compendium PhD thesis support for ETSII-US",
   "00245f0b48a9": "Add bilingual MISCDG master's thesis covers for ETSII-US using the original Overleaf artwork",

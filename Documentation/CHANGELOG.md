@@ -2,6 +2,17 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.14.1] - 2026-11-20
+
+### Bug Fixes
+
+- Prevent the missing-comma warning in Anteproyecto Gantt charts without changing their layout
+
+
+### Maintenance
+
+- Prepare v8.14.1
+
 ## [v8.14.0] - 2026-11-20
 
 ### Features
