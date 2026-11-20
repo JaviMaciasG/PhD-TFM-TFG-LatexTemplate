@@ -1,0 +1,22 @@
+% Maintainer-only driver. Run from the source tree through
+% export-degree-catalogue.sh; no user configuration or selected degree needed.
+\documentclass{book}
+\input{Config/degree-registry.tex}
+\input{Config/institutions.tex}
+\input{Config/degrees.tex}
+\ExplSyntaxOn
+\iow_new:N \g_template_catalogue_export_iow
+\cs_new_protected:Npn \ExportDegreeCatalogue
+  {
+    \group_begin:
+    \iow_open:Nn \g_template_catalogue_export_iow {degree-catalogue-body.tex}
+    \cs_set_protected:Npn \uah_catalogue_emit:n ##1
+      {\iow_now:Nn \g_template_catalogue_export_iow {##1}}
+    \DegreeRegistryPrintCatalogue
+    \iow_close:N \g_template_catalogue_export_iow
+    \group_end:
+  }
+\ExplSyntaxOff
+\begin{document}
+\ExportDegreeCatalogue
+\end{document}

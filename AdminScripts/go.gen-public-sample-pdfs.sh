@@ -65,6 +65,30 @@ if [[ -z $release || $release == */* || $release == *' '* ]]; then
   exit 1
 fi
 
+catalogue="$temporary_directory/titulaciones-soportadas.tex"
+if $include_distribution; then
+  distribution_base="03-PhDTFMTFG-LaTeX-Template-UAH-$release"
+  distribution_zip="$repository_root/$distribution_base.zip"
+  distribution_tgz="$repository_root/$distribution_base.tgz"
+  if [[ ! -f $distribution_zip || ! -f $distribution_tgz ]]; then
+    echo "ERROR: ZIP and TGZ archives for $release are required. Run 'make distrib' first." >&2
+    exit 1
+  fi
+  for registry in Config/degrees.tex Config/institutions.tex; do
+    if ! tar -xOf "$distribution_tgz" "./$registry" | cmp -s "$repository_root/$registry" -; then
+      echo "ERROR: the archive does not match $registry. Run 'make distrib' again." >&2
+      exit 1
+    fi
+  done
+  if ! tar -xOf "$distribution_tgz" ./Book/appendix/titulaciones-soportadas.tex >"$catalogue" ||
+    ! grep -Fxq '% Catalogue generated for distribution from the degree registry.' "$catalogue"; then
+    echo "ERROR: the archive has no static degree catalogue. Run 'make distrib' again." >&2
+    exit 1
+  fi
+else
+  bash "$script_directory/export-degree-catalogue.sh" "$catalogue" || exit 1
+fi
+
 mkdir -p "$output_directory"
 rm -f -- \
   "$output_directory/00-DOWNLOAD-GUIDE.pdf" \
@@ -110,6 +134,7 @@ comparison_inputs="$temporary_directory/typesetting-comparison"
 comparison_output="$repository_root/TYPESETTING-STYLES-COMPARISON.pdf"
 echo "[INF] Generating $comparison_output from Spanish GIEC samples..."
 if "$builder" \
+    --catalogue "$catalogue" \
     --chapter-bibliographies false \
     --final-bibliography true \
     --bibliography-numbering global \
@@ -142,6 +167,7 @@ for index in "${!samples[@]}"; do
   mkdir -p "$build_directory"
   echo "[INF] Generating $output_name ($degree, $language, $structure, $style, $font_mode)..."
   if "$builder" \
+      --catalogue "$catalogue" \
       --degree "$degree" \
       --language "$language" \
       --structure "$structure" \
@@ -182,19 +208,6 @@ echo "[INF] Generated ${#generated_files[@]} PDF files in $output_directory."
 
 publication_files=("${generated_files[@]}" "$repository_root/RELEASE.txt")
 if $include_distribution; then
-  distribution_base="03-PhDTFMTFG-LaTeX-Template-UAH-$release"
-  distribution_zip="$repository_root/$distribution_base.zip"
-  distribution_tgz="$repository_root/$distribution_base.tgz"
-  [[ -f $distribution_zip ]] || {
-    echo "ERROR: distribution archive is missing: $distribution_zip" >&2
-    echo "Run 'make distrib' first, or use the 'make publish-dropbox' target." >&2
-    exit 1
-  }
-  [[ -f $distribution_tgz ]] || {
-    echo "ERROR: distribution archive is missing: $distribution_tgz" >&2
-    echo "Run 'make distrib' first, or use the 'make publish-dropbox' target." >&2
-    exit 1
-  }
   publication_files+=("$distribution_zip" "$distribution_tgz")
 fi
 

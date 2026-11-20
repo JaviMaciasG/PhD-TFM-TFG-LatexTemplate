@@ -137,7 +137,9 @@ The UAH TFG covers, EPS-UAH master cover, MUCTE pages, ESCET-URJC outer cover an
 
 Do not impose these advisor lines on fixed layouts: MUC and MUANBD outer covers, doctoral covers, ETSII-URJC, EIF-URJC and UPM pages. MUC and MUANBD use the separate lines in their shared UAH information sheet. GISD and MUNE retain their specific technical/academic supervision assignments.
 
-The `Book/appendix/titulaciones-soportadas.tex` appendix reads the registry through `\DegreeRegistryPrintCatalogue` without selecting a different degree or changing its metadata. It groups active academic entries by university and school, displays the identifier and Spanish name followed by the registered translation or `not translated` in parentheses, and distinguishes compendium doctoral variants. Legacy degrees and research reports are excluded. Also update the short identifier lists in myconfig.tex and the configuration chapter when adding degrees. UPM has several supported schools, which appear in separate subsections.
+The catalogue in `Book/appendix/titulaciones-soportadas.tex` is generated from the degree registry. It groups active academic entries by university and school, displays the identifier and Spanish name followed by the registered translation or `not translated` in parentheses, and distinguishes compendium doctoral variants. Legacy degrees and research reports are excluded. Also update the short identifier lists in myconfig.tex and the configuration chapter when adding degrees. UPM has several supported schools, which appear in separate subsections.
+
+`make distrib` generates the catalogue once. After the archives pass validation and are built, it also leaves the two static appendix files in the checkout under `Book/appendix/` and `Book/appendix/orig/`, so you can build the complete manual there. The next run replaces only the marked catalogue block. `make publish-dropbox` reuses the archived appendix for the public examples and the style comparison. Running `make public-samples` separately generates it once for that run. Make corrections in the degree registry, not in the generated block.
 
 ## Maintaining EIF-URJC and ETSII-URJC cover layouts
 

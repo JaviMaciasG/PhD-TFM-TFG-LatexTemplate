@@ -13,6 +13,7 @@ document_structure=
 chapter_bibliographies=
 final_bibliography=
 bibliography_numbering=
+catalogue=
 output_directory=
 list_styles=false
 declare -a requested_styles=()
@@ -30,6 +31,7 @@ Options:
   --chapter-bibliographies BOOL    true or false; defaults to myconfig.
   --final-bibliography BOOL        true or false; defaults to myconfig.
   --bibliography-numbering MODE    global or chapter; defaults to myconfig.
+  --catalogue FILE                Use this static appendix in the isolated build.
   --output-dir DIRECTORY          Default: Book/typesetting-prototypes.
   --root DIRECTORY                Template repository root.
   --list-styles                   Print registered styles and exit.
@@ -79,6 +81,11 @@ while (($#)); do
       esac
       shift 2
       ;;
+    --catalogue)
+      (($# >= 2)) && [[ -n $2 ]] || { echo "ERROR: --catalogue requires a file." >&2; exit 2; }
+      catalogue=$2
+      shift 2
+      ;;
     --output-dir)
       (($# >= 2)) || { echo "ERROR: --output-dir requires a directory." >&2; exit 2; }
       output_directory=$2
@@ -114,6 +121,11 @@ IFS=, read -r -a registered_styles <<<"$style_list"
 if $list_styles; then
   printf '%s\n' "${registered_styles[@]}"
   exit 0
+fi
+
+if [[ -n $catalogue && ( ! -f $catalogue || ! -s $catalogue || ! -r $catalogue ) ]]; then
+  echo "ERROR: static catalogue is missing, empty or unreadable: $catalogue" >&2
+  exit 1
 fi
 
 case $font_mode in
@@ -259,6 +271,10 @@ while IFS= read -r file; do
   mkdir -p "$source_tree/$(dirname -- "$file")"
   cp -p -- "$repository_root/$file" "$source_tree/$file"
 done <"$manifest"
+
+if [[ -n $catalogue ]]; then
+  cp -- "$catalogue" "$source_tree/Book/appendix/titulaciones-soportadas.tex" || exit 1
+fi
 
 config="$source_tree/Config/myconfig.tex"
 config_base="$temporary_directory/myconfig.tex"

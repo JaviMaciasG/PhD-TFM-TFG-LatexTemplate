@@ -395,6 +395,8 @@
 % Catálogo del manual: consulta de solo lectura, sin seleccionar titulaciones.
 \seq_new:N \l_uah_catalogue_schools_seq
 \tl_new:N \l_uah_catalogue_school_tl
+% The maintainer exporter replaces this sink to write the same LaTeX to disk.
+\cs_new_protected:Npn \uah_catalogue_emit:n #1 {#1}
 \prg_new_conditional:Npnn \uah_catalogue_degree:n #1 { T, TF }
   {
     \str_if_eq:eeTF {\prop_item:Nn \g_uah_degree_registry_prop {#1/status}} {active}
@@ -408,17 +410,23 @@
 \cs_new_protected:Npn \uah_catalogue_entry:n #1
   {
     \prop_get:NnN \g_uah_degree_registry_prop {#1/degree-name-english} \l_tmpa_tl
-    \item \texttt{#1}:~\prop_item:Nn \g_uah_degree_registry_prop {#1/degree-name}
-    \nobreakspace{}(\tl_if_blank:VTF \l_tmpa_tl {\mbox{not~translated}} {\tl_use:N \l_tmpa_tl}).
-    \str_if_eq:eeT {\prop_item:Nn \g_uah_degree_registry_prop {#1/document-structure}} {compendium}
-      {~Modalidad~de~tesis~por~compendio~de~publicaciones.}
+    \exp_args:Ne \uah_catalogue_emit:n
+      {
+        \exp_not:n {\item \texttt{#1}:~}
+        \prop_item:Nn \g_uah_degree_registry_prop {#1/degree-name}
+        \exp_not:n {\nobreakspace{}(}
+        \tl_if_blank:VTF \l_tmpa_tl {\exp_not:n {\mbox{not~translated}}} {\exp_not:V \l_tmpa_tl}
+        ).
+        \str_if_eq:eeT {\prop_item:Nn \g_uah_degree_registry_prop {#1/document-structure}} {compendium}
+          {~Modalidad~de~tesis~por~compendio~de~publicaciones.}
+      }
   }
 \cs_new_protected:Npn \uah_catalogue_school:nn #1#2
   {
     \str_if_eq:nnTF {#1}{UPM}
-      {\int_compare:nNnF {\seq_count:N \l_uah_catalogue_schools_seq} = {1} {\subsection{#2}}}
-      {\subsection{#2}}
-    \begin{itemize}
+      {\int_compare:nNnF {\seq_count:N \l_uah_catalogue_schools_seq} = {1} {\uah_catalogue_emit:n {\subsection{#2}}}}
+      {\uah_catalogue_emit:n {\subsection{#2}}}
+    \uah_catalogue_emit:n {\begin{itemize}}
       \seq_map_inline:Nn \g_uah_degree_registry_ids_seq
         {
           \uah_catalogue_degree:nT {##1}
@@ -430,7 +438,7 @@
                 }
             }
         }
-    \end{itemize}
+    \uah_catalogue_emit:n {\end{itemize}}
   }
 \cs_new_protected:Npn \uah_catalogue_university:n #1
   {
@@ -453,11 +461,12 @@
         \int_compare:nNnT {\seq_count:N \l_uah_catalogue_schools_seq} = {1}
           {\tl_put_right:Ne \l_tmpa_tl {~--~\seq_item:Nn \l_uah_catalogue_schools_seq {1}}}
       }
-    \exp_args:NV \section \l_tmpa_tl
+    \exp_args:Ne \uah_catalogue_emit:n
+      {\exp_not:n {\section} {\exp_not:V \l_tmpa_tl}}
     % El título completo se conserva en el texto y en el índice; la cabecera
     % utiliza las siglas para no desbordar con los centros de la UPM.
     \str_if_eq:nnT {#1}{UPM}
-      {\sectionmark{UPM}}
+      {\uah_catalogue_emit:n {\sectionmark{UPM}}}
     \seq_map_inline:Nn \l_uah_catalogue_schools_seq {\uah_catalogue_school:nn {#1}{##1}}
   }
 \NewDocumentCommand \DegreeRegistryPrintCatalogue { }

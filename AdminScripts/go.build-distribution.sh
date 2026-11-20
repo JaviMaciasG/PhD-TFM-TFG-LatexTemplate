@@ -41,8 +41,10 @@ reference_sources=(
   Book/cover/uclm/portada-tfg-eiia-uclm.tex
   Book/cover/uclm/credits-tfg-eiia-uclm.tex
   Book/cover/us/portada-phd-etsii-us.tex
+  Book/cover/us/portada-tfg-etsii-us.tex
   Book/cover/us/portada-tfm-miscdg-etsii-us.tex
   Book/logos/us/escudo-trp.png
+  Book/logos/us/logo-ETSII-US-Horizontal-Color.png
   Book/logos/us/logo-miscdg-us.png
   Book/logos/us/MISCDG-LICENSE.txt
   Book/logos/uclm/Logo_UCLM_2025_b.pdf
@@ -101,6 +103,16 @@ while IFS= read -r file; do
   cp -p -- "$file" "$stage/$file"
 done < "$manifest"
 
+# Freeze the catalogue in both manual copies before validating or archiving them.
+appendices=(Book/appendix/titulaciones-soportadas.tex Book/appendix/orig/titulaciones-soportadas.tex)
+for appendix in "${appendices[@]}"; do
+  cp -- "$stage/$appendix" "$temporary_directory/${appendix//\//-}.source"
+done
+echo "Exporting the supported-degrees appendix..."
+bash AdminScripts/export-degree-catalogue.sh --root "$stage" \
+  "$stage/Book/appendix/titulaciones-soportadas.tex" \
+  "$stage/Book/appendix/orig/titulaciones-soportadas.tex"
+
 # Students receive a project README, not the upstream repository introduction.
 cp -p -- "$project_readme" "$stage/README.md"
 mv "$stage/README.pdf" "$stage/00-README.pdf"
@@ -143,7 +155,23 @@ validate_component "Anteproyecto" Anteproyecto anteproyecto_latexmk
 validate_component "TFG paperwork" PapeleoTFG
 validate_component "TFM paperwork" PapeleoTFM
 
+for appendix in "${appendices[@]}"; do
+  if ! cmp -s -- "$temporary_directory/${appendix//\//-}.source" "$appendix"; then
+    echo "ERROR: $appendix changed during validation; rerun 'make distrib' to preserve the edits." >&2
+    exit 1
+  fi
+done
+
 rm -f -- "$base.tgz" "$base.zip"
 tar -C "$stage" -czf "$repository_root/$base.tgz" .
 (cd "$stage" && zip -qr "$repository_root/$base.zip" .)
+
+# Keep exactly the validated copies for local manual builds. Avoid touching
+# their timestamps when the registry and the surrounding prose are unchanged.
+for appendix in "${appendices[@]}"; do
+  if ! cmp -s -- "$stage/$appendix" "$appendix"; then
+    cp -- "$stage/$appendix" "$appendix"
+  fi
+done
+echo "Static degree catalogue available in Book/appendix/ and Book/appendix/orig/."
 printf 'Created %s.tgz and %s.zip from release %s (%s files).\n' "$base" "$base" "$release" "$(wc -l < "$manifest")"

@@ -87,6 +87,15 @@ for spec in "${cases[@]}"; do
 done
 fi
 if [[ $scope == all || $scope == catalogue ]]; then
+# Exercise the dynamic renderer even if the checkout holds a static catalogue.
+awk '
+  /^% Catalogue generated for distribution from the degree registry\.$/ {
+    print "\\DegreeRegistryPrintCatalogue"; static = 1; next
+  }
+  /^% End of generated degree catalogue\.$/ { static = 0; next }
+  !static { print }
+' "$repository_root/Book/appendix/orig/titulaciones-soportadas.tex" \
+  >"$fixture/Book/appendix/titulaciones-soportadas.tex"
 build catalogue degree-catalogue
 ! grep -Eq '^CATALOGUE: (GSI|IT|IE|ITTSE|ITTST|ITI|GEINTRARR)$' "$fixture/Book/catalogue.log"
 grep -q 'not translated' "$fixture/text.txt"
@@ -105,7 +114,7 @@ assert 'Inglés:' not in text
 PY
 grep -q 'Modalidad de tesis por' "$fixture/text.txt"
 [[ $(grep -c '\\contentsline {section}' "$fixture/Book/catalogue.toc") == 5 ]]
-[[ $(grep -c '\\contentsline {subsection}' "$fixture/Book/catalogue.toc") == 9 ]]
+[[ $(grep -c '\\contentsline {subsection}' "$fixture/Book/catalogue.toc") == 10 ]]
 for degree in GIE-EIIA-UCLM GIEIA-EIIA-UCLM GIA-EIIA-UCLM; do
   grep -Fxq "CATALOGUE: $degree" "$fixture/Book/catalogue.log"
 done
@@ -115,8 +124,19 @@ while IFS= read -r degree; do
   [[ $degree != GSI ]] || continue
   grep -Fxq "CATALOGUE: $degree" "$fixture/Book/catalogue.log"
 done < <(sh "$query" identifiers)
+cp "$fixture/text.txt" "$fixture/catalogue-dynamic.txt"
+bash "$repository_root/AdminScripts/export-degree-catalogue.sh" \
+  "$fixture/Book/appendix/titulaciones-soportadas.tex" "$fixture/catalogue-original.tex"
+cmp "$fixture/Book/appendix/titulaciones-soportadas.tex" "$fixture/catalogue-original.tex"
+! grep -Fq '\DegreeRegistryPrintCatalogue' "$fixture/Book/appendix/titulaciones-soportadas.tex"
+build catalogue-static degree-catalogue '\def\TestStaticCatalogue{}'
+! grep -q '^CATALOGUE:' "$fixture/Book/catalogue-static.log"
+cmp "$fixture/catalogue-dynamic.txt" "$fixture/text.txt"
+cmp "$fixture/Book/catalogue.toc" "$fixture/Book/catalogue-static.toc"
 fi
-cmp "$repository_root/Book/appendix/titulaciones-soportadas.tex" "$repository_root/Book/appendix/orig/titulaciones-soportadas.tex"
+diff -u \
+  <(sed 's/^%\\DegreeRegistryPrintCatalogue$/\\DegreeRegistryPrintCatalogue/' "$repository_root/Book/appendix/titulaciones-soportadas.tex") \
+  "$repository_root/Book/appendix/orig/titulaciones-soportadas.tex"
 ! grep -Eq '\\texttt\{GSI\}' "$repository_root/Book/chapters/configuracion.tex"
 ! grep -Eq '^%[[:space:]]+GSI[[:space:]]' "$repository_root/Config/myconfig.tex"
 [[ $before == "$(sha256sum "$repository_root/Config/myconfig.tex")" ]]

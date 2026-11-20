@@ -21,6 +21,10 @@
   {\typeout{CATALOGUE:~#1}\catalogue_test_entry:n {#1}}
 \ExplSyntaxOff
 \begin{document}
+\ifdefined\TestStaticCatalogue
+  \renewcommand{\DegreeRegistryPrintCatalogue}{%
+    \PackageError{catalogue-test}{Static appendix called the dynamic catalogue}{}}
+\fi
 \tableofcontents
 \appendix
 \input{appendix/titulaciones-soportadas.tex}

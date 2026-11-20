@@ -3,6 +3,9 @@
 set -euo pipefail
 case ${0##*/} in
   make) exit 0 ;;
+  export-degree-catalogue.sh)
+    printf 'Fixture static catalogue\n' >"$1"
+    exit 0 ;;
   pandoc)
     while (($#)); do
       if [[ $1 == -o ]]; then printf 'Fixture documentation\n' >"$2"; exit 0; fi
@@ -18,9 +21,11 @@ case ${0##*/} in
   build-book-typesetting-prototypes.sh)
     [[ ${FAIL_FIXTURE_BUILD:-false} != true ]] || exit 1
     destination= language=spanish font=institutional style=
+    catalogue=
     chapter_bibliographies=unset final_bibliography=unset bibliography_numbering=unset
     while (($#)); do
       case $1 in
+        --catalogue) catalogue=$2; shift 2 ;;
         --output-dir) destination=$2; shift 2 ;;
         --language) language=$2; shift 2 ;;
         --font-mode) font=$2; shift 2 ;;
@@ -31,6 +36,7 @@ case ${0##*/} in
         *) shift ;;
       esac
     done
+    grep -Fxq 'Fixture static catalogue' "$catalogue"
     mkdir -p "$destination"
     name="book-${style:-standard}"
     [[ $language != english ]] || name+=-english
@@ -82,7 +88,7 @@ if bash "$helper" "$source_directory" "$fixture/missing" >"$fixture/missing.log"
 mkdir -p "$fixture/repository/AdminScripts" "$fixture/bin"
 cp "$repository_root/AdminScripts/go.gen-public-sample-pdfs.sh" "$fixture/repository/AdminScripts/"
 cp "$helper" "$fixture/repository/AdminScripts/"
-for builder in build-book-typesetting-prototypes.sh build-book-style-comparisons.sh; do
+for builder in build-book-typesetting-prototypes.sh build-book-style-comparisons.sh export-degree-catalogue.sh; do
   cp "$0" "$fixture/repository/AdminScripts/$builder"
   chmod +x "$fixture/repository/AdminScripts/$builder"
 done
