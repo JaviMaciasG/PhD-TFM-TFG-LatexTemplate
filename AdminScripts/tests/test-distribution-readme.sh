@@ -77,6 +77,19 @@ test_directory=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 repository_root=$(cd -- "$test_directory/../.." && pwd)
 fixture=$(mktemp -d)
 trap 'rm -rf -- "$fixture"' EXIT
+
+# An existing PDF must not prevent the documentation Makefile from asking
+# the root Makefile whether README.md has changed.
+readme_fixture="$fixture/readme-delegation"
+mkdir -p "$readme_fixture/Documentation"
+cp "$repository_root/Documentation/Makefile" "$readme_fixture/Documentation/"
+printf 'README.pdf: README.md\n\tcp README.md README.pdf\n' >"$readme_fixture/Makefile"
+printf 'Old documentation\n' >"$readme_fixture/README.pdf"
+printf 'Use Tools/prepare-book.sh\n' >"$readme_fixture/README.md"
+touch -t 200001010000 "$readme_fixture/README.pdf"
+make -s -C "$readme_fixture/Documentation" ../README.pdf
+cmp "$readme_fixture/README.md" "$readme_fixture/README.pdf"
+
 source_root="$fixture/repository"
 mkdir -p "$source_root/Documentation/es" "$source_root/AdminScripts" \
   "$source_root/Book" "$source_root/Config" "$source_root/Anteproyecto" \

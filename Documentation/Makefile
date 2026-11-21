@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := pdfs
-.PHONY: all pdfs changelog style-comparison paperwork-guides
+.PHONY: all pdfs changelog style-comparison paperwork-guides ../README.pdf
 
 all: pdfs
 
@@ -9,6 +9,8 @@ paperwork-guides:
 	$(MAKE) -C ../PapeleoTFG guia
 	$(MAKE) -C ../PapeleoTFM guia
 
+# Always delegate the freshness check to the root Makefile, which knows
+# about the Markdown, metadata and image dependencies.
 ../README.pdf:
 	$(MAKE) -C .. README.pdf
 
