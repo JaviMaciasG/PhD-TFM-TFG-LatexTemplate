@@ -184,40 +184,19 @@ You can already write in the template as it stands. However, its chapters contai
 
 Once you've compiled and reviewed the manual, save a backup copy of the entire folder, including anything you've written, in case something goes wrong.
 
-Once you've prepared the minimal structure using either of the two methods below, organise your work by adding, removing or reordering the `\input{...}` instructions in `Book/content-standard.tex`. Write in the content files, compile `Book/book.tex` and review the PDF and warnings. Making small changes and compiling frequently makes errors easier to find.
+Once you've prepared the minimal structure, organise your work by adding, removing or reordering the `\input{...}` instructions in `Book/content-standard.tex`. Write in the content files, compile `Book/book.tex` and review the PDF and warnings. Making small changes and compiling frequently makes errors easier to find.
 
 When you're concentrating on a chapter, you may not want to wade through covers, abstracts and lists every time you open the PDF. After compiling and reviewing the complete manual, you can set `\ZenMode` to `true` in `Config/myconfig.tex`: you'll still compile `Book/book.tex`, but see only the content selected in `Book/content-standard.tex` (or `Book/content-compendium.tex` for a thesis by compendium). Choose chapters by commenting out or restoring their `\input{...}` lines. Before submitting your work, set `\ZenMode` back to `false` and review the complete document. The manual's *Modo zen para redactar* subsection has the details.
 
-### Manual method
+To use the preparation tool, follow the instructions for your operating system:
 
-The distribution includes minimal versions (in other words, almost empty so you can write *your* book) of an initial chapter structure in:
+- **Windows:** open `Tools/prepare-book.bat`.
+- **macOS:** open `Tools/prepare-book.command`.
+- **Linux:** double-click `Tools/prepare-book.sh` and choose `Run in Terminal`. If your file manager doesn't offer that option, run `sh Tools/prepare-book.sh` from the template folder.
 
-```text
-Book/chapters/bare/
-Book/appendix/bare/
-```
+Choose whether to prepare a minimal document or restore the examples. The tool backs up the files it will replace. Then compile `Book/book.tex`.
 
-To prepare a conventional minimal structure manually, follow these steps:
-
-1. Check that you've saved the backup copy before replacing or deleting files.
-2. To avoid leaving example chapters that might confuse you, delete only the `.tex` files directly inside `Book/chapters/` and `Book/appendix/`. Don't delete the folders or their subfolders, such as `bare/`, `orig/` or `compendium/`, or files of other types. This cleanup isn't necessary for compilation, but makes it clearer which content you'll be using.
-3. Copy the chapter files from `Book/chapters/bare/` to `Book/chapters/`, except for the organisation file `content-standard.tex`.
-4. Copy the files from `Book/appendix/bare/` to `Book/appendix/`.
-5. Replace `Book/content-standard.tex` with `Book/chapters/bare/content-standard.tex`.
-6. Review which optional elements you want to include in `Config/myconfig.tex` and leave those you don't need set to `false`. For example, the lists of videos and symbols are usually unnecessary when starting out, because they serve more specialised needs.
-7. Compile `Book/book.tex` again.
-
-### If you feel comfortable with the terminal
-
-If you use `make`, run this from `Book/`:
-
-```bash
-make bare
-```
-
-This target creates a backup, prepares the minimal structure, installs the corresponding source files and disables some of the optional example material. It also offers to delete example figures and diagrams, but only if you confirm. Before running it, still check that you've saved your own backup copy.
-
-You can also prepare the minimal structure for a doctoral thesis by compendium if that's the selected structure. Consult the manual before applying it to a document you've already started.
+If you'd rather prepare the minimal structure by hand, you'll find the steps in the manual's *Preparación de una estructura mínima* section. This method also works if you're working in a browser. If you already use `make`, the same section explains how to automate the process.
 
 ## Collaboration with your advisor and document review
 

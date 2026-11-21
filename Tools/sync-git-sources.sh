@@ -103,7 +103,11 @@ for explicit_file in \
   LICENSE \
   README.md \
   Makefile \
-  sync-git-sources.sh \
+  Tools/sync-git-sources.sh \
+  Tools/prepare-book.bat \
+  Tools/prepare-book.command \
+  Tools/prepare-book.sh \
+  Tools/estructuras.tsv \
   Config/easter-egg.txt \
   Config/query-degree-registry.sh \
   Config/latex-common.mk \
@@ -114,6 +118,14 @@ for explicit_file in \
   PapeleoTFM/Makefile \
   PapeleoPHD/Makefile; do
   [[ -f "$repository_root/$explicit_file" ]] && printf '%s\n' "$explicit_file" >>"$required_unsorted"
+done
+
+# These sources are used by the student preparation helpers, not read by
+# LaTeX while compiling the currently selected document.
+for source_dir in Book/{chapters,appendix,chapters/compendium}/{bare,orig}; do
+  for source_file in "$repository_root/$source_dir/"*.tex; do
+    [[ ! -f $source_file ]] || add_repository_file "$source_file" "$repository_root"
+  done
 done
 
 compile_and_collect Book/book.tex

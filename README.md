@@ -184,40 +184,19 @@ Ya puedes escribir en la plantilla tal como está. Sin embargo, sus capítulos c
 
 Una vez que hayas compilado y revisado el manual, guarda una copia de seguridad de la carpeta completa, incluyendo cualquier contenido que hayas escrito, por si algo sale mal.
 
-Cuando hayas preparado la estructura mínima con cualquiera de los dos métodos siguientes, organiza tu trabajo añadiendo, eliminando o reordenando las instrucciones `\input{...}` de `Book/content-standard.tex`. Escribe en los archivos de contenido, compila `Book/book.tex` y revisa el PDF y los avisos. Hacer cambios pequeños y compilar con frecuencia facilita encontrar los errores.
+Una vez preparada la estructura mínima, organiza tu trabajo añadiendo, eliminando o reordenando las instrucciones `\input{...}` de `Book/content-standard.tex`. Escribe en los archivos de contenido, compila `Book/book.tex` y revisa el PDF y los avisos. Hacer cambios pequeños y compilar con frecuencia facilita encontrar los errores.
 
 Cuando estés concentrado en un capítulo, quizá no te apetezca atravesar portadas, resúmenes e índices cada vez que abres el PDF. Después de compilar y revisar el manual completo, puedes poner `\ZenMode` en `true` dentro de `Config/myconfig.tex`: seguirás compilando `Book/book.tex`, pero verás solo el contenido seleccionado en `Book/content-standard.tex` (o `Book/content-compendium.tex` si preparas una tesis por compendio). Elige los capítulos comentando o activando sus líneas `\input{...}`. Antes de entregar el trabajo, devuelve `\ZenMode` a `false` y revisa el documento completo. El apartado *Modo zen para redactar* del manual te cuenta los detalles.
 
-### Método manual
+Para usar la herramienta de preparación, sigue los pasos de tu sistema:
 
-La distribución incluye versiones mínimas (es decir, casi vacías para que puedas escribir *tu* libro) de una estructura inicial de capítulos en:
+- **Windows:** abre `Tools/prepare-book.bat`.
+- **macOS:** abre `Tools/prepare-book.command`.
+- **Linux:** haz doble clic en `Tools/prepare-book.sh` y elige `Ejecutar en un terminal`. Si no aparece esa opción, ejecuta `sh Tools/prepare-book.sh` desde la carpeta de la plantilla.
 
-```text
-Book/chapters/bare/
-Book/appendix/bare/
-```
+Elige preparar un documento mínimo o restaurar los ejemplos. La herramienta guarda una copia de los archivos que va a sustituir. Después, compila `Book/book.tex`.
 
-Para preparar manualmente una estructura mínima convencional, sigue estos pasos:
-
-1. Comprueba que has guardado la copia de seguridad antes de sustituir o eliminar archivos.
-2. Para no dejar capítulos de ejemplo que puedan confundirte, elimina sólo los archivos `.tex` situados directamente en `Book/chapters/` y `Book/appendix/`. No elimines las carpetas ni sus subcarpetas, como `bare/`, `orig/` o `compendium/`, ni los archivos de otros tipos. Esta limpieza no es necesaria para compilar, pero deja más claro qué contenido vas a utilizar.
-3. Copia a `Book/chapters/` los archivos de capítulo de `Book/chapters/bare/`, excepto el archivo de organización `content-standard.tex`.
-4. Copia a `Book/appendix/` los archivos de `Book/appendix/bare/`.
-5. Sustituye `Book/content-standard.tex` por `Book/chapters/bare/content-standard.tex`.
-6. Revisa en `Config/myconfig.tex` qué elementos opcionales quieres incluir y deja en `false` los que no necesites. Por ejemplo, las listas de vídeos y de símbolos suelen ser prescindibles al empezar, porque se utilizan en trabajos con necesidades más específicas.
-7. Compila de nuevo `Book/book.tex`.
-
-### Si te sientes cómodo con la terminal
-
-Si utilizas `make`, ejecuta desde `Book/`:
-
-```bash
-make bare
-```
-
-Este objetivo crea una copia de seguridad, prepara la estructura mínima, instala los archivos fuente correspondientes y desactiva parte del material opcional de ejemplo. También ofrece eliminar figuras y diagramas de ejemplo, sólo si lo confirmas. Antes de ejecutarlo, comprueba igualmente que has guardado tu propia copia de seguridad.
-
-También puedes preparar la estructura mínima de una tesis doctoral por compendio si esa es la estructura seleccionada. Consulta el manual antes de aplicarlo a un documento que ya hayas empezado.
+Si prefieres preparar la estructura mínima a mano, encontrarás los pasos en el apartado *Preparación de una estructura mínima* del manual. Ese método también te sirve si trabajas desde el navegador. Si ya utilizas `make`, en el mismo apartado te explico cómo automatizar el proceso.
 
 ## Colaboración con tu tutor y revisión del documento
 

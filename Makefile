@@ -50,7 +50,7 @@ clean-all-documents: clean
 	$(MAKE) clean-paperwork
 
 sync-git-sources:
-	@bash sync-git-sources.sh
+	@bash Tools/sync-git-sources.sh
 
 help:
 	@printf '%s\n' \

@@ -17,6 +17,23 @@ command -v pandoc >/dev/null 2>&1 || { echo "ERROR: pandoc is required to render
 [[ -f TYPESETTING-STYLES-COMPARISON.pdf ]] || { echo "ERROR: TYPESETTING-STYLES-COMPARISON.pdf is missing; run make -C Documentation first." >&2; exit 1; }
 project_readme=Documentation/es/README-PROYECTO.md
 [[ -s $project_readme ]] || { echo "ERROR: project README template is missing or empty: $project_readme" >&2; exit 1; }
+student_tools=(
+  Tools/prepare-book.bat Tools/prepare-book.command Tools/prepare-book.sh
+  Tools/estructuras.tsv Tools/sync-git-sources.sh
+)
+registry_query=Config/query-degree-registry.sh
+degree_ids=$(sh "$registry_query" identifiers)
+[[ -n $degree_ids ]] || { echo "ERROR: no degrees found in the registry." >&2; exit 1; }
+expected_structures=$(
+  for degree in $degree_ids; do
+    structure=$(sh "$registry_query" document-structure "$degree") || exit 1
+    printf '%s\t%s\n' "$degree" "$structure"
+  done
+)
+if ! printf '%s\n' "$expected_structures" | cmp -s - Tools/estructuras.tsv; then
+  echo "ERROR: Tools/estructuras.tsv does not match Config/degrees.tex; regenerate it with the registry query before packaging." >&2
+  exit 1
+fi
 
 guide_sources=(
   PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex
@@ -76,7 +93,7 @@ pandoc Documentation/es/TYPESETTING-STYLES-GUIDE.md -t pdf \
     LICENSE \
     Makefile \
     RELEASE.txt \
-    sync-git-sources.sh
+    "${student_tools[@]}"
   printf '%s\n' "${reference_sources[@]}"
   git ls-files -- Anteproyecto Book Config PapeleoTFG PapeleoTFM
 } | while IFS= read -r file; do
@@ -118,9 +135,10 @@ cp -p -- "$project_readme" "$stage/README.md"
 mv "$stage/README.pdf" "$stage/00-README.pdf"
 mv "$stage/TYPESETTING-STYLES-COMPARISON.pdf" "$stage/02-TYPESETTING-STYLES-COMPARISON.pdf"
 
-for required_file in README.md 00-README.pdf 02-TYPESETTING-STYLES-COMPARISON.pdf RELEASE.txt Makefile 04-TYPESETTING-STYLES-GUIDE.pdf sync-git-sources.sh Book/book.tex Book/abstract/summary-pages.tex Config/myconfig.tex "${guide_pdfs[@]}"; do
+for required_file in README.md 00-README.pdf 02-TYPESETTING-STYLES-COMPARISON.pdf RELEASE.txt Makefile 04-TYPESETTING-STYLES-GUIDE.pdf "${student_tools[@]}" Book/book.tex Book/abstract/summary-pages.tex Config/myconfig.tex "${guide_pdfs[@]}"; do
   [[ -f $stage/$required_file ]] || { echo "ERROR: required distribution file is missing: $required_file" >&2; exit 1; }
 done
+chmod +x -- "$stage/Tools/prepare-book.command" "$stage/Tools/prepare-book.sh"
 
 for forbidden_path in AdminScripts Deprecated Documentation normativas PapeleoPHD UsefulDocs TODO "${guide_sources[@]}"; do
   [[ ! -e $stage/$forbidden_path ]] || { echo "ERROR: maintainer-only path entered the distribution: $forbidden_path" >&2; exit 1; }

@@ -26,7 +26,9 @@ Directorios de nivel superior y su función principal:
 - `UsefulDocs/`: documentación de referencia (hojas de consulta y símbolos).
 - `Deprecated/`: material heredado conservado como referencia.
 
-El fichero `sync-git-sources.sh` de la raíz es la implementación orientada al usuario que hay detrás de `make sync-git-sources`; se mantiene fuera de `AdminScripts/` porque se distribuye con la plantilla y no es una utilidad para mantenedores.
+El fichero `Tools/sync-git-sources.sh` es la implementación orientada al usuario que hay detrás de `make sync-git-sources`; se guarda en `Tools/` porque se distribuye con la plantilla y no es una utilidad para mantenedores.
+
+Los lanzadores `Tools/prepare-book` utilizan `Tools/estructuras.tsv` para seleccionar las fuentes convencionales o de compendio sin ejecutar LaTeX. Si modificas el registro de titulaciones, actualiza la tabla: ejecuta `sh Config/query-degree-registry.sh identifiers` y consulta `document-structure` para cada identificador, en ese orden. Guarda un identificador y su estructura por línea, separados por un tabulador. La generación de la distribución rechaza una tabla desactualizada.
 
 ## Flujo de trabajo principal del usuario
 
@@ -64,7 +66,7 @@ El `Makefile` de la raíz también puede generar una versión PDF del README y d
 - `Anteproyecto/Makefile` utiliza la misma capa incremental de `latexmk` con soporte automático de bibliografía.
 - Los Makefiles de `PapeleoTFG/`, `PapeleoTFM/` y `PapeleoPHD/` utilizan `latexmk` para seguir las dependencias directas y de configuración compartida de cada documento administrativo.
 - Los objetivos de raíz `anteproyecto`, `paperwork` y `all-documents` pueden orquestar opcionalmente estos componentes; `paperwork` selecciona el directorio correspondiente al tipo de titulación configurado.
-- El objetivo de raíz `sync-git-sources` invoca `sync-git-sources.sh` para actualizar el índice Git de un usuario a partir de las dependencias del libro, el anteproyecto y la documentación administrativa; el script se niega a ejecutarse en el repositorio oficial de la plantilla marcado como tal.
+- El objetivo de raíz `sync-git-sources` invoca `Tools/sync-git-sources.sh` para actualizar el índice Git de un usuario a partir de las dependencias del libro, el anteproyecto y la documentación administrativa; el script se niega a ejecutarse en el repositorio oficial de la plantilla marcado como tal.
 - Las opciones compartidas del motor están en `Config/latex-common.mk`; `Config/latexmkrc` conserva extensiones adicionales para limpiar los archivos de glosarios.
 - `AdminScripts/build-book-typesetting-prototypes.sh` genera muestras aisladas del libro completo para los perfiles visuales registrados. `AdminScripts/build-book-style-comparisons.sh` utiliza Python y PyMuPDF para añadir preliminares bilingües neutros y extraer, etiquetar y componer las páginas de comparación.
 - `AdminScripts/go.gen-public-sample-pdfs.sh` genera la matriz pública reducida de Dropbox y, opcionalmente, publica sus PDF junto con `RELEASE.txt` tras una confirmación interactiva. El objetivo `publish-dropbox`, exclusivo para mantenedores, también genera y publica ambos archivos de versión validados en la misma operación confirmada. `go.gen-all-pdfs.sh` muestra una matriz de regresión seleccionable y pide confirmación; por defecto genera representantes y `--all` activa la cobertura exhaustiva. Compila en copias aisladas y guarda PDF y registros en `Book/all-pdfs/`.

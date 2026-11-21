@@ -21,7 +21,17 @@ El documento principal es `Book/book.tex`. Puedes compilarlo desde tu editor LaT
 
 Para organizar tu contenido, edita `Book/content-standard.tex`. Si preparas una tesis por compendio de publicaciones, selecciona `PHDUAH-COMPENDIUM`, `PHD-ETSIT-UPM-COMPENDIUM`, `PHD-ETSII-UPM-COMPENDIUM` o `PHD-ETSII-US-COMPENDIUM` mediante `\myDegree` en `Config/myconfig.tex` y utiliza `Book/content-compendium.tex`.
 
-Consulta [00-README.pdf](00-README.pdf) y el manual que obtienes al compilar la plantilla por primera vez para conocer el procedimiento completo, incluida la preparación de una estructura mínima antes de empezar a escribir.
+Consulta [00-README.pdf](00-README.pdf) y el manual que obtienes al compilar la plantilla por primera vez para conocer el procedimiento completo.
+
+## Con la herramienta de preparación
+
+- **Windows:** abre `Tools/prepare-book.bat`.
+- **macOS:** abre `Tools/prepare-book.command`.
+- **Linux:** haz doble clic en `Tools/prepare-book.sh` y elige `Ejecutar en un terminal`. Si no aparece esa opción, ejecuta `sh Tools/prepare-book.sh` desde la carpeta de la plantilla.
+
+Elige preparar un documento mínimo o restaurar los ejemplos. La herramienta guarda una copia de los archivos que va a sustituir. Después, compila `Book/book.tex`.
+
+Si trabajas en Overleaf o Prism, consulta el apartado *Preparación de una estructura mínima* del manual.
 
 ## Plantilla utilizada
 

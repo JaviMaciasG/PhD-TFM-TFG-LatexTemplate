@@ -109,7 +109,8 @@ for script in build-book-typesetting-prototypes.sh build-book-style-comparisons.
 done
 cp "$repository_root/Book/appendix/titulaciones-soportadas.tex" "$source_root/Book/appendix/"
 cp "$repository_root/Book/appendix/orig/titulaciones-soportadas.tex" "$source_root/Book/appendix/orig/"
-for file in .gitignore .latexmkrc LICENSE Makefile sync-git-sources.sh \
+cp -a "$repository_root/Tools" "$source_root/"
+for file in .gitignore .latexmkrc LICENSE Makefile \
   Book/book.tex Config/myconfig.tex Config/degrees.tex Config/institutions.tex Anteproyecto/anteproyecto.tex \
   Book/cover/urjc/portada-tfg-eif-urjc.tex \
   PapeleoTFG/TFG-GuiaPapeleo-EPS-UAH.tex PapeleoTFM/TFM-GuiaPapeleo-EPS-UAH.tex \
@@ -117,6 +118,7 @@ for file in .gitignore .latexmkrc LICENSE Makefile sync-git-sources.sh \
   printf 'Fixture source\n' >"$source_root/$file"
 done
 # Keep the fixture aligned with the distribution script's explicit pre-commit sources.
+cp "$repository_root/Config/"{degrees.tex,query-degree-registry.sh} "$source_root/Config/"
 while IFS= read -r file; do
   mkdir -p "$source_root/$(dirname "$file")"
   [[ -e $source_root/$file ]] || printf 'Fixture source\n' >"$source_root/$file"
@@ -154,6 +156,10 @@ unzip -q "$source_root/$base.zip" -d "$fixture/zip"
 for unpacked in "$fixture/tgz" "$fixture/zip"; do
   cmp "$source_root/Documentation/es/README-PROYECTO.md" "$unpacked/README.md"
   [[ -s $unpacked/00-README.pdf && -s $unpacked/Book/book.tex && -s $unpacked/Config/myconfig.tex ]]
+  for tool in prepare-book.bat prepare-book.command prepare-book.sh estructuras.tsv sync-git-sources.sh; do
+    cmp "$repository_root/Tools/$tool" "$unpacked/Tools/$tool"
+  done
+  [[ -x $unpacked/Tools/prepare-book.command && ! -e $unpacked/sync-git-sources.sh ]]
   [[ -s $unpacked/Book/appendix/titulaciones-soportadas.tex && -s $unpacked/Book/cover/urjc/portada-tfg-eif-urjc.tex ]]
   cmp "$unpacked/Book/appendix/titulaciones-soportadas.tex" "$unpacked/Book/appendix/orig/titulaciones-soportadas.tex"
   grep -Fq '\item \texttt{TEST-DEGREE}' "$unpacked/Book/appendix/titulaciones-soportadas.tex"

@@ -26,7 +26,9 @@ Top-level directories and their primary role:
 - `UsefulDocs/`: Reference docs (cheatsheets and symbols).
 - `Deprecated/`: Legacy material kept for reference.
 
-The root-level `sync-git-sources.sh` is the user-facing implementation behind `make sync-git-sources`; it is kept outside `AdminScripts/` because it is distributed with the template and is not a maintainer utility.
+The distributed `Tools/sync-git-sources.sh` is the user-facing implementation behind `make sync-git-sources`; it lives in `Tools/` because it is distributed with the template and is not a maintainer utility.
+
+The `Tools/prepare-book` launchers use `Tools/estructuras.tsv` to select the standard or compendium sources without running LaTeX. After changing the degree registry, refresh the table: run `sh Config/query-degree-registry.sh identifiers`, then query `document-structure` for each identifier in that order. Store one tab-separated identifier and structure per line. The distribution build rejects a stale table.
 
 ## Main user workflow
 
@@ -64,7 +66,7 @@ The root `Makefile` can also produce a PDF version of the README and delegate th
 - `Anteproyecto/Makefile` uses the same incremental `latexmk` layer with automatic bibliography support.
 - The Makefiles under `PapeleoTFG/`, `PapeleoTFM/`, and `PapeleoPHD/` use `latexmk` to track direct and shared configuration dependencies for every administrative document.
 - The root targets `anteproyecto`, `paperwork`, and `all-documents` optionally orchestrate these components; `paperwork` selects the directory matching the configured degree type.
-- The root target `sync-git-sources` invokes `sync-git-sources.sh` to update a user's Git index from the dependencies of the book, proposal, and paperwork; the script refuses to run in the marked official template repository.
+- The root target `sync-git-sources` invokes `Tools/sync-git-sources.sh` to update a user's Git index from the dependencies of the book, proposal, and paperwork; the script refuses to run in the marked official template repository.
 - Shared engine options live in `Config/latex-common.mk`; `Config/latexmkrc` retains extra glossary cleanup extensions.
 - `AdminScripts/build-book-typesetting-prototypes.sh` builds isolated full-book samples for the registered visual profiles. `AdminScripts/build-book-style-comparisons.sh` uses Python and PyMuPDF to add neutral bilingual front matter and extract, label, and compose the comparison pages.
 - `AdminScripts/go.gen-public-sample-pdfs.sh` generates the reduced public Dropbox matrix and optionally publishes its PDFs plus `RELEASE.txt` after interactive confirmation. The maintainer-only `publish-dropbox` target also builds and publishes both validated release archives in the same confirmed operation. `go.gen-all-pdfs.sh` previews a selectable regression matrix and asks for confirmation; its default is representative, while `--all` enables exhaustive coverage. Builds use isolated copies and save PDFs and logs under `Book/all-pdfs/`.
