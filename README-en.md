@@ -6,7 +6,7 @@ Writing a bachelor's, master's or doctoral thesis is enough work already. Wrestl
 
 The template is designed mainly for the University of Alcalá (UAH), although it also supports some degrees at URJC, UPM, UCLM and US. It can generate documents in Spanish or English and covers everything from conventional academic reports (BsC, MsC. Thesis) to doctoral theses by compendium of publications, including administrative paperwork (for the UAH case).
 
-When you first use the template, all those files and options may feel a little intimidating. That's normal, but you don't need to know them all or have Jedi-level skills to get started. You'll only need to deal with a few files, and I'll show you which ones. You'll discover the rest as you need it, so relax and keep going, because I'm sure you've got this.
+When you first use the template, all those files and options may feel a little intimidating. That's normal, but you don't need to know them all or have *Jedi-level* skills to get started. You'll only need to deal with a few files, and I'll show you which ones. You'll discover the rest as you need it, so relax and keep going, because I'm sure you've got this.
 
 
 ## What the template does for you
@@ -41,6 +41,8 @@ To get started, I recommend working on your own computer with a LaTeX distributi
 
 [^privacidad]: Before uploading your project to an online service, review its privacy terms and, if you use AI features, its data-use controls. If your project contains confidential information, personal data or material covered by agreements with third parties, check with your advisor or institution first. A local installation lets you work without uploading your project to these services.
 
+You don't need to use the terminal or `make` to work with the template. If you'd rather compile from the terminal, section 7.2 (*Compilación mediante el Makefile*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) explains how and which tools you need.
+
 ### Windows
 
 1. Install the current version of [`MiKTeX`](https://miktex.org/download).
@@ -58,7 +60,7 @@ On Ubuntu or Debian, look for these exact names in your system's package manager
 - `texstudio`: installs the editor where you'll write your thesis.
 - `biber`: installs the tool that prepares the bibliography. With `texlive-full`, it will usually already be installed as a dependency, but you can check in the package manager.
 
-For example, if you have the `Synaptic` Package Manager on Ubuntu, open it, search for each name, select `Marcar para instalar` and click `Aplicar`. Accept any dependencies it suggests too. `Synaptic` isn't installed by default in every version of Ubuntu. The [Ubuntu help page for `Synaptic`](https://help.ubuntu.com/stable/ubuntu-help/addremove-install-synaptic.html.en) explains how to get it and use it. If you prefer installing from the terminal, you'll find the commands in the manual.
+For example, if you have the `Synaptic` Package Manager on Ubuntu, open it, search for each name, select `Marcar para instalar` and click `Aplicar`. Accept any dependencies it suggests too. `Synaptic` isn't installed by default in every version of Ubuntu. The [Ubuntu help page for `Synaptic`](https://help.ubuntu.com/stable/ubuntu-help/addremove-install-synaptic.html.en) explains how to get it and use it. If you prefer installing from the terminal, you'll find the commands in section 7.1 (*Instalación desde la terminal en GNU/Linux*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv).
 
 On other GNU/Linux distributions, install `TeX Live`, `TeXstudio` and `biber` through their package manager. The names of the `TeX Live` collections may differ from those above.
 
@@ -91,12 +93,6 @@ With [`Overleaf`](https://www.overleaf.com/), you can work in your browser witho
 
 A word of warning: on the free plan, you almost certainly won't be able to compile the complete manual because that version of `Overleaf` has a very restrictive compilation time limit. If it times out, it doesn't mean you've done anything wrong. You can use a local installation or, after reviewing the precompiled manual, try the minimal structure and leave out any example material you don't need. A smaller document may fit within the time limit, but I can't guarantee it.
 
-### If you're comfortable with the terminal
-
-`make` is an optional alternative to the editor for automating tasks. Besides the LaTeX distribution and `biber`, this route needs `make`, `bash`, `latexmk`, `perl` and `makeglossaries` (if any of these tools is missing from your distribution, you'll get a clear error message and can simply install what's missing). The book's default target also uses `Ghostscript` to generate a compressed copy. The manual explains these requirements and the additional tools for converting certain figure and diagram formats.
-
-**You don't need to use the terminal or** `make` **to work with the template**: your LaTeX editor is an equally valid alternative. If you choose this route, you'll find the instructions in [If you're comfortable with the terminal: optional compilation with `make`](#if-youre-comfortable-with-the-terminal-optional-compilation-with-make).
-
 ## Your first PDF, step by step
 
 ### Download and extract the student distribution
@@ -105,7 +101,7 @@ To write your document, I recommend downloading the `zip` distribution from [`Dr
 
 [^1]: The [`GitHub` repository](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate) also contains maintenance tools, regulations and historical files. You can clone it or create a *fork* if you want to contribute, but you don't need those materials to get started.
 
-The [PDF download guide](https://www.dropbox.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk&dl=0) explains what each example demonstrates. We only provide a few examples to avoid overwhelming you with dozens of files and possibilities, and the absence of a PDF for your particular degree doesn't mean it isn't supported (the list is very long). If you want to consult the manual before installing anything, open the [GIEC bachelor's thesis example at UAH](https://www.dropbox.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv&dl=0).
+The [PDF download guide](https://dl.dropboxusercontent.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk) explains what each example demonstrates. We only provide a few examples to avoid overwhelming you with dozens of files and possibilities, and the absence of a PDF for your particular degree doesn't mean it isn't supported (the list is very long). When this README refers to a section of the "manual", it means the full document available on Dropbox: the [GIEC bachelor's thesis example at UAH](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv). You can read it without installing anything.
 
 Extract the template into a folder where you have write permissions. Keep the distribution's directories together: `Book/` needs the shared files in `Config/`.
 
@@ -113,7 +109,7 @@ Extract the template into a folder where you have write permissions. Keep the di
 
 With your [environment set up](#set-up-your-environment), open `Book/book.tex` in `TeXstudio` and select `Herramientas` > `Compilar y ver` (`F5`), or click the double green arrow icon ![Build and view](Book/figures/manual/texstudio-build-and-view-16.png) on the toolbar. Do this first compilation before changing anything. If you use another editor, open the same file and use its usual build function. To work in your browser, follow the instructions for [`Overleaf`](#compile-the-example-in-overleaf).
 
-The template automatically generates the lists of acronyms and symbols. When using the editor this way, you don't need to install anything else (apart from the LaTeX distribution, of course). If the lists don't appear after the first compilation, compile again. For other issues, consult the compilation section of the manual.
+The template automatically generates the lists of acronyms and symbols. When using the editor this way, you don't need to install anything else (apart from the LaTeX distribution, of course). If the lists don't appear after the first compilation, compile again. For other issues, see section 7.4 (*Resolución de problemas*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv).
 
 The resulting PDF confirms that your environment works and serves as the template manual and a collection of examples. Browse it to get your bearings, without having to read it all. If this first compilation fails, check [Common problems](#common-problems) before changing other files.
 
@@ -144,16 +140,6 @@ These details let you check the initial personalisation. Leave the advanced opti
 > **Important:** don't delete or comment out variable definitions. If an optional detail doesn't apply to you, such as the coadvisor, keep the variable and leave its value empty.
 
 Compile `Book/book.tex` again and check that your name, title and degree appear correctly. Also check that the advisors' names and any dates you've entered have been updated if your degree's layout displays those details, as the UAH layouts do. Don't leave the example details in the version you submit. `Book/book.tex` is the file you compile, but you normally won't need to edit it: configuration and content are kept separate.
-
-### If you're comfortable with the terminal: optional compilation with `make`
-
-If you've installed the tools described in [If you're comfortable with the terminal](#if-youre-comfortable-with-the-terminal), open a terminal in `Book/` and run:
-
-```bash
-make
-```
-
-The `Makefile` uses `latexmk` to coordinate LaTeX, `biber` and glossary processing, run the necessary passes and avoid unnecessary recompilations. The proposal and paperwork directories also include `Makefile` files. Further down, you'll find two other uses: preparing the minimal structure and selecting sources for `git`, explained in the [collaboration](#collaboration-with-your-advisor-and-document-review) section.
 
 ## The files you really need to know
 
@@ -186,46 +172,46 @@ Once you've compiled and reviewed the manual, save a backup copy of the entire f
 
 Once you've prepared the minimal structure, organise your work by adding, removing or reordering the `\input{...}` instructions in `Book/content-standard.tex`. Write in the content files, compile `Book/book.tex` and review the PDF and warnings. Making small changes and compiling frequently makes errors easier to find.
 
-When you're concentrating on a chapter, you may not want to wade through covers, abstracts and lists every time you open the PDF. After compiling and reviewing the complete manual, you can set `\ZenMode` to `true` in `Config/myconfig.tex`: you'll still compile `Book/book.tex`, but see only the content selected in `Book/content-standard.tex` (or `Book/content-compendium.tex` for a thesis by compendium). Choose chapters by commenting out or restoring their `\input{...}` lines. Before submitting your work, set `\ZenMode` back to `false` and review the complete document. The manual's *Modo zen para redactar* subsection has the details.
+When you're concentrating on a chapter, you may not want to wade through covers, abstracts and lists every time you open the PDF. After compiling and reviewing the complete manual, you can set `\ZenMode` to `true` in `Config/myconfig.tex`: you'll still compile `Book/book.tex`, but see only the content selected in `Book/content-standard.tex` (or `Book/content-compendium.tex` for a thesis by compendium). Choose chapters by commenting out or restoring their `\input{...}` lines. Before submitting your work, set `\ZenMode` back to `false` and review the complete document. Section 3.4.1 (*Modo zen para redactar*) of the manual has the details.
 
-To use the preparation tool, follow the instructions for your operating system:
+To use the preparation tool, open your file manager in the folder where you extracted the distribution, then follow the steps for your operating system:
 
-- **Windows:** open `Tools/prepare-book.bat`.
-- **macOS:** open `Tools/prepare-book.command`.
-- **Linux:** double-click `Tools/prepare-book.sh` and choose `Run in Terminal`. If your file manager doesn't offer that option, run `sh Tools/prepare-book.sh` from the template folder.
+- On **Windows:** open `Tools/prepare-book.bat`.
+- On **macOS:** open `Tools/prepare-book.command`.
+- On **GNU/Linux:** double-click `Tools/prepare-book.sh` and choose `Run in Terminal`. If your file manager doesn't offer that option, see section 2.7 (*Preparación de una estructura mínima*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv).
 
 Choose whether to prepare a minimal document or restore the examples. The tool backs up the files it will replace. Then compile `Book/book.tex`.
 
-If you'd rather prepare the minimal structure by hand, you'll find the steps in the manual's *Preparación de una estructura mínima* section. This method also works if you're working in a browser. If you already use `make`, the same section explains how to automate the process.
+If you'd rather prepare the minimal structure by hand, you'll find the steps in section 2.7 (*Preparación de una estructura mínima*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv). This method also works if you're working in a browser. If you already use `make`, the same section explains how to automate the process.
 
 ## Collaboration with your advisor and document review
 
 ### `git` for keeping and sharing your work
 
-`git` stores your project's history in a repository and lets you recover earlier versions. Each *commit* records a set of changes with a message describing them. You don't need it to compile, but I recommend it so you don't have to rely on copies called "final", "final-good" and "really-final-this-time".
+`git` stores your project's history in a repository and lets you recover earlier versions. Each *commit* records a set of changes with a message describing them. You don't need it to compile, but I recommend it so you don't have to rely on copies called `final`, `final-good` and `final-for-real-this-time-no-really`.
 
 `git` keeps the history on your computer. You can share a remote copy through `GitHub`, `GitLab` or another service, but remember to synchronise your changes to keep it up to date.
 
-Once you've prepared the minimal structure, you can create your repository and make the first *commit* from a graphical application, without using the console:
+Once you've prepared the minimal structure, you can create your repository and make the first *commit* from a [graphical application](https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/Interfaces,_frontends,_and_tools.html#Graphical_Interfaces), without using the console:
 
 1. Open the project's root folder and use the option to create or initialise a repository if one doesn't exist yet.
 2. Keep the `.gitignore` file included with the template. It excludes auxiliary files and the PDFs generated during compilation.
 3. Select all the files the application suggests for your first *commit*. The option may be called `Stage all changes`, `Select all` or appear as a checkbox to select everything. Even if there are lots of files, you don't have to choose them one by one. If any personal files you've copied into that folder appear and you don't want to share them, deselect them.
 4. Write a message describing the start of your work and create the *commit*. Publishing it to a remote service is a separate, later operation.
 
-The manual's *Preparación del repositorio `git`* section explains which files to keep, which ones not to upload and how to continue with subsequent *commits*. You'll find plenty of information about `git` and `GitHub`, so I won't bore you with the details here.
+Section 2.8 (*Preparación del repositorio Git*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) explains which files to keep, which ones not to upload and how to continue with subsequent *commits*. You'll find plenty of information about `git` and `GitHub` online, so I won't bore you with the details here.
 
-If you're comfortable with the terminal and use `make`, with your repository already created, run `make sync-git-sources` from the root to select sources according to the compilation dependencies. It will show you the changes and ask for confirmation before preparing your next *commit*. It can stop tracking files it doesn't detect as necessary for compilation, without deleting them from disk. This option doesn't make the *commit* or upload the changes to the online repository for you. Consult the manual for the requirements.
+If you already use `make`, section 2.8.3 (*Sincronización mediante el Makefile*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) explains how to prepare the files for your next *commit*.
 
 ### Reviewing the document with your advisor
 
 The `git` history helps you see what's changed, but doesn't replace comments on the content. You can combine it with the review tools provided by whichever service you use to share the project.
 
-I've also found the `todonotes` package useful, and the template already loads it. At the end of `Config/myconfig.tex`, you'll find example commands such as `\todojmg`, `\todorbc` and `\todomig`, which you can adapt to the people reviewing your work. For example, `\todojmg{Revisar esta explicación}` inserts a review note. The manual describes these tools and how to generate a document showing tracked changes. Come back to these tools when you start exchanging versions with your advisor.
+I've found the `todonotes` package useful, and it's available in the template. At the end of `Config/myconfig.tex`, you'll find example commands such as `\todojmg`, `\todorbc` and `\todomig`, which you can adapt to the people reviewing your work. For example, `\todojmg{Revisar esta explicación}` inserts a review note. See section 5.1 (*Comandos personalizados*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) for review notes and section 7.3 (*Generación del documento con control de cambios*) for comparing versions. Come back to these tools when you start exchanging versions with your advisor.
 
 ## When you need something more
 
-Add these features as you need them. The manual contains the full details and examples.
+Add these features as you need them. The [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) contains the full details and examples.
 
 ### Project proposal
 
@@ -247,8 +233,6 @@ For example:
 \includegraphics[width=0.8\textwidth]{mi-figura.png}
 ```
 
-The `Makefile` files can convert some source formats, such as SVG, EPS or DIA, when the corresponding external tools are installed.
-
 ### Acronyms and symbols
 
 You can define your acronyms and symbols in:
@@ -258,9 +242,9 @@ Book/acronyms/defacronymsgl.tex
 Book/symbols/defsymbolsgl.tex
 ```
 
-Both files already contain examples you can follow to add your own definitions. To generate the lists (indexes), follow the instructions for [the first compilation](#compile-the-example-without-changing-anything). If you use `make`, remember the requirements in [If you're comfortable with the terminal](#if-youre-comfortable-with-the-terminal).
+Both files already contain examples you can follow to add your own definitions. To generate the lists (indexes), follow the instructions for [the first compilation](#compile-the-example-without-changing-anything).
 
-### Administrative paperwork
+### Administrative paperwork (UAH only)
 
 You'll find some of the administrative documents grouped by type of work in these directories:
 
@@ -269,17 +253,21 @@ PapeleoTFG/
 PapeleoTFM/
 ```
 
-You can compile the `.tex` file for an individual form from your editor or use the corresponding `Makefile` files (run `make help` in the relevant folder for more help). If you work online, select it as explained in the [`Overleaf`](#compile-the-example-in-overleaf) section. Consult the PDF guides included in those folders and always check the applicable regulations.
+You can compile each form's `.tex` file from your editor. If you work online, select it as explained in the [`Overleaf`](#compile-the-example-in-overleaf) section. Consult the PDF guides in those folders and always check the applicable regulations.
 
 ### Doctoral thesis by compendium of publications
 
 For a doctoral thesis by compendium:
 
-- Select `PHDUAH-COMPENDIUM`, `PHD-ETSIT-UPM-COMPENDIUM`, `PHD-ETSII-UPM-COMPENDIUM`, or `PHD-ETSII-US-COMPENDIUM` through `\myDegree` in `Config/myconfig.tex`, according to your university and school.
+- In `Config/myconfig.tex`, set `\myDegree` to the identifier for your university and school:
+    - `PHDUAH-COMPENDIUM`,
+    - `PHD-ETSIT-UPM-COMPENDIUM`,
+    - `PHD-ETSII-UPM-COMPENDIUM`, or
+    - `PHD-ETSII-US-COMPENDIUM`.
 - Organise the content in `Book/content-compendium.tex`.
 - Keep compiling `Book/book.tex`.
 
-Consult the manual and your programme's regulations before including publications, especially regarding permission to reuse them.
+Check section 6.2 (*Caso especializado: tesis por compendio de publicaciones*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) and your programme's regulations before including publications, especially regarding permission to reuse them.
 
 ## Common problems
 
@@ -339,15 +327,16 @@ If you need help with a compilation error or want to send a suggestion, you can 
 
 ## Credits, licence and contributions
 
-I'm Javier Macías Guarasa, and I maintain this template so you can spend more time on the content of your work than on formatting. Your corrections, experiences and suggestions help me improve it, as they have over the years.
+I'm Javier Macías Guarasa, and I maintain this template so you can spend more time on the content of your work than on formatting. Your corrections, experiences and suggestions have helped me improve it over the years, so don't hesitate to send them my way.
 
 I'm not an expert in LaTeX or template design, and many decisions have come from trying to solve specific problems. As I mentioned in the introduction, I'm well aware that the structure can feel overwhelming at first and that some things could still be made simpler. If you spot any, or have any suggestions, let me know by sending a message to [javier.maciasguarasa@uah.es](mailto:javier.maciasguarasa@uah.es).
 
 The project keeps evolving, and all contributions are welcome, especially to:
 
+- Suggest improvements.
 - Fix errors.
 - Improve the documentation.
-- Update forms and institutional requirements.
+- Update forms and institutional requirements, including those of universities other than UAH.
 - Extend compatibility with degrees.
 - Simplify the experience for people using the template for the first time.
 

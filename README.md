@@ -6,7 +6,7 @@ Escribir un TFG, un TFM o una tesis doctoral ya da bastante trabajo. Pelearte co
 
 La plantilla está diseñada principalmente para la Universidad de Alcalá (UAH), aunque también incluye soporte para algunas titulaciones de la URJC, UPM, UCLM y US. Permite generar documentos en español o en inglés y cubre desde trabajos académicos convencionales hasta anteproyectos, documentación administrativa (para el caso de UAH) y tesis doctorales por compendio de publicaciones.
 
-Al usar la plantilla puede que tantos archivos y opciones te impongan un poco. Es normal, pero no necesitas conocerlos todos ni tener nivel Jedi para empezar. Sólo tendrás que ocuparte de unos pocos archivos, y te iré indicando cuáles. El resto lo irás descubriendo cuando lo necesites, así que relax y ánimo, porque estoy seguro de que puedes con ello.
+Al usar la plantilla puede que tantos archivos y opciones te impongan un poco. Es normal, pero no necesitas conocerlos todos ni tener *nivel Jedi* para empezar. Sólo tendrás que ocuparte de unos pocos archivos, y te iré indicando cuáles. El resto lo irás descubriendo cuando lo necesites, así que relax y ánimo, porque estoy seguro de que puedes con ello.
 
 
 ## Qué hace la plantilla por ti
@@ -41,6 +41,8 @@ Para empezar te recomiendo trabajar en tu equipo con una distribución de LaTeX 
 
 [^privacidad]: Antes de subir tu proyecto a un servicio en línea, revisa sus condiciones de privacidad y, si utilizas funciones de IA, los controles de uso de datos. Si contiene información confidencial, datos personales o material sujeto a acuerdos con terceros, consulta primero con tu tutor o institución. Una instalación local permite trabajar sin subir el proyecto a estos servicios.
 
+No necesitas usar la terminal ni `make` para trabajar con la plantilla. Si prefieres compilar desde la terminal, el apartado 7.2 (*Compilación mediante el Makefile*) del [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) explica cómo hacerlo y qué herramientas necesitas.
+
 ### Windows
 
 1. Instala la versión actual de [`MiKTeX`](https://miktex.org/download).
@@ -58,7 +60,7 @@ En Ubuntu o Debian, busca estos nombres exactos en el gestor de paquetes de tu s
 - `texstudio`: instala el editor en el que escribirás tu trabajo.
 - `biber`: instala la herramienta que prepara la bibliografía. Con `texlive-full` normalmente ya quedará instalado como dependencia, pero puedes comprobarlo en el gestor.
 
-Por ejemplo, si tienes el Gestor de paquetes `Synaptic` en Ubuntu, ábrelo, busca cada nombre, selecciona `Marcar para instalar` y pulsa `Aplicar`. Acepta también las dependencias que proponga. `Synaptic` no viene instalado en todas las versiones de Ubuntu. La [ayuda de Ubuntu sobre `Synaptic`](https://help.ubuntu.com/stable/ubuntu-help/addremove-install-synaptic.html.en) explica cómo obtenerlo y utilizarlo. Si prefieres instalar desde la terminal, encontrarás los comandos en el manual.
+Por ejemplo, si tienes el Gestor de paquetes `Synaptic` en Ubuntu, ábrelo, busca cada nombre, selecciona `Marcar para instalar` y pulsa `Aplicar`. Acepta también las dependencias que proponga. `Synaptic` no viene instalado en todas las versiones de Ubuntu. La [ayuda de Ubuntu sobre `Synaptic`](https://help.ubuntu.com/stable/ubuntu-help/addremove-install-synaptic.html.en) explica cómo obtenerlo y utilizarlo. Si prefieres instalar desde la terminal, encontrarás los comandos en el apartado 7.1 (*Instalación desde la terminal en GNU/Linux*) del [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv).
 
 En otras distribuciones GNU/Linux, instala `TeX Live`, `TeXstudio` y `biber` mediante su gestor de paquetes. Los nombres de las colecciones de `TeX Live` pueden ser distintos de los anteriores.
 
@@ -91,12 +93,6 @@ Con [`Overleaf`](https://www.overleaf.com/) puedes trabajar desde el navegador, 
 
 Ojo: con el plan gratuito es casi seguro que no podrás compilar el manual completo porque esa versión de `Overleaf` limita mucho el tiempo de compilación. Si se agota ese tiempo, no significa que hayas hecho algo mal. Puedes utilizar una instalación local o, después de revisar el manual precompilado, probar con la estructura mínima y prescindir del material de ejemplo que no necesites. Un documento más pequeño puede caber en el límite de tiempo, pero no puedo garantizártelo.
 
-### Si te manejas con la terminal
-
-`make` es una alternativa opcional al editor para automatizar tareas. Además de la distribución de LaTeX y `biber`, esta vía necesita `make`, `bash`, `latexmk`, `perl` y `makeglossaries` (si te falta alguna de esas herramientas en tu distribución, te dará un claro mensaje de error y basta con instalar lo que falte). El objetivo predeterminado del libro utiliza también `Ghostscript` para generar una copia comprimida. El manual detalla estos requisitos y las herramientas adicionales para convertir determinados formatos de figuras y diagramas.
-
-**No necesitas utilizar la terminal ni** `make` **para trabajar con la plantilla**: tu editor de LaTeX es una alternativa igualmente válida. Si eliges esta vía, encontrarás las instrucciones en [Si te manejas con la terminal: compilación opcional con `make`](#si-te-manejas-con-la-terminal-compilación-opcional-con-make).
-
 ## Tu primer PDF, paso a paso
 
 ### Descarga y descomprime la distribución para estudiantes
@@ -105,7 +101,7 @@ Para escribir tu documento te recomiendo que descargues la distribución `zip` d
 
 [^1]: El [repositorio de `GitHub`](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate) contiene además herramientas de mantenimiento, normativa y archivos históricos. Puedes clonarlo o crear un *fork* si quieres contribuir, pero no necesitas esos materiales para empezar.
 
-La [guía de descarga en PDF](https://www.dropbox.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk&dl=0) explica qué muestra cada ejemplo. Sólo mostramos algunos ejemplos para no abrumarte con decenas de ficheros y posibilidades, y que no exista un PDF para tu titulación concreta no significa que no esté soportada (la lista es muy grande). Si quieres consultar el manual antes de instalar nada, abre el [ejemplo de TFG del GIEC en la UAH](https://www.dropbox.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv&dl=0).
+La [guía de descarga en PDF](https://dl.dropboxusercontent.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk) explica qué muestra cada ejemplo. Sólo mostramos algunos ejemplos para no abrumarte con decenas de ficheros y posibilidades, y que no exista un PDF para tu titulación concreta no significa que no esté soportada (la lista es muy grande). Cuando en este README te remito a un apartado del "manual", me refiero al documento completo disponible en Dropbox: el [ejemplo de TFG del GIEC en la UAH](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv). Puedes consultarlo sin instalar nada.
 
 Descomprime la plantilla en una carpeta en la que tengas permisos de escritura. Conserva juntos los directorios de la distribución: `Book/` necesita los archivos compartidos de `Config/`.
 
@@ -113,7 +109,7 @@ Descomprime la plantilla en una carpeta en la que tengas permisos de escritura. 
 
 Con el [entorno preparado](#prepara-tu-entorno), abre `Book/book.tex` en `TeXstudio` y selecciona `Herramientas` > `Compilar y ver` (`F5`), o pulsa el icono de la doble flecha verde ![Compilar y ver](Book/figures/manual/texstudio-build-and-view-16.png) de la barra de herramientas. Haz esta primera compilación antes de modificar nada. Si utilizas otro editor, abre ese mismo archivo y utiliza su función habitual de construcción. Para trabajar desde el navegador, sigue las instrucciones de [`Overleaf`](#compila-el-ejemplo-en-overleaf).
 
-La plantilla genera automáticamente las listas de acrónimos y símbolos. Para esta vía desde el editor no necesitas instalar nada más (salvo la distribución de LaTeX, claro). Si las listas no aparecen tras la primera compilación, vuelve a compilar. Para otras incidencias, consulta el apartado de compilación del manual.
+La plantilla genera automáticamente las listas de acrónimos y símbolos. Para esta vía desde el editor no necesitas instalar nada más (salvo la distribución de LaTeX, claro). Si las listas no aparecen tras la primera compilación, vuelve a compilar. Para otras incidencias, consulta el apartado 7.4 (*Resolución de problemas*) del [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv).
 
 El PDF resultante es una prueba de que tu entorno funciona, el manual de la plantilla y una colección de ejemplos. Revísalo para orientarte, sin necesidad de leerlo entero. Si esta primera compilación falla, consulta [Problemas frecuentes](#problemas-frecuentes) antes de cambiar otros archivos.
 
@@ -144,16 +140,6 @@ Con estos datos puedes comprobar la personalización inicial. Deja las opciones 
 > **Importante:** no elimines ni comentes las definiciones de variables. Si un dato opcional no corresponde a tu caso, como el cotutor, conserva la variable y deja su valor vacío.
 
 Vuelve a compilar `Book/book.tex` y comprueba que aparecen tu nombre, el título y la titulación correctos. Comprueba también que se hayan actualizado los nombres de los tutores y las fechas que hayas introducido si el modelo de tu titulación muestra esos datos, como ocurre en los modelos de la UAH. No dejes los datos de ejemplo en la versión que entregues. `Book/book.tex` es el archivo que compilas, pero normalmente no tendrás que editarlo: la configuración y el contenido están separados.
-
-### Si te manejas con la terminal: compilación opcional con `make`
-
-Si has preparado las herramientas del apartado [Si te manejas con la terminal](#si-te-manejas-con-la-terminal), abre una terminal en `Book/` y ejecuta:
-
-```bash
-make
-```
-
-El `Makefile` utiliza `latexmk` para coordinar LaTeX, `biber` y el procesamiento de glosarios, realizar las pasadas necesarias y evitar recompilaciones innecesarias. Los directorios del anteproyecto y del papeleo también incluyen ficheros `Makefile`. Más abajo encontrarás otros dos usos: preparar la estructura mínima y seleccionar los fuentes para `git`, que se explica en el apartado de [colaboración](#colaboración-con-tu-tutor-y-revisión-del-documento).
 
 ## Los archivos que realmente necesitas conocer
 
@@ -186,46 +172,46 @@ Una vez que hayas compilado y revisado el manual, guarda una copia de seguridad 
 
 Una vez preparada la estructura mínima, organiza tu trabajo añadiendo, eliminando o reordenando las instrucciones `\input{...}` de `Book/content-standard.tex`. Escribe en los archivos de contenido, compila `Book/book.tex` y revisa el PDF y los avisos. Hacer cambios pequeños y compilar con frecuencia facilita encontrar los errores.
 
-Cuando estés concentrado en un capítulo, quizá no te apetezca atravesar portadas, resúmenes e índices cada vez que abres el PDF. Después de compilar y revisar el manual completo, puedes poner `\ZenMode` en `true` dentro de `Config/myconfig.tex`: seguirás compilando `Book/book.tex`, pero verás solo el contenido seleccionado en `Book/content-standard.tex` (o `Book/content-compendium.tex` si preparas una tesis por compendio). Elige los capítulos comentando o activando sus líneas `\input{...}`. Antes de entregar el trabajo, devuelve `\ZenMode` a `false` y revisa el documento completo. El apartado *Modo zen para redactar* del manual te cuenta los detalles.
+Cuando estés concentrado en un capítulo, quizá no te apetezca atravesar portadas, resúmenes e índices cada vez que abres el PDF. Después de compilar y revisar el manual completo, puedes poner `\ZenMode` en `true` dentro de `Config/myconfig.tex`: seguirás compilando `Book/book.tex`, pero verás sólo el contenido seleccionado en `Book/content-standard.tex` (o `Book/content-compendium.tex` si preparas una tesis por compendio). Elige los capítulos comentando o activando sus líneas `\input{...}`. Antes de entregar el trabajo, devuelve `\ZenMode` a `false` y revisa el documento completo. El apartado 3.4.1 (*Modo zen para redactar*) del manual te cuenta los detalles.
 
-Para usar la herramienta de preparación, sigue los pasos de tu sistema:
+Para usar la herramienta de preparación, arranca tu explorador de archivos en el directorio donde hayas descomprimido la distribución, y sigue los pasos de tu sistema:
 
-- **Windows:** abre `Tools/prepare-book.bat`.
-- **macOS:** abre `Tools/prepare-book.command`.
-- **Linux:** haz doble clic en `Tools/prepare-book.sh` y elige `Ejecutar en un terminal`. Si no aparece esa opción, ejecuta `sh Tools/prepare-book.sh` desde la carpeta de la plantilla.
+- En **Windows:** abre `Tools/prepare-book.bat`.
+- En **macOS:** abre `Tools/prepare-book.command`.
+- En **GNU/Linux:** haz doble clic en `Tools/prepare-book.sh` y elige `Ejecutar en un terminal`. Si no aparece esa opción, consulta el apartado 2.7 (*Preparación de una estructura mínima*) del [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv).
 
 Elige preparar un documento mínimo o restaurar los ejemplos. La herramienta guarda una copia de los archivos que va a sustituir. Después, compila `Book/book.tex`.
 
-Si prefieres preparar la estructura mínima a mano, encontrarás los pasos en el apartado *Preparación de una estructura mínima* del manual. Ese método también te sirve si trabajas desde el navegador. Si ya utilizas `make`, en el mismo apartado te explico cómo automatizar el proceso.
+Si prefieres preparar la estructura mínima a mano, encontrarás los pasos en el apartado 2.7 (*Preparación de una estructura mínima*) del [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv). Ese método también te sirve si trabajas desde el navegador. Si ya utilizas `make`, en el mismo apartado te explico cómo automatizar el proceso.
 
 ## Colaboración con tu tutor y revisión del documento
 
 ### `git` para conservar y compartir tu trabajo
 
-`git` guarda el historial de tu proyecto en un repositorio y te permite recuperar versiones anteriores. Cada *commit* registra un conjunto de cambios con un mensaje que los describe. No lo necesitas para compilar, pero te lo recomiendo para no depender de copias llamadas "final", "final-bueno" y "ahora-sí-final".
+`git` guarda el historial de tu proyecto en un repositorio y te permite recuperar versiones anteriores. Cada *commit* registra un conjunto de cambios con un mensaje que los describe. No lo necesitas para compilar, pero te lo recomiendo para no depender de copias llamadas `final`, `final-bueno` y `ahora-sí-final-de-verdad-de-la-buena`.
 
 `git` conserva el historial en tu equipo. Puedes compartir una copia remota mediante `GitHub`, `GitLab` u otro servicio, pero recuerda sincronizar tus cambios para mantenerla al día.
 
-Cuando tengas preparada la estructura mínima, puedes crear tu repositorio y hacer el primer *commit* desde una aplicación gráfica, sin utilizar la consola:
+Cuando tengas preparada la estructura mínima, puedes crear tu repositorio y hacer el primer *commit* desde una [aplicación gráfica](https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/Interfaces,_frontends,_and_tools.html#Graphical_Interfaces), sin utilizar la consola:
 
 1. Abre la carpeta raíz del proyecto y utiliza la opción de crear o inicializar un repositorio, si todavía no existe.
 2. Conserva el fichero `.gitignore` incluido en la plantilla. Se encarga de excluir los archivos auxiliares y los PDF generados durante la compilación.
 3. Selecciona todos los archivos que te proponga la aplicación para el primer *commit*. La opción puede llamarse `Stage all changes`, `Select all` o aparecer como una casilla para marcarlos todos. Aunque haya muchos, no tienes que elegirlos uno a uno. Si aparecen archivos personales que hayas copiado a esa carpeta y no quieras compartir, desmárcalos.
 4. Escribe un mensaje que describa el inicio de tu trabajo y crea el *commit*. Publicarlo en un servicio remoto es una operación posterior y separada.
 
-El apartado *Preparación del repositorio `git`* del manual explica qué archivos conservar, cuáles no debes subir y cómo continuar con los siguientes *commits*. Encontrarás mucha información sobre `git` y `GitHub`, así que no voy a aburrirte aquí con los detalles.
+El apartado 2.8 (*Preparación del repositorio Git*) del [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) explica qué archivos conservar, cuáles no debes subir y cómo continuar con los siguientes *commits*. Encontrarás mucha información sobre `git` y `GitHub` en la red, así que no voy a aburrirte aquí con los detalles.
 
-Si te sientes cómodo en la terminal y utilizas `make`, con el repositorio ya creado, ejecuta `make sync-git-sources` desde la raíz para seleccionar los fuentes según las dependencias de compilación. Te mostrará los cambios y te pedirá confirmación antes de preparar el próximo *commit*. Puede dejar de versionar archivos que no detecte como necesarios para compilar, sin borrarlos del disco. Esta opción no hace el *commit* ni sube al repositorio online los cambios por ti. Consulta los requisitos en el manual.
+Si ya utilizas `make`, en el apartado 2.8.3 (*Sincronización mediante el Makefile*) del [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) te explico cómo preparar los archivos para tu próximo *commit*.
 
 ### Revisar el documento con tu tutor
 
 El historial de `git` te ayuda a ver qué ha cambiado, pero no sustituye los comentarios sobre el contenido. Puedes combinarlo con las herramientas de revisión del servicio que utilices para compartir el proyecto.
 
-También me ha resultado útil el paquete `todonotes`, que ya carga la plantilla. Al final de `Config/myconfig.tex` encontrarás comandos de ejemplo como `\todojmg`, `\todorbc` y `\todomig`, que puedes adaptar a las personas que revisen tu trabajo. Por ejemplo, `\todojmg{Revisar esta explicación}` inserta una nota de revisión. El manual describe estas ayudas y la generación de un documento de control de cambios. Vuelve a estas ayudas cuando empieces a intercambiar versiones con tu tutor.
+A mí me ha resultado útil el paquete `todonotes`, que está disponible en la plantilla. Al final de `Config/myconfig.tex` encontrarás comandos de ejemplo como `\todojmg`, `\todorbc` y `\todomig`, que puedes adaptar a las personas que revisen tu trabajo. Por ejemplo, `\todojmg{Revisar esta explicación}` inserta una nota de revisión. Consulta el apartado 5.1 (*Comandos personalizados*) del [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) para saber más sobre las notas y el 7.3 (*Generación del documento con control de cambios*) para comparar versiones. Vuelve a estas ayudas cuando empieces a intercambiar versiones con tu tutor.
 
 ## Cuando necesites algo más
 
-Incorpora estas funciones a medida que las necesites. El manual contiene los detalles y ejemplos completos.
+Incorpora estas funciones a medida que las necesites. El [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) contiene los detalles y ejemplos completos.
 
 ### Anteproyecto
 
@@ -247,8 +233,6 @@ Por ejemplo:
 \includegraphics[width=0.8\textwidth]{mi-figura.png}
 ```
 
-Los ficheros `Makefile` pueden convertir algunos formatos fuente, como SVG, EPS o DIA, cuando las herramientas externas correspondientes están instaladas.
-
 ### Acrónimos y símbolos
 
 Puedes definir tus acrónimos y símbolos en:
@@ -258,9 +242,9 @@ Book/acronyms/defacronymsgl.tex
 Book/symbols/defsymbolsgl.tex
 ```
 
-Ambos archivos contienen ya ejemplos que puedes imitar para añadir tus propias definiciones. Para generar las listas (índices), sigue las indicaciones de [la primera compilación](#compila-el-ejemplo-sin-modificar-nada). Si utilizas `make`, recuerda los requisitos de [Si te manejas con la terminal](#si-te-manejas-con-la-terminal).
+Ambos archivos contienen ya ejemplos que puedes imitar para añadir tus propias definiciones. Para generar las listas (índices), sigue las indicaciones de [la primera compilación](#compila-el-ejemplo-sin-modificar-nada).
 
-### Documentación administrativa
+### Documentación administrativa (soportado para UAH)
 
 Encontrarás algunos de los documentos administrativos agrupados por tipo de trabajo en los directorios:
 
@@ -269,17 +253,21 @@ PapeleoTFG/
 PapeleoTFM/
 ```
 
-Puedes compilar el archivo `.tex` de un formulario concreto desde tu editor o utilizar los ficheros `Makefile` correspondientes (ejecuta `make help` en la carpeta correspondiente para obtener más ayuda). Si trabajas en línea, selecciónalo como se explica en el apartado de [`Overleaf`](#compila-el-ejemplo-en-overleaf). Consulta las guías PDF incluidas en esas carpetas y verifica siempre la normativa aplicable.
+Puedes compilar el `.tex` de cada formulario desde tu editor. Si trabajas en línea, selecciónalo como se explica en el apartado de [`Overleaf`](#compila-el-ejemplo-en-overleaf). Consulta las guías PDF de esas carpetas y verifica la normativa aplicable.
 
 ### Tesis doctoral por compendio de publicaciones
 
 Para una tesis doctoral por compendio:
 
-- Selecciona `PHDUAH-COMPENDIUM`, `PHD-ETSIT-UPM-COMPENDIUM`, `PHD-ETSII-UPM-COMPENDIUM` o `PHD-ETSII-US-COMPENDIUM` mediante `\myDegree` en `Config/myconfig.tex`, según tu universidad y centro.
+- En `Config/myconfig.tex`, asigna a `\myDegree` el identificador que corresponda a tu universidad y centro:
+    - `PHDUAH-COMPENDIUM`,
+    - `PHD-ETSIT-UPM-COMPENDIUM`,
+    - `PHD-ETSII-UPM-COMPENDIUM`, o
+    - `PHD-ETSII-US-COMPENDIUM`.
 - Organiza el contenido en `Book/content-compendium.tex`.
 - Continúa compilando `Book/book.tex`.
 
-Consulta el manual y la normativa de tu programa antes de incorporar publicaciones, especialmente en lo relativo a permisos de reutilización.
+Consulta el apartado 6.2 (*Caso especializado: tesis por compendio de publicaciones*) del [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) y la normativa de tu programa antes de incorporar publicaciones, especialmente en lo relativo a permisos de reutilización.
 
 ## Problemas frecuentes
 
@@ -287,7 +275,7 @@ Consulta el manual y la normativa de tu programa antes de incorporar publicacion
 
 Prueba primero con una copia recién descargada, sin modificaciones. Si tampoco compila:
 
-1. Revisa el primer mensaje de error real del registro, no solo el último.
+1. Revisa el primer mensaje de error real del registro, no sólo el último.
 2. Actualiza tu distribución de LaTeX.
 3. Permite que se instalen los paquetes que falten.
 4. Comprueba que estás compilando `Book/book.tex`.
@@ -339,15 +327,16 @@ Si necesitas ayuda con un error de compilación o quieres enviar una sugerencia,
 
 ## Créditos, licencia y contribuciones
 
-Mantengo esta plantilla para que puedas dedicar más tiempo al contenido de tu trabajo que al formato. Tus correcciones, experiencias y sugerencias me ayudan a mejorarla, y así ha sido a lo largo de los años.
+Mantengo esta plantilla para que puedas dedicar más tiempo al contenido de tu trabajo que al formato. Tus correcciones, experiencias y sugerencias me ayudan a mejorarla, y así ha sido a lo largo de los años, con lo que no te cortes para hacérmelas llegar.
 
 No soy un experto en LaTeX ni en diseñar plantillas, y muchas decisiones han salido de intentar resolver problemas concretos. Como te decía en la introducción de este documento, soy muy consciente de que la estructura puede resultar abrumadora al principio y que todavía hay cosas que podrían hacerse más sencillas. Si ves alguna, o tienes cualquier sugerencia, cuéntamelo enviándome un mensaje a [javier.maciasguarasa@uah.es](mailto:javier.maciasguarasa@uah.es).
 
 El proyecto sigue evolucionando y todas las contribuciones son bienvenidas, especialmente para:
 
+- Hacer sugerencias de mejora.
 - Corregir errores.
 - Mejorar la documentación.
-- Actualizar formularios y requisitos institucionales.
+- Actualizar formularios y requisitos institucionales (también de universidades distintas a la UAH).
 - Ampliar la compatibilidad con titulaciones.
 - Simplificar la experiencia de quienes utilizan la plantilla por primera vez.
 
