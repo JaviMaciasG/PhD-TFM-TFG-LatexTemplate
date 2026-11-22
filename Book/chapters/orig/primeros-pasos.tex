@@ -13,7 +13,7 @@ En este capítulo te acompaño desde la descarga de la plantilla hasta la genera
 \section{Descarga y documentos de ejemplo}
 \label{sec:descarga-ejemplos}
 
-La \href{https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0}{carpeta de descargas de la plantilla} contiene los archivos ZIP y TGZ de la versión publicada y una selección reducida de documentos completos. Te recomendamos comenzar por \texttt{TFG-GIEC-spanish.pdf}, que utiliza la estructura y el estilo predeterminados. El fichero \texttt{01-DOWNLOAD-GUIDE.pdf}, situado al principio de la carpeta, enumera todos los ejemplos disponibles y explica qué idioma, estructura, estilo tipográfico y cubierta muestra cada uno.
+La \href{https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0}{carpeta de descargas de la plantilla} contiene los archivos ZIP y TGZ de la versión publicada y una selección reducida de documentos completos. Te recomiendo empezar por el \href{https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv}{ejemplo de TFG del GIEC en la UAH}, que contiene este manual completo y utiliza la estructura y el estilo predeterminados. La \href{https://dl.dropboxusercontent.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk}{guía de descarga en PDF} explica qué idioma, estructura, estilo tipográfico y cubierta muestra cada ejemplo.
 
 Los PDF precompilados son ejemplos representativos y no una copia para cada titulación admitida. Si no encuentras un documento dedicado a tu grado o máster, no significa que no esté soportado: consulta los identificadores disponibles en \texttt{Config/myconfig.tex} y la lista descrita en el capítulo~\ref{cha:configuracion}. El fichero \texttt{RELEASE.txt} de la carpeta te permite comprobar a qué versión corresponden los archivos publicados.
 
@@ -101,7 +101,7 @@ La sección~\ref{sec:compilacion-overleaf} explica cómo importar la distribuci�
 
 \subsection{Si te manejas con la terminal: herramientas opcionales para \texttt{make}}
 
-\texttt{make} permite automatizar tareas, pero tu editor es una alternativa igualmente válida. Para utilizar el \texttt{Makefile} suministrado necesitas, además de la distribución de \LaTeX{} y \texttt{biber}, las herramientas \texttt{make}, \texttt{bash}, \texttt{latexmk}, \texttt{perl} y \texttt{makeglossaries}. El objetivo predeterminado utiliza también \texttt{Ghostscript} para generar una copia comprimida. Encontrarás el procedimiento y las herramientas adicionales para convertir figuras y diagramas en la sección~\ref{sec:compilacion-makefile}.
+No necesitas la terminal ni \texttt{make} para compilar desde tu editor. Si prefieres automatizar la compilación, consulta la sección~\ref{sec:compilacion-makefile}, donde encontrarás el procedimiento y las herramientas necesarias.
 
 Puedes ampliar estas indicaciones con la documentación del proyecto \LaTeX{}~\cite{latex-project-docs} y el manual de \texttt{biber}~\cite{biber-manual}, pero no necesitas ni mucho menos leerlos completos para empezar.
 
@@ -211,11 +211,11 @@ Después de compilar y revisar el manual completo, puedes activar \texttt{\textb
 
 \subsection{Con la herramienta de preparación}
 
-Abre \texttt{Tools/prepare-book.bat} en Windows o \texttt{Tools/prepare-book.command} en macOS. En GNU/Linux, haz doble clic en \texttt{Tools/prepare-book.sh} y elige \texttt{Ejecutar en un terminal}. Si tu gestor de archivos no ofrece esa opción, ejecuta \verb|sh Tools/prepare-book.sh| desde la carpeta de la plantilla. Si el sistema impide ejecutar la herramienta, puedes seguir el método manual de la sección~\ref{sec:estructura-minima-manual}.
+Abre el explorador de archivos en la carpeta donde hayas descomprimido la distribución. Haz doble clic en \texttt{Tools/prepare-book.bat} en Windows o en \texttt{Tools/prepare-book.command} en macOS. En GNU/Linux, haz doble clic en \texttt{Tools/prepare-book.sh} y elige \texttt{Ejecutar en un terminal}. Si tu gestor de archivos no ofrece esa opción, ejecuta \verb|sh Tools/prepare-book.sh| desde la carpeta de la plantilla. Si el sistema impide ejecutar la herramienta, puedes seguir el método manual de la sección~\ref{sec:estructura-minima-manual}.
 
 Elige preparar un documento mínimo o restaurar los ejemplos de la plantilla. La herramienta selecciona la estructura según tu titulación y te indica qué carpetas va a cambiar antes de pedirte confirmación. No modifica \texttt{Config/myconfig.tex} ni borra figuras o diagramas. Cuando termine, compila de nuevo \texttt{Book/book.tex}.
 
-Restaurar los ejemplos no deshace la última operación. Si quieres recuperar tus archivos, abre la carpeta de la copia de seguridad indicada por la herramienta (si no la ves, muestra los archivos ocultos). Retira los \texttt{.tex} que la herramienta instaló directamente en las carpetas que cambió, sin borrar sus subcarpetas. Después copia los archivos respaldados a sus rutas originales, incluido el fichero de organización en \texttt{Book/}.
+Restaurar los ejemplos no deshace la última operación. Si quieres recuperar tus archivos, abre la carpeta \texttt{Book/.YYYYMMDD-HHMMSS-backup} que la herramienta te muestra antes de pedirte confirmación. Si no la ves, activa la opción para mostrar los archivos ocultos. Retira los \texttt{.tex} que la herramienta instaló directamente en las carpetas que cambió, sin borrar sus subcarpetas. Después copia los archivos respaldados a sus rutas originales, incluido el fichero de organización en \texttt{Book/}.
 
 Si trabajas en \texttt{Overleaf} o \texttt{Prism}, descarga una copia de tu proyecto y descomprímela. Si tu copia no contiene la carpeta \texttt{Tools/}, cópiala desde la distribución. Ejecuta la herramienta, comprime el contenido de la carpeta del proyecto como un ZIP sin incluir la copia de seguridad e impórtalo como un proyecto nuevo, sin sobrescribir el anterior. Si solo puedes trabajar en el navegador, utiliza el método manual.
 

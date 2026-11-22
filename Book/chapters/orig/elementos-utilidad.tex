@@ -69,7 +69,9 @@ Puedes editar o eliminar el bloque de cita de cada capítulo sin afectar al rest
 
 Puedes incluir directamente ficheros \texttt{pdf}, \texttt{png} y \texttt{jpg} mediante \texttt{\textbackslash{}includegraphics}, del paquete \texttt{graphicx}~\cite{graphicx-manual}. Para evitar que tengas que escribir la ruta completa de cada figura, ya hemos configurado en \texttt{Book/book.tex} los directorios \texttt{logos/}, \texttt{figures/} y \texttt{diagrams/} mediante \texttt{\textbackslash{}graphicspath}, así que normalmente bastará con que indiques su ruta relativa dentro de uno de ellos. Los logotipos institucionales se organizan en los subdirectorios \texttt{logos/uah/}, \texttt{logos/upm/} y \texttt{logos/urjc/}, y los recursos compartidos en \texttt{logos/shared/}.
 
-El \texttt{Makefile} descrito en el apartado~\ref{sec:compilacion-makefile} puede convertir automáticamente fuentes \texttt{dia}, \texttt{svg} y \texttt{eps} a PDF cuando están instaladas las herramientas opcionales necesarias, enumeradas en ese mismo apartado. Los PDF generados pueden incluirse después como cualquier otra figura.
+Los PDF de las figuras y diagramas de ejemplo ya están incluidos en la distribución. No necesitas \texttt{make} ni herramientas de conversión para compilar los ejemplos.
+
+Si modificas los diagramas de ejemplo o añades otros nuevos, el \texttt{Makefile} descrito en el apartado~\ref{sec:compilacion-makefile} puede convertir automáticamente fuentes \texttt{dia}, \texttt{svg} y \texttt{eps} a PDF cuando están instaladas las herramientas opcionales necesarias, enumeradas en ese mismo apartado. Los PDF generados pueden incluirse después como cualquier otra figura.
 
 La figura~\ref{fig:fig_clobj} utiliza \texttt{diagrams/Esquema\_objetos.pdf}, que también puede generarse a partir de \texttt{diagrams/Esquema\_objetos.dia}\footnote{El ejemplo procede de los trabajos de David Casillas y Manuel Villaverde.}.
 
