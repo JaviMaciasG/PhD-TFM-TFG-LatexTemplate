@@ -4,7 +4,7 @@
 
 Escribir un TFG, un TFM o una tesis doctoral ya da bastante trabajo, y pelearte con los márgenes, la portada y la numeración no debería formar parte del *pack*. Para eso está esta plantilla: tú pones el contenido y ella se pelea con el formato.
 
-La plantilla está diseñada principalmente para estudiantes de grado, máster y doctorado de la Universidad de Alcalá (UAH), aunque también incluye soporte para algunas titulaciones de la URJC, la UPM, la UCLM y la Universidad de Sevilla. Permite generar documentos en español o en inglés y cubre desde TFG y TFM hasta tesis doctorales, incluidas las tesis por compendio de publicaciones. También incluye anteproyectos y parte de la documentación administrativa (para la UAH).
+La plantilla está diseñada principalmente para estudiantes de grado, máster y doctorado de la Universidad de Alcalá (UAH), aunque también incluye soporte para algunas titulaciones de la URJC, la UPM, la UCLM y la US. Permite generar documentos en español o en inglés y cubre desde TFG y TFM hasta tesis doctorales, incluidas las tesis por compendio de publicaciones. También incluye anteproyectos y parte de la documentación administrativa (para la UAH).
 
 Si al abrir la plantilla te entran ganas de cerrarla y fingir que nunca la has visto por tantos archivos y opciones, respira hondo porque es normal. No necesitas conocerlos todos ni tener *nivel Jedi* para empezar. Sólo tendrás que ocuparte de unos pocos archivos, y te iré indicando cuáles. El resto lo irás descubriendo cuando lo necesites. Dedicarle un rato al principio compensa: el índice, las referencias y la bibliografía se actualizan solos, tu documento lucirá con un acabado profesional y tú te quedas con lo importante, que es escribir. Relax y ánimo: estoy seguro de que puedes con ello.
 
@@ -33,15 +33,13 @@ Este es el recorrido que te propongo (usa los enlaces para ir a la sección de e
     - En tu equipo: [descomprime la plantilla y compila el ejemplo](#compila-el-ejemplo-en-tu-equipo-sin-modificar-nada).
     - En el navegador: [compila el ejemplo en Overleaf](#compila-el-ejemplo-en-overleaf-sin-modificar-nada).
 4. **[Introduce tus datos y compila de nuevo](#introduce-tus-datos-y-compila-de-nuevo)** para comprobarlos en el PDF, tanto si trabajas en tu equipo como si utilizas Overleaf.
-5. **[Prepara la estructura mínima](#prepara-la-plantilla-para-escribir)** y empieza a escribir tu documento.
+5. Si quieres partir de una [estructura mínima](#prepara-la-plantilla-para-escribir), prepárala antes de empezar a escribir.
 
 Si tras este proceso el PDF generado muestra tu nombre y el título de tu trabajo, ya tienes la plantilla funcionando. Enhorabuena, el 80 % del miedo ya está superado y el resto lo irás aprendiendo cuando lo necesites.
 
 ## Prepara tu entorno
 
-Aquí tienes los pasos para instalar LaTeX y configurar TeXstudio en tu equipo. Si ya utilizas otro editor, puedes seguir usándolo. Si prefieres trabajar desde el navegador, ve directamente a [Compila el ejemplo en Overleaf](#compila-el-ejemplo-en-overleaf-sin-modificar-nada) y revisa la privacidad de tu proyecto antes de subirlo.[^privacidad]
-
-[^privacidad]: Antes de subir tu proyecto a un servicio en línea, revisa sus condiciones de privacidad y, si utilizas funciones de IA, los controles de uso de datos. Si contiene información confidencial, datos personales o material sujeto a acuerdos con terceros, consulta primero con tu tutor o institución. Una instalación local permite trabajar sin subir el proyecto a estos servicios.
+Aquí tienes los pasos para instalar LaTeX y configurar TeXstudio en tu equipo. Si ya utilizas otro editor, puedes seguir usándolo. Si prefieres trabajar desde el navegador, ve directamente a [Compila el ejemplo en Overleaf](#compila-el-ejemplo-en-overleaf-sin-modificar-nada).
 
 Con la recomendación anterior, no necesitas usar la terminal ni `make` para trabajar con la plantilla, pero si quieres hacerlo, el apartado 7.2 (*Compilación mediante el Makefile*) del [manual] explica el proceso y qué herramientas necesitas.
 
@@ -91,11 +89,9 @@ Si los menús están en inglés, busca `Options` > `Configure TeXstudio` (o `TeX
 
 ### Descarga la distribución para estudiantes
 
-Para escribir tu documento te recomiendo que descargues la distribución `zip` de [Dropbox](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)[^1].
+Para escribir tu documento, descarga de [Dropbox](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)[^1] el archivo `03-PhDTFMTFG-LaTeX-Template-UAH-<versión>.zip`, donde `<versión>` es el número de versión de la plantilla.
 
-[^1]: El [repositorio de GitHub](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate) contiene además herramientas de mantenimiento, normativa y archivos históricos. Puedes clonarlo o crear un *fork* si quieres contribuir, pero no necesitas esos materiales para empezar.
-
-La [guía de descarga en PDF](https://dl.dropboxusercontent.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk) explica qué muestra cada ejemplo. Sólo mostramos algunos ejemplos para no abrumarte con decenas de ficheros y posibilidades, y que no exista un PDF para tu titulación concreta no significa que no esté soportada (la lista es muy grande). Cuando en este README te remito a un apartado del "manual", me refiero al documento completo disponible en Dropbox: el [ejemplo de TFG del GIEC en la UAH][manual]. Puedes consultarlo sin instalar nada.
+La [guía de descarga en PDF](https://dl.dropboxusercontent.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk) explica qué muestra cada ejemplo. Sólo mostramos algunas variaciones para no abrumarte con decenas de ficheros y posibilidades, y que no exista un PDF para tu titulación concreta no significa que no esté soportada (la lista es muy grande). Cuando en este README te remita a un apartado del "manual", me refiero al documento completo disponible en Dropbox: el [ejemplo de TFG del GIEC en la UAH][manual]. Puedes consultarlo sin instalar nada.
 
 ### Compila el ejemplo en tu equipo sin modificar nada
 
@@ -109,7 +105,9 @@ El PDF resultante es una prueba de que tu entorno funciona, el manual de la plan
 
 ### Compila el ejemplo en Overleaf sin modificar nada
 
-Esta alternativa te permite trabajar sin instalar LaTeX ni TeXstudio en tu equipo. Sólo necesitas una cuenta y conexión a Internet.
+Esta alternativa te permite trabajar sin instalar LaTeX ni TeXstudio en tu equipo. Sólo necesitas una cuenta y conexión a Internet. Antes de subir tu proyecto a Overleaf, revisa las condiciones de privacidad del servicio.[^privacidad]
+
+[^privacidad]: Antes de subir tu proyecto a un servicio en línea, revisa sus condiciones de privacidad y, si utilizas funciones de IA, los controles de uso de datos. Si contiene información confidencial, datos personales o material sujeto a acuerdos con terceros, consulta primero con tu tutor o institución. Una instalación local permite trabajar sin subir el proyecto a estos servicios.
 
 Ojo: con el plan gratuito es casi seguro que no podrás compilar el manual completo porque esa versión de Overleaf limita mucho el tiempo de compilación. Si se agota ese tiempo, no significa que hayas hecho algo mal. Puedes utilizar una instalación local o, después de revisar el [manual precompilado][manual], probar con la [estructura mínima](#prepara-la-plantilla-para-escribir) y prescindir del material de ejemplo que no necesites. Un documento más pequeño puede caber en el límite de tiempo, pero no puedo garantizártelo.
 
@@ -164,17 +162,17 @@ Ya puedes escribir en la plantilla tal como está. Sin embargo, sus capítulos c
 
 Una vez que hayas compilado y revisado el manual, guarda una copia de seguridad de la carpeta completa, incluyendo cualquier contenido que hayas escrito, por si algo sale mal.
 
-Una vez preparada la estructura mínima, organiza tu trabajo añadiendo, eliminando o reordenando las instrucciones `\input{...}` de `Book/content-standard.tex`. Escribe en los archivos de contenido, compila `Book/book.tex` y revisa el PDF y los avisos. Hacer cambios pequeños y compilar con frecuencia facilita encontrar los errores.
-
 Para usar la herramienta de preparación, arranca tu explorador de archivos en el directorio donde hayas descomprimido la distribución, y sigue los pasos de tu sistema (ejecutar se realiza normalmente con doble clic):
 
 - En **Windows:** ejecuta `Tools/prepare-book.bat`.
 - En **macOS:** ejecuta `Tools/prepare-book.command`.
-- En **GNU/Linux:** ejecuta `Tools/prepare-book.sh` y elige `Ejecutar en un terminal`. 
+- En **GNU/Linux:** ejecuta `Tools/prepare-book.sh` y elige `Ejecutar en un terminal`.
 
-Al ejecutar el comando, elige preparar un documento mínimo o restaurar los ejemplos. La herramienta guarda una copia de los archivos que va a sustituir en `Book/.YYYYMMDD-HHMMSS-backup`. Si no ves la carpeta de la copia de seguridad, activa la opción para mostrar los archivos ocultos. Después, compila `Book/book.tex`.
+Al ejecutar el comando, elige preparar un documento mínimo o restaurar los ejemplos. La herramienta guarda una copia de los archivos que va a sustituir en `Book/.YYYYMMDD-HHMMSS-backup`. Si no ves la carpeta de la copia de seguridad, activa la opción para mostrar los archivos ocultos. Después, compila `Book/book.tex`, como siempre.
 
-Si prefieres preparar la estructura mínima a mano, encontrarás los pasos en el apartado 2.7 (*Preparación de una estructura mínima*) del [manual]. Ese método también te sirve si trabajas desde el navegador. Si ya utilizas `make`, en el mismo apartado te explico cómo automatizar el proceso.
+Si prefieres preparar la estructura mínima a mano o tu explorador de archivos no te permite ejecutar la herramienta, encontrarás los pasos en el apartado 2.7 (*Preparación de una estructura mínima*) del [manual]. Ese método también te sirve si trabajas desde el navegador. Si ya utilizas `make`, en el mismo apartado te explico cómo automatizar el proceso.
+
+Tanto si partes de la estructura mínima como si conservas la original, organiza tu trabajo añadiendo, eliminando o reordenando las instrucciones `\input{...}` de `Book/content-standard.tex`. Escribe en los archivos de contenido, compila `Book/book.tex` y revisa el PDF y los avisos. Hacer cambios pequeños y compilar con frecuencia facilita encontrar los errores.
 
 ## Colaboración con tu tutor y revisión del documento
 
@@ -319,7 +317,7 @@ El proyecto sigue evolucionando y todas las contribuciones son bienvenidas, espe
 - Ampliar la compatibilidad con titulaciones.
 - Simplificar la experiencia de quienes utilizan la plantilla por primera vez.
 
-Puedes proponer cambios mediante una *pull request* o comunicar una incidencia en [GitHub](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate).
+Puedes proponer cambios mediante una *pull request* o [comunicar una incidencia](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate/issues) en [GitHub](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate).
 
 Consulta el archivo de licencia incluido en la distribución antes de redistribuir o modificar el proyecto.
 
