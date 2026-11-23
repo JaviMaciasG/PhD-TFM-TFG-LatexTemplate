@@ -89,9 +89,9 @@ Si los menús están en inglés, busca `Options` > `Configure TeXstudio` (o `TeX
 
 ### Descarga la distribución para estudiantes
 
-Para escribir tu documento, descarga de [Dropbox](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0) el archivo `03-PhDTFMTFG-LaTeX-Template.zip`. Puedes consultar la versión en el archivo `RELEASE.txt` que encontrarás dentro del ZIP.
+Para escribir tu documento, descarga el archivo [`03-PhDTFMTFG-LaTeX-Template.zip`][zip]. Puedes consultar la versión en el archivo `RELEASE.txt` que encontrarás dentro del ZIP. Para ver los ejemplos y otros archivos, visita la [carpeta de Dropbox][dropbox].
 
-La [guía de descarga en PDF](https://dl.dropboxusercontent.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk) explica qué muestra cada ejemplo. Sólo mostramos algunas variaciones para no abrumarte con decenas de ficheros y posibilidades, y que no exista un PDF para tu titulación concreta no significa que no esté soportada (la lista es muy grande). Cuando en este README te remita a un apartado del "manual", me refiero al documento completo disponible en Dropbox: el [ejemplo de TFG del GIEC en la UAH][manual]. Puedes consultarlo sin instalar nada.
+La [guía de descarga en PDF][download-guide] explica qué muestra cada ejemplo. Sólo mostramos algunas variaciones para no abrumarte con decenas de ficheros y posibilidades, y que no exista un PDF para tu titulación concreta no significa que no esté soportada (la lista es muy grande). Cuando en este README te remita a un apartado del "manual", me refiero al documento completo disponible en Dropbox: el [ejemplo de TFG del GIEC en la UAH][manual]. Puedes consultarlo sin instalar nada.
 
 ### Compila el ejemplo en tu equipo sin modificar nada
 
@@ -327,4 +327,7 @@ Enjoy!
 
 Javi
 
-[manual]: https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv
+[manual]: https://www.dropbox.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv&raw=1
+[zip]: https://www.dropbox.com/scl/fi/tgaa8elj9sq3qbssptuys/03-PhDTFMTFG-LaTeX-Template.zip?rlkey=t01rv4tizsfw96vy0dcp902z0&dl=1
+[download-guide]: https://www.dropbox.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk&raw=1
+[dropbox]: https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0
