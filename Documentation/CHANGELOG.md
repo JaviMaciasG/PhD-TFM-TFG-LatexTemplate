@@ -2,6 +2,37 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.14.3] - 2026-11-23
+
+### Features
+
+- Ship Windows, macOS, and Linux helpers to prepare a minimal book or restore the examples without Make, with confirmation and backups
+
+
+### Bug Fixes
+
+- Rebuild the student distribution's README PDF when its Markdown source changes
+
+
+### Documentation
+
+- Shorten the README quick start, link directly to the downloadable PDFs, and point terminal and Make users to numbered sections of the manual
+
+- Explain how to launch the book preparation helper and recover its backup in the manual, and link to the full GIEC example
+
+- Clarify which chapter and appendix sources to edit and make the ETSIT-UPM advisor note easier to find
+
+- Move Zen Mode out of the Spanish README quick start, simplify setup instructions, and explain hidden backups
+
+- Give the Spanish README one download step and separate first-build instructions for local editors and Overleaf
+
+- Bring the English README in line with the Spanish guide for local and Overleaf builds, Zen Mode, and backup recovery
+
+
+### Maintenance
+
+- Prepare v8.14.3
+
 ## [v8.14.2] - 2026-11-20
 
 ### Bug Fixes

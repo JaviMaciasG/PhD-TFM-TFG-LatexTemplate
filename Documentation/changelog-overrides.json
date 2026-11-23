@@ -1,4 +1,12 @@
 {
+  "32f540b": "Bring the English README in line with the Spanish guide for local and Overleaf builds, Zen Mode, and backup recovery",
+  "649b175": "Give the Spanish README one download step and separate first-build instructions for local editors and Overleaf",
+  "317870e": "Move Zen Mode out of the Spanish README quick start, simplify setup instructions, and explain hidden backups",
+  "5eaa9c2": "Clarify which chapter and appendix sources to edit and make the ETSIT-UPM advisor note easier to find",
+  "4fc7464": "Explain how to launch the book preparation helper and recover its backup in the manual, and link to the full GIEC example",
+  "45c74ea": "Shorten the README quick start, link directly to the downloadable PDFs, and point terminal and Make users to numbered sections of the manual",
+  "4bd274e": "Ship Windows, macOS, and Linux helpers to prepare a minimal book or restore the examples without Make, with confirmation and backups",
+  "d47f335": "Rebuild the student distribution's README PDF when its Markdown source changes",
   "021f56b": "List the University of Seville among the supported universities in the READMEs",
   "9a316b1": "Speed up degree-registry lookups by storing metadata in smaller per-degree records",
   "ed94fd4": "Prevent glossary commands in a manual example caption from being repeated in the list of figures",
