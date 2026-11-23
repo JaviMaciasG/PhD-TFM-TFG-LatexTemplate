@@ -2,6 +2,22 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.14.6] - 2026-11-23
+
+### Features
+
+- Add a Spanish GitHub Pages landing page with direct links to the student ZIP, quick start, and example manual
+
+
+### Documentation
+
+- Link the student ZIP directly from both READMEs, offer ZIP and TGZ in the manual and download guides, and open the public guide and example PDFs inline
+
+
+### Maintenance
+
+- Prepare v8.14.6
+
 ## [v8.14.5] - 2026-11-23
 
 ### Build System

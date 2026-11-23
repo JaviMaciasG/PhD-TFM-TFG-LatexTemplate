@@ -1,4 +1,6 @@
 {
+  "a95eda2": "Link the student ZIP directly from both READMEs, offer ZIP and TGZ in the manual and download guides, and open the public guide and example PDFs inline",
+  "131fcfd": "Add a Spanish GitHub Pages landing page with direct links to the student ZIP, quick start, and example manual",
   "8070a12": "Publish one ZIP and one TGZ to Dropbox under fixed filenames, updating them in place and removing obsolete versioned copies while retaining versioned local builds",
   "bff8a6d": "Remove the -UAH suffix from student ZIP and TGZ filenames while keeping the 03- prefix; update any direct links or scripts that use the old names",
   "f051456": "Move the privacy notice next to the Overleaf upload, explain optional project preparation before chapter organisation, and sync both READMEs",
