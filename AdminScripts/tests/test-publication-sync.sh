@@ -70,8 +70,11 @@ obsolete_archives=(
 for filename in "${obsolete_archives[@]}"; do
   printf 'obsolete archive\n' >"$destination/$filename"
 done
+declare -A archive_inodes
 for extension in zip tgz; do
-  printf 'new archive\n' >"$source_directory/$archive_base-vtest.$extension"
+  printf 'new archive\n' >"$source_directory/$archive_base.$extension"
+  printf 'old archive\n' >"$destination/$archive_base.$extension"
+  archive_inodes[$extension]=$(stat -c %i "$destination/$archive_base.$extension")
 done
 printf 'unrelated\n' >"$destination/personal.pdf"
 printf 'unrelated archive\n' >"$destination/03-other-template.zip"
@@ -88,7 +91,8 @@ cmp "$source_directory/00-README.pdf" "$destination/00-README.pdf"
 [[ ! -e $destination/TFG-old.pdf ]]
 for filename in "${obsolete_archives[@]}"; do [[ ! -e $destination/$filename ]]; done
 for extension in zip tgz; do
-  cmp "$source_directory/$archive_base-vtest.$extension" "$destination/$archive_base-vtest.$extension"
+  cmp "$source_directory/$archive_base.$extension" "$destination/$archive_base.$extension"
+  [[ ${archive_inodes[$extension]} == "$(stat -c %i "$destination/$archive_base.$extension")" ]]
 done
 [[ -f $destination/personal.pdf && -f $destination/03-other-template.zip && -f $destination/notes.txt && -f $destination/subdirectory/TFG-old.pdf ]]
 [[ -z $(bash "$helper" --dry-run --include-distribution "$source_directory" "$destination") ]]
@@ -100,6 +104,9 @@ for filename in "${obsolete_archives[@]}"; do
 done
 before=$(snapshot)
 bash "$helper" "$pdf_only_source" "$destination" >/dev/null
+[[ $before == "$(snapshot)" ]]
+if bash "$helper" --include-distribution "$pdf_only_source" "$destination" >"$fixture/missing-archives.log" 2>&1; then exit 1; fi
+grep -Fq 'publication staging is missing the fixed-name zip archive' "$fixture/missing-archives.log"
 [[ $before == "$(snapshot)" ]]
 mkdir "$fixture/incomplete"
 before=$(snapshot)

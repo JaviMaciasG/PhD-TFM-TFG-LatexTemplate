@@ -5,7 +5,15 @@ case ${0##*/} in
   pymupdf|rsync) exit 0 ;;
   sync-publication-files.sh)
     [[ $1 == --dry-run ]]
-    exit ;;
+    if [[ $2 == --include-distribution ]]; then
+      for extension in zip tgz; do
+        cmp "$EXPECTED_DISTRIBUTION_BASE.$extension" "$3/03-PhDTFMTFG-LaTeX-Template.$extension"
+        [[ ! -e $3/${EXPECTED_DISTRIBUTION_BASE##*/}.$extension ]]
+      done
+    else
+      [[ ! -e $2/03-PhDTFMTFG-LaTeX-Template.zip && ! -e $2/03-PhDTFMTFG-LaTeX-Template.tgz ]]
+    fi
+    exit 0 ;;
   build-book-style-comparisons.sh)
     while (($#)); do
       if [[ $1 == --output ]]; then printf 'Fixture comparison PDF\n' >"$2"; exit 0; fi
@@ -198,6 +206,7 @@ done
 # Both publication modes pass the same file to the comparison and every sample.
 mkdir "$fixture/dropbox"
 export EXPECTED_CATALOGUE="$fixture/tgz/Book/appendix/titulaciones-soportadas.tex"
+export EXPECTED_DISTRIBUTION_BASE="$source_root/$base"
 export SAMPLE_CATALOGUE_LOG="$fixture/sample-catalogue.log"
 export CATALOGUE_EXPORT_LOG="$fixture/catalogue-export.log"
 export FAIL_CATALOGUE_EXPORT=false

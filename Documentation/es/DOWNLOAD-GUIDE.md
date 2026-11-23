@@ -13,9 +13,9 @@ Los PDF restantes son ejemplos seleccionados deliberadamente, en lugar de un doc
 
 # Archivos de la plantilla e información de la versión
 
-- `03-PhDTFMTFG-LaTeX-Template-<versión>.zip`: plantilla de usuario completa en formato ZIP.
-- `03-PhDTFMTFG-LaTeX-Template-<versión>.tgz`: la misma plantilla en formato TAR comprimido.
-- `RELEASE.txt`: identificador exacto de la versión utilizado para crear los archivos y los ejemplos.
+- `03-PhDTFMTFG-LaTeX-Template.zip`: plantilla de usuario completa en formato ZIP.
+- `03-PhDTFMTFG-LaTeX-Template.tgz`: la misma plantilla en formato TAR comprimido.
+- `RELEASE.txt`: identificador exacto de la versión utilizado para crear los archivos y los ejemplos. Ambos archivos comprimidos incluyen también una copia de este fichero.
 - `00-README.pdf`: introducción al proyecto e información de inicio rápido en formato PDF.
 - `01-DOWNLOAD-GUIDE.pdf`: esta guía, proporcionada en un formato que puede abrirse directamente desde Dropbox.
 - `02-TYPESETTING-STYLES-COMPARISON.pdf`: comparación visual bilingüe de todos los estilos tipográficos disponibles, utilizando las mismas páginas representativas para cada uno.

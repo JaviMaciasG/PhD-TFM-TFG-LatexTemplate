@@ -20,7 +20,7 @@ Usage: go.gen-public-sample-pdfs.sh [OPTIONS]
 
 Options:
   --destination DIRECTORY   Dropbox publication directory.
-  --include-distribution    Also publish the release ZIP and TGZ archives.
+  --include-distribution    Also publish the ZIP and TGZ under fixed names.
   -h, --help                Show this help.
 EOF
 }
@@ -67,7 +67,8 @@ fi
 
 catalogue="$temporary_directory/titulaciones-soportadas.tex"
 if $include_distribution; then
-  distribution_base="03-PhDTFMTFG-LaTeX-Template-$release"
+  public_archive_base=03-PhDTFMTFG-LaTeX-Template
+  distribution_base="$public_archive_base-$release"
   distribution_zip="$repository_root/$distribution_base.zip"
   distribution_tgz="$repository_root/$distribution_base.tgz"
   if [[ ! -f $distribution_zip || ! -f $distribution_tgz ]]; then
@@ -225,14 +226,21 @@ confirm() {
   esac
 }
 
-echo "The following files are ready to be published to $dropbox_directory:"
-printf '  %s\n' "${publication_files[@]##*/}"
 dropbox_staging="$temporary_directory/publication"
 mkdir "$dropbox_staging" || exit 1
 for file in "${publication_files[@]}"; do
   [[ -s $file ]] || { echo "ERROR: publication file is missing or empty: $file" >&2; exit 1; }
-  cp -p -- "$file" "$dropbox_staging/" || exit 1
+  publication_name=${file##*/}
+  if $include_distribution; then
+    case $file in
+      "$distribution_zip") publication_name="$public_archive_base.zip" ;;
+      "$distribution_tgz") publication_name="$public_archive_base.tgz" ;;
+    esac
+  fi
+  cp -p -- "$file" "$dropbox_staging/$publication_name" || exit 1
 done
+echo "The following files are ready to be published to $dropbox_directory:"
+(cd "$dropbox_staging" && printf '  %s\n' *) || exit 1
 sync_options=()
 $include_distribution && sync_options+=(--include-distribution)
 echo '[INF] Synchronization preview (obsolete managed publications will be deleted; unrelated files are preserved):'

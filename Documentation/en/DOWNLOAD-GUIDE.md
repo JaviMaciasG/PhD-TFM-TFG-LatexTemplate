@@ -13,9 +13,9 @@ The remaining PDFs are deliberately selected examples rather than one generated 
 
 # Template archives and release information
 
-- `03-PhDTFMTFG-LaTeX-Template-<version>.zip`: complete user template in ZIP format.
-- `03-PhDTFMTFG-LaTeX-Template-<version>.tgz`: the same template in compressed TAR format.
-- `RELEASE.txt`: exact release identifier used to create the archives and examples.
+- `03-PhDTFMTFG-LaTeX-Template.zip`: complete user template in ZIP format.
+- `03-PhDTFMTFG-LaTeX-Template.tgz`: the same template in compressed TAR format.
+- `RELEASE.txt`: exact release identifier used to create the archives and examples. Both archives also contain a copy of this file.
 - `00-README.pdf`: rendered project introduction and quick-start information.
 - `01-DOWNLOAD-GUIDE.pdf`: this guide, provided in a format that can be opened directly from Dropbox.
 - `02-TYPESETTING-STYLES-COMPARISON.pdf`: a bilingual visual comparison of every available typesetting style, using the same representative pages for each one.

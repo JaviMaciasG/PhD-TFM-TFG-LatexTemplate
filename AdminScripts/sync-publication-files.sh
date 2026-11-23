@@ -26,6 +26,14 @@ destination_directory=$(cd -- "$2" && pwd -P)
   echo 'ERROR: publication staging must contain RELEASE.txt and generated PDFs.' >&2
   exit 1
 }
+if $include_distribution; then
+  for extension in zip tgz; do
+    [[ -s $source_directory/03-PhDTFMTFG-LaTeX-Template.$extension ]] || {
+      echo "ERROR: publication staging is missing the fixed-name $extension archive." >&2
+      exit 1
+    }
+  done
+fi
 
 # Excluded files/directories are protected from deletion by rsync. Do not use
 # --delete-excluded: unrelated destination content must survive synchronization.
@@ -41,7 +49,8 @@ for pattern in 'TFG-*.pdf' 'TFM-*.pdf' 'PhD-*.pdf' 'PHD-*.pdf' 'TFC-*.pdf' \
   options+=("--include=/$pattern")
 done
 if $include_distribution; then
-  # The current prefix also matches the old 03- archives with -UAH in the name.
+  # Fixed archive names are included by the staging loop. These patterns
+  # allow cleanup of obsolete versioned archives, including those with -UAH.
   for pattern in '00-PhDTFMTFG-LaTeX-Template-UAH-*.zip' '00-PhDTFMTFG-LaTeX-Template-UAH-*.tgz' \
       '03-PhDTFMTFG-LaTeX-Template-*.zip' '03-PhDTFMTFG-LaTeX-Template-*.tgz'; do
     options+=("--include=/$pattern")
