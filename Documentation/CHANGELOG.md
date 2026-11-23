@@ -2,6 +2,17 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.14.5] - 2026-11-23
+
+### Build System
+
+- Publish one ZIP and one TGZ to Dropbox under fixed filenames, updating them in place and removing obsolete versioned copies while retaining versioned local builds
+
+
+### Maintenance
+
+- Prepare v8.14.5
+
 ## [v8.14.4] - 2026-11-23
 
 ### Documentation
