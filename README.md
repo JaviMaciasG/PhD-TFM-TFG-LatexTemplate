@@ -23,25 +23,27 @@ Con sólo definir, de forma muy sencilla, unos pocos datos de configuración, la
 
 ## Empieza aquí: la versión corta
 
-Para empezar, te recomiendo una instalación local con TeXstudio. Si necesitas trabajar desde el navegador, encontrarás las alternativas más adelante.
+Para empezar, te recomiendo una instalación local con TeXstudio, pero puedes trabajar online con Overleaf (te lo iré contando).
 
 Este es el recorrido que te propongo (usa los enlaces para ir a la sección de este documento donde te doy detalles):
 
-1. **[Prepara tu entorno](#prepara-tu-entorno)** para trabajar en tu equipo con TeXstudio.
-2. **[Descarga y descomprime la distribución para estudiantes](#descarga-y-descomprime-la-distribución-para-estudiantes)**.
-3. **[Compila el ejemplo sin modificar nada](#compila-el-ejemplo-sin-modificar-nada)** para comprobar que todo funciona y consultar el manual que genera.
-4. **[Introduce tus datos y compila de nuevo](#introduce-tus-datos-y-compila-de-nuevo)** para comprobarlos en el PDF.
+1. **[Prepara tu entorno](#prepara-tu-entorno)** si vas a trabajar en tu equipo con TeXstudio. Si vas a usar Overleaf, sáltate este paso.
+2. **[Descarga la distribución para estudiantes](#descarga-la-distribución-para-estudiantes)**.
+3. **Compila el ejemplo sin modificar nada** para comprobar que todo funciona y consultar el manual que genera:
+    - En tu equipo: [descomprime la plantilla y compila el ejemplo](#compila-el-ejemplo-en-tu-equipo-sin-modificar-nada).
+    - En el navegador: [compila el ejemplo en Overleaf](#compila-el-ejemplo-en-overleaf-sin-modificar-nada).
+4. **[Introduce tus datos y compila de nuevo](#introduce-tus-datos-y-compila-de-nuevo)** para comprobarlos en el PDF, tanto si trabajas en tu equipo como si utilizas Overleaf.
 5. **[Prepara la estructura mínima](#prepara-la-plantilla-para-escribir)** y empieza a escribir tu documento.
 
-Si el PDF muestra tu nombre y el título de tu trabajo, ya tienes la plantilla funcionando. Enhorabuena, el 80 % del miedo ya está superado. El resto lo irás aprendiendo cuando lo necesites.
+Si tras este proces el PDF muestra tu nombre y el título de tu trabajo, ya tienes la plantilla funcionando. Enhorabuena, el 80 % del miedo ya está superado. El resto lo irás aprendiendo cuando lo necesites.
 
 ## Prepara tu entorno
 
-Para empezar te recomiendo trabajar en tu equipo con una distribución de LaTeX y [TeXstudio](https://www.texstudio.org/). Si ya utilizas otro editor, puedes seguir haciéndolo. También puedes [trabajar desde el navegador](#si-prefieres-trabajar-desde-el-navegador) con Overleaf.[^privacidad]
+Aquí tienes los pasos para instalar LaTeX y configurar TeXstudio en tu equipo. Si ya utilizas otro editor, puedes seguir usándolo. Si prefieres trabajar desde el navegador, ve directamente a [Compila el ejemplo en Overleaf](#compila-el-ejemplo-en-overleaf-sin-modificar-nada) y revisa la privacidad de tu proyecto antes de subirlo.[^privacidad]
 
 [^privacidad]: Antes de subir tu proyecto a un servicio en línea, revisa sus condiciones de privacidad y, si utilizas funciones de IA, los controles de uso de datos. Si contiene información confidencial, datos personales o material sujeto a acuerdos con terceros, consulta primero con tu tutor o institución. Una instalación local permite trabajar sin subir el proyecto a estos servicios.
 
-No necesitas usar la terminal ni `make` para trabajar con la plantilla. Si prefieres compilar desde la terminal, el apartado 7.2 (*Compilación mediante el Makefile*) del [manual] explica cómo hacerlo y qué herramientas necesitas.
+Con la recomendación anterior, no necesitas usar la terminal ni `make` para trabajar con la plantilla, pero si quieres hacerlo, el apartado 7.2 (*Compilación mediante el Makefile*) del [manual] explica el proceso y qué herramientas necesitas.
 
 ### Windows
 
@@ -85,17 +87,9 @@ La plantilla utiliza `biber` para preparar las referencias bibliográficas. Sól
 
 Si los menús están en inglés, busca `Options` > `Configure TeXstudio` (o `TeXstudio` > `Preferences` en macOS) y después `Build` > `Default Bibliography Tool` > `Biber`.
 
-### Si prefieres trabajar desde el navegador
-
-Esta alternativa te permite trabajar sin instalar LaTeX en tu equipo. Revisa los requisitos y limitaciones del servicio antes de subir tu proyecto.
-
-Con [Overleaf](https://www.overleaf.com/) puedes trabajar desde el navegador, sin instalar LaTeX ni TeXstudio en tu equipo.[^privacidad] Sólo necesitas una cuenta y conexión a Internet. Las instrucciones para importar la plantilla están en [Compila el ejemplo en Overleaf](#compila-el-ejemplo-en-overleaf).
-
-Ojo: con el plan gratuito es casi seguro que no podrás compilar el manual completo porque esa versión de Overleaf limita mucho el tiempo de compilación. Si se agota ese tiempo, no significa que hayas hecho algo mal. Puedes utilizar una instalación local o, después de revisar el manual precompilado, probar con la estructura mínima y prescindir del material de ejemplo que no necesites. Un documento más pequeño puede caber en el límite de tiempo, pero no puedo garantizártelo.
-
 ## Tu primer PDF, paso a paso
 
-### Descarga y descomprime la distribución para estudiantes
+### Descarga la distribución para estudiantes
 
 Para escribir tu documento te recomiendo que descargues la distribución `zip` de [Dropbox](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)[^1].
 
@@ -103,23 +97,23 @@ Para escribir tu documento te recomiendo que descargues la distribución `zip` d
 
 La [guía de descarga en PDF](https://dl.dropboxusercontent.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk) explica qué muestra cada ejemplo. Sólo mostramos algunos ejemplos para no abrumarte con decenas de ficheros y posibilidades, y que no exista un PDF para tu titulación concreta no significa que no esté soportada (la lista es muy grande). Cuando en este README te remito a un apartado del "manual", me refiero al documento completo disponible en Dropbox: el [ejemplo de TFG del GIEC en la UAH][manual]. Puedes consultarlo sin instalar nada.
 
+### Compila el ejemplo en tu equipo sin modificar nada
+
 Descomprime la plantilla en una carpeta en la que tengas permisos de escritura. Conserva juntos los directorios de la distribución: `Book/` necesita los archivos compartidos de `Config/`.
 
-### Compila el ejemplo sin modificar nada
-
-Con el [entorno preparado](#prepara-tu-entorno), abre `Book/book.tex` en TeXstudio y selecciona `Herramientas` > `Compilar y ver` (`F5`), o pulsa el icono de la doble flecha verde ![Compilar y ver](Book/figures/manual/texstudio-build-and-view-16.png) de la barra de herramientas. Haz esta primera compilación antes de modificar nada. Si utilizas otro editor, abre ese mismo archivo y utiliza su función habitual de construcción. Para trabajar desde el navegador, sigue las instrucciones de [Overleaf](#compila-el-ejemplo-en-overleaf).
+Con el [entorno preparado](#prepara-tu-entorno), abre `Book/book.tex` en TeXstudio y selecciona `Herramientas` > `Compilar y ver` (`F5`), o pulsa el icono de la doble flecha verde ![Compilar y ver](Book/figures/manual/texstudio-build-and-view-16.png) de la barra de herramientas. Haz esta primera compilación antes de modificar nada. Si utilizas otro editor, abre ese mismo archivo y utiliza su función habitual de construcción. Para trabajar desde el navegador, sigue las instrucciones de [Overleaf](#compila-el-ejemplo-en-overleaf-sin-modificar-nada).
 
 La plantilla genera automáticamente las listas de acrónimos y símbolos. Para esta vía desde el editor no necesitas instalar nada más (salvo la distribución de LaTeX, claro). Si las listas no aparecen tras la primera compilación, vuelve a compilar. Para otras incidencias, consulta el apartado 7.4 (*Resolución de problemas*) del [manual].
 
 El PDF resultante es una prueba de que tu entorno funciona, el manual de la plantilla y una colección de ejemplos. Revísalo para orientarte, sin necesidad de leerlo entero. Si esta primera compilación falla, consulta [Problemas frecuentes](#problemas-frecuentes) antes de cambiar otros archivos.
 
-### Compila el ejemplo en Overleaf
+### Compila el ejemplo en Overleaf sin modificar nada
 
-Después de [descargar la distribución](#descarga-y-descomprime-la-distribución-para-estudiantes), utiliza el archivo `zip` sin descomprimir para importar el proyecto en Overleaf.
+Esta alternativa te permite trabajar sin instalar LaTeX ni TeXstudio en tu equipo. Sólo necesitas una cuenta y conexión a Internet.
 
-Antes de importar el proyecto, revisa los requisitos y limitaciones de [Overleaf](#si-prefieres-trabajar-desde-el-navegador).
+Ojo: con el plan gratuito es casi seguro que no podrás compilar el manual completo porque esa versión de Overleaf limita mucho el tiempo de compilación. Si se agota ese tiempo, no significa que hayas hecho algo mal. Puedes utilizar una instalación local o, después de revisar el [manual precompilado][manual], probar con la [estructura mínima](#prepara-la-plantilla-para-escribir) y prescindir del material de ejemplo que no necesites. Un documento más pequeño puede caber en el límite de tiempo, pero no puedo garantizártelo.
 
-Inicia sesión en Overleaf, crea un proyecto mediante `New Project` > `Upload Project` y sube el `zip` de la distribución sin descomprimir. Abre `Settings` > `Compiler` > `Main document` y selecciona `Book/book.tex`. Comprueba que el compilador sea `pdfLaTeX` y pulsa `Recompile`. No necesitas configurar `biber` por separado. Si se agota el tiempo de compilación, revisa el aviso del apartado [Overleaf](#si-prefieres-trabajar-desde-el-navegador).
+Inicia sesión en [Overleaf](https://www.overleaf.com/), crea un proyecto mediante `New Project` > `Upload Project` y sube el [`zip` de la distribución](#descarga-la-distribución-para-estudiantes) sin descomprimir. Abre `Settings` > `Compiler` > `Main document` y selecciona `Book/book.tex`. Comprueba que el compilador sea `pdfLaTeX` y pulsa `Recompile`. No necesitas configurar `biber` por separado.
 
 Cuando quieras compilar otro documento independiente, como `Anteproyecto/anteproyecto.tex` o un formulario del papeleo, selecciónalo en ese mismo campo `Main document`. Para trabajar en los capítulos del libro, mantén seleccionado `Book/book.tex`, no el archivo de cada capítulo.
 
@@ -188,9 +182,9 @@ Si prefieres preparar la estructura mínima a mano, encontrarás los pasos en el
 
 `git` guarda el historial de tu proyecto en un repositorio y te permite recuperar versiones anteriores. Cada *commit* registra un conjunto de cambios con un mensaje que los describe. No lo necesitas para compilar, pero te lo recomiendo para no depender de copias llamadas `final`, `final-bueno` y `ahora-sí-final-de-verdad-de-la-buena`.
 
-`git` conserva el historial en tu equipo. Puedes compartir una copia remota mediante GitHub, GitLab u otro servicio, pero recuerda sincronizar tus cambios para mantenerla al día.
+`git` conserva el historial en tu equipo. Puedes compartir una copia remota mediante [GitHub](https://github.com/), [GitLab](https://gitlab.com/) u otro servicio, pero recuerda sincronizar tus cambios para mantenerla al día.
 
-Cuando tengas preparada la estructura mínima, puedes crear tu repositorio y hacer el primer *commit* desde una [aplicación gráfica](https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/Interfaces,_frontends,_and_tools.html#Graphical_Interfaces), sin utilizar la consola:
+Cuando tengas preparada la estructura mínima, puedes crear tu repositorio y hacer el primer *commit* desde una [aplicación gráfica](https://git-scm.com/tools/guis), sin utilizar la consola:
 
 1. Abre la carpeta raíz del proyecto y utiliza la opción de crear o inicializar un repositorio, si todavía no existe.
 2. Conserva el fichero `.gitignore` incluido en la plantilla. Se encarga de excluir los archivos auxiliares y los PDF generados durante la compilación.
@@ -213,7 +207,7 @@ Incorpora estas funciones a medida que las necesites. El [manual] contiene los d
 
 ### Anteproyecto
 
-Para trabajar en tu anteproyecto, abre `Anteproyecto/anteproyecto.tex`, que comparte con el documento principal los datos definidos en `Config/myconfig.tex`. Si trabajas en línea, sigue las instrucciones para seleccionar el documento en [Overleaf](#compila-el-ejemplo-en-overleaf).
+Para trabajar en tu anteproyecto, abre `Anteproyecto/anteproyecto.tex`, que comparte con el documento principal los datos definidos en `Config/myconfig.tex`. Si trabajas en línea, sigue las instrucciones para seleccionar el documento en [Overleaf](#compila-el-ejemplo-en-overleaf-sin-modificar-nada).
 
 ### Bibliografía
 
@@ -240,7 +234,7 @@ Book/acronyms/defacronymsgl.tex
 Book/symbols/defsymbolsgl.tex
 ```
 
-Ambos archivos contienen ya ejemplos que puedes imitar para añadir tus propias definiciones. Para generar las listas (índices), sigue las indicaciones de [la primera compilación](#compila-el-ejemplo-sin-modificar-nada).
+Ambos archivos contienen ya ejemplos que puedes imitar para añadir tus propias definiciones. Para generar las listas (índices), sigue las indicaciones de [la primera compilación](#compila-el-ejemplo-en-tu-equipo-sin-modificar-nada).
 
 ### Documentación administrativa (soportado para UAH)
 
@@ -251,7 +245,7 @@ PapeleoTFG/
 PapeleoTFM/
 ```
 
-Puedes compilar el `.tex` de cada formulario desde tu editor. Si trabajas en línea, selecciónalo como se explica en el apartado de [Overleaf](#compila-el-ejemplo-en-overleaf). Consulta las guías PDF de esas carpetas y verifica la normativa aplicable.
+Puedes compilar el `.tex` de cada formulario desde tu editor. Si trabajas en línea, selecciónalo como se explica en el apartado de [Overleaf](#compila-el-ejemplo-en-overleaf-sin-modificar-nada). Consulta las guías PDF de esas carpetas y verifica la normativa aplicable.
 
 ### Modo zen para redactar
 
@@ -291,7 +285,7 @@ Comprueba que:
 - Has citado las referencias en el texto.
 - Has seguido las instrucciones de [Configura TeXstudio](#configura-texstudio) para seleccionar `biber`.
 
-Tras esa verificación, vuelve a compilar como se explica en [Compila el ejemplo sin modificar nada](#compila-el-ejemplo-sin-modificar-nada). Si la bibliografía sigue sin aparecer y no hay errores pendientes en el registro, prueba a ejecutar `Herramientas` > `Limpiar los archivos auxiliares` en TeXstudio. Revisa la lista de archivos que eliminará, pulsa `Aceptar` y vuelve a compilar. Esta limpieza es una medida para resolver el problema, no un paso necesario en cada compilación.
+Tras esa verificación, vuelve a compilar como se explica en [Compila el ejemplo sin modificar nada](#compila-el-ejemplo-en-tu-equipo-sin-modificar-nada). Si la bibliografía sigue sin aparecer y no hay errores pendientes en el registro, prueba a ejecutar `Herramientas` > `Limpiar los archivos auxiliares` en TeXstudio. Revisa la lista de archivos que eliminará, pulsa `Aceptar` y vuelve a compilar. Esta limpieza es una medida para resolver el problema, no un paso necesario en cada compilación.
 
 ### El ejemplo compilaba antes de que lo modificara
 
@@ -323,7 +317,7 @@ Si solicitas ayuda, incluye esa información. Un mensaje como "no compila" descr
 
 Al compilar la distribución, obtendrás también el manual completo y una colección de ejemplos. No necesitas leerlo de principio a fin antes de empezar: consúltalo cuando quieras configurar una función o copiar la estructura de un ejemplo.
 
-Los enlaces a la guía de descarga y al ejemplo precompilado están en [Descarga y descomprime la distribución para estudiantes](#descarga-y-descomprime-la-distribución-para-estudiantes). Para comunicar un error reproducible o proponer una mejora, puedes utilizar el [sistema de incidencias de GitHub](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate/issues).
+Los enlaces a la guía de descarga y al ejemplo precompilado están en [Descarga la distribución para estudiantes](#descarga-la-distribución-para-estudiantes). Para comunicar un error reproducible o proponer una mejora, puedes utilizar el [sistema de incidencias de GitHub](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate/issues).
 
 Si necesitas ayuda con un error de compilación o quieres enviar una sugerencia, puedes escribirme a [javier.maciasguarasa@uah.es](mailto:javier.maciasguarasa@uah.es). Incluye, si es posible, el sistema operativo, la distribución de LaTeX, el editor, el archivo que estabas compilando y el primer mensaje de error.
 
