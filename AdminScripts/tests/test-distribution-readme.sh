@@ -149,7 +149,9 @@ run_distribution() {
 }
 run_distribution false >"$fixture/build.log" 2>&1 || { cat "$fixture/build.log" >&2; exit 1; }
 
-base=03-PhDTFMTFG-LaTeX-Template-UAH-vtest
+base=03-PhDTFMTFG-LaTeX-Template-vtest
+[[ ! -e $source_root/03-PhDTFMTFG-LaTeX-Template-UAH-vtest.tgz ]]
+[[ ! -e $source_root/03-PhDTFMTFG-LaTeX-Template-UAH-vtest.zip ]]
 mkdir "$fixture/tgz" "$fixture/zip"
 tar -xzf "$source_root/$base.tgz" -C "$fixture/tgz"
 unzip -q "$source_root/$base.zip" -d "$fixture/zip"

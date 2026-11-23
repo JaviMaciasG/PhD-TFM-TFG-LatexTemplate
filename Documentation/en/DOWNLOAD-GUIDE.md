@@ -13,8 +13,8 @@ The remaining PDFs are deliberately selected examples rather than one generated 
 
 # Template archives and release information
 
-- `03-PhDTFMTFG-LaTeX-Template-UAH-<release>.zip`: complete user template in ZIP format.
-- `03-PhDTFMTFG-LaTeX-Template-UAH-<release>.tgz`: the same template in compressed TAR format.
+- `03-PhDTFMTFG-LaTeX-Template-<version>.zip`: complete user template in ZIP format.
+- `03-PhDTFMTFG-LaTeX-Template-<version>.tgz`: the same template in compressed TAR format.
 - `RELEASE.txt`: exact release identifier used to create the archives and examples.
 - `00-README.pdf`: rendered project introduction and quick-start information.
 - `01-DOWNLOAD-GUIDE.pdf`: this guide, provided in a format that can be opened directly from Dropbox.

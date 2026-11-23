@@ -41,8 +41,9 @@ for pattern in 'TFG-*.pdf' 'TFM-*.pdf' 'PhD-*.pdf' 'PHD-*.pdf' 'TFC-*.pdf' \
   options+=("--include=/$pattern")
 done
 if $include_distribution; then
+  # The current prefix also matches the old 03- archives with -UAH in the name.
   for pattern in '00-PhDTFMTFG-LaTeX-Template-UAH-*.zip' '00-PhDTFMTFG-LaTeX-Template-UAH-*.tgz' \
-      '03-PhDTFMTFG-LaTeX-Template-UAH-*.zip' '03-PhDTFMTFG-LaTeX-Template-UAH-*.tgz'; do
+      '03-PhDTFMTFG-LaTeX-Template-*.zip' '03-PhDTFMTFG-LaTeX-Template-*.tgz'; do
     options+=("--include=/$pattern")
   done
 fi

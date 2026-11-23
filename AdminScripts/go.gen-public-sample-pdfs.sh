@@ -67,7 +67,7 @@ fi
 
 catalogue="$temporary_directory/titulaciones-soportadas.tex"
 if $include_distribution; then
-  distribution_base="03-PhDTFMTFG-LaTeX-Template-UAH-$release"
+  distribution_base="03-PhDTFMTFG-LaTeX-Template-$release"
   distribution_zip="$repository_root/$distribution_base.zip"
   distribution_tgz="$repository_root/$distribution_base.tgz"
   if [[ ! -f $distribution_zip || ! -f $distribution_tgz ]]; then

@@ -89,7 +89,7 @@ If the menus are in English, look for `Options` > `Configure TeXstudio` (or `TeX
 
 ### Download the student distribution
 
-To write your document, download `03-PhDTFMTFG-LaTeX-Template-UAH-<version>.zip` from [Dropbox](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0), where `<version>` is the template's version number.
+To write your document, download `03-PhDTFMTFG-LaTeX-Template-<version>.zip` from [Dropbox](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0), where `<version>` is the template's version number.
 
 The [PDF download guide](https://dl.dropboxusercontent.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk) explains what each example demonstrates. We only provide a few examples to avoid overwhelming you with dozens of files and possibilities, and the absence of a PDF for your particular degree doesn't mean it isn't supported (the list is very long). When this README refers to a section of the "manual", it means the full document available on Dropbox: the [GIEC bachelor's thesis example at UAH][manual]. You can read it without installing anything.
 

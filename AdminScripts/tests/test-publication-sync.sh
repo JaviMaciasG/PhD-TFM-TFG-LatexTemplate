@@ -60,23 +60,47 @@ printf 'old content\n' >"$destination/00-README.pdf"
 touch -r "$destination/00-README.pdf" "$source_directory/00-README.pdf"
 inode=$(stat -c %i "$destination/00-README.pdf")
 printf 'obsolete\n' >"$destination/TFG-old.pdf"
-printf 'obsolete archive\n' >"$destination/03-PhDTFMTFG-LaTeX-Template-UAH-old.zip"
+archive_base=03-PhDTFMTFG-LaTeX-Template
+obsolete_archives=(
+  "00-PhDTFMTFG-LaTeX-Template-UAH-old.tgz"
+  "$archive_base-UAH-old.zip"
+  "$archive_base-old.zip"
+  "$archive_base-old.tgz"
+)
+for filename in "${obsolete_archives[@]}"; do
+  printf 'obsolete archive\n' >"$destination/$filename"
+done
+for extension in zip tgz; do
+  printf 'new archive\n' >"$source_directory/$archive_base-vtest.$extension"
+done
 printf 'unrelated\n' >"$destination/personal.pdf"
+printf 'unrelated archive\n' >"$destination/03-other-template.zip"
 printf 'unrelated\n' >"$destination/notes.txt"
 printf 'nested\n' >"$destination/subdirectory/TFG-old.pdf"
 snapshot() { (cd "$destination" && find . -type f -exec sha256sum {} + | sort); }
 before=$(snapshot)
 preview=$(bash "$helper" --dry-run --include-distribution "$source_directory" "$destination")
 [[ $before == "$(snapshot)" && $preview == *'*deleting'* && $preview == *'00-README.pdf'* ]]
+for filename in "${obsolete_archives[@]}"; do [[ $preview == *"$filename"* ]]; done
 bash "$helper" --include-distribution "$source_directory" "$destination" >"$fixture/sync.log"
 cmp "$source_directory/00-README.pdf" "$destination/00-README.pdf"
 [[ $inode == "$(stat -c %i "$destination/00-README.pdf")" ]]
-[[ ! -e $destination/TFG-old.pdf && ! -e $destination/03-PhDTFMTFG-LaTeX-Template-UAH-old.zip ]]
-[[ -f $destination/personal.pdf && -f $destination/notes.txt && -f $destination/subdirectory/TFG-old.pdf ]]
+[[ ! -e $destination/TFG-old.pdf ]]
+for filename in "${obsolete_archives[@]}"; do [[ ! -e $destination/$filename ]]; done
+for extension in zip tgz; do
+  cmp "$source_directory/$archive_base-vtest.$extension" "$destination/$archive_base-vtest.$extension"
+done
+[[ -f $destination/personal.pdf && -f $destination/03-other-template.zip && -f $destination/notes.txt && -f $destination/subdirectory/TFG-old.pdf ]]
 [[ -z $(bash "$helper" --dry-run --include-distribution "$source_directory" "$destination") ]]
-printf 'preserved without archive publication\n' >"$destination/03-PhDTFMTFG-LaTeX-Template-UAH-old.tgz"
-bash "$helper" "$source_directory" "$destination" >/dev/null
-[[ -f $destination/03-PhDTFMTFG-LaTeX-Template-UAH-old.tgz ]]
+pdf_only_source="$fixture/pdf-only-staging"
+mkdir "$pdf_only_source"
+cp "$source_directory/RELEASE.txt" "$source_directory/00-README.pdf" "$pdf_only_source/"
+for filename in "${obsolete_archives[@]}"; do
+  printf 'preserved without archive publication\n' >"$destination/$filename"
+done
+before=$(snapshot)
+bash "$helper" "$pdf_only_source" "$destination" >/dev/null
+[[ $before == "$(snapshot)" ]]
 mkdir "$fixture/incomplete"
 before=$(snapshot)
 if bash "$helper" "$fixture/incomplete" "$destination" >"$fixture/incomplete.log" 2>&1; then exit 1; fi

@@ -75,7 +75,7 @@ reference_sources=(
 make -C PapeleoTFG guia
 make -C PapeleoTFM guia
 
-base="03-PhDTFMTFG-LaTeX-Template-UAH-$release"
+base="03-PhDTFMTFG-LaTeX-Template-$release"
 temporary_directory=$(mktemp -d)
 trap 'rm -rf "$temporary_directory"' EXIT
 stage="$temporary_directory/stage"
