@@ -23,34 +23,36 @@ By simply filling in a few configuration details, you let the template take care
 
 ## Start here: the short version
 
-To get started, I recommend a local installation with `TeXstudio`. If you need to work in your browser, you'll find the alternatives further down.
+To get started, I recommend a local installation with TeXstudio, but you can also work online with Overleaf (I'll show you how as we go).
 
 Here's the route I suggest (use the links to jump to the section of this document where I explain the details):
 
-1. **[Set up your environment](#set-up-your-environment)** to work locally with `TeXstudio`.
-2. **[Download and extract the student distribution](#download-and-extract-the-student-distribution)**.
-3. **[Compile the example without changing anything](#compile-the-example-without-changing-anything)** to check that everything works and consult the manual it generates.
-4. **[Enter your details and compile again](#enter-your-details-and-compile-again)** to check them in the PDF.
+1. **[Set up your environment](#set-up-your-environment)** if you're working on your computer with TeXstudio. If you're using Overleaf, skip this step.
+2. **[Download the student distribution](#download-the-student-distribution)**.
+3. **Compile the example without changing anything** to check that everything works and consult the manual it generates:
+    - On your computer: [extract the template and compile the example](#compile-the-example-on-your-computer-without-changing-anything).
+    - In your browser: [compile the example in Overleaf](#compile-the-example-in-overleaf-without-changing-anything).
+4. **[Enter your details and compile again](#enter-your-details-and-compile-again)** to check them in the PDF, whether you're working on your computer or using Overleaf.
 5. **[Prepare the minimal structure](#prepare-the-template-for-writing)** and start writing your document.
 
-If the PDF shows your name and your thesis title, you've got the template working. Congratulations, you've already overcome 80% of the fear. You'll learn the rest as you need it.
+If, after these steps, the PDF shows your name and your thesis title, you've got the template working. Congratulations, you've already overcome 80% of the fear. You'll learn the rest as you need it.
 
 ## Set up your environment
 
-To get started, I recommend working on your own computer with a LaTeX distribution and [`TeXstudio`](https://www.texstudio.org/). If you already use another editor, you can keep using it. You can also [work in your browser](#if-you-prefer-working-in-your-browser) with `Overleaf`.[^privacidad]
+Here's how to install LaTeX and configure TeXstudio on your computer. If you already use another editor, you can keep using it. If you'd rather work in your browser, go straight to [Compile the example in Overleaf](#compile-the-example-in-overleaf-without-changing-anything) and consider your project's privacy before uploading it.[^privacidad]
 
 [^privacidad]: Before uploading your project to an online service, review its privacy terms and, if you use AI features, its data-use controls. If your project contains confidential information, personal data or material covered by agreements with third parties, check with your advisor or institution first. A local installation lets you work without uploading your project to these services.
 
-You don't need to use the terminal or `make` to work with the template. If you'd rather compile from the terminal, section 7.2 (*Compilación mediante el Makefile*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) explains how and which tools you need.
+With the setup above, you don't need the terminal or `make` to work with the template. If you'd like to use them, section 7.2 (*Compilación mediante el Makefile*) of the [manual] explains the process and which tools you need.
 
 ### Windows
 
-1. Install the current version of [`MiKTeX`](https://miktex.org/download).
-2. During installation, allow `MiKTeX` to install missing packages, either automatically or after asking you.
-3. Open `MiKTeX Console`, check for updates and install them (use the `Check for updates` option on the main screen).
-4. Install [`TeXstudio`](https://www.texstudio.org/).
+1. Install the current version of [MiKTeX](https://miktex.org/download).
+2. During installation, allow MiKTeX to install missing packages, either automatically or after asking you.
+3. Open MiKTeX Console, check for updates and install them (use the `Check for updates` option on the main screen).
+4. Install [TeXstudio](https://www.texstudio.org/).
 
-Then follow the instructions in [Configure `TeXstudio`](#configure-texstudio).
+Then follow the instructions in [Configure TeXstudio](#configure-texstudio).
 
 ### GNU/Linux
 
@@ -60,22 +62,22 @@ On Ubuntu or Debian, look for these exact names in your system's package manager
 - `texstudio`: installs the editor where you'll write your thesis.
 - `biber`: installs the tool that prepares the bibliography. With `texlive-full`, it will usually already be installed as a dependency, but you can check in the package manager.
 
-For example, if you have the `Synaptic` Package Manager on Ubuntu, open it, search for each name, select `Marcar para instalar` and click `Aplicar`. Accept any dependencies it suggests too. `Synaptic` isn't installed by default in every version of Ubuntu. The [Ubuntu help page for `Synaptic`](https://help.ubuntu.com/stable/ubuntu-help/addremove-install-synaptic.html.en) explains how to get it and use it. If you prefer installing from the terminal, you'll find the commands in section 7.1 (*Instalación desde la terminal en GNU/Linux*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv).
+If you prefer installing from the terminal, you'll find the commands in section 7.1 (*Instalación desde la terminal en GNU/Linux*) of the [manual].
 
-On other GNU/Linux distributions, install `TeX Live`, `TeXstudio` and `biber` through their package manager. The names of the `TeX Live` collections may differ from those above.
+On other GNU/Linux distributions, install TeX Live, TeXstudio and `biber` through their package manager. The names of the TeX Live collections may differ from those above.
 
-Then follow the instructions in [Configure `TeXstudio`](#configure-texstudio).
+Then follow the instructions in [Configure TeXstudio](#configure-texstudio).
 
 ### macOS
 
-1. Install [`MacTeX`](https://www.tug.org/mactex/).
-2. Install [`TeXstudio`](https://www.texstudio.org/) if you want to follow the recommended route.
+1. Install [MacTeX](https://www.tug.org/mactex/).
+2. Install [TeXstudio](https://www.texstudio.org/) if you want to follow the recommended route.
 
-The full `MacTeX` installation already includes `biber`.
+The full MacTeX installation already includes `biber`.
 
-Then follow the instructions in [Configure `TeXstudio`](#configure-texstudio).
+Then follow the instructions in [Configure TeXstudio](#configure-texstudio).
 
-### Configure `TeXstudio`
+### Configure TeXstudio
 
 The template uses `biber` to prepare bibliographic references. You only need to select it in the editor, not learn how to use it separately. This configuration is the same for Windows, GNU/Linux and macOS:
 
@@ -85,41 +87,33 @@ The template uses `biber` to prepare bibliographic references. You only need to 
 
 If the menus are in English, look for `Options` > `Configure TeXstudio` (or `TeXstudio` > `Preferences` on macOS), then `Build` > `Default Bibliography Tool` > `Biber`.
 
-### If you prefer working in your browser
-
-This alternative lets you work without installing LaTeX on your computer. Review the requirements and limitations of the service before uploading your project.
-
-With [`Overleaf`](https://www.overleaf.com/), you can work in your browser without installing LaTeX or `TeXstudio` on your computer.[^privacidad] You only need an account and an Internet connection. The instructions for importing the template are in [Compile the example in `Overleaf`](#compile-the-example-in-overleaf).
-
-A word of warning: on the free plan, you almost certainly won't be able to compile the complete manual because that version of `Overleaf` has a very restrictive compilation time limit. If it times out, it doesn't mean you've done anything wrong. You can use a local installation or, after reviewing the precompiled manual, try the minimal structure and leave out any example material you don't need. A smaller document may fit within the time limit, but I can't guarantee it.
-
 ## Your first PDF, step by step
 
-### Download and extract the student distribution
+### Download the student distribution
 
-To write your document, I recommend downloading the `zip` distribution from [`Dropbox`](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)[^1].
+To write your document, I recommend downloading the `zip` distribution from [Dropbox](https://www.dropbox.com/sh/mm6fwh3ruuuyjz2/AABDUmo7Xj1S968FeJgbmFPva?dl=0)[^1].
 
-[^1]: The [`GitHub` repository](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate) also contains maintenance tools, regulations and historical files. You can clone it or create a *fork* if you want to contribute, but you don't need those materials to get started.
+[^1]: The [GitHub repository](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate) also contains maintenance tools, regulations and historical files. You can clone it or create a *fork* if you want to contribute, but you don't need those materials to get started.
 
-The [PDF download guide](https://dl.dropboxusercontent.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk) explains what each example demonstrates. We only provide a few examples to avoid overwhelming you with dozens of files and possibilities, and the absence of a PDF for your particular degree doesn't mean it isn't supported (the list is very long). When this README refers to a section of the "manual", it means the full document available on Dropbox: the [GIEC bachelor's thesis example at UAH](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv). You can read it without installing anything.
+The [PDF download guide](https://dl.dropboxusercontent.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk) explains what each example demonstrates. We only provide a few examples to avoid overwhelming you with dozens of files and possibilities, and the absence of a PDF for your particular degree doesn't mean it isn't supported (the list is very long). When this README refers to a section of the "manual", it means the full document available on Dropbox: the [GIEC bachelor's thesis example at UAH][manual]. You can read it without installing anything.
+
+### Compile the example on your computer without changing anything
 
 Extract the template into a folder where you have write permissions. Keep the distribution's directories together: `Book/` needs the shared files in `Config/`.
 
-### Compile the example without changing anything
+With your [environment set up](#set-up-your-environment), open `Book/book.tex` in TeXstudio and select `Herramientas` > `Compilar y ver` (`F5`), or click the double green arrow icon ![Build and view](Book/figures/manual/texstudio-build-and-view-16.png) on the toolbar. Do this first compilation before changing anything. If you use another editor, open the same file and use its usual build function. To work in your browser, follow the instructions for [Overleaf](#compile-the-example-in-overleaf-without-changing-anything).
 
-With your [environment set up](#set-up-your-environment), open `Book/book.tex` in `TeXstudio` and select `Herramientas` > `Compilar y ver` (`F5`), or click the double green arrow icon ![Build and view](Book/figures/manual/texstudio-build-and-view-16.png) on the toolbar. Do this first compilation before changing anything. If you use another editor, open the same file and use its usual build function. To work in your browser, follow the instructions for [`Overleaf`](#compile-the-example-in-overleaf).
-
-The template automatically generates the lists of acronyms and symbols. When using the editor this way, you don't need to install anything else (apart from the LaTeX distribution, of course). If the lists don't appear after the first compilation, compile again. For other issues, see section 7.4 (*Resolución de problemas*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv).
+The template automatically generates the lists of acronyms and symbols. When using the editor this way, you don't need to install anything else (apart from the LaTeX distribution, of course). If the lists don't appear after the first compilation, compile again. For other issues, see section 7.4 (*Resolución de problemas*) of the [manual].
 
 The resulting PDF confirms that your environment works and serves as the template manual and a collection of examples. Browse it to get your bearings, without having to read it all. If this first compilation fails, check [Common problems](#common-problems) before changing other files.
 
-### Compile the example in `Overleaf`
+### Compile the example in Overleaf without changing anything
 
-After [downloading the distribution](#download-and-extract-the-student-distribution), use the `zip` file without extracting it to import the project into `Overleaf`.
+This option lets you work without installing LaTeX or TeXstudio on your computer. All you need is an account and an Internet connection.
 
-Before importing the project, review the requirements and limitations of [`Overleaf`](#if-you-prefer-working-in-your-browser).
+A word of warning: on the free plan, you almost certainly won't be able to compile the complete manual because that version of Overleaf has a very restrictive compilation time limit. If it times out, it doesn't mean you've done anything wrong. You can use a local installation or, after reviewing the [precompiled manual][manual], try the [minimal structure](#prepare-the-template-for-writing) and leave out any example material you don't need. A smaller document may fit within the time limit, but I can't guarantee it.
 
-Log in to `Overleaf`, create a project through `New Project` > `Upload Project` and upload the distribution `zip` without extracting it. Open `Settings` > `Compiler` > `Main document` and select `Book/book.tex`. Check that the compiler is `pdfLaTeX` and click `Recompile`. You don't need to configure `biber` separately. If compilation times out, review the warning in the [`Overleaf`](#if-you-prefer-working-in-your-browser) section.
+Log in to [Overleaf](https://www.overleaf.com/), create a project through `New Project` > `Upload Project` and upload the [`zip` distribution](#download-the-student-distribution) without extracting it. Open `Settings` > `Compiler` > `Main document` and select `Book/book.tex`. Check that the compiler is `pdfLaTeX` and click `Recompile`. You don't need to configure `biber` separately.
 
 When you want to compile another standalone document, such as `Anteproyecto/anteproyecto.tex` or a paperwork form, select it in the same `Main document` field. To work on the book's chapters, keep `Book/book.tex` selected, not the individual chapter file.
 
@@ -172,17 +166,15 @@ Once you've compiled and reviewed the manual, save a backup copy of the entire f
 
 Once you've prepared the minimal structure, organise your work by adding, removing or reordering the `\input{...}` instructions in `Book/content-standard.tex`. Write in the content files, compile `Book/book.tex` and review the PDF and warnings. Making small changes and compiling frequently makes errors easier to find.
 
-When you're concentrating on a chapter, you may not want to wade through covers, abstracts and lists every time you open the PDF. After compiling and reviewing the complete manual, you can set `\ZenMode` to `true` in `Config/myconfig.tex`: you'll still compile `Book/book.tex`, but see only the content selected in `Book/content-standard.tex` (or `Book/content-compendium.tex` for a thesis by compendium). Choose chapters by commenting out or restoring their `\input{...}` lines. Before submitting your work, set `\ZenMode` back to `false` and review the complete document. Section 3.4.1 (*Modo zen para redactar*) of the manual has the details.
-
 To use the preparation tool, open your file manager in the folder where you extracted the distribution, then follow the steps for your operating system:
 
 - On **Windows:** open `Tools/prepare-book.bat`.
 - On **macOS:** open `Tools/prepare-book.command`.
-- On **GNU/Linux:** double-click `Tools/prepare-book.sh` and choose `Run in Terminal`. If your file manager doesn't offer that option, see section 2.7 (*Preparación de una estructura mínima*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv).
+- On **GNU/Linux:** double-click `Tools/prepare-book.sh` and choose `Run in Terminal`. If your file manager doesn't offer that option, see section 2.7 (*Preparación de una estructura mínima*) of the [manual].
 
-Choose whether to prepare a minimal document or restore the examples. The tool backs up the files it will replace. Then compile `Book/book.tex`.
+Choose whether to prepare a minimal document or restore the examples. The tool backs up the files it will replace in `Book/.YYYYMMDD-HHMMSS-backup`. If you don't see the backup folder, turn on the option to show hidden files. Then compile `Book/book.tex`.
 
-If you'd rather prepare the minimal structure by hand, you'll find the steps in section 2.7 (*Preparación de una estructura mínima*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv). This method also works if you're working in a browser. If you already use `make`, the same section explains how to automate the process.
+If you'd rather prepare the minimal structure by hand, you'll find the steps in section 2.7 (*Preparación de una estructura mínima*) of the [manual]. This method also works if you're working in a browser. If you already use `make`, the same section explains how to automate the process.
 
 ## Collaboration with your advisor and document review
 
@@ -190,36 +182,36 @@ If you'd rather prepare the minimal structure by hand, you'll find the steps in 
 
 `git` stores your project's history in a repository and lets you recover earlier versions. Each *commit* records a set of changes with a message describing them. You don't need it to compile, but I recommend it so you don't have to rely on copies called `final`, `final-good` and `final-for-real-this-time-no-really`.
 
-`git` keeps the history on your computer. You can share a remote copy through `GitHub`, `GitLab` or another service, but remember to synchronise your changes to keep it up to date.
+`git` keeps the history on your computer. You can share a remote copy through [GitHub](https://github.com/), [GitLab](https://gitlab.com/) or another service, but remember to synchronise your changes to keep it up to date.
 
-Once you've prepared the minimal structure, you can create your repository and make the first *commit* from a [graphical application](https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/Interfaces,_frontends,_and_tools.html#Graphical_Interfaces), without using the console:
+Once you've prepared the minimal structure, you can create your repository and make the first *commit* from a [graphical application](https://git-scm.com/tools/guis), without using the console:
 
 1. Open the project's root folder and use the option to create or initialise a repository if one doesn't exist yet.
 2. Keep the `.gitignore` file included with the template. It excludes auxiliary files and the PDFs generated during compilation.
 3. Select all the files the application suggests for your first *commit*. The option may be called `Stage all changes`, `Select all` or appear as a checkbox to select everything. Even if there are lots of files, you don't have to choose them one by one. If any personal files you've copied into that folder appear and you don't want to share them, deselect them.
 4. Write a message describing the start of your work and create the *commit*. Publishing it to a remote service is a separate, later operation.
 
-Section 2.8 (*Preparación del repositorio Git*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) explains which files to keep, which ones not to upload and how to continue with subsequent *commits*. You'll find plenty of information about `git` and `GitHub` online, so I won't bore you with the details here.
+Section 2.8 (*Preparación del repositorio Git*) of the [manual] explains which files to keep, which ones not to upload and how to continue with subsequent *commits*. You'll find plenty of information about `git` and GitHub online, so I won't bore you with the details here.
 
-If you already use `make`, section 2.8.3 (*Sincronización mediante el Makefile*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) explains how to prepare the files for your next *commit*.
+If you already use `make`, section 2.8.3 (*Sincronización mediante el Makefile*) of the [manual] explains how to prepare the files for your next *commit*.
 
 ### Reviewing the document with your advisor
 
 The `git` history helps you see what's changed, but doesn't replace comments on the content. You can combine it with the review tools provided by whichever service you use to share the project.
 
-I've found the `todonotes` package useful, and it's available in the template. At the end of `Config/myconfig.tex`, you'll find example commands such as `\todojmg`, `\todorbc` and `\todomig`, which you can adapt to the people reviewing your work. For example, `\todojmg{Revisar esta explicación}` inserts a review note. See section 5.1 (*Comandos personalizados*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) for review notes and section 7.3 (*Generación del documento con control de cambios*) for comparing versions. Come back to these tools when you start exchanging versions with your advisor.
+I've found the `todonotes` package useful, and it's available in the template. At the end of `Config/myconfig.tex`, you'll find example commands such as `\todojmg`, `\todorbc` and `\todomig`, which you can adapt to the people reviewing your work. For example, `\todojmg{Revisar esta explicación}` inserts a review note. See section 5.1 (*Comandos personalizados*) of the [manual] for review notes and section 7.3 (*Generación del documento con control de cambios*) for comparing versions. Come back to these tools when you start exchanging versions with your advisor.
 
 ## When you need something more
 
-Add these features as you need them. The [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) contains the full details and examples.
+Add these features as you need them. The [manual] contains the full details and examples.
 
 ### Project proposal
 
-To work on your project proposal, open `Anteproyecto/anteproyecto.tex`, which shares the details defined in `Config/myconfig.tex` with the main document. If you work online, follow the document-selection instructions for [`Overleaf`](#compile-the-example-in-overleaf).
+To work on your project proposal, open `Anteproyecto/anteproyecto.tex`, which shares the details defined in `Config/myconfig.tex` with the main document. If you work online, follow the document-selection instructions for [Overleaf](#compile-the-example-in-overleaf-without-changing-anything).
 
 ### Bibliography
 
-For normal use, add your BibTeX references to `Book/biblio/biblio.bib`. The template uses `biblatex` with `biber`. If you work with `TeXstudio`, apply the configuration described in [Configure `TeXstudio`](#configure-texstudio).
+For normal use, add your BibTeX references to `Book/biblio/biblio.bib`. The template uses `biblatex` with `biber`. If you work with TeXstudio, apply the configuration described in [Configure TeXstudio](#configure-texstudio).
 
 If you work with several `.bib` files, place them in `Book/biblio/` and declare them in `Book/biblio/bibliofiles.tex`, following the existing examples.
 
@@ -242,7 +234,7 @@ Book/acronyms/defacronymsgl.tex
 Book/symbols/defsymbolsgl.tex
 ```
 
-Both files already contain examples you can follow to add your own definitions. To generate the lists (indexes), follow the instructions for [the first compilation](#compile-the-example-without-changing-anything).
+Both files already contain examples you can follow to add your own definitions. To generate the lists (indexes), follow the instructions for [the first compilation](#compile-the-example-on-your-computer-without-changing-anything).
 
 ### Administrative paperwork (UAH only)
 
@@ -253,7 +245,11 @@ PapeleoTFG/
 PapeleoTFM/
 ```
 
-You can compile each form's `.tex` file from your editor. If you work online, select it as explained in the [`Overleaf`](#compile-the-example-in-overleaf) section. Consult the PDF guides in those folders and always check the applicable regulations.
+You can compile each form's `.tex` file from your editor. If you work online, select it as explained in the [Overleaf](#compile-the-example-in-overleaf-without-changing-anything) section. Consult the PDF guides in those folders and always check the applicable regulations.
+
+### Zen Mode for writing
+
+When you're concentrating on a chapter, you may not want to wade through covers, abstracts and lists every time you open the PDF. To work without those pages, set `\ZenMode` to `true` in `Config/myconfig.tex` and keep compiling `Book/book.tex`. Section 3.4.1 (*Modo zen para redactar*) of the [manual] explains how to choose which chapters to compile. Before submitting your work, set `\ZenMode` back to `false` and review the complete document.
 
 ### Doctoral thesis by compendium of publications
 
@@ -267,7 +263,7 @@ For a doctoral thesis by compendium:
 - Organise the content in `Book/content-compendium.tex`.
 - Keep compiling `Book/book.tex`.
 
-Check section 6.2 (*Caso especializado: tesis por compendio de publicaciones*) of the [manual](https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv) and your programme's regulations before including publications, especially regarding permission to reuse them.
+Check section 6.2 (*Caso especializado: tesis por compendio de publicaciones*) of the [manual] and your programme's regulations before including publications, especially regarding permission to reuse them.
 
 ## Common problems
 
@@ -279,7 +275,7 @@ First try a freshly downloaded copy, without modifications. If that doesn't comp
 2. Update your LaTeX distribution.
 3. Allow any missing packages to be installed.
 4. Check that you're compiling `Book/book.tex`.
-5. Verify that you've selected `biber`, as explained in [Configure `TeXstudio`](#configure-texstudio). If you've changed the compiler in `TeXstudio`, check that `Compilador por defecto` is set to `PdfLaTeX` under `Opciones` > `Configurar TeXstudio` > `Compilar` (on macOS, `TeXstudio` > `Preferencias` > `Compilar`).
+5. Verify that you've selected `biber`, as explained in [Configure TeXstudio](#configure-texstudio). If you've changed the compiler in TeXstudio, check that `Compilador por defecto` is set to `PdfLaTeX` under `Opciones` > `Configurar TeXstudio` > `Compilar` (on macOS, `TeXstudio` > `Preferencias` > `Compilar`).
 
 ### The bibliography doesn't appear
 
@@ -287,13 +283,13 @@ Check that:
 
 - The entries are in `Book/biblio/biblio.bib` or in a file declared in `Book/biblio/bibliofiles.tex`.
 - You've cited the references in the text.
-- You've followed the instructions in [Configure `TeXstudio`](#configure-texstudio) to select `biber`.
+- You've followed the instructions in [Configure TeXstudio](#configure-texstudio) to select `biber`.
 
-After checking these points, compile again as explained in [Compile the example without changing anything](#compile-the-example-without-changing-anything). If the bibliography still doesn't appear and there are no outstanding errors in the log, try `Herramientas` > `Limpiar los archivos auxiliares` in `TeXstudio`. Review the list of files it will delete, click `Aceptar` and compile again. This cleanup is a troubleshooting measure, not a necessary step in every compilation.
+After checking these points, compile again as explained in [Compile the example without changing anything](#compile-the-example-on-your-computer-without-changing-anything). If the bibliography still doesn't appear and there are no outstanding errors in the log, try `Herramientas` > `Limpiar los archivos auxiliares` in TeXstudio. Review the list of files it will delete, click `Aceptar` and compile again. This cleanup is a troubleshooting measure, not a necessary step in every compilation.
 
 ### The example compiled before I modified it
 
-Save all files and compile `Book/book.tex` again. In `TeXstudio`, open the messages or log panel and find the first error, not the formatting warnings. If the editor lets you jump to its location, open the indicated line and also check the preceding ones: sometimes the problem starts before the point where LaTeX detects it.
+Save all files and compile `Book/book.tex` again. In TeXstudio, open the messages or log panel and find the first error, not the formatting warnings. If the editor lets you jump to its location, open the indicated line and also check the preceding ones: sometimes the problem starts before the point where LaTeX detects it.
 
 Start by checking the changes you've just made:
 
@@ -321,7 +317,7 @@ If you ask for help, include that information. A message like "it won't compile"
 
 When you compile the distribution, you'll also get the complete manual and a collection of examples. You don't need to read it from beginning to end before starting: consult it whenever you want to configure a feature or copy the structure of an example.
 
-The links to the download guide and precompiled example are in [Download and extract the student distribution](#download-and-extract-the-student-distribution). To report a reproducible error or suggest an improvement, you can use the [`GitHub` issue tracker](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate/issues).
+The links to the download guide and precompiled example are in [Download the student distribution](#download-the-student-distribution). To report a reproducible error or suggest an improvement, you can use the [GitHub issue tracker](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate/issues).
 
 If you need help with a compilation error or want to send a suggestion, you can write to me at [javier.maciasguarasa@uah.es](mailto:javier.maciasguarasa@uah.es). If possible, include your operating system, LaTeX distribution, editor, the file you were compiling and the first error message.
 
@@ -340,7 +336,7 @@ The project keeps evolving, and all contributions are welcome, especially to:
 - Extend compatibility with degrees.
 - Simplify the experience for people using the template for the first time.
 
-You can suggest changes through a *pull request* or report an issue on [`GitHub`](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate).
+You can suggest changes through a *pull request* or report an issue on [GitHub](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate).
 
 Consult the licence file included in the distribution before redistributing or modifying the project.
 
@@ -349,3 +345,5 @@ Enjoy!
 
 
 Javi
+
+[manual]: https://dl.dropboxusercontent.com/scl/fi/wwzbaow0g4cgs7euxvwxy/TFG-GIEC-spanish.pdf?rlkey=2x54yp52avfad67a2fdl3esmv
