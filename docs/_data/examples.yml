@@ -1,0 +1,65 @@
+# Refresh a thumbnail from the public PDF listed in that entry:
+# curl -fsSL "$url" -o "$pdf"
+# pdftoppm -f 1 -l 1 -singlefile -scale-to 480 -jpeg -jpegopt quality=82,optimize=y "$pdf" "docs/assets/examples/$sample"
+# Check that page 1 is the cover and update its dimensions and alt text if needed.
+groups:
+  - title: TFG
+    items:
+      - label: GISTS · ETSIT-UPM
+        url: https://www.dropbox.com/scl/fi/1gaz7irrpq1t38c6zfk9g/TFG-GISTS-ETSIT-UPM-spanish.pdf?rlkey=siunebokaz6wk7l939jax9qkl&raw=1
+        image: /assets/examples/upm.jpg
+        width: 340
+        height: 480
+        alt: Portada naranja de un TFG de Ingeniería de Tecnologías y Servicios de Telecomunicación.
+      - label: GII · ETSII-URJC
+        url: https://www.dropbox.com/scl/fi/j4t8ksau8lu6q1xxeqkdm/TFG-GII-ETSII-URJC-english-editorial.pdf?rlkey=qidobibfvmfxpttfteui11hne&raw=1
+        image: /assets/examples/urjc.jpg
+        width: 340
+        height: 480
+        alt: Portada blanca de un TFG de Ingeniería Informática con el logotipo de la Universidad Rey Juan Carlos.
+  - title: TFM
+    items:
+      - label: MUIE · UAH
+        url: https://www.dropbox.com/scl/fi/nlwtxw96qp4hq6oe8reyf/TFM-MUIE-spanish-modern.pdf?rlkey=2en4ej47zfetwx6x848ffnr2d&raw=1
+        image: /assets/examples/muie.jpg
+        width: 340
+        height: 480
+        alt: Portada blanca con franjas azules del Máster en Ingeniería Electrónica.
+      - label: MUCTE · UAH · En inglés
+        url: https://www.dropbox.com/scl/fi/r1pa6kwfkups9trnhye20/TFM-MUCTE-english-framed.pdf?rlkey=wcsnika0d1bmrnb87btcgbhkf&raw=1
+        image: /assets/examples/mucte.jpg
+        width: 340
+        height: 480
+        alt: Portada blanca con los logotipos de la UAH y el Máster en Ciencia y Tecnología desde el Espacio.
+      - label: MUC · UAH
+        url: https://www.dropbox.com/scl/fi/49to5rssvhs2fcaq5ot96/TFM-MUC-spanish-shaded.pdf?rlkey=c5izlrq0xcvhhu7nl8pkm69vp&raw=1
+        image: /assets/examples/muc.jpg
+        width: 340
+        height: 480
+        alt: Portada azul con una banda dorada del Máster en Ciberseguridad.
+  - title: Tesis doctorales
+    items:
+      - label: Convencional · UAH · En inglés
+        url: https://www.dropbox.com/scl/fi/ihbrvgylikc9pvaylvmz7/PhD-PHDUAH-english-conventional-mimosis.pdf?rlkey=26zobzpky4sb0ln151xuhd2go&raw=1
+        image: /assets/examples/mimosis.jpg
+        width: 340
+        height: 480
+        alt: Portada blanca de una tesis doctoral convencional en inglés, con el escudo azul de la UAH.
+      - label: Por compendio · UAH
+        url: https://www.dropbox.com/scl/fi/ti7p716humo5vx5lvl7oc/PhD-PHDUAH-spanish-compendium-standard.pdf?rlkey=ujuogq5bluvsnthw3xeh0ohk9&raw=1
+        image: /assets/examples/compendium.jpg
+        width: 340
+        height: 480
+        alt: Portada blanca de una tesis por compendio de publicaciones, con el escudo azul de la UAH.
+      - label: Con bibliografía por capítulo · UAH
+        url: https://www.dropbox.com/scl/fi/j2ms7n2swy15xm3tr05qk/PhD-PHDUAH-spanish-conventional-chapterbib-editorial.pdf?rlkey=m920ztnekvst9734eitwi7pt5&raw=1
+        image: /assets/examples/chapter-bib.jpg
+        width: 340
+        height: 480
+        alt: Portada blanca de una tesis en español con bibliografía por capítulo, con el escudo azul de la UAH.
+
+resources:
+  - label: Guía de descarga (PDF)
+    url: https://www.dropbox.com/scl/fi/n4jtan9a5v06cc1cp7n4h/01-DOWNLOAD-GUIDE.pdf?rlkey=ux7d8ox85zwlpwhr6nyjvx7zk&raw=1
+  - label: Comparar estilos tipográficos (PDF)
+    url: https://www.dropbox.com/scl/fi/kl9geyh49na52yq1oy5hp/02-TYPESETTING-STYLES-COMPARISON.pdf?rlkey=ztygupln7j1fjhjsz1mlz4ky7&raw=1

@@ -1,3 +1,9 @@
-theme: jekyll-theme-primer
 title: Plantilla LaTeX para TFG, TFM y tesis doctorales
 lang: es
+description: Descarga la plantilla, sigue la guía de primeros pasos y consulta un TFG de ejemplo de la Universidad de Alcalá.
+
+# Refresh the cover manually from the public GIEC sample, from the repository root:
+# cover_pdf=$(mktemp /tmp/giec-cover.XXXXXX.pdf)
+# curl -fsSL "$(jq -r .manual_url docs/_data/downloads.json)" -o "$cover_pdf"
+# pdftoppm -f 1 -l 1 -singlefile -scale-to 760 -jpeg -jpegopt quality=82,optimize=y "$cover_pdf" docs/assets/portada-giec
+# Check the sample data and update the image dimensions in index.md if they change.

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | escape }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ page.description | default: site.description | escape }}">
+  <title>{{ page.title | default: site.title | escape }}</title>
+  <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
+</head>
+<body>
+  <div class="site">
+    <main>
+      <div class="main{% if page.cover %} main--with-cover{% endif %}">
+        <div class="page-copy">
+          {{ content }}
+        </div>
+        {% if page.cover %}
+        <figure class="cover">
+          <img src="{{ page.cover.image | relative_url }}" width="{{ page.cover.width }}" height="{{ page.cover.height }}" alt="{{ page.cover.alt | escape }}">
+          <figcaption>{{ page.cover.caption | escape }}</figcaption>
+        </figure>
+        {% endif %}
+      </div>
+      {% if page.examples %}{% include example-gallery.html %}{% endif %}
+    </main>
+    {% if page.footer_links %}
+    <footer class="site-footer">
+      {% assign downloads = site.data.downloads %}
+      {% for link in page.footer_links %}
+        {% if link.only_with_direct_zip %}
+          {% unless downloads.zip_url and downloads.zip_url != "TODO" %}{% continue %}{% endunless %}
+        {% endif %}
+        {% assign url = link.url %}
+        {% if link.download %}{% assign url = downloads[link.download] %}{% endif %}
+        <a href="{{ url | escape }}"{% if link.lang %} lang="{{ link.lang | escape }}"{% endif %}>{{ link.label | escape }}</a>
+      {% endfor %}
+    </footer>
+    {% endif %}
+  </div>
+</body>
+</html>

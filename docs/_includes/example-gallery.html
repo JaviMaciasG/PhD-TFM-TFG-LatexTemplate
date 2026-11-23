@@ -1,0 +1,22 @@
+<section class="examples" aria-labelledby="otros-ejemplos">
+  <h2 id="otros-ejemplos">Otros ejemplos</h2>
+  <p>Selecciona una portada para abrir el PDF completo.</p>
+  {% for group in site.data.examples.groups %}
+    <h3>{{ group.title | escape }}</h3>
+    <ul class="examples-grid">
+      {% for example in group.items %}
+      <li>
+        <a class="example" href="{{ example.url | escape }}">
+          <img src="{{ example.image | relative_url }}" width="{{ example.width }}" height="{{ example.height }}" alt="{{ example.alt | escape }}" loading="lazy" decoding="async">
+          <span>{{ example.label | escape }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+  <ul class="next-links examples-resources">
+    {% for resource in site.data.examples.resources %}
+      <li><a href="{{ resource.url | escape }}">{{ resource.label | escape }}</a></li>
+    {% endfor %}
+  </ul>
+</section>
