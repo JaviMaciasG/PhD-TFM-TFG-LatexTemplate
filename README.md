@@ -2,11 +2,11 @@
 
 ## Introducción
 
-Escribir un TFG, un TFM o una tesis doctoral ya da bastante trabajo. Pelearte con los márgenes, la portada y la numeración, no debería formar parte del pack.
+Escribir un TFG, un TFM o una tesis doctoral ya da bastante trabajo, y pelearte con los márgenes, la portada y la numeración no debería formar parte del *pack*. Para eso está esta plantilla: tú pones el contenido y ella se pelea con el formato.
 
-La plantilla está diseñada principalmente para la Universidad de Alcalá (UAH), aunque también incluye soporte para algunas titulaciones de la URJC, UPM, UCLM y US. Permite generar documentos en español o en inglés y cubre desde trabajos académicos convencionales hasta anteproyectos, documentación administrativa (para el caso de UAH) y tesis doctorales por compendio de publicaciones.
+La plantilla está diseñada principalmente para estudiantes de grado, máster y doctorado de la Universidad de Alcalá (UAH), aunque también incluye soporte para algunas titulaciones de la URJC, la UPM, la UCLM y la Universidad de Sevilla. Permite generar documentos en español o en inglés y cubre desde TFG y TFM hasta tesis doctorales, incluidas las tesis por compendio de publicaciones. También incluye anteproyectos y parte de la documentación administrativa (para la UAH).
 
-Al usar la plantilla puede que tantos archivos y opciones te impongan un poco. Es normal, pero no necesitas conocerlos todos ni tener *nivel Jedi* para empezar. Sólo tendrás que ocuparte de unos pocos archivos, y te iré indicando cuáles. El resto lo irás descubriendo cuando lo necesites, así que relax y ánimo, porque estoy seguro de que puedes con ello.
+Si al abrir la plantilla te entran ganas de cerrarla y fingir que nunca la has visto por tantos archivos y opciones, respira hondo porque es normal. No necesitas conocerlos todos ni tener *nivel Jedi* para empezar. Sólo tendrás que ocuparte de unos pocos archivos, y te iré indicando cuáles. El resto lo irás descubriendo cuando lo necesites. Dedicarle un rato al principio compensa: el índice, las referencias y la bibliografía se actualizan solos, tu documento lucirá con un acabado profesional y tú te quedas con lo importante, que es escribir. Relax y ánimo: estoy seguro de que puedes con ello.
 
 
 ## Qué hace la plantilla por ti
@@ -35,7 +35,7 @@ Este es el recorrido que te propongo (usa los enlaces para ir a la sección de e
 4. **[Introduce tus datos y compila de nuevo](#introduce-tus-datos-y-compila-de-nuevo)** para comprobarlos en el PDF, tanto si trabajas en tu equipo como si utilizas Overleaf.
 5. **[Prepara la estructura mínima](#prepara-la-plantilla-para-escribir)** y empieza a escribir tu documento.
 
-Si tras este proces el PDF muestra tu nombre y el título de tu trabajo, ya tienes la plantilla funcionando. Enhorabuena, el 80 % del miedo ya está superado. El resto lo irás aprendiendo cuando lo necesites.
+Si tras este proceso el PDF generado muestra tu nombre y el título de tu trabajo, ya tienes la plantilla funcionando. Enhorabuena, el 80 % del miedo ya está superado y el resto lo irás aprendiendo cuando lo necesites.
 
 ## Prepara tu entorno
 
@@ -166,13 +166,13 @@ Una vez que hayas compilado y revisado el manual, guarda una copia de seguridad 
 
 Una vez preparada la estructura mínima, organiza tu trabajo añadiendo, eliminando o reordenando las instrucciones `\input{...}` de `Book/content-standard.tex`. Escribe en los archivos de contenido, compila `Book/book.tex` y revisa el PDF y los avisos. Hacer cambios pequeños y compilar con frecuencia facilita encontrar los errores.
 
-Para usar la herramienta de preparación, arranca tu explorador de archivos en el directorio donde hayas descomprimido la distribución, y sigue los pasos de tu sistema:
+Para usar la herramienta de preparación, arranca tu explorador de archivos en el directorio donde hayas descomprimido la distribución, y sigue los pasos de tu sistema (ejecutar se realiza normalmente con doble clic):
 
-- En **Windows:** abre `Tools/prepare-book.bat`.
-- En **macOS:** abre `Tools/prepare-book.command`.
-- En **GNU/Linux:** haz doble clic en `Tools/prepare-book.sh` y elige `Ejecutar en un terminal`. Si no aparece esa opción, consulta el apartado 2.7 (*Preparación de una estructura mínima*) del [manual].
+- En **Windows:** ejecuta `Tools/prepare-book.bat`.
+- En **macOS:** ejecuta `Tools/prepare-book.command`.
+- En **GNU/Linux:** ejecuta `Tools/prepare-book.sh` y elige `Ejecutar en un terminal`. 
 
-Elige preparar un documento mínimo o restaurar los ejemplos. La herramienta guarda una copia de los archivos que va a sustituir en `Book/.YYYYMMDD-HHMMSS-backup`. Si no ves la carpeta de la copia de seguridad, activa la opción para mostrar los archivos ocultos. Después, compila `Book/book.tex`.
+Al ejecutar el comando, elige preparar un documento mínimo o restaurar los ejemplos. La herramienta guarda una copia de los archivos que va a sustituir en `Book/.YYYYMMDD-HHMMSS-backup`. Si no ves la carpeta de la copia de seguridad, activa la opción para mostrar los archivos ocultos. Después, compila `Book/book.tex`.
 
 Si prefieres preparar la estructura mínima a mano, encontrarás los pasos en el apartado 2.7 (*Preparación de una estructura mínima*) del [manual]. Ese método también te sirve si trabajas desde el navegador. Si ya utilizas `make`, en el mismo apartado te explico cómo automatizar el proceso.
 
@@ -219,33 +219,13 @@ Si trabajas con varios archivos `.bib`, colócalos en `Book/biblio/` y decláral
 
 Guarda las ilustraciones en `Book/figures/` o `Book/diagrams/`. Puedes utilizar figuras en formato PDF, PNG y JPEG directamente en la plantilla.
 
-Por ejemplo:
-
-```latex
-\includegraphics[width=0.8\textwidth]{mi-figura.png}
-```
+Por ejemplo: `\includegraphics[width=0.8\textwidth]{mi-figura.png}`
 
 ### Acrónimos y símbolos
 
-Puedes definir tus acrónimos y símbolos en:
-
-```text
-Book/acronyms/defacronymsgl.tex
-Book/symbols/defsymbolsgl.tex
-```
+Puedes definir tus acrónimos y símbolos en `Book/acronyms/defacronymsgl.tex` y `Book/symbols/defsymbolsgl.tex`, respectivamente.
 
 Ambos archivos contienen ya ejemplos que puedes imitar para añadir tus propias definiciones. Para generar las listas (índices), sigue las indicaciones de [la primera compilación](#compila-el-ejemplo-en-tu-equipo-sin-modificar-nada).
-
-### Documentación administrativa (soportado para UAH)
-
-Encontrarás algunos de los documentos administrativos agrupados por tipo de trabajo en los directorios:
-
-```text
-PapeleoTFG/
-PapeleoTFM/
-```
-
-Puedes compilar el `.tex` de cada formulario desde tu editor. Si trabajas en línea, selecciónalo como se explica en el apartado de [Overleaf](#compila-el-ejemplo-en-overleaf-sin-modificar-nada). Consulta las guías PDF de esas carpetas y verifica la normativa aplicable.
 
 ### Modo zen para redactar
 
@@ -255,15 +235,18 @@ Cuando estés concentrado en un capítulo, quizá no te apetezca atravesar porta
 
 Para una tesis doctoral por compendio:
 
-- En `Config/myconfig.tex`, asigna a `\myDegree` el identificador que corresponda a tu universidad y centro:
-    - `PHDUAH-COMPENDIUM`,
-    - `PHD-ETSIT-UPM-COMPENDIUM`,
-    - `PHD-ETSII-UPM-COMPENDIUM`, o
-    - `PHD-ETSII-US-COMPENDIUM`.
+- En `Config/myconfig.tex`, asigna a `\myDegree` el identificador que corresponda a tu universidad y centro (que tendrán un nombre del tipo `PHD...COMPENDIUM`).
 - Organiza el contenido en `Book/content-compendium.tex`.
 - Continúa compilando `Book/book.tex`.
 
 Consulta el apartado 6.2 (*Caso especializado: tesis por compendio de publicaciones*) del [manual] y la normativa de tu programa antes de incorporar publicaciones, especialmente en lo relativo a permisos de reutilización.
+
+### Documentación administrativa (sólo UAH)
+
+Encontrarás algunos de los documentos administrativos agrupados por tipo de trabajo en los directorios `PapeleoTFG/` y `PapeleoTFM/`.
+
+Puedes compilar el `.tex` de cada formulario desde tu editor. Si trabajas en línea, selecciónalo como se explica en el apartado de [Overleaf](#compila-el-ejemplo-en-overleaf-sin-modificar-nada). Consulta las guías PDF que encontrarás en esas carpetas y verifica la normativa aplicable.
+
 
 ## Problemas frecuentes
 
@@ -317,7 +300,7 @@ Si solicitas ayuda, incluye esa información. Un mensaje como "no compila" descr
 
 Al compilar la distribución, obtendrás también el manual completo y una colección de ejemplos. No necesitas leerlo de principio a fin antes de empezar: consúltalo cuando quieras configurar una función o copiar la estructura de un ejemplo.
 
-Los enlaces a la guía de descarga y al ejemplo precompilado están en [Descarga la distribución para estudiantes](#descarga-la-distribución-para-estudiantes). Para comunicar un error reproducible o proponer una mejora, puedes utilizar el [sistema de incidencias de GitHub](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate/issues).
+Los enlaces a la guía de descarga y al ejemplo precompilado ([manual]) están en [Descarga la distribución para estudiantes](#descarga-la-distribución-para-estudiantes). Para comunicar un error reproducible o proponer una mejora, puedes utilizar el [sistema de incidencias de GitHub](https://github.com/JaviMaciasG/PhD-TFM-TFG-LatexTemplate/issues).
 
 Si necesitas ayuda con un error de compilación o quieres enviar una sugerencia, puedes escribirme a [javier.maciasguarasa@uah.es](mailto:javier.maciasguarasa@uah.es). Incluye, si es posible, el sistema operativo, la distribución de LaTeX, el editor, el archivo que estabas compilando y el primer mensaje de error.
 
