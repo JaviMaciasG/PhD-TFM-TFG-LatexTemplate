@@ -1,4 +1,7 @@
 {
+  "bff8a6d": "Remove the -UAH suffix from student ZIP and TGZ filenames while keeping the 03- prefix; update any direct links or scripts that use the old names",
+  "f051456": "Move the privacy notice next to the Overleaf upload, explain optional project preparation before chapter organisation, and sync both READMEs",
+  "3d1031e": "Refresh the Spanish README introduction and shorten its examples, compendium instructions, and paperwork section",
   "32f540b": "Bring the English README in line with the Spanish guide for local and Overleaf builds, Zen Mode, and backup recovery",
   "649b175": "Give the Spanish README one download step and separate first-build instructions for local editors and Overleaf",
   "317870e": "Move Zen Mode out of the Spanish README quick start, simplify setup instructions, and explain hidden backups",

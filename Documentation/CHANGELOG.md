@@ -2,6 +2,24 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.14.4] - 2026-11-23
+
+### Documentation
+
+- Move the privacy notice next to the Overleaf upload, explain optional project preparation before chapter organisation, and sync both READMEs
+
+
+### Build System
+
+- Remove the -UAH suffix from student ZIP and TGZ filenames while keeping the 03- prefix; update any direct links or scripts that use the old names
+
+
+### Maintenance
+
+- Refresh the Spanish README introduction and shorten its examples, compendium instructions, and paperwork section
+
+- Prepare v8.14.4
+
 ## [v8.14.3] - 2026-11-23
 
 ### Features
