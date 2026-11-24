@@ -2,6 +2,19 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.14.7] - 2026-11-24
+
+### Features
+
+- Redesign the Spanish GitHub Pages landing page with a prominent download button, links to both READMEs and a gallery of eight example PDFs
+
+- Add a worked robot-prototype budget covering labour, equipment depreciation, software licences, overhead, professional fees and VAT, and offer the budget and conditions document as optional appendices
+
+
+### Maintenance
+
+- Prepare v8.14.7
+
 ## [v8.14.6] - 2026-11-23
 
 ### Features

@@ -1,4 +1,6 @@
 {
+  "99b707e": "Add a worked robot-prototype budget covering labour, equipment depreciation, software licences, overhead, professional fees and VAT, and offer the budget and conditions document as optional appendices",
+  "ef75dde": "Redesign the Spanish GitHub Pages landing page with a prominent download button, links to both READMEs and a gallery of eight example PDFs",
   "a95eda2": "Link the student ZIP directly from both READMEs, offer ZIP and TGZ in the manual and download guides, and open the public guide and example PDFs inline",
   "131fcfd": "Add a Spanish GitHub Pages landing page with direct links to the student ZIP, quick start, and example manual",
   "8070a12": "Publish one ZIP and one TGZ to Dropbox under fixed filenames, updating them in place and removing obsolete versioned copies while retaining versioned local builds",
