@@ -1,175 +1,231 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Función: presupuesto.
+% Función: ejemplo de presupuesto de desarrollo de un prototipo.
 %
-% Uso: modifica este fichero para sustituir el ejemplo por tu contenido.
+% Uso: adapta los conceptos, cantidades y precios a tu trabajo.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Presupuesto}
 \label{cha:presupuesto}
 
+Este ejemplo estima el coste de desarrollar un prototipo de robot móvil con
+control por joystick. Incluye el diseño del hardware y del software, el
+montaje y las pruebas. No estima el coste de fabricar una serie de robots ni
+de instalar el sistema en su destino final.
 
-En este capítulo se incluye una estimación del coste total para la realización del proyecto. En las siguientes secciones los costes son divididos en función de su origen, exponiendo el subtotal en cada uno de los apartados y al final se añade el total de estas cifras.
+Los precios, las tarifas y los porcentajes son supuestos del ejemplo, no
+cotizaciones ni tipos que deban aplicarse a otros proyectos. Los importes
+se expresan sin IVA hasta el resumen final.
 
-\section{Recursos Hardware}
-\label{sec:presupuesto-hardware}
+\section{Costes directos}
+\label{sec:presupuesto-directos}
 
-Se ha necesitado gran cantidad de recursos hardware para construir la plataforma y que funcione correctamente. Dichos recursos son enumerados en el siguiente listado.
+\begin{samepage}
+  \subsection{Costes de personal}
+  \label{sec:presupuesto-mano}
 
-\begin{itemize}
-    \item Chasis.
-    \item Ruedas.
-    \item Baterías.
-    \item Motores y encoders.
-    \item Piezas 3D.
-    \item Material básico de electrónica (resistencias, condensadores, LEDs, etc).
-    \item Drivers para motores.
-    \item Tarjetas microcontroladoras LPC2129.
-    \item Joystick analógico inductivo.
-\end{itemize}
+  \begin{table}[H]
+    \caption{Coste de personal.}
+    \label{tab:recursos_humanos}
+    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X r r r@{}}
+      \hline
+      \textbf{Perfil}                           & \textbf{Horas} & \textbf{Tarifa (€/h)} & \textbf{Importe (€)} \\
+      \hline
+      Ingeniero de Desarrollo Hardware (Junior) &            180 &                 30,00 &             5.400,00 \\
+      Ingeniero de Desarrollo Software (Junior) &            120 &                 25,00 &             3.000,00 \\
+      Ingeniero Senior / Director de Proyecto   &             35 &                 55,00 &             1.925,00 \\
+      \hline
+      \textbf{Total de personal}                &   \textbf{335} &                       &   \textbf{10.325,00} \\
+      \hline
+    \end{tabularx}
+  \end{table}
 
-El precio y las unidades son incluidos en la tabla \ref{tab:recursos_hardware} junto con el total de los recursos hardware.
+  Las tarifas son referencias de facturación profesional sin IVA y se
+  usan para valorar la dedicación en este ejemplo.
 
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|c|c|}
-\hline
-Concepto                & Precio por Unidad & Cantidad & Subtotal \\ \hline
-Chasis                  & 50,00 \euro               & 1        & 50,00 \euro        \\ \hline
-Ruedas                  & 10,00 \euro                & 4        & 40,00 \euro       \\ \hline
-Baterías                & 40,00 \euro                & 2        & 80,00 \euro       \\ \hline
-Motor y encoder         & 20,00 \euro                & 2        & 40,00 \euro       \\ \hline
-Piezas 3D               & 15,00 \euro                & 1        & 15,00 \euro       \\ \hline
-Material de electrónica & 60,00 \euro                & 1        & 60,00 \euro       \\ \hline
-Drivers                 & 30,00 \euro                & 2        & 60,00 \euro       \\ \hline
-LPC2129                 & 50,00 \euro                & 2        & 100,00 \euro      \\ \hline
-Joystick                & 110,00 \euro               & 1        & 110,00 \euro      \\ \hline
-\multicolumn{3}{|c|}{TOTAL}                            & 555,00 \euro     \\ \hline
-\end{tabular}
-\caption{Recursos hardware usados}
-\label{tab:recursos_hardware}
-\end{table}
+  Las 300 horas del estudiante (12 ECTS a razón de 25 horas por crédito)
+  se reparten en 180 horas de desarrollo de hardware (diseño de esquemas y
+  placas de circuito impreso, montaje y ensayos de laboratorio) y 120 horas
+  de desarrollo de software (arquitectura del firmware y del código,
+  programación, depuración y documentación). Las 35 horas de supervisión
+  técnica y gestión del proyecto corresponden al ingeniero sénior y se
+  añaden a las 300 horas del estudiante.
+\end{samepage}
+\pagebreak[0]
 
-\section{Recursos de desarrollo y pruebas}
-\label{sec:presupuesto-software}
+\begin{samepage}
+  \subsection{Hardware y amortización}
+  \label{sec:presupuesto-hardware}
 
-Para llevar a cabo este trabajo es necesario el uso de determinado software, que involucra la programación de los nodos, el diseño electrónico de los mismos, la simulación de la plataforma, etc. A continuación se incluye un listado de los programas usados para dichas tareas. El precio se ha calculado en función de la vida útil del recurso (2 años) y el tiempo utilizado (2 meses).
+  Los componentes que se incorporan al prototipo se imputan por su precio
+  de compra. Las piezas impresas corresponden al juego montado en el robot.
 
-\begin{itemize}
-    \item Matlab para diseño de controlador PI, representación de gráficas y pruebas.
-    \item OrCAD para diseño de circuitos electrónicos.
-    \item $\mu$Vision de Keil para programación de microcontroladores.
-    \item FreeCAD. Este programa es gratuito y se ha usado para diseño de piezas 3D y modelado de la plataforma.
-\end{itemize}
+  \nopagebreak
+  \begin{table}[H]
+    \caption{Componentes incorporados al prototipo.}
+    \label{tab:recursos_hardware}
+    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X r r r@{}}
+      \hline
+      \textbf{Componente}           & \textbf{Cantidad} & \textbf{Precio unitario (€)} & \textbf{Importe (€)} \\
+      \hline
+      Chasis                        &                 1 &                        50,00 &                50,00 \\
+      Ruedas                        &                 4 &                        10,00 &                40,00 \\
+      Baterías                      &                 2 &                        40,00 &                80,00 \\
+      Motores con encoder           &                 2 &                        20,00 &                40,00 \\
+      Piezas impresas en 3D (juego) &                 1 &                        15,00 &                15,00 \\
+      Controladores de motor        &                 2 &                        30,00 &                60,00 \\
+      Tarjetas LPC2129              &                 2 &                        50,00 &               100,00 \\
+      Joystick analógico inductivo  &                 1 &                       110,00 &               110,00 \\
+      \hline
+      \textbf{Subtotal}             &                   &                              &      \textbf{495,00} \\
+      \hline
+    \end{tabularx}
+  \end{table}
+\end{samepage}
+\pagebreak[0]
 
-En la tabla \ref{tab:recursos_software} se incluyen dichos programas con sus respectivos costes de licencia.
+\begin{samepage}
+  \medskip
+  Para los equipos reutilizables se aplica una amortización lineal: se
+  divide el precio de compra por la vida útil estimada en meses y se
+  multiplica por los meses de uso imputados al proyecto.
 
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|c|c|}
-\hline
-Concepto    & Precio por Unidad & Coeficiente & Subtotal \\ \hline
-Matlab      & 200,00 \euro                 & 0,0833        & 16,66 \euro        \\ \hline
-$\mu$Vision & 400,00 \euro                 & 0,0833        & 33,32 \euro        \\ \hline
-FreeCAD       & 0,00 \euro                 & 0,0833        & 0,00 \euro       \\ \hline
-OrCAD     & 125,00 \euro                 & 0,0833        & 10,41 \euro        \\ \hline
-Portatil Lenovo Yoga     & 700,00 \euro                 & 0,0833        & 58,31 \euro        \\ \hline
-\multicolumn{3}{|c|}{TOTAL}                & 118,70 \euro        \\ \hline
-\end{tabular}
-\caption{Recursos de desarrollo y pruebas}
-\label{tab:recursos_software}
-\end{table}
+  \nopagebreak
+  \begin{table}[H]
+    \caption{Amortización de los equipos reutilizables.}
+    \label{tab:presupuesto-amortizacion}
+    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X r r r r@{}}
+      \hline
+      \textbf{Equipo}       & \textbf{Compra (€)} & \textbf{Vida útil (meses)} & \textbf{Uso (meses)} & \textbf{Importe (€)} \\
+      \hline
+      Ordenador portátil    &            1.200,00 &                         48 &                    4 &               100,00 \\
+      Equipo de laboratorio &            1.800,00 &                         60 &                    2 &                60,00 \\
+      \hline
+      \textbf{Subtotal}     &                     &                            &                      &      \textbf{160,00} \\
+      \hline
+    \end{tabularx}
+  \end{table}
+  \medskip
+  El coste de hardware y amortización asciende a \textbf{655,00\,€}.
+\end{samepage}
+\pagebreak[0]
 
-\section{Recursos Humanos}
-\label{sec:presupuesto-mano}
+\begin{samepage}
+  \subsection{Licencias de software}
+  \label{sec:presupuesto-software}
 
-El coste proveniente a los recursos humanos del trabajo provienen de un ingeniero que desarrolla el trabajo completo. A continuación se incluyen dichos costes.
+  Se imputa la parte de cada licencia anual que corresponde a los meses
+  de uso del proyecto. Este reparto es un criterio de imputación de costes,
+  no implica que las licencias puedan contratarse por meses.
 
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|c|c|}
-\hline
-Concepto  & Precio por hora & Cantidad de horas & Subtotal \\ \hline
-Ingeniero & 50,00 \euro              & 500                 & 25000,00 \euro       \\ \hline
-\multicolumn{3}{|c|}{TOTAL}                     & 25000,00 \euro        \\ \hline
-\end{tabular}
-\caption{Recursos humanos}
-\label{tab:recursos_humanos}
-\end{table}
+  \nopagebreak
+  \begin{table}[H]
+    \caption{Coste imputado de las licencias comerciales.}
+    \label{tab:recursos_software}
+    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X r r r@{}}
+      \hline
+      \textbf{Herramienta y uso}                         & \textbf{Precio (€/año)} & \textbf{Uso (meses)} & \textbf{Importe (€)} \\
+      \hline
+      Cadence OrCAD: diseño de circuitos                 &                  600,00 &                    4 &               200,00 \\
+      MATLAB y Simulink: diseño y simulación del control &                  360,00 &                    2 &                60,00 \\
+      Arm Keil MDK (µVision): programación y depuración  &                  240,00 &                    3 &                60,00 \\
+      \hline
+      \textbf{Subtotal}                                  &                         &                      &      \textbf{320,00} \\
+      \hline
+    \end{tabularx}
+  \end{table}
+\end{samepage}
+\pagebreak[0]
 
-\section{Presupuesto de ejecución material}
-\label{sec:presupuesto-material}
+\begin{samepage}
+  \subsection{Material fungible}
+  \label{sec:presupuesto-material}
 
-El presupuesto de ejecución material es la suma de los recursos hardware, software y humanos necesarios para llevar a cabo el trabajo.
+  Se incluyen los materiales consumidos en el montaje y las pruebas, sin
+  repetir las piezas que se han imputado al prototipo.
 
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-Concepto           & Subtotal \\ \hline
-Recursos hardware  & 555,00 \euro        \\ \hline
-Recursos software  & 118,70 \euro        \\ \hline
-Coste mano de obra & 25000,00 \euro        \\ \hline
-TOTAL              & 25673,70 \euro        \\ \hline
-\end{tabular}
-\caption{Presupuesto de ejecución material}
-\label{tab:ejec_material}
-\end{table}
+  \nopagebreak
+  \begin{table}[H]
+    \caption{Coste del material fungible.}
+    \label{tab:presupuesto-fungible}
+    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X r r r@{}}
+      \hline
+      \textbf{Concepto}                              & \textbf{Lotes} & \textbf{Precio por lote (€)} & \textbf{Importe (€)} \\
+      \hline
+      Resistencias, condensadores y LED para pruebas &              1 &                        60,00 &                60,00 \\
+      Estaño y consumibles de montaje                &              1 &                        30,00 &                30,00 \\
+      Material para montajes de ensayo               &              1 &                        30,00 &                30,00 \\
+      \hline
+      \textbf{Subtotal}                              &                &                              &      \textbf{120,00} \\
+      \hline
+    \end{tabularx}
+  \end{table}
+\end{samepage}
+\pagebreak[0]
 
-\section{Importe de la ejecución por contrata}
-\label{sec:presupuesto-ejecucion}
+\begin{samepage}
+  \section{Costes adicionales}
 
-Los costes de la ejecución por contrata deben incluir los gastos derivados del uso de las instalaciones donde se ha llevado a cabo el trabajo, las cargas fiscales, los gastos financiero, las tasas administrativas y las obligaciones de control del proyecto.
+  \subsection{Costes indirectos y honorarios facultativos}
+  \label{sec:presupuesto-costes-adicionales}
 
-Dicho gasto se asume estableciendo un recargo sobre el coste del importe del presupuesto de ejecución material. Dicho recargo equivale al 22\% de dicho importe
+  Para estimar los gastos compartidos que no se han imputado de forma
+  directa, como los suministros y el mantenimiento del espacio de trabajo,
+  se aplica un 25\,\% al total de los costes directos.
 
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-Concepto                                      & Subtotal \\ \hline
-22\% del coste total de ejecución de material & 5648,21 \euro       \\ \hline
-\end{tabular}
-\caption{Importe de ejecución por contrata}
-\label{tab:ejec_contrata}
-\end{table}
+  El ejemplo contempla una revisión técnica externa de la documentación y
+  de los resultados de ensayo. Este servicio es independiente del trabajo
+  del estudiante y de las 35 horas de supervisión y gestión ya imputadas
+  a personal. Para estimarlo se aplica un 5\,\% a los costes directos.
 
+  \nopagebreak
+  \begin{table}[H]
+    \caption{Cálculo de los costes indirectos y los honorarios facultativos.}
+    \label{tab:presupuesto-costes-adicionales}
+    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X r r r@{}}
+      \hline
+      \textbf{Concepto}         & \textbf{Base (€)} & \textbf{Porcentaje} & \textbf{Importe (€)} \\
+      \hline
+      Costes indirectos        &         11.420,00 &              25\,\% &             2.855,00 \\
+      Honorarios facultativos  &         11.420,00 &               5\,\% &               571,00 \\
+      \hline
+    \end{tabularx}
+  \end{table}
+\end{samepage}
+\pagebreak[0]
 
-\section{Honorarios facultativos}
-\label{sec:presupuesto-facultativos}
+\begin{samepage}
+  \section{Resumen del presupuesto}
+  \label{sec:presupuesto-total}
 
-Se fija en este proyecto un porcentaje del 7\% sobre el coste total de ejecución por contrata.
+  El resumen distingue los costes directos, los costes indirectos y los
+  honorarios. A efectos de este ejemplo se aplica un IVA del 21\,\% al
+  total antes de impuestos y se redondea la cuota al céntimo.
 
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-Concepto                                & Subtotal \\ \hline
-7\% del coste de ejecución por contrata & 395,38 \euro        \\ \hline
-\end{tabular}
-\caption{Importe de los honorarios facultativos}
-\label{tab:honorarios}
-\end{table}
-
-\section{Presupuesto Total}
-\label{sec:presupuesto-total}
-
-A continuación, en la tabla \ref{tab:presupuesto_total} se realiza la suma de todos los conceptos del presupuesto tenidos en cuenta en los anteriores apartados.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-Concepto Precio                    & Subtotal \\ \hline
-Presupuesto de ejecución material  & 25673,70 \euro        \\ \hline
-Importe de la ejecución contratada & 5648,21 \euro        \\ \hline
-Horarios facultativos              & 395,38 \euro        \\ \hline
-TOTAL (sin IVA)                    & 31717,29 \euro        \\ \hline
-IVA (22 \%)                        & 6977,80\euro        \\ \hline
-TOTAL                              & 38695,10 \euro        \\ \hline
-\end{tabular}
-\caption{Importe del presupuesto total del proyecto}
-\label{tab:presupuesto_total}
-\end{table}
+  \nopagebreak
+  \begin{table}[H]
+    \caption{Resumen económico del desarrollo del prototipo.}
+    \label{tab:presupuesto_total}
+    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X r@{}}
+      \hline
+      \textbf{Concepto}               & \textbf{Importe (€)} \\
+      \hline
+      Costes de personal              &            10.325,00 \\
+      Hardware y amortización         &               655,00 \\
+      Licencias de software           &               320,00 \\
+      Material fungible               &               120,00 \\
+      \hline
+      \textbf{Costes directos}        &   \textbf{11.420,00} \\
+      Costes indirectos (25\,\%)      &             2.855,00 \\
+      Honorarios facultativos (5\,\%) &               571,00 \\
+      \hline
+      \textbf{Total sin IVA}          &   \textbf{14.846,00} \\
+      IVA (21\,\%)                    &             3.117,66 \\
+      \hline
+      \textbf{Total con IVA}          &   \textbf{17.963,66} \\
+      \hline
+    \end{tabularx}
+  \end{table}
+\end{samepage}
 
 %%% Local Variables:
 %%% TeX-master: "../book"
