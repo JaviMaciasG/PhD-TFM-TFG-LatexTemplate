@@ -221,7 +221,15 @@
 % \usepackage[all]{hypcap}
 \usepackage[center]{caption}
 \usepackage{subcaption}
-
+% Temporary compatibility fix for amsmath/subcaption (added by JMG on 20261125)
+% LaTeX issue: https://github.com/latex3/latex2e/issues/2172
+\makeatletter
+\AtBeginDocument{%
+  \g@addto@macro\caption@subtypehook{%
+    \let\ltx@label\label
+  }%
+}
+\makeatother
 
 % Para numerar las \subsubsection
 \setcounter{secnumdepth}{5}
