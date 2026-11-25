@@ -2,6 +2,17 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.14.9] - 2026-11-25
+
+### Features
+
+- New commands to use notes in the margin
+
+
+### Bug Fixes
+
+- Margins defined to avoid warning
+
 ## [v8.14.8] - 2026-11-25
 
 ### Features
@@ -17,6 +28,8 @@ This file is generated from tagged Git history with `git-cliff`. Regenerate it w
 ### Maintenance
 
 - No longer tracking normativas folder (updated ignored files and docs)
+
+- Prepare v8.14.8
 
 - Prepare v8.14.8
 
