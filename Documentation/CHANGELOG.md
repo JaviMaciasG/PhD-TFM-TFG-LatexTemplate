@@ -2,6 +2,24 @@
 
 This file is generated from tagged Git history with `git-cliff`. Regenerate it with `make -C Documentation changelog`; edit this configuration rather than the generated output.
 
+## [v8.14.8] - 2026-11-25
+
+### Features
+
+- Added Manuel Ruano to contributors (he was the one with the idea of the videos list
+
+
+### Bug Fixes
+
+- Added temp fix for LaTeX issue
+
+
+### Maintenance
+
+- No longer tracking normativas folder (updated ignored files and docs)
+
+- Prepare v8.14.8
+
 ## [v8.14.7] - 2026-11-24
 
 ### Features
