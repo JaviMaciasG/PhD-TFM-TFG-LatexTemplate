@@ -608,6 +608,9 @@ TYPESETTING-STYLES-COMPARISON.pdf
 /Deprecated/cdromCover/simplecd/simplecd.zip
 /go.resume-codex.sh
 
+# Local copies of regulations and annexes.
+/normativas/
+
 # Legacy root-level local release notes; Documentation/CHANGELOG.md is tracked.
 /CHANGELOG.md
 

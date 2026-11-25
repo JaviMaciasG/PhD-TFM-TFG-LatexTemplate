@@ -20,7 +20,6 @@ Top-level directories and their primary role:
 - `Anteproyecto/`: Proposal document template and build workflow.
 - `Config/`: Core global configuration and compilation logic (`preamble`, `postamble`, language/worktype handling, and the Book-only typesetting profiles under `Config/typesetting/`).
 - `PapeleoTFG/`, `PapeleoTFM/`, `PapeleoPHD/`: Administrative paperwork templates by document type.
-- `normativas/`: Official regulations and annexes in PDF/DOCX format.
 - `AdminScripts/`: Maintainer-only release and regression automation.
 - `Documentation/`: User guides, maintainer documentation, and repository notes. The README files remain at the root.
 - `UsefulDocs/`: Reference docs (cheatsheets and symbols).

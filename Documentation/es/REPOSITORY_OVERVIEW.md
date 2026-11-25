@@ -20,7 +20,6 @@ Directorios de nivel superior y su función principal:
 - `Anteproyecto/`: plantilla del documento de anteproyecto y flujo de compilación.
 - `Config/`: configuración global básica y lógica de compilación (`preamble`, `postamble`, gestión del idioma/tipo de trabajo y los perfiles de maquetación exclusivos de Book en `Config/typesetting/`).
 - `PapeleoTFG/`, `PapeleoTFM/`, `PapeleoPHD/`: plantillas de documentación administrativa por tipo de documento.
-- `normativas/`: normativas oficiales y anexos en formato PDF/DOCX.
 - `AdminScripts/`: automatización de publicaciones y regresión destinada únicamente a mantenedores.
 - `Documentation/`: guías de usuario, documentación para mantenedores y notas del repositorio. Los ficheros README permanecen en la raíz.
 - `UsefulDocs/`: documentación de referencia (hojas de consulta y símbolos).
