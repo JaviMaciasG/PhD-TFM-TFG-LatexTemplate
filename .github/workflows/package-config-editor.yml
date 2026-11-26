@@ -1,0 +1,70 @@
+name: Package myconfig.tex editor
+run-name: Package editor ${{ inputs.target }} (${{ inputs.request_id || github.run_id }})
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Native platforms to package
+        type: choice
+        default: all
+        options:
+          - all
+          - linux-x64
+          - windows-x64
+          - macos
+          - macos-arm64
+          - macos-intel
+      request_id:
+        description: Optional request identifier used by the Makefile
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: Build ${{ matrix.target }}
+    strategy:
+      fail-fast: false
+      matrix:
+        target: >-
+          ${{ fromJSON('{"all":["linux-x64","windows-x64","macos-arm64","macos-intel"],
+          "macos":["macos-arm64","macos-intel"],"linux-x64":["linux-x64"],"windows-x64":["windows-x64"],
+          "macos-arm64":["macos-arm64"],"macos-intel":["macos-intel"]}')[inputs.target] }}
+    runs-on: >-
+      ${{ fromJSON('{"linux-x64":"ubuntu-24.04","windows-x64":"windows-2022",
+      "macos-arm64":"macos-15","macos-intel":"macos-15-intel"}')[matrix.target] }}
+    timeout-minutes: 30
+    env:
+      PYTHONUTF8: '1'
+      QT_QPA_PLATFORM: offscreen
+    defaults:
+      run:
+        working-directory: ConfigEditor
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: |
+            ConfigEditor/requirements.txt
+            ConfigEditor/packaging-requirements.txt
+      - name: Install Linux desktop libraries
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libegl1 libgl1 libxcb-cursor0
+      - name: Install Python dependencies
+        run: python -m pip install -r requirements.txt -r packaging-requirements.txt
+      - name: Run editor tests
+        run: python -m unittest discover -s tests -v
+      - name: Build native app
+        run: python build_standalone.py
+      - name: Launch in smoke-test mode and archive
+        run: python package_bundle.py --target ${{ matrix.target }} --smoke-test-project ..
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ConfigEditor-${{ matrix.target }}
+          path: ConfigEditor/dist/packages/*
+          if-no-files-found: error
+          retention-days: 14
