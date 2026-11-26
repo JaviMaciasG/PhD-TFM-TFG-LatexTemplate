@@ -620,3 +620,10 @@ OldDocs
 Old/
 
 *.bak0
+
+# Local backups from the optional myconfig.tex editor.
+/Config/.myconfig-backups/
+/Config/.myconfig-*.tmp
+/ConfigEditor/build/
+/ConfigEditor/.venv-package/
+/ConfigEditor/dist/
