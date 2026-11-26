@@ -1,5 +1,6 @@
 from hashlib import sha256
 import json
+import os
 from pathlib import Path
 import tarfile
 import tempfile
@@ -31,7 +32,8 @@ class PackagingTest(unittest.TestCase):
                 _, executable = bundle_files(root, target)
                 executable.parent.mkdir()
                 executable.write_bytes(b"stand-in executable")
-                executable.chmod(0o755)
+                if target == "linux-x64" and os.name == "posix":
+                    executable.chmod(0o755)
                 runtime = executable.parent / "_internal"
                 runtime.mkdir()
                 (runtime / "sample-runtime").touch()
@@ -39,7 +41,9 @@ class PackagingTest(unittest.TestCase):
                 if target == "linux-x64":
                     with tarfile.open(archive) as bundle:
                         names = bundle.getnames()
-                        self.assertTrue(bundle.getmember(f"{APP}/{APP}").mode & 0o111)
+                        # Windows cannot set POSIX executable bits on the test fixture.
+                        if os.name == "posix":
+                            self.assertTrue(bundle.getmember(f"{APP}/{APP}").mode & 0o111)
                 else:
                     with zipfile.ZipFile(archive) as bundle:
                         names = bundle.namelist()
